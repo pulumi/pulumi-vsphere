@@ -16,10 +16,11 @@ package main
 
 import (
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 
 	"github.com/Smithx10/pulumi-vsphere/pkg/version"
 )
 
 func main() {
-	tfbridge.Main("vsphere", version.Version, aws.Provider())
+	tfbridge.Main("vsphere", version.Version, vsphere.Provider())
 }

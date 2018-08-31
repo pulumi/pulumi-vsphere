@@ -16,11 +16,11 @@ package main
 
 import (
 	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
+	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 
-	"github.com/pulumi/pulumi-aws"
-	"github.com/pulumi/pulumi-aws/pkg/version"
+	"github.com/Smithx10/pulumi-vsphere/pkg/version"
 )
 
 func main() {
-	tfgen.Main("aws", version.Version, aws.Provider())
+	tfgen.Main("vsphere", version.Version, vsphere.Provider())
 }
