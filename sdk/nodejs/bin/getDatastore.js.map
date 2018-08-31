@@ -1,0 +1,1 @@
+{"version":3,"file":"getDatastore.js","sourceRoot":"","sources":["../getDatastore.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAEzC;;;;;;;GAOG;AACH,sBAA6B,IAAsB,EAAE,IAA2B;IAC5E,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,yCAAyC,EAAE;QACpE,cAAc,EAAE,IAAI,CAAC,YAAY;QACjC,MAAM,EAAE,IAAI,CAAC,IAAI;KACpB,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AALD,oCAKC"}

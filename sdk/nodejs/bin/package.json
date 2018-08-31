@@ -1,0 +1,28 @@
+{
+    "name": "@pulumi/vsphere",
+    "version": "v0.15.0-1535928404-ge9609df",
+    "description": "A Pulumi package for creating vsphere resources",
+    "keywords": [
+        "pulumi",
+        "vsphere"
+    ],
+    "homepage": "https://pulumi.io",
+    "repository": "https://github.com/Smithx10/pulumi-vsphere",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^0.15.0",
+        "builtin-modules": "3.0.0",
+        "read-package-tree": "^5.2.1",
+        "resolve": "^1.8.1"
+    },
+    "devDependencies": {
+        "@types/node": "^10.9.2",
+        "typescript": "^2.6.2"
+    },
+    "pulumi": {
+        "resource": true
+    }
+}
