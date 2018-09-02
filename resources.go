@@ -42,6 +42,15 @@ func vsphereResource(mod string, res string) tokens.Type {
 	return vsphereType(mod+"/"+fn, res)
 }
 
+// stringValue gets a string value from a property map if present, else ""
+func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
+	val, ok := vars[prop]
+	if ok && val.IsString() {
+		return val.StringValue()
+	}
+	return ""
+}
+
 // preConfigureCallback validates that AWS credentials can be succesfully discovered. This emulates the credentials
 // configuration subset of `github.com/terraform-providers/terraform-provider-aws/aws.providerConfigure`.  We do this
 // before passing control to the TF provider to ensure we can report actionable errors.
