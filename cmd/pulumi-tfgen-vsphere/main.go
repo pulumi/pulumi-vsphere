@@ -17,7 +17,7 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
 
-	"github.com/Smithx10/pulumi-vsphere"
+	vsphere "github.com/Smithx10/pulumi-vsphere"
 	"github.com/Smithx10/pulumi-vsphere/pkg/version"
 )
 
