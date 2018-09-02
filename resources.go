@@ -1,11 +1,9 @@
 package vsphere
 
 import (
-	"fmt"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
@@ -54,22 +52,21 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 // preConfigureCallback validates that AWS credentials can be succesfully discovered. This emulates the credentials
 // configuration subset of `github.com/terraform-providers/terraform-provider-aws/aws.providerConfigure`.  We do this
 // before passing control to the TF provider to ensure we can report actionable errors.
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
-	config := &vsphere.Config{
-		InsecureFlag:  true,
-		User:          stringValue(vars, "user"),
-		Password:      stringValue(vars, "password"),
-		VSphereServer: stringValue(vars, "server"),
-	}
 
-	fmt.Println(config)
-	//if stringValue(vars, "token") == "" {
-	//return errors.New("unable to discover VSphere credentials" +
-	//"- see https://pulumi.io/install/vsphere.html for details on configuration")
-	//}
+//InsecureFlag:  true,
+//User:          stringValue(vars, "user"),
+//Password:      stringValue(vars, "password"),
+//VSphereServer: stringValue(vars, "server"),
+//}
 
-	return nil
-}
+//fmt.Println(config)
+////if stringValue(vars, "token") == "" {
+////return errors.New("unable to discover VSphere credentials" +
+////"- see https://pulumi.io/install/vsphere.html for details on configuration")
+////}
+
+//return nil
+//}
 
 func Provider() tfbridge.ProviderInfo {
 	p := vsphere.Provider().(*schema.Provider)
