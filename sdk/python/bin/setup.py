@@ -8,14 +8,14 @@ from subprocess import check_call
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
-        check_call(['pulumi', 'plugin', 'install', 'resource', 'vsphere', 'v0.15.0-1535916298-gaed830d'])
+        check_call(['pulumi', 'plugin', 'install', 'resource', 'vsphere', 'v0.15.0-1535928270-g0c960e8'])
 
 def readme():
     with open('README.rst') as f:
         return f.read()
 
 setup(name='pulumi_vsphere',
-      version='0.15.0.post1535916298',
+      version='0.15.0.post1535928270',
       description='A Pulumi package for creating vsphere resources',
       long_description=readme(),
       cmdclass={
