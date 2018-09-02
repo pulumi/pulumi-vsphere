@@ -1,7 +1,6 @@
 package vsphere
 
 import (
-	"errors"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
@@ -59,12 +58,6 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 		User:          stringValue(vars, "user"),
 		Password:      stringValue(vars, "password"),
 		VSphereServer: stringValue(vars, "server"),
-	}
-
-	creds, err := vsphere.NewConfig(config)
-	if err != nil {
-		return errors.New("unable to discover VSphere credentials" +
-			"- see https://pulumi.io/install/vsphere.html for details on configuration")
 	}
 
 	//if stringValue(vars, "token") == "" {
