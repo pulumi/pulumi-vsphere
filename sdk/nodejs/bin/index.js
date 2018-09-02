@@ -6,9 +6,9 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 // Export members:
-__export(require("./Virtual_machine"));
+__export(require("./getVirtualMachine"));
 __export(require("./provider"));
-__export(require("./virtual_machine"));
+__export(require("./virtualMachine"));
 // Export sub-modules:
 const config = require("./config/index");
 exports.config = config;

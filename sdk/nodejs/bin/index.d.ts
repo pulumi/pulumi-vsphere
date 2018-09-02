@@ -1,5 +1,5 @@
-export * from "./Virtual_machine";
+export * from "./getVirtualMachine";
 export * from "./provider";
-export * from "./virtual_machine";
+export * from "./virtualMachine";
 import * as config from "./config/index";
 export { config };

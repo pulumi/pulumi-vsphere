@@ -1,0 +1,13 @@
+README.rst
+setup.py
+pulumi_vsphere/__init__.py
+pulumi_vsphere/get_virtual_machine.py
+pulumi_vsphere/virtual_machine.py
+pulumi_vsphere.egg-info/PKG-INFO
+pulumi_vsphere.egg-info/SOURCES.txt
+pulumi_vsphere.egg-info/dependency_links.txt
+pulumi_vsphere.egg-info/not-zip-safe
+pulumi_vsphere.egg-info/requires.txt
+pulumi_vsphere.egg-info/top_level.txt
+pulumi_vsphere/config/__init__.py
+pulumi_vsphere/config/vars.py

@@ -1,0 +1,13 @@
+Metadata-Version: 1.0
+Name: pulumi-vsphere
+Version: 0.15.0.post1535893899+dirty
+Summary: A Pulumi package for creating vsphere resources
+Home-page: https://pulumi.io
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: MIT
+Project-URL: Repository, https://github.com/Smithx10/pulumi-vsphere
+Description: 
+        
+Keywords: pulumi vsphere
+Platform: UNKNOWN

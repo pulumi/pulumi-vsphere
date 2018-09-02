@@ -2,9 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
-export * from "./Virtual_machine";
+export * from "./getVirtualMachine";
 export * from "./provider";
-export * from "./virtual_machine";
+export * from "./virtualMachine";
 
 // Export sub-modules:
 import * as config from "./config/index";
