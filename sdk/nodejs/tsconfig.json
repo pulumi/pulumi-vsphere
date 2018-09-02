@@ -11,6 +11,7 @@
         "computeCluster.ts",
         "computeClusterHostGroup.ts",
         "computeClusterVmAffinityRule.ts",
+        "computeClusterVmAntiAffinityRule.ts",
         "computeClusterVmDependencyRule.ts",
         "computeClusterVmGroup.ts",
         "computeClusterVmHostRule.ts",

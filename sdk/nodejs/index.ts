@@ -5,6 +5,7 @@
 export * from "./computeCluster";
 export * from "./computeClusterHostGroup";
 export * from "./computeClusterVmAffinityRule";
+export * from "./computeClusterVmAntiAffinityRule";
 export * from "./computeClusterVmDependencyRule";
 export * from "./computeClusterVmGroup";
 export * from "./computeClusterVmHostRule";

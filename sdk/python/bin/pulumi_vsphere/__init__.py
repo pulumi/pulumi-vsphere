@@ -9,6 +9,7 @@ __all__ = ['config']
 from compute_cluster import *
 from compute_cluster_host_group import *
 from compute_cluster_vm_affinity_rule import *
+from compute_cluster_vm_anti_affinity_rule import *
 from compute_cluster_vm_dependency_rule import *
 from compute_cluster_vm_group import *
 from compute_cluster_vm_host_rule import *

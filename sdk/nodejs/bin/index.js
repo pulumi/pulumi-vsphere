@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./computeCluster"));
 __export(require("./computeClusterHostGroup"));
 __export(require("./computeClusterVmAffinityRule"));
+__export(require("./computeClusterVmAntiAffinityRule"));
 __export(require("./computeClusterVmDependencyRule"));
 __export(require("./computeClusterVmGroup"));
 __export(require("./computeClusterVmHostRule"));

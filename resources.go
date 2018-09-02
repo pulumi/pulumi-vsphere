@@ -15,18 +15,18 @@ const (
 	vsphereMod = "index"
 )
 
-// vsphereMember manufactures a type token for the Digital Ocean package and the given module and type.
+// vsphereMember manufactures a type token for the VSphere package and the given module and type.
 func vsphereMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(vspherePkg + ":" + mod + ":" + mem)
 }
 
-// vsphereType manufactures a type token for the Digital Ocean package and the given module and type.
+// vsphereType manufactures a type token for the VSphere package and the given module and type.
 func vsphereType(mod string, typ string) tokens.Type {
 	return tokens.Type(vsphereMember(mod, typ))
 }
 
 // vsphereDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the Digital Ocean package and names the file by simply lower casing the data
+// It automatically uses the VSphere package and names the file by simply lower casing the data
 // source's first character.
 func vsphereDataSource(mod string, res string) tokens.ModuleMember {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -48,25 +48,6 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 	}
 	return ""
 }
-
-// preConfigureCallback validates that AWS credentials can be succesfully discovered. This emulates the credentials
-// configuration subset of `github.com/terraform-providers/terraform-provider-aws/aws.providerConfigure`.  We do this
-// before passing control to the TF provider to ensure we can report actionable errors.
-
-//InsecureFlag:  true,
-//User:          stringValue(vars, "user"),
-//Password:      stringValue(vars, "password"),
-//VSphereServer: stringValue(vars, "server"),
-//}
-
-//fmt.Println(config)
-////if stringValue(vars, "token") == "" {
-////return errors.New("unable to discover VSphere credentials" +
-////"- see https://pulumi.io/install/vsphere.html for details on configuration")
-////}
-
-//return nil
-//}
 
 func Provider() tfbridge.ProviderInfo {
 	p := vsphere.Provider().(*schema.Provider)

@@ -4,6 +4,7 @@ pulumi_vsphere/__init__.py
 pulumi_vsphere/compute_cluster.py
 pulumi_vsphere/compute_cluster_host_group.py
 pulumi_vsphere/compute_cluster_vm_affinity_rule.py
+pulumi_vsphere/compute_cluster_vm_anti_affinity_rule.py
 pulumi_vsphere/compute_cluster_vm_dependency_rule.py
 pulumi_vsphere/compute_cluster_vm_group.py
 pulumi_vsphere/compute_cluster_vm_host_rule.py
