@@ -5,6 +5,9 @@ PACK             := vsphere
 PACKDIR          := sdk
 PROJECT          := github.com/Smithx10/pulumi-vsphere
 NODE_MODULE_NAME := @pulumi/vsphere
+PULUMI_BIN := /usr/local/opt/pulumi
+PULUMI_NODE_MODULES := /usr/local/lib/node_modules
+
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}

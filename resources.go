@@ -56,8 +56,8 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
 // before passing control to the TF provider to ensure we can report actionable errors.
 func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
 	if stringValue(vars, "token") == "" {
-		return errors.New("unable to discover Digital Ocean credentials" +
-			"- see https://pulumi.io/install/digitalocean.html for details on configuration")
+		return errors.New("unable to discover VSphere credentials" +
+			"- see https://pulumi.io/install/vsphere.html for details on configuration")
 	}
 
 	return nil
@@ -75,10 +75,10 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:           "https://github.com/Smithx10/pulumi-vsphere",
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"vsphere_virtual_machine": {Tok: vsphereResource(vsphereMod, "Virtual_machine")},
+			"vsphere_virtual_machine": {Tok: vsphereResource(vsphereMod, "VirtualMachine")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"vsphere_virtual_machine": {Tok: vsphereDataSource(vsphereMod, "Virtual_machine")},
+			"vsphere_virtual_machine": {Tok: vsphereDataSource(vsphereMod, "getVirtualMachine")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
