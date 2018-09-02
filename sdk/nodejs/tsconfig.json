@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true
+    },
+    "files": [
+        "Virtual_machine.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "index.ts",
+        "provider.ts",
+        "virtual_machine.ts"
+    ]
+}
+
