@@ -43,13 +43,14 @@ func vsphereResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := vsphere.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "vsphere",
-		Description: "A Pulumi package for creating vsphere resources",
-		Keywords:    []string{"pulumi", "vsphere"},
-		License:     "MIT",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/Smithx10/pulumi-vsphere",
+		P:                    p,
+		Name:                 "vsphere",
+		Description:          "A Pulumi package for creating vsphere resources",
+		Keywords:             []string{"pulumi", "vsphere"},
+		License:              "MIT",
+		Homepage:             "https://pulumi.io",
+		Repository:           "https://github.com/Smithx10/pulumi-vsphere",
+		PreconfigureCallBack: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_virtual_machine": {Tok: vsphereResource(vsphereMod, "Virtual_machine")},
 		},

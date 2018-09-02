@@ -1,0 +1,11 @@
+[[constraint]]
+  name = "github.com/pulumi/pulumi"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/pulumi/pulumi-terraform"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/terraform-providers/terraform-provider-vsphere"
+  branch = "master"
