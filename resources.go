@@ -74,14 +74,14 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 func Provider() tfbridge.ProviderInfo {
 	p := vsphere.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "vsphere",
-		Description:          "A Pulumi package for creating vsphere resources",
-		Keywords:             []string{"pulumi", "vsphere"},
-		License:              "MIT",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/Smithx10/pulumi-vsphere",
-		PreConfigureCallback: preConfigureCallback,
+		P:           p,
+		Name:        "vsphere",
+		Description: "A Pulumi package for creating vsphere resources",
+		Keywords:    []string{"pulumi", "vsphere"},
+		License:     "MIT",
+		Homepage:    "https://pulumi.io",
+		Repository:  "https://github.com/Smithx10/pulumi-vsphere",
+		//PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_compute_cluster":                         {Tok: vsphereResource(vsphereMod, "ComputeCluster")},
 			"vsphere_compute_cluster_host_group":              {Tok: vsphereResource(vsphereMod, "ComputeClusterHostGroup")},
