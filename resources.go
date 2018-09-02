@@ -1,80 +1,85 @@
-// Copyright 2016-2018, Pulumi Corporation.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package vsphere
 
 import (
+	"unicode"
+
+	"github.com/Smithx10/pulumi-vsphere"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi/pkg/tokens"
+	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 )
 
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
+const (
+	vspherePkg = "vsphere"
+	vsphereMod = "index"
+)
 
-// Provider returns additional overlaid schema and metadata associated with the aws package.
+// vsphereMember manufactures a type token for the Digital Ocean package and the given module and type.
+func vsphereMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(vspherePkg + ":" + mod + ":" + mem)
+}
+
+// vsphereType manufactures a type token for the Digital Ocean package and the given module and type.
+func vsphereType(mod string, typ string) tokens.Type {
+	return tokens.Type(vsphereMember(mod, typ))
+}
+
+// vsphereDataSource manufactures a standard resource token given a module and resource name.
+// It automatically uses the Digital Ocean package and names the file by simply lower casing the data
+// source's first character.
+func vsphereDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return vsphereMember(mod+"/"+fn, res)
+}
+
+// vsphereResource manufactures a standard resource token given a module and resource name.
+// package and names the file by simply lower casing the resource's first character.
+func vsphereResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return vsphereType(mod+"/"+fn, res)
+}
+
 func Provider() tfbridge.ProviderInfo {
-	p := aws.Provider().(*schema.Provider)
+	p := vsphere.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "vsphere",
-		Description: "A Pulumi package for creating and managing VMware Vsphere resources.",
+		Description: "A Pulumi package for creating vsphere resources",
 		Keywords:    []string{"pulumi", "vsphere"},
-		License:     "Apache-2.0",
+		License:     "MIT",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/Smithx10/pulumi-vsphere",
-		Config: map[string]*tfbridge.SchemaInfo{
-			"region": {
-				Type: awsType("region", "Region"),
-			},
-		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// AWS Certificate Manager
-			"aws_acm_certificate_validation": {Tok: awsResource(acmMod, "CertificateValidation")},
-			// AWS Private Certificate Authority
-			"aws_acmpca_certificate_authority": {
-				Tok: awsResource(acmpcaMod, "CertificateAuthority"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"tags": {Type: awsType(awsMod, "Tags")},
-				},
-			},
+			"vsphere_virtual_machine": {Tok: vsphereResource(vsphereMod, "Virtual_machine")},
+		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"vsphere_virtual_machine": {Tok: vsphereDataSource(vsphereMod, "Virtual_machine")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.15.1-dev",
+				"@pulumi/pulumi":    "^0.15.0",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
-				"resolve":           "^1.7.1",
+				"resolve":           "^1.8.1",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
+				"@types/node": "^10.9.2",
 			},
 		},
 	}
-
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const awsName = "name"
+	const nameField = "name"
 	for resname, res := range prov.Resources {
 		if schema := p.ResourcesMap[resname]; schema != nil {
 			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[awsName]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[awsName]; !hasfield {
+			if tfs, has := schema.Schema[nameField]; has && (tfs.Optional || tfs.Required) {
+				if _, hasfield := res.Fields[nameField]; !hasfield {
 					if res.Fields == nil {
 						res.Fields = make(map[string]*tfbridge.SchemaInfo)
 					}
-					res.Fields[awsName] = tfbridge.AutoName(awsName, 255)
+					res.Fields[nameField] = tfbridge.AutoName(nameField, 255)
 				}
 			}
 		}

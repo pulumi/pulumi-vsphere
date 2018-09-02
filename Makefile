@@ -1,4 +1,4 @@
-PROJECT_NAME := Amazon Web Services (AWS) Package
+PROJECT_NAME :=  VSphere Package
 include build/common.mk
 
 PACK             := vsphere
@@ -22,7 +22,7 @@ TESTPARALLELISM := 4
 build::
 	go install -ldflags "-X github.com/Smithx10/pulumi-vsphere/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 	go install -ldflags "-X github.com/Smithx10/pulumi-vsphere/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
-	for LANGUAGE in "nodejs" "python" "go" ; do \
+	for LANGUAGE in "nodejs"; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
 	cd ${PACKDIR}/nodejs/ && \
