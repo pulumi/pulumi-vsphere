@@ -1,6 +1,6 @@
 {
-    "name": "@smithx10/pulumi-vsphere",
-    "version": "0.0.1",
+    "name": "@pulumi/vsphere",
+    "version": "${VERSION}",
     "description": "A Pulumi package for creating vsphere resources",
     "keywords": [
         "pulumi",
