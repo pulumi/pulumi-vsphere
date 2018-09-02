@@ -1,0 +1,1 @@
+{"version":3,"file":"getDatacenter.js","sourceRoot":"","sources":["../getDatacenter.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAEzC;;;;;;;GAOG;AACH,uBAA8B,IAAwB,EAAE,IAA2B;IAC/E,IAAI,GAAG,IAAI,IAAI,EAAE,CAAC;IAClB,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,2CAA2C,EAAE;QACtE,MAAM,EAAE,IAAI,CAAC,IAAI;KACpB,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AALD,sCAKC"}
