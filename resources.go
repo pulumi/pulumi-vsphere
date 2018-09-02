@@ -3,7 +3,6 @@ package vsphere
 import (
 	"unicode"
 
-	"github.com/Smithx10/pulumi-vsphere"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
