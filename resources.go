@@ -1,10 +1,13 @@
 package vsphere
 
 import (
+	"errors"
 	"unicode"
 
 	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform/terraform"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 )
@@ -39,6 +42,18 @@ func vsphereResource(mod string, res string) tokens.Type {
 	return vsphereType(mod+"/"+fn, res)
 }
 
+// preConfigureCallback validates that AWS credentials can be succesfully discovered. This emulates the credentials
+// configuration subset of `github.com/terraform-providers/terraform-provider-aws/aws.providerConfigure`.  We do this
+// before passing control to the TF provider to ensure we can report actionable errors.
+func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
+	if stringValue(vars, "token") == "" {
+		return errors.New("unable to discover Digital Ocean credentials" +
+			"- see https://pulumi.io/install/digitalocean.html for details on configuration")
+	}
+
+	return nil
+}
+
 func Provider() tfbridge.ProviderInfo {
 	p := vsphere.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
@@ -49,7 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:              "MIT",
 		Homepage:             "https://pulumi.io",
 		Repository:           "https://github.com/Smithx10/pulumi-vsphere",
-		PreconfigureCallBack: preConfigureCallback,
+		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_virtual_machine": {Tok: vsphereResource(vsphereMod, "Virtual_machine")},
 		},
@@ -65,6 +80,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.9.2",
+			},
+			Overlay: &tfbridge.OverlayInfo{
+				Files:   []string{},
+				Modules: map[string]*tfbridge.OverlayInfo{},
 			},
 		},
 	}
