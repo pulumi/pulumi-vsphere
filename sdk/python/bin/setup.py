@@ -8,7 +8,7 @@ from subprocess import check_call
 class InstallPluginCommand(install):
     def run(self):
         install.run(self)
-        check_call(['pulumi', 'plugin', 'install', 'resource', 'vsphere', '-1536091003-g5a44e2b'])
+        check_call(['pulumi', 'plugin', 'install', 'resource', 'vsphere', '-1536091069-g758b017'])
 
 def readme():
     with open('README.rst') as f:

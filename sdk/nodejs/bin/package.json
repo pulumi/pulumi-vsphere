@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/vsphere",
-    "version": "-1536091003-g5a44e2b",
+    "version": "-1536091069-g758b017",
     "description": "A Pulumi package for creating vsphere resources",
     "keywords": [
         "pulumi",
