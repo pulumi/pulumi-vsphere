@@ -1,13 +1,13 @@
 {
     "name": "@pulumi/vsphere",
-    "version": "v0.15.0-1535928404-ge9609df",
+    "version": "-1536091003-g5a44e2b",
     "description": "A Pulumi package for creating vsphere resources",
     "keywords": [
         "pulumi",
         "vsphere"
     ],
     "homepage": "https://pulumi.io",
-    "repository": "https://github.com/Smithx10/pulumi-vsphere",
+    "repository": "https://github.com/pulumi/pulumi-vsphere",
     "license": "MIT",
     "scripts": {
         "build": "tsc"

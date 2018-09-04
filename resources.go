@@ -58,7 +58,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "vsphere"},
 		License:     "MIT",
 		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/Smithx10/pulumi-vsphere",
+		Repository:  "https://github.com/pulumi/pulumi-vsphere",
 		//PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_compute_cluster":                         {Tok: vsphereResource(vsphereMod, "ComputeCluster")},
