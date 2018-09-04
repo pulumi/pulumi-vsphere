@@ -24,7 +24,7 @@ setup(name='pulumi_vsphere',
       keywords='pulumi vsphere',
       url='https://pulumi.io',
       project_urls={
-          'Repository': 'https://github.com/Smithx10/pulumi-vsphere'
+          'Repository': 'https://github.com/pulumi/pulumi-vsphere'
       },
       license='MIT',
       packages=find_packages(),

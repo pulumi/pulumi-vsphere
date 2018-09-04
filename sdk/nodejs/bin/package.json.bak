@@ -7,7 +7,7 @@
         "vsphere"
     ],
     "homepage": "https://pulumi.io",
-    "repository": "https://github.com/Smithx10/pulumi-vsphere",
+    "repository": "https://github.com/pulumi/pulumi-vsphere",
     "license": "MIT",
     "scripts": {
         "build": "tsc"

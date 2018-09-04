@@ -11,11 +11,11 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @smithx10/pulumi-vsphere
+    $ npm install @pulumi/pulumi-vsphere
 
 or `yarn`:
 
-    $ yarn add @smithx10/pulumi-vsphere
+    $ yarn add @pulumi/pulumi-vsphere
 
 ### Python
 
@@ -25,7 +25,7 @@ A Python SDK is not yet published.
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/Smithx10/pulumi-vsphere/sdk/go/...
+    $ go get github.com/pulumi/pulumi-vsphere/sdk/go/...
 
 ## Reference
 

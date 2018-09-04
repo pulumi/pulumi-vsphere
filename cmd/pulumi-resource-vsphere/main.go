@@ -15,10 +15,10 @@
 package main
 
 import (
-	"github.com/Smithx10/pulumi-vsphere"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
 
-	"github.com/Smithx10/pulumi-vsphere/pkg/version"
+	"github.com/pulumi/pulumi-vsphere"
+	"github.com/pulumi/pulumi-vsphere/pkg/version"
 )
 
 func main() {
