@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: pulumi-vsphere
-Version: 0.0.0
+Version: 0.0.1.dev1536091185+dirty
 Summary: A Pulumi package for creating vsphere resources
 Home-page: https://pulumi.io
 Author: UNKNOWN
