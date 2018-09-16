@@ -5,9 +5,6 @@ PACK             := vsphere
 PACKDIR          := sdk
 PROJECT          := github.com/pulumi/pulumi-vsphere
 NODE_MODULE_NAME := @pulumi/vsphere
-PULUMI_BIN := /usr/local/opt/pulumi
-PULUMI_NODE_MODULES := /usr/local/lib/node_modules
-
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
@@ -63,7 +60,6 @@ install::
 
 test_all::
 	PATH=$(PULUMI_BIN):$(PATH) go test -v -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
-	PATH=$(PULUMI_BIN):$(PATH) go test -v -cover -timeout 1h -parallel ${TESTPARALLELISM} ./tests/...
 
 .PHONY: publish_tgz
 publish_tgz:

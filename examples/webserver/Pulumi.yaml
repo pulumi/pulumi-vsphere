@@ -1,0 +1,3 @@
+name: vsphere-webserver
+description: asic example of an VSphere web server accessible over HTTP.
+runtime: nodejs
