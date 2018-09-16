@@ -1,5 +1,7 @@
 # VSphere provider
 
+**This library is still under development.**
+
 The VSphere resource provider for Pulumi lets you use VSphere resources in your infrastructure 
 programs. To use this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
