@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/pulumi/pulumi-vsphere.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-vsphere)
+
 # VSphere provider
 
 **This library is still under development.**
