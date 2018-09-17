@@ -15,15 +15,17 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/pulumi-vsphere
+    $ npm install @pulumi/vsphere
 
 or `yarn`:
 
-    $ yarn add @pulumi/pulumi-vsphere
+    $ yarn add @pulumi/vsphere
 
 ### Python
 
-A Python SDK is not yet published.
+To use from Python, install using `pip`:
+
+    $ pip install pulumi-vsphere
 
 ### Go
 
