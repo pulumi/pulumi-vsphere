@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "./utilities";
 
 /**
  * The `vsphere_storage_drs_vm_override` resource can be used to add a Storage DRS

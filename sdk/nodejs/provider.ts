@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "./utilities";
 
 /**
  * The provider type for the vsphere package
@@ -24,12 +25,12 @@ export class Provider extends pulumi.ProviderResource {
             if (!args || args.user === undefined) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["allowUnverifiedSsl"] = args ? args.allowUnverifiedSsl : undefined;
-            inputs["clientDebug"] = args ? args.clientDebug : undefined;
+            inputs["allowUnverifiedSsl"] = pulumi.output(args ? args.allowUnverifiedSsl : undefined).apply(JSON.stringify);
+            inputs["clientDebug"] = pulumi.output(args ? args.clientDebug : undefined).apply(JSON.stringify);
             inputs["clientDebugPath"] = args ? args.clientDebugPath : undefined;
             inputs["clientDebugPathRun"] = args ? args.clientDebugPathRun : undefined;
             inputs["password"] = args ? args.password : undefined;
-            inputs["persistSession"] = args ? args.persistSession : undefined;
+            inputs["persistSession"] = pulumi.output(args ? args.persistSession : undefined).apply(JSON.stringify);
             inputs["restSessionPath"] = args ? args.restSessionPath : undefined;
             inputs["user"] = args ? args.user : undefined;
             inputs["vcenterServer"] = args ? args.vcenterServer : undefined;

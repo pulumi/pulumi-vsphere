@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "./utilities";
 
 /**
  * The `vsphere_distributed_virtual_switch` data source can be used to discover

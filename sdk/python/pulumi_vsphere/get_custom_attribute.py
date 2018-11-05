@@ -4,17 +4,18 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetCustomAttributeResult(object):
     """
     A collection of values returned by getCustomAttribute.
     """
     def __init__(__self__, managed_object_type=None, id=None):
-        if managed_object_type and not isinstance(managed_object_type, basestring):
-            raise TypeError('Expected argument managed_object_type to be a basestring')
+        if managed_object_type and not isinstance(managed_object_type, str):
+            raise TypeError('Expected argument managed_object_type to be a str')
         __self__.managed_object_type = managed_object_type
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

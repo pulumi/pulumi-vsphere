@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     """
@@ -30,7 +31,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """Create a ComputeClusterVmDependencyRule resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -39,66 +40,20 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        elif not isinstance(compute_cluster_id, basestring):
-            raise TypeError('Expected property compute_cluster_id to be a basestring')
-        __self__.compute_cluster_id = compute_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
-        resource if changed.
-        """
         __props__['computeClusterId'] = compute_cluster_id
 
         if not dependency_vm_group_name:
             raise TypeError('Missing required property dependency_vm_group_name')
-        elif not isinstance(dependency_vm_group_name, basestring):
-            raise TypeError('Expected property dependency_vm_group_name to be a basestring')
-        __self__.dependency_vm_group_name = dependency_vm_group_name
-        """
-        The name of the VM group that this
-        rule depends on. The VMs defined in the group specified by
-        `vm_group_name` will not be started until the VMs in this
-        group are started.
-        """
         __props__['dependencyVmGroupName'] = dependency_vm_group_name
 
-        if enabled and not isinstance(enabled, bool):
-            raise TypeError('Expected property enabled to be a bool')
-        __self__.enabled = enabled
-        """
-        Enable this rule in the cluster. Default: `true`.
-        """
         __props__['enabled'] = enabled
 
-        if mandatory and not isinstance(mandatory, bool):
-            raise TypeError('Expected property mandatory to be a bool')
-        __self__.mandatory = mandatory
-        """
-        When this value is `true`, prevents any virtual
-        machine operations that may violate this rule. Default: `false`.
-        """
         __props__['mandatory'] = mandatory
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the rule. This must be unique in the
-        cluster.
-        """
         __props__['name'] = name
 
         if not vm_group_name:
             raise TypeError('Missing required property vm_group_name')
-        elif not isinstance(vm_group_name, basestring):
-            raise TypeError('Expected property vm_group_name to be a basestring')
-        __self__.vm_group_name = vm_group_name
-        """
-        The name of the VM group that is the subject of
-        this rule. The VMs defined in this group will not be started until the VMs in
-        the group specified by
-        `dependency_vm_group_name` are started.
-        """
         __props__['vmGroupName'] = vm_group_name
 
         super(ComputeClusterVmDependencyRule, __self__).__init__(
@@ -107,16 +62,3 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'computeClusterId' in outs:
-            self.compute_cluster_id = outs['computeClusterId']
-        if 'dependencyVmGroupName' in outs:
-            self.dependency_vm_group_name = outs['dependencyVmGroupName']
-        if 'enabled' in outs:
-            self.enabled = outs['enabled']
-        if 'mandatory' in outs:
-            self.mandatory = outs['mandatory']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'vmGroupName' in outs:
-            self.vm_group_name = outs['vmGroupName']

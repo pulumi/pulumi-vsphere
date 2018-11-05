@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetVmfsDisksResult(object):
     """
@@ -17,8 +18,8 @@ class GetVmfsDisksResult(object):
         A lexicographically sorted list of devices discovered by the
         operation, matching the supplied `filter`, if provided.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

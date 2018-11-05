@@ -4,17 +4,18 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetNetworkResult(object):
     """
     A collection of values returned by getNetwork.
     """
     def __init__(__self__, type=None, id=None):
-        if type and not isinstance(type, basestring):
-            raise TypeError('Expected argument type to be a basestring')
+        if type and not isinstance(type, str):
+            raise TypeError('Expected argument type to be a str')
         __self__.type = type
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
