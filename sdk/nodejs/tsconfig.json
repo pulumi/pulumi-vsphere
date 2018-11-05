@@ -51,6 +51,7 @@
         "storageDrsVmOverride.ts",
         "tag.ts",
         "tagCategory.ts",
+        "utilities.ts",
         "vappContainer.ts",
         "virtualDisk.ts",
         "virtualMachine.ts",

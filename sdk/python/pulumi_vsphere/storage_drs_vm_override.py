@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class StorageDrsVmOverride(pulumi.CustomResource):
     """
@@ -22,7 +23,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         """Create a StorageDrsVmOverride resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -31,58 +32,16 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
         if not datastore_cluster_id:
             raise TypeError('Missing required property datastore_cluster_id')
-        elif not isinstance(datastore_cluster_id, basestring):
-            raise TypeError('Expected property datastore_cluster_id to be a basestring')
-        __self__.datastore_cluster_id = datastore_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the datastore cluster to put the override in.
-        Forces a new resource if changed.
-        """
         __props__['datastoreClusterId'] = datastore_cluster_id
 
-        if sdrs_automation_level and not isinstance(sdrs_automation_level, basestring):
-            raise TypeError('Expected property sdrs_automation_level to be a basestring')
-        __self__.sdrs_automation_level = sdrs_automation_level
-        """
-        Overrides any Storage DRS automation
-        levels for this virtual machine. Can be one of `automated` or `manual`. When
-        not specified, the datastore cluster's settings are used according to the
-        [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
-        """
         __props__['sdrsAutomationLevel'] = sdrs_automation_level
 
-        if sdrs_enabled and not isinstance(sdrs_enabled, basestring):
-            raise TypeError('Expected property sdrs_enabled to be a basestring')
-        __self__.sdrs_enabled = sdrs_enabled
-        """
-        Overrides the default Storage DRS setting for
-        this virtual machine. When not specified, the datastore cluster setting is
-        used.
-        """
         __props__['sdrsEnabled'] = sdrs_enabled
 
-        if sdrs_intra_vm_affinity and not isinstance(sdrs_intra_vm_affinity, basestring):
-            raise TypeError('Expected property sdrs_intra_vm_affinity to be a basestring')
-        __self__.sdrs_intra_vm_affinity = sdrs_intra_vm_affinity
-        """
-        Overrides the intra-VM affinity setting
-        for this virtual machine. When `true`, all disks for this virtual machine
-        will be kept on the same datastore. When `false`, Storage DRS may locate
-        individual disks on different datastores if it helps satisfy cluster
-        requirements. When not specified, the datastore cluster's settings are used.
-        """
         __props__['sdrsIntraVmAffinity'] = sdrs_intra_vm_affinity
 
         if not virtual_machine_id:
             raise TypeError('Missing required property virtual_machine_id')
-        elif not isinstance(virtual_machine_id, basestring):
-            raise TypeError('Expected property virtual_machine_id to be a basestring')
-        __self__.virtual_machine_id = virtual_machine_id
-        """
-        The UUID of the virtual machine to create
-        the override for.  Forces a new resource if changed.
-        """
         __props__['virtualMachineId'] = virtual_machine_id
 
         super(StorageDrsVmOverride, __self__).__init__(
@@ -91,14 +50,3 @@ class StorageDrsVmOverride(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'datastoreClusterId' in outs:
-            self.datastore_cluster_id = outs['datastoreClusterId']
-        if 'sdrsAutomationLevel' in outs:
-            self.sdrs_automation_level = outs['sdrsAutomationLevel']
-        if 'sdrsEnabled' in outs:
-            self.sdrs_enabled = outs['sdrsEnabled']
-        if 'sdrsIntraVmAffinity' in outs:
-            self.sdrs_intra_vm_affinity = outs['sdrsIntraVmAffinity']
-        if 'virtualMachineId' in outs:
-            self.virtual_machine_id = outs['virtualMachineId']

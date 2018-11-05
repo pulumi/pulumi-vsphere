@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetTagCategoryResult(object):
     """
@@ -13,14 +14,14 @@ class GetTagCategoryResult(object):
         if associable_types and not isinstance(associable_types, list):
             raise TypeError('Expected argument associable_types to be a list')
         __self__.associable_types = associable_types
-        if cardinality and not isinstance(cardinality, basestring):
-            raise TypeError('Expected argument cardinality to be a basestring')
+        if cardinality and not isinstance(cardinality, str):
+            raise TypeError('Expected argument cardinality to be a str')
         __self__.cardinality = cardinality
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

@@ -4,14 +4,15 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetDatastoreClusterResult(object):
     """
     A collection of values returned by getDatastoreCluster.
     """
     def __init__(__self__, id=None):
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

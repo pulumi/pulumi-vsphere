@@ -4,17 +4,18 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class GetComputeClusterResult(object):
     """
     A collection of values returned by getComputeCluster.
     """
     def __init__(__self__, resource_pool_id=None, id=None):
-        if resource_pool_id and not isinstance(resource_pool_id, basestring):
-            raise TypeError('Expected argument resource_pool_id to be a basestring')
+        if resource_pool_id and not isinstance(resource_pool_id, str):
+            raise TypeError('Expected argument resource_pool_id to be a str')
         __self__.resource_pool_id = resource_pool_id
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.

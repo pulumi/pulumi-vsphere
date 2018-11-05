@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class TagCategory(pulumi.CustomResource):
     """
@@ -25,7 +26,7 @@ class TagCategory(pulumi.CustomResource):
         """Create a TagCategory resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -34,43 +35,14 @@ class TagCategory(pulumi.CustomResource):
 
         if not associable_types:
             raise TypeError('Missing required property associable_types')
-        elif not isinstance(associable_types, list):
-            raise TypeError('Expected property associable_types to be a list')
-        __self__.associable_types = associable_types
-        """
-        A list object types that this category is
-        valid to be assigned to. For a full list, click
-        here.
-        """
         __props__['associableTypes'] = associable_types
 
         if not cardinality:
             raise TypeError('Missing required property cardinality')
-        elif not isinstance(cardinality, basestring):
-            raise TypeError('Expected property cardinality to be a basestring')
-        __self__.cardinality = cardinality
-        """
-        The number of tags that can be assigned from this
-        category to a single object at once. Can be one of `SINGLE` (object can only
-        be assigned one tag in this category), to `MULTIPLE` (object can be assigned
-        multiple tags in this category). Forces a new resource if changed.
-        """
         __props__['cardinality'] = cardinality
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A description for the category.
-        """
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the category.
-        """
         __props__['name'] = name
 
         super(TagCategory, __self__).__init__(
@@ -79,12 +51,3 @@ class TagCategory(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'associableTypes' in outs:
-            self.associable_types = outs['associableTypes']
-        if 'cardinality' in outs:
-            self.cardinality = outs['cardinality']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']

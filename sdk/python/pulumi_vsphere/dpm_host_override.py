@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities
 
 class DpmHostOverride(pulumi.CustomResource):
     """
@@ -26,7 +27,7 @@ class DpmHostOverride(pulumi.CustomResource):
         """Create a DpmHostOverride resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -35,43 +36,14 @@ class DpmHostOverride(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        elif not isinstance(compute_cluster_id, basestring):
-            raise TypeError('Expected property compute_cluster_id to be a basestring')
-        __self__.compute_cluster_id = compute_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
-        resource if changed.
-        """
         __props__['computeClusterId'] = compute_cluster_id
 
-        if dpm_automation_level and not isinstance(dpm_automation_level, basestring):
-            raise TypeError('Expected property dpm_automation_level to be a basestring')
-        __self__.dpm_automation_level = dpm_automation_level
-        """
-        The automation level for host power
-        operations on this host. Can be one of `manual` or `automated`. Default:
-        `manual`.
-        """
         __props__['dpmAutomationLevel'] = dpm_automation_level
 
-        if dpm_enabled and not isinstance(dpm_enabled, bool):
-            raise TypeError('Expected property dpm_enabled to be a bool')
-        __self__.dpm_enabled = dpm_enabled
-        """
-        Enable DPM support for this host. Default:
-        `false`.
-        """
         __props__['dpmEnabled'] = dpm_enabled
 
         if not host_system_id:
             raise TypeError('Missing required property host_system_id')
-        elif not isinstance(host_system_id, basestring):
-            raise TypeError('Expected property host_system_id to be a basestring')
-        __self__.host_system_id = host_system_id
-        """
-        The managed object ID of the host.
-        """
         __props__['hostSystemId'] = host_system_id
 
         super(DpmHostOverride, __self__).__init__(
@@ -80,12 +52,3 @@ class DpmHostOverride(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'computeClusterId' in outs:
-            self.compute_cluster_id = outs['computeClusterId']
-        if 'dpmAutomationLevel' in outs:
-            self.dpm_automation_level = outs['dpmAutomationLevel']
-        if 'dpmEnabled' in outs:
-            self.dpm_enabled = outs['dpmEnabled']
-        if 'hostSystemId' in outs:
-            self.host_system_id = outs['hostSystemId']
