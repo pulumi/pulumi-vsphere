@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class StorageDrsVmOverride(pulumi.CustomResource):
     """
@@ -32,21 +32,28 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
         if not datastore_cluster_id:
             raise TypeError('Missing required property datastore_cluster_id')
-        __props__['datastoreClusterId'] = datastore_cluster_id
+        __props__['datastore_cluster_id'] = datastore_cluster_id
 
-        __props__['sdrsAutomationLevel'] = sdrs_automation_level
+        __props__['sdrs_automation_level'] = sdrs_automation_level
 
-        __props__['sdrsEnabled'] = sdrs_enabled
+        __props__['sdrs_enabled'] = sdrs_enabled
 
-        __props__['sdrsIntraVmAffinity'] = sdrs_intra_vm_affinity
+        __props__['sdrs_intra_vm_affinity'] = sdrs_intra_vm_affinity
 
         if not virtual_machine_id:
             raise TypeError('Missing required property virtual_machine_id')
-        __props__['virtualMachineId'] = virtual_machine_id
+        __props__['virtual_machine_id'] = virtual_machine_id
 
         super(StorageDrsVmOverride, __self__).__init__(
             'vsphere:index/storageDrsVmOverride:StorageDrsVmOverride',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

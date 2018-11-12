@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class DistributedVirtualSwitch(pulumi.CustomResource):
     """
@@ -41,183 +41,183 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['activeUplinks'] = active_uplinks
+        __props__['active_uplinks'] = active_uplinks
 
-        __props__['allowForgedTransmits'] = allow_forged_transmits
+        __props__['allow_forged_transmits'] = allow_forged_transmits
 
-        __props__['allowMacChanges'] = allow_mac_changes
+        __props__['allow_mac_changes'] = allow_mac_changes
 
-        __props__['allowPromiscuous'] = allow_promiscuous
+        __props__['allow_promiscuous'] = allow_promiscuous
 
-        __props__['blockAllPorts'] = block_all_ports
+        __props__['block_all_ports'] = block_all_ports
 
-        __props__['checkBeacon'] = check_beacon
+        __props__['check_beacon'] = check_beacon
 
-        __props__['contactDetail'] = contact_detail
+        __props__['contact_detail'] = contact_detail
 
-        __props__['contactName'] = contact_name
+        __props__['contact_name'] = contact_name
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
         if not datacenter_id:
             raise TypeError('Missing required property datacenter_id')
-        __props__['datacenterId'] = datacenter_id
+        __props__['datacenter_id'] = datacenter_id
 
         __props__['description'] = description
 
-        __props__['directpathGen2Allowed'] = directpath_gen2_allowed
+        __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
 
-        __props__['egressShapingAverageBandwidth'] = egress_shaping_average_bandwidth
+        __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
 
-        __props__['egressShapingBurstSize'] = egress_shaping_burst_size
+        __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
 
-        __props__['egressShapingEnabled'] = egress_shaping_enabled
+        __props__['egress_shaping_enabled'] = egress_shaping_enabled
 
-        __props__['egressShapingPeakBandwidth'] = egress_shaping_peak_bandwidth
+        __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
 
         __props__['failback'] = failback
 
-        __props__['faulttoleranceMaximumMbit'] = faulttolerance_maximum_mbit
+        __props__['faulttolerance_maximum_mbit'] = faulttolerance_maximum_mbit
 
-        __props__['faulttoleranceReservationMbit'] = faulttolerance_reservation_mbit
+        __props__['faulttolerance_reservation_mbit'] = faulttolerance_reservation_mbit
 
-        __props__['faulttoleranceShareCount'] = faulttolerance_share_count
+        __props__['faulttolerance_share_count'] = faulttolerance_share_count
 
-        __props__['faulttoleranceShareLevel'] = faulttolerance_share_level
+        __props__['faulttolerance_share_level'] = faulttolerance_share_level
 
         __props__['folder'] = folder
 
-        __props__['hbrMaximumMbit'] = hbr_maximum_mbit
+        __props__['hbr_maximum_mbit'] = hbr_maximum_mbit
 
-        __props__['hbrReservationMbit'] = hbr_reservation_mbit
+        __props__['hbr_reservation_mbit'] = hbr_reservation_mbit
 
-        __props__['hbrShareCount'] = hbr_share_count
+        __props__['hbr_share_count'] = hbr_share_count
 
-        __props__['hbrShareLevel'] = hbr_share_level
+        __props__['hbr_share_level'] = hbr_share_level
 
         __props__['hosts'] = hosts
 
-        __props__['ingressShapingAverageBandwidth'] = ingress_shaping_average_bandwidth
+        __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
 
-        __props__['ingressShapingBurstSize'] = ingress_shaping_burst_size
+        __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
 
-        __props__['ingressShapingEnabled'] = ingress_shaping_enabled
+        __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
 
-        __props__['ingressShapingPeakBandwidth'] = ingress_shaping_peak_bandwidth
+        __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
 
-        __props__['ipv4Address'] = ipv4_address
+        __props__['ipv4_address'] = ipv4_address
 
-        __props__['iscsiMaximumMbit'] = iscsi_maximum_mbit
+        __props__['iscsi_maximum_mbit'] = iscsi_maximum_mbit
 
-        __props__['iscsiReservationMbit'] = iscsi_reservation_mbit
+        __props__['iscsi_reservation_mbit'] = iscsi_reservation_mbit
 
-        __props__['iscsiShareCount'] = iscsi_share_count
+        __props__['iscsi_share_count'] = iscsi_share_count
 
-        __props__['iscsiShareLevel'] = iscsi_share_level
+        __props__['iscsi_share_level'] = iscsi_share_level
 
-        __props__['lacpApiVersion'] = lacp_api_version
+        __props__['lacp_api_version'] = lacp_api_version
 
-        __props__['lacpEnabled'] = lacp_enabled
+        __props__['lacp_enabled'] = lacp_enabled
 
-        __props__['lacpMode'] = lacp_mode
+        __props__['lacp_mode'] = lacp_mode
 
-        __props__['linkDiscoveryOperation'] = link_discovery_operation
+        __props__['link_discovery_operation'] = link_discovery_operation
 
-        __props__['linkDiscoveryProtocol'] = link_discovery_protocol
+        __props__['link_discovery_protocol'] = link_discovery_protocol
 
-        __props__['managementMaximumMbit'] = management_maximum_mbit
+        __props__['management_maximum_mbit'] = management_maximum_mbit
 
-        __props__['managementReservationMbit'] = management_reservation_mbit
+        __props__['management_reservation_mbit'] = management_reservation_mbit
 
-        __props__['managementShareCount'] = management_share_count
+        __props__['management_share_count'] = management_share_count
 
-        __props__['managementShareLevel'] = management_share_level
+        __props__['management_share_level'] = management_share_level
 
-        __props__['maxMtu'] = max_mtu
+        __props__['max_mtu'] = max_mtu
 
-        __props__['multicastFilteringMode'] = multicast_filtering_mode
+        __props__['multicast_filtering_mode'] = multicast_filtering_mode
 
         __props__['name'] = name
 
-        __props__['netflowActiveFlowTimeout'] = netflow_active_flow_timeout
+        __props__['netflow_active_flow_timeout'] = netflow_active_flow_timeout
 
-        __props__['netflowCollectorIpAddress'] = netflow_collector_ip_address
+        __props__['netflow_collector_ip_address'] = netflow_collector_ip_address
 
-        __props__['netflowCollectorPort'] = netflow_collector_port
+        __props__['netflow_collector_port'] = netflow_collector_port
 
-        __props__['netflowEnabled'] = netflow_enabled
+        __props__['netflow_enabled'] = netflow_enabled
 
-        __props__['netflowIdleFlowTimeout'] = netflow_idle_flow_timeout
+        __props__['netflow_idle_flow_timeout'] = netflow_idle_flow_timeout
 
-        __props__['netflowInternalFlowsOnly'] = netflow_internal_flows_only
+        __props__['netflow_internal_flows_only'] = netflow_internal_flows_only
 
-        __props__['netflowObservationDomainId'] = netflow_observation_domain_id
+        __props__['netflow_observation_domain_id'] = netflow_observation_domain_id
 
-        __props__['netflowSamplingRate'] = netflow_sampling_rate
+        __props__['netflow_sampling_rate'] = netflow_sampling_rate
 
-        __props__['networkResourceControlEnabled'] = network_resource_control_enabled
+        __props__['network_resource_control_enabled'] = network_resource_control_enabled
 
-        __props__['networkResourceControlVersion'] = network_resource_control_version
+        __props__['network_resource_control_version'] = network_resource_control_version
 
-        __props__['nfsMaximumMbit'] = nfs_maximum_mbit
+        __props__['nfs_maximum_mbit'] = nfs_maximum_mbit
 
-        __props__['nfsReservationMbit'] = nfs_reservation_mbit
+        __props__['nfs_reservation_mbit'] = nfs_reservation_mbit
 
-        __props__['nfsShareCount'] = nfs_share_count
+        __props__['nfs_share_count'] = nfs_share_count
 
-        __props__['nfsShareLevel'] = nfs_share_level
+        __props__['nfs_share_level'] = nfs_share_level
 
-        __props__['notifySwitches'] = notify_switches
+        __props__['notify_switches'] = notify_switches
 
-        __props__['portPrivateSecondaryVlanId'] = port_private_secondary_vlan_id
+        __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
 
-        __props__['standbyUplinks'] = standby_uplinks
+        __props__['standby_uplinks'] = standby_uplinks
 
         __props__['tags'] = tags
 
-        __props__['teamingPolicy'] = teaming_policy
+        __props__['teaming_policy'] = teaming_policy
 
-        __props__['txUplink'] = tx_uplink
+        __props__['tx_uplink'] = tx_uplink
 
         __props__['uplinks'] = uplinks
 
-        __props__['vdpMaximumMbit'] = vdp_maximum_mbit
+        __props__['vdp_maximum_mbit'] = vdp_maximum_mbit
 
-        __props__['vdpReservationMbit'] = vdp_reservation_mbit
+        __props__['vdp_reservation_mbit'] = vdp_reservation_mbit
 
-        __props__['vdpShareCount'] = vdp_share_count
+        __props__['vdp_share_count'] = vdp_share_count
 
-        __props__['vdpShareLevel'] = vdp_share_level
+        __props__['vdp_share_level'] = vdp_share_level
 
         __props__['version'] = version
 
-        __props__['virtualmachineMaximumMbit'] = virtualmachine_maximum_mbit
+        __props__['virtualmachine_maximum_mbit'] = virtualmachine_maximum_mbit
 
-        __props__['virtualmachineReservationMbit'] = virtualmachine_reservation_mbit
+        __props__['virtualmachine_reservation_mbit'] = virtualmachine_reservation_mbit
 
-        __props__['virtualmachineShareCount'] = virtualmachine_share_count
+        __props__['virtualmachine_share_count'] = virtualmachine_share_count
 
-        __props__['virtualmachineShareLevel'] = virtualmachine_share_level
+        __props__['virtualmachine_share_level'] = virtualmachine_share_level
 
-        __props__['vlanId'] = vlan_id
+        __props__['vlan_id'] = vlan_id
 
-        __props__['vlanRanges'] = vlan_ranges
+        __props__['vlan_ranges'] = vlan_ranges
 
-        __props__['vmotionMaximumMbit'] = vmotion_maximum_mbit
+        __props__['vmotion_maximum_mbit'] = vmotion_maximum_mbit
 
-        __props__['vmotionReservationMbit'] = vmotion_reservation_mbit
+        __props__['vmotion_reservation_mbit'] = vmotion_reservation_mbit
 
-        __props__['vmotionShareCount'] = vmotion_share_count
+        __props__['vmotion_share_count'] = vmotion_share_count
 
-        __props__['vmotionShareLevel'] = vmotion_share_level
+        __props__['vmotion_share_level'] = vmotion_share_level
 
-        __props__['vsanMaximumMbit'] = vsan_maximum_mbit
+        __props__['vsan_maximum_mbit'] = vsan_maximum_mbit
 
-        __props__['vsanReservationMbit'] = vsan_reservation_mbit
+        __props__['vsan_reservation_mbit'] = vsan_reservation_mbit
 
-        __props__['vsanShareCount'] = vsan_share_count
+        __props__['vsan_share_count'] = vsan_share_count
 
-        __props__['vsanShareLevel'] = vsan_share_level
+        __props__['vsan_share_level'] = vsan_share_level
 
         __props__['config_version'] = None
 
@@ -226,4 +226,11 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class HostVirtualSwitch(pulumi.CustomResource):
     """
@@ -32,27 +32,27 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
         if not active_nics:
             raise TypeError('Missing required property active_nics')
-        __props__['activeNics'] = active_nics
+        __props__['active_nics'] = active_nics
 
-        __props__['allowForgedTransmits'] = allow_forged_transmits
+        __props__['allow_forged_transmits'] = allow_forged_transmits
 
-        __props__['allowMacChanges'] = allow_mac_changes
+        __props__['allow_mac_changes'] = allow_mac_changes
 
-        __props__['allowPromiscuous'] = allow_promiscuous
+        __props__['allow_promiscuous'] = allow_promiscuous
 
-        __props__['beaconInterval'] = beacon_interval
+        __props__['beacon_interval'] = beacon_interval
 
-        __props__['checkBeacon'] = check_beacon
+        __props__['check_beacon'] = check_beacon
 
         __props__['failback'] = failback
 
         if not host_system_id:
             raise TypeError('Missing required property host_system_id')
-        __props__['hostSystemId'] = host_system_id
+        __props__['host_system_id'] = host_system_id
 
-        __props__['linkDiscoveryOperation'] = link_discovery_operation
+        __props__['link_discovery_operation'] = link_discovery_operation
 
-        __props__['linkDiscoveryProtocol'] = link_discovery_protocol
+        __props__['link_discovery_protocol'] = link_discovery_protocol
 
         __props__['mtu'] = mtu
 
@@ -60,29 +60,36 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
         if not network_adapters:
             raise TypeError('Missing required property network_adapters')
-        __props__['networkAdapters'] = network_adapters
+        __props__['network_adapters'] = network_adapters
 
-        __props__['notifySwitches'] = notify_switches
+        __props__['notify_switches'] = notify_switches
 
-        __props__['numberOfPorts'] = number_of_ports
+        __props__['number_of_ports'] = number_of_ports
 
-        __props__['shapingAverageBandwidth'] = shaping_average_bandwidth
+        __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
 
-        __props__['shapingBurstSize'] = shaping_burst_size
+        __props__['shaping_burst_size'] = shaping_burst_size
 
-        __props__['shapingEnabled'] = shaping_enabled
+        __props__['shaping_enabled'] = shaping_enabled
 
-        __props__['shapingPeakBandwidth'] = shaping_peak_bandwidth
+        __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
 
         if not standby_nics:
             raise TypeError('Missing required property standby_nics')
-        __props__['standbyNics'] = standby_nics
+        __props__['standby_nics'] = standby_nics
 
-        __props__['teamingPolicy'] = teaming_policy
+        __props__['teaming_policy'] = teaming_policy
 
         super(HostVirtualSwitch, __self__).__init__(
             'vsphere:index/hostVirtualSwitch:HostVirtualSwitch',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

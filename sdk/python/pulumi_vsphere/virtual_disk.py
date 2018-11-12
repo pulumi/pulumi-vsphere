@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class VirtualDisk(pulumi.CustomResource):
     """
@@ -27,9 +27,9 @@ class VirtualDisk(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['adapterType'] = adapter_type
+        __props__['adapter_type'] = adapter_type
 
-        __props__['createDirectories'] = create_directories
+        __props__['create_directories'] = create_directories
 
         __props__['datacenter'] = datacenter
 
@@ -45,11 +45,18 @@ class VirtualDisk(pulumi.CustomResource):
 
         if not vmdk_path:
             raise TypeError('Missing required property vmdk_path')
-        __props__['vmdkPath'] = vmdk_path
+        __props__['vmdk_path'] = vmdk_path
 
         super(VirtualDisk, __self__).__init__(
             'vsphere:index/virtualDisk:VirtualDisk',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

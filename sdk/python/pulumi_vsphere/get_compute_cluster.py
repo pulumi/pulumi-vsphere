@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class GetComputeClusterResult(object):
     """
@@ -21,7 +21,7 @@ class GetComputeClusterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_compute_cluster(datacenter_id=None, name=None):
+async def get_compute_cluster(datacenter_id=None, name=None):
     """
     The `vsphere_compute_cluster` data source can be used to discover the ID of a
     cluster in vSphere. This is useful to fetch the ID of a cluster that you want
@@ -44,7 +44,7 @@ def get_compute_cluster(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getComputeCluster:getComputeCluster', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getComputeCluster:getComputeCluster', __args__)
 
     return GetComputeClusterResult(
         resource_pool_id=__ret__.get('resourcePoolId'),

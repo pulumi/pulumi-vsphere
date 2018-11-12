@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class HostPortGroup(pulumi.CustomResource):
     """
@@ -29,43 +29,43 @@ class HostPortGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['activeNics'] = active_nics
+        __props__['active_nics'] = active_nics
 
-        __props__['allowForgedTransmits'] = allow_forged_transmits
+        __props__['allow_forged_transmits'] = allow_forged_transmits
 
-        __props__['allowMacChanges'] = allow_mac_changes
+        __props__['allow_mac_changes'] = allow_mac_changes
 
-        __props__['allowPromiscuous'] = allow_promiscuous
+        __props__['allow_promiscuous'] = allow_promiscuous
 
-        __props__['checkBeacon'] = check_beacon
+        __props__['check_beacon'] = check_beacon
 
         __props__['failback'] = failback
 
         if not host_system_id:
             raise TypeError('Missing required property host_system_id')
-        __props__['hostSystemId'] = host_system_id
+        __props__['host_system_id'] = host_system_id
 
         __props__['name'] = name
 
-        __props__['notifySwitches'] = notify_switches
+        __props__['notify_switches'] = notify_switches
 
-        __props__['shapingAverageBandwidth'] = shaping_average_bandwidth
+        __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
 
-        __props__['shapingBurstSize'] = shaping_burst_size
+        __props__['shaping_burst_size'] = shaping_burst_size
 
-        __props__['shapingEnabled'] = shaping_enabled
+        __props__['shaping_enabled'] = shaping_enabled
 
-        __props__['shapingPeakBandwidth'] = shaping_peak_bandwidth
+        __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
 
-        __props__['standbyNics'] = standby_nics
+        __props__['standby_nics'] = standby_nics
 
-        __props__['teamingPolicy'] = teaming_policy
+        __props__['teaming_policy'] = teaming_policy
 
         if not virtual_switch_name:
             raise TypeError('Missing required property virtual_switch_name')
-        __props__['virtualSwitchName'] = virtual_switch_name
+        __props__['virtual_switch_name'] = virtual_switch_name
 
-        __props__['vlanId'] = vlan_id
+        __props__['vlan_id'] = vlan_id
 
         __props__['computed_policy'] = None
         __props__['key'] = None
@@ -76,4 +76,11 @@ class HostPortGroup(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

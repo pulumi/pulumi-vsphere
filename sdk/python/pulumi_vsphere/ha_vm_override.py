@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class HaVmOverride(pulumi.CustomResource):
     """
@@ -34,41 +34,48 @@ class HaVmOverride(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        __props__['haDatastoreApdRecoveryAction'] = ha_datastore_apd_recovery_action
+        __props__['ha_datastore_apd_recovery_action'] = ha_datastore_apd_recovery_action
 
-        __props__['haDatastoreApdResponse'] = ha_datastore_apd_response
+        __props__['ha_datastore_apd_response'] = ha_datastore_apd_response
 
-        __props__['haDatastoreApdResponseDelay'] = ha_datastore_apd_response_delay
+        __props__['ha_datastore_apd_response_delay'] = ha_datastore_apd_response_delay
 
-        __props__['haDatastorePdlResponse'] = ha_datastore_pdl_response
+        __props__['ha_datastore_pdl_response'] = ha_datastore_pdl_response
 
-        __props__['haHostIsolationResponse'] = ha_host_isolation_response
+        __props__['ha_host_isolation_response'] = ha_host_isolation_response
 
-        __props__['haVmFailureInterval'] = ha_vm_failure_interval
+        __props__['ha_vm_failure_interval'] = ha_vm_failure_interval
 
-        __props__['haVmMaximumFailureWindow'] = ha_vm_maximum_failure_window
+        __props__['ha_vm_maximum_failure_window'] = ha_vm_maximum_failure_window
 
-        __props__['haVmMaximumResets'] = ha_vm_maximum_resets
+        __props__['ha_vm_maximum_resets'] = ha_vm_maximum_resets
 
-        __props__['haVmMinimumUptime'] = ha_vm_minimum_uptime
+        __props__['ha_vm_minimum_uptime'] = ha_vm_minimum_uptime
 
-        __props__['haVmMonitoring'] = ha_vm_monitoring
+        __props__['ha_vm_monitoring'] = ha_vm_monitoring
 
-        __props__['haVmMonitoringUseClusterDefaults'] = ha_vm_monitoring_use_cluster_defaults
+        __props__['ha_vm_monitoring_use_cluster_defaults'] = ha_vm_monitoring_use_cluster_defaults
 
-        __props__['haVmRestartPriority'] = ha_vm_restart_priority
+        __props__['ha_vm_restart_priority'] = ha_vm_restart_priority
 
-        __props__['haVmRestartTimeout'] = ha_vm_restart_timeout
+        __props__['ha_vm_restart_timeout'] = ha_vm_restart_timeout
 
         if not virtual_machine_id:
             raise TypeError('Missing required property virtual_machine_id')
-        __props__['virtualMachineId'] = virtual_machine_id
+        __props__['virtual_machine_id'] = virtual_machine_id
 
         super(HaVmOverride, __self__).__init__(
             'vsphere:index/haVmOverride:HaVmOverride',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

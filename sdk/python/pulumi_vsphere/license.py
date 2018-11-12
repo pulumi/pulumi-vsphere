@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class License(pulumi.CustomResource):
     """
@@ -25,7 +25,7 @@ class License(pulumi.CustomResource):
 
         if not license_key:
             raise TypeError('Missing required property license_key')
-        __props__['licenseKey'] = license_key
+        __props__['license_key'] = license_key
 
         __props__['edition_key'] = None
         __props__['name'] = None
@@ -37,4 +37,11 @@ class License(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

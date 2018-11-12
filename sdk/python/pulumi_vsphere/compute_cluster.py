@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class ComputeCluster(pulumi.CustomResource):
     """
@@ -47,109 +47,109 @@ class ComputeCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
         if not datacenter_id:
             raise TypeError('Missing required property datacenter_id')
-        __props__['datacenterId'] = datacenter_id
+        __props__['datacenter_id'] = datacenter_id
 
-        __props__['dpmAutomationLevel'] = dpm_automation_level
+        __props__['dpm_automation_level'] = dpm_automation_level
 
-        __props__['dpmEnabled'] = dpm_enabled
+        __props__['dpm_enabled'] = dpm_enabled
 
-        __props__['dpmThreshold'] = dpm_threshold
+        __props__['dpm_threshold'] = dpm_threshold
 
-        __props__['drsAdvancedOptions'] = drs_advanced_options
+        __props__['drs_advanced_options'] = drs_advanced_options
 
-        __props__['drsAutomationLevel'] = drs_automation_level
+        __props__['drs_automation_level'] = drs_automation_level
 
-        __props__['drsEnablePredictiveDrs'] = drs_enable_predictive_drs
+        __props__['drs_enable_predictive_drs'] = drs_enable_predictive_drs
 
-        __props__['drsEnableVmOverrides'] = drs_enable_vm_overrides
+        __props__['drs_enable_vm_overrides'] = drs_enable_vm_overrides
 
-        __props__['drsEnabled'] = drs_enabled
+        __props__['drs_enabled'] = drs_enabled
 
-        __props__['drsMigrationThreshold'] = drs_migration_threshold
+        __props__['drs_migration_threshold'] = drs_migration_threshold
 
         __props__['folder'] = folder
 
-        __props__['forceEvacuateOnDestroy'] = force_evacuate_on_destroy
+        __props__['force_evacuate_on_destroy'] = force_evacuate_on_destroy
 
-        __props__['haAdmissionControlFailoverHostSystemIds'] = ha_admission_control_failover_host_system_ids
+        __props__['ha_admission_control_failover_host_system_ids'] = ha_admission_control_failover_host_system_ids
 
-        __props__['haAdmissionControlHostFailureTolerance'] = ha_admission_control_host_failure_tolerance
+        __props__['ha_admission_control_host_failure_tolerance'] = ha_admission_control_host_failure_tolerance
 
-        __props__['haAdmissionControlPerformanceTolerance'] = ha_admission_control_performance_tolerance
+        __props__['ha_admission_control_performance_tolerance'] = ha_admission_control_performance_tolerance
 
-        __props__['haAdmissionControlPolicy'] = ha_admission_control_policy
+        __props__['ha_admission_control_policy'] = ha_admission_control_policy
 
-        __props__['haAdmissionControlResourcePercentageAutoCompute'] = ha_admission_control_resource_percentage_auto_compute
+        __props__['ha_admission_control_resource_percentage_auto_compute'] = ha_admission_control_resource_percentage_auto_compute
 
-        __props__['haAdmissionControlResourcePercentageCpu'] = ha_admission_control_resource_percentage_cpu
+        __props__['ha_admission_control_resource_percentage_cpu'] = ha_admission_control_resource_percentage_cpu
 
-        __props__['haAdmissionControlResourcePercentageMemory'] = ha_admission_control_resource_percentage_memory
+        __props__['ha_admission_control_resource_percentage_memory'] = ha_admission_control_resource_percentage_memory
 
-        __props__['haAdmissionControlSlotPolicyExplicitCpu'] = ha_admission_control_slot_policy_explicit_cpu
+        __props__['ha_admission_control_slot_policy_explicit_cpu'] = ha_admission_control_slot_policy_explicit_cpu
 
-        __props__['haAdmissionControlSlotPolicyExplicitMemory'] = ha_admission_control_slot_policy_explicit_memory
+        __props__['ha_admission_control_slot_policy_explicit_memory'] = ha_admission_control_slot_policy_explicit_memory
 
-        __props__['haAdmissionControlSlotPolicyUseExplicitSize'] = ha_admission_control_slot_policy_use_explicit_size
+        __props__['ha_admission_control_slot_policy_use_explicit_size'] = ha_admission_control_slot_policy_use_explicit_size
 
-        __props__['haAdvancedOptions'] = ha_advanced_options
+        __props__['ha_advanced_options'] = ha_advanced_options
 
-        __props__['haDatastoreApdRecoveryAction'] = ha_datastore_apd_recovery_action
+        __props__['ha_datastore_apd_recovery_action'] = ha_datastore_apd_recovery_action
 
-        __props__['haDatastoreApdResponse'] = ha_datastore_apd_response
+        __props__['ha_datastore_apd_response'] = ha_datastore_apd_response
 
-        __props__['haDatastoreApdResponseDelay'] = ha_datastore_apd_response_delay
+        __props__['ha_datastore_apd_response_delay'] = ha_datastore_apd_response_delay
 
-        __props__['haDatastorePdlResponse'] = ha_datastore_pdl_response
+        __props__['ha_datastore_pdl_response'] = ha_datastore_pdl_response
 
-        __props__['haEnabled'] = ha_enabled
+        __props__['ha_enabled'] = ha_enabled
 
-        __props__['haHeartbeatDatastoreIds'] = ha_heartbeat_datastore_ids
+        __props__['ha_heartbeat_datastore_ids'] = ha_heartbeat_datastore_ids
 
-        __props__['haHeartbeatDatastorePolicy'] = ha_heartbeat_datastore_policy
+        __props__['ha_heartbeat_datastore_policy'] = ha_heartbeat_datastore_policy
 
-        __props__['haHostIsolationResponse'] = ha_host_isolation_response
+        __props__['ha_host_isolation_response'] = ha_host_isolation_response
 
-        __props__['haHostMonitoring'] = ha_host_monitoring
+        __props__['ha_host_monitoring'] = ha_host_monitoring
 
-        __props__['haVmComponentProtection'] = ha_vm_component_protection
+        __props__['ha_vm_component_protection'] = ha_vm_component_protection
 
-        __props__['haVmDependencyRestartCondition'] = ha_vm_dependency_restart_condition
+        __props__['ha_vm_dependency_restart_condition'] = ha_vm_dependency_restart_condition
 
-        __props__['haVmFailureInterval'] = ha_vm_failure_interval
+        __props__['ha_vm_failure_interval'] = ha_vm_failure_interval
 
-        __props__['haVmMaximumFailureWindow'] = ha_vm_maximum_failure_window
+        __props__['ha_vm_maximum_failure_window'] = ha_vm_maximum_failure_window
 
-        __props__['haVmMaximumResets'] = ha_vm_maximum_resets
+        __props__['ha_vm_maximum_resets'] = ha_vm_maximum_resets
 
-        __props__['haVmMinimumUptime'] = ha_vm_minimum_uptime
+        __props__['ha_vm_minimum_uptime'] = ha_vm_minimum_uptime
 
-        __props__['haVmMonitoring'] = ha_vm_monitoring
+        __props__['ha_vm_monitoring'] = ha_vm_monitoring
 
-        __props__['haVmRestartAdditionalDelay'] = ha_vm_restart_additional_delay
+        __props__['ha_vm_restart_additional_delay'] = ha_vm_restart_additional_delay
 
-        __props__['haVmRestartPriority'] = ha_vm_restart_priority
+        __props__['ha_vm_restart_priority'] = ha_vm_restart_priority
 
-        __props__['haVmRestartTimeout'] = ha_vm_restart_timeout
+        __props__['ha_vm_restart_timeout'] = ha_vm_restart_timeout
 
-        __props__['hostClusterExitTimeout'] = host_cluster_exit_timeout
+        __props__['host_cluster_exit_timeout'] = host_cluster_exit_timeout
 
-        __props__['hostSystemIds'] = host_system_ids
+        __props__['host_system_ids'] = host_system_ids
 
         __props__['name'] = name
 
-        __props__['proactiveHaAutomationLevel'] = proactive_ha_automation_level
+        __props__['proactive_ha_automation_level'] = proactive_ha_automation_level
 
-        __props__['proactiveHaEnabled'] = proactive_ha_enabled
+        __props__['proactive_ha_enabled'] = proactive_ha_enabled
 
-        __props__['proactiveHaModerateRemediation'] = proactive_ha_moderate_remediation
+        __props__['proactive_ha_moderate_remediation'] = proactive_ha_moderate_remediation
 
-        __props__['proactiveHaProviderIds'] = proactive_ha_provider_ids
+        __props__['proactive_ha_provider_ids'] = proactive_ha_provider_ids
 
-        __props__['proactiveHaSevereRemediation'] = proactive_ha_severe_remediation
+        __props__['proactive_ha_severe_remediation'] = proactive_ha_severe_remediation
 
         __props__['tags'] = tags
 
@@ -160,4 +160,11 @@ class ComputeCluster(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

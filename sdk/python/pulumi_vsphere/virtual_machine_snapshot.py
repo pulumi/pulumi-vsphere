@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class VirtualMachineSnapshot(pulumi.CustomResource):
     """
@@ -56,19 +56,26 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             raise TypeError('Missing required property quiesce')
         __props__['quiesce'] = quiesce
 
-        __props__['removeChildren'] = remove_children
+        __props__['remove_children'] = remove_children
 
         if not snapshot_name:
             raise TypeError('Missing required property snapshot_name')
-        __props__['snapshotName'] = snapshot_name
+        __props__['snapshot_name'] = snapshot_name
 
         if not virtual_machine_uuid:
             raise TypeError('Missing required property virtual_machine_uuid')
-        __props__['virtualMachineUuid'] = virtual_machine_uuid
+        __props__['virtual_machine_uuid'] = virtual_machine_uuid
 
         super(VirtualMachineSnapshot, __self__).__init__(
             'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

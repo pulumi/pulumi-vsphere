@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class GetNetworkResult(object):
     """
@@ -21,7 +21,7 @@ class GetNetworkResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_network(datacenter_id=None, name=None):
+async def get_network(datacenter_id=None, name=None):
     """
     The `vsphere_network` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
@@ -33,7 +33,7 @@ def get_network(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__)
 
     return GetNetworkResult(
         type=__ret__.get('type'),

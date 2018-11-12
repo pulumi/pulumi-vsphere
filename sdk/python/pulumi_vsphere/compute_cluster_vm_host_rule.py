@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class ComputeClusterVmHostRule(pulumi.CustomResource):
     """
@@ -43,13 +43,13 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['affinityHostGroupName'] = affinity_host_group_name
+        __props__['affinity_host_group_name'] = affinity_host_group_name
 
-        __props__['antiAffinityHostGroupName'] = anti_affinity_host_group_name
+        __props__['anti_affinity_host_group_name'] = anti_affinity_host_group_name
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
         __props__['enabled'] = enabled
 
@@ -59,11 +59,18 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
         if not vm_group_name:
             raise TypeError('Missing required property vm_group_name')
-        __props__['vmGroupName'] = vm_group_name
+        __props__['vm_group_name'] = vm_group_name
 
         super(ComputeClusterVmHostRule, __self__).__init__(
             'vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
