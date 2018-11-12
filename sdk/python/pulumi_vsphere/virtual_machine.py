@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class VirtualMachine(pulumi.CustomResource):
     """
@@ -29,125 +29,125 @@ class VirtualMachine(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['alternateGuestName'] = alternate_guest_name
+        __props__['alternate_guest_name'] = alternate_guest_name
 
         __props__['annotation'] = annotation
 
-        __props__['bootDelay'] = boot_delay
+        __props__['boot_delay'] = boot_delay
 
-        __props__['bootRetryDelay'] = boot_retry_delay
+        __props__['boot_retry_delay'] = boot_retry_delay
 
-        __props__['bootRetryEnabled'] = boot_retry_enabled
+        __props__['boot_retry_enabled'] = boot_retry_enabled
 
         __props__['cdrom'] = cdrom
 
         __props__['clone'] = clone
 
-        __props__['cpuHotAddEnabled'] = cpu_hot_add_enabled
+        __props__['cpu_hot_add_enabled'] = cpu_hot_add_enabled
 
-        __props__['cpuHotRemoveEnabled'] = cpu_hot_remove_enabled
+        __props__['cpu_hot_remove_enabled'] = cpu_hot_remove_enabled
 
-        __props__['cpuLimit'] = cpu_limit
+        __props__['cpu_limit'] = cpu_limit
 
-        __props__['cpuPerformanceCountersEnabled'] = cpu_performance_counters_enabled
+        __props__['cpu_performance_counters_enabled'] = cpu_performance_counters_enabled
 
-        __props__['cpuReservation'] = cpu_reservation
+        __props__['cpu_reservation'] = cpu_reservation
 
-        __props__['cpuShareCount'] = cpu_share_count
+        __props__['cpu_share_count'] = cpu_share_count
 
-        __props__['cpuShareLevel'] = cpu_share_level
+        __props__['cpu_share_level'] = cpu_share_level
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
-        __props__['datastoreClusterId'] = datastore_cluster_id
+        __props__['datastore_cluster_id'] = datastore_cluster_id
 
-        __props__['datastoreId'] = datastore_id
+        __props__['datastore_id'] = datastore_id
 
         __props__['disks'] = disks
 
-        __props__['efiSecureBootEnabled'] = efi_secure_boot_enabled
+        __props__['efi_secure_boot_enabled'] = efi_secure_boot_enabled
 
-        __props__['enableDiskUuid'] = enable_disk_uuid
+        __props__['enable_disk_uuid'] = enable_disk_uuid
 
-        __props__['enableLogging'] = enable_logging
+        __props__['enable_logging'] = enable_logging
 
-        __props__['eptRviMode'] = ept_rvi_mode
+        __props__['ept_rvi_mode'] = ept_rvi_mode
 
-        __props__['extraConfig'] = extra_config
+        __props__['extra_config'] = extra_config
 
         __props__['firmware'] = firmware
 
         __props__['folder'] = folder
 
-        __props__['forcePowerOff'] = force_power_off
+        __props__['force_power_off'] = force_power_off
 
-        __props__['guestId'] = guest_id
+        __props__['guest_id'] = guest_id
 
-        __props__['hostSystemId'] = host_system_id
+        __props__['host_system_id'] = host_system_id
 
-        __props__['hvMode'] = hv_mode
+        __props__['hv_mode'] = hv_mode
 
-        __props__['latencySensitivity'] = latency_sensitivity
+        __props__['latency_sensitivity'] = latency_sensitivity
 
         __props__['memory'] = memory
 
-        __props__['memoryHotAddEnabled'] = memory_hot_add_enabled
+        __props__['memory_hot_add_enabled'] = memory_hot_add_enabled
 
-        __props__['memoryLimit'] = memory_limit
+        __props__['memory_limit'] = memory_limit
 
-        __props__['memoryReservation'] = memory_reservation
+        __props__['memory_reservation'] = memory_reservation
 
-        __props__['memoryShareCount'] = memory_share_count
+        __props__['memory_share_count'] = memory_share_count
 
-        __props__['memoryShareLevel'] = memory_share_level
+        __props__['memory_share_level'] = memory_share_level
 
-        __props__['migrateWaitTimeout'] = migrate_wait_timeout
+        __props__['migrate_wait_timeout'] = migrate_wait_timeout
 
         __props__['name'] = name
 
-        __props__['nestedHvEnabled'] = nested_hv_enabled
+        __props__['nested_hv_enabled'] = nested_hv_enabled
 
         if not network_interfaces:
             raise TypeError('Missing required property network_interfaces')
-        __props__['networkInterfaces'] = network_interfaces
+        __props__['network_interfaces'] = network_interfaces
 
-        __props__['numCoresPerSocket'] = num_cores_per_socket
+        __props__['num_cores_per_socket'] = num_cores_per_socket
 
-        __props__['numCpus'] = num_cpus
+        __props__['num_cpus'] = num_cpus
 
         if not resource_pool_id:
             raise TypeError('Missing required property resource_pool_id')
-        __props__['resourcePoolId'] = resource_pool_id
+        __props__['resource_pool_id'] = resource_pool_id
 
-        __props__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
+        __props__['run_tools_scripts_after_power_on'] = run_tools_scripts_after_power_on
 
-        __props__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
+        __props__['run_tools_scripts_after_resume'] = run_tools_scripts_after_resume
 
-        __props__['runToolsScriptsBeforeGuestReboot'] = run_tools_scripts_before_guest_reboot
+        __props__['run_tools_scripts_before_guest_reboot'] = run_tools_scripts_before_guest_reboot
 
-        __props__['runToolsScriptsBeforeGuestShutdown'] = run_tools_scripts_before_guest_shutdown
+        __props__['run_tools_scripts_before_guest_shutdown'] = run_tools_scripts_before_guest_shutdown
 
-        __props__['runToolsScriptsBeforeGuestStandby'] = run_tools_scripts_before_guest_standby
+        __props__['run_tools_scripts_before_guest_standby'] = run_tools_scripts_before_guest_standby
 
-        __props__['scsiBusSharing'] = scsi_bus_sharing
+        __props__['scsi_bus_sharing'] = scsi_bus_sharing
 
-        __props__['scsiControllerCount'] = scsi_controller_count
+        __props__['scsi_controller_count'] = scsi_controller_count
 
-        __props__['scsiType'] = scsi_type
+        __props__['scsi_type'] = scsi_type
 
-        __props__['shutdownWaitTimeout'] = shutdown_wait_timeout
+        __props__['shutdown_wait_timeout'] = shutdown_wait_timeout
 
-        __props__['swapPlacementPolicy'] = swap_placement_policy
+        __props__['swap_placement_policy'] = swap_placement_policy
 
-        __props__['syncTimeWithHost'] = sync_time_with_host
+        __props__['sync_time_with_host'] = sync_time_with_host
 
         __props__['tags'] = tags
 
         __props__['vapp'] = vapp
 
-        __props__['waitForGuestNetRoutable'] = wait_for_guest_net_routable
+        __props__['wait_for_guest_net_routable'] = wait_for_guest_net_routable
 
-        __props__['waitForGuestNetTimeout'] = wait_for_guest_net_timeout
+        __props__['wait_for_guest_net_timeout'] = wait_for_guest_net_timeout
 
         __props__['change_version'] = None
         __props__['default_ip_address'] = None
@@ -165,4 +165,11 @@ class VirtualMachine(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

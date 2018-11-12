@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class CustomAttribute(pulumi.CustomResource):
     """
@@ -31,7 +31,7 @@ class CustomAttribute(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['managedObjectType'] = managed_object_type
+        __props__['managed_object_type'] = managed_object_type
 
         __props__['name'] = name
 
@@ -40,4 +40,11 @@ class CustomAttribute(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

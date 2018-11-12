@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class DistributedPortGroup(pulumi.CustomResource):
     """
@@ -39,99 +39,99 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['activeUplinks'] = active_uplinks
+        __props__['active_uplinks'] = active_uplinks
 
-        __props__['allowForgedTransmits'] = allow_forged_transmits
+        __props__['allow_forged_transmits'] = allow_forged_transmits
 
-        __props__['allowMacChanges'] = allow_mac_changes
+        __props__['allow_mac_changes'] = allow_mac_changes
 
-        __props__['allowPromiscuous'] = allow_promiscuous
+        __props__['allow_promiscuous'] = allow_promiscuous
 
-        __props__['autoExpand'] = auto_expand
+        __props__['auto_expand'] = auto_expand
 
-        __props__['blockAllPorts'] = block_all_ports
+        __props__['block_all_ports'] = block_all_ports
 
-        __props__['blockOverrideAllowed'] = block_override_allowed
+        __props__['block_override_allowed'] = block_override_allowed
 
-        __props__['checkBeacon'] = check_beacon
+        __props__['check_beacon'] = check_beacon
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
         __props__['description'] = description
 
-        __props__['directpathGen2Allowed'] = directpath_gen2_allowed
+        __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
 
         if not distributed_virtual_switch_uuid:
             raise TypeError('Missing required property distributed_virtual_switch_uuid')
-        __props__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
+        __props__['distributed_virtual_switch_uuid'] = distributed_virtual_switch_uuid
 
-        __props__['egressShapingAverageBandwidth'] = egress_shaping_average_bandwidth
+        __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
 
-        __props__['egressShapingBurstSize'] = egress_shaping_burst_size
+        __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
 
-        __props__['egressShapingEnabled'] = egress_shaping_enabled
+        __props__['egress_shaping_enabled'] = egress_shaping_enabled
 
-        __props__['egressShapingPeakBandwidth'] = egress_shaping_peak_bandwidth
+        __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
 
         __props__['failback'] = failback
 
-        __props__['ingressShapingAverageBandwidth'] = ingress_shaping_average_bandwidth
+        __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
 
-        __props__['ingressShapingBurstSize'] = ingress_shaping_burst_size
+        __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
 
-        __props__['ingressShapingEnabled'] = ingress_shaping_enabled
+        __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
 
-        __props__['ingressShapingPeakBandwidth'] = ingress_shaping_peak_bandwidth
+        __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
 
-        __props__['lacpEnabled'] = lacp_enabled
+        __props__['lacp_enabled'] = lacp_enabled
 
-        __props__['lacpMode'] = lacp_mode
+        __props__['lacp_mode'] = lacp_mode
 
-        __props__['livePortMovingAllowed'] = live_port_moving_allowed
+        __props__['live_port_moving_allowed'] = live_port_moving_allowed
 
         __props__['name'] = name
 
-        __props__['netflowEnabled'] = netflow_enabled
+        __props__['netflow_enabled'] = netflow_enabled
 
-        __props__['netflowOverrideAllowed'] = netflow_override_allowed
+        __props__['netflow_override_allowed'] = netflow_override_allowed
 
-        __props__['networkResourcePoolKey'] = network_resource_pool_key
+        __props__['network_resource_pool_key'] = network_resource_pool_key
 
-        __props__['networkResourcePoolOverrideAllowed'] = network_resource_pool_override_allowed
+        __props__['network_resource_pool_override_allowed'] = network_resource_pool_override_allowed
 
-        __props__['notifySwitches'] = notify_switches
+        __props__['notify_switches'] = notify_switches
 
-        __props__['numberOfPorts'] = number_of_ports
+        __props__['number_of_ports'] = number_of_ports
 
-        __props__['portConfigResetAtDisconnect'] = port_config_reset_at_disconnect
+        __props__['port_config_reset_at_disconnect'] = port_config_reset_at_disconnect
 
-        __props__['portNameFormat'] = port_name_format
+        __props__['port_name_format'] = port_name_format
 
-        __props__['portPrivateSecondaryVlanId'] = port_private_secondary_vlan_id
+        __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
 
-        __props__['securityPolicyOverrideAllowed'] = security_policy_override_allowed
+        __props__['security_policy_override_allowed'] = security_policy_override_allowed
 
-        __props__['shapingOverrideAllowed'] = shaping_override_allowed
+        __props__['shaping_override_allowed'] = shaping_override_allowed
 
-        __props__['standbyUplinks'] = standby_uplinks
+        __props__['standby_uplinks'] = standby_uplinks
 
         __props__['tags'] = tags
 
-        __props__['teamingPolicy'] = teaming_policy
+        __props__['teaming_policy'] = teaming_policy
 
-        __props__['trafficFilterOverrideAllowed'] = traffic_filter_override_allowed
+        __props__['traffic_filter_override_allowed'] = traffic_filter_override_allowed
 
-        __props__['txUplink'] = tx_uplink
+        __props__['tx_uplink'] = tx_uplink
 
         __props__['type'] = type
 
-        __props__['uplinkTeamingOverrideAllowed'] = uplink_teaming_override_allowed
+        __props__['uplink_teaming_override_allowed'] = uplink_teaming_override_allowed
 
-        __props__['vlanId'] = vlan_id
+        __props__['vlan_id'] = vlan_id
 
-        __props__['vlanOverrideAllowed'] = vlan_override_allowed
+        __props__['vlan_override_allowed'] = vlan_override_allowed
 
-        __props__['vlanRanges'] = vlan_ranges
+        __props__['vlan_ranges'] = vlan_ranges
 
         __props__['config_version'] = None
         __props__['key'] = None
@@ -141,4 +141,11 @@ class DistributedPortGroup(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

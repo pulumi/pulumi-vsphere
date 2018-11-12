@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     """
@@ -40,11 +40,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
         if not dependency_vm_group_name:
             raise TypeError('Missing required property dependency_vm_group_name')
-        __props__['dependencyVmGroupName'] = dependency_vm_group_name
+        __props__['dependency_vm_group_name'] = dependency_vm_group_name
 
         __props__['enabled'] = enabled
 
@@ -54,11 +54,18 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         if not vm_group_name:
             raise TypeError('Missing required property vm_group_name')
-        __props__['vmGroupName'] = vm_group_name
+        __props__['vm_group_name'] = vm_group_name
 
         super(ComputeClusterVmDependencyRule, __self__).__init__(
             'vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

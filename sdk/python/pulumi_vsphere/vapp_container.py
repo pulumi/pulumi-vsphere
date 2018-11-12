@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class VappContainer(pulumi.CustomResource):
     """
@@ -27,35 +27,35 @@ class VappContainer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['cpuExpandable'] = cpu_expandable
+        __props__['cpu_expandable'] = cpu_expandable
 
-        __props__['cpuLimit'] = cpu_limit
+        __props__['cpu_limit'] = cpu_limit
 
-        __props__['cpuReservation'] = cpu_reservation
+        __props__['cpu_reservation'] = cpu_reservation
 
-        __props__['cpuShareLevel'] = cpu_share_level
+        __props__['cpu_share_level'] = cpu_share_level
 
-        __props__['cpuShares'] = cpu_shares
+        __props__['cpu_shares'] = cpu_shares
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
-        __props__['memoryExpandable'] = memory_expandable
+        __props__['memory_expandable'] = memory_expandable
 
-        __props__['memoryLimit'] = memory_limit
+        __props__['memory_limit'] = memory_limit
 
-        __props__['memoryReservation'] = memory_reservation
+        __props__['memory_reservation'] = memory_reservation
 
-        __props__['memoryShareLevel'] = memory_share_level
+        __props__['memory_share_level'] = memory_share_level
 
-        __props__['memoryShares'] = memory_shares
+        __props__['memory_shares'] = memory_shares
 
         __props__['name'] = name
 
-        __props__['parentFolderId'] = parent_folder_id
+        __props__['parent_folder_id'] = parent_folder_id
 
         if not parent_resource_pool_id:
             raise TypeError('Missing required property parent_resource_pool_id')
-        __props__['parentResourcePoolId'] = parent_resource_pool_id
+        __props__['parent_resource_pool_id'] = parent_resource_pool_id
 
         __props__['tags'] = tags
 
@@ -64,4 +64,11 @@ class VappContainer(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

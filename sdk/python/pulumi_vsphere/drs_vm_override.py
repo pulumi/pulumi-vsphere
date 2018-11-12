@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class DrsVmOverride(pulumi.CustomResource):
     """
@@ -36,19 +36,26 @@ class DrsVmOverride(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        __props__['drsAutomationLevel'] = drs_automation_level
+        __props__['drs_automation_level'] = drs_automation_level
 
-        __props__['drsEnabled'] = drs_enabled
+        __props__['drs_enabled'] = drs_enabled
 
         if not virtual_machine_id:
             raise TypeError('Missing required property virtual_machine_id')
-        __props__['virtualMachineId'] = virtual_machine_id
+        __props__['virtual_machine_id'] = virtual_machine_id
 
         super(DrsVmOverride, __self__).__init__(
             'vsphere:index/drsVmOverride:DrsVmOverride',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

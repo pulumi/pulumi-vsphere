@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class File(pulumi.CustomResource):
     """
@@ -32,7 +32,7 @@ class File(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['createDirectories'] = create_directories
+        __props__['create_directories'] = create_directories
 
         __props__['datacenter'] = datacenter
 
@@ -42,19 +42,26 @@ class File(pulumi.CustomResource):
 
         if not destination_file:
             raise TypeError('Missing required property destination_file')
-        __props__['destinationFile'] = destination_file
+        __props__['destination_file'] = destination_file
 
-        __props__['sourceDatacenter'] = source_datacenter
+        __props__['source_datacenter'] = source_datacenter
 
-        __props__['sourceDatastore'] = source_datastore
+        __props__['source_datastore'] = source_datastore
 
         if not source_file:
             raise TypeError('Missing required property source_file')
-        __props__['sourceFile'] = source_file
+        __props__['source_file'] = source_file
 
         super(File, __self__).__init__(
             'vsphere:index/file:File',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

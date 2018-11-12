@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class GetHostResult(object):
     """
@@ -25,7 +25,7 @@ class GetHostResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_host(datacenter_id=None, name=None):
+async def get_host(datacenter_id=None, name=None):
     """
     The `vsphere_host` data source can be used to discover the ID of a vSphere
     host. This can then be used with resources or data sources that require a host
@@ -35,7 +35,7 @@ def get_host(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__)
 
     return GetHostResult(
         resource_pool_id=__ret__.get('resourcePoolId'),

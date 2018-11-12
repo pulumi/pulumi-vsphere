@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class Folder(pulumi.CustomResource):
     """
@@ -29,9 +29,9 @@ class Folder(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
-        __props__['datacenterId'] = datacenter_id
+        __props__['datacenter_id'] = datacenter_id
 
         if not path:
             raise TypeError('Missing required property path')
@@ -48,4 +48,11 @@ class Folder(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

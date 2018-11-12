@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class TagCategory(pulumi.CustomResource):
     """
@@ -35,7 +35,7 @@ class TagCategory(pulumi.CustomResource):
 
         if not associable_types:
             raise TypeError('Missing required property associable_types')
-        __props__['associableTypes'] = associable_types
+        __props__['associable_types'] = associable_types
 
         if not cardinality:
             raise TypeError('Missing required property cardinality')
@@ -50,4 +50,11 @@ class TagCategory(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

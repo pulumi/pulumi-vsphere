@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class ComputeClusterHostGroup(pulumi.CustomResource):
     """
@@ -41,9 +41,9 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        __props__['hostSystemIds'] = host_system_ids
+        __props__['host_system_ids'] = host_system_ids
 
         __props__['name'] = name
 
@@ -52,4 +52,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

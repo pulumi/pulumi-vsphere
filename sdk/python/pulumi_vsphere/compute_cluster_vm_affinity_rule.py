@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     """
@@ -48,7 +48,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
         __props__['enabled'] = enabled
 
@@ -58,11 +58,18 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         if not virtual_machine_ids:
             raise TypeError('Missing required property virtual_machine_ids')
-        __props__['virtualMachineIds'] = virtual_machine_ids
+        __props__['virtual_machine_ids'] = virtual_machine_ids
 
         super(ComputeClusterVmAffinityRule, __self__).__init__(
             'vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule',
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

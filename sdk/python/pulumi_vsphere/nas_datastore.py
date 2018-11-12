@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class NasDatastore(pulumi.CustomResource):
     """
@@ -30,29 +30,29 @@ class NasDatastore(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['accessMode'] = access_mode
+        __props__['access_mode'] = access_mode
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
-        __props__['datastoreClusterId'] = datastore_cluster_id
+        __props__['datastore_cluster_id'] = datastore_cluster_id
 
         __props__['folder'] = folder
 
         if not host_system_ids:
             raise TypeError('Missing required property host_system_ids')
-        __props__['hostSystemIds'] = host_system_ids
+        __props__['host_system_ids'] = host_system_ids
 
         __props__['name'] = name
 
         if not remote_hosts:
             raise TypeError('Missing required property remote_hosts')
-        __props__['remoteHosts'] = remote_hosts
+        __props__['remote_hosts'] = remote_hosts
 
         if not remote_path:
             raise TypeError('Missing required property remote_path')
-        __props__['remotePath'] = remote_path
+        __props__['remote_path'] = remote_path
 
-        __props__['securityType'] = security_type
+        __props__['security_type'] = security_type
 
         __props__['tags'] = tags
 
@@ -72,4 +72,11 @@ class NasDatastore(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

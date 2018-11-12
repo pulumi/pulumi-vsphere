@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class GetDatacenterResult(object):
     """
@@ -18,7 +18,7 @@ class GetDatacenterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_datacenter(name=None):
+async def get_datacenter(name=None):
     """
     The `vsphere_datacenter` data source can be used to discover the ID of a
     vSphere datacenter. This can then be used with resources or data sources that
@@ -30,7 +30,7 @@ def get_datacenter(name=None):
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__)
 
     return GetDatacenterResult(
         id=__ret__.get('id'))

@@ -4,7 +4,7 @@
 
 import pulumi
 import pulumi.runtime
-from . import utilities
+from . import utilities, tables
 
 class DatastoreCluster(pulumi.CustomResource):
     """
@@ -34,55 +34,55 @@ class DatastoreCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__['customAttributes'] = custom_attributes
+        __props__['custom_attributes'] = custom_attributes
 
         if not datacenter_id:
             raise TypeError('Missing required property datacenter_id')
-        __props__['datacenterId'] = datacenter_id
+        __props__['datacenter_id'] = datacenter_id
 
         __props__['folder'] = folder
 
         __props__['name'] = name
 
-        __props__['sdrsAdvancedOptions'] = sdrs_advanced_options
+        __props__['sdrs_advanced_options'] = sdrs_advanced_options
 
-        __props__['sdrsAutomationLevel'] = sdrs_automation_level
+        __props__['sdrs_automation_level'] = sdrs_automation_level
 
-        __props__['sdrsDefaultIntraVmAffinity'] = sdrs_default_intra_vm_affinity
+        __props__['sdrs_default_intra_vm_affinity'] = sdrs_default_intra_vm_affinity
 
-        __props__['sdrsEnabled'] = sdrs_enabled
+        __props__['sdrs_enabled'] = sdrs_enabled
 
-        __props__['sdrsFreeSpaceThreshold'] = sdrs_free_space_threshold
+        __props__['sdrs_free_space_threshold'] = sdrs_free_space_threshold
 
-        __props__['sdrsFreeSpaceThresholdMode'] = sdrs_free_space_threshold_mode
+        __props__['sdrs_free_space_threshold_mode'] = sdrs_free_space_threshold_mode
 
-        __props__['sdrsFreeSpaceUtilizationDifference'] = sdrs_free_space_utilization_difference
+        __props__['sdrs_free_space_utilization_difference'] = sdrs_free_space_utilization_difference
 
-        __props__['sdrsIoBalanceAutomationLevel'] = sdrs_io_balance_automation_level
+        __props__['sdrs_io_balance_automation_level'] = sdrs_io_balance_automation_level
 
-        __props__['sdrsIoLatencyThreshold'] = sdrs_io_latency_threshold
+        __props__['sdrs_io_latency_threshold'] = sdrs_io_latency_threshold
 
-        __props__['sdrsIoLoadBalanceEnabled'] = sdrs_io_load_balance_enabled
+        __props__['sdrs_io_load_balance_enabled'] = sdrs_io_load_balance_enabled
 
-        __props__['sdrsIoLoadImbalanceThreshold'] = sdrs_io_load_imbalance_threshold
+        __props__['sdrs_io_load_imbalance_threshold'] = sdrs_io_load_imbalance_threshold
 
-        __props__['sdrsIoReservableIopsThreshold'] = sdrs_io_reservable_iops_threshold
+        __props__['sdrs_io_reservable_iops_threshold'] = sdrs_io_reservable_iops_threshold
 
-        __props__['sdrsIoReservablePercentThreshold'] = sdrs_io_reservable_percent_threshold
+        __props__['sdrs_io_reservable_percent_threshold'] = sdrs_io_reservable_percent_threshold
 
-        __props__['sdrsIoReservableThresholdMode'] = sdrs_io_reservable_threshold_mode
+        __props__['sdrs_io_reservable_threshold_mode'] = sdrs_io_reservable_threshold_mode
 
-        __props__['sdrsLoadBalanceInterval'] = sdrs_load_balance_interval
+        __props__['sdrs_load_balance_interval'] = sdrs_load_balance_interval
 
-        __props__['sdrsPolicyEnforcementAutomationLevel'] = sdrs_policy_enforcement_automation_level
+        __props__['sdrs_policy_enforcement_automation_level'] = sdrs_policy_enforcement_automation_level
 
-        __props__['sdrsRuleEnforcementAutomationLevel'] = sdrs_rule_enforcement_automation_level
+        __props__['sdrs_rule_enforcement_automation_level'] = sdrs_rule_enforcement_automation_level
 
-        __props__['sdrsSpaceBalanceAutomationLevel'] = sdrs_space_balance_automation_level
+        __props__['sdrs_space_balance_automation_level'] = sdrs_space_balance_automation_level
 
-        __props__['sdrsSpaceUtilizationThreshold'] = sdrs_space_utilization_threshold
+        __props__['sdrs_space_utilization_threshold'] = sdrs_space_utilization_threshold
 
-        __props__['sdrsVmEvacuationAutomationLevel'] = sdrs_vm_evacuation_automation_level
+        __props__['sdrs_vm_evacuation_automation_level'] = sdrs_vm_evacuation_automation_level
 
         __props__['tags'] = tags
 
@@ -91,4 +91,11 @@ class DatastoreCluster(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
