@@ -29,6 +29,6 @@ setup(name='pulumi_vsphere',
       license='Apachce-2.0',
       packages=find_packages(),
       install_requires=[
-          'pulumi'
+          'pulumi>=0.16.4,<0.17.0'
       ],
       zip_safe=False)
