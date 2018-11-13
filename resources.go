@@ -100,7 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.15.0",
+				"@pulumi/pulumi":    "^0.16.4",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
 				"resolve":           "^1.8.1",
@@ -111,6 +111,11 @@ func Provider() tfbridge.ProviderInfo {
 			Overlay: &tfbridge.OverlayInfo{
 				Files:   []string{},
 				Modules: map[string]*tfbridge.OverlayInfo{},
+			},
+		},
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=0.16.4,<0.17.0",
 			},
 		},
 	}
