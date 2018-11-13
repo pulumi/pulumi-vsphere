@@ -5,7 +5,6 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 )
@@ -38,15 +37,6 @@ func vsphereDataSource(mod string, res string) tokens.ModuleMember {
 func vsphereResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return vsphereType(mod+"/"+fn, res)
-}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	return ""
 }
 
 func Provider() tfbridge.ProviderInfo {
@@ -110,7 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^0.16.0",
+				"@pulumi/pulumi":    "^0.16.4",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
 				"resolve":           "^1.8.1",
@@ -125,7 +115,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=0.16.0,<0.17.0",
+				"pulumi": ">=0.16.4,<0.17.0",
 			},
 		},
 	}

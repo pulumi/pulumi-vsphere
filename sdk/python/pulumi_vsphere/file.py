@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class File(pulumi.CustomResource):
     """
@@ -24,82 +25,32 @@ class File(pulumi.CustomResource):
         """Create a File resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if create_directories and not isinstance(create_directories, bool):
-            raise TypeError('Expected property create_directories to be a bool')
-        __self__.create_directories = create_directories
-        """
-        Create directories in `destination_file`
-        path parameter if any missing for copy operation.
-        """
-        __props__['createDirectories'] = create_directories
+        __props__['create_directories'] = create_directories
 
-        if datacenter and not isinstance(datacenter, basestring):
-            raise TypeError('Expected property datacenter to be a basestring')
-        __self__.datacenter = datacenter
-        """
-        The name of a datacenter in which the file will be
-        uploaded to.
-        """
         __props__['datacenter'] = datacenter
 
         if not datastore:
             raise TypeError('Missing required property datastore')
-        elif not isinstance(datastore, basestring):
-            raise TypeError('Expected property datastore to be a basestring')
-        __self__.datastore = datastore
-        """
-        The name of the datastore in which to upload the
-        file to.
-        """
         __props__['datastore'] = datastore
 
         if not destination_file:
             raise TypeError('Missing required property destination_file')
-        elif not isinstance(destination_file, basestring):
-            raise TypeError('Expected property destination_file to be a basestring')
-        __self__.destination_file = destination_file
-        """
-        The path to where the file should be uploaded
-        or copied to on vSphere.
-        """
-        __props__['destinationFile'] = destination_file
+        __props__['destination_file'] = destination_file
 
-        if source_datacenter and not isinstance(source_datacenter, basestring):
-            raise TypeError('Expected property source_datacenter to be a basestring')
-        __self__.source_datacenter = source_datacenter
-        """
-        The name of a datacenter in which the file
-        will be copied from. Forces a new resource if changed.
-        """
-        __props__['sourceDatacenter'] = source_datacenter
+        __props__['source_datacenter'] = source_datacenter
 
-        if source_datastore and not isinstance(source_datastore, basestring):
-            raise TypeError('Expected property source_datastore to be a basestring')
-        __self__.source_datastore = source_datastore
-        """
-        The name of the datastore in which file will
-        be copied from. Forces a new resource if changed.
-        """
-        __props__['sourceDatastore'] = source_datastore
+        __props__['source_datastore'] = source_datastore
 
         if not source_file:
             raise TypeError('Missing required property source_file')
-        elif not isinstance(source_file, basestring):
-            raise TypeError('Expected property source_file to be a basestring')
-        __self__.source_file = source_file
-        """
-        The path to the file being uploaded from the
-        Terraform host to vSphere or copied within vSphere. Forces a new resource if
-        changed.
-        """
-        __props__['sourceFile'] = source_file
+        __props__['source_file'] = source_file
 
         super(File, __self__).__init__(
             'vsphere:index/file:File',
@@ -107,18 +58,10 @@ class File(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'createDirectories' in outs:
-            self.create_directories = outs['createDirectories']
-        if 'datacenter' in outs:
-            self.datacenter = outs['datacenter']
-        if 'datastore' in outs:
-            self.datastore = outs['datastore']
-        if 'destinationFile' in outs:
-            self.destination_file = outs['destinationFile']
-        if 'sourceDatacenter' in outs:
-            self.source_datacenter = outs['sourceDatacenter']
-        if 'sourceDatastore' in outs:
-            self.source_datastore = outs['sourceDatastore']
-        if 'sourceFile' in outs:
-            self.source_file = outs['sourceFile']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

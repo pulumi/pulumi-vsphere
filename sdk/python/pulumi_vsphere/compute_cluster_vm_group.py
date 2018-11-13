@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class ComputeClusterVmGroup(pulumi.CustomResource):
     """
@@ -33,7 +34,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         """Create a ComputeClusterVmGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -42,33 +43,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        elif not isinstance(compute_cluster_id, basestring):
-            raise TypeError('Expected property compute_cluster_id to be a basestring')
-        __self__.compute_cluster_id = compute_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
-        resource if changed.
-        """
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the VM group. This must be unique in the
-        cluster. Forces a new resource if changed.
-        """
         __props__['name'] = name
 
-        if virtual_machine_ids and not isinstance(virtual_machine_ids, list):
-            raise TypeError('Expected property virtual_machine_ids to be a list')
-        __self__.virtual_machine_ids = virtual_machine_ids
-        """
-        The UUIDs of the virtual machines in this
-        group.
-        """
-        __props__['virtualMachineIds'] = virtual_machine_ids
+        __props__['virtual_machine_ids'] = virtual_machine_ids
 
         super(ComputeClusterVmGroup, __self__).__init__(
             'vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup',
@@ -76,10 +55,10 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'computeClusterId' in outs:
-            self.compute_cluster_id = outs['computeClusterId']
-        if 'name' in outs:
-            self.name = outs['name']
-        if 'virtualMachineIds' in outs:
-            self.virtual_machine_ids = outs['virtualMachineIds']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

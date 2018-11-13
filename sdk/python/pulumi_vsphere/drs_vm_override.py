@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class DrsVmOverride(pulumi.CustomResource):
     """
@@ -26,7 +27,7 @@ class DrsVmOverride(pulumi.CustomResource):
         """Create a DrsVmOverride resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -35,45 +36,15 @@ class DrsVmOverride(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        elif not isinstance(compute_cluster_id, basestring):
-            raise TypeError('Expected property compute_cluster_id to be a basestring')
-        __self__.compute_cluster_id = compute_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
-        resource if changed.
-        """
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        if drs_automation_level and not isinstance(drs_automation_level, basestring):
-            raise TypeError('Expected property drs_automation_level to be a basestring')
-        __self__.drs_automation_level = drs_automation_level
-        """
-        Overrides the automation level for this virtual
-        machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
-        `fullyAutomated`. Default: `manual`.
-        """
-        __props__['drsAutomationLevel'] = drs_automation_level
+        __props__['drs_automation_level'] = drs_automation_level
 
-        if drs_enabled and not isinstance(drs_enabled, bool):
-            raise TypeError('Expected property drs_enabled to be a bool')
-        __self__.drs_enabled = drs_enabled
-        """
-        Overrides the default DRS setting for this virtual
-        machine. Can be either `true` or `false`. Default: `false`.
-        """
-        __props__['drsEnabled'] = drs_enabled
+        __props__['drs_enabled'] = drs_enabled
 
         if not virtual_machine_id:
             raise TypeError('Missing required property virtual_machine_id')
-        elif not isinstance(virtual_machine_id, basestring):
-            raise TypeError('Expected property virtual_machine_id to be a basestring')
-        __self__.virtual_machine_id = virtual_machine_id
-        """
-        The UUID of the virtual machine to create
-        the override for.  Forces a new resource if changed.
-        """
-        __props__['virtualMachineId'] = virtual_machine_id
+        __props__['virtual_machine_id'] = virtual_machine_id
 
         super(DrsVmOverride, __self__).__init__(
             'vsphere:index/drsVmOverride:DrsVmOverride',
@@ -81,12 +52,10 @@ class DrsVmOverride(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'computeClusterId' in outs:
-            self.compute_cluster_id = outs['computeClusterId']
-        if 'drsAutomationLevel' in outs:
-            self.drs_automation_level = outs['drsAutomationLevel']
-        if 'drsEnabled' in outs:
-            self.drs_enabled = outs['drsEnabled']
-        if 'virtualMachineId' in outs:
-            self.virtual_machine_id = outs['virtualMachineId']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

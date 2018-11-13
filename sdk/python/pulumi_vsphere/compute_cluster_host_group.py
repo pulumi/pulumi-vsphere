@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class ComputeClusterHostGroup(pulumi.CustomResource):
     """
@@ -31,7 +32,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """Create a ComputeClusterHostGroup resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -40,32 +41,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
         if not compute_cluster_id:
             raise TypeError('Missing required property compute_cluster_id')
-        elif not isinstance(compute_cluster_id, basestring):
-            raise TypeError('Expected property compute_cluster_id to be a basestring')
-        __self__.compute_cluster_id = compute_cluster_id
-        """
-        The [managed object reference
-        ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
-        resource if changed.
-        """
-        __props__['computeClusterId'] = compute_cluster_id
+        __props__['compute_cluster_id'] = compute_cluster_id
 
-        if host_system_ids and not isinstance(host_system_ids, list):
-            raise TypeError('Expected property host_system_ids to be a list')
-        __self__.host_system_ids = host_system_ids
-        """
-        The [managed object IDs][docs-about-morefs] of
-        the hosts to put in the cluster.
-        """
-        __props__['hostSystemIds'] = host_system_ids
+        __props__['host_system_ids'] = host_system_ids
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the host group. This must be unique in the
-        cluster. Forces a new resource if changed.
-        """
         __props__['name'] = name
 
         super(ComputeClusterHostGroup, __self__).__init__(
@@ -74,10 +53,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'computeClusterId' in outs:
-            self.compute_cluster_id = outs['computeClusterId']
-        if 'hostSystemIds' in outs:
-            self.host_system_ids = outs['hostSystemIds']
-        if 'name' in outs:
-            self.name = outs['name']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

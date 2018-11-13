@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class GetDistributedVirtualSwitchResult(object):
     """
@@ -13,14 +14,14 @@ class GetDistributedVirtualSwitchResult(object):
         if uplinks and not isinstance(uplinks, list):
             raise TypeError('Expected argument uplinks to be a list')
         __self__.uplinks = uplinks
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_distributed_virtual_switch(datacenter_id=None, name=None):
+async def get_distributed_virtual_switch(datacenter_id=None, name=None):
     """
     The `vsphere_distributed_virtual_switch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
@@ -37,7 +38,7 @@ def get_distributed_virtual_switch(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__)
 
     return GetDistributedVirtualSwitchResult(
         uplinks=__ret__.get('uplinks'),

@@ -127,12 +127,12 @@ func GetHostVirtualSwitch(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *HostVirtualSwitch) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *HostVirtualSwitch) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The list of active network adapters used for load

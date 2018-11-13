@@ -4,23 +4,24 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class GetTagResult(object):
     """
     A collection of values returned by getTag.
     """
     def __init__(__self__, description=None, id=None):
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected argument description to be a basestring')
+        if description and not isinstance(description, str):
+            raise TypeError('Expected argument description to be a str')
         __self__.description = description
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_tag(category_id=None, name=None):
+async def get_tag(category_id=None, name=None):
     """
     The `vsphere_tag` data source can be used to reference tags that are not
     managed by Terraform. Its attributes are exactly the same as the [`vsphere_tag`
@@ -37,7 +38,7 @@ def get_tag(category_id=None, name=None):
 
     __args__['categoryId'] = category_id
     __args__['name'] = name
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__)
 
     return GetTagResult(
         description=__ret__.get('description'),

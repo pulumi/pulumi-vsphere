@@ -91,12 +91,12 @@ func GetVmfsDatastore(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *VmfsDatastore) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *VmfsDatastore) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // The connectivity status of the datastore. If this is `false`,

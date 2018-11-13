@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class Tag(pulumi.CustomResource):
     """
@@ -22,7 +23,7 @@ class Tag(pulumi.CustomResource):
         """Create a Tag resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -31,30 +32,10 @@ class Tag(pulumi.CustomResource):
 
         if not category_id:
             raise TypeError('Missing required property category_id')
-        elif not isinstance(category_id, basestring):
-            raise TypeError('Expected property category_id to be a basestring')
-        __self__.category_id = category_id
-        """
-        The unique identifier of the parent category in
-        which this tag will be created. Forces a new resource if changed.
-        """
-        __props__['categoryId'] = category_id
+        __props__['category_id'] = category_id
 
-        if description and not isinstance(description, basestring):
-            raise TypeError('Expected property description to be a basestring')
-        __self__.description = description
-        """
-        A description for the tag.
-        """
         __props__['description'] = description
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The display name of the tag. The name must be unique
-        within its category.
-        """
         __props__['name'] = name
 
         super(Tag, __self__).__init__(
@@ -63,10 +44,10 @@ class Tag(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'categoryId' in outs:
-            self.category_id = outs['categoryId']
-        if 'description' in outs:
-            self.description = outs['description']
-        if 'name' in outs:
-            self.name = outs['name']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

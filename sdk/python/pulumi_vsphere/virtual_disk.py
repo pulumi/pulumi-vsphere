@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class VirtualDisk(pulumi.CustomResource):
     """
@@ -19,84 +20,32 @@ class VirtualDisk(pulumi.CustomResource):
         """Create a VirtualDisk resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if adapter_type and not isinstance(adapter_type, basestring):
-            raise TypeError('Expected property adapter_type to be a basestring')
-        __self__.adapter_type = adapter_type
-        """
-        The adapter type for this virtual disk. Can be
-        one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
-        """
-        __props__['adapterType'] = adapter_type
+        __props__['adapter_type'] = adapter_type
 
-        if create_directories and not isinstance(create_directories, bool):
-            raise TypeError('Expected property create_directories to be a bool')
-        __self__.create_directories = create_directories
-        """
-        Tells the resource to create any
-        directories that are a part of the `vmdk_path` parameter if they are missing.
-        Default: `false`.
-        """
-        __props__['createDirectories'] = create_directories
+        __props__['create_directories'] = create_directories
 
-        if datacenter and not isinstance(datacenter, basestring):
-            raise TypeError('Expected property datacenter to be a basestring')
-        __self__.datacenter = datacenter
-        """
-        The name of the datacenter in which to create the
-        disk. Can be omitted when when ESXi or if there is only one datacenter in
-        your infrastructure.
-        """
         __props__['datacenter'] = datacenter
 
         if not datastore:
             raise TypeError('Missing required property datastore')
-        elif not isinstance(datastore, basestring):
-            raise TypeError('Expected property datastore to be a basestring')
-        __self__.datastore = datastore
-        """
-        The name of the datastore in which to create the
-        disk.
-        """
         __props__['datastore'] = datastore
 
         if not size:
             raise TypeError('Missing required property size')
-        elif not isinstance(size, int):
-            raise TypeError('Expected property size to be a int')
-        __self__.size = size
-        """
-        Size of the disk (in GB).
-        """
         __props__['size'] = size
 
-        if type and not isinstance(type, basestring):
-            raise TypeError('Expected property type to be a basestring')
-        __self__.type = type
-        """
-        The type of disk to create. Can be one of
-        `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
-        information on what each kind of disk provisioning policy means, click
-        [here][docs-vmware-vm-disk-provisioning].
-        """
         __props__['type'] = type
 
         if not vmdk_path:
             raise TypeError('Missing required property vmdk_path')
-        elif not isinstance(vmdk_path, basestring):
-            raise TypeError('Expected property vmdk_path to be a basestring')
-        __self__.vmdk_path = vmdk_path
-        """
-        The path, including filename, of the virtual disk to
-        be created.  This needs to end in `.vmdk`.
-        """
-        __props__['vmdkPath'] = vmdk_path
+        __props__['vmdk_path'] = vmdk_path
 
         super(VirtualDisk, __self__).__init__(
             'vsphere:index/virtualDisk:VirtualDisk',
@@ -104,18 +53,10 @@ class VirtualDisk(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'adapterType' in outs:
-            self.adapter_type = outs['adapterType']
-        if 'createDirectories' in outs:
-            self.create_directories = outs['createDirectories']
-        if 'datacenter' in outs:
-            self.datacenter = outs['datacenter']
-        if 'datastore' in outs:
-            self.datastore = outs['datastore']
-        if 'size' in outs:
-            self.size = outs['size']
-        if 'type' in outs:
-            self.type = outs['type']
-        if 'vmdkPath' in outs:
-            self.vmdk_path = outs['vmdkPath']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

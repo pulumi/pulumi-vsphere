@@ -4,6 +4,7 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class CustomAttribute(pulumi.CustomResource):
     """
@@ -23,30 +24,15 @@ class CustomAttribute(pulumi.CustomResource):
         """Create a CustomAttribute resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, basestring):
+        if not isinstance(__name__, str):
             raise TypeError('Expected resource name to be a string')
         if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if managed_object_type and not isinstance(managed_object_type, basestring):
-            raise TypeError('Expected property managed_object_type to be a basestring')
-        __self__.managed_object_type = managed_object_type
-        """
-        The object type that this attribute may be
-        applied to. If not set, the custom attribute may be applied to any object
-        type. For a full list, click here. Forces a new
-        resource if changed.
-        """
-        __props__['managedObjectType'] = managed_object_type
+        __props__['managed_object_type'] = managed_object_type
 
-        if name and not isinstance(name, basestring):
-            raise TypeError('Expected property name to be a basestring')
-        __self__.name = name
-        """
-        The name of the custom attribute.
-        """
         __props__['name'] = name
 
         super(CustomAttribute, __self__).__init__(
@@ -55,8 +41,10 @@ class CustomAttribute(pulumi.CustomResource):
             __props__,
             __opts__)
 
-    def set_outputs(self, outs):
-        if 'managedObjectType' in outs:
-            self.managed_object_type = outs['managedObjectType']
-        if 'name' in outs:
-            self.name = outs['name']
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

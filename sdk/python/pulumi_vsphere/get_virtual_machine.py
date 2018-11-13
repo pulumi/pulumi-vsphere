@@ -4,14 +4,15 @@
 
 import pulumi
 import pulumi.runtime
+from . import utilities, tables
 
 class GetVirtualMachineResult(object):
     """
     A collection of values returned by getVirtualMachine.
     """
     def __init__(__self__, alternate_guest_name=None, disks=None, firmware=None, guest_id=None, network_interface_types=None, scsi_bus_sharing=None, scsi_type=None, id=None):
-        if alternate_guest_name and not isinstance(alternate_guest_name, basestring):
-            raise TypeError('Expected argument alternate_guest_name to be a basestring')
+        if alternate_guest_name and not isinstance(alternate_guest_name, str):
+            raise TypeError('Expected argument alternate_guest_name to be a str')
         __self__.alternate_guest_name = alternate_guest_name
         """
         The alternate guest name of the virtual machine when
@@ -30,14 +31,14 @@ class GetVirtualMachineResult(object):
         Only the first number of controllers defined by `scsi_controller_scan_count`
         are scanned for disks. The sub-attributes are:
         """
-        if firmware and not isinstance(firmware, basestring):
-            raise TypeError('Expected argument firmware to be a basestring')
+        if firmware and not isinstance(firmware, str):
+            raise TypeError('Expected argument firmware to be a str')
         __self__.firmware = firmware
         """
         The firmware type for this virtual machine. Can be `bios` or `efi`.
         """
-        if guest_id and not isinstance(guest_id, basestring):
-            raise TypeError('Expected argument guest_id to be a basestring')
+        if guest_id and not isinstance(guest_id, str):
+            raise TypeError('Expected argument guest_id to be a str')
         __self__.guest_id = guest_id
         """
         The guest ID of the virtual machine or template.
@@ -50,16 +51,16 @@ class GetVirtualMachineResult(object):
         interface found on the virtual machine, in device bus order. Will be one of
         `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         """
-        if scsi_bus_sharing and not isinstance(scsi_bus_sharing, basestring):
-            raise TypeError('Expected argument scsi_bus_sharing to be a basestring')
+        if scsi_bus_sharing and not isinstance(scsi_bus_sharing, str):
+            raise TypeError('Expected argument scsi_bus_sharing to be a str')
         __self__.scsi_bus_sharing = scsi_bus_sharing
         """
         Mode for sharing the SCSI bus. The modes are
         physicalSharing, virtualSharing, and noSharing. Only the first number of
         controllers defined by `scsi_controller_scan_count` are scanned.
         """
-        if scsi_type and not isinstance(scsi_type, basestring):
-            raise TypeError('Expected argument scsi_type to be a basestring')
+        if scsi_type and not isinstance(scsi_type, str):
+            raise TypeError('Expected argument scsi_type to be a str')
         __self__.scsi_type = scsi_type
         """
         The common type of all SCSI controllers on this virtual machine.
@@ -68,14 +69,14 @@ class GetVirtualMachineResult(object):
         there are multiple controller types. Only the first number of controllers
         defined by `scsi_controller_scan_count` are scanned.
         """
-        if id and not isinstance(id, basestring):
-            raise TypeError('Expected argument id to be a basestring')
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_virtual_machine(datacenter_id=None, name=None, scsi_controller_scan_count=None):
+async def get_virtual_machine(datacenter_id=None, name=None, scsi_controller_scan_count=None):
     """
     The `vsphere_virtual_machine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
@@ -90,7 +91,7 @@ def get_virtual_machine(datacenter_id=None, name=None, scsi_controller_scan_coun
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     __args__['scsiControllerScanCount'] = scsi_controller_scan_count
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__)
 
     return GetVirtualMachineResult(
         alternate_guest_name=__ret__.get('alternateGuestName'),
