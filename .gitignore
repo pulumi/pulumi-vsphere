@@ -5,3 +5,4 @@ Pulumi.*.yaml
 **/command-output/
 
 .idea
+yarn.lock
