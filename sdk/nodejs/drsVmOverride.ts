@@ -29,8 +29,8 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DrsVmOverrideState): DrsVmOverride {
-        return new DrsVmOverride(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DrsVmOverrideState, opts?: pulumi.CustomResourceOptions): DrsVmOverride {
+        return new DrsVmOverride(name, <any>state, { ...opts, id: id });
     }
 
     /**
