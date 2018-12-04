@@ -1,6 +1,10 @@
 
 ## 0.16.2 (unreleased)
 
+### Improvements
+
+- Fix an issue where `pulumi` would issue a warning that the plugin version was incorrect.
+
 ## 0.16.1 (Released Novemeber 13th, 2018)
 
 ### Major Changes
