@@ -17,7 +17,7 @@ if [ "$(go env GOOS)" = "windows" ]; then
 fi
 
 go build \
-   -ldflags "-X github.com/jen20/pulumi-vsphere/pkg/version.Version=${VERSION}" \
+   -ldflags "-X github.com/pulumi/pulumi-vsphere/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-vsphere${BIN_SUFFIX}" \
    "${ROOT}/cmd/pulumi-resource-vsphere"
 
