@@ -43,6 +43,7 @@ export * from "./storageDrsVmOverride";
 export * from "./tag";
 export * from "./tagCategory";
 export * from "./vappContainer";
+export * from "./vappEntity";
 export * from "./virtualDisk";
 export * from "./virtualMachine";
 export * from "./virtualMachineSnapshot";
