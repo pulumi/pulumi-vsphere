@@ -37,8 +37,8 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VirtualMachineSnapshotState): VirtualMachineSnapshot {
-        return new VirtualMachineSnapshot(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VirtualMachineSnapshotState, opts?: pulumi.CustomResourceOptions): VirtualMachineSnapshot {
+        return new VirtualMachineSnapshot(name, <any>state, { ...opts, id: id });
     }
 
     /**

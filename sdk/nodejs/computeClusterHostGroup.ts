@@ -34,8 +34,8 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ComputeClusterHostGroupState): ComputeClusterHostGroup {
-        return new ComputeClusterHostGroup(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ComputeClusterHostGroupState, opts?: pulumi.CustomResourceOptions): ComputeClusterHostGroup {
+        return new ComputeClusterHostGroup(name, <any>state, { ...opts, id: id });
     }
 
     /**

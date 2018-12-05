@@ -25,8 +25,8 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HostVirtualSwitchState): HostVirtualSwitch {
-        return new HostVirtualSwitch(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HostVirtualSwitchState, opts?: pulumi.CustomResourceOptions): HostVirtualSwitch {
+        return new HostVirtualSwitch(name, <any>state, { ...opts, id: id });
     }
 
     /**

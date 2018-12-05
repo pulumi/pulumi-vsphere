@@ -33,6 +33,7 @@ from .storage_drs_vm_override import *
 from .tag import *
 from .tag_category import *
 from .vapp_container import *
+from .vapp_entity import *
 from .virtual_disk import *
 from .virtual_machine import *
 from .virtual_machine_snapshot import *

@@ -53,6 +53,7 @@
         "tagCategory.ts",
         "utilities.ts",
         "vappContainer.ts",
+        "vappEntity.ts",
         "virtualDisk.ts",
         "virtualMachine.ts",
         "virtualMachineSnapshot.ts",
