@@ -1,4 +1,12 @@
-## 0.16.3 (unreleased)
+## 0.16.4 (unreleased)
+
+## 0.16.3 (Released January 19th, 2019)
+
+### Improvements
+
+- Updated to the v1.9.1 version of the Terraform VSphere Provider.
+
+- Documentation comments for the Node.js SDK now include examples
 
 ## 0.16.2 (Released December 5th, 2018)
 
