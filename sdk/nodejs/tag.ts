@@ -13,8 +13,39 @@ import * as utilities from "./utilities";
  * 
  * [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
  * 
- * ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
+ * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
  * requires vCenter 6.0 or higher.
+ * 
+ * ## Example Usage
+ * 
+ * This example creates a tag named `terraform-test-tag`. This tag is assigned the
+ * `terraform-test-category` category, which was created by the
+ * [`vsphere_tag_category` resource][docs-tag-category-resource]. The resulting
+ * tag can be assigned to VMs and datastores only, and can be the only value in
+ * the category that can be assigned, as per the restrictions defined by the
+ * category.
+ * 
+ * [docs-tag-category-resource]: /docs/providers/vsphere/r/tag_category.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_tag_category_category = new vsphere.TagCategory("category", {
+ *     associableTypes: [
+ *         "VirtualMachine",
+ *         "Datastore",
+ *     ],
+ *     cardinality: "SINGLE",
+ *     description: "Managed by Terraform",
+ *     name: "terraform-test-category",
+ * });
+ * const vsphere_tag_tag = new vsphere.Tag("tag", {
+ *     categoryId: vsphere_tag_category_category.id,
+ *     description: "Managed by Terraform",
+ *     name: "terraform-test-tag",
+ * });
+ * ```
  */
 export class Tag extends pulumi.CustomResource {
     /**

@@ -27,10 +27,10 @@ import (
 // [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 // [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 // 
-// ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterVmHostRule struct {
 	s *pulumi.ResourceState
 }

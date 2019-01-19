@@ -15,7 +15,7 @@ import (
 // 
 // [resource-tag]: /docs/providers/vsphere/r/tag.html
 // 
-// ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
 // requires vCenter 6.0 or higher.
 func LookupTag(ctx *pulumi.Context, args *GetTagArgs) (*GetTagResult, error) {
 	inputs := make(map[string]interface{})

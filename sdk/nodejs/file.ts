@@ -17,6 +17,37 @@ import * as utilities from "./utilities";
  * re-created. Depending on if destination parameters are being changed as well,
  * this may result in the destination file either being overwritten or deleted at
  * the old location.
+ * 
+ * ## Example Usages
+ * 
+ * ### Uploading a file
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_file_ubuntu_disk_upload = new vsphere.File("ubuntu_disk_upload", {
+ *     datacenter: "my_datacenter",
+ *     datastore: "local",
+ *     destinationFile: "/my_path/disks/custom_ubuntu.vmdk",
+ *     sourceFile: "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
+ * });
+ * ```
+ * ### Copying a file
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_file_ubuntu_disk_copy = new vsphere.File("ubuntu_disk_copy", {
+ *     datacenter: "my_datacenter",
+ *     datastore: "local",
+ *     destinationFile: "/my_path/custom_ubuntu_id.vmdk",
+ *     sourceDatacenter: "my_datacenter",
+ *     sourceDatastore: "local",
+ *     sourceFile: "/my_path/disks/custom_ubuntu.vmdk",
+ * });
+ * ```
  */
 export class File extends pulumi.CustomResource {
     /**

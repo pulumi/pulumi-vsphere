@@ -20,10 +20,57 @@ import * as utilities from "./utilities";
  * 
  * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below is the exact same configuration as the
+ * [example][tf-vsphere-cluster-resource-example] in the
+ * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource, but in
+ * addition, it creates a host group with the same hosts that get put into the
+ * cluster.
+ * 
+ * [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_datacenter = config.get("datacenter") || "dc1";
+ * const var_hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: var_datacenter,
+ * }));
+ * const vsphere_host_hosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < var_hosts.length; i++) {
+ *     vsphere_host_hosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *         name: var_hosts[i],
+ *     })));
+ * }
+ * const vsphere_compute_cluster_compute_cluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     drsAutomationLevel: "fullyAutomated",
+ *     drsEnabled: true,
+ *     haEnabled: true,
+ *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-compute-cluster-test",
+ * });
+ * const vsphere_compute_cluster_host_group_cluster_host_group = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ *     computeClusterId: vsphere_compute_cluster_compute_cluster.id,
+ *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-test-cluster-host-group",
+ * });
+ * ```
  */
 export class ComputeClusterHostGroup extends pulumi.CustomResource {
     /**

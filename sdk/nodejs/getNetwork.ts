@@ -10,6 +10,21 @@ import * as utilities from "./utilities";
  * network interface for `vsphere_virtual_machine` or any other vSphere resource
  * that requires a network. This includes standard (host-based) port groups, DVS
  * port groups, or opaque networks such as those managed by NSX.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_network_net = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-net",
+ * }));
+ * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {

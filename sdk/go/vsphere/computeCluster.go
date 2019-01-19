@@ -31,10 +31,10 @@ import (
 // [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
 // [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 // 
-// ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeCluster struct {
 	s *pulumi.ResourceState
 }

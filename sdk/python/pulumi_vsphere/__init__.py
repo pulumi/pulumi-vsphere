@@ -49,5 +49,7 @@ from .get_network import *
 from .get_resource_pool import *
 from .get_tag import *
 from .get_tag_category import *
+from .get_vapp_container import *
 from .get_virtual_machine import *
 from .get_vmfs_disks import *
+from .provider import *

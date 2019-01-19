@@ -21,8 +21,91 @@ import * as utilities from "./utilities";
  * 
  * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates two virtual machine in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source]
+ * data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * -> Note how `dependency_vm_group_name` and
+ * `vm_group_name` are sourced off of the `name` attributes from
+ * the [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource]
+ * resource. This is to ensure that the rule is not created before the groups
+ * exist, which may not possibly happen in the event that the names came from a
+ * "static" source such as a variable.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_virtual_machine_vm1 = new vsphere.VirtualMachine("vm1", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 2048,
+ *     name: "terraform-test1",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * const vsphere_compute_cluster_vm_group_cluster_vm_group1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-cluster-vm-group1",
+ *     virtualMachineIds: [vsphere_virtual_machine_vm1.id],
+ * });
+ * const vsphere_virtual_machine_vm2 = new vsphere.VirtualMachine("vm2", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 2048,
+ *     name: "terraform-test2",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * const vsphere_compute_cluster_vm_group_cluster_vm_group2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-cluster-vm-group2",
+ *     virtualMachineIds: [vsphere_virtual_machine_vm2.id],
+ * });
+ * const vsphere_compute_cluster_vm_dependency_rule_cluster_vm_dependency_rule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     dependencyVmGroupName: vsphere_compute_cluster_vm_group_cluster_vm_group1.name,
+ *     name: "terraform-test-cluster-vm-dependency-rule",
+ *     vmGroupName: vsphere_compute_cluster_vm_group_cluster_vm_group2.name,
+ * });
+ * ```
  */
 export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     /**

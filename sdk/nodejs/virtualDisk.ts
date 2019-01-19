@@ -12,6 +12,21 @@ import * as utilities from "./utilities";
  * 
  * [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
  * [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_virtual_disk_myDisk = new vsphere.VirtualDisk("myDisk", {
+ *     datacenter: "Datacenter",
+ *     datastore: "local",
+ *     size: 2,
+ *     type: "thin",
+ *     vmdkPath: "myDisk.vmdk",
+ * });
+ * ```
  */
 export class VirtualDisk extends pulumi.CustomResource {
     /**

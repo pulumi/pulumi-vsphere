@@ -24,10 +24,89 @@ import * as utilities from "./utilities";
  * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
  * [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source]
+ * data source. It then creates a group with this virtual machine. It also creates
+ * a host group off of the host looked up via the
+ * [`vsphere_host`][tf-vsphere-host-data-source] data source. Finally, this
+ * virtual machine is configured to run specifically on that host via a
+ * `vsphere_compute_cluster_vm_host_rule` resource.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
+ * 
+ * -> Note how `vm_group_name` and
+ * `affinity_host_group_name` are sourced off of the
+ * `name` attributes from the
+ * [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource] and
+ * [`vsphere_compute_cluster_host_group`][tf-vsphere-cluster-host-group-resource]
+ * resources. This is to ensure that the rule is not created before the groups
+ * exist, which may not possibly happen in the event that the names came from a
+ * "static" source such as a variable.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_compute_cluster_host_group_cluster_host_group = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     hostSystemIds: [vsphere_host_host.apply(__arg0 => __arg0.id)],
+ *     name: "terraform-test-cluster-vm-group",
+ * });
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 2048,
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * const vsphere_compute_cluster_vm_group_cluster_vm_group = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-cluster-vm-group",
+ *     virtualMachineIds: [vsphere_virtual_machine_vm.id],
+ * });
+ * const vsphere_compute_cluster_vm_host_rule_cluster_vm_host_rule = new vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule", {
+ *     affinityHostGroupName: vsphere_compute_cluster_host_group_cluster_host_group.name,
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-cluster-vm-host-rule",
+ *     vmGroupName: vsphere_compute_cluster_vm_group_cluster_vm_group.name,
+ * });
+ * ```
  */
 export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     /**

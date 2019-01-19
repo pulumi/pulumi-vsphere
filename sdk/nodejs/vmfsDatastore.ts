@@ -13,6 +13,73 @@ import * as utilities from "./utilities";
  * [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source.
  * 
  * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
+ * 
+ * ## Example Usage
+ * 
+ * ### Addition of local disks on a single host
+ * 
+ * The following example uses the default datacenter and default host to add a
+ * datastore with local disks to a single ESXi server.
+ * 
+ * > **NOTE:** There are some situations where datastore creation will not work
+ * when working through vCenter (usually when trying to create a datastore on a
+ * single host with local disks). If you experience trouble creating the datastore
+ * you need through vCenter, break the datstore off into a different configuration
+ * and deploy it using the ESXi server as the provider endpoint, using a similar
+ * configuration to what is below.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({}));
+ * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * }));
+ * const vsphere_vmfs_datastore_datastore = new vsphere.VmfsDatastore("datastore", {
+ *     disks: [
+ *         "mpx.vmhba1:C0:T1:L0",
+ *         "mpx.vmhba1:C0:T2:L0",
+ *         "mpx.vmhba1:C0:T2:L0",
+ *     ],
+ *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test",
+ * });
+ * ```
+ * ### Auto-detection of disks via `vsphere_vmfs_disks`
+ * 
+ * The following example makes use of the
+ * [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source to auto-detect
+ * exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
+ * exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
+ * into `vsphere_vmfs_datastore`. The datastore is also placed in the
+ * `datastore-folder` folder afterwards.
+ * 
+ * [ext-netapp]: https://kb.netapp.com/support/s/article/ka31A0000000rLRQAY/how-to-match-a-lun-s-naa-number-to-its-serial-number?language=en_US
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_vmfs_disks_available = pulumi.output(vsphere.getVmfsDisks({
+ *     filter: "naa.60a98000",
+ *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
+ *     rescan: true,
+ * }));
+ * const vsphere_vmfs_datastore_datastore = new vsphere.VmfsDatastore("datastore", {
+ *     disks: vsphere_vmfs_disks_available.apply(__arg0 => __arg0.disks),
+ *     folder: "datastore-folder",
+ *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test",
+ * });
+ * ```
  */
 export class VmfsDatastore extends pulumi.CustomResource {
     /**

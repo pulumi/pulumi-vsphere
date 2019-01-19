@@ -15,10 +15,61 @@ import * as utilities from "./utilities";
  * 
  * [ref-vsphere-cluster-dpm]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-5E5E349A-4644-4C9C-B434-1C0243EBDC80.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The following example creates a compute cluster comprised of three hosts,
+ * making use of the
+ * [`vsphere_compute_cluster`][tf-vsphere-compute-cluster-resource] resource. DPM
+ * will be disabled in the cluster as it is the default setting, but we override
+ * the setting of the first host referenced by the
+ * [`vsphere_host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
+ * the `vsphere_dpm_host_override` resource so it will be powered off when the
+ * cluster does not need it to service virtual machines.
+ * 
+ * [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_datacenter = config.get("datacenter") || "dc1";
+ * const var_hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: var_datacenter,
+ * }));
+ * const vsphere_host_hosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < var_hosts.length; i++) {
+ *     vsphere_host_hosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *         name: var_hosts[i],
+ *     })));
+ * }
+ * const vsphere_compute_cluster_compute_cluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     drsAutomationLevel: "fullyAutomated",
+ *     drsEnabled: true,
+ *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-compute-cluster-test",
+ * });
+ * const vsphere_dpm_host_override_dpm_host_override = new vsphere.DpmHostOverride("dpm_host_override", {
+ *     computeClusterId: vsphere_compute_cluster_compute_cluster.id,
+ *     dpmAutomationLevel: "automated",
+ *     dpmEnabled: true,
+ *     hostSystemId: vsphere_host_hosts[0].apply(__arg0 => __arg0.id),
+ * });
+ * ```
  */
 export class DpmHostOverride extends pulumi.CustomResource {
     /**

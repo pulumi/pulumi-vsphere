@@ -24,7 +24,7 @@ import (
 // 
 // [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 type ComputeClusterVmDependencyRule struct {
 	s *pulumi.ResourceState

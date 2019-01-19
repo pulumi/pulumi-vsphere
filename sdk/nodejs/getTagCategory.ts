@@ -13,8 +13,19 @@ import * as utilities from "./utilities";
  * 
  * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
  * 
- * ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
+ * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
  * requires vCenter 6.0 or higher.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_tag_category_category = pulumi.output(vsphere.getTagCategory({
+ *     name: "terraform-test-category",
+ * }));
+ * ```
  */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
     return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {

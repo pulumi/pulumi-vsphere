@@ -15,7 +15,7 @@ import (
 // 
 // [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
 // 
-// ~> **NOTE:** This data source requires vCenter and is not available on direct
+// > **NOTE:** This data source requires vCenter and is not available on direct
 // ESXi connections.
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *GetDistributedVirtualSwitchArgs) (*GetDistributedVirtualSwitchResult, error) {
 	inputs := make(map[string]interface{})

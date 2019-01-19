@@ -8,6 +8,21 @@ import * as utilities from "./utilities";
  * The `vsphere_host` data source can be used to discover the ID of a vSphere
  * host. This can then be used with resources or data sources that require a host
  * managed object reference ID.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * ```
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
     return pulumi.runtime.invoke("vsphere:index/getHost:getHost", {

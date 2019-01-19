@@ -15,6 +15,69 @@ import * as utilities from "./utilities";
  * page][ref-vsphere-datastore-clusters].
  * 
  * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+ * 
+ * ## Example Usage
+ * 
+ * The example below builds on the [Storage DRS
+ * example][tf-vsphere-vm-storage-drs-example] in the `vsphere_virtual_machine`
+ * resource. However, rather than use the output of the
+ * [`vsphere_datastore_cluster` data
+ * source][tf-vsphere-datastore-cluster-data-source] for the location of the
+ * virtual machine, we instead get what is assumed to be a member datastore using
+ * the [`vsphere_datastore` data source][tf-vsphere-datastore-data-source] and put
+ * the virtual machine there instead. We then use the
+ * `vsphere_storage_drs_vm_override` resource to ensure that Storage DRS does not
+ * apply to this virtual machine, and hence the VM will never be migrated off of
+ * the datastore.
+ * 
+ * [tf-vsphere-vm-storage-drs-example]: /docs/providers/vsphere/r/virtual_machine.html#using-storage-drs
+ * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+ * [tf-vsphere-datastore-data-source]: /docs/providers/vsphere/d/datastore.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_datastore_member_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore-cluster1-member1",
+ * }));
+ * const vsphere_datastore_cluster_datastore_cluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore-cluster1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "public",
+ * }));
+ * const vsphere_resource_pool_pool = pulumi.output(vsphere.getResourcePool({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1/Resources",
+ * }));
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: vsphere_datastore_member_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 1024,
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_resource_pool_pool.apply(__arg0 => __arg0.id),
+ * });
+ * const vsphere_storage_drs_vm_override_drs_vm_override = new vsphere.StorageDrsVmOverride("drs_vm_override", {
+ *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ *     sdrsEnabled: "false",
+ *     virtualMachineId: vsphere_virtual_machine_vm.id,
+ * });
+ * ```
  */
 export class StorageDrsVmOverride extends pulumi.CustomResource {
     /**

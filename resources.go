@@ -96,7 +96,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_resource_pool":              {Tok: vsphereDataSource(vsphereMod, "getResourcePool")},
 			"vsphere_tag":                        {Tok: vsphereDataSource(vsphereMod, "getTag")},
 			"vsphere_tag_category":               {Tok: vsphereDataSource(vsphereMod, "getTagCategory")},
-			"vsphere_vapp_entity":                {Tok: vsphereDataSource(vsphereMod, "getVappEntity")},
+			"vsphere_vapp_container":             {Tok: vsphereDataSource(vsphereMod, "getVappContainer")},
 			"vsphere_virtual_machine":            {Tok: vsphereDataSource(vsphereMod, "getVirtualMachine")},
 			"vsphere_vmfs_disks":                 {Tok: vsphereDataSource(vsphereMod, "getVmfsDisks")},
 		},

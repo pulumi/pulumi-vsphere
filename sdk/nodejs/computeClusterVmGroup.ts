@@ -22,10 +22,64 @@ import * as utilities from "./utilities";
  * [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
  * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates two virtual machines in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * virtual machine in the cluster looked up by the
+ * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source. It
+ * then creates a group from these two virtual machines.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_virtual_machine_vm: vsphere.VirtualMachine[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     vsphere_virtual_machine_vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
+ *         datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *         disks: [{
+ *             label: "disk0",
+ *             size: 20,
+ *         }],
+ *         guestId: "other3xLinux64Guest",
+ *         memory: 2048,
+ *         name: `terraform-test-${i}`,
+ *         networkInterfaces: [{
+ *             networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         }],
+ *         numCpus: 2,
+ *         resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *     }));
+ * }
+ * const vsphere_compute_cluster_vm_group_cluster_vm_group = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-cluster-vm-group",
+ *     virtualMachineIds: vsphere_virtual_machine_vm.map(v => v.id),
+ * });
+ * ```
  */
 export class ComputeClusterVmGroup extends pulumi.CustomResource {
     /**

@@ -15,8 +15,69 @@ import * as utilities from "./utilities";
  * 
  * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * virtual machine in the cluster looked up by the
+ * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * 
+ * Considering a scenario where this virtual machine is of high value to the
+ * application or organization for which it does its work, it's been determined in
+ * the event of a host failure, that this should be one of the first virtual
+ * machines to be started by vSphere HA during recovery. Hence, its
+ * `ha_vm_restart_priority` as been set to `highest`,
+ * which, assuming that the default restart priority is `medium` and no other
+ * virtual machine has been assigned the `highest` priority, will mean that this
+ * VM will be started before any other virtual machine in the event of host
+ * failure.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 2048,
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * const vsphere_ha_vm_override_ha_vm_override = new vsphere.HaVmOverride("ha_vm_override", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     haVmRestartPriority: "highest",
+ *     virtualMachineId: vsphere_virtual_machine_vm.id,
+ * });
+ * ```
  */
 export class HaVmOverride extends pulumi.CustomResource {
     /**

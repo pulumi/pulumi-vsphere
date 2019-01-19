@@ -15,10 +15,61 @@ import * as utilities from "./utilities";
  * 
  * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The following example sets up a datastore cluster and enables Storage DRS with
+ * the default settings. It then creates two NAS datastores using the
+ * [`vsphere_nas_datastore` resource][ref-tf-nas-datastore] and assigns them to
+ * the datastore cluster.
+ * 
+ * [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({}));
+ * const vsphere_host_esxi_hosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < var_hosts.length; i++) {
+ *     vsphere_host_esxi_hosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *         name: var_hosts[i],
+ *     })));
+ * }
+ * const vsphere_datastore_cluster_datastore_cluster = new vsphere.DatastoreCluster("datastore_cluster", {
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "terraform-datastore-cluster-test",
+ *     sdrsEnabled: true,
+ * });
+ * const vsphere_nas_datastore_datastore1 = new vsphere.NasDatastore("datastore1", {
+ *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.id,
+ *     hostSystemIds: pulumi.all(vsphere_host_esxi_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-datastore-test1",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/terraform-test1",
+ *     type: "NFS",
+ * });
+ * const vsphere_nas_datastore_datastore2 = new vsphere.NasDatastore("datastore2", {
+ *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.id,
+ *     hostSystemIds: pulumi.all(vsphere_host_esxi_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-datastore-test2",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/terraform-test2",
+ *     type: "NFS",
+ * });
+ * ```
  */
 export class DatastoreCluster extends pulumi.CustomResource {
     /**

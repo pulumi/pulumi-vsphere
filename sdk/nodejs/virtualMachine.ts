@@ -14,6 +14,68 @@ import * as utilities from "./utilities";
  * page][vmware-docs-vm-management].
  * 
  * [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
+ * ### Using Storage DRS
+ * 
+ * The `vsphere_virtual_machine` resource also supports Storage DRS, allowing the
+ * assignment of virtual machines to datastore clusters. When assigned to a
+ * datastore cluster, changes to a virtual machine's underlying datastores are
+ * ignored unless disks drift outside of the datastore cluster. The example below
+ * makes use of the [`vsphere_datastore_cluster` data
+ * source][tf-vsphere-datastore-cluster-data-source], and the
+ * `datastore_cluster_id` configuration setting. Note
+ * that the [`vsphere_datastore_cluster`
+ * resource][tf-vsphere-datastore-cluster-resource] also exists to allow for
+ * management of datastore clusters directly in Terraform.
+ * 
+ * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+ * [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
+ * 
+ * > **NOTE:** When managing datastore clusters, member datastores, and virtual
+ * machines within the same Terraform configuration, race conditions can apply.
+ * This is because datastore clusters must be created before datastores can be
+ * assigned to them, and the respective `vsphere_virtual_machine` resources will
+ * no longer have an implicit dependency on the specific datastore resources. Use
+ * [`depends_on`][tf-docs-depends-on] to create an explicit dependency on the
+ * datastores in the cluster, or manage datastore clusters and datastores in a
+ * separate configuration.
+ * 
+ * [tf-docs-depends-on]: /docs/configuration/resources.html#depends_on
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_cluster_datastore_cluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore-cluster1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "public",
+ * }));
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     memory: 1024,
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * ```
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**

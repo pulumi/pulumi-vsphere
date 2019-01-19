@@ -12,6 +12,21 @@ import * as utilities from "./utilities";
  * reads the guest ID so that can be supplied as well.
  * 
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_virtual_machine_template = pulumi.output(vsphere.getVirtualMachine({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "test-vm-template",
+ * }));
+ * ```
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {

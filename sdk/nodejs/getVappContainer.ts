@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_datastore` data source can be used to discover the ID of a
- * datastore in vSphere. This is useful to fetch the ID of a datastore that you
- * want to use to create virtual machines in using the
+ * The `vsphere_vapp_container` data source can be used to discover the ID of a
+ * vApp container in vSphere. This is useful to fetch the ID of a vApp container
+ * that you want to use to create virtual machines in using the
  * [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
  * 
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -21,41 +21,39 @@ import * as utilities from "./utilities";
  * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ * const vsphere_vapp_container_pool = pulumi.output(vsphere.getVappContainer({
  *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
- *     name: "datastore1",
+ *     name: "vapp-container-1",
  * }));
  * ```
  */
-export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
-    return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
+export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
+    return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getDatastore.
+ * A collection of arguments for invoking getVappContainer.
  */
-export interface GetDatastoreArgs {
+export interface GetVappContainerArgs {
     /**
      * The [managed object reference
-     * ID][docs-about-morefs] of the datacenter the datastore is located in. This
-     * can be omitted if the search path used in `name` is an absolute path. For
-     * default datacenters, use the id attribute from an empty `vsphere_datacenter`
-     * data source.
+     * ID][docs-about-morefs] of the datacenter the vApp container is located in.
      */
-    readonly datacenterId?: string;
+    readonly datacenterId: string;
     /**
-     * The name of the datastore. This can be a name or path.
+     * The name of the vApp container. This can be a name or
+     * path.
      */
     readonly name: string;
 }
 
 /**
- * A collection of values returned by getDatastore.
+ * A collection of values returned by getVappContainer.
  */
-export interface GetDatastoreResult {
+export interface GetVappContainerResult {
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

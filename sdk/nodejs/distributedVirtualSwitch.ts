@@ -24,8 +24,12 @@ import * as utilities from "./utilities";
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  * [ref-vsphere-dvs]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * > **NOTE:** The default uplink names when a DVS is created are `uplink1`
+ * through to `uplink4`, however this default is not guaranteed to be stable and
+ * you are encouraged to set your own.
+ * 
  */
 export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**

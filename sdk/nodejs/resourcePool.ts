@@ -12,6 +12,33 @@ import * as utilities from "./utilities";
  * page][ref-vsphere-resource_pools].
  * 
  * [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+ * 
+ * ## Example Usage
+ * 
+ * The following example sets up a resource pool in a compute cluster which uses
+ * the default settings for CPU and memory reservations, shares, and limits. The
+ * compute cluster needs to already exist in vSphere.  
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_cluster = config.get("cluster") || "cluster1";
+ * const var_datacenter = config.get("datacenter") || "dc1";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: var_datacenter,
+ * }));
+ * const vsphere_compute_cluster_compute_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: var_cluster,
+ * }));
+ * const vsphere_resource_pool_resource_pool = new vsphere.ResourcePool("resource_pool", {
+ *     name: "terraform-resource-pool-test",
+ *     parentResourcePoolId: vsphere_compute_cluster_compute_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * ```
  */
 export class ResourcePool extends pulumi.CustomResource {
     /**
