@@ -15,6 +15,65 @@ import * as utilities from "./utilities";
  * 
  * [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * 
+ * ## Example Usages
+ * 
+ * **Create a virtual switch with one active and one standby NIC:**
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ *     activeNics: ["vmnic0"],
+ *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
+ *     name: "vSwitchTerraformTest",
+ *     networkAdapters: [
+ *         "vmnic0",
+ *         "vmnic1",
+ *     ],
+ *     standbyNics: ["vmnic1"],
+ * });
+ * ```
+ * **Create a virtual switch with extra networking policy options:**
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ *     activeNics: ["vmnic0"],
+ *     allowForgedTransmits: false,
+ *     allowMacChanges: false,
+ *     allowPromiscuous: false,
+ *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
+ *     name: "vSwitchTerraformTest",
+ *     networkAdapters: [
+ *         "vmnic0",
+ *         "vmnic1",
+ *     ],
+ *     shapingAverageBandwidth: 50000000,
+ *     shapingBurstSize: 1000000000,
+ *     shapingEnabled: true,
+ *     shapingPeakBandwidth: 100000000,
+ *     standbyNics: ["vmnic1"],
+ *     teamingPolicy: "failover_explicit",
+ * });
+ * ```
  */
 export class HostVirtualSwitch extends pulumi.CustomResource {
     /**

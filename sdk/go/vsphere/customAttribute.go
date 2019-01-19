@@ -16,7 +16,7 @@ import (
 // 
 // [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
 // 
-// ~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
 // and require vCenter.
 type CustomAttribute struct {
 	s *pulumi.ResourceState

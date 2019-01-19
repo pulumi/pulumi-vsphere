@@ -13,8 +13,34 @@ import * as utilities from "./utilities";
  * 
  * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
  * 
- * ~> **NOTE:** This data source requires vCenter and is not available on direct
+ * > **NOTE:** This data source requires vCenter and is not available on direct
  * ESXi connections.
+ * 
+ * ## Example Usage
+ * 
+ * The following example locates a DVS that is named `terraform-test-dvs`, in the
+ * datacenter `dc1`. It then uses this DVS to set up a
+ * `vsphere_distributed_port_group` resource that uses the first uplink as a
+ * primary uplink and the second uplink as a secondary.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_distributed_virtual_switch_dvs = pulumi.output(vsphere.getDistributedVirtualSwitch({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-dvs",
+ * }));
+ * const vsphere_distributed_port_group_pg = new vsphere.DistributedPortGroup("pg", {
+ *     activeUplinks: [vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.uplinks[0])],
+ *     distributedVirtualSwitchUuid: vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-pg",
+ *     standbyUplinks: [vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.uplinks[1])],
+ * });
+ * ```
  */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
     return pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {

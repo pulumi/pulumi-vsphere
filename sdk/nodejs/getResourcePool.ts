@@ -11,6 +11,11 @@ import * as utilities from "./utilities";
  * [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
  * 
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * For more information on the root resource pool, see [Managing Resource
+ * Pools][vmware-docs-resource-pools] in the vSphere documentation.
+ * 
+ * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+ * 
  */
 export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
     args = args || {};

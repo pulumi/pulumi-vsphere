@@ -20,10 +20,65 @@ import * as utilities from "./utilities";
  * operation that would keep that from happening, depending on the value of the
  * `mandatory` flag.
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates two virtual machines in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * virtual machines in the datastore cluster looked up by the
+ * [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-data-source] data
+ * source. It then creates an anti-affinity rule for these two virtual machines,
+ * ensuring they will run on different datastores whenever possible.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_cluster_datastore_cluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore-cluster1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_virtual_machine_vm: vsphere.VirtualMachine[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     vsphere_virtual_machine_vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
+ *         datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ *         disks: [{
+ *             label: "disk0",
+ *             size: 20,
+ *         }],
+ *         guestId: "other3xLinux64Guest",
+ *         memory: 2048,
+ *         name: `terraform-test-${i}`,
+ *         networkInterfaces: [{
+ *             networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         }],
+ *         numCpus: 2,
+ *         resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *     }));
+ * }
+ * const vsphere_datastore_cluster_vm_anti_affinity_rule_cluster_vm_anti_affinity_rule = new vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ *     name: "terraform-test-datastore-cluster-vm-anti-affinity-rule",
+ *     virtualMachineIds: vsphere_virtual_machine_vm.map(v => v.id),
+ * });
+ * ```
  */
 export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**

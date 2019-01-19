@@ -28,10 +28,55 @@ import * as utilities from "./utilities";
  * [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
  * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The following example sets up a cluster and enables DRS and vSphere HA with the
+ * default settings. The hosts have to exist already in vSphere and should not
+ * already be members of clusters - it's best to add these as standalone hosts
+ * before adding them to a cluster.
+ * 
+ * Note that the following example assumes each host has been configured correctly
+ * according to the requirements of vSphere HA. For more information, click
+ * [here][ref-vsphere-ha-checklist].
+ * 
+ * [ref-vsphere-ha-checklist]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-BA85FEC4-A37C-45BA-938D-37B309010D93.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_datacenter = config.get("datacenter") || "dc1";
+ * const var_hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: var_datacenter,
+ * }));
+ * const vsphere_host_hosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < var_hosts.length; i++) {
+ *     vsphere_host_hosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *         name: var_hosts[i],
+ *     })));
+ * }
+ * const vsphere_compute_cluster_compute_cluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     drsAutomationLevel: "fullyAutomated",
+ *     drsEnabled: true,
+ *     haEnabled: true,
+ *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-compute-cluster-test",
+ * });
+ * ```
  */
 export class ComputeCluster extends pulumi.CustomResource {
     /**

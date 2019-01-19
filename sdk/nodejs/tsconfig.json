@@ -38,6 +38,7 @@
         "getResourcePool.ts",
         "getTag.ts",
         "getTagCategory.ts",
+        "getVappContainer.ts",
         "getVirtualMachine.ts",
         "getVmfsDisks.ts",
         "haVmOverride.ts",

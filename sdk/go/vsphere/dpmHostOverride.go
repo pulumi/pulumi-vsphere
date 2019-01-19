@@ -18,10 +18,10 @@ import (
 // 
 // [ref-vsphere-cluster-dpm]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-5E5E349A-4644-4C9C-B434-1C0243EBDC80.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 // 
-// ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type DpmHostOverride struct {
 	s *pulumi.ResourceState
 }

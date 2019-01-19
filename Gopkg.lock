@@ -54,22 +54,14 @@
     "aws/credentials/ec2rolecreds",
     "aws/credentials/endpointcreds",
     "aws/credentials/stscreds",
-    "aws/csm",
     "aws/defaults",
     "aws/ec2metadata",
     "aws/endpoints",
     "aws/request",
     "aws/session",
     "aws/signer/v4",
-    "internal/ini",
-    "internal/s3err",
-    "internal/sdkio",
-    "internal/sdkrand",
-    "internal/sdkuri",
     "internal/shareddefaults",
     "private/protocol",
-    "private/protocol/eventstream",
-    "private/protocol/eventstream/eventstreamapi",
     "private/protocol/json/jsonutil",
     "private/protocol/jsonrpc",
     "private/protocol/query",
@@ -81,8 +73,8 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "ddc06f9fad886ea5daa5f828f3ca094084f8c2a7"
-  version = "v1.15.90"
+  revision = "be4fa13e47938e4801fada8c8ca3d1867ad3dcb3"
+  version = "v1.8.34"
 
 [[projects]]
   name = "github.com/bgentry/go-netrc"
@@ -113,8 +105,8 @@
 [[projects]]
   name = "github.com/djherbis/times"
   packages = ["."]
-  revision = "faa5b9ca02e9fe5d12023adddc0afa603d489fa8"
-  version = "v1.1.0"
+  revision = "847c5208d8924cea0acea3376ff62aede93afe39"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/docker/docker"
@@ -152,6 +144,17 @@
   name = "github.com/gedex/inflector"
   packages = ["."]
   revision = "16278e9db8130ac7ec405dc174cfb94344f16325"
+
+[[projects]]
+  name = "github.com/go-ini/ini"
+  packages = ["."]
+  revision = "766e555c68dc8bda90d197ee8946c37519c19409"
+
+[[projects]]
+  name = "github.com/gofrs/flock"
+  packages = ["."]
+  revision = "7f43ea2e6a643ad441fc12d0ecc0d3388b300c53"
+  version = "v0.7.0"
 
 [[projects]]
   branch = "master"
@@ -463,7 +466,7 @@
     "sdk/go/pulumi/config",
     "sdk/proto/go"
   ]
-  revision = "84ea2f0df750e313e64afb2a1ed982529e4c8598"
+  revision = "0b8fd47fb541a3ceae04b8661d8ad9ed642f711e"
 
 [[projects]]
   branch = "master"
@@ -472,7 +475,7 @@
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "2c187fb6f5e33adbc3c54c4dff4c86f7c9af7379"
+  revision = "b0770d37ae5ab50be1a2d316a6b5a7b41e8043cb"
 
 [[projects]]
   branch = "master"
@@ -523,11 +526,10 @@
 [[projects]]
   name = "github.com/stretchr/testify"
   packages = ["assert"]
-  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
-  version = "v1.2.2"
+  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
+  version = "v1.3.0"
 
 [[projects]]
-  branch = "master"
   name = "github.com/terraform-providers/terraform-provider-vsphere"
   packages = [
     "vsphere",
@@ -551,7 +553,8 @@
     "vsphere/internal/virtualdevice",
     "vsphere/internal/vmworkflow"
   ]
-  revision = "3a0043d0b6e4cf6fc6f84bb942e472cb77dc62b5"
+  revision = "b3258c5d590d4ba7291e3bdbc85b9b294b7656bd"
+  version = "v1.9.1"
 
 [[projects]]
   branch = "master"
@@ -622,8 +625,8 @@
 [[projects]]
   name = "github.com/vmware/vic"
   packages = ["pkg/vsphere/tags"]
-  revision = "fa9732d083151b0cfd2e66ed12a2c17136186e80"
-  version = "v1.4.3"
+  revision = "b830072bfe88e63bbc1d8ae8f7d1eaf38133bc1d"
+  version = "v1.5.0"
 
 [[projects]]
   name = "github.com/xanzy/ssh-agent"
@@ -740,8 +743,8 @@
     "core",
     "terminal"
   ]
-  revision = "fb519f89e19299d852ffdd9b734af122d2dcbd30"
-  version = "v1.7.0"
+  revision = "38cdfa1242b19e0eb8b6f33004bf8e89832b8743"
+  version = "v1.8.0"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
@@ -817,6 +820,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2c926eb8a34cfdf2909c0f12261083fcc67bd32dbf8968ed84367c46273221ef"
+  inputs-digest = "4d2ce8d00e32bddba99d11b72fdab97a930f51076ef1e52d26a0243c5c4dee50"
   solver-name = "gps-cdcl"
   solver-version = 1

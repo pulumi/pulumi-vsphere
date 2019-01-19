@@ -30,6 +30,7 @@ export * from "./getNetwork";
 export * from "./getResourcePool";
 export * from "./getTag";
 export * from "./getTagCategory";
+export * from "./getVappContainer";
 export * from "./getVirtualMachine";
 export * from "./getVmfsDisks";
 export * from "./haVmOverride";

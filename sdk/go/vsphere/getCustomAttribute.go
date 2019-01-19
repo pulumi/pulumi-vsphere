@@ -15,7 +15,7 @@ import (
 // 
 // [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
 // 
-// ~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
 // and require vCenter.
 func LookupCustomAttribute(ctx *pulumi.Context, args *GetCustomAttributeArgs) (*GetCustomAttributeResult, error) {
 	inputs := make(map[string]interface{})

@@ -16,7 +16,7 @@ import (
 // 
 // [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
 // 
-// ~> **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
+// > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
 // can contain the actual running state of the virtual machine, data for all disks
 // that have not been set to be independent from the snapshot (including ones that
 // have been attached via the [attach][docs-vsphere-virtual-machine-disk-attach]

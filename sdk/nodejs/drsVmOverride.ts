@@ -15,10 +15,73 @@ import * as utilities from "./utilities";
  * 
  * [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
  * 
- * ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
- * ~> **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * The example below creates a virtual machine in a cluster using the
+ * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * virtual machine in the cluster looked up by the
+ * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source, but also
+ * pinning the VM to a host defined by the
+ * [`vsphere_host`][tf-vsphere-host-data-source] data source, which is assumed to
+ * be a host within the cluster. To ensure that the VM stays on this host and does
+ * not need to be migrated back at any point in time, an override is entered using
+ * the `vsphere_drs_vm_override` resource that disables DRS for this virtual
+ * machine, ensuring that it does not move.
+ * 
+ * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "cluster1",
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 20,
+ *     }],
+ *     guestId: "other3xLinux64Guest",
+ *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
+ *     memory: 2048,
+ *     name: "terraform-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * });
+ * const vsphere_drs_vm_override_drs_vm_override = new vsphere.DrsVmOverride("drs_vm_override", {
+ *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
+ *     drsEnabled: false,
+ *     virtualMachineId: vsphere_virtual_machine_vm.id,
+ * });
+ * ```
  */
 export class DrsVmOverride extends pulumi.CustomResource {
     /**

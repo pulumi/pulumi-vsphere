@@ -18,10 +18,10 @@ import (
 // 
 // [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 // 
-// ~> **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+// > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 type DatastoreCluster struct {
 	s *pulumi.ResourceState
 }

@@ -13,8 +13,19 @@ import * as utilities from "./utilities";
  * 
  * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
  * 
- * ~> **NOTE:** Custom attributes are unsupported on direct ESXi connections 
+ * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
  * and require vCenter.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_custom_attribute_attribute = pulumi.output(vsphere.getCustomAttribute({
+ *     name: "terraform-test-attribute",
+ * }));
+ * ```
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
     return pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {

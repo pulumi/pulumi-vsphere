@@ -18,7 +18,7 @@ import (
 // 
 // [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 type HaVmOverride struct {
 	s *pulumi.ResourceState

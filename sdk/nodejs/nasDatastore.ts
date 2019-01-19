@@ -9,12 +9,46 @@ import * as utilities from "./utilities";
  * datastores on an ESXi host or a set of hosts. The resource supports mounting
  * NFS v3 and v4.1 shares to be used as datastores.
  * 
- * ~> **NOTE:** Unlike [`vsphere_vmfs_datastore`][resource-vmfs-datastore], a NAS
+ * > **NOTE:** Unlike [`vsphere_vmfs_datastore`][resource-vmfs-datastore], a NAS
  * datastore is only mounted on the hosts you choose to mount it on. To mount on
  * multiple hosts, you must specify each host that you want to add in the
  * `host_system_ids` argument.
  * 
  * [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+ * 
+ * ## Example Usage
+ * 
+ * The following example would set up a NFS v3 share on 3 hosts connected through
+ * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
+ * is named `nfs` and has `/export/terraform-test` exported.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({}));
+ * const vsphere_host_esxi_hosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < var_hosts.length; i++) {
+ *     vsphere_host_esxi_hosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *         name: var_hosts[i],
+ *     })));
+ * }
+ * const vsphere_nas_datastore_datastore = new vsphere.NasDatastore("datastore", {
+ *     hostSystemIds: pulumi.all(vsphere_host_esxi_hosts).apply(__arg0 => __arg0.map(v => v.id)),
+ *     name: "terraform-test",
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/terraform-test",
+ *     type: "NFS",
+ * });
+ * ```
  */
 export class NasDatastore extends pulumi.CustomResource {
     /**

@@ -12,6 +12,61 @@ import * as utilities from "./utilities";
  * page][ref-vsphere-vapp].
  * 
  * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+ * 
+ * ## Example Usage
+ * 
+ * The basic example below sets up a vApp container and a virtual machine in a
+ * compute cluster and then creates a vApp entity to change the virtual machine's
+ * power on behavior in the vApp container.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const var_cluster = config.get("cluster") || "cluster1";
+ * const var_datacenter = config.get("datacenter") || "dc1";
+ * 
+ * const vsphere_vapp_entity_vapp_entity = new vsphere.VappEntity("vapp_entity", {
+ *     containerId: "vsphere_vapp_container.vapp_container.id",
+ *     startAction: "non",
+ *     targetId: "vsphere_virtual_machine.vm.id",
+ * });
+ * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ *     name: var_datacenter,
+ * }));
+ * const vsphere_compute_cluster_compute_cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: var_cluster,
+ * }));
+ * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "datastore1",
+ * }));
+ * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ *     name: "network1",
+ * }));
+ * const vsphere_vapp_container_vapp_container = new vsphere.VappContainer("vapp_container", {
+ *     name: "terraform-vapp-container-test",
+ *     parentResourcePoolId: vsphere_compute_cluster_compute_cluster.apply(__arg0 => __arg0.id),
+ * });
+ * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     disks: [{
+ *         label: "disk0",
+ *         size: 1,
+ *     }],
+ *     guestId: "ubuntu64Guest",
+ *     memory: 1024,
+ *     name: "terraform-virutal-machine-test",
+ *     networkInterfaces: [{
+ *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *     }],
+ *     numCpus: 2,
+ *     resourcePoolId: vsphere_vapp_container_vapp_container.id,
+ * });
+ * ```
  */
 export class VappEntity extends pulumi.CustomResource {
     /**

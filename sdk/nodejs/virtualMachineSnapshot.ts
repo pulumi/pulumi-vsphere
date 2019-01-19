@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * 
  * [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
  * 
- * ~> **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
+ * > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
  * can contain the actual running state of the virtual machine, data for all disks
  * that have not been set to be independent from the snapshot (including ones that
  * have been attached via the [attach][docs-vsphere-virtual-machine-disk-attach]
@@ -27,6 +27,23 @@ import * as utilities from "./utilities";
  * 
  * [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
  * [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_virtual_machine_snapshot_demo1 = new vsphere.VirtualMachineSnapshot("demo1", {
+ *     consolidate: true,
+ *     description: "This is Demo Snapshot",
+ *     memory: true,
+ *     quiesce: true,
+ *     removeChildren: false,
+ *     snapshotName: "Snapshot Name",
+ *     virtualMachineUuid: "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+ * });
+ * ```
  */
 export class VirtualMachineSnapshot extends pulumi.CustomResource {
     /**

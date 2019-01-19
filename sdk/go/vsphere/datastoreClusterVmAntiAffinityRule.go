@@ -23,10 +23,10 @@ import (
 // operation that would keep that from happening, depending on the value of the
 // `mandatory` flag.
 // 
-// ~> **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 // 
-// ~> **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+// > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 type DatastoreClusterVmAntiAffinityRule struct {
 	s *pulumi.ResourceState
 }

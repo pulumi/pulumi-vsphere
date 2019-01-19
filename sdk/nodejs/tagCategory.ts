@@ -16,8 +16,30 @@ import * as utilities from "./utilities";
  * [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
  * [ext-tag-categories]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-BA3D1794-28F2-43F3-BCE9-3964CB207FB6.html
  * 
- * ~> **NOTE:** Tagging support is unsupported on direct ESXi connections and
+ * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
  * requires vCenter 6.0 or higher.
+ * 
+ * ## Example Usage
+ * 
+ * This example creates a tag category named `terraform-test-category`, with
+ * single cardinality (meaning that only one tag in this category can be assigned
+ * to an object at any given time). Tags in this category can only be assigned to
+ * VMs and datastores.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_tag_category_category = new vsphere.TagCategory("category", {
+ *     associableTypes: [
+ *         "VirtualMachine",
+ *         "Datastore",
+ *     ],
+ *     cardinality: "SINGLE",
+ *     description: "Managed by Terraform",
+ *     name: "terraform-test-category",
+ * });
+ * ```
  */
 export class TagCategory extends pulumi.CustomResource {
     /**

@@ -7,9 +7,9 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetDatastoreResult(object):
+class GetVappContainerResult(object):
     """
-    A collection of values returned by getDatastore.
+    A collection of values returned by getVappContainer.
     """
     def __init__(__self__, id=None):
         if id and not isinstance(id, str):
@@ -19,11 +19,11 @@ class GetDatastoreResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_datastore(datacenter_id=None, name=None):
+async def get_vapp_container(datacenter_id=None, name=None):
     """
-    The `vsphere_datastore` data source can be used to discover the ID of a
-    datastore in vSphere. This is useful to fetch the ID of a datastore that you
-    want to use to create virtual machines in using the
+    The `vsphere_vapp_container` data source can be used to discover the ID of a
+    vApp container in vSphere. This is useful to fetch the ID of a vApp container
+    that you want to use to create virtual machines in using the
     [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
     
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -32,7 +32,7 @@ async def get_datastore(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getDatastore:getDatastore', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getVappContainer:getVappContainer', __args__)
 
-    return GetDatastoreResult(
+    return GetVappContainerResult(
         id=__ret__.get('id'))

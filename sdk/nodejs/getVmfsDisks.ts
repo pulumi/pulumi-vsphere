@@ -11,6 +11,26 @@ import * as utilities from "./utilities";
  * datastores based off a set of discovered disks.
  * 
  * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const vsphere_host_host = pulumi.output(vsphere.getHost({
+ *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ *     name: "esxi1",
+ * }));
+ * const vsphere_vmfs_disks_available = pulumi.output(vsphere.getVmfsDisks({
+ *     filter: "mpx.vmhba1:C0:T[12]:L0",
+ *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
+ *     rescan: true,
+ * }));
+ * ```
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
     return pulumi.runtime.invoke("vsphere:index/getVmfsDisks:getVmfsDisks", {
