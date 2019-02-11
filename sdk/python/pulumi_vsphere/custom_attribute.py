@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -19,7 +20,7 @@ class CustomAttribute(pulumi.CustomResource):
     """
     The name of the custom attribute.
     """
-    def __init__(__self__, __name__, __opts__=None, managed_object_type=None, name=None):
+    def __init__(__self__, resource_name, opts=None, managed_object_type=None, name=None, __name__=None, __opts__=None):
         """
         The `vsphere_custom_attribute` resource can be used to create and manage custom
         attributes, which allow users to associate user-specific meta-information with 
@@ -33,20 +34,51 @@ class CustomAttribute(pulumi.CustomResource):
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
         
+        ## Managed Object Types
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        The following table will help you determine what value you need to enter for 
+        the managed object type you want the attribute to apply to.
+        
+        Note that if you want a attribute to apply to all objects, leave the type 
+        unspecified.
+        
+        <table>
+        <tr><th>Type</th><th>Value</th></tr>
+        <tr><td>Folders</td><td>`Folder`</td></tr>
+        <tr><td>Clusters</td><td>`ClusterComputeResource`</td></tr>
+        <tr><td>Datacenters</td><td>`Datacenter`</td></tr>
+        <tr><td>Datastores</td><td>`Datastore`</td></tr>
+        <tr><td>Datastore Clusters</td><td>`StoragePod`</td></tr>
+        <tr><td>DVS Portgroups</td><td>`DistributedVirtualPortgroup`</td></tr>
+        <tr><td>Distributed vSwitches</td><td>`DistributedVirtualSwitch`<br>`VmwareDistributedVirtualSwitch`</td></tr>
+        <tr><td>Hosts</td><td>`HostSystem`</td></tr>
+        <tr><td>Content Libraries</td><td>`com.vmware.content.Library`</td></tr>
+        <tr><td>Content Library Items</td><td>`com.vmware.content.library.Item`</td></tr>
+        <tr><td>Networks</td><td>`HostNetwork`<br>`Network`<br>`OpaqueNetwork`</td></tr>
+        <tr><td>Resource Pools</td><td>`ResourcePool`</td></tr>
+        <tr><td>vApps</td><td>`VirtualApp`</td></tr>
+        <tr><td>Virtual Machines</td><td>`VirtualMachine`</td></tr>
+        </table>
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
                type. For a full list, click here. Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -57,9 +89,9 @@ class CustomAttribute(pulumi.CustomResource):
 
         super(CustomAttribute, __self__).__init__(
             'vsphere:index/customAttribute:CustomAttribute',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

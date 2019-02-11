@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -44,7 +45,7 @@ class File(pulumi.CustomResource):
     Terraform host to vSphere or copied within vSphere. Forces a new resource if
     changed.
     """
-    def __init__(__self__, __name__, __opts__=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None):
+    def __init__(__self__, resource_name, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None, __name__=None, __opts__=None):
         """
         The `vsphere_file` resource can be used to upload files (such as virtual disk
         files) from the host machine that Terraform is running on to a target
@@ -59,9 +60,8 @@ class File(pulumi.CustomResource):
         this may result in the destination file either being overwritten or deleted at
         the old location.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter if any missing for copy operation.
         :param pulumi.Input[str] datacenter: The name of a datacenter in which the file will be
@@ -78,11 +78,17 @@ class File(pulumi.CustomResource):
                Terraform host to vSphere or copied within vSphere. Forces a new resource if
                changed.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -91,11 +97,11 @@ class File(pulumi.CustomResource):
 
         __props__['datacenter'] = datacenter
 
-        if not datastore:
+        if datastore is None:
             raise TypeError('Missing required property datastore')
         __props__['datastore'] = datastore
 
-        if not destination_file:
+        if destination_file is None:
             raise TypeError('Missing required property destination_file')
         __props__['destination_file'] = destination_file
 
@@ -103,15 +109,15 @@ class File(pulumi.CustomResource):
 
         __props__['source_datastore'] = source_datastore
 
-        if not source_file:
+        if source_file is None:
             raise TypeError('Missing required property source_file')
         __props__['source_file'] = source_file
 
         super(File, __self__).__init__(
             'vsphere:index/file:File',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

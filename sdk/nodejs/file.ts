@@ -26,20 +26,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_file_ubuntu_disk_upload = new vsphere.File("ubuntu_disk_upload", {
+ * const ubuntuDiskUpload = new vsphere.File("ubuntu_disk_upload", {
  *     datacenter: "my_datacenter",
  *     datastore: "local",
  *     destinationFile: "/my_path/disks/custom_ubuntu.vmdk",
  *     sourceFile: "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
  * });
  * ```
+ * 
  * ### Copying a file
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_file_ubuntu_disk_copy = new vsphere.File("ubuntu_disk_copy", {
+ * const ubuntuDiskCopy = new vsphere.File("ubuntu_disk_copy", {
  *     datacenter: "my_datacenter",
  *     datastore: "local",
  *     destinationFile: "/my_path/custom_ubuntu_id.vmdk",

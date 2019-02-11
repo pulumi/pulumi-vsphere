@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -53,7 +54,7 @@ class VappEntity(pulumi.CustomResource):
     started when VMware Tools are ready instead of waiting for `start_delay`. This
     property has no effect for vApps. Default: false
     """
-    def __init__(__self__, __name__, __opts__=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None):
+    def __init__(__self__, resource_name, opts=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None, __name__=None, __opts__=None):
         """
         The `vsphere_vapp_entity` resource can be used to describe the behavior of an
         entity (virtual machine or sub-vApp container) in a vApp container.
@@ -63,9 +64,8 @@ class VappEntity(pulumi.CustomResource):
         
         [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
         :param pulumi.Input[dict] custom_attributes
@@ -88,16 +88,22 @@ class VappEntity(pulumi.CustomResource):
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not container_id:
+        if container_id is None:
             raise TypeError('Missing required property container_id')
         __props__['container_id'] = container_id
 
@@ -115,7 +121,7 @@ class VappEntity(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not target_id:
+        if target_id is None:
             raise TypeError('Missing required property target_id')
         __props__['target_id'] = target_id
 
@@ -123,9 +129,9 @@ class VappEntity(pulumi.CustomResource):
 
         super(VappEntity, __self__).__init__(
             'vsphere:index/vappEntity:VappEntity',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -26,10 +26,103 @@ import * as utilities from "./utilities";
  * 
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * 
+ * ## Example Usage
+ * 
+ * The following example below demonstrates a "standard" example of configuring a
+ * vSphere DVS in a 3-node vSphere datacenter named `dc1`, across 4 NICs with two
+ * being used as active, and two being used as passive. Note that the NIC failover
+ * order propagates to any port groups configured on this DVS and can be overridden
+ * there.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const esxiHosts = config.get("esxiHosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * const networkInterfaces = config.get("networkInterfaces") || [
+ *     "vmnic0",
+ *     "vmnic1",
+ *     "vmnic2",
+ *     "vmnic3",
+ * ];
+ * 
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const host: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < esxiHosts.length; i++) {
+ *     host.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: dc.apply(dc => dc.id),
+ *         name: esxiHosts[i],
+ *     })));
+ * }
+ * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
+ *     activeUplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     datacenterId: dc.apply(dc => dc.id),
+ *     hosts: [
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[0].apply(host => host.id),
+ *         },
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[1].apply(host => host.id),
+ *         },
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[2].apply(host => host.id),
+ *         },
+ *     ],
+ *     standbyUplinks: [
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ * });
+ * ```
+ * 
+ * ### Uplink name and count control
+ * 
+ * The following abridged example below demonstrates how you can manage the number
+ * of uplinks, and the name of the uplinks via the `uplinks` parameter.
+ * 
+ * Note that if you change the uplink naming and count after creating the DVS, you
+ * may need to explicitly specify `active_uplinks` and `standby_uplinks` as these
+ * values are saved to Terraform state after creation, regardless of being
+ * specified in config, and will drift if not modified, causing errors.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
+ *     activeUplinks: ["tfup1"],
+ *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ *     standbyUplinks: ["tfup2"],
+ *     uplinks: [
+ *         "tfup1",
+ *         "tfup2",
+ *     ],
+ * });
+ * ```
+ * 
  * > **NOTE:** The default uplink names when a DVS is created are `uplink1`
  * through to `uplink4`, however this default is not guaranteed to be stable and
  * you are encouraged to set your own.
- * 
  */
 export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**

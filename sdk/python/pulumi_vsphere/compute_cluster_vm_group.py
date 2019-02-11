@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -24,7 +25,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
     The UUIDs of the virtual machines in this
     group.
     """
-    def __init__(__self__, __name__, __opts__=None, compute_cluster_id=None, name=None, virtual_machine_ids=None):
+    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, name=None, virtual_machine_ids=None, __name__=None, __opts__=None):
         """
         The `vsphere_compute_cluster_vm_group` resource can be used to manage groups of
         virtual machines in a cluster, either created by the
@@ -48,9 +49,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
                resource if changed.
@@ -59,16 +59,22 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
-        if not compute_cluster_id:
+        if compute_cluster_id is None:
             raise TypeError('Missing required property compute_cluster_id')
         __props__['compute_cluster_id'] = compute_cluster_id
 
@@ -78,9 +84,9 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         super(ComputeClusterVmGroup, __self__).__init__(
             'vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

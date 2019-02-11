@@ -24,19 +24,18 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const var_cluster = config.get("cluster") || "cluster1";
- * const var_datacenter = config.get("datacenter") || "dc1";
+ * const cluster = config.get("cluster") || "cluster1";
+ * const datacenter = config.get("datacenter") || "dc1";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
- *     name: var_datacenter,
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: datacenter,
  * }));
- * const vsphere_compute_cluster_compute_cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
- *     name: var_cluster,
+ * const computeCluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
+ *     name: cluster,
  * }));
- * const vsphere_resource_pool_resource_pool = new vsphere.ResourcePool("resource_pool", {
- *     name: "terraform-resource-pool-test",
- *     parentResourcePoolId: vsphere_compute_cluster_compute_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ * const resourcePool = new vsphere.ResourcePool("resource_pool", {
+ *     parentResourcePoolId: computeCluster.apply(computeCluster => computeCluster.resourcePoolId),
  * });
  * ```
  */

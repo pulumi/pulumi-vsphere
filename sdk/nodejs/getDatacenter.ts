@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
  * ```

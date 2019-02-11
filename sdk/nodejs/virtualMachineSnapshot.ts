@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_virtual_machine_snapshot_demo1 = new vsphere.VirtualMachineSnapshot("demo1", {
+ * const demo1 = new vsphere.VirtualMachineSnapshot("demo1", {
  *     consolidate: true,
  *     description: "This is Demo Snapshot",
  *     memory: true,

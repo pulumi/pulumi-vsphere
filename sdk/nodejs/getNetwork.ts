@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_network_net = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const net = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "terraform-test-net",
  * }));
  * ```

@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_virtual_machine_template = pulumi.output(vsphere.getVirtualMachine({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const template = pulumi.output(vsphere.getVirtualMachine({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "test-vm-template",
  * }));
  * ```

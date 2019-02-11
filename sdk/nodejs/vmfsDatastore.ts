@@ -14,6 +14,36 @@ import * as utilities from "./utilities";
  * 
  * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
  * 
+ * ## Auto-Mounting of Datastores Within vCenter
+ * 
+ * Note that the current behaviour of this resource will auto-mount any created
+ * datastores to any other host within vCenter that has access to the same disk.
+ * 
+ * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+ * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+ * create the datastore on `esxi1`, the datastore will be automatically mounted on
+ * `esxi2` and `esxi3`, without the need to configure the resource on either of
+ * those two hosts.
+ * 
+ * Future versions of this resource may allow you to control the hosts that a
+ * datastore is mounted to, but currently, this automatic behaviour cannot be
+ * changed, so keep this in mind when writing your configurations and deploying
+ * your disks.
+ * 
+ * ## Increasing Datastore Size
+ * 
+ * To increase the size of a datastore, you must add additional disks to the
+ * `disks` attribute. Expanding the size of a datastore by increasing the size of
+ * an already provisioned disk is currently not supported (but may be in future
+ * versions of this resource).
+ * 
+ * > **NOTE:** You cannot decrease the size of a datastore. If the resource
+ * detects disks removed from the configuration, Terraform will give an error. To
+ * reduce the size of the datastore, the resource needs to be re-created - run
+ * [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
+ * 
+ * [cmd-taint]: /docs/commands/taint.html
+ * 
  * ## Example Usage
  * 
  * ### Addition of local disks on a single host
@@ -32,20 +62,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const datacenter = pulumi.output(vsphere.getDatacenter({}));
+ * const esxiHost = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  * }));
- * const vsphere_vmfs_datastore_datastore = new vsphere.VmfsDatastore("datastore", {
+ * const datastore = new vsphere.VmfsDatastore("datastore", {
  *     disks: [
  *         "mpx.vmhba1:C0:T1:L0",
  *         "mpx.vmhba1:C0:T2:L0",
  *         "mpx.vmhba1:C0:T2:L0",
  *     ],
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "terraform-test",
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
  * });
  * ```
+ * 
  * ### Auto-detection of disks via `vsphere_vmfs_disks`
  * 
  * The following example makes use of the
@@ -61,23 +91,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const esxiHost = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_vmfs_disks_available = pulumi.output(vsphere.getVmfsDisks({
+ * const available = pulumi.output(vsphere.getVmfsDisks({
  *     filter: "naa.60a98000",
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
  *     rescan: true,
  * }));
- * const vsphere_vmfs_datastore_datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: vsphere_vmfs_disks_available.apply(__arg0 => __arg0.disks),
+ * const datastore = new vsphere.VmfsDatastore("datastore", {
+ *     disks: available.apply(available => available.disks),
  *     folder: "datastore-folder",
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "terraform-test",
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
  * });
  * ```
  */

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -42,7 +43,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
     """
     The virtual machine UUID.
     """
-    def __init__(__self__, __name__, __opts__=None, consolidate=None, description=None, memory=None, quiesce=None, remove_children=None, snapshot_name=None, virtual_machine_uuid=None):
+    def __init__(__self__, resource_name, opts=None, consolidate=None, description=None, memory=None, quiesce=None, remove_children=None, snapshot_name=None, virtual_machine_uuid=None, __name__=None, __opts__=None):
         """
         The `vsphere_virtual_machine_snapshot` resource can be used to manage snapshots
         for a virtual machine.
@@ -67,9 +68,8 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
         [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] consolidate: If set to `true`, the delta disks involved in this
                snapshot will be consolidated into the parent when this resource is
                destroyed.
@@ -84,44 +84,50 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['consolidate'] = consolidate
 
-        if not description:
+        if description is None:
             raise TypeError('Missing required property description')
         __props__['description'] = description
 
-        if not memory:
+        if memory is None:
             raise TypeError('Missing required property memory')
         __props__['memory'] = memory
 
-        if not quiesce:
+        if quiesce is None:
             raise TypeError('Missing required property quiesce')
         __props__['quiesce'] = quiesce
 
         __props__['remove_children'] = remove_children
 
-        if not snapshot_name:
+        if snapshot_name is None:
             raise TypeError('Missing required property snapshot_name')
         __props__['snapshot_name'] = snapshot_name
 
-        if not virtual_machine_uuid:
+        if virtual_machine_uuid is None:
             raise TypeError('Missing required property virtual_machine_uuid')
         __props__['virtual_machine_uuid'] = virtual_machine_uuid
 
         super(VirtualMachineSnapshot, __self__).__init__(
             'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

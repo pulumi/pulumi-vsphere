@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_tag_category_category = pulumi.output(vsphere.getTagCategory({
+ * const category = pulumi.output(vsphere.getTagCategory({
  *     name: "terraform-test-category",
  * }));
  * ```

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -41,7 +42,7 @@ class Folder(pulumi.CustomResource):
     `vm` for virtual machine folders, `datastore` for datastore folders, and
     `network` for network folders. Forces a new resource if changed.
     """
-    def __init__(__self__, __name__, __opts__=None, custom_attributes=None, datacenter_id=None, path=None, tags=None, type=None):
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, path=None, tags=None, type=None, __name__=None, __opts__=None):
         """
         The `vsphere_folder` resource can be used to manage vSphere inventory folders.
         The resource supports creating folders of the 5 major types - datacenter
@@ -53,9 +54,8 @@ class Folder(pulumi.CustomResource):
         `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
         as that folder exists.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
                value strings to set for folder. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
@@ -75,11 +75,17 @@ class Folder(pulumi.CustomResource):
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -88,21 +94,21 @@ class Folder(pulumi.CustomResource):
 
         __props__['datacenter_id'] = datacenter_id
 
-        if not path:
+        if path is None:
             raise TypeError('Missing required property path')
         __props__['path'] = path
 
         __props__['tags'] = tags
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
         super(Folder, __self__).__init__(
             'vsphere:index/folder:Folder',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

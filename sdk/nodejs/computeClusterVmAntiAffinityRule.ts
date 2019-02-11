@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * operation that would keep that from happening, depending on the value of the
  * `mandatory` flag.
  * 
- * -> Keep in mind that this rule can only be used to tell VMs to run separately
+ * > Keep in mind that this rule can only be used to tell VMs to run separately
  * on _non-specific_ hosts - specific hosts cannot be specified with this rule.
  * For that, see the
  * [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
@@ -48,43 +48,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "cluster1",
  * }));
- * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore1",
  * }));
- * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "network1",
  * }));
- * const vsphere_virtual_machine_vm: vsphere.VirtualMachine[] = [];
+ * const vm: vsphere.VirtualMachine[] = [];
  * for (let i = 0; i < 2; i++) {
- *     vsphere_virtual_machine_vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
- *         datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ *     vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
+ *         datastoreId: datastore.apply(datastore => datastore.id),
  *         disks: [{
  *             label: "disk0",
  *             size: 20,
  *         }],
  *         guestId: "other3xLinux64Guest",
  *         memory: 2048,
- *         name: `terraform-test-${i}`,
  *         networkInterfaces: [{
- *             networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *             networkId: network.apply(network => network.id),
  *         }],
  *         numCpus: 2,
- *         resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *         resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
  *     }));
  * }
- * const vsphere_compute_cluster_vm_anti_affinity_rule_cluster_vm_anti_affinity_rule = new vsphere.ComputeClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
- *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
- *     name: "terraform-test-cluster-vm-anti-affinity-rule",
- *     virtualMachineIds: vsphere_virtual_machine_vm.map(v => v.id),
+ * const clusterVmAntiAffinityRule = new vsphere.ComputeClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
  */

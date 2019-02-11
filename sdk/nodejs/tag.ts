@@ -31,19 +31,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_tag_category_category = new vsphere.TagCategory("category", {
+ * const category = new vsphere.TagCategory("category", {
  *     associableTypes: [
  *         "VirtualMachine",
  *         "Datastore",
  *     ],
  *     cardinality: "SINGLE",
  *     description: "Managed by Terraform",
- *     name: "terraform-test-category",
  * });
- * const vsphere_tag_tag = new vsphere.Tag("tag", {
- *     categoryId: vsphere_tag_category_category.id,
+ * const tag = new vsphere.Tag("tag", {
+ *     categoryId: category.id,
  *     description: "Managed by Terraform",
- *     name: "terraform-test-tag",
  * });
  * ```
  */

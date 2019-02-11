@@ -17,6 +17,228 @@ import (
 // page][vmware-docs-vm-management].
 // 
 // [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
+// 
+// ## About Working with Virtual Machines in Terraform
+// 
+// A high degree of control and flexibility is afforded to a vSphere user when it
+// comes to how to configure, deploy, and manage virtual machines - much more
+// control than given in a traditional cloud provider. As such, Terraform has to
+// make some decisions on how to manage the virtual machines it creates and
+// manages. This section documents things you need to know about your virtual
+// machine configuration that you should consider when setting up virtual
+// machines, creating templates to clone from, or migrating from previous versions
+// of this resource.
+// 
+// ### Disks
+// 
+// The `vsphere_virtual_machine` resource currently only supports standard
+// VMDK-backed virtual disks - it does not support other special kinds of disk
+// devices like RDM disks.
+// 
+// Disks are managed by an arbitrary label supplied to the `label`
+// attribute of a `disk` block. This is separate from the
+// automatic naming that vSphere picks for you when creating a virtual machine.
+// Control over a virtual disk's name is not supported unless you are attaching an
+// external disk with the `attach` attribute.
+// 
+// Virtual disks can be SCSI disks only. The SCSI controllers managed by Terraform
+// can vary, depending on the value supplied to
+// `scsi_controller_count`. This also dictates the
+// controllers that are checked when looking for disks during a cloning process.
+// By default, this value is `1`, meaning that you can have up to 15 disks
+// configured on a virtual machine. These are all configured with the controller
+// type defined by the `scsi_type` setting. If you are cloning from
+// a template, devices will be added or re-configured as necessary.
+// 
+// When cloning from a template, you must specify disks of either the same or
+// greater size than the disks in the source template when creating a traditional
+// clone, or exactly the same size when cloning from snapshot (also known as a
+// linked clone). For more details, see the section on creating a virtual machine
+// from a template.
+// 
+// A maximum of 60 virtual disks can be configured when the
+// `scsi_controller_count` setting is configured to its
+// maximum of `4` controllers. See the disk options section for
+// more details.
+// 
+// ### Customization and network waiters
+// 
+// Terraform waits during various parts of a virtual machine deployment to ensure
+// that it is in a correct expected state before proceeding. These happen when a
+// VM is created, or also when it's updated, depending on the waiter.
+// 
+// Two waiters of note are:
+// 
+// * **The customization waiter:** This waiter watches events in vSphere to
+//   monitor when customization on a virtual machine completes during VM creation.
+//   Depending on your vSphere or VM configuration it may be necessary to change
+//   the timeout or turn it off. This can be controlled by the
+//   `timeout` setting in the customization
+//   settings block.
+// * **The network waiter:** This waiter waits for interfaces to show up on a
+//   guest virtual machine close to the end of both VM creation and update. This
+//   waiter is necessary to ensure that correct IP information gets reported to
+//   the guest virtual machine, mainly to facilitate the availability of a valid,
+//   reachable default IP address for any [provisioners][tf-docs-provisioners].
+//   The behavior of the waiter can be controlled with the
+//   `wait_for_guest_net_timeout` and
+//   `wait_for_guest_net_routable` settings.
+// 
+// [tf-docs-provisioners]: /docs/provisioners/index.html
+// 
+// ### Migrating from a previous version of this resource
+// 
+// > **NOTE:** This section only applies to versions of this resource available
+// in versions v0.4.2 of this provider or earlier.
+// 
+// The path for migrating to the current version of this resource is very similar
+// to the import path, with the exception that the `terraform
+// import` command does not need to be run. See that section for details on what
+// is required before you run `terraform plan` on a state that requires migration.
+// 
+// A successful migration usually only results in a configuration-only diff - that
+// is, Terraform reconciles some configuration settings that cannot be set during
+// the migration process with state. In this event, no reconfiguration operations
+// are sent to the vSphere server during the next `terraform apply`.  See the
+// importing section for more details.
+// 
+// ## Creating a Virtual Machine from a Template
+// 
+// The `clone` block can be used to create a new virtual machine from an existing
+// virtual machine or template. The resource supports both making a complete copy
+// of a virtual machine, or cloning from a snapshot (otherwise known as a linked
+// clone).
+// 
+// See the cloning and customization
+// example for a usage synopsis.
+// 
+// > **NOTE:** Changing any option in `clone` after creation forces a new
+// resource.
+// 
+// > **NOTE:** Cloning requires vCenter and is not supported on direct ESXi
+// connections.
+// 
+// The options available in the `clone` block are:
+// 
+// * `template_uuid` - (Required) The UUID of the source virtual machine or
+//   template.
+// * `linked_clone` - (Optional) Clone this virtual machine from a snapshot.
+//   Templates must have a single snapshot only in order to be eligible. Default:
+//   `false`.
+// * `timeout` - (Optional) The timeout, in minutes, to wait for the virtual
+//   machine clone to complete. Default: 30 minutes.
+// * `customize` - (Optional) The customization spec for this clone. This allows
+//   the user to configure the virtual machine post-clone. For more details, see
+//   virtual machine customization.
+// 
+// ### Additional requirements and notes for cloning
+// 
+// Note that when cloning from a template, there are additional requirements in
+// both the resource configuration and source template:
+// 
+// * The virtual machine must not be powered on at the time of cloning.
+// * All disks on the virtual machine must be SCSI disks.
+// * You must specify at least the same number of `disk` devices as there are
+//   disks that exist in the template. These devices are ordered and lined up by
+//   the `unit_number` attribute. Additional disks can be added past this.
+// * The `size` of a virtual disk must be at least the same size as its
+//   counterpart disk in the template.
+// * When using `linked_clone`, the `size`, `thin_provisioned`, and
+//   `eagerly_scrub` settings for each disk must be an exact match to the
+//   individual disk's counterpart in the source template.
+// * The `scsi_controller_count` setting should be
+//   configured as necessary to cover all of the disks on the template. For best
+//   results, only configure this setting for the amount of controllers you will
+//   need to cover your disk quantity and bandwidth needs, and configure your
+//   template accordingly. For most workloads, this setting should be kept at its
+//   default of `1`, and all disks in the template should reside on the single,
+//   primary controller.
+// * Some operating systems (such as Windows) do not respond well to a change in
+//   disk controller type, so when using such OSes, take care to ensure that
+//   `scsi_type` is set to an exact match of the template's controller set. For
+//   maximum compatibility, make sure the SCSI controllers on the source template
+//   are all the same type.
+// 
+// To ease the gathering of some of these options, you can use the
+// [`vsphere_virtual_machine` data source][tf-vsphere-virtual-machine-ds], which
+// will give you disk attributes, network interface types, SCSI bus types, and
+// also the guest ID of the source template.  See the cloning and customization
+// example for usage details.
+// 
+// ## Virtual Machine Migration
+// 
+// The `vsphere_virtual_machine` resource supports live migration (otherwise known
+// as vMotion) both on the host and storage level. One can migrate the entire VM
+// to another host, cluster, resource pool, or datastore, and migrate or pin a
+// single disk to a specific datastore.
+// 
+// ### Host, cluster, and resource pool migration 
+// 
+// To migrate the virtual machine to another host or resource pool, change the
+// `host_system_id` or `resource_pool_id` to the manged object IDs of the new host
+// or resource pool accordingly. To change the virtual machine's cluster or
+// standalone host, select a resource pool within the specific target.
+// 
+// The same rules apply for migration as they do for VM creation - any host
+// specified needs to be a part of the resource pool supplied. Also keep in mind
+// the implications of moving the virtual machine to a resource pool in another
+// cluster or standalone host, namely ensuring that all hosts in the cluster (or
+// the single standalone host) have access to the datastore that the virtual
+// machine is in.
+// 
+// ## Importing 
+// 
+// ### Additional requirements and notes for importing
+// 
+// Many of the same requirements for
+// cloning apply to importing,
+// although since importing writes directly to state, a lot of these rules cannot
+// be enforced at import time, so every effort should be made to ensure the
+// correctness of the configuration before the import.
+// 
+// In addition to these rules, the following extra rules apply to importing:
+// 
+// * Disks need to have their `label` argument assigned in a convention
+//   matching `diskN`, starting with disk number 0, based on each disk's order on
+//   the SCSI bus. As an example, a disk on SCSI controller 0 with a unit number
+//   of 0 would be labeled `disk0`, a disk on the same controller with a unit
+//   number of 1 would be `disk1`, but the next disk, which is on SCSI controller
+//   1 with a unit number of 0, still becomes `disk2`.
+// * Disks always get imported with `keep_on_remove` enabled
+//   until the first `terraform apply` runs, which will remove the setting for
+//   known disks. This is an extra safeguard against naming or accounting mistakes
+//   in the disk configuration.
+// * The `scsi_controller_count` for the resource is set
+//   to the number of contiguous SCSI controllers found, starting with the SCSI
+//   controller at bus number 0. If no SCSI controllers are found, the VM is not
+//   eligible for import. To ensure maximum compatibility, make sure your virtual
+//   machine has the exact number of SCSI controllers it needs, and set
+//   `scsi_controller_count` accordingly.
+// 
+// After importing, you should run `terraform plan`. Unless you have changed
+// anything else in configuration that would be causing other attributes to
+// change, the only difference should be configuration-only changes, usually
+// comprising of:
+// 
+// * The `imported` flag will transition from `true` to `false`.
+// * `keep_on_remove` of known disks will transition from
+//   `true` to `false`. 
+// * Configuration supplied in the `clone` block, if present, will be
+//   persisted to state. This initial persistence operation does not perform any
+//   cloning or customization actions, nor does it force a new resource. After the
+//   first apply operation, further changes to `clone` will force a new resource
+//   as per normal operation.
+// 
+// > **NOTE:** Further to the above, do not make any configuration changes to
+// `clone` after importing or upgrading from a legacy version of the provider
+// before doing an initial `terraform apply` as these changes will not correctly
+// force a new resource, and your changes will have persisted to state, preventing
+// further plans from correctly triggering a diff.
+// 
+// These changes only update Terraform state when applied, hence it is safe to run
+// when the virtual machine is running. If more settings are being modified, you
+// may need to plan maintenance accordingly for any necessary re-configuration of
+// the virtual machine.
 type VirtualMachine struct {
 	s *pulumi.ResourceState
 }

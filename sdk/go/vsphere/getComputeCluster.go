@@ -18,7 +18,7 @@ import (
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 // [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
 // 
-// -> You may also wish to see the
+// > You may also wish to see the
 // [`vsphere_compute_cluster`][docs-compute-cluster-resource] resource for further
 // details about clusters or how to work with them in Terraform.
 // 

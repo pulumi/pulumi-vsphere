@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * 
  * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
- * -> Note how `dependency_vm_group_name` and
+ * > Note how `dependency_vm_group_name` and
  * `vm_group_name` are sourced off of the `name` attributes from
  * the [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource]
  * resource. This is to ensure that the rule is not created before the groups
@@ -44,66 +44,61 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "cluster1",
  * }));
- * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore1",
  * }));
- * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "network1",
  * }));
- * const vsphere_virtual_machine_vm1 = new vsphere.VirtualMachine("vm1", {
- *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ * const vm1 = new vsphere.VirtualMachine("vm1", {
+ *     datastoreId: datastore.apply(datastore => datastore.id),
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
  *     }],
  *     guestId: "other3xLinux64Guest",
  *     memory: 2048,
- *     name: "terraform-test1",
  *     networkInterfaces: [{
- *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         networkId: network.apply(network => network.id),
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
  * });
- * const vsphere_compute_cluster_vm_group_cluster_vm_group1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
- *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
- *     name: "terraform-test-cluster-vm-group1",
- *     virtualMachineIds: [vsphere_virtual_machine_vm1.id],
+ * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
+ *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     virtualMachineIds: [vm1.id],
  * });
- * const vsphere_virtual_machine_vm2 = new vsphere.VirtualMachine("vm2", {
- *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ * const vm2 = new vsphere.VirtualMachine("vm2", {
+ *     datastoreId: datastore.apply(datastore => datastore.id),
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
  *     }],
  *     guestId: "other3xLinux64Guest",
  *     memory: 2048,
- *     name: "terraform-test2",
  *     networkInterfaces: [{
- *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         networkId: network.apply(network => network.id),
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
  * });
- * const vsphere_compute_cluster_vm_group_cluster_vm_group2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
- *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
- *     name: "terraform-test-cluster-vm-group2",
- *     virtualMachineIds: [vsphere_virtual_machine_vm2.id],
+ * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
+ *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     virtualMachineIds: [vm2.id],
  * });
- * const vsphere_compute_cluster_vm_dependency_rule_cluster_vm_dependency_rule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
- *     computeClusterId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.id),
- *     dependencyVmGroupName: vsphere_compute_cluster_vm_group_cluster_vm_group1.name,
- *     name: "terraform-test-cluster-vm-dependency-rule",
- *     vmGroupName: vsphere_compute_cluster_vm_group_cluster_vm_group2.name,
+ * const clusterVmDependencyRule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
+ *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     dependencyVmGroupName: clusterVmGroup1.name,
+ *     vmGroupName: clusterVmGroup2.name,
  * });
  * ```
  */

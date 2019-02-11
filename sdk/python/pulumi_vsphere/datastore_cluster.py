@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -145,7 +146,7 @@ class DatastoreCluster(pulumi.CustomResource):
     The IDs of any tags to attach to this resource. See
     [here][docs-applying-tags] for a reference on how to apply tags.
     """
-    def __init__(__self__, __name__, __opts__=None, custom_attributes=None, datacenter_id=None, folder=None, name=None, sdrs_advanced_options=None, sdrs_automation_level=None, sdrs_default_intra_vm_affinity=None, sdrs_enabled=None, sdrs_free_space_threshold=None, sdrs_free_space_threshold_mode=None, sdrs_free_space_utilization_difference=None, sdrs_io_balance_automation_level=None, sdrs_io_latency_threshold=None, sdrs_io_load_balance_enabled=None, sdrs_io_load_imbalance_threshold=None, sdrs_io_reservable_iops_threshold=None, sdrs_io_reservable_percent_threshold=None, sdrs_io_reservable_threshold_mode=None, sdrs_load_balance_interval=None, sdrs_policy_enforcement_automation_level=None, sdrs_rule_enforcement_automation_level=None, sdrs_space_balance_automation_level=None, sdrs_space_utilization_threshold=None, sdrs_vm_evacuation_automation_level=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, folder=None, name=None, sdrs_advanced_options=None, sdrs_automation_level=None, sdrs_default_intra_vm_affinity=None, sdrs_enabled=None, sdrs_free_space_threshold=None, sdrs_free_space_threshold_mode=None, sdrs_free_space_utilization_difference=None, sdrs_io_balance_automation_level=None, sdrs_io_latency_threshold=None, sdrs_io_load_balance_enabled=None, sdrs_io_load_imbalance_threshold=None, sdrs_io_reservable_iops_threshold=None, sdrs_io_reservable_percent_threshold=None, sdrs_io_reservable_threshold_mode=None, sdrs_load_balance_interval=None, sdrs_policy_enforcement_automation_level=None, sdrs_rule_enforcement_automation_level=None, sdrs_space_balance_automation_level=None, sdrs_space_utilization_threshold=None, sdrs_vm_evacuation_automation_level=None, tags=None, __name__=None, __opts__=None):
         """
         The `vsphere_datastore_cluster` resource can be used to create and manage
         datastore clusters. This can be used to create groups of datastores with a
@@ -162,9 +163,8 @@ class DatastoreCluster(pulumi.CustomResource):
         
         > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -234,18 +234,24 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['custom_attributes'] = custom_attributes
 
-        if not datacenter_id:
+        if datacenter_id is None:
             raise TypeError('Missing required property datacenter_id')
         __props__['datacenter_id'] = datacenter_id
 
@@ -297,9 +303,9 @@ class DatastoreCluster(pulumi.CustomResource):
 
         super(DatastoreCluster, __self__).__init__(
             'vsphere:index/datastoreCluster:DatastoreCluster',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

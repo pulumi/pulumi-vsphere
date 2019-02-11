@@ -23,29 +23,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const esxiHost = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "vSwitchTerraformTest",
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
  *     ],
  *     standbyNics: ["vmnic1"],
  * });
- * const vsphere_host_port_group_pg = new vsphere.HostPortGroup("pg", {
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "PGTerraformTest",
- *     virtualSwitchName: vsphere_host_virtual_switch_switch.name,
+ * const pg = new vsphere.HostPortGroup("pg", {
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     virtualSwitchName: switchHostVirtualSwitch.name,
  * });
  * ```
+ * 
  * **Create a port group with VLAN set and some overrides:**
  * 
  * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
@@ -58,28 +57,26 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_esxi_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const esxiHost = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "vSwitchTerraformTest",
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
  *     ],
  *     standbyNics: ["vmnic1"],
  * });
- * const vsphere_host_port_group_pg = new vsphere.HostPortGroup("pg", {
+ * const pg = new vsphere.HostPortGroup("pg", {
  *     allowPromiscuous: true,
- *     hostSystemId: vsphere_host_esxi_host.apply(__arg0 => __arg0.id),
- *     name: "PGTerraformTest",
- *     virtualSwitchName: vsphere_host_virtual_switch_switch.name,
+ *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     virtualSwitchName: switchHostVirtualSwitch.name,
  *     vlanId: 4095,
  * });
  * ```

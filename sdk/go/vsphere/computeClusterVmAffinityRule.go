@@ -22,7 +22,7 @@ import (
 // that would keep that from happening, depending on the value of the
 // `mandatory` flag.
 // 
-// -> Keep in mind that this rule can only be used to tell VMs to run together on
+// > Keep in mind that this rule can only be used to tell VMs to run together on
 // a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
 // the
 // [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]

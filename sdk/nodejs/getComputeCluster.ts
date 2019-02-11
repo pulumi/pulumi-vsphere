@@ -16,11 +16,26 @@ import * as utilities from "./utilities";
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
  * 
- * -> You may also wish to see the
+ * > You may also wish to see the
  * [`vsphere_compute_cluster`][docs-compute-cluster-resource] resource for further
  * details about clusters or how to work with them in Terraform.
  * 
  * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const computeCluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ *     name: "compute-cluster1",
+ * }));
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * ```
  */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
     return pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {

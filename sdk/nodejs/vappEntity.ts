@@ -24,47 +24,45 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const var_cluster = config.get("cluster") || "cluster1";
- * const var_datacenter = config.get("datacenter") || "dc1";
+ * const cluster = config.get("cluster") || "cluster1";
+ * const datacenter = config.get("datacenter") || "dc1";
  * 
- * const vsphere_vapp_entity_vapp_entity = new vsphere.VappEntity("vapp_entity", {
+ * const vappEntity = new vsphere.VappEntity("vapp_entity", {
  *     containerId: "vsphere_vapp_container.vapp_container.id",
  *     startAction: "non",
  *     targetId: "vsphere_virtual_machine.vm.id",
  * });
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
- *     name: var_datacenter,
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: datacenter,
  * }));
- * const vsphere_compute_cluster_compute_cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
- *     name: var_cluster,
+ * const computeCluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
+ *     name: cluster,
  * }));
- * const vsphere_datastore_datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const datastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore1",
  * }));
- * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "network1",
  * }));
- * const vsphere_vapp_container_vapp_container = new vsphere.VappContainer("vapp_container", {
- *     name: "terraform-vapp-container-test",
- *     parentResourcePoolId: vsphere_compute_cluster_compute_cluster.apply(__arg0 => __arg0.id),
+ * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ *     parentResourcePoolId: computeCluster.apply(computeCluster => computeCluster.id),
  * });
- * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: vsphere_datastore_datastore.apply(__arg0 => __arg0.id),
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: datastore.apply(datastore => datastore.id),
  *     disks: [{
  *         label: "disk0",
  *         size: 1,
  *     }],
  *     guestId: "ubuntu64Guest",
  *     memory: 1024,
- *     name: "terraform-virutal-machine-test",
  *     networkInterfaces: [{
- *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         networkId: network.apply(network => network.id),
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: vsphere_vapp_container_vapp_container.id,
+ *     resourcePoolId: vappContainer.id,
  * });
  * ```
  */
