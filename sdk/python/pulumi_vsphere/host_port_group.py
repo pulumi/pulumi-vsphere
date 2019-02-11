@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -57,7 +58,7 @@ class HostPortGroup(pulumi.CustomResource):
     ID of `4095` enables trunk mode, allowing the guest to manage its own
     tagging. Default: `0`.
     """
-    def __init__(__self__, __name__, __opts__=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, failback=None, host_system_id=None, name=None, notify_switches=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None):
+    def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, failback=None, host_system_id=None, name=None, notify_switches=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None, __name__=None, __opts__=None):
         """
         The `vsphere_host_port_group` resource can be used to manage vSphere standard
         port groups on an ESXi host. These port groups are connected to standard
@@ -69,9 +70,8 @@ class HostPortGroup(pulumi.CustomResource):
         [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_nics
         :param pulumi.Input[bool] allow_forged_transmits
         :param pulumi.Input[bool] allow_mac_changes
@@ -96,11 +96,17 @@ class HostPortGroup(pulumi.CustomResource):
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -117,7 +123,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         __props__['failback'] = failback
 
-        if not host_system_id:
+        if host_system_id is None:
             raise TypeError('Missing required property host_system_id')
         __props__['host_system_id'] = host_system_id
 
@@ -137,7 +143,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         __props__['teaming_policy'] = teaming_policy
 
-        if not virtual_switch_name:
+        if virtual_switch_name is None:
             raise TypeError('Missing required property virtual_switch_name')
         __props__['virtual_switch_name'] = virtual_switch_name
 
@@ -149,9 +155,9 @@ class HostPortGroup(pulumi.CustomResource):
 
         super(HostPortGroup, __self__).__init__(
             'vsphere:index/hostPortGroup:HostPortGroup',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -18,16 +18,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const host = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_vmfs_disks_available = pulumi.output(vsphere.getVmfsDisks({
+ * const available = pulumi.output(vsphere.getVmfsDisks({
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
- *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
+ *     hostSystemId: host.apply(host => host.id),
  *     rescan: true,
  * }));
  * ```

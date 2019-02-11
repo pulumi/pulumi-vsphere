@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// -> **A note on the naming of this resource:** VMware refers to clusters of
+// > **A note on the naming of this resource:** VMware refers to clusters of
 // hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
 // clusters_. All of these refer to the same kind of resource (with the latter two
 // referring to specific features of clustering). In Terraform, we use
@@ -35,6 +35,47 @@ import (
 // connections.
 // 
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+// 
+// ## vSphere Version Requirements
+// 
+// A large number of settings in the `vsphere_compute_cluster` resource require a
+// specific version of vSphere to function. Rather than include warnings at every
+// setting or section, these settings are documented below.  Note that this list
+// is for cluster-specific attributes only, and does not include the
+// `tags` parameter, which requires vSphere 6.0 or higher across all
+// resources that can be tagged.
+// 
+// All settings are footnoted by an asterisk (`*`) in their specific section in
+// the documentation, which takes you here.
+// 
+// ### Settings that require vSphere version 6.0 or higher
+// 
+// These settings require vSphere 6.0 or higher:
+// 
+// * `ha_datastore_apd_recovery_action`
+// * `ha_datastore_apd_response`
+// * `ha_datastore_apd_response_delay`
+// * `ha_datastore_pdl_response`
+// * `ha_vm_component_protection`
+// 
+// ### Settings that require vSphere version 6.5 or higher
+// 
+// These settings require vSphere 6.5 or higher:
+// 
+// * `drs_enable_predictive_drs`
+// * `ha_admission_control_host_failure_tolerance`
+//   (When `ha_admission_control_policy` is set to
+//   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
+//   `failoverHosts`)
+// * `ha_admission_control_resource_percentage_auto_compute`
+// * `ha_vm_restart_timeout`
+// * `ha_vm_dependency_restart_condition`
+// * `ha_vm_restart_additional_delay`
+// * `proactive_ha_automation_level`
+// * `proactive_ha_enabled`
+// * `proactive_ha_moderate_remediation`
+// * `proactive_ha_provider_ids`
+// * `proactive_ha_severe_remediation`
 type ComputeCluster struct {
 	s *pulumi.ResourceState
 }

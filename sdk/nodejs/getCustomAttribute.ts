@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_custom_attribute_attribute = pulumi.output(vsphere.getCustomAttribute({
+ * const attribute = pulumi.output(vsphere.getCustomAttribute({
  *     name: "terraform-test-attribute",
  * }));
  * ```

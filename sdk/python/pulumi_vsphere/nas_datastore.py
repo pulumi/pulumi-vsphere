@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -112,7 +113,7 @@ class NasDatastore(pulumi.CustomResource):
     """
     The unique locator for the datastore.
     """
-    def __init__(__self__, __name__, __opts__=None, access_mode=None, custom_attributes=None, datastore_cluster_id=None, folder=None, host_system_ids=None, name=None, remote_hosts=None, remote_path=None, security_type=None, tags=None, type=None):
+    def __init__(__self__, resource_name, opts=None, access_mode=None, custom_attributes=None, datastore_cluster_id=None, folder=None, host_system_ids=None, name=None, remote_hosts=None, remote_path=None, security_type=None, tags=None, type=None, __name__=None, __opts__=None):
         """
         The `vsphere_nas_datastore` resource can be used to create and manage NAS
         datastores on an ESXi host or a set of hosts. The resource supports mounting
@@ -125,9 +126,8 @@ class NasDatastore(pulumi.CustomResource):
         
         [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for the mount point. Can be one of
                `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
                that the datastore will be read-write depending on the permissions of the
@@ -164,11 +164,17 @@ class NasDatastore(pulumi.CustomResource):
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -181,17 +187,17 @@ class NasDatastore(pulumi.CustomResource):
 
         __props__['folder'] = folder
 
-        if not host_system_ids:
+        if host_system_ids is None:
             raise TypeError('Missing required property host_system_ids')
         __props__['host_system_ids'] = host_system_ids
 
         __props__['name'] = name
 
-        if not remote_hosts:
+        if remote_hosts is None:
             raise TypeError('Missing required property remote_hosts')
         __props__['remote_hosts'] = remote_hosts
 
-        if not remote_path:
+        if remote_path is None:
             raise TypeError('Missing required property remote_path')
         __props__['remote_path'] = remote_path
 
@@ -212,9 +218,9 @@ class NasDatastore(pulumi.CustomResource):
 
         super(NasDatastore, __self__).__init__(
             'vsphere:index/nasDatastore:NasDatastore',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

@@ -34,37 +34,34 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const var_hosts = config.get("hosts") || [
+ * const hosts = config.get("hosts") || [
  *     "esxi1",
  *     "esxi2",
  *     "esxi3",
  * ];
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const vsphere_host_esxi_hosts: Output<vsphere.GETHOSTResult>[] = [];
- * for (let i = 0; i < var_hosts.length; i++) {
- *     vsphere_host_esxi_hosts.push(pulumi.output(vsphere.getHost({
- *         datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
- *         name: var_hosts[i],
+ * const datacenter = pulumi.output(vsphere.getDatacenter({}));
+ * const esxiHosts: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < hosts.length; i++) {
+ *     esxiHosts.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *         name: hosts[i],
  *     })));
  * }
- * const vsphere_datastore_cluster_datastore_cluster = new vsphere.DatastoreCluster("datastore_cluster", {
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
- *     name: "terraform-datastore-cluster-test",
+ * const datastoreCluster = new vsphere.DatastoreCluster("datastore_cluster", {
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     sdrsEnabled: true,
  * });
- * const vsphere_nas_datastore_datastore1 = new vsphere.NasDatastore("datastore1", {
- *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.id,
- *     hostSystemIds: pulumi.all(vsphere_host_esxi_hosts).apply(__arg0 => __arg0.map(v => v.id)),
- *     name: "terraform-datastore-test1",
+ * const datastore1 = new vsphere.NasDatastore("datastore1", {
+ *     datastoreClusterId: datastoreCluster.id,
+ *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
  *     remoteHosts: ["nfs"],
  *     remotePath: "/export/terraform-test1",
  *     type: "NFS",
  * });
- * const vsphere_nas_datastore_datastore2 = new vsphere.NasDatastore("datastore2", {
- *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.id,
- *     hostSystemIds: pulumi.all(vsphere_host_esxi_hosts).apply(__arg0 => __arg0.map(v => v.id)),
- *     name: "terraform-datastore-test2",
+ * const datastore2 = new vsphere.NasDatastore("datastore2", {
+ *     datastoreClusterId: datastoreCluster.id,
+ *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
  *     remoteHosts: ["nfs"],
  *     remotePath: "/export/terraform-test2",
  *     type: "NFS",

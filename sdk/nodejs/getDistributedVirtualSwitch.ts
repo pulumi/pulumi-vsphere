@@ -27,18 +27,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_distributed_virtual_switch_dvs = pulumi.output(vsphere.getDistributedVirtualSwitch({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const dvs = pulumi.output(vsphere.getDistributedVirtualSwitch({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "terraform-test-dvs",
  * }));
- * const vsphere_distributed_port_group_pg = new vsphere.DistributedPortGroup("pg", {
- *     activeUplinks: [vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.uplinks[0])],
- *     distributedVirtualSwitchUuid: vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.id),
- *     name: "terraform-test-pg",
- *     standbyUplinks: [vsphere_distributed_virtual_switch_dvs.apply(__arg0 => __arg0.uplinks[1])],
+ * const pg = new vsphere.DistributedPortGroup("pg", {
+ *     activeUplinks: [dvs.apply(dvs => dvs.uplinks[0])],
+ *     distributedVirtualSwitchUuid: dvs.apply(dvs => dvs.id),
+ *     standbyUplinks: [dvs.apply(dvs => dvs.uplinks[1])],
  * });
  * ```
  */

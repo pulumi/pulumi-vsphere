@@ -38,44 +38,43 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_datastore_member_datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const memberDatastore = pulumi.output(vsphere.getDatastore({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore-cluster1-member1",
  * }));
- * const vsphere_datastore_cluster_datastore_cluster = pulumi.output(vsphere.getDatastoreCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const datastoreCluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore-cluster1",
  * }));
- * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "public",
  * }));
- * const vsphere_resource_pool_pool = pulumi.output(vsphere.getResourcePool({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const pool = pulumi.output(vsphere.getResourcePool({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "cluster1/Resources",
  * }));
- * const vsphere_virtual_machine_vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: vsphere_datastore_member_datastore.apply(__arg0 => __arg0.id),
+ * const vm = new vsphere.VirtualMachine("vm", {
+ *     datastoreId: memberDatastore.apply(memberDatastore => memberDatastore.id),
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
  *     }],
  *     guestId: "other3xLinux64Guest",
  *     memory: 1024,
- *     name: "terraform-test",
  *     networkInterfaces: [{
- *         networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *         networkId: network.apply(network => network.id),
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: vsphere_resource_pool_pool.apply(__arg0 => __arg0.id),
+ *     resourcePoolId: pool.apply(pool => pool.id),
  * });
- * const vsphere_storage_drs_vm_override_drs_vm_override = new vsphere.StorageDrsVmOverride("drs_vm_override", {
- *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ * const drsVmOverride = new vsphere.StorageDrsVmOverride("drs_vm_override", {
+ *     datastoreClusterId: datastoreCluster.apply(datastoreCluster => datastoreCluster.id),
  *     sdrsEnabled: "false",
- *     virtualMachineId: vsphere_virtual_machine_vm.id,
+ *     virtualMachineId: vm.id,
  * });
  * ```
  */

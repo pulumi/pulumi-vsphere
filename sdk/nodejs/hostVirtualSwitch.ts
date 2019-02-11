@@ -24,17 +24,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const host = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
- *     name: "vSwitchTerraformTest",
+ *     hostSystemId: host.apply(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
@@ -42,26 +41,26 @@ import * as utilities from "./utilities";
  *     standbyNics: ["vmnic1"],
  * });
  * ```
+ * 
  * **Create a virtual switch with extra networking policy options:**
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_host_host = pulumi.output(vsphere.getHost({
- *     datacenterId: vsphere_datacenter_datacenter.apply(__arg0 => __arg0.id),
+ * const host = pulumi.output(vsphere.getHost({
+ *     datacenterId: datacenter.apply(datacenter => datacenter.id),
  *     name: "esxi1",
  * }));
- * const vsphere_host_virtual_switch_switch = new vsphere.HostVirtualSwitch("switch", {
+ * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
  *     allowForgedTransmits: false,
  *     allowMacChanges: false,
  *     allowPromiscuous: false,
- *     hostSystemId: vsphere_host_host.apply(__arg0 => __arg0.id),
- *     name: "vSwitchTerraformTest",
+ *     hostSystemId: host.apply(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",

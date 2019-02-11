@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -84,7 +85,7 @@ class VmfsDatastore(pulumi.CustomResource):
     """
     The unique locator for the datastore.
     """
-    def __init__(__self__, __name__, __opts__=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None, __name__=None, __opts__=None):
         """
         The `vsphere_vmfs_datastore` resource can be used to create and manage VMFS
         datastores on an ESXi host or a set of hosts. The resource supports using any
@@ -95,9 +96,38 @@ class VmfsDatastore(pulumi.CustomResource):
         
         [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
         
+        ## Auto-Mounting of Datastores Within vCenter
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        Note that the current behaviour of this resource will auto-mount any created
+        datastores to any other host within vCenter that has access to the same disk.
+        
+        Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+        hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+        create the datastore on `esxi1`, the datastore will be automatically mounted on
+        `esxi2` and `esxi3`, without the need to configure the resource on either of
+        those two hosts.
+        
+        Future versions of this resource may allow you to control the hosts that a
+        datastore is mounted to, but currently, this automatic behaviour cannot be
+        changed, so keep this in mind when writing your configurations and deploying
+        your disks.
+        
+        ## Increasing Datastore Size
+        
+        To increase the size of a datastore, you must add additional disks to the
+        `disks` attribute. Expanding the size of a datastore by increasing the size of
+        an already provisioned disk is currently not supported (but may be in future
+        versions of this resource).
+        
+        > **NOTE:** You cannot decrease the size of a datastore. If the resource
+        detects disks removed from the configuration, Terraform will give an error. To
+        reduce the size of the datastore, the resource needs to be re-created - run
+        [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
+        
+        [cmd-taint]: /docs/commands/taint.html
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -123,11 +153,17 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -136,13 +172,13 @@ class VmfsDatastore(pulumi.CustomResource):
 
         __props__['datastore_cluster_id'] = datastore_cluster_id
 
-        if not disks:
+        if disks is None:
             raise TypeError('Missing required property disks')
         __props__['disks'] = disks
 
         __props__['folder'] = folder
 
-        if not host_system_id:
+        if host_system_id is None:
             raise TypeError('Missing required property host_system_id')
         __props__['host_system_id'] = host_system_id
 
@@ -160,9 +196,9 @@ class VmfsDatastore(pulumi.CustomResource):
 
         super(VmfsDatastore, __self__).__init__(
             'vsphere:index/vmfsDatastore:VmfsDatastore',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

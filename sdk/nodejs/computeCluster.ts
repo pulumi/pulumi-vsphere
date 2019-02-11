@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * -> **A note on the naming of this resource:** VMware refers to clusters of
+ * > **A note on the naming of this resource:** VMware refers to clusters of
  * hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
  * clusters_. All of these refer to the same kind of resource (with the latter two
  * referring to specific features of clustering). In Terraform, we use
@@ -51,32 +51,72 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const var_datacenter = config.get("datacenter") || "dc1";
- * const var_hosts = config.get("hosts") || [
+ * const datacenter = config.get("datacenter") || "dc1";
+ * const hosts = config.get("hosts") || [
  *     "esxi1",
  *     "esxi2",
  *     "esxi3",
  * ];
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
- *     name: var_datacenter,
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: datacenter,
  * }));
- * const vsphere_host_hosts: Output<vsphere.GETHOSTResult>[] = [];
- * for (let i = 0; i < var_hosts.length; i++) {
- *     vsphere_host_hosts.push(pulumi.output(vsphere.getHost({
- *         datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
- *         name: var_hosts[i],
+ * const hostsHost: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < hosts.length; i++) {
+ *     hostsHost.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: dc.apply(dc => dc.id),
+ *         name: hosts[i],
  *     })));
  * }
- * const vsphere_compute_cluster_compute_cluster = new vsphere.ComputeCluster("compute_cluster", {
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     datacenterId: dc.apply(dc => dc.id),
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     haEnabled: true,
- *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
- *     name: "terraform-compute-cluster-test",
+ *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
  * });
  * ```
+ * 
+ * ## vSphere Version Requirements
+ * 
+ * A large number of settings in the `vsphere_compute_cluster` resource require a
+ * specific version of vSphere to function. Rather than include warnings at every
+ * setting or section, these settings are documented below.  Note that this list
+ * is for cluster-specific attributes only, and does not include the
+ * `tags` parameter, which requires vSphere 6.0 or higher across all
+ * resources that can be tagged.
+ * 
+ * All settings are footnoted by an asterisk (`*`) in their specific section in
+ * the documentation, which takes you here.
+ * 
+ * ### Settings that require vSphere version 6.0 or higher
+ * 
+ * These settings require vSphere 6.0 or higher:
+ * 
+ * * `ha_datastore_apd_recovery_action`
+ * * `ha_datastore_apd_response`
+ * * `ha_datastore_apd_response_delay`
+ * * `ha_datastore_pdl_response`
+ * * `ha_vm_component_protection`
+ * 
+ * ### Settings that require vSphere version 6.5 or higher
+ * 
+ * These settings require vSphere 6.5 or higher:
+ * 
+ * * `drs_enable_predictive_drs`
+ * * `ha_admission_control_host_failure_tolerance`
+ *   (When `ha_admission_control_policy` is set to
+ *   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
+ *   `failoverHosts`)
+ * * `ha_admission_control_resource_percentage_auto_compute`
+ * * `ha_vm_restart_timeout`
+ * * `ha_vm_dependency_restart_condition`
+ * * `ha_vm_restart_additional_delay`
+ * * `proactive_ha_automation_level`
+ * * `proactive_ha_enabled`
+ * * `proactive_ha_moderate_remediation`
+ * * `proactive_ha_provider_ids`
+ * * `proactive_ha_severe_remediation`
  */
 export class ComputeCluster extends pulumi.CustomResource {
     /**

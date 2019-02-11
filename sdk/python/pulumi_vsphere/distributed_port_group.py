@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -137,7 +138,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     on this port group to be overridden on an individual port.
     """
     vlan_ranges: pulumi.Output[list]
-    def __init__(__self__, __name__, __opts__=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None):
+    def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None, __name__=None, __opts__=None):
         """
         The `vsphere_distributed_port_group` resource can be used to manage vSphere
         distributed virtual port groups. These port groups are connected to distributed
@@ -159,9 +160,8 @@ class DistributedPortGroup(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_uplinks
         :param pulumi.Input[bool] allow_forged_transmits
         :param pulumi.Input[bool] allow_mac_changes
@@ -233,11 +233,17 @@ class DistributedPortGroup(pulumi.CustomResource):
                on this port group to be overridden on an individual port.
         :param pulumi.Input[list] vlan_ranges
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -264,7 +270,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
 
-        if not distributed_virtual_switch_uuid:
+        if distributed_virtual_switch_uuid is None:
             raise TypeError('Missing required property distributed_virtual_switch_uuid')
         __props__['distributed_virtual_switch_uuid'] = distributed_virtual_switch_uuid
 
@@ -341,9 +347,9 @@ class DistributedPortGroup(pulumi.CustomResource):
 
         super(DistributedPortGroup, __self__).__init__(
             'vsphere:index/distributedPortGroup:DistributedPortGroup',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

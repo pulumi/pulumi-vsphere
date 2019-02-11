@@ -40,35 +40,33 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const var_datacenter = config.get("datacenter") || "dc1";
- * const var_hosts = config.get("hosts") || [
+ * const datacenter = config.get("datacenter") || "dc1";
+ * const hosts = config.get("hosts") || [
  *     "esxi1",
  *     "esxi2",
  *     "esxi3",
  * ];
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
- *     name: var_datacenter,
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: datacenter,
  * }));
- * const vsphere_host_hosts: Output<vsphere.GETHOSTResult>[] = [];
- * for (let i = 0; i < var_hosts.length; i++) {
- *     vsphere_host_hosts.push(pulumi.output(vsphere.getHost({
- *         datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
- *         name: var_hosts[i],
+ * const hostsHost: Output<vsphere.GETHOSTResult>[] = [];
+ * for (let i = 0; i < hosts.length; i++) {
+ *     hostsHost.push(pulumi.output(vsphere.getHost({
+ *         datacenterId: dc.apply(dc => dc.id),
+ *         name: hosts[i],
  *     })));
  * }
- * const vsphere_compute_cluster_compute_cluster = new vsphere.ComputeCluster("compute_cluster", {
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ *     datacenterId: dc.apply(dc => dc.id),
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     haEnabled: true,
- *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
- *     name: "terraform-compute-cluster-test",
+ *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
  * });
- * const vsphere_compute_cluster_host_group_cluster_host_group = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
- *     computeClusterId: vsphere_compute_cluster_compute_cluster.id,
- *     hostSystemIds: pulumi.all(vsphere_host_hosts).apply(__arg0 => __arg0.map(v => v.id)),
- *     name: "terraform-test-cluster-host-group",
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ *     computeClusterId: computeCluster.id,
+ *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
  * });
  * ```
  */

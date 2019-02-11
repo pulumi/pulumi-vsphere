@@ -40,43 +40,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const vsphere_compute_cluster_cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const cluster = pulumi.output(vsphere.getComputeCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "cluster1",
  * }));
- * const vsphere_datastore_cluster_datastore_cluster = pulumi.output(vsphere.getDatastoreCluster({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const datastoreCluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "datastore-cluster1",
  * }));
- * const vsphere_network_network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const network = pulumi.output(vsphere.getNetwork({
+ *     datacenterId: dc.apply(dc => dc.id),
  *     name: "network1",
  * }));
- * const vsphere_virtual_machine_vm: vsphere.VirtualMachine[] = [];
+ * const vm: vsphere.VirtualMachine[] = [];
  * for (let i = 0; i < 2; i++) {
- *     vsphere_virtual_machine_vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
- *         datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
+ *     vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
+ *         datastoreClusterId: datastoreCluster.apply(datastoreCluster => datastoreCluster.id),
  *         disks: [{
  *             label: "disk0",
  *             size: 20,
  *         }],
  *         guestId: "other3xLinux64Guest",
  *         memory: 2048,
- *         name: `terraform-test-${i}`,
  *         networkInterfaces: [{
- *             networkId: vsphere_network_network.apply(__arg0 => __arg0.id),
+ *             networkId: network.apply(network => network.id),
  *         }],
  *         numCpus: 2,
- *         resourcePoolId: vsphere_compute_cluster_cluster.apply(__arg0 => __arg0.resourcePoolId),
+ *         resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
  *     }));
  * }
- * const vsphere_datastore_cluster_vm_anti_affinity_rule_cluster_vm_anti_affinity_rule = new vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
- *     datastoreClusterId: vsphere_datastore_cluster_datastore_cluster.apply(__arg0 => __arg0.id),
- *     name: "terraform-test-datastore-cluster-vm-anti-affinity-rule",
- *     virtualMachineIds: vsphere_virtual_machine_vm.map(v => v.id),
+ * const clusterVmAntiAffinityRule = new vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ *     datastoreClusterId: datastoreCluster.apply(datastoreCluster => datastoreCluster.id),
+ *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
  */

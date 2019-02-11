@@ -24,13 +24,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({}));
- * const vsphere_folder_folder = new vsphere.Folder("folder", {
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const dc = pulumi.output(vsphere.getDatacenter({}));
+ * const folder = new vsphere.Folder("folder", {
+ *     datacenterId: dc.apply(dc => dc.id),
  *     path: "terraform-test-folder",
  *     type: "vm",
  * });
  * ```
+ * 
  * ### Example with subfolders
  * 
  * The below example builds off of the above by first creating a folder named
@@ -46,15 +47,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_dc = pulumi.output(vsphere.getDatacenter({}));
- * const vsphere_folder_parent = new vsphere.Folder("parent", {
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
+ * const dc = pulumi.output(vsphere.getDatacenter({}));
+ * const parent = new vsphere.Folder("parent", {
+ *     datacenterId: dc.apply(dc => dc.id),
  *     path: "terraform-test-parent",
  *     type: "vm",
  * });
- * const vsphere_folder_folder = new vsphere.Folder("folder", {
- *     datacenterId: vsphere_datacenter_dc.apply(__arg0 => __arg0.id),
- *     path: vsphere_folder_parent.path.apply(__arg0 => `${__arg0}/terraform-test-folder`),
+ * const folder = new vsphere.Folder("folder", {
+ *     datacenterId: dc.apply(dc => dc.id),
+ *     path: parent.path.apply(path => `${path}/terraform-test-folder`),
  *     type: "vm",
  * });
  * ```

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -95,7 +96,7 @@ class VappContainer(pulumi.CustomResource):
     The IDs of any tags to attach to this resource. See
     [here][docs-applying-tags] for a reference on how to apply tags.
     """
-    def __init__(__self__, __name__, __opts__=None, cpu_expandable=None, cpu_limit=None, cpu_reservation=None, cpu_share_level=None, cpu_shares=None, custom_attributes=None, memory_expandable=None, memory_limit=None, memory_reservation=None, memory_share_level=None, memory_shares=None, name=None, parent_folder_id=None, parent_resource_pool_id=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, cpu_expandable=None, cpu_limit=None, cpu_reservation=None, cpu_share_level=None, cpu_shares=None, custom_attributes=None, memory_expandable=None, memory_limit=None, memory_reservation=None, memory_share_level=None, memory_shares=None, name=None, parent_folder_id=None, parent_resource_pool_id=None, tags=None, __name__=None, __opts__=None):
         """
         The `vsphere_vapp_container` resource can be used to create and manage
         vApps.
@@ -105,9 +106,8 @@ class VappContainer(pulumi.CustomResource):
         
         [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -154,11 +154,17 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -189,7 +195,7 @@ class VappContainer(pulumi.CustomResource):
 
         __props__['parent_folder_id'] = parent_folder_id
 
-        if not parent_resource_pool_id:
+        if parent_resource_pool_id is None:
             raise TypeError('Missing required property parent_resource_pool_id')
         __props__['parent_resource_pool_id'] = parent_resource_pool_id
 
@@ -197,9 +203,9 @@ class VappContainer(pulumi.CustomResource):
 
         super(VappContainer, __self__).__init__(
             'vsphere:index/vappContainer:VappContainer',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):

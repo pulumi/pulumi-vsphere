@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_virtual_disk_myDisk = new vsphere.VirtualDisk("myDisk", {
+ * const myDisk = new vsphere.VirtualDisk("myDisk", {
  *     datacenter: "Datacenter",
  *     datastore: "local",
  *     size: 2,

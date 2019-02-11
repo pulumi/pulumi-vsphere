@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_license_licenseKey = new vsphere.License("licenseKey", {
+ * const licenseKey = new vsphere.License("licenseKey", {
  *     labels: {
  *         VpxClientLicenseLabel: "Hello World",
  *         Workflow: "Hello World",

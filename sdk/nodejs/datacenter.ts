@@ -16,19 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_prod_datacenter = new vsphere.Datacenter("prod_datacenter", {
- *     name: "my_prod_datacenter",
- * });
+ * const prodDatacenter = new vsphere.Datacenter("prod_datacenter", {});
  * ```
+ * 
  * **Create datacenter on a subfolder:**
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const vsphere_datacenter_research_datacenter = new vsphere.Datacenter("research_datacenter", {
+ * const researchDatacenter = new vsphere.Datacenter("research_datacenter", {
  *     folder: "/research/",
- *     name: "my_research_datacenter",
  * });
  * ```
  */

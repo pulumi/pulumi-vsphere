@@ -16,6 +16,21 @@ import * as utilities from "./utilities";
  * [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
  * [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }));
+ * const datastoreCluster = pulumi.output(vsphere.getDatastoreCluster({
+ *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ *     name: "datastore-cluster1",
+ * }));
+ * ```
  */
 export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
     return pulumi.runtime.invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", {

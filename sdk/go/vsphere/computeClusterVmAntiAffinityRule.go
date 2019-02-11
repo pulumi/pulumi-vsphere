@@ -23,7 +23,7 @@ import (
 // operation that would keep that from happening, depending on the value of the
 // `mandatory` flag.
 // 
-// -> Keep in mind that this rule can only be used to tell VMs to run separately
+// > Keep in mind that this rule can only be used to tell VMs to run separately
 // on _non-specific_ hosts - specific hosts cannot be specified with this rule.
 // For that, see the
 // [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]

@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from . import utilities, tables
@@ -349,9 +350,9 @@ class ComputeCluster(pulumi.CustomResource):
     The IDs of any tags to attach to this resource. See
     [here][docs-applying-tags] for a reference on how to apply tags.
     """
-    def __init__(__self__, __name__, __opts__=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None):
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __name__=None, __opts__=None):
         """
-        -> **A note on the naming of this resource:** VMware refers to clusters of
+        > **A note on the naming of this resource:** VMware refers to clusters of
         hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
         clusters_. All of these refer to the same kind of resource (with the latter two
         referring to specific features of clustering). In Terraform, we use
@@ -379,9 +380,49 @@ class ComputeCluster(pulumi.CustomResource):
         
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
         
+        ## vSphere Version Requirements
         
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        A large number of settings in the `vsphere_compute_cluster` resource require a
+        specific version of vSphere to function. Rather than include warnings at every
+        setting or section, these settings are documented below.  Note that this list
+        is for cluster-specific attributes only, and does not include the
+        `tags` parameter, which requires vSphere 6.0 or higher across all
+        resources that can be tagged.
+        
+        All settings are footnoted by an asterisk (`*`) in their specific section in
+        the documentation, which takes you here.
+        
+        ### Settings that require vSphere version 6.0 or higher
+        
+        These settings require vSphere 6.0 or higher:
+        
+        * `ha_datastore_apd_recovery_action`
+        * `ha_datastore_apd_response`
+        * `ha_datastore_apd_response_delay`
+        * `ha_datastore_pdl_response`
+        * `ha_vm_component_protection`
+        
+        ### Settings that require vSphere version 6.5 or higher
+        
+        These settings require vSphere 6.5 or higher:
+        
+        * `drs_enable_predictive_drs`
+        * `ha_admission_control_host_failure_tolerance`
+          (When `ha_admission_control_policy` is set to
+          `resourcePercentage` or `slotPolicy`. Permitted in all versions under
+          `failoverHosts`)
+        * `ha_admission_control_resource_percentage_auto_compute`
+        * `ha_vm_restart_timeout`
+        * `ha_vm_dependency_restart_condition`
+        * `ha_vm_restart_additional_delay`
+        * `proactive_ha_automation_level`
+        * `proactive_ha_enabled`
+        * `proactive_ha_moderate_remediation`
+        * `proactive_ha_provider_ids`
+        * `proactive_ha_severe_remediation`
+        
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
@@ -567,18 +608,24 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['custom_attributes'] = custom_attributes
 
-        if not datacenter_id:
+        if datacenter_id is None:
             raise TypeError('Missing required property datacenter_id')
         __props__['datacenter_id'] = datacenter_id
 
@@ -686,9 +733,9 @@ class ComputeCluster(pulumi.CustomResource):
 
         super(ComputeCluster, __self__).__init__(
             'vsphere:index/computeCluster:ComputeCluster',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):
