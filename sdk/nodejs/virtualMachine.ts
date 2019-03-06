@@ -125,16 +125,16 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const cluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: "cluster1",
  * }));
- * const datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const datastore = dc.apply(dc => vsphere.getDatastore({
+ *     datacenterId: dc.id,
  *     name: "datastore1",
  * }));
- * const network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const network = dc.apply(dc => vsphere.getNetwork({
+ *     datacenterId: dc.id,
  *     name: "public",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
@@ -174,20 +174,20 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const cluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: "cluster1",
  * }));
- * const datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const datastore = dc.apply(dc => vsphere.getDatastore({
+ *     datacenterId: dc.id,
  *     name: "datastore1",
  * }));
- * const network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const network = dc.apply(dc => vsphere.getNetwork({
+ *     datacenterId: dc.id,
  *     name: "public",
  * }));
- * const template = pulumi.output(vsphere.getVirtualMachine({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const template = dc.apply(dc => vsphere.getVirtualMachine({
+ *     datacenterId: dc.id,
  *     name: "ubuntu-16.04",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
@@ -252,20 +252,20 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const cluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: "cluster1",
  * }));
- * const datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const datastore = dc.apply(dc => vsphere.getDatastore({
+ *     datacenterId: dc.id,
  *     name: "datastore1",
  * }));
- * const network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const network = dc.apply(dc => vsphere.getNetwork({
+ *     datacenterId: dc.id,
  *     name: "public",
  * }));
- * const tempateFromOvf = pulumi.output(vsphere.getVirtualMachine({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const tempateFromOvf = dc.apply(dc => vsphere.getVirtualMachine({
+ *     datacenterId: dc.id,
  *     name: "template_from_ovf",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
@@ -335,16 +335,16 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const cluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const cluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: "cluster1",
  * }));
- * const datastoreCluster = pulumi.output(vsphere.getDatastoreCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const datastoreCluster = dc.apply(dc => vsphere.getDatastoreCluster({
+ *     datacenterId: dc.id,
  *     name: "datastore-cluster1",
  * }));
- * const network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const network = dc.apply(dc => vsphere.getNetwork({
+ *     datacenterId: dc.id,
  *     name: "public",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {

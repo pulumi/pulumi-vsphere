@@ -21,8 +21,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const pool = pulumi.output(vsphere.getResourcePool({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const pool = datacenter.apply(datacenter => vsphere.getResourcePool({
+ *     datacenterId: datacenter.id,
  *     name: "resource-pool-1",
  * }));
  * ```
@@ -44,8 +44,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const pool = pulumi.output(vsphere.getResourcePool({
- *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ * const pool = vsphere_datacenter_dc.id.apply(id => vsphere.getResourcePool({
+ *     datacenterId: id,
  *     name: "esxi1/Resources",
  * }));
  * ```

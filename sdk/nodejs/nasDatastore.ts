@@ -36,11 +36,11 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({}));
  * const esxiHosts: Output<vsphere.GETHOSTResult>[] = [];
  * for (let i = 0; i < hosts.length; i++) {
- *     esxiHosts.push(pulumi.output(vsphere.getHost({
- *         datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     esxiHosts.push(vsphere.getHost);
+ * %!(EXTRA string=datacenter.apply(datacenter => vsphere.getHost({
+ *         datacenterId: datacenter.id,
  *         name: hosts[i],
- *     })));
- * }
+ *     })))}
  * const datastore = new vsphere.NasDatastore("datastore", {
  *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
  *     remoteHosts: ["nfs"],

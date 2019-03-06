@@ -51,11 +51,11 @@ import * as utilities from "./utilities";
  * }));
  * const hostsHost: Output<vsphere.GETHOSTResult>[] = [];
  * for (let i = 0; i < hosts.length; i++) {
- *     hostsHost.push(pulumi.output(vsphere.getHost({
- *         datacenterId: dc.apply(dc => dc.id),
+ *     hostsHost.push(vsphere.getHost);
+ * %!(EXTRA string=dc.apply(dc => vsphere.getHost({
+ *         datacenterId: dc.id,
  *         name: hosts[i],
- *     })));
- * }
+ *     })))}
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
  *     datacenterId: dc.apply(dc => dc.id),
  *     drsAutomationLevel: "fullyAutomated",

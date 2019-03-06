@@ -30,8 +30,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const dvs = pulumi.output(vsphere.getDistributedVirtualSwitch({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const dvs = datacenter.apply(datacenter => vsphere.getDistributedVirtualSwitch({
+ *     datacenterId: datacenter.id,
  *     name: "terraform-test-dvs",
  * }));
  * const pg = new vsphere.DistributedPortGroup("pg", {

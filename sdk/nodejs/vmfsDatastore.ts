@@ -63,8 +63,8 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const esxiHost = pulumi.output(vsphere.getHost({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
  * }));
  * const datastore = new vsphere.VmfsDatastore("datastore", {
  *     disks: [
@@ -94,13 +94,13 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const esxiHost = pulumi.output(vsphere.getHost({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
  *     name: "esxi1",
  * }));
- * const available = pulumi.output(vsphere.getVmfsDisks({
+ * const available = esxiHost.apply(esxiHost => vsphere.getVmfsDisks({
  *     filter: "naa.60a98000",
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  *     rescan: true,
  * }));
  * const datastore = new vsphere.VmfsDatastore("datastore", {

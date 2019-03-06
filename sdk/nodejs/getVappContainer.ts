@@ -21,8 +21,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const pool = pulumi.output(vsphere.getVappContainer({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const pool = datacenter.apply(datacenter => vsphere.getVappContainer({
+ *     datacenterId: datacenter.id,
  *     name: "vapp-container-1",
  * }));
  * ```
