@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  * const category = pulumi.output(vsphere.getTagCategory({
  *     name: "terraform-test-category",
  * }));
- * const tag = pulumi.output(vsphere.getTag({
- *     categoryId: category.apply(category => category.id),
+ * const tag = category.apply(category => vsphere.getTag({
+ *     categoryId: category.id,
  *     name: "terraform-test-tag",
  * }));
  * ```

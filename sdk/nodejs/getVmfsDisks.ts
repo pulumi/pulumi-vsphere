@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const host = pulumi.output(vsphere.getHost({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const host = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
  *     name: "esxi1",
  * }));
- * const available = pulumi.output(vsphere.getVmfsDisks({
+ * const available = host.apply(host => vsphere.getVmfsDisks({
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
- *     hostSystemId: host.apply(host => host.id),
+ *     hostSystemId: host.id,
  *     rescan: true,
  * }));
  * ```

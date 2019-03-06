@@ -54,11 +54,11 @@ import * as utilities from "./utilities";
  * }));
  * const host: Output<vsphere.GETHOSTResult>[] = [];
  * for (let i = 0; i < esxiHosts.length; i++) {
- *     host.push(pulumi.output(vsphere.getHost({
- *         datacenterId: dc.apply(dc => dc.id),
+ *     host.push(vsphere.getHost);
+ * %!(EXTRA string=dc.apply(dc => vsphere.getHost({
+ *         datacenterId: dc.id,
  *         name: esxiHosts[i],
- *     })));
- * }
+ *     })))}
  * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
  *     activeUplinks: [
  *         "uplink1",

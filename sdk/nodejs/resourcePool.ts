@@ -30,8 +30,8 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }));
- * const computeCluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const computeCluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: cluster,
  * }));
  * const resourcePool = new vsphere.ResourcePool("resource_pool", {

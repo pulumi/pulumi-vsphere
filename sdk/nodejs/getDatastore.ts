@@ -21,8 +21,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const datastore = datacenter.apply(datacenter => vsphere.getDatastore({
+ *     datacenterId: datacenter.id,
  *     name: "datastore1",
  * }));
  * ```

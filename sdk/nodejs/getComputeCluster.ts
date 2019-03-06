@@ -28,8 +28,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const computeCluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ * const computeCluster = vsphere_datacenter_dc.id.apply(id => vsphere.getComputeCluster({
+ *     datacenterId: id,
  *     name: "compute-cluster1",
  * }));
  * const datacenter = pulumi.output(vsphere.getDatacenter({

@@ -35,16 +35,16 @@ import * as utilities from "./utilities";
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }));
- * const computeCluster = pulumi.output(vsphere.getComputeCluster({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const computeCluster = dc.apply(dc => vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
  *     name: cluster,
  * }));
- * const datastore = pulumi.output(vsphere.getDatastore({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const datastore = dc.apply(dc => vsphere.getDatastore({
+ *     datacenterId: dc.id,
  *     name: "datastore1",
  * }));
- * const network = pulumi.output(vsphere.getNetwork({
- *     datacenterId: dc.apply(dc => dc.id),
+ * const network = dc.apply(dc => vsphere.getNetwork({
+ *     datacenterId: dc.id,
  *     name: "network1",
  * }));
  * const vappContainer = new vsphere.VappContainer("vapp_container", {

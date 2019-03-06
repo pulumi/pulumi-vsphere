@@ -27,8 +27,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const host = pulumi.output(vsphere.getHost({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const host = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
  *     name: "esxi1",
  * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
@@ -51,8 +51,8 @@ import * as utilities from "./utilities";
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }));
- * const host = pulumi.output(vsphere.getHost({
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ * const host = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
  *     name: "esxi1",
  * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
