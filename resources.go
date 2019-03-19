@@ -46,7 +46,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:        "vsphere",
 		Description: "A Pulumi package for creating vsphere resources",
 		Keywords:    []string{"pulumi", "vsphere"},
-		License:     "Apachce-2.0",
+		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-vsphere",
 		//PreConfigureCallback: preConfigureCallback,
