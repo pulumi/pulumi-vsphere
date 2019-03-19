@@ -25,6 +25,7 @@ export * from "./getDatacenter";
 export * from "./getDatastore";
 export * from "./getDatastoreCluster";
 export * from "./getDistributedVirtualSwitch";
+export * from "./getFolder";
 export * from "./getHost";
 export * from "./getNetwork";
 export * from "./getResourcePool";

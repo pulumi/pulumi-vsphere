@@ -39,6 +39,17 @@ import * as utilities from "./utilities";
  *     description: "Managed by Terraform",
  * });
  * ```
+ * 
+ * ## Importing
+ * 
+ * An existing tag category can be [imported][docs-import] into this resource via
+ * its name, using the following command:
+ * 
+ * [docs-import]: https://www.terraform.io/docs/import/index.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class TagCategory extends pulumi.CustomResource {
     /**

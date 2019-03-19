@@ -73,6 +73,23 @@ import * as utilities from "./utilities";
  *     teamingPolicy: "failover_explicit",
  * });
  * ```
+ * 
+ * ## Importing
+ * 
+ * An existing vSwitch can be [imported][docs-import] into this resource by its ID.
+ * The convention of the id is a prefix, the host system [managed objectID][docs-about-morefs], and the virtual switch
+ * name. An example would be `tf-HostVirtualSwitch:host-10:vSwitchTerraformTest`.
+ * Import can the be done via the following command:
+ * 
+ * [docs-import]: https://www.terraform.io/docs/import/index.html
+ * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ * 
+ * The above would import the vSwtich named `vSwitchTerraformTest` that is located in the `host-10`
+ * vSphere host.
  */
 export class HostVirtualSwitch extends pulumi.CustomResource {
     /**

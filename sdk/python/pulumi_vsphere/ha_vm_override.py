@@ -31,7 +31,7 @@ class HaVmOverride(pulumi.CustomResource):
     `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
     <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
     """
-    ha_datastore_apd_response_delay: pulumi.Output[int]
+    ha_datastore_apd_response_delay: pulumi.Output[float]
     """
     Controls the delay in minutes
     to wait after an APD timeout event to execute the response action defined in
@@ -54,13 +54,13 @@ class HaVmOverride(pulumi.CustomResource):
     the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
     `shutdown`. Default: `clusterIsolationResponse`.
     """
-    ha_vm_failure_interval: pulumi.Output[int]
+    ha_vm_failure_interval: pulumi.Output[float]
     """
     If a heartbeat from this virtual
     machine is not received within this configured interval, the virtual machine
     is marked as failed. The value is in seconds. Default: `30`.
     """
-    ha_vm_maximum_failure_window: pulumi.Output[int]
+    ha_vm_maximum_failure_window: pulumi.Output[float]
     """
     The length of the reset window in
     which `ha_vm_maximum_resets` can operate. When this
@@ -69,13 +69,13 @@ class HaVmOverride(pulumi.CustomResource):
     unlimited reset time is allotted. The value is specified in seconds. Default:
     `-1` (no window).
     """
-    ha_vm_maximum_resets: pulumi.Output[int]
+    ha_vm_maximum_resets: pulumi.Output[float]
     """
     The maximum number of resets that HA will
     perform to this virtual machine when responding to a failure event. Default:
     `3`
     """
-    ha_vm_minimum_uptime: pulumi.Output[int]
+    ha_vm_minimum_uptime: pulumi.Output[float]
     """
     The time, in seconds, that HA waits after
     powering on this virtual machine before monitoring for heartbeats. Default:
@@ -101,7 +101,7 @@ class HaVmOverride(pulumi.CustomResource):
     `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
     Default: `clusterRestartPriority`.
     """
-    ha_vm_restart_timeout: pulumi.Output[int]
+    ha_vm_restart_timeout: pulumi.Output[float]
     """
     The maximum time, in seconds, that
     vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -143,7 +143,7 @@ class HaVmOverride(pulumi.CustomResource):
                datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
                <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[float] ha_datastore_apd_response_delay: Controls the delay in minutes
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Use `-1` to use
                the cluster default. Default: `-1`.
@@ -157,19 +157,19 @@ class HaVmOverride(pulumi.CustomResource):
                machine when a host has detected that it has been isolated from the rest of
                the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
                `shutdown`. Default: `clusterIsolationResponse`.
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from this virtual
+        :param pulumi.Input[float] ha_vm_failure_interval: If a heartbeat from this virtual
                machine is not received within this configured interval, the virtual machine
                is marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[float] ha_vm_maximum_failure_window: The length of the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
                unlimited reset time is allotted. The value is specified in seconds. Default:
                `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
+        :param pulumi.Input[float] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to this virtual machine when responding to a failure event. Default:
                `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
+        :param pulumi.Input[float] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on this virtual machine before monitoring for heartbeats. Default:
                `120` (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
@@ -183,7 +183,7 @@ class HaVmOverride(pulumi.CustomResource):
                machine when vSphere detects a host failure. Can be one of
                `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
                Default: `clusterRestartPriority`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
+        :param pulumi.Input[float] ha_vm_restart_timeout: The maximum time, in seconds, that
                vSphere HA will wait for this virtual machine to be ready. Use `-1` to
                specify the cluster default.  Default: `-1`.
                <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>

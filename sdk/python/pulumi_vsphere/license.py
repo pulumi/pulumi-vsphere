@@ -25,11 +25,11 @@ class License(pulumi.CustomResource):
     """
     The display name for the license.
     """
-    total: pulumi.Output[int]
+    total: pulumi.Output[float]
     """
     Total number of units (example: CPUs) contained in the license.
     """
-    used: pulumi.Output[int]
+    used: pulumi.Output[float]
     """
     The number of units (example: CPUs) assigned to this license.
     """

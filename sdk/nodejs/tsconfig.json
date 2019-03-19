@@ -33,6 +33,7 @@
         "getDatastore.ts",
         "getDatastoreCluster.ts",
         "getDistributedVirtualSwitch.ts",
+        "getFolder.ts",
         "getHost.ts",
         "getNetwork.ts",
         "getResourcePool.ts",

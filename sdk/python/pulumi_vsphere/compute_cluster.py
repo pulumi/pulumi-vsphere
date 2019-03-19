@@ -33,7 +33,7 @@ class ComputeCluster(pulumi.CustomResource):
     Requires `drs_enabled` to be `true` in order to be effective.
     Default: `false`.
     """
-    dpm_threshold: pulumi.Output[int]
+    dpm_threshold: pulumi.Output[float]
     """
     A value between `1` and `5` indicating the
     threshold of load within the cluster that influences host power operations.
@@ -66,7 +66,7 @@ class ComputeCluster(pulumi.CustomResource):
     """
     Enable DRS for this cluster. Default: `false`.
     """
-    drs_migration_threshold: pulumi.Output[int]
+    drs_migration_threshold: pulumi.Output[float]
     """
     A value between `1` and `5` indicating
     the threshold of imbalance tolerated between hosts. A lower setting will
@@ -98,7 +98,7 @@ class ComputeCluster(pulumi.CustomResource):
     block access to the host, and DRS will ignore the host when making
     recommendations.
     """
-    ha_admission_control_host_failure_tolerance: pulumi.Output[int]
+    ha_admission_control_host_failure_tolerance: pulumi.Output[float]
     """
     The maximum number
     of failed hosts that admission control tolerates when making decisions on
@@ -106,7 +106,7 @@ class ComputeCluster(pulumi.CustomResource):
     the number of hosts in the cluster. Default: `1`.
     <sup>\*</sup>
     """
-    ha_admission_control_performance_tolerance: pulumi.Output[int]
+    ha_admission_control_performance_tolerance: pulumi.Output[float]
     """
     The percentage of
     resource reduction that a cluster of virtual machines can tolerate in case of
@@ -129,24 +129,24 @@ class ComputeCluster(pulumi.CustomResource):
     user-defined values. Default: `true`.
     <sup>\*</sup>
     """
-    ha_admission_control_resource_percentage_cpu: pulumi.Output[int]
+    ha_admission_control_resource_percentage_cpu: pulumi.Output[float]
     """
     Controls the
     user-defined percentage of CPU resources in the cluster to reserve for
     failover. Default: `100`.
     """
-    ha_admission_control_resource_percentage_memory: pulumi.Output[int]
+    ha_admission_control_resource_percentage_memory: pulumi.Output[float]
     """
     Controls the
     user-defined percentage of memory resources in the cluster to reserve for
     failover. Default: `100`.
     """
-    ha_admission_control_slot_policy_explicit_cpu: pulumi.Output[int]
+    ha_admission_control_slot_policy_explicit_cpu: pulumi.Output[float]
     """
     Controls the
     user-defined CPU slot size, in MHz. Default: `32`.
     """
-    ha_admission_control_slot_policy_explicit_memory: pulumi.Output[int]
+    ha_admission_control_slot_policy_explicit_memory: pulumi.Output[float]
     """
     Controls the
     user-defined memory slot size, in MB. Default: `100`.
@@ -178,7 +178,7 @@ class ComputeCluster(pulumi.CustomResource):
     `restartConservative`, or `restartAggressive`.  Default: `disabled`.
     <sup>\*</sup>
     """
-    ha_datastore_apd_response_delay: pulumi.Output[int]
+    ha_datastore_apd_response_delay: pulumi.Output[float]
     """
     Controls the delay in minutes
     to wait after an APD timeout event to execute the response action defined in
@@ -242,13 +242,13 @@ class ComputeCluster(pulumi.CustomResource):
     is considered ready immediately after a host is found to start it on.
     <sup>\*</sup>
     """
-    ha_vm_failure_interval: pulumi.Output[int]
+    ha_vm_failure_interval: pulumi.Output[float]
     """
     If a heartbeat from a virtual machine
     is not received within this configured interval, the virtual machine is
     marked as failed. The value is in seconds. Default: `30`.
     """
-    ha_vm_maximum_failure_window: pulumi.Output[int]
+    ha_vm_maximum_failure_window: pulumi.Output[float]
     """
     The length of the reset window in
     which `ha_vm_maximum_resets` can operate. When this
@@ -257,12 +257,12 @@ class ComputeCluster(pulumi.CustomResource):
     unlimited reset time is allotted. The value is specified in seconds. Default:
     `-1` (no window).
     """
-    ha_vm_maximum_resets: pulumi.Output[int]
+    ha_vm_maximum_resets: pulumi.Output[float]
     """
     The maximum number of resets that HA will
     perform to a virtual machine when responding to a failure event. Default: `3`
     """
-    ha_vm_minimum_uptime: pulumi.Output[int]
+    ha_vm_minimum_uptime: pulumi.Output[float]
     """
     The time, in seconds, that HA waits after
     powering on a virtual machine before monitoring for heartbeats. Default:
@@ -274,7 +274,7 @@ class ComputeCluster(pulumi.CustomResource):
     when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
     `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
     """
-    ha_vm_restart_additional_delay: pulumi.Output[int]
+    ha_vm_restart_additional_delay: pulumi.Output[float]
     """
     Additional delay in seconds
     after ready condition is met. A VM is considered ready at this point.
@@ -286,14 +286,14 @@ class ComputeCluster(pulumi.CustomResource):
     for affected virtual machines when vSphere detects a host failure. Can be one
     of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
     """
-    ha_vm_restart_timeout: pulumi.Output[int]
+    ha_vm_restart_timeout: pulumi.Output[float]
     """
     The maximum time, in seconds,
     that vSphere HA will wait for virtual machines in one priority to be ready
     before proceeding with the next priority. Default: `600` (10 minutes).
     <sup>\*</sup>
     """
-    host_cluster_exit_timeout: pulumi.Output[int]
+    host_cluster_exit_timeout: pulumi.Output[float]
     """
     The timeout for each host maintenance mode
     operation when removing hosts from a cluster. The value is specified in
@@ -435,7 +435,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for DRS in this cluster.
                Requires `drs_enabled` to be `true` in order to be effective.
                Default: `false`.
-        :param pulumi.Input[int] dpm_threshold: A value between `1` and `5` indicating the
+        :param pulumi.Input[float] dpm_threshold: A value between `1` and `5` indicating the
                threshold of load within the cluster that influences host power operations.
                This affects both power on and power off operations - a lower setting will
                tolerate more of a surplus/deficit than a higher setting. Default: `3`.
@@ -450,7 +450,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
-        :param pulumi.Input[int] drs_migration_threshold: A value between `1` and `5` indicating
+        :param pulumi.Input[float] drs_migration_threshold: A value between `1` and `5` indicating
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
@@ -470,12 +470,12 @@ class ComputeCluster(pulumi.CustomResource):
                hosts. These hosts are kept as available as possible - admission control will
                block access to the host, and DRS will ignore the host when making
                recommendations.
-        :param pulumi.Input[int] ha_admission_control_host_failure_tolerance: The maximum number
+        :param pulumi.Input[float] ha_admission_control_host_failure_tolerance: The maximum number
                of failed hosts that admission control tolerates when making decisions on
                whether to permit virtual machine operations. The maximum is one less than
                the number of hosts in the cluster. Default: `1`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_admission_control_performance_tolerance: The percentage of
+        :param pulumi.Input[float] ha_admission_control_performance_tolerance: The percentage of
                resource reduction that a cluster of virtual machines can tolerate in case of
                a failover. A value of 0 produces warnings only, whereas a value of 100
                disables the setting. Default: `100` (disabled).
@@ -489,15 +489,15 @@ class ComputeCluster(pulumi.CustomResource):
                setting from the total amount of resources in the cluster. Disable to supply
                user-defined values. Default: `true`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_admission_control_resource_percentage_cpu: Controls the
+        :param pulumi.Input[float] ha_admission_control_resource_percentage_cpu: Controls the
                user-defined percentage of CPU resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[int] ha_admission_control_resource_percentage_memory: Controls the
+        :param pulumi.Input[float] ha_admission_control_resource_percentage_memory: Controls the
                user-defined percentage of memory resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_cpu: Controls the
+        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_cpu: Controls the
                user-defined CPU slot size, in MHz. Default: `32`.
-        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_memory: Controls the
+        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_memory: Controls the
                user-defined memory slot size, in MB. Default: `100`.
         :param pulumi.Input[bool] ha_admission_control_slot_policy_use_explicit_size: Controls
                whether or not you wish to supply explicit values to CPU and memory slot
@@ -514,7 +514,7 @@ class ComputeCluster(pulumi.CustomResource):
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[float] ha_datastore_apd_response_delay: Controls the delay in minutes
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Default: `3`
                minutes. <sup>\*</sup>
@@ -551,34 +551,34 @@ class ComputeCluster(pulumi.CustomResource):
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
+        :param pulumi.Input[float] ha_vm_failure_interval: If a heartbeat from a virtual machine
                is not received within this configured interval, the virtual machine is
                marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[float] ha_vm_maximum_failure_window: The length of the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
                unlimited reset time is allotted. The value is specified in seconds. Default:
                `-1` (no window).
-        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
+        :param pulumi.Input[float] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
-        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
+        :param pulumi.Input[float] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
                `120` (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[float] ha_vm_restart_additional_delay: Additional delay in seconds
                after ready condition is met. A VM is considered ready at this point.
                Default: `0` (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
-        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
+        :param pulumi.Input[float] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
                before proceeding with the next priority. Default: `600` (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
+        :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
         :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of

@@ -56,6 +56,17 @@ import * as utilities from "./utilities";
  * <tr><td>vApps</td><td>`VirtualApp`</td></tr>
  * <tr><td>Virtual Machines</td><td>`VirtualMachine`</td></tr>
  * </table>
+ * 
+ * ## Importing
+ * 
+ * An existing custom attribute can be [imported][docs-import] into this resource 
+ * via its name, using the following command:
+ * 
+ * [docs-import]: https://www.terraform.io/docs/import/index.html
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class CustomAttribute extends pulumi.CustomResource {
     /**

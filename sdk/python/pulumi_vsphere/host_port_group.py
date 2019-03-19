@@ -40,10 +40,10 @@ class HostPortGroup(pulumi.CustomResource):
     """
     A list of ports that currently exist and are used on this port group.
     """
-    shaping_average_bandwidth: pulumi.Output[int]
-    shaping_burst_size: pulumi.Output[int]
+    shaping_average_bandwidth: pulumi.Output[float]
+    shaping_burst_size: pulumi.Output[float]
     shaping_enabled: pulumi.Output[bool]
-    shaping_peak_bandwidth: pulumi.Output[int]
+    shaping_peak_bandwidth: pulumi.Output[float]
     standby_nics: pulumi.Output[list]
     teaming_policy: pulumi.Output[str]
     virtual_switch_name: pulumi.Output[str]
@@ -51,7 +51,7 @@ class HostPortGroup(pulumi.CustomResource):
     The name of the virtual switch to bind
     this port group to. Forces a new resource if changed.
     """
-    vlan_id: pulumi.Output[int]
+    vlan_id: pulumi.Output[float]
     """
     The VLAN ID/trunk mode for this port group.  An ID of
     `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
@@ -72,26 +72,13 @@ class HostPortGroup(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] active_nics
-        :param pulumi.Input[bool] allow_forged_transmits
-        :param pulumi.Input[bool] allow_mac_changes
-        :param pulumi.Input[bool] allow_promiscuous
-        :param pulumi.Input[bool] check_beacon
-        :param pulumi.Input[bool] failback
         :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
                changed.
-        :param pulumi.Input[bool] notify_switches
-        :param pulumi.Input[int] shaping_average_bandwidth
-        :param pulumi.Input[int] shaping_burst_size
-        :param pulumi.Input[bool] shaping_enabled
-        :param pulumi.Input[int] shaping_peak_bandwidth
-        :param pulumi.Input[list] standby_nics
-        :param pulumi.Input[str] teaming_policy
         :param pulumi.Input[str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
-        :param pulumi.Input[int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
+        :param pulumi.Input[float] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.

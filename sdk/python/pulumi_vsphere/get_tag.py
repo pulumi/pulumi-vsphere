@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetTagResult(object):
+class GetTagResult:
     """
     A collection of values returned by getTag.
     """
@@ -23,7 +23,7 @@ class GetTagResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_tag(category_id=None, name=None):
+async def get_tag(category_id=None,name=None,opts=None):
     """
     The `vsphere_tag` data source can be used to reference tags that are not
     managed by Terraform. Its attributes are exactly the same as the [`vsphere_tag`
@@ -40,7 +40,7 @@ async def get_tag(category_id=None, name=None):
 
     __args__['categoryId'] = category_id
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts)
 
     return GetTagResult(
         description=__ret__.get('description'),

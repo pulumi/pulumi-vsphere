@@ -21,12 +21,12 @@ class VappEntity(pulumi.CustomResource):
     or powerOn. If set to none, then the entity does not participate in auto-start.
     Default: powerOn
     """
-    start_delay: pulumi.Output[int]
+    start_delay: pulumi.Output[float]
     """
     Delay in seconds before continuing with the next
     entity in the order of entities to be started. Default: 120
     """
-    start_order: pulumi.Output[int]
+    start_order: pulumi.Output[float]
     """
     Order to start and stop target in vApp. Default: 1
     """
@@ -36,7 +36,7 @@ class VappEntity(pulumi.CustomResource):
     to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
     does not participate in auto-stop. Default: powerOff
     """
-    stop_delay: pulumi.Output[int]
+    stop_delay: pulumi.Output[float]
     """
     Delay in seconds before continuing with the next
     entity in the order sequence. This is only used if the stopAction is
@@ -68,20 +68,18 @@ class VappEntity(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
-        :param pulumi.Input[dict] custom_attributes
         :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
                or powerOn. If set to none, then the entity does not participate in auto-start.
                Default: powerOn
-        :param pulumi.Input[int] start_delay: Delay in seconds before continuing with the next
+        :param pulumi.Input[float] start_delay: Delay in seconds before continuing with the next
                entity in the order of entities to be started. Default: 120
-        :param pulumi.Input[int] start_order: Order to start and stop target in vApp. Default: 1
+        :param pulumi.Input[float] start_order: Order to start and stop target in vApp. Default: 1
         :param pulumi.Input[str] stop_action: Defines the stop action for the entity. Can be set
                to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
                does not participate in auto-stop. Default: powerOff
-        :param pulumi.Input[int] stop_delay: Delay in seconds before continuing with the next
+        :param pulumi.Input[float] stop_delay: Delay in seconds before continuing with the next
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
-        :param pulumi.Input[list] tags
         :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being

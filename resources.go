@@ -91,6 +91,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_datastore":                  {Tok: vsphereDataSource(vsphereMod, "getDatastore")},
 			"vsphere_datastore_cluster":          {Tok: vsphereDataSource(vsphereMod, "getDatastoreCluster")},
 			"vsphere_distributed_virtual_switch": {Tok: vsphereDataSource(vsphereMod, "getDistributedVirtualSwitch")},
+			"vsphere_folder":                     {Tok: vsphereDataSource(vsphereMod, "getFolder")},
 			"vsphere_host":                       {Tok: vsphereDataSource(vsphereMod, "getHost")},
 			"vsphere_network":                    {Tok: vsphereDataSource(vsphereMod, "getNetwork")},
 			"vsphere_resource_pool":              {Tok: vsphereDataSource(vsphereMod, "getResourcePool")},

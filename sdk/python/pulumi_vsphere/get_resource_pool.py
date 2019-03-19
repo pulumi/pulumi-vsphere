@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetResourcePoolResult(object):
+class GetResourcePoolResult:
     """
     A collection of values returned by getResourcePool.
     """
@@ -20,7 +20,7 @@ class GetResourcePoolResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_resource_pool(datacenter_id=None, name=None):
+async def get_resource_pool(datacenter_id=None,name=None,opts=None):
     """
     The `vsphere_resource_pool` data source can be used to discover the ID of a
     resource pool in vSphere. This is useful to fetch the ID of a resource pool
@@ -33,7 +33,7 @@ async def get_resource_pool(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getResourcePool:getResourcePool', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getResourcePool:getResourcePool', __args__, opts=opts)
 
     return GetResourcePoolResult(
         id=__ret__.get('id'))

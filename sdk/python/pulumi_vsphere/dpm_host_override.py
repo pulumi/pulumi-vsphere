@@ -54,7 +54,6 @@ class DpmHostOverride(pulumi.CustomResource):
                `manual`.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
-        :param pulumi.Input[str] host_system_id
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
