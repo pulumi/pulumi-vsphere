@@ -2,6 +2,12 @@
 
 ## Improvements
 
+- Update to v1.10.0 of the VSphere Terraform Provider.
+
+- Fix a bug where setting a property value back to the default results in no change
+
+- Numeric types in Python are now projected as `float` instead of `int`, fixing some crashes.
+
 ## 0.17.0 (Released March 6th, 2019)
 
 ## Improvements
