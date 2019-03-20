@@ -44,6 +44,7 @@ from .get_datacenter import *
 from .get_datastore import *
 from .get_datastore_cluster import *
 from .get_distributed_virtual_switch import *
+from .get_folder import *
 from .get_host import *
 from .get_network import *
 from .get_resource_pool import *

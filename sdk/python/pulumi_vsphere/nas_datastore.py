@@ -21,7 +21,7 @@ class NasDatastore(pulumi.CustomResource):
     The connectivity status of the datastore. If this is `false`,
     some other computed attributes may be out of date.
     """
-    capacity: pulumi.Output[int]
+    capacity: pulumi.Output[float]
     """
     Maximum capacity of the datastore, in megabytes.
     """
@@ -48,7 +48,7 @@ class NasDatastore(pulumi.CustomResource):
     `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
     `datastore_cluster_id`.
     """
-    free_space: pulumi.Output[int]
+    free_space: pulumi.Output[float]
     """
     Available space of this datastore, in megabytes.
     """
@@ -104,7 +104,7 @@ class NasDatastore(pulumi.CustomResource):
     v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
     changed.
     """
-    uncommitted_space: pulumi.Output[int]
+    uncommitted_space: pulumi.Output[float]
     """
     Total additional storage space, in megabytes,
     potentially used by all virtual machines on this datastore.

@@ -78,8 +78,10 @@ import * as utilities from "./utilities";
  *   the guest virtual machine, mainly to facilitate the availability of a valid,
  *   reachable default IP address for any [provisioners][tf-docs-provisioners].
  *   The behavior of the waiter can be controlled with the
- *   `wait_for_guest_net_timeout` and
- *   `wait_for_guest_net_routable` settings.
+ *   `wait_for_guest_net_timeout`,
+ *   `wait_for_guest_net_routable`,
+ *   `wait_for_guest_ip_timeout`, and
+ *   `ignored_guest_ips` settings.
  * 
  * [tf-docs-provisioners]: /docs/provisioners/index.html
  * 
@@ -703,6 +705,13 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly hvMode: pulumi.Output<string | undefined>;
     /**
+     * List of IP addresses to ignore while waiting
+     * for an available IP address using either of the waiters. Any IP addresses in
+     * this list will be ignored if they show up so that the waiter will continue to
+     * wait for a real IP address. Default: [].
+     */
+    public readonly ignoredGuestIps: pulumi.Output<string[] | undefined>;
+    /**
      * This is flagged if the virtual machine has been imported, or the
      * state has been migrated from a previous version of the resource. It
      * influences the behavior of the first post-import apply operation. See the
@@ -896,16 +905,29 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly vmxPath: pulumi.Output<string>;
     /**
+     * The amount of time, in minutes, to
+     * wait for an available guest IP address on this virtual machine. This should
+     * only be used if your version of VMware Tools does not allow the
+     * `wait_for_guest_net_timeout` waiter to be
+     * used. A value less than 1 disables the waiter. Default: 0.
+     */
+    public readonly waitForGuestIpTimeout: pulumi.Output<number | undefined>;
+    /**
      * Controls whether or not the guest
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. Default: `true`.
+     * discovered default gateways as part of its success criteria. This property is
+     * ignored if the `wait_for_guest_ip_timeout`
+     * waiter is used. Default: `true`.
      */
     public readonly waitForGuestNetRoutable: pulumi.Output<boolean | undefined>;
     /**
      * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter. Default: 5 minutes.
+     * wait for an available IP address on this virtual machine's NICs. Older
+     * versions of VMware Tools do not populate this property. In those cases, this
+     * waiter can be disabled and the
+     * `wait_for_guest_ip_timeout` waiter can be used
+     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     public readonly waitForGuestNetTimeout: pulumi.Output<number | undefined>;
 
@@ -953,6 +975,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["guestIpAddresses"] = state ? state.guestIpAddresses : undefined;
             inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
             inputs["hvMode"] = state ? state.hvMode : undefined;
+            inputs["ignoredGuestIps"] = state ? state.ignoredGuestIps : undefined;
             inputs["imported"] = state ? state.imported : undefined;
             inputs["latencySensitivity"] = state ? state.latencySensitivity : undefined;
             inputs["memory"] = state ? state.memory : undefined;
@@ -987,6 +1010,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["vappTransports"] = state ? state.vappTransports : undefined;
             inputs["vmwareToolsStatus"] = state ? state.vmwareToolsStatus : undefined;
             inputs["vmxPath"] = state ? state.vmxPath : undefined;
+            inputs["waitForGuestIpTimeout"] = state ? state.waitForGuestIpTimeout : undefined;
             inputs["waitForGuestNetRoutable"] = state ? state.waitForGuestNetRoutable : undefined;
             inputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
         } else {
@@ -1026,6 +1050,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["guestId"] = args ? args.guestId : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
             inputs["hvMode"] = args ? args.hvMode : undefined;
+            inputs["ignoredGuestIps"] = args ? args.ignoredGuestIps : undefined;
             inputs["latencySensitivity"] = args ? args.latencySensitivity : undefined;
             inputs["memory"] = args ? args.memory : undefined;
             inputs["memoryHotAddEnabled"] = args ? args.memoryHotAddEnabled : undefined;
@@ -1053,6 +1078,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vapp"] = args ? args.vapp : undefined;
+            inputs["waitForGuestIpTimeout"] = args ? args.waitForGuestIpTimeout : undefined;
             inputs["waitForGuestNetRoutable"] = args ? args.waitForGuestNetRoutable : undefined;
             inputs["waitForGuestNetTimeout"] = args ? args.waitForGuestNetTimeout : undefined;
             inputs["changeVersion"] = undefined /*out*/;
@@ -1263,6 +1289,13 @@ export interface VirtualMachineState {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
+     * List of IP addresses to ignore while waiting
+     * for an available IP address using either of the waiters. Any IP addresses in
+     * this list will be ignored if they show up so that the waiter will continue to
+     * wait for a real IP address. Default: [].
+     */
+    readonly ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * This is flagged if the virtual machine has been imported, or the
      * state has been migrated from a previous version of the resource. It
      * influences the behavior of the first post-import apply operation. See the
@@ -1456,16 +1489,29 @@ export interface VirtualMachineState {
      */
     readonly vmxPath?: pulumi.Input<string>;
     /**
+     * The amount of time, in minutes, to
+     * wait for an available guest IP address on this virtual machine. This should
+     * only be used if your version of VMware Tools does not allow the
+     * `wait_for_guest_net_timeout` waiter to be
+     * used. A value less than 1 disables the waiter. Default: 0.
+     */
+    readonly waitForGuestIpTimeout?: pulumi.Input<number>;
+    /**
      * Controls whether or not the guest
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. Default: `true`.
+     * discovered default gateways as part of its success criteria. This property is
+     * ignored if the `wait_for_guest_ip_timeout`
+     * waiter is used. Default: `true`.
      */
     readonly waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
      * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter. Default: 5 minutes.
+     * wait for an available IP address on this virtual machine's NICs. Older
+     * versions of VMware Tools do not populate this property. In those cases, this
+     * waiter can be disabled and the
+     * `wait_for_guest_ip_timeout` waiter can be used
+     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     readonly waitForGuestNetTimeout?: pulumi.Input<number>;
 }
@@ -1639,6 +1685,13 @@ export interface VirtualMachineArgs {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
+     * List of IP addresses to ignore while waiting
+     * for an available IP address using either of the waiters. Any IP addresses in
+     * this list will be ignored if they show up so that the waiter will continue to
+     * wait for a real IP address. Default: [].
+     */
+    readonly ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Controls the scheduling delay of the
      * virtual machine. Use a higher sensitivity for applications that require lower
      * latency, such as VOIP, media player applications, or applications that
@@ -1794,16 +1847,29 @@ export interface VirtualMachineArgs {
      */
     readonly vapp?: pulumi.Input<{ properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
     /**
+     * The amount of time, in minutes, to
+     * wait for an available guest IP address on this virtual machine. This should
+     * only be used if your version of VMware Tools does not allow the
+     * `wait_for_guest_net_timeout` waiter to be
+     * used. A value less than 1 disables the waiter. Default: 0.
+     */
+    readonly waitForGuestIpTimeout?: pulumi.Input<number>;
+    /**
      * Controls whether or not the guest
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. Default: `true`.
+     * discovered default gateways as part of its success criteria. This property is
+     * ignored if the `wait_for_guest_ip_timeout`
+     * waiter is used. Default: `true`.
      */
     readonly waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
      * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine. A value less than 1
-     * disables the waiter. Default: 5 minutes.
+     * wait for an available IP address on this virtual machine's NICs. Older
+     * versions of VMware Tools do not populate this property. In those cases, this
+     * waiter can be disabled and the
+     * `wait_for_guest_ip_timeout` waiter can be used
+     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     readonly waitForGuestNetTimeout?: pulumi.Input<number>;
 }

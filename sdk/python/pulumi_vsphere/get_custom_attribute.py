@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetCustomAttributeResult(object):
+class GetCustomAttributeResult:
     """
     A collection of values returned by getCustomAttribute.
     """
@@ -23,7 +23,7 @@ class GetCustomAttributeResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_custom_attribute(name=None):
+async def get_custom_attribute(name=None,opts=None):
     """
     The `vsphere_custom_attribute` data source can be used to reference custom 
     attributes that are not managed by Terraform. Its attributes are exactly the 
@@ -39,7 +39,7 @@ async def get_custom_attribute(name=None):
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts)
 
     return GetCustomAttributeResult(
         managed_object_type=__ret__.get('managedObjectType'),

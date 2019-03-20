@@ -15,14 +15,14 @@ class VappContainer(pulumi.CustomResource):
     container can grow beyond the specified value if the parent resource pool has
     unreserved resources. Default: `true`
     """
-    cpu_limit: pulumi.Output[int]
+    cpu_limit: pulumi.Output[float]
     """
     The CPU utilization of a vApp container will not
     exceed this limit, even if there are available resources. Set to `-1` for
     unlimited.
     Default: `-1`
     """
-    cpu_reservation: pulumi.Output[int]
+    cpu_reservation: pulumi.Output[float]
     """
     Amount of CPU (MHz) that is guaranteed
     available to the vApp container. Default: `0`
@@ -35,7 +35,7 @@ class VappContainer(pulumi.CustomResource):
     `low`, `normal`, or `high` are specified values in `cpu_shares` will be
     ignored.  Default: `normal`
     """
-    cpu_shares: pulumi.Output[int]
+    cpu_shares: pulumi.Output[float]
     """
     The number of shares allocated for CPU. Used to
     determine resource allocation in case of resource contention. If this is set,
@@ -48,14 +48,14 @@ class VappContainer(pulumi.CustomResource):
     container can grow beyond the specified value if the parent resource pool has
     unreserved resources. Default: `true`
     """
-    memory_limit: pulumi.Output[int]
+    memory_limit: pulumi.Output[float]
     """
     The CPU utilization of a vApp container will not
     exceed this limit, even if there are available resources. Set to `-1` for
     unlimited.
     Default: `-1`
     """
-    memory_reservation: pulumi.Output[int]
+    memory_reservation: pulumi.Output[float]
     """
     Amount of CPU (MHz) that is guaranteed
     available to the vApp container. Default: `0`
@@ -68,7 +68,7 @@ class VappContainer(pulumi.CustomResource):
     `low`, `normal`, or `high` are specified values in `memory_shares` will be
     ignored.  Default: `normal`
     """
-    memory_shares: pulumi.Output[int]
+    memory_shares: pulumi.Output[float]
     """
     The number of shares allocated for CPU. Used to
     determine resource allocation in case of resource contention. If this is set,
@@ -111,36 +111,35 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] cpu_limit: The CPU utilization of a vApp container will not
+        :param pulumi.Input[float] cpu_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
                unlimited.
                Default: `-1`
-        :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[float] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `cpu_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[int] cpu_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
-        :param pulumi.Input[dict] custom_attributes
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] memory_limit: The CPU utilization of a vApp container will not
+        :param pulumi.Input[float] memory_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
                unlimited.
                Default: `-1`
-        :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[float] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[int] memory_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[float] memory_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the vApp container.

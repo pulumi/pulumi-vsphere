@@ -75,12 +75,12 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     Allow VMDirectPath Gen2 for the ports
     for which this policy applies to.
     """
-    egress_shaping_average_bandwidth: pulumi.Output[int]
+    egress_shaping_average_bandwidth: pulumi.Output[float]
     """
     The average bandwidth in bits
     per second if egress traffic shaping is enabled on the port.
     """
-    egress_shaping_burst_size: pulumi.Output[int]
+    egress_shaping_burst_size: pulumi.Output[float]
     """
     The maximum burst size allowed in
     bytes if egress traffic shaping is enabled on the port.
@@ -90,7 +90,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     `true` if the traffic shaper is enabled
     on the port for egress traffic.
     """
-    egress_shaping_peak_bandwidth: pulumi.Output[int]
+    egress_shaping_peak_bandwidth: pulumi.Output[float]
     """
     The peak bandwidth during bursts
     in bits per second if egress traffic shaping is enabled on the port.
@@ -100,30 +100,30 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     If `true`, the teaming policy will re-activate failed
     uplinks higher in precedence when they come back up.
     """
-    faulttolerance_maximum_mbit: pulumi.Output[int]
-    faulttolerance_reservation_mbit: pulumi.Output[int]
-    faulttolerance_share_count: pulumi.Output[int]
+    faulttolerance_maximum_mbit: pulumi.Output[float]
+    faulttolerance_reservation_mbit: pulumi.Output[float]
+    faulttolerance_share_count: pulumi.Output[float]
     faulttolerance_share_level: pulumi.Output[str]
     folder: pulumi.Output[str]
     """
     The folder to create the DVS in. Forces a new resource
     if changed.
     """
-    hbr_maximum_mbit: pulumi.Output[int]
-    hbr_reservation_mbit: pulumi.Output[int]
-    hbr_share_count: pulumi.Output[int]
+    hbr_maximum_mbit: pulumi.Output[float]
+    hbr_reservation_mbit: pulumi.Output[float]
+    hbr_share_count: pulumi.Output[float]
     hbr_share_level: pulumi.Output[str]
     hosts: pulumi.Output[list]
     """
     Use the `host` block to declare a host specification. The
     options are:
     """
-    ingress_shaping_average_bandwidth: pulumi.Output[int]
+    ingress_shaping_average_bandwidth: pulumi.Output[float]
     """
     The average bandwidth in
     bits per second if ingress traffic shaping is enabled on the port.
     """
-    ingress_shaping_burst_size: pulumi.Output[int]
+    ingress_shaping_burst_size: pulumi.Output[float]
     """
     The maximum burst size allowed in
     bytes if ingress traffic shaping is enabled on the port.
@@ -133,7 +133,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     `true` if the traffic shaper is
     enabled on the port for ingress traffic.
     """
-    ingress_shaping_peak_bandwidth: pulumi.Output[int]
+    ingress_shaping_peak_bandwidth: pulumi.Output[float]
     """
     The peak bandwidth during
     bursts in bits per second if ingress traffic shaping is enabled on the port.
@@ -144,9 +144,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     mostly useful when used with the Netflow arguments found
     below.
     """
-    iscsi_maximum_mbit: pulumi.Output[int]
-    iscsi_reservation_mbit: pulumi.Output[int]
-    iscsi_share_count: pulumi.Output[int]
+    iscsi_maximum_mbit: pulumi.Output[float]
+    iscsi_reservation_mbit: pulumi.Output[float]
+    iscsi_share_count: pulumi.Output[float]
     iscsi_share_level: pulumi.Output[str]
     lacp_api_version: pulumi.Output[str]
     """
@@ -173,11 +173,11 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     The discovery protocol type. Valid
     types are `cdp` and `lldp`.
     """
-    management_maximum_mbit: pulumi.Output[int]
-    management_reservation_mbit: pulumi.Output[int]
-    management_share_count: pulumi.Output[int]
+    management_maximum_mbit: pulumi.Output[float]
+    management_reservation_mbit: pulumi.Output[float]
+    management_share_count: pulumi.Output[float]
     management_share_level: pulumi.Output[str]
-    max_mtu: pulumi.Output[int]
+    max_mtu: pulumi.Output[float]
     """
     The maximum transmission unit (MTU) for the virtual
     switch.
@@ -191,7 +191,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     """
     The name of the distributed virtual switch.
     """
-    netflow_active_flow_timeout: pulumi.Output[int]
+    netflow_active_flow_timeout: pulumi.Output[float]
     """
     The number of seconds after which
     active flows are forced to be exported to the collector. Allowed range is
@@ -203,7 +203,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
     Switch Version 6.0 or later. Must be set before Netflow can be enabled.
     """
-    netflow_collector_port: pulumi.Output[int]
+    netflow_collector_port: pulumi.Output[float]
     """
     Port for the Netflow collector. This
     must be set before Netflow can be enabled.
@@ -213,7 +213,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     Enables Netflow on all ports that this policy
     applies to.
     """
-    netflow_idle_flow_timeout: pulumi.Output[int]
+    netflow_idle_flow_timeout: pulumi.Output[float]
     """
     The number of seconds after which
     idle flows are forced to be exported to the collector. Allowed range is `10`
@@ -225,12 +225,12 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     traffic that has both source and destination served by the same host.
     Default: `false`.
     """
-    netflow_observation_domain_id: pulumi.Output[int]
+    netflow_observation_domain_id: pulumi.Output[float]
     """
     The observation domain ID for
     the Netflow collector.
     """
-    netflow_sampling_rate: pulumi.Output[int]
+    netflow_sampling_rate: pulumi.Output[float]
     """
     The ratio of total number of packets to
     the number of packets analyzed. The default is `0`, which indicates that the
@@ -247,16 +247,16 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     The version of network I/O
     control to use. Can be one of `version2` or `version3`. Default: `version2`.
     """
-    nfs_maximum_mbit: pulumi.Output[int]
-    nfs_reservation_mbit: pulumi.Output[int]
-    nfs_share_count: pulumi.Output[int]
+    nfs_maximum_mbit: pulumi.Output[float]
+    nfs_reservation_mbit: pulumi.Output[float]
+    nfs_share_count: pulumi.Output[float]
     nfs_share_level: pulumi.Output[str]
     notify_switches: pulumi.Output[bool]
     """
     If `true`, the teaming policy will notify the
     broadcast network of an uplink failover, triggering cache updates.
     """
-    port_private_secondary_vlan_id: pulumi.Output[int]
+    port_private_secondary_vlan_id: pulumi.Output[float]
     """
     Used to define a secondary VLAN
     ID when using private VLANs.
@@ -292,9 +292,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     names.  See here for an example on how to
     use this option.
     """
-    vdp_maximum_mbit: pulumi.Output[int]
-    vdp_reservation_mbit: pulumi.Output[int]
-    vdp_share_count: pulumi.Output[int]
+    vdp_maximum_mbit: pulumi.Output[float]
+    vdp_reservation_mbit: pulumi.Output[float]
+    vdp_share_count: pulumi.Output[float]
     vdp_share_level: pulumi.Output[str]
     version: pulumi.Output[str]
     """
@@ -303,11 +303,11 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     being used. A DVS can be upgraded to another version, but cannot be
     downgraded.
     """
-    virtualmachine_maximum_mbit: pulumi.Output[int]
-    virtualmachine_reservation_mbit: pulumi.Output[int]
-    virtualmachine_share_count: pulumi.Output[int]
+    virtualmachine_maximum_mbit: pulumi.Output[float]
+    virtualmachine_reservation_mbit: pulumi.Output[float]
+    virtualmachine_share_count: pulumi.Output[float]
     virtualmachine_share_level: pulumi.Output[str]
-    vlan_id: pulumi.Output[int]
+    vlan_id: pulumi.Output[float]
     vlan_ranges: pulumi.Output[list]
     """
     Used to denote VLAN trunking. Use the `min_vlan`
@@ -315,13 +315,13 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     `vlan_range` definitions are allowed, but they must not overlap. Example
     below:
     """
-    vmotion_maximum_mbit: pulumi.Output[int]
-    vmotion_reservation_mbit: pulumi.Output[int]
-    vmotion_share_count: pulumi.Output[int]
+    vmotion_maximum_mbit: pulumi.Output[float]
+    vmotion_reservation_mbit: pulumi.Output[float]
+    vmotion_share_count: pulumi.Output[float]
     vmotion_share_level: pulumi.Output[str]
-    vsan_maximum_mbit: pulumi.Output[int]
-    vsan_reservation_mbit: pulumi.Output[int]
-    vsan_share_count: pulumi.Output[int]
+    vsan_maximum_mbit: pulumi.Output[float]
+    vsan_reservation_mbit: pulumi.Output[float]
+    vsan_share_count: pulumi.Output[float]
     vsan_share_level: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, block_all_ports=None, check_beacon=None, contact_detail=None, contact_name=None, custom_attributes=None, datacenter_id=None, description=None, directpath_gen2_allowed=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, faulttolerance_maximum_mbit=None, faulttolerance_reservation_mbit=None, faulttolerance_share_count=None, faulttolerance_share_level=None, folder=None, hbr_maximum_mbit=None, hbr_reservation_mbit=None, hbr_share_count=None, hbr_share_level=None, hosts=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, ipv4_address=None, iscsi_maximum_mbit=None, iscsi_reservation_mbit=None, iscsi_share_count=None, iscsi_share_level=None, lacp_api_version=None, lacp_enabled=None, lacp_mode=None, link_discovery_operation=None, link_discovery_protocol=None, management_maximum_mbit=None, management_reservation_mbit=None, management_share_count=None, management_share_level=None, max_mtu=None, multicast_filtering_mode=None, name=None, netflow_active_flow_timeout=None, netflow_collector_ip_address=None, netflow_collector_port=None, netflow_enabled=None, netflow_idle_flow_timeout=None, netflow_internal_flows_only=None, netflow_observation_domain_id=None, netflow_sampling_rate=None, network_resource_control_enabled=None, network_resource_control_version=None, nfs_maximum_mbit=None, nfs_reservation_mbit=None, nfs_share_count=None, nfs_share_level=None, notify_switches=None, port_private_secondary_vlan_id=None, standby_uplinks=None, tags=None, teaming_policy=None, tx_uplink=None, uplinks=None, vdp_maximum_mbit=None, vdp_reservation_mbit=None, vdp_share_count=None, vdp_share_level=None, version=None, virtualmachine_maximum_mbit=None, virtualmachine_reservation_mbit=None, virtualmachine_share_count=None, virtualmachine_share_level=None, vlan_id=None, vlan_ranges=None, vmotion_maximum_mbit=None, vmotion_reservation_mbit=None, vmotion_share_count=None, vmotion_share_level=None, vsan_maximum_mbit=None, vsan_reservation_mbit=None, vsan_share_count=None, vsan_share_level=None, __name__=None, __opts__=None):
         """
@@ -378,43 +378,31 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] description: A detailed description for the DVS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
-        :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
+        :param pulumi.Input[float] egress_shaping_average_bandwidth: The average bandwidth in bits
                per second if egress traffic shaping is enabled on the port.
-        :param pulumi.Input[int] egress_shaping_burst_size: The maximum burst size allowed in
+        :param pulumi.Input[float] egress_shaping_burst_size: The maximum burst size allowed in
                bytes if egress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] egress_shaping_enabled: `true` if the traffic shaper is enabled
                on the port for egress traffic.
-        :param pulumi.Input[int] egress_shaping_peak_bandwidth: The peak bandwidth during bursts
+        :param pulumi.Input[float] egress_shaping_peak_bandwidth: The peak bandwidth during bursts
                in bits per second if egress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] failback: If `true`, the teaming policy will re-activate failed
                uplinks higher in precedence when they come back up.
-        :param pulumi.Input[int] faulttolerance_maximum_mbit
-        :param pulumi.Input[int] faulttolerance_reservation_mbit
-        :param pulumi.Input[int] faulttolerance_share_count
-        :param pulumi.Input[str] faulttolerance_share_level
         :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
                if changed.
-        :param pulumi.Input[int] hbr_maximum_mbit
-        :param pulumi.Input[int] hbr_reservation_mbit
-        :param pulumi.Input[int] hbr_share_count
-        :param pulumi.Input[str] hbr_share_level
         :param pulumi.Input[list] hosts: Use the `host` block to declare a host specification. The
                options are:
-        :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average bandwidth in
+        :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average bandwidth in
                bits per second if ingress traffic shaping is enabled on the port.
-        :param pulumi.Input[int] ingress_shaping_burst_size: The maximum burst size allowed in
+        :param pulumi.Input[float] ingress_shaping_burst_size: The maximum burst size allowed in
                bytes if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: `true` if the traffic shaper is
                enabled on the port for ingress traffic.
-        :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
+        :param pulumi.Input[float] ingress_shaping_peak_bandwidth: The peak bandwidth during
                bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
                mostly useful when used with the Netflow arguments found
                below.
-        :param pulumi.Input[int] iscsi_maximum_mbit
-        :param pulumi.Input[int] iscsi_reservation_mbit
-        :param pulumi.Input[int] iscsi_share_count
-        :param pulumi.Input[str] iscsi_share_level
         :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
                version to use with the switch. Possible values are `singleLag` and
                `multipleLag`.
@@ -425,34 +413,30 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                for link discovery traffic.
         :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type. Valid
                types are `cdp` and `lldp`.
-        :param pulumi.Input[int] management_maximum_mbit
-        :param pulumi.Input[int] management_reservation_mbit
-        :param pulumi.Input[int] management_share_count
-        :param pulumi.Input[str] management_share_level
-        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
+        :param pulumi.Input[float] max_mtu: The maximum transmission unit (MTU) for the virtual
                switch.
         :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
                with the switch. Can be one of `legacyFiltering` or `snooping`.
         :param pulumi.Input[str] name: The name of the distributed virtual switch.
-        :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
+        :param pulumi.Input[float] netflow_active_flow_timeout: The number of seconds after which
                active flows are forced to be exported to the collector. Allowed range is
                `60` to `3600`. Default: `60`.
         :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
                collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
                Switch Version 6.0 or later. Must be set before Netflow can be enabled.
-        :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
+        :param pulumi.Input[float] netflow_collector_port: Port for the Netflow collector. This
                must be set before Netflow can be enabled.
         :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
                applies to.
-        :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which
+        :param pulumi.Input[float] netflow_idle_flow_timeout: The number of seconds after which
                idle flows are forced to be exported to the collector. Allowed range is `10`
                to `600`. Default: `15`.
         :param pulumi.Input[bool] netflow_internal_flows_only: Whether to limit analysis to
                traffic that has both source and destination served by the same host.
                Default: `false`.
-        :param pulumi.Input[int] netflow_observation_domain_id: The observation domain ID for
+        :param pulumi.Input[float] netflow_observation_domain_id: The observation domain ID for
                the Netflow collector.
-        :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
+        :param pulumi.Input[float] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
                switch should analyze all packets. The maximum value is `1000`, which
                indicates an analysis rate of 0.001%.
@@ -460,13 +444,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                network I/O control. Default: `false`.
         :param pulumi.Input[str] network_resource_control_version: The version of network I/O
                control to use. Can be one of `version2` or `version3`. Default: `version2`.
-        :param pulumi.Input[int] nfs_maximum_mbit
-        :param pulumi.Input[int] nfs_reservation_mbit
-        :param pulumi.Input[int] nfs_share_count
-        :param pulumi.Input[str] nfs_share_level
         :param pulumi.Input[bool] notify_switches: If `true`, the teaming policy will notify the
                broadcast network of an uplink failover, triggering cache updates.
-        :param pulumi.Input[int] port_private_secondary_vlan_id: Used to define a secondary VLAN
+        :param pulumi.Input[float] port_private_secondary_vlan_id: Used to define a secondary VLAN
                ID when using private VLANs.
         :param pulumi.Input[list] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
@@ -484,31 +464,14 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                controls the number of uplinks that exist on the DVS, in addition to the
                names.  See here for an example on how to
                use this option.
-        :param pulumi.Input[int] vdp_maximum_mbit
-        :param pulumi.Input[int] vdp_reservation_mbit
-        :param pulumi.Input[int] vdp_share_count
-        :param pulumi.Input[str] vdp_share_level
         :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
                create the DVS at the latest version supported by the version of vSphere
                being used. A DVS can be upgraded to another version, but cannot be
                downgraded.
-        :param pulumi.Input[int] virtualmachine_maximum_mbit
-        :param pulumi.Input[int] virtualmachine_reservation_mbit
-        :param pulumi.Input[int] virtualmachine_share_count
-        :param pulumi.Input[str] virtualmachine_share_level
-        :param pulumi.Input[int] vlan_id
         :param pulumi.Input[list] vlan_ranges: Used to denote VLAN trunking. Use the `min_vlan`
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
-        :param pulumi.Input[int] vmotion_maximum_mbit
-        :param pulumi.Input[int] vmotion_reservation_mbit
-        :param pulumi.Input[int] vmotion_share_count
-        :param pulumi.Input[str] vmotion_share_level
-        :param pulumi.Input[int] vsan_maximum_mbit
-        :param pulumi.Input[int] vsan_reservation_mbit
-        :param pulumi.Input[int] vsan_share_count
-        :param pulumi.Input[str] vsan_share_level
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -120,6 +120,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "host_system_id": "hostSystemId",
     "host_system_ids": "hostSystemIds",
     "hv_mode": "hvMode",
+    "ignored_guest_ips": "ignoredGuestIps",
     "ingress_shaping_average_bandwidth": "ingressShapingAverageBandwidth",
     "ingress_shaping_burst_size": "ingressShapingBurstSize",
     "ingress_shaping_enabled": "ingressShapingEnabled",
@@ -284,6 +285,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "vsan_share_level": "vsanShareLevel",
     "vsphere_server": "vsphereServer",
     "wait_for_guest": "waitForGuest",
+    "wait_for_guest_ip_timeout": "waitForGuestIpTimeout",
     "wait_for_guest_net_routable": "waitForGuestNetRoutable",
     "wait_for_guest_net_timeout": "waitForGuestNetTimeout",
 }
@@ -406,6 +408,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "hostSystemId": "host_system_id",
     "hostSystemIds": "host_system_ids",
     "hvMode": "hv_mode",
+    "ignoredGuestIps": "ignored_guest_ips",
     "ingressShapingAverageBandwidth": "ingress_shaping_average_bandwidth",
     "ingressShapingBurstSize": "ingress_shaping_burst_size",
     "ingressShapingEnabled": "ingress_shaping_enabled",
@@ -570,6 +573,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "vsanShareLevel": "vsan_share_level",
     "vsphereServer": "vsphere_server",
     "waitForGuest": "wait_for_guest",
+    "waitForGuestIpTimeout": "wait_for_guest_ip_timeout",
     "waitForGuestNetRoutable": "wait_for_guest_net_routable",
     "waitForGuestNetTimeout": "wait_for_guest_net_timeout",
 }

@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetTagCategoryResult(object):
+class GetTagCategoryResult:
     """
     A collection of values returned by getTagCategory.
     """
@@ -29,7 +29,7 @@ class GetTagCategoryResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_tag_category(name=None):
+async def get_tag_category(name=None,opts=None):
     """
     The `vsphere_tag_category` data source can be used to reference tag categories
     that are not managed by Terraform. Its attributes are exactly the same as the
@@ -45,7 +45,7 @@ async def get_tag_category(name=None):
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts)
 
     return GetTagCategoryResult(
         associable_types=__ret__.get('associableTypes'),

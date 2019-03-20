@@ -31,7 +31,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     flag indicates whether or not all traffic is seen on a given port. Default:
     `false`.
     """
-    beacon_interval: pulumi.Output[int]
+    beacon_interval: pulumi.Output[float]
     """
     The interval, in seconds, that a NIC beacon
     packet is sent out. This can be used with `check_beacon` to
@@ -65,7 +65,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     The discovery protocol type.  Valid
     types are `cpd` and `lldp`. Default: `cdp`.
     """
-    mtu: pulumi.Output[int]
+    mtu: pulumi.Output[float]
     """
     The maximum transmission unit (MTU) for the virtual
     switch. Default: `1500`.
@@ -85,17 +85,17 @@ class HostVirtualSwitch(pulumi.CustomResource):
     notify the broadcast network of a NIC failover, triggering cache updates.
     Default: `true`.
     """
-    number_of_ports: pulumi.Output[int]
+    number_of_ports: pulumi.Output[float]
     """
     The number of ports to create with this
     virtual switch. Default: `128`.
     """
-    shaping_average_bandwidth: pulumi.Output[int]
+    shaping_average_bandwidth: pulumi.Output[float]
     """
     The average bandwidth in bits per
     second if traffic shaping is enabled. Default: `0`
     """
-    shaping_burst_size: pulumi.Output[int]
+    shaping_burst_size: pulumi.Output[float]
     """
     The maximum burst size allowed in bytes if
     shaping is enabled. Default: `0`
@@ -105,7 +105,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     Set to `true` to enable the traffic shaper for
     ports managed by this virtual switch. Default: `false`.
     """
-    shaping_peak_bandwidth: pulumi.Output[int]
+    shaping_peak_bandwidth: pulumi.Output[float]
     """
     The peak bandwidth during bursts in
     bits per second if traffic shaping is enabled. Default: `0`
@@ -146,7 +146,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
                flag indicates whether or not all traffic is seen on a given port. Default:
                `false`.
-        :param pulumi.Input[int] beacon_interval: The interval, in seconds, that a NIC beacon
+        :param pulumi.Input[float] beacon_interval: The interval, in seconds, that a NIC beacon
                packet is sent out. This can be used with `check_beacon` to
                offer link failure capability beyond link status only. Default: `1`.
         :param pulumi.Input[bool] check_beacon: Enable beacon probing - this requires that the
@@ -162,7 +162,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
                for link discovery traffic. Default: `listen`.
         :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type.  Valid
                types are `cpd` and `lldp`. Default: `cdp`.
-        :param pulumi.Input[int] mtu: The maximum transmission unit (MTU) for the virtual
+        :param pulumi.Input[float] mtu: The maximum transmission unit (MTU) for the virtual
                switch. Default: `1500`.
         :param pulumi.Input[str] name: The name of the virtual switch. Forces a new resource if
                changed.
@@ -170,15 +170,15 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[bool] notify_switches: If set to `true`, the teaming policy will
                notify the broadcast network of a NIC failover, triggering cache updates.
                Default: `true`.
-        :param pulumi.Input[int] number_of_ports: The number of ports to create with this
+        :param pulumi.Input[float] number_of_ports: The number of ports to create with this
                virtual switch. Default: `128`.
-        :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
+        :param pulumi.Input[float] shaping_average_bandwidth: The average bandwidth in bits per
                second if traffic shaping is enabled. Default: `0`
-        :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
+        :param pulumi.Input[float] shaping_burst_size: The maximum burst size allowed in bytes if
                shaping is enabled. Default: `0`
         :param pulumi.Input[bool] shaping_enabled: Set to `true` to enable the traffic shaper for
                ports managed by this virtual switch. Default: `false`.
-        :param pulumi.Input[int] shaping_peak_bandwidth: The peak bandwidth during bursts in
+        :param pulumi.Input[float] shaping_peak_bandwidth: The peak bandwidth during bursts in
                bits per second if traffic shaping is enabled. Default: `0`
         :param pulumi.Input[list] standby_nics: The list of standby network adapters used for
                failover.

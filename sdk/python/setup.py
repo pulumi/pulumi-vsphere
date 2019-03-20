@@ -26,7 +26,7 @@ setup(name='pulumi_vsphere',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-vsphere'
       },
-      license='Apachce-2.0',
+      license='Apache-2.0',
       packages=find_packages(),
       install_requires=[
           'pulumi>=0.17.0,<0.18.0'

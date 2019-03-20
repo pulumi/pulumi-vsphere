@@ -18,17 +18,6 @@ class Provider(pulumi.ProviderResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_unverified_ssl
-        :param pulumi.Input[bool] client_debug
-        :param pulumi.Input[str] client_debug_path
-        :param pulumi.Input[str] client_debug_path_run
-        :param pulumi.Input[str] password
-        :param pulumi.Input[bool] persist_session
-        :param pulumi.Input[str] rest_session_path
-        :param pulumi.Input[str] user
-        :param pulumi.Input[str] vcenter_server
-        :param pulumi.Input[str] vim_session_path
-        :param pulumi.Input[str] vsphere_server
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

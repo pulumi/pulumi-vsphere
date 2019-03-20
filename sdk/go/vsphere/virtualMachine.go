@@ -81,8 +81,10 @@ import (
 //   the guest virtual machine, mainly to facilitate the availability of a valid,
 //   reachable default IP address for any [provisioners][tf-docs-provisioners].
 //   The behavior of the waiter can be controlled with the
-//   `wait_for_guest_net_timeout` and
-//   `wait_for_guest_net_routable` settings.
+//   `wait_for_guest_net_timeout`,
+//   `wait_for_guest_net_routable`,
+//   `wait_for_guest_ip_timeout`, and
+//   `ignored_guest_ips` settings.
 // 
 // [tf-docs-provisioners]: /docs/provisioners/index.html
 // 
@@ -283,6 +285,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["guestId"] = nil
 		inputs["hostSystemId"] = nil
 		inputs["hvMode"] = nil
+		inputs["ignoredGuestIps"] = nil
 		inputs["latencySensitivity"] = nil
 		inputs["memory"] = nil
 		inputs["memoryHotAddEnabled"] = nil
@@ -310,6 +313,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["syncTimeWithHost"] = nil
 		inputs["tags"] = nil
 		inputs["vapp"] = nil
+		inputs["waitForGuestIpTimeout"] = nil
 		inputs["waitForGuestNetRoutable"] = nil
 		inputs["waitForGuestNetTimeout"] = nil
 	} else {
@@ -342,6 +346,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["guestId"] = args.GuestId
 		inputs["hostSystemId"] = args.HostSystemId
 		inputs["hvMode"] = args.HvMode
+		inputs["ignoredGuestIps"] = args.IgnoredGuestIps
 		inputs["latencySensitivity"] = args.LatencySensitivity
 		inputs["memory"] = args.Memory
 		inputs["memoryHotAddEnabled"] = args.MemoryHotAddEnabled
@@ -369,6 +374,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["syncTimeWithHost"] = args.SyncTimeWithHost
 		inputs["tags"] = args.Tags
 		inputs["vapp"] = args.Vapp
+		inputs["waitForGuestIpTimeout"] = args.WaitForGuestIpTimeout
 		inputs["waitForGuestNetRoutable"] = args.WaitForGuestNetRoutable
 		inputs["waitForGuestNetTimeout"] = args.WaitForGuestNetTimeout
 	}
@@ -427,6 +433,7 @@ func GetVirtualMachine(ctx *pulumi.Context,
 		inputs["guestIpAddresses"] = state.GuestIpAddresses
 		inputs["hostSystemId"] = state.HostSystemId
 		inputs["hvMode"] = state.HvMode
+		inputs["ignoredGuestIps"] = state.IgnoredGuestIps
 		inputs["imported"] = state.Imported
 		inputs["latencySensitivity"] = state.LatencySensitivity
 		inputs["memory"] = state.Memory
@@ -461,6 +468,7 @@ func GetVirtualMachine(ctx *pulumi.Context,
 		inputs["vappTransports"] = state.VappTransports
 		inputs["vmwareToolsStatus"] = state.VmwareToolsStatus
 		inputs["vmxPath"] = state.VmxPath
+		inputs["waitForGuestIpTimeout"] = state.WaitForGuestIpTimeout
 		inputs["waitForGuestNetRoutable"] = state.WaitForGuestNetRoutable
 		inputs["waitForGuestNetTimeout"] = state.WaitForGuestNetTimeout
 	}
@@ -701,6 +709,14 @@ func (r *VirtualMachine) HvMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["hvMode"])
 }
 
+// List of IP addresses to ignore while waiting
+// for an available IP address using either of the waiters. Any IP addresses in
+// this list will be ignored if they show up so that the waiter will continue to
+// wait for a real IP address. Default: [].
+func (r *VirtualMachine) IgnoredGuestIps() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["ignoredGuestIps"])
+}
+
 // This is flagged if the virtual machine has been imported, or the
 // state has been migrated from a previous version of the resource. It
 // influences the behavior of the first post-import apply operation. See the
@@ -928,17 +944,31 @@ func (r *VirtualMachine) VmxPath() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vmxPath"])
 }
 
+// The amount of time, in minutes, to
+// wait for an available guest IP address on this virtual machine. This should
+// only be used if your version of VMware Tools does not allow the
+// `wait_for_guest_net_timeout` waiter to be
+// used. A value less than 1 disables the waiter. Default: 0.
+func (r *VirtualMachine) WaitForGuestIpTimeout() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["waitForGuestIpTimeout"])
+}
+
 // Controls whether or not the guest
 // network waiter waits for a routable address. When `false`, the waiter does
 // not wait for a default gateway, nor are IP addresses checked against any
-// discovered default gateways as part of its success criteria. Default: `true`.
+// discovered default gateways as part of its success criteria. This property is
+// ignored if the `wait_for_guest_ip_timeout`
+// waiter is used. Default: `true`.
 func (r *VirtualMachine) WaitForGuestNetRoutable() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitForGuestNetRoutable"])
 }
 
 // The amount of time, in minutes, to
-// wait for an available IP address on this virtual machine. A value less than 1
-// disables the waiter. Default: 5 minutes.
+// wait for an available IP address on this virtual machine's NICs. Older
+// versions of VMware Tools do not populate this property. In those cases, this
+// waiter can be disabled and the
+// `wait_for_guest_ip_timeout` waiter can be used
+// instead. A value less than 1 disables the waiter. Default: 5 minutes.
 func (r *VirtualMachine) WaitForGuestNetTimeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["waitForGuestNetTimeout"])
 }
@@ -1069,6 +1099,11 @@ type VirtualMachineState struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode interface{}
+	// List of IP addresses to ignore while waiting
+	// for an available IP address using either of the waiters. Any IP addresses in
+	// this list will be ignored if they show up so that the waiter will continue to
+	// wait for a real IP address. Default: [].
+	IgnoredGuestIps interface{}
 	// This is flagged if the virtual machine has been imported, or the
 	// state has been migrated from a previous version of the resource. It
 	// influences the behavior of the first post-import apply operation. See the
@@ -1194,14 +1229,25 @@ type VirtualMachineState struct {
 	// The path of the virtual machine's configuration file in the VM's
 	// datastore.
 	VmxPath interface{}
+	// The amount of time, in minutes, to
+	// wait for an available guest IP address on this virtual machine. This should
+	// only be used if your version of VMware Tools does not allow the
+	// `wait_for_guest_net_timeout` waiter to be
+	// used. A value less than 1 disables the waiter. Default: 0.
+	WaitForGuestIpTimeout interface{}
 	// Controls whether or not the guest
 	// network waiter waits for a routable address. When `false`, the waiter does
 	// not wait for a default gateway, nor are IP addresses checked against any
-	// discovered default gateways as part of its success criteria. Default: `true`.
+	// discovered default gateways as part of its success criteria. This property is
+	// ignored if the `wait_for_guest_ip_timeout`
+	// waiter is used. Default: `true`.
 	WaitForGuestNetRoutable interface{}
 	// The amount of time, in minutes, to
-	// wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter. Default: 5 minutes.
+	// wait for an available IP address on this virtual machine's NICs. Older
+	// versions of VMware Tools do not populate this property. In those cases, this
+	// waiter can be disabled and the
+	// `wait_for_guest_ip_timeout` waiter can be used
+	// instead. A value less than 1 disables the waiter. Default: 5 minutes.
 	WaitForGuestNetTimeout interface{}
 }
 
@@ -1313,6 +1359,11 @@ type VirtualMachineArgs struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode interface{}
+	// List of IP addresses to ignore while waiting
+	// for an available IP address using either of the waiters. Any IP addresses in
+	// this list will be ignored if they show up so that the waiter will continue to
+	// wait for a real IP address. Default: [].
+	IgnoredGuestIps interface{}
 	// Controls the scheduling delay of the
 	// virtual machine. Use a higher sensitivity for applications that require lower
 	// latency, such as VOIP, media player applications, or applications that
@@ -1414,13 +1465,24 @@ type VirtualMachineArgs struct {
 	// configuration for
 	// more details.
 	Vapp interface{}
+	// The amount of time, in minutes, to
+	// wait for an available guest IP address on this virtual machine. This should
+	// only be used if your version of VMware Tools does not allow the
+	// `wait_for_guest_net_timeout` waiter to be
+	// used. A value less than 1 disables the waiter. Default: 0.
+	WaitForGuestIpTimeout interface{}
 	// Controls whether or not the guest
 	// network waiter waits for a routable address. When `false`, the waiter does
 	// not wait for a default gateway, nor are IP addresses checked against any
-	// discovered default gateways as part of its success criteria. Default: `true`.
+	// discovered default gateways as part of its success criteria. This property is
+	// ignored if the `wait_for_guest_ip_timeout`
+	// waiter is used. Default: `true`.
 	WaitForGuestNetRoutable interface{}
 	// The amount of time, in minutes, to
-	// wait for an available IP address on this virtual machine. A value less than 1
-	// disables the waiter. Default: 5 minutes.
+	// wait for an available IP address on this virtual machine's NICs. Older
+	// versions of VMware Tools do not populate this property. In those cases, this
+	// waiter can be disabled and the
+	// `wait_for_guest_ip_timeout` waiter can be used
+	// instead. A value less than 1 disables the waiter. Default: 5 minutes.
 	WaitForGuestNetTimeout interface{}
 }

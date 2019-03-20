@@ -31,7 +31,7 @@ class VirtualDisk(pulumi.CustomResource):
     The name of the datastore in which to create the
     disk.
     """
-    size: pulumi.Output[int]
+    size: pulumi.Output[float]
     """
     Size of the disk (in GB).
     """
@@ -69,7 +69,7 @@ class VirtualDisk(pulumi.CustomResource):
                your infrastructure.
         :param pulumi.Input[str] datastore: The name of the datastore in which to create the
                disk.
-        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[float] size: Size of the disk (in GB).
         :param pulumi.Input[str] type: The type of disk to create. Can be one of
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click

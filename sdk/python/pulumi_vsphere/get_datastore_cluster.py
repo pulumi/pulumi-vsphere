@@ -8,7 +8,7 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class GetDatastoreClusterResult(object):
+class GetDatastoreClusterResult:
     """
     A collection of values returned by getDatastoreCluster.
     """
@@ -20,7 +20,7 @@ class GetDatastoreClusterResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_datastore_cluster(datacenter_id=None, name=None):
+async def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     """
     The `vsphere_datastore_cluster` data source can be used to discover the ID of a
     datastore cluster in vSphere. This is useful to fetch the ID of a datastore
@@ -38,7 +38,7 @@ async def get_datastore_cluster(datacenter_id=None, name=None):
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__)
+    __ret__ = await pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts)
 
     return GetDatastoreClusterResult(
         id=__ret__.get('id'))

@@ -42,15 +42,15 @@ class DistributedPortGroup(pulumi.CustomResource):
     The ID of the DVS to add the
     port group to. Forces a new resource if changed.
     """
-    egress_shaping_average_bandwidth: pulumi.Output[int]
-    egress_shaping_burst_size: pulumi.Output[int]
+    egress_shaping_average_bandwidth: pulumi.Output[float]
+    egress_shaping_burst_size: pulumi.Output[float]
     egress_shaping_enabled: pulumi.Output[bool]
-    egress_shaping_peak_bandwidth: pulumi.Output[int]
+    egress_shaping_peak_bandwidth: pulumi.Output[float]
     failback: pulumi.Output[bool]
-    ingress_shaping_average_bandwidth: pulumi.Output[int]
-    ingress_shaping_burst_size: pulumi.Output[int]
+    ingress_shaping_average_bandwidth: pulumi.Output[float]
+    ingress_shaping_burst_size: pulumi.Output[float]
     ingress_shaping_enabled: pulumi.Output[bool]
-    ingress_shaping_peak_bandwidth: pulumi.Output[int]
+    ingress_shaping_peak_bandwidth: pulumi.Output[float]
     key: pulumi.Output[str]
     lacp_enabled: pulumi.Output[bool]
     lacp_mode: pulumi.Output[str]
@@ -82,7 +82,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     resource pool set on this port group to be overridden on an individual port.
     """
     notify_switches: pulumi.Output[bool]
-    number_of_ports: pulumi.Output[int]
+    number_of_ports: pulumi.Output[float]
     """
     The number of ports available on this port
     group. Cannot be decreased below the amount of used ports on the port group.
@@ -98,7 +98,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     the ports in this port group. See the `portNameFormat` attribute listed
     [here][ext-vsphere-portname-format] for details on the format syntax.
     """
-    port_private_secondary_vlan_id: pulumi.Output[int]
+    port_private_secondary_vlan_id: pulumi.Output[float]
     security_policy_override_allowed: pulumi.Output[bool]
     """
     Allow the [security policy
@@ -131,7 +131,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     options][uplink-teaming-settings] on this port group to be overridden on an
     individual port.
     """
-    vlan_id: pulumi.Output[int]
+    vlan_id: pulumi.Output[float]
     vlan_override_allowed: pulumi.Output[bool]
     """
     Allow the [VLAN settings][vlan-settings]
@@ -162,38 +162,19 @@ class DistributedPortGroup(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] active_uplinks
-        :param pulumi.Input[bool] allow_forged_transmits
-        :param pulumi.Input[bool] allow_mac_changes
-        :param pulumi.Input[bool] allow_promiscuous
         :param pulumi.Input[bool] auto_expand: Allows the port group to create additional ports
                past the limit specified in `number_of_ports` if necessary. Default: `true`.
-        :param pulumi.Input[bool] block_all_ports
         :param pulumi.Input[bool] block_override_allowed: Allow the [port shutdown
                policy][port-shutdown-policy] to be overridden on an individual port.
-        :param pulumi.Input[bool] check_beacon
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
                value string to set for port group. See [here][docs-setting-custom-attributes]
                for a reference on how to set values for custom attributes.
         :param pulumi.Input[str] description: An optional description for the port group.
-        :param pulumi.Input[bool] directpath_gen2_allowed
         :param pulumi.Input[str] distributed_virtual_switch_uuid: The ID of the DVS to add the
                port group to. Forces a new resource if changed.
-        :param pulumi.Input[int] egress_shaping_average_bandwidth
-        :param pulumi.Input[int] egress_shaping_burst_size
-        :param pulumi.Input[bool] egress_shaping_enabled
-        :param pulumi.Input[int] egress_shaping_peak_bandwidth
-        :param pulumi.Input[bool] failback
-        :param pulumi.Input[int] ingress_shaping_average_bandwidth
-        :param pulumi.Input[int] ingress_shaping_burst_size
-        :param pulumi.Input[bool] ingress_shaping_enabled
-        :param pulumi.Input[int] ingress_shaping_peak_bandwidth
-        :param pulumi.Input[bool] lacp_enabled
-        :param pulumi.Input[str] lacp_mode
         :param pulumi.Input[bool] live_port_moving_allowed: Allow a port in this port group to be
                moved to another port group while it is connected.
         :param pulumi.Input[str] name: The name of the port group.
-        :param pulumi.Input[bool] netflow_enabled
         :param pulumi.Input[bool] netflow_override_allowed: Allow the [Netflow
                policy][netflow-policy] on this port group to be overridden on an individual
                port.
@@ -202,36 +183,28 @@ class DistributedPortGroup(pulumi.CustomResource):
                association.
         :param pulumi.Input[bool] network_resource_pool_override_allowed: Allow the network
                resource pool set on this port group to be overridden on an individual port.
-        :param pulumi.Input[bool] notify_switches
-        :param pulumi.Input[int] number_of_ports: The number of ports available on this port
+        :param pulumi.Input[float] number_of_ports: The number of ports available on this port
                group. Cannot be decreased below the amount of used ports on the port group.
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset a port's settings to the
                settings defined on this port group policy when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
-        :param pulumi.Input[int] port_private_secondary_vlan_id
         :param pulumi.Input[bool] security_policy_override_allowed: Allow the [security policy
                settings][sec-policy-settings] defined in this port group policy to be
                overridden on an individual port.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the [traffic shaping
                options][traffic-shaping-settings] on this port group policy to be overridden
                on an individual port.
-        :param pulumi.Input[list] standby_uplinks
-        :param pulumi.Input[list] tags
-        :param pulumi.Input[str] teaming_policy
         :param pulumi.Input[bool] traffic_filter_override_allowed: Allow any traffic filters on
                this port group to be overridden on an individual port.
-        :param pulumi.Input[bool] tx_uplink
         :param pulumi.Input[str] type: The port group type. Can be one of `earlyBinding` (static
                binding) or `ephemeral`. Default: `earlyBinding`.
         :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the [uplink teaming
                options][uplink-teaming-settings] on this port group to be overridden on an
                individual port.
-        :param pulumi.Input[int] vlan_id
         :param pulumi.Input[bool] vlan_override_allowed: Allow the [VLAN settings][vlan-settings]
                on this port group to be overridden on an individual port.
-        :param pulumi.Input[list] vlan_ranges
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

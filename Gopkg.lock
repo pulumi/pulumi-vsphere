@@ -33,6 +33,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "5f10fee965225ac1eecdc234c09daf5cd9e7f7b6"
+  version = "v1.2.1"
 
 [[projects]]
   digest = "1:a93eae425b2bb209ecba9f76a8e513bb11c67fc46aba4d7465c0d35a7d94ace3"
@@ -105,6 +106,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "4aabc24848ce5fd31929f7d1e4ea74d3709c14cd"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:79421244ba5848aae4b0a5c41e633a04e4894cb0b164a219dc8c15ec7facb7f1"
@@ -112,6 +114,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "2ee87856327ba09384cabd113bc6b5d174e9ec0f"
+  version = "v3.5.1"
 
 [[projects]]
   branch = "master"
@@ -127,6 +130,7 @@
   packages = ["spew"]
   pruneopts = ""
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
 
 [[projects]]
   digest = "1:82d115eea49c038ccbcd74608c4815e7addc2f30ce861544d725d2770900c280"
@@ -187,14 +191,15 @@
   packages = ["."]
   pruneopts = ""
   revision = "766e555c68dc8bda90d197ee8946c37519c19409"
+  version = "v1.23.1"
 
 [[projects]]
-  digest = "1:ac02823572830fb544c7a94152465ca7833aaf1f186aeb4445ce9d34aacfcc4a"
+  digest = "1:a4724325f1d3bd4127dac415e980c7c28f2e08f4d0ba2513e7de9980906604ef"
   name = "github.com/gofrs/flock"
   packages = ["."]
   pruneopts = ""
-  revision = "7f43ea2e6a643ad441fc12d0ecc0d3388b300c53"
-  version = "v0.7.0"
+  revision = "392e7fae8f1b0bdbd67dad7237d23f618feb6dbb"
+  version = "v0.7.1"
 
 [[projects]]
   branch = "master"
@@ -205,7 +210,7 @@
   revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
 
 [[projects]]
-  digest = "1:3dd078fda7500c341bc26cfbc6c6a34614f295a2457149fc1045cab767cbcf18"
+  digest = "1:529d738b7976c3848cae5cf3a8036440166835e389c1f617af701eeb12a0518d"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -218,8 +223,8 @@
     "ptypes/timestamp",
   ]
   pruneopts = ""
-  revision = "aa810b61a9c79d51363740d207bb46cf8e620ed5"
-  version = "v1.2.0"
+  revision = "b5d812f8a3706043e23a9cd5babf2e5423744d30"
+  version = "v1.3.1"
 
 [[projects]]
   branch = "master"
@@ -325,7 +330,7 @@
   revision = "0dc08b1671f34c4250ce212759ebd880f743d883"
 
 [[projects]]
-  digest = "1:9cb70bd48df04061b45f23c7e8ded70af26323ce9fbb2dbf36a7b69393d1062c"
+  digest = "1:3706ce570a62d23a1ad087cda9fa52c086c25f34ba23dfc3a3350eb2d32337ce"
   name = "github.com/hashicorp/terraform"
   packages = [
     "config",
@@ -356,7 +361,8 @@
     "version",
   ]
   pruneopts = ""
-  revision = "3505769600eec4a85a3be203a9c7eba7f97c5ade"
+  revision = "41e50bd32a8825a84535e353c3674af8ce799161"
+  version = "v0.11.7"
 
 [[projects]]
   digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"
@@ -398,12 +404,12 @@
   version = "0.5"
 
 [[projects]]
-  digest = "1:0f79867e9aac8a4e20bc1b0956d81f340da9ade9bcc00a4bfb1ebd738c152f7a"
+  digest = "1:85fdd2ce48a3fd1ddc4671b972f50a47dcf2eebb24813e90b28a8a1fcf65ee5a"
   name = "github.com/mattn/go-colorable"
   packages = ["."]
   pruneopts = ""
-  revision = "efa589957cd060542a26d2dd7832fd6a6c6c3ade"
-  version = "v0.1.0"
+  revision = "3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
+  version = "v0.1.1"
 
 [[projects]]
   digest = "1:420bb8eabfa6dff0cb5c8e786489a420e7e9d93a8b1d83882cce70c5a5b9bc3e"
@@ -411,6 +417,7 @@
   packages = ["."]
   pruneopts = ""
   revision = "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
+  version = "v0.0.2"
 
 [[projects]]
   branch = "master"
@@ -533,7 +540,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3cd2ee0fc4d4c21d8a6373ce710e73125ebd7512fa44faef76fad971644eb4d0"
+  digest = "1:4de24d3dd2b3f41fd551a4d75a1d8a47366dc4fdfa4ececfa9944d57a0e133c0"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -550,6 +557,7 @@
     "pkg/resource/config",
     "pkg/resource/deploy",
     "pkg/resource/deploy/providers",
+    "pkg/resource/edit",
     "pkg/resource/graph",
     "pkg/resource/plugin",
     "pkg/resource/provider",
@@ -580,18 +588,18 @@
     "sdk/proto/go",
   ]
   pruneopts = ""
-  revision = "4229f85fdaabcfc7bc866379b271b730c2384b6c"
+  revision = "ecb50b9b85db370ac58bc914bc4aa4ba3aeeb6d0"
 
 [[projects]]
   branch = "master"
-  digest = "1:ee977962b3fd8565483e1114262993016dcec9f170447a86b690b08ad5ab5bde"
+  digest = "1:0013fa04c4fef0969d8de96303da07015e409fecdf54ae865bd2735165d44f1b"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen",
   ]
   pruneopts = ""
-  revision = "50c3039457f71c1bbc62f0acd86e0f8ed72e2cea"
+  revision = "ac9bdb2d464bc6d64b9a97fadbb8c6b57f2a4fb0"
 
 [[projects]]
   branch = "master"
@@ -662,7 +670,7 @@
   version = "v1.3.0"
 
 [[projects]]
-  digest = "1:f224a44a4cfa713eab869a484ac2b648d5dd913d3657e9144d1d77602b979a74"
+  digest = "1:364fb52596f5d5286b1e3fe6b769c73bddf65d0d141f4b90161e6158578ebeee"
   name = "github.com/terraform-providers/terraform-provider-vsphere"
   packages = [
     "vsphere",
@@ -687,8 +695,8 @@
     "vsphere/internal/vmworkflow",
   ]
   pruneopts = ""
-  revision = "b3258c5d590d4ba7291e3bdbc85b9b294b7656bd"
-  version = "v1.9.1"
+  revision = "a8d89bfac26dcee6759eabbbf9ed7e03015197e9"
+  version = "v1.10.0"
 
 [[projects]]
   branch = "master"
@@ -738,6 +746,7 @@
   ]
   pruneopts = ""
   revision = "0c6b41e72360850ca4f98dc341fd999726ea007f"
+  version = "v0.5.4"
 
 [[projects]]
   digest = "1:f9fe29bf856d49f9a51d6001588cb5ee5d65c8a7ff5e8b0dd5423c3a510f0833"
@@ -765,6 +774,7 @@
   ]
   pruneopts = ""
   revision = "e3a01f9611c32b2362366434bcd671516e78955d"
+  version = "v0.18.0"
 
 [[projects]]
   digest = "1:420a3124eb99616caf0d105d255376bd74ce652b58a5d5425de1dae54d6982ff"
@@ -775,12 +785,12 @@
   version = "v1.5.0"
 
 [[projects]]
-  digest = "1:afc0b8068986a01e2d8f449917829753a54f6bd4d1265c2b4ad9cba75560020f"
+  digest = "1:172f94a6b3644a8f9e6b5e5b7fc9fe1e42d424f52a0300b2e7ab1e57db73f85d"
   name = "github.com/xanzy/ssh-agent"
   packages = ["."]
   pruneopts = ""
-  revision = "640f0ab560aeb89d523bb6ac322b1244d5c3796c"
-  version = "v0.2.0"
+  revision = "6a3e2ff9e7c564f36873c2e36413f634534f1c44"
+  version = "v0.2.1"
 
 [[projects]]
   digest = "1:ee9d0fafc925d015e7e7ab627a6b9e852539b5a74ca780cfebb660db6c374a23"
@@ -838,6 +848,14 @@
   ]
   pruneopts = ""
   revision = "1c05540f6879653db88113bc4a2b70aec4bd491f"
+
+[[projects]]
+  branch = "master"
+  digest = "1:0142c968b74c157abbb0220c05fa2bdde8a3a4509d6134b35ef75d5b58afb721"
+  name = "golang.org/x/sync"
+  packages = ["errgroup"]
+  pruneopts = ""
+  revision = "e225da77a7e68af35c70ccbf71af2b83e6acac3c"
 
 [[projects]]
   digest = "1:c61dac47382f9834b58d28a3ef9072a569960d364fd76afc19487fb63550be81"
@@ -925,12 +943,13 @@
   version = "v4.3.0"
 
 [[projects]]
-  digest = "1:a72d911e18578e34367f4b849340501c7e6a2787a3a05651b3d53c6cb96990f4"
+  digest = "1:8b8c3a2fa9908caa5d9e1c8a7f57e527758522bbde64e2bafd59f86293c23da1"
   name = "gopkg.in/src-d/go-git.v4"
   packages = [
     ".",
     "config",
     "internal/revision",
+    "internal/url",
     "plumbing",
     "plumbing/cache",
     "plumbing/filemode",
@@ -970,8 +989,8 @@
     "utils/merkletrie/noder",
   ]
   pruneopts = ""
-  revision = "a1f6ef44dfed1253ef7f3bc049f66b15f8fc2ab2"
-  version = "v4.9.1"
+  revision = "db6c41c156481962abf9a55a324858674c25ab08"
+  version = "v4.10.0"
 
 [[projects]]
   digest = "1:ceec7e96590fb8168f36df4795fefe17051d4b0c2acc7ec4e260d8138c4dafac"
