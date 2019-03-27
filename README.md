@@ -2,8 +2,6 @@
 
 # VSphere provider
 
-**This library is still under development.**
-
 The VSphere resource provider for Pulumi lets you use VSphere resources in your infrastructure 
 programs. To use this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
@@ -35,4 +33,6 @@ To use from Go, use `go get` to grab the latest version of the library
 
 ## Reference
 
-API documentation is not yet published.
+NodeJS: https://pulumi.io/reference/pkg/nodejs/@pulumi/vsphere/index.html
+Python: Coming soon!
+Go: https://godoc.org/github.com/pulumi/pulumi-vsphere/sdk/go/vsphere
