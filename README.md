@@ -33,6 +33,6 @@ To use from Go, use `go get` to grab the latest version of the library
 
 ## Reference
 
-NodeJS: https://pulumi.io/reference/pkg/nodejs/@pulumi/vsphere/index.html
-Python: Coming soon!
-Go: https://godoc.org/github.com/pulumi/pulumi-vsphere/sdk/go/vsphere
+* NodeJS: https://pulumi.io/reference/pkg/nodejs/@pulumi/vsphere/index.html
+* Python: Coming soon!
+* Go: https://godoc.org/github.com/pulumi/pulumi-vsphere/sdk/go/vsphere
