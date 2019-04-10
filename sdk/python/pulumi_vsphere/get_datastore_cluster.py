@@ -12,9 +12,15 @@ class GetDatastoreClusterResult:
     """
     A collection of values returned by getDatastoreCluster.
     """
-    def __init__(__self__, id=None):
+    def __init__(__self__, datacenter_id=None, name=None, id=None):
+        if datacenter_id and not isinstance(datacenter_id, str):
+            raise TypeError("Expected argument 'datacenter_id' to be a str")
+        __self__.datacenter_id = datacenter_id
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -41,4 +47,6 @@ async def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts)
 
     return GetDatastoreClusterResult(
+        datacenter_id=__ret__.get('datacenterId'),
+        name=__ret__.get('name'),
         id=__ret__.get('id'))

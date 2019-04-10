@@ -24,6 +24,8 @@ func LookupVappContainer(ctx *pulumi.Context, args *GetVappContainerArgs) (*GetV
 		return nil, err
 	}
 	return &GetVappContainerResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -40,6 +42,8 @@ type GetVappContainerArgs struct {
 
 // A collection of values returned by getVappContainer.
 type GetVappContainerResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

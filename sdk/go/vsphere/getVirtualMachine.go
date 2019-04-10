@@ -27,11 +27,14 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *GetVirtualMachineArgs) (*Ge
 	}
 	return &GetVirtualMachineResult{
 		AlternateGuestName: outputs["alternateGuestName"],
+		DatacenterId: outputs["datacenterId"],
 		Disks: outputs["disks"],
 		Firmware: outputs["firmware"],
 		GuestId: outputs["guestId"],
+		Name: outputs["name"],
 		NetworkInterfaceTypes: outputs["networkInterfaceTypes"],
 		ScsiBusSharing: outputs["scsiBusSharing"],
+		ScsiControllerScanCount: outputs["scsiControllerScanCount"],
 		ScsiType: outputs["scsiType"],
 		Id: outputs["id"],
 	}, nil
@@ -58,6 +61,7 @@ type GetVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
 	// guest_id is a non-specific operating system, like `otherGuest`.
 	AlternateGuestName interface{}
+	DatacenterId interface{}
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `vsphere_virtual_machine` resource in the order the resource expects
@@ -71,6 +75,7 @@ type GetVirtualMachineResult struct {
 	Firmware interface{}
 	// The guest ID of the virtual machine or template.
 	GuestId interface{}
+	Name interface{}
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
@@ -79,6 +84,7 @@ type GetVirtualMachineResult struct {
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsi_controller_scan_count` are scanned.
 	ScsiBusSharing interface{}
+	ScsiControllerScanCount interface{}
 	// The common type of all SCSI controllers on this virtual machine.
 	// Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
 	// SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when

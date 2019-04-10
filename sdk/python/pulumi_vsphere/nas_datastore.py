@@ -188,17 +188,17 @@ class NasDatastore(pulumi.CustomResource):
         __props__['folder'] = folder
 
         if host_system_ids is None:
-            raise TypeError('Missing required property host_system_ids')
+            raise TypeError("Missing required property 'host_system_ids'")
         __props__['host_system_ids'] = host_system_ids
 
         __props__['name'] = name
 
         if remote_hosts is None:
-            raise TypeError('Missing required property remote_hosts')
+            raise TypeError("Missing required property 'remote_hosts'")
         __props__['remote_hosts'] = remote_hosts
 
         if remote_path is None:
-            raise TypeError('Missing required property remote_path')
+            raise TypeError("Missing required property 'remote_path'")
         __props__['remote_path'] = remote_path
 
         __props__['security_type'] = security_type

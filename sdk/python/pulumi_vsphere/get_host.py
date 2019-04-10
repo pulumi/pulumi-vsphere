@@ -12,16 +12,22 @@ class GetHostResult:
     """
     A collection of values returned by getHost.
     """
-    def __init__(__self__, resource_pool_id=None, id=None):
+    def __init__(__self__, datacenter_id=None, name=None, resource_pool_id=None, id=None):
+        if datacenter_id and not isinstance(datacenter_id, str):
+            raise TypeError("Expected argument 'datacenter_id' to be a str")
+        __self__.datacenter_id = datacenter_id
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if resource_pool_id and not isinstance(resource_pool_id, str):
-            raise TypeError('Expected argument resource_pool_id to be a str')
+            raise TypeError("Expected argument 'resource_pool_id' to be a str")
         __self__.resource_pool_id = resource_pool_id
         """
         The [managed object ID][docs-about-morefs] of the host's
         root resource pool.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -40,5 +46,7 @@ async def get_host(datacenter_id=None,name=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__, opts=opts)
 
     return GetHostResult(
+        datacenter_id=__ret__.get('datacenterId'),
+        name=__ret__.get('name'),
         resource_pool_id=__ret__.get('resourcePoolId'),
         id=__ret__.get('id'))

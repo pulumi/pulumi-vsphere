@@ -206,7 +206,7 @@ class HaVmOverride(pulumi.CustomResource):
         __props__ = dict()
 
         if compute_cluster_id is None:
-            raise TypeError('Missing required property compute_cluster_id')
+            raise TypeError("Missing required property 'compute_cluster_id'")
         __props__['compute_cluster_id'] = compute_cluster_id
 
         __props__['ha_datastore_apd_recovery_action'] = ha_datastore_apd_recovery_action
@@ -236,7 +236,7 @@ class HaVmOverride(pulumi.CustomResource):
         __props__['ha_vm_restart_timeout'] = ha_vm_restart_timeout
 
         if virtual_machine_id is None:
-            raise TypeError('Missing required property virtual_machine_id')
+            raise TypeError("Missing required property 'virtual_machine_id'")
         __props__['virtual_machine_id'] = virtual_machine_id
 
         super(HaVmOverride, __self__).__init__(

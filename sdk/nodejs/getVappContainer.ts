@@ -54,6 +54,8 @@ export interface GetVappContainerArgs {
  * A collection of values returned by getVappContainer.
  */
 export interface GetVappContainerResult {
+    readonly datacenterId: string;
+    readonly name: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

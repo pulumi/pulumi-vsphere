@@ -507,7 +507,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         __props__['custom_attributes'] = custom_attributes
 
         if datacenter_id is None:
-            raise TypeError('Missing required property datacenter_id')
+            raise TypeError("Missing required property 'datacenter_id'")
         __props__['datacenter_id'] = datacenter_id
 
         __props__['description'] = description

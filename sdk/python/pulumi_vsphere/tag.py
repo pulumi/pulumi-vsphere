@@ -60,7 +60,7 @@ class Tag(pulumi.CustomResource):
         __props__ = dict()
 
         if category_id is None:
-            raise TypeError('Missing required property category_id')
+            raise TypeError("Missing required property 'category_id'")
         __props__['category_id'] = category_id
 
         __props__['description'] = description

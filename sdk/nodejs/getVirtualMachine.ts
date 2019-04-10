@@ -69,6 +69,7 @@ export interface GetVirtualMachineResult {
      * guest_id is a non-specific operating system, like `otherGuest`.
      */
     readonly alternateGuestName: string;
+    readonly datacenterId?: string;
     /**
      * Information about each of the disks on this virtual machine or
      * template. These are sorted by bus and unit number so that they can be applied
@@ -88,6 +89,7 @@ export interface GetVirtualMachineResult {
      * The guest ID of the virtual machine or template.
      */
     readonly guestId: string;
+    readonly name: string;
     /**
      * The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
@@ -100,6 +102,7 @@ export interface GetVirtualMachineResult {
      * controllers defined by `scsi_controller_scan_count` are scanned.
      */
     readonly scsiBusSharing: string;
+    readonly scsiControllerScanCount?: number;
     /**
      * The common type of all SCSI controllers on this virtual machine.
      * Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic

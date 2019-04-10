@@ -20,6 +20,7 @@ func LookupFolder(ctx *pulumi.Context, args *GetFolderArgs) (*GetFolderResult, e
 		return nil, err
 	}
 	return &GetFolderResult{
+		Path: outputs["path"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -36,6 +37,7 @@ type GetFolderArgs struct {
 
 // A collection of values returned by getFolder.
 type GetFolderResult struct {
+	Path interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

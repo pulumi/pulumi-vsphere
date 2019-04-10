@@ -45,6 +45,7 @@ export interface GetDatacenterArgs {
  * A collection of values returned by getDatacenter.
  */
 export interface GetDatacenterResult {
+    readonly name?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

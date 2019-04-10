@@ -12,16 +12,19 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, disks=None, firmware=None, guest_id=None, network_interface_types=None, scsi_bus_sharing=None, scsi_type=None, id=None):
+    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, id=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
-            raise TypeError('Expected argument alternate_guest_name to be a str')
+            raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         __self__.alternate_guest_name = alternate_guest_name
         """
         The alternate guest name of the virtual machine when
         guest_id is a non-specific operating system, like `otherGuest`.
         """
+        if datacenter_id and not isinstance(datacenter_id, str):
+            raise TypeError("Expected argument 'datacenter_id' to be a str")
+        __self__.datacenter_id = datacenter_id
         if disks and not isinstance(disks, list):
-            raise TypeError('Expected argument disks to be a list')
+            raise TypeError("Expected argument 'disks' to be a list")
         __self__.disks = disks
         """
         Information about each of the disks on this virtual machine or
@@ -34,19 +37,22 @@ class GetVirtualMachineResult:
         are scanned for disks. The sub-attributes are:
         """
         if firmware and not isinstance(firmware, str):
-            raise TypeError('Expected argument firmware to be a str')
+            raise TypeError("Expected argument 'firmware' to be a str")
         __self__.firmware = firmware
         """
         The firmware type for this virtual machine. Can be `bios` or `efi`.
         """
         if guest_id and not isinstance(guest_id, str):
-            raise TypeError('Expected argument guest_id to be a str')
+            raise TypeError("Expected argument 'guest_id' to be a str")
         __self__.guest_id = guest_id
         """
         The guest ID of the virtual machine or template.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if network_interface_types and not isinstance(network_interface_types, list):
-            raise TypeError('Expected argument network_interface_types to be a list')
+            raise TypeError("Expected argument 'network_interface_types' to be a list")
         __self__.network_interface_types = network_interface_types
         """
         The network interface types for each network
@@ -54,15 +60,18 @@ class GetVirtualMachineResult:
         `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         """
         if scsi_bus_sharing and not isinstance(scsi_bus_sharing, str):
-            raise TypeError('Expected argument scsi_bus_sharing to be a str')
+            raise TypeError("Expected argument 'scsi_bus_sharing' to be a str")
         __self__.scsi_bus_sharing = scsi_bus_sharing
         """
         Mode for sharing the SCSI bus. The modes are
         physicalSharing, virtualSharing, and noSharing. Only the first number of
         controllers defined by `scsi_controller_scan_count` are scanned.
         """
+        if scsi_controller_scan_count and not isinstance(scsi_controller_scan_count, float):
+            raise TypeError("Expected argument 'scsi_controller_scan_count' to be a float")
+        __self__.scsi_controller_scan_count = scsi_controller_scan_count
         if scsi_type and not isinstance(scsi_type, str):
-            raise TypeError('Expected argument scsi_type to be a str')
+            raise TypeError("Expected argument 'scsi_type' to be a str")
         __self__.scsi_type = scsi_type
         """
         The common type of all SCSI controllers on this virtual machine.
@@ -72,7 +81,7 @@ class GetVirtualMachineResult:
         defined by `scsi_controller_scan_count` are scanned.
         """
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -97,10 +106,13 @@ async def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_
 
     return GetVirtualMachineResult(
         alternate_guest_name=__ret__.get('alternateGuestName'),
+        datacenter_id=__ret__.get('datacenterId'),
         disks=__ret__.get('disks'),
         firmware=__ret__.get('firmware'),
         guest_id=__ret__.get('guestId'),
+        name=__ret__.get('name'),
         network_interface_types=__ret__.get('networkInterfaceTypes'),
         scsi_bus_sharing=__ret__.get('scsiBusSharing'),
+        scsi_controller_scan_count=__ret__.get('scsiControllerScanCount'),
         scsi_type=__ret__.get('scsiType'),
         id=__ret__.get('id'))

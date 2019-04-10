@@ -12,12 +12,18 @@ class GetDistributedVirtualSwitchResult:
     """
     A collection of values returned by getDistributedVirtualSwitch.
     """
-    def __init__(__self__, uplinks=None, id=None):
+    def __init__(__self__, datacenter_id=None, name=None, uplinks=None, id=None):
+        if datacenter_id and not isinstance(datacenter_id, str):
+            raise TypeError("Expected argument 'datacenter_id' to be a str")
+        __self__.datacenter_id = datacenter_id
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if uplinks and not isinstance(uplinks, list):
-            raise TypeError('Expected argument uplinks to be a list')
+            raise TypeError("Expected argument 'uplinks' to be a list")
         __self__.uplinks = uplinks
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -43,5 +49,7 @@ async def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None)
     __ret__ = await pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts)
 
     return GetDistributedVirtualSwitchResult(
+        datacenter_id=__ret__.get('datacenterId'),
+        name=__ret__.get('name'),
         uplinks=__ret__.get('uplinks'),
         id=__ret__.get('id'))

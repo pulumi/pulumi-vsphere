@@ -23,6 +23,8 @@ func LookupNetwork(ctx *pulumi.Context, args *GetNetworkArgs) (*GetNetworkResult
 		return nil, err
 	}
 	return &GetNetworkResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		Type: outputs["type"],
 		Id: outputs["id"],
 	}, nil
@@ -42,6 +44,8 @@ type GetNetworkArgs struct {
 
 // A collection of values returned by getNetwork.
 type GetNetworkResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	Type interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

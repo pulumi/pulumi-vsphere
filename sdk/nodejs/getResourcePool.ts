@@ -86,6 +86,8 @@ export interface GetResourcePoolArgs {
  * A collection of values returned by getResourcePool.
  */
 export interface GetResourcePoolResult {
+    readonly datacenterId?: string;
+    readonly name?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

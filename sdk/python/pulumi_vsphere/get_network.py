@@ -12,12 +12,18 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, type=None, id=None):
+    def __init__(__self__, datacenter_id=None, name=None, type=None, id=None):
+        if datacenter_id and not isinstance(datacenter_id, str):
+            raise TypeError("Expected argument 'datacenter_id' to be a str")
+        __self__.datacenter_id = datacenter_id
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if type and not isinstance(type, str):
-            raise TypeError('Expected argument type to be a str')
+            raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -38,5 +44,7 @@ async def get_network(datacenter_id=None,name=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts)
 
     return GetNetworkResult(
+        datacenter_id=__ret__.get('datacenterId'),
+        name=__ret__.get('name'),
         type=__ret__.get('type'),
         id=__ret__.get('id'))

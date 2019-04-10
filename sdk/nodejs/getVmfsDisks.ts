@@ -71,6 +71,9 @@ export interface GetVmfsDisksResult {
      * operation, matching the supplied `filter`, if provided.
      */
     readonly disks: string[];
+    readonly filter?: string;
+    readonly hostSystemId: string;
+    readonly rescan?: boolean;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

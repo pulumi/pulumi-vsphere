@@ -51,6 +51,8 @@ export interface GetHostArgs {
  * A collection of values returned by getHost.
  */
 export interface GetHostResult {
+    readonly datacenterId: string;
+    readonly name?: string;
     /**
      * The [managed object ID][docs-about-morefs] of the host's
      * root resource pool.

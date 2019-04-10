@@ -182,7 +182,7 @@ class ResourcePool(pulumi.CustomResource):
         __props__['name'] = name
 
         if parent_resource_pool_id is None:
-            raise TypeError('Missing required property parent_resource_pool_id')
+            raise TypeError("Missing required property 'parent_resource_pool_id'")
         __props__['parent_resource_pool_id'] = parent_resource_pool_id
 
         __props__['tags'] = tags

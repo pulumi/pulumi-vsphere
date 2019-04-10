@@ -34,6 +34,8 @@ func LookupComputeCluster(ctx *pulumi.Context, args *GetComputeClusterArgs) (*Ge
 		return nil, err
 	}
 	return &GetComputeClusterResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		ResourcePoolId: outputs["resourcePoolId"],
 		Id: outputs["id"],
 	}, nil
@@ -53,6 +55,8 @@ type GetComputeClusterArgs struct {
 
 // A collection of values returned by getComputeCluster.
 type GetComputeClusterResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	ResourcePoolId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

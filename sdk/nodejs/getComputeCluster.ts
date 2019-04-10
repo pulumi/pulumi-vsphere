@@ -66,6 +66,8 @@ export interface GetComputeClusterArgs {
  * A collection of values returned by getComputeCluster.
  */
 export interface GetComputeClusterResult {
+    readonly datacenterId?: string;
+    readonly name: string;
     readonly resourcePoolId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

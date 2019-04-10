@@ -173,13 +173,13 @@ class VmfsDatastore(pulumi.CustomResource):
         __props__['datastore_cluster_id'] = datastore_cluster_id
 
         if disks is None:
-            raise TypeError('Missing required property disks')
+            raise TypeError("Missing required property 'disks'")
         __props__['disks'] = disks
 
         __props__['folder'] = folder
 
         if host_system_id is None:
-            raise TypeError('Missing required property host_system_id')
+            raise TypeError("Missing required property 'host_system_id'")
         __props__['host_system_id'] = host_system_id
 
         __props__['name'] = name

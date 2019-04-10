@@ -55,6 +55,8 @@ export interface GetNetworkArgs {
  * A collection of values returned by getNetwork.
  */
 export interface GetNetworkResult {
+    readonly datacenterId?: string;
+    readonly name: string;
     readonly type: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
