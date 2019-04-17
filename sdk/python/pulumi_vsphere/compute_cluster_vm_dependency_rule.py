@@ -99,11 +99,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         __props__ = dict()
 
         if compute_cluster_id is None:
-            raise TypeError('Missing required property compute_cluster_id')
+            raise TypeError("Missing required property 'compute_cluster_id'")
         __props__['compute_cluster_id'] = compute_cluster_id
 
         if dependency_vm_group_name is None:
-            raise TypeError('Missing required property dependency_vm_group_name')
+            raise TypeError("Missing required property 'dependency_vm_group_name'")
         __props__['dependency_vm_group_name'] = dependency_vm_group_name
 
         __props__['enabled'] = enabled
@@ -113,7 +113,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         __props__['name'] = name
 
         if vm_group_name is None:
-            raise TypeError('Missing required property vm_group_name')
+            raise TypeError("Missing required property 'vm_group_name'")
         __props__['vm_group_name'] = vm_group_name
 
         super(ComputeClusterVmDependencyRule, __self__).__init__(

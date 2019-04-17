@@ -23,6 +23,7 @@ func LookupDatacenter(ctx *pulumi.Context, args *GetDatacenterArgs) (*GetDatacen
 		return nil, err
 	}
 	return &GetDatacenterResult{
+		Name: outputs["name"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -36,6 +37,7 @@ type GetDatacenterArgs struct {
 
 // A collection of values returned by getDatacenter.
 type GetDatacenterResult struct {
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -95,13 +95,13 @@ class Folder(pulumi.CustomResource):
         __props__['datacenter_id'] = datacenter_id
 
         if path is None:
-            raise TypeError('Missing required property path')
+            raise TypeError("Missing required property 'path'")
         __props__['path'] = path
 
         __props__['tags'] = tags
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         super(Folder, __self__).__init__(

@@ -12,12 +12,18 @@ class GetTagResult:
     """
     A collection of values returned by getTag.
     """
-    def __init__(__self__, description=None, id=None):
+    def __init__(__self__, category_id=None, description=None, name=None, id=None):
+        if category_id and not isinstance(category_id, str):
+            raise TypeError("Expected argument 'category_id' to be a str")
+        __self__.category_id = category_id
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -43,5 +49,7 @@ async def get_tag(category_id=None,name=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts)
 
     return GetTagResult(
+        category_id=__ret__.get('categoryId'),
         description=__ret__.get('description'),
+        name=__ret__.get('name'),
         id=__ret__.get('id'))

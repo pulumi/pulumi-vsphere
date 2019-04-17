@@ -56,7 +56,9 @@ export interface GetTagArgs {
  * A collection of values returned by getTag.
  */
 export interface GetTagResult {
+    readonly categoryId: string;
     readonly description: string;
+    readonly name: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

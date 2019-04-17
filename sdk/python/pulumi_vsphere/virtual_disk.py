@@ -99,17 +99,17 @@ class VirtualDisk(pulumi.CustomResource):
         __props__['datacenter'] = datacenter
 
         if datastore is None:
-            raise TypeError('Missing required property datastore')
+            raise TypeError("Missing required property 'datastore'")
         __props__['datastore'] = datastore
 
         if size is None:
-            raise TypeError('Missing required property size')
+            raise TypeError("Missing required property 'size'")
         __props__['size'] = size
 
         __props__['type'] = type
 
         if vmdk_path is None:
-            raise TypeError('Missing required property vmdk_path')
+            raise TypeError("Missing required property 'vmdk_path'")
         __props__['vmdk_path'] = vmdk_path
 
         super(VirtualDisk, __self__).__init__(

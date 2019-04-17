@@ -195,7 +195,7 @@ class VappContainer(pulumi.CustomResource):
         __props__['parent_folder_id'] = parent_folder_id
 
         if parent_resource_pool_id is None:
-            raise TypeError('Missing required property parent_resource_pool_id')
+            raise TypeError("Missing required property 'parent_resource_pool_id'")
         __props__['parent_resource_pool_id'] = parent_resource_pool_id
 
         __props__['tags'] = tags

@@ -102,25 +102,25 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         __props__['consolidate'] = consolidate
 
         if description is None:
-            raise TypeError('Missing required property description')
+            raise TypeError("Missing required property 'description'")
         __props__['description'] = description
 
         if memory is None:
-            raise TypeError('Missing required property memory')
+            raise TypeError("Missing required property 'memory'")
         __props__['memory'] = memory
 
         if quiesce is None:
-            raise TypeError('Missing required property quiesce')
+            raise TypeError("Missing required property 'quiesce'")
         __props__['quiesce'] = quiesce
 
         __props__['remove_children'] = remove_children
 
         if snapshot_name is None:
-            raise TypeError('Missing required property snapshot_name')
+            raise TypeError("Missing required property 'snapshot_name'")
         __props__['snapshot_name'] = snapshot_name
 
         if virtual_machine_uuid is None:
-            raise TypeError('Missing required property virtual_machine_uuid')
+            raise TypeError("Missing required property 'virtual_machine_uuid'")
         __props__['virtual_machine_uuid'] = virtual_machine_uuid
 
         super(VirtualMachineSnapshot, __self__).__init__(

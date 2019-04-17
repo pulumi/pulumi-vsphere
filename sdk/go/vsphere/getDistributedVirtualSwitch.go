@@ -28,6 +28,8 @@ func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *GetDistributedVir
 		return nil, err
 	}
 	return &GetDistributedVirtualSwitchResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		Uplinks: outputs["uplinks"],
 		Id: outputs["id"],
 	}, nil
@@ -48,6 +50,8 @@ type GetDistributedVirtualSwitchArgs struct {
 
 // A collection of values returned by getDistributedVirtualSwitch.
 type GetDistributedVirtualSwitchResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	Uplinks interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

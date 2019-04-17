@@ -12,16 +12,25 @@ class GetVmfsDisksResult:
     """
     A collection of values returned by getVmfsDisks.
     """
-    def __init__(__self__, disks=None, id=None):
+    def __init__(__self__, disks=None, filter=None, host_system_id=None, rescan=None, id=None):
         if disks and not isinstance(disks, list):
-            raise TypeError('Expected argument disks to be a list')
+            raise TypeError("Expected argument 'disks' to be a list")
         __self__.disks = disks
         """
         A lexicographically sorted list of devices discovered by the
         operation, matching the supplied `filter`, if provided.
         """
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        __self__.filter = filter
+        if host_system_id and not isinstance(host_system_id, str):
+            raise TypeError("Expected argument 'host_system_id' to be a str")
+        __self__.host_system_id = host_system_id
+        if rescan and not isinstance(rescan, bool):
+            raise TypeError("Expected argument 'rescan' to be a bool")
+        __self__.rescan = rescan
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -45,4 +54,7 @@ async def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
 
     return GetVmfsDisksResult(
         disks=__ret__.get('disks'),
+        filter=__ret__.get('filter'),
+        host_system_id=__ret__.get('hostSystemId'),
+        rescan=__ret__.get('rescan'),
         id=__ret__.get('id'))

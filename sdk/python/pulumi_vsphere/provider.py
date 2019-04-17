@@ -43,7 +43,7 @@ class Provider(pulumi.ProviderResource):
         __props__['client_debug_path_run'] = client_debug_path_run
 
         if password is None:
-            raise TypeError('Missing required property password')
+            raise TypeError("Missing required property 'password'")
         __props__['password'] = password
 
         __props__['persist_session'] = pulumi.Output.from_input(persist_session).apply(json.dumps) if persist_session is not None else None
@@ -51,7 +51,7 @@ class Provider(pulumi.ProviderResource):
         __props__['rest_session_path'] = rest_session_path
 
         if user is None:
-            raise TypeError('Missing required property user')
+            raise TypeError("Missing required property 'user'")
         __props__['user'] = user
 
         __props__['vcenter_server'] = vcenter_server

@@ -202,7 +202,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         __props__ = dict()
 
         if active_nics is None:
-            raise TypeError('Missing required property active_nics')
+            raise TypeError("Missing required property 'active_nics'")
         __props__['active_nics'] = active_nics
 
         __props__['allow_forged_transmits'] = allow_forged_transmits
@@ -218,7 +218,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         __props__['failback'] = failback
 
         if host_system_id is None:
-            raise TypeError('Missing required property host_system_id')
+            raise TypeError("Missing required property 'host_system_id'")
         __props__['host_system_id'] = host_system_id
 
         __props__['link_discovery_operation'] = link_discovery_operation
@@ -230,7 +230,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         __props__['name'] = name
 
         if network_adapters is None:
-            raise TypeError('Missing required property network_adapters')
+            raise TypeError("Missing required property 'network_adapters'")
         __props__['network_adapters'] = network_adapters
 
         __props__['notify_switches'] = notify_switches
@@ -246,7 +246,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
 
         if standby_nics is None:
-            raise TypeError('Missing required property standby_nics')
+            raise TypeError("Missing required property 'standby_nics'")
         __props__['standby_nics'] = standby_nics
 
         __props__['teaming_policy'] = teaming_policy

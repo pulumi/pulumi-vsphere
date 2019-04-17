@@ -26,6 +26,9 @@ func LookupVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs) (*GetVmfsDisks
 	}
 	return &GetVmfsDisksResult{
 		Disks: outputs["disks"],
+		Filter: outputs["filter"],
+		HostSystemId: outputs["hostSystemId"],
+		Rescan: outputs["rescan"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -49,6 +52,9 @@ type GetVmfsDisksResult struct {
 	// A lexicographically sorted list of devices discovered by the
 	// operation, matching the supplied `filter`, if provided.
 	Disks interface{}
+	Filter interface{}
+	HostSystemId interface{}
+	Rescan interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

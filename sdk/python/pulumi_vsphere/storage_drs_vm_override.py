@@ -90,7 +90,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         __props__ = dict()
 
         if datastore_cluster_id is None:
-            raise TypeError('Missing required property datastore_cluster_id')
+            raise TypeError("Missing required property 'datastore_cluster_id'")
         __props__['datastore_cluster_id'] = datastore_cluster_id
 
         __props__['sdrs_automation_level'] = sdrs_automation_level
@@ -100,7 +100,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         __props__['sdrs_intra_vm_affinity'] = sdrs_intra_vm_affinity
 
         if virtual_machine_id is None:
-            raise TypeError('Missing required property virtual_machine_id')
+            raise TypeError("Missing required property 'virtual_machine_id'")
         __props__['virtual_machine_id'] = virtual_machine_id
 
         super(StorageDrsVmOverride, __self__).__init__(

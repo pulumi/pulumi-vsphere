@@ -927,7 +927,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__['nested_hv_enabled'] = nested_hv_enabled
 
         if network_interfaces is None:
-            raise TypeError('Missing required property network_interfaces')
+            raise TypeError("Missing required property 'network_interfaces'")
         __props__['network_interfaces'] = network_interfaces
 
         __props__['num_cores_per_socket'] = num_cores_per_socket
@@ -935,7 +935,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__['num_cpus'] = num_cpus
 
         if resource_pool_id is None:
-            raise TypeError('Missing required property resource_pool_id')
+            raise TypeError("Missing required property 'resource_pool_id'")
         __props__['resource_pool_id'] = resource_pool_id
 
         __props__['run_tools_scripts_after_power_on'] = run_tools_scripts_after_power_on

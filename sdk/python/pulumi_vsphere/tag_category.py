@@ -74,11 +74,11 @@ class TagCategory(pulumi.CustomResource):
         __props__ = dict()
 
         if associable_types is None:
-            raise TypeError('Missing required property associable_types')
+            raise TypeError("Missing required property 'associable_types'")
         __props__['associable_types'] = associable_types
 
         if cardinality is None:
-            raise TypeError('Missing required property cardinality')
+            raise TypeError("Missing required property 'cardinality'")
         __props__['cardinality'] = cardinality
 
         __props__['description'] = description

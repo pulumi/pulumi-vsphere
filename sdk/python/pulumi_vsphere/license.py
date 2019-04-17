@@ -60,7 +60,7 @@ class License(pulumi.CustomResource):
         __props__['labels'] = labels
 
         if license_key is None:
-            raise TypeError('Missing required property license_key')
+            raise TypeError("Missing required property 'license_key'")
         __props__['license_key'] = license_key
 
         __props__['edition_key'] = None

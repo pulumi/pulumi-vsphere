@@ -244,7 +244,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
 
         if distributed_virtual_switch_uuid is None:
-            raise TypeError('Missing required property distributed_virtual_switch_uuid')
+            raise TypeError("Missing required property 'distributed_virtual_switch_uuid'")
         __props__['distributed_virtual_switch_uuid'] = distributed_virtual_switch_uuid
 
         __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth

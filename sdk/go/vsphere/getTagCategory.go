@@ -30,6 +30,7 @@ func LookupTagCategory(ctx *pulumi.Context, args *GetTagCategoryArgs) (*GetTagCa
 		AssociableTypes: outputs["associableTypes"],
 		Cardinality: outputs["cardinality"],
 		Description: outputs["description"],
+		Name: outputs["name"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -45,6 +46,7 @@ type GetTagCategoryResult struct {
 	AssociableTypes interface{}
 	Cardinality interface{}
 	Description interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

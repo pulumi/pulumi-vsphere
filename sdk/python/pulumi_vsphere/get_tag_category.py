@@ -12,18 +12,21 @@ class GetTagCategoryResult:
     """
     A collection of values returned by getTagCategory.
     """
-    def __init__(__self__, associable_types=None, cardinality=None, description=None, id=None):
+    def __init__(__self__, associable_types=None, cardinality=None, description=None, name=None, id=None):
         if associable_types and not isinstance(associable_types, list):
-            raise TypeError('Expected argument associable_types to be a list')
+            raise TypeError("Expected argument 'associable_types' to be a list")
         __self__.associable_types = associable_types
         if cardinality and not isinstance(cardinality, str):
-            raise TypeError('Expected argument cardinality to be a str')
+            raise TypeError("Expected argument 'cardinality' to be a str")
         __self__.cardinality = cardinality
         if description and not isinstance(description, str):
-            raise TypeError('Expected argument description to be a str')
+            raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -51,4 +54,5 @@ async def get_tag_category(name=None,opts=None):
         associable_types=__ret__.get('associableTypes'),
         cardinality=__ret__.get('cardinality'),
         description=__ret__.get('description'),
+        name=__ret__.get('name'),
         id=__ret__.get('id'))

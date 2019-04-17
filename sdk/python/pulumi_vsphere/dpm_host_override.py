@@ -71,7 +71,7 @@ class DpmHostOverride(pulumi.CustomResource):
         __props__ = dict()
 
         if compute_cluster_id is None:
-            raise TypeError('Missing required property compute_cluster_id')
+            raise TypeError("Missing required property 'compute_cluster_id'")
         __props__['compute_cluster_id'] = compute_cluster_id
 
         __props__['dpm_automation_level'] = dpm_automation_level
@@ -79,7 +79,7 @@ class DpmHostOverride(pulumi.CustomResource):
         __props__['dpm_enabled'] = dpm_enabled
 
         if host_system_id is None:
-            raise TypeError('Missing required property host_system_id')
+            raise TypeError("Missing required property 'host_system_id'")
         __props__['host_system_id'] = host_system_id
 
         super(DpmHostOverride, __self__).__init__(

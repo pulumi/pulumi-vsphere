@@ -29,6 +29,8 @@ func LookupDatastoreCluster(ctx *pulumi.Context, args *GetDatastoreClusterArgs) 
 		return nil, err
 	}
 	return &GetDatastoreClusterResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -47,6 +49,8 @@ type GetDatastoreClusterArgs struct {
 
 // A collection of values returned by getDatastoreCluster.
 type GetDatastoreClusterResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

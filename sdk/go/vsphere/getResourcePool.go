@@ -24,6 +24,8 @@ func LookupResourcePool(ctx *pulumi.Context, args *GetResourcePoolArgs) (*GetRes
 		return nil, err
 	}
 	return &GetResourcePoolResult{
+		DatacenterId: outputs["datacenterId"],
+		Name: outputs["name"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -43,6 +45,8 @@ type GetResourcePoolArgs struct {
 
 // A collection of values returned by getResourcePool.
 type GetResourcePoolResult struct {
+	DatacenterId interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

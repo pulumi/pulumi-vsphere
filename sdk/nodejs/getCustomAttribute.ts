@@ -48,6 +48,7 @@ export interface GetCustomAttributeArgs {
  */
 export interface GetCustomAttributeResult {
     readonly managedObjectType: string;
+    readonly name: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

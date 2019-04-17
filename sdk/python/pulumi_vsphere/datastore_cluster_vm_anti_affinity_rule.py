@@ -83,7 +83,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         __props__ = dict()
 
         if datastore_cluster_id is None:
-            raise TypeError('Missing required property datastore_cluster_id')
+            raise TypeError("Missing required property 'datastore_cluster_id'")
         __props__['datastore_cluster_id'] = datastore_cluster_id
 
         __props__['enabled'] = enabled
@@ -93,7 +93,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         __props__['name'] = name
 
         if virtual_machine_ids is None:
-            raise TypeError('Missing required property virtual_machine_ids')
+            raise TypeError("Missing required property 'virtual_machine_ids'")
         __props__['virtual_machine_ids'] = virtual_machine_ids
 
         super(DatastoreClusterVmAntiAffinityRule, __self__).__init__(

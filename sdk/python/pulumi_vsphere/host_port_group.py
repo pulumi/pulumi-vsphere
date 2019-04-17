@@ -111,7 +111,7 @@ class HostPortGroup(pulumi.CustomResource):
         __props__['failback'] = failback
 
         if host_system_id is None:
-            raise TypeError('Missing required property host_system_id')
+            raise TypeError("Missing required property 'host_system_id'")
         __props__['host_system_id'] = host_system_id
 
         __props__['name'] = name
@@ -131,7 +131,7 @@ class HostPortGroup(pulumi.CustomResource):
         __props__['teaming_policy'] = teaming_policy
 
         if virtual_switch_name is None:
-            raise TypeError('Missing required property virtual_switch_name')
+            raise TypeError("Missing required property 'virtual_switch_name'")
         __props__['virtual_switch_name'] = virtual_switch_name
 
         __props__['vlan_id'] = vlan_id
