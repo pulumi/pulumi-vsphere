@@ -1,4 +1,9 @@
-## 0.17.2 (Unreleased)
+## 0.17.3 (Unreleased)
+
+## 0.17.2 (Released April 22nd, 2019)
+
+- Updated the version of pulumi-terraform on which the provider is based. No user-facing changes
+  should be visible.
 
 ## 0.17.1 (Released March 20th, 2019)
 
