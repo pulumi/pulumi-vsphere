@@ -61,22 +61,22 @@ import * as utilities from "./utilities";
  *     name: "network1",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
  *     }],
  *     guestId: "other3xLinux64Guest",
- *     hostSystemId: host.apply(host => host.id),
+ *     hostSystemId: host.id,
  *     memory: 2048,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * const drsVmOverride = new vsphere.DrsVmOverride("drs_vm_override", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     drsEnabled: false,
  *     virtualMachineId: vm.id,
  * });

@@ -67,19 +67,19 @@ import * as utilities from "./utilities";
  *         "uplink1",
  *         "uplink2",
  *     ],
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     hosts: [
  *         {
  *             devices: networkInterfaces,
- *             hostSystemId: host[0].apply(host => host.id),
+ *             hostSystemId: host[0].id,
  *         },
  *         {
  *             devices: networkInterfaces,
- *             hostSystemId: host[1].apply(host => host.id),
+ *             hostSystemId: host[1].id,
  *         },
  *         {
  *             devices: networkInterfaces,
- *             hostSystemId: host[2].apply(host => host.id),
+ *             hostSystemId: host[2].id,
  *         },
  *     ],
  *     standbyUplinks: [
@@ -111,7 +111,7 @@ import * as utilities from "./utilities";
  * 
  * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
  *     activeUplinks: ["tfup1"],
- *     datacenterId: vsphere_datacenter_dc.id.apply(id => id),
+ *     datacenterId: vsphere_datacenter_dc.id,
  *     standbyUplinks: ["tfup2"],
  *     uplinks: [
  *         "tfup1",

@@ -76,11 +76,11 @@ import * as utilities from "./utilities";
  *     name: "network1",
  * }));
  * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
- *     hostSystemIds: [host.apply(host => host.id)],
+ *     computeClusterId: cluster.id,
+ *     hostSystemIds: [host.id],
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -88,18 +88,18 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 2048,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm.id],
  * });
  * const clusterVmHostRule = new vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule", {
  *     affinityHostGroupName: clusterHostGroup.name,
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     vmGroupName: clusterVmGroup.name,
  * });
  * ```

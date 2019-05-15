@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *     name: "cluster1/Resources",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: memberDatastore.apply(memberDatastore => memberDatastore.id),
+ *     datastoreId: memberDatastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -66,13 +66,13 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 1024,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: pool.apply(pool => pool.id),
+ *     resourcePoolId: pool.id,
  * });
  * const drsVmOverride = new vsphere.StorageDrsVmOverride("drs_vm_override", {
- *     datastoreClusterId: datastoreCluster.apply(datastoreCluster => datastoreCluster.id),
+ *     datastoreClusterId: datastoreCluster.id,
  *     sdrsEnabled: "false",
  *     virtualMachineId: vm.id,
  * });

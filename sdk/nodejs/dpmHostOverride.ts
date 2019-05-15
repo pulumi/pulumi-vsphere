@@ -57,16 +57,16 @@ import * as utilities from "./utilities";
  *         name: hosts[i],
  *     })))}
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
- *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
+ *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * const dpmHostOverride = new vsphere.DpmHostOverride("dpm_host_override", {
  *     computeClusterId: computeCluster.id,
  *     dpmAutomationLevel: "automated",
  *     dpmEnabled: true,
- *     hostSystemId: hostsHost[0].apply(hostsHost => hostsHost.id),
+ *     hostSystemId: hostsHost[0].id,
  * });
  * ```
  */

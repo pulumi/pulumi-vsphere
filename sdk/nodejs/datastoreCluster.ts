@@ -49,19 +49,19 @@ import * as utilities from "./utilities";
  *         name: hosts[i],
  *     })))}
  * const datastoreCluster = new vsphere.DatastoreCluster("datastore_cluster", {
- *     datacenterId: datacenter.apply(datacenter => datacenter.id),
+ *     datacenterId: datacenter.id,
  *     sdrsEnabled: true,
  * });
  * const datastore1 = new vsphere.NasDatastore("datastore1", {
  *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
+ *     hostSystemIds: esxiHosts.map(v => v.id),
  *     remoteHosts: ["nfs"],
  *     remotePath: "/export/terraform-test1",
  *     type: "NFS",
  * });
  * const datastore2 = new vsphere.NasDatastore("datastore2", {
  *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
+ *     hostSystemIds: esxiHosts.map(v => v.id),
  *     remoteHosts: ["nfs"],
  *     remotePath: "/export/terraform-test2",
  *     type: "NFS",

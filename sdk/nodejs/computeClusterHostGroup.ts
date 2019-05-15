@@ -58,15 +58,15 @@ import * as utilities from "./utilities";
  *         name: hosts[i],
  *     })))}
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     haEnabled: true,
- *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
+ *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
  *     computeClusterId: computeCluster.id,
- *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
+ *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * ```
  */

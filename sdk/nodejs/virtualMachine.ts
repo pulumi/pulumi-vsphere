@@ -140,7 +140,7 @@ import * as utilities from "./utilities";
  *     name: "public",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -148,10 +148,10 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 1024,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * ```
  * 
@@ -205,24 +205,24 @@ import * as utilities from "./utilities";
  *                 ipv4Netmask: 24,
  *             }],
  *         },
- *         templateUuid: template.apply(template => template.id),
+ *         templateUuid: template.id,
  *     },
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
- *         eagerlyScrub: template.apply(template => template.disks[0].eagerlyScrub),
+ *         eagerlyScrub: template.disks[0].eagerlyScrub,
  *         label: "disk0",
- *         size: template.apply(template => template.disks[0].size),
- *         thinProvisioned: template.apply(template => template.disks[0].thinProvisioned),
+ *         size: template.disks[0].size,
+ *         thinProvisioned: template.disks[0].thinProvisioned,
  *     }],
- *     guestId: template.apply(template => template.guestId),
+ *     guestId: template.guestId,
  *     memory: 1024,
  *     networkInterfaces: [{
  *         adapterType: template.apply(template => template.networkInterfaceTypes[0]),
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
- *     scsiType: template.apply(template => template.scsiType),
+ *     resourcePoolId: cluster.resourcePoolId,
+ *     scsiType: template.scsiType,
  * });
  * ```
  * 
@@ -272,24 +272,24 @@ import * as utilities from "./utilities";
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
  *     clone: {
- *         templateUuid: vsphere_virtual_machine_template_from_ovf.id.apply(id => id),
+ *         templateUuid: vsphere_virtual_machine_template_from_ovf.id,
  *     },
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
- *         eagerlyScrub: vsphere_virtual_machine_template.disks.apply(disks => disks.0.eagerlyScrub),
+ *         eagerlyScrub: vsphere_virtual_machine_template.disks.0.eagerlyScrub,
  *         name: "disk0",
- *         size: vsphere_virtual_machine_template.disks.apply(disks => disks.0.size),
- *         thinProvisioned: vsphere_virtual_machine_template.disks.apply(disks => disks.0.thinProvisioned),
+ *         size: vsphere_virtual_machine_template.disks.0.size,
+ *         thinProvisioned: vsphere_virtual_machine_template.disks.0.thinProvisioned,
  *     }],
- *     guestId: vsphere_virtual_machine_template.guestId.apply(guestId => guestId),
+ *     guestId: vsphere_virtual_machine_template.guestId,
  *     memory: 1024,
  *     networkInterfaces: [{
  *         adapterType: vsphere_virtual_machine_template.networkInterfaceTypes.apply(networkInterfaceTypes => networkInterfaceTypes[0]),
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
- *     scsiType: vsphere_virtual_machine_template.scsiType.apply(scsiType => scsiType),
+ *     resourcePoolId: cluster.resourcePoolId,
+ *     scsiType: vsphere_virtual_machine_template.scsiType,
  *     vapp: {
  *         properties: {
  *             "guestinfo.dns.server.0": "10.0.0.10",
@@ -350,7 +350,7 @@ import * as utilities from "./utilities";
  *     name: "public",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreClusterId: datastoreCluster.apply(datastoreCluster => datastoreCluster.id),
+ *     datastoreClusterId: datastoreCluster.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -358,10 +358,10 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 1024,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * ```
  * 

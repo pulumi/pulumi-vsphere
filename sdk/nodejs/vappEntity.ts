@@ -48,10 +48,10 @@ import * as utilities from "./utilities";
  *     name: "network1",
  * }));
  * const vappContainer = new vsphere.VappContainer("vapp_container", {
- *     parentResourcePoolId: computeCluster.apply(computeCluster => computeCluster.id),
+ *     parentResourcePoolId: computeCluster.id,
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 1,
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *     guestId: "ubuntu64Guest",
  *     memory: 1024,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
  *     resourcePoolId: vappContainer.id,

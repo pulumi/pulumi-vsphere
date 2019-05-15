@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: host.apply(host => host.id),
+ *     hostSystemId: host.id,
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *     allowForgedTransmits: false,
  *     allowMacChanges: false,
  *     allowPromiscuous: false,
- *     hostSystemId: host.apply(host => host.id),
+ *     hostSystemId: host.id,
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
