@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * 
  * const dc = pulumi.output(vsphere.getDatacenter({}));
  * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     path: "terraform-test-folder",
  *     type: "vm",
  * });
@@ -49,13 +49,13 @@ import * as utilities from "./utilities";
  * 
  * const dc = pulumi.output(vsphere.getDatacenter({}));
  * const parent = new vsphere.Folder("parent", {
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     path: "terraform-test-parent",
  *     type: "vm",
  * });
  * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.apply(dc => dc.id),
- *     path: parent.path.apply(path => `${path}/terraform-test-folder`),
+ *     datacenterId: dc.id,
+ *     path: pulumi.interpolate`${parent.path}/terraform-test-folder`,
  *     type: "vm",
  * });
  * ```

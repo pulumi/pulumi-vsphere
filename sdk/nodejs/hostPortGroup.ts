@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *     standbyNics: ["vmnic1"],
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  *     virtualSwitchName: switchHostVirtualSwitch.name,
  * });
  * ```
@@ -66,7 +66,7 @@ import * as utilities from "./utilities";
  * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
  *     allowPromiscuous: true,
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  *     virtualSwitchName: switchHostVirtualSwitch.name,
  *     vlanId: 4095,
  * });

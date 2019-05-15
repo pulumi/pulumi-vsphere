@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * }));
  * const pg = new vsphere.DistributedPortGroup("pg", {
  *     activeUplinks: [dvs.apply(dvs => dvs.uplinks[0])],
- *     distributedVirtualSwitchUuid: dvs.apply(dvs => dvs.id),
+ *     distributedVirtualSwitchUuid: dvs.id,
  *     standbyUplinks: [dvs.apply(dvs => dvs.uplinks[1])],
  * });
  * ```

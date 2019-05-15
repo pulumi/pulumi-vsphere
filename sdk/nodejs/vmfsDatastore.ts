@@ -72,7 +72,7 @@ import * as utilities from "./utilities";
  *         "mpx.vmhba1:C0:T2:L0",
  *         "mpx.vmhba1:C0:T2:L0",
  *     ],
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  * });
  * ```
  * 
@@ -104,9 +104,9 @@ import * as utilities from "./utilities";
  *     rescan: true,
  * }));
  * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: available.apply(available => available.disks),
+ *     disks: available.disks,
  *     folder: "datastore-folder",
- *     hostSystemId: esxiHost.apply(esxiHost => esxiHost.id),
+ *     hostSystemId: esxiHost.id,
  * });
  * ```
  */

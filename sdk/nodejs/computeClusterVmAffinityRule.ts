@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  * const vm: vsphere.VirtualMachine[] = [];
  * for (let i = 0; i < 2; i++) {
  *     vm.push(new vsphere.VirtualMachine(`vm-${i}`, {
- *         datastoreId: datastore.apply(datastore => datastore.id),
+ *         datastoreId: datastore.id,
  *         disks: [{
  *             label: "disk0",
  *             size: 20,
@@ -73,14 +73,14 @@ import * as utilities from "./utilities";
  *         guestId: "other3xLinux64Guest",
  *         memory: 2048,
  *         networkInterfaces: [{
- *             networkId: network.apply(network => network.id),
+ *             networkId: network.id,
  *         }],
  *         numCpus: 2,
- *         resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *         resourcePoolId: cluster.resourcePoolId,
  *     }));
  * }
  * const clusterVmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("cluster_vm_affinity_rule", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```

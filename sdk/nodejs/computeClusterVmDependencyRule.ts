@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *     name: "network1",
  * }));
  * const vm1 = new vsphere.VirtualMachine("vm1", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -68,17 +68,17 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 2048,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm1.id],
  * });
  * const vm2 = new vsphere.VirtualMachine("vm2", {
- *     datastoreId: datastore.apply(datastore => datastore.id),
+ *     datastoreId: datastore.id,
  *     disks: [{
  *         label: "disk0",
  *         size: 20,
@@ -86,17 +86,17 @@ import * as utilities from "./utilities";
  *     guestId: "other3xLinux64Guest",
  *     memory: 2048,
  *     networkInterfaces: [{
- *         networkId: network.apply(network => network.id),
+ *         networkId: network.id,
  *     }],
  *     numCpus: 2,
- *     resourcePoolId: cluster.apply(cluster => cluster.resourcePoolId),
+ *     resourcePoolId: cluster.resourcePoolId,
  * });
  * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm2.id],
  * });
  * const clusterVmDependencyRule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
- *     computeClusterId: cluster.apply(cluster => cluster.id),
+ *     computeClusterId: cluster.id,
  *     dependencyVmGroupName: clusterVmGroup1.name,
  *     vmGroupName: clusterVmGroup2.name,
  * });

@@ -69,11 +69,11 @@ import * as utilities from "./utilities";
  *         name: hosts[i],
  *     })))}
  * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
- *     datacenterId: dc.apply(dc => dc.id),
+ *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     haEnabled: true,
- *     hostSystemIds: pulumi.all(hostsHost).apply(hostsHost => hostsHost.map(v => v.id)),
+ *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * ```
  * 

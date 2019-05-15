@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *         name: hosts[i],
  *     })))}
  * const datastore = new vsphere.NasDatastore("datastore", {
- *     hostSystemIds: pulumi.all(esxiHosts).apply(esxiHosts => esxiHosts.map(v => v.id)),
+ *     hostSystemIds: esxiHosts.map(v => v.id),
  *     remoteHosts: ["nfs"],
  *     remotePath: "/export/terraform-test",
  *     type: "NFS",

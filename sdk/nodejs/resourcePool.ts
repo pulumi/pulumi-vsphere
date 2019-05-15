@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     name: cluster,
  * }));
  * const resourcePool = new vsphere.ResourcePool("resource_pool", {
- *     parentResourcePoolId: computeCluster.apply(computeCluster => computeCluster.resourcePoolId),
+ *     parentResourcePoolId: computeCluster.resourcePoolId,
  * });
  * ```
  */
