@@ -98,53 +98,53 @@ export class VappEntity extends pulumi.CustomResource {
      * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
      */
-    public readonly containerId: pulumi.Output<string>;
+    public readonly containerId!: pulumi.Output<string>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    public readonly startAction: pulumi.Output<string | undefined>;
+    public readonly startAction!: pulumi.Output<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    public readonly startDelay: pulumi.Output<number | undefined>;
+    public readonly startDelay!: pulumi.Output<number | undefined>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    public readonly startOrder: pulumi.Output<number | undefined>;
+    public readonly startOrder!: pulumi.Output<number | undefined>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    public readonly stopAction: pulumi.Output<string | undefined>;
+    public readonly stopAction!: pulumi.Output<string | undefined>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    public readonly stopDelay: pulumi.Output<number | undefined>;
+    public readonly stopDelay!: pulumi.Output<number | undefined>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * [Managed object ID|docs-about-morefs] of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
-    public readonly targetId: pulumi.Output<string>;
+    public readonly targetId!: pulumi.Output<string>;
     /**
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `start_delay`. This
      * property has no effect for vApps. Default: false
      */
-    public readonly waitForGuest: pulumi.Output<boolean | undefined>;
+    public readonly waitForGuest!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a VappEntity resource with the given unique name, arguments, and options.
@@ -157,7 +157,7 @@ export class VappEntity extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VappEntityArgs | VappEntityState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VappEntityState = argsOrState as VappEntityState | undefined;
+            const state = argsOrState as VappEntityState | undefined;
             inputs["containerId"] = state ? state.containerId : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["startAction"] = state ? state.startAction : undefined;

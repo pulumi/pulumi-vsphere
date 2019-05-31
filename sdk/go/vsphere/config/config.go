@@ -30,7 +30,7 @@ func GetClientDebugPathRun(ctx *pulumi.Context) string {
 
 // The user password for vSphere API operations.
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Require(ctx, "vsphere:password")
+	return config.Get(ctx, "vsphere:password")
 }
 
 // Persist vSphere client sessions to disk
@@ -45,7 +45,7 @@ func GetRestSessionPath(ctx *pulumi.Context) string {
 
 // The user name for vSphere API operations.
 func GetUser(ctx *pulumi.Context) string {
-	return config.Require(ctx, "vsphere:user")
+	return config.Get(ctx, "vsphere:user")
 }
 
 func GetVcenterServer(ctx *pulumi.Context) string {

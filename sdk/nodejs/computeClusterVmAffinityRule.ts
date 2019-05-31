@@ -103,25 +103,25 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    public readonly mandatory: pulumi.Output<boolean | undefined>;
+    public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on the same host together.
      */
-    public readonly virtualMachineIds: pulumi.Output<string[]>;
+    public readonly virtualMachineIds!: pulumi.Output<string[]>;
 
     /**
      * Create a ComputeClusterVmAffinityRule resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ComputeClusterVmAffinityRuleArgs | ComputeClusterVmAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ComputeClusterVmAffinityRuleState = argsOrState as ComputeClusterVmAffinityRuleState | undefined;
+            const state = argsOrState as ComputeClusterVmAffinityRuleState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["mandatory"] = state ? state.mandatory : undefined;

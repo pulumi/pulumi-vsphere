@@ -63,35 +63,35 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    public readonly consolidate: pulumi.Output<boolean | undefined>;
+    public readonly consolidate!: pulumi.Output<boolean | undefined>;
     /**
      * A description for the snapshot.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * If set to `true`, a dump of the internal state of the
      * virtual machine is included in the snapshot.
      */
-    public readonly memory: pulumi.Output<boolean>;
+    public readonly memory!: pulumi.Output<boolean>;
     /**
      * If set to `true`, and the virtual machine is powered
      * on when the snapshot is taken, VMware Tools is used to quiesce the file
      * system in the virtual machine.
      */
-    public readonly quiesce: pulumi.Output<boolean>;
+    public readonly quiesce!: pulumi.Output<boolean>;
     /**
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    public readonly removeChildren: pulumi.Output<boolean | undefined>;
+    public readonly removeChildren!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the snapshot.
      */
-    public readonly snapshotName: pulumi.Output<string>;
+    public readonly snapshotName!: pulumi.Output<string>;
     /**
      * The virtual machine UUID.
      */
-    public readonly virtualMachineUuid: pulumi.Output<string>;
+    public readonly virtualMachineUuid!: pulumi.Output<string>;
 
     /**
      * Create a VirtualMachineSnapshot resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VirtualMachineSnapshotArgs | VirtualMachineSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VirtualMachineSnapshotState = argsOrState as VirtualMachineSnapshotState | undefined;
+            const state = argsOrState as VirtualMachineSnapshotState | undefined;
             inputs["consolidate"] = state ? state.consolidate : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["memory"] = state ? state.memory : undefined;

@@ -122,38 +122,38 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
      * machines defined in `vm_group_name` will be run on the
      * hosts defined in this host group.
      */
-    public readonly affinityHostGroupName: pulumi.Output<string | undefined>;
+    public readonly affinityHostGroupName!: pulumi.Output<string | undefined>;
     /**
      * When this field is used, the
      * virtual machines defined in `vm_group_name` will _not_ be
      * run on the hosts defined in this host group.
      */
-    public readonly antiAffinityHostGroupName: pulumi.Output<string | undefined>;
+    public readonly antiAffinityHostGroupName!: pulumi.Output<string | undefined>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    public readonly mandatory: pulumi.Output<boolean | undefined>;
+    public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The name of the virtual machine group to use
      * with this rule.
      */
-    public readonly vmGroupName: pulumi.Output<string>;
+    public readonly vmGroupName!: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterVmHostRule resource with the given unique name, arguments, and options.
@@ -166,7 +166,7 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ComputeClusterVmHostRuleArgs | ComputeClusterVmHostRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ComputeClusterVmHostRuleState = argsOrState as ComputeClusterVmHostRuleState | undefined;
+            const state = argsOrState as ComputeClusterVmHostRuleState | undefined;
             inputs["affinityHostGroupName"] = state ? state.affinityHostGroupName : undefined;
             inputs["antiAffinityHostGroupName"] = state ? state.antiAffinityHostGroupName : undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;

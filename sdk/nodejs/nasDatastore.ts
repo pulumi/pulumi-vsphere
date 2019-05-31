@@ -68,29 +68,29 @@ export class NasDatastore extends pulumi.CustomResource {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    public readonly accessMode: pulumi.Output<string | undefined>;
+    public readonly accessMode!: pulumi.Output<string | undefined>;
     /**
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    public /*out*/ readonly accessible: pulumi.Output<boolean>;
+    public /*out*/ readonly accessible!: pulumi.Output<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    public /*out*/ readonly capacity: pulumi.Output<number>;
+    public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    public readonly datastoreClusterId: pulumi.Output<string | undefined>;
+    public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -100,72 +100,72 @@ export class NasDatastore extends pulumi.CustomResource {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastore_cluster_id`.
      */
-    public readonly folder: pulumi.Output<string | undefined>;
+    public readonly folder!: pulumi.Output<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    public /*out*/ readonly freeSpace: pulumi.Output<number>;
+    public /*out*/ readonly freeSpace!: pulumi.Output<number>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to mount the datastore on.
      */
-    public readonly hostSystemIds: pulumi.Output<string[]>;
+    public readonly hostSystemIds!: pulumi.Output<string[]>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    public /*out*/ readonly maintenanceMode: pulumi.Output<string>;
+    public /*out*/ readonly maintenanceMode!: pulumi.Output<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    public /*out*/ readonly multipleHostAccess: pulumi.Output<boolean>;
+    public /*out*/ readonly multipleHostAccess!: pulumi.Output<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    public /*out*/ readonly protocolEndpoint: pulumi.Output<string>;
+    public /*out*/ readonly protocolEndpoint!: pulumi.Output<string>;
     /**
      * The hostnames or IP addresses of the remote
      * server or servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
-    public readonly remoteHosts: pulumi.Output<string[]>;
+    public readonly remoteHosts!: pulumi.Output<string[]>;
     /**
      * The remote path of the mount point. Forces a new
      * resource if changed.
      */
-    public readonly remotePath: pulumi.Output<string>;
+    public readonly remotePath!: pulumi.Output<string>;
     /**
      * The security type to use when using NFS v4.1.
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    public readonly securityType: pulumi.Output<string | undefined>;
+    public readonly securityType!: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    public /*out*/ readonly uncommittedSpace: pulumi.Output<number>;
+    public /*out*/ readonly uncommittedSpace!: pulumi.Output<number>;
     /**
      * The unique locator for the datastore.
      */
-    public /*out*/ readonly url: pulumi.Output<string>;
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a NasDatastore resource with the given unique name, arguments, and options.
@@ -178,7 +178,7 @@ export class NasDatastore extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: NasDatastoreArgs | NasDatastoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NasDatastoreState = argsOrState as NasDatastoreState | undefined;
+            const state = argsOrState as NasDatastoreState | undefined;
             inputs["accessMode"] = state ? state.accessMode : undefined;
             inputs["accessible"] = state ? state.accessible : undefined;
             inputs["capacity"] = state ? state.capacity : undefined;

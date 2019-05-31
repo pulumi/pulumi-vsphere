@@ -652,7 +652,7 @@ func (r *VirtualMachine) EptRviMode() *pulumi.StringOutput {
 
 // Extra configuration data for this virtual
 // machine. Can be used to supply advanced parameters not normally in
-// configuration, such as data for cloud-config (under the guestinfo namespace).
+// configuration, such as instance metadata.
 func (r *VirtualMachine) ExtraConfig() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["extraConfig"])
 }
@@ -1066,7 +1066,7 @@ type VirtualMachineState struct {
 	EptRviMode interface{}
 	// Extra configuration data for this virtual
 	// machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as data for cloud-config (under the guestinfo namespace).
+	// configuration, such as instance metadata.
 	ExtraConfig interface{}
 	// The firmware interface to use on the virtual machine.
 	// Can be one of `bios` or `EFI`. Default: `bios`.
@@ -1332,7 +1332,7 @@ type VirtualMachineArgs struct {
 	EptRviMode interface{}
 	// Extra configuration data for this virtual
 	// machine. Can be used to supply advanced parameters not normally in
-	// configuration, such as data for cloud-config (under the guestinfo namespace).
+	// configuration, such as instance metadata.
 	ExtraConfig interface{}
 	// The firmware interface to use on the virtual machine.
 	// Can be one of `bios` or `EFI`. Default: `bios`.

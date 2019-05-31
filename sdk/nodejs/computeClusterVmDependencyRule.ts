@@ -120,35 +120,35 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
      * `vm_group_name` will not be started until the VMs in this
      * group are started.
      */
-    public readonly dependencyVmGroupName: pulumi.Output<string>;
+    public readonly dependencyVmGroupName!: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    public readonly mandatory: pulumi.Output<boolean | undefined>;
+    public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
      * `dependency_vm_group_name` are started.
      */
-    public readonly vmGroupName: pulumi.Output<string>;
+    public readonly vmGroupName!: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterVmDependencyRule resource with the given unique name, arguments, and options.
@@ -161,7 +161,7 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ComputeClusterVmDependencyRuleArgs | ComputeClusterVmDependencyRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ComputeClusterVmDependencyRuleState = argsOrState as ComputeClusterVmDependencyRuleState | undefined;
+            const state = argsOrState as ComputeClusterVmDependencyRuleState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["dependencyVmGroupName"] = state ? state.dependencyVmGroupName : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;

@@ -30,7 +30,7 @@ client_debug_path_run = __config__.get('clientDebugPathRun')
 govmomi debug path for a single run
 """
 
-password = __config__.require('password')
+password = __config__.get('password')
 """
 The user password for vSphere API operations.
 """
@@ -45,7 +45,7 @@ rest_session_path = __config__.get('restSessionPath')
 The directory to save vSphere REST API sessions to
 """
 
-user = __config__.require('user')
+user = __config__.get('user')
 """
 The user name for vSphere API operations.
 """

@@ -127,28 +127,28 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    public /*out*/ readonly accessible: pulumi.Output<boolean>;
+    public /*out*/ readonly accessible!: pulumi.Output<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    public /*out*/ readonly capacity: pulumi.Output<number>;
+    public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    public readonly datastoreClusterId: pulumi.Output<string | undefined>;
+    public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
      * The disks to use with the datastore.
      */
-    public readonly disks: pulumi.Output<string[]>;
+    public readonly disks!: pulumi.Output<string[]>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -158,11 +158,11 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
      * `datastore_cluster_id`.
      */
-    public readonly folder: pulumi.Output<string | undefined>;
+    public readonly folder!: pulumi.Output<string | undefined>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    public /*out*/ readonly freeSpace: pulumi.Output<number>;
+    public /*out*/ readonly freeSpace!: pulumi.Output<number>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -170,35 +170,35 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * here for more info. Forces a
      * new resource if changed.
      */
-    public readonly hostSystemId: pulumi.Output<string>;
+    public readonly hostSystemId!: pulumi.Output<string>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    public /*out*/ readonly maintenanceMode: pulumi.Output<string>;
+    public /*out*/ readonly maintenanceMode!: pulumi.Output<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    public /*out*/ readonly multipleHostAccess: pulumi.Output<boolean>;
+    public /*out*/ readonly multipleHostAccess!: pulumi.Output<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    public /*out*/ readonly uncommittedSpace: pulumi.Output<number>;
+    public /*out*/ readonly uncommittedSpace!: pulumi.Output<number>;
     /**
      * The unique locator for the datastore.
      */
-    public /*out*/ readonly url: pulumi.Output<string>;
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a VmfsDatastore resource with the given unique name, arguments, and options.
@@ -211,7 +211,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VmfsDatastoreArgs | VmfsDatastoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VmfsDatastoreState = argsOrState as VmfsDatastoreState | undefined;
+            const state = argsOrState as VmfsDatastoreState | undefined;
             inputs["accessible"] = state ? state.accessible : undefined;
             inputs["capacity"] = state ? state.capacity : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;

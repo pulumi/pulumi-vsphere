@@ -96,20 +96,20 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
-    public readonly datastoreClusterId: pulumi.Output<string>;
+    public readonly datastoreClusterId!: pulumi.Output<string>;
     /**
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
      * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
      */
-    public readonly sdrsAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Overrides the default Storage DRS setting for
      * this virtual machine. When not specified, the datastore cluster setting is
      * used.
      */
-    public readonly sdrsEnabled: pulumi.Output<string | undefined>;
+    public readonly sdrsEnabled!: pulumi.Output<string | undefined>;
     /**
      * Overrides the intra-VM affinity setting
      * for this virtual machine. When `true`, all disks for this virtual machine
@@ -117,12 +117,12 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      * individual disks on different datastores if it helps satisfy cluster
      * requirements. When not specified, the datastore cluster's settings are used.
      */
-    public readonly sdrsIntraVmAffinity: pulumi.Output<string | undefined>;
+    public readonly sdrsIntraVmAffinity!: pulumi.Output<string | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    public readonly virtualMachineId: pulumi.Output<string>;
+    public readonly virtualMachineId!: pulumi.Output<string>;
 
     /**
      * Create a StorageDrsVmOverride resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: StorageDrsVmOverrideArgs | StorageDrsVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: StorageDrsVmOverrideState = argsOrState as StorageDrsVmOverrideState | undefined;
+            const state = argsOrState as StorageDrsVmOverrideState | undefined;
             inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
             inputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
             inputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;

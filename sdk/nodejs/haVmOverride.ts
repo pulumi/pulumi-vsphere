@@ -96,7 +96,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * Controls the action to take
      * on this virtual machine if an APD status on an affected datastore clears in
@@ -104,7 +104,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      * `reset`.  Default: `useClusterDefault`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
-    public readonly haDatastoreApdRecoveryAction: pulumi.Output<string | undefined>;
+    public readonly haDatastoreApdRecoveryAction!: pulumi.Output<string | undefined>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected loss to all paths to a relevant
@@ -112,7 +112,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
-    public readonly haDatastoreApdResponse: pulumi.Output<string | undefined>;
+    public readonly haDatastoreApdResponse!: pulumi.Output<string | undefined>;
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
@@ -120,7 +120,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      * the cluster default. Default: `-1`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
-    public readonly haDatastoreApdResponseDelay: pulumi.Output<number | undefined>;
+    public readonly haDatastoreApdResponseDelay!: pulumi.Output<number | undefined>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected a permanent device loss to a
@@ -128,20 +128,20 @@ export class HaVmOverride extends pulumi.CustomResource {
      * `restartAggressive`. Default: `clusterDefault`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
-    public readonly haDatastorePdlResponse: pulumi.Output<string | undefined>;
+    public readonly haDatastorePdlResponse!: pulumi.Output<string | undefined>;
     /**
      * The action to take on this virtual
      * machine when a host has detected that it has been isolated from the rest of
      * the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
      * `shutdown`. Default: `clusterIsolationResponse`.
      */
-    public readonly haHostIsolationResponse: pulumi.Output<string | undefined>;
+    public readonly haHostIsolationResponse!: pulumi.Output<string | undefined>;
     /**
      * If a heartbeat from this virtual
      * machine is not received within this configured interval, the virtual machine
      * is marked as failed. The value is in seconds. Default: `30`.
      */
-    public readonly haVmFailureInterval: pulumi.Output<number | undefined>;
+    public readonly haVmFailureInterval!: pulumi.Output<number | undefined>;
     /**
      * The length of the reset window in
      * which `ha_vm_maximum_resets` can operate. When this
@@ -150,51 +150,51 @@ export class HaVmOverride extends pulumi.CustomResource {
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
-    public readonly haVmMaximumFailureWindow: pulumi.Output<number | undefined>;
+    public readonly haVmMaximumFailureWindow!: pulumi.Output<number | undefined>;
     /**
      * The maximum number of resets that HA will
      * perform to this virtual machine when responding to a failure event. Default:
      * `3`
      */
-    public readonly haVmMaximumResets: pulumi.Output<number | undefined>;
+    public readonly haVmMaximumResets!: pulumi.Output<number | undefined>;
     /**
      * The time, in seconds, that HA waits after
      * powering on this virtual machine before monitoring for heartbeats. Default:
      * `120` (2 minutes).
      */
-    public readonly haVmMinimumUptime: pulumi.Output<number | undefined>;
+    public readonly haVmMinimumUptime!: pulumi.Output<number | undefined>;
     /**
      * The type of virtual machine monitoring to use
      * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      */
-    public readonly haVmMonitoring: pulumi.Output<string | undefined>;
+    public readonly haVmMonitoring!: pulumi.Output<string | undefined>;
     /**
      * Determines whether or
      * not the cluster's default settings or the VM override settings specified in
      * this resource are used for virtual machine monitoring. The default is `true`
      * (use cluster defaults) - set to `false` to have overrides take effect.
      */
-    public readonly haVmMonitoringUseClusterDefaults: pulumi.Output<boolean | undefined>;
+    public readonly haVmMonitoringUseClusterDefaults!: pulumi.Output<boolean | undefined>;
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
      * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
      * Default: `clusterRestartPriority`.
      */
-    public readonly haVmRestartPriority: pulumi.Output<string | undefined>;
+    public readonly haVmRestartPriority!: pulumi.Output<string | undefined>;
     /**
      * The maximum time, in seconds, that
      * vSphere HA will wait for this virtual machine to be ready. Use `-1` to
      * specify the cluster default.  Default: `-1`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
-    public readonly haVmRestartTimeout: pulumi.Output<number | undefined>;
+    public readonly haVmRestartTimeout!: pulumi.Output<number | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    public readonly virtualMachineId: pulumi.Output<string>;
+    public readonly virtualMachineId!: pulumi.Output<string>;
 
     /**
      * Create a HaVmOverride resource with the given unique name, arguments, and options.
@@ -207,7 +207,7 @@ export class HaVmOverride extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: HaVmOverrideArgs | HaVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: HaVmOverrideState = argsOrState as HaVmOverrideState | undefined;
+            const state = argsOrState as HaVmOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["haDatastoreApdRecoveryAction"] = state ? state.haDatastoreApdRecoveryAction : undefined;
             inputs["haDatastoreApdResponse"] = state ? state.haDatastoreApdResponse : undefined;

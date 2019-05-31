@@ -97,17 +97,17 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * The name of the VM group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines in this
      * group.
      */
-    public readonly virtualMachineIds: pulumi.Output<string[] | undefined>;
+    public readonly virtualMachineIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ComputeClusterVmGroup resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ComputeClusterVmGroupArgs | ComputeClusterVmGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ComputeClusterVmGroupState = argsOrState as ComputeClusterVmGroupState | undefined;
+            const state = argsOrState as ComputeClusterVmGroupState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;

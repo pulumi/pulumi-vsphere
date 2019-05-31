@@ -38,27 +38,27 @@ export class License extends pulumi.CustomResource {
     /**
      * The product edition of the license key.
      */
-    public /*out*/ readonly editionKey: pulumi.Output<string>;
+    public /*out*/ readonly editionKey!: pulumi.Output<string>;
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    public readonly labels: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The license key to add.
      */
-    public readonly licenseKey: pulumi.Output<string>;
+    public readonly licenseKey!: pulumi.Output<string>;
     /**
      * The display name for the license.
      */
-    public /*out*/ readonly name: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Total number of units (example: CPUs) contained in the license.
      */
-    public /*out*/ readonly total: pulumi.Output<number>;
+    public /*out*/ readonly total!: pulumi.Output<number>;
     /**
      * The number of units (example: CPUs) assigned to this license.
      */
-    public /*out*/ readonly used: pulumi.Output<number>;
+    public /*out*/ readonly used!: pulumi.Output<number>;
 
     /**
      * Create a License resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class License extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LicenseArgs | LicenseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LicenseState = argsOrState as LicenseState | undefined;
+            const state = argsOrState as LicenseState | undefined;
             inputs["editionKey"] = state ? state.editionKey : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["licenseKey"] = state ? state.licenseKey : undefined;

@@ -96,25 +96,25 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
-    public readonly datastoreClusterId: pulumi.Output<string>;
+    public readonly datastoreClusterId!: pulumi.Output<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    public readonly mandatory: pulumi.Output<boolean | undefined>;
+    public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      */
-    public readonly virtualMachineIds: pulumi.Output<string[]>;
+    public readonly virtualMachineIds!: pulumi.Output<string[]>;
 
     /**
      * Create a DatastoreClusterVmAntiAffinityRule resource with the given unique name, arguments, and options.
@@ -127,7 +127,7 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatastoreClusterVmAntiAffinityRuleArgs | DatastoreClusterVmAntiAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatastoreClusterVmAntiAffinityRuleState = argsOrState as DatastoreClusterVmAntiAffinityRuleState | undefined;
+            const state = argsOrState as DatastoreClusterVmAntiAffinityRuleState | undefined;
             inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["mandatory"] = state ? state.mandatory : undefined;
