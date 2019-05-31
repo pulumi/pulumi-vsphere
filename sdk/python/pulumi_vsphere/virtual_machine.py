@@ -150,7 +150,7 @@ class VirtualMachine(pulumi.CustomResource):
     """
     Extra configuration data for this virtual
     machine. Can be used to supply advanced parameters not normally in
-    configuration, such as data for cloud-config (under the guestinfo namespace).
+    configuration, such as instance metadata.
     """
     firmware: pulumi.Output[str]
     """
@@ -715,7 +715,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `automatic`.
         :param pulumi.Input[dict] extra_config: Extra configuration data for this virtual
                machine. Can be used to supply advanced parameters not normally in
-               configuration, such as data for cloud-config (under the guestinfo namespace).
+               configuration, such as instance metadata.
         :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine.
                Can be one of `bios` or `EFI`. Default: `bios`.
         :param pulumi.Input[str] folder: The path to the folder to put this virtual machine in,

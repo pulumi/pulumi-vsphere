@@ -3,15 +3,21 @@ module github.com/pulumi/pulumi-vsphere
 go 1.12
 
 require (
-	github.com/hashicorp/terraform v0.12.0-alpha4.0.20190401213546-16778fea9219
-	github.com/pkg/errors v0.8.0
+	github.com/apparentlymart/go-rundeck-api v0.0.0-20160826143032-f6af74d34d1e // indirect
+	github.com/fsouza/go-dockerclient v0.0.0-20160427172547-1d4f4ae73768 // indirect
+	github.com/hashicorp/terraform v0.12.0-rc1
+	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v0.17.6-0.20190410045519-ef5e148a73c0
 	github.com/pulumi/pulumi-terraform v0.14.1-dev.0.20190410072831-daa83d981043
+	github.com/rancher/go-rancher v0.0.0-20170407040943-ec24b7f12fca // indirect
 	github.com/stretchr/testify v1.3.0
-	github.com/terraform-providers/terraform-provider-vsphere v1.10.0
+	github.com/terraform-providers/terraform-provider-vsphere v1.11.0
+	gopkg.in/vmihailenco/msgpack.v2 v2.9.1 // indirect
+	k8s.io/kubernetes v1.6.1 // indirect
 )
 
 replace (
 	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
+	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.3.0
 	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
 )

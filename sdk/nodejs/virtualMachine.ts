@@ -266,13 +266,13 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  *     name: "public",
  * }));
- * const tempateFromOvf = dc.apply(dc => vsphere.getVirtualMachine({
+ * const templateFromOvf = dc.apply(dc => vsphere.getVirtualMachine({
  *     datacenterId: dc.id,
  *     name: "template_from_ovf",
  * }));
  * const vm = new vsphere.VirtualMachine("vm", {
  *     clone: {
- *         templateUuid: vsphere_virtual_machine_template_from_ovf.id,
+ *         templateUuid: templateFromOvf.id,
  *     },
  *     datastoreId: datastore.id,
  *     disks: [{
@@ -292,12 +292,7 @@ import * as utilities from "./utilities";
  *     scsiType: vsphere_virtual_machine_template.scsiType,
  *     vapp: {
  *         properties: {
- *             "guestinfo.dns.server.0": "10.0.0.10",
- *             "guestinfo.hostname": "terraform-test.foobar.local",
- *             "guestinfo.interface.0.ip.0.address": "10.0.0.100/24",
- *             "guestinfo.interface.0.name": "ens192",
- *             "guestinfo.interface.0.route.0.destination": "0.0.0.0/0",
- *             "guestinfo.interface.0.route.0.gateway": "10.0.0.1",
+ *             "guestinfo.tf.internal.id": "42",
  *         },
  *     },
  * });
@@ -656,7 +651,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Extra configuration data for this virtual
      * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as data for cloud-config (under the guestinfo namespace).
+     * configuration, such as instance metadata.
      */
     public readonly extraConfig: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -1240,7 +1235,7 @@ export interface VirtualMachineState {
     /**
      * Extra configuration data for this virtual
      * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as data for cloud-config (under the guestinfo namespace).
+     * configuration, such as instance metadata.
      */
     readonly extraConfig?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -1644,7 +1639,7 @@ export interface VirtualMachineArgs {
     /**
      * Extra configuration data for this virtual
      * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as data for cloud-config (under the guestinfo namespace).
+     * configuration, such as instance metadata.
      */
     readonly extraConfig?: pulumi.Input<{[key: string]: any}>;
     /**
