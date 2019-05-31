@@ -87,13 +87,13 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
-    public readonly datacenterId: pulumi.Output<string>;
+    public readonly datacenterId!: pulumi.Output<string>;
     /**
      * The relative path to a folder to put this datastore
      * cluster in.  This is a path relative to the datacenter you are deploying the
@@ -103,71 +103,71 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
      */
-    public readonly folder: pulumi.Output<string | undefined>;
+    public readonly folder!: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore cluster.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A key/value map of advanced Storage DRS
      * settings that are not exposed via Terraform or the vSphere client.
      */
-    public readonly sdrsAdvancedOptions: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.
      */
-    public readonly sdrsAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * When `true`, all disks in a
      * single virtual machine will be kept on the same datastore. Default: `true`.
      */
-    public readonly sdrsDefaultIntraVmAffinity: pulumi.Output<boolean | undefined>;
+    public readonly sdrsDefaultIntraVmAffinity!: pulumi.Output<boolean | undefined>;
     /**
      * Enable Storage DRS for this datastore cluster.
      * Default: `false`.
      */
-    public readonly sdrsEnabled: pulumi.Output<boolean | undefined>;
+    public readonly sdrsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The free space threshold to use.
      * When set to `utilization`, `drs_space_utilization_threshold` is used, and
      * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
      * `utilization`.
      */
-    public readonly sdrsFreeSpaceThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsFreeSpaceThreshold!: pulumi.Output<number | undefined>;
     /**
      * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
      * freeSpace, drs_free_space_threshold is used.
      */
-    public readonly sdrsFreeSpaceThresholdMode: pulumi.Output<string | undefined>;
+    public readonly sdrsFreeSpaceThresholdMode!: pulumi.Output<string | undefined>;
     /**
      * The threshold, in
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */
-    public readonly sdrsFreeSpaceUtilizationDifference: pulumi.Output<number | undefined>;
+    public readonly sdrsFreeSpaceUtilizationDifference!: pulumi.Output<number | undefined>;
     /**
      * Overrides the default
      * automation settings when correcting I/O load imbalances.
      */
-    public readonly sdrsIoBalanceAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsIoBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * The I/O latency threshold, in
      * milliseconds, that storage DRS uses to make recommendations to move disks
      * from this datastore. Default: `15` seconds.
      */
-    public readonly sdrsIoLatencyThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsIoLatencyThreshold!: pulumi.Output<number | undefined>;
     /**
      * Enable I/O load balancing for
      * this datastore cluster. Default: `true`.
      */
-    public readonly sdrsIoLoadBalanceEnabled: pulumi.Output<boolean | undefined>;
+    public readonly sdrsIoLoadBalanceEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The difference between load
      * in datastores in the cluster before storage DRS makes recommendations to
      * balance the load. Default: `5` percent.
      */
-    public readonly sdrsIoLoadImbalanceThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsIoLoadImbalanceThreshold!: pulumi.Output<number | undefined>;
     /**
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
@@ -176,55 +176,55 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
-    public readonly sdrsIoReservableIopsThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsIoReservableIopsThreshold!: pulumi.Output<number | undefined>;
     /**
      * The threshold, in
      * percent, of actual estimated performance of the datastore (in IOPS) that
      * storage DRS uses to make recommendations to move VMs off of a datastore when
      * the total reservable IOPS exceeds the threshold. Default: `60` percent.
      */
-    public readonly sdrsIoReservablePercentThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsIoReservablePercentThreshold!: pulumi.Output<number | undefined>;
     /**
      * The reservable IOPS
      * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
      * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
      * `manual`. Default: `automatic`.
      */
-    public readonly sdrsIoReservableThresholdMode: pulumi.Output<string | undefined>;
+    public readonly sdrsIoReservableThresholdMode!: pulumi.Output<string | undefined>;
     /**
      * The storage DRS poll interval, in
      * minutes. Default: `480` minutes.
      */
-    public readonly sdrsLoadBalanceInterval: pulumi.Output<number | undefined>;
+    public readonly sdrsLoadBalanceInterval!: pulumi.Output<number | undefined>;
     /**
      * Overrides the default
      * automation settings when correcting storage and VM policy violations.
      */
-    public readonly sdrsPolicyEnforcementAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsPolicyEnforcementAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Overrides the default
      * automation settings when correcting affinity rule violations.
      */
-    public readonly sdrsRuleEnforcementAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsRuleEnforcementAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Overrides the default
      * automation settings when correcting disk space imbalances.
      */
-    public readonly sdrsSpaceBalanceAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsSpaceBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
-    public readonly sdrsSpaceUtilizationThreshold: pulumi.Output<number | undefined>;
+    public readonly sdrsSpaceUtilizationThreshold!: pulumi.Output<number | undefined>;
     /**
      * Overrides the default
      * automation settings when generating recommendations for datastore evacuation.
      */
-    public readonly sdrsVmEvacuationAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly sdrsVmEvacuationAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DatastoreCluster resource with the given unique name, arguments, and options.
@@ -237,7 +237,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatastoreClusterArgs | DatastoreClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatastoreClusterState = argsOrState as DatastoreClusterState | undefined;
+            const state = argsOrState as DatastoreClusterState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["datacenterId"] = state ? state.datacenterId : undefined;
             inputs["folder"] = state ? state.folder : undefined;

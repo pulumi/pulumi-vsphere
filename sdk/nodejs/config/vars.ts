@@ -25,7 +25,7 @@ export let clientDebugPathRun: string | undefined = __config.get("clientDebugPat
 /**
  * The user password for vSphere API operations.
  */
-export let password: string = __config.require("password");
+export let password: string | undefined = __config.get("password");
 /**
  * Persist vSphere client sessions to disk
  */
@@ -37,7 +37,7 @@ export let restSessionPath: string | undefined = __config.get("restSessionPath")
 /**
  * The user name for vSphere API operations.
  */
-export let user: string = __config.require("user");
+export let user: string | undefined = __config.get("user");
 export let vcenterServer: string | undefined = __config.get("vcenterServer");
 /**
  * The directory to save vSphere SOAP API sessions to

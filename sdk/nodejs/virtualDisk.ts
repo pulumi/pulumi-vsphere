@@ -45,40 +45,40 @@ export class VirtualDisk extends pulumi.CustomResource {
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      */
-    public readonly adapterType: pulumi.Output<string | undefined>;
+    public readonly adapterType!: pulumi.Output<string | undefined>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdk_path` parameter if they are missing.
      * Default: `false`.
      */
-    public readonly createDirectories: pulumi.Output<boolean | undefined>;
+    public readonly createDirectories!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    public readonly datacenter: pulumi.Output<string | undefined>;
+    public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore in which to create the
      * disk.
      */
-    public readonly datastore: pulumi.Output<string>;
+    public readonly datastore!: pulumi.Output<string>;
     /**
      * Size of the disk (in GB).
      */
-    public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      */
-    public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.
      */
-    public readonly vmdkPath: pulumi.Output<string>;
+    public readonly vmdkPath!: pulumi.Output<string>;
 
     /**
      * Create a VirtualDisk resource with the given unique name, arguments, and options.
@@ -91,7 +91,7 @@ export class VirtualDisk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VirtualDiskArgs | VirtualDiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VirtualDiskState = argsOrState as VirtualDiskState | undefined;
+            const state = argsOrState as VirtualDiskState | undefined;
             inputs["adapterType"] = state ? state.adapterType : undefined;
             inputs["createDirectories"] = state ? state.createDirectories : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;

@@ -78,13 +78,13 @@ export class Folder extends pulumi.CustomResource {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    public readonly datacenterId: pulumi.Output<string | undefined>;
+    public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -93,19 +93,19 @@ export class Folder extends pulumi.CustomResource {
      * `terraform-test-folder`, the resulting path would be
      * `/default-dc/vm/terraform-test-folder`.
      */
-    public readonly path: pulumi.Output<string>;
+    public readonly path!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,
      * `vm` for virtual machine folders, `datastore` for datastore folders, and
      * `network` for network folders. Forces a new resource if changed.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ export class Folder extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FolderState = argsOrState as FolderState | undefined;
+            const state = argsOrState as FolderState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["datacenterId"] = state ? state.datacenterId : undefined;
             inputs["path"] = state ? state.path : undefined;

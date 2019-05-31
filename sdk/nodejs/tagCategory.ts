@@ -69,22 +69,22 @@ export class TagCategory extends pulumi.CustomResource {
      * valid to be assigned to. For a full list, click
      * here.
      */
-    public readonly associableTypes: pulumi.Output<string[]>;
+    public readonly associableTypes!: pulumi.Output<string[]>;
     /**
      * The number of tags that can be assigned from this
      * category to a single object at once. Can be one of `SINGLE` (object can only
      * be assigned one tag in this category), to `MULTIPLE` (object can be assigned
      * multiple tags in this category). Forces a new resource if changed.
      */
-    public readonly cardinality: pulumi.Output<string>;
+    public readonly cardinality!: pulumi.Output<string>;
     /**
      * A description for the category.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the category.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a TagCategory resource with the given unique name, arguments, and options.
@@ -97,7 +97,7 @@ export class TagCategory extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TagCategoryArgs | TagCategoryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TagCategoryState = argsOrState as TagCategoryState | undefined;
+            const state = argsOrState as TagCategoryState | undefined;
             inputs["associableTypes"] = state ? state.associableTypes : undefined;
             inputs["cardinality"] = state ? state.cardinality : undefined;
             inputs["description"] = state ? state.description : undefined;

@@ -88,22 +88,22 @@ export class DpmHostOverride extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      */
-    public readonly dpmAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly dpmAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    public readonly dpmEnabled: pulumi.Output<boolean | undefined>;
+    public readonly dpmEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The managed object ID of the host.
      */
-    public readonly hostSystemId: pulumi.Output<string>;
+    public readonly hostSystemId!: pulumi.Output<string>;
 
     /**
      * Create a DpmHostOverride resource with the given unique name, arguments, and options.
@@ -116,7 +116,7 @@ export class DpmHostOverride extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DpmHostOverrideArgs | DpmHostOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DpmHostOverrideState = argsOrState as DpmHostOverrideState | undefined;
+            const state = argsOrState as DpmHostOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["dpmAutomationLevel"] = state ? state.dpmAutomationLevel : undefined;
             inputs["dpmEnabled"] = state ? state.dpmEnabled : undefined;

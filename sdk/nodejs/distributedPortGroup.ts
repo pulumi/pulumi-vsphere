@@ -151,222 +151,222 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly activeUplinks: pulumi.Output<string[]>;
+    public readonly activeUplinks!: pulumi.Output<string[]>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
      * than that of its own.
      */
-    public readonly allowForgedTransmits: pulumi.Output<boolean>;
+    public readonly allowForgedTransmits!: pulumi.Output<boolean>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    public readonly allowMacChanges: pulumi.Output<boolean>;
+    public readonly allowMacChanges!: pulumi.Output<boolean>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    public readonly allowPromiscuous: pulumi.Output<boolean>;
+    public readonly allowPromiscuous!: pulumi.Output<boolean>;
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `number_of_ports` if necessary. Default: `true`.
      */
-    public readonly autoExpand: pulumi.Output<boolean | undefined>;
+    public readonly autoExpand!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether to block all ports by default.
      */
-    public readonly blockAllPorts: pulumi.Output<boolean>;
+    public readonly blockAllPorts!: pulumi.Output<boolean>;
     /**
      * Allow the [port shutdown
      * policy][port-shutdown-policy] to be overridden on an individual port.
      */
-    public readonly blockOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly blockOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * Enable beacon probing on the ports this policy applies to.
      */
-    public readonly checkBeacon: pulumi.Output<boolean>;
+    public readonly checkBeacon!: pulumi.Output<boolean>;
     /**
      * Version string of the configuration that this spec is trying to change.
      */
-    public /*out*/ readonly configVersion: pulumi.Output<string>;
+    public /*out*/ readonly configVersion!: pulumi.Output<string>;
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * An optional description for the port group.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Allow VMDirectPath Gen2 on the ports this policy applies to.
      */
-    public readonly directpathGen2Allowed: pulumi.Output<boolean>;
+    public readonly directpathGen2Allowed!: pulumi.Output<boolean>;
     /**
      * The ID of the DVS to add the
      * port group to. Forces a new resource if changed.
      */
-    public readonly distributedVirtualSwitchUuid: pulumi.Output<string>;
+    public readonly distributedVirtualSwitchUuid!: pulumi.Output<string>;
     /**
      * The average egress bandwidth in bits per second if egress shaping is enabled on the port.
      */
-    public readonly egressShapingAverageBandwidth: pulumi.Output<number>;
+    public readonly egressShapingAverageBandwidth!: pulumi.Output<number>;
     /**
      * The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
      */
-    public readonly egressShapingBurstSize: pulumi.Output<number>;
+    public readonly egressShapingBurstSize!: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for egress traffic on the port.
      */
-    public readonly egressShapingEnabled: pulumi.Output<boolean>;
+    public readonly egressShapingEnabled!: pulumi.Output<boolean>;
     /**
      * The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
      */
-    public readonly egressShapingPeakBandwidth: pulumi.Output<number>;
+    public readonly egressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    public readonly failback: pulumi.Output<boolean>;
+    public readonly failback!: pulumi.Output<boolean>;
     /**
      * The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingAverageBandwidth: pulumi.Output<number>;
+    public readonly ingressShapingAverageBandwidth!: pulumi.Output<number>;
     /**
      * The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
      */
-    public readonly ingressShapingBurstSize: pulumi.Output<number>;
+    public readonly ingressShapingBurstSize!: pulumi.Output<number>;
     /**
      * True if the traffic shaper is enabled for ingress traffic on the port.
      */
-    public readonly ingressShapingEnabled: pulumi.Output<boolean>;
+    public readonly ingressShapingEnabled!: pulumi.Output<boolean>;
     /**
      * The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    public readonly ingressShapingPeakBandwidth: pulumi.Output<number>;
+    public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
      * The generated UUID of the portgroup.
      */
-    public /*out*/ readonly key: pulumi.Output<string>;
+    public /*out*/ readonly key!: pulumi.Output<string>;
     /**
      * Whether or not to enable LACP on all uplink ports.
      */
-    public readonly lacpEnabled: pulumi.Output<boolean>;
+    public readonly lacpEnabled!: pulumi.Output<boolean>;
     /**
      * The uplink LACP mode to use. Can be one of active or passive.
      */
-    public readonly lacpMode: pulumi.Output<string>;
+    public readonly lacpMode!: pulumi.Output<string>;
     /**
      * Allow a port in this port group to be
      * moved to another port group while it is connected.
      */
-    public readonly livePortMovingAllowed: pulumi.Output<boolean | undefined>;
+    public readonly livePortMovingAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the port group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Indicates whether to enable netflow on all ports.
      */
-    public readonly netflowEnabled: pulumi.Output<boolean>;
+    public readonly netflowEnabled!: pulumi.Output<boolean>;
     /**
      * Allow the [Netflow
      * policy][netflow-policy] on this port group to be overridden on an individual
      * port.
      */
-    public readonly netflowOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly netflowOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * The key of a network resource pool
      * to associate with this port group. The default is `-1`, which implies no
      * association.
      */
-    public readonly networkResourcePoolKey: pulumi.Output<string | undefined>;
+    public readonly networkResourcePoolKey!: pulumi.Output<string | undefined>;
     /**
      * Allow the network
      * resource pool set on this port group to be overridden on an individual port.
      */
-    public readonly networkResourcePoolOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly networkResourcePoolOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    public readonly notifySwitches: pulumi.Output<boolean>;
+    public readonly notifySwitches!: pulumi.Output<boolean>;
     /**
      * The number of ports available on this port
      * group. Cannot be decreased below the amount of used ports on the port group.
      */
-    public readonly numberOfPorts: pulumi.Output<number>;
+    public readonly numberOfPorts!: pulumi.Output<number>;
     /**
      * Reset a port's settings to the
      * settings defined on this port group policy when the port disconnects.
      */
-    public readonly portConfigResetAtDisconnect: pulumi.Output<boolean | undefined>;
+    public readonly portConfigResetAtDisconnect!: pulumi.Output<boolean | undefined>;
     /**
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
      */
-    public readonly portNameFormat: pulumi.Output<string | undefined>;
+    public readonly portNameFormat!: pulumi.Output<string | undefined>;
     /**
      * The secondary VLAN ID for this port.
      */
-    public readonly portPrivateSecondaryVlanId: pulumi.Output<number>;
+    public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
     /**
      * Allow the [security policy
      * settings][sec-policy-settings] defined in this port group policy to be
      * overridden on an individual port.
      */
-    public readonly securityPolicyOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly securityPolicyOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * Allow the [traffic shaping
      * options][traffic-shaping-settings] on this port group policy to be overridden
      * on an individual port.
      */
-    public readonly shapingOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly shapingOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
-    public readonly standbyUplinks: pulumi.Output<string[]>;
+    public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
      * failover_explicit, or loadbalance_loadbased.
      */
-    public readonly teamingPolicy: pulumi.Output<string>;
+    public readonly teamingPolicy!: pulumi.Output<string>;
     /**
      * Allow any traffic filters on
      * this port group to be overridden on an individual port.
      */
-    public readonly trafficFilterOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly trafficFilterOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular
      * packet forwarded done by the switch.
      */
-    public readonly txUplink: pulumi.Output<boolean>;
+    public readonly txUplink!: pulumi.Output<boolean>;
     /**
      * The port group type. Can be one of `earlyBinding` (static
      * binding) or `ephemeral`. Default: `earlyBinding`.
      */
-    public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * Allow the [uplink teaming
      * options][uplink-teaming-settings] on this port group to be overridden on an
      * individual port.
      */
-    public readonly uplinkTeamingOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly uplinkTeamingOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanId: pulumi.Output<number>;
+    public readonly vlanId!: pulumi.Output<number>;
     /**
      * Allow the [VLAN settings][vlan-settings]
      * on this port group to be overridden on an individual port.
      */
-    public readonly vlanOverrideAllowed: pulumi.Output<boolean | undefined>;
+    public readonly vlanOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanRanges: pulumi.Output<{ maxVlan: number, minVlan: number }[]>;
+    public readonly vlanRanges!: pulumi.Output<{ maxVlan: number, minVlan: number }[]>;
 
     /**
      * Create a DistributedPortGroup resource with the given unique name, arguments, and options.
@@ -379,7 +379,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DistributedPortGroupArgs | DistributedPortGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DistributedPortGroupState = argsOrState as DistributedPortGroupState | undefined;
+            const state = argsOrState as DistributedPortGroupState | undefined;
             inputs["activeUplinks"] = state ? state.activeUplinks : undefined;
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
             inputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;

@@ -88,17 +88,17 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster.
      */
-    public readonly hostSystemIds: pulumi.Output<string[] | undefined>;
+    public readonly hostSystemIds!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a ComputeClusterHostGroup resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ComputeClusterHostGroupArgs | ComputeClusterHostGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ComputeClusterHostGroupState = argsOrState as ComputeClusterHostGroupState | undefined;
+            const state = argsOrState as ComputeClusterHostGroupState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
             inputs["name"] = state ? state.name : undefined;

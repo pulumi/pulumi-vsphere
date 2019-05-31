@@ -87,11 +87,11 @@ export class CustomAttribute extends pulumi.CustomResource {
      * type. For a full list, click here. Forces a new
      * resource if changed.
      */
-    public readonly managedObjectType: pulumi.Output<string | undefined>;
+    public readonly managedObjectType!: pulumi.Output<string | undefined>;
     /**
      * The name of the custom attribute.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a CustomAttribute resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ export class CustomAttribute extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CustomAttributeArgs | CustomAttributeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: CustomAttributeState = argsOrState as CustomAttributeState | undefined;
+            const state = argsOrState as CustomAttributeState | undefined;
             inputs["managedObjectType"] = state ? state.managedObjectType : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {

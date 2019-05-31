@@ -62,16 +62,16 @@ export class Tag extends pulumi.CustomResource {
      * The unique identifier of the parent category in
      * which this tag will be created. Forces a new resource if changed.
      */
-    public readonly categoryId: pulumi.Output<string>;
+    public readonly categoryId!: pulumi.Output<string>;
     /**
      * A description for the tag.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -84,7 +84,7 @@ export class Tag extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TagState = argsOrState as TagState | undefined;
+            const state = argsOrState as TagState | undefined;
             inputs["categoryId"] = state ? state.categoryId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;

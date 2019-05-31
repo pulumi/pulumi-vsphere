@@ -49,26 +49,26 @@ export class Datacenter extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The folder where the datacenter should be created.
      * Forces a new resource if changed.
      */
-    public readonly folder: pulumi.Output<string | undefined>;
+    public readonly folder!: pulumi.Output<string | undefined>;
     /**
      * [Managed object ID][docs-about-morefs] of this datacenter.
      */
-    public /*out*/ readonly moid: pulumi.Output<string>;
+    public /*out*/ readonly moid!: pulumi.Output<string>;
     /**
      * The name of the datacenter. This name needs to be unique
      * within the folder. Forces a new resource if changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Datacenter resource with the given unique name, arguments, and options.
@@ -81,7 +81,7 @@ export class Datacenter extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatacenterArgs | DatacenterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatacenterState = argsOrState as DatacenterState | undefined;
+            const state = argsOrState as DatacenterState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["folder"] = state ? state.folder : undefined;
             inputs["moid"] = state ? state.moid : undefined;

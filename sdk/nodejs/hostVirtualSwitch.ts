@@ -108,114 +108,114 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      * The list of active network adapters used for load
      * balancing.
      */
-    public readonly activeNics: pulumi.Output<string[]>;
+    public readonly activeNics!: pulumi.Output<string[]>;
     /**
      * Controls whether or not the virtual
      * network adapter is allowed to send network traffic with a different MAC
      * address than that of its own. Default: `true`.
      */
-    public readonly allowForgedTransmits: pulumi.Output<boolean | undefined>;
+    public readonly allowForgedTransmits!: pulumi.Output<boolean | undefined>;
     /**
      * Controls whether or not the Media Access
      * Control (MAC) address can be changed. Default: `true`.
      */
-    public readonly allowMacChanges: pulumi.Output<boolean | undefined>;
+    public readonly allowMacChanges!: pulumi.Output<boolean | undefined>;
     /**
      * Enable promiscuous mode on the network. This
      * flag indicates whether or not all traffic is seen on a given port. Default:
      * `false`.
      */
-    public readonly allowPromiscuous: pulumi.Output<boolean | undefined>;
+    public readonly allowPromiscuous!: pulumi.Output<boolean | undefined>;
     /**
      * The interval, in seconds, that a NIC beacon
      * packet is sent out. This can be used with `check_beacon` to
      * offer link failure capability beyond link status only. Default: `1`.
      */
-    public readonly beaconInterval: pulumi.Output<number | undefined>;
+    public readonly beaconInterval!: pulumi.Output<number | undefined>;
     /**
      * Enable beacon probing - this requires that the
      * `beacon_interval` option has been set in the bridge
      * options. If this is set to `false`, only link status is used to check for
      * failed NICs.  Default: `false`.
      */
-    public readonly checkBeacon: pulumi.Output<boolean | undefined>;
+    public readonly checkBeacon!: pulumi.Output<boolean | undefined>;
     /**
      * If set to `true`, the teaming policy will re-activate
      * failed interfaces higher in precedence when they come back up.  Default:
      * `true`.
      */
-    public readonly failback: pulumi.Output<boolean | undefined>;
+    public readonly failback!: pulumi.Output<boolean | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      */
-    public readonly hostSystemId: pulumi.Output<string>;
+    public readonly hostSystemId!: pulumi.Output<string>;
     /**
      * Whether to `advertise` or `listen`
      * for link discovery traffic. Default: `listen`.
      */
-    public readonly linkDiscoveryOperation: pulumi.Output<string | undefined>;
+    public readonly linkDiscoveryOperation!: pulumi.Output<string | undefined>;
     /**
      * The discovery protocol type.  Valid
      * types are `cpd` and `lldp`. Default: `cdp`.
      */
-    public readonly linkDiscoveryProtocol: pulumi.Output<string | undefined>;
+    public readonly linkDiscoveryProtocol!: pulumi.Output<string | undefined>;
     /**
      * The maximum transmission unit (MTU) for the virtual
      * switch. Default: `1500`.
      */
-    public readonly mtu: pulumi.Output<number | undefined>;
+    public readonly mtu!: pulumi.Output<number | undefined>;
     /**
      * The name of the virtual switch. Forces a new resource if
      * changed.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The network interfaces to bind to the bridge.
      */
-    public readonly networkAdapters: pulumi.Output<string[]>;
+    public readonly networkAdapters!: pulumi.Output<string[]>;
     /**
      * If set to `true`, the teaming policy will
      * notify the broadcast network of a NIC failover, triggering cache updates.
      * Default: `true`.
      */
-    public readonly notifySwitches: pulumi.Output<boolean | undefined>;
+    public readonly notifySwitches!: pulumi.Output<boolean | undefined>;
     /**
      * The number of ports to create with this
      * virtual switch. Default: `128`.
      */
-    public readonly numberOfPorts: pulumi.Output<number | undefined>;
+    public readonly numberOfPorts!: pulumi.Output<number | undefined>;
     /**
      * The average bandwidth in bits per
      * second if traffic shaping is enabled. Default: `0`
      */
-    public readonly shapingAverageBandwidth: pulumi.Output<number | undefined>;
+    public readonly shapingAverageBandwidth!: pulumi.Output<number | undefined>;
     /**
      * The maximum burst size allowed in bytes if
      * shaping is enabled. Default: `0`
      */
-    public readonly shapingBurstSize: pulumi.Output<number | undefined>;
+    public readonly shapingBurstSize!: pulumi.Output<number | undefined>;
     /**
      * Set to `true` to enable the traffic shaper for
      * ports managed by this virtual switch. Default: `false`.
      */
-    public readonly shapingEnabled: pulumi.Output<boolean | undefined>;
+    public readonly shapingEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The peak bandwidth during bursts in
      * bits per second if traffic shaping is enabled. Default: `0`
      */
-    public readonly shapingPeakBandwidth: pulumi.Output<number | undefined>;
+    public readonly shapingPeakBandwidth!: pulumi.Output<number | undefined>;
     /**
      * The list of standby network adapters used for
      * failover.
      */
-    public readonly standbyNics: pulumi.Output<string[]>;
+    public readonly standbyNics!: pulumi.Output<string[]>;
     /**
      * The network adapter teaming policy. Can be one
      * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
      * `failover_explicit`. Default: `loadbalance_srcid`.
      */
-    public readonly teamingPolicy: pulumi.Output<string | undefined>;
+    public readonly teamingPolicy!: pulumi.Output<string | undefined>;
 
     /**
      * Create a HostVirtualSwitch resource with the given unique name, arguments, and options.
@@ -228,7 +228,7 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: HostVirtualSwitchArgs | HostVirtualSwitchState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: HostVirtualSwitchState = argsOrState as HostVirtualSwitchState | undefined;
+            const state = argsOrState as HostVirtualSwitchState | undefined;
             inputs["activeNics"] = state ? state.activeNics : undefined;
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
             inputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;

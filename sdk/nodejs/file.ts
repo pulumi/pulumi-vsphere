@@ -67,38 +67,38 @@ export class File extends pulumi.CustomResource {
      * Create directories in `destination_file`
      * path parameter if any missing for copy operation.
      */
-    public readonly createDirectories: pulumi.Output<boolean | undefined>;
+    public readonly createDirectories!: pulumi.Output<boolean | undefined>;
     /**
      * The name of a datacenter in which the file will be
      * uploaded to.
      */
-    public readonly datacenter: pulumi.Output<string | undefined>;
+    public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore in which to upload the
      * file to.
      */
-    public readonly datastore: pulumi.Output<string>;
+    public readonly datastore!: pulumi.Output<string>;
     /**
      * The path to where the file should be uploaded
      * or copied to on vSphere.
      */
-    public readonly destinationFile: pulumi.Output<string>;
+    public readonly destinationFile!: pulumi.Output<string>;
     /**
      * The name of a datacenter in which the file
      * will be copied from. Forces a new resource if changed.
      */
-    public readonly sourceDatacenter: pulumi.Output<string | undefined>;
+    public readonly sourceDatacenter!: pulumi.Output<string | undefined>;
     /**
      * The name of the datastore in which file will
      * be copied from. Forces a new resource if changed.
      */
-    public readonly sourceDatastore: pulumi.Output<string | undefined>;
+    public readonly sourceDatastore!: pulumi.Output<string | undefined>;
     /**
      * The path to the file being uploaded from the
      * Terraform host to vSphere or copied within vSphere. Forces a new resource if
      * changed.
      */
-    public readonly sourceFile: pulumi.Output<string>;
+    public readonly sourceFile!: pulumi.Output<string>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export class File extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FileArgs | FileState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FileState = argsOrState as FileState | undefined;
+            const state = argsOrState as FileState | undefined;
             inputs["createDirectories"] = state ? state.createDirectories : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["datastore"] = state ? state.datastore : undefined;

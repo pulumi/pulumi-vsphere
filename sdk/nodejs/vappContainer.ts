@@ -105,19 +105,19 @@ export class VappContainer extends pulumi.CustomResource {
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    public readonly cpuExpandable: pulumi.Output<boolean | undefined>;
+    public readonly cpuExpandable!: pulumi.Output<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited.
      * Default: `-1`
      */
-    public readonly cpuLimit: pulumi.Output<number | undefined>;
+    public readonly cpuLimit!: pulumi.Output<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    public readonly cpuReservation: pulumi.Output<number | undefined>;
+    public readonly cpuReservation!: pulumi.Output<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -125,35 +125,35 @@ export class VappContainer extends pulumi.CustomResource {
      * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
      * ignored.  Default: `normal`
      */
-    public readonly cpuShareLevel: pulumi.Output<string | undefined>;
+    public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpu_share_level` must be `custom`.
      */
-    public readonly cpuShares: pulumi.Output<number>;
+    public readonly cpuShares!: pulumi.Output<number>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    public readonly memoryExpandable: pulumi.Output<boolean | undefined>;
+    public readonly memoryExpandable!: pulumi.Output<boolean | undefined>;
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
      * unlimited.
      * Default: `-1`
      */
-    public readonly memoryLimit: pulumi.Output<number | undefined>;
+    public readonly memoryLimit!: pulumi.Output<number | undefined>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the vApp container. Default: `0`
      */
-    public readonly memoryReservation: pulumi.Output<number | undefined>;
+    public readonly memoryReservation!: pulumi.Output<number | undefined>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -161,22 +161,22 @@ export class VappContainer extends pulumi.CustomResource {
      * `low`, `normal`, or `high` are specified values in `memory_shares` will be
      * ignored.  Default: `normal`
      */
-    public readonly memoryShareLevel: pulumi.Output<string | undefined>;
+    public readonly memoryShareLevel!: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memory_share_level` must be `custom`.
      */
-    public readonly memoryShares: pulumi.Output<number>;
+    public readonly memoryShares!: pulumi.Output<number>;
     /**
      * The name of the vApp container.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the vApp container's parent folder.
      */
-    public readonly parentFolderId: pulumi.Output<string | undefined>;
+    public readonly parentFolderId!: pulumi.Output<string | undefined>;
     /**
      * The [managed object ID][docs-about-morefs]
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -184,12 +184,12 @@ export class VappContainer extends pulumi.CustomResource {
      * from one parent resource pool to another, both must share a common root
      * resource pool or the move will fail.
      */
-    public readonly parentResourcePoolId: pulumi.Output<string>;
+    public readonly parentResourcePoolId!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource. See
      * [here][docs-applying-tags] for a reference on how to apply tags.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a VappContainer resource with the given unique name, arguments, and options.
@@ -202,7 +202,7 @@ export class VappContainer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VappContainerArgs | VappContainerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VappContainerState = argsOrState as VappContainerState | undefined;
+            const state = argsOrState as VappContainerState | undefined;
             inputs["cpuExpandable"] = state ? state.cpuExpandable : undefined;
             inputs["cpuLimit"] = state ? state.cpuLimit : undefined;
             inputs["cpuReservation"] = state ? state.cpuReservation : undefined;

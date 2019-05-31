@@ -100,23 +100,23 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    public readonly computeClusterId: pulumi.Output<string>;
+    public readonly computeClusterId!: pulumi.Output<string>;
     /**
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      */
-    public readonly drsAutomationLevel: pulumi.Output<string | undefined>;
+    public readonly drsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    public readonly drsEnabled: pulumi.Output<boolean | undefined>;
+    public readonly drsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    public readonly virtualMachineId: pulumi.Output<string>;
+    public readonly virtualMachineId!: pulumi.Output<string>;
 
     /**
      * Create a DrsVmOverride resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ export class DrsVmOverride extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DrsVmOverrideArgs | DrsVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DrsVmOverrideState = argsOrState as DrsVmOverrideState | undefined;
+            const state = argsOrState as DrsVmOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["drsAutomationLevel"] = state ? state.drsAutomationLevel : undefined;
             inputs["drsEnabled"] = state ? state.drsEnabled : undefined;
