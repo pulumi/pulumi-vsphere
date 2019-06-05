@@ -511,6 +511,20 @@ export class VirtualMachine extends pulumi.CustomResource {
         return new VirtualMachine(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/virtualMachine:VirtualMachine';
+
+    /**
+     * Returns true if the given object is an instance of VirtualMachine.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VirtualMachine {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VirtualMachine.__pulumiType;
+    }
+
     /**
      * The guest name for the operating system
      * when `guest_id` is `other` or `other-64`.
@@ -1087,7 +1101,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["vmwareToolsStatus"] = undefined /*out*/;
             inputs["vmxPath"] = undefined /*out*/;
         }
-        super("vsphere:index/virtualMachine:VirtualMachine", name, inputs, opts);
+        super(VirtualMachine.__pulumiType, name, inputs, opts);
     }
 }
 

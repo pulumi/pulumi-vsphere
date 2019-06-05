@@ -62,6 +62,20 @@ export class NasDatastore extends pulumi.CustomResource {
         return new NasDatastore(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/nasDatastore:NasDatastore';
+
+    /**
+     * Returns true if the given object is an instance of NasDatastore.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NasDatastore {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === NasDatastore.__pulumiType;
+    }
+
     /**
      * Access mode for the mount point. Can be one of
      * `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
@@ -229,7 +243,7 @@ export class NasDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
-        super("vsphere:index/nasDatastore:NasDatastore", name, inputs, opts);
+        super(NasDatastore.__pulumiType, name, inputs, opts);
     }
 }
 

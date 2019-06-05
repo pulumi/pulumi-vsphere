@@ -115,6 +115,20 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
         return new ComputeClusterVmDependencyRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule';
+
+    /**
+     * Returns true if the given object is an instance of ComputeClusterVmDependencyRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ComputeClusterVmDependencyRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ComputeClusterVmDependencyRule.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -186,7 +200,7 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["vmGroupName"] = args ? args.vmGroupName : undefined;
         }
-        super("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, inputs, opts);
+        super(ComputeClusterVmDependencyRule.__pulumiType, name, inputs, opts);
     }
 }
 

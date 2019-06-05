@@ -58,6 +58,20 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
         return new VirtualMachineSnapshot(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot';
+
+    /**
+     * Returns true if the given object is an instance of VirtualMachineSnapshot.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VirtualMachineSnapshot {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VirtualMachineSnapshot.__pulumiType;
+    }
+
     /**
      * If set to `true`, the delta disks involved in this
      * snapshot will be consolidated into the parent when this resource is
@@ -137,7 +151,7 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
             inputs["snapshotName"] = args ? args.snapshotName : undefined;
             inputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
         }
-        super("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, inputs, opts);
+        super(VirtualMachineSnapshot.__pulumiType, name, inputs, opts);
     }
 }
 

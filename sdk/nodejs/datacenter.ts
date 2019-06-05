@@ -43,6 +43,20 @@ export class Datacenter extends pulumi.CustomResource {
         return new Datacenter(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/datacenter:Datacenter';
+
+    /**
+     * Returns true if the given object is an instance of Datacenter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Datacenter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Datacenter.__pulumiType;
+    }
+
     /**
      * Map of custom attribute ids to value 
      * strings to set for datacenter resource. See
@@ -95,7 +109,7 @@ export class Datacenter extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["moid"] = undefined /*out*/;
         }
-        super("vsphere:index/datacenter:Datacenter", name, inputs, opts);
+        super(Datacenter.__pulumiType, name, inputs, opts);
     }
 }
 

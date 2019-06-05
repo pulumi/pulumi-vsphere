@@ -104,6 +104,20 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
         return new HostVirtualSwitch(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/hostVirtualSwitch:HostVirtualSwitch';
+
+    /**
+     * Returns true if the given object is an instance of HostVirtualSwitch.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is HostVirtualSwitch {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === HostVirtualSwitch.__pulumiType;
+    }
+
     /**
      * The list of active network adapters used for load
      * balancing.
@@ -286,7 +300,7 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
             inputs["standbyNics"] = args ? args.standbyNics : undefined;
             inputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
         }
-        super("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", name, inputs, opts);
+        super(HostVirtualSwitch.__pulumiType, name, inputs, opts);
     }
 }
 

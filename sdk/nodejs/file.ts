@@ -63,6 +63,20 @@ export class File extends pulumi.CustomResource {
         return new File(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/file:File';
+
+    /**
+     * Returns true if the given object is an instance of File.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is File {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === File.__pulumiType;
+    }
+
     /**
      * Create directories in `destination_file`
      * path parameter if any missing for copy operation.
@@ -138,7 +152,7 @@ export class File extends pulumi.CustomResource {
             inputs["sourceDatastore"] = args ? args.sourceDatastore : undefined;
             inputs["sourceFile"] = args ? args.sourceFile : undefined;
         }
-        super("vsphere:index/file:File", name, inputs, opts);
+        super(File.__pulumiType, name, inputs, opts);
     }
 }
 

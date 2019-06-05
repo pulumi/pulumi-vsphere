@@ -91,6 +91,20 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
         return new DatastoreClusterVmAntiAffinityRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule';
+
+    /**
+     * Returns true if the given object is an instance of DatastoreClusterVmAntiAffinityRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatastoreClusterVmAntiAffinityRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DatastoreClusterVmAntiAffinityRule.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
@@ -147,7 +161,7 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        super("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule", name, inputs, opts);
+        super(DatastoreClusterVmAntiAffinityRule.__pulumiType, name, inputs, opts);
     }
 }
 

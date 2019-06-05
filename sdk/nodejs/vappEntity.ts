@@ -94,6 +94,20 @@ export class VappEntity extends pulumi.CustomResource {
         return new VappEntity(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/vappEntity:VappEntity';
+
+    /**
+     * Returns true if the given object is an instance of VappEntity.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VappEntity {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VappEntity.__pulumiType;
+    }
+
     /**
      * [Managed object ID|docs-about-morefs] of the vApp
      * container the entity is a member of.
@@ -187,7 +201,7 @@ export class VappEntity extends pulumi.CustomResource {
             inputs["targetId"] = args ? args.targetId : undefined;
             inputs["waitForGuest"] = args ? args.waitForGuest : undefined;
         }
-        super("vsphere:index/vappEntity:VappEntity", name, inputs, opts);
+        super(VappEntity.__pulumiType, name, inputs, opts);
     }
 }
 

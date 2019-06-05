@@ -100,6 +100,20 @@ export class VappContainer extends pulumi.CustomResource {
         return new VappContainer(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/vappContainer:VappContainer';
+
+    /**
+     * Returns true if the given object is an instance of VappContainer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VappContainer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VappContainer.__pulumiType;
+    }
+
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
@@ -239,7 +253,7 @@ export class VappContainer extends pulumi.CustomResource {
             inputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        super("vsphere:index/vappContainer:VappContainer", name, inputs, opts);
+        super(VappContainer.__pulumiType, name, inputs, opts);
     }
 }
 

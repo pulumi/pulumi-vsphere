@@ -137,6 +137,20 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
         return new DistributedVirtualSwitch(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch';
+
+    /**
+     * Returns true if the given object is an instance of DistributedVirtualSwitch.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DistributedVirtualSwitch {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DistributedVirtualSwitch.__pulumiType;
+    }
+
     /**
      * A list of active uplinks to be used in load
      * balancing. These uplinks need to match the definitions in the
@@ -762,7 +776,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["vsanShareLevel"] = args ? args.vsanShareLevel : undefined;
             inputs["configVersion"] = undefined /*out*/;
         }
-        super("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, inputs, opts);
+        super(DistributedVirtualSwitch.__pulumiType, name, inputs, opts);
     }
 }
 

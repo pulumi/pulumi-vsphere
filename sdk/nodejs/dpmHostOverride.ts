@@ -83,6 +83,20 @@ export class DpmHostOverride extends pulumi.CustomResource {
         return new DpmHostOverride(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/dpmHostOverride:DpmHostOverride';
+
+    /**
+     * Returns true if the given object is an instance of DpmHostOverride.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DpmHostOverride {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DpmHostOverride.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
@@ -134,7 +148,7 @@ export class DpmHostOverride extends pulumi.CustomResource {
             inputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
         }
-        super("vsphere:index/dpmHostOverride:DpmHostOverride", name, inputs, opts);
+        super(DpmHostOverride.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -94,6 +94,20 @@ export class HostPortGroup extends pulumi.CustomResource {
         return new HostPortGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/hostPortGroup:HostPortGroup';
+
+    /**
+     * Returns true if the given object is an instance of HostPortGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is HostPortGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === HostPortGroup.__pulumiType;
+    }
+
     /**
      * List of active network adapters used for load balancing.
      */
@@ -247,7 +261,7 @@ export class HostPortGroup extends pulumi.CustomResource {
             inputs["key"] = undefined /*out*/;
             inputs["ports"] = undefined /*out*/;
         }
-        super("vsphere:index/hostPortGroup:HostPortGroup", name, inputs, opts);
+        super(HostPortGroup.__pulumiType, name, inputs, opts);
     }
 }
 

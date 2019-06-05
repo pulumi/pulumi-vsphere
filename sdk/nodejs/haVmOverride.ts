@@ -91,6 +91,20 @@ export class HaVmOverride extends pulumi.CustomResource {
         return new HaVmOverride(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/haVmOverride:HaVmOverride';
+
+    /**
+     * Returns true if the given object is an instance of HaVmOverride.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is HaVmOverride {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === HaVmOverride.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
@@ -247,7 +261,7 @@ export class HaVmOverride extends pulumi.CustomResource {
             inputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        super("vsphere:index/haVmOverride:HaVmOverride", name, inputs, opts);
+        super(HaVmOverride.__pulumiType, name, inputs, opts);
     }
 }
 

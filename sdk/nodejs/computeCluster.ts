@@ -131,6 +131,20 @@ export class ComputeCluster extends pulumi.CustomResource {
         return new ComputeCluster(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/computeCluster:ComputeCluster';
+
+    /**
+     * Returns true if the given object is an instance of ComputeCluster.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ComputeCluster {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ComputeCluster.__pulumiType;
+    }
+
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
@@ -600,7 +614,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["resourcePoolId"] = undefined /*out*/;
         }
-        super("vsphere:index/computeCluster:ComputeCluster", name, inputs, opts);
+        super(ComputeCluster.__pulumiType, name, inputs, opts);
     }
 }
 

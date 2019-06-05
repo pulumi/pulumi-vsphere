@@ -52,6 +52,20 @@ export class ResourcePool extends pulumi.CustomResource {
         return new ResourcePool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/resourcePool:ResourcePool';
+
+    /**
+     * Returns true if the given object is an instance of ResourcePool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ResourcePool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ResourcePool.__pulumiType;
+    }
+
     /**
      * Determines if the reservation on a resource
      * pool can grow beyond the specified value if the parent resource pool has
@@ -182,7 +196,7 @@ export class ResourcePool extends pulumi.CustomResource {
             inputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        super("vsphere:index/resourcePool:ResourcePool", name, inputs, opts);
+        super(ResourcePool.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -81,6 +81,20 @@ export class DatastoreCluster extends pulumi.CustomResource {
         return new DatastoreCluster(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/datastoreCluster:DatastoreCluster';
+
+    /**
+     * Returns true if the given object is an instance of DatastoreCluster.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DatastoreCluster {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DatastoreCluster.__pulumiType;
+    }
+
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster. See
@@ -294,7 +308,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
             inputs["sdrsVmEvacuationAutomationLevel"] = args ? args.sdrsVmEvacuationAutomationLevel : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        super("vsphere:index/datastoreCluster:DatastoreCluster", name, inputs, opts);
+        super(DatastoreCluster.__pulumiType, name, inputs, opts);
     }
 }
 

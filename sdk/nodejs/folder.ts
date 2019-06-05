@@ -73,6 +73,20 @@ export class Folder extends pulumi.CustomResource {
         return new Folder(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/folder:Folder';
+
+    /**
+     * Returns true if the given object is an instance of Folder.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Folder {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Folder.__pulumiType;
+    }
+
     /**
      * Map of custom attribute ids to attribute 
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
@@ -138,7 +152,7 @@ export class Folder extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        super("vsphere:index/folder:Folder", name, inputs, opts);
+        super(Folder.__pulumiType, name, inputs, opts);
     }
 }
 

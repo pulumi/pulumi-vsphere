@@ -98,6 +98,20 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
         return new ComputeClusterVmAffinityRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule';
+
+    /**
+     * Returns true if the given object is an instance of ComputeClusterVmAffinityRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ComputeClusterVmAffinityRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ComputeClusterVmAffinityRule.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -154,7 +168,7 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        super("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule", name, inputs, opts);
+        super(ComputeClusterVmAffinityRule.__pulumiType, name, inputs, opts);
     }
 }
 
