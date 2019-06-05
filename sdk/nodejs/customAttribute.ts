@@ -81,6 +81,20 @@ export class CustomAttribute extends pulumi.CustomResource {
         return new CustomAttribute(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/customAttribute:CustomAttribute';
+
+    /**
+     * Returns true if the given object is an instance of CustomAttribute.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is CustomAttribute {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === CustomAttribute.__pulumiType;
+    }
+
     /**
      * The object type that this attribute may be
      * applied to. If not set, the custom attribute may be applied to any object
@@ -112,7 +126,7 @@ export class CustomAttribute extends pulumi.CustomResource {
             inputs["managedObjectType"] = args ? args.managedObjectType : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("vsphere:index/customAttribute:CustomAttribute", name, inputs, opts);
+        super(CustomAttribute.__pulumiType, name, inputs, opts);
     }
 }
 

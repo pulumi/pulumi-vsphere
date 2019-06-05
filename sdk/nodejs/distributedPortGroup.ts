@@ -148,6 +148,20 @@ export class DistributedPortGroup extends pulumi.CustomResource {
         return new DistributedPortGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/distributedPortGroup:DistributedPortGroup';
+
+    /**
+     * Returns true if the given object is an instance of DistributedPortGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DistributedPortGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === DistributedPortGroup.__pulumiType;
+    }
+
     /**
      * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
@@ -482,7 +496,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
             inputs["configVersion"] = undefined /*out*/;
             inputs["key"] = undefined /*out*/;
         }
-        super("vsphere:index/distributedPortGroup:DistributedPortGroup", name, inputs, opts);
+        super(DistributedPortGroup.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -83,6 +83,20 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
         return new ComputeClusterHostGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup';
+
+    /**
+     * Returns true if the given object is an instance of ComputeClusterHostGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ComputeClusterHostGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ComputeClusterHostGroup.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
@@ -124,7 +138,7 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
             inputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup", name, inputs, opts);
+        super(ComputeClusterHostGroup.__pulumiType, name, inputs, opts);
     }
 }
 

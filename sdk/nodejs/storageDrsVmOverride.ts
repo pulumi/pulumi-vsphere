@@ -91,6 +91,20 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
         return new StorageDrsVmOverride(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/storageDrsVmOverride:StorageDrsVmOverride';
+
+    /**
+     * Returns true if the given object is an instance of StorageDrsVmOverride.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is StorageDrsVmOverride {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === StorageDrsVmOverride.__pulumiType;
+    }
+
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster to put the override in.
@@ -155,7 +169,7 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             inputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        super("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride", name, inputs, opts);
+        super(StorageDrsVmOverride.__pulumiType, name, inputs, opts);
     }
 }
 

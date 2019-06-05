@@ -123,6 +123,20 @@ export class VmfsDatastore extends pulumi.CustomResource {
         return new VmfsDatastore(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/vmfsDatastore:VmfsDatastore';
+
+    /**
+     * Returns true if the given object is an instance of VmfsDatastore.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VmfsDatastore {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VmfsDatastore.__pulumiType;
+    }
+
     /**
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
@@ -249,7 +263,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
-        super("vsphere:index/vmfsDatastore:VmfsDatastore", name, inputs, opts);
+        super(VmfsDatastore.__pulumiType, name, inputs, opts);
     }
 }
 

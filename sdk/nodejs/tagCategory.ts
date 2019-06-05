@@ -64,6 +64,20 @@ export class TagCategory extends pulumi.CustomResource {
         return new TagCategory(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/tagCategory:TagCategory';
+
+    /**
+     * Returns true if the given object is an instance of TagCategory.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TagCategory {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TagCategory.__pulumiType;
+    }
+
     /**
      * A list object types that this category is
      * valid to be assigned to. For a full list, click
@@ -115,7 +129,7 @@ export class TagCategory extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("vsphere:index/tagCategory:TagCategory", name, inputs, opts);
+        super(TagCategory.__pulumiType, name, inputs, opts);
     }
 }
 

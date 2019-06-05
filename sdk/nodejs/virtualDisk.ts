@@ -41,6 +41,20 @@ export class VirtualDisk extends pulumi.CustomResource {
         return new VirtualDisk(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere:index/virtualDisk:VirtualDisk';
+
+    /**
+     * Returns true if the given object is an instance of VirtualDisk.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VirtualDisk {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === VirtualDisk.__pulumiType;
+    }
+
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
@@ -118,7 +132,7 @@ export class VirtualDisk extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["vmdkPath"] = args ? args.vmdkPath : undefined;
         }
-        super("vsphere:index/virtualDisk:VirtualDisk", name, inputs, opts);
+        super(VirtualDisk.__pulumiType, name, inputs, opts);
     }
 }
 

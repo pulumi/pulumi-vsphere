@@ -11,6 +11,20 @@ import * as utilities from "./utilities";
  * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
+    /** @internal */
+    public static readonly __pulumiType = 'vsphere';
+
+    /**
+     * Returns true if the given object is an instance of Provider.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Provider {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Provider.__pulumiType;
+    }
+
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -40,7 +54,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["vimSessionPath"] = args ? args.vimSessionPath : undefined;
             inputs["vsphereServer"] = args ? args.vsphereServer : undefined;
         }
-        super("vsphere", name, inputs, opts);
+        super(Provider.__pulumiType, name, inputs, opts);
     }
 }
 
