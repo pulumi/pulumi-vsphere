@@ -1,60 +1,39 @@
-## 0.17.4
+CHANGELOG
+=========
 
-## 0.17.3 (Released May 31, 2019)
+## HEAD (Unreleased)
+_(none)_
 
-## Improvements
+---
 
-- Update to v1.11.0 of the VSphere Terraform Provider.
+## 0.17.3 (2019-06-05)
+* Update to v1.11.0 of the vSphere Terraform provider
 
-## 0.17.2 (Released April 22nd, 2019)
+## 0.17.2 (2019-02-22)
+* Update the version of the Pulumi-Terraform bridge. No user facing changes should be visible.
 
-## Improvements
+## 0.17.1 (2019-03-20)
+* Update to v1.10.0 of the vSphere Terraform provider
+* Fix a bug where setting a property value back to a default value results in no change
+* Project numeric types in Python as `float` instead of `int`, fixing some crashes
 
-- Update the version of pulumi-terraform on which the provider is based. No user-facing changes
-  should be visible.
+## 0.17.0 (2019-03-06)
+* Updated to the latest version of the `pulumi` SDK
 
-## 0.17.1 (Released March 20th, 2019)
+## 0.16.4 (2019-02-11)
+* Add support for the `deleteBeforeReplace` resource option and improved delete-before-replace behaviour introduced in Pulumi v0.16.14
 
-## Improvements
+## 0.16.3 (2019-01-19)
+* Update to v1.9.1 of the vSphere Terraform provider
+* Add documentation comments to the Node.js SDK
 
-- Update to v1.10.0 of the VSphere Terraform Provider.
+## 0.16.2 (2018-12-05)
+* Update to v1.9.0 of the vSphere Terraform provider
+* Fix an issue where the Pulumi CLI would warn of an incorrect plugin version for vSphere
 
-- Fix a bug where setting a property value back to the default results in no change
+## 0.16.1 (2018-11-13)
+* Support Python 3.6 and higher, instead of only Python 3.7
 
-- Numeric types in Python are now projected as `float` instead of `int`, fixing some crashes.
+## 0.16.0 (2018-10-16)
+* Initial release of the vSphere Provider
 
-## 0.17.0 (Released March 6th, 2019)
-
-## Improvements
-
-- Depend on latest version of `@pulumi/pulumi`
-
-## 0.16.4 (Released February 11th, 2019)
-
-### Improvements
-
-- Support for the `deleteBeforeReplace` resource option and improved
-  delete-before-replace behaviour introduced in [Pulumi
-  0.16.14](https://github.com/pulumi/pulumi/blob/master/CHANGELOG.md#01614-released-january-31st-2019).
-
-## 0.16.3 (Released January 19th, 2019)
-
-### Improvements
-
-- Updated to the v1.9.1 version of the Terraform VSphere Provider.
-
-- Documentation comments for the Node.js SDK now include examples
-
-## 0.16.2 (Released December 5th, 2018)
-
-### Improvements
-
-- Update provider to v1.9.0
-
-- Fix an issue where `pulumi` would issue a warning that the plugin version was incorrect.
-
-## 0.16.1 (Released Novemeber 13th, 2018)
-
-### Major Changes
-
-- If you're using Pulumi with Python, this release removes Python 2.7 support in favor of Python 3.6 and greater.
