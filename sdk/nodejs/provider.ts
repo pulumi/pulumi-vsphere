@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["restSessionPath"] = args ? args.restSessionPath : undefined;
             inputs["user"] = args ? args.user : undefined;
             inputs["vcenterServer"] = args ? args.vcenterServer : undefined;
+            inputs["vimKeepAlive"] = pulumi.output(args ? args.vimKeepAlive : undefined).apply(JSON.stringify);
             inputs["vimSessionPath"] = args ? args.vimSessionPath : undefined;
             inputs["vsphereServer"] = args ? args.vsphereServer : undefined;
         }
@@ -95,6 +96,10 @@ export interface ProviderArgs {
      */
     readonly user: pulumi.Input<string>;
     readonly vcenterServer?: pulumi.Input<string>;
+    /**
+     * Keep alive interval for the VIM session in minutes
+     */
+    readonly vimKeepAlive?: pulumi.Input<number>;
     /**
      * The directory to save vSphere SOAP API sessions to
      */

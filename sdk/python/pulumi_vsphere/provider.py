@@ -9,7 +9,7 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, allow_unverified_ssl=None, client_debug=None, client_debug_path=None, client_debug_path_run=None, password=None, persist_session=None, rest_session_path=None, user=None, vcenter_server=None, vim_session_path=None, vsphere_server=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_unverified_ssl=None, client_debug=None, client_debug_path=None, client_debug_path_run=None, password=None, persist_session=None, rest_session_path=None, user=None, vcenter_server=None, vim_keep_alive=None, vim_session_path=None, vsphere_server=None, __name__=None, __opts__=None):
         """
         The provider type for the vsphere package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -55,6 +55,8 @@ class Provider(pulumi.ProviderResource):
         __props__['user'] = user
 
         __props__['vcenter_server'] = vcenter_server
+
+        __props__['vim_keep_alive'] = pulumi.Output.from_input(vim_keep_alive).apply(json.dumps) if vim_keep_alive is not None else None
 
         __props__['vim_session_path'] = vim_session_path
 

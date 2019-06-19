@@ -40,6 +40,10 @@ export let restSessionPath: string | undefined = __config.get("restSessionPath")
 export let user: string | undefined = __config.get("user");
 export let vcenterServer: string | undefined = __config.get("vcenterServer");
 /**
+ * Keep alive interval for the VIM session in minutes
+ */
+export let vimKeepAlive: number | undefined = __config.getObject<number>("vimKeepAlive");
+/**
  * The directory to save vSphere SOAP API sessions to
  */
 export let vimSessionPath: string | undefined = __config.get("vimSessionPath");
