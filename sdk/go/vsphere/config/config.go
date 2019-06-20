@@ -52,6 +52,11 @@ func GetVcenterServer(ctx *pulumi.Context) string {
 	return config.Get(ctx, "vsphere:vcenterServer")
 }
 
+// Keep alive interval for the VIM session in minutes
+func GetVimKeepAlive(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "vsphere:vimKeepAlive")
+}
+
 // The directory to save vSphere SOAP API sessions to
 func GetVimSessionPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "vsphere:vimSessionPath")

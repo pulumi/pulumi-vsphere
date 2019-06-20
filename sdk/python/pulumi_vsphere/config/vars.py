@@ -52,6 +52,11 @@ The user name for vSphere API operations.
 
 vcenter_server = __config__.get('vcenterServer')
 
+vim_keep_alive = __config__.get('vimKeepAlive')
+"""
+Keep alive interval for the VIM session in minutes
+"""
+
 vim_session_path = __config__.get('vimSessionPath')
 """
 The directory to save vSphere SOAP API sessions to
