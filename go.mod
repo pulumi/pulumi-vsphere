@@ -19,7 +19,7 @@ require (
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v0.17.22-0.20190702185104-ebceea93a5da
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190703150544-a9a9ca8157ca
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190708212248-f083d8ce442f
 	github.com/rancher/go-rancher v0.0.0-20170407040943-ec24b7f12fca // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
