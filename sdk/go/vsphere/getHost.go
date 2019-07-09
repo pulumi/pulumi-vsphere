@@ -10,6 +10,8 @@ import (
 // The `vsphere_host` data source can be used to discover the ID of a vSphere
 // host. This can then be used with resources or data sources that require a host
 // managed object reference ID.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
 func LookupHost(ctx *pulumi.Context, args *GetHostArgs) (*GetHostResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

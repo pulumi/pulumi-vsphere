@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  *     name: "vapp-container-1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
  */
 export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
     return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {

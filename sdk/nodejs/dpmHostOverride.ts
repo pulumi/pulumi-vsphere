@@ -69,6 +69,8 @@ import * as utilities from "./utilities";
  *     hostSystemId: hostsHost[0].id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/dpm_host_override.html.markdown.
  */
 export class DpmHostOverride extends pulumi.CustomResource {
     /**

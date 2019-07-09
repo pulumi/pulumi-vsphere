@@ -4,53 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_tag_category` resource can be used to create and manage tag
- * categories, which determine how tags are grouped together and applied to
- * specific objects.
- * 
- * For more information about tags, click [here][ext-tags-general]. For more
- * information about tag categories specifically, click
- * [here][ext-tag-categories].
- * 
- * [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
- * [ext-tag-categories]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-BA3D1794-28F2-43F3-BCE9-3964CB207FB6.html
- * 
- * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
- * requires vCenter 6.0 or higher.
- * 
- * ## Example Usage
- * 
- * This example creates a tag category named `terraform-test-category`, with
- * single cardinality (meaning that only one tag in this category can be assigned
- * to an object at any given time). Tags in this category can only be assigned to
- * VMs and datastores.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const category = new vsphere.TagCategory("category", {
- *     associableTypes: [
- *         "VirtualMachine",
- *         "Datastore",
- *     ],
- *     cardinality: "SINGLE",
- *     description: "Managed by Terraform",
- * });
- * ```
- * 
- * ## Importing
- * 
- * An existing tag category can be [imported][docs-import] into this resource via
- * its name, using the following command:
- * 
- * [docs-import]: https://www.terraform.io/docs/import/index.html
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- */
 export class TagCategory extends pulumi.CustomResource {
     /**
      * Get an existing TagCategory resource's state with the given name, ID, and optional extra

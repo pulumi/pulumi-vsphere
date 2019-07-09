@@ -4,51 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_nas_datastore` resource can be used to create and manage NAS
- * datastores on an ESXi host or a set of hosts. The resource supports mounting
- * NFS v3 and v4.1 shares to be used as datastores.
- * 
- * > **NOTE:** Unlike [`vsphere_vmfs_datastore`][resource-vmfs-datastore], a NAS
- * datastore is only mounted on the hosts you choose to mount it on. To mount on
- * multiple hosts, you must specify each host that you want to add in the
- * `host_system_ids` argument.
- * 
- * [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
- * 
- * ## Example Usage
- * 
- * The following example would set up a NFS v3 share on 3 hosts connected through
- * vCenter in the same datacenter - `esxi1`, `esxi2`, and `esxi3`. The remote host
- * is named `nfs` and has `/export/terraform-test` exported.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const config = new pulumi.Config();
- * const hosts = config.get("hosts") || [
- *     "esxi1",
- *     "esxi2",
- *     "esxi3",
- * ];
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const esxiHosts: Output<vsphere.GETHOSTResult>[] = [];
- * for (let i = 0; i < hosts.length; i++) {
- *     esxiHosts.push(vsphere.getHost);
- * %!(EXTRA string=datacenter.apply(datacenter => vsphere.getHost({
- *         datacenterId: datacenter.id,
- *         name: hosts[i],
- *     })))}
- * const datastore = new vsphere.NasDatastore("datastore", {
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/terraform-test",
- *     type: "NFS",
- * });
- * ```
- */
 export class NasDatastore extends pulumi.CustomResource {
     /**
      * Get an existing NasDatastore resource's state with the given name, ID, and optional extra
@@ -106,13 +61,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -281,13 +230,7 @@ export interface NasDatastoreState {
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -382,13 +325,7 @@ export interface NasDatastoreArgs {
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     readonly folder?: pulumi.Input<string>;
     /**

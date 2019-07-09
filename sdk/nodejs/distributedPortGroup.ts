@@ -134,6 +134,8 @@ import * as utilities from "./utilities";
  *     vlanId: 1000,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
  */
 export class DistributedPortGroup extends pulumi.CustomResource {
     /**

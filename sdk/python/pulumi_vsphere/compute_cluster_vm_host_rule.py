@@ -90,6 +90,8 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
                with this rule.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

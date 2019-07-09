@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_compute_cluster` data source can be used to discover the ID of a
- * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
- * to use for virtual machine placement via the
- * [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource, allowing
- * you to specify the cluster's root resource pool directly versus using the alias
- * available through the [`vsphere_resource_pool`][docs-resource-pool-data-source]
- * data source.
- * 
- * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
- * [docs-resource-pool-data-source]: /docs/providers/vsphere/d/resource_pool.html
- * 
- * > You may also wish to see the
- * [`vsphere_compute_cluster`][docs-compute-cluster-resource] resource for further
- * details about clusters or how to work with them in Terraform.
- * 
- * [docs-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const computeCluster = vsphere_datacenter_dc.id.apply(id => vsphere.getComputeCluster({
- *     datacenterId: id,
- *     name: "compute-cluster1",
- * }));
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * ```
- */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
     return pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {
         "datacenterId": args.datacenterId,

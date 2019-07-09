@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_tag` resource can be used to create and manage tags, which allow
- * you to attach metadata to objects in the vSphere inventory to make these
- * objects more sortable and searchable.
- * 
- * For more information about tags, click [here][ext-tags-general].
- * 
- * [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
- * 
- * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
- * requires vCenter 6.0 or higher.
- * 
- * ## Example Usage
- * 
- * This example creates a tag named `terraform-test-tag`. This tag is assigned the
- * `terraform-test-category` category, which was created by the
- * [`vsphere_tag_category` resource][docs-tag-category-resource]. The resulting
- * tag can be assigned to VMs and datastores only, and can be the only value in
- * the category that can be assigned, as per the restrictions defined by the
- * category.
- * 
- * [docs-tag-category-resource]: /docs/providers/vsphere/r/tag_category.html
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const category = new vsphere.TagCategory("category", {
- *     associableTypes: [
- *         "VirtualMachine",
- *         "Datastore",
- *     ],
- *     cardinality: "SINGLE",
- *     description: "Managed by Terraform",
- * });
- * const tag = new vsphere.Tag("tag", {
- *     categoryId: category.id,
- *     description: "Managed by Terraform",
- * });
- * ```
- */
 export class Tag extends pulumi.CustomResource {
     /**
      * Get an existing Tag resource's state with the given name, ID, and optional extra

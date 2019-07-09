@@ -77,6 +77,8 @@ import * as utilities from "./utilities";
  *     virtualMachineId: vm.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
  */
 export class HaVmOverride extends pulumi.CustomResource {
     /**

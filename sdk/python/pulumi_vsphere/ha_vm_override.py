@@ -189,6 +189,8 @@ class HaVmOverride(pulumi.CustomResource):
                <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

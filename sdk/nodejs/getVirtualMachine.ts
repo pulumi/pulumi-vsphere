@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  *     name: "test-vm-template",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {

@@ -67,6 +67,8 @@ class CustomAttribute(pulumi.CustomResource):
                type. For a full list, click here. Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

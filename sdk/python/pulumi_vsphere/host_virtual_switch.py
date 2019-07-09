@@ -185,6 +185,8 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one
                of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`. Default: `loadbalance_srcid`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

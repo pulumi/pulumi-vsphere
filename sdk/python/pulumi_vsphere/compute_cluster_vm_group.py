@@ -58,6 +58,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                cluster. Forces a new resource if changed.
         :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

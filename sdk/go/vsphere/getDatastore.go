@@ -13,6 +13,8 @@ import (
 // [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
 // 
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
 func LookupDatastore(ctx *pulumi.Context, args *GetDatastoreArgs) (*GetDatastoreResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

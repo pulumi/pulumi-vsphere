@@ -57,6 +57,8 @@ class TagCategory(pulumi.CustomResource):
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
         :param pulumi.Input[str] name: The name of the category.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag_category.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

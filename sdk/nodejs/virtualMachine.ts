@@ -4,500 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_virtual_machine` resource can be used to manage the complex
- * lifecycle of a virtual machine. It supports management of disk, network
- * interface, and CDROM devices, creation from scratch or cloning from template,
- * and migration through both host and storage vMotion.
- * 
- * For more details on working with virtual machines in vSphere, see [this
- * page][vmware-docs-vm-management].
- * 
- * [vmware-docs-vm-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-55238059-912E-411F-A0E9-A7A536972A91.html
- * 
- * ## About Working with Virtual Machines in Terraform
- * 
- * A high degree of control and flexibility is afforded to a vSphere user when it
- * comes to how to configure, deploy, and manage virtual machines - much more
- * control than given in a traditional cloud provider. As such, Terraform has to
- * make some decisions on how to manage the virtual machines it creates and
- * manages. This section documents things you need to know about your virtual
- * machine configuration that you should consider when setting up virtual
- * machines, creating templates to clone from, or migrating from previous versions
- * of this resource.
- * 
- * ### Disks
- * 
- * The `vsphere_virtual_machine` resource currently only supports standard
- * VMDK-backed virtual disks - it does not support other special kinds of disk
- * devices like RDM disks.
- * 
- * Disks are managed by an arbitrary label supplied to the `label`
- * attribute of a `disk` block. This is separate from the
- * automatic naming that vSphere picks for you when creating a virtual machine.
- * Control over a virtual disk's name is not supported unless you are attaching an
- * external disk with the `attach` attribute.
- * 
- * Virtual disks can be SCSI disks only. The SCSI controllers managed by Terraform
- * can vary, depending on the value supplied to
- * `scsi_controller_count`. This also dictates the
- * controllers that are checked when looking for disks during a cloning process.
- * By default, this value is `1`, meaning that you can have up to 15 disks
- * configured on a virtual machine. These are all configured with the controller
- * type defined by the `scsi_type` setting. If you are cloning from
- * a template, devices will be added or re-configured as necessary.
- * 
- * When cloning from a template, you must specify disks of either the same or
- * greater size than the disks in the source template when creating a traditional
- * clone, or exactly the same size when cloning from snapshot (also known as a
- * linked clone). For more details, see the section on creating a virtual machine
- * from a template.
- * 
- * A maximum of 60 virtual disks can be configured when the
- * `scsi_controller_count` setting is configured to its
- * maximum of `4` controllers. See the disk options section for
- * more details.
- * 
- * ### Customization and network waiters
- * 
- * Terraform waits during various parts of a virtual machine deployment to ensure
- * that it is in a correct expected state before proceeding. These happen when a
- * VM is created, or also when it's updated, depending on the waiter.
- * 
- * Two waiters of note are:
- * 
- * * **The customization waiter:** This waiter watches events in vSphere to
- *   monitor when customization on a virtual machine completes during VM creation.
- *   Depending on your vSphere or VM configuration it may be necessary to change
- *   the timeout or turn it off. This can be controlled by the
- *   `timeout` setting in the customization
- *   settings block.
- * * **The network waiter:** This waiter waits for interfaces to show up on a
- *   guest virtual machine close to the end of both VM creation and update. This
- *   waiter is necessary to ensure that correct IP information gets reported to
- *   the guest virtual machine, mainly to facilitate the availability of a valid,
- *   reachable default IP address for any [provisioners][tf-docs-provisioners].
- *   The behavior of the waiter can be controlled with the
- *   `wait_for_guest_net_timeout`,
- *   `wait_for_guest_net_routable`,
- *   `wait_for_guest_ip_timeout`, and
- *   `ignored_guest_ips` settings.
- * 
- * [tf-docs-provisioners]: /docs/provisioners/index.html
- * 
- * ### Migrating from a previous version of this resource
- * 
- * > **NOTE:** This section only applies to versions of this resource available
- * in versions v0.4.2 of this provider or earlier.
- * 
- * The path for migrating to the current version of this resource is very similar
- * to the import path, with the exception that the `terraform
- * import` command does not need to be run. See that section for details on what
- * is required before you run `terraform plan` on a state that requires migration.
- * 
- * A successful migration usually only results in a configuration-only diff - that
- * is, Terraform reconciles some configuration settings that cannot be set during
- * the migration process with state. In this event, no reconfiguration operations
- * are sent to the vSphere server during the next `terraform apply`.  See the
- * importing section for more details.
- * 
- * ## Example Usage
- * 
- * ### Creating a virtual machine from scratch
- * 
- * The following block contains all that is necessary to create a new virtual
- * machine, with a single disk and network interface. 
- * 
- * The resource makes use of the following data sources to do its job:
- * [`vsphere_datacenter`][tf-vsphere-datacenter] to locate the datacenter,
- * [`vsphere_datastore`][tf-vsphere-datastore] to locate the default datastore to
- * put the virtual machine in, [`vsphere_resource_pool`][tf-vsphere-resource-pool]
- * to locate a resource pool located in a cluster or standalone host, and
- * [`vsphere_network`][tf-vsphere-network] to locate a network.
- * 
- * [tf-vsphere-datacenter]: /docs/providers/vsphere/d/datacenter.html
- * [tf-vsphere-datastore]: /docs/providers/vsphere/d/datastore.html
- * [tf-vsphere-resource-pool]: /docs/providers/vsphere/d/resource_pool.html
- * [tf-vsphere-network]: /docs/providers/vsphere/d/network.html
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const cluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * }));
- * const datastore = dc.apply(dc => vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "public",
- * }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.id,
- *     disks: [{
- *         label: "disk0",
- *         size: 20,
- *     }],
- *     guestId: "other3xLinux64Guest",
- *     memory: 1024,
- *     networkInterfaces: [{
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: cluster.resourcePoolId,
- * });
- * ```
- * 
- * ### Cloning and customization example
- * 
- * Building on the above example, the below configuration creates a VM by cloning
- * it from a template, fetched via the
- * [`vsphere_virtual_machine`][tf-vsphere-virtual-machine-ds] data source. This
- * allows us to locate the UUID of the template we want to clone, along with
- * settings for network interface type, SCSI bus type (especially important on
- * Windows machines), and disk attributes.
- * 
- * [tf-vsphere-virtual-machine-ds]: /docs/providers/vsphere/d/virtual_machine.html
- * 
- * > **NOTE:** Cloning requires vCenter and is not supported on direct ESXi
- * connections.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const cluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * }));
- * const datastore = dc.apply(dc => vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "public",
- * }));
- * const template = dc.apply(dc => vsphere.getVirtualMachine({
- *     datacenterId: dc.id,
- *     name: "ubuntu-16.04",
- * }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     clone: {
- *         customize: {
- *             ipv4Gateway: "10.0.0.1",
- *             linuxOptions: {
- *                 domain: "test.internal",
- *                 hostName: "terraform-test",
- *             },
- *             networkInterfaces: [{
- *                 ipv4Address: "10.0.0.10",
- *                 ipv4Netmask: 24,
- *             }],
- *         },
- *         templateUuid: template.id,
- *     },
- *     datastoreId: datastore.id,
- *     disks: [{
- *         eagerlyScrub: template.disks[0].eagerlyScrub,
- *         label: "disk0",
- *         size: template.disks[0].size,
- *         thinProvisioned: template.disks[0].thinProvisioned,
- *     }],
- *     guestId: template.guestId,
- *     memory: 1024,
- *     networkInterfaces: [{
- *         adapterType: template.apply(template => template.networkInterfaceTypes[0]),
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: cluster.resourcePoolId,
- *     scsiType: template.scsiType,
- * });
- * ```
- * 
- * ### Cloning from an OVF/OVA-created template with vApp properties
- * 
- * This alternate example details how to clone a VM from a template that came from
- * an OVF/OVA file. This leverages the resource's vApp
- * properties capabilities to
- * set appropriate keys that control various configuration settings on the virtual
- * machine or virtual appliance. In this scenario, using `customize` is not
- * recommended as the functionality has tendency to overlap.
- * 
- * > **NOTE:** Neither the `vsphere_virtual_machine` resource nor the vSphere
- * provider supports importing of OVA or OVF files as this is a workflow that is
- * fundamentally not the domain of Terraform. The supported path for deployment in
- * Terraform is to first import the virtual machine into a template that has not
- * been powered on, and then clone from that template. This can be accomplished
- * with [Packer][ext-packer-io], [govc][ext-govc]'s `import.ovf` and `import.ova`
- * subcommands, or [ovftool][ext-ovftool].
- * 
- * [ext-packer-io]: https://www.packer.io/
- * [ext-govc]: https://github.com/vmware/govmomi/tree/master/govc
- * [ext-ovftool]: https://code.vmware.com/web/dp/tool/ovf
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const cluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * }));
- * const datastore = dc.apply(dc => vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "public",
- * }));
- * const templateFromOvf = dc.apply(dc => vsphere.getVirtualMachine({
- *     datacenterId: dc.id,
- *     name: "template_from_ovf",
- * }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     clone: {
- *         templateUuid: templateFromOvf.id,
- *     },
- *     datastoreId: datastore.id,
- *     disks: [{
- *         eagerlyScrub: vsphere_virtual_machine_template.disks.0.eagerlyScrub,
- *         name: "disk0",
- *         size: vsphere_virtual_machine_template.disks.0.size,
- *         thinProvisioned: vsphere_virtual_machine_template.disks.0.thinProvisioned,
- *     }],
- *     guestId: vsphere_virtual_machine_template.guestId,
- *     memory: 1024,
- *     networkInterfaces: [{
- *         adapterType: vsphere_virtual_machine_template.networkInterfaceTypes.apply(networkInterfaceTypes => networkInterfaceTypes[0]),
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: cluster.resourcePoolId,
- *     scsiType: vsphere_virtual_machine_template.scsiType,
- *     vapp: {
- *         properties: {
- *             "guestinfo.tf.internal.id": "42",
- *         },
- *     },
- * });
- * ```
- * 
- * ### Using Storage DRS
- * 
- * The `vsphere_virtual_machine` resource also supports Storage DRS, allowing the
- * assignment of virtual machines to datastore clusters. When assigned to a
- * datastore cluster, changes to a virtual machine's underlying datastores are
- * ignored unless disks drift outside of the datastore cluster. The example below
- * makes use of the [`vsphere_datastore_cluster` data
- * source][tf-vsphere-datastore-cluster-data-source], and the
- * `datastore_cluster_id` configuration setting. Note
- * that the [`vsphere_datastore_cluster`
- * resource][tf-vsphere-datastore-cluster-resource] also exists to allow for
- * management of datastore clusters directly in Terraform.
- * 
- * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
- * [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
- * 
- * > **NOTE:** When managing datastore clusters, member datastores, and virtual
- * machines within the same Terraform configuration, race conditions can apply.
- * This is because datastore clusters must be created before datastores can be
- * assigned to them, and the respective `vsphere_virtual_machine` resources will
- * no longer have an implicit dependency on the specific datastore resources. Use
- * [`depends_on`][tf-docs-depends-on] to create an explicit dependency on the
- * datastores in the cluster, or manage datastore clusters and datastores in a
- * separate configuration.
- * 
- * [tf-docs-depends-on]: /docs/configuration/resources.html#depends_on
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const cluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * }));
- * const datastoreCluster = dc.apply(dc => vsphere.getDatastoreCluster({
- *     datacenterId: dc.id,
- *     name: "datastore-cluster1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "public",
- * }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreClusterId: datastoreCluster.id,
- *     disks: [{
- *         label: "disk0",
- *         size: 20,
- *     }],
- *     guestId: "other3xLinux64Guest",
- *     memory: 1024,
- *     networkInterfaces: [{
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: cluster.resourcePoolId,
- * });
- * ```
- * 
- * ## Creating a Virtual Machine from a Template
- * 
- * The `clone` block can be used to create a new virtual machine from an existing
- * virtual machine or template. The resource supports both making a complete copy
- * of a virtual machine, or cloning from a snapshot (otherwise known as a linked
- * clone).
- * 
- * See the cloning and customization
- * example for a usage synopsis.
- * 
- * > **NOTE:** Changing any option in `clone` after creation forces a new
- * resource.
- * 
- * > **NOTE:** Cloning requires vCenter and is not supported on direct ESXi
- * connections.
- * 
- * The options available in the `clone` block are:
- * 
- * * `template_uuid` - (Required) The UUID of the source virtual machine or
- *   template.
- * * `linked_clone` - (Optional) Clone this virtual machine from a snapshot.
- *   Templates must have a single snapshot only in order to be eligible. Default:
- *   `false`.
- * * `timeout` - (Optional) The timeout, in minutes, to wait for the virtual
- *   machine clone to complete. Default: 30 minutes.
- * * `customize` - (Optional) The customization spec for this clone. This allows
- *   the user to configure the virtual machine post-clone. For more details, see
- *   virtual machine customization.
- * 
- * ### Additional requirements and notes for cloning
- * 
- * Note that when cloning from a template, there are additional requirements in
- * both the resource configuration and source template:
- * 
- * * The virtual machine must not be powered on at the time of cloning.
- * * All disks on the virtual machine must be SCSI disks.
- * * You must specify at least the same number of `disk` devices as there are
- *   disks that exist in the template. These devices are ordered and lined up by
- *   the `unit_number` attribute. Additional disks can be added past this.
- * * The `size` of a virtual disk must be at least the same size as its
- *   counterpart disk in the template.
- * * When using `linked_clone`, the `size`, `thin_provisioned`, and
- *   `eagerly_scrub` settings for each disk must be an exact match to the
- *   individual disk's counterpart in the source template.
- * * The `scsi_controller_count` setting should be
- *   configured as necessary to cover all of the disks on the template. For best
- *   results, only configure this setting for the amount of controllers you will
- *   need to cover your disk quantity and bandwidth needs, and configure your
- *   template accordingly. For most workloads, this setting should be kept at its
- *   default of `1`, and all disks in the template should reside on the single,
- *   primary controller.
- * * Some operating systems (such as Windows) do not respond well to a change in
- *   disk controller type, so when using such OSes, take care to ensure that
- *   `scsi_type` is set to an exact match of the template's controller set. For
- *   maximum compatibility, make sure the SCSI controllers on the source template
- *   are all the same type.
- * 
- * To ease the gathering of some of these options, you can use the
- * [`vsphere_virtual_machine` data source][tf-vsphere-virtual-machine-ds], which
- * will give you disk attributes, network interface types, SCSI bus types, and
- * also the guest ID of the source template.  See the cloning and customization
- * example for usage details.
- * 
- * ## Virtual Machine Migration
- * 
- * The `vsphere_virtual_machine` resource supports live migration (otherwise known
- * as vMotion) both on the host and storage level. One can migrate the entire VM
- * to another host, cluster, resource pool, or datastore, and migrate or pin a
- * single disk to a specific datastore.
- * 
- * ### Host, cluster, and resource pool migration 
- * 
- * To migrate the virtual machine to another host or resource pool, change the
- * `host_system_id` or `resource_pool_id` to the manged object IDs of the new host
- * or resource pool accordingly. To change the virtual machine's cluster or
- * standalone host, select a resource pool within the specific target.
- * 
- * The same rules apply for migration as they do for VM creation - any host
- * specified needs to be a part of the resource pool supplied. Also keep in mind
- * the implications of moving the virtual machine to a resource pool in another
- * cluster or standalone host, namely ensuring that all hosts in the cluster (or
- * the single standalone host) have access to the datastore that the virtual
- * machine is in.
- * 
- * ## Importing 
- * 
- * ### Additional requirements and notes for importing
- * 
- * Many of the same requirements for
- * cloning apply to importing,
- * although since importing writes directly to state, a lot of these rules cannot
- * be enforced at import time, so every effort should be made to ensure the
- * correctness of the configuration before the import.
- * 
- * In addition to these rules, the following extra rules apply to importing:
- * 
- * * Disks need to have their `label` argument assigned in a convention
- *   matching `diskN`, starting with disk number 0, based on each disk's order on
- *   the SCSI bus. As an example, a disk on SCSI controller 0 with a unit number
- *   of 0 would be labeled `disk0`, a disk on the same controller with a unit
- *   number of 1 would be `disk1`, but the next disk, which is on SCSI controller
- *   1 with a unit number of 0, still becomes `disk2`.
- * * Disks always get imported with `keep_on_remove` enabled
- *   until the first `terraform apply` runs, which will remove the setting for
- *   known disks. This is an extra safeguard against naming or accounting mistakes
- *   in the disk configuration.
- * * The `scsi_controller_count` for the resource is set
- *   to the number of contiguous SCSI controllers found, starting with the SCSI
- *   controller at bus number 0. If no SCSI controllers are found, the VM is not
- *   eligible for import. To ensure maximum compatibility, make sure your virtual
- *   machine has the exact number of SCSI controllers it needs, and set
- *   `scsi_controller_count` accordingly.
- * 
- * After importing, you should run `terraform plan`. Unless you have changed
- * anything else in configuration that would be causing other attributes to
- * change, the only difference should be configuration-only changes, usually
- * comprising of:
- * 
- * * The `imported` flag will transition from `true` to `false`.
- * * `keep_on_remove` of known disks will transition from
- *   `true` to `false`. 
- * * Configuration supplied in the `clone` block, if present, will be
- *   persisted to state. This initial persistence operation does not perform any
- *   cloning or customization actions, nor does it force a new resource. After the
- *   first apply operation, further changes to `clone` will force a new resource
- *   as per normal operation.
- * 
- * > **NOTE:** Further to the above, do not make any configuration changes to
- * `clone` after importing or upgrading from a legacy version of the provider
- * before doing an initial `terraform apply` as these changes will not correctly
- * force a new resource, and your changes will have persisted to state, preventing
- * further plans from correctly triggering a diff.
- * 
- * These changes only update Terraform state when applied, hence it is safe to run
- * when the virtual machine is running. If more settings are being modified, you
- * may need to plan maintenance accordingly for any necessary re-configuration of
- * the virtual machine.
- */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Get an existing VirtualMachine resource's state with the given name, ID, and optional extra
@@ -627,13 +133,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * The IP address selected by Terraform to be used with
-     * any [provisioners][tf-docs-provisioners] configured on this resource.
-     * Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * The IP address selected by Terraform to be used for the provisioner.
      */
     public /*out*/ readonly defaultIpAddress!: pulumi.Output<string>;
     /**
@@ -806,9 +306,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
     /**
-     * Value internal to Terraform used to determine if a
-     * configuration set change requires a reboot. This value is only useful during
-     * an update process and gets reset on refresh.
+     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
     /**
@@ -849,10 +347,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
     /**
-     * The number of SCSI controllers that
-     * Terraform manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
+     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
+     * remove controllers.
      */
     public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
     /**
@@ -1211,13 +708,7 @@ export interface VirtualMachineState {
      */
     readonly datastoreId?: pulumi.Input<string>;
     /**
-     * The IP address selected by Terraform to be used with
-     * any [provisioners][tf-docs-provisioners] configured on this resource.
-     * Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * The IP address selected by Terraform to be used for the provisioner.
      */
     readonly defaultIpAddress?: pulumi.Input<string>;
     /**
@@ -1390,9 +881,7 @@ export interface VirtualMachineState {
      */
     readonly numCpus?: pulumi.Input<number>;
     /**
-     * Value internal to Terraform used to determine if a
-     * configuration set change requires a reboot. This value is only useful during
-     * an update process and gets reset on refresh.
+     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
     readonly rebootRequired?: pulumi.Input<boolean>;
     /**
@@ -1433,10 +922,9 @@ export interface VirtualMachineState {
      */
     readonly scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that
-     * Terraform manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
+     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
+     * remove controllers.
      */
     readonly scsiControllerCount?: pulumi.Input<number>;
     /**
@@ -1812,10 +1300,9 @@ export interface VirtualMachineArgs {
      */
     readonly scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that
-     * Terraform manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
+     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
+     * remove controllers.
      */
     readonly scsiControllerCount?: pulumi.Input<number>;
     /**

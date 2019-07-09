@@ -80,6 +80,8 @@ import * as utilities from "./utilities";
  *     vlanId: 4095,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
  */
 export class HostPortGroup extends pulumi.CustomResource {
     /**

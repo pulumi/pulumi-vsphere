@@ -13,6 +13,8 @@ import (
 // [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
 // 
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
 func LookupResourcePool(ctx *pulumi.Context, args *GetResourcePoolArgs) (*GetResourcePoolResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

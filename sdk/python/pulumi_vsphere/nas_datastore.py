@@ -39,15 +39,6 @@ class NasDatastore(pulumi.CustomResource):
     Conflicts with `folder`.
     """
     folder: pulumi.Output[str]
-    """
-    The relative path to a folder to put this datastore in.
-    This is a path relative to the datacenter you are deploying the datastore to.
-    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-    Terraform will place a datastore named `terraform-test` in a datastore folder
-    located at `/dc1/datastore/foo/bar`, with the final inventory path being
-    `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-    `datastore_cluster_id`.
-    """
     free_space: pulumi.Output[float]
     """
     Available space of this datastore, in megabytes.
@@ -139,13 +130,6 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               Terraform will place a datastore named `terraform-test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-               `datastore_cluster_id`.
         :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
@@ -163,6 +147,8 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

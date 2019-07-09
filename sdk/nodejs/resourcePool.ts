@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  *     parentResourcePoolId: computeCluster.resourcePoolId,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/resource_pool.html.markdown.
  */
 export class ResourcePool extends pulumi.CustomResource {
     /**

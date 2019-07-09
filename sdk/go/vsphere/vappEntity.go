@@ -15,6 +15,8 @@ import (
 // page][ref-vsphere-vapp].
 // 
 // [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
 type VappEntity struct {
 	s *pulumi.ResourceState
 }

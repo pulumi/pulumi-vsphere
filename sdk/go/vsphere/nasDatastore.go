@@ -18,6 +18,8 @@ import (
 // `host_system_ids` argument.
 // 
 // [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
 type NasDatastore struct {
 	s *pulumi.ResourceState
 }
@@ -152,13 +154,7 @@ func (r *NasDatastore) DatastoreClusterId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datastoreClusterId"])
 }
 
-// The relative path to a folder to put this datastore in.
-// This is a path relative to the datacenter you are deploying the datastore to.
-// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-// Terraform will place a datastore named `terraform-test` in a datastore folder
-// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-// `datastore_cluster_id`.
+// The path to the datastore folder to put the datastore in.
 func (r *NasDatastore) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
@@ -262,13 +258,7 @@ type NasDatastoreState struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId interface{}
-	// The relative path to a folder to put this datastore in.
-	// This is a path relative to the datacenter you are deploying the datastore to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a datastore named `terraform-test` in a datastore folder
-	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-	// `datastore_cluster_id`.
+	// The path to the datastore folder to put the datastore in.
 	Folder interface{}
 	// Available space of this datastore, in megabytes.
 	FreeSpace interface{}
@@ -327,13 +317,7 @@ type NasDatastoreArgs struct {
 	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId interface{}
-	// The relative path to a folder to put this datastore in.
-	// This is a path relative to the datacenter you are deploying the datastore to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a datastore named `terraform-test` in a datastore folder
-	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-	// `datastore_cluster_id`.
+	// The path to the datastore folder to put the datastore in.
 	Folder interface{}
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to mount the datastore on.

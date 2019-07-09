@@ -7,16 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_custom_attribute` data source can be used to reference custom 
-// attributes that are not managed by Terraform. Its attributes are exactly the 
-// same as the [`vsphere_custom_attribute` resource][resource-custom-attribute], 
-// and, like importing, the data source takes a name to search on. The `id` and 
-// other attributes are then populated with the data found by the search.
-// 
-// [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
-// 
-// > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
-// and require vCenter.
 func LookupCustomAttribute(ctx *pulumi.Context, args *GetCustomAttributeArgs) (*GetCustomAttributeResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

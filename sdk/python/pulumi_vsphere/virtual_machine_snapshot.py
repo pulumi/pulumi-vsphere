@@ -83,6 +83,8 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
                is removed when this resource is destroyed.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

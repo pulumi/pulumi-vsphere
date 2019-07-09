@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  *     name: "datastore-cluster1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
  */
 export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
     return pulumi.runtime.invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", {

@@ -35,6 +35,8 @@ import (
 // connections.
 // 
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown.
 type ComputeClusterVmAntiAffinityRule struct {
 	s *pulumi.ResourceState
 }

@@ -27,6 +27,8 @@ import (
 // connections.
 // 
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
 type ComputeClusterHostGroup struct {
 	s *pulumi.ResourceState
 }

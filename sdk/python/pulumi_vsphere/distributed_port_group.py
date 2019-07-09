@@ -205,6 +205,8 @@ class DistributedPortGroup(pulumi.CustomResource):
                individual port.
         :param pulumi.Input[bool] vlan_override_allowed: Allow the [VLAN settings][vlan-settings]
                on this port group to be overridden on an individual port.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

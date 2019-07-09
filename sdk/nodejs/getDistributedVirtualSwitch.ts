@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_distributed_virtual_switch` data source can be used to discover
- * the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
- * can then be used with resources or data sources that require a DVS, such as the
- * [`vsphere_distributed_port_group`][distributed-port-group] resource, for which
- * an example is shown below.
- * 
- * [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
- * 
- * > **NOTE:** This data source requires vCenter and is not available on direct
- * ESXi connections.
- * 
- * ## Example Usage
- * 
- * The following example locates a DVS that is named `terraform-test-dvs`, in the
- * datacenter `dc1`. It then uses this DVS to set up a
- * `vsphere_distributed_port_group` resource that uses the first uplink as a
- * primary uplink and the second uplink as a secondary.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const dvs = datacenter.apply(datacenter => vsphere.getDistributedVirtualSwitch({
- *     datacenterId: datacenter.id,
- *     name: "terraform-test-dvs",
- * }));
- * const pg = new vsphere.DistributedPortGroup("pg", {
- *     activeUplinks: [dvs.apply(dvs => dvs.uplinks[0])],
- *     distributedVirtualSwitchUuid: dvs.id,
- *     standbyUplinks: [dvs.apply(dvs => dvs.uplinks[1])],
- * });
- * ```
- */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
     return pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
         "datacenterId": args.datacenterId,

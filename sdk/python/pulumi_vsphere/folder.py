@@ -22,14 +22,6 @@ class Folder(pulumi.CustomResource):
     resource if changed.
     """
     path: pulumi.Output[str]
-    """
-    The path of the folder to be created. This is relative to
-    the root of the type of folder you are creating, and the supplied datacenter.
-    For example, given a default datacenter of `default-dc`, a folder of type
-    `vm` (denoting a virtual machine folder), and a supplied folder of
-    `terraform-test-folder`, the resulting path would be
-    `/default-dc/vm/terraform-test-folder`.
-    """
     tags: pulumi.Output[list]
     """
     The IDs of any tags to attach to this resource. See
@@ -62,18 +54,14 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
-        :param pulumi.Input[str] path: The path of the folder to be created. This is relative to
-               the root of the type of folder you are creating, and the supplied datacenter.
-               For example, given a default datacenter of `default-dc`, a folder of type
-               `vm` (denoting a virtual machine folder), and a supplied folder of
-               `terraform-test-folder`, the resulting path would be
-               `/default-dc/vm/terraform-test-folder`.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

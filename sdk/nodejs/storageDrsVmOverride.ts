@@ -77,6 +77,8 @@ import * as utilities from "./utilities";
  *     virtualMachineId: vm.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
  */
 export class StorageDrsVmOverride extends pulumi.CustomResource {
     /**

@@ -4,28 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_network` data source can be used to discover the ID of a network
- * in vSphere. This can be any network that can be used as the backing for a
- * network interface for `vsphere_virtual_machine` or any other vSphere resource
- * that requires a network. This includes standard (host-based) port groups, DVS
- * port groups, or opaque networks such as those managed by NSX.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const net = datacenter.apply(datacenter => vsphere.getNetwork({
- *     datacenterId: datacenter.id,
- *     name: "terraform-test-net",
- * }));
- * ```
- */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     return pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,

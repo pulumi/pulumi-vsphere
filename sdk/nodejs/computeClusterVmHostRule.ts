@@ -103,6 +103,8 @@ import * as utilities from "./utilities";
  *     vmGroupName: clusterVmGroup.name,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
  */
 export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     /**

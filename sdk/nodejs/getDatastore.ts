@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  *     name: "datastore1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
  */
 export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
     return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {

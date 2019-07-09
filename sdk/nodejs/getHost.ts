@@ -23,6 +23,8 @@ import * as utilities from "./utilities";
  *     name: "esxi1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
     return pulumi.runtime.invoke("vsphere:index/getHost:getHost", {

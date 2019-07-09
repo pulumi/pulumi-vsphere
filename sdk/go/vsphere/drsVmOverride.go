@@ -22,6 +22,8 @@ import (
 // connections.
 // 
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/drs_vm_override.html.markdown.
 type DrsVmOverride struct {
 	s *pulumi.ResourceState
 }

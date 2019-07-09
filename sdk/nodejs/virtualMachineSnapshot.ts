@@ -44,6 +44,8 @@ import * as utilities from "./utilities";
  *     virtualMachineUuid: "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
  */
 export class VirtualMachineSnapshot extends pulumi.CustomResource {
     /**

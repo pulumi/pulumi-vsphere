@@ -33,18 +33,6 @@ class GetTagCategoryResult:
         """
 
 async def get_tag_category(name=None,opts=None):
-    """
-    The `vsphere_tag_category` data source can be used to reference tag categories
-    that are not managed by Terraform. Its attributes are exactly the same as the
-    [`vsphere_tag_category` resource][resource-tag-category], and, like importing,
-    the data source takes a name to search on. The `id` and other attributes are
-    then populated with the data found by the search.
-    
-    [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
-    
-    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
-    """
     __args__ = dict()
 
     __args__['name'] = name

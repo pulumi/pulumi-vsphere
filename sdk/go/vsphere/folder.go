@@ -17,6 +17,8 @@ import (
 // Subfolders are discovered by parsing the relative path specified in `path`, so
 // `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
 // as that folder exists.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
 type Folder struct {
 	s *pulumi.ResourceState
 }
@@ -94,12 +96,7 @@ func (r *Folder) DatacenterId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datacenterId"])
 }
 
-// The path of the folder to be created. This is relative to
-// the root of the type of folder you are creating, and the supplied datacenter.
-// For example, given a default datacenter of `default-dc`, a folder of type
-// `vm` (denoting a virtual machine folder), and a supplied folder of
-// `terraform-test-folder`, the resulting path would be
-// `/default-dc/vm/terraform-test-folder`.
+// The path of the folder and any parents, relative to the datacenter and folder type being defined.
 func (r *Folder) Path() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["path"])
 }
@@ -128,12 +125,7 @@ type FolderState struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId interface{}
-	// The path of the folder to be created. This is relative to
-	// the root of the type of folder you are creating, and the supplied datacenter.
-	// For example, given a default datacenter of `default-dc`, a folder of type
-	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `terraform-test-folder`, the resulting path would be
-	// `/default-dc/vm/terraform-test-folder`.
+	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
 	Path interface{}
 	// The IDs of any tags to attach to this resource. See
 	// [here][docs-applying-tags] for a reference on how to apply tags.
@@ -155,12 +147,7 @@ type FolderArgs struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId interface{}
-	// The path of the folder to be created. This is relative to
-	// the root of the type of folder you are creating, and the supplied datacenter.
-	// For example, given a default datacenter of `default-dc`, a folder of type
-	// `vm` (denoting a virtual machine folder), and a supplied folder of
-	// `terraform-test-folder`, the resulting path would be
-	// `/default-dc/vm/terraform-test-folder`.
+	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
 	Path interface{}
 	// The IDs of any tags to attach to this resource. See
 	// [here][docs-applying-tags] for a reference on how to apply tags.

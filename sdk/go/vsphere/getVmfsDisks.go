@@ -13,6 +13,8 @@ import (
 // datastores based off a set of discovered disks.
 // 
 // [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
 func LookupVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs) (*GetVmfsDisksResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
