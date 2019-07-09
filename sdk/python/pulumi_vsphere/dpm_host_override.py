@@ -54,6 +54,8 @@ class DpmHostOverride(pulumi.CustomResource):
                `manual`.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/dpm_host_override.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

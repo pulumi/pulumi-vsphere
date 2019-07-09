@@ -27,6 +27,8 @@ import (
 // connections.
 // 
 // > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown.
 type DatastoreClusterVmAntiAffinityRule struct {
 	s *pulumi.ResourceState
 }

@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_tag_category` data source can be used to reference tag categories
- * that are not managed by Terraform. Its attributes are exactly the same as the
- * [`vsphere_tag_category` resource][resource-tag-category], and, like importing,
- * the data source takes a name to search on. The `id` and other attributes are
- * then populated with the data found by the search.
- * 
- * [resource-tag-category]: /docs/providers/vsphere/r/tag_category.html
- * 
- * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
- * requires vCenter 6.0 or higher.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const category = pulumi.output(vsphere.getTagCategory({
- *     name: "terraform-test-category",
- * }));
- * ```
- */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
     return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,

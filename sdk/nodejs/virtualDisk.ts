@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  *     vmdkPath: "myDisk.vmdk",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
  */
 export class VirtualDisk extends pulumi.CustomResource {
     /**

@@ -8,18 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_file` resource can be used to upload files (such as virtual disk
-// files) from the host machine that Terraform is running on to a target
-// datastore.  The resource can also be used to copy files between datastores, or
-// from one location to another on the same datastore.
-// 
-// Updates to destination parameters such as `datacenter`, `datastore`, or
-// `destination_file` will move the managed file a new destination based on the
-// values of the new settings.  If any source parameter is changed, such as
-// `source_datastore`, `source_datacenter` or `source_file`), the resource will be
-// re-created. Depending on if destination parameters are being changed as well,
-// this may result in the destination file either being overwritten or deleted at
-// the old location.
 type File struct {
 	s *pulumi.ResourceState
 }
@@ -128,9 +116,6 @@ func (r *File) SourceDatastore() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceDatastore"])
 }
 
-// The path to the file being uploaded from the
-// Terraform host to vSphere or copied within vSphere. Forces a new resource if
-// changed.
 func (r *File) SourceFile() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sourceFile"])
 }
@@ -155,9 +140,6 @@ type FileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore interface{}
-	// The path to the file being uploaded from the
-	// Terraform host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
 	SourceFile interface{}
 }
 
@@ -181,8 +163,5 @@ type FileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore interface{}
-	// The path to the file being uploaded from the
-	// Terraform host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
 	SourceFile interface{}
 }

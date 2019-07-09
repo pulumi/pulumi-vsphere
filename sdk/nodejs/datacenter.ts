@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  *     folder: "/research/",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
  */
 export class Datacenter extends pulumi.CustomResource {
     /**

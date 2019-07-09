@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  *     rescan: true,
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
     return pulumi.runtime.invoke("vsphere:index/getVmfsDisks:getVmfsDisks", {

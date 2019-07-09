@@ -10,6 +10,8 @@ import (
 // The `vsphere_folder` data source can be used to get the general attributes of a
 // vSphere inventory folder. Paths are absolute and include must include the
 // datacenter.  
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
 func LookupFolder(ctx *pulumi.Context, args *GetFolderArgs) (*GetFolderResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -27,11 +29,6 @@ func LookupFolder(ctx *pulumi.Context, args *GetFolderArgs) (*GetFolderResult, e
 
 // A collection of arguments for invoking getFolder.
 type GetFolderArgs struct {
-	// The absolute path of the folder. For example, given a
-	// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-	// of `terraform-test-folder`, the resulting path would be
-	// `/default-dc/vm/terraform-test-folder`. The valid folder types to be used in
-	// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
 	Path interface{}
 }
 

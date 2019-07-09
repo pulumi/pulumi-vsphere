@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  *     name: "dc1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
  */
 export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
     args = args || {};

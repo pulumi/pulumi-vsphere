@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     licenseKey: "452CQ-2EK54-K8742-00000-00000",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
  */
 export class License extends pulumi.CustomResource {
     /**

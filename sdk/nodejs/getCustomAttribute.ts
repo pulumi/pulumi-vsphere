@@ -4,29 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_custom_attribute` data source can be used to reference custom 
- * attributes that are not managed by Terraform. Its attributes are exactly the 
- * same as the [`vsphere_custom_attribute` resource][resource-custom-attribute], 
- * and, like importing, the data source takes a name to search on. The `id` and 
- * other attributes are then populated with the data found by the search.
- * 
- * [resource-custom-attribute]: /docs/providers/vsphere/r/custom_attribute.html
- * 
- * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
- * and require vCenter.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const attribute = pulumi.output(vsphere.getCustomAttribute({
- *     name: "terraform-test-attribute",
- * }));
- * ```
- */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
     return pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {
         "name": args.name,

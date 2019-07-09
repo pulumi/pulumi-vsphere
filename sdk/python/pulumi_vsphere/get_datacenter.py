@@ -31,6 +31,8 @@ async def get_datacenter(name=None,opts=None):
     data source.
     
     [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
     """
     __args__ = dict()
 

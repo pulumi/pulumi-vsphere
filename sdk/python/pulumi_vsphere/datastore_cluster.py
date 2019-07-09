@@ -23,24 +23,11 @@ class DatastoreCluster(pulumi.CustomResource):
     changed.
     """
     folder: pulumi.Output[str]
-    """
-    The relative path to a folder to put this datastore
-    cluster in.  This is a path relative to the datacenter you are deploying the
-    datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-    `foo/bar`, Terraform will place a datastore cluster named
-    `terraform-datastore-cluster-test` in a datastore folder located at
-    `/dc1/datastore/foo/bar`, with the final inventory path being
-    `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
-    """
     name: pulumi.Output[str]
     """
     The name of the datastore cluster.
     """
     sdrs_advanced_options: pulumi.Output[dict]
-    """
-    A key/value map of advanced Storage DRS
-    settings that are not exposed via Terraform or the vSphere client.
-    """
     sdrs_automation_level: pulumi.Output[str]
     """
     The global automation level for all
@@ -172,16 +159,7 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
-        :param pulumi.Input[str] folder: The relative path to a folder to put this datastore
-               cluster in.  This is a path relative to the datacenter you are deploying the
-               datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-               `foo/bar`, Terraform will place a datastore cluster named
-               `terraform-datastore-cluster-test` in a datastore folder located at
-               `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
         :param pulumi.Input[str] name: The name of the datastore cluster.
-        :param pulumi.Input[dict] sdrs_advanced_options: A key/value map of advanced Storage DRS
-               settings that are not exposed via Terraform or the vSphere client.
         :param pulumi.Input[str] sdrs_automation_level: The global automation level for all
                virtual machines in this datastore cluster. Default: `manual`.
         :param pulumi.Input[bool] sdrs_default_intra_vm_affinity: When `true`, all disks in a
@@ -231,6 +209,8 @@ class DatastoreCluster(pulumi.CustomResource):
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

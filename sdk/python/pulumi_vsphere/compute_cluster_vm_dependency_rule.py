@@ -82,6 +82,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                this rule. The VMs defined in this group will not be started until the VMs in
                the group specified by
                `dependency_vm_group_name` are started.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -13,6 +13,8 @@ import (
 // data source.
 // 
 // [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
 func LookupDatacenter(ctx *pulumi.Context, args *GetDatacenterArgs) (*GetDatacenterResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

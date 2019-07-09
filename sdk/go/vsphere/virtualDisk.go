@@ -15,6 +15,8 @@ import (
 // 
 // [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
 // [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
 type VirtualDisk struct {
 	s *pulumi.ResourceState
 }

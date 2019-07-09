@@ -8,74 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > **A note on the naming of this resource:** VMware refers to clusters of
-// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-// clusters_. All of these refer to the same kind of resource (with the latter two
-// referring to specific features of clustering). In Terraform, we use
-// `vsphere_compute_cluster` to differentiate host clusters from _datastore
-// clusters_, which are clusters of datastores that can be used to distribute load
-// and ensure fault tolerance via distribution of virtual machines. Datastore
-// clusters can also be managed through Terraform, via the
-// [`vsphere_datastore_cluster` resource][docs-r-vsphere-datastore-cluster].
-// 
-// [docs-r-vsphere-datastore-cluster]: /docs/providers/vsphere/r/datastore_cluster.html
-// 
-// The `vsphere_compute_cluster` resource can be used to create and manage
-// clusters of hosts allowing for resource control of compute resources, load
-// balancing through DRS, and high availability through vSphere HA.
-// 
-// For more information on vSphere clusters and DRS, see [this
-// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-// page][ref-vsphere-ha-clusters].
-// 
-// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
-// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-// 
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-// 
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-// 
-// ## vSphere Version Requirements
-// 
-// A large number of settings in the `vsphere_compute_cluster` resource require a
-// specific version of vSphere to function. Rather than include warnings at every
-// setting or section, these settings are documented below.  Note that this list
-// is for cluster-specific attributes only, and does not include the
-// `tags` parameter, which requires vSphere 6.0 or higher across all
-// resources that can be tagged.
-// 
-// All settings are footnoted by an asterisk (`*`) in their specific section in
-// the documentation, which takes you here.
-// 
-// ### Settings that require vSphere version 6.0 or higher
-// 
-// These settings require vSphere 6.0 or higher:
-// 
-// * `ha_datastore_apd_recovery_action`
-// * `ha_datastore_apd_response`
-// * `ha_datastore_apd_response_delay`
-// * `ha_datastore_pdl_response`
-// * `ha_vm_component_protection`
-// 
-// ### Settings that require vSphere version 6.5 or higher
-// 
-// These settings require vSphere 6.5 or higher:
-// 
-// * `drs_enable_predictive_drs`
-// * `ha_admission_control_host_failure_tolerance`
-//   (When `ha_admission_control_policy` is set to
-//   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
-//   `failoverHosts`)
-// * `ha_admission_control_resource_percentage_auto_compute`
-// * `ha_vm_restart_timeout`
-// * `ha_vm_dependency_restart_condition`
-// * `ha_vm_restart_additional_delay`
-// * `proactive_ha_automation_level`
-// * `proactive_ha_enabled`
-// * `proactive_ha_moderate_remediation`
-// * `proactive_ha_provider_ids`
-// * `proactive_ha_severe_remediation`
 type ComputeCluster struct {
 	s *pulumi.ResourceState
 }
@@ -354,21 +286,13 @@ func (r *ComputeCluster) DrsMigrationThreshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["drsMigrationThreshold"])
 }
 
-// The relative path to a folder to put this cluster in.
-// This is a path relative to the datacenter you are deploying the cluster to.
-// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-// Terraform will place a cluster named `terraform-compute-cluster-test` in a
-// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-// being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
+// The name of the folder to locate the cluster in.
 func (r *ComputeCluster) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
 
-// When destroying the resource, setting this to
-// `true` will auto-remove any hosts that are currently a member of the cluster,
-// as if they were removed by taking their entry out of `host_system_ids` (see
-// below). This is an advanced
-// option and should only be used for testing. Default: `false`.
+// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+// for testing and is not recommended in normal use.
 func (r *ComputeCluster) ForceEvacuateOnDestroy() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forceEvacuateOnDestroy"])
 }
@@ -720,18 +644,10 @@ type ComputeClusterState struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold interface{}
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a cluster named `terraform-compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder interface{}
-	// When destroying the resource, setting this to
-	// `true` will auto-remove any hosts that are currently a member of the cluster,
-	// as if they were removed by taking their entry out of `host_system_ids` (see
-	// below). This is an advanced
-	// option and should only be used for testing. Default: `false`.
+	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy interface{}
 	// Defines the
 	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
@@ -962,18 +878,10 @@ type ComputeClusterArgs struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold interface{}
-	// The relative path to a folder to put this cluster in.
-	// This is a path relative to the datacenter you are deploying the cluster to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a cluster named `terraform-compute-cluster-test` in a
-	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
-	// being `/dc1/host/foo/bar/terraform-datastore-cluster-test`.
+	// The name of the folder to locate the cluster in.
 	Folder interface{}
-	// When destroying the resource, setting this to
-	// `true` will auto-remove any hosts that are currently a member of the cluster,
-	// as if they were removed by taking their entry out of `host_system_ids` (see
-	// below). This is an advanced
-	// option and should only be used for testing. Default: `false`.
+	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+	// for testing and is not recommended in normal use.
 	ForceEvacuateOnDestroy interface{}
 	// Defines the
 	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover

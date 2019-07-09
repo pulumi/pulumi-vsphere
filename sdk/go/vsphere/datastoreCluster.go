@@ -22,6 +22,8 @@ import (
 // connections.
 // 
 // > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
 type DatastoreCluster struct {
 	s *pulumi.ResourceState
 }
@@ -157,13 +159,7 @@ func (r *DatastoreCluster) DatacenterId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datacenterId"])
 }
 
-// The relative path to a folder to put this datastore
-// cluster in.  This is a path relative to the datacenter you are deploying the
-// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-// `foo/bar`, Terraform will place a datastore cluster named
-// `terraform-datastore-cluster-test` in a datastore folder located at
-// `/dc1/datastore/foo/bar`, with the final inventory path being
-// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+// The name of the folder to locate the datastore cluster in.
 func (r *DatastoreCluster) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
@@ -173,8 +169,7 @@ func (r *DatastoreCluster) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// A key/value map of advanced Storage DRS
-// settings that are not exposed via Terraform or the vSphere client.
+// Advanced configuration options for storage DRS.
 func (r *DatastoreCluster) SdrsAdvancedOptions() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["sdrsAdvancedOptions"])
 }
@@ -322,18 +317,11 @@ type DatastoreClusterState struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId interface{}
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, Terraform will place a datastore cluster named
-	// `terraform-datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder interface{}
 	// The name of the datastore cluster.
 	Name interface{}
-	// A key/value map of advanced Storage DRS
-	// settings that are not exposed via Terraform or the vSphere client.
+	// Advanced configuration options for storage DRS.
 	SdrsAdvancedOptions interface{}
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -420,18 +408,11 @@ type DatastoreClusterArgs struct {
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId interface{}
-	// The relative path to a folder to put this datastore
-	// cluster in.  This is a path relative to the datacenter you are deploying the
-	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-	// `foo/bar`, Terraform will place a datastore cluster named
-	// `terraform-datastore-cluster-test` in a datastore folder located at
-	// `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+	// The name of the folder to locate the datastore cluster in.
 	Folder interface{}
 	// The name of the datastore cluster.
 	Name interface{}
-	// A key/value map of advanced Storage DRS
-	// settings that are not exposed via Terraform or the vSphere client.
+	// Advanced configuration options for storage DRS.
 	SdrsAdvancedOptions interface{}
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.

@@ -36,15 +36,6 @@ class VmfsDatastore(pulumi.CustomResource):
     The disks to use with the datastore.
     """
     folder: pulumi.Output[str]
-    """
-    The relative path to a folder to put this datastore in.
-    This is a path relative to the datacenter you are deploying the datastore to.
-    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-    Terraform will place a datastore named `terraform-test` in a datastore folder
-    located at `/dc1/datastore/foo/bar`, with the final inventory path being
-    `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-    `datastore_cluster_id`.
-    """
     free_space: pulumi.Output[float]
     """
     Available space of this datastore, in megabytes.
@@ -87,44 +78,7 @@ class VmfsDatastore(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None, __name__=None, __opts__=None):
         """
-        The `vsphere_vmfs_datastore` resource can be used to create and manage VMFS
-        datastores on an ESXi host or a set of hosts. The resource supports using any
-        SCSI device that can generally be used in a datastore, such as local disks, or
-        disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
-        Devices can be specified manually, or discovered using the
-        [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source.
-        
-        [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
-        
-        ## Auto-Mounting of Datastores Within vCenter
-        
-        Note that the current behaviour of this resource will auto-mount any created
-        datastores to any other host within vCenter that has access to the same disk.
-        
-        Example: You want to create a datastore with a iSCSI LUN that is visible on 3
-        hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
-        create the datastore on `esxi1`, the datastore will be automatically mounted on
-        `esxi2` and `esxi3`, without the need to configure the resource on either of
-        those two hosts.
-        
-        Future versions of this resource may allow you to control the hosts that a
-        datastore is mounted to, but currently, this automatic behaviour cannot be
-        changed, so keep this in mind when writing your configurations and deploying
-        your disks.
-        
-        ## Increasing Datastore Size
-        
-        To increase the size of a datastore, you must add additional disks to the
-        `disks` attribute. Expanding the size of a datastore by increasing the size of
-        an already provisioned disk is currently not supported (but may be in future
-        versions of this resource).
-        
-        > **NOTE:** You cannot decrease the size of a datastore. If the resource
-        detects disks removed from the configuration, Terraform will give an error. To
-        reduce the size of the datastore, the resource needs to be re-created - run
-        [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
-        
-        [cmd-taint]: /docs/commands/taint.html
+        Create a VmfsDatastore resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,13 +90,6 @@ class VmfsDatastore(pulumi.CustomResource):
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[list] disks: The disks to use with the datastore.
-        :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
-               This is a path relative to the datacenter you are deploying the datastore to.
-               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-               Terraform will place a datastore named `terraform-test` in a datastore folder
-               located at `/dc1/datastore/foo/bar`, with the final inventory path being
-               `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-               `datastore_cluster_id`.
         :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
@@ -152,6 +99,8 @@ class VmfsDatastore(pulumi.CustomResource):
                changed.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vmfs_datastore.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

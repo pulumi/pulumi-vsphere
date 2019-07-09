@@ -17,6 +17,8 @@ import (
 // 
 // > **NOTE:** This data source requires vCenter and is not available on direct
 // ESXi connections.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *GetDistributedVirtualSwitchArgs) (*GetDistributedVirtualSwitchResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

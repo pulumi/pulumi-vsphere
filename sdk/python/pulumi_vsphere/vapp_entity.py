@@ -85,6 +85,8 @@ class VappEntity(pulumi.CustomResource):
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -4,62 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_folder` resource can be used to manage vSphere inventory folders.
- * The resource supports creating folders of the 5 major types - datacenter
- * folders, host and cluster folders, virtual machine folders, datastore folders,
- * and network folders.
- * 
- * Paths are always relative to the specific type of folder you are creating.
- * Subfolders are discovered by parsing the relative path specified in `path`, so
- * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
- * as that folder exists.
- * 
- * ## Example Usage
- * 
- * The basic example below creates a virtual machine folder named
- * `terraform-test-folder` in the default datacenter's VM hierarchy. 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({}));
- * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.id,
- *     path: "terraform-test-folder",
- *     type: "vm",
- * });
- * ```
- * 
- * ### Example with subfolders
- * 
- * The below example builds off of the above by first creating a folder named
- * `terraform-test-parent`, and then locating `terraform-test-folder` in that
- * folder. To ensure the parent is created first, we create an interpolation
- * dependency off the parent's `path` attribute.
- * 
- * Note that if you change parents (for example, went from the above basic
- * configuration to this one), your folder will be moved to be under the correct
- * parent.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = pulumi.output(vsphere.getDatacenter({}));
- * const parent = new vsphere.Folder("parent", {
- *     datacenterId: dc.id,
- *     path: "terraform-test-parent",
- *     type: "vm",
- * });
- * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.id,
- *     path: pulumi.interpolate`${parent.path}/terraform-test-folder`,
- *     type: "vm",
- * });
- * ```
- */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra
@@ -100,12 +44,7 @@ export class Folder extends pulumi.CustomResource {
      */
     public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
-     * The path of the folder to be created. This is relative to
-     * the root of the type of folder you are creating, and the supplied datacenter.
-     * For example, given a default datacenter of `default-dc`, a folder of type
-     * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `terraform-test-folder`, the resulting path would be
-     * `/default-dc/vm/terraform-test-folder`.
+     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
      */
     public readonly path!: pulumi.Output<string>;
     /**
@@ -173,12 +112,7 @@ export interface FolderState {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The path of the folder to be created. This is relative to
-     * the root of the type of folder you are creating, and the supplied datacenter.
-     * For example, given a default datacenter of `default-dc`, a folder of type
-     * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `terraform-test-folder`, the resulting path would be
-     * `/default-dc/vm/terraform-test-folder`.
+     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
      */
     readonly path?: pulumi.Input<string>;
     /**
@@ -212,12 +146,7 @@ export interface FolderArgs {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The path of the folder to be created. This is relative to
-     * the root of the type of folder you are creating, and the supplied datacenter.
-     * For example, given a default datacenter of `default-dc`, a folder of type
-     * `vm` (denoting a virtual machine folder), and a supplied folder of
-     * `terraform-test-folder`, the resulting path would be
-     * `/default-dc/vm/terraform-test-folder`.
+     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
      */
     readonly path: pulumi.Input<string>;
     /**

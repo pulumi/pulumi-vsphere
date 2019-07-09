@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     path: "/dc1/datastore/folder1",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
     return pulumi.runtime.invoke("vsphere:index/getFolder:getFolder", {
@@ -30,13 +32,6 @@ export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getFolder.
  */
 export interface GetFolderArgs {
-    /**
-     * The absolute path of the folder. For example, given a
-     * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
-     * of `terraform-test-folder`, the resulting path would be
-     * `/default-dc/vm/terraform-test-folder`. The valid folder types to be used in
-     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
-     */
     readonly path: string;
 }
 

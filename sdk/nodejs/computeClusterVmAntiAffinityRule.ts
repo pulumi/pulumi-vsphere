@@ -85,6 +85,8 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown.
  */
 export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**

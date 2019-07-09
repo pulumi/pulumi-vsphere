@@ -8,44 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_vmfs_datastore` resource can be used to create and manage VMFS
-// datastores on an ESXi host or a set of hosts. The resource supports using any
-// SCSI device that can generally be used in a datastore, such as local disks, or
-// disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
-// Devices can be specified manually, or discovered using the
-// [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source.
-// 
-// [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
-// 
-// ## Auto-Mounting of Datastores Within vCenter
-// 
-// Note that the current behaviour of this resource will auto-mount any created
-// datastores to any other host within vCenter that has access to the same disk.
-// 
-// Example: You want to create a datastore with a iSCSI LUN that is visible on 3
-// hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
-// create the datastore on `esxi1`, the datastore will be automatically mounted on
-// `esxi2` and `esxi3`, without the need to configure the resource on either of
-// those two hosts.
-// 
-// Future versions of this resource may allow you to control the hosts that a
-// datastore is mounted to, but currently, this automatic behaviour cannot be
-// changed, so keep this in mind when writing your configurations and deploying
-// your disks.
-// 
-// ## Increasing Datastore Size
-// 
-// To increase the size of a datastore, you must add additional disks to the
-// `disks` attribute. Expanding the size of a datastore by increasing the size of
-// an already provisioned disk is currently not supported (but may be in future
-// versions of this resource).
-// 
-// > **NOTE:** You cannot decrease the size of a datastore. If the resource
-// detects disks removed from the configuration, Terraform will give an error. To
-// reduce the size of the datastore, the resource needs to be re-created - run
-// [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
-// 
-// [cmd-taint]: /docs/commands/taint.html
 type VmfsDatastore struct {
 	s *pulumi.ResourceState
 }
@@ -160,13 +122,7 @@ func (r *VmfsDatastore) Disks() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
-// The relative path to a folder to put this datastore in.
-// This is a path relative to the datacenter you are deploying the datastore to.
-// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-// Terraform will place a datastore named `terraform-test` in a datastore folder
-// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-// `datastore_cluster_id`.
+// The path to the datastore folder to put the datastore in.
 func (r *VmfsDatastore) Folder() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["folder"])
 }
@@ -237,13 +193,7 @@ type VmfsDatastoreState struct {
 	DatastoreClusterId interface{}
 	// The disks to use with the datastore.
 	Disks interface{}
-	// The relative path to a folder to put this datastore in.
-	// This is a path relative to the datacenter you are deploying the datastore to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a datastore named `terraform-test` in a datastore folder
-	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-	// `datastore_cluster_id`.
+	// The path to the datastore folder to put the datastore in.
 	Folder interface{}
 	// Available space of this datastore, in megabytes.
 	FreeSpace interface{}
@@ -284,13 +234,7 @@ type VmfsDatastoreArgs struct {
 	DatastoreClusterId interface{}
 	// The disks to use with the datastore.
 	Disks interface{}
-	// The relative path to a folder to put this datastore in.
-	// This is a path relative to the datacenter you are deploying the datastore to.
-	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-	// Terraform will place a datastore named `terraform-test` in a datastore folder
-	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
-	// `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-	// `datastore_cluster_id`.
+	// The path to the datastore folder to put the datastore in.
 	Folder interface{}
 	// The [managed object ID][docs-about-morefs] of
 	// the host to set the datastore up on. Note that this is not necessarily the

@@ -82,6 +82,8 @@ class HostPortGroup(pulumi.CustomResource):
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

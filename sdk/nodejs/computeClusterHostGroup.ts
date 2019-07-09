@@ -69,6 +69,8 @@ import * as utilities from "./utilities";
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
  */
 export class ComputeClusterHostGroup extends pulumi.CustomResource {
     /**

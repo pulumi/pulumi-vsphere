@@ -4,70 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_datastore_cluster` resource can be used to create and manage
- * datastore clusters. This can be used to create groups of datastores with a
- * shared management interface, allowing for resource control and load balancing
- * through Storage DRS.
- * 
- * For more information on vSphere datastore clusters and Storage DRS, see [this
- * page][ref-vsphere-datastore-clusters].
- * 
- * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
- * 
- * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
- * connections.
- * 
- * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
- * 
- * ## Example Usage
- * 
- * The following example sets up a datastore cluster and enables Storage DRS with
- * the default settings. It then creates two NAS datastores using the
- * [`vsphere_nas_datastore` resource][ref-tf-nas-datastore] and assigns them to
- * the datastore cluster.
- * 
- * [ref-tf-nas-datastore]: /docs/providers/vsphere/r/nas_datastore.html
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const config = new pulumi.Config();
- * const hosts = config.get("hosts") || [
- *     "esxi1",
- *     "esxi2",
- *     "esxi3",
- * ];
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const esxiHosts: Output<vsphere.GETHOSTResult>[] = [];
- * for (let i = 0; i < hosts.length; i++) {
- *     esxiHosts.push(vsphere.getHost);
- * %!(EXTRA string=datacenter.apply(datacenter => vsphere.getHost({
- *         datacenterId: datacenter.id,
- *         name: hosts[i],
- *     })))}
- * const datastoreCluster = new vsphere.DatastoreCluster("datastore_cluster", {
- *     datacenterId: datacenter.id,
- *     sdrsEnabled: true,
- * });
- * const datastore1 = new vsphere.NasDatastore("datastore1", {
- *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/terraform-test1",
- *     type: "NFS",
- * });
- * const datastore2 = new vsphere.NasDatastore("datastore2", {
- *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/terraform-test2",
- *     type: "NFS",
- * });
- * ```
- */
 export class DatastoreCluster extends pulumi.CustomResource {
     /**
      * Get an existing DatastoreCluster resource's state with the given name, ID, and optional extra
@@ -109,13 +45,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly datacenterId!: pulumi.Output<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, Terraform will place a datastore cluster named
-     * `terraform-datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -123,8 +53,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via Terraform or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -330,13 +259,7 @@ export interface DatastoreClusterState {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, Terraform will place a datastore cluster named
-     * `terraform-datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -344,8 +267,7 @@ export interface DatastoreClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via Terraform or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -480,13 +402,7 @@ export interface DatastoreClusterArgs {
      */
     readonly datacenterId: pulumi.Input<string>;
     /**
-     * The relative path to a folder to put this datastore
-     * cluster in.  This is a path relative to the datacenter you are deploying the
-     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
-     * `foo/bar`, Terraform will place a datastore cluster named
-     * `terraform-datastore-cluster-test` in a datastore folder located at
-     * `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-datastore-cluster-test`.
+     * The name of the folder to locate the datastore cluster in.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -494,8 +410,7 @@ export interface DatastoreClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A key/value map of advanced Storage DRS
-     * settings that are not exposed via Terraform or the vSphere client.
+     * Advanced configuration options for storage DRS.
      */
     readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
     /**

@@ -52,6 +52,8 @@ class Datacenter(pulumi.CustomResource):
                within the folder. Forces a new resource if changed.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -4,112 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere_vmfs_datastore` resource can be used to create and manage VMFS
- * datastores on an ESXi host or a set of hosts. The resource supports using any
- * SCSI device that can generally be used in a datastore, such as local disks, or
- * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
- * Devices can be specified manually, or discovered using the
- * [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source.
- * 
- * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
- * 
- * ## Auto-Mounting of Datastores Within vCenter
- * 
- * Note that the current behaviour of this resource will auto-mount any created
- * datastores to any other host within vCenter that has access to the same disk.
- * 
- * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
- * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
- * create the datastore on `esxi1`, the datastore will be automatically mounted on
- * `esxi2` and `esxi3`, without the need to configure the resource on either of
- * those two hosts.
- * 
- * Future versions of this resource may allow you to control the hosts that a
- * datastore is mounted to, but currently, this automatic behaviour cannot be
- * changed, so keep this in mind when writing your configurations and deploying
- * your disks.
- * 
- * ## Increasing Datastore Size
- * 
- * To increase the size of a datastore, you must add additional disks to the
- * `disks` attribute. Expanding the size of a datastore by increasing the size of
- * an already provisioned disk is currently not supported (but may be in future
- * versions of this resource).
- * 
- * > **NOTE:** You cannot decrease the size of a datastore. If the resource
- * detects disks removed from the configuration, Terraform will give an error. To
- * reduce the size of the datastore, the resource needs to be re-created - run
- * [`terraform taint`][cmd-taint] to taint the resource so it can be re-created.
- * 
- * [cmd-taint]: /docs/commands/taint.html
- * 
- * ## Example Usage
- * 
- * ### Addition of local disks on a single host
- * 
- * The following example uses the default datacenter and default host to add a
- * datastore with local disks to a single ESXi server.
- * 
- * > **NOTE:** There are some situations where datastore creation will not work
- * when working through vCenter (usually when trying to create a datastore on a
- * single host with local disks). If you experience trouble creating the datastore
- * you need through vCenter, break the datstore off into a different configuration
- * and deploy it using the ESXi server as the provider endpoint, using a similar
- * configuration to what is below.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({}));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
- *     datacenterId: datacenter.id,
- * }));
- * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: [
- *         "mpx.vmhba1:C0:T1:L0",
- *         "mpx.vmhba1:C0:T2:L0",
- *         "mpx.vmhba1:C0:T2:L0",
- *     ],
- *     hostSystemId: esxiHost.id,
- * });
- * ```
- * 
- * ### Auto-detection of disks via `vsphere_vmfs_disks`
- * 
- * The following example makes use of the
- * [`vsphere_vmfs_disks`][data-source-vmfs-disks] data source to auto-detect
- * exported iSCSI LUNS matching a certain NAA vendor ID (in this case, LUNs
- * exported from a [NetApp][ext-netapp]). These discovered disks are then loaded
- * into `vsphere_vmfs_datastore`. The datastore is also placed in the
- * `datastore-folder` folder afterwards.
- * 
- * [ext-netapp]: https://kb.netapp.com/support/s/article/ka31A0000000rLRQAY/how-to-match-a-lun-s-naa-number-to-its-serial-number?language=en_US
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
- *     datacenterId: datacenter.id,
- *     name: "esxi1",
- * }));
- * const available = esxiHost.apply(esxiHost => vsphere.getVmfsDisks({
- *     filter: "naa.60a98000",
- *     hostSystemId: esxiHost.id,
- *     rescan: true,
- * }));
- * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: available.disks,
- *     folder: "datastore-folder",
- *     hostSystemId: esxiHost.id,
- * });
- * ```
- */
 export class VmfsDatastore extends pulumi.CustomResource {
     /**
      * Get an existing VmfsDatastore resource's state with the given name, ID, and optional extra
@@ -164,13 +58,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<string[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -298,13 +186,7 @@ export interface VmfsDatastoreState {
      */
     readonly disks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -371,13 +253,7 @@ export interface VmfsDatastoreArgs {
      */
     readonly disks: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The relative path to a folder to put this datastore in.
-     * This is a path relative to the datacenter you are deploying the datastore to.
-     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-     * Terraform will place a datastore named `terraform-test` in a datastore folder
-     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
-     * `/dc1/datastore/foo/bar/terraform-test`. Conflicts with
-     * `datastore_cluster_id`.
+     * The path to the datastore folder to put the datastore in.
      */
     readonly folder?: pulumi.Input<string>;
     /**

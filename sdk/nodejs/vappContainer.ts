@@ -86,6 +86,8 @@ import * as utilities from "./utilities";
  *     resourcePoolId: vappContainer.id,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_container.html.markdown.
  */
 export class VappContainer extends pulumi.CustomResource {
     /**

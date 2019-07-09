@@ -96,6 +96,8 @@ async def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_
     reads the guest ID so that can be supplied as well.
     
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
     """
     __args__ = dict()
 

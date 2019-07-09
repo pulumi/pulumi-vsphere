@@ -41,6 +41,8 @@ class License(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
