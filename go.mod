@@ -15,11 +15,10 @@ require (
 	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
-	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v0.17.22-0.20190702185104-ebceea93a5da
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190709052202-629f7c54269d
+	github.com/pulumi/pulumi v0.17.23-0.20190715212628-02ffff88409f
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190716112909-08d502e9b427
 	github.com/rancher/go-rancher v0.0.0-20170407040943-ec24b7f12fca // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
@@ -35,6 +34,6 @@ require (
 
 replace (
 	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
-	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.3.0
+	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.4.2-0.20190403091019-9b3cdde74fbe
 	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
 )
