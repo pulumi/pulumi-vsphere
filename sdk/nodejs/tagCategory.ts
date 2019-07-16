@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag_category.html.markdown.
+ */
 export class TagCategory extends pulumi.CustomResource {
     /**
      * Get an existing TagCategory resource's state with the given name, ID, and optional extra
