@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
+ */
 export class NasDatastore extends pulumi.CustomResource {
     /**
      * Get an existing NasDatastore resource's state with the given name, ID, and optional extra

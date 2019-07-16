@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/custom_attribute.html.markdown.
 func LookupCustomAttribute(ctx *pulumi.Context, args *GetCustomAttributeArgs) (*GetCustomAttributeResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

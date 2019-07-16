@@ -27,6 +27,9 @@ class GetCustomAttributeResult:
         """
 
 async def get_custom_attribute(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/custom_attribute.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name

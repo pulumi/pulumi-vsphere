@@ -30,6 +30,9 @@ class GetTagResult:
         """
 
 async def get_tag(category_id=None,name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag.html.markdown.
+    """
     __args__ = dict()
 
     __args__['categoryId'] = category_id

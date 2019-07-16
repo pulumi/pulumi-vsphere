@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
+ */
 export class VappEntity extends pulumi.CustomResource {
     /**
      * Get an existing VappEntity resource's state with the given name, ID, and optional extra

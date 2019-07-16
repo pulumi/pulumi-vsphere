@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/compute_cluster.html.markdown.
 func LookupComputeCluster(ctx *pulumi.Context, args *GetComputeClusterArgs) (*GetComputeClusterResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

@@ -8,6 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine.html.markdown.
 type VirtualMachine struct {
 	s *pulumi.ResourceState
 }

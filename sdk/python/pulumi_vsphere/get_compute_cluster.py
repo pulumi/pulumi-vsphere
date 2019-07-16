@@ -30,6 +30,9 @@ class GetComputeClusterResult:
         """
 
 async def get_compute_cluster(datacenter_id=None,name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/compute_cluster.html.markdown.
+    """
     __args__ = dict()
 
     __args__['datacenterId'] = datacenter_id

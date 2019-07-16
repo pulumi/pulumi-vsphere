@@ -33,6 +33,9 @@ class GetTagCategoryResult:
         """
 
 async def get_tag_category(name=None,opts=None):
+    """
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag_category.html.markdown.
+    """
     __args__ = dict()
 
     __args__['name'] = name
