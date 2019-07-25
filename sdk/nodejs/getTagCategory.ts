@@ -7,10 +7,12 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag_category.html.markdown.
  */
-export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
-    return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
+export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> & GetTagCategoryResult {
+    const promise: Promise<GetTagCategoryResult> = pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

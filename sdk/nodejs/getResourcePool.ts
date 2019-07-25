@@ -57,12 +57,14 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
  */
-export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
+export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> & GetResourcePoolResult {
     args = args || {};
-    return pulumi.runtime.invoke("vsphere:index/getResourcePool:getResourcePool", {
+    const promise: Promise<GetResourcePoolResult> = pulumi.runtime.invoke("vsphere:index/getResourcePool:getResourcePool", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
