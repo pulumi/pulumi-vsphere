@@ -106,6 +106,13 @@ export class License extends pulumi.CustomResource {
             inputs["total"] = undefined /*out*/;
             inputs["used"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(License.__pulumiType, name, inputs, opts);
     }
 }

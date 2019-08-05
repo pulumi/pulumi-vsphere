@@ -82,6 +82,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ComputeClusterHostGroup, __self__).__init__(
             'vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup',
             resource_name,

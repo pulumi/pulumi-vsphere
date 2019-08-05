@@ -84,6 +84,10 @@ class DpmHostOverride(pulumi.CustomResource):
             raise TypeError("Missing required property 'host_system_id'")
         __props__['host_system_id'] = host_system_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DpmHostOverride, __self__).__init__(
             'vsphere:index/dpmHostOverride:DpmHostOverride',
             resource_name,

@@ -263,6 +263,13 @@ export class HostPortGroup extends pulumi.CustomResource {
             inputs["key"] = undefined /*out*/;
             inputs["ports"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(HostPortGroup.__pulumiType, name, inputs, opts);
     }
 }

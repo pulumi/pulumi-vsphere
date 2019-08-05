@@ -126,6 +126,10 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
             raise TypeError("Missing required property 'vm_group_name'")
         __props__['vm_group_name'] = vm_group_name
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ComputeClusterVmHostRule, __self__).__init__(
             'vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule',
             resource_name,

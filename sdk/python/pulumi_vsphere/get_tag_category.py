@@ -32,14 +32,26 @@ class GetTagCategoryResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_tag_category(name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_tag_category(name=None,opts=None):
     """
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag_category.html.markdown.
     """
     __args__ = dict()
 
     __args__['name'] = name
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts).value
 
     return GetTagCategoryResult(
         associable_types=__ret__.get('associableTypes'),

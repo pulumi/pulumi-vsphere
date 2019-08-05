@@ -134,6 +134,13 @@ export class VirtualDisk extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["vmdkPath"] = args ? args.vmdkPath : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VirtualDisk.__pulumiType, name, inputs, opts);
     }
 }

@@ -241,6 +241,10 @@ class HaVmOverride(pulumi.CustomResource):
             raise TypeError("Missing required property 'virtual_machine_id'")
         __props__['virtual_machine_id'] = virtual_machine_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(HaVmOverride, __self__).__init__(
             'vsphere:index/haVmOverride:HaVmOverride',
             resource_name,

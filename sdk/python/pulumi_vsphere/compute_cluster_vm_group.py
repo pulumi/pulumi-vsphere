@@ -84,6 +84,10 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         __props__['virtual_machine_ids'] = virtual_machine_ids
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ComputeClusterVmGroup, __self__).__init__(
             'vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup',
             resource_name,

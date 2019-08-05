@@ -150,6 +150,13 @@ export class DpmHostOverride extends pulumi.CustomResource {
             inputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DpmHostOverride.__pulumiType, name, inputs, opts);
     }
 }

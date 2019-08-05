@@ -171,6 +171,13 @@ export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ComputeClusterVmAntiAffinityRule.__pulumiType, name, inputs, opts);
     }
 }

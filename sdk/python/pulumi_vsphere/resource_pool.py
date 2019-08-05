@@ -189,6 +189,10 @@ class ResourcePool(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ResourcePool, __self__).__init__(
             'vsphere:index/resourcePool:ResourcePool',
             resource_name,

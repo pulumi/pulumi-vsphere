@@ -263,6 +263,13 @@ export class HaVmOverride extends pulumi.CustomResource {
             inputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(HaVmOverride.__pulumiType, name, inputs, opts);
     }
 }

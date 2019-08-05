@@ -171,6 +171,13 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             inputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(StorageDrsVmOverride.__pulumiType, name, inputs, opts);
     }
 }

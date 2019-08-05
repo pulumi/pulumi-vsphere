@@ -87,6 +87,10 @@ class TagCategory(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(TagCategory, __self__).__init__(
             'vsphere:index/tagCategory:TagCategory',
             resource_name,

@@ -195,6 +195,13 @@ export class NasDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(NasDatastore.__pulumiType, name, inputs, opts);
     }
 }

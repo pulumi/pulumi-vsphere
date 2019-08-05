@@ -30,12 +30,21 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
  */
-export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
-    return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
+export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> & GetVirtualMachineResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetVirtualMachineResult> = pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
         "datacenterId": args.datacenterId,
         "name": args.name,
         "scsiControllerScanCount": args.scsiControllerScanCount,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

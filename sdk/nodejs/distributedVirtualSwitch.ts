@@ -659,6 +659,13 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["vsanShareLevel"] = args ? args.vsanShareLevel : undefined;
             inputs["configVersion"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DistributedVirtualSwitch.__pulumiType, name, inputs, opts);
     }
 }

@@ -22,10 +22,19 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
  */
-export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-    return pulumi.runtime.invoke("vsphere:index/getFolder:getFolder", {
+export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> & GetFolderResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetFolderResult> = pulumi.runtime.invoke("vsphere:index/getFolder:getFolder", {
         "path": args.path,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

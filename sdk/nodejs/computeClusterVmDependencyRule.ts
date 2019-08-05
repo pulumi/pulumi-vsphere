@@ -202,6 +202,13 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["vmGroupName"] = args ? args.vmGroupName : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ComputeClusterVmDependencyRule.__pulumiType, name, inputs, opts);
     }
 }

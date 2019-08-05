@@ -163,6 +163,13 @@ export class DrsVmOverride extends pulumi.CustomResource {
             inputs["drsEnabled"] = args ? args.drsEnabled : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DrsVmOverride.__pulumiType, name, inputs, opts);
     }
 }

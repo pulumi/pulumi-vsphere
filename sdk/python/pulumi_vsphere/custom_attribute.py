@@ -89,6 +89,10 @@ class CustomAttribute(pulumi.CustomResource):
 
         __props__['name'] = name
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(CustomAttribute, __self__).__init__(
             'vsphere:index/customAttribute:CustomAttribute',
             resource_name,

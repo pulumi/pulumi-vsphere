@@ -670,6 +670,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
         __props__['config_version'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DistributedVirtualSwitch, __self__).__init__(
             'vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch',
             resource_name,

@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
  * The provider type for the vsphere package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
- * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+ * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/index.html.markdown.
  */
@@ -56,6 +56,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["vimKeepAlive"] = pulumi.output(args ? args.vimKeepAlive : undefined).apply(JSON.stringify);
             inputs["vimSessionPath"] = args ? args.vimSessionPath : undefined;
             inputs["vsphereServer"] = args ? args.vsphereServer : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

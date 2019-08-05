@@ -98,6 +98,10 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
             raise TypeError("Missing required property 'virtual_machine_ids'")
         __props__['virtual_machine_ids'] = virtual_machine_ids
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DatastoreClusterVmAntiAffinityRule, __self__).__init__(
             'vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule',
             resource_name,

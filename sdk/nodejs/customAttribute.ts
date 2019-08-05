@@ -65,6 +65,13 @@ export class CustomAttribute extends pulumi.CustomResource {
             inputs["managedObjectType"] = args ? args.managedObjectType : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(CustomAttribute.__pulumiType, name, inputs, opts);
     }
 }

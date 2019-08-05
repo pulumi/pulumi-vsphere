@@ -143,6 +143,10 @@ class VmfsDatastore(pulumi.CustomResource):
         __props__['uncommitted_space'] = None
         __props__['url'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(VmfsDatastore, __self__).__init__(
             'vsphere:index/vmfsDatastore:VmfsDatastore',
             resource_name,

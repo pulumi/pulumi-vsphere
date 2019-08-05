@@ -320,6 +320,10 @@ class DistributedPortGroup(pulumi.CustomResource):
         __props__['config_version'] = None
         __props__['key'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(DistributedPortGroup, __self__).__init__(
             'vsphere:index/distributedPortGroup:DistributedPortGroup',
             resource_name,

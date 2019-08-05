@@ -87,7 +87,15 @@ class GetVirtualMachineResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=None,opts=None):
     """
     The `vsphere_virtual_machine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
@@ -104,7 +112,11 @@ async def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     __args__['scsiControllerScanCount'] = scsi_controller_scan_count
-    __ret__ = await pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts).value
 
     return GetVirtualMachineResult(
         alternate_guest_name=__ret__.get('alternateGuestName'),
