@@ -125,6 +125,10 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             raise TypeError("Missing required property 'virtual_machine_uuid'")
         __props__['virtual_machine_uuid'] = virtual_machine_uuid
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(VirtualMachineSnapshot, __self__).__init__(
             'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot',
             resource_name,

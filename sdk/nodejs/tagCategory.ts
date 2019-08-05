@@ -85,6 +85,13 @@ export class TagCategory extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(TagCategory.__pulumiType, name, inputs, opts);
     }
 }

@@ -498,6 +498,13 @@ export class DistributedPortGroup extends pulumi.CustomResource {
             inputs["configVersion"] = undefined /*out*/;
             inputs["key"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DistributedPortGroup.__pulumiType, name, inputs, opts);
     }
 }

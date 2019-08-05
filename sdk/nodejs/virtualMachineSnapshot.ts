@@ -153,6 +153,13 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
             inputs["snapshotName"] = args ? args.snapshotName : undefined;
             inputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VirtualMachineSnapshot.__pulumiType, name, inputs, opts);
     }
 }

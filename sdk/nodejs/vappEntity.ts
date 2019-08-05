@@ -127,6 +127,13 @@ export class VappEntity extends pulumi.CustomResource {
             inputs["targetId"] = args ? args.targetId : undefined;
             inputs["waitForGuest"] = args ? args.waitForGuest : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VappEntity.__pulumiType, name, inputs, opts);
     }
 }

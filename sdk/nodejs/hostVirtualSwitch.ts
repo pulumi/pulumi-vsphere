@@ -216,6 +216,13 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
             inputs["standbyNics"] = args ? args.standbyNics : undefined;
             inputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(HostVirtualSwitch.__pulumiType, name, inputs, opts);
     }
 }

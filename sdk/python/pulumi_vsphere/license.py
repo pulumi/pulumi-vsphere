@@ -70,6 +70,10 @@ class License(pulumi.CustomResource):
         __props__['total'] = None
         __props__['used'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(License, __self__).__init__(
             'vsphere:index/license:License',
             resource_name,

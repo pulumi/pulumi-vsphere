@@ -727,6 +727,10 @@ class VirtualMachine(pulumi.CustomResource):
         __props__['vmware_tools_status'] = None
         __props__['vmx_path'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(VirtualMachine, __self__).__init__(
             'vsphere:index/virtualMachine:VirtualMachine',
             resource_name,

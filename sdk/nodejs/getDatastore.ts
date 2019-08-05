@@ -29,11 +29,20 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
  */
-export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
-    return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
+export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> & GetDatastoreResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDatastoreResult> = pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

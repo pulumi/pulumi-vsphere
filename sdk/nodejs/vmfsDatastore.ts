@@ -154,6 +154,13 @@ export class VmfsDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VmfsDatastore.__pulumiType, name, inputs, opts);
     }
 }

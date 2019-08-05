@@ -198,6 +198,13 @@ export class ResourcePool extends pulumi.CustomResource {
             inputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ResourcePool.__pulumiType, name, inputs, opts);
     }
 }

@@ -94,6 +94,13 @@ export class Folder extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Folder.__pulumiType, name, inputs, opts);
     }
 }

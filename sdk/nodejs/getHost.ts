@@ -26,11 +26,20 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
  */
-export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
-    return pulumi.runtime.invoke("vsphere:index/getHost:getHost", {
+export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> & GetHostResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetHostResult> = pulumi.runtime.invoke("vsphere:index/getHost:getHost", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

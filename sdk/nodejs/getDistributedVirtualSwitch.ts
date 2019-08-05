@@ -7,11 +7,20 @@ import * as utilities from "./utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
  */
-export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
-    return pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
+export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> & GetDistributedVirtualSwitchResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDistributedVirtualSwitchResult> = pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

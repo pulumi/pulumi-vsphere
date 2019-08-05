@@ -96,6 +96,10 @@ class File(pulumi.CustomResource):
             raise TypeError("Missing required property 'source_file'")
         __props__['source_file'] = source_file
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(File, __self__).__init__(
             'vsphere:index/file:File',
             resource_name,

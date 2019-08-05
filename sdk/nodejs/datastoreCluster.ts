@@ -240,6 +240,13 @@ export class DatastoreCluster extends pulumi.CustomResource {
             inputs["sdrsVmEvacuationAutomationLevel"] = args ? args.sdrsVmEvacuationAutomationLevel : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DatastoreCluster.__pulumiType, name, inputs, opts);
     }
 }

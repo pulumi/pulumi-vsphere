@@ -601,6 +601,13 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["vmwareToolsStatus"] = undefined /*out*/;
             inputs["vmxPath"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(VirtualMachine.__pulumiType, name, inputs, opts);
     }
 }

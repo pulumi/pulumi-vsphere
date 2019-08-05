@@ -104,6 +104,13 @@ export class File extends pulumi.CustomResource {
             inputs["sourceDatastore"] = args ? args.sourceDatastore : undefined;
             inputs["sourceFile"] = args ? args.sourceFile : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(File.__pulumiType, name, inputs, opts);
     }
 }

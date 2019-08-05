@@ -111,6 +111,13 @@ export class Datacenter extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["moid"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Datacenter.__pulumiType, name, inputs, opts);
     }
 }

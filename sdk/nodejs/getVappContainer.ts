@@ -29,11 +29,20 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
  */
-export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
-    return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
+export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> & GetVappContainerResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetVappContainerResult> = pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

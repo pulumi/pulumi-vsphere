@@ -25,11 +25,20 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
  */
-export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
+export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> & GetDatacenterResult {
     args = args || {};
-    return pulumi.runtime.invoke("vsphere:index/getDatacenter:getDatacenter", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDatacenterResult> = pulumi.runtime.invoke("vsphere:index/getDatacenter:getDatacenter", {
         "name": args.name,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
