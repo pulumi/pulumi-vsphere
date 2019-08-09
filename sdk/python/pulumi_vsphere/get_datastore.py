@@ -25,21 +25,22 @@ class GetDatastoreResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDatastoreResult(GetDatastoreResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDatastoreResult(
+            datacenter_id=self.datacenter_id,
+            name=self.name,
+            id=self.id)
 
 def get_datastore(datacenter_id=None,name=None,opts=None):
     """
-    The `vsphere_datastore` data source can be used to discover the ID of a
+    The `.getDatastore` data source can be used to discover the ID of a
     datastore in vSphere. This is useful to fetch the ID of a datastore that you
     want to use to create virtual machines in using the
-    [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
+    [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
     
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
@@ -55,7 +56,7 @@ def get_datastore(datacenter_id=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatastore:getDatastore', __args__, opts=opts).value
 
-    return GetDatastoreResult(
+    return AwaitableGetDatastoreResult(
         datacenter_id=__ret__.get('datacenterId'),
         name=__ret__.get('name'),
         id=__ret__.get('id'))

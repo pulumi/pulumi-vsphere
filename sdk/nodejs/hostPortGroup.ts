@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_host_port_group` resource can be used to manage vSphere standard
+ * The `vsphere..HostPortGroup` resource can be used to manage vSphere standard
  * port groups on an ESXi host. These port groups are connected to standard
  * virtual switches, which can be managed by the
- * [`vsphere_host_virtual_switch`][host-virtual-switch] resource.
+ * [`vsphere..HostVirtualSwitch`][host-virtual-switch] resource.
  * 
  * For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
  * 
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  * 
  * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
  * and sets
- * [`allow_promiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
+ * [`allowPromiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
  * to ensure that all traffic is seen on the port. The latter setting overrides
  * the implicit default of `false` set on the virtual switch.
  * 

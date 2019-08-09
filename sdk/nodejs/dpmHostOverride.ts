@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_dpm_host_override` resource can be used to add a DPM override to a
+ * The `vsphere..DpmHostOverride` resource can be used to add a DPM override to a
  * cluster for a particular host. This allows you to control the power management
  * settings for individual hosts in the cluster while leaving any unspecified ones
  * at the default power management settings.
@@ -24,11 +24,11 @@ import * as utilities from "./utilities";
  * 
  * The following example creates a compute cluster comprised of three hosts,
  * making use of the
- * [`vsphere_compute_cluster`][tf-vsphere-compute-cluster-resource] resource. DPM
+ * [`vsphere..ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
  * will be disabled in the cluster as it is the default setting, but we override
  * the setting of the first host referenced by the
- * [`vsphere_host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
- * the `vsphere_dpm_host_override` resource so it will be powered off when the
+ * [`vsphere..getHost`][tf-vsphere-host-data-source] data source (`esxi1`) by using
+ * the `vsphere..DpmHostOverride` resource so it will be powered off when the
  * cluster does not need it to service virtual machines.
  * 
  * [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
@@ -56,13 +56,13 @@ import * as utilities from "./utilities";
  *         datacenterId: dc.id,
  *         name: hosts[i],
  *     })))}
- * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
  *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });
- * const dpmHostOverride = new vsphere.DpmHostOverride("dpm_host_override", {
+ * const dpmHostOverride = new vsphere.DpmHostOverride("dpmHostOverride", {
  *     computeClusterId: computeCluster.id,
  *     dpmAutomationLevel: "automated",
  *     dpmEnabled: true,

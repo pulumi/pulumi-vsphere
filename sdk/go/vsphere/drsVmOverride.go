@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_drs_vm_override` resource can be used to add a DRS override to a
+// The `.DrsVmOverride` resource can be used to add a DRS override to a
 // cluster for a specific virtual machine. With this resource, one can enable or
 // disable DRS and control the automation level for a single virtual machine
 // without affecting the rest of the cluster.

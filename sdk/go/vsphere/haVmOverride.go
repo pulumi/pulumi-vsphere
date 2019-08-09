@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_ha_vm_override` resource can be used to add an override for
+// The `.HaVmOverride` resource can be used to add an override for
 // vSphere HA settings on a cluster for a specific virtual machine. With this
 // resource, one can control specific HA settings so that they are different than
 // the cluster default, accommodating the needs of that specific virtual machine,
@@ -142,7 +142,7 @@ func (r *HaVmOverride) HaDatastoreApdResponse() *pulumi.StringOutput {
 
 // Controls the delay in minutes
 // to wait after an APD timeout event to execute the response action defined in
-// `ha_datastore_apd_response`. Use `-1` to use
+// `haDatastoreApdResponse`. Use `-1` to use
 // the cluster default. Default: `-1`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 func (r *HaVmOverride) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
@@ -174,9 +174,9 @@ func (r *HaVmOverride) HaVmFailureInterval() *pulumi.IntOutput {
 }
 
 // The length of the reset window in
-// which `ha_vm_maximum_resets` can operate. When this
+// which `haVmMaximumResets` can operate. When this
 // window expires, no more resets are attempted regardless of the setting
-// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 // unlimited reset time is allotted. The value is specified in seconds. Default:
 // `-1` (no window).
 func (r *HaVmOverride) HaVmMaximumFailureWindow() *pulumi.IntOutput {
@@ -254,7 +254,7 @@ type HaVmOverrideState struct {
 	HaDatastoreApdResponse interface{}
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
-	// `ha_datastore_apd_response`. Use `-1` to use
+	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
 	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay interface{}
@@ -274,9 +274,9 @@ type HaVmOverrideState struct {
 	// is marked as failed. The value is in seconds. Default: `30`.
 	HaVmFailureInterval interface{}
 	// The length of the reset window in
-	// which `ha_vm_maximum_resets` can operate. When this
+	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
-	// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 	// unlimited reset time is allotted. The value is specified in seconds. Default:
 	// `-1` (no window).
 	HaVmMaximumFailureWindow interface{}
@@ -332,7 +332,7 @@ type HaVmOverrideArgs struct {
 	HaDatastoreApdResponse interface{}
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
-	// `ha_datastore_apd_response`. Use `-1` to use
+	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
 	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay interface{}
@@ -352,9 +352,9 @@ type HaVmOverrideArgs struct {
 	// is marked as failed. The value is in seconds. Default: `30`.
 	HaVmFailureInterval interface{}
 	// The length of the reset window in
-	// which `ha_vm_maximum_resets` can operate. When this
+	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
-	// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 	// unlimited reset time is allotted. The value is specified in seconds. Default:
 	// `-1` (no window).
 	HaVmMaximumFailureWindow interface{}

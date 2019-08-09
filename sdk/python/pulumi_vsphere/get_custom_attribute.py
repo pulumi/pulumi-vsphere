@@ -25,14 +25,15 @@ class GetCustomAttributeResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetCustomAttributeResult(
+            managed_object_type=self.managed_object_type,
+            name=self.name,
+            id=self.id)
 
 def get_custom_attribute(name=None,opts=None):
     """
@@ -47,7 +48,7 @@ def get_custom_attribute(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts).value
 
-    return GetCustomAttributeResult(
+    return AwaitableGetCustomAttributeResult(
         managed_object_type=__ret__.get('managedObjectType'),
         name=__ret__.get('name'),
         id=__ret__.get('id'))

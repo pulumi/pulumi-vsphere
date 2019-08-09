@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_custom_attribute` resource can be used to create and manage custom
+// The `.CustomAttribute` resource can be used to create and manage custom
 // attributes, which allow users to associate user-specific meta-information with 
 // vSphere managed objects. Custom attribute values must be strings and are stored 
 // on the vCenter Server and not the managed object.

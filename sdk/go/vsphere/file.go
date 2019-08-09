@@ -81,7 +81,7 @@ func (r *File) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Create directories in `destination_file`
+// Create directories in `destinationFile`
 // path parameter if any missing for copy operation.
 func (r *File) CreateDirectories() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["createDirectories"])
@@ -123,7 +123,7 @@ func (r *File) SourceFile() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering File resources.
 type FileState struct {
-	// Create directories in `destination_file`
+	// Create directories in `destinationFile`
 	// path parameter if any missing for copy operation.
 	CreateDirectories interface{}
 	// The name of a datacenter in which the file will be
@@ -146,7 +146,7 @@ type FileState struct {
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// Create directories in `destination_file`
+	// Create directories in `destinationFile`
 	// path parameter if any missing for copy operation.
 	CreateDirectories interface{}
 	// The name of a datacenter in which the file will be

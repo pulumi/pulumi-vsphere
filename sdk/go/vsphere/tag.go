@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_tag` resource can be used to create and manage tags, which allow
+// The `.Tag` resource can be used to create and manage tags, which allow
 // you to attach metadata to objects in the vSphere inventory to make these
 // objects more sortable and searchable.
 // 

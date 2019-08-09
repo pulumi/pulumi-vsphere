@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_ha_vm_override` resource can be used to add an override for
+ * The `vsphere..HaVmOverride` resource can be used to add an override for
  * vSphere HA settings on a cluster for a specific virtual machine. With this
  * resource, one can control specific HA settings so that they are different than
  * the cluster default, accommodating the needs of that specific virtual machine,
@@ -21,15 +21,15 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates a virtual machine in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * Considering a scenario where this virtual machine is of high value to the
  * application or organization for which it does its work, it's been determined in
  * the event of a host failure, that this should be one of the first virtual
  * machines to be started by vSphere HA during recovery. Hence, its
- * `ha_vm_restart_priority` as been set to `highest`,
+ * `haVmRestartPriority` as been set to `highest`,
  * which, assuming that the default restart priority is `medium` and no other
  * virtual machine has been assigned the `highest` priority, will mean that this
  * VM will be started before any other virtual machine in the event of host
@@ -71,7 +71,7 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const haVmOverride = new vsphere.HaVmOverride("ha_vm_override", {
+ * const haVmOverride = new vsphere.HaVmOverride("haVmOverride", {
  *     computeClusterId: cluster.id,
  *     haVmRestartPriority: "highest",
  *     virtualMachineId: vm.id,
@@ -132,7 +132,7 @@ export class HaVmOverride extends pulumi.CustomResource {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Use `-1` to use
+     * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
@@ -160,9 +160,9 @@ export class HaVmOverride extends pulumi.CustomResource {
     public readonly haVmFailureInterval!: pulumi.Output<number | undefined>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
@@ -303,7 +303,7 @@ export interface HaVmOverrideState {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Use `-1` to use
+     * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
@@ -331,9 +331,9 @@ export interface HaVmOverrideState {
     readonly haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
@@ -413,7 +413,7 @@ export interface HaVmOverrideArgs {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Use `-1` to use
+     * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
      * <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
      */
@@ -441,9 +441,9 @@ export interface HaVmOverrideArgs {
     readonly haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */

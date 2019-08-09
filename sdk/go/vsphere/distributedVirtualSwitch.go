@@ -8,14 +8,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_distributed_virtual_switch` resource can be used to manage VMware
+// The `.DistributedVirtualSwitch` resource can be used to manage VMware
 // Distributed Virtual Switches.
 // 
 // An essential component of a distributed, scalable VMware datacenter, the
 // vSphere Distributed Virtual Switch (DVS) provides centralized management and
 // monitoring of the networking configuration of all the hosts that are associated
 // with the switch. In addition to adding port groups (see the
-// [`vsphere_distributed_port_group`][distributed-port-group] resource) that can
+// [`.DistributedPortGroup`][distributed-port-group] resource) that can
 // be used as networks for virtual machines, a DVS can be configured to perform
 // advanced high availability, traffic shaping, network monitoring, and more.
 // 
@@ -737,8 +737,8 @@ func (r *DistributedVirtualSwitch) Tags() *pulumi.ArrayOutput {
 }
 
 // The uplink teaming policy. Can be one of
-// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-// `failover_explicit`.
+// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+// `failoverExplicit`.
 func (r *DistributedVirtualSwitch) TeamingPolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["teamingPolicy"])
 }
@@ -811,9 +811,9 @@ func (r *DistributedVirtualSwitch) VlanId() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["vlanId"])
 }
 
-// Used to denote VLAN trunking. Use the `min_vlan`
-// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-// `vlan_range` definitions are allowed, but they must not overlap. Example
+// Used to denote VLAN trunking. Use the `minVlan`
+// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+// `vlanRange` definitions are allowed, but they must not overlap. Example
 // below:
 func (r *DistributedVirtualSwitch) VlanRanges() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["vlanRanges"])
@@ -1055,8 +1055,8 @@ type DistributedVirtualSwitchState struct {
 	// [here][docs-applying-tags] for a reference on how to apply tags.
 	Tags interface{}
 	// The uplink teaming policy. Can be one of
-	// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-	// `failover_explicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+	// `failoverExplicit`.
 	TeamingPolicy interface{}
 	// Forward all traffic transmitted by ports for which
 	// this policy applies to its DVS uplinks.
@@ -1090,9 +1090,9 @@ type DistributedVirtualSwitchState struct {
 	VirtualmachineShareLevel interface{}
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId interface{}
-	// Used to denote VLAN trunking. Use the `min_vlan`
-	// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-	// `vlan_range` definitions are allowed, but they must not overlap. Example
+	// Used to denote VLAN trunking. Use the `minVlan`
+	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	VlanRanges interface{}
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
@@ -1307,8 +1307,8 @@ type DistributedVirtualSwitchArgs struct {
 	// [here][docs-applying-tags] for a reference on how to apply tags.
 	Tags interface{}
 	// The uplink teaming policy. Can be one of
-	// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-	// `failover_explicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+	// `failoverExplicit`.
 	TeamingPolicy interface{}
 	// Forward all traffic transmitted by ports for which
 	// this policy applies to its DVS uplinks.
@@ -1342,9 +1342,9 @@ type DistributedVirtualSwitchArgs struct {
 	VirtualmachineShareLevel interface{}
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId interface{}
-	// Used to denote VLAN trunking. Use the `min_vlan`
-	// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-	// `vlan_range` definitions are allowed, but they must not overlap. Example
+	// Used to denote VLAN trunking. Use the `minVlan`
+	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
 	VlanRanges interface{}
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.

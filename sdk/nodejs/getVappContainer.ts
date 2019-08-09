@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_vapp_container` data source can be used to discover the ID of a
+ * The `vsphere..VappContainer` data source can be used to discover the ID of a
  * vApp container in vSphere. This is useful to fetch the ID of a vApp container
  * that you want to use to create virtual machines in using the
- * [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. 
+ * [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
  * 
  * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 

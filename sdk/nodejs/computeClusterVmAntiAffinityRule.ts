@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_compute_cluster_vm_anti_affinity_rule` resource can be used to
+ * The `vsphere..ComputeClusterVmAntiAffinityRule` resource can be used to
  * manage VM anti-affinity rules in a cluster, either created by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * > Keep in mind that this rule can only be used to tell VMs to run separately
  * on _non-specific_ hosts - specific hosts cannot be specified with this rule.
  * For that, see the
- * [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resource.
  * 
  * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
@@ -36,9 +36,9 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates two virtual machines in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machines in the cluster looked up by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source. It
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
  * then creates an anti-affinity rule for these two virtual machines, ensuring
  * they will run on different hosts whenever possible.
  * 
@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  *         resourcePoolId: cluster.resourcePoolId,
  *     }));
  * }
- * const clusterVmAntiAffinityRule = new vsphere.ComputeClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ * const clusterVmAntiAffinityRule = new vsphere.ComputeClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: vm.map(v => v.id),
  * });

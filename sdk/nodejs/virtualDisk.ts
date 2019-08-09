@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_virtual_disk` resource can be used to create virtual disks outside
- * of any given [`vsphere_virtual_machine`][docs-vsphere-virtual-machine]
+ * The `vsphere..VirtualDisk` resource can be used to create virtual disks outside
+ * of any given [`vsphere..VirtualMachine`][docs-vsphere-virtual-machine]
  * resource. These disks can be attached to a virtual machine by creating a disk
  * block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
  * 
@@ -64,7 +64,7 @@ export class VirtualDisk extends pulumi.CustomResource {
     public readonly adapterType!: pulumi.Output<string | undefined>;
     /**
      * Tells the resource to create any
-     * directories that are a part of the `vmdk_path` parameter if they are missing.
+     * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      */
     public readonly createDirectories!: pulumi.Output<boolean | undefined>;
@@ -156,7 +156,7 @@ export interface VirtualDiskState {
     readonly adapterType?: pulumi.Input<string>;
     /**
      * Tells the resource to create any
-     * directories that are a part of the `vmdk_path` parameter if they are missing.
+     * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      */
     readonly createDirectories?: pulumi.Input<boolean>;
@@ -200,7 +200,7 @@ export interface VirtualDiskArgs {
     readonly adapterType?: pulumi.Input<string>;
     /**
      * Tells the resource to create any
-     * directories that are a part of the `vmdk_path` parameter if they are missing.
+     * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      */
     readonly createDirectories?: pulumi.Input<boolean>;

@@ -58,13 +58,13 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     public readonly allowPromiscuous!: pulumi.Output<boolean | undefined>;
     /**
      * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `check_beacon` to
+     * packet is sent out. This can be used with `checkBeacon` to
      * offer link failure capability beyond link status only. Default: `1`.
      */
     public readonly beaconInterval!: pulumi.Output<number | undefined>;
     /**
      * Enable beacon probing - this requires that the
-     * `beacon_interval` option has been set in the bridge
+     * `beaconInterval` option has been set in the bridge
      * options. If this is set to `false`, only link status is used to check for
      * failed NICs.  Default: `false`.
      */
@@ -142,8 +142,8 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     public readonly standbyNics!: pulumi.Output<string[]>;
     /**
      * The network adapter teaming policy. Can be one
-     * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`. Default: `loadbalance_srcid`.
+     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`. Default: `loadbalanceSrcid`.
      */
     public readonly teamingPolicy!: pulumi.Output<string | undefined>;
 
@@ -255,13 +255,13 @@ export interface HostVirtualSwitchState {
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `check_beacon` to
+     * packet is sent out. This can be used with `checkBeacon` to
      * offer link failure capability beyond link status only. Default: `1`.
      */
     readonly beaconInterval?: pulumi.Input<number>;
     /**
      * Enable beacon probing - this requires that the
-     * `beacon_interval` option has been set in the bridge
+     * `beaconInterval` option has been set in the bridge
      * options. If this is set to `false`, only link status is used to check for
      * failed NICs.  Default: `false`.
      */
@@ -339,8 +339,8 @@ export interface HostVirtualSwitchState {
     readonly standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The network adapter teaming policy. Can be one
-     * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`. Default: `loadbalance_srcid`.
+     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`. Default: `loadbalanceSrcid`.
      */
     readonly teamingPolicy?: pulumi.Input<string>;
 }
@@ -373,13 +373,13 @@ export interface HostVirtualSwitchArgs {
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * The interval, in seconds, that a NIC beacon
-     * packet is sent out. This can be used with `check_beacon` to
+     * packet is sent out. This can be used with `checkBeacon` to
      * offer link failure capability beyond link status only. Default: `1`.
      */
     readonly beaconInterval?: pulumi.Input<number>;
     /**
      * Enable beacon probing - this requires that the
-     * `beacon_interval` option has been set in the bridge
+     * `beaconInterval` option has been set in the bridge
      * options. If this is set to `false`, only link status is used to check for
      * failed NICs.  Default: `false`.
      */
@@ -457,8 +457,8 @@ export interface HostVirtualSwitchArgs {
     readonly standbyNics: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The network adapter teaming policy. Can be one
-     * of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`. Default: `loadbalance_srcid`.
+     * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`. Default: `loadbalanceSrcid`.
      */
     readonly teamingPolicy?: pulumi.Input<string>;
 }

@@ -121,12 +121,12 @@ class HostVirtualSwitch(pulumi.CustomResource):
     of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
     `failover_explicit`. Default: `loadbalance_srcid`.
     """
-    def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, beacon_interval=None, check_beacon=None, failback=None, host_system_id=None, link_discovery_operation=None, link_discovery_protocol=None, mtu=None, name=None, network_adapters=None, notify_switches=None, number_of_ports=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, beacon_interval=None, check_beacon=None, failback=None, host_system_id=None, link_discovery_operation=None, link_discovery_protocol=None, mtu=None, name=None, network_adapters=None, notify_switches=None, number_of_ports=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_host_virtual_switch` resource can be used to manage vSphere
+        The `.HostVirtualSwitch` resource can be used to manage vSphere
         standard switches on an ESXi host. These switches can be used as a backing for
         standard port groups, which can be managed by the
-        [`vsphere_host_port_group`][host-port-group] resource.
+        [`.HostPortGroup`][host-port-group] resource.
         
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
@@ -194,76 +194,137 @@ class HostVirtualSwitch(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if active_nics is None:
-            raise TypeError("Missing required property 'active_nics'")
-        __props__['active_nics'] = active_nics
-
-        __props__['allow_forged_transmits'] = allow_forged_transmits
-
-        __props__['allow_mac_changes'] = allow_mac_changes
-
-        __props__['allow_promiscuous'] = allow_promiscuous
-
-        __props__['beacon_interval'] = beacon_interval
-
-        __props__['check_beacon'] = check_beacon
-
-        __props__['failback'] = failback
-
-        if host_system_id is None:
-            raise TypeError("Missing required property 'host_system_id'")
-        __props__['host_system_id'] = host_system_id
-
-        __props__['link_discovery_operation'] = link_discovery_operation
-
-        __props__['link_discovery_protocol'] = link_discovery_protocol
-
-        __props__['mtu'] = mtu
-
-        __props__['name'] = name
-
-        if network_adapters is None:
-            raise TypeError("Missing required property 'network_adapters'")
-        __props__['network_adapters'] = network_adapters
-
-        __props__['notify_switches'] = notify_switches
-
-        __props__['number_of_ports'] = number_of_ports
-
-        __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
-
-        __props__['shaping_burst_size'] = shaping_burst_size
-
-        __props__['shaping_enabled'] = shaping_enabled
-
-        __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
-
-        if standby_nics is None:
-            raise TypeError("Missing required property 'standby_nics'")
-        __props__['standby_nics'] = standby_nics
-
-        __props__['teaming_policy'] = teaming_policy
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if active_nics is None:
+                raise TypeError("Missing required property 'active_nics'")
+            __props__['active_nics'] = active_nics
+            __props__['allow_forged_transmits'] = allow_forged_transmits
+            __props__['allow_mac_changes'] = allow_mac_changes
+            __props__['allow_promiscuous'] = allow_promiscuous
+            __props__['beacon_interval'] = beacon_interval
+            __props__['check_beacon'] = check_beacon
+            __props__['failback'] = failback
+            if host_system_id is None:
+                raise TypeError("Missing required property 'host_system_id'")
+            __props__['host_system_id'] = host_system_id
+            __props__['link_discovery_operation'] = link_discovery_operation
+            __props__['link_discovery_protocol'] = link_discovery_protocol
+            __props__['mtu'] = mtu
+            __props__['name'] = name
+            if network_adapters is None:
+                raise TypeError("Missing required property 'network_adapters'")
+            __props__['network_adapters'] = network_adapters
+            __props__['notify_switches'] = notify_switches
+            __props__['number_of_ports'] = number_of_ports
+            __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
+            __props__['shaping_burst_size'] = shaping_burst_size
+            __props__['shaping_enabled'] = shaping_enabled
+            __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
+            if standby_nics is None:
+                raise TypeError("Missing required property 'standby_nics'")
+            __props__['standby_nics'] = standby_nics
+            __props__['teaming_policy'] = teaming_policy
         super(HostVirtualSwitch, __self__).__init__(
             'vsphere:index/hostVirtualSwitch:HostVirtualSwitch',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, beacon_interval=None, check_beacon=None, failback=None, host_system_id=None, link_discovery_operation=None, link_discovery_protocol=None, mtu=None, name=None, network_adapters=None, notify_switches=None, number_of_ports=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None):
+        """
+        Get an existing HostVirtualSwitch resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] active_nics: The list of active network adapters used for load
+               balancing.
+        :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual
+               network adapter is allowed to send network traffic with a different MAC
+               address than that of its own. Default: `true`.
+        :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access
+               Control (MAC) address can be changed. Default: `true`.
+        :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
+               flag indicates whether or not all traffic is seen on a given port. Default:
+               `false`.
+        :param pulumi.Input[float] beacon_interval: The interval, in seconds, that a NIC beacon
+               packet is sent out. This can be used with `check_beacon` to
+               offer link failure capability beyond link status only. Default: `1`.
+        :param pulumi.Input[bool] check_beacon: Enable beacon probing - this requires that the
+               `beacon_interval` option has been set in the bridge
+               options. If this is set to `false`, only link status is used to check for
+               failed NICs.  Default: `false`.
+        :param pulumi.Input[bool] failback: If set to `true`, the teaming policy will re-activate
+               failed interfaces higher in precedence when they come back up.  Default:
+               `true`.
+        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+               the host to set the virtual switch up on. Forces a new resource if changed.
+        :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
+               for link discovery traffic. Default: `listen`.
+        :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type.  Valid
+               types are `cpd` and `lldp`. Default: `cdp`.
+        :param pulumi.Input[float] mtu: The maximum transmission unit (MTU) for the virtual
+               switch. Default: `1500`.
+        :param pulumi.Input[str] name: The name of the virtual switch. Forces a new resource if
+               changed.
+        :param pulumi.Input[list] network_adapters: The network interfaces to bind to the bridge.
+        :param pulumi.Input[bool] notify_switches: If set to `true`, the teaming policy will
+               notify the broadcast network of a NIC failover, triggering cache updates.
+               Default: `true`.
+        :param pulumi.Input[float] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+        :param pulumi.Input[float] shaping_average_bandwidth: The average bandwidth in bits per
+               second if traffic shaping is enabled. Default: `0`
+        :param pulumi.Input[float] shaping_burst_size: The maximum burst size allowed in bytes if
+               shaping is enabled. Default: `0`
+        :param pulumi.Input[bool] shaping_enabled: Set to `true` to enable the traffic shaper for
+               ports managed by this virtual switch. Default: `false`.
+        :param pulumi.Input[float] shaping_peak_bandwidth: The peak bandwidth during bursts in
+               bits per second if traffic shaping is enabled. Default: `0`
+        :param pulumi.Input[list] standby_nics: The list of standby network adapters used for
+               failover.
+        :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one
+               of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+               `failover_explicit`. Default: `loadbalance_srcid`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["active_nics"] = active_nics
+        __props__["allow_forged_transmits"] = allow_forged_transmits
+        __props__["allow_mac_changes"] = allow_mac_changes
+        __props__["allow_promiscuous"] = allow_promiscuous
+        __props__["beacon_interval"] = beacon_interval
+        __props__["check_beacon"] = check_beacon
+        __props__["failback"] = failback
+        __props__["host_system_id"] = host_system_id
+        __props__["link_discovery_operation"] = link_discovery_operation
+        __props__["link_discovery_protocol"] = link_discovery_protocol
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["network_adapters"] = network_adapters
+        __props__["notify_switches"] = notify_switches
+        __props__["number_of_ports"] = number_of_ports
+        __props__["shaping_average_bandwidth"] = shaping_average_bandwidth
+        __props__["shaping_burst_size"] = shaping_burst_size
+        __props__["shaping_enabled"] = shaping_enabled
+        __props__["shaping_peak_bandwidth"] = shaping_peak_bandwidth
+        __props__["standby_nics"] = standby_nics
+        __props__["teaming_policy"] = teaming_policy
+        return HostVirtualSwitch(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

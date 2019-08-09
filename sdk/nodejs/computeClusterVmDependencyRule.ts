@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_compute_cluster_vm_dependency_rule` resource can be used to manage
+ * The `vsphere..ComputeClusterVmDependencyRule` resource can be used to manage
  * VM dependency rules in a cluster, either created by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * A virtual machine dependency rule applies to vSphere HA, and allows
  * user-defined startup orders for virtual machines in the case of host failure.
  * Virtual machines are supplied via groups, which can be managed via the
- * [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource]
+ * [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource.
  * 
  * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
@@ -27,15 +27,15 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates two virtual machine in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource in a cluster
- * looked up by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source]
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. Two groups are created, each with one of the created VMs. Finally, a rule is created to ensure that `vm1` starts before `vm2`.
  * 
  * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
- * > Note how `dependency_vm_group_name` and
- * `vm_group_name` are sourced off of the `name` attributes from
- * the [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource]
+ * > Note how `dependencyVmGroupName` and
+ * `vmGroupName` are sourced off of the `name` attributes from
+ * the [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
  * resource. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
  * "static" source such as a variable.
@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("cluster_vm_group1", {
+ * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("clusterVmGroup1", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm1.id],
  * });
@@ -91,11 +91,11 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("cluster_vm_group2", {
+ * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("clusterVmGroup2", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm2.id],
  * });
- * const clusterVmDependencyRule = new vsphere.ComputeClusterVmDependencyRule("cluster_vm_dependency_rule", {
+ * const clusterVmDependencyRule = new vsphere.ComputeClusterVmDependencyRule("clusterVmDependencyRule", {
  *     computeClusterId: cluster.id,
  *     dependencyVmGroupName: clusterVmGroup1.name,
  *     vmGroupName: clusterVmGroup2.name,
@@ -140,7 +140,7 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
     public readonly dependencyVmGroupName!: pulumi.Output<string>;
@@ -162,7 +162,7 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      */
     public readonly vmGroupName!: pulumi.Output<string>;
 
@@ -226,7 +226,7 @@ export interface ComputeClusterVmDependencyRuleState {
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
     readonly dependencyVmGroupName?: pulumi.Input<string>;
@@ -248,7 +248,7 @@ export interface ComputeClusterVmDependencyRuleState {
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      */
     readonly vmGroupName?: pulumi.Input<string>;
 }
@@ -266,7 +266,7 @@ export interface ComputeClusterVmDependencyRuleArgs {
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
-     * `vm_group_name` will not be started until the VMs in this
+     * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
     readonly dependencyVmGroupName: pulumi.Input<string>;
@@ -288,7 +288,7 @@ export interface ComputeClusterVmDependencyRuleArgs {
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
-     * `dependency_vm_group_name` are started.
+     * `dependencyVmGroupName` are started.
      */
     readonly vmGroupName: pulumi.Input<string>;
 }

@@ -35,20 +35,23 @@ class GetVmfsDisksResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetVmfsDisksResult(
+            disks=self.disks,
+            filter=self.filter,
+            host_system_id=self.host_system_id,
+            rescan=self.rescan,
+            id=self.id)
 
 def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     """
-    The `vsphere_vmfs_disks` data source can be used to discover the storage
+    The `.getVmfsDisks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
-    [`vsphere_vmfs_datastore`][data-source-vmfs-datastore] resource to create VMFS
+    [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
     datastores based off a set of discovered disks.
     
     [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
@@ -66,7 +69,7 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts).value
 
-    return GetVmfsDisksResult(
+    return AwaitableGetVmfsDisksResult(
         disks=__ret__.get('disks'),
         filter=__ret__.get('filter'),
         host_system_id=__ret__.get('hostSystemId'),

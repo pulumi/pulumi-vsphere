@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_tag_category` resource can be used to create and manage tag
+// The `.TagCategory` resource can be used to create and manage tag
 // categories, which determine how tags are grouped together and applied to
 // specific objects.
 // 

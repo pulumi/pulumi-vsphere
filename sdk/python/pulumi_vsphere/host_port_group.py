@@ -58,12 +58,12 @@ class HostPortGroup(pulumi.CustomResource):
     ID of `4095` enables trunk mode, allowing the guest to manage its own
     tagging. Default: `0`.
     """
-    def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, failback=None, host_system_id=None, name=None, notify_switches=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, failback=None, host_system_id=None, name=None, notify_switches=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_host_port_group` resource can be used to manage vSphere standard
+        The `.HostPortGroup` resource can be used to manage vSphere standard
         port groups on an ESXi host. These port groups are connected to standard
         virtual switches, which can be managed by the
-        [`vsphere_host_virtual_switch`][host-virtual-switch] resource.
+        [`.HostVirtualSwitch`][host-virtual-switch] resource.
         
         For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
         
@@ -91,68 +91,97 @@ class HostPortGroup(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['active_nics'] = active_nics
-
-        __props__['allow_forged_transmits'] = allow_forged_transmits
-
-        __props__['allow_mac_changes'] = allow_mac_changes
-
-        __props__['allow_promiscuous'] = allow_promiscuous
-
-        __props__['check_beacon'] = check_beacon
-
-        __props__['failback'] = failback
-
-        if host_system_id is None:
-            raise TypeError("Missing required property 'host_system_id'")
-        __props__['host_system_id'] = host_system_id
-
-        __props__['name'] = name
-
-        __props__['notify_switches'] = notify_switches
-
-        __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
-
-        __props__['shaping_burst_size'] = shaping_burst_size
-
-        __props__['shaping_enabled'] = shaping_enabled
-
-        __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
-
-        __props__['standby_nics'] = standby_nics
-
-        __props__['teaming_policy'] = teaming_policy
-
-        if virtual_switch_name is None:
-            raise TypeError("Missing required property 'virtual_switch_name'")
-        __props__['virtual_switch_name'] = virtual_switch_name
-
-        __props__['vlan_id'] = vlan_id
-
-        __props__['computed_policy'] = None
-        __props__['key'] = None
-        __props__['ports'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['active_nics'] = active_nics
+            __props__['allow_forged_transmits'] = allow_forged_transmits
+            __props__['allow_mac_changes'] = allow_mac_changes
+            __props__['allow_promiscuous'] = allow_promiscuous
+            __props__['check_beacon'] = check_beacon
+            __props__['failback'] = failback
+            if host_system_id is None:
+                raise TypeError("Missing required property 'host_system_id'")
+            __props__['host_system_id'] = host_system_id
+            __props__['name'] = name
+            __props__['notify_switches'] = notify_switches
+            __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
+            __props__['shaping_burst_size'] = shaping_burst_size
+            __props__['shaping_enabled'] = shaping_enabled
+            __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
+            __props__['standby_nics'] = standby_nics
+            __props__['teaming_policy'] = teaming_policy
+            if virtual_switch_name is None:
+                raise TypeError("Missing required property 'virtual_switch_name'")
+            __props__['virtual_switch_name'] = virtual_switch_name
+            __props__['vlan_id'] = vlan_id
+            __props__['computed_policy'] = None
+            __props__['key'] = None
+            __props__['ports'] = None
         super(HostPortGroup, __self__).__init__(
             'vsphere:index/hostPortGroup:HostPortGroup',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, computed_policy=None, failback=None, host_system_id=None, key=None, name=None, notify_switches=None, ports=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None):
+        """
+        Get an existing HostPortGroup resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] computed_policy: A map with a full set of the [policy
+               options][host-vswitch-policy-options] computed from defaults and overrides,
+               explaining the effective policy for this port group.
+        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+               the host to set the port group up on. Forces a new resource if changed.
+        :param pulumi.Input[str] key: The key for this port group as returned from the vSphere API.
+        :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
+               changed.
+        :param pulumi.Input[dict] ports: A list of ports that currently exist and are used on this port group.
+        :param pulumi.Input[str] virtual_switch_name: The name of the virtual switch to bind
+               this port group to. Forces a new resource if changed.
+        :param pulumi.Input[float] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
+               `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
+               ID of `4095` enables trunk mode, allowing the guest to manage its own
+               tagging. Default: `0`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["active_nics"] = active_nics
+        __props__["allow_forged_transmits"] = allow_forged_transmits
+        __props__["allow_mac_changes"] = allow_mac_changes
+        __props__["allow_promiscuous"] = allow_promiscuous
+        __props__["check_beacon"] = check_beacon
+        __props__["computed_policy"] = computed_policy
+        __props__["failback"] = failback
+        __props__["host_system_id"] = host_system_id
+        __props__["key"] = key
+        __props__["name"] = name
+        __props__["notify_switches"] = notify_switches
+        __props__["ports"] = ports
+        __props__["shaping_average_bandwidth"] = shaping_average_bandwidth
+        __props__["shaping_burst_size"] = shaping_burst_size
+        __props__["shaping_enabled"] = shaping_enabled
+        __props__["shaping_peak_bandwidth"] = shaping_peak_bandwidth
+        __props__["standby_nics"] = standby_nics
+        __props__["teaming_policy"] = teaming_policy
+        __props__["virtual_switch_name"] = virtual_switch_name
+        __props__["vlan_id"] = vlan_id
+        return HostPortGroup(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

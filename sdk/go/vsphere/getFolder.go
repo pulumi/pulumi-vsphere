@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_folder` data source can be used to get the general attributes of a
+// The `.Folder` data source can be used to get the general attributes of a
 // vSphere inventory folder. Paths are absolute and include must include the
 // datacenter.  
 //

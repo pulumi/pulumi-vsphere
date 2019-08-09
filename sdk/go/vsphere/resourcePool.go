@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_resource_pool` resource can be used to create and manage
+// The `.ResourcePool` resource can be used to create and manage
 // resource pools in standalone hosts or on compute clusters.
 // 
 // For more information on vSphere resource pools, see [this
@@ -127,7 +127,7 @@ func (r *ResourcePool) CpuReservation() *pulumi.IntOutput {
 // The CPU allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 // ignored.  Default: `normal`
 func (r *ResourcePool) CpuShareLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cpuShareLevel"])
@@ -135,7 +135,7 @@ func (r *ResourcePool) CpuShareLevel() *pulumi.StringOutput {
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
-// `cpu_share_level` must be `custom`.
+// `cpuShareLevel` must be `custom`.
 func (r *ResourcePool) CpuShares() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["cpuShares"])
 }
@@ -168,7 +168,7 @@ func (r *ResourcePool) MemoryReservation() *pulumi.IntOutput {
 // The CPU allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 // ignored.  Default: `normal`
 func (r *ResourcePool) MemoryShareLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["memoryShareLevel"])
@@ -176,7 +176,7 @@ func (r *ResourcePool) MemoryShareLevel() *pulumi.StringOutput {
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
-// `memory_share_level` must be `custom`.
+// `memoryShareLevel` must be `custom`.
 func (r *ResourcePool) MemoryShares() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["memoryShares"])
 }
@@ -217,12 +217,12 @@ type ResourcePoolState struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 	// ignored.  Default: `normal`
 	CpuShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `cpu_share_level` must be `custom`.
+	// `cpuShareLevel` must be `custom`.
 	CpuShares interface{}
 	// A list of custom attributes to set on this resource.
 	CustomAttributes interface{}
@@ -240,12 +240,12 @@ type ResourcePoolState struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `memory_share_level` must be `custom`.
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares interface{}
 	// The name of the resource pool.
 	Name interface{}
@@ -276,12 +276,12 @@ type ResourcePoolArgs struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 	// ignored.  Default: `normal`
 	CpuShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `cpu_share_level` must be `custom`.
+	// `cpuShareLevel` must be `custom`.
 	CpuShares interface{}
 	// A list of custom attributes to set on this resource.
 	CustomAttributes interface{}
@@ -299,12 +299,12 @@ type ResourcePoolArgs struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `memory_share_level` must be `custom`.
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares interface{}
 	// The name of the resource pool.
 	Name interface{}

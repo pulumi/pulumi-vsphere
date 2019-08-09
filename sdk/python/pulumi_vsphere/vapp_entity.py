@@ -54,9 +54,9 @@ class VappEntity(pulumi.CustomResource):
     started when VMware Tools are ready instead of waiting for `start_delay`. This
     property has no effect for vApps. Default: false
     """
-    def __init__(__self__, resource_name, opts=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_vapp_entity` resource can be used to describe the behavior of an
+        The `.VappEntity` resource can be used to describe the behavior of an
         entity (virtual machine or sub-vApp container) in a vApp container.
         
         For more information on vSphere vApps, see [this
@@ -94,50 +94,81 @@ class VappEntity(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if container_id is None:
-            raise TypeError("Missing required property 'container_id'")
-        __props__['container_id'] = container_id
-
-        __props__['custom_attributes'] = custom_attributes
-
-        __props__['start_action'] = start_action
-
-        __props__['start_delay'] = start_delay
-
-        __props__['start_order'] = start_order
-
-        __props__['stop_action'] = stop_action
-
-        __props__['stop_delay'] = stop_delay
-
-        __props__['tags'] = tags
-
-        if target_id is None:
-            raise TypeError("Missing required property 'target_id'")
-        __props__['target_id'] = target_id
-
-        __props__['wait_for_guest'] = wait_for_guest
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if container_id is None:
+                raise TypeError("Missing required property 'container_id'")
+            __props__['container_id'] = container_id
+            __props__['custom_attributes'] = custom_attributes
+            __props__['start_action'] = start_action
+            __props__['start_delay'] = start_delay
+            __props__['start_order'] = start_order
+            __props__['stop_action'] = stop_action
+            __props__['stop_delay'] = stop_delay
+            __props__['tags'] = tags
+            if target_id is None:
+                raise TypeError("Missing required property 'target_id'")
+            __props__['target_id'] = target_id
+            __props__['wait_for_guest'] = wait_for_guest
         super(VappEntity, __self__).__init__(
             'vsphere:index/vappEntity:VappEntity',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None):
+        """
+        Get an existing VappEntity resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
+               container the entity is a member of.
+        :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
+               or powerOn. If set to none, then the entity does not participate in auto-start.
+               Default: powerOn
+        :param pulumi.Input[float] start_delay: Delay in seconds before continuing with the next
+               entity in the order of entities to be started. Default: 120
+        :param pulumi.Input[float] start_order: Order to start and stop target in vApp. Default: 1
+        :param pulumi.Input[str] stop_action: Defines the stop action for the entity. Can be set
+               to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
+               does not participate in auto-stop. Default: powerOff
+        :param pulumi.Input[float] stop_delay: Delay in seconds before continuing with the next
+               entity in the order sequence. This is only used if the stopAction is
+               guestShutdown. Default: 120
+        :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
+               to power on or power off. This can be a virtual machine or a vApp.
+        :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
+               started when VMware Tools are ready instead of waiting for `start_delay`. This
+               property has no effect for vApps. Default: false
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["container_id"] = container_id
+        __props__["custom_attributes"] = custom_attributes
+        __props__["start_action"] = start_action
+        __props__["start_delay"] = start_delay
+        __props__["start_order"] = start_order
+        __props__["stop_action"] = stop_action
+        __props__["stop_delay"] = stop_delay
+        __props__["tags"] = tags
+        __props__["target_id"] = target_id
+        __props__["wait_for_guest"] = wait_for_guest
+        return VappEntity(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

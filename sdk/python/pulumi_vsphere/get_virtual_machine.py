@@ -29,7 +29,7 @@ class GetVirtualMachineResult:
         """
         Information about each of the disks on this virtual machine or
         template. These are sorted by bus and unit number so that they can be applied
-        to a `vsphere_virtual_machine` resource in the order the resource expects
+        to a `.VirtualMachine` resource in the order the resource expects
         while cloning. This is useful for discovering certain disk settings while
         performing a linked clone, as all settings that are output by this data
         source must be the same on the destination virtual machine as the source.
@@ -86,21 +86,30 @@ class GetVirtualMachineResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetVirtualMachineResult(
+            alternate_guest_name=self.alternate_guest_name,
+            datacenter_id=self.datacenter_id,
+            disks=self.disks,
+            firmware=self.firmware,
+            guest_id=self.guest_id,
+            name=self.name,
+            network_interface_types=self.network_interface_types,
+            scsi_bus_sharing=self.scsi_bus_sharing,
+            scsi_controller_scan_count=self.scsi_controller_scan_count,
+            scsi_type=self.scsi_type,
+            id=self.id)
 
 def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=None,opts=None):
     """
-    The `vsphere_virtual_machine` data source can be used to find the UUID of an
+    The `.VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
     the UUID of a template to be used as the source for cloning into a new
-    [`vsphere_virtual_machine`][docs-virtual-machine-resource] resource. It also
+    [`.VirtualMachine`][docs-virtual-machine-resource] resource. It also
     reads the guest ID so that can be supplied as well.
     
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -118,7 +127,7 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts).value
 
-    return GetVirtualMachineResult(
+    return AwaitableGetVirtualMachineResult(
         alternate_guest_name=__ret__.get('alternateGuestName'),
         datacenter_id=__ret__.get('datacenterId'),
         disks=__ret__.get('disks'),

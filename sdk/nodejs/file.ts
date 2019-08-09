@@ -35,7 +35,7 @@ export class File extends pulumi.CustomResource {
     }
 
     /**
-     * Create directories in `destination_file`
+     * Create directories in `destinationFile`
      * path parameter if any missing for copy operation.
      */
     public readonly createDirectories!: pulumi.Output<boolean | undefined>;
@@ -120,7 +120,7 @@ export class File extends pulumi.CustomResource {
  */
 export interface FileState {
     /**
-     * Create directories in `destination_file`
+     * Create directories in `destinationFile`
      * path parameter if any missing for copy operation.
      */
     readonly createDirectories?: pulumi.Input<boolean>;
@@ -157,7 +157,7 @@ export interface FileState {
  */
 export interface FileArgs {
     /**
-     * Create directories in `destination_file`
+     * Create directories in `destinationFile`
      * path parameter if any missing for copy operation.
      */
     readonly createDirectories?: pulumi.Input<boolean>;

@@ -22,18 +22,18 @@ class GetFolderResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetFolderResult(
+            path=self.path,
+            id=self.id)
 
 def get_folder(path=None,opts=None):
     """
-    The `vsphere_folder` data source can be used to get the general attributes of a
+    The `.Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
 
@@ -48,6 +48,6 @@ def get_folder(path=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts).value
 
-    return GetFolderResult(
+    return AwaitableGetFolderResult(
         path=__ret__.get('path'),
         id=__ret__.get('id'))

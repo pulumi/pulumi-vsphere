@@ -258,7 +258,7 @@ func (r *VirtualMachine) ID() *pulumi.IDOutput {
 }
 
 // The guest name for the operating system
-// when `guest_id` is `other` or `other-64`.
+// when `guestId` is `other` or `other-64`.
 func (r *VirtualMachine) AlternateGuestName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["alternateGuestName"])
 }
@@ -276,14 +276,14 @@ func (r *VirtualMachine) BootDelay() *pulumi.IntOutput {
 }
 
 // The number of milliseconds to wait before
-// retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+// retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
 // Default: `10000` (10 seconds).
 func (r *VirtualMachine) BootRetryDelay() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["bootRetryDelay"])
 }
 
 // If set to true, a virtual machine that
-// fails to boot will try again after the delay defined in `boot_retry_delay`.
+// fails to boot will try again after the delay defined in `bootRetryDelay`.
 // Default: `false`.
 func (r *VirtualMachine) BootRetryEnabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["bootRetryEnabled"])
@@ -342,7 +342,7 @@ func (r *VirtualMachine) CpuReservation() *pulumi.IntOutput {
 }
 
 // The number of CPU shares allocated to the
-// virtual machine when the `cpu_share_level` is `custom`.
+// virtual machine when the `cpuShareLevel` is `custom`.
 func (r *VirtualMachine) CpuShareCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["cpuShareCount"])
 }
@@ -371,7 +371,7 @@ func (r *VirtualMachine) DatastoreClusterId() *pulumi.StringOutput {
 }
 
 // The datastore ID that the ISO is located in.
-// Requried for using a datastore ISO. Conflicts with `client_device`.
+// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 func (r *VirtualMachine) DatastoreId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["datastoreId"])
 }
@@ -433,7 +433,7 @@ func (r *VirtualMachine) Folder() *pulumi.StringOutput {
 
 // If a guest shutdown failed or timed out while
 // updating or destroying (see
-// `shutdown_wait_timeout`), force the power-off of
+// `shutdownWaitTimeout`), force the power-off of
 // the virtual machine. Default: `true`.
 func (r *VirtualMachine) ForcePowerOff() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["forcePowerOff"])
@@ -446,7 +446,7 @@ func (r *VirtualMachine) GuestId() *pulumi.StringOutput {
 }
 
 // The current list of IP addresses on this machine,
-// including the value of `default_ip_address`. If VMware tools is not running
+// including the value of `defaultIpAddress`. If VMware tools is not running
 // on the virtual machine, or if the VM is powered off, this list will be empty.
 // * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 // virtual machine.
@@ -457,7 +457,7 @@ func (r *VirtualMachine) GuestIpAddresses() *pulumi.ArrayOutput {
 // An optional [managed object reference
 // ID][docs-about-morefs] of a host to put this virtual machine on. See the
 // section on virtual machine migration for
-// details on changing this value. If a `host_system_id` is not supplied,
+// details on changing this value. If a `hostSystemId` is not supplied,
 // vSphere will select a host in the resource pool to place the virtual machine,
 // according to any defaults or DRS policies in place.
 func (r *VirtualMachine) HostSystemId() *pulumi.StringOutput {
@@ -522,7 +522,7 @@ func (r *VirtualMachine) MemoryReservation() *pulumi.IntOutput {
 }
 
 // The number of memory shares allocated to
-// the virtual machine when the `memory_share_level` is `custom`.
+// the virtual machine when the `memoryShareLevel` is `custom`.
 func (r *VirtualMachine) MemoryShareCount() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["memoryShareCount"])
 }
@@ -568,7 +568,7 @@ func (r *VirtualMachine) NetworkInterfaces() *pulumi.ArrayOutput {
 
 // The number of cores to distribute among
 // the CPUs in this virtual machine. If specified, the value supplied to
-// `num_cpus` must be evenly divisible by this value. Default: `1`.
+// `numCpus` must be evenly divisible by this value. Default: `1`.
 func (r *VirtualMachine) NumCoresPerSocket() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["numCoresPerSocket"])
 }
@@ -644,7 +644,7 @@ func (r *VirtualMachine) ScsiType() *pulumi.StringOutput {
 
 // The amount of time, in minutes, to wait
 // for a graceful guest shutdown when making necessary updates to the virtual
-// machine. If `force_power_off` is set to true, the VM will be force powered-off
+// machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 // after this timeout, otherwise an error is returned. Default: 3 minutes.
 func (r *VirtualMachine) ShutdownWaitTimeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["shutdownWaitTimeout"])
@@ -706,7 +706,7 @@ func (r *VirtualMachine) VmxPath() *pulumi.StringOutput {
 // The amount of time, in minutes, to
 // wait for an available guest IP address on this virtual machine. This should
 // only be used if your version of VMware Tools does not allow the
-// `wait_for_guest_net_timeout` waiter to be
+// `waitForGuestNetTimeout` waiter to be
 // used. A value less than 1 disables the waiter. Default: 0.
 func (r *VirtualMachine) WaitForGuestIpTimeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["waitForGuestIpTimeout"])
@@ -716,7 +716,7 @@ func (r *VirtualMachine) WaitForGuestIpTimeout() *pulumi.IntOutput {
 // network waiter waits for a routable address. When `false`, the waiter does
 // not wait for a default gateway, nor are IP addresses checked against any
 // discovered default gateways as part of its success criteria. This property is
-// ignored if the `wait_for_guest_ip_timeout`
+// ignored if the `waitForGuestIpTimeout`
 // waiter is used. Default: `true`.
 func (r *VirtualMachine) WaitForGuestNetRoutable() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitForGuestNetRoutable"])
@@ -726,7 +726,7 @@ func (r *VirtualMachine) WaitForGuestNetRoutable() *pulumi.BoolOutput {
 // wait for an available IP address on this virtual machine's NICs. Older
 // versions of VMware Tools do not populate this property. In those cases, this
 // waiter can be disabled and the
-// `wait_for_guest_ip_timeout` waiter can be used
+// `waitForGuestIpTimeout` waiter can be used
 // instead. A value less than 1 disables the waiter. Default: 5 minutes.
 func (r *VirtualMachine) WaitForGuestNetTimeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["waitForGuestNetTimeout"])
@@ -735,7 +735,7 @@ func (r *VirtualMachine) WaitForGuestNetTimeout() *pulumi.IntOutput {
 // Input properties used for looking up and filtering VirtualMachine resources.
 type VirtualMachineState struct {
 	// The guest name for the operating system
-	// when `guest_id` is `other` or `other-64`.
+	// when `guestId` is `other` or `other-64`.
 	AlternateGuestName interface{}
 	// A user-provided description of the virtual machine.
 	// The default is no annotation.
@@ -744,11 +744,11 @@ type VirtualMachineState struct {
 	// the boot sequence. The default is no delay.
 	BootDelay interface{}
 	// The number of milliseconds to wait before
-	// retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+	// retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
 	// Default: `10000` (10 seconds).
 	BootRetryDelay interface{}
 	// If set to true, a virtual machine that
-	// fails to boot will try again after the delay defined in `boot_retry_delay`.
+	// fails to boot will try again after the delay defined in `bootRetryDelay`.
 	// Default: `false`.
 	BootRetryEnabled interface{}
 	// A specification for a CDROM device on this virtual
@@ -780,7 +780,7 @@ type VirtualMachineState struct {
 	// machine is guaranteed. The default is no reservation.
 	CpuReservation interface{}
 	// The number of CPU shares allocated to the
-	// virtual machine when the `cpu_share_level` is `custom`.
+	// virtual machine when the `cpuShareLevel` is `custom`.
 	CpuShareCount interface{}
 	// The allocation level for CPU resources. Can be
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -797,7 +797,7 @@ type VirtualMachineState struct {
 	// migration for details on changing this value.
 	DatastoreClusterId interface{}
 	// The datastore ID that the ISO is located in.
-	// Requried for using a datastore ISO. Conflicts with `client_device`.
+	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId interface{}
 	// The IP address selected by Terraform to be used for the provisioner.
 	DefaultIpAddress interface{}
@@ -829,14 +829,14 @@ type VirtualMachineState struct {
 	Folder interface{}
 	// If a guest shutdown failed or timed out while
 	// updating or destroying (see
-	// `shutdown_wait_timeout`), force the power-off of
+	// `shutdownWaitTimeout`), force the power-off of
 	// the virtual machine. Default: `true`.
 	ForcePowerOff interface{}
 	// The guest ID for the operating system type. For a
 	// full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
 	GuestId interface{}
 	// The current list of IP addresses on this machine,
-	// including the value of `default_ip_address`. If VMware tools is not running
+	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
 	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 	// virtual machine.
@@ -844,7 +844,7 @@ type VirtualMachineState struct {
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
-	// details on changing this value. If a `host_system_id` is not supplied,
+	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
 	// according to any defaults or DRS policies in place.
 	HostSystemId interface{}
@@ -882,7 +882,7 @@ type VirtualMachineState struct {
 	// virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation interface{}
 	// The number of memory shares allocated to
-	// the virtual machine when the `memory_share_level` is `custom`.
+	// the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount interface{}
 	// The allocation level for memory resources.
 	// Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -907,7 +907,7 @@ type VirtualMachineState struct {
 	NetworkInterfaces interface{}
 	// The number of cores to distribute among
 	// the CPUs in this virtual machine. If specified, the value supplied to
-	// `num_cpus` must be evenly divisible by this value. Default: `1`.
+	// `numCpus` must be evenly divisible by this value. Default: `1`.
 	NumCoresPerSocket interface{}
 	// The number of virtual processors to assign to this
 	// virtual machine. Default: `1`.
@@ -947,7 +947,7 @@ type VirtualMachineState struct {
 	ScsiType interface{}
 	// The amount of time, in minutes, to wait
 	// for a graceful guest shutdown when making necessary updates to the virtual
-	// machine. If `force_power_off` is set to true, the VM will be force powered-off
+	// machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 	// after this timeout, otherwise an error is returned. Default: 3 minutes.
 	ShutdownWaitTimeout interface{}
 	// The swap file placement policy for this
@@ -982,21 +982,21 @@ type VirtualMachineState struct {
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
-	// `wait_for_guest_net_timeout` waiter to be
+	// `waitForGuestNetTimeout` waiter to be
 	// used. A value less than 1 disables the waiter. Default: 0.
 	WaitForGuestIpTimeout interface{}
 	// Controls whether or not the guest
 	// network waiter waits for a routable address. When `false`, the waiter does
 	// not wait for a default gateway, nor are IP addresses checked against any
 	// discovered default gateways as part of its success criteria. This property is
-	// ignored if the `wait_for_guest_ip_timeout`
+	// ignored if the `waitForGuestIpTimeout`
 	// waiter is used. Default: `true`.
 	WaitForGuestNetRoutable interface{}
 	// The amount of time, in minutes, to
 	// wait for an available IP address on this virtual machine's NICs. Older
 	// versions of VMware Tools do not populate this property. In those cases, this
 	// waiter can be disabled and the
-	// `wait_for_guest_ip_timeout` waiter can be used
+	// `waitForGuestIpTimeout` waiter can be used
 	// instead. A value less than 1 disables the waiter. Default: 5 minutes.
 	WaitForGuestNetTimeout interface{}
 }
@@ -1004,7 +1004,7 @@ type VirtualMachineState struct {
 // The set of arguments for constructing a VirtualMachine resource.
 type VirtualMachineArgs struct {
 	// The guest name for the operating system
-	// when `guest_id` is `other` or `other-64`.
+	// when `guestId` is `other` or `other-64`.
 	AlternateGuestName interface{}
 	// A user-provided description of the virtual machine.
 	// The default is no annotation.
@@ -1013,11 +1013,11 @@ type VirtualMachineArgs struct {
 	// the boot sequence. The default is no delay.
 	BootDelay interface{}
 	// The number of milliseconds to wait before
-	// retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+	// retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
 	// Default: `10000` (10 seconds).
 	BootRetryDelay interface{}
 	// If set to true, a virtual machine that
-	// fails to boot will try again after the delay defined in `boot_retry_delay`.
+	// fails to boot will try again after the delay defined in `bootRetryDelay`.
 	// Default: `false`.
 	BootRetryEnabled interface{}
 	// A specification for a CDROM device on this virtual
@@ -1045,7 +1045,7 @@ type VirtualMachineArgs struct {
 	// machine is guaranteed. The default is no reservation.
 	CpuReservation interface{}
 	// The number of CPU shares allocated to the
-	// virtual machine when the `cpu_share_level` is `custom`.
+	// virtual machine when the `cpuShareLevel` is `custom`.
 	CpuShareCount interface{}
 	// The allocation level for CPU resources. Can be
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -1062,7 +1062,7 @@ type VirtualMachineArgs struct {
 	// migration for details on changing this value.
 	DatastoreClusterId interface{}
 	// The datastore ID that the ISO is located in.
-	// Requried for using a datastore ISO. Conflicts with `client_device`.
+	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId interface{}
 	// A specification for a virtual disk device on this virtual
 	// machine. See disk options below.
@@ -1092,7 +1092,7 @@ type VirtualMachineArgs struct {
 	Folder interface{}
 	// If a guest shutdown failed or timed out while
 	// updating or destroying (see
-	// `shutdown_wait_timeout`), force the power-off of
+	// `shutdownWaitTimeout`), force the power-off of
 	// the virtual machine. Default: `true`.
 	ForcePowerOff interface{}
 	// The guest ID for the operating system type. For a
@@ -1101,7 +1101,7 @@ type VirtualMachineArgs struct {
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
-	// details on changing this value. If a `host_system_id` is not supplied,
+	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
 	// according to any defaults or DRS policies in place.
 	HostSystemId interface{}
@@ -1134,7 +1134,7 @@ type VirtualMachineArgs struct {
 	// virtual machine is guaranteed. The default is no reservation.
 	MemoryReservation interface{}
 	// The number of memory shares allocated to
-	// the virtual machine when the `memory_share_level` is `custom`.
+	// the virtual machine when the `memoryShareLevel` is `custom`.
 	MemoryShareCount interface{}
 	// The allocation level for memory resources.
 	// Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -1157,7 +1157,7 @@ type VirtualMachineArgs struct {
 	NetworkInterfaces interface{}
 	// The number of cores to distribute among
 	// the CPUs in this virtual machine. If specified, the value supplied to
-	// `num_cpus` must be evenly divisible by this value. Default: `1`.
+	// `numCpus` must be evenly divisible by this value. Default: `1`.
 	NumCoresPerSocket interface{}
 	// The number of virtual processors to assign to this
 	// virtual machine. Default: `1`.
@@ -1195,7 +1195,7 @@ type VirtualMachineArgs struct {
 	ScsiType interface{}
 	// The amount of time, in minutes, to wait
 	// for a graceful guest shutdown when making necessary updates to the virtual
-	// machine. If `force_power_off` is set to true, the VM will be force powered-off
+	// machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 	// after this timeout, otherwise an error is returned. Default: 3 minutes.
 	ShutdownWaitTimeout interface{}
 	// The swap file placement policy for this
@@ -1217,21 +1217,21 @@ type VirtualMachineArgs struct {
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
-	// `wait_for_guest_net_timeout` waiter to be
+	// `waitForGuestNetTimeout` waiter to be
 	// used. A value less than 1 disables the waiter. Default: 0.
 	WaitForGuestIpTimeout interface{}
 	// Controls whether or not the guest
 	// network waiter waits for a routable address. When `false`, the waiter does
 	// not wait for a default gateway, nor are IP addresses checked against any
 	// discovered default gateways as part of its success criteria. This property is
-	// ignored if the `wait_for_guest_ip_timeout`
+	// ignored if the `waitForGuestIpTimeout`
 	// waiter is used. Default: `true`.
 	WaitForGuestNetRoutable interface{}
 	// The amount of time, in minutes, to
 	// wait for an available IP address on this virtual machine's NICs. Older
 	// versions of VMware Tools do not populate this property. In those cases, this
 	// waiter can be disabled and the
-	// `wait_for_guest_ip_timeout` waiter can be used
+	// `waitForGuestIpTimeout` waiter can be used
 	// instead. A value less than 1 disables the waiter. Default: 5 minutes.
 	WaitForGuestNetTimeout interface{}
 }

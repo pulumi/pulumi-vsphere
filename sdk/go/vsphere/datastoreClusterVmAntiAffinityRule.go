@@ -8,10 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_datastore_cluster_vm_anti_affinity_rule` resource can be used to
+// The `.DatastoreClusterVmAntiAffinityRule` resource can be used to
 // manage VM anti-affinity rules in a datastore cluster, either created by the
-// [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
-// by the [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-data-source] data source.
+// [`.DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+// by the [`.DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
 // 
 // [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
 // [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html

@@ -28,21 +28,23 @@ class GetDistributedVirtualSwitchResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDistributedVirtualSwitchResult(
+            datacenter_id=self.datacenter_id,
+            name=self.name,
+            uplinks=self.uplinks,
+            id=self.id)
 
 def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     """
-    The `vsphere_distributed_virtual_switch` data source can be used to discover
+    The `.DistributedVirtualSwitch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
     can then be used with resources or data sources that require a DVS, such as the
-    [`vsphere_distributed_port_group`][distributed-port-group] resource, for which
+    [`.DistributedPortGroup`][distributed-port-group] resource, for which
     an example is shown below.
     
     [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
@@ -62,7 +64,7 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts).value
 
-    return GetDistributedVirtualSwitchResult(
+    return AwaitableGetDistributedVirtualSwitchResult(
         datacenter_id=__ret__.get('datacenterId'),
         name=__ret__.get('name'),
         uplinks=__ret__.get('uplinks'),

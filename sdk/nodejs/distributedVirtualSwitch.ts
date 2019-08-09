@@ -363,8 +363,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`.
      */
     public readonly teamingPolicy!: pulumi.Output<string>;
     /**
@@ -424,9 +424,9 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly vlanId!: pulumi.Output<number>;
     /**
-     * Used to denote VLAN trunking. Use the `min_vlan`
-     * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlan_range` definitions are allowed, but they must not overlap. Example
+     * Used to denote VLAN trunking. Use the `minVlan`
+     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+     * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
     public readonly vlanRanges!: pulumi.Output<{ maxVlan: number, minVlan: number }[]>;
@@ -1003,8 +1003,8 @@ export interface DistributedVirtualSwitchState {
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`.
      */
     readonly teamingPolicy?: pulumi.Input<string>;
     /**
@@ -1064,9 +1064,9 @@ export interface DistributedVirtualSwitchState {
      */
     readonly vlanId?: pulumi.Input<number>;
     /**
-     * Used to denote VLAN trunking. Use the `min_vlan`
-     * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlan_range` definitions are allowed, but they must not overlap. Example
+     * Used to denote VLAN trunking. Use the `minVlan`
+     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+     * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
     readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;
@@ -1433,8 +1433,8 @@ export interface DistributedVirtualSwitchArgs {
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-     * `failover_explicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+     * `failoverExplicit`.
      */
     readonly teamingPolicy?: pulumi.Input<string>;
     /**
@@ -1494,9 +1494,9 @@ export interface DistributedVirtualSwitchArgs {
      */
     readonly vlanId?: pulumi.Input<number>;
     /**
-     * Used to denote VLAN trunking. Use the `min_vlan`
-     * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
-     * `vlan_range` definitions are allowed, but they must not overlap. Example
+     * Used to denote VLAN trunking. Use the `minVlan`
+     * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+     * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
     readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;

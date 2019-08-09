@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_distributed_port_group` resource can be used to manage vSphere
+ * The `vsphere..DistributedPortGroup` resource can be used to manage vSphere
  * distributed virtual port groups. These port groups are connected to distributed
  * virtual switches, which can be managed by the
- * [`vsphere_distributed_virtual_switch`][distributed-virtual-switch] resource.
+ * [`vsphere..DistributedVirtualSwitch`][distributed-virtual-switch] resource.
  * 
  * Distributed port groups can be used as networks for virtual machines, allowing
  * VMs to use the networking supplied by a distributed virtual switch (DVS), with
@@ -28,8 +28,8 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The configuration below builds on the example given in the
- * [`vsphere_distributed_virtual_switch`][distributed-virtual-switch] resource by
- * adding the `vsphere_distributed_port_group` resource, attaching itself to the
+ * [`vsphere..DistributedVirtualSwitch`][distributed-virtual-switch] resource by
+ * adding the `vsphere..DistributedPortGroup` resource, attaching itself to the
  * DVS created here and assigning VLAN ID 1000.
  * 
  * ```typescript
@@ -99,13 +99,13 @@ import * as utilities from "./utilities";
  * ### Overriding DVS policies
  * 
  * All of the [default port policies][dvs-default-port-policies] available in the
- * `vsphere_distributed_virtual_switch` resource can be overridden on the port
+ * `vsphere..DistributedVirtualSwitch` resource can be overridden on the port
  * group level by specifying new settings for them.
  * 
  * [dvs-default-port-policies]: /docs/providers/vsphere/r/distributed_virtual_switch.html#default-port-group-policy-arguments
  * 
  * As an example, we also take this example from the
- * `vsphere_distributed_virtual_switch` resource where we manually specify our
+ * `vsphere..DistributedVirtualSwitch` resource where we manually specify our
  * uplink count and uplink order. While the DVS has a default policy of using the
  * first uplink as an active uplink and the second one as a standby, the
  * overridden port group policy means that both uplinks will be used as active
@@ -183,7 +183,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     public readonly allowPromiscuous!: pulumi.Output<boolean>;
     /**
      * Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      */
     public readonly autoExpand!: pulumi.Output<boolean | undefined>;
     /**
@@ -532,7 +532,7 @@ export interface DistributedPortGroupState {
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      */
     readonly autoExpand?: pulumi.Input<boolean>;
     /**
@@ -757,7 +757,7 @@ export interface DistributedPortGroupArgs {
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * Allows the port group to create additional ports
-     * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
      */
     readonly autoExpand?: pulumi.Input<boolean>;
     /**

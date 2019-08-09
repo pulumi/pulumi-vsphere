@@ -41,9 +41,9 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     The UUID of the virtual machine to create
     the override for.  Forces a new resource if changed.
     """
-    def __init__(__self__, resource_name, opts=None, datastore_cluster_id=None, sdrs_automation_level=None, sdrs_enabled=None, sdrs_intra_vm_affinity=None, virtual_machine_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, datastore_cluster_id=None, sdrs_automation_level=None, sdrs_enabled=None, sdrs_intra_vm_affinity=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_storage_drs_vm_override` resource can be used to add a Storage DRS
+        The `.StorageDrsVmOverride` resource can be used to add a Storage DRS
         override to a datastore cluster for a specific virtual machine. With this
         resource, one can enable or disable Storage DRS, and control the automation
         level and disk affinity for a single virtual machine without affecting the rest
@@ -82,40 +82,69 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if datastore_cluster_id is None:
-            raise TypeError("Missing required property 'datastore_cluster_id'")
-        __props__['datastore_cluster_id'] = datastore_cluster_id
-
-        __props__['sdrs_automation_level'] = sdrs_automation_level
-
-        __props__['sdrs_enabled'] = sdrs_enabled
-
-        __props__['sdrs_intra_vm_affinity'] = sdrs_intra_vm_affinity
-
-        if virtual_machine_id is None:
-            raise TypeError("Missing required property 'virtual_machine_id'")
-        __props__['virtual_machine_id'] = virtual_machine_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if datastore_cluster_id is None:
+                raise TypeError("Missing required property 'datastore_cluster_id'")
+            __props__['datastore_cluster_id'] = datastore_cluster_id
+            __props__['sdrs_automation_level'] = sdrs_automation_level
+            __props__['sdrs_enabled'] = sdrs_enabled
+            __props__['sdrs_intra_vm_affinity'] = sdrs_intra_vm_affinity
+            if virtual_machine_id is None:
+                raise TypeError("Missing required property 'virtual_machine_id'")
+            __props__['virtual_machine_id'] = virtual_machine_id
         super(StorageDrsVmOverride, __self__).__init__(
             'vsphere:index/storageDrsVmOverride:StorageDrsVmOverride',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, datastore_cluster_id=None, sdrs_automation_level=None, sdrs_enabled=None, sdrs_intra_vm_affinity=None, virtual_machine_id=None):
+        """
+        Get an existing StorageDrsVmOverride resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the datastore cluster to put the override in.
+               Forces a new resource if changed.
+        :param pulumi.Input[str] sdrs_automation_level: Overrides any Storage DRS automation
+               levels for this virtual machine. Can be one of `automated` or `manual`. When
+               not specified, the datastore cluster's settings are used according to the
+               [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+        :param pulumi.Input[str] sdrs_enabled: Overrides the default Storage DRS setting for
+               this virtual machine. When not specified, the datastore cluster setting is
+               used.
+        :param pulumi.Input[str] sdrs_intra_vm_affinity: Overrides the intra-VM affinity setting
+               for this virtual machine. When `true`, all disks for this virtual machine
+               will be kept on the same datastore. When `false`, Storage DRS may locate
+               individual disks on different datastores if it helps satisfy cluster
+               requirements. When not specified, the datastore cluster's settings are used.
+        :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
+               the override for.  Forces a new resource if changed.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["datastore_cluster_id"] = datastore_cluster_id
+        __props__["sdrs_automation_level"] = sdrs_automation_level
+        __props__["sdrs_enabled"] = sdrs_enabled
+        __props__["sdrs_intra_vm_affinity"] = sdrs_intra_vm_affinity
+        __props__["virtual_machine_id"] = virtual_machine_id
+        return StorageDrsVmOverride(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -8,10 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_distributed_port_group` resource can be used to manage vSphere
+// The `.DistributedPortGroup` resource can be used to manage vSphere
 // distributed virtual port groups. These port groups are connected to distributed
 // virtual switches, which can be managed by the
-// [`vsphere_distributed_virtual_switch`][distributed-virtual-switch] resource.
+// [`.DistributedVirtualSwitch`][distributed-virtual-switch] resource.
 // 
 // Distributed port groups can be used as networks for virtual machines, allowing
 // VMs to use the networking supplied by a distributed virtual switch (DVS), with
@@ -238,7 +238,7 @@ func (r *DistributedPortGroup) AllowPromiscuous() *pulumi.BoolOutput {
 }
 
 // Allows the port group to create additional ports
-// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
 func (r *DistributedPortGroup) AutoExpand() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["autoExpand"])
 }
@@ -495,7 +495,7 @@ type DistributedPortGroupState struct {
 	// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous interface{}
 	// Allows the port group to create additional ports
-	// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
 	AutoExpand interface{}
 	// Indicates whether to block all ports by default.
 	BlockAllPorts interface{}
@@ -622,7 +622,7 @@ type DistributedPortGroupArgs struct {
 	// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous interface{}
 	// Allows the port group to create additional ports
-	// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
 	AutoExpand interface{}
 	// Indicates whether to block all ports by default.
 	BlockAllPorts interface{}

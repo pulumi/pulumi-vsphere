@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_compute_cluster_vm_host_rule` resource can be used to manage
+ * The `vsphere..ComputeClusterVmHostRule` resource can be used to manage
  * VM-to-host rules in a cluster, either created by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
  * outside of the ones specified in the rule. Virtual machines and hosts are
  * supplied via groups, which can be managed via the
- * [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource] and
- * [`vsphere_compute_cluster_host_group`][tf-vsphere-cluster-host-group-resource]
+ * [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+ * [`vsphere..ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
  * resources.
  * 
  * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
@@ -32,22 +32,22 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates a virtual machine in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource in a cluster
- * looked up by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source]
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
+ * looked up by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. It also creates
  * a host group off of the host looked up via the
- * [`vsphere_host`][tf-vsphere-host-data-source] data source. Finally, this
+ * [`vsphere..getHost`][tf-vsphere-host-data-source] data source. Finally, this
  * virtual machine is configured to run specifically on that host via a
- * `vsphere_compute_cluster_vm_host_rule` resource.
+ * `vsphere..ComputeClusterVmHostRule` resource.
  * 
  * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  * 
- * > Note how `vm_group_name` and
- * `affinity_host_group_name` are sourced off of the
+ * > Note how `vmGroupName` and
+ * `affinityHostGroupName` are sourced off of the
  * `name` attributes from the
- * [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource] and
- * [`vsphere_compute_cluster_host_group`][tf-vsphere-cluster-host-group-resource]
+ * [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
+ * [`vsphere..ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
  * resources. This is to ensure that the rule is not created before the groups
  * exist, which may not possibly happen in the event that the names came from a
  * "static" source such as a variable.
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  *     name: "network1",
  * }));
- * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("clusterHostGroup", {
  *     computeClusterId: cluster.id,
  *     hostSystemIds: [host.id],
  * });
@@ -93,11 +93,11 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("clusterVmGroup", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm.id],
  * });
- * const clusterVmHostRule = new vsphere.ComputeClusterVmHostRule("cluster_vm_host_rule", {
+ * const clusterVmHostRule = new vsphere.ComputeClusterVmHostRule("clusterVmHostRule", {
  *     affinityHostGroupName: clusterHostGroup.name,
  *     computeClusterId: cluster.id,
  *     vmGroupName: clusterVmGroup.name,
@@ -135,13 +135,13 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
 
     /**
      * When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
     public readonly affinityHostGroupName!: pulumi.Output<string | undefined>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
     public readonly antiAffinityHostGroupName!: pulumi.Output<string | undefined>;
@@ -223,13 +223,13 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
 export interface ComputeClusterVmHostRuleState {
     /**
      * When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
     readonly affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
     readonly antiAffinityHostGroupName?: pulumi.Input<string>;
@@ -266,13 +266,13 @@ export interface ComputeClusterVmHostRuleState {
 export interface ComputeClusterVmHostRuleArgs {
     /**
      * When this field is used, the virtual
-     * machines defined in `vm_group_name` will be run on the
+     * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
     readonly affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
-     * virtual machines defined in `vm_group_name` will _not_ be
+     * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
     readonly antiAffinityHostGroupName?: pulumi.Input<string>;

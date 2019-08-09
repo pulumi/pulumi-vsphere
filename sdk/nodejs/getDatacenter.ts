@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_datacenter` data source can be used to discover the ID of a
+ * The `vsphere..Datacenter` data source can be used to discover the ID of a
  * vSphere datacenter. This can then be used with resources or data sources that
- * require a datacenter, such as the [`vsphere_host`][data-source-vsphere-host]
+ * require a datacenter, such as the [`vsphere..getHost`][data-source-vsphere-host]
  * data source.
  * 
  * [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html

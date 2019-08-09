@@ -234,7 +234,7 @@ func (r *ComputeCluster) DpmAutomationLevel() *pulumi.StringOutput {
 }
 
 // Enable DPM support for DRS in this cluster.
-// Requires `drs_enabled` to be `true` in order to be effective.
+// Requires `drsEnabled` to be `true` in order to be effective.
 // Default: `false`.
 func (r *ComputeCluster) DpmEnabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["dpmEnabled"])
@@ -334,7 +334,7 @@ func (r *ComputeCluster) HaAdmissionControlPolicy() *pulumi.StringOutput {
 // 
 // Automatically determine available resource percentages by subtracting the
 // average number of host resources represented by the
-// `ha_admission_control_host_failure_tolerance`
+// `haAdmissionControlHostFailureTolerance`
 // setting from the total amount of resources in the cluster. Disable to supply
 // user-defined values. Default: `true`.
 // <sup>\*</sup>
@@ -401,7 +401,7 @@ func (r *ComputeCluster) HaDatastoreApdResponse() *pulumi.StringOutput {
 
 // Controls the delay in minutes
 // to wait after an APD timeout event to execute the response action defined in
-// `ha_datastore_apd_response`. Default: `3`
+// `haDatastoreApdResponse`. Default: `3`
 // minutes. <sup>\*</sup>
 func (r *ComputeCluster) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["haDatastoreApdResponseDelay"])
@@ -424,7 +424,7 @@ func (r *ComputeCluster) HaEnabled() *pulumi.BoolOutput {
 
 // The list of managed object IDs for
 // preferred datastores to use for HA heartbeating. This setting is only useful
-// when `ha_heartbeat_datastore_policy` is set
+// when `haHeartbeatDatastorePolicy` is set
 // to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
 func (r *ComputeCluster) HaHeartbeatDatastoreIds() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["haHeartbeatDatastoreIds"])
@@ -480,9 +480,9 @@ func (r *ComputeCluster) HaVmFailureInterval() *pulumi.IntOutput {
 }
 
 // The length of the reset window in
-// which `ha_vm_maximum_resets` can operate. When this
+// which `haVmMaximumResets` can operate. When this
 // window expires, no more resets are attempted regardless of the setting
-// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 // unlimited reset time is allotted. The value is specified in seconds. Default:
 // `-1` (no window).
 func (r *ComputeCluster) HaVmMaximumFailureWindow() *pulumi.IntOutput {
@@ -566,7 +566,7 @@ func (r *ComputeCluster) ProactiveHaEnabled() *pulumi.BoolOutput {
 // The configured remediation
 // for moderately degraded hosts. Can be one of `MaintenanceMode` or
 // `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-// `proactive_ha_severe_remediation` is set
+// `proactiveHaSevereRemediation` is set
 // to `QuarantineMode`. Default: `QuarantineMode`.
 // <sup>\*</sup>
 func (r *ComputeCluster) ProactiveHaModerateRemediation() *pulumi.StringOutput {
@@ -583,7 +583,7 @@ func (r *ComputeCluster) ProactiveHaProviderIds() *pulumi.ArrayOutput {
 // The configured remediation for
 // severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
 // Note that this cannot be set to `QuarantineMode` when
-// `proactive_ha_moderate_remediation` is
+// `proactiveHaModerateRemediation` is
 // set to `MaintenanceMode`. Default: `QuarantineMode`.
 // <sup>\*</sup>
 func (r *ComputeCluster) ProactiveHaSevereRemediation() *pulumi.StringOutput {
@@ -616,7 +616,7 @@ type ComputeClusterState struct {
 	// `manual`.
 	DpmAutomationLevel interface{}
 	// Enable DPM support for DRS in this cluster.
-	// Requires `drs_enabled` to be `true` in order to be effective.
+	// Requires `drsEnabled` to be `true` in order to be effective.
 	// Default: `false`.
 	DpmEnabled interface{}
 	// A value between `1` and `5` indicating the
@@ -674,7 +674,7 @@ type ComputeClusterState struct {
 	// 
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
-	// `ha_admission_control_host_failure_tolerance`
+	// `haAdmissionControlHostFailureTolerance`
 	// setting from the total amount of resources in the cluster. Disable to supply
 	// user-defined values. Default: `true`.
 	// <sup>\*</sup>
@@ -714,7 +714,7 @@ type ComputeClusterState struct {
 	HaDatastoreApdResponse interface{}
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
-	// `ha_datastore_apd_response`. Default: `3`
+	// `haDatastoreApdResponse`. Default: `3`
 	// minutes. <sup>\*</sup>
 	HaDatastoreApdResponseDelay interface{}
 	// Controls the action to take on
@@ -728,7 +728,7 @@ type ComputeClusterState struct {
 	HaEnabled interface{}
 	// The list of managed object IDs for
 	// preferred datastores to use for HA heartbeating. This setting is only useful
-	// when `ha_heartbeat_datastore_policy` is set
+	// when `haHeartbeatDatastorePolicy` is set
 	// to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
 	HaHeartbeatDatastoreIds interface{}
 	// The selection policy for HA
@@ -763,9 +763,9 @@ type ComputeClusterState struct {
 	// marked as failed. The value is in seconds. Default: `30`.
 	HaVmFailureInterval interface{}
 	// The length of the reset window in
-	// which `ha_vm_maximum_resets` can operate. When this
+	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
-	// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 	// unlimited reset time is allotted. The value is specified in seconds. Default:
 	// `-1` (no window).
 	HaVmMaximumFailureWindow interface{}
@@ -813,7 +813,7 @@ type ComputeClusterState struct {
 	// The configured remediation
 	// for moderately degraded hosts. Can be one of `MaintenanceMode` or
 	// `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-	// `proactive_ha_severe_remediation` is set
+	// `proactiveHaSevereRemediation` is set
 	// to `QuarantineMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaModerateRemediation interface{}
@@ -824,7 +824,7 @@ type ComputeClusterState struct {
 	// The configured remediation for
 	// severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
 	// Note that this cannot be set to `QuarantineMode` when
-	// `proactive_ha_moderate_remediation` is
+	// `proactiveHaModerateRemediation` is
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation interface{}
@@ -850,7 +850,7 @@ type ComputeClusterArgs struct {
 	// `manual`.
 	DpmAutomationLevel interface{}
 	// Enable DPM support for DRS in this cluster.
-	// Requires `drs_enabled` to be `true` in order to be effective.
+	// Requires `drsEnabled` to be `true` in order to be effective.
 	// Default: `false`.
 	DpmEnabled interface{}
 	// A value between `1` and `5` indicating the
@@ -908,7 +908,7 @@ type ComputeClusterArgs struct {
 	// 
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
-	// `ha_admission_control_host_failure_tolerance`
+	// `haAdmissionControlHostFailureTolerance`
 	// setting from the total amount of resources in the cluster. Disable to supply
 	// user-defined values. Default: `true`.
 	// <sup>\*</sup>
@@ -948,7 +948,7 @@ type ComputeClusterArgs struct {
 	HaDatastoreApdResponse interface{}
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
-	// `ha_datastore_apd_response`. Default: `3`
+	// `haDatastoreApdResponse`. Default: `3`
 	// minutes. <sup>\*</sup>
 	HaDatastoreApdResponseDelay interface{}
 	// Controls the action to take on
@@ -962,7 +962,7 @@ type ComputeClusterArgs struct {
 	HaEnabled interface{}
 	// The list of managed object IDs for
 	// preferred datastores to use for HA heartbeating. This setting is only useful
-	// when `ha_heartbeat_datastore_policy` is set
+	// when `haHeartbeatDatastorePolicy` is set
 	// to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
 	HaHeartbeatDatastoreIds interface{}
 	// The selection policy for HA
@@ -997,9 +997,9 @@ type ComputeClusterArgs struct {
 	// marked as failed. The value is in seconds. Default: `30`.
 	HaVmFailureInterval interface{}
 	// The length of the reset window in
-	// which `ha_vm_maximum_resets` can operate. When this
+	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
-	// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
 	// unlimited reset time is allotted. The value is specified in seconds. Default:
 	// `-1` (no window).
 	HaVmMaximumFailureWindow interface{}
@@ -1047,7 +1047,7 @@ type ComputeClusterArgs struct {
 	// The configured remediation
 	// for moderately degraded hosts. Can be one of `MaintenanceMode` or
 	// `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-	// `proactive_ha_severe_remediation` is set
+	// `proactiveHaSevereRemediation` is set
 	// to `QuarantineMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaModerateRemediation interface{}
@@ -1058,7 +1058,7 @@ type ComputeClusterArgs struct {
 	// The configured remediation for
 	// severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
 	// Note that this cannot be set to `QuarantineMode` when
-	// `proactive_ha_moderate_remediation` is
+	// `proactiveHaModerateRemediation` is
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation interface{}

@@ -81,7 +81,7 @@ export class VappEntity extends pulumi.CustomResource {
     public readonly targetId!: pulumi.Output<string>;
     /**
      * Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
     public readonly waitForGuest!: pulumi.Output<boolean | undefined>;
@@ -189,7 +189,7 @@ export interface VappEntityState {
     readonly targetId?: pulumi.Input<string>;
     /**
      * Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
     readonly waitForGuest?: pulumi.Input<boolean>;
@@ -246,7 +246,7 @@ export interface VappEntityArgs {
     readonly targetId: pulumi.Input<string>;
     /**
      * Determines if the VM should be marked as being
-     * started when VMware Tools are ready instead of waiting for `start_delay`. This
+     * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
     readonly waitForGuest?: pulumi.Input<boolean>;
