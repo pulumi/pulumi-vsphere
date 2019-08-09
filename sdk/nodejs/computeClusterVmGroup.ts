@@ -5,18 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_compute_cluster_vm_group` resource can be used to manage groups of
+ * The `vsphere..ComputeClusterVmGroup` resource can be used to manage groups of
  * virtual machines in a cluster, either created by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * This resource mainly serves as an input to the
- * [`vsphere_compute_cluster_vm_dependency_rule`][tf-vsphere-cluster-vm-dependency-rule-resource]
+ * [`vsphere..ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
  * and
- * [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resources. See the individual resource documentation pages for more information.
  * 
  * [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
@@ -30,9 +30,9 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates two virtual machines in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source. It
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
  * then creates a group from these two virtual machines.
  * 
  * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  *         resourcePoolId: cluster.resourcePoolId,
  *     }));
  * }
- * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("cluster_vm_group", {
+ * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("clusterVmGroup", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: vm.map(v => v.id),
  * });

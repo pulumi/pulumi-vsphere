@@ -28,20 +28,22 @@ class GetNetworkResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetNetworkResult(
+            datacenter_id=self.datacenter_id,
+            name=self.name,
+            type=self.type,
+            id=self.id)
 
 def get_network(datacenter_id=None,name=None,opts=None):
     """
-    The `vsphere_network` data source can be used to discover the ID of a network
+    The `.getNetwork` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
-    network interface for `vsphere_virtual_machine` or any other vSphere resource
+    network interface for `.VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups, DVS
     port groups, or opaque networks such as those managed by NSX.
 
@@ -57,7 +59,7 @@ def get_network(datacenter_id=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts).value
 
-    return GetNetworkResult(
+    return AwaitableGetNetworkResult(
         datacenter_id=__ret__.get('datacenterId'),
         name=__ret__.get('name'),
         type=__ret__.get('type'),

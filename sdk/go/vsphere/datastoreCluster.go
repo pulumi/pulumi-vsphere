@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_datastore_cluster` resource can be used to create and manage
+// The `.DatastoreCluster` resource can be used to create and manage
 // datastore clusters. This can be used to create groups of datastores with a
 // shared management interface, allowing for resource control and load balancing
 // through Storage DRS.
@@ -193,8 +193,8 @@ func (r *DatastoreCluster) SdrsEnabled() *pulumi.BoolOutput {
 }
 
 // The free space threshold to use.
-// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 // `utilization`.
 func (r *DatastoreCluster) SdrsFreeSpaceThreshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["sdrsFreeSpaceThreshold"])
@@ -242,7 +242,7 @@ func (r *DatastoreCluster) SdrsIoLoadImbalanceThreshold() *pulumi.IntOutput {
 // The threshold of reservable
 // IOPS of all virtual machines on the datastore before storage DRS makes
 // recommendations to move VMs off of a datastore. Note that this setting should
-// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 // estimate of the capacity of the datastores in your cluster, and should be set
 // to roughly 50-60% of the worst case peak performance of the backing LUNs.
 func (r *DatastoreCluster) SdrsIoReservableIopsThreshold() *pulumi.IntOutput {
@@ -258,8 +258,8 @@ func (r *DatastoreCluster) SdrsIoReservablePercentThreshold() *pulumi.IntOutput 
 }
 
 // The reservable IOPS
-// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+// threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+// of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
 // `manual`. Default: `automatic`.
 func (r *DatastoreCluster) SdrsIoReservableThresholdMode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sdrsIoReservableThresholdMode"])
@@ -333,8 +333,8 @@ type DatastoreClusterState struct {
 	// Default: `false`.
 	SdrsEnabled interface{}
 	// The free space threshold to use.
-	// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-	// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
 	SdrsFreeSpaceThreshold interface{}
 	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
@@ -361,7 +361,7 @@ type DatastoreClusterState struct {
 	// The threshold of reservable
 	// IOPS of all virtual machines on the datastore before storage DRS makes
 	// recommendations to move VMs off of a datastore. Note that this setting should
-	// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
 	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold interface{}
@@ -371,8 +371,8 @@ type DatastoreClusterState struct {
 	// the total reservable IOPS exceeds the threshold. Default: `60` percent.
 	SdrsIoReservablePercentThreshold interface{}
 	// The reservable IOPS
-	// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-	// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+	// threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+	// of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
 	// `manual`. Default: `automatic`.
 	SdrsIoReservableThresholdMode interface{}
 	// The storage DRS poll interval, in
@@ -424,8 +424,8 @@ type DatastoreClusterArgs struct {
 	// Default: `false`.
 	SdrsEnabled interface{}
 	// The free space threshold to use.
-	// When set to `utilization`, `drs_space_utilization_threshold` is used, and
-	// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
 	SdrsFreeSpaceThreshold interface{}
 	// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
@@ -452,7 +452,7 @@ type DatastoreClusterArgs struct {
 	// The threshold of reservable
 	// IOPS of all virtual machines on the datastore before storage DRS makes
 	// recommendations to move VMs off of a datastore. Note that this setting should
-	// only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+	// only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
 	// estimate of the capacity of the datastores in your cluster, and should be set
 	// to roughly 50-60% of the worst case peak performance of the backing LUNs.
 	SdrsIoReservableIopsThreshold interface{}
@@ -462,8 +462,8 @@ type DatastoreClusterArgs struct {
 	// the total reservable IOPS exceeds the threshold. Default: `60` percent.
 	SdrsIoReservablePercentThreshold interface{}
 	// The reservable IOPS
-	// threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-	// of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+	// threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+	// of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
 	// `manual`. Default: `automatic`.
 	SdrsIoReservableThresholdMode interface{}
 	// The storage DRS poll interval, in

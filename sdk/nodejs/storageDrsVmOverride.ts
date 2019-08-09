@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_storage_drs_vm_override` resource can be used to add a Storage DRS
+ * The `vsphere..StorageDrsVmOverride` resource can be used to add a Storage DRS
  * override to a datastore cluster for a specific virtual machine. With this
  * resource, one can enable or disable Storage DRS, and control the automation
  * level and disk affinity for a single virtual machine without affecting the rest
@@ -19,14 +19,14 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below builds on the [Storage DRS
- * example][tf-vsphere-vm-storage-drs-example] in the `vsphere_virtual_machine`
+ * example][tf-vsphere-vm-storage-drs-example] in the `vsphere..VirtualMachine`
  * resource. However, rather than use the output of the
- * [`vsphere_datastore_cluster` data
+ * [`vsphere..DatastoreCluster` data
  * source][tf-vsphere-datastore-cluster-data-source] for the location of the
  * virtual machine, we instead get what is assumed to be a member datastore using
- * the [`vsphere_datastore` data source][tf-vsphere-datastore-data-source] and put
+ * the [`vsphere..getDatastore` data source][tf-vsphere-datastore-data-source] and put
  * the virtual machine there instead. We then use the
- * `vsphere_storage_drs_vm_override` resource to ensure that Storage DRS does not
+ * `vsphere..StorageDrsVmOverride` resource to ensure that Storage DRS does not
  * apply to this virtual machine, and hence the VM will never be migrated off of
  * the datastore.
  * 
@@ -71,7 +71,7 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: pool.id,
  * });
- * const drsVmOverride = new vsphere.StorageDrsVmOverride("drs_vm_override", {
+ * const drsVmOverride = new vsphere.StorageDrsVmOverride("drsVmOverride", {
  *     datastoreClusterId: datastoreCluster.id,
  *     sdrsEnabled: "false",
  *     virtualMachineId: vm.id,

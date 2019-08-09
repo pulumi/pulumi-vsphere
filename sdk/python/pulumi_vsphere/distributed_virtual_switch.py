@@ -323,16 +323,16 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     vsan_reservation_mbit: pulumi.Output[float]
     vsan_share_count: pulumi.Output[float]
     vsan_share_level: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, block_all_ports=None, check_beacon=None, contact_detail=None, contact_name=None, custom_attributes=None, datacenter_id=None, description=None, directpath_gen2_allowed=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, faulttolerance_maximum_mbit=None, faulttolerance_reservation_mbit=None, faulttolerance_share_count=None, faulttolerance_share_level=None, folder=None, hbr_maximum_mbit=None, hbr_reservation_mbit=None, hbr_share_count=None, hbr_share_level=None, hosts=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, ipv4_address=None, iscsi_maximum_mbit=None, iscsi_reservation_mbit=None, iscsi_share_count=None, iscsi_share_level=None, lacp_api_version=None, lacp_enabled=None, lacp_mode=None, link_discovery_operation=None, link_discovery_protocol=None, management_maximum_mbit=None, management_reservation_mbit=None, management_share_count=None, management_share_level=None, max_mtu=None, multicast_filtering_mode=None, name=None, netflow_active_flow_timeout=None, netflow_collector_ip_address=None, netflow_collector_port=None, netflow_enabled=None, netflow_idle_flow_timeout=None, netflow_internal_flows_only=None, netflow_observation_domain_id=None, netflow_sampling_rate=None, network_resource_control_enabled=None, network_resource_control_version=None, nfs_maximum_mbit=None, nfs_reservation_mbit=None, nfs_share_count=None, nfs_share_level=None, notify_switches=None, port_private_secondary_vlan_id=None, standby_uplinks=None, tags=None, teaming_policy=None, tx_uplink=None, uplinks=None, vdp_maximum_mbit=None, vdp_reservation_mbit=None, vdp_share_count=None, vdp_share_level=None, version=None, virtualmachine_maximum_mbit=None, virtualmachine_reservation_mbit=None, virtualmachine_share_count=None, virtualmachine_share_level=None, vlan_id=None, vlan_ranges=None, vmotion_maximum_mbit=None, vmotion_reservation_mbit=None, vmotion_share_count=None, vmotion_share_level=None, vsan_maximum_mbit=None, vsan_reservation_mbit=None, vsan_share_count=None, vsan_share_level=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, block_all_ports=None, check_beacon=None, contact_detail=None, contact_name=None, custom_attributes=None, datacenter_id=None, description=None, directpath_gen2_allowed=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, faulttolerance_maximum_mbit=None, faulttolerance_reservation_mbit=None, faulttolerance_share_count=None, faulttolerance_share_level=None, folder=None, hbr_maximum_mbit=None, hbr_reservation_mbit=None, hbr_share_count=None, hbr_share_level=None, hosts=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, ipv4_address=None, iscsi_maximum_mbit=None, iscsi_reservation_mbit=None, iscsi_share_count=None, iscsi_share_level=None, lacp_api_version=None, lacp_enabled=None, lacp_mode=None, link_discovery_operation=None, link_discovery_protocol=None, management_maximum_mbit=None, management_reservation_mbit=None, management_share_count=None, management_share_level=None, max_mtu=None, multicast_filtering_mode=None, name=None, netflow_active_flow_timeout=None, netflow_collector_ip_address=None, netflow_collector_port=None, netflow_enabled=None, netflow_idle_flow_timeout=None, netflow_internal_flows_only=None, netflow_observation_domain_id=None, netflow_sampling_rate=None, network_resource_control_enabled=None, network_resource_control_version=None, nfs_maximum_mbit=None, nfs_reservation_mbit=None, nfs_share_count=None, nfs_share_level=None, notify_switches=None, port_private_secondary_vlan_id=None, standby_uplinks=None, tags=None, teaming_policy=None, tx_uplink=None, uplinks=None, vdp_maximum_mbit=None, vdp_reservation_mbit=None, vdp_share_count=None, vdp_share_level=None, version=None, virtualmachine_maximum_mbit=None, virtualmachine_reservation_mbit=None, virtualmachine_share_count=None, virtualmachine_share_level=None, vlan_id=None, vlan_ranges=None, vmotion_maximum_mbit=None, vmotion_reservation_mbit=None, vmotion_share_count=None, vmotion_share_level=None, vsan_maximum_mbit=None, vsan_reservation_mbit=None, vsan_share_count=None, vsan_share_level=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_distributed_virtual_switch` resource can be used to manage VMware
+        The `.DistributedVirtualSwitch` resource can be used to manage VMware
         Distributed Virtual Switches.
         
         An essential component of a distributed, scalable VMware datacenter, the
         vSphere Distributed Virtual Switch (DVS) provides centralized management and
         monitoring of the networking configuration of all the hosts that are associated
         with the switch. In addition to adding port groups (see the
-        [`vsphere_distributed_port_group`][distributed-port-group] resource) that can
+        [`.DistributedPortGroup`][distributed-port-group] resource) that can
         be used as networks for virtual machines, a DVS can be configured to perform
         advanced high availability, traffic shaping, network monitoring, and more.
         
@@ -481,206 +481,341 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['active_uplinks'] = active_uplinks
-
-        __props__['allow_forged_transmits'] = allow_forged_transmits
-
-        __props__['allow_mac_changes'] = allow_mac_changes
-
-        __props__['allow_promiscuous'] = allow_promiscuous
-
-        __props__['block_all_ports'] = block_all_ports
-
-        __props__['check_beacon'] = check_beacon
-
-        __props__['contact_detail'] = contact_detail
-
-        __props__['contact_name'] = contact_name
-
-        __props__['custom_attributes'] = custom_attributes
-
-        if datacenter_id is None:
-            raise TypeError("Missing required property 'datacenter_id'")
-        __props__['datacenter_id'] = datacenter_id
-
-        __props__['description'] = description
-
-        __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
-
-        __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
-
-        __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
-
-        __props__['egress_shaping_enabled'] = egress_shaping_enabled
-
-        __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
-
-        __props__['failback'] = failback
-
-        __props__['faulttolerance_maximum_mbit'] = faulttolerance_maximum_mbit
-
-        __props__['faulttolerance_reservation_mbit'] = faulttolerance_reservation_mbit
-
-        __props__['faulttolerance_share_count'] = faulttolerance_share_count
-
-        __props__['faulttolerance_share_level'] = faulttolerance_share_level
-
-        __props__['folder'] = folder
-
-        __props__['hbr_maximum_mbit'] = hbr_maximum_mbit
-
-        __props__['hbr_reservation_mbit'] = hbr_reservation_mbit
-
-        __props__['hbr_share_count'] = hbr_share_count
-
-        __props__['hbr_share_level'] = hbr_share_level
-
-        __props__['hosts'] = hosts
-
-        __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
-
-        __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
-
-        __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
-
-        __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
-
-        __props__['ipv4_address'] = ipv4_address
-
-        __props__['iscsi_maximum_mbit'] = iscsi_maximum_mbit
-
-        __props__['iscsi_reservation_mbit'] = iscsi_reservation_mbit
-
-        __props__['iscsi_share_count'] = iscsi_share_count
-
-        __props__['iscsi_share_level'] = iscsi_share_level
-
-        __props__['lacp_api_version'] = lacp_api_version
-
-        __props__['lacp_enabled'] = lacp_enabled
-
-        __props__['lacp_mode'] = lacp_mode
-
-        __props__['link_discovery_operation'] = link_discovery_operation
-
-        __props__['link_discovery_protocol'] = link_discovery_protocol
-
-        __props__['management_maximum_mbit'] = management_maximum_mbit
-
-        __props__['management_reservation_mbit'] = management_reservation_mbit
-
-        __props__['management_share_count'] = management_share_count
-
-        __props__['management_share_level'] = management_share_level
-
-        __props__['max_mtu'] = max_mtu
-
-        __props__['multicast_filtering_mode'] = multicast_filtering_mode
-
-        __props__['name'] = name
-
-        __props__['netflow_active_flow_timeout'] = netflow_active_flow_timeout
-
-        __props__['netflow_collector_ip_address'] = netflow_collector_ip_address
-
-        __props__['netflow_collector_port'] = netflow_collector_port
-
-        __props__['netflow_enabled'] = netflow_enabled
-
-        __props__['netflow_idle_flow_timeout'] = netflow_idle_flow_timeout
-
-        __props__['netflow_internal_flows_only'] = netflow_internal_flows_only
-
-        __props__['netflow_observation_domain_id'] = netflow_observation_domain_id
-
-        __props__['netflow_sampling_rate'] = netflow_sampling_rate
-
-        __props__['network_resource_control_enabled'] = network_resource_control_enabled
-
-        __props__['network_resource_control_version'] = network_resource_control_version
-
-        __props__['nfs_maximum_mbit'] = nfs_maximum_mbit
-
-        __props__['nfs_reservation_mbit'] = nfs_reservation_mbit
-
-        __props__['nfs_share_count'] = nfs_share_count
-
-        __props__['nfs_share_level'] = nfs_share_level
-
-        __props__['notify_switches'] = notify_switches
-
-        __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
-
-        __props__['standby_uplinks'] = standby_uplinks
-
-        __props__['tags'] = tags
-
-        __props__['teaming_policy'] = teaming_policy
-
-        __props__['tx_uplink'] = tx_uplink
-
-        __props__['uplinks'] = uplinks
-
-        __props__['vdp_maximum_mbit'] = vdp_maximum_mbit
-
-        __props__['vdp_reservation_mbit'] = vdp_reservation_mbit
-
-        __props__['vdp_share_count'] = vdp_share_count
-
-        __props__['vdp_share_level'] = vdp_share_level
-
-        __props__['version'] = version
-
-        __props__['virtualmachine_maximum_mbit'] = virtualmachine_maximum_mbit
-
-        __props__['virtualmachine_reservation_mbit'] = virtualmachine_reservation_mbit
-
-        __props__['virtualmachine_share_count'] = virtualmachine_share_count
-
-        __props__['virtualmachine_share_level'] = virtualmachine_share_level
-
-        __props__['vlan_id'] = vlan_id
-
-        __props__['vlan_ranges'] = vlan_ranges
-
-        __props__['vmotion_maximum_mbit'] = vmotion_maximum_mbit
-
-        __props__['vmotion_reservation_mbit'] = vmotion_reservation_mbit
-
-        __props__['vmotion_share_count'] = vmotion_share_count
-
-        __props__['vmotion_share_level'] = vmotion_share_level
-
-        __props__['vsan_maximum_mbit'] = vsan_maximum_mbit
-
-        __props__['vsan_reservation_mbit'] = vsan_reservation_mbit
-
-        __props__['vsan_share_count'] = vsan_share_count
-
-        __props__['vsan_share_level'] = vsan_share_level
-
-        __props__['config_version'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['active_uplinks'] = active_uplinks
+            __props__['allow_forged_transmits'] = allow_forged_transmits
+            __props__['allow_mac_changes'] = allow_mac_changes
+            __props__['allow_promiscuous'] = allow_promiscuous
+            __props__['block_all_ports'] = block_all_ports
+            __props__['check_beacon'] = check_beacon
+            __props__['contact_detail'] = contact_detail
+            __props__['contact_name'] = contact_name
+            __props__['custom_attributes'] = custom_attributes
+            if datacenter_id is None:
+                raise TypeError("Missing required property 'datacenter_id'")
+            __props__['datacenter_id'] = datacenter_id
+            __props__['description'] = description
+            __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
+            __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
+            __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
+            __props__['egress_shaping_enabled'] = egress_shaping_enabled
+            __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
+            __props__['failback'] = failback
+            __props__['faulttolerance_maximum_mbit'] = faulttolerance_maximum_mbit
+            __props__['faulttolerance_reservation_mbit'] = faulttolerance_reservation_mbit
+            __props__['faulttolerance_share_count'] = faulttolerance_share_count
+            __props__['faulttolerance_share_level'] = faulttolerance_share_level
+            __props__['folder'] = folder
+            __props__['hbr_maximum_mbit'] = hbr_maximum_mbit
+            __props__['hbr_reservation_mbit'] = hbr_reservation_mbit
+            __props__['hbr_share_count'] = hbr_share_count
+            __props__['hbr_share_level'] = hbr_share_level
+            __props__['hosts'] = hosts
+            __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
+            __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
+            __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
+            __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
+            __props__['ipv4_address'] = ipv4_address
+            __props__['iscsi_maximum_mbit'] = iscsi_maximum_mbit
+            __props__['iscsi_reservation_mbit'] = iscsi_reservation_mbit
+            __props__['iscsi_share_count'] = iscsi_share_count
+            __props__['iscsi_share_level'] = iscsi_share_level
+            __props__['lacp_api_version'] = lacp_api_version
+            __props__['lacp_enabled'] = lacp_enabled
+            __props__['lacp_mode'] = lacp_mode
+            __props__['link_discovery_operation'] = link_discovery_operation
+            __props__['link_discovery_protocol'] = link_discovery_protocol
+            __props__['management_maximum_mbit'] = management_maximum_mbit
+            __props__['management_reservation_mbit'] = management_reservation_mbit
+            __props__['management_share_count'] = management_share_count
+            __props__['management_share_level'] = management_share_level
+            __props__['max_mtu'] = max_mtu
+            __props__['multicast_filtering_mode'] = multicast_filtering_mode
+            __props__['name'] = name
+            __props__['netflow_active_flow_timeout'] = netflow_active_flow_timeout
+            __props__['netflow_collector_ip_address'] = netflow_collector_ip_address
+            __props__['netflow_collector_port'] = netflow_collector_port
+            __props__['netflow_enabled'] = netflow_enabled
+            __props__['netflow_idle_flow_timeout'] = netflow_idle_flow_timeout
+            __props__['netflow_internal_flows_only'] = netflow_internal_flows_only
+            __props__['netflow_observation_domain_id'] = netflow_observation_domain_id
+            __props__['netflow_sampling_rate'] = netflow_sampling_rate
+            __props__['network_resource_control_enabled'] = network_resource_control_enabled
+            __props__['network_resource_control_version'] = network_resource_control_version
+            __props__['nfs_maximum_mbit'] = nfs_maximum_mbit
+            __props__['nfs_reservation_mbit'] = nfs_reservation_mbit
+            __props__['nfs_share_count'] = nfs_share_count
+            __props__['nfs_share_level'] = nfs_share_level
+            __props__['notify_switches'] = notify_switches
+            __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
+            __props__['standby_uplinks'] = standby_uplinks
+            __props__['tags'] = tags
+            __props__['teaming_policy'] = teaming_policy
+            __props__['tx_uplink'] = tx_uplink
+            __props__['uplinks'] = uplinks
+            __props__['vdp_maximum_mbit'] = vdp_maximum_mbit
+            __props__['vdp_reservation_mbit'] = vdp_reservation_mbit
+            __props__['vdp_share_count'] = vdp_share_count
+            __props__['vdp_share_level'] = vdp_share_level
+            __props__['version'] = version
+            __props__['virtualmachine_maximum_mbit'] = virtualmachine_maximum_mbit
+            __props__['virtualmachine_reservation_mbit'] = virtualmachine_reservation_mbit
+            __props__['virtualmachine_share_count'] = virtualmachine_share_count
+            __props__['virtualmachine_share_level'] = virtualmachine_share_level
+            __props__['vlan_id'] = vlan_id
+            __props__['vlan_ranges'] = vlan_ranges
+            __props__['vmotion_maximum_mbit'] = vmotion_maximum_mbit
+            __props__['vmotion_reservation_mbit'] = vmotion_reservation_mbit
+            __props__['vmotion_share_count'] = vmotion_share_count
+            __props__['vmotion_share_level'] = vmotion_share_level
+            __props__['vsan_maximum_mbit'] = vsan_maximum_mbit
+            __props__['vsan_reservation_mbit'] = vsan_reservation_mbit
+            __props__['vsan_share_count'] = vsan_share_count
+            __props__['vsan_share_level'] = vsan_share_level
+            __props__['config_version'] = None
         super(DistributedVirtualSwitch, __self__).__init__(
             'vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, block_all_ports=None, check_beacon=None, config_version=None, contact_detail=None, contact_name=None, custom_attributes=None, datacenter_id=None, description=None, directpath_gen2_allowed=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, faulttolerance_maximum_mbit=None, faulttolerance_reservation_mbit=None, faulttolerance_share_count=None, faulttolerance_share_level=None, folder=None, hbr_maximum_mbit=None, hbr_reservation_mbit=None, hbr_share_count=None, hbr_share_level=None, hosts=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, ipv4_address=None, iscsi_maximum_mbit=None, iscsi_reservation_mbit=None, iscsi_share_count=None, iscsi_share_level=None, lacp_api_version=None, lacp_enabled=None, lacp_mode=None, link_discovery_operation=None, link_discovery_protocol=None, management_maximum_mbit=None, management_reservation_mbit=None, management_share_count=None, management_share_level=None, max_mtu=None, multicast_filtering_mode=None, name=None, netflow_active_flow_timeout=None, netflow_collector_ip_address=None, netflow_collector_port=None, netflow_enabled=None, netflow_idle_flow_timeout=None, netflow_internal_flows_only=None, netflow_observation_domain_id=None, netflow_sampling_rate=None, network_resource_control_enabled=None, network_resource_control_version=None, nfs_maximum_mbit=None, nfs_reservation_mbit=None, nfs_share_count=None, nfs_share_level=None, notify_switches=None, port_private_secondary_vlan_id=None, standby_uplinks=None, tags=None, teaming_policy=None, tx_uplink=None, uplinks=None, vdp_maximum_mbit=None, vdp_reservation_mbit=None, vdp_share_count=None, vdp_share_level=None, version=None, virtualmachine_maximum_mbit=None, virtualmachine_reservation_mbit=None, virtualmachine_share_count=None, virtualmachine_share_level=None, vlan_id=None, vlan_ranges=None, vmotion_maximum_mbit=None, vmotion_reservation_mbit=None, vmotion_share_count=None, vmotion_share_level=None, vsan_maximum_mbit=None, vsan_reservation_mbit=None, vsan_share_count=None, vsan_share_level=None):
+        """
+        Get an existing DistributedVirtualSwitch resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] active_uplinks: A list of active uplinks to be used in load
+               balancing. These uplinks need to match the definitions in the
+               `uplinks` DVS argument. See
+               here for more details.
+        :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
+               network adapter is allowed to send network traffic with a different MAC
+               address than that of its own.
+        :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access
+               Control (MAC) address can be changed.
+        :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
+               flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
+               this policy applies to, effectively blocking all network access to connected
+               virtual devices.
+        :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
+               to detect NIC failure.
+        :param pulumi.Input[str] contact_detail: The detailed contact information for the person
+               who is responsible for the DVS.
+        :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
+               DVS.
+        :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set for virtual switch. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
+               virtual switch will be created. Forces a new resource if changed.
+        :param pulumi.Input[str] description: A detailed description for the DVS.
+        :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
+               for which this policy applies to.
+        :param pulumi.Input[float] egress_shaping_average_bandwidth: The average bandwidth in bits
+               per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[float] egress_shaping_burst_size: The maximum burst size allowed in
+               bytes if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] egress_shaping_enabled: `true` if the traffic shaper is enabled
+               on the port for egress traffic.
+        :param pulumi.Input[float] egress_shaping_peak_bandwidth: The peak bandwidth during bursts
+               in bits per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] failback: If `true`, the teaming policy will re-activate failed
+               uplinks higher in precedence when they come back up.
+        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
+               if changed.
+        :param pulumi.Input[list] hosts: Use the `host` block to declare a host specification. The
+               options are:
+        :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average bandwidth in
+               bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[float] ingress_shaping_burst_size: The maximum burst size allowed in
+               bytes if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] ingress_shaping_enabled: `true` if the traffic shaper is
+               enabled on the port for ingress traffic.
+        :param pulumi.Input[float] ingress_shaping_peak_bandwidth: The peak bandwidth during
+               bursts in bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
+               mostly useful when used with the Netflow arguments found
+               below.
+        :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
+               version to use with the switch. Possible values are `singleLag` and
+               `multipleLag`.
+        :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
+               applies to.
+        :param pulumi.Input[str] lacp_mode: The LACP mode. Can be one of `active` or `passive`.
+        :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
+               for link discovery traffic.
+        :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type. Valid
+               types are `cdp` and `lldp`.
+        :param pulumi.Input[float] max_mtu: The maximum transmission unit (MTU) for the virtual
+               switch.
+        :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
+               with the switch. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+        :param pulumi.Input[float] netflow_active_flow_timeout: The number of seconds after which
+               active flows are forced to be exported to the collector. Allowed range is
+               `60` to `3600`. Default: `60`.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
+               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
+               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        :param pulumi.Input[float] netflow_collector_port: Port for the Netflow collector. This
+               must be set before Netflow can be enabled.
+        :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
+               applies to.
+        :param pulumi.Input[float] netflow_idle_flow_timeout: The number of seconds after which
+               idle flows are forced to be exported to the collector. Allowed range is `10`
+               to `600`. Default: `15`.
+        :param pulumi.Input[bool] netflow_internal_flows_only: Whether to limit analysis to
+               traffic that has both source and destination served by the same host.
+               Default: `false`.
+        :param pulumi.Input[float] netflow_observation_domain_id: The observation domain ID for
+               the Netflow collector.
+        :param pulumi.Input[float] netflow_sampling_rate: The ratio of total number of packets to
+               the number of packets analyzed. The default is `0`, which indicates that the
+               switch should analyze all packets. The maximum value is `1000`, which
+               indicates an analysis rate of 0.001%.
+        :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
+               network I/O control. Default: `false`.
+        :param pulumi.Input[str] network_resource_control_version: The version of network I/O
+               control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        :param pulumi.Input[bool] notify_switches: If `true`, the teaming policy will notify the
+               broadcast network of an uplink failover, triggering cache updates.
+        :param pulumi.Input[float] port_private_secondary_vlan_id: Used to define a secondary VLAN
+               ID when using private VLANs.
+        :param pulumi.Input[list] standby_uplinks: A list of standby uplinks to be used in
+               failover. These uplinks need to match the definitions in the
+               `uplinks` DVS argument. See
+               here for more details.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
+               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+               `failover_explicit`.
+        :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
+               this policy applies to its DVS uplinks.
+        :param pulumi.Input[list] uplinks: A list of strings that uniquely identifies the names
+               of the uplinks on the DVS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the DVS, in addition to the
+               names.  See here for an example on how to
+               use this option.
+        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
+               create the DVS at the latest version supported by the version of vSphere
+               being used. A DVS can be upgraded to another version, but cannot be
+               downgraded.
+        :param pulumi.Input[list] vlan_ranges: Used to denote VLAN trunking. Use the `min_vlan`
+               and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
+               `vlan_range` definitions are allowed, but they must not overlap. Example
+               below:
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_virtual_switch.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["active_uplinks"] = active_uplinks
+        __props__["allow_forged_transmits"] = allow_forged_transmits
+        __props__["allow_mac_changes"] = allow_mac_changes
+        __props__["allow_promiscuous"] = allow_promiscuous
+        __props__["block_all_ports"] = block_all_ports
+        __props__["check_beacon"] = check_beacon
+        __props__["config_version"] = config_version
+        __props__["contact_detail"] = contact_detail
+        __props__["contact_name"] = contact_name
+        __props__["custom_attributes"] = custom_attributes
+        __props__["datacenter_id"] = datacenter_id
+        __props__["description"] = description
+        __props__["directpath_gen2_allowed"] = directpath_gen2_allowed
+        __props__["egress_shaping_average_bandwidth"] = egress_shaping_average_bandwidth
+        __props__["egress_shaping_burst_size"] = egress_shaping_burst_size
+        __props__["egress_shaping_enabled"] = egress_shaping_enabled
+        __props__["egress_shaping_peak_bandwidth"] = egress_shaping_peak_bandwidth
+        __props__["failback"] = failback
+        __props__["faulttolerance_maximum_mbit"] = faulttolerance_maximum_mbit
+        __props__["faulttolerance_reservation_mbit"] = faulttolerance_reservation_mbit
+        __props__["faulttolerance_share_count"] = faulttolerance_share_count
+        __props__["faulttolerance_share_level"] = faulttolerance_share_level
+        __props__["folder"] = folder
+        __props__["hbr_maximum_mbit"] = hbr_maximum_mbit
+        __props__["hbr_reservation_mbit"] = hbr_reservation_mbit
+        __props__["hbr_share_count"] = hbr_share_count
+        __props__["hbr_share_level"] = hbr_share_level
+        __props__["hosts"] = hosts
+        __props__["ingress_shaping_average_bandwidth"] = ingress_shaping_average_bandwidth
+        __props__["ingress_shaping_burst_size"] = ingress_shaping_burst_size
+        __props__["ingress_shaping_enabled"] = ingress_shaping_enabled
+        __props__["ingress_shaping_peak_bandwidth"] = ingress_shaping_peak_bandwidth
+        __props__["ipv4_address"] = ipv4_address
+        __props__["iscsi_maximum_mbit"] = iscsi_maximum_mbit
+        __props__["iscsi_reservation_mbit"] = iscsi_reservation_mbit
+        __props__["iscsi_share_count"] = iscsi_share_count
+        __props__["iscsi_share_level"] = iscsi_share_level
+        __props__["lacp_api_version"] = lacp_api_version
+        __props__["lacp_enabled"] = lacp_enabled
+        __props__["lacp_mode"] = lacp_mode
+        __props__["link_discovery_operation"] = link_discovery_operation
+        __props__["link_discovery_protocol"] = link_discovery_protocol
+        __props__["management_maximum_mbit"] = management_maximum_mbit
+        __props__["management_reservation_mbit"] = management_reservation_mbit
+        __props__["management_share_count"] = management_share_count
+        __props__["management_share_level"] = management_share_level
+        __props__["max_mtu"] = max_mtu
+        __props__["multicast_filtering_mode"] = multicast_filtering_mode
+        __props__["name"] = name
+        __props__["netflow_active_flow_timeout"] = netflow_active_flow_timeout
+        __props__["netflow_collector_ip_address"] = netflow_collector_ip_address
+        __props__["netflow_collector_port"] = netflow_collector_port
+        __props__["netflow_enabled"] = netflow_enabled
+        __props__["netflow_idle_flow_timeout"] = netflow_idle_flow_timeout
+        __props__["netflow_internal_flows_only"] = netflow_internal_flows_only
+        __props__["netflow_observation_domain_id"] = netflow_observation_domain_id
+        __props__["netflow_sampling_rate"] = netflow_sampling_rate
+        __props__["network_resource_control_enabled"] = network_resource_control_enabled
+        __props__["network_resource_control_version"] = network_resource_control_version
+        __props__["nfs_maximum_mbit"] = nfs_maximum_mbit
+        __props__["nfs_reservation_mbit"] = nfs_reservation_mbit
+        __props__["nfs_share_count"] = nfs_share_count
+        __props__["nfs_share_level"] = nfs_share_level
+        __props__["notify_switches"] = notify_switches
+        __props__["port_private_secondary_vlan_id"] = port_private_secondary_vlan_id
+        __props__["standby_uplinks"] = standby_uplinks
+        __props__["tags"] = tags
+        __props__["teaming_policy"] = teaming_policy
+        __props__["tx_uplink"] = tx_uplink
+        __props__["uplinks"] = uplinks
+        __props__["vdp_maximum_mbit"] = vdp_maximum_mbit
+        __props__["vdp_reservation_mbit"] = vdp_reservation_mbit
+        __props__["vdp_share_count"] = vdp_share_count
+        __props__["vdp_share_level"] = vdp_share_level
+        __props__["version"] = version
+        __props__["virtualmachine_maximum_mbit"] = virtualmachine_maximum_mbit
+        __props__["virtualmachine_reservation_mbit"] = virtualmachine_reservation_mbit
+        __props__["virtualmachine_share_count"] = virtualmachine_share_count
+        __props__["virtualmachine_share_level"] = virtualmachine_share_level
+        __props__["vlan_id"] = vlan_id
+        __props__["vlan_ranges"] = vlan_ranges
+        __props__["vmotion_maximum_mbit"] = vmotion_maximum_mbit
+        __props__["vmotion_reservation_mbit"] = vmotion_reservation_mbit
+        __props__["vmotion_share_count"] = vmotion_share_count
+        __props__["vmotion_share_level"] = vmotion_share_level
+        __props__["vsan_maximum_mbit"] = vsan_maximum_mbit
+        __props__["vsan_reservation_mbit"] = vsan_reservation_mbit
+        __props__["vsan_share_count"] = vsan_share_count
+        __props__["vsan_share_level"] = vsan_share_level
+        return DistributedVirtualSwitch(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

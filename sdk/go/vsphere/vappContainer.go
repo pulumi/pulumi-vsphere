@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_vapp_container` resource can be used to create and manage
+// The `.VappContainer` resource can be used to create and manage
 // vApps.
 // 
 // For more information on vSphere vApps, see [this
@@ -131,7 +131,7 @@ func (r *VappContainer) CpuReservation() *pulumi.IntOutput {
 // The CPU allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 // ignored.  Default: `normal`
 func (r *VappContainer) CpuShareLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["cpuShareLevel"])
@@ -139,7 +139,7 @@ func (r *VappContainer) CpuShareLevel() *pulumi.StringOutput {
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
-// `cpu_share_level` must be `custom`.
+// `cpuShareLevel` must be `custom`.
 func (r *VappContainer) CpuShares() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["cpuShares"])
 }
@@ -173,7 +173,7 @@ func (r *VappContainer) MemoryReservation() *pulumi.IntOutput {
 // The CPU allocation level. The level is a
 // simplified view of shares. Levels map to a pre-determined set of numeric
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 // ignored.  Default: `normal`
 func (r *VappContainer) MemoryShareLevel() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["memoryShareLevel"])
@@ -181,7 +181,7 @@ func (r *VappContainer) MemoryShareLevel() *pulumi.StringOutput {
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
-// `memory_share_level` must be `custom`.
+// `memoryShareLevel` must be `custom`.
 func (r *VappContainer) MemoryShares() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["memoryShares"])
 }
@@ -229,12 +229,12 @@ type VappContainerState struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 	// ignored.  Default: `normal`
 	CpuShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `cpu_share_level` must be `custom`.
+	// `cpuShareLevel` must be `custom`.
 	CpuShares interface{}
 	// A list of custom attributes to set on this resource.
 	CustomAttributes interface{}
@@ -253,12 +253,12 @@ type VappContainerState struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `memory_share_level` must be `custom`.
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares interface{}
 	// The name of the vApp container.
 	Name interface{}
@@ -293,12 +293,12 @@ type VappContainerArgs struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+	// `low`, `normal`, or `high` are specified values in `cpuShares` will be
 	// ignored.  Default: `normal`
 	CpuShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `cpu_share_level` must be `custom`.
+	// `cpuShareLevel` must be `custom`.
 	CpuShares interface{}
 	// A list of custom attributes to set on this resource.
 	CustomAttributes interface{}
@@ -317,12 +317,12 @@ type VappContainerArgs struct {
 	// The CPU allocation level. The level is a
 	// simplified view of shares. Levels map to a pre-determined set of numeric
 	// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-	// `low`, `normal`, or `high` are specified values in `memory_shares` will be
+	// `low`, `normal`, or `high` are specified values in `memoryShares` will be
 	// ignored.  Default: `normal`
 	MemoryShareLevel interface{}
 	// The number of shares allocated for CPU. Used to
 	// determine resource allocation in case of resource contention. If this is set,
-	// `memory_share_level` must be `custom`.
+	// `memoryShareLevel` must be `custom`.
 	MemoryShares interface{}
 	// The name of the vApp container.
 	Name interface{}

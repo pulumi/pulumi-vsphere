@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_dpm_host_override` resource can be used to add a DPM override to a
+// The `.DpmHostOverride` resource can be used to add a DPM override to a
 // cluster for a particular host. This allows you to control the power management
 // settings for individual hosts in the cluster while leaving any unspecified ones
 // at the default power management settings.

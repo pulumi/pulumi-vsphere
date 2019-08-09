@@ -76,8 +76,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The free space threshold to use.
-     * When set to `utilization`, `drs_space_utilization_threshold` is used, and
-     * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
      */
     public readonly sdrsFreeSpaceThreshold!: pulumi.Output<number | undefined>;
@@ -118,7 +118,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
      * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
@@ -132,8 +132,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsIoReservablePercentThreshold!: pulumi.Output<number | undefined>;
     /**
      * The reservable IOPS
-     * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-     * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
      * `manual`. Default: `automatic`.
      */
     public readonly sdrsIoReservableThresholdMode!: pulumi.Output<string | undefined>;
@@ -297,8 +297,8 @@ export interface DatastoreClusterState {
     readonly sdrsEnabled?: pulumi.Input<boolean>;
     /**
      * The free space threshold to use.
-     * When set to `utilization`, `drs_space_utilization_threshold` is used, and
-     * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
      */
     readonly sdrsFreeSpaceThreshold?: pulumi.Input<number>;
@@ -339,7 +339,7 @@ export interface DatastoreClusterState {
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
      * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
@@ -353,8 +353,8 @@ export interface DatastoreClusterState {
     readonly sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
      * The reservable IOPS
-     * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-     * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
      * `manual`. Default: `automatic`.
      */
     readonly sdrsIoReservableThresholdMode?: pulumi.Input<string>;
@@ -440,8 +440,8 @@ export interface DatastoreClusterArgs {
     readonly sdrsEnabled?: pulumi.Input<boolean>;
     /**
      * The free space threshold to use.
-     * When set to `utilization`, `drs_space_utilization_threshold` is used, and
-     * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
+     * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
+     * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
      */
     readonly sdrsFreeSpaceThreshold?: pulumi.Input<number>;
@@ -482,7 +482,7 @@ export interface DatastoreClusterArgs {
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
      * recommendations to move VMs off of a datastore. Note that this setting should
-     * only be set if `sdrs_io_reservable_percent_threshold` cannot make an accurate
+     * only be set if `sdrsIoReservablePercentThreshold` cannot make an accurate
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
@@ -496,8 +496,8 @@ export interface DatastoreClusterArgs {
     readonly sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
      * The reservable IOPS
-     * threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
-     * of `automatic`, or `sdrs_io_reservable_iops_threshold` in the event of
+     * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
+     * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
      * `manual`. Default: `automatic`.
      */
     readonly sdrsIoReservableThresholdMode?: pulumi.Input<string>;

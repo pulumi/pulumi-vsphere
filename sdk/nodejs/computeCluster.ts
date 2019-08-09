@@ -54,7 +54,7 @@ export class ComputeCluster extends pulumi.CustomResource {
     public readonly dpmAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * Enable DPM support for DRS in this cluster.
-     * Requires `drs_enabled` to be `true` in order to be effective.
+     * Requires `drsEnabled` to be `true` in order to be effective.
      * Default: `false`.
      */
     public readonly dpmEnabled!: pulumi.Output<boolean | undefined>;
@@ -140,7 +140,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * 
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
-     * `ha_admission_control_host_failure_tolerance`
+     * `haAdmissionControlHostFailureTolerance`
      * setting from the total amount of resources in the cluster. Disable to supply
      * user-defined values. Default: `true`.
      * <sup>\*</sup>
@@ -198,7 +198,7 @@ export class ComputeCluster extends pulumi.CustomResource {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Default: `3`
+     * `haDatastoreApdResponse`. Default: `3`
      * minutes. <sup>\*</sup>
      */
     public readonly haDatastoreApdResponseDelay!: pulumi.Output<number | undefined>;
@@ -218,7 +218,7 @@ export class ComputeCluster extends pulumi.CustomResource {
     /**
      * The list of managed object IDs for
      * preferred datastores to use for HA heartbeating. This setting is only useful
-     * when `ha_heartbeat_datastore_policy` is set
+     * when `haHeartbeatDatastorePolicy` is set
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      */
     public readonly haHeartbeatDatastoreIds!: pulumi.Output<string[] | undefined>;
@@ -267,9 +267,9 @@ export class ComputeCluster extends pulumi.CustomResource {
     public readonly haVmFailureInterval!: pulumi.Output<number | undefined>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
@@ -341,7 +341,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * The configured remediation
      * for moderately degraded hosts. Can be one of `MaintenanceMode` or
      * `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-     * `proactive_ha_severe_remediation` is set
+     * `proactiveHaSevereRemediation` is set
      * to `QuarantineMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
@@ -356,7 +356,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * The configured remediation for
      * severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
      * Note that this cannot be set to `QuarantineMode` when
-     * `proactive_ha_moderate_remediation` is
+     * `proactiveHaModerateRemediation` is
      * set to `MaintenanceMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
@@ -530,7 +530,7 @@ export interface ComputeClusterState {
     readonly dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for DRS in this cluster.
-     * Requires `drs_enabled` to be `true` in order to be effective.
+     * Requires `drsEnabled` to be `true` in order to be effective.
      * Default: `false`.
      */
     readonly dpmEnabled?: pulumi.Input<boolean>;
@@ -616,7 +616,7 @@ export interface ComputeClusterState {
      * 
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
-     * `ha_admission_control_host_failure_tolerance`
+     * `haAdmissionControlHostFailureTolerance`
      * setting from the total amount of resources in the cluster. Disable to supply
      * user-defined values. Default: `true`.
      * <sup>\*</sup>
@@ -674,7 +674,7 @@ export interface ComputeClusterState {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Default: `3`
+     * `haDatastoreApdResponse`. Default: `3`
      * minutes. <sup>\*</sup>
      */
     readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
@@ -694,7 +694,7 @@ export interface ComputeClusterState {
     /**
      * The list of managed object IDs for
      * preferred datastores to use for HA heartbeating. This setting is only useful
-     * when `ha_heartbeat_datastore_policy` is set
+     * when `haHeartbeatDatastorePolicy` is set
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      */
     readonly haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -743,9 +743,9 @@ export interface ComputeClusterState {
     readonly haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
@@ -817,7 +817,7 @@ export interface ComputeClusterState {
      * The configured remediation
      * for moderately degraded hosts. Can be one of `MaintenanceMode` or
      * `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-     * `proactive_ha_severe_remediation` is set
+     * `proactiveHaSevereRemediation` is set
      * to `QuarantineMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
@@ -832,7 +832,7 @@ export interface ComputeClusterState {
      * The configured remediation for
      * severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
      * Note that this cannot be set to `QuarantineMode` when
-     * `proactive_ha_moderate_remediation` is
+     * `proactiveHaModerateRemediation` is
      * set to `MaintenanceMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
@@ -872,7 +872,7 @@ export interface ComputeClusterArgs {
     readonly dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for DRS in this cluster.
-     * Requires `drs_enabled` to be `true` in order to be effective.
+     * Requires `drsEnabled` to be `true` in order to be effective.
      * Default: `false`.
      */
     readonly dpmEnabled?: pulumi.Input<boolean>;
@@ -958,7 +958,7 @@ export interface ComputeClusterArgs {
      * 
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
-     * `ha_admission_control_host_failure_tolerance`
+     * `haAdmissionControlHostFailureTolerance`
      * setting from the total amount of resources in the cluster. Disable to supply
      * user-defined values. Default: `true`.
      * <sup>\*</sup>
@@ -1016,7 +1016,7 @@ export interface ComputeClusterArgs {
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
-     * `ha_datastore_apd_response`. Default: `3`
+     * `haDatastoreApdResponse`. Default: `3`
      * minutes. <sup>\*</sup>
      */
     readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
@@ -1036,7 +1036,7 @@ export interface ComputeClusterArgs {
     /**
      * The list of managed object IDs for
      * preferred datastores to use for HA heartbeating. This setting is only useful
-     * when `ha_heartbeat_datastore_policy` is set
+     * when `haHeartbeatDatastorePolicy` is set
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      */
     readonly haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1085,9 +1085,9 @@ export interface ComputeClusterArgs {
     readonly haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
-     * which `ha_vm_maximum_resets` can operate. When this
+     * which `haVmMaximumResets` can operate. When this
      * window expires, no more resets are attempted regardless of the setting
-     * configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
+     * configured in `haVmMaximumResets`. `-1` means no window, meaning an
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
@@ -1159,7 +1159,7 @@ export interface ComputeClusterArgs {
      * The configured remediation
      * for moderately degraded hosts. Can be one of `MaintenanceMode` or
      * `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
-     * `proactive_ha_severe_remediation` is set
+     * `proactiveHaSevereRemediation` is set
      * to `QuarantineMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
@@ -1174,7 +1174,7 @@ export interface ComputeClusterArgs {
      * The configured remediation for
      * severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
      * Note that this cannot be set to `QuarantineMode` when
-     * `proactive_ha_moderate_remediation` is
+     * `proactiveHaModerateRemediation` is
      * set to `MaintenanceMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */

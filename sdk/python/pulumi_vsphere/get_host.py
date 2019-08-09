@@ -32,18 +32,20 @@ class GetHostResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetHostResult(GetHostResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetHostResult(
+            datacenter_id=self.datacenter_id,
+            name=self.name,
+            resource_pool_id=self.resource_pool_id,
+            id=self.id)
 
 def get_host(datacenter_id=None,name=None,opts=None):
     """
-    The `vsphere_host` data source can be used to discover the ID of a vSphere
+    The `.getHost` data source can be used to discover the ID of a vSphere
     host. This can then be used with resources or data sources that require a host
     managed object reference ID.
 
@@ -59,7 +61,7 @@ def get_host(datacenter_id=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__, opts=opts).value
 
-    return GetHostResult(
+    return AwaitableGetHostResult(
         datacenter_id=__ret__.get('datacenterId'),
         name=__ret__.get('name'),
         resource_pool_id=__ret__.get('resourcePoolId'),

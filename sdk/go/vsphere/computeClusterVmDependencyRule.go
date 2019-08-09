@@ -8,10 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_compute_cluster_vm_dependency_rule` resource can be used to manage
+// The `.ComputeClusterVmDependencyRule` resource can be used to manage
 // VM dependency rules in a cluster, either created by the
-// [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
-// by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+// [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+// by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
 // 
 // [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
 // [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
@@ -19,7 +19,7 @@ import (
 // A virtual machine dependency rule applies to vSphere HA, and allows
 // user-defined startup orders for virtual machines in the case of host failure.
 // Virtual machines are supplied via groups, which can be managed via the
-// [`vsphere_compute_cluster_vm_group`][tf-vsphere-cluster-vm-group-resource]
+// [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
 // resource.
 // 
 // [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
@@ -106,7 +106,7 @@ func (r *ComputeClusterVmDependencyRule) ComputeClusterId() *pulumi.StringOutput
 
 // The name of the VM group that this
 // rule depends on. The VMs defined in the group specified by
-// `vm_group_name` will not be started until the VMs in this
+// `vmGroupName` will not be started until the VMs in this
 // group are started.
 func (r *ComputeClusterVmDependencyRule) DependencyVmGroupName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["dependencyVmGroupName"])
@@ -132,7 +132,7 @@ func (r *ComputeClusterVmDependencyRule) Name() *pulumi.StringOutput {
 // The name of the VM group that is the subject of
 // this rule. The VMs defined in this group will not be started until the VMs in
 // the group specified by
-// `dependency_vm_group_name` are started.
+// `dependencyVmGroupName` are started.
 func (r *ComputeClusterVmDependencyRule) VmGroupName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["vmGroupName"])
 }
@@ -145,7 +145,7 @@ type ComputeClusterVmDependencyRuleState struct {
 	ComputeClusterId interface{}
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
-	// `vm_group_name` will not be started until the VMs in this
+	// `vmGroupName` will not be started until the VMs in this
 	// group are started.
 	DependencyVmGroupName interface{}
 	// Enable this rule in the cluster. Default: `true`.
@@ -159,7 +159,7 @@ type ComputeClusterVmDependencyRuleState struct {
 	// The name of the VM group that is the subject of
 	// this rule. The VMs defined in this group will not be started until the VMs in
 	// the group specified by
-	// `dependency_vm_group_name` are started.
+	// `dependencyVmGroupName` are started.
 	VmGroupName interface{}
 }
 
@@ -171,7 +171,7 @@ type ComputeClusterVmDependencyRuleArgs struct {
 	ComputeClusterId interface{}
 	// The name of the VM group that this
 	// rule depends on. The VMs defined in the group specified by
-	// `vm_group_name` will not be started until the VMs in this
+	// `vmGroupName` will not be started until the VMs in this
 	// group are started.
 	DependencyVmGroupName interface{}
 	// Enable this rule in the cluster. Default: `true`.
@@ -185,6 +185,6 @@ type ComputeClusterVmDependencyRuleArgs struct {
 	// The name of the VM group that is the subject of
 	// this rule. The VMs defined in this group will not be started until the VMs in
 	// the group specified by
-	// `dependency_vm_group_name` are started.
+	// `dependencyVmGroupName` are started.
 	VmGroupName interface{}
 }

@@ -138,12 +138,12 @@ class DistributedPortGroup(pulumi.CustomResource):
     on this port group to be overridden on an individual port.
     """
     vlan_ranges: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_distributed_port_group` resource can be used to manage vSphere
+        The `.DistributedPortGroup` resource can be used to manage vSphere
         distributed virtual port groups. These port groups are connected to distributed
         virtual switches, which can be managed by the
-        [`vsphere_distributed_virtual_switch`][distributed-virtual-switch] resource.
+        [`.DistributedVirtualSwitch`][distributed-virtual-switch] resource.
         
         Distributed port groups can be used as networks for virtual machines, allowing
         VMs to use the networking supplied by a distributed virtual switch (DVS), with
@@ -214,123 +214,179 @@ class DistributedPortGroup(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['active_uplinks'] = active_uplinks
-
-        __props__['allow_forged_transmits'] = allow_forged_transmits
-
-        __props__['allow_mac_changes'] = allow_mac_changes
-
-        __props__['allow_promiscuous'] = allow_promiscuous
-
-        __props__['auto_expand'] = auto_expand
-
-        __props__['block_all_ports'] = block_all_ports
-
-        __props__['block_override_allowed'] = block_override_allowed
-
-        __props__['check_beacon'] = check_beacon
-
-        __props__['custom_attributes'] = custom_attributes
-
-        __props__['description'] = description
-
-        __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
-
-        if distributed_virtual_switch_uuid is None:
-            raise TypeError("Missing required property 'distributed_virtual_switch_uuid'")
-        __props__['distributed_virtual_switch_uuid'] = distributed_virtual_switch_uuid
-
-        __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
-
-        __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
-
-        __props__['egress_shaping_enabled'] = egress_shaping_enabled
-
-        __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
-
-        __props__['failback'] = failback
-
-        __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
-
-        __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
-
-        __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
-
-        __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
-
-        __props__['lacp_enabled'] = lacp_enabled
-
-        __props__['lacp_mode'] = lacp_mode
-
-        __props__['live_port_moving_allowed'] = live_port_moving_allowed
-
-        __props__['name'] = name
-
-        __props__['netflow_enabled'] = netflow_enabled
-
-        __props__['netflow_override_allowed'] = netflow_override_allowed
-
-        __props__['network_resource_pool_key'] = network_resource_pool_key
-
-        __props__['network_resource_pool_override_allowed'] = network_resource_pool_override_allowed
-
-        __props__['notify_switches'] = notify_switches
-
-        __props__['number_of_ports'] = number_of_ports
-
-        __props__['port_config_reset_at_disconnect'] = port_config_reset_at_disconnect
-
-        __props__['port_name_format'] = port_name_format
-
-        __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
-
-        __props__['security_policy_override_allowed'] = security_policy_override_allowed
-
-        __props__['shaping_override_allowed'] = shaping_override_allowed
-
-        __props__['standby_uplinks'] = standby_uplinks
-
-        __props__['tags'] = tags
-
-        __props__['teaming_policy'] = teaming_policy
-
-        __props__['traffic_filter_override_allowed'] = traffic_filter_override_allowed
-
-        __props__['tx_uplink'] = tx_uplink
-
-        __props__['type'] = type
-
-        __props__['uplink_teaming_override_allowed'] = uplink_teaming_override_allowed
-
-        __props__['vlan_id'] = vlan_id
-
-        __props__['vlan_override_allowed'] = vlan_override_allowed
-
-        __props__['vlan_ranges'] = vlan_ranges
-
-        __props__['config_version'] = None
-        __props__['key'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['active_uplinks'] = active_uplinks
+            __props__['allow_forged_transmits'] = allow_forged_transmits
+            __props__['allow_mac_changes'] = allow_mac_changes
+            __props__['allow_promiscuous'] = allow_promiscuous
+            __props__['auto_expand'] = auto_expand
+            __props__['block_all_ports'] = block_all_ports
+            __props__['block_override_allowed'] = block_override_allowed
+            __props__['check_beacon'] = check_beacon
+            __props__['custom_attributes'] = custom_attributes
+            __props__['description'] = description
+            __props__['directpath_gen2_allowed'] = directpath_gen2_allowed
+            if distributed_virtual_switch_uuid is None:
+                raise TypeError("Missing required property 'distributed_virtual_switch_uuid'")
+            __props__['distributed_virtual_switch_uuid'] = distributed_virtual_switch_uuid
+            __props__['egress_shaping_average_bandwidth'] = egress_shaping_average_bandwidth
+            __props__['egress_shaping_burst_size'] = egress_shaping_burst_size
+            __props__['egress_shaping_enabled'] = egress_shaping_enabled
+            __props__['egress_shaping_peak_bandwidth'] = egress_shaping_peak_bandwidth
+            __props__['failback'] = failback
+            __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
+            __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
+            __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
+            __props__['ingress_shaping_peak_bandwidth'] = ingress_shaping_peak_bandwidth
+            __props__['lacp_enabled'] = lacp_enabled
+            __props__['lacp_mode'] = lacp_mode
+            __props__['live_port_moving_allowed'] = live_port_moving_allowed
+            __props__['name'] = name
+            __props__['netflow_enabled'] = netflow_enabled
+            __props__['netflow_override_allowed'] = netflow_override_allowed
+            __props__['network_resource_pool_key'] = network_resource_pool_key
+            __props__['network_resource_pool_override_allowed'] = network_resource_pool_override_allowed
+            __props__['notify_switches'] = notify_switches
+            __props__['number_of_ports'] = number_of_ports
+            __props__['port_config_reset_at_disconnect'] = port_config_reset_at_disconnect
+            __props__['port_name_format'] = port_name_format
+            __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
+            __props__['security_policy_override_allowed'] = security_policy_override_allowed
+            __props__['shaping_override_allowed'] = shaping_override_allowed
+            __props__['standby_uplinks'] = standby_uplinks
+            __props__['tags'] = tags
+            __props__['teaming_policy'] = teaming_policy
+            __props__['traffic_filter_override_allowed'] = traffic_filter_override_allowed
+            __props__['tx_uplink'] = tx_uplink
+            __props__['type'] = type
+            __props__['uplink_teaming_override_allowed'] = uplink_teaming_override_allowed
+            __props__['vlan_id'] = vlan_id
+            __props__['vlan_override_allowed'] = vlan_override_allowed
+            __props__['vlan_ranges'] = vlan_ranges
+            __props__['config_version'] = None
+            __props__['key'] = None
         super(DistributedPortGroup, __self__).__init__(
             'vsphere:index/distributedPortGroup:DistributedPortGroup',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, config_version=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, key=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None):
+        """
+        Get an existing DistributedPortGroup resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_expand: Allows the port group to create additional ports
+               past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        :param pulumi.Input[bool] block_override_allowed: Allow the [port shutdown
+               policy][port-shutdown-policy] to be overridden on an individual port.
+        :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
+               value string to set for port group. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+        :param pulumi.Input[str] description: An optional description for the port group.
+        :param pulumi.Input[str] distributed_virtual_switch_uuid: The ID of the DVS to add the
+               port group to. Forces a new resource if changed.
+        :param pulumi.Input[bool] live_port_moving_allowed: Allow a port in this port group to be
+               moved to another port group while it is connected.
+        :param pulumi.Input[str] name: The name of the port group.
+        :param pulumi.Input[bool] netflow_override_allowed: Allow the [Netflow
+               policy][netflow-policy] on this port group to be overridden on an individual
+               port.
+        :param pulumi.Input[str] network_resource_pool_key: The key of a network resource pool
+               to associate with this port group. The default is `-1`, which implies no
+               association.
+        :param pulumi.Input[bool] network_resource_pool_override_allowed: Allow the network
+               resource pool set on this port group to be overridden on an individual port.
+        :param pulumi.Input[float] number_of_ports: The number of ports available on this port
+               group. Cannot be decreased below the amount of used ports on the port group.
+        :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset a port's settings to the
+               settings defined on this port group policy when the port disconnects.
+        :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
+               the ports in this port group. See the `portNameFormat` attribute listed
+               [here][ext-vsphere-portname-format] for details on the format syntax.
+        :param pulumi.Input[bool] security_policy_override_allowed: Allow the [security policy
+               settings][sec-policy-settings] defined in this port group policy to be
+               overridden on an individual port.
+        :param pulumi.Input[bool] shaping_override_allowed: Allow the [traffic shaping
+               options][traffic-shaping-settings] on this port group policy to be overridden
+               on an individual port.
+        :param pulumi.Input[bool] traffic_filter_override_allowed: Allow any traffic filters on
+               this port group to be overridden on an individual port.
+        :param pulumi.Input[str] type: The port group type. Can be one of `earlyBinding` (static
+               binding) or `ephemeral`. Default: `earlyBinding`.
+        :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the [uplink teaming
+               options][uplink-teaming-settings] on this port group to be overridden on an
+               individual port.
+        :param pulumi.Input[bool] vlan_override_allowed: Allow the [VLAN settings][vlan-settings]
+               on this port group to be overridden on an individual port.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["active_uplinks"] = active_uplinks
+        __props__["allow_forged_transmits"] = allow_forged_transmits
+        __props__["allow_mac_changes"] = allow_mac_changes
+        __props__["allow_promiscuous"] = allow_promiscuous
+        __props__["auto_expand"] = auto_expand
+        __props__["block_all_ports"] = block_all_ports
+        __props__["block_override_allowed"] = block_override_allowed
+        __props__["check_beacon"] = check_beacon
+        __props__["config_version"] = config_version
+        __props__["custom_attributes"] = custom_attributes
+        __props__["description"] = description
+        __props__["directpath_gen2_allowed"] = directpath_gen2_allowed
+        __props__["distributed_virtual_switch_uuid"] = distributed_virtual_switch_uuid
+        __props__["egress_shaping_average_bandwidth"] = egress_shaping_average_bandwidth
+        __props__["egress_shaping_burst_size"] = egress_shaping_burst_size
+        __props__["egress_shaping_enabled"] = egress_shaping_enabled
+        __props__["egress_shaping_peak_bandwidth"] = egress_shaping_peak_bandwidth
+        __props__["failback"] = failback
+        __props__["ingress_shaping_average_bandwidth"] = ingress_shaping_average_bandwidth
+        __props__["ingress_shaping_burst_size"] = ingress_shaping_burst_size
+        __props__["ingress_shaping_enabled"] = ingress_shaping_enabled
+        __props__["ingress_shaping_peak_bandwidth"] = ingress_shaping_peak_bandwidth
+        __props__["key"] = key
+        __props__["lacp_enabled"] = lacp_enabled
+        __props__["lacp_mode"] = lacp_mode
+        __props__["live_port_moving_allowed"] = live_port_moving_allowed
+        __props__["name"] = name
+        __props__["netflow_enabled"] = netflow_enabled
+        __props__["netflow_override_allowed"] = netflow_override_allowed
+        __props__["network_resource_pool_key"] = network_resource_pool_key
+        __props__["network_resource_pool_override_allowed"] = network_resource_pool_override_allowed
+        __props__["notify_switches"] = notify_switches
+        __props__["number_of_ports"] = number_of_ports
+        __props__["port_config_reset_at_disconnect"] = port_config_reset_at_disconnect
+        __props__["port_name_format"] = port_name_format
+        __props__["port_private_secondary_vlan_id"] = port_private_secondary_vlan_id
+        __props__["security_policy_override_allowed"] = security_policy_override_allowed
+        __props__["shaping_override_allowed"] = shaping_override_allowed
+        __props__["standby_uplinks"] = standby_uplinks
+        __props__["tags"] = tags
+        __props__["teaming_policy"] = teaming_policy
+        __props__["traffic_filter_override_allowed"] = traffic_filter_override_allowed
+        __props__["tx_uplink"] = tx_uplink
+        __props__["type"] = type
+        __props__["uplink_teaming_override_allowed"] = uplink_teaming_override_allowed
+        __props__["vlan_id"] = vlan_id
+        __props__["vlan_override_allowed"] = vlan_override_allowed
+        __props__["vlan_ranges"] = vlan_ranges
+        return DistributedPortGroup(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

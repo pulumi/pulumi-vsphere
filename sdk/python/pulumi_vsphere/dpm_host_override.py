@@ -27,9 +27,9 @@ class DpmHostOverride(pulumi.CustomResource):
     `false`.
     """
     host_system_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, dpm_automation_level=None, dpm_enabled=None, host_system_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, dpm_automation_level=None, dpm_enabled=None, host_system_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `vsphere_dpm_host_override` resource can be used to add a DPM override to a
+        The `.DpmHostOverride` resource can be used to add a DPM override to a
         cluster for a particular host. This allows you to control the power management
         settings for individual hosts in the cluster while leaving any unspecified ones
         at the default power management settings.
@@ -63,38 +63,58 @@ class DpmHostOverride(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if compute_cluster_id is None:
-            raise TypeError("Missing required property 'compute_cluster_id'")
-        __props__['compute_cluster_id'] = compute_cluster_id
-
-        __props__['dpm_automation_level'] = dpm_automation_level
-
-        __props__['dpm_enabled'] = dpm_enabled
-
-        if host_system_id is None:
-            raise TypeError("Missing required property 'host_system_id'")
-        __props__['host_system_id'] = host_system_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if compute_cluster_id is None:
+                raise TypeError("Missing required property 'compute_cluster_id'")
+            __props__['compute_cluster_id'] = compute_cluster_id
+            __props__['dpm_automation_level'] = dpm_automation_level
+            __props__['dpm_enabled'] = dpm_enabled
+            if host_system_id is None:
+                raise TypeError("Missing required property 'host_system_id'")
+            __props__['host_system_id'] = host_system_id
         super(DpmHostOverride, __self__).__init__(
             'vsphere:index/dpmHostOverride:DpmHostOverride',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, compute_cluster_id=None, dpm_automation_level=None, dpm_enabled=None, host_system_id=None):
+        """
+        Get an existing DpmHostOverride resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
+               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[str] dpm_automation_level: The automation level for host power
+               operations on this host. Can be one of `manual` or `automated`. Default:
+               `manual`.
+        :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
+               `false`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/dpm_host_override.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["compute_cluster_id"] = compute_cluster_id
+        __props__["dpm_automation_level"] = dpm_automation_level
+        __props__["dpm_enabled"] = dpm_enabled
+        __props__["host_system_id"] = host_system_id
+        return DpmHostOverride(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

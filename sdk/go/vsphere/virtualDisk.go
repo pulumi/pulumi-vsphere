@@ -8,8 +8,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_virtual_disk` resource can be used to create virtual disks outside
-// of any given [`vsphere_virtual_machine`][docs-vsphere-virtual-machine]
+// The `.VirtualDisk` resource can be used to create virtual disks outside
+// of any given [`.VirtualMachine`][docs-vsphere-virtual-machine]
 // resource. These disks can be attached to a virtual machine by creating a disk
 // block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
 // 
@@ -96,7 +96,7 @@ func (r *VirtualDisk) AdapterType() *pulumi.StringOutput {
 }
 
 // Tells the resource to create any
-// directories that are a part of the `vmdk_path` parameter if they are missing.
+// directories that are a part of the `vmdkPath` parameter if they are missing.
 // Default: `false`.
 func (r *VirtualDisk) CreateDirectories() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["createDirectories"])
@@ -140,7 +140,7 @@ type VirtualDiskState struct {
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	AdapterType interface{}
 	// Tells the resource to create any
-	// directories that are a part of the `vmdk_path` parameter if they are missing.
+	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
 	CreateDirectories interface{}
 	// The name of the datacenter in which to create the
@@ -168,7 +168,7 @@ type VirtualDiskArgs struct {
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	AdapterType interface{}
 	// Tells the resource to create any
-	// directories that are a part of the `vmdk_path` parameter if they are missing.
+	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
 	CreateDirectories interface{}
 	// The name of the datacenter in which to create the

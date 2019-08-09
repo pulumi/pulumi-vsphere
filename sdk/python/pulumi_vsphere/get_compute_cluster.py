@@ -28,14 +28,16 @@ class GetComputeClusterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetComputeClusterResult(GetComputeClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetComputeClusterResult(
+            datacenter_id=self.datacenter_id,
+            name=self.name,
+            resource_pool_id=self.resource_pool_id,
+            id=self.id)
 
 def get_compute_cluster(datacenter_id=None,name=None,opts=None):
     """
@@ -51,7 +53,7 @@ def get_compute_cluster(datacenter_id=None,name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getComputeCluster:getComputeCluster', __args__, opts=opts).value
 
-    return GetComputeClusterResult(
+    return AwaitableGetComputeClusterResult(
         datacenter_id=__ret__.get('datacenterId'),
         name=__ret__.get('name'),
         resource_pool_id=__ret__.get('resourcePoolId'),

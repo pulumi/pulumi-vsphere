@@ -8,10 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_host_virtual_switch` resource can be used to manage vSphere
+// The `.HostVirtualSwitch` resource can be used to manage vSphere
 // standard switches on an ESXi host. These switches can be used as a backing for
 // standard port groups, which can be managed by the
-// [`vsphere_host_port_group`][host-port-group] resource.
+// [`.HostPortGroup`][host-port-group] resource.
 // 
 // For an overview on vSphere networking concepts, see [this
 // page][ref-vsphere-net-concepts].
@@ -164,14 +164,14 @@ func (r *HostVirtualSwitch) AllowPromiscuous() *pulumi.BoolOutput {
 }
 
 // The interval, in seconds, that a NIC beacon
-// packet is sent out. This can be used with `check_beacon` to
+// packet is sent out. This can be used with `checkBeacon` to
 // offer link failure capability beyond link status only. Default: `1`.
 func (r *HostVirtualSwitch) BeaconInterval() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["beaconInterval"])
 }
 
 // Enable beacon probing - this requires that the
-// `beacon_interval` option has been set in the bridge
+// `beaconInterval` option has been set in the bridge
 // options. If this is set to `false`, only link status is used to check for
 // failed NICs.  Default: `false`.
 func (r *HostVirtualSwitch) CheckBeacon() *pulumi.BoolOutput {
@@ -264,8 +264,8 @@ func (r *HostVirtualSwitch) StandbyNics() *pulumi.ArrayOutput {
 }
 
 // The network adapter teaming policy. Can be one
-// of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-// `failover_explicit`. Default: `loadbalance_srcid`.
+// of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+// `failoverExplicit`. Default: `loadbalanceSrcid`.
 func (r *HostVirtualSwitch) TeamingPolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["teamingPolicy"])
 }
@@ -287,11 +287,11 @@ type HostVirtualSwitchState struct {
 	// `false`.
 	AllowPromiscuous interface{}
 	// The interval, in seconds, that a NIC beacon
-	// packet is sent out. This can be used with `check_beacon` to
+	// packet is sent out. This can be used with `checkBeacon` to
 	// offer link failure capability beyond link status only. Default: `1`.
 	BeaconInterval interface{}
 	// Enable beacon probing - this requires that the
-	// `beacon_interval` option has been set in the bridge
+	// `beaconInterval` option has been set in the bridge
 	// options. If this is set to `false`, only link status is used to check for
 	// failed NICs.  Default: `false`.
 	CheckBeacon interface{}
@@ -339,8 +339,8 @@ type HostVirtualSwitchState struct {
 	// failover.
 	StandbyNics interface{}
 	// The network adapter teaming policy. Can be one
-	// of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-	// `failover_explicit`. Default: `loadbalance_srcid`.
+	// of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+	// `failoverExplicit`. Default: `loadbalanceSrcid`.
 	TeamingPolicy interface{}
 }
 
@@ -361,11 +361,11 @@ type HostVirtualSwitchArgs struct {
 	// `false`.
 	AllowPromiscuous interface{}
 	// The interval, in seconds, that a NIC beacon
-	// packet is sent out. This can be used with `check_beacon` to
+	// packet is sent out. This can be used with `checkBeacon` to
 	// offer link failure capability beyond link status only. Default: `1`.
 	BeaconInterval interface{}
 	// Enable beacon probing - this requires that the
-	// `beacon_interval` option has been set in the bridge
+	// `beaconInterval` option has been set in the bridge
 	// options. If this is set to `false`, only link status is used to check for
 	// failed NICs.  Default: `false`.
 	CheckBeacon interface{}
@@ -413,7 +413,7 @@ type HostVirtualSwitchArgs struct {
 	// failover.
 	StandbyNics interface{}
 	// The network adapter teaming policy. Can be one
-	// of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-	// `failover_explicit`. Default: `loadbalance_srcid`.
+	// of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+	// `failoverExplicit`. Default: `loadbalanceSrcid`.
 	TeamingPolicy interface{}
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_drs_vm_override` resource can be used to add a DRS override to a
+ * The `vsphere..DrsVmOverride` resource can be used to add a DRS override to a
  * cluster for a specific virtual machine. With this resource, one can enable or
  * disable DRS and control the automation level for a single virtual machine
  * without affecting the rest of the cluster.
@@ -23,14 +23,14 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates a virtual machine in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machine in the cluster looked up by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source, but also
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source, but also
  * pinning the VM to a host defined by the
- * [`vsphere_host`][tf-vsphere-host-data-source] data source, which is assumed to
+ * [`vsphere..getHost`][tf-vsphere-host-data-source] data source, which is assumed to
  * be a host within the cluster. To ensure that the VM stays on this host and does
  * not need to be migrated back at any point in time, an override is entered using
- * the `vsphere_drs_vm_override` resource that disables DRS for this virtual
+ * the `vsphere..DrsVmOverride` resource that disables DRS for this virtual
  * machine, ensuring that it does not move.
  * 
  * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const drsVmOverride = new vsphere.DrsVmOverride("drs_vm_override", {
+ * const drsVmOverride = new vsphere.DrsVmOverride("drsVmOverride", {
  *     computeClusterId: cluster.id,
  *     drsEnabled: false,
  *     virtualMachineId: vm.id,

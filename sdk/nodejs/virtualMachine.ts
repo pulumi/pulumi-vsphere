@@ -36,7 +36,7 @@ export class VirtualMachine extends pulumi.CustomResource {
 
     /**
      * The guest name for the operating system
-     * when `guest_id` is `other` or `other-64`.
+     * when `guestId` is `other` or `other-64`.
      */
     public readonly alternateGuestName!: pulumi.Output<string | undefined>;
     /**
@@ -51,13 +51,13 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly bootDelay!: pulumi.Output<number | undefined>;
     /**
      * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
      * Default: `10000` (10 seconds).
      */
     public readonly bootRetryDelay!: pulumi.Output<number | undefined>;
     /**
      * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `boot_retry_delay`.
+     * fails to boot will try again after the delay defined in `bootRetryDelay`.
      * Default: `false`.
      */
     public readonly bootRetryEnabled!: pulumi.Output<boolean | undefined>;
@@ -107,7 +107,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly cpuReservation!: pulumi.Output<number | undefined>;
     /**
      * The number of CPU shares allocated to the
-     * virtual machine when the `cpu_share_level` is `custom`.
+     * virtual machine when the `cpuShareLevel` is `custom`.
      */
     public readonly cpuShareCount!: pulumi.Output<number>;
     /**
@@ -132,7 +132,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
      * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `client_device`.
+     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
@@ -184,7 +184,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * If a guest shutdown failed or timed out while
      * updating or destroying (see
-     * `shutdown_wait_timeout`), force the power-off of
+     * `shutdownWaitTimeout`), force the power-off of
      * the virtual machine. Default: `true`.
      */
     public readonly forcePowerOff!: pulumi.Output<boolean | undefined>;
@@ -195,7 +195,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly guestId!: pulumi.Output<string | undefined>;
     /**
      * The current list of IP addresses on this machine,
-     * including the value of `default_ip_address`. If VMware tools is not running
+     * including the value of `defaultIpAddress`. If VMware tools is not running
      * on the virtual machine, or if the VM is powered off, this list will be empty.
      * * `moid`: The [managed object reference ID][docs-about-morefs] of the created
      * virtual machine.
@@ -205,7 +205,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the
      * section on virtual machine migration for
-     * details on changing this value. If a `host_system_id` is not supplied,
+     * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
      * according to any defaults or DRS policies in place.
      */
@@ -261,7 +261,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly memoryReservation!: pulumi.Output<number | undefined>;
     /**
      * The number of memory shares allocated to
-     * the virtual machine when the `memory_share_level` is `custom`.
+     * the virtual machine when the `memoryShareLevel` is `custom`.
      */
     public readonly memoryShareCount!: pulumi.Output<number>;
     /**
@@ -300,7 +300,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
-     * `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     public readonly numCoresPerSocket!: pulumi.Output<number | undefined>;
     /**
@@ -364,7 +364,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The amount of time, in minutes, to wait
      * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `force_power_off` is set to true, the VM will be force powered-off
+     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
      * after this timeout, otherwise an error is returned. Default: 3 minutes.
      */
     public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
@@ -417,7 +417,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should
      * only be used if your version of VMware Tools does not allow the
-     * `wait_for_guest_net_timeout` waiter to be
+     * `waitForGuestNetTimeout` waiter to be
      * used. A value less than 1 disables the waiter. Default: 0.
      */
     public readonly waitForGuestIpTimeout!: pulumi.Output<number | undefined>;
@@ -426,7 +426,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
      * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `wait_for_guest_ip_timeout`
+     * ignored if the `waitForGuestIpTimeout`
      * waiter is used. Default: `true`.
      */
     public readonly waitForGuestNetRoutable!: pulumi.Output<boolean | undefined>;
@@ -435,7 +435,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * wait for an available IP address on this virtual machine's NICs. Older
      * versions of VMware Tools do not populate this property. In those cases, this
      * waiter can be disabled and the
-     * `wait_for_guest_ip_timeout` waiter can be used
+     * `waitForGuestIpTimeout` waiter can be used
      * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     public readonly waitForGuestNetTimeout!: pulumi.Output<number | undefined>;
@@ -618,7 +618,7 @@ export class VirtualMachine extends pulumi.CustomResource {
 export interface VirtualMachineState {
     /**
      * The guest name for the operating system
-     * when `guest_id` is `other` or `other-64`.
+     * when `guestId` is `other` or `other-64`.
      */
     readonly alternateGuestName?: pulumi.Input<string>;
     /**
@@ -633,13 +633,13 @@ export interface VirtualMachineState {
     readonly bootDelay?: pulumi.Input<number>;
     /**
      * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
      * Default: `10000` (10 seconds).
      */
     readonly bootRetryDelay?: pulumi.Input<number>;
     /**
      * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `boot_retry_delay`.
+     * fails to boot will try again after the delay defined in `bootRetryDelay`.
      * Default: `false`.
      */
     readonly bootRetryEnabled?: pulumi.Input<boolean>;
@@ -689,7 +689,7 @@ export interface VirtualMachineState {
     readonly cpuReservation?: pulumi.Input<number>;
     /**
      * The number of CPU shares allocated to the
-     * virtual machine when the `cpu_share_level` is `custom`.
+     * virtual machine when the `cpuShareLevel` is `custom`.
      */
     readonly cpuShareCount?: pulumi.Input<number>;
     /**
@@ -714,7 +714,7 @@ export interface VirtualMachineState {
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
      * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `client_device`.
+     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     readonly datastoreId?: pulumi.Input<string>;
     /**
@@ -766,7 +766,7 @@ export interface VirtualMachineState {
     /**
      * If a guest shutdown failed or timed out while
      * updating or destroying (see
-     * `shutdown_wait_timeout`), force the power-off of
+     * `shutdownWaitTimeout`), force the power-off of
      * the virtual machine. Default: `true`.
      */
     readonly forcePowerOff?: pulumi.Input<boolean>;
@@ -777,7 +777,7 @@ export interface VirtualMachineState {
     readonly guestId?: pulumi.Input<string>;
     /**
      * The current list of IP addresses on this machine,
-     * including the value of `default_ip_address`. If VMware tools is not running
+     * including the value of `defaultIpAddress`. If VMware tools is not running
      * on the virtual machine, or if the VM is powered off, this list will be empty.
      * * `moid`: The [managed object reference ID][docs-about-morefs] of the created
      * virtual machine.
@@ -787,7 +787,7 @@ export interface VirtualMachineState {
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the
      * section on virtual machine migration for
-     * details on changing this value. If a `host_system_id` is not supplied,
+     * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
      * according to any defaults or DRS policies in place.
      */
@@ -843,7 +843,7 @@ export interface VirtualMachineState {
     readonly memoryReservation?: pulumi.Input<number>;
     /**
      * The number of memory shares allocated to
-     * the virtual machine when the `memory_share_level` is `custom`.
+     * the virtual machine when the `memoryShareLevel` is `custom`.
      */
     readonly memoryShareCount?: pulumi.Input<number>;
     /**
@@ -882,7 +882,7 @@ export interface VirtualMachineState {
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
-     * `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     readonly numCoresPerSocket?: pulumi.Input<number>;
     /**
@@ -946,7 +946,7 @@ export interface VirtualMachineState {
     /**
      * The amount of time, in minutes, to wait
      * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `force_power_off` is set to true, the VM will be force powered-off
+     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
      * after this timeout, otherwise an error is returned. Default: 3 minutes.
      */
     readonly shutdownWaitTimeout?: pulumi.Input<number>;
@@ -999,7 +999,7 @@ export interface VirtualMachineState {
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should
      * only be used if your version of VMware Tools does not allow the
-     * `wait_for_guest_net_timeout` waiter to be
+     * `waitForGuestNetTimeout` waiter to be
      * used. A value less than 1 disables the waiter. Default: 0.
      */
     readonly waitForGuestIpTimeout?: pulumi.Input<number>;
@@ -1008,7 +1008,7 @@ export interface VirtualMachineState {
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
      * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `wait_for_guest_ip_timeout`
+     * ignored if the `waitForGuestIpTimeout`
      * waiter is used. Default: `true`.
      */
     readonly waitForGuestNetRoutable?: pulumi.Input<boolean>;
@@ -1017,7 +1017,7 @@ export interface VirtualMachineState {
      * wait for an available IP address on this virtual machine's NICs. Older
      * versions of VMware Tools do not populate this property. In those cases, this
      * waiter can be disabled and the
-     * `wait_for_guest_ip_timeout` waiter can be used
+     * `waitForGuestIpTimeout` waiter can be used
      * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     readonly waitForGuestNetTimeout?: pulumi.Input<number>;
@@ -1029,7 +1029,7 @@ export interface VirtualMachineState {
 export interface VirtualMachineArgs {
     /**
      * The guest name for the operating system
-     * when `guest_id` is `other` or `other-64`.
+     * when `guestId` is `other` or `other-64`.
      */
     readonly alternateGuestName?: pulumi.Input<string>;
     /**
@@ -1044,13 +1044,13 @@ export interface VirtualMachineArgs {
     readonly bootDelay?: pulumi.Input<number>;
     /**
      * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
      * Default: `10000` (10 seconds).
      */
     readonly bootRetryDelay?: pulumi.Input<number>;
     /**
      * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `boot_retry_delay`.
+     * fails to boot will try again after the delay defined in `bootRetryDelay`.
      * Default: `false`.
      */
     readonly bootRetryEnabled?: pulumi.Input<boolean>;
@@ -1094,7 +1094,7 @@ export interface VirtualMachineArgs {
     readonly cpuReservation?: pulumi.Input<number>;
     /**
      * The number of CPU shares allocated to the
-     * virtual machine when the `cpu_share_level` is `custom`.
+     * virtual machine when the `cpuShareLevel` is `custom`.
      */
     readonly cpuShareCount?: pulumi.Input<number>;
     /**
@@ -1119,7 +1119,7 @@ export interface VirtualMachineArgs {
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
      * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `client_device`.
+     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     readonly datastoreId?: pulumi.Input<string>;
     /**
@@ -1167,7 +1167,7 @@ export interface VirtualMachineArgs {
     /**
      * If a guest shutdown failed or timed out while
      * updating or destroying (see
-     * `shutdown_wait_timeout`), force the power-off of
+     * `shutdownWaitTimeout`), force the power-off of
      * the virtual machine. Default: `true`.
      */
     readonly forcePowerOff?: pulumi.Input<boolean>;
@@ -1180,7 +1180,7 @@ export interface VirtualMachineArgs {
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the
      * section on virtual machine migration for
-     * details on changing this value. If a `host_system_id` is not supplied,
+     * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
      * according to any defaults or DRS policies in place.
      */
@@ -1229,7 +1229,7 @@ export interface VirtualMachineArgs {
     readonly memoryReservation?: pulumi.Input<number>;
     /**
      * The number of memory shares allocated to
-     * the virtual machine when the `memory_share_level` is `custom`.
+     * the virtual machine when the `memoryShareLevel` is `custom`.
      */
     readonly memoryShareCount?: pulumi.Input<number>;
     /**
@@ -1264,7 +1264,7 @@ export interface VirtualMachineArgs {
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
-     * `num_cpus` must be evenly divisible by this value. Default: `1`.
+     * `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     readonly numCoresPerSocket?: pulumi.Input<number>;
     /**
@@ -1324,7 +1324,7 @@ export interface VirtualMachineArgs {
     /**
      * The amount of time, in minutes, to wait
      * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `force_power_off` is set to true, the VM will be force powered-off
+     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
      * after this timeout, otherwise an error is returned. Default: 3 minutes.
      */
     readonly shutdownWaitTimeout?: pulumi.Input<number>;
@@ -1356,7 +1356,7 @@ export interface VirtualMachineArgs {
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should
      * only be used if your version of VMware Tools does not allow the
-     * `wait_for_guest_net_timeout` waiter to be
+     * `waitForGuestNetTimeout` waiter to be
      * used. A value less than 1 disables the waiter. Default: 0.
      */
     readonly waitForGuestIpTimeout?: pulumi.Input<number>;
@@ -1365,7 +1365,7 @@ export interface VirtualMachineArgs {
      * network waiter waits for a routable address. When `false`, the waiter does
      * not wait for a default gateway, nor are IP addresses checked against any
      * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `wait_for_guest_ip_timeout`
+     * ignored if the `waitForGuestIpTimeout`
      * waiter is used. Default: `true`.
      */
     readonly waitForGuestNetRoutable?: pulumi.Input<boolean>;
@@ -1374,7 +1374,7 @@ export interface VirtualMachineArgs {
      * wait for an available IP address on this virtual machine's NICs. Older
      * versions of VMware Tools do not populate this property. In those cases, this
      * waiter can be disabled and the
-     * `wait_for_guest_ip_timeout` waiter can be used
+     * `waitForGuestIpTimeout` waiter can be used
      * instead. A value less than 1 disables the waiter. Default: 5 minutes.
      */
     readonly waitForGuestNetTimeout?: pulumi.Input<number>;

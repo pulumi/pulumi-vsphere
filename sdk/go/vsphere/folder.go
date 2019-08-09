@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_folder` resource can be used to manage vSphere inventory folders.
+// The `.Folder` resource can be used to manage vSphere inventory folders.
 // The resource supports creating folders of the 5 major types - datacenter
 // folders, host and cluster folders, virtual machine folders, datastore folders,
 // and network folders.

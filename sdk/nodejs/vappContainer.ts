@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_vapp_container` resource can be used to create and manage
+ * The `vsphere..VappContainer` resource can be used to create and manage
  * vApps.
  * 
  * For more information on vSphere vApps, see [this
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  *     name: cluster,
  * }));
- * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ * const vappContainer = new vsphere.VappContainer("vappContainer", {
  *     parentResourcePoolId: computeCluster.id,
  * });
  * ```
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * ### Example with virtual machine
  * 
  * The below example builds off the basic example, but includes a virtual machine
- * in the new vApp container. To accomplish this, the `resource_pool_id` of the
+ * in the new vApp container. To accomplish this, the `resourcePoolId` of the
  * virtual machine is set to the `id` of the vApp container.
  * 
  * ```typescript
@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  *     name: "network1",
  * }));
- * const vappContainer = new vsphere.VappContainer("vapp_container", {
+ * const vappContainer = new vsphere.VappContainer("vappContainer", {
  *     parentResourcePoolId: computeCluster.id,
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
@@ -138,14 +138,14 @@ export class VappContainer extends pulumi.CustomResource {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
     public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      */
     public readonly cpuShares!: pulumi.Output<number>;
     /**
@@ -174,14 +174,14 @@ export class VappContainer extends pulumi.CustomResource {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
     public readonly memoryShareLevel!: pulumi.Output<string | undefined>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      */
     public readonly memoryShares!: pulumi.Output<number>;
     /**
@@ -292,14 +292,14 @@ export interface VappContainerState {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
     readonly cpuShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      */
     readonly cpuShares?: pulumi.Input<number>;
     /**
@@ -328,14 +328,14 @@ export interface VappContainerState {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
     readonly memoryShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      */
     readonly memoryShares?: pulumi.Input<number>;
     /**
@@ -388,14 +388,14 @@ export interface VappContainerArgs {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+     * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
     readonly cpuShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `cpu_share_level` must be `custom`.
+     * `cpuShareLevel` must be `custom`.
      */
     readonly cpuShares?: pulumi.Input<number>;
     /**
@@ -424,14 +424,14 @@ export interface VappContainerArgs {
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
      * values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-     * `low`, `normal`, or `high` are specified values in `memory_shares` will be
+     * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
     readonly memoryShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
-     * `memory_share_level` must be `custom`.
+     * `memoryShareLevel` must be `custom`.
      */
     readonly memoryShares?: pulumi.Input<number>;
     /**

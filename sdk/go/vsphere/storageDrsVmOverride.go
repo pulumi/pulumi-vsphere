@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_storage_drs_vm_override` resource can be used to add a Storage DRS
+// The `.StorageDrsVmOverride` resource can be used to add a Storage DRS
 // override to a datastore cluster for a specific virtual machine. With this
 // resource, one can enable or disable Storage DRS, and control the automation
 // level and disk affinity for a single virtual machine without affecting the rest

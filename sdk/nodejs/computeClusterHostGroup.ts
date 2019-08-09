@@ -5,16 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_compute_cluster_host_group` resource can be used to manage groups
+ * The `vsphere..ComputeClusterHostGroup` resource can be used to manage groups
  * of hosts in a cluster, either created by the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere_compute_cluster`][tf-vsphere-cluster-data-source] data source.
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
+ * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * This resource mainly serves as an input to the
- * [`vsphere_compute_cluster_vm_host_rule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resource - see the documentation for that resource for further details on how
  * to use host groups.
  * 
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * 
  * The example below is the exact same configuration as the
  * [example][tf-vsphere-cluster-resource-example] in the
- * [`vsphere_compute_cluster`][tf-vsphere-cluster-resource] resource, but in
+ * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
  * addition, it creates a host group with the same hosts that get put into the
  * cluster.
  * 
@@ -57,14 +57,14 @@ import * as utilities from "./utilities";
  *         datacenterId: dc.id,
  *         name: hosts[i],
  *     })))}
- * const computeCluster = new vsphere.ComputeCluster("compute_cluster", {
+ * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
  *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",
  *     drsEnabled: true,
  *     haEnabled: true,
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });
- * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("cluster_host_group", {
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("clusterHostGroup", {
  *     computeClusterId: computeCluster.id,
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });

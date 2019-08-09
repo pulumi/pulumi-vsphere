@@ -22,20 +22,20 @@ class GetDatacenterResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDatacenterResult(GetDatacenterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDatacenterResult(
+            name=self.name,
+            id=self.id)
 
 def get_datacenter(name=None,opts=None):
     """
-    The `vsphere_datacenter` data source can be used to discover the ID of a
+    The `.Datacenter` data source can be used to discover the ID of a
     vSphere datacenter. This can then be used with resources or data sources that
-    require a datacenter, such as the [`vsphere_host`][data-source-vsphere-host]
+    require a datacenter, such as the [`.getHost`][data-source-vsphere-host]
     data source.
     
     [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
@@ -51,6 +51,6 @@ def get_datacenter(name=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts).value
 
-    return GetDatacenterResult(
+    return AwaitableGetDatacenterResult(
         name=__ret__.get('name'),
         id=__ret__.get('id'))

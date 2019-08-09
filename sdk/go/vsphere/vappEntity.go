@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `vsphere_vapp_entity` resource can be used to describe the behavior of an
+// The `.VappEntity` resource can be used to describe the behavior of an
 // entity (virtual machine or sub-vApp container) in a vApp container.
 // 
 // For more information on vSphere vApps, see [this
@@ -150,7 +150,7 @@ func (r *VappEntity) TargetId() *pulumi.StringOutput {
 }
 
 // Determines if the VM should be marked as being
-// started when VMware Tools are ready instead of waiting for `start_delay`. This
+// started when VMware Tools are ready instead of waiting for `startDelay`. This
 // property has no effect for vApps. Default: false
 func (r *VappEntity) WaitForGuest() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["waitForGuest"])
@@ -186,7 +186,7 @@ type VappEntityState struct {
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId interface{}
 	// Determines if the VM should be marked as being
-	// started when VMware Tools are ready instead of waiting for `start_delay`. This
+	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
 	WaitForGuest interface{}
 }
@@ -221,7 +221,7 @@ type VappEntityArgs struct {
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId interface{}
 	// Determines if the VM should be marked as being
-	// started when VMware Tools are ready instead of waiting for `start_delay`. This
+	// started when VMware Tools are ready instead of waiting for `startDelay`. This
 	// property has no effect for vApps. Default: false
 	WaitForGuest interface{}
 }

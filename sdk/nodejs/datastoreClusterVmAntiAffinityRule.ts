@@ -5,10 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere_datastore_cluster_vm_anti_affinity_rule` resource can be used to
+ * The `vsphere..DatastoreClusterVmAntiAffinityRule` resource can be used to
  * manage VM anti-affinity rules in a datastore cluster, either created by the
- * [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
- * by the [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-data-source] data source.
+ * [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
+ * by the [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
  * 
  * [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
  * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
@@ -28,9 +28,9 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below creates two virtual machines in a cluster using the
- * [`vsphere_virtual_machine`][tf-vsphere-vm-resource] resource, creating the
+ * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
  * virtual machines in the datastore cluster looked up by the
- * [`vsphere_datastore_cluster`][tf-vsphere-datastore-cluster-data-source] data
+ * [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
  * source. It then creates an anti-affinity rule for these two virtual machines,
  * ensuring they will run on different datastores whenever possible.
  * 
@@ -72,7 +72,7 @@ import * as utilities from "./utilities";
  *         resourcePoolId: cluster.resourcePoolId,
  *     }));
  * }
- * const clusterVmAntiAffinityRule = new vsphere.DatastoreClusterVmAntiAffinityRule("cluster_vm_anti_affinity_rule", {
+ * const clusterVmAntiAffinityRule = new vsphere.DatastoreClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", {
  *     datastoreClusterId: datastoreCluster.id,
  *     virtualMachineIds: vm.map(v => v.id),
  * });
