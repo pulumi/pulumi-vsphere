@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = vsphere.getDatacenter({
  *     name: "dc1",
- * }));
- * const template = datacenter.apply(datacenter => vsphere.getVirtualMachine({
+ * });
+ * const template = vsphere.getVirtualMachine({
  *     datacenterId: datacenter.id,
  *     name: "test-vm-template",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.

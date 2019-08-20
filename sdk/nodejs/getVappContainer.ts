@@ -18,13 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = vsphere.getDatacenter({
  *     name: "dc1",
- * }));
- * const pool = datacenter.apply(datacenter => vsphere.getVappContainer({
+ * });
+ * const pool = vsphere.getVappContainer({
  *     datacenterId: datacenter.id,
  *     name: "vapp-container-1",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.

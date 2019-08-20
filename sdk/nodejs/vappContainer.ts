@@ -27,13 +27,13 @@ import * as utilities from "./utilities";
  * const cluster = config.get("cluster") || "cluster1";
  * const datacenter = config.get("datacenter") || "dc1";
  * 
- * const dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = vsphere.getDatacenter({
  *     name: datacenter,
- * }));
- * const computeCluster = dc.apply(dc => vsphere.getComputeCluster({
+ * });
+ * const computeCluster = vsphere.getComputeCluster({
  *     datacenterId: dc.id,
  *     name: cluster,
- * }));
+ * });
  * const vappContainer = new vsphere.VappContainer("vappContainer", {
  *     parentResourcePoolId: computeCluster.id,
  * });
@@ -53,21 +53,21 @@ import * as utilities from "./utilities";
  * const cluster = config.get("cluster") || "cluster1";
  * const datacenter = config.get("datacenter") || "dc1";
  * 
- * const dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = vsphere.getDatacenter({
  *     name: datacenter,
- * }));
- * const computeCluster = dc.apply(dc => vsphere.getComputeCluster({
+ * });
+ * const computeCluster = vsphere.getComputeCluster({
  *     datacenterId: dc.id,
  *     name: cluster,
- * }));
- * const datastore = dc.apply(dc => vsphere.getDatastore({
+ * });
+ * const datastore = vsphere.getDatastore({
  *     datacenterId: dc.id,
  *     name: "datastore1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
+ * });
+ * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
  *     name: "network1",
- * }));
+ * });
  * const vappContainer = new vsphere.VappContainer("vappContainer", {
  *     parentResourcePoolId: computeCluster.id,
  * });
