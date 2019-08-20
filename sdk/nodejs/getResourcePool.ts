@@ -18,13 +18,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = vsphere.getDatacenter({
  *     name: "dc1",
- * }));
- * const pool = datacenter.apply(datacenter => vsphere.getResourcePool({
+ * });
+ * const pool = vsphere.getResourcePool({
  *     datacenterId: datacenter.id,
  *     name: "resource-pool-1",
- * }));
+ * });
  * ```
  * 
  * ### Specifying the root resource pool for a standalone host

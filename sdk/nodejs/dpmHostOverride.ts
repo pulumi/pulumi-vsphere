@@ -46,16 +46,16 @@ import * as utilities from "./utilities";
  *     "esxi3",
  * ];
  * 
- * const dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = vsphere.getDatacenter({
  *     name: datacenter,
- * }));
- * const hostsHost: Output<vsphere.GETHOSTResult>[] = [];
+ * });
+ * const hostsHost: vsphere.GetHostResult[] = [];
  * for (let i = 0; i < hosts.length; i++) {
- *     hostsHost.push(vsphere.getHost);
- * %!(EXTRA string=dc.apply(dc => vsphere.getHost({
+ *     hostsHost.push(vsphere.getHost({
  *         datacenterId: dc.id,
  *         name: hosts[i],
- *     })))}
+ *     }));
+ * }
  * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
  *     datacenterId: dc.id,
  *     drsAutomationLevel: "fullyAutomated",

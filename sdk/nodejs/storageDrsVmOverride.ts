@@ -38,25 +38,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const dc = pulumi.output(vsphere.getDatacenter({
+ * const dc = vsphere.getDatacenter({
  *     name: "dc1",
- * }));
- * const memberDatastore = dc.apply(dc => vsphere.getDatastore({
+ * });
+ * const memberDatastore = vsphere.getDatastore({
  *     datacenterId: dc.id,
  *     name: "datastore-cluster1-member1",
- * }));
- * const datastoreCluster = dc.apply(dc => vsphere.getDatastoreCluster({
+ * });
+ * const datastoreCluster = vsphere.getDatastoreCluster({
  *     datacenterId: dc.id,
  *     name: "datastore-cluster1",
- * }));
- * const network = dc.apply(dc => vsphere.getNetwork({
+ * });
+ * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
  *     name: "public",
- * }));
- * const pool = dc.apply(dc => vsphere.getResourcePool({
+ * });
+ * const pool = vsphere.getResourcePool({
  *     datacenterId: dc.id,
  *     name: "cluster1/Resources",
- * }));
+ * });
  * const vm = new vsphere.VirtualMachine("vm", {
  *     datastoreId: memberDatastore.id,
  *     disks: [{
