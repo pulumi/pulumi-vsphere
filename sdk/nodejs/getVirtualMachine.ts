@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -91,7 +93,7 @@ export interface GetVirtualMachineResult {
      * Only the first number of controllers defined by `scsiControllerScanCount`
      * are scanned for disks. The sub-attributes are:
      */
-    readonly disks: { eagerlyScrub: boolean, size: number, thinProvisioned: boolean }[];
+    readonly disks: outputs.GetVirtualMachineDisk[];
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */

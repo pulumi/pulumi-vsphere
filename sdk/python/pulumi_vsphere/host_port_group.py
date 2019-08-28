@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class HostPortGroup(pulumi.CustomResource):
@@ -39,6 +40,10 @@ class HostPortGroup(pulumi.CustomResource):
     ports: pulumi.Output[dict]
     """
     A list of ports that currently exist and are used on this port group.
+    
+      * `key` (`str`) - The key for this port group as returned from the vSphere API.
+      * `macAddresses` (`list`)
+      * `type` (`str`)
     """
     shaping_average_bandwidth: pulumi.Output[float]
     shaping_burst_size: pulumi.Output[float]
@@ -137,6 +142,7 @@ class HostPortGroup(pulumi.CustomResource):
         """
         Get an existing HostPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,10 +161,16 @@ class HostPortGroup(pulumi.CustomResource):
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
+        
+        The **ports** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - The key for this port group as returned from the vSphere API.
+          * `macAddresses` (`pulumi.Input[list]`)
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["active_nics"] = active_nics

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDistributedVirtualSwitchResult:
@@ -51,6 +52,14 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     
     > **NOTE:** This data source requires vCenter and is not available on direct
     ESXi connections.
+    
+    :param str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the DVS is located in. This can be
+           omitted if the search path used in `name` is an absolute path. For default
+           datacenters, use the id attribute from an empty `.Datacenter` data
+           source.
+    :param str name: The name of the distributed virtual switch. This can be a
+           name or path.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
     """
@@ -59,7 +68,7 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts).value

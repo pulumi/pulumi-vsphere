@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDatastoreClusterResult:
@@ -48,6 +49,13 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
     [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    
+    :param str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the datastore cluster is located in.
+           This can be omitted if the search path used in `name` is an absolute path.
+           For default datacenters, use the id attribute from an empty
+           `.Datacenter` data source.
+    :param str name: The name or absolute path to the datastore cluster.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
     """
@@ -56,7 +64,7 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts).value

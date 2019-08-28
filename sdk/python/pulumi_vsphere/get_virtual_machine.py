@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetVirtualMachineResult:
@@ -113,6 +114,16 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
     reads the guest ID so that can be supplied as well.
     
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    
+    :param str datacenter_id: The [managed object reference
+           ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+           This can be omitted if the search path used in `name` is an absolute path.
+           For default datacenters, use the `id` attribute from an empty
+           `.Datacenter` data source.
+    :param str name: The name of the virtual machine. This can be a name or
+           path.
+    :param float scsi_controller_scan_count: The number of SCSI controllers to
+           scan for disk attributes and controller types on. Default: `1`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
     """
@@ -122,7 +133,7 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
     __args__['name'] = name
     __args__['scsiControllerScanCount'] = scsi_controller_scan_count
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts).value

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -163,7 +165,7 @@ export class HostPortGroup extends pulumi.CustomResource {
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    public /*out*/ readonly ports!: pulumi.Output<{ key: string, macAddresses: string[], type: string }>;
+    public /*out*/ readonly ports!: pulumi.Output<outputs.HostPortGroupPorts>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
@@ -331,7 +333,7 @@ export interface HostPortGroupState {
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    readonly ports?: pulumi.Input<{ key?: pulumi.Input<string>, macAddresses?: pulumi.Input<pulumi.Input<string>[]>, type?: pulumi.Input<string> }>;
+    readonly ports?: pulumi.Input<inputs.HostPortGroupPorts>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */

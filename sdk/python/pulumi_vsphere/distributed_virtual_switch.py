@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class DistributedVirtualSwitch(pulumi.CustomResource):
@@ -117,6 +118,11 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     """
     Use the `host` block to declare a host specification. The
     options are:
+    
+      * `devices` (`list`) - The list of NIC devices to map to uplinks on the DVS,
+        added in order they are specified.
+      * `host_system_id` (`str`) - The host system ID of the host to add to the
+        DVS.
     """
     ingress_shaping_average_bandwidth: pulumi.Output[float]
     """
@@ -314,6 +320,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
     `vlan_range` definitions are allowed, but they must not overlap. Example
     below:
+    
+      * `maxVlan` (`float`)
+      * `minVlan` (`float`)
     """
     vmotion_maximum_mbit: pulumi.Output[float]
     vmotion_reservation_mbit: pulumi.Output[float]
@@ -472,6 +481,18 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+        
+        The **hosts** object supports the following:
+        
+          * `devices` (`pulumi.Input[list]`) - The list of NIC devices to map to uplinks on the DVS,
+            added in order they are specified.
+          * `host_system_id` (`pulumi.Input[str]`) - The host system ID of the host to add to the
+            DVS.
+        
+        The **vlan_ranges** object supports the following:
+        
+          * `maxVlan` (`pulumi.Input[float]`)
+          * `minVlan` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_virtual_switch.html.markdown.
         """
@@ -594,6 +615,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         Get an existing DistributedVirtualSwitch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -720,10 +742,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+        
+        The **hosts** object supports the following:
+        
+          * `devices` (`pulumi.Input[list]`) - The list of NIC devices to map to uplinks on the DVS,
+            added in order they are specified.
+          * `host_system_id` (`pulumi.Input[str]`) - The host system ID of the host to add to the
+            DVS.
+        
+        The **vlan_ranges** object supports the following:
+        
+          * `maxVlan` (`pulumi.Input[float]`)
+          * `minVlan` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_virtual_switch.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["active_uplinks"] = active_uplinks

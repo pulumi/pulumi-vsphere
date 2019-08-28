@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -382,7 +384,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    public readonly vlanRanges!: pulumi.Output<{ maxVlan: number, minVlan: number }[]>;
+    public readonly vlanRanges!: pulumi.Output<outputs.DistributedPortGroupVlanRange[]>;
 
     /**
      * Create a DistributedPortGroup resource with the given unique name, arguments, and options.
@@ -731,7 +733,7 @@ export interface DistributedPortGroupState {
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;
+    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[]>;
 }
 
 /**
@@ -948,5 +950,5 @@ export interface DistributedPortGroupArgs {
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;
+    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedPortGroupVlanRange>[]>;
 }
