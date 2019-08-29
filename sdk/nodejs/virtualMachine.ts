@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -65,7 +67,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * A specification for a CDROM device on this virtual
      * machine. See CDROM options below.
      */
-    public readonly cdrom!: pulumi.Output<{ clientDevice?: boolean, datastoreId?: string, deviceAddress: string, key: number, path?: string } | undefined>;
+    public readonly cdrom!: pulumi.Output<outputs.VirtualMachineCdrom | undefined>;
     /**
      * A unique identifier for a given version of the last
      * configuration applied, such the timestamp of the last update to the
@@ -78,7 +80,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * See creating a virtual machine from a
      * template for more details.
      */
-    public readonly clone!: pulumi.Output<{ customize?: { dnsServerLists?: string[], dnsSuffixLists?: string[], ipv4Gateway?: string, ipv6Gateway?: string, linuxOptions?: { domain: string, hostName: string, hwClockUtc?: boolean, timeZone?: string }, networkInterfaces?: { dnsDomain?: string, dnsServerLists?: string[], ipv4Address?: string, ipv4Netmask?: number, ipv6Address?: string, ipv6Netmask?: number }[], timeout?: number, windowsOptions?: { adminPassword?: string, autoLogon?: boolean, autoLogonCount?: number, computerName: string, domainAdminPassword?: string, domainAdminUser?: string, fullName?: string, joinDomain?: string, organizationName?: string, productKey?: string, runOnceCommandLists?: string[], timeZone?: number, workgroup?: string }, windowsSysprepText?: string }, linkedClone?: boolean, templateUuid: string, timeout?: number } | undefined>;
+    public readonly clone!: pulumi.Output<outputs.VirtualMachineClone | undefined>;
     /**
      * Allow CPUs to be added to this virtual
      * machine while it is running.
@@ -143,7 +145,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * A specification for a virtual disk device on this virtual
      * machine. See disk options below.
      */
-    public readonly disks!: pulumi.Output<{ attach?: boolean, datastoreId?: string, deviceAddress: string, diskMode?: string, diskSharing?: string, eagerlyScrub?: boolean, ioLimit?: number, ioReservation?: number, ioShareCount?: number, ioShareLevel?: string, keepOnRemove?: boolean, key: number, label?: string, name?: string, path: string, size?: number, thinProvisioned?: boolean, unitNumber?: number, uuid: string, writeThrough?: boolean }[]>;
+    public readonly disks!: pulumi.Output<outputs.VirtualMachineDisk[]>;
     /**
      * When the `firmware` type is set to is
      * `efi`, this enables EFI secure boot. Default: `false`.
@@ -296,7 +298,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * virtual machine. See network interface options
      * below.
      */
-    public readonly networkInterfaces!: pulumi.Output<{ adapterType?: string, bandwidthLimit?: number, bandwidthReservation?: number, bandwidthShareCount: number, bandwidthShareLevel?: string, deviceAddress: string, key: number, macAddress: string, networkId: string, useStaticMac?: boolean }[]>;
+    public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[]>;
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
@@ -396,7 +398,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * configuration for
      * more details.
      */
-    public readonly vapp!: pulumi.Output<{ properties?: {[key: string]: string} } | undefined>;
+    public readonly vapp!: pulumi.Output<outputs.VirtualMachineVapp | undefined>;
     /**
      * Computed value which is only valid for cloned virtual
      * machines. A list of vApp transport methods supported by the source virtual
@@ -647,7 +649,7 @@ export interface VirtualMachineState {
      * A specification for a CDROM device on this virtual
      * machine. See CDROM options below.
      */
-    readonly cdrom?: pulumi.Input<{ clientDevice?: pulumi.Input<boolean>, datastoreId?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, key?: pulumi.Input<number>, path?: pulumi.Input<string> }>;
+    readonly cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
     /**
      * A unique identifier for a given version of the last
      * configuration applied, such the timestamp of the last update to the
@@ -660,7 +662,7 @@ export interface VirtualMachineState {
      * See creating a virtual machine from a
      * template for more details.
      */
-    readonly clone?: pulumi.Input<{ customize?: pulumi.Input<{ dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>, dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[]>, ipv4Gateway?: pulumi.Input<string>, ipv6Gateway?: pulumi.Input<string>, linuxOptions?: pulumi.Input<{ domain: pulumi.Input<string>, hostName: pulumi.Input<string>, hwClockUtc?: pulumi.Input<boolean>, timeZone?: pulumi.Input<string> }>, networkInterfaces?: pulumi.Input<pulumi.Input<{ dnsDomain?: pulumi.Input<string>, dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>, ipv4Address?: pulumi.Input<string>, ipv4Netmask?: pulumi.Input<number>, ipv6Address?: pulumi.Input<string>, ipv6Netmask?: pulumi.Input<number> }>[]>, timeout?: pulumi.Input<number>, windowsOptions?: pulumi.Input<{ adminPassword?: pulumi.Input<string>, autoLogon?: pulumi.Input<boolean>, autoLogonCount?: pulumi.Input<number>, computerName: pulumi.Input<string>, domainAdminPassword?: pulumi.Input<string>, domainAdminUser?: pulumi.Input<string>, fullName?: pulumi.Input<string>, joinDomain?: pulumi.Input<string>, organizationName?: pulumi.Input<string>, productKey?: pulumi.Input<string>, runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[]>, timeZone?: pulumi.Input<number>, workgroup?: pulumi.Input<string> }>, windowsSysprepText?: pulumi.Input<string> }>, linkedClone?: pulumi.Input<boolean>, templateUuid: pulumi.Input<string>, timeout?: pulumi.Input<number> }>;
+    readonly clone?: pulumi.Input<inputs.VirtualMachineClone>;
     /**
      * Allow CPUs to be added to this virtual
      * machine while it is running.
@@ -725,7 +727,7 @@ export interface VirtualMachineState {
      * A specification for a virtual disk device on this virtual
      * machine. See disk options below.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<{ attach?: pulumi.Input<boolean>, datastoreId?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, diskMode?: pulumi.Input<string>, diskSharing?: pulumi.Input<string>, eagerlyScrub?: pulumi.Input<boolean>, ioLimit?: pulumi.Input<number>, ioReservation?: pulumi.Input<number>, ioShareCount?: pulumi.Input<number>, ioShareLevel?: pulumi.Input<string>, keepOnRemove?: pulumi.Input<boolean>, key?: pulumi.Input<number>, label?: pulumi.Input<string>, name?: pulumi.Input<string>, path?: pulumi.Input<string>, size?: pulumi.Input<number>, thinProvisioned?: pulumi.Input<boolean>, unitNumber?: pulumi.Input<number>, uuid?: pulumi.Input<string>, writeThrough?: pulumi.Input<boolean> }>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.VirtualMachineDisk>[]>;
     /**
      * When the `firmware` type is set to is
      * `efi`, this enables EFI secure boot. Default: `false`.
@@ -878,7 +880,7 @@ export interface VirtualMachineState {
      * virtual machine. See network interface options
      * below.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<{ adapterType?: pulumi.Input<string>, bandwidthLimit?: pulumi.Input<number>, bandwidthReservation?: pulumi.Input<number>, bandwidthShareCount?: pulumi.Input<number>, bandwidthShareLevel?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, key?: pulumi.Input<number>, macAddress?: pulumi.Input<string>, networkId: pulumi.Input<string>, useStaticMac?: pulumi.Input<boolean> }>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
@@ -978,7 +980,7 @@ export interface VirtualMachineState {
      * configuration for
      * more details.
      */
-    readonly vapp?: pulumi.Input<{ properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
+    readonly vapp?: pulumi.Input<inputs.VirtualMachineVapp>;
     /**
      * Computed value which is only valid for cloned virtual
      * machines. A list of vApp transport methods supported by the source virtual
@@ -1058,14 +1060,14 @@ export interface VirtualMachineArgs {
      * A specification for a CDROM device on this virtual
      * machine. See CDROM options below.
      */
-    readonly cdrom?: pulumi.Input<{ clientDevice?: pulumi.Input<boolean>, datastoreId?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, key?: pulumi.Input<number>, path?: pulumi.Input<string> }>;
+    readonly cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
     /**
      * When specified, the VM will be created as a clone of a
      * specified template. Optional customization options can be submitted as well.
      * See creating a virtual machine from a
      * template for more details.
      */
-    readonly clone?: pulumi.Input<{ customize?: pulumi.Input<{ dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>, dnsSuffixLists?: pulumi.Input<pulumi.Input<string>[]>, ipv4Gateway?: pulumi.Input<string>, ipv6Gateway?: pulumi.Input<string>, linuxOptions?: pulumi.Input<{ domain: pulumi.Input<string>, hostName: pulumi.Input<string>, hwClockUtc?: pulumi.Input<boolean>, timeZone?: pulumi.Input<string> }>, networkInterfaces?: pulumi.Input<pulumi.Input<{ dnsDomain?: pulumi.Input<string>, dnsServerLists?: pulumi.Input<pulumi.Input<string>[]>, ipv4Address?: pulumi.Input<string>, ipv4Netmask?: pulumi.Input<number>, ipv6Address?: pulumi.Input<string>, ipv6Netmask?: pulumi.Input<number> }>[]>, timeout?: pulumi.Input<number>, windowsOptions?: pulumi.Input<{ adminPassword?: pulumi.Input<string>, autoLogon?: pulumi.Input<boolean>, autoLogonCount?: pulumi.Input<number>, computerName: pulumi.Input<string>, domainAdminPassword?: pulumi.Input<string>, domainAdminUser?: pulumi.Input<string>, fullName?: pulumi.Input<string>, joinDomain?: pulumi.Input<string>, organizationName?: pulumi.Input<string>, productKey?: pulumi.Input<string>, runOnceCommandLists?: pulumi.Input<pulumi.Input<string>[]>, timeZone?: pulumi.Input<number>, workgroup?: pulumi.Input<string> }>, windowsSysprepText?: pulumi.Input<string> }>, linkedClone?: pulumi.Input<boolean>, templateUuid: pulumi.Input<string>, timeout?: pulumi.Input<number> }>;
+    readonly clone?: pulumi.Input<inputs.VirtualMachineClone>;
     /**
      * Allow CPUs to be added to this virtual
      * machine while it is running.
@@ -1126,7 +1128,7 @@ export interface VirtualMachineArgs {
      * A specification for a virtual disk device on this virtual
      * machine. See disk options below.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<{ attach?: pulumi.Input<boolean>, datastoreId?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, diskMode?: pulumi.Input<string>, diskSharing?: pulumi.Input<string>, eagerlyScrub?: pulumi.Input<boolean>, ioLimit?: pulumi.Input<number>, ioReservation?: pulumi.Input<number>, ioShareCount?: pulumi.Input<number>, ioShareLevel?: pulumi.Input<string>, keepOnRemove?: pulumi.Input<boolean>, key?: pulumi.Input<number>, label?: pulumi.Input<string>, name?: pulumi.Input<string>, path?: pulumi.Input<string>, size?: pulumi.Input<number>, thinProvisioned?: pulumi.Input<boolean>, unitNumber?: pulumi.Input<number>, uuid?: pulumi.Input<string>, writeThrough?: pulumi.Input<boolean> }>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.VirtualMachineDisk>[]>;
     /**
      * When the `firmware` type is set to is
      * `efi`, this enables EFI secure boot. Default: `false`.
@@ -1260,7 +1262,7 @@ export interface VirtualMachineArgs {
      * virtual machine. See network interface options
      * below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<{ adapterType?: pulumi.Input<string>, bandwidthLimit?: pulumi.Input<number>, bandwidthReservation?: pulumi.Input<number>, bandwidthShareCount?: pulumi.Input<number>, bandwidthShareLevel?: pulumi.Input<string>, deviceAddress?: pulumi.Input<string>, key?: pulumi.Input<number>, macAddress?: pulumi.Input<string>, networkId: pulumi.Input<string>, useStaticMac?: pulumi.Input<boolean> }>[]>;
+    readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
      * The number of cores to distribute among
      * the CPUs in this virtual machine. If specified, the value supplied to
@@ -1351,7 +1353,7 @@ export interface VirtualMachineArgs {
      * configuration for
      * more details.
      */
-    readonly vapp?: pulumi.Input<{ properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}> }>;
+    readonly vapp?: pulumi.Input<inputs.VirtualMachineVapp>;
     /**
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetVmfsDisksResult:
@@ -55,6 +56,14 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     datastores based off a set of discovered disks.
     
     [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+    
+    :param str filter: A regular expression to filter the disks against. Only
+           disks with canonical names that match will be included.
+    :param str host_system_id: The [managed object ID][docs-about-morefs] of
+           the host to look for disks on.
+    :param bool rescan: Whether or not to rescan storage adapters before
+           searching for disks. This may lengthen the time it takes to perform the
+           search. Default: `false`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
     """
@@ -64,7 +73,7 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     __args__['hostSystemId'] = host_system_id
     __args__['rescan'] = rescan
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts).value

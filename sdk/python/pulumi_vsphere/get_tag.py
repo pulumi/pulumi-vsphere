@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetTagResult:
@@ -41,6 +42,11 @@ class AwaitableGetTagResult(GetTagResult):
 
 def get_tag(category_id=None,name=None,opts=None):
     """
+    Use this data source to access information about an existing resource.
+    
+    :param str category_id: The ID of the tag category the tag is located in.
+    :param str name: The name of the tag.
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag.html.markdown.
     """
     __args__ = dict()
@@ -48,7 +54,7 @@ def get_tag(category_id=None,name=None,opts=None):
     __args__['categoryId'] = category_id
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts).value

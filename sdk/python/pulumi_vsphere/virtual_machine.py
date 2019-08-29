@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class VirtualMachine(pulumi.CustomResource):
@@ -40,6 +41,15 @@ class VirtualMachine(pulumi.CustomResource):
     """
     A specification for a CDROM device on this virtual
     machine. See CDROM options below.
+    
+      * `clientDevice` (`bool`) - Indicates whether the device should be backed by
+        remote client device. Conflicts with `datastore_id` and `path`.
+      * `datastore_id` (`str`) - The datastore ID that the ISO is located in.
+        Requried for using a datastore ISO. Conflicts with `client_device`.
+      * `deviceAddress` (`str`) - <elided>
+      * `key` (`float`) - The ID of the device within the virtual machine.
+      * `path` (`str`) - The path to the ISO file. Requried for using a datastore
+        ISO. Conflicts with `client_device`.
     """
     change_version: pulumi.Output[str]
     """
@@ -53,6 +63,53 @@ class VirtualMachine(pulumi.CustomResource):
     specified template. Optional customization options can be submitted as well.
     See creating a virtual machine from a
     template for more details.
+    
+      * `customize` (`dict`)
+    
+        * `dnsServerLists` (`list`)
+        * `dnsSuffixLists` (`list`)
+        * `ipv4Gateway` (`str`)
+        * `ipv6Gateway` (`str`)
+        * `linuxOptions` (`dict`)
+    
+          * `domain` (`str`)
+          * `hostName` (`str`)
+          * `hwClockUtc` (`bool`)
+          * `timeZone` (`str`)
+    
+        * `network_interfaces` (`list`) - A specification for a virtual NIC on this
+          virtual machine. See network interface options
+          below.
+    
+          * `dnsDomain` (`str`)
+          * `dnsServerLists` (`list`)
+          * `ipv4_address` (`str`)
+          * `ipv4Netmask` (`float`)
+          * `ipv6Address` (`str`)
+          * `ipv6Netmask` (`float`)
+    
+        * `timeout` (`float`)
+        * `windowsOptions` (`dict`)
+    
+          * `adminPassword` (`str`)
+          * `autoLogon` (`bool`)
+          * `autoLogonCount` (`float`)
+          * `computerName` (`str`)
+          * `domainAdminPassword` (`str`)
+          * `domainAdminUser` (`str`)
+          * `fullName` (`str`)
+          * `joinDomain` (`str`)
+          * `organizationName` (`str`)
+          * `productKey` (`str`)
+          * `runOnceCommandLists` (`list`)
+          * `timeZone` (`float`)
+          * `workgroup` (`str`)
+    
+        * `windowsSysprepText` (`str`)
+    
+      * `linkedClone` (`bool`)
+      * `templateUuid` (`str`)
+      * `timeout` (`float`)
     """
     cpu_hot_add_enabled: pulumi.Output[bool]
     """
@@ -115,6 +172,55 @@ class VirtualMachine(pulumi.CustomResource):
     """
     A specification for a virtual disk device on this virtual
     machine. See disk options below.
+    
+      * `attach` (`bool`) - Attach an external disk instead of creating a new one.
+        Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
+        `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+      * `datastore_id` (`str`) - The datastore ID that the ISO is located in.
+        Requried for using a datastore ISO. Conflicts with `client_device`.
+      * `deviceAddress` (`str`) - <elided>
+      * `diskMode` (`str`) - The mode of this this virtual disk for purposes of
+        writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
+        `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
+        Default: `persistent`. For an explanation of options, click
+        [here][vmware-docs-disk-mode].
+      * `diskSharing` (`str`) - The sharing mode of this virtual disk. Can be one
+        of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+      * `eagerlyScrub` (`bool`) - If set to `true`, the disk space is zeroed out
+        on VM creation. This will delay the creation of the disk or virtual machine.
+        Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
+        on picking a disk type.  Default: `false`.
+      * `ioLimit` (`float`) - The upper limit of IOPS that this disk can use. The
+        default is no limit.
+      * `ioReservation` (`float`) - The I/O reservation (guarantee) that this disk
+        has, in IOPS.  The default is no reservation.
+      * `ioShareCount` (`float`) - The share count for this disk when the share
+        level is `custom`.
+      * `ioShareLevel` (`str`) - The share allocation level for this disk. Can
+        be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+      * `keepOnRemove` (`bool`) - Keep this disk when removing the device or
+        destroying the virtual machine. Default: `false`.
+      * `key` (`float`) - The ID of the device within the virtual machine.
+      * `label` (`str`) - A label for the disk. Forces a new disk if changed.
+      * `name` (`str`) - An alias for both `label` and `path`, the latter when
+        using `attach`. Required if not using `label`.
+      * `path` (`str`) - The path to the ISO file. Requried for using a datastore
+        ISO. Conflicts with `client_device`.
+      * `size` (`float`) - The size of the disk, in GiB.
+      * `thinProvisioned` (`bool`) - If `true`, this disk is thin provisioned,
+        with space for the file being allocated on an as-needed basis. Cannot be set
+        to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
+        type. Default: `true`.
+      * `unitNumber` (`float`) - The disk number on the SCSI bus. The maximum value
+        for this setting is the value of
+        `scsi_controller_count` times 15, minus 1 (so `14`,
+        `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
+        for which one disk must be set to. Duplicate unit numbers are not allowed.
+      * `uuid` (`str`) - The UUID of the virtual disk's VMDK file. This is used to track the
+        virtual disk on the virtual machine.
+      * `writeThrough` (`bool`) - If `true`, writes for this disk are sent
+        directly to the filesystem immediately instead of being buffered. Default:
+        `false`.
     """
     efi_secure_boot_enabled: pulumi.Output[bool]
     """
@@ -265,6 +371,28 @@ class VirtualMachine(pulumi.CustomResource):
     A specification for a virtual NIC on this
     virtual machine. See network interface options
     below.
+    
+      * `adapter_type` (`str`) - The network interface type. Can be one of
+        `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+      * `bandwidthLimit` (`float`) - The upper bandwidth limit of this network
+        interface, in Mbits/sec. The default is no limit.
+      * `bandwidthReservation` (`float`) - The bandwidth reservation of this
+        network interface, in Mbits/sec. The default is no reservation.
+      * `bandwidthShareCount` (`float`) - The share count for this network
+        interface when the share level is `custom`.
+      * `bandwidthShareLevel` (`str`) - The bandwidth share allocation level for
+        this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
+        `normal`.
+      * `deviceAddress` (`str`) - <elided>
+      * `key` (`float`) - The ID of the device within the virtual machine.
+      * `macAddress` (`str`) - The MAC address of this network interface. Can
+        only be manually set if `use_static_mac` is true, otherwise this is a
+        computed value that gives the current MAC address of this interface.
+      * `networkId` (`str`) - The [managed object reference
+        ID][docs-about-morefs] of the network to connect this interface to.
+      * `useStaticMac` (`bool`) - If true, the `mac_address` field is treated as
+        a static MAC address and set accordingly. Setting this to `true` requires
+        `mac_address` to be set. Default: `false`.
     """
     num_cores_per_socket: pulumi.Output[float]
     """
@@ -357,6 +485,8 @@ class VirtualMachine(pulumi.CustomResource):
     imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
     configuration for
     more details.
+    
+      * `properties` (`dict`)
     """
     vapp_transports: pulumi.Output[list]
     """
@@ -574,6 +704,145 @@ class VirtualMachine(pulumi.CustomResource):
                waiter can be disabled and the
                `wait_for_guest_ip_timeout` waiter can be used
                instead. A value less than 1 disables the waiter. Default: 5 minutes.
+        
+        The **cdrom** object supports the following:
+        
+          * `clientDevice` (`pulumi.Input[bool]`) - Indicates whether the device should be backed by
+            remote client device. Conflicts with `datastore_id` and `path`.
+          * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
+            Requried for using a datastore ISO. Conflicts with `client_device`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+            ISO. Conflicts with `client_device`.
+        
+        The **clone** object supports the following:
+        
+          * `customize` (`pulumi.Input[dict]`)
+        
+            * `dnsServerLists` (`pulumi.Input[list]`)
+            * `dnsSuffixLists` (`pulumi.Input[list]`)
+            * `ipv4Gateway` (`pulumi.Input[str]`)
+            * `ipv6Gateway` (`pulumi.Input[str]`)
+            * `linuxOptions` (`pulumi.Input[dict]`)
+        
+              * `domain` (`pulumi.Input[str]`)
+              * `hostName` (`pulumi.Input[str]`)
+              * `hwClockUtc` (`pulumi.Input[bool]`)
+              * `timeZone` (`pulumi.Input[str]`)
+        
+            * `network_interfaces` (`pulumi.Input[list]`) - A specification for a virtual NIC on this
+              virtual machine. See network interface options
+              below.
+        
+              * `dnsDomain` (`pulumi.Input[str]`)
+              * `dnsServerLists` (`pulumi.Input[list]`)
+              * `ipv4_address` (`pulumi.Input[str]`)
+              * `ipv4Netmask` (`pulumi.Input[float]`)
+              * `ipv6Address` (`pulumi.Input[str]`)
+              * `ipv6Netmask` (`pulumi.Input[float]`)
+        
+            * `timeout` (`pulumi.Input[float]`)
+            * `windowsOptions` (`pulumi.Input[dict]`)
+        
+              * `adminPassword` (`pulumi.Input[str]`)
+              * `autoLogon` (`pulumi.Input[bool]`)
+              * `autoLogonCount` (`pulumi.Input[float]`)
+              * `computerName` (`pulumi.Input[str]`)
+              * `domainAdminPassword` (`pulumi.Input[str]`)
+              * `domainAdminUser` (`pulumi.Input[str]`)
+              * `fullName` (`pulumi.Input[str]`)
+              * `joinDomain` (`pulumi.Input[str]`)
+              * `organizationName` (`pulumi.Input[str]`)
+              * `productKey` (`pulumi.Input[str]`)
+              * `runOnceCommandLists` (`pulumi.Input[list]`)
+              * `timeZone` (`pulumi.Input[float]`)
+              * `workgroup` (`pulumi.Input[str]`)
+        
+            * `windowsSysprepText` (`pulumi.Input[str]`)
+        
+          * `linkedClone` (`pulumi.Input[bool]`)
+          * `templateUuid` (`pulumi.Input[str]`)
+          * `timeout` (`pulumi.Input[float]`)
+        
+        The **disks** object supports the following:
+        
+          * `attach` (`pulumi.Input[bool]`) - Attach an external disk instead of creating a new one.
+            Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
+            `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+          * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
+            Requried for using a datastore ISO. Conflicts with `client_device`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `diskMode` (`pulumi.Input[str]`) - The mode of this this virtual disk for purposes of
+            writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
+            `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
+            Default: `persistent`. For an explanation of options, click
+            [here][vmware-docs-disk-mode].
+          * `diskSharing` (`pulumi.Input[str]`) - The sharing mode of this virtual disk. Can be one
+            of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+          * `eagerlyScrub` (`pulumi.Input[bool]`) - If set to `true`, the disk space is zeroed out
+            on VM creation. This will delay the creation of the disk or virtual machine.
+            Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
+            on picking a disk type.  Default: `false`.
+          * `ioLimit` (`pulumi.Input[float]`) - The upper limit of IOPS that this disk can use. The
+            default is no limit.
+          * `ioReservation` (`pulumi.Input[float]`) - The I/O reservation (guarantee) that this disk
+            has, in IOPS.  The default is no reservation.
+          * `ioShareCount` (`pulumi.Input[float]`) - The share count for this disk when the share
+            level is `custom`.
+          * `ioShareLevel` (`pulumi.Input[str]`) - The share allocation level for this disk. Can
+            be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+          * `keepOnRemove` (`pulumi.Input[bool]`) - Keep this disk when removing the device or
+            destroying the virtual machine. Default: `false`.
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `label` (`pulumi.Input[str]`) - A label for the disk. Forces a new disk if changed.
+          * `name` (`pulumi.Input[str]`) - An alias for both `label` and `path`, the latter when
+            using `attach`. Required if not using `label`.
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+            ISO. Conflicts with `client_device`.
+          * `size` (`pulumi.Input[float]`) - The size of the disk, in GiB.
+          * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
+            with space for the file being allocated on an as-needed basis. Cannot be set
+            to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
+            type. Default: `true`.
+          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the SCSI bus. The maximum value
+            for this setting is the value of
+            `scsi_controller_count` times 15, minus 1 (so `14`,
+            `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
+            for which one disk must be set to. Duplicate unit numbers are not allowed.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of the virtual disk's VMDK file. This is used to track the
+            virtual disk on the virtual machine.
+          * `writeThrough` (`pulumi.Input[bool]`) - If `true`, writes for this disk are sent
+            directly to the filesystem immediately instead of being buffered. Default:
+            `false`.
+        
+        The **network_interfaces** object supports the following:
+        
+          * `adapter_type` (`pulumi.Input[str]`) - The network interface type. Can be one of
+            `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+          * `bandwidthLimit` (`pulumi.Input[float]`) - The upper bandwidth limit of this network
+            interface, in Mbits/sec. The default is no limit.
+          * `bandwidthReservation` (`pulumi.Input[float]`) - The bandwidth reservation of this
+            network interface, in Mbits/sec. The default is no reservation.
+          * `bandwidthShareCount` (`pulumi.Input[float]`) - The share count for this network
+            interface when the share level is `custom`.
+          * `bandwidthShareLevel` (`pulumi.Input[str]`) - The bandwidth share allocation level for
+            this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
+            `normal`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `macAddress` (`pulumi.Input[str]`) - The MAC address of this network interface. Can
+            only be manually set if `use_static_mac` is true, otherwise this is a
+            computed value that gives the current MAC address of this interface.
+          * `networkId` (`pulumi.Input[str]`) - The [managed object reference
+            ID][docs-about-morefs] of the network to connect this interface to.
+          * `useStaticMac` (`pulumi.Input[bool]`) - If true, the `mac_address` field is treated as
+            a static MAC address and set accordingly. Setting this to `true` requires
+            `mac_address` to be set. Default: `false`.
+        
+        The **vapp** object supports the following:
+        
+          * `properties` (`pulumi.Input[dict]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine.html.markdown.
         """
@@ -679,6 +948,7 @@ class VirtualMachine(pulumi.CustomResource):
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -871,10 +1141,149 @@ class VirtualMachine(pulumi.CustomResource):
                waiter can be disabled and the
                `wait_for_guest_ip_timeout` waiter can be used
                instead. A value less than 1 disables the waiter. Default: 5 minutes.
+        
+        The **cdrom** object supports the following:
+        
+          * `clientDevice` (`pulumi.Input[bool]`) - Indicates whether the device should be backed by
+            remote client device. Conflicts with `datastore_id` and `path`.
+          * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
+            Requried for using a datastore ISO. Conflicts with `client_device`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+            ISO. Conflicts with `client_device`.
+        
+        The **clone** object supports the following:
+        
+          * `customize` (`pulumi.Input[dict]`)
+        
+            * `dnsServerLists` (`pulumi.Input[list]`)
+            * `dnsSuffixLists` (`pulumi.Input[list]`)
+            * `ipv4Gateway` (`pulumi.Input[str]`)
+            * `ipv6Gateway` (`pulumi.Input[str]`)
+            * `linuxOptions` (`pulumi.Input[dict]`)
+        
+              * `domain` (`pulumi.Input[str]`)
+              * `hostName` (`pulumi.Input[str]`)
+              * `hwClockUtc` (`pulumi.Input[bool]`)
+              * `timeZone` (`pulumi.Input[str]`)
+        
+            * `network_interfaces` (`pulumi.Input[list]`) - A specification for a virtual NIC on this
+              virtual machine. See network interface options
+              below.
+        
+              * `dnsDomain` (`pulumi.Input[str]`)
+              * `dnsServerLists` (`pulumi.Input[list]`)
+              * `ipv4_address` (`pulumi.Input[str]`)
+              * `ipv4Netmask` (`pulumi.Input[float]`)
+              * `ipv6Address` (`pulumi.Input[str]`)
+              * `ipv6Netmask` (`pulumi.Input[float]`)
+        
+            * `timeout` (`pulumi.Input[float]`)
+            * `windowsOptions` (`pulumi.Input[dict]`)
+        
+              * `adminPassword` (`pulumi.Input[str]`)
+              * `autoLogon` (`pulumi.Input[bool]`)
+              * `autoLogonCount` (`pulumi.Input[float]`)
+              * `computerName` (`pulumi.Input[str]`)
+              * `domainAdminPassword` (`pulumi.Input[str]`)
+              * `domainAdminUser` (`pulumi.Input[str]`)
+              * `fullName` (`pulumi.Input[str]`)
+              * `joinDomain` (`pulumi.Input[str]`)
+              * `organizationName` (`pulumi.Input[str]`)
+              * `productKey` (`pulumi.Input[str]`)
+              * `runOnceCommandLists` (`pulumi.Input[list]`)
+              * `timeZone` (`pulumi.Input[float]`)
+              * `workgroup` (`pulumi.Input[str]`)
+        
+            * `windowsSysprepText` (`pulumi.Input[str]`)
+        
+          * `linkedClone` (`pulumi.Input[bool]`)
+          * `templateUuid` (`pulumi.Input[str]`)
+          * `timeout` (`pulumi.Input[float]`)
+        
+        The **disks** object supports the following:
+        
+          * `attach` (`pulumi.Input[bool]`) - Attach an external disk instead of creating a new one.
+            Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
+            `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+          * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
+            Requried for using a datastore ISO. Conflicts with `client_device`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `diskMode` (`pulumi.Input[str]`) - The mode of this this virtual disk for purposes of
+            writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
+            `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
+            Default: `persistent`. For an explanation of options, click
+            [here][vmware-docs-disk-mode].
+          * `diskSharing` (`pulumi.Input[str]`) - The sharing mode of this virtual disk. Can be one
+            of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+          * `eagerlyScrub` (`pulumi.Input[bool]`) - If set to `true`, the disk space is zeroed out
+            on VM creation. This will delay the creation of the disk or virtual machine.
+            Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
+            on picking a disk type.  Default: `false`.
+          * `ioLimit` (`pulumi.Input[float]`) - The upper limit of IOPS that this disk can use. The
+            default is no limit.
+          * `ioReservation` (`pulumi.Input[float]`) - The I/O reservation (guarantee) that this disk
+            has, in IOPS.  The default is no reservation.
+          * `ioShareCount` (`pulumi.Input[float]`) - The share count for this disk when the share
+            level is `custom`.
+          * `ioShareLevel` (`pulumi.Input[str]`) - The share allocation level for this disk. Can
+            be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+          * `keepOnRemove` (`pulumi.Input[bool]`) - Keep this disk when removing the device or
+            destroying the virtual machine. Default: `false`.
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `label` (`pulumi.Input[str]`) - A label for the disk. Forces a new disk if changed.
+          * `name` (`pulumi.Input[str]`) - An alias for both `label` and `path`, the latter when
+            using `attach`. Required if not using `label`.
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+            ISO. Conflicts with `client_device`.
+          * `size` (`pulumi.Input[float]`) - The size of the disk, in GiB.
+          * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
+            with space for the file being allocated on an as-needed basis. Cannot be set
+            to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
+            type. Default: `true`.
+          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the SCSI bus. The maximum value
+            for this setting is the value of
+            `scsi_controller_count` times 15, minus 1 (so `14`,
+            `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
+            for which one disk must be set to. Duplicate unit numbers are not allowed.
+          * `uuid` (`pulumi.Input[str]`) - The UUID of the virtual disk's VMDK file. This is used to track the
+            virtual disk on the virtual machine.
+          * `writeThrough` (`pulumi.Input[bool]`) - If `true`, writes for this disk are sent
+            directly to the filesystem immediately instead of being buffered. Default:
+            `false`.
+        
+        The **network_interfaces** object supports the following:
+        
+          * `adapter_type` (`pulumi.Input[str]`) - The network interface type. Can be one of
+            `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+          * `bandwidthLimit` (`pulumi.Input[float]`) - The upper bandwidth limit of this network
+            interface, in Mbits/sec. The default is no limit.
+          * `bandwidthReservation` (`pulumi.Input[float]`) - The bandwidth reservation of this
+            network interface, in Mbits/sec. The default is no reservation.
+          * `bandwidthShareCount` (`pulumi.Input[float]`) - The share count for this network
+            interface when the share level is `custom`.
+          * `bandwidthShareLevel` (`pulumi.Input[str]`) - The bandwidth share allocation level for
+            this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
+            `normal`.
+          * `deviceAddress` (`pulumi.Input[str]`) - <elided>
+          * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
+          * `macAddress` (`pulumi.Input[str]`) - The MAC address of this network interface. Can
+            only be manually set if `use_static_mac` is true, otherwise this is a
+            computed value that gives the current MAC address of this interface.
+          * `networkId` (`pulumi.Input[str]`) - The [managed object reference
+            ID][docs-about-morefs] of the network to connect this interface to.
+          * `useStaticMac` (`pulumi.Input[bool]`) - If true, the `mac_address` field is treated as
+            a static MAC address and set accordingly. Setting this to `true` requires
+            `mac_address` to be set. Default: `false`.
+        
+        The **vapp** object supports the following:
+        
+          * `properties` (`pulumi.Input[dict]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["alternate_guest_name"] = alternate_guest_name

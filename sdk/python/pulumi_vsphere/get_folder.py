@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetFolderResult:
@@ -36,6 +37,7 @@ def get_folder(path=None,opts=None):
     The `.Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
+    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
     """
@@ -43,7 +45,7 @@ def get_folder(path=None,opts=None):
 
     __args__['path'] = path
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts).value

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -169,7 +171,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * Use the `host` block to declare a host specification. The
      * options are:
      */
-    public readonly hosts!: pulumi.Output<{ devices: string[], hostSystemId: string }[] | undefined>;
+    public readonly hosts!: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
@@ -429,7 +431,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
-    public readonly vlanRanges!: pulumi.Output<{ maxVlan: number, minVlan: number }[]>;
+    public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */
@@ -809,7 +811,7 @@ export interface DistributedVirtualSwitchState {
      * Use the `host` block to declare a host specification. The
      * options are:
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<{ devices: pulumi.Input<pulumi.Input<string>[]>, hostSystemId: pulumi.Input<string> }>[]>;
+    readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
@@ -1069,7 +1071,7 @@ export interface DistributedVirtualSwitchState {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;
+    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */
@@ -1239,7 +1241,7 @@ export interface DistributedVirtualSwitchArgs {
      * Use the `host` block to declare a host specification. The
      * options are:
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<{ devices: pulumi.Input<pulumi.Input<string>[]>, hostSystemId: pulumi.Input<string> }>[]>;
+    readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
@@ -1499,7 +1501,7 @@ export interface DistributedVirtualSwitchArgs {
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<{ maxVlan: pulumi.Input<number>, minVlan: pulumi.Input<number> }>[]>;
+    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */

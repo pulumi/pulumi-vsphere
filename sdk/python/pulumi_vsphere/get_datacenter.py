@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetDatacenterResult:
@@ -39,6 +40,9 @@ def get_datacenter(name=None,opts=None):
     data source.
     
     [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+    
+    :param str name: The name of the datacenter. This can be a name or path.
+           Can be omitted if there is only one datacenter in your inventory.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
     """
@@ -46,7 +50,7 @@ def get_datacenter(name=None,opts=None):
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts).value
