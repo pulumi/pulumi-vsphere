@@ -59,13 +59,13 @@ import * as utilities from "./utilities";
  * const dc = vsphere.getDatacenter({
  *     name: "dc1",
  * });
- * const cluster = vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * });
  * const datastore = vsphere.getDatastore({
  *     datacenterId: dc.id,
  *     name: "datastore1",
+ * });
+ * const cluster = vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
+ *     name: "cluster1",
  * });
  * const host = vsphere.getHost({
  *     datacenterId: dc.id,
@@ -74,10 +74,6 @@ import * as utilities from "./utilities";
  * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
  *     name: "network1",
- * });
- * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("clusterHostGroup", {
- *     computeClusterId: cluster.id,
- *     hostSystemIds: [host.id],
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
  *     datastoreId: datastore.id,
@@ -96,6 +92,10 @@ import * as utilities from "./utilities";
  * const clusterVmGroup = new vsphere.ComputeClusterVmGroup("clusterVmGroup", {
  *     computeClusterId: cluster.id,
  *     virtualMachineIds: [vm.id],
+ * });
+ * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("clusterHostGroup", {
+ *     computeClusterId: cluster.id,
+ *     hostSystemIds: [host.id],
  * });
  * const clusterVmHostRule = new vsphere.ComputeClusterVmHostRule("clusterVmHostRule", {
  *     affinityHostGroupName: clusterHostGroup.name,

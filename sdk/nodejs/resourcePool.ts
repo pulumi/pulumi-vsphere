@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const cluster = config.get("cluster") || "cluster1";
  * const datacenter = config.get("datacenter") || "dc1";
+ * const cluster = config.get("cluster") || "cluster1";
  * 
  * const dc = vsphere.getDatacenter({
  *     name: datacenter,

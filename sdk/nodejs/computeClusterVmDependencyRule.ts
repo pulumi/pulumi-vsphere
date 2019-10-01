@@ -47,13 +47,13 @@ import * as utilities from "./utilities";
  * const dc = vsphere.getDatacenter({
  *     name: "dc1",
  * });
- * const cluster = vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * });
  * const datastore = vsphere.getDatastore({
  *     datacenterId: dc.id,
  *     name: "datastore1",
+ * });
+ * const cluster = vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
+ *     name: "cluster1",
  * });
  * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
@@ -73,10 +73,6 @@ import * as utilities from "./utilities";
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
  * });
- * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("clusterVmGroup1", {
- *     computeClusterId: cluster.id,
- *     virtualMachineIds: [vm1.id],
- * });
  * const vm2 = new vsphere.VirtualMachine("vm2", {
  *     datastoreId: datastore.id,
  *     disks: [{
@@ -90,6 +86,10 @@ import * as utilities from "./utilities";
  *     }],
  *     numCpus: 2,
  *     resourcePoolId: cluster.resourcePoolId,
+ * });
+ * const clusterVmGroup1 = new vsphere.ComputeClusterVmGroup("clusterVmGroup1", {
+ *     computeClusterId: cluster.id,
+ *     virtualMachineIds: [vm1.id],
  * });
  * const clusterVmGroup2 = new vsphere.ComputeClusterVmGroup("clusterVmGroup2", {
  *     computeClusterId: cluster.id,

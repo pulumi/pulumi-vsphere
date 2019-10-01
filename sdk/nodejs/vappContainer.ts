@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const cluster = config.get("cluster") || "cluster1";
  * const datacenter = config.get("datacenter") || "dc1";
+ * const cluster = config.get("cluster") || "cluster1";
  * 
  * const dc = vsphere.getDatacenter({
  *     name: datacenter,
@@ -52,8 +52,8 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  * 
  * const config = new pulumi.Config();
- * const cluster = config.get("cluster") || "cluster1";
  * const datacenter = config.get("datacenter") || "dc1";
+ * const cluster = config.get("cluster") || "cluster1";
  * 
  * const dc = vsphere.getDatacenter({
  *     name: datacenter,
@@ -62,13 +62,13 @@ import * as utilities from "./utilities";
  *     datacenterId: dc.id,
  *     name: cluster,
  * });
- * const datastore = vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore1",
- * });
  * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
  *     name: "network1",
+ * });
+ * const datastore = vsphere.getDatastore({
+ *     datacenterId: dc.id,
+ *     name: "datastore1",
  * });
  * const vappContainer = new vsphere.VappContainer("vappContainer", {
  *     parentResourcePoolId: computeCluster.id,
