@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Regenerate SDK against tf2pulumi 0.6.0
+* Upgrade to v1.13.0 of the vSphere Terraform Provider
 
 ---
 
