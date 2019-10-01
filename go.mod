@@ -3,20 +3,21 @@ module github.com/pulumi/pulumi-vsphere
 go 1.12
 
 require (
+	cloud.google.com/go/logging v1.0.0 // indirect
 	github.com/Azure/go-autorest/autorest/azure/auth v0.3.0 // indirect
 	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
 	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
-	github.com/hashicorp/terraform v0.12.6
+	github.com/hashicorp/terraform v0.12.9
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
-	github.com/kylelemons/godebug v1.1.0 // indirect
+	github.com/kr/pty v1.1.3 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.0.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190828172748-3f206601e7a1
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
-	github.com/terraform-providers/terraform-provider-vsphere v1.12.0
+	github.com/terraform-providers/terraform-provider-vsphere v1.13.0
 	github.com/ulikunitz/xz v0.5.6 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 )
