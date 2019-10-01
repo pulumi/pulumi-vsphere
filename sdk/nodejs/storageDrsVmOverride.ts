@@ -43,21 +43,21 @@ import * as utilities from "./utilities";
  * const dc = vsphere.getDatacenter({
  *     name: "dc1",
  * });
- * const memberDatastore = vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore-cluster1-member1",
- * });
  * const datastoreCluster = vsphere.getDatastoreCluster({
  *     datacenterId: dc.id,
  *     name: "datastore-cluster1",
  * });
- * const network = vsphere.getNetwork({
+ * const memberDatastore = vsphere.getDatastore({
  *     datacenterId: dc.id,
- *     name: "public",
+ *     name: "datastore-cluster1-member1",
  * });
  * const pool = vsphere.getResourcePool({
  *     datacenterId: dc.id,
  *     name: "cluster1/Resources",
+ * });
+ * const network = vsphere.getNetwork({
+ *     datacenterId: dc.id,
+ *     name: "public",
  * });
  * const vm = new vsphere.VirtualMachine("vm", {
  *     datastoreId: memberDatastore.id,

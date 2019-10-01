@@ -43,13 +43,13 @@ import * as utilities from "./utilities";
  * const dc = vsphere.getDatacenter({
  *     name: "dc1",
  * });
- * const cluster = vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * });
  * const datastoreCluster = vsphere.getDatastoreCluster({
  *     datacenterId: dc.id,
  *     name: "datastore-cluster1",
+ * });
+ * const cluster = vsphere.getComputeCluster({
+ *     datacenterId: dc.id,
+ *     name: "cluster1",
  * });
  * const network = vsphere.getNetwork({
  *     datacenterId: dc.id,
