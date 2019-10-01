@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * [`vsphere..ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
  * will be disabled in the cluster as it is the default setting, but we override
  * the setting of the first host referenced by the
- * [`vsphere..getHost`][tf-vsphere-host-data-source] data source (`esxi1`) by using
+ * [`vsphere..Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
  * the `vsphere..DpmHostOverride` resource so it will be powered off when the
  * cluster does not need it to service virtual machines.
  * 

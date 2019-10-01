@@ -71,7 +71,7 @@ export interface VirtualMachineCdrom {
      */
     key: number;
     /**
-     * The path to the ISO file. Requried for using a datastore
+     * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
      */
     path?: string;
@@ -208,12 +208,12 @@ export interface VirtualMachineDisk {
      */
     name?: string;
     /**
-     * The path to the ISO file. Requried for using a datastore
+     * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
      */
     path: string;
     /**
-     * The size of the disk, in GiB.
+     * The size of the disk, in GB.
      */
     size?: number;
     /**

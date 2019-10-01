@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `.getHost` data source can be used to discover the ID of a vSphere
+// The `.Host` data source can be used to discover the ID of a vSphere
 // host. This can then be used with resources or data sources that require a host
 // managed object reference ID.
 //

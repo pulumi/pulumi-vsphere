@@ -48,7 +48,7 @@ class VirtualMachine(pulumi.CustomResource):
         Requried for using a datastore ISO. Conflicts with `client_device`.
       * `deviceAddress` (`str`) - <elided>
       * `key` (`float`) - The ID of the device within the virtual machine.
-      * `path` (`str`) - The path to the ISO file. Requried for using a datastore
+      * `path` (`str`) - The path to the ISO file. Required for using a datastore
         ISO. Conflicts with `client_device`.
     """
     change_version: pulumi.Output[str]
@@ -204,9 +204,9 @@ class VirtualMachine(pulumi.CustomResource):
       * `label` (`str`) - A label for the disk. Forces a new disk if changed.
       * `name` (`str`) - An alias for both `label` and `path`, the latter when
         using `attach`. Required if not using `label`.
-      * `path` (`str`) - The path to the ISO file. Requried for using a datastore
+      * `path` (`str`) - The path to the ISO file. Required for using a datastore
         ISO. Conflicts with `client_device`.
-      * `size` (`float`) - The size of the disk, in GiB.
+      * `size` (`float`) - The size of the disk, in GB.
       * `thinProvisioned` (`bool`) - If `true`, this disk is thin provisioned,
         with space for the file being allocated on an as-needed basis. Cannot be set
         to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -396,14 +396,15 @@ class VirtualMachine(pulumi.CustomResource):
     """
     num_cores_per_socket: pulumi.Output[float]
     """
-    The number of cores to distribute among
-    the CPUs in this virtual machine. If specified, the value supplied to
-    `num_cpus` must be evenly divisible by this value. Default: `1`.
+    The number of cores per socket in this
+    virtual machine. The number of vCPUs on the virtual machine will be
+    `num_cpus` divided by `num_cores_per_socket`. If specified, the value
+    supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
     """
     num_cpus: pulumi.Output[float]
     """
-    The number of virtual processors to assign to this
-    virtual machine. Default: `1`.
+    The total number of virtual processor cores to assign
+    to this virtual machine. Default: `1`.
     """
     reboot_required: pulumi.Output[bool]
     resource_pool_id: pulumi.Output[str]
@@ -647,11 +648,12 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[list] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
-        :param pulumi.Input[float] num_cores_per_socket: The number of cores to distribute among
-               the CPUs in this virtual machine. If specified, the value supplied to
-               `num_cpus` must be evenly divisible by this value. Default: `1`.
-        :param pulumi.Input[float] num_cpus: The number of virtual processors to assign to this
-               virtual machine. Default: `1`.
+        :param pulumi.Input[float] num_cores_per_socket: The number of cores per socket in this
+               virtual machine. The number of vCPUs on the virtual machine will be
+               `num_cpus` divided by `num_cores_per_socket`. If specified, the value
+               supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+        :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
+               to this virtual machine. Default: `1`.
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
                ID][docs-about-morefs] of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -713,7 +715,7 @@ class VirtualMachine(pulumi.CustomResource):
             Requried for using a datastore ISO. Conflicts with `client_device`.
           * `deviceAddress` (`pulumi.Input[str]`) - <elided>
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
-          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
         
         The **clone** object supports the following:
@@ -798,9 +800,9 @@ class VirtualMachine(pulumi.CustomResource):
           * `label` (`pulumi.Input[str]`) - A label for the disk. Forces a new disk if changed.
           * `name` (`pulumi.Input[str]`) - An alias for both `label` and `path`, the latter when
             using `attach`. Required if not using `label`.
-          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
-          * `size` (`pulumi.Input[float]`) - The size of the disk, in GiB.
+          * `size` (`pulumi.Input[float]`) - The size of the disk, in GB.
           * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -1075,11 +1077,12 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[list] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
-        :param pulumi.Input[float] num_cores_per_socket: The number of cores to distribute among
-               the CPUs in this virtual machine. If specified, the value supplied to
-               `num_cpus` must be evenly divisible by this value. Default: `1`.
-        :param pulumi.Input[float] num_cpus: The number of virtual processors to assign to this
-               virtual machine. Default: `1`.
+        :param pulumi.Input[float] num_cores_per_socket: The number of cores per socket in this
+               virtual machine. The number of vCPUs on the virtual machine will be
+               `num_cpus` divided by `num_cores_per_socket`. If specified, the value
+               supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+        :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
+               to this virtual machine. Default: `1`.
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
                ID][docs-about-morefs] of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -1150,7 +1153,7 @@ class VirtualMachine(pulumi.CustomResource):
             Requried for using a datastore ISO. Conflicts with `client_device`.
           * `deviceAddress` (`pulumi.Input[str]`) - <elided>
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
-          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
         
         The **clone** object supports the following:
@@ -1235,9 +1238,9 @@ class VirtualMachine(pulumi.CustomResource):
           * `label` (`pulumi.Input[str]`) - A label for the disk. Forces a new disk if changed.
           * `name` (`pulumi.Input[str]`) - An alias for both `label` and `path`, the latter when
             using `attach`. Required if not using `label`.
-          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Requried for using a datastore
+          * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
-          * `size` (`pulumi.Input[float]`) - The size of the disk, in GiB.
+          * `size` (`pulumi.Input[float]`) - The size of the disk, in GB.
           * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk

@@ -300,14 +300,15 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[]>;
     /**
-     * The number of cores to distribute among
-     * the CPUs in this virtual machine. If specified, the value supplied to
-     * `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in this
+     * virtual machine. The number of vCPUs on the virtual machine will be
+     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
+     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     public readonly numCoresPerSocket!: pulumi.Output<number | undefined>;
     /**
-     * The number of virtual processors to assign to this
-     * virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign
+     * to this virtual machine. Default: `1`.
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
     /**
@@ -882,14 +883,15 @@ export interface VirtualMachineState {
      */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute among
-     * the CPUs in this virtual machine. If specified, the value supplied to
-     * `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in this
+     * virtual machine. The number of vCPUs on the virtual machine will be
+     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
+     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     readonly numCoresPerSocket?: pulumi.Input<number>;
     /**
-     * The number of virtual processors to assign to this
-     * virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign
+     * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
     /**
@@ -1264,14 +1266,15 @@ export interface VirtualMachineArgs {
      */
     readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores to distribute among
-     * the CPUs in this virtual machine. If specified, the value supplied to
-     * `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in this
+     * virtual machine. The number of vCPUs on the virtual machine will be
+     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
+     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     readonly numCoresPerSocket?: pulumi.Input<number>;
     /**
-     * The number of virtual processors to assign to this
-     * virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign
+     * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
     /**

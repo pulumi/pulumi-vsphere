@@ -35,6 +35,7 @@ export * from "./getVappContainer";
 export * from "./getVirtualMachine";
 export * from "./getVmfsDisks";
 export * from "./haVmOverride";
+export * from "./host";
 export * from "./hostPortGroup";
 export * from "./hostVirtualSwitch";
 export * from "./license";

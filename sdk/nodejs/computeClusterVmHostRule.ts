@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * looked up by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source]
  * data source. It then creates a group with this virtual machine. It also creates
  * a host group off of the host looked up via the
- * [`vsphere..getHost`][tf-vsphere-host-data-source] data source. Finally, this
+ * [`vsphere..Host`][tf-vsphere-host-data-source] data source. Finally, this
  * virtual machine is configured to run specifically on that host via a
  * `vsphere..ComputeClusterVmHostRule` resource.
  * 

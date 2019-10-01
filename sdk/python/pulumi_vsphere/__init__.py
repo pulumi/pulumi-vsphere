@@ -28,6 +28,7 @@ from .drs_vm_override import *
 from .file import *
 from .folder import *
 from .ha_vm_override import *
+from .host import *
 from .host_port_group import *
 from .host_virtual_switch import *
 from .license import *

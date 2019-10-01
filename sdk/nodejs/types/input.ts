@@ -56,7 +56,7 @@ export interface VirtualMachineCdrom {
      */
     key?: pulumi.Input<number>;
     /**
-     * The path to the ISO file. Requried for using a datastore
+     * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
      */
     path?: pulumi.Input<string>;
@@ -193,12 +193,12 @@ export interface VirtualMachineDisk {
      */
     name?: pulumi.Input<string>;
     /**
-     * The path to the ISO file. Requried for using a datastore
+     * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
      */
     path?: pulumi.Input<string>;
     /**
-     * The size of the disk, in GiB.
+     * The size of the disk, in GB.
      */
     size?: pulumi.Input<number>;
     /**

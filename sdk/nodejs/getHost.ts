@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..getHost` data source can be used to discover the ID of a vSphere
+ * The `vsphere..Host` data source can be used to discover the ID of a vSphere
  * host. This can then be used with resources or data sources that require a host
  * managed object reference ID.
  * 
