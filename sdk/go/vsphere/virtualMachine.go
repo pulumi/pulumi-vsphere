@@ -566,15 +566,16 @@ func (r *VirtualMachine) NetworkInterfaces() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
-// The number of cores to distribute among
-// the CPUs in this virtual machine. If specified, the value supplied to
-// `numCpus` must be evenly divisible by this value. Default: `1`.
+// The number of cores per socket in this
+// virtual machine. The number of vCPUs on the virtual machine will be
+// `numCpus` divided by `numCoresPerSocket`. If specified, the value
+// supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
 func (r *VirtualMachine) NumCoresPerSocket() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["numCoresPerSocket"])
 }
 
-// The number of virtual processors to assign to this
-// virtual machine. Default: `1`.
+// The total number of virtual processor cores to assign
+// to this virtual machine. Default: `1`.
 func (r *VirtualMachine) NumCpus() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["numCpus"])
 }
@@ -905,12 +906,13 @@ type VirtualMachineState struct {
 	// virtual machine. See network interface options
 	// below.
 	NetworkInterfaces interface{}
-	// The number of cores to distribute among
-	// the CPUs in this virtual machine. If specified, the value supplied to
-	// `numCpus` must be evenly divisible by this value. Default: `1`.
+	// The number of cores per socket in this
+	// virtual machine. The number of vCPUs on the virtual machine will be
+	// `numCpus` divided by `numCoresPerSocket`. If specified, the value
+	// supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
 	NumCoresPerSocket interface{}
-	// The number of virtual processors to assign to this
-	// virtual machine. Default: `1`.
+	// The total number of virtual processor cores to assign
+	// to this virtual machine. Default: `1`.
 	NumCpus interface{}
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired interface{}
@@ -1155,12 +1157,13 @@ type VirtualMachineArgs struct {
 	// virtual machine. See network interface options
 	// below.
 	NetworkInterfaces interface{}
-	// The number of cores to distribute among
-	// the CPUs in this virtual machine. If specified, the value supplied to
-	// `numCpus` must be evenly divisible by this value. Default: `1`.
+	// The number of cores per socket in this
+	// virtual machine. The number of vCPUs on the virtual machine will be
+	// `numCpus` divided by `numCoresPerSocket`. If specified, the value
+	// supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
 	NumCoresPerSocket interface{}
-	// The number of virtual processors to assign to this
-	// virtual machine. Default: `1`.
+	// The total number of virtual processor cores to assign
+	// to this virtual machine. Default: `1`.
 	NumCpus interface{}
 	// The [managed object reference
 	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.

@@ -69,6 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_file":                                    {Tok: vsphereResource(vsphereMod, "File")},
 			"vsphere_folder":                                  {Tok: vsphereResource(vsphereMod, "Folder")},
 			"vsphere_ha_vm_override":                          {Tok: vsphereResource(vsphereMod, "HaVmOverride")},
+			"vsphere_host":                                    {Tok: vsphereResource(vsphereMod, "Host")},
 			"vsphere_host_port_group":                         {Tok: vsphereResource(vsphereMod, "HostPortGroup")},
 			"vsphere_host_virtual_switch":                     {Tok: vsphereResource(vsphereMod, "HostVirtualSwitch")},
 			"vsphere_license":                                 {Tok: vsphereResource(vsphereMod, "License")},
