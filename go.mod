@@ -16,7 +16,6 @@ require (
 	github.com/pulumi/pulumi v1.0.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f
 	github.com/spf13/afero v1.2.2 // indirect
-	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-vsphere v1.13.0
 	github.com/ulikunitz/xz v0.5.6 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
