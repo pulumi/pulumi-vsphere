@@ -7,40 +7,48 @@ import (
 	"path"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
+func TestAccMinimal(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "minimal"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccWebserver(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "webserver"),
+			RunUpdateTest: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
-	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-		return
+	if err != nil {
+		t.FailNow()
 	}
 
-	// base options shared amongst all tests.
-	base := integration.ProgramTestOptions{
-		Config: map[string]string{},
-	}
+	return cwd
+}
+
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{}
+}
+
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"@pulumi/vsphere",
 		},
 	})
 
-	examples := []integration.ProgramTestOptions{
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "minimal")}),
-		baseJS.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "webserver")}),
-	}
-
-	for _, ex := range examples {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
-	}
-}
-
-func createEditDir(dir string) integration.EditDir {
-	return integration.EditDir{Dir: dir, ExtraRuntimeValidation: nil}
+	return baseJS
 }
