@@ -30,9 +30,40 @@ To use from Python, install using `pip`:
 To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-vsphere/sdk/go/...
+    
+## Configuration
+
+The following configuration points are available:
+
+- `vsphere:user` - (Required) This is the username for vSphere API operations. Can also be specified with the `VSPHERE_USER`
+  environment variable.
+- `vsphere:password` - (Required) This is the password for vSphere API operations. Can also be specified with the 
+  `VSPHERE_PASSWORD` environment variable.
+- `vsphere:vsphereServer` - (Required) This is the vCenter server name for vSphere API operations. Can also be specified
+  with the `VSPHERE_SERVER` environment variable.
+- `vsphere:allowUnverifiedSsl` - (Optional) Boolean that can be set to true to disable SSL certificate verification. 
+  This should be used with care as it could allow an attacker to intercept your auth token. If omitted, default value is
+  `false`. Can also be specified with the `VSPHERE_ALLOW_UNVERIFIED_SSL` environment variable.
+- `vsphere:vimKeepAlive` - (Optional) Keep alive interval in minutes for the VIM session. Standard session timeout in 
+  vSphere is 30 minutes. This defaults to `10` minutes to ensure that operations that take a longer than 30 minutes 
+  without API interaction do not result in a session timeout. Can also be specified with the `VSPHERE_VIM_KEEP_ALIVE`
+  environment variable.
+- `vsphere:persistSession` - (Optional) Persist the SOAP and REST client sessions to disk. Default: false. Can also be 
+  specified by the `VSPHERE_PERSIST_SESSION` environment variable.
+- `vsphere:vimSessionPath` - (Optional) The direcotry to save the VIM SOAP API session to. Default: `${HOME}/.govmomi/sessions`.
+  Can also be specified by the `VSPHERE_VIM_SESSION_PATH` environment variable.
+- `vsphere:restSessionPath` - (Optional) The directory to save the REST API session (used for tags) to. Default: `${HOME}/.govmomi/rest_sessions`. 
+  Can also be specified by the `VSPHERE_REST_SESSION_PATH` environment variable.
+- `vsphere:clientDebug` - (Optional) When `true`, the provider logs SOAP calls made to the vSphere API to disk. The log 
+  files are logged to `${HOME}/.govmomi`. Can also be specified with the `VSPHERE_CLIENT_DEBUG` environment variable.
+- `vsphere:clientDebugPath` - (Optional) Override the default log path. Can also be specified with the 
+  `VSPHERE_CLIENT_DEBUG_PATH` environment variable.
+- `vsphere:clientDebugPathRun` - (Optional) A specific subdirectory in `client_debug_path` to use for debugging calls for
+  this particular provider configuration. All data in this directory is removed at the start of the provider run. Can also
+  be specified with the `VSPHERE_CLIENT_DEBUG_PATH_RUN` environment variable.
 
 ## Reference
 
-* NodeJS: https://pulumi.io/reference/pkg/nodejs/@pulumi/vsphere/index.html
-* Python: Coming soon!
+* NodeJS: https://www.pulumi.com/docs/reference/pkg/nodejs/pulumi/vsphere/
+* Python: https://www.pulumi.com/docs/reference/pkg/python/pulumi_vsphere/
 * Go: https://godoc.org/github.com/pulumi/pulumi-vsphere/sdk/go/vsphere
