@@ -2,11 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
-
+* Add support for DotNet SDK Generation
 ---
 
-## 0.17.12 (2019-12-02)
+## 0.17.12 (2019-10-02)
 * Regenerate SDK against tf2pulumi 0.6.0
 * Upgrade to v1.13.0 of the vSphere Terraform Provider
 

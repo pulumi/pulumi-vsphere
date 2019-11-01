@@ -11,6 +11,10 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 
+DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
+DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
+DOTNET_VERSION := $(strip ${DOTNET_PREFIX})-preview-$(strip ${DOTNET_SUFFIX})
+
 TESTPARALLELISM := 4
 
 # NOTE: Since the plugin is published using the nodejs style semver version
@@ -19,7 +23,7 @@ TESTPARALLELISM := 4
 build::
 	go install -ldflags "-X github.com/pulumi/pulumi-vsphere/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
 	go install -ldflags "-X github.com/pulumi/pulumi-vsphere/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
-	for LANGUAGE in "nodejs" "python" "go"; do \
+	for LANGUAGE in "nodejs" "python" "go" "dotnet"; do \
 		$(TFGEN) $$LANGUAGE --overlays overlays/$$LANGUAGE/ --out ${PACKDIR}/$$LANGUAGE/ || exit 3 ; \
 	done
 	cd ${PACKDIR}/nodejs/ && \
@@ -28,17 +32,15 @@ build::
 		cp ../../README.md ../../LICENSE.txt package.json yarn.lock ./bin/ && \
 		sed -i.bak "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 	cd ${PACKDIR}/python/ && \
-		if [ $$(command -v pandoc) ]; then \
-			pandoc --from=markdown --to=rst --output=README.rst ../../README.md; \
-		else \
-			echo "warning: pandoc not found, not generating README.rst"; \
-			echo "" > README.rst; \
-		fi && \
+		cp ../../README.md . && \
 		$(PYTHON) setup.py clean --all 2>/dev/null && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
 		sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
+    cd ${PACKDIR}/dotnet/ && \
+        echo "${VERSION:v%=%}" >version.txt && \
+        dotnet build /p:Version=${DOTNET_VERSION}
 
 lint::
 	golangci-lint run
