@@ -10,51 +10,6 @@ import * as utilities from "./utilities";
  * Provides a VMware vSphere host resource. This represents an ESXi host that
  * can be used either as part of a Compute Cluster or Standalone.
  * 
- * ## Example Usages
- * 
- * **Create a standalone host:**
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = vsphere.getDatacenter({
- *     name: "my-datacenter",
- * });
- * const h1 = new vsphere.Host("h1", {
- *     "data.vsphere_datacenter.dc.id": [{}],
- *     datacenter: "",
- *     hostname: "10.10.10.1",
- *     license: "00000-00000-00000-00000i-00000",
- *     password: "password",
- *     username: "root",
- * });
- * ```
- * 
- * **Create host in a compute cluster:**
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- * 
- * const dc = vsphere.getDatacenter({
- *     name: "TfDatacenter",
- * });
- * const c1 = vsphere.getComputeCluster({
- *     "data.vsphere_datacenter.dc.id": [{}],
- *     datacenterId: "",
- *     name: "DC0_C0",
- * });
- * const h1 = new vsphere.Host("h1", {
- *     cluster: "",
- *     "data.vsphere_compute_cluster.c1.id": [{}],
- *     hostname: "10.10.10.1",
- *     license: "00000-00000-00000-00000i-00000",
- *     password: "password",
- *     username: "root",
- * });
- * ```
- * 
  * ## Importing 
  * 
  * An existing host can be [imported][docs-import] into this resource

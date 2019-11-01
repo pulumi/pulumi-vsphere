@@ -1,6 +1,8 @@
 /vendor/
 .pulumi
 Pulumi.*.yaml
+**/bin/
+**/obj/
 
 **/command-output/
 
