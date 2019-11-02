@@ -38,9 +38,9 @@ build::
 		sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
-    	cd ${PACKDIR}/dotnet/ && \
-        	echo "${VERSION:v%=%}" >version.txt && \
-        	dotnet build /p:Version=${DOTNET_VERSION}
+	cd ${PACKDIR}/dotnet/ && \
+  	echo "${VERSION:v%=%}" >version.txt && \
+  	dotnet build /p:Version=${DOTNET_VERSION}
 
 lint::
 	golangci-lint run
