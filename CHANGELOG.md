@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Remove README.rst from the Python package and replace it with README.md
 
 ---
 
