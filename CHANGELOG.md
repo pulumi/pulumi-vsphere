@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Remove README.rst from the Python package and replace it with README.md
+_(none)_
 
 ---
+
+## 1.1.0 (2019-11-13)
+* Remove README.rst from the Python package and replace it with README.md
 
 ## 1.0.0 (2019-11-13)
 * Add support for DotNet SDK Generation
