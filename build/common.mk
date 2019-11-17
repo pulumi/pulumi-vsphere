@@ -109,6 +109,8 @@ PULUMI_NODE_MODULES := $(PULUMI_ROOT)/node_modules
 # ensure that `default` is the target that is run when no arguments are passed to make
 default::
 
+GOPROXY = 'https://proxy.golang.org'
+
 PYTHON ?= python3
 PIP ?= pip3
 
@@ -143,8 +145,14 @@ all:: build install lint test_all
 
 ensure::
 	$(call STEP_MESSAGE)
-	@if [ -e 'Gopkg.toml' ]; then echo "dep ensure -v"; dep ensure -v; \
-		elif [ -e 'go.mod' ]; then echo "GO111MODULE=on go mod vendor"; GO111MODULE=on go mod vendor; gomod-doccopy -provider terraform-provider-$(PACK); fi
+ifeq ($(NOPROXY), true)
+	@echo "GO111MODULE=on go mod tidy"; GO111MODULE=on go mod tidy
+	@echo "GO111MODULE=on go mod vendor"; GO111MODULE=on go mod vendor
+else
+	@echo "GO111MODULE=on GOPROXY=$(GOPROXY) go mod tidy"; GO111MODULE=on GOPROXY=$(GOPROXY) go mod tidy
+	@echo "GO111MODULE=on GOPROXY=$(GOPROXY) go mod vendor"; GO111MODULE=on GOPROXY=$(GOPROXY) go mod vendor
+endif
+	gomod-doccopy -provider terraform-provider-$(PACK);
 	@if [ -e 'package.json' ]; then echo "yarn install"; yarn install; fi
 
 build::
