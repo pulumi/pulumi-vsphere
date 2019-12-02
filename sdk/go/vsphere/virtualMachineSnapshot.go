@@ -101,54 +101,54 @@ func GetVirtualMachineSnapshot(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VirtualMachineSnapshot) URN() *pulumi.URNOutput {
+func (r *VirtualMachineSnapshot) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VirtualMachineSnapshot) ID() *pulumi.IDOutput {
+func (r *VirtualMachineSnapshot) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If set to `true`, the delta disks involved in this
 // snapshot will be consolidated into the parent when this resource is
 // destroyed.
-func (r *VirtualMachineSnapshot) Consolidate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["consolidate"])
+func (r *VirtualMachineSnapshot) Consolidate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["consolidate"])
 }
 
 // A description for the snapshot.
-func (r *VirtualMachineSnapshot) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *VirtualMachineSnapshot) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If set to `true`, a dump of the internal state of the
 // virtual machine is included in the snapshot.
-func (r *VirtualMachineSnapshot) Memory() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["memory"])
+func (r *VirtualMachineSnapshot) Memory() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["memory"])
 }
 
 // If set to `true`, and the virtual machine is powered
 // on when the snapshot is taken, VMware Tools is used to quiesce the file
 // system in the virtual machine.
-func (r *VirtualMachineSnapshot) Quiesce() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["quiesce"])
+func (r *VirtualMachineSnapshot) Quiesce() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["quiesce"])
 }
 
 // If set to `true`, the entire snapshot subtree
 // is removed when this resource is destroyed.
-func (r *VirtualMachineSnapshot) RemoveChildren() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["removeChildren"])
+func (r *VirtualMachineSnapshot) RemoveChildren() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["removeChildren"])
 }
 
 // The name of the snapshot.
-func (r *VirtualMachineSnapshot) SnapshotName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotName"])
+func (r *VirtualMachineSnapshot) SnapshotName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshotName"])
 }
 
 // The virtual machine UUID.
-func (r *VirtualMachineSnapshot) VirtualMachineUuid() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["virtualMachineUuid"])
+func (r *VirtualMachineSnapshot) VirtualMachineUuid() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["virtualMachineUuid"])
 }
 
 // Input properties used for looking up and filtering VirtualMachineSnapshot resources.

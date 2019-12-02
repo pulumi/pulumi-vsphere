@@ -20,7 +20,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
         /// </summary>
         public static Task<GetResourcePoolResult> GetResourcePool(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetResourcePoolArgs : Pulumi.ResourceArgs

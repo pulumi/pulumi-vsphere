@@ -74,35 +74,35 @@ func GetStorageDrsVmOverride(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *StorageDrsVmOverride) URN() *pulumi.URNOutput {
+func (r *StorageDrsVmOverride) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *StorageDrsVmOverride) ID() *pulumi.IDOutput {
+func (r *StorageDrsVmOverride) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the datastore cluster to put the override in.
 // Forces a new resource if changed.
-func (r *StorageDrsVmOverride) DatastoreClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastoreClusterId"])
+func (r *StorageDrsVmOverride) DatastoreClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastoreClusterId"])
 }
 
 // Overrides any Storage DRS automation
 // levels for this virtual machine. Can be one of `automated` or `manual`. When
 // not specified, the datastore cluster's settings are used according to the
 // [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
-func (r *StorageDrsVmOverride) SdrsAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sdrsAutomationLevel"])
+func (r *StorageDrsVmOverride) SdrsAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sdrsAutomationLevel"])
 }
 
 // Overrides the default Storage DRS setting for
 // this virtual machine. When not specified, the datastore cluster setting is
 // used.
-func (r *StorageDrsVmOverride) SdrsEnabled() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sdrsEnabled"])
+func (r *StorageDrsVmOverride) SdrsEnabled() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sdrsEnabled"])
 }
 
 // Overrides the intra-VM affinity setting
@@ -110,14 +110,14 @@ func (r *StorageDrsVmOverride) SdrsEnabled() *pulumi.StringOutput {
 // will be kept on the same datastore. When `false`, Storage DRS may locate
 // individual disks on different datastores if it helps satisfy cluster
 // requirements. When not specified, the datastore cluster's settings are used.
-func (r *StorageDrsVmOverride) SdrsIntraVmAffinity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sdrsIntraVmAffinity"])
+func (r *StorageDrsVmOverride) SdrsIntraVmAffinity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sdrsIntraVmAffinity"])
 }
 
 // The UUID of the virtual machine to create
 // the override for.  Forces a new resource if changed.
-func (r *StorageDrsVmOverride) VirtualMachineId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["virtualMachineId"])
+func (r *StorageDrsVmOverride) VirtualMachineId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["virtualMachineId"])
 }
 
 // Input properties used for looking up and filtering StorageDrsVmOverride resources.

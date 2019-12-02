@@ -61,43 +61,43 @@ func GetLicense(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *License) URN() *pulumi.URNOutput {
+func (r *License) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *License) ID() *pulumi.IDOutput {
+func (r *License) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The product edition of the license key.
-func (r *License) EditionKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["editionKey"])
+func (r *License) EditionKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["editionKey"])
 }
 
 // A map of key/value pairs to be attached as labels (tags) to the license key.
-func (r *License) Labels() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["labels"])
+func (r *License) Labels() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["labels"])
 }
 
 // The license key to add.
-func (r *License) LicenseKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["licenseKey"])
+func (r *License) LicenseKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["licenseKey"])
 }
 
 // The display name for the license.
-func (r *License) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *License) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Total number of units (example: CPUs) contained in the license.
-func (r *License) Total() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["total"])
+func (r *License) Total() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["total"])
 }
 
 // The number of units (example: CPUs) assigned to this license.
-func (r *License) Used() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["used"])
+func (r *License) Used() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["used"])
 }
 
 // Input properties used for looking up and filtering License resources.

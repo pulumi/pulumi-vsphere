@@ -93,57 +93,57 @@ func GetComputeClusterVmHostRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterVmHostRule) URN() *pulumi.URNOutput {
+func (r *ComputeClusterVmHostRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterVmHostRule) ID() *pulumi.IDOutput {
+func (r *ComputeClusterVmHostRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // When this field is used, the virtual
 // machines defined in `vmGroupName` will be run on the
 // hosts defined in this host group.
-func (r *ComputeClusterVmHostRule) AffinityHostGroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["affinityHostGroupName"])
+func (r *ComputeClusterVmHostRule) AffinityHostGroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["affinityHostGroupName"])
 }
 
 // When this field is used, the
 // virtual machines defined in `vmGroupName` will _not_ be
 // run on the hosts defined in this host group.
-func (r *ComputeClusterVmHostRule) AntiAffinityHostGroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["antiAffinityHostGroupName"])
+func (r *ComputeClusterVmHostRule) AntiAffinityHostGroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["antiAffinityHostGroupName"])
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterVmHostRule) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterVmHostRule) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // Enable this rule in the cluster. Default: `true`.
-func (r *ComputeClusterVmHostRule) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *ComputeClusterVmHostRule) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
-func (r *ComputeClusterVmHostRule) Mandatory() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mandatory"])
+func (r *ComputeClusterVmHostRule) Mandatory() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mandatory"])
 }
 
 // The name of the rule. This must be unique in the
 // cluster.
-func (r *ComputeClusterVmHostRule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterVmHostRule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the virtual machine group to use
 // with this rule.
-func (r *ComputeClusterVmHostRule) VmGroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vmGroupName"])
+func (r *ComputeClusterVmHostRule) VmGroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vmGroupName"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterVmHostRule resources.

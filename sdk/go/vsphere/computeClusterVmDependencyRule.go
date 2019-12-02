@@ -88,53 +88,53 @@ func GetComputeClusterVmDependencyRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterVmDependencyRule) URN() *pulumi.URNOutput {
+func (r *ComputeClusterVmDependencyRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterVmDependencyRule) ID() *pulumi.IDOutput {
+func (r *ComputeClusterVmDependencyRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterVmDependencyRule) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterVmDependencyRule) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // The name of the VM group that this
 // rule depends on. The VMs defined in the group specified by
 // `vmGroupName` will not be started until the VMs in this
 // group are started.
-func (r *ComputeClusterVmDependencyRule) DependencyVmGroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dependencyVmGroupName"])
+func (r *ComputeClusterVmDependencyRule) DependencyVmGroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dependencyVmGroupName"])
 }
 
 // Enable this rule in the cluster. Default: `true`.
-func (r *ComputeClusterVmDependencyRule) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *ComputeClusterVmDependencyRule) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
-func (r *ComputeClusterVmDependencyRule) Mandatory() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mandatory"])
+func (r *ComputeClusterVmDependencyRule) Mandatory() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mandatory"])
 }
 
 // The name of the rule. This must be unique in the
 // cluster.
-func (r *ComputeClusterVmDependencyRule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterVmDependencyRule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the VM group that is the subject of
 // this rule. The VMs defined in this group will not be started until the VMs in
 // the group specified by
 // `dependencyVmGroupName` are started.
-func (r *ComputeClusterVmDependencyRule) VmGroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vmGroupName"])
+func (r *ComputeClusterVmDependencyRule) VmGroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vmGroupName"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterVmDependencyRule resources.

@@ -87,78 +87,78 @@ func GetHost(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Host) URN() *pulumi.URNOutput {
+func (r *Host) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Host) ID() *pulumi.IDOutput {
+func (r *Host) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the Compute Cluster this host should
 // be added to. This should not be set if `datacenter` is set.
-func (r *Host) Cluster() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cluster"])
+func (r *Host) Cluster() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cluster"])
 }
 
 // If set to false then the host will be disconected.
 // Default is `false`.
-func (r *Host) Connected() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["connected"])
+func (r *Host) Connected() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["connected"])
 }
 
 // The ID of the datacenter this host should
 // be added to. This should not be set if `cluster` is set.
-func (r *Host) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *Host) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // If set to true then it will force the host to be added, even
 // if the host is already connected to a different vSphere instance. Default is `false`
-func (r *Host) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *Host) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
 // FQDN or IP address of the host to be added.
-func (r *Host) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *Host) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // The license key that will be applied to the host.
 // The license key is expected to be present in vSphere.
-func (r *Host) License() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["license"])
+func (r *Host) License() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["license"])
 }
 
 // Set the lockdown state of the host. Valid options are
 // `disabled`, `normal`, and `strict`. Default is `disabled`.
-func (r *Host) Lockdown() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lockdown"])
+func (r *Host) Lockdown() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lockdown"])
 }
 
 // Set the management state of the host. Default is `false`.
-func (r *Host) Maintenance() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["maintenance"])
+func (r *Host) Maintenance() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["maintenance"])
 }
 
 // Password that will be used by vSphere to authenticate
 // to the host.
-func (r *Host) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Host) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Host's certificate SHA-1 thumbprint. If not set the the
 // CA that signed the host's certificate should be trusted. If the CA is not trusted
 // and no thumbprint is set then the operation will fail.
-func (r *Host) Thumbprint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["thumbprint"])
+func (r *Host) Thumbprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["thumbprint"])
 }
 
 // Username that will be used by vSphere to authenticate
 // to the host.
-func (r *Host) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *Host) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering Host resources.

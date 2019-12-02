@@ -74,32 +74,32 @@ func GetComputeClusterHostGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterHostGroup) URN() *pulumi.URNOutput {
+func (r *ComputeClusterHostGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterHostGroup) ID() *pulumi.IDOutput {
+func (r *ComputeClusterHostGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterHostGroup) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterHostGroup) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // The [managed object IDs][docs-about-morefs] of
 // the hosts to put in the cluster.
-func (r *ComputeClusterHostGroup) HostSystemIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
+func (r *ComputeClusterHostGroup) HostSystemIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
 }
 
 // The name of the host group. This must be unique in the
 // cluster. Forces a new resource if changed.
-func (r *ComputeClusterHostGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterHostGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterHostGroup resources.

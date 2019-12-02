@@ -20,7 +20,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
         /// </summary>
         public static Task<GetVappContainerResult> GetVappContainer(GetVappContainerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVappContainerArgs : Pulumi.ResourceArgs

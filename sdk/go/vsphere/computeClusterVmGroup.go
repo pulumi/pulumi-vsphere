@@ -76,32 +76,32 @@ func GetComputeClusterVmGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterVmGroup) URN() *pulumi.URNOutput {
+func (r *ComputeClusterVmGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterVmGroup) ID() *pulumi.IDOutput {
+func (r *ComputeClusterVmGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterVmGroup) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterVmGroup) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // The name of the VM group. This must be unique in the
 // cluster. Forces a new resource if changed.
-func (r *ComputeClusterVmGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterVmGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The UUIDs of the virtual machines in this
 // group.
-func (r *ComputeClusterVmGroup) VirtualMachineIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
+func (r *ComputeClusterVmGroup) VirtualMachineIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterVmGroup resources.

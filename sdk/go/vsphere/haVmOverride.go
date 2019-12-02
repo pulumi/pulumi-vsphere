@@ -106,20 +106,20 @@ func GetHaVmOverride(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *HaVmOverride) URN() *pulumi.URNOutput {
+func (r *HaVmOverride) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *HaVmOverride) ID() *pulumi.IDOutput {
+func (r *HaVmOverride) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 // resource if changed.
-func (r *HaVmOverride) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *HaVmOverride) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // Controls the action to take
@@ -127,8 +127,8 @@ func (r *HaVmOverride) ComputeClusterId() *pulumi.StringOutput {
 // the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 // `reset`.  Default: `useClusterDefault`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-func (r *HaVmOverride) HaDatastoreApdRecoveryAction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastoreApdRecoveryAction"])
+func (r *HaVmOverride) HaDatastoreApdRecoveryAction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastoreApdRecoveryAction"])
 }
 
 // Controls the action to take on this
@@ -136,8 +136,8 @@ func (r *HaVmOverride) HaDatastoreApdRecoveryAction() *pulumi.StringOutput {
 // datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 // `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-func (r *HaVmOverride) HaDatastoreApdResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastoreApdResponse"])
+func (r *HaVmOverride) HaDatastoreApdResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastoreApdResponse"])
 }
 
 // Controls the delay in minutes
@@ -145,8 +145,8 @@ func (r *HaVmOverride) HaDatastoreApdResponse() *pulumi.StringOutput {
 // `haDatastoreApdResponse`. Use `-1` to use
 // the cluster default. Default: `-1`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-func (r *HaVmOverride) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haDatastoreApdResponseDelay"])
+func (r *HaVmOverride) HaDatastoreApdResponseDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haDatastoreApdResponseDelay"])
 }
 
 // Controls the action to take on this
@@ -154,23 +154,23 @@ func (r *HaVmOverride) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
 // relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 // `restartAggressive`. Default: `clusterDefault`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-func (r *HaVmOverride) HaDatastorePdlResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastorePdlResponse"])
+func (r *HaVmOverride) HaDatastorePdlResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastorePdlResponse"])
 }
 
 // The action to take on this virtual
 // machine when a host has detected that it has been isolated from the rest of
 // the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
 // `shutdown`. Default: `clusterIsolationResponse`.
-func (r *HaVmOverride) HaHostIsolationResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haHostIsolationResponse"])
+func (r *HaVmOverride) HaHostIsolationResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haHostIsolationResponse"])
 }
 
 // If a heartbeat from this virtual
 // machine is not received within this configured interval, the virtual machine
 // is marked as failed. The value is in seconds. Default: `30`.
-func (r *HaVmOverride) HaVmFailureInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmFailureInterval"])
+func (r *HaVmOverride) HaVmFailureInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmFailureInterval"])
 }
 
 // The length of the reset window in
@@ -179,59 +179,59 @@ func (r *HaVmOverride) HaVmFailureInterval() *pulumi.IntOutput {
 // configured in `haVmMaximumResets`. `-1` means no window, meaning an
 // unlimited reset time is allotted. The value is specified in seconds. Default:
 // `-1` (no window).
-func (r *HaVmOverride) HaVmMaximumFailureWindow() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMaximumFailureWindow"])
+func (r *HaVmOverride) HaVmMaximumFailureWindow() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMaximumFailureWindow"])
 }
 
 // The maximum number of resets that HA will
 // perform to this virtual machine when responding to a failure event. Default:
 // `3`
-func (r *HaVmOverride) HaVmMaximumResets() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMaximumResets"])
+func (r *HaVmOverride) HaVmMaximumResets() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMaximumResets"])
 }
 
 // The time, in seconds, that HA waits after
 // powering on this virtual machine before monitoring for heartbeats. Default:
 // `120` (2 minutes).
-func (r *HaVmOverride) HaVmMinimumUptime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMinimumUptime"])
+func (r *HaVmOverride) HaVmMinimumUptime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMinimumUptime"])
 }
 
 // The type of virtual machine monitoring to use
 // when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 // `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-func (r *HaVmOverride) HaVmMonitoring() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmMonitoring"])
+func (r *HaVmOverride) HaVmMonitoring() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmMonitoring"])
 }
 
 // Determines whether or
 // not the cluster's default settings or the VM override settings specified in
 // this resource are used for virtual machine monitoring. The default is `true`
 // (use cluster defaults) - set to `false` to have overrides take effect.
-func (r *HaVmOverride) HaVmMonitoringUseClusterDefaults() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["haVmMonitoringUseClusterDefaults"])
+func (r *HaVmOverride) HaVmMonitoringUseClusterDefaults() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["haVmMonitoringUseClusterDefaults"])
 }
 
 // The restart priority for the virtual
 // machine when vSphere detects a host failure. Can be one of
 // `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
 // Default: `clusterRestartPriority`.
-func (r *HaVmOverride) HaVmRestartPriority() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmRestartPriority"])
+func (r *HaVmOverride) HaVmRestartPriority() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmRestartPriority"])
 }
 
 // The maximum time, in seconds, that
 // vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 // specify the cluster default.  Default: `-1`.
 // <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
-func (r *HaVmOverride) HaVmRestartTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmRestartTimeout"])
+func (r *HaVmOverride) HaVmRestartTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmRestartTimeout"])
 }
 
 // The UUID of the virtual machine to create
 // the override for.  Forces a new resource if changed.
-func (r *HaVmOverride) VirtualMachineId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["virtualMachineId"])
+func (r *HaVmOverride) VirtualMachineId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["virtualMachineId"])
 }
 
 // Input properties used for looking up and filtering HaVmOverride resources.

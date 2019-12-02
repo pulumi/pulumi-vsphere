@@ -25,7 +25,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
         /// </summary>
         public static Task<GetDatastoreClusterResult> GetDatastoreCluster(GetDatastoreClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDatastoreClusterArgs : Pulumi.ResourceArgs

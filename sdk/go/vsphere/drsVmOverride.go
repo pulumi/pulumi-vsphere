@@ -75,39 +75,39 @@ func GetDrsVmOverride(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DrsVmOverride) URN() *pulumi.URNOutput {
+func (r *DrsVmOverride) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DrsVmOverride) ID() *pulumi.IDOutput {
+func (r *DrsVmOverride) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 // resource if changed.
-func (r *DrsVmOverride) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *DrsVmOverride) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // Overrides the automation level for this virtual
 // machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 // `fullyAutomated`. Default: `manual`.
-func (r *DrsVmOverride) DrsAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["drsAutomationLevel"])
+func (r *DrsVmOverride) DrsAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["drsAutomationLevel"])
 }
 
 // Overrides the default DRS setting for this virtual
 // machine. Can be either `true` or `false`. Default: `false`.
-func (r *DrsVmOverride) DrsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["drsEnabled"])
+func (r *DrsVmOverride) DrsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["drsEnabled"])
 }
 
 // The UUID of the virtual machine to create
 // the override for.  Forces a new resource if changed.
-func (r *DrsVmOverride) VirtualMachineId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["virtualMachineId"])
+func (r *DrsVmOverride) VirtualMachineId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["virtualMachineId"])
 }
 
 // Input properties used for looking up and filtering DrsVmOverride resources.

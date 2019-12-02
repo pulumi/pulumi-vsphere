@@ -649,7 +649,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DistributedVirtualSwitch(string name, DistributedVirtualSwitchArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

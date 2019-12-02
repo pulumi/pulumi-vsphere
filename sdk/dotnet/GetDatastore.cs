@@ -20,7 +20,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
         /// </summary>
         public static Task<GetDatastoreResult> GetDatastore(GetDatastoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDatastoreArgs : Pulumi.ResourceArgs

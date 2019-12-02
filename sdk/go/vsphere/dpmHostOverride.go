@@ -75,38 +75,38 @@ func GetDpmHostOverride(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DpmHostOverride) URN() *pulumi.URNOutput {
+func (r *DpmHostOverride) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DpmHostOverride) ID() *pulumi.IDOutput {
+func (r *DpmHostOverride) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
 // resource if changed.
-func (r *DpmHostOverride) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *DpmHostOverride) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // The automation level for host power
 // operations on this host. Can be one of `manual` or `automated`. Default:
 // `manual`.
-func (r *DpmHostOverride) DpmAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dpmAutomationLevel"])
+func (r *DpmHostOverride) DpmAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dpmAutomationLevel"])
 }
 
 // Enable DPM support for this host. Default:
 // `false`.
-func (r *DpmHostOverride) DpmEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["dpmEnabled"])
+func (r *DpmHostOverride) DpmEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["dpmEnabled"])
 }
 
 // The managed object ID of the host.
-func (r *DpmHostOverride) HostSystemId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostSystemId"])
+func (r *DpmHostOverride) HostSystemId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostSystemId"])
 }
 
 // Input properties used for looking up and filtering DpmHostOverride resources.

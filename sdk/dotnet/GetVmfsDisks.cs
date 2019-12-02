@@ -20,7 +20,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
         /// </summary>
         public static Task<GetVmfsDisksResult> GetVmfsDisks(GetVmfsDisksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVmfsDisksArgs : Pulumi.ResourceArgs

@@ -567,7 +567,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VirtualMachine(string name, VirtualMachineArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/virtualMachine:VirtualMachine", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/virtualMachine:VirtualMachine", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

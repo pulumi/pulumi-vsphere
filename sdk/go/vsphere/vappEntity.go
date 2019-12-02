@@ -86,74 +86,74 @@ func GetVappEntity(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VappEntity) URN() *pulumi.URNOutput {
+func (r *VappEntity) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VappEntity) ID() *pulumi.IDOutput {
+func (r *VappEntity) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // [Managed object ID|docs-about-morefs] of the vApp
 // container the entity is a member of.
-func (r *VappEntity) ContainerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["containerId"])
+func (r *VappEntity) ContainerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["containerId"])
 }
 
 // A list of custom attributes to set on this resource.
-func (r *VappEntity) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *VappEntity) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // How to start the entity. Valid settings are none
 // or powerOn. If set to none, then the entity does not participate in auto-start.
 // Default: powerOn
-func (r *VappEntity) StartAction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["startAction"])
+func (r *VappEntity) StartAction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["startAction"])
 }
 
 // Delay in seconds before continuing with the next
 // entity in the order of entities to be started. Default: 120
-func (r *VappEntity) StartDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startDelay"])
+func (r *VappEntity) StartDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startDelay"])
 }
 
 // Order to start and stop target in vApp. Default: 1
-func (r *VappEntity) StartOrder() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startOrder"])
+func (r *VappEntity) StartOrder() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startOrder"])
 }
 
 // Defines the stop action for the entity. Can be set
 // to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
 // does not participate in auto-stop. Default: powerOff
-func (r *VappEntity) StopAction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stopAction"])
+func (r *VappEntity) StopAction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stopAction"])
 }
 
 // Delay in seconds before continuing with the next
 // entity in the order sequence. This is only used if the stopAction is
 // guestShutdown. Default: 120
-func (r *VappEntity) StopDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["stopDelay"])
+func (r *VappEntity) StopDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["stopDelay"])
 }
 
 // A list of tag IDs to apply to this object.
-func (r *VappEntity) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *VappEntity) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // [Managed object ID|docs-about-morefs] of the entity
 // to power on or power off. This can be a virtual machine or a vApp.
-func (r *VappEntity) TargetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["targetId"])
+func (r *VappEntity) TargetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["targetId"])
 }
 
 // Determines if the VM should be marked as being
 // started when VMware Tools are ready instead of waiting for `startDelay`. This
 // property has no effect for vApps. Default: false
-func (r *VappEntity) WaitForGuest() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitForGuest"])
+func (r *VappEntity) WaitForGuest() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["waitForGuest"])
 }
 
 // Input properties used for looking up and filtering VappEntity resources.

@@ -74,38 +74,38 @@ func GetTagCategory(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TagCategory) URN() *pulumi.URNOutput {
+func (r *TagCategory) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TagCategory) ID() *pulumi.IDOutput {
+func (r *TagCategory) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A list object types that this category is
 // valid to be assigned to. For a full list, click
 // here.
-func (r *TagCategory) AssociableTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["associableTypes"])
+func (r *TagCategory) AssociableTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["associableTypes"])
 }
 
 // The number of tags that can be assigned from this
 // category to a single object at once. Can be one of `SINGLE` (object can only
 // be assigned one tag in this category), to `MULTIPLE` (object can be assigned
 // multiple tags in this category). Forces a new resource if changed.
-func (r *TagCategory) Cardinality() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cardinality"])
+func (r *TagCategory) Cardinality() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cardinality"])
 }
 
 // A description for the category.
-func (r *TagCategory) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TagCategory) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the category.
-func (r *TagCategory) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TagCategory) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering TagCategory resources.

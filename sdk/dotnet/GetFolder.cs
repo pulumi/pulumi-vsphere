@@ -17,7 +17,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
         /// </summary>
         public static Task<GetFolderResult> GetFolder(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetFolderArgs : Pulumi.ResourceArgs

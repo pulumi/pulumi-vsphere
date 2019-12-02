@@ -72,53 +72,53 @@ func GetFile(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *File) URN() *pulumi.URNOutput {
+func (r *File) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *File) ID() *pulumi.IDOutput {
+func (r *File) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Create directories in `destinationFile`
 // path parameter if any missing for copy operation.
-func (r *File) CreateDirectories() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["createDirectories"])
+func (r *File) CreateDirectories() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["createDirectories"])
 }
 
 // The name of a datacenter in which the file will be
 // uploaded to.
-func (r *File) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *File) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // The name of the datastore in which to upload the
 // file to.
-func (r *File) Datastore() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastore"])
+func (r *File) Datastore() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastore"])
 }
 
 // The path to where the file should be uploaded
 // or copied to on vSphere.
-func (r *File) DestinationFile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationFile"])
+func (r *File) DestinationFile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationFile"])
 }
 
 // The name of a datacenter in which the file
 // will be copied from. Forces a new resource if changed.
-func (r *File) SourceDatacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDatacenter"])
+func (r *File) SourceDatacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceDatacenter"])
 }
 
 // The name of the datastore in which file will
 // be copied from. Forces a new resource if changed.
-func (r *File) SourceDatastore() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceDatastore"])
+func (r *File) SourceDatastore() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceDatastore"])
 }
 
-func (r *File) SourceFile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceFile"])
+func (r *File) SourceFile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceFile"])
 }
 
 // Input properties used for looking up and filtering File resources.
