@@ -83,54 +83,54 @@ func GetVmfsDatastore(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VmfsDatastore) URN() *pulumi.URNOutput {
+func (r *VmfsDatastore) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VmfsDatastore) ID() *pulumi.IDOutput {
+func (r *VmfsDatastore) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The connectivity status of the datastore. If this is `false`,
 // some other computed attributes may be out of date.
-func (r *VmfsDatastore) Accessible() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["accessible"])
+func (r *VmfsDatastore) Accessible() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["accessible"])
 }
 
 // Maximum capacity of the datastore, in megabytes.
-func (r *VmfsDatastore) Capacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["capacity"])
+func (r *VmfsDatastore) Capacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["capacity"])
 }
 
 // Map of custom attribute ids to attribute 
 // value string to set on datastore resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-func (r *VmfsDatastore) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *VmfsDatastore) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The [managed object
 // ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 // Conflicts with `folder`.
-func (r *VmfsDatastore) DatastoreClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastoreClusterId"])
+func (r *VmfsDatastore) DatastoreClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastoreClusterId"])
 }
 
 // The disks to use with the datastore.
-func (r *VmfsDatastore) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *VmfsDatastore) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
 // The path to the datastore folder to put the datastore in.
-func (r *VmfsDatastore) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *VmfsDatastore) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // Available space of this datastore, in megabytes.
-func (r *VmfsDatastore) FreeSpace() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["freeSpace"])
+func (r *VmfsDatastore) FreeSpace() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["freeSpace"])
 }
 
 // The [managed object ID][docs-about-morefs] of
@@ -138,42 +138,42 @@ func (r *VmfsDatastore) FreeSpace() *pulumi.IntOutput {
 // only host that the datastore will be set up on - see
 // here for more info. Forces a
 // new resource if changed.
-func (r *VmfsDatastore) HostSystemId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostSystemId"])
+func (r *VmfsDatastore) HostSystemId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostSystemId"])
 }
 
 // The current maintenance mode state of the datastore.
-func (r *VmfsDatastore) MaintenanceMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["maintenanceMode"])
+func (r *VmfsDatastore) MaintenanceMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintenanceMode"])
 }
 
 // If `true`, more than one host in the datacenter has
 // been configured with access to the datastore.
-func (r *VmfsDatastore) MultipleHostAccess() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multipleHostAccess"])
+func (r *VmfsDatastore) MultipleHostAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multipleHostAccess"])
 }
 
 // The name of the datastore. Forces a new resource if
 // changed.
-func (r *VmfsDatastore) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VmfsDatastore) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *VmfsDatastore) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *VmfsDatastore) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Total additional storage space, in megabytes,
 // potentially used by all virtual machines on this datastore.
-func (r *VmfsDatastore) UncommittedSpace() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["uncommittedSpace"])
+func (r *VmfsDatastore) UncommittedSpace() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["uncommittedSpace"])
 }
 
 // The unique locator for the datastore.
-func (r *VmfsDatastore) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *VmfsDatastore) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering VmfsDatastore resources.

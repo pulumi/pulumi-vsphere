@@ -64,7 +64,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagCategory(string name, TagCategoryArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/tagCategory:TagCategory", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/tagCategory:TagCategory", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

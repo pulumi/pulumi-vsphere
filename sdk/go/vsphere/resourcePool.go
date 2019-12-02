@@ -95,33 +95,33 @@ func GetResourcePool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ResourcePool) URN() *pulumi.URNOutput {
+func (r *ResourcePool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ResourcePool) ID() *pulumi.IDOutput {
+func (r *ResourcePool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Determines if the reservation on a resource
 // pool can grow beyond the specified value if the parent resource pool has
 // unreserved resources. Default: `true`
-func (r *ResourcePool) CpuExpandable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cpuExpandable"])
+func (r *ResourcePool) CpuExpandable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cpuExpandable"])
 }
 
 // The CPU utilization of a resource pool will not exceed
 // this limit, even if there are available resources. Set to `-1` for unlimited.
 // Default: `-1`
-func (r *ResourcePool) CpuLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuLimit"])
+func (r *ResourcePool) CpuLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuLimit"])
 }
 
 // Amount of CPU (MHz) that is guaranteed
 // available to the resource pool. Default: `0`
-func (r *ResourcePool) CpuReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuReservation"])
+func (r *ResourcePool) CpuReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuReservation"])
 }
 
 // The CPU allocation level. The level is a
@@ -129,40 +129,40 @@ func (r *ResourcePool) CpuReservation() *pulumi.IntOutput {
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `cpuShares` will be
 // ignored.  Default: `normal`
-func (r *ResourcePool) CpuShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuShareLevel"])
+func (r *ResourcePool) CpuShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuShareLevel"])
 }
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
 // `cpuShareLevel` must be `custom`.
-func (r *ResourcePool) CpuShares() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuShares"])
+func (r *ResourcePool) CpuShares() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuShares"])
 }
 
 // A list of custom attributes to set on this resource.
-func (r *ResourcePool) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *ResourcePool) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // Determines if the reservation on a resource
 // pool can grow beyond the specified value if the parent resource pool has
 // unreserved resources. Default: `true`
-func (r *ResourcePool) MemoryExpandable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["memoryExpandable"])
+func (r *ResourcePool) MemoryExpandable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["memoryExpandable"])
 }
 
 // The CPU utilization of a resource pool will not exceed
 // this limit, even if there are available resources. Set to `-1` for unlimited.
 // Default: `-1`
-func (r *ResourcePool) MemoryLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryLimit"])
+func (r *ResourcePool) MemoryLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryLimit"])
 }
 
 // Amount of CPU (MHz) that is guaranteed
 // available to the resource pool. Default: `0`
-func (r *ResourcePool) MemoryReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryReservation"])
+func (r *ResourcePool) MemoryReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryReservation"])
 }
 
 // The CPU allocation level. The level is a
@@ -170,20 +170,20 @@ func (r *ResourcePool) MemoryReservation() *pulumi.IntOutput {
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `memoryShares` will be
 // ignored.  Default: `normal`
-func (r *ResourcePool) MemoryShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memoryShareLevel"])
+func (r *ResourcePool) MemoryShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memoryShareLevel"])
 }
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
 // `memoryShareLevel` must be `custom`.
-func (r *ResourcePool) MemoryShares() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryShares"])
+func (r *ResourcePool) MemoryShares() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryShares"])
 }
 
 // The name of the resource pool.
-func (r *ResourcePool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ResourcePool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The [managed object ID][docs-about-morefs]
@@ -191,14 +191,14 @@ func (r *ResourcePool) Name() *pulumi.StringOutput {
 // or standalone host, or a resource pool itself. When moving a resource pool
 // from one parent resource pool to another, both must share a common root
 // resource pool or the move will fail.
-func (r *ResourcePool) ParentResourcePoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parentResourcePoolId"])
+func (r *ResourcePool) ParentResourcePoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parentResourcePoolId"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *ResourcePool) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *ResourcePool) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering ResourcePool resources.

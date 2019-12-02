@@ -13,7 +13,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/custom_attribute.html.markdown.
         /// </summary>
         public static Task<GetCustomAttributeResult> GetCustomAttribute(GetCustomAttributeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetCustomAttributeArgs : Pulumi.ResourceArgs

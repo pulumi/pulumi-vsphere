@@ -17,7 +17,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
         /// </summary>
         public static Task<GetHostResult> GetHost(GetHostArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetHostArgs : Pulumi.ResourceArgs

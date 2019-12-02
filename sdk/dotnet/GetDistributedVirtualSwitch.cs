@@ -24,7 +24,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> GetDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDistributedVirtualSwitchArgs : Pulumi.ResourceArgs

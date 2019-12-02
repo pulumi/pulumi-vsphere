@@ -13,7 +13,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/compute_cluster.html.markdown.
         /// </summary>
         public static Task<GetComputeClusterResult> GetComputeCluster(GetComputeClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetComputeClusterArgs : Pulumi.ResourceArgs

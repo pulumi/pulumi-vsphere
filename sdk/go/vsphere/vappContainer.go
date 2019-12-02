@@ -98,34 +98,34 @@ func GetVappContainer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VappContainer) URN() *pulumi.URNOutput {
+func (r *VappContainer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VappContainer) ID() *pulumi.IDOutput {
+func (r *VappContainer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Determines if the reservation on a vApp
 // container can grow beyond the specified value if the parent resource pool has
 // unreserved resources. Default: `true`
-func (r *VappContainer) CpuExpandable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cpuExpandable"])
+func (r *VappContainer) CpuExpandable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cpuExpandable"])
 }
 
 // The CPU utilization of a vApp container will not
 // exceed this limit, even if there are available resources. Set to `-1` for
 // unlimited.
 // Default: `-1`
-func (r *VappContainer) CpuLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuLimit"])
+func (r *VappContainer) CpuLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuLimit"])
 }
 
 // Amount of CPU (MHz) that is guaranteed
 // available to the vApp container. Default: `0`
-func (r *VappContainer) CpuReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuReservation"])
+func (r *VappContainer) CpuReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuReservation"])
 }
 
 // The CPU allocation level. The level is a
@@ -133,41 +133,41 @@ func (r *VappContainer) CpuReservation() *pulumi.IntOutput {
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `cpuShares` will be
 // ignored.  Default: `normal`
-func (r *VappContainer) CpuShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuShareLevel"])
+func (r *VappContainer) CpuShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuShareLevel"])
 }
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
 // `cpuShareLevel` must be `custom`.
-func (r *VappContainer) CpuShares() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuShares"])
+func (r *VappContainer) CpuShares() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuShares"])
 }
 
 // A list of custom attributes to set on this resource.
-func (r *VappContainer) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *VappContainer) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // Determines if the reservation on a vApp
 // container can grow beyond the specified value if the parent resource pool has
 // unreserved resources. Default: `true`
-func (r *VappContainer) MemoryExpandable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["memoryExpandable"])
+func (r *VappContainer) MemoryExpandable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["memoryExpandable"])
 }
 
 // The CPU utilization of a vApp container will not
 // exceed this limit, even if there are available resources. Set to `-1` for
 // unlimited.
 // Default: `-1`
-func (r *VappContainer) MemoryLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryLimit"])
+func (r *VappContainer) MemoryLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryLimit"])
 }
 
 // Amount of CPU (MHz) that is guaranteed
 // available to the vApp container. Default: `0`
-func (r *VappContainer) MemoryReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryReservation"])
+func (r *VappContainer) MemoryReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryReservation"])
 }
 
 // The CPU allocation level. The level is a
@@ -175,26 +175,26 @@ func (r *VappContainer) MemoryReservation() *pulumi.IntOutput {
 // values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
 // `low`, `normal`, or `high` are specified values in `memoryShares` will be
 // ignored.  Default: `normal`
-func (r *VappContainer) MemoryShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memoryShareLevel"])
+func (r *VappContainer) MemoryShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memoryShareLevel"])
 }
 
 // The number of shares allocated for CPU. Used to
 // determine resource allocation in case of resource contention. If this is set,
 // `memoryShareLevel` must be `custom`.
-func (r *VappContainer) MemoryShares() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryShares"])
+func (r *VappContainer) MemoryShares() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryShares"])
 }
 
 // The name of the vApp container.
-func (r *VappContainer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VappContainer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The [managed object ID][docs-about-morefs] of
 // the vApp container's parent folder.
-func (r *VappContainer) ParentFolderId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parentFolderId"])
+func (r *VappContainer) ParentFolderId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parentFolderId"])
 }
 
 // The [managed object ID][docs-about-morefs]
@@ -202,14 +202,14 @@ func (r *VappContainer) ParentFolderId() *pulumi.StringOutput {
 // or standalone host, or a resource pool itself. When moving a vApp container
 // from one parent resource pool to another, both must share a common root
 // resource pool or the move will fail.
-func (r *VappContainer) ParentResourcePoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["parentResourcePoolId"])
+func (r *VappContainer) ParentResourcePoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["parentResourcePoolId"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *VappContainer) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *VappContainer) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering VappContainer resources.

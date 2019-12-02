@@ -111,12 +111,12 @@ func GetNasDatastore(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NasDatastore) URN() *pulumi.URNOutput {
+func (r *NasDatastore) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NasDatastore) ID() *pulumi.IDOutput {
+func (r *NasDatastore) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -124,117 +124,117 @@ func (r *NasDatastore) ID() *pulumi.IDOutput {
 // `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
 // that the datastore will be read-write depending on the permissions of the
 // actual share. Default: `readWrite`. Forces a new resource if changed.
-func (r *NasDatastore) AccessMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessMode"])
+func (r *NasDatastore) AccessMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessMode"])
 }
 
 // The connectivity status of the datastore. If this is `false`,
 // some other computed attributes may be out of date.
-func (r *NasDatastore) Accessible() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["accessible"])
+func (r *NasDatastore) Accessible() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["accessible"])
 }
 
 // Maximum capacity of the datastore, in megabytes.
-func (r *NasDatastore) Capacity() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["capacity"])
+func (r *NasDatastore) Capacity() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["capacity"])
 }
 
 // Map of custom attribute ids to attribute 
 // value strings to set on datasource resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-func (r *NasDatastore) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *NasDatastore) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The [managed object
 // ID][docs-about-morefs] of a datastore cluster to put this datastore in.
 // Conflicts with `folder`.
-func (r *NasDatastore) DatastoreClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastoreClusterId"])
+func (r *NasDatastore) DatastoreClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastoreClusterId"])
 }
 
 // The path to the datastore folder to put the datastore in.
-func (r *NasDatastore) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *NasDatastore) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // Available space of this datastore, in megabytes.
-func (r *NasDatastore) FreeSpace() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["freeSpace"])
+func (r *NasDatastore) FreeSpace() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["freeSpace"])
 }
 
 // The [managed object IDs][docs-about-morefs] of
 // the hosts to mount the datastore on.
-func (r *NasDatastore) HostSystemIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
+func (r *NasDatastore) HostSystemIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
 }
 
 // The current maintenance mode state of the datastore.
-func (r *NasDatastore) MaintenanceMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["maintenanceMode"])
+func (r *NasDatastore) MaintenanceMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintenanceMode"])
 }
 
 // If `true`, more than one host in the datacenter has
 // been configured with access to the datastore.
-func (r *NasDatastore) MultipleHostAccess() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multipleHostAccess"])
+func (r *NasDatastore) MultipleHostAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["multipleHostAccess"])
 }
 
 // The name of the datastore. Forces a new resource if
 // changed.
-func (r *NasDatastore) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NasDatastore) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Indicates that this NAS volume is a protocol endpoint.
 // This field is only populated if the host supports virtual datastores.
-func (r *NasDatastore) ProtocolEndpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocolEndpoint"])
+func (r *NasDatastore) ProtocolEndpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocolEndpoint"])
 }
 
 // The hostnames or IP addresses of the remote
 // server or servers. Only one element should be present for NFS v3 but multiple
 // can be present for NFS v4.1. Forces a new resource if changed.
-func (r *NasDatastore) RemoteHosts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["remoteHosts"])
+func (r *NasDatastore) RemoteHosts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["remoteHosts"])
 }
 
 // The remote path of the mount point. Forces a new
 // resource if changed.
-func (r *NasDatastore) RemotePath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["remotePath"])
+func (r *NasDatastore) RemotePath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["remotePath"])
 }
 
 // The security type to use when using NFS v4.1.
 // Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 // if changed.
-func (r *NasDatastore) SecurityType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityType"])
+func (r *NasDatastore) SecurityType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityType"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *NasDatastore) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *NasDatastore) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The type of NAS volume. Can be one of `NFS` (to denote
 // v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
 // changed.
-func (r *NasDatastore) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *NasDatastore) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Total additional storage space, in megabytes,
 // potentially used by all virtual machines on this datastore.
-func (r *NasDatastore) UncommittedSpace() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["uncommittedSpace"])
+func (r *NasDatastore) UncommittedSpace() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["uncommittedSpace"])
 }
 
 // The unique locator for the datastore.
-func (r *NasDatastore) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *NasDatastore) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering NasDatastore resources.

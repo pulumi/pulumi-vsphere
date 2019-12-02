@@ -149,7 +149,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VappContainer(string name, VappContainerArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/vappContainer:VappContainer", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/vappContainer:VappContainer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

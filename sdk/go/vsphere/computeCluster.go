@@ -203,12 +203,12 @@ func GetComputeCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeCluster) URN() *pulumi.URNOutput {
+func (r *ComputeCluster) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeCluster) ID() *pulumi.IDOutput {
+func (r *ComputeCluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -216,86 +216,86 @@ func (r *ComputeCluster) ID() *pulumi.IDOutput {
 // value strings to set for the datastore cluster. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-func (r *ComputeCluster) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *ComputeCluster) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The [managed object ID][docs-about-morefs] of
 // the datacenter to create the cluster in. Forces a new resource if changed.
-func (r *ComputeCluster) DatacenterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenterId"])
+func (r *ComputeCluster) DatacenterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenterId"])
 }
 
 // The automation level for host power
 // operations in this cluster. Can be one of `manual` or `automated`. Default:
 // `manual`.
-func (r *ComputeCluster) DpmAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dpmAutomationLevel"])
+func (r *ComputeCluster) DpmAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dpmAutomationLevel"])
 }
 
 // Enable DPM support for DRS in this cluster.
 // Requires `drsEnabled` to be `true` in order to be effective.
 // Default: `false`.
-func (r *ComputeCluster) DpmEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["dpmEnabled"])
+func (r *ComputeCluster) DpmEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["dpmEnabled"])
 }
 
 // A value between `1` and `5` indicating the
 // threshold of load within the cluster that influences host power operations.
 // This affects both power on and power off operations - a lower setting will
 // tolerate more of a surplus/deficit than a higher setting. Default: `3`.
-func (r *ComputeCluster) DpmThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dpmThreshold"])
+func (r *ComputeCluster) DpmThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["dpmThreshold"])
 }
 
 // A key/value map that specifies advanced
 // options for DRS and DPM.
-func (r *ComputeCluster) DrsAdvancedOptions() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["drsAdvancedOptions"])
+func (r *ComputeCluster) DrsAdvancedOptions() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["drsAdvancedOptions"])
 }
 
 // The default automation level for all
 // virtual machines in this cluster. Can be one of `manual`,
 // `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
-func (r *ComputeCluster) DrsAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["drsAutomationLevel"])
+func (r *ComputeCluster) DrsAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["drsAutomationLevel"])
 }
 
 // When `true`, enables DRS to use data
 // from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
 // recommendations. <sup>\*</sup>
-func (r *ComputeCluster) DrsEnablePredictiveDrs() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["drsEnablePredictiveDrs"])
+func (r *ComputeCluster) DrsEnablePredictiveDrs() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["drsEnablePredictiveDrs"])
 }
 
 // Allow individual DRS overrides to be
 // set for virtual machines in the cluster. Default: `true`.
-func (r *ComputeCluster) DrsEnableVmOverrides() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["drsEnableVmOverrides"])
+func (r *ComputeCluster) DrsEnableVmOverrides() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["drsEnableVmOverrides"])
 }
 
 // Enable DRS for this cluster. Default: `false`.
-func (r *ComputeCluster) DrsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["drsEnabled"])
+func (r *ComputeCluster) DrsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["drsEnabled"])
 }
 
 // A value between `1` and `5` indicating
 // the threshold of imbalance tolerated between hosts. A lower setting will
 // tolerate more imbalance while a higher setting will tolerate less. Default:
 // `3`.
-func (r *ComputeCluster) DrsMigrationThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["drsMigrationThreshold"])
+func (r *ComputeCluster) DrsMigrationThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["drsMigrationThreshold"])
 }
 
 // The name of the folder to locate the cluster in.
-func (r *ComputeCluster) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *ComputeCluster) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
 // for testing and is not recommended in normal use.
-func (r *ComputeCluster) ForceEvacuateOnDestroy() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceEvacuateOnDestroy"])
+func (r *ComputeCluster) ForceEvacuateOnDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceEvacuateOnDestroy"])
 }
 
 // Defines the
@@ -303,8 +303,8 @@ func (r *ComputeCluster) ForceEvacuateOnDestroy() *pulumi.BoolOutput {
 // hosts. These hosts are kept as available as possible - admission control will
 // block access to the host, and DRS will ignore the host when making
 // recommendations.
-func (r *ComputeCluster) HaAdmissionControlFailoverHostSystemIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["haAdmissionControlFailoverHostSystemIds"])
+func (r *ComputeCluster) HaAdmissionControlFailoverHostSystemIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["haAdmissionControlFailoverHostSystemIds"])
 }
 
 // The maximum number
@@ -312,23 +312,23 @@ func (r *ComputeCluster) HaAdmissionControlFailoverHostSystemIds() *pulumi.Array
 // whether to permit virtual machine operations. The maximum is one less than
 // the number of hosts in the cluster. Default: `1`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaAdmissionControlHostFailureTolerance() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlHostFailureTolerance"])
+func (r *ComputeCluster) HaAdmissionControlHostFailureTolerance() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlHostFailureTolerance"])
 }
 
 // The percentage of
 // resource reduction that a cluster of virtual machines can tolerate in case of
 // a failover. A value of 0 produces warnings only, whereas a value of 100
 // disables the setting. Default: `100` (disabled).
-func (r *ComputeCluster) HaAdmissionControlPerformanceTolerance() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlPerformanceTolerance"])
+func (r *ComputeCluster) HaAdmissionControlPerformanceTolerance() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlPerformanceTolerance"])
 }
 
 // The type of admission control
 // policy to use with vSphere HA. Can be one of `resourcePercentage`,
 // `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
-func (r *ComputeCluster) HaAdmissionControlPolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haAdmissionControlPolicy"])
+func (r *ComputeCluster) HaAdmissionControlPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haAdmissionControlPolicy"])
 }
 
 // 
@@ -338,56 +338,56 @@ func (r *ComputeCluster) HaAdmissionControlPolicy() *pulumi.StringOutput {
 // setting from the total amount of resources in the cluster. Disable to supply
 // user-defined values. Default: `true`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaAdmissionControlResourcePercentageAutoCompute() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["haAdmissionControlResourcePercentageAutoCompute"])
+func (r *ComputeCluster) HaAdmissionControlResourcePercentageAutoCompute() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["haAdmissionControlResourcePercentageAutoCompute"])
 }
 
 // Controls the
 // user-defined percentage of CPU resources in the cluster to reserve for
 // failover. Default: `100`.
-func (r *ComputeCluster) HaAdmissionControlResourcePercentageCpu() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlResourcePercentageCpu"])
+func (r *ComputeCluster) HaAdmissionControlResourcePercentageCpu() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlResourcePercentageCpu"])
 }
 
 // Controls the
 // user-defined percentage of memory resources in the cluster to reserve for
 // failover. Default: `100`.
-func (r *ComputeCluster) HaAdmissionControlResourcePercentageMemory() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlResourcePercentageMemory"])
+func (r *ComputeCluster) HaAdmissionControlResourcePercentageMemory() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlResourcePercentageMemory"])
 }
 
 // Controls the
 // user-defined CPU slot size, in MHz. Default: `32`.
-func (r *ComputeCluster) HaAdmissionControlSlotPolicyExplicitCpu() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlSlotPolicyExplicitCpu"])
+func (r *ComputeCluster) HaAdmissionControlSlotPolicyExplicitCpu() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlSlotPolicyExplicitCpu"])
 }
 
 // Controls the
 // user-defined memory slot size, in MB. Default: `100`.
-func (r *ComputeCluster) HaAdmissionControlSlotPolicyExplicitMemory() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haAdmissionControlSlotPolicyExplicitMemory"])
+func (r *ComputeCluster) HaAdmissionControlSlotPolicyExplicitMemory() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haAdmissionControlSlotPolicyExplicitMemory"])
 }
 
 // Controls
 // whether or not you wish to supply explicit values to CPU and memory slot
 // sizes. The default is `false`, which tells vSphere to gather a automatic
 // average based on all powered-on virtual machines currently in the cluster.
-func (r *ComputeCluster) HaAdmissionControlSlotPolicyUseExplicitSize() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["haAdmissionControlSlotPolicyUseExplicitSize"])
+func (r *ComputeCluster) HaAdmissionControlSlotPolicyUseExplicitSize() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["haAdmissionControlSlotPolicyUseExplicitSize"])
 }
 
 // A key/value map that specifies advanced
 // options for vSphere HA.
-func (r *ComputeCluster) HaAdvancedOptions() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["haAdvancedOptions"])
+func (r *ComputeCluster) HaAdvancedOptions() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["haAdvancedOptions"])
 }
 
 // Controls the action to take
 // on virtual machines if an APD status on an affected datastore clears in the
 // middle of an APD event. Can be one of `none` or `reset`. Default: `none`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaDatastoreApdRecoveryAction() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastoreApdRecoveryAction"])
+func (r *ComputeCluster) HaDatastoreApdRecoveryAction() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastoreApdRecoveryAction"])
 }
 
 // Controls the action to take on
@@ -395,16 +395,16 @@ func (r *ComputeCluster) HaDatastoreApdRecoveryAction() *pulumi.StringOutput {
 // relevant datastore. Can be one of `disabled`, `warning`,
 // `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaDatastoreApdResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastoreApdResponse"])
+func (r *ComputeCluster) HaDatastoreApdResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastoreApdResponse"])
 }
 
 // Controls the delay in minutes
 // to wait after an APD timeout event to execute the response action defined in
 // `haDatastoreApdResponse`. Default: `3`
 // minutes. <sup>\*</sup>
-func (r *ComputeCluster) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haDatastoreApdResponseDelay"])
+func (r *ComputeCluster) HaDatastoreApdResponseDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haDatastoreApdResponseDelay"])
 }
 
 // Controls the action to take on
@@ -412,53 +412,53 @@ func (r *ComputeCluster) HaDatastoreApdResponseDelay() *pulumi.IntOutput {
 // relevant datastore. Can be one of `disabled`, `warning`, or
 // `restartAggressive`. Default: `disabled`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaDatastorePdlResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haDatastorePdlResponse"])
+func (r *ComputeCluster) HaDatastorePdlResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haDatastorePdlResponse"])
 }
 
 // Enable vSphere HA for this cluster. Default:
 // `false`.
-func (r *ComputeCluster) HaEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["haEnabled"])
+func (r *ComputeCluster) HaEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["haEnabled"])
 }
 
 // The list of managed object IDs for
 // preferred datastores to use for HA heartbeating. This setting is only useful
 // when `haHeartbeatDatastorePolicy` is set
 // to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
-func (r *ComputeCluster) HaHeartbeatDatastoreIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["haHeartbeatDatastoreIds"])
+func (r *ComputeCluster) HaHeartbeatDatastoreIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["haHeartbeatDatastoreIds"])
 }
 
 // The selection policy for HA
 // heartbeat datastores. Can be one of `allFeasibleDs`, `userSelectedDs`, or
 // `allFeasibleDsWithUserPreference`. Default:
 // `allFeasibleDsWithUserPreference`.
-func (r *ComputeCluster) HaHeartbeatDatastorePolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haHeartbeatDatastorePolicy"])
+func (r *ComputeCluster) HaHeartbeatDatastorePolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haHeartbeatDatastorePolicy"])
 }
 
 // The action to take on virtual
 // machines when a host has detected that it has been isolated from the rest of
 // the cluster. Can be one of `none`, `powerOff`, or `shutdown`. Default:
 // `none`.
-func (r *ComputeCluster) HaHostIsolationResponse() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haHostIsolationResponse"])
+func (r *ComputeCluster) HaHostIsolationResponse() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haHostIsolationResponse"])
 }
 
 // Global setting that controls whether
 // vSphere HA remediates virtual machines on host failure. Can be one of `enabled`
 // or `disabled`. Default: `enabled`.
-func (r *ComputeCluster) HaHostMonitoring() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haHostMonitoring"])
+func (r *ComputeCluster) HaHostMonitoring() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haHostMonitoring"])
 }
 
 // Controls vSphere VM component
 // protection for virtual machines in this cluster. Can be one of `enabled` or
 // `disabled`. Default: `enabled`.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaVmComponentProtection() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmComponentProtection"])
+func (r *ComputeCluster) HaVmComponentProtection() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmComponentProtection"])
 }
 
 // The condition used to
@@ -468,15 +468,15 @@ func (r *ComputeCluster) HaVmComponentProtection() *pulumi.StringOutput {
 // `appHbStatusGreen`. The default is `none`, which means that a virtual machine
 // is considered ready immediately after a host is found to start it on.
 // <sup>\*</sup>
-func (r *ComputeCluster) HaVmDependencyRestartCondition() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmDependencyRestartCondition"])
+func (r *ComputeCluster) HaVmDependencyRestartCondition() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmDependencyRestartCondition"])
 }
 
 // If a heartbeat from a virtual machine
 // is not received within this configured interval, the virtual machine is
 // marked as failed. The value is in seconds. Default: `30`.
-func (r *ComputeCluster) HaVmFailureInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmFailureInterval"])
+func (r *ComputeCluster) HaVmFailureInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmFailureInterval"])
 }
 
 // The length of the reset window in
@@ -485,82 +485,82 @@ func (r *ComputeCluster) HaVmFailureInterval() *pulumi.IntOutput {
 // configured in `haVmMaximumResets`. `-1` means no window, meaning an
 // unlimited reset time is allotted. The value is specified in seconds. Default:
 // `-1` (no window).
-func (r *ComputeCluster) HaVmMaximumFailureWindow() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMaximumFailureWindow"])
+func (r *ComputeCluster) HaVmMaximumFailureWindow() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMaximumFailureWindow"])
 }
 
 // The maximum number of resets that HA will
 // perform to a virtual machine when responding to a failure event. Default: `3`
-func (r *ComputeCluster) HaVmMaximumResets() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMaximumResets"])
+func (r *ComputeCluster) HaVmMaximumResets() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMaximumResets"])
 }
 
 // The time, in seconds, that HA waits after
 // powering on a virtual machine before monitoring for heartbeats. Default:
 // `120` (2 minutes).
-func (r *ComputeCluster) HaVmMinimumUptime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmMinimumUptime"])
+func (r *ComputeCluster) HaVmMinimumUptime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmMinimumUptime"])
 }
 
 // The type of virtual machine monitoring to use
 // when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 // `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-func (r *ComputeCluster) HaVmMonitoring() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmMonitoring"])
+func (r *ComputeCluster) HaVmMonitoring() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmMonitoring"])
 }
 
 // Additional delay in seconds
 // after ready condition is met. A VM is considered ready at this point.
 // Default: `0` (no delay). <sup>\*</sup>
-func (r *ComputeCluster) HaVmRestartAdditionalDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmRestartAdditionalDelay"])
+func (r *ComputeCluster) HaVmRestartAdditionalDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmRestartAdditionalDelay"])
 }
 
 // The default restart priority
 // for affected virtual machines when vSphere detects a host failure. Can be one
 // of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
-func (r *ComputeCluster) HaVmRestartPriority() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["haVmRestartPriority"])
+func (r *ComputeCluster) HaVmRestartPriority() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["haVmRestartPriority"])
 }
 
 // The maximum time, in seconds,
 // that vSphere HA will wait for virtual machines in one priority to be ready
 // before proceeding with the next priority. Default: `600` (10 minutes).
 // <sup>\*</sup>
-func (r *ComputeCluster) HaVmRestartTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["haVmRestartTimeout"])
+func (r *ComputeCluster) HaVmRestartTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["haVmRestartTimeout"])
 }
 
 // The timeout for each host maintenance mode
 // operation when removing hosts from a cluster. The value is specified in
 // seconds. Default: `3600` (1 hour).
-func (r *ComputeCluster) HostClusterExitTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["hostClusterExitTimeout"])
+func (r *ComputeCluster) HostClusterExitTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["hostClusterExitTimeout"])
 }
 
 // The [managed object IDs][docs-about-morefs] of
 // the hosts to put in the cluster.
-func (r *ComputeCluster) HostSystemIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
+func (r *ComputeCluster) HostSystemIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["hostSystemIds"])
 }
 
 // The name of the cluster.
-func (r *ComputeCluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeCluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Determines how the host
 // quarantine, maintenance mode, or virtual machine migration recommendations
 // made by proactive HA are to be handled. Can be one of `Automated` or
 // `Manual`. Default: `Manual`. <sup>\*</sup>
-func (r *ComputeCluster) ProactiveHaAutomationLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["proactiveHaAutomationLevel"])
+func (r *ComputeCluster) ProactiveHaAutomationLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proactiveHaAutomationLevel"])
 }
 
 // Enables Proactive HA. Default: `false`.
 // <sup>\*</sup>
-func (r *ComputeCluster) ProactiveHaEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["proactiveHaEnabled"])
+func (r *ComputeCluster) ProactiveHaEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["proactiveHaEnabled"])
 }
 
 // The configured remediation
@@ -569,15 +569,15 @@ func (r *ComputeCluster) ProactiveHaEnabled() *pulumi.BoolOutput {
 // `proactiveHaSevereRemediation` is set
 // to `QuarantineMode`. Default: `QuarantineMode`.
 // <sup>\*</sup>
-func (r *ComputeCluster) ProactiveHaModerateRemediation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["proactiveHaModerateRemediation"])
+func (r *ComputeCluster) ProactiveHaModerateRemediation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proactiveHaModerateRemediation"])
 }
 
 // The list of IDs for health update
 // providers configured for this cluster.
 // <sup>\*</sup>
-func (r *ComputeCluster) ProactiveHaProviderIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["proactiveHaProviderIds"])
+func (r *ComputeCluster) ProactiveHaProviderIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["proactiveHaProviderIds"])
 }
 
 // The configured remediation for
@@ -586,19 +586,19 @@ func (r *ComputeCluster) ProactiveHaProviderIds() *pulumi.ArrayOutput {
 // `proactiveHaModerateRemediation` is
 // set to `MaintenanceMode`. Default: `QuarantineMode`.
 // <sup>\*</sup>
-func (r *ComputeCluster) ProactiveHaSevereRemediation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["proactiveHaSevereRemediation"])
+func (r *ComputeCluster) ProactiveHaSevereRemediation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proactiveHaSevereRemediation"])
 }
 
 // The managed object ID of the cluster's root resource pool.
-func (r *ComputeCluster) ResourcePoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourcePoolId"])
+func (r *ComputeCluster) ResourcePoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourcePoolId"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *ComputeCluster) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *ComputeCluster) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering ComputeCluster resources.

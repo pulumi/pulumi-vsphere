@@ -80,58 +80,58 @@ func GetVirtualDisk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VirtualDisk) URN() *pulumi.URNOutput {
+func (r *VirtualDisk) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VirtualDisk) ID() *pulumi.IDOutput {
+func (r *VirtualDisk) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The adapter type for this virtual disk. Can be
 // one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
-func (r *VirtualDisk) AdapterType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["adapterType"])
+func (r *VirtualDisk) AdapterType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["adapterType"])
 }
 
 // Tells the resource to create any
 // directories that are a part of the `vmdkPath` parameter if they are missing.
 // Default: `false`.
-func (r *VirtualDisk) CreateDirectories() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["createDirectories"])
+func (r *VirtualDisk) CreateDirectories() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["createDirectories"])
 }
 
 // The name of the datacenter in which to create the
 // disk. Can be omitted when when ESXi or if there is only one datacenter in
 // your infrastructure.
-func (r *VirtualDisk) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *VirtualDisk) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // The name of the datastore in which to create the
 // disk.
-func (r *VirtualDisk) Datastore() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastore"])
+func (r *VirtualDisk) Datastore() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastore"])
 }
 
 // Size of the disk (in GB).
-func (r *VirtualDisk) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *VirtualDisk) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The type of disk to create. Can be one of
 // `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 // information on what each kind of disk provisioning policy means, click
 // [here][docs-vmware-vm-disk-provisioning].
-func (r *VirtualDisk) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *VirtualDisk) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The path, including filename, of the virtual disk to
 // be created.  This needs to end in `.vmdk`.
-func (r *VirtualDisk) VmdkPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vmdkPath"])
+func (r *VirtualDisk) VmdkPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vmdkPath"])
 }
 
 // Input properties used for looking up and filtering VirtualDisk resources.

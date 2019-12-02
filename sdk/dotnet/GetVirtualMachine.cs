@@ -21,7 +21,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
         /// </summary>
         public static Task<GetVirtualMachineResult> GetVirtualMachine(GetVirtualMachineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetVirtualMachineArgs : Pulumi.ResourceArgs

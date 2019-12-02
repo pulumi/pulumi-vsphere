@@ -85,12 +85,12 @@ func GetCustomAttribute(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CustomAttribute) URN() *pulumi.URNOutput {
+func (r *CustomAttribute) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CustomAttribute) ID() *pulumi.IDOutput {
+func (r *CustomAttribute) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -98,13 +98,13 @@ func (r *CustomAttribute) ID() *pulumi.IDOutput {
 // applied to. If not set, the custom attribute may be applied to any object
 // type. For a full list, click here. Forces a new
 // resource if changed.
-func (r *CustomAttribute) ManagedObjectType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["managedObjectType"])
+func (r *CustomAttribute) ManagedObjectType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["managedObjectType"])
 }
 
 // The name of the custom attribute.
-func (r *CustomAttribute) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *CustomAttribute) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering CustomAttribute resources.

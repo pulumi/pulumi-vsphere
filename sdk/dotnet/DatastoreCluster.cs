@@ -224,7 +224,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatastoreCluster(string name, DatastoreClusterArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/datastoreCluster:DatastoreCluster", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/datastoreCluster:DatastoreCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -19,7 +19,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
         /// </summary>
         public static Task<GetNetworkResult> GetNetwork(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNetworkArgs : Pulumi.ResourceArgs

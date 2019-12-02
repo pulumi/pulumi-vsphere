@@ -20,7 +20,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
         /// </summary>
         public static Task<GetDatacenterResult> GetDatacenter(GetDatacenterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDatacenterArgs : Pulumi.ResourceArgs

@@ -66,7 +66,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DrsVmOverride(string name, DrsVmOverrideArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/drsVmOverride:DrsVmOverride", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/drsVmOverride:DrsVmOverride", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

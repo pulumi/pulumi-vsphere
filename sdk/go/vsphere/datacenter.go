@@ -58,12 +58,12 @@ func GetDatacenter(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Datacenter) URN() *pulumi.URNOutput {
+func (r *Datacenter) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Datacenter) ID() *pulumi.IDOutput {
+func (r *Datacenter) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
@@ -71,31 +71,31 @@ func (r *Datacenter) ID() *pulumi.IDOutput {
 // strings to set for datacenter resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-func (r *Datacenter) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *Datacenter) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The folder where the datacenter should be created.
 // Forces a new resource if changed.
-func (r *Datacenter) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *Datacenter) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // [Managed object ID][docs-about-morefs] of this datacenter.
-func (r *Datacenter) Moid() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["moid"])
+func (r *Datacenter) Moid() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["moid"])
 }
 
 // The name of the datacenter. This name needs to be unique
 // within the folder. Forces a new resource if changed.
-func (r *Datacenter) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Datacenter) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *Datacenter) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Datacenter) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Datacenter resources.

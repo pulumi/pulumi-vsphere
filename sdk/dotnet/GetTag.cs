@@ -13,7 +13,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag.html.markdown.
         /// </summary>
         public static Task<GetTagResult> GetTag(GetTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetTagArgs : Pulumi.ResourceArgs

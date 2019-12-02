@@ -73,46 +73,46 @@ func GetFolder(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Folder) URN() *pulumi.URNOutput {
+func (r *Folder) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Folder) ID() *pulumi.IDOutput {
+func (r *Folder) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Map of custom attribute ids to attribute 
 // value strings to set for folder. See [here][docs-setting-custom-attributes]
 // for a reference on how to set values for custom attributes.
-func (r *Folder) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *Folder) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The ID of the datacenter the folder will be created in.
 // Required for all folder types except for datacenter folders. Forces a new
 // resource if changed.
-func (r *Folder) DatacenterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenterId"])
+func (r *Folder) DatacenterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenterId"])
 }
 
 // The path of the folder and any parents, relative to the datacenter and folder type being defined.
-func (r *Folder) Path() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["path"])
+func (r *Folder) Path() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["path"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *Folder) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Folder) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The type of folder to create. Allowed options are
 // `datacenter` for datacenter folders, `host` for host and cluster folders,
 // `vm` for virtual machine folders, `datastore` for datastore folders, and
 // `network` for network folders. Forces a new resource if changed.
-func (r *Folder) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Folder) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering Folder resources.

@@ -90,42 +90,42 @@ func GetComputeClusterVmAffinityRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterVmAffinityRule) URN() *pulumi.URNOutput {
+func (r *ComputeClusterVmAffinityRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterVmAffinityRule) ID() *pulumi.IDOutput {
+func (r *ComputeClusterVmAffinityRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterVmAffinityRule) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterVmAffinityRule) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // Enable this rule in the cluster. Default: `true`.
-func (r *ComputeClusterVmAffinityRule) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *ComputeClusterVmAffinityRule) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
-func (r *ComputeClusterVmAffinityRule) Mandatory() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mandatory"])
+func (r *ComputeClusterVmAffinityRule) Mandatory() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mandatory"])
 }
 
 // The name of the rule. This must be unique in the cluster.
-func (r *ComputeClusterVmAffinityRule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterVmAffinityRule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The UUIDs of the virtual machines to run
 // on the same host together.
-func (r *ComputeClusterVmAffinityRule) VirtualMachineIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
+func (r *ComputeClusterVmAffinityRule) VirtualMachineIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterVmAffinityRule resources.

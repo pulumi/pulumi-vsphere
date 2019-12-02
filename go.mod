@@ -4,21 +4,17 @@ go 1.12
 
 require (
 	cloud.google.com/go/logging v1.0.0 // indirect
-	github.com/Azure/go-autorest/autorest/azure/auth v0.3.0 // indirect
-	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
-	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/terraform v0.12.9
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.0.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20191030013051-eccdb58dc332
+	github.com/pulumi/pulumi v1.6.0
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20191202134852-87cfb4dc8ae1
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/terraform-providers/terraform-provider-vsphere v1.13.0
 	github.com/ulikunitz/xz v0.5.6 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
-	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
 
 replace (

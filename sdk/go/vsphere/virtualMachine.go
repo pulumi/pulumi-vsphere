@@ -248,117 +248,117 @@ func GetVirtualMachine(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *VirtualMachine) URN() *pulumi.URNOutput {
+func (r *VirtualMachine) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *VirtualMachine) ID() *pulumi.IDOutput {
+func (r *VirtualMachine) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The guest name for the operating system
 // when `guestId` is `other` or `other-64`.
-func (r *VirtualMachine) AlternateGuestName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["alternateGuestName"])
+func (r *VirtualMachine) AlternateGuestName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["alternateGuestName"])
 }
 
 // A user-provided description of the virtual machine.
 // The default is no annotation.
-func (r *VirtualMachine) Annotation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["annotation"])
+func (r *VirtualMachine) Annotation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["annotation"])
 }
 
 // The number of milliseconds to wait before starting
 // the boot sequence. The default is no delay.
-func (r *VirtualMachine) BootDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bootDelay"])
+func (r *VirtualMachine) BootDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bootDelay"])
 }
 
 // The number of milliseconds to wait before
 // retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
 // Default: `10000` (10 seconds).
-func (r *VirtualMachine) BootRetryDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bootRetryDelay"])
+func (r *VirtualMachine) BootRetryDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bootRetryDelay"])
 }
 
 // If set to true, a virtual machine that
 // fails to boot will try again after the delay defined in `bootRetryDelay`.
 // Default: `false`.
-func (r *VirtualMachine) BootRetryEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["bootRetryEnabled"])
+func (r *VirtualMachine) BootRetryEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["bootRetryEnabled"])
 }
 
 // A specification for a CDROM device on this virtual
 // machine. See CDROM options below.
-func (r *VirtualMachine) Cdrom() *pulumi.Output {
+func (r *VirtualMachine) Cdrom() pulumi.Output {
 	return r.s.State["cdrom"]
 }
 
 // A unique identifier for a given version of the last
 // configuration applied, such the timestamp of the last update to the
 // configuration.
-func (r *VirtualMachine) ChangeVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["changeVersion"])
+func (r *VirtualMachine) ChangeVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["changeVersion"])
 }
 
 // When specified, the VM will be created as a clone of a
 // specified template. Optional customization options can be submitted as well.
 // See creating a virtual machine from a
 // template for more details.
-func (r *VirtualMachine) Clone() *pulumi.Output {
+func (r *VirtualMachine) Clone() pulumi.Output {
 	return r.s.State["clone"]
 }
 
 // Allow CPUs to be added to this virtual
 // machine while it is running.
-func (r *VirtualMachine) CpuHotAddEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cpuHotAddEnabled"])
+func (r *VirtualMachine) CpuHotAddEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cpuHotAddEnabled"])
 }
 
 // Allow CPUs to be removed to this
 // virtual machine while it is running.
-func (r *VirtualMachine) CpuHotRemoveEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cpuHotRemoveEnabled"])
+func (r *VirtualMachine) CpuHotRemoveEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cpuHotRemoveEnabled"])
 }
 
 // The maximum amount of CPU (in MHz) that this virtual
 // machine can consume, regardless of available resources. The default is no
 // limit.
-func (r *VirtualMachine) CpuLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuLimit"])
+func (r *VirtualMachine) CpuLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuLimit"])
 }
 
 // Enable CPU performance
 // counters on this virtual machine. Default: `false`.
-func (r *VirtualMachine) CpuPerformanceCountersEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cpuPerformanceCountersEnabled"])
+func (r *VirtualMachine) CpuPerformanceCountersEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cpuPerformanceCountersEnabled"])
 }
 
 // The amount of CPU (in MHz) that this virtual
 // machine is guaranteed. The default is no reservation.
-func (r *VirtualMachine) CpuReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuReservation"])
+func (r *VirtualMachine) CpuReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuReservation"])
 }
 
 // The number of CPU shares allocated to the
 // virtual machine when the `cpuShareLevel` is `custom`.
-func (r *VirtualMachine) CpuShareCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cpuShareCount"])
+func (r *VirtualMachine) CpuShareCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cpuShareCount"])
 }
 
 // The allocation level for CPU resources. Can be
 // one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-func (r *VirtualMachine) CpuShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cpuShareLevel"])
+func (r *VirtualMachine) CpuShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cpuShareLevel"])
 }
 
 // Map of custom attribute ids to attribute
 // value strings to set for virtual machine. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
-func (r *VirtualMachine) CustomAttributes() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["customAttributes"])
+func (r *VirtualMachine) CustomAttributes() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["customAttributes"])
 }
 
 // The [managed object reference
@@ -366,83 +366,83 @@ func (r *VirtualMachine) CustomAttributes() *pulumi.MapOutput {
 // applies to entire virtual machine and implies that you wish to use Storage
 // DRS with this virtual machine. See the section on virtual machine
 // migration for details on changing this value.
-func (r *VirtualMachine) DatastoreClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastoreClusterId"])
+func (r *VirtualMachine) DatastoreClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastoreClusterId"])
 }
 
 // The datastore ID that the ISO is located in.
 // Requried for using a datastore ISO. Conflicts with `clientDevice`.
-func (r *VirtualMachine) DatastoreId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datastoreId"])
+func (r *VirtualMachine) DatastoreId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datastoreId"])
 }
 
 // The IP address selected by Terraform to be used for the provisioner.
-func (r *VirtualMachine) DefaultIpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultIpAddress"])
+func (r *VirtualMachine) DefaultIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultIpAddress"])
 }
 
 // A specification for a virtual disk device on this virtual
 // machine. See disk options below.
-func (r *VirtualMachine) Disks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["disks"])
+func (r *VirtualMachine) Disks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["disks"])
 }
 
 // When the `firmware` type is set to is
 // `efi`, this enables EFI secure boot. Default: `false`.
-func (r *VirtualMachine) EfiSecureBootEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["efiSecureBootEnabled"])
+func (r *VirtualMachine) EfiSecureBootEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["efiSecureBootEnabled"])
 }
 
 // Expose the UUIDs of attached virtual disks to
 // the virtual machine, allowing access to them in the guest. Default: `false`.
-func (r *VirtualMachine) EnableDiskUuid() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableDiskUuid"])
+func (r *VirtualMachine) EnableDiskUuid() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableDiskUuid"])
 }
 
 // Enable logging of virtual machine events to a
 // log file stored in the virtual machine directory. Default: `false`.
-func (r *VirtualMachine) EnableLogging() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableLogging"])
+func (r *VirtualMachine) EnableLogging() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableLogging"])
 }
 
 // The EPT/RVI (hardware memory virtualization)
 // setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
 // Default: `automatic`.
-func (r *VirtualMachine) EptRviMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["eptRviMode"])
+func (r *VirtualMachine) EptRviMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["eptRviMode"])
 }
 
 // Extra configuration data for this virtual
 // machine. Can be used to supply advanced parameters not normally in
 // configuration, such as instance metadata.
-func (r *VirtualMachine) ExtraConfig() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["extraConfig"])
+func (r *VirtualMachine) ExtraConfig() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["extraConfig"])
 }
 
 // The firmware interface to use on the virtual machine.
 // Can be one of `bios` or `EFI`. Default: `bios`.
-func (r *VirtualMachine) Firmware() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["firmware"])
+func (r *VirtualMachine) Firmware() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["firmware"])
 }
 
 // The path to the folder to put this virtual machine in,
 // relative to the datacenter that the resource pool is in.
-func (r *VirtualMachine) Folder() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["folder"])
+func (r *VirtualMachine) Folder() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["folder"])
 }
 
 // If a guest shutdown failed or timed out while
 // updating or destroying (see
 // `shutdownWaitTimeout`), force the power-off of
 // the virtual machine. Default: `true`.
-func (r *VirtualMachine) ForcePowerOff() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forcePowerOff"])
+func (r *VirtualMachine) ForcePowerOff() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forcePowerOff"])
 }
 
 // The guest ID for the operating system type. For a
 // full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
-func (r *VirtualMachine) GuestId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["guestId"])
+func (r *VirtualMachine) GuestId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["guestId"])
 }
 
 // The current list of IP addresses on this machine,
@@ -450,8 +450,8 @@ func (r *VirtualMachine) GuestId() *pulumi.StringOutput {
 // on the virtual machine, or if the VM is powered off, this list will be empty.
 // * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 // virtual machine.
-func (r *VirtualMachine) GuestIpAddresses() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["guestIpAddresses"])
+func (r *VirtualMachine) GuestIpAddresses() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["guestIpAddresses"])
 }
 
 // An optional [managed object reference
@@ -460,31 +460,31 @@ func (r *VirtualMachine) GuestIpAddresses() *pulumi.ArrayOutput {
 // details on changing this value. If a `hostSystemId` is not supplied,
 // vSphere will select a host in the resource pool to place the virtual machine,
 // according to any defaults or DRS policies in place.
-func (r *VirtualMachine) HostSystemId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostSystemId"])
+func (r *VirtualMachine) HostSystemId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostSystemId"])
 }
 
 // The (non-nested) hardware virtualization setting for
 // this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 // `hvAuto`.
-func (r *VirtualMachine) HvMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hvMode"])
+func (r *VirtualMachine) HvMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hvMode"])
 }
 
 // List of IP addresses to ignore while waiting
 // for an available IP address using either of the waiters. Any IP addresses in
 // this list will be ignored if they show up so that the waiter will continue to
 // wait for a real IP address. Default: [].
-func (r *VirtualMachine) IgnoredGuestIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ignoredGuestIps"])
+func (r *VirtualMachine) IgnoredGuestIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ignoredGuestIps"])
 }
 
 // This is flagged if the virtual machine has been imported, or the
 // state has been migrated from a previous version of the resource. It
 // influences the behavior of the first post-import apply operation. See the
 // section on importing below.
-func (r *VirtualMachine) Imported() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["imported"])
+func (r *VirtualMachine) Imported() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["imported"])
 }
 
 // Controls the scheduling delay of the
@@ -492,188 +492,188 @@ func (r *VirtualMachine) Imported() *pulumi.BoolOutput {
 // latency, such as VOIP, media player applications, or applications that
 // require frequent access to mouse or keyboard devices. Can be one of `low`,
 // `normal`, `medium`, or `high`.
-func (r *VirtualMachine) LatencySensitivity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["latencySensitivity"])
+func (r *VirtualMachine) LatencySensitivity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["latencySensitivity"])
 }
 
 // The size of the virtual machine's memory, in MB.
 // Default: `1024` (1 GB).
-func (r *VirtualMachine) Memory() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memory"])
+func (r *VirtualMachine) Memory() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memory"])
 }
 
 // Allow memory to be added to this
 // virtual machine while it is running.
-func (r *VirtualMachine) MemoryHotAddEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["memoryHotAddEnabled"])
+func (r *VirtualMachine) MemoryHotAddEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["memoryHotAddEnabled"])
 }
 
 // The maximum amount of memory (in MB) that this
 // virtual machine can consume, regardless of available resources. The default
 // is no limit.
-func (r *VirtualMachine) MemoryLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryLimit"])
+func (r *VirtualMachine) MemoryLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryLimit"])
 }
 
 // The amount of memory (in MB) that this
 // virtual machine is guaranteed. The default is no reservation.
-func (r *VirtualMachine) MemoryReservation() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryReservation"])
+func (r *VirtualMachine) MemoryReservation() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryReservation"])
 }
 
 // The number of memory shares allocated to
 // the virtual machine when the `memoryShareLevel` is `custom`.
-func (r *VirtualMachine) MemoryShareCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["memoryShareCount"])
+func (r *VirtualMachine) MemoryShareCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["memoryShareCount"])
 }
 
 // The allocation level for memory resources.
 // Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-func (r *VirtualMachine) MemoryShareLevel() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memoryShareLevel"])
+func (r *VirtualMachine) MemoryShareLevel() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memoryShareLevel"])
 }
 
 // The amount of time, in minutes, to wait
 // for a virtual machine migration to complete before failing. Default: 10
 // minutes. Also see the section on virtual machine
 // migration.
-func (r *VirtualMachine) MigrateWaitTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["migrateWaitTimeout"])
+func (r *VirtualMachine) MigrateWaitTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["migrateWaitTimeout"])
 }
 
 // The machine object ID from VMWare
-func (r *VirtualMachine) Moid() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["moid"])
+func (r *VirtualMachine) Moid() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["moid"])
 }
 
 // An alias for both `label` and `path`, the latter when
 // using `attach`. Required if not using `label`.
-func (r *VirtualMachine) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *VirtualMachine) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Enable nested hardware virtualization on
 // this virtual machine, facilitating nested virtualization in the guest.
 // Default: `false`.
-func (r *VirtualMachine) NestedHvEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["nestedHvEnabled"])
+func (r *VirtualMachine) NestedHvEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["nestedHvEnabled"])
 }
 
 // A specification for a virtual NIC on this
 // virtual machine. See network interface options
 // below.
-func (r *VirtualMachine) NetworkInterfaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
+func (r *VirtualMachine) NetworkInterfaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["networkInterfaces"])
 }
 
 // The number of cores per socket in this
 // virtual machine. The number of vCPUs on the virtual machine will be
 // `numCpus` divided by `numCoresPerSocket`. If specified, the value
 // supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
-func (r *VirtualMachine) NumCoresPerSocket() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numCoresPerSocket"])
+func (r *VirtualMachine) NumCoresPerSocket() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numCoresPerSocket"])
 }
 
 // The total number of virtual processor cores to assign
 // to this virtual machine. Default: `1`.
-func (r *VirtualMachine) NumCpus() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["numCpus"])
+func (r *VirtualMachine) NumCpus() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["numCpus"])
 }
 
 // Value internal to Terraform used to determine if a configuration set change requires a reboot.
-func (r *VirtualMachine) RebootRequired() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["rebootRequired"])
+func (r *VirtualMachine) RebootRequired() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["rebootRequired"])
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the resource pool to put this virtual machine in.
 // See the section on virtual machine migration
 // for details on changing this value.
-func (r *VirtualMachine) ResourcePoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourcePoolId"])
+func (r *VirtualMachine) ResourcePoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourcePoolId"])
 }
 
 // Enable the execution of
 // post-power-on scripts when VMware tools is installed. Default: `true`.
-func (r *VirtualMachine) RunToolsScriptsAfterPowerOn() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["runToolsScriptsAfterPowerOn"])
+func (r *VirtualMachine) RunToolsScriptsAfterPowerOn() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["runToolsScriptsAfterPowerOn"])
 }
 
 // Enable the execution of
 // post-resume scripts when VMware tools is installed. Default: `true`.
-func (r *VirtualMachine) RunToolsScriptsAfterResume() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["runToolsScriptsAfterResume"])
+func (r *VirtualMachine) RunToolsScriptsAfterResume() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["runToolsScriptsAfterResume"])
 }
 
 // Enable the execution of
 // pre-reboot scripts when VMware tools is installed. Default: `false`.
-func (r *VirtualMachine) RunToolsScriptsBeforeGuestReboot() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestReboot"])
+func (r *VirtualMachine) RunToolsScriptsBeforeGuestReboot() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestReboot"])
 }
 
 // Enable the execution
 // of pre-shutdown scripts when VMware tools is installed. Default: `true`.
-func (r *VirtualMachine) RunToolsScriptsBeforeGuestShutdown() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestShutdown"])
+func (r *VirtualMachine) RunToolsScriptsBeforeGuestShutdown() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestShutdown"])
 }
 
 // Enable the execution of
 // pre-standby scripts when VMware tools is installed. Default: `true`.
-func (r *VirtualMachine) RunToolsScriptsBeforeGuestStandby() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestStandby"])
+func (r *VirtualMachine) RunToolsScriptsBeforeGuestStandby() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["runToolsScriptsBeforeGuestStandby"])
 }
 
 // Mode for sharing the SCSI bus. The modes are
 // physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
-func (r *VirtualMachine) ScsiBusSharing() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scsiBusSharing"])
+func (r *VirtualMachine) ScsiBusSharing() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scsiBusSharing"])
 }
 
 // The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
 // you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
 // controllers.
-func (r *VirtualMachine) ScsiControllerCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["scsiControllerCount"])
+func (r *VirtualMachine) ScsiControllerCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["scsiControllerCount"])
 }
 
 // The type of SCSI bus this virtual machine will have.
 // Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
 // pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
-func (r *VirtualMachine) ScsiType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scsiType"])
+func (r *VirtualMachine) ScsiType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scsiType"])
 }
 
 // The amount of time, in minutes, to wait
 // for a graceful guest shutdown when making necessary updates to the virtual
 // machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 // after this timeout, otherwise an error is returned. Default: 3 minutes.
-func (r *VirtualMachine) ShutdownWaitTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["shutdownWaitTimeout"])
+func (r *VirtualMachine) ShutdownWaitTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["shutdownWaitTimeout"])
 }
 
 // The swap file placement policy for this
 // virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 // Default: `inherit`.
-func (r *VirtualMachine) SwapPlacementPolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["swapPlacementPolicy"])
+func (r *VirtualMachine) SwapPlacementPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["swapPlacementPolicy"])
 }
 
 // Enable guest clock synchronization with
 // the host. Requires VMware tools to be installed. Default: `false`.
-func (r *VirtualMachine) SyncTimeWithHost() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["syncTimeWithHost"])
+func (r *VirtualMachine) SyncTimeWithHost() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["syncTimeWithHost"])
 }
 
 // The IDs of any tags to attach to this resource. See
 // [here][docs-applying-tags] for a reference on how to apply tags.
-func (r *VirtualMachine) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *VirtualMachine) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // The UUID of the virtual disk's VMDK file. This is used to track the
 // virtual disk on the virtual machine.
-func (r *VirtualMachine) Uuid() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["uuid"])
+func (r *VirtualMachine) Uuid() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["uuid"])
 }
 
 // Optional vApp configuration. The only sub-key available
@@ -681,27 +681,27 @@ func (r *VirtualMachine) Uuid() *pulumi.StringOutput {
 // imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
 // configuration for
 // more details.
-func (r *VirtualMachine) Vapp() *pulumi.Output {
+func (r *VirtualMachine) Vapp() pulumi.Output {
 	return r.s.State["vapp"]
 }
 
 // Computed value which is only valid for cloned virtual
 // machines. A list of vApp transport methods supported by the source virtual
 // machine or template.
-func (r *VirtualMachine) VappTransports() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vappTransports"])
+func (r *VirtualMachine) VappTransports() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vappTransports"])
 }
 
 // The state of VMware tools in the guest. This will
 // determine the proper course of action for some device operations.
-func (r *VirtualMachine) VmwareToolsStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vmwareToolsStatus"])
+func (r *VirtualMachine) VmwareToolsStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vmwareToolsStatus"])
 }
 
 // The path of the virtual machine's configuration file in the VM's
 // datastore.
-func (r *VirtualMachine) VmxPath() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vmxPath"])
+func (r *VirtualMachine) VmxPath() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vmxPath"])
 }
 
 // The amount of time, in minutes, to
@@ -709,8 +709,8 @@ func (r *VirtualMachine) VmxPath() *pulumi.StringOutput {
 // only be used if your version of VMware Tools does not allow the
 // `waitForGuestNetTimeout` waiter to be
 // used. A value less than 1 disables the waiter. Default: 0.
-func (r *VirtualMachine) WaitForGuestIpTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["waitForGuestIpTimeout"])
+func (r *VirtualMachine) WaitForGuestIpTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["waitForGuestIpTimeout"])
 }
 
 // Controls whether or not the guest
@@ -719,8 +719,8 @@ func (r *VirtualMachine) WaitForGuestIpTimeout() *pulumi.IntOutput {
 // discovered default gateways as part of its success criteria. This property is
 // ignored if the `waitForGuestIpTimeout`
 // waiter is used. Default: `true`.
-func (r *VirtualMachine) WaitForGuestNetRoutable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitForGuestNetRoutable"])
+func (r *VirtualMachine) WaitForGuestNetRoutable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["waitForGuestNetRoutable"])
 }
 
 // The amount of time, in minutes, to
@@ -729,8 +729,8 @@ func (r *VirtualMachine) WaitForGuestNetRoutable() *pulumi.BoolOutput {
 // waiter can be disabled and the
 // `waitForGuestIpTimeout` waiter can be used
 // instead. A value less than 1 disables the waiter. Default: 5 minutes.
-func (r *VirtualMachine) WaitForGuestNetTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["waitForGuestNetTimeout"])
+func (r *VirtualMachine) WaitForGuestNetTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["waitForGuestNetTimeout"])
 }
 
 // Input properties used for looking up and filtering VirtualMachine resources.

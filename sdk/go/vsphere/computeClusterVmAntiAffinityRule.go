@@ -91,42 +91,42 @@ func GetComputeClusterVmAntiAffinityRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ComputeClusterVmAntiAffinityRule) URN() *pulumi.URNOutput {
+func (r *ComputeClusterVmAntiAffinityRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ComputeClusterVmAntiAffinityRule) ID() *pulumi.IDOutput {
+func (r *ComputeClusterVmAntiAffinityRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [managed object reference
 // ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
 // resource if changed.
-func (r *ComputeClusterVmAntiAffinityRule) ComputeClusterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["computeClusterId"])
+func (r *ComputeClusterVmAntiAffinityRule) ComputeClusterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["computeClusterId"])
 }
 
 // Enable this rule in the cluster. Default: `true`.
-func (r *ComputeClusterVmAntiAffinityRule) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *ComputeClusterVmAntiAffinityRule) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
-func (r *ComputeClusterVmAntiAffinityRule) Mandatory() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mandatory"])
+func (r *ComputeClusterVmAntiAffinityRule) Mandatory() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mandatory"])
 }
 
 // The name of the rule. This must be unique in the cluster.
-func (r *ComputeClusterVmAntiAffinityRule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ComputeClusterVmAntiAffinityRule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The UUIDs of the virtual machines to run
 // on hosts different from each other.
-func (r *ComputeClusterVmAntiAffinityRule) VirtualMachineIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
+func (r *ComputeClusterVmAntiAffinityRule) VirtualMachineIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["virtualMachineIds"])
 }
 
 // Input properties used for looking up and filtering ComputeClusterVmAntiAffinityRule resources.

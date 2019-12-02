@@ -59,7 +59,7 @@ namespace Pulumi.Vsphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public License(string name, LicenseArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/license:License", name, args, MakeResourceOptions(options, ""))
+            : base("vsphere:index/license:License", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

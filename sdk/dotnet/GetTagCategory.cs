@@ -13,7 +13,7 @@ namespace Pulumi.Vsphere
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag_category.html.markdown.
         /// </summary>
         public static Task<GetTagCategoryResult> GetTagCategory(GetTagCategoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetTagCategoryArgs : Pulumi.ResourceArgs
