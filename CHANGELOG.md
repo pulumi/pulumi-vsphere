@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to support go 1.13.x
-* Upgrade to pulumi-terraform@dotnet
+_(none)_
 
 ---
+
+## 1.2.0 (2019-12-04)
+* Upgrade to support go 1.13.x
+* Upgrade to pulumi-terraform@dotnet
 
 ## 1.1.0 (2019-11-13)
 * Remove README.rst from the Python package and replace it with README.md
