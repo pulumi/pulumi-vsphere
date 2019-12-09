@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Namespace names in .NET SDK are adjusted to PascalCase
-([#259](https://github.com/pulumi/pulumi-vsphere/pull/51)).
+([#51](https://github.com/pulumi/pulumi-vsphere/pull/51)).
 
 ---
 
