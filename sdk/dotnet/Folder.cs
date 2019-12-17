@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Vsphere
+namespace Pulumi.VSphere
 {
     /// <summary>
     /// The `vsphere..Folder` resource can be used to manage vSphere inventory folders.

@@ -127,6 +127,9 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "1.5.0-*",
 				"System.Collections.Immutable": "1.6.0",
 			},
+			Namespaces: map[string]string{
+				"vsphere": "VSphere",
+			},
 		},
 	}
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that

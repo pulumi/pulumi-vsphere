@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Vsphere
+namespace Pulumi.VSphere
 {
     public static class Config
     {

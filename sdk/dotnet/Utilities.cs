@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using Pulumi;
 
-namespace Pulumi.Vsphere
+namespace Pulumi.VSphere
 {
     static class Utilities
     {
@@ -66,7 +66,7 @@ namespace Pulumi.Vsphere
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream("Pulumi.Vsphere.version.txt");
+            using var stream = assembly.GetManifestResourceStream("Pulumi.VSphere.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
         }

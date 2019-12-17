@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Vsphere
+namespace Pulumi.VSphere
 {
     /// <summary>
     /// The provider type for the vsphere package. By default, resources use package-wide configuration

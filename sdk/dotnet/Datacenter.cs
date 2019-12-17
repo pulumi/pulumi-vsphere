@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Vsphere
+namespace Pulumi.VSphere
 {
     /// <summary>
     /// Provides a VMware vSphere datacenter resource. This can be used as the primary
