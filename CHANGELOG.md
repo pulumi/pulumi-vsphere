@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.3.0 (2019-12-19)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#51](https://github.com/pulumi/pulumi-vsphere/pull/51)).
 * Upgrade to v1.14.0 of the vSphere Terraform Provider
-
----
 
 ## 1.2.0 (2019-12-04)
 * Upgrade to support go 1.13.x
