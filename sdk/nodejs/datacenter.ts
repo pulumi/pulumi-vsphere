@@ -65,7 +65,7 @@ export class Datacenter extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The folder where the datacenter should be created.
      * Forces a new resource if changed.
@@ -132,7 +132,7 @@ export interface DatacenterState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The folder where the datacenter should be created.
      * Forces a new resource if changed.
@@ -164,7 +164,7 @@ export interface DatacenterArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The folder where the datacenter should be created.
      * Forces a new resource if changed.

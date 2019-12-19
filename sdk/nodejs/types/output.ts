@@ -301,3 +301,41 @@ export interface VirtualMachineNetworkInterface {
 export interface VirtualMachineVapp {
     properties?: {[key: string]: string};
 }
+
+export interface VnicIpv4 {
+    /**
+     * Use DHCP to configure the interface's IPv4 stack.
+     */
+    dhcp?: boolean;
+    /**
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     */
+    gw?: string;
+    /**
+     * Address of the interface, if DHCP is not set.
+     */
+    ip?: string;
+    /**
+     * Netmask of the interface, if DHCP is not set.
+     */
+    netmask?: string;
+}
+
+export interface VnicIpv6 {
+    /**
+     * List of IPv6 addresses
+     */
+    addresses?: string[];
+    /**
+     * Use IPv6 Autoconfiguration (RFC2462).
+     */
+    autoconfig?: boolean;
+    /**
+     * Use DHCP to configure the interface's IPv4 stack.
+     */
+    dhcp?: boolean;
+    /**
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     */
+    gw?: string;
+}

@@ -31,7 +31,7 @@ namespace Pulumi.VSphere
         /// A list of custom attributes to set on this resource.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, object>?> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// How to start the entity. Valid settings are none
@@ -145,14 +145,14 @@ namespace Pulumi.VSphere
         public Input<string> ContainerId { get; set; } = null!;
 
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A list of custom attributes to set on this resource.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -235,14 +235,14 @@ namespace Pulumi.VSphere
         public Input<string>? ContainerId { get; set; }
 
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A list of custom attributes to set on this resource.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 

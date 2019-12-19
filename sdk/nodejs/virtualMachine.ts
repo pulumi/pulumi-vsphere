@@ -123,7 +123,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
@@ -172,7 +172,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * machine. Can be used to supply advanced parameters not normally in
      * configuration, such as instance metadata.
      */
-    public readonly extraConfig!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The firmware interface to use on the virtual machine.
      * Can be one of `bios` or `EFI`. Default: `bios`.
@@ -219,10 +219,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly hvMode!: pulumi.Output<string | undefined>;
     /**
-     * List of IP addresses to ignore while waiting
-     * for an available IP address using either of the waiters. Any IP addresses in
-     * this list will be ignored if they show up so that the waiter will continue to
-     * wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to
+     * ignore while waiting for an available IP address using either of the waiters.
+     * Any IP addresses in this list will be ignored if they show up so that the
+     * waiter will continue to wait for a real IP address. Default: [].
      */
     public readonly ignoredGuestIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -706,7 +706,7 @@ export interface VirtualMachineState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
@@ -755,7 +755,7 @@ export interface VirtualMachineState {
      * machine. Can be used to supply advanced parameters not normally in
      * configuration, such as instance metadata.
      */
-    readonly extraConfig?: pulumi.Input<{[key: string]: any}>;
+    readonly extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The firmware interface to use on the virtual machine.
      * Can be one of `bios` or `EFI`. Default: `bios`.
@@ -802,10 +802,10 @@ export interface VirtualMachineState {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
-     * List of IP addresses to ignore while waiting
-     * for an available IP address using either of the waiters. Any IP addresses in
-     * this list will be ignored if they show up so that the waiter will continue to
-     * wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to
+     * ignore while waiting for an available IP address using either of the waiters.
+     * Any IP addresses in this list will be ignored if they show up so that the
+     * waiter will continue to wait for a real IP address. Default: [].
      */
     readonly ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1112,7 +1112,7 @@ export interface VirtualMachineArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
@@ -1157,7 +1157,7 @@ export interface VirtualMachineArgs {
      * machine. Can be used to supply advanced parameters not normally in
      * configuration, such as instance metadata.
      */
-    readonly extraConfig?: pulumi.Input<{[key: string]: any}>;
+    readonly extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The firmware interface to use on the virtual machine.
      * Can be one of `bios` or `EFI`. Default: `bios`.
@@ -1196,10 +1196,10 @@ export interface VirtualMachineArgs {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
-     * List of IP addresses to ignore while waiting
-     * for an available IP address using either of the waiters. Any IP addresses in
-     * this list will be ignored if they show up so that the waiter will continue to
-     * wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to
+     * ignore while waiting for an available IP address using either of the waiters.
+     * Any IP addresses in this list will be ignored if they show up so that the
+     * waiter will continue to wait for a real IP address. Default: [].
      */
     readonly ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

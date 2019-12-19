@@ -139,7 +139,7 @@ export class HostPortGroup extends pulumi.CustomResource {
      * options][host-vswitch-policy-options] computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
-    public /*out*/ readonly computedPolicy!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly computedPolicy!: pulumi.Output<{[key: string]: string}>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
@@ -307,7 +307,7 @@ export interface HostPortGroupState {
      * options][host-vswitch-policy-options] computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
-    readonly computedPolicy?: pulumi.Input<{[key: string]: any}>;
+    readonly computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */

@@ -39,21 +39,39 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if allow_unverified_ssl is None:
+                allow_unverified_ssl = utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
             __props__['allow_unverified_ssl'] = pulumi.Output.from_input(allow_unverified_ssl).apply(json.dumps) if allow_unverified_ssl is not None else None
+            if client_debug is None:
+                client_debug = utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
             __props__['client_debug'] = pulumi.Output.from_input(client_debug).apply(json.dumps) if client_debug is not None else None
+            if client_debug_path is None:
+                client_debug_path = utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
             __props__['client_debug_path'] = client_debug_path
+            if client_debug_path_run is None:
+                client_debug_path_run = utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
             __props__['client_debug_path_run'] = client_debug_path_run
             if password is None:
-                raise TypeError("Missing required property 'password'")
+                password = utilities.get_env('VSPHERE_PASSWORD')
             __props__['password'] = password
+            if persist_session is None:
+                persist_session = utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
             __props__['persist_session'] = pulumi.Output.from_input(persist_session).apply(json.dumps) if persist_session is not None else None
+            if rest_session_path is None:
+                rest_session_path = utilities.get_env('VSPHERE_REST_SESSION_PATH')
             __props__['rest_session_path'] = rest_session_path
             if user is None:
-                raise TypeError("Missing required property 'user'")
+                user = utilities.get_env('VSPHERE_USER')
             __props__['user'] = user
             __props__['vcenter_server'] = vcenter_server
+            if vim_keep_alive is None:
+                vim_keep_alive = utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
             __props__['vim_keep_alive'] = pulumi.Output.from_input(vim_keep_alive).apply(json.dumps) if vim_keep_alive is not None else None
+            if vim_session_path is None:
+                vim_session_path = utilities.get_env('VSPHERE_VIM_SESSION_PATH')
             __props__['vim_session_path'] = vim_session_path
+            if vsphere_server is None:
+                vsphere_server = utilities.get_env('VSPHERE_SERVER')
             __props__['vsphere_server'] = vsphere_server
         super(Provider, __self__).__init__(
             'vsphere',

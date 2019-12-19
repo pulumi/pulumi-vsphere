@@ -90,7 +90,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter where the distributed
      * virtual switch will be created. Forces a new resource if changed.
@@ -730,7 +730,7 @@ export interface DistributedVirtualSwitchState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter where the distributed
      * virtual switch will be created. Forces a new resource if changed.
@@ -1160,7 +1160,7 @@ export interface DistributedVirtualSwitchArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter where the distributed
      * virtual switch will be created. Forces a new resource if changed.

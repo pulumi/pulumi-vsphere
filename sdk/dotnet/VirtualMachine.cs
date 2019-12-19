@@ -130,7 +130,7 @@ namespace Pulumi.VSphere
         /// for custom attributes.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, object>?> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// The [managed object reference
@@ -197,7 +197,7 @@ namespace Pulumi.VSphere
         /// configuration, such as instance metadata.
         /// </summary>
         [Output("extraConfig")]
-        public Output<ImmutableDictionary<string, object>?> ExtraConfig { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ExtraConfig { get; private set; } = null!;
 
         /// <summary>
         /// The firmware interface to use on the virtual machine.
@@ -259,10 +259,10 @@ namespace Pulumi.VSphere
         public Output<string?> HvMode { get; private set; } = null!;
 
         /// <summary>
-        /// List of IP addresses to ignore while waiting
-        /// for an available IP address using either of the waiters. Any IP addresses in
-        /// this list will be ignored if they show up so that the waiter will continue to
-        /// wait for a real IP address. Default: [].
+        /// List of IP addresses and CIDR networks to
+        /// ignore while waiting for an available IP address using either of the waiters.
+        /// Any IP addresses in this list will be ignored if they show up so that the
+        /// waiter will continue to wait for a real IP address. Default: [].
         /// </summary>
         [Output("ignoredGuestIps")]
         public Output<ImmutableArray<string>> IgnoredGuestIps { get; private set; } = null!;
@@ -708,7 +708,7 @@ namespace Pulumi.VSphere
         public Input<string>? CpuShareLevel { get; set; }
 
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// Map of custom attribute ids to attribute
@@ -716,9 +716,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -782,16 +782,16 @@ namespace Pulumi.VSphere
         public Input<string>? EptRviMode { get; set; }
 
         [Input("extraConfig")]
-        private InputMap<object>? _extraConfig;
+        private InputMap<string>? _extraConfig;
 
         /// <summary>
         /// Extra configuration data for this virtual
         /// machine. Can be used to supply advanced parameters not normally in
         /// configuration, such as instance metadata.
         /// </summary>
-        public InputMap<object> ExtraConfig
+        public InputMap<string> ExtraConfig
         {
-            get => _extraConfig ?? (_extraConfig = new InputMap<object>());
+            get => _extraConfig ?? (_extraConfig = new InputMap<string>());
             set => _extraConfig = value;
         }
 
@@ -848,10 +848,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _ignoredGuestIps;
 
         /// <summary>
-        /// List of IP addresses to ignore while waiting
-        /// for an available IP address using either of the waiters. Any IP addresses in
-        /// this list will be ignored if they show up so that the waiter will continue to
-        /// wait for a real IP address. Default: [].
+        /// List of IP addresses and CIDR networks to
+        /// ignore while waiting for an available IP address using either of the waiters.
+        /// Any IP addresses in this list will be ignored if they show up so that the
+        /// waiter will continue to wait for a real IP address. Default: [].
         /// </summary>
         public InputList<string> IgnoredGuestIps
         {
@@ -1231,7 +1231,7 @@ namespace Pulumi.VSphere
         public Input<string>? CpuShareLevel { get; set; }
 
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// Map of custom attribute ids to attribute
@@ -1239,9 +1239,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -1311,16 +1311,16 @@ namespace Pulumi.VSphere
         public Input<string>? EptRviMode { get; set; }
 
         [Input("extraConfig")]
-        private InputMap<object>? _extraConfig;
+        private InputMap<string>? _extraConfig;
 
         /// <summary>
         /// Extra configuration data for this virtual
         /// machine. Can be used to supply advanced parameters not normally in
         /// configuration, such as instance metadata.
         /// </summary>
-        public InputMap<object> ExtraConfig
+        public InputMap<string> ExtraConfig
         {
-            get => _extraConfig ?? (_extraConfig = new InputMap<object>());
+            get => _extraConfig ?? (_extraConfig = new InputMap<string>());
             set => _extraConfig = value;
         }
 
@@ -1393,10 +1393,10 @@ namespace Pulumi.VSphere
         private InputList<string>? _ignoredGuestIps;
 
         /// <summary>
-        /// List of IP addresses to ignore while waiting
-        /// for an available IP address using either of the waiters. Any IP addresses in
-        /// this list will be ignored if they show up so that the waiter will continue to
-        /// wait for a real IP address. Default: [].
+        /// List of IP addresses and CIDR networks to
+        /// ignore while waiting for an available IP address using either of the waiters.
+        /// Any IP addresses in this list will be ignored if they show up so that the
+        /// waiter will continue to wait for a real IP address. Default: [].
         /// </summary>
         public InputList<string> IgnoredGuestIps
         {

@@ -210,7 +210,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      * value string to set for port group. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An optional description for the port group.
      */
@@ -559,7 +559,7 @@ export interface DistributedPortGroupState {
      * value string to set for port group. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An optional description for the port group.
      */
@@ -780,7 +780,7 @@ export interface DistributedPortGroupArgs {
      * value string to set for port group. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An optional description for the port group.
      */

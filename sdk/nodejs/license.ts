@@ -60,7 +60,7 @@ export class License extends pulumi.CustomResource {
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The license key to add.
      */
@@ -130,7 +130,7 @@ export interface LicenseState {
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The license key to add.
      */
@@ -156,7 +156,7 @@ export interface LicenseArgs {
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: any}>;
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The license key to add.
      */

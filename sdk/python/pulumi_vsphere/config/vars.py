@@ -11,59 +11,59 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('vsphere')
 
-allow_unverified_ssl = __config__.get('allowUnverifiedSsl')
+allow_unverified_ssl = __config__.get('allowUnverifiedSsl') or utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
 """
 If set, VMware vSphere client will permit unverifiable SSL certificates.
 """
 
-client_debug = __config__.get('clientDebug')
+client_debug = __config__.get('clientDebug') or utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
 """
 govmomi debug
 """
 
-client_debug_path = __config__.get('clientDebugPath')
+client_debug_path = __config__.get('clientDebugPath') or utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
 """
 govmomi debug path for debug
 """
 
-client_debug_path_run = __config__.get('clientDebugPathRun')
+client_debug_path_run = __config__.get('clientDebugPathRun') or utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
 """
 govmomi debug path for a single run
 """
 
-password = __config__.get('password')
+password = __config__.get('password') or utilities.get_env('VSPHERE_PASSWORD')
 """
 The user password for vSphere API operations.
 """
 
-persist_session = __config__.get('persistSession')
+persist_session = __config__.get('persistSession') or utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
 """
 Persist vSphere client sessions to disk
 """
 
-rest_session_path = __config__.get('restSessionPath')
+rest_session_path = __config__.get('restSessionPath') or utilities.get_env('VSPHERE_REST_SESSION_PATH')
 """
 The directory to save vSphere REST API sessions to
 """
 
-user = __config__.get('user')
+user = __config__.get('user') or utilities.get_env('VSPHERE_USER')
 """
 The user name for vSphere API operations.
 """
 
 vcenter_server = __config__.get('vcenterServer')
 
-vim_keep_alive = __config__.get('vimKeepAlive')
+vim_keep_alive = __config__.get('vimKeepAlive') or utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
 """
 Keep alive interval for the VIM session in minutes
 """
 
-vim_session_path = __config__.get('vimSessionPath')
+vim_session_path = __config__.get('vimSessionPath') or utilities.get_env('VSPHERE_VIM_SESSION_PATH')
 """
 The directory to save vSphere SOAP API sessions to
 """
 
-vsphere_server = __config__.get('vsphereServer')
+vsphere_server = __config__.get('vsphereServer') or utilities.get_env('VSPHERE_SERVER')
 """
 The vSphere Server name for vSphere API operations.
 """

@@ -286,3 +286,41 @@ export interface VirtualMachineNetworkInterface {
 export interface VirtualMachineVapp {
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
+
+export interface VnicIpv4 {
+    /**
+     * Use DHCP to configure the interface's IPv4 stack.
+     */
+    dhcp?: pulumi.Input<boolean>;
+    /**
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     */
+    gw?: pulumi.Input<string>;
+    /**
+     * Address of the interface, if DHCP is not set.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * Netmask of the interface, if DHCP is not set.
+     */
+    netmask?: pulumi.Input<string>;
+}
+
+export interface VnicIpv6 {
+    /**
+     * List of IPv6 addresses
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Use IPv6 Autoconfiguration (RFC2462).
+     */
+    autoconfig?: pulumi.Input<boolean>;
+    /**
+     * Use DHCP to configure the interface's IPv4 stack.
+     */
+    dhcp?: pulumi.Input<boolean>;
+    /**
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     */
+    gw?: pulumi.Input<string>;
+}

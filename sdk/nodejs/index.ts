@@ -51,6 +51,7 @@ export * from "./virtualDisk";
 export * from "./virtualMachine";
 export * from "./virtualMachineSnapshot";
 export * from "./vmfsDatastore";
+export * from "./vnic";
 
 // Export sub-modules:
 import * as config from "./config/index";

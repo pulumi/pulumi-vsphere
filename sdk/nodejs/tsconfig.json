@@ -68,7 +68,8 @@
         "virtualDisk.ts",
         "virtualMachine.ts",
         "virtualMachineSnapshot.ts",
-        "vmfsDatastore.ts"
+        "vmfsDatastore.ts",
+        "vnic.ts"
     ]
 }
 
