@@ -49,7 +49,63 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-vsphere",
-		//PreConfigureCallback: preConfigureCallback,
+		Config: map[string]*tfbridge.SchemaInfo{
+			"user": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_USER"},
+				},
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_PASSWORD"},
+				},
+			},
+			"vsphere_server": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_SERVER"},
+				},
+			},
+			"allow_unverified_ssl": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_ALLOW_UNVERIFIED_SSL"},
+				},
+			},
+			"client_debug": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_CLIENT_DEBUG"},
+				},
+			},
+			"client_debug_path_run": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_CLIENT_DEBUG_PATH_RUN"},
+				},
+			},
+			"client_debug_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_CLIENT_DEBUG_PATH"},
+				},
+			},
+			"persist_session": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_PERSIST_SESSION"},
+				},
+			},
+			"vim_session_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_VIM_SESSION_PATH"},
+				},
+			},
+			"rest_session_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_REST_SESSION_PATH"},
+				},
+			},
+			"vim_keep_alive": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"VSPHERE_VIM_KEEP_ALIVE"},
+				},
+			},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_compute_cluster":                         {Tok: vsphereResource(vsphereMod, "ComputeCluster")},
 			"vsphere_compute_cluster_host_group":              {Tok: vsphereResource(vsphereMod, "ComputeClusterHostGroup")},
@@ -84,6 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_virtual_machine":                         {Tok: vsphereResource(vsphereMod, "VirtualMachine")},
 			"vsphere_virtual_machine_snapshot":                {Tok: vsphereResource(vsphereMod, "VirtualMachineSnapshot")},
 			"vsphere_vmfs_datastore":                          {Tok: vsphereResource(vsphereMod, "VmfsDatastore")},
+			"vsphere_vnic":                                    {Tok: vsphereResource(vsphereMod, "Vnic")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"vsphere_compute_cluster":            {Tok: vsphereDataSource(vsphereMod, "getComputeCluster")},

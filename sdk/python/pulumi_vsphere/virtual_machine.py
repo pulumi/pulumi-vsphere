@@ -296,10 +296,10 @@ class VirtualMachine(pulumi.CustomResource):
     """
     ignored_guest_ips: pulumi.Output[list]
     """
-    List of IP addresses to ignore while waiting
-    for an available IP address using either of the waiters. Any IP addresses in
-    this list will be ignored if they show up so that the waiter will continue to
-    wait for a real IP address. Default: [].
+    List of IP addresses and CIDR networks to
+    ignore while waiting for an available IP address using either of the waiters.
+    Any IP addresses in this list will be ignored if they show up so that the
+    waiter will continue to wait for a real IP address. Default: [].
     """
     imported: pulumi.Output[bool]
     """
@@ -614,10 +614,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
-        :param pulumi.Input[list] ignored_guest_ips: List of IP addresses to ignore while waiting
-               for an available IP address using either of the waiters. Any IP addresses in
-               this list will be ignored if they show up so that the waiter will continue to
-               wait for a real IP address. Default: [].
+        :param pulumi.Input[list] ignored_guest_ips: List of IP addresses and CIDR networks to
+               ignore while waiting for an available IP address using either of the waiters.
+               Any IP addresses in this list will be ignored if they show up so that the
+               waiter will continue to wait for a real IP address. Default: [].
         :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the
                virtual machine. Use a higher sensitivity for applications that require lower
                latency, such as VOIP, media player applications, or applications that
@@ -1039,10 +1039,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
-        :param pulumi.Input[list] ignored_guest_ips: List of IP addresses to ignore while waiting
-               for an available IP address using either of the waiters. Any IP addresses in
-               this list will be ignored if they show up so that the waiter will continue to
-               wait for a real IP address. Default: [].
+        :param pulumi.Input[list] ignored_guest_ips: List of IP addresses and CIDR networks to
+               ignore while waiting for an available IP address using either of the waiters.
+               Any IP addresses in this list will be ignored if they show up so that the
+               waiter will continue to wait for a real IP address. Default: [].
         :param pulumi.Input[bool] imported: This is flagged if the virtual machine has been imported, or the
                state has been migrated from a previous version of the resource. It
                influences the behavior of the first post-import apply operation. See the

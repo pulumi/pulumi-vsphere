@@ -37,27 +37,21 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.password === undefined) {
-                throw new Error("Missing required property 'password'");
-            }
-            if (!args || args.user === undefined) {
-                throw new Error("Missing required property 'user'");
-            }
-            inputs["allowUnverifiedSsl"] = pulumi.output(args ? args.allowUnverifiedSsl : undefined).apply(JSON.stringify);
-            inputs["clientDebug"] = pulumi.output(args ? args.clientDebug : undefined).apply(JSON.stringify);
-            inputs["clientDebugPath"] = args ? args.clientDebugPath : undefined;
-            inputs["clientDebugPathRun"] = args ? args.clientDebugPathRun : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["persistSession"] = pulumi.output(args ? args.persistSession : undefined).apply(JSON.stringify);
-            inputs["restSessionPath"] = args ? args.restSessionPath : undefined;
-            inputs["user"] = args ? args.user : undefined;
+            inputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) || utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
+            inputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) || utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
+            inputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+            inputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("VSPHERE_PASSWORD");
+            inputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) || utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
+            inputs["restSessionPath"] = (args ? args.restSessionPath : undefined) || utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+            inputs["user"] = (args ? args.user : undefined) || utilities.getEnv("VSPHERE_USER");
             inputs["vcenterServer"] = args ? args.vcenterServer : undefined;
-            inputs["vimKeepAlive"] = pulumi.output(args ? args.vimKeepAlive : undefined).apply(JSON.stringify);
-            inputs["vimSessionPath"] = args ? args.vimSessionPath : undefined;
-            inputs["vsphereServer"] = args ? args.vsphereServer : undefined;
+            inputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) || utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
+            inputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) || utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+            inputs["vsphereServer"] = (args ? args.vsphereServer : undefined) || utilities.getEnv("VSPHERE_SERVER");
         }
         if (!opts) {
             opts = {}
@@ -93,7 +87,7 @@ export interface ProviderArgs {
     /**
      * The user password for vSphere API operations.
      */
-    readonly password: pulumi.Input<string>;
+    readonly password?: pulumi.Input<string>;
     /**
      * Persist vSphere client sessions to disk
      */
@@ -105,7 +99,7 @@ export interface ProviderArgs {
     /**
      * The user name for vSphere API operations.
      */
-    readonly user: pulumi.Input<string>;
+    readonly user?: pulumi.Input<string>;
     readonly vcenterServer?: pulumi.Input<string>;
     /**
      * Keep alive interval for the VIM session in minutes

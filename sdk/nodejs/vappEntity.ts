@@ -44,7 +44,7 @@ export class VappEntity extends pulumi.CustomResource {
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
@@ -152,7 +152,7 @@ export interface VappEntityState {
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
@@ -209,7 +209,7 @@ export interface VappEntityArgs {
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.

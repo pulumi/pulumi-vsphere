@@ -51,7 +51,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
@@ -186,7 +186,7 @@ export interface VmfsDatastoreState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
@@ -253,7 +253,7 @@ export interface VmfsDatastoreArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object
      * ID][docs-about-morefs] of a datastore cluster to put this datastore in.

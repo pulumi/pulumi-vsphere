@@ -40,7 +40,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
@@ -58,7 +58,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
     /**
      * Advanced configuration options for storage DRS.
      */
-    public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.
@@ -261,7 +261,7 @@ export interface DatastoreClusterState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
@@ -279,7 +279,7 @@ export interface DatastoreClusterState {
     /**
      * Advanced configuration options for storage DRS.
      */
-    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.
@@ -404,7 +404,7 @@ export interface DatastoreClusterArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the datastore cluster in. Forces a new resource if
@@ -422,7 +422,7 @@ export interface DatastoreClusterArgs {
     /**
      * Advanced configuration options for storage DRS.
      */
-    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.

@@ -61,7 +61,7 @@ namespace Pulumi.VSphere
         /// explaining the effective policy for this port group.
         /// </summary>
         [Output("computedPolicy")]
-        public Output<ImmutableDictionary<string, object>> ComputedPolicy { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ComputedPolicy { get; private set; } = null!;
 
         /// <summary>
         /// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
@@ -371,16 +371,16 @@ namespace Pulumi.VSphere
         public Input<bool>? CheckBeacon { get; set; }
 
         [Input("computedPolicy")]
-        private InputMap<object>? _computedPolicy;
+        private InputMap<string>? _computedPolicy;
 
         /// <summary>
         /// A map with a full set of the [policy
         /// options][host-vswitch-policy-options] computed from defaults and overrides,
         /// explaining the effective policy for this port group.
         /// </summary>
-        public InputMap<object> ComputedPolicy
+        public InputMap<string> ComputedPolicy
         {
-            get => _computedPolicy ?? (_computedPolicy = new InputMap<object>());
+            get => _computedPolicy ?? (_computedPolicy = new InputMap<string>());
             set => _computedPolicy = value;
         }
 

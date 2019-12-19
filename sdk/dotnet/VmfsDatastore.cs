@@ -32,7 +32,7 @@ namespace Pulumi.VSphere
         /// for custom attributes.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, object>?> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// The [managed object
@@ -157,7 +157,7 @@ namespace Pulumi.VSphere
     public sealed class VmfsDatastoreArgs : Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// Map of custom attribute ids to attribute 
@@ -165,9 +165,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -248,7 +248,7 @@ namespace Pulumi.VSphere
         public Input<int>? Capacity { get; set; }
 
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// Map of custom attribute ids to attribute 
@@ -256,9 +256,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 

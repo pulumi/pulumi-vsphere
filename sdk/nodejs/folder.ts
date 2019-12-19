@@ -41,7 +41,7 @@ export class Folder extends pulumi.CustomResource {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
@@ -116,7 +116,7 @@ export interface FolderState {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
@@ -150,7 +150,7 @@ export interface FolderArgs {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new

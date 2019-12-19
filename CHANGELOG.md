@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#51](https://github.com/pulumi/pulumi-vsphere/pull/51)).
+* Upgrade to v1.14.0 of the vSphere Terraform Provider
 
 ---
 

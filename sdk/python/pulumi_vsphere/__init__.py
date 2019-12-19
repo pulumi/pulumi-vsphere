@@ -43,6 +43,7 @@ from .virtual_disk import *
 from .virtual_machine import *
 from .virtual_machine_snapshot import *
 from .vmfs_datastore import *
+from .vnic import *
 from .get_compute_cluster import *
 from .get_custom_attribute import *
 from .get_datacenter import *

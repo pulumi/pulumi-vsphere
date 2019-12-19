@@ -24,7 +24,7 @@ namespace Pulumi.VSphere
         /// A map of key/value pairs to be attached as labels (tags) to the license key.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The license key to add.
@@ -97,14 +97,14 @@ namespace Pulumi.VSphere
     public sealed class LicenseArgs : Pulumi.ResourceArgs
     {
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// A map of key/value pairs to be attached as labels (tags) to the license key.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -128,14 +128,14 @@ namespace Pulumi.VSphere
         public Input<string>? EditionKey { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// A map of key/value pairs to be attached as labels (tags) to the license key.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

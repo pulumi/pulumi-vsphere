@@ -19,7 +19,7 @@ namespace Pulumi.VSphere
         /// for custom attributes.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, object>?> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// The [managed object ID][docs-about-morefs] of
@@ -58,7 +58,7 @@ namespace Pulumi.VSphere
         /// options for DRS and DPM.
         /// </summary>
         [Output("drsAdvancedOptions")]
-        public Output<ImmutableDictionary<string, object>?> DrsAdvancedOptions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> DrsAdvancedOptions { get; private set; } = null!;
 
         /// <summary>
         /// The default automation level for all
@@ -204,7 +204,7 @@ namespace Pulumi.VSphere
         /// options for vSphere HA.
         /// </summary>
         [Output("haAdvancedOptions")]
-        public Output<ImmutableDictionary<string, object>?> HaAdvancedOptions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> HaAdvancedOptions { get; private set; } = null!;
 
         /// <summary>
         /// Controls the action to take
@@ -501,7 +501,7 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterArgs : Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A map of custom attribute ids to attribute
@@ -509,9 +509,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -548,15 +548,15 @@ namespace Pulumi.VSphere
         public Input<int>? DpmThreshold { get; set; }
 
         [Input("drsAdvancedOptions")]
-        private InputMap<object>? _drsAdvancedOptions;
+        private InputMap<string>? _drsAdvancedOptions;
 
         /// <summary>
         /// A key/value map that specifies advanced
         /// options for DRS and DPM.
         /// </summary>
-        public InputMap<object> DrsAdvancedOptions
+        public InputMap<string> DrsAdvancedOptions
         {
-            get => _drsAdvancedOptions ?? (_drsAdvancedOptions = new InputMap<object>());
+            get => _drsAdvancedOptions ?? (_drsAdvancedOptions = new InputMap<string>());
             set => _drsAdvancedOptions = value;
         }
 
@@ -706,15 +706,15 @@ namespace Pulumi.VSphere
         public Input<bool>? HaAdmissionControlSlotPolicyUseExplicitSize { get; set; }
 
         [Input("haAdvancedOptions")]
-        private InputMap<object>? _haAdvancedOptions;
+        private InputMap<string>? _haAdvancedOptions;
 
         /// <summary>
         /// A key/value map that specifies advanced
         /// options for vSphere HA.
         /// </summary>
-        public InputMap<object> HaAdvancedOptions
+        public InputMap<string> HaAdvancedOptions
         {
-            get => _haAdvancedOptions ?? (_haAdvancedOptions = new InputMap<object>());
+            get => _haAdvancedOptions ?? (_haAdvancedOptions = new InputMap<string>());
             set => _haAdvancedOptions = value;
         }
 
@@ -992,7 +992,7 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterState : Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A map of custom attribute ids to attribute
@@ -1000,9 +1000,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -1039,15 +1039,15 @@ namespace Pulumi.VSphere
         public Input<int>? DpmThreshold { get; set; }
 
         [Input("drsAdvancedOptions")]
-        private InputMap<object>? _drsAdvancedOptions;
+        private InputMap<string>? _drsAdvancedOptions;
 
         /// <summary>
         /// A key/value map that specifies advanced
         /// options for DRS and DPM.
         /// </summary>
-        public InputMap<object> DrsAdvancedOptions
+        public InputMap<string> DrsAdvancedOptions
         {
-            get => _drsAdvancedOptions ?? (_drsAdvancedOptions = new InputMap<object>());
+            get => _drsAdvancedOptions ?? (_drsAdvancedOptions = new InputMap<string>());
             set => _drsAdvancedOptions = value;
         }
 
@@ -1197,15 +1197,15 @@ namespace Pulumi.VSphere
         public Input<bool>? HaAdmissionControlSlotPolicyUseExplicitSize { get; set; }
 
         [Input("haAdvancedOptions")]
-        private InputMap<object>? _haAdvancedOptions;
+        private InputMap<string>? _haAdvancedOptions;
 
         /// <summary>
         /// A key/value map that specifies advanced
         /// options for vSphere HA.
         /// </summary>
-        public InputMap<object> HaAdvancedOptions
+        public InputMap<string> HaAdvancedOptions
         {
-            get => _haAdvancedOptions ?? (_haAdvancedOptions = new InputMap<object>());
+            get => _haAdvancedOptions ?? (_haAdvancedOptions = new InputMap<string>());
             set => _haAdvancedOptions = value;
         }
 

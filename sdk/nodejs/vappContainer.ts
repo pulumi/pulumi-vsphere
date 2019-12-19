@@ -153,7 +153,7 @@ export class VappContainer extends pulumi.CustomResource {
     /**
      * A list of custom attributes to set on this resource.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
@@ -307,7 +307,7 @@ export interface VappContainerState {
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has
@@ -403,7 +403,7 @@ export interface VappContainerArgs {
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Determines if the reservation on a vApp
      * container can grow beyond the specified value if the parent resource pool has

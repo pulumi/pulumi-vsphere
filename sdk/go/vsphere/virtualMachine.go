@@ -471,10 +471,10 @@ func (r *VirtualMachine) HvMode() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["hvMode"])
 }
 
-// List of IP addresses to ignore while waiting
-// for an available IP address using either of the waiters. Any IP addresses in
-// this list will be ignored if they show up so that the waiter will continue to
-// wait for a real IP address. Default: [].
+// List of IP addresses and CIDR networks to
+// ignore while waiting for an available IP address using either of the waiters.
+// Any IP addresses in this list will be ignored if they show up so that the
+// waiter will continue to wait for a real IP address. Default: [].
 func (r *VirtualMachine) IgnoredGuestIps() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["ignoredGuestIps"])
 }
@@ -853,10 +853,10 @@ type VirtualMachineState struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode interface{}
-	// List of IP addresses to ignore while waiting
-	// for an available IP address using either of the waiters. Any IP addresses in
-	// this list will be ignored if they show up so that the waiter will continue to
-	// wait for a real IP address. Default: [].
+	// List of IP addresses and CIDR networks to
+	// ignore while waiting for an available IP address using either of the waiters.
+	// Any IP addresses in this list will be ignored if they show up so that the
+	// waiter will continue to wait for a real IP address. Default: [].
 	IgnoredGuestIps interface{}
 	// This is flagged if the virtual machine has been imported, or the
 	// state has been migrated from a previous version of the resource. It
@@ -1111,10 +1111,10 @@ type VirtualMachineArgs struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode interface{}
-	// List of IP addresses to ignore while waiting
-	// for an available IP address using either of the waiters. Any IP addresses in
-	// this list will be ignored if they show up so that the waiter will continue to
-	// wait for a real IP address. Default: [].
+	// List of IP addresses and CIDR networks to
+	// ignore while waiting for an available IP address using either of the waiters.
+	// Any IP addresses in this list will be ignored if they show up so that the
+	// waiter will continue to wait for a real IP address. Default: [].
 	IgnoredGuestIps interface{}
 	// Controls the scheduling delay of the
 	// virtual machine. Use a higher sensitivity for applications that require lower

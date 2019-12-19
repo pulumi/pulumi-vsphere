@@ -40,7 +40,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    public readonly customAttributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
@@ -69,7 +69,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * A key/value map that specifies advanced
      * options for DRS and DPM.
      */
-    public readonly drsAdvancedOptions!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly drsAdvancedOptions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The default automation level for all
      * virtual machines in this cluster. Can be one of `manual`,
@@ -179,7 +179,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      * A key/value map that specifies advanced
      * options for vSphere HA.
      */
-    public readonly haAdvancedOptions!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly haAdvancedOptions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Controls the action to take
      * on virtual machines if an APD status on an affected datastore clears in the
@@ -516,7 +516,7 @@ export interface ComputeClusterState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
@@ -545,7 +545,7 @@ export interface ComputeClusterState {
      * A key/value map that specifies advanced
      * options for DRS and DPM.
      */
-    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The default automation level for all
      * virtual machines in this cluster. Can be one of `manual`,
@@ -655,7 +655,7 @@ export interface ComputeClusterState {
      * A key/value map that specifies advanced
      * options for vSphere HA.
      */
-    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Controls the action to take
      * on virtual machines if an APD status on an affected datastore clears in the
@@ -858,7 +858,7 @@ export interface ComputeClusterArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: any}>;
+    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [managed object ID][docs-about-morefs] of
      * the datacenter to create the cluster in. Forces a new resource if changed.
@@ -887,7 +887,7 @@ export interface ComputeClusterArgs {
      * A key/value map that specifies advanced
      * options for DRS and DPM.
      */
-    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The default automation level for all
      * virtual machines in this cluster. Can be one of `manual`,
@@ -997,7 +997,7 @@ export interface ComputeClusterArgs {
      * A key/value map that specifies advanced
      * options for vSphere HA.
      */
-    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: any}>;
+    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Controls the action to take
      * on virtual machines if an APD status on an affected datastore clears in the

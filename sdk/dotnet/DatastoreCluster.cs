@@ -34,7 +34,7 @@ namespace Pulumi.VSphere
         /// for custom attributes.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, object>?> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// The [managed object ID][docs-about-morefs] of
@@ -60,7 +60,7 @@ namespace Pulumi.VSphere
         /// Advanced configuration options for storage DRS.
         /// </summary>
         [Output("sdrsAdvancedOptions")]
-        public Output<ImmutableDictionary<string, object>?> SdrsAdvancedOptions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> SdrsAdvancedOptions { get; private set; } = null!;
 
         /// <summary>
         /// The global automation level for all
@@ -262,7 +262,7 @@ namespace Pulumi.VSphere
     public sealed class DatastoreClusterArgs : Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A map of custom attribute ids to attribute
@@ -270,9 +270,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -297,14 +297,14 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         [Input("sdrsAdvancedOptions")]
-        private InputMap<object>? _sdrsAdvancedOptions;
+        private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
         /// Advanced configuration options for storage DRS.
         /// </summary>
-        public InputMap<object> SdrsAdvancedOptions
+        public InputMap<string> SdrsAdvancedOptions
         {
-            get => _sdrsAdvancedOptions ?? (_sdrsAdvancedOptions = new InputMap<object>());
+            get => _sdrsAdvancedOptions ?? (_sdrsAdvancedOptions = new InputMap<string>());
             set => _sdrsAdvancedOptions = value;
         }
 
@@ -475,7 +475,7 @@ namespace Pulumi.VSphere
     public sealed class DatastoreClusterState : Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
-        private InputMap<object>? _customAttributes;
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// A map of custom attribute ids to attribute
@@ -483,9 +483,9 @@ namespace Pulumi.VSphere
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
         /// </summary>
-        public InputMap<object> CustomAttributes
+        public InputMap<string> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<object>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
             set => _customAttributes = value;
         }
 
@@ -510,14 +510,14 @@ namespace Pulumi.VSphere
         public Input<string>? Name { get; set; }
 
         [Input("sdrsAdvancedOptions")]
-        private InputMap<object>? _sdrsAdvancedOptions;
+        private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
         /// Advanced configuration options for storage DRS.
         /// </summary>
-        public InputMap<object> SdrsAdvancedOptions
+        public InputMap<string> SdrsAdvancedOptions
         {
-            get => _sdrsAdvancedOptions ?? (_sdrsAdvancedOptions = new InputMap<object>());
+            get => _sdrsAdvancedOptions ?? (_sdrsAdvancedOptions = new InputMap<string>());
             set => _sdrsAdvancedOptions = value;
         }
 

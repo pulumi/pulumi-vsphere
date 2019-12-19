@@ -10,42 +10,98 @@ import (
 
 // If set, VMware vSphere client will permit unverifiable SSL certificates.
 func GetAllowUnverifiedSsl(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "vsphere:allowUnverifiedSsl")
+	v, err := config.TryBool(ctx, "vsphere:allowUnverifiedSsl")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool); ok {
+		return dv
+	}
+	return v
 }
 
 // govmomi debug
 func GetClientDebug(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "vsphere:clientDebug")
+	v, err := config.TryBool(ctx, "vsphere:clientDebug")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_CLIENT_DEBUG").(bool); ok {
+		return dv
+	}
+	return v
 }
 
 // govmomi debug path for debug
 func GetClientDebugPath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:clientDebugPath")
+	v, err := config.Try(ctx, "vsphere:clientDebugPath")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // govmomi debug path for a single run
 func GetClientDebugPathRun(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:clientDebugPathRun")
+	v, err := config.Try(ctx, "vsphere:clientDebugPathRun")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The user password for vSphere API operations.
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:password")
+	v, err := config.Try(ctx, "vsphere:password")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_PASSWORD").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // Persist vSphere client sessions to disk
 func GetPersistSession(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "vsphere:persistSession")
+	v, err := config.TryBool(ctx, "vsphere:persistSession")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool); ok {
+		return dv
+	}
+	return v
 }
 
 // The directory to save vSphere REST API sessions to
 func GetRestSessionPath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:restSessionPath")
+	v, err := config.Try(ctx, "vsphere:restSessionPath")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The user name for vSphere API operations.
 func GetUser(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:user")
+	v, err := config.Try(ctx, "vsphere:user")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_USER").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetVcenterServer(ctx *pulumi.Context) string {
@@ -54,15 +110,36 @@ func GetVcenterServer(ctx *pulumi.Context) string {
 
 // Keep alive interval for the VIM session in minutes
 func GetVimKeepAlive(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "vsphere:vimKeepAlive")
+	v, err := config.TryInt(ctx, "vsphere:vimKeepAlive")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int); ok {
+		return dv
+	}
+	return v
 }
 
 // The directory to save vSphere SOAP API sessions to
 func GetVimSessionPath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:vimSessionPath")
+	v, err := config.Try(ctx, "vsphere:vimSessionPath")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The vSphere Server name for vSphere API operations.
 func GetVsphereServer(ctx *pulumi.Context) string {
-	return config.Get(ctx, "vsphere:vsphereServer")
+	v, err := config.Try(ctx, "vsphere:vsphereServer")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_SERVER").(string); ok {
+		return dv
+	}
+	return v
 }
