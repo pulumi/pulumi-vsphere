@@ -13,7 +13,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, id=None):
+    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, id=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         __self__.alternate_guest_name = alternate_guest_name
@@ -48,6 +48,12 @@ class GetVirtualMachineResult:
         __self__.guest_id = guest_id
         """
         The guest ID of the virtual machine or template.
+        """
+        if guest_ip_addresses and not isinstance(guest_ip_addresses, list):
+            raise TypeError("Expected argument 'guest_ip_addresses' to be a list")
+        __self__.guest_ip_addresses = guest_ip_addresses
+        """
+        A list of IP addresses as reported by VMWare tools.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -98,6 +104,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             disks=self.disks,
             firmware=self.firmware,
             guest_id=self.guest_id,
+            guest_ip_addresses=self.guest_ip_addresses,
             name=self.name,
             network_interface_types=self.network_interface_types,
             scsi_bus_sharing=self.scsi_bus_sharing,
@@ -144,6 +151,7 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
         disks=__ret__.get('disks'),
         firmware=__ret__.get('firmware'),
         guest_id=__ret__.get('guestId'),
+        guest_ip_addresses=__ret__.get('guestIpAddresses'),
         name=__ret__.get('name'),
         network_interface_types=__ret__.get('networkInterfaceTypes'),
         scsi_bus_sharing=__ret__.get('scsiBusSharing'),

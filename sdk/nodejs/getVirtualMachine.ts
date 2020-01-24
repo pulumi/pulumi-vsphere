@@ -102,6 +102,10 @@ export interface GetVirtualMachineResult {
      * The guest ID of the virtual machine or template.
      */
     readonly guestId: string;
+    /**
+     * A list of IP addresses as reported by VMWare tools.
+     */
+    readonly guestIpAddresses: string[];
     readonly name: string;
     /**
      * The network interface types for each network

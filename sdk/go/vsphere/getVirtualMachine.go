@@ -33,6 +33,7 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *GetVirtualMachineArgs) (*Ge
 		Disks: outputs["disks"],
 		Firmware: outputs["firmware"],
 		GuestId: outputs["guestId"],
+		GuestIpAddresses: outputs["guestIpAddresses"],
 		Name: outputs["name"],
 		NetworkInterfaceTypes: outputs["networkInterfaceTypes"],
 		ScsiBusSharing: outputs["scsiBusSharing"],
@@ -77,6 +78,8 @@ type GetVirtualMachineResult struct {
 	Firmware interface{}
 	// The guest ID of the virtual machine or template.
 	GuestId interface{}
+	// A list of IP addresses as reported by VMWare tools.
+	GuestIpAddresses interface{}
 	Name interface{}
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
