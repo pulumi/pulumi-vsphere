@@ -83,6 +83,10 @@ namespace Pulumi.VSphere
         /// The guest ID of the virtual machine or template.
         /// </summary>
         public readonly string GuestId;
+        /// <summary>
+        /// A list of IP addresses as reported by VMWare tools.
+        /// </summary>
+        public readonly ImmutableArray<string> GuestIpAddresses;
         public readonly string Name;
         /// <summary>
         /// The network interface types for each network
@@ -117,6 +121,7 @@ namespace Pulumi.VSphere
             ImmutableArray<Outputs.GetVirtualMachineDisksResult> disks,
             string firmware,
             string guestId,
+            ImmutableArray<string> guestIpAddresses,
             string name,
             ImmutableArray<string> networkInterfaceTypes,
             string scsiBusSharing,
@@ -129,6 +134,7 @@ namespace Pulumi.VSphere
             Disks = disks;
             Firmware = firmware;
             GuestId = guestId;
+            GuestIpAddresses = guestIpAddresses;
             Name = name;
             NetworkInterfaceTypes = networkInterfaceTypes;
             ScsiBusSharing = scsiBusSharing;
