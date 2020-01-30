@@ -13,8 +13,8 @@ import (
 // [`.NasDatastore`][docs-nas-datastore-resource] or
 // [`.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or create
 // virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
-//
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+// 
 // [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
 // [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
@@ -32,8 +32,8 @@ func LookupDatastoreCluster(ctx *pulumi.Context, args *GetDatastoreClusterArgs) 
 	}
 	return &GetDatastoreClusterResult{
 		DatacenterId: outputs["datacenterId"],
-		Name:         outputs["name"],
-		Id:           outputs["id"],
+		Name: outputs["name"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -52,7 +52,7 @@ type GetDatastoreClusterArgs struct {
 // A collection of values returned by getDatastoreCluster.
 type GetDatastoreClusterResult struct {
 	DatacenterId interface{}
-	Name         interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

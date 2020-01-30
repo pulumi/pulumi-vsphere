@@ -10,8 +10,8 @@ import (
 // The `.getDatastore` data source can be used to discover the ID of a
 // datastore in vSphere. This is useful to fetch the ID of a datastore that you
 // want to use to create virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
-//
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+// 
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
@@ -27,8 +27,8 @@ func LookupDatastore(ctx *pulumi.Context, args *GetDatastoreArgs) (*GetDatastore
 	}
 	return &GetDatastoreResult{
 		DatacenterId: outputs["datacenterId"],
-		Name:         outputs["name"],
-		Id:           outputs["id"],
+		Name: outputs["name"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -47,7 +47,7 @@ type GetDatastoreArgs struct {
 // A collection of values returned by getDatastore.
 type GetDatastoreResult struct {
 	DatacenterId interface{}
-	Name         interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

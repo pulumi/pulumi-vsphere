@@ -10,8 +10,8 @@ import (
 // The `.ResourcePool` data source can be used to discover the ID of a
 // resource pool in vSphere. This is useful to fetch the ID of a resource pool
 // that you want to use to create virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
-//
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+// 
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
@@ -27,8 +27,8 @@ func LookupResourcePool(ctx *pulumi.Context, args *GetResourcePoolArgs) (*GetRes
 	}
 	return &GetResourcePoolResult{
 		DatacenterId: outputs["datacenterId"],
-		Name:         outputs["name"],
-		Id:           outputs["id"],
+		Name: outputs["name"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -48,7 +48,7 @@ type GetResourcePoolArgs struct {
 // A collection of values returned by getResourcePool.
 type GetResourcePoolResult struct {
 	DatacenterId interface{}
-	Name         interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

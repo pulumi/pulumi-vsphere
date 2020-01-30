@@ -103,7 +103,7 @@ func (r *VmfsDatastore) Capacity() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["capacity"])
 }
 
-// Map of custom attribute ids to attribute
+// Map of custom attribute ids to attribute 
 // value string to set on datastore resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
@@ -183,7 +183,7 @@ type VmfsDatastoreState struct {
 	Accessible interface{}
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity interface{}
-	// Map of custom attribute ids to attribute
+	// Map of custom attribute ids to attribute 
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -224,7 +224,7 @@ type VmfsDatastoreState struct {
 
 // The set of arguments for constructing a VmfsDatastore resource.
 type VmfsDatastoreArgs struct {
-	// Map of custom attribute ids to attribute
+	// Map of custom attribute ids to attribute 
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.

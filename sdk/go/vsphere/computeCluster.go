@@ -331,7 +331,7 @@ func (r *ComputeCluster) HaAdmissionControlPolicy() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["haAdmissionControlPolicy"])
 }
 
-//
+// 
 // Automatically determine available resource percentages by subtracting the
 // average number of host resources represented by the
 // `haAdmissionControlHostFailureTolerance`
@@ -671,7 +671,7 @@ type ComputeClusterState struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy interface{}
-	//
+	// 
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -905,7 +905,7 @@ type ComputeClusterArgs struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy interface{}
-	//
+	// 
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`

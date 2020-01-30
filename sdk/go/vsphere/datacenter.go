@@ -67,7 +67,7 @@ func (r *Datacenter) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Map of custom attribute ids to value
+// Map of custom attribute ids to value 
 // strings to set for datacenter resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
@@ -100,7 +100,7 @@ func (r *Datacenter) Tags() pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Datacenter resources.
 type DatacenterState struct {
-	// Map of custom attribute ids to value
+	// Map of custom attribute ids to value 
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -120,7 +120,7 @@ type DatacenterState struct {
 
 // The set of arguments for constructing a Datacenter resource.
 type DatacenterArgs struct {
-	// Map of custom attribute ids to value
+	// Map of custom attribute ids to value 
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.

@@ -8,25 +8,25 @@ import (
 )
 
 // The `.CustomAttribute` resource can be used to create and manage custom
-// attributes, which allow users to associate user-specific meta-information with
-// vSphere managed objects. Custom attribute values must be strings and are stored
+// attributes, which allow users to associate user-specific meta-information with 
+// vSphere managed objects. Custom attribute values must be strings and are stored 
 // on the vCenter Server and not the managed object.
-//
+// 
 // For more information about custom attributes, click [here][ext-custom-attributes].
-//
+// 
 // [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
-//
-// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// 
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
 // and require vCenter.
-//
+// 
 // ## Managed Object Types
-//
-// The following table will help you determine what value you need to enter for
+// 
+// The following table will help you determine what value you need to enter for 
 // the managed object type you want the attribute to apply to.
-//
-// Note that if you want a attribute to apply to all objects, leave the type
+// 
+// Note that if you want a attribute to apply to all objects, leave the type 
 // unspecified.
-//
+// 
 // <table>
 // <tr><th>Type</th><th>Value</th></tr>
 // <tr><td>Folders</td><td>`Folder`</td></tr>

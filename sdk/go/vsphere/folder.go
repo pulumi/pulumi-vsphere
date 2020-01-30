@@ -12,7 +12,7 @@ import (
 // The resource supports creating folders of the 5 major types - datacenter
 // folders, host and cluster folders, virtual machine folders, datastore folders,
 // and network folders.
-//
+// 
 // Paths are always relative to the specific type of folder you are creating.
 // Subfolders are discovered by parsing the relative path specified in `path`, so
 // `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
@@ -82,7 +82,7 @@ func (r *Folder) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Map of custom attribute ids to attribute
+// Map of custom attribute ids to attribute 
 // value strings to set for folder. See [here][docs-setting-custom-attributes]
 // for a reference on how to set values for custom attributes.
 func (r *Folder) CustomAttributes() pulumi.MapOutput {
@@ -117,7 +117,7 @@ func (r *Folder) Type() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Folder resources.
 type FolderState struct {
-	// Map of custom attribute ids to attribute
+	// Map of custom attribute ids to attribute 
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes interface{}
@@ -139,7 +139,7 @@ type FolderState struct {
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
-	// Map of custom attribute ids to attribute
+	// Map of custom attribute ids to attribute 
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes interface{}

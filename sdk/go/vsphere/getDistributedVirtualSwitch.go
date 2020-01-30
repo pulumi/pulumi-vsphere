@@ -12,9 +12,9 @@ import (
 // can then be used with resources or data sources that require a DVS, such as the
 // [`.DistributedPortGroup`][distributed-port-group] resource, for which
 // an example is shown below.
-//
+// 
 // [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
-//
+// 
 // > **NOTE:** This data source requires vCenter and is not available on direct
 // ESXi connections.
 //
@@ -31,9 +31,9 @@ func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *GetDistributedVir
 	}
 	return &GetDistributedVirtualSwitchResult{
 		DatacenterId: outputs["datacenterId"],
-		Name:         outputs["name"],
-		Uplinks:      outputs["uplinks"],
-		Id:           outputs["id"],
+		Name: outputs["name"],
+		Uplinks: outputs["uplinks"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -53,8 +53,8 @@ type GetDistributedVirtualSwitchArgs struct {
 // A collection of values returned by getDistributedVirtualSwitch.
 type GetDistributedVirtualSwitchResult struct {
 	DatacenterId interface{}
-	Name         interface{}
-	Uplinks      interface{}
+	Name interface{}
+	Uplinks interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

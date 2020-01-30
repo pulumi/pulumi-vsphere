@@ -19,8 +19,8 @@ func LookupCustomAttribute(ctx *pulumi.Context, args *GetCustomAttributeArgs) (*
 	}
 	return &GetCustomAttributeResult{
 		ManagedObjectType: outputs["managedObjectType"],
-		Name:              outputs["name"],
-		Id:                outputs["id"],
+		Name: outputs["name"],
+		Id: outputs["id"],
 	}, nil
 }
 
@@ -33,7 +33,7 @@ type GetCustomAttributeArgs struct {
 // A collection of values returned by getCustomAttribute.
 type GetCustomAttributeResult struct {
 	ManagedObjectType interface{}
-	Name              interface{}
+	Name interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }
