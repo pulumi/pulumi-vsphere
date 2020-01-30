@@ -23,10 +23,10 @@ func LookupHost(ctx *pulumi.Context, args *GetHostArgs) (*GetHostResult, error) 
 		return nil, err
 	}
 	return &GetHostResult{
-		DatacenterId: outputs["datacenterId"],
-		Name: outputs["name"],
+		DatacenterId:   outputs["datacenterId"],
+		Name:           outputs["name"],
 		ResourcePoolId: outputs["resourcePoolId"],
-		Id: outputs["id"],
+		Id:             outputs["id"],
 	}, nil
 }
 
@@ -43,7 +43,7 @@ type GetHostArgs struct {
 // A collection of values returned by getHost.
 type GetHostResult struct {
 	DatacenterId interface{}
-	Name interface{}
+	Name         interface{}
 	// The [managed object ID][docs-about-morefs] of the host's
 	// root resource pool.
 	ResourcePoolId interface{}

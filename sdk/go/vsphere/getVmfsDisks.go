@@ -11,7 +11,7 @@ import (
 // devices available on an ESXi host. This data source can be combined with the
 // [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
 // datastores based off a set of discovered disks.
-// 
+//
 // [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
@@ -27,11 +27,11 @@ func LookupVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs) (*GetVmfsDisks
 		return nil, err
 	}
 	return &GetVmfsDisksResult{
-		Disks: outputs["disks"],
-		Filter: outputs["filter"],
+		Disks:        outputs["disks"],
+		Filter:       outputs["filter"],
 		HostSystemId: outputs["hostSystemId"],
-		Rescan: outputs["rescan"],
-		Id: outputs["id"],
+		Rescan:       outputs["rescan"],
+		Id:           outputs["id"],
 	}, nil
 }
 
@@ -53,10 +53,10 @@ type GetVmfsDisksArgs struct {
 type GetVmfsDisksResult struct {
 	// A lexicographically sorted list of devices discovered by the
 	// operation, matching the supplied `filter`, if provided.
-	Disks interface{}
-	Filter interface{}
+	Disks        interface{}
+	Filter       interface{}
 	HostSystemId interface{}
-	Rescan interface{}
+	Rescan       interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

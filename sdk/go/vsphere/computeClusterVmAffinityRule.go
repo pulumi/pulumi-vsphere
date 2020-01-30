@@ -12,27 +12,27 @@ import (
 // VM affinity rules in a cluster, either created by the
 // [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
 // by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-// 
+//
 // [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
 // [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-// 
+//
 // This rule can be used to tell a set to virtual machines to run together on a
 // single host within a cluster. When configured, DRS will make a best effort to
 // ensure that the virtual machines run on the same host, or prevent any operation
 // that would keep that from happening, depending on the value of the
 // `mandatory` flag.
-// 
+//
 // > Keep in mind that this rule can only be used to tell VMs to run together on
 // a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
 // the
 // [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
 // resource.
-// 
+//
 // [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
-// 
+//
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
-// 
+//
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown.

@@ -12,7 +12,7 @@ import (
 // the UUID of a template to be used as the source for cloning into a new
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource. It also
 // reads the guest ID so that can be supplied as well.
-// 
+//
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
@@ -28,18 +28,18 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *GetVirtualMachineArgs) (*Ge
 		return nil, err
 	}
 	return &GetVirtualMachineResult{
-		AlternateGuestName: outputs["alternateGuestName"],
-		DatacenterId: outputs["datacenterId"],
-		Disks: outputs["disks"],
-		Firmware: outputs["firmware"],
-		GuestId: outputs["guestId"],
-		GuestIpAddresses: outputs["guestIpAddresses"],
-		Name: outputs["name"],
-		NetworkInterfaceTypes: outputs["networkInterfaceTypes"],
-		ScsiBusSharing: outputs["scsiBusSharing"],
+		AlternateGuestName:      outputs["alternateGuestName"],
+		DatacenterId:            outputs["datacenterId"],
+		Disks:                   outputs["disks"],
+		Firmware:                outputs["firmware"],
+		GuestId:                 outputs["guestId"],
+		GuestIpAddresses:        outputs["guestIpAddresses"],
+		Name:                    outputs["name"],
+		NetworkInterfaceTypes:   outputs["networkInterfaceTypes"],
+		ScsiBusSharing:          outputs["scsiBusSharing"],
 		ScsiControllerScanCount: outputs["scsiControllerScanCount"],
-		ScsiType: outputs["scsiType"],
-		Id: outputs["id"],
+		ScsiType:                outputs["scsiType"],
+		Id:                      outputs["id"],
 	}, nil
 }
 
@@ -64,7 +64,7 @@ type GetVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
 	// guestId is a non-specific operating system, like `otherGuest`.
 	AlternateGuestName interface{}
-	DatacenterId interface{}
+	DatacenterId       interface{}
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `.VirtualMachine` resource in the order the resource expects
@@ -80,7 +80,7 @@ type GetVirtualMachineResult struct {
 	GuestId interface{}
 	// A list of IP addresses as reported by VMWare tools.
 	GuestIpAddresses interface{}
-	Name interface{}
+	Name             interface{}
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
@@ -88,7 +88,7 @@ type GetVirtualMachineResult struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
-	ScsiBusSharing interface{}
+	ScsiBusSharing          interface{}
 	ScsiControllerScanCount interface{}
 	// The common type of all SCSI controllers on this virtual machine.
 	// Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic

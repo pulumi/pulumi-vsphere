@@ -11,12 +11,12 @@ import (
 // The `.NasDatastore` resource can be used to create and manage NAS
 // datastores on an ESXi host or a set of hosts. The resource supports mounting
 // NFS v3 and v4.1 shares to be used as datastores.
-// 
+//
 // > **NOTE:** Unlike [`.VmfsDatastore`][resource-vmfs-datastore], a NAS
 // datastore is only mounted on the hosts you choose to mount it on. To mount on
 // multiple hosts, you must specify each host that you want to add in the
 // `hostSystemIds` argument.
-// 
+//
 // [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
@@ -139,7 +139,7 @@ func (r *NasDatastore) Capacity() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["capacity"])
 }
 
-// Map of custom attribute ids to attribute 
+// Map of custom attribute ids to attribute
 // value strings to set on datasource resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
@@ -249,7 +249,7 @@ type NasDatastoreState struct {
 	Accessible interface{}
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity interface{}
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -308,7 +308,7 @@ type NasDatastoreArgs struct {
 	// that the datastore will be read-write depending on the permissions of the
 	// actual share. Default: `readWrite`. Forces a new resource if changed.
 	AccessMode interface{}
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.

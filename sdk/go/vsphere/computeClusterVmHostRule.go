@@ -12,10 +12,10 @@ import (
 // VM-to-host rules in a cluster, either created by the
 // [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
 // by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-// 
+//
 // [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
 // [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-// 
+//
 // This resource can create both _affinity rules_, where virtual machines run on
 // specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
 // outside of the ones specified in the rule. Virtual machines and hosts are
@@ -23,13 +23,13 @@ import (
 // [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
 // [`.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
 // resources.
-// 
+//
 // [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 // [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
-// 
+//
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
-// 
+//
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.

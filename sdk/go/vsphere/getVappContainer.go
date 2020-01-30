@@ -10,8 +10,8 @@ import (
 // The `.VappContainer` data source can be used to discover the ID of a
 // vApp container in vSphere. This is useful to fetch the ID of a vApp container
 // that you want to use to create virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-// 
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
+//
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
@@ -27,8 +27,8 @@ func LookupVappContainer(ctx *pulumi.Context, args *GetVappContainerArgs) (*GetV
 	}
 	return &GetVappContainerResult{
 		DatacenterId: outputs["datacenterId"],
-		Name: outputs["name"],
-		Id: outputs["id"],
+		Name:         outputs["name"],
+		Id:           outputs["id"],
 	}, nil
 }
 
@@ -45,7 +45,7 @@ type GetVappContainerArgs struct {
 // A collection of values returned by getVappContainer.
 type GetVappContainerResult struct {
 	DatacenterId interface{}
-	Name interface{}
+	Name         interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -9,13 +9,16 @@ require (
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.6.0
+	github.com/pulumi/pulumi v1.9.1
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20191202134852-87cfb4dc8ae1
 	github.com/spf13/afero v1.2.2 // indirect
+	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/terraform-providers/terraform-provider-vsphere v1.15.0
 	github.com/ulikunitz/xz v0.5.6 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmware/govmomi v0.21.0 // indirect
+	golang.org/x/crypto v0.0.0-20190820162420-60c769a6c586 // indirect
+	google.golang.org/grpc v1.24.0 // indirect
 )
 
 replace (

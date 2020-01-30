@@ -83,7 +83,7 @@ func (r *Vnic) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Key of the distributed portgroup the nic will connect to. 
+// Key of the distributed portgroup the nic will connect to.
 func (r *Vnic) DistributedPortGroup() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["distributedPortGroup"])
 }
@@ -130,7 +130,7 @@ func (r *Vnic) Portgroup() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Vnic resources.
 type VnicState struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup interface{}
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort interface{}
@@ -152,7 +152,7 @@ type VnicState struct {
 
 // The set of arguments for constructing a Vnic resource.
 type VnicArgs struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup interface{}
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort interface{}

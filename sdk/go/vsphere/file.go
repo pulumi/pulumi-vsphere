@@ -141,7 +141,7 @@ type FileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore interface{}
-	SourceFile interface{}
+	SourceFile      interface{}
 }
 
 // The set of arguments for constructing a File resource.
@@ -164,5 +164,5 @@ type FileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore interface{}
-	SourceFile interface{}
+	SourceFile      interface{}
 }

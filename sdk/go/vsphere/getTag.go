@@ -19,10 +19,10 @@ func LookupTag(ctx *pulumi.Context, args *GetTagArgs) (*GetTagResult, error) {
 		return nil, err
 	}
 	return &GetTagResult{
-		CategoryId: outputs["categoryId"],
+		CategoryId:  outputs["categoryId"],
 		Description: outputs["description"],
-		Name: outputs["name"],
-		Id: outputs["id"],
+		Name:        outputs["name"],
+		Id:          outputs["id"],
 	}, nil
 }
 
@@ -36,9 +36,9 @@ type GetTagArgs struct {
 
 // A collection of values returned by getTag.
 type GetTagResult struct {
-	CategoryId interface{}
+	CategoryId  interface{}
 	Description interface{}
-	Name interface{}
+	Name        interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }
