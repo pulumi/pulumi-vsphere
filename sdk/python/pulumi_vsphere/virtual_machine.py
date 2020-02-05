@@ -207,6 +207,7 @@ class VirtualMachine(pulumi.CustomResource):
       * `path` (`str`) - The path to the ISO file. Required for using a datastore
         ISO. Conflicts with `client_device`.
       * `size` (`float`) - The size of the disk, in GB.
+      * `storage_policy_id` (`str`) - The UUID of the storage policy to assign to this disk.
       * `thinProvisioned` (`bool`) - If `true`, this disk is thin provisioned,
         with space for the file being allocated on an as-needed basis. Cannot be set
         to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -458,6 +459,10 @@ class VirtualMachine(pulumi.CustomResource):
     machine. If `force_power_off` is set to true, the VM will be force powered-off
     after this timeout, otherwise an error is returned. Default: 3 minutes.
     """
+    storage_policy_id: pulumi.Output[str]
+    """
+    The UUID of the storage policy to assign to this disk.
+    """
     swap_placement_policy: pulumi.Output[str]
     """
     The swap file placement policy for this
@@ -531,7 +536,7 @@ class VirtualMachine(pulumi.CustomResource):
     `wait_for_guest_ip_timeout` waiter can be used
     instead. A value less than 1 disables the waiter. Default: 5 minutes.
     """
-    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VirtualMachine resource with the given unique name, props, and options.
         
@@ -677,6 +682,7 @@ class VirtualMachine(pulumi.CustomResource):
                for a graceful guest shutdown when making necessary updates to the virtual
                machine. If `force_power_off` is set to true, the VM will be force powered-off
                after this timeout, otherwise an error is returned. Default: 3 minutes.
+        :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to this disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
@@ -803,6 +809,7 @@ class VirtualMachine(pulumi.CustomResource):
           * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
           * `size` (`pulumi.Input[float]`) - The size of the disk, in GB.
+          * `storage_policy_id` (`pulumi.Input[str]`) - The UUID of the storage policy to assign to this disk.
           * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -922,6 +929,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['scsi_controller_count'] = scsi_controller_count
             __props__['scsi_type'] = scsi_type
             __props__['shutdown_wait_timeout'] = shutdown_wait_timeout
+            __props__['storage_policy_id'] = storage_policy_id
             __props__['swap_placement_policy'] = swap_placement_policy
             __props__['sync_time_with_host'] = sync_time_with_host
             __props__['tags'] = tags
@@ -946,7 +954,7 @@ class VirtualMachine(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
+    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1106,6 +1114,7 @@ class VirtualMachine(pulumi.CustomResource):
                for a graceful guest shutdown when making necessary updates to the virtual
                machine. If `force_power_off` is set to true, the VM will be force powered-off
                after this timeout, otherwise an error is returned. Default: 3 minutes.
+        :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to this disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
@@ -1241,6 +1250,7 @@ class VirtualMachine(pulumi.CustomResource):
           * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
           * `size` (`pulumi.Input[float]`) - The size of the disk, in GB.
+          * `storage_policy_id` (`pulumi.Input[str]`) - The UUID of the storage policy to assign to this disk.
           * `thinProvisioned` (`pulumi.Input[bool]`) - If `true`, this disk is thin provisioned,
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -1348,6 +1358,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["scsi_controller_count"] = scsi_controller_count
         __props__["scsi_type"] = scsi_type
         __props__["shutdown_wait_timeout"] = shutdown_wait_timeout
+        __props__["storage_policy_id"] = storage_policy_id
         __props__["swap_placement_policy"] = swap_placement_policy
         __props__["sync_time_with_host"] = sync_time_with_host
         __props__["tags"] = tags

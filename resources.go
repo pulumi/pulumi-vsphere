@@ -158,6 +158,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_vapp_container":             {Tok: vsphereDataSource(vsphereMod, "getVappContainer")},
 			"vsphere_virtual_machine":            {Tok: vsphereDataSource(vsphereMod, "getVirtualMachine")},
 			"vsphere_vmfs_disks":                 {Tok: vsphereDataSource(vsphereMod, "getVmfsDisks")},
+			"vsphere_storage_policy":             {Tok: vsphereDataSource(vsphereMod, "getPolicy")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

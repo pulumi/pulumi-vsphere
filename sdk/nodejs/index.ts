@@ -28,6 +28,7 @@ export * from "./getDistributedVirtualSwitch";
 export * from "./getFolder";
 export * from "./getHost";
 export * from "./getNetwork";
+export * from "./getPolicy";
 export * from "./getResourcePool";
 export * from "./getTag";
 export * from "./getTagCategory";

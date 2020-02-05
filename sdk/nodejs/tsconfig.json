@@ -41,6 +41,7 @@
         "getFolder.ts",
         "getHost.ts",
         "getNetwork.ts",
+        "getPolicy.ts",
         "getResourcePool.ts",
         "getTag.ts",
         "getTagCategory.ts",

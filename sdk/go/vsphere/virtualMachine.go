@@ -77,6 +77,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["scsiControllerCount"] = nil
 		inputs["scsiType"] = nil
 		inputs["shutdownWaitTimeout"] = nil
+		inputs["storagePolicyId"] = nil
 		inputs["swapPlacementPolicy"] = nil
 		inputs["syncTimeWithHost"] = nil
 		inputs["tags"] = nil
@@ -138,6 +139,7 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		inputs["scsiControllerCount"] = args.ScsiControllerCount
 		inputs["scsiType"] = args.ScsiType
 		inputs["shutdownWaitTimeout"] = args.ShutdownWaitTimeout
+		inputs["storagePolicyId"] = args.StoragePolicyId
 		inputs["swapPlacementPolicy"] = args.SwapPlacementPolicy
 		inputs["syncTimeWithHost"] = args.SyncTimeWithHost
 		inputs["tags"] = args.Tags
@@ -228,6 +230,7 @@ func GetVirtualMachine(ctx *pulumi.Context,
 		inputs["scsiControllerCount"] = state.ScsiControllerCount
 		inputs["scsiType"] = state.ScsiType
 		inputs["shutdownWaitTimeout"] = state.ShutdownWaitTimeout
+		inputs["storagePolicyId"] = state.StoragePolicyId
 		inputs["swapPlacementPolicy"] = state.SwapPlacementPolicy
 		inputs["syncTimeWithHost"] = state.SyncTimeWithHost
 		inputs["tags"] = state.Tags
@@ -651,6 +654,11 @@ func (r *VirtualMachine) ShutdownWaitTimeout() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["shutdownWaitTimeout"])
 }
 
+// The UUID of the storage policy to assign to this disk.
+func (r *VirtualMachine) StoragePolicyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["storagePolicyId"])
+}
+
 // The swap file placement policy for this
 // virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 // Default: `inherit`.
@@ -952,6 +960,8 @@ type VirtualMachineState struct {
 	// machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 	// after this timeout, otherwise an error is returned. Default: 3 minutes.
 	ShutdownWaitTimeout interface{}
+	// The UUID of the storage policy to assign to this disk.
+	StoragePolicyId interface{}
 	// The swap file placement policy for this
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
@@ -1201,6 +1211,8 @@ type VirtualMachineArgs struct {
 	// machine. If `forcePowerOff` is set to true, the VM will be force powered-off
 	// after this timeout, otherwise an error is returned. Default: 3 minutes.
 	ShutdownWaitTimeout interface{}
+	// The UUID of the storage policy to assign to this disk.
+	StoragePolicyId interface{}
 	// The swap file placement policy for this
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.

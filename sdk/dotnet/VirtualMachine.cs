@@ -466,6 +466,12 @@ namespace Pulumi.VSphere
         public Output<int?> ShutdownWaitTimeout { get; private set; } = null!;
 
         /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        [Output("storagePolicyId")]
+        public Output<string?> StoragePolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The swap file placement policy for this
         /// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
         /// Default: `inherit`.
@@ -1043,6 +1049,12 @@ namespace Pulumi.VSphere
         public Input<int>? ShutdownWaitTimeout { get; set; }
 
         /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        [Input("storagePolicyId")]
+        public Input<string>? StoragePolicyId { get; set; }
+
+        /// <summary>
         /// The swap file placement policy for this
         /// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
         /// Default: `inherit`.
@@ -1607,6 +1619,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("shutdownWaitTimeout")]
         public Input<int>? ShutdownWaitTimeout { get; set; }
+
+        /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        [Input("storagePolicyId")]
+        public Input<string>? StoragePolicyId { get; set; }
 
         /// <summary>
         /// The swap file placement policy for this
@@ -2257,6 +2275,12 @@ namespace Pulumi.VSphere
         public Input<int>? Size { get; set; }
 
         /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        [Input("storagePolicyId")]
+        public Input<string>? StoragePolicyId { get; set; }
+
+        /// <summary>
         /// If `true`, this disk is thin provisioned,
         /// with space for the file being allocated on an as-needed basis. Cannot be set
         /// to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -2407,6 +2431,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
+
+        /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        [Input("storagePolicyId")]
+        public Input<string>? StoragePolicyId { get; set; }
 
         /// <summary>
         /// If `true`, this disk is thin provisioned,
@@ -2917,6 +2947,10 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly int? Size;
         /// <summary>
+        /// The UUID of the storage policy to assign to this disk.
+        /// </summary>
+        public readonly string? StoragePolicyId;
+        /// <summary>
         /// If `true`, this disk is thin provisioned,
         /// with space for the file being allocated on an as-needed basis. Cannot be set
         /// to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
@@ -2961,6 +2995,7 @@ namespace Pulumi.VSphere
             string? name,
             string path,
             int? size,
+            string? storagePolicyId,
             bool? thinProvisioned,
             int? unitNumber,
             string uuid,
@@ -2982,6 +3017,7 @@ namespace Pulumi.VSphere
             Name = name;
             Path = path;
             Size = size;
+            StoragePolicyId = storagePolicyId;
             ThinProvisioned = thinProvisioned;
             UnitNumber = unitNumber;
             Uuid = uuid;

@@ -372,6 +372,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
     /**
+     * The UUID of the storage policy to assign to this disk.
+     */
+    public readonly storagePolicyId!: pulumi.Output<string | undefined>;
+    /**
      * The swap file placement policy for this
      * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
      * Default: `inherit`.
@@ -514,6 +518,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["scsiControllerCount"] = state ? state.scsiControllerCount : undefined;
             inputs["scsiType"] = state ? state.scsiType : undefined;
             inputs["shutdownWaitTimeout"] = state ? state.shutdownWaitTimeout : undefined;
+            inputs["storagePolicyId"] = state ? state.storagePolicyId : undefined;
             inputs["swapPlacementPolicy"] = state ? state.swapPlacementPolicy : undefined;
             inputs["syncTimeWithHost"] = state ? state.syncTimeWithHost : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -586,6 +591,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["scsiControllerCount"] = args ? args.scsiControllerCount : undefined;
             inputs["scsiType"] = args ? args.scsiType : undefined;
             inputs["shutdownWaitTimeout"] = args ? args.shutdownWaitTimeout : undefined;
+            inputs["storagePolicyId"] = args ? args.storagePolicyId : undefined;
             inputs["swapPlacementPolicy"] = args ? args.swapPlacementPolicy : undefined;
             inputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -954,6 +960,10 @@ export interface VirtualMachineState {
      * after this timeout, otherwise an error is returned. Default: 3 minutes.
      */
     readonly shutdownWaitTimeout?: pulumi.Input<number>;
+    /**
+     * The UUID of the storage policy to assign to this disk.
+     */
+    readonly storagePolicyId?: pulumi.Input<string>;
     /**
      * The swap file placement policy for this
      * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
@@ -1333,6 +1343,10 @@ export interface VirtualMachineArgs {
      * after this timeout, otherwise an error is returned. Default: 3 minutes.
      */
     readonly shutdownWaitTimeout?: pulumi.Input<number>;
+    /**
+     * The UUID of the storage policy to assign to this disk.
+     */
+    readonly storagePolicyId?: pulumi.Input<string>;
     /**
      * The swap file placement policy for this
      * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
