@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.15.0 of the vSphere Terraform Provider
+* Upgrade to v1.16.0 of the vSphere Terraform Provider
 
 ---
 

@@ -54,6 +54,7 @@ from .get_folder import *
 from .get_host import *
 from .get_network import *
 from .get_resource_pool import *
+from .get_policy import *
 from .get_tag import *
 from .get_tag_category import *
 from .get_vapp_container import *

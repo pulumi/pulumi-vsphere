@@ -217,6 +217,10 @@ export interface VirtualMachineDisk {
      */
     size?: number;
     /**
+     * The UUID of the storage policy to assign to this disk.
+     */
+    storagePolicyId?: string;
+    /**
      * If `true`, this disk is thin provisioned,
      * with space for the file being allocated on an as-needed basis. Cannot be set
      * to `true` when `eagerlyScrub` is `true`. See the section on picking a disk
