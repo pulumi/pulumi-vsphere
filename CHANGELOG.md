@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.16.0 of the vSphere Terraform Provider
+_(none)_
 
 ---
+
+## 1.4.0 (2020-02-06)
+* Upgrade to v1.16.0 of the vSphere Terraform Provider
 
 ## 1.3.0 (2019-12-19)
 * Namespace names in .NET SDK are adjusted to PascalCase
