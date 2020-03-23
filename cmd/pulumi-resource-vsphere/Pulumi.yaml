@@ -1,0 +1,3 @@
+name: vsphere
+description: A Pulumi resource provider for vsphere.
+language: schema

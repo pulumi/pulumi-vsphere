@@ -103,6 +103,7 @@ endif
 
 PULUMI_BIN          := $(PULUMI_ROOT)/bin
 PULUMI_NODE_MODULES := $(PULUMI_ROOT)/node_modules
+PULUMI_NUGET 		:= $(PULUMI_ROOT)/nuget
 
 .PHONY: default all ensure only_build only_test build lint install test_fast test_all core
 
@@ -168,6 +169,7 @@ install::
 	$(call STEP_MESSAGE)
 	@mkdir -p $(PULUMI_BIN)
 	@mkdir -p $(PULUMI_NODE_MODULES)
+	@mkdir -p $(PULUMI_NUGET)
 
 test_all:: test_fast
 	$(call STEP_MESSAGE)
