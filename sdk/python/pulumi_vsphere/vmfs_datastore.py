@@ -37,6 +37,9 @@ class VmfsDatastore(pulumi.CustomResource):
     The disks to use with the datastore.
     """
     folder: pulumi.Output[str]
+    """
+    The path to the datastore folder to put the datastore in.
+    """
     free_space: pulumi.Output[float]
     """
     Available space of this datastore, in megabytes.
@@ -80,7 +83,6 @@ class VmfsDatastore(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VmfsDatastore resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
@@ -91,6 +93,7 @@ class VmfsDatastore(pulumi.CustomResource):
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[list] disks: The disks to use with the datastore.
+        :param pulumi.Input[str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
@@ -100,8 +103,6 @@ class VmfsDatastore(pulumi.CustomResource):
                changed.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vmfs_datastore.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -149,7 +150,7 @@ class VmfsDatastore(pulumi.CustomResource):
         """
         Get an existing VmfsDatastore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,6 +165,7 @@ class VmfsDatastore(pulumi.CustomResource):
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
         :param pulumi.Input[list] disks: The disks to use with the datastore.
+        :param pulumi.Input[str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[float] free_space: Available space of this datastore, in megabytes.
         :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
                the host to set the datastore up on. Note that this is not necessarily the
@@ -180,12 +182,11 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vmfs_datastore.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["accessible"] = accessible
         __props__["capacity"] = capacity
         __props__["custom_attributes"] = custom_attributes

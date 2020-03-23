@@ -44,7 +44,6 @@ class File(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a File resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
@@ -59,8 +58,6 @@ class File(pulumi.CustomResource):
                will be copied from. Forces a new resource if changed.
         :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
                be copied from. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/file.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,7 +100,7 @@ class File(pulumi.CustomResource):
         """
         Get an existing File resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -119,12 +116,11 @@ class File(pulumi.CustomResource):
                will be copied from. Forces a new resource if changed.
         :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
                be copied from. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/file.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_directories"] = create_directories
         __props__["datacenter"] = datacenter
         __props__["datastore"] = datastore

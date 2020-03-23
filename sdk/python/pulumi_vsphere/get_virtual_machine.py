@@ -13,7 +13,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, id=None):
+    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, id=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         __self__.alternate_guest_name = alternate_guest_name
@@ -55,6 +55,12 @@ class GetVirtualMachineResult:
         """
         A list of IP addresses as reported by VMWare tools.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -87,12 +93,6 @@ class GetVirtualMachineResult:
         there are multiple controller types. Only the first number of controllers
         defined by `scsi_controller_scan_count` are scanned.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -105,12 +105,12 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             firmware=self.firmware,
             guest_id=self.guest_id,
             guest_ip_addresses=self.guest_ip_addresses,
+            id=self.id,
             name=self.name,
             network_interface_types=self.network_interface_types,
             scsi_bus_sharing=self.scsi_bus_sharing,
             scsi_controller_scan_count=self.scsi_controller_scan_count,
-            scsi_type=self.scsi_type,
-            id=self.id)
+            scsi_type=self.scsi_type)
 
 def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=None,opts=None):
     """
@@ -119,9 +119,12 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
     the UUID of a template to be used as the source for cloning into a new
     [`.VirtualMachine`][docs-virtual-machine-resource] resource. It also
     reads the guest ID so that can be supplied as well.
-    
+
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
+
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the virtual machine is located in.
            This can be omitted if the search path used in `name` is an absolute path.
@@ -131,10 +134,9 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
            path.
     :param float scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -152,9 +154,9 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
         firmware=__ret__.get('firmware'),
         guest_id=__ret__.get('guestId'),
         guest_ip_addresses=__ret__.get('guestIpAddresses'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         network_interface_types=__ret__.get('networkInterfaceTypes'),
         scsi_bus_sharing=__ret__.get('scsiBusSharing'),
         scsi_controller_scan_count=__ret__.get('scsiControllerScanCount'),
-        scsi_type=__ret__.get('scsiType'),
-        id=__ret__.get('id'))
+        scsi_type=__ret__.get('scsiType'))

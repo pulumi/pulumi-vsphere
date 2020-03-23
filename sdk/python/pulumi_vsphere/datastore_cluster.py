@@ -24,11 +24,17 @@ class DatastoreCluster(pulumi.CustomResource):
     changed.
     """
     folder: pulumi.Output[str]
+    """
+    The name of the folder to locate the datastore cluster in.
+    """
     name: pulumi.Output[str]
     """
     The name of the datastore cluster.
     """
     sdrs_advanced_options: pulumi.Output[dict]
+    """
+    Advanced configuration options for storage DRS.
+    """
     sdrs_automation_level: pulumi.Output[str]
     """
     The global automation level for all
@@ -52,6 +58,10 @@ class DatastoreCluster(pulumi.CustomResource):
     `utilization`.
     """
     sdrs_free_space_threshold_mode: pulumi.Output[str]
+    """
+    The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+    freeSpace, drs_free_space_threshold is used.
+    """
     sdrs_free_space_utilization_difference: pulumi.Output[float]
     """
     The threshold, in
@@ -124,6 +134,9 @@ class DatastoreCluster(pulumi.CustomResource):
     automation settings when correcting disk space imbalances.
     """
     sdrs_space_utilization_threshold: pulumi.Output[float]
+    """
+    The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+    """
     sdrs_vm_evacuation_automation_level: pulumi.Output[str]
     """
     Overrides the default
@@ -140,17 +153,19 @@ class DatastoreCluster(pulumi.CustomResource):
         datastore clusters. This can be used to create groups of datastores with a
         shared management interface, allowing for resource control and load balancing
         through Storage DRS.
-        
+
         For more information on vSphere datastore clusters and Storage DRS, see [this
         page][ref-vsphere-datastore-clusters].
-        
+
         [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
         > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
@@ -160,7 +175,9 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
+        :param pulumi.Input[str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[str] name: The name of the datastore cluster.
+        :param pulumi.Input[dict] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[str] sdrs_automation_level: The global automation level for all
                virtual machines in this datastore cluster. Default: `manual`.
         :param pulumi.Input[bool] sdrs_default_intra_vm_affinity: When `true`, all disks in a
@@ -171,6 +188,8 @@ class DatastoreCluster(pulumi.CustomResource):
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
+        :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+               freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[float] sdrs_free_space_utilization_difference: The threshold, in
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
@@ -206,12 +225,11 @@ class DatastoreCluster(pulumi.CustomResource):
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
+        :param pulumi.Input[float] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -268,7 +286,7 @@ class DatastoreCluster(pulumi.CustomResource):
         """
         Get an existing DatastoreCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -279,7 +297,9 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The [managed object ID][docs-about-morefs] of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
+        :param pulumi.Input[str] folder: The name of the folder to locate the datastore cluster in.
         :param pulumi.Input[str] name: The name of the datastore cluster.
+        :param pulumi.Input[dict] sdrs_advanced_options: Advanced configuration options for storage DRS.
         :param pulumi.Input[str] sdrs_automation_level: The global automation level for all
                virtual machines in this datastore cluster. Default: `manual`.
         :param pulumi.Input[bool] sdrs_default_intra_vm_affinity: When `true`, all disks in a
@@ -290,6 +310,8 @@ class DatastoreCluster(pulumi.CustomResource):
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
+        :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+               freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[float] sdrs_free_space_utilization_difference: The threshold, in
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
@@ -325,16 +347,16 @@ class DatastoreCluster(pulumi.CustomResource):
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
+        :param pulumi.Input[float] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["custom_attributes"] = custom_attributes
         __props__["datacenter_id"] = datacenter_id
         __props__["folder"] = folder

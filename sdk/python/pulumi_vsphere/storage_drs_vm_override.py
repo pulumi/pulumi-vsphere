@@ -49,12 +49,14 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         resource, one can enable or disable Storage DRS, and control the automation
         level and disk affinity for a single virtual machine without affecting the rest
         of the datastore cluster.
-        
+
         For more information on vSphere datastore clusters and Storage DRS, see [this
         page][ref-vsphere-datastore-clusters].
-        
+
         [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
@@ -74,8 +76,6 @@ class StorageDrsVmOverride(pulumi.CustomResource):
                requirements. When not specified, the datastore cluster's settings are used.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,7 +114,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         """
         Get an existing StorageDrsVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -135,12 +135,11 @@ class StorageDrsVmOverride(pulumi.CustomResource):
                requirements. When not specified, the datastore cluster's settings are used.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["datastore_cluster_id"] = datastore_cluster_id
         __props__["sdrs_automation_level"] = sdrs_automation_level
         __props__["sdrs_enabled"] = sdrs_enabled

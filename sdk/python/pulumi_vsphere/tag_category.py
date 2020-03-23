@@ -36,17 +36,19 @@ class TagCategory(pulumi.CustomResource):
         The `.TagCategory` resource can be used to create and manage tag
         categories, which determine how tags are grouped together and applied to
         specific objects.
-        
+
         For more information about tags, click [here][ext-tags-general]. For more
         information about tag categories specifically, click
         [here][ext-tag-categories].
-        
+
         [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
         [ext-tag-categories]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-BA3D1794-28F2-43F3-BCE9-3964CB207FB6.html
-        
+
         > **NOTE:** Tagging support is unsupported on direct ESXi connections and
         requires vCenter 6.0 or higher.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag_category.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] associable_types: A list object types that this category is
@@ -58,8 +60,6 @@ class TagCategory(pulumi.CustomResource):
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
         :param pulumi.Input[str] name: The name of the category.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag_category.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +97,7 @@ class TagCategory(pulumi.CustomResource):
         """
         Get an existing TagCategory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,12 +110,11 @@ class TagCategory(pulumi.CustomResource):
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
         :param pulumi.Input[str] name: The name of the category.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag_category.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["associable_types"] = associable_types
         __props__["cardinality"] = cardinality
         __props__["description"] = description

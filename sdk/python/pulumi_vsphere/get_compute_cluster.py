@@ -13,22 +13,22 @@ class GetComputeClusterResult:
     """
     A collection of values returned by getComputeCluster.
     """
-    def __init__(__self__, datacenter_id=None, name=None, resource_pool_id=None, id=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None, resource_pool_id=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if resource_pool_id and not isinstance(resource_pool_id, str):
-            raise TypeError("Expected argument 'resource_pool_id' to be a str")
-        __self__.resource_pool_id = resource_pool_id
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        if resource_pool_id and not isinstance(resource_pool_id, str):
+            raise TypeError("Expected argument 'resource_pool_id' to be a str")
+        __self__.resource_pool_id = resource_pool_id
 class AwaitableGetComputeClusterResult(GetComputeClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,24 +36,23 @@ class AwaitableGetComputeClusterResult(GetComputeClusterResult):
             yield self
         return GetComputeClusterResult(
             datacenter_id=self.datacenter_id,
+            id=self.id,
             name=self.name,
-            resource_pool_id=self.resource_pool_id,
-            id=self.id)
+            resource_pool_id=self.resource_pool_id)
 
 def get_compute_cluster(datacenter_id=None,name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the cluster is located in.  This can
            be omitted if the search path used in `name` is an absolute path.  For
            default datacenters, use the id attribute from an empty `.Datacenter`
            data source.
     :param str name: The name or absolute path to the cluster.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/compute_cluster.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -65,6 +64,6 @@ def get_compute_cluster(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetComputeClusterResult(
         datacenter_id=__ret__.get('datacenterId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        resource_pool_id=__ret__.get('resourcePoolId'),
-        id=__ret__.get('id'))
+        resource_pool_id=__ret__.get('resourcePoolId'))

@@ -154,6 +154,8 @@ export interface VirtualDiskState {
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     * 
+     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
     readonly adapterType?: pulumi.Input<string>;
     /**
@@ -198,6 +200,8 @@ export interface VirtualDiskArgs {
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     * 
+     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
     readonly adapterType?: pulumi.Input<string>;
     /**

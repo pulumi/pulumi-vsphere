@@ -128,13 +128,15 @@ class HostVirtualSwitch(pulumi.CustomResource):
         standard switches on an ESXi host. These switches can be used as a backing for
         standard port groups, which can be managed by the
         [`.HostPortGroup`][host-port-group] resource.
-        
+
         For an overview on vSphere networking concepts, see [this
         page][ref-vsphere-net-concepts].
-        
+
         [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_nics: The list of active network adapters used for load
@@ -186,8 +188,6 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one
                of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`. Default: `loadbalance_srcid`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -246,7 +246,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         """
         Get an existing HostVirtualSwitch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,12 +299,11 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one
                of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`. Default: `loadbalance_srcid`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["active_nics"] = active_nics
         __props__["allow_forged_transmits"] = allow_forged_transmits
         __props__["allow_mac_changes"] = allow_mac_changes

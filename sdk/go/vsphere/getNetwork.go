@@ -13,7 +13,7 @@ import (
 // network interface for `.VirtualMachine` or any other vSphere resource
 // that requires a network. This includes standard (host-based) port groups, DVS
 // port groups, or opaque networks such as those managed by NSX.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
 func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.InvokeOption) (*GetNetworkResult, error) {
 	var rv GetNetworkResult

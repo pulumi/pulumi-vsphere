@@ -13,7 +13,7 @@ import (
 
 // Provides a VMware vSphere host resource. This represents an ESXi host that
 // can be used either as part of a Compute Cluster or Standalone.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host.html.markdown.
 type Host struct {
 	pulumi.CustomResourceState

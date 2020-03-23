@@ -12,9 +12,9 @@ import (
 // vSphere datacenter. This can then be used with resources or data sources that
 // require a datacenter, such as the [`.Host`][data-source-vsphere-host]
 // data source.
-// 
+//
 // [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
 func LookupDatacenter(ctx *pulumi.Context, args *LookupDatacenterArgs, opts ...pulumi.InvokeOption) (*LookupDatacenterResult, error) {
 	var rv LookupDatacenterResult

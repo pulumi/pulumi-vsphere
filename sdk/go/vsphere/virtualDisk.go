@@ -15,10 +15,10 @@ import (
 // of any given [`.VirtualMachine`][docs-vsphere-virtual-machine]
 // resource. These disks can be attached to a virtual machine by creating a disk
 // block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
-// 
+//
 // [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
 // [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
 type VirtualDisk struct {
 	pulumi.CustomResourceState

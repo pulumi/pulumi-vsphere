@@ -75,7 +75,14 @@ class ComputeCluster(pulumi.CustomResource):
     `3`.
     """
     folder: pulumi.Output[str]
+    """
+    The name of the folder to locate the cluster in.
+    """
     force_evacuate_on_destroy: pulumi.Output[bool]
+    """
+    Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+    for testing and is not recommended in normal use.
+    """
     ha_admission_control_failover_host_system_ids: pulumi.Output[list]
     """
     Defines the
@@ -107,7 +114,7 @@ class ComputeCluster(pulumi.CustomResource):
     """
     ha_admission_control_resource_percentage_auto_compute: pulumi.Output[bool]
     """
-    
+
     Automatically determine available resource percentages by subtracting the
     average number of host resources represented by the
     `ha_admission_control_host_failure_tolerance`
@@ -331,6 +338,9 @@ class ComputeCluster(pulumi.CustomResource):
     <sup>\*</sup>
     """
     resource_pool_id: pulumi.Output[str]
+    """
+    The managed object ID of the cluster's root resource pool.
+    """
     tags: pulumi.Output[list]
     """
     The IDs of any tags to attach to this resource. See
@@ -339,7 +349,6 @@ class ComputeCluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ComputeCluster resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
@@ -373,6 +382,9 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+               for testing and is not recommended in normal use.
         :param pulumi.Input[list] ha_admission_control_failover_host_system_ids: Defines the
                [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -515,8 +527,6 @@ class ComputeCluster(pulumi.CustomResource):
                <sup>\*</sup>
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -601,7 +611,7 @@ class ComputeCluster(pulumi.CustomResource):
         """
         Get an existing ComputeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -636,6 +646,9 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] folder: The name of the folder to locate the cluster in.
+        :param pulumi.Input[bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+               for testing and is not recommended in normal use.
         :param pulumi.Input[list] ha_admission_control_failover_host_system_ids: Defines the
                [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -776,14 +789,14 @@ class ComputeCluster(pulumi.CustomResource):
                `proactive_ha_moderate_remediation` is
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
+        :param pulumi.Input[str] resource_pool_id: The managed object ID of the cluster's root resource pool.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["custom_attributes"] = custom_attributes
         __props__["datacenter_id"] = datacenter_id
         __props__["dpm_automation_level"] = dpm_automation_level

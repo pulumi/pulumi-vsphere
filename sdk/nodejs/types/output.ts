@@ -62,9 +62,6 @@ export interface VirtualMachineCdrom {
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: string;
-    /**
-     * <elided>
-     */
     deviceAddress: string;
     /**
      * The ID of the device within the virtual machine.
@@ -145,9 +142,6 @@ export interface VirtualMachineDisk {
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: string;
-    /**
-     * <elided>
-     */
     deviceAddress: string;
     /**
      * The mode of this this virtual disk for purposes of
@@ -275,9 +269,6 @@ export interface VirtualMachineNetworkInterface {
      * `normal`.
      */
     bandwidthShareLevel?: string;
-    /**
-     * <elided>
-     */
     deviceAddress: string;
     /**
      * The ID of the device within the virtual machine.

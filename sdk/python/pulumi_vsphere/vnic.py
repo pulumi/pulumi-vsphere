@@ -19,10 +19,13 @@ class Vnic(pulumi.CustomResource):
     UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
     """
     host: pulumi.Output[str]
+    """
+    ESX host the interface belongs to
+    """
     ipv4: pulumi.Output[dict]
     """
     IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
-    
+
       * `dhcp` (`bool`) - Use DHCP to configure the interface's IPv4 stack.
       * `gw` (`str`) - IP address of the default gateway, if DHCP or autoconfig is not set.
       * `ip` (`str`) - Address of the interface, if DHCP is not set.
@@ -31,7 +34,7 @@ class Vnic(pulumi.CustomResource):
     ipv6: pulumi.Output[dict]
     """
     IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
-    
+
       * `addresses` (`list`) - List of IPv6 addresses
       * `autoconfig` (`bool`) - Use IPv6 Autoconfiguration (RFC2462).
       * `dhcp` (`bool`) - Use DHCP to configure the interface's IPv4 stack.
@@ -56,33 +59,34 @@ class Vnic(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, distributed_port_group=None, distributed_switch_port=None, host=None, ipv4=None, ipv6=None, mac=None, mtu=None, netstack=None, portgroup=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a VMware vSphere vnic resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to. 
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
         :param pulumi.Input[dict] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
         :param pulumi.Input[str] mac: MAC address of the interface.
         :param pulumi.Input[float] mtu: MTU of the interface.
         :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
-        
+
         The **ipv4** object supports the following:
-        
+
           * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
           * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
           * `ip` (`pulumi.Input[str]`) - Address of the interface, if DHCP is not set.
           * `netmask` (`pulumi.Input[str]`) - Netmask of the interface, if DHCP is not set.
-        
+
         The **ipv6** object supports the following:
-        
+
           * `addresses` (`pulumi.Input[list]`) - List of IPv6 addresses
           * `autoconfig` (`pulumi.Input[bool]`) - Use IPv6 Autoconfiguration (RFC2462).
           * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
           * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,38 +127,38 @@ class Vnic(pulumi.CustomResource):
         """
         Get an existing Vnic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to. 
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
         :param pulumi.Input[dict] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
         :param pulumi.Input[str] mac: MAC address of the interface.
         :param pulumi.Input[float] mtu: MTU of the interface.
         :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
-        
+
         The **ipv4** object supports the following:
-        
+
           * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
           * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
           * `ip` (`pulumi.Input[str]`) - Address of the interface, if DHCP is not set.
           * `netmask` (`pulumi.Input[str]`) - Netmask of the interface, if DHCP is not set.
-        
+
         The **ipv6** object supports the following:
-        
+
           * `addresses` (`pulumi.Input[list]`) - List of IPv6 addresses
           * `autoconfig` (`pulumi.Input[bool]`) - Use IPv6 Autoconfiguration (RFC2462).
           * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
           * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["distributed_port_group"] = distributed_port_group
         __props__["distributed_switch_port"] = distributed_switch_port
         __props__["host"] = host

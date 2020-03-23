@@ -23,6 +23,9 @@ class Folder(pulumi.CustomResource):
     resource if changed.
     """
     path: pulumi.Output[str]
+    """
+    The path of the folder and any parents, relative to the datacenter and folder type being defined.
+    """
     tags: pulumi.Output[list]
     """
     The IDs of any tags to attach to this resource. See
@@ -41,12 +44,14 @@ class Folder(pulumi.CustomResource):
         The resource supports creating folders of the 5 major types - datacenter
         folders, host and cluster folders, virtual machine folders, datastore folders,
         and network folders.
-        
+
         Paths are always relative to the specific type of folder you are creating.
         Subfolders are discovered by parsing the relative path specified in `path`, so
         `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
         as that folder exists.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
@@ -55,14 +60,13 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
+        :param pulumi.Input[str] path: The path of the folder and any parents, relative to the datacenter and folder type being defined.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +105,7 @@ class Folder(pulumi.CustomResource):
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -111,18 +115,18 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
+        :param pulumi.Input[str] path: The path of the folder and any parents, relative to the datacenter and folder type being defined.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["custom_attributes"] = custom_attributes
         __props__["datacenter_id"] = datacenter_id
         __props__["path"] = path

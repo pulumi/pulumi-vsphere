@@ -48,12 +48,12 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         """
         The `.VirtualMachineSnapshot` resource can be used to manage snapshots
         for a virtual machine.
-        
+
         For more information on managing snapshots and how they work in VMware, see
         [here][ext-vm-snapshot-management].
-        
+
         [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
-        
+
         > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
         can contain the actual running state of the virtual machine, data for all disks
         that have not been set to be independent from the snapshot (including ones that
@@ -65,10 +65,12 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         HashiCorp recommends retaining snapshots for a extended period of time and does
         NOT recommend using them as as backup feature. For more information on the
         limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
-        
+
         [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
         [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] consolidate: If set to `true`, the delta disks involved in this
@@ -84,8 +86,6 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
                is removed when this resource is destroyed.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,7 +132,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         """
         Get an existing VirtualMachineSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,12 +149,11 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
                is removed when this resource is destroyed.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["consolidate"] = consolidate
         __props__["description"] = description
         __props__["memory"] = memory
