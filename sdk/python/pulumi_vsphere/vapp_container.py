@@ -43,6 +43,9 @@ class VappContainer(pulumi.CustomResource):
     `cpu_share_level` must be `custom`.
     """
     custom_attributes: pulumi.Output[dict]
+    """
+    A list of custom attributes to set on this resource.
+    """
     memory_expandable: pulumi.Output[bool]
     """
     Determines if the reservation on a vApp
@@ -101,12 +104,14 @@ class VappContainer(pulumi.CustomResource):
         """
         The `.VappContainer` resource can be used to create and manage
         vApps.
-        
+
         For more information on vSphere vApps, see [this
         page][ref-vsphere-vapp].
-        
+
         [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_container.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a vApp
@@ -126,6 +131,7 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
+        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -153,8 +159,6 @@ class VappContainer(pulumi.CustomResource):
                resource pool or the move will fail.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_container.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -201,7 +205,7 @@ class VappContainer(pulumi.CustomResource):
         """
         Get an existing VappContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,6 +226,7 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
+        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -249,12 +254,11 @@ class VappContainer(pulumi.CustomResource):
                resource pool or the move will fail.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
                [here][docs-applying-tags] for a reference on how to apply tags.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_container.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cpu_expandable"] = cpu_expandable
         __props__["cpu_limit"] = cpu_limit
         __props__["cpu_reservation"] = cpu_reservation

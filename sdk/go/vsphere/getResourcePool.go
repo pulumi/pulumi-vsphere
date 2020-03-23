@@ -12,9 +12,9 @@ import (
 // resource pool in vSphere. This is useful to fetch the ID of a resource pool
 // that you want to use to create virtual machines in using the
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-// 
+//
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	var rv LookupResourcePoolResult

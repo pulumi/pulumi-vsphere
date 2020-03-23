@@ -53,10 +53,10 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         VM-to-host rules in a cluster, either created by the
         [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
         by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-        
+
         [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
         [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-        
+
         This resource can create both _affinity rules_, where virtual machines run on
         specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
         outside of the ones specified in the rule. Virtual machines and hosts are
@@ -64,15 +64,17 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
         [`.ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
         resources.
-        
+
         [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
         [tf-vsphere-cluster-host-group-resource]: /docs/providers/vsphere/r/compute_cluster_host_group.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] affinity_host_group_name: When this field is used, the virtual
@@ -91,8 +93,6 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
                with this rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +133,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         """
         Get an existing ComputeClusterVmHostRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -153,12 +153,11 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
                with this rule.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["affinity_host_group_name"] = affinity_host_group_name
         __props__["anti_affinity_host_group_name"] = anti_affinity_host_group_name
         __props__["compute_cluster_id"] = compute_cluster_id

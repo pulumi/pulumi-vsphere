@@ -16,11 +16,22 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/index.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_unverified_ssl: If set, VMware vSphere client will permit unverifiable SSL certificates.
+        :param pulumi.Input[bool] client_debug: govmomi debug
+        :param pulumi.Input[str] client_debug_path: govmomi debug path for debug
+        :param pulumi.Input[str] client_debug_path_run: govmomi debug path for a single run
+        :param pulumi.Input[str] password: The user password for vSphere API operations.
+        :param pulumi.Input[bool] persist_session: Persist vSphere client sessions to disk
+        :param pulumi.Input[str] rest_session_path: The directory to save vSphere REST API sessions to
+        :param pulumi.Input[str] user: The user name for vSphere API operations.
+        :param pulumi.Input[float] vim_keep_alive: Keep alive interval for the VIM session in minutes
+        :param pulumi.Input[str] vim_session_path: The directory to save vSphere SOAP API sessions to
+        :param pulumi.Input[str] vsphere_server: The vSphere Server name for vSphere API operations.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,22 +90,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

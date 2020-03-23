@@ -15,12 +15,12 @@ import (
 // The resource supports creating folders of the 5 major types - datacenter
 // folders, host and cluster folders, virtual machine folders, datastore folders,
 // and network folders.
-// 
+//
 // Paths are always relative to the specific type of folder you are creating.
 // Subfolders are discovered by parsing the relative path specified in `path`, so
 // `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
 // as that folder exists.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
 type Folder struct {
 	pulumi.CustomResourceState

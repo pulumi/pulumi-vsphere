@@ -13,35 +13,35 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, path=None, id=None):
-        if path and not isinstance(path, str):
-            raise TypeError("Expected argument 'path' to be a str")
-        __self__.path = path
+    def __init__(__self__, id=None, path=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if path and not isinstance(path, str):
+            raise TypeError("Expected argument 'path' to be a str")
+        __self__.path = path
 class AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetFolderResult(
-            path=self.path,
-            id=self.id)
+            id=self.id,
+            path=self.path)
 
 def get_folder(path=None,opts=None):
     """
     The `.Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
-    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['path'] = path
     if opts is None:
@@ -51,5 +51,5 @@ def get_folder(path=None,opts=None):
     __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts).value
 
     return AwaitableGetFolderResult(
-        path=__ret__.get('path'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        path=__ret__.get('path'))

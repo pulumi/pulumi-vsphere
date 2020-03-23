@@ -37,13 +37,13 @@ class License(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, labels=None, license_key=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class License(pulumi.CustomResource):
         """
         Get an existing License resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,12 +91,11 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[str] name: The display name for the license.
         :param pulumi.Input[float] total: Total number of units (example: CPUs) contained in the license.
         :param pulumi.Input[float] used: The number of units (example: CPUs) assigned to this license.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["edition_key"] = edition_key
         __props__["labels"] = labels
         __props__["license_key"] = license_key

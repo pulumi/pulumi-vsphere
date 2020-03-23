@@ -13,22 +13,22 @@ class GetDistributedVirtualSwitchResult:
     """
     A collection of values returned by getDistributedVirtualSwitch.
     """
-    def __init__(__self__, datacenter_id=None, name=None, uplinks=None, id=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None, uplinks=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if uplinks and not isinstance(uplinks, list):
-            raise TypeError("Expected argument 'uplinks' to be a list")
-        __self__.uplinks = uplinks
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        if uplinks and not isinstance(uplinks, list):
+            raise TypeError("Expected argument 'uplinks' to be a list")
+        __self__.uplinks = uplinks
 class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,9 +36,9 @@ class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResu
             yield self
         return GetDistributedVirtualSwitchResult(
             datacenter_id=self.datacenter_id,
+            id=self.id,
             name=self.name,
-            uplinks=self.uplinks,
-            id=self.id)
+            uplinks=self.uplinks)
 
 def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     """
@@ -47,12 +47,15 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     can then be used with resources or data sources that require a DVS, such as the
     [`.DistributedPortGroup`][distributed-port-group] resource, for which
     an example is shown below.
-    
+
     [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
-    
+
     > **NOTE:** This data source requires vCenter and is not available on direct
     ESXi connections.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
+
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the DVS is located in. This can be
            omitted if the search path used in `name` is an absolute path. For default
@@ -60,10 +63,9 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
            source.
     :param str name: The name of the distributed virtual switch. This can be a
            name or path.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -75,6 +77,6 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetDistributedVirtualSwitchResult(
         datacenter_id=__ret__.get('datacenterId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        uplinks=__ret__.get('uplinks'),
-        id=__ret__.get('id'))
+        uplinks=__ret__.get('uplinks'))

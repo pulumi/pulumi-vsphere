@@ -12,9 +12,9 @@ import (
 // devices available on an ESXi host. This data source can be combined with the
 // [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
 // datastores based off a set of discovered disks.
-// 
+//
 // [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
 func GetVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs, opts ...pulumi.InvokeOption) (*GetVmfsDisksResult, error) {
 	var rv GetVmfsDisksResult

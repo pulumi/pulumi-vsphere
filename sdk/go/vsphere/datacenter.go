@@ -12,7 +12,7 @@ import (
 
 // Provides a VMware vSphere datacenter resource. This can be used as the primary
 // container of inventory objects such as hosts and virtual machines.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
 type Datacenter struct {
 	pulumi.CustomResourceState

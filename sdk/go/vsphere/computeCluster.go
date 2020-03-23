@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster.html.markdown.
 type ComputeCluster struct {
 	pulumi.CustomResourceState
 
@@ -83,7 +82,7 @@ type ComputeCluster struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrOutput `pulumi:"haAdmissionControlPolicy"`
-	// 
+	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -346,7 +345,7 @@ type computeClusterState struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	// 
+	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -579,7 +578,7 @@ type ComputeClusterState struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	// 
+	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -816,7 +815,7 @@ type computeClusterArgs struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	// 
+	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -1048,7 +1047,7 @@ type ComputeClusterArgs struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	// 
+	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`

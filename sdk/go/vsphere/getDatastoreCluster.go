@@ -15,11 +15,11 @@ import (
 // [`.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or create
 // virtual machines in using the
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-// 
+//
 // [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
 // [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
 func LookupDatastoreCluster(ctx *pulumi.Context, args *LookupDatastoreClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreClusterResult, error) {
 	var rv LookupDatastoreClusterResult

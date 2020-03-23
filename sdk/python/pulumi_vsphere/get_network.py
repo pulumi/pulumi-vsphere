@@ -13,22 +13,22 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, datacenter_id=None, name=None, type=None, id=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None, type=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        __self__.type = type
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,9 +36,9 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             yield self
         return GetNetworkResult(
             datacenter_id=self.datacenter_id,
+            id=self.id,
             name=self.name,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_network(datacenter_id=None,name=None,opts=None):
     """
@@ -47,17 +47,19 @@ def get_network(datacenter_id=None,name=None,opts=None):
     network interface for `.VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups, DVS
     port groups, or opaque networks such as those managed by NSX.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
+
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the network is located in. This can
            be omitted if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `.Datacenter` data
            source.
     :param str name: The name of the network. This can be a name or path.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -69,6 +71,6 @@ def get_network(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetNetworkResult(
         datacenter_id=__ret__.get('datacenterId'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

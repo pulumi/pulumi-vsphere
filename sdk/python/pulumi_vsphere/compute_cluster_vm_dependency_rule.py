@@ -50,21 +50,23 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         VM dependency rules in a cluster, either created by the
         [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
         by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-        
+
         [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
         [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-        
+
         A virtual machine dependency rule applies to vSphere HA, and allows
         user-defined startup orders for virtual machines in the case of host failure.
         Virtual machines are supplied via groups, which can be managed via the
         [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
         resource.
-        
+
         [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
@@ -83,8 +85,6 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                this rule. The VMs defined in this group will not be started until the VMs in
                the group specified by
                `dependency_vm_group_name` are started.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,7 +126,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """
         Get an existing ComputeClusterVmDependencyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,12 +146,11 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                this rule. The VMs defined in this group will not be started until the VMs in
                the group specified by
                `dependency_vm_group_name` are started.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compute_cluster_id"] = compute_cluster_id
         __props__["dependency_vm_group_name"] = dependency_vm_group_name
         __props__["enabled"] = enabled

@@ -32,22 +32,24 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         of hosts in a cluster, either created by the
         [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
         by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-        
+
         [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
         [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-        
+
         This resource mainly serves as an input to the
         [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource - see the documentation for that resource for further details on how
         to use host groups.
-        
+
         [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
@@ -57,8 +59,6 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         Get an existing ComputeClusterHostGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +104,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compute_cluster_id"] = compute_cluster_id
         __props__["host_system_ids"] = host_system_ids
         __props__["name"] = name

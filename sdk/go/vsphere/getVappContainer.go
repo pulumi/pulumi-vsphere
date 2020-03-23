@@ -12,9 +12,9 @@ import (
 // vApp container in vSphere. This is useful to fetch the ID of a vApp container
 // that you want to use to create virtual machines in using the
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-// 
+//
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
 func LookupVappContainer(ctx *pulumi.Context, args *LookupVappContainerArgs, opts ...pulumi.InvokeOption) (*LookupVappContainerResult, error) {
 	var rv LookupVappContainerResult

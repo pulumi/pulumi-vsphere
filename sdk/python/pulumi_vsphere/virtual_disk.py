@@ -54,10 +54,12 @@ class VirtualDisk(pulumi.CustomResource):
         of any given [`.VirtualMachine`][docs-vsphere-virtual-machine]
         resource. These disks can be attached to a virtual machine by creating a disk
         block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
-        
+
         [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
         [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
@@ -77,8 +79,6 @@ class VirtualDisk(pulumi.CustomResource):
                [here][docs-vmware-vm-disk-provisioning].
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,7 +121,7 @@ class VirtualDisk(pulumi.CustomResource):
         """
         Get an existing VirtualDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,12 +142,11 @@ class VirtualDisk(pulumi.CustomResource):
                [here][docs-vmware-vm-disk-provisioning].
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_disk.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["adapter_type"] = adapter_type
         __props__["create_directories"] = create_directories
         __props__["datacenter"] = datacenter

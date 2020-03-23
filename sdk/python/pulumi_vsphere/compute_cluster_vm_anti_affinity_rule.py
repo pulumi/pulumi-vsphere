@@ -40,30 +40,32 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         manage VM anti-affinity rules in a cluster, either created by the
         [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
         by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-        
+
         [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
         [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-        
+
         This rule can be used to tell a set to virtual machines to run on different
         hosts within a cluster, useful for preventing single points of failure in
         application cluster scenarios. When configured, DRS will make a best effort to
         ensure that the virtual machines run on different hosts, or prevent any
         operation that would keep that from happening, depending on the value of the
         `mandatory` flag.
-        
+
         > Keep in mind that this rule can only be used to tell VMs to run separately
         on _non-specific_ hosts - specific hosts cannot be specified with this rule.
         For that, see the
         [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
         resource.
-        
+
         [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
@@ -75,8 +77,6 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,7 +115,7 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         Get an existing ComputeClusterVmAntiAffinityRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,12 +128,11 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_anti_affinity_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compute_cluster_id"] = compute_cluster_id
         __props__["enabled"] = enabled
         __props__["mandatory"] = mandatory

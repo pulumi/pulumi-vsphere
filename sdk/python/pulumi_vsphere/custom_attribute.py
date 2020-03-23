@@ -27,22 +27,22 @@ class CustomAttribute(pulumi.CustomResource):
         attributes, which allow users to associate user-specific meta-information with 
         vSphere managed objects. Custom attribute values must be strings and are stored 
         on the vCenter Server and not the managed object.
-        
+
         For more information about custom attributes, click [here][ext-custom-attributes].
-        
+
         [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
-        
+
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
-        
+
         ## Managed Object Types
-        
+
         The following table will help you determine what value you need to enter for 
         the managed object type you want the attribute to apply to.
-        
+
         Note that if you want a attribute to apply to all objects, leave the type 
         unspecified.
-        
+
         <table>
         <tr><th>Type</th><th>Value</th></tr>
         <tr><td>Folders</td><td>`Folder`</td></tr>
@@ -60,7 +60,9 @@ class CustomAttribute(pulumi.CustomResource):
         <tr><td>vApps</td><td>`VirtualApp`</td></tr>
         <tr><td>Virtual Machines</td><td>`VirtualMachine`</td></tr>
         </table>
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
@@ -68,8 +70,6 @@ class CustomAttribute(pulumi.CustomResource):
                type. For a full list, click here. Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +101,7 @@ class CustomAttribute(pulumi.CustomResource):
         """
         Get an existing CustomAttribute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,12 +110,11 @@ class CustomAttribute(pulumi.CustomResource):
                type. For a full list, click here. Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["managed_object_type"] = managed_object_type
         __props__["name"] = name
         return CustomAttribute(resource_name, opts=opts, __props__=__props__)

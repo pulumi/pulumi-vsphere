@@ -47,9 +47,6 @@ export interface VirtualMachineCdrom {
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
-    /**
-     * <elided>
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
      * The ID of the device within the virtual machine.
@@ -130,9 +127,6 @@ export interface VirtualMachineDisk {
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
-    /**
-     * <elided>
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
      * The mode of this this virtual disk for purposes of
@@ -260,9 +254,6 @@ export interface VirtualMachineNetworkInterface {
      * `normal`.
      */
     bandwidthShareLevel?: pulumi.Input<string>;
-    /**
-     * <elided>
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
      * The ID of the device within the virtual machine.

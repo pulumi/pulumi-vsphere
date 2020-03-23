@@ -13,19 +13,19 @@ class GetResourcePoolResult:
     """
     A collection of values returned by getResourcePool.
     """
-    def __init__(__self__, datacenter_id=None, name=None, id=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
 class AwaitableGetResourcePoolResult(GetResourcePoolResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,8 +33,8 @@ class AwaitableGetResourcePoolResult(GetResourcePoolResult):
             yield self
         return GetResourcePoolResult(
             datacenter_id=self.datacenter_id,
-            name=self.name,
-            id=self.id)
+            id=self.id,
+            name=self.name)
 
 def get_resource_pool(datacenter_id=None,name=None,opts=None):
     """
@@ -42,9 +42,12 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
     resource pool in vSphere. This is useful to fetch the ID of a resource pool
     that you want to use to create virtual machines in using the
     [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-    
+
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
+
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the resource pool is located in.
            This can be omitted if the search path used in `name` is an absolute path.
@@ -52,10 +55,9 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
            `.Datacenter` data source.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -67,5 +69,5 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetResourcePoolResult(
         datacenter_id=__ret__.get('datacenterId'),
-        name=__ret__.get('name'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        name=__ret__.get('name'))

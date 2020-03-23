@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a VMware vSphere vnic resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
 type Vnic struct {
 	pulumi.CustomResourceState

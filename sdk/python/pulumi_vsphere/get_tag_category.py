@@ -13,7 +13,7 @@ class GetTagCategoryResult:
     """
     A collection of values returned by getTagCategory.
     """
-    def __init__(__self__, associable_types=None, cardinality=None, description=None, name=None, id=None):
+    def __init__(__self__, associable_types=None, cardinality=None, description=None, id=None, name=None):
         if associable_types and not isinstance(associable_types, list):
             raise TypeError("Expected argument 'associable_types' to be a list")
         __self__.associable_types = associable_types
@@ -23,15 +23,15 @@ class GetTagCategoryResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
 class AwaitableGetTagCategoryResult(GetTagCategoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,18 +41,17 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
             associable_types=self.associable_types,
             cardinality=self.cardinality,
             description=self.description,
-            name=self.name,
-            id=self.id)
+            id=self.id,
+            name=self.name)
 
 def get_tag_category(name=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str name: The name of the tag category.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/tag_category.html.markdown.
+    :param str name: The name of the tag category.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -65,5 +64,5 @@ def get_tag_category(name=None,opts=None):
         associable_types=__ret__.get('associableTypes'),
         cardinality=__ret__.get('cardinality'),
         description=__ret__.get('description'),
-        name=__ret__.get('name'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        name=__ret__.get('name'))

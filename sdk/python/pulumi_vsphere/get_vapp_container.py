@@ -13,19 +13,19 @@ class GetVappContainerResult:
     """
     A collection of values returned by getVappContainer.
     """
-    def __init__(__self__, datacenter_id=None, name=None, id=None):
+    def __init__(__self__, datacenter_id=None, id=None, name=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        __self__.name = name
 class AwaitableGetVappContainerResult(GetVappContainerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,8 +33,8 @@ class AwaitableGetVappContainerResult(GetVappContainerResult):
             yield self
         return GetVappContainerResult(
             datacenter_id=self.datacenter_id,
-            name=self.name,
-            id=self.id)
+            id=self.id,
+            name=self.name)
 
 def get_vapp_container(datacenter_id=None,name=None,opts=None):
     """
@@ -42,17 +42,19 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
     vApp container in vSphere. This is useful to fetch the ID of a vApp container
     that you want to use to create virtual machines in using the
     [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-    
+
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
+
+
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the vApp container is located in.
     :param str name: The name of the vApp container. This can be a name or
            path.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
@@ -64,5 +66,5 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetVappContainerResult(
         datacenter_id=__ret__.get('datacenterId'),
-        name=__ret__.get('name'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        name=__ret__.get('name'))

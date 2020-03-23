@@ -16,6 +16,9 @@ class VappEntity(pulumi.CustomResource):
     container the entity is a member of.
     """
     custom_attributes: pulumi.Output[dict]
+    """
+    A list of custom attributes to set on this resource.
+    """
     start_action: pulumi.Output[str]
     """
     How to start the entity. Valid settings are none
@@ -44,6 +47,9 @@ class VappEntity(pulumi.CustomResource):
     guestShutdown. Default: 120
     """
     tags: pulumi.Output[list]
+    """
+    A list of tag IDs to apply to this object.
+    """
     target_id: pulumi.Output[str]
     """
     [Managed object ID|docs-about-morefs] of the entity
@@ -59,16 +65,19 @@ class VappEntity(pulumi.CustomResource):
         """
         The `.VappEntity` resource can be used to describe the behavior of an
         entity (virtual machine or sub-vApp container) in a vApp container.
-        
+
         For more information on vSphere vApps, see [this
         page][ref-vsphere-vapp].
-        
+
         [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
+        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
                or powerOn. If set to none, then the entity does not participate in auto-start.
                Default: powerOn
@@ -81,13 +90,12 @@ class VappEntity(pulumi.CustomResource):
         :param pulumi.Input[float] stop_delay: Delay in seconds before continuing with the next
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
+        :param pulumi.Input[list] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -131,12 +139,13 @@ class VappEntity(pulumi.CustomResource):
         """
         Get an existing VappEntity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
                container the entity is a member of.
+        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
                or powerOn. If set to none, then the entity does not participate in auto-start.
                Default: powerOn
@@ -149,17 +158,17 @@ class VappEntity(pulumi.CustomResource):
         :param pulumi.Input[float] stop_delay: Delay in seconds before continuing with the next
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
+        :param pulumi.Input[list] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["container_id"] = container_id
         __props__["custom_attributes"] = custom_attributes
         __props__["start_action"] = start_action

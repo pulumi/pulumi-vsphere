@@ -121,14 +121,16 @@ class HaVmOverride(pulumi.CustomResource):
         resource, one can control specific HA settings so that they are different than
         the cluster default, accommodating the needs of that specific virtual machine,
         while not affecting the rest of the cluster.
-        
+
         For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
-        
+
         [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
@@ -190,8 +192,6 @@ class HaVmOverride(pulumi.CustomResource):
                <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -240,7 +240,7 @@ class HaVmOverride(pulumi.CustomResource):
         """
         Get an existing HaVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -303,12 +303,11 @@ class HaVmOverride(pulumi.CustomResource):
                <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compute_cluster_id"] = compute_cluster_id
         __props__["ha_datastore_apd_recovery_action"] = ha_datastore_apd_recovery_action
         __props__["ha_datastore_apd_response"] = ha_datastore_apd_response

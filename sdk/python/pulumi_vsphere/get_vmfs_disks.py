@@ -13,7 +13,7 @@ class GetVmfsDisksResult:
     """
     A collection of values returned by getVmfsDisks.
     """
-    def __init__(__self__, disks=None, filter=None, host_system_id=None, rescan=None, id=None):
+    def __init__(__self__, disks=None, filter=None, host_system_id=None, id=None, rescan=None):
         if disks and not isinstance(disks, list):
             raise TypeError("Expected argument 'disks' to be a list")
         __self__.disks = disks
@@ -27,15 +27,15 @@ class GetVmfsDisksResult:
         if host_system_id and not isinstance(host_system_id, str):
             raise TypeError("Expected argument 'host_system_id' to be a str")
         __self__.host_system_id = host_system_id
-        if rescan and not isinstance(rescan, bool):
-            raise TypeError("Expected argument 'rescan' to be a bool")
-        __self__.rescan = rescan
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if rescan and not isinstance(rescan, bool):
+            raise TypeError("Expected argument 'rescan' to be a bool")
+        __self__.rescan = rescan
 class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,8 +45,8 @@ class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
             disks=self.disks,
             filter=self.filter,
             host_system_id=self.host_system_id,
-            rescan=self.rescan,
-            id=self.id)
+            id=self.id,
+            rescan=self.rescan)
 
 def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     """
@@ -54,9 +54,12 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     devices available on an ESXi host. This data source can be combined with the
     [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
     datastores based off a set of discovered disks.
-    
+
     [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
+
+
     :param str filter: A regular expression to filter the disks against. Only
            disks with canonical names that match will be included.
     :param str host_system_id: The [managed object ID][docs-about-morefs] of
@@ -64,10 +67,9 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     :param bool rescan: Whether or not to rescan storage adapters before
            searching for disks. This may lengthen the time it takes to perform the
            search. Default: `false`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['filter'] = filter
     __args__['hostSystemId'] = host_system_id
@@ -82,5 +84,5 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
         disks=__ret__.get('disks'),
         filter=__ret__.get('filter'),
         host_system_id=__ret__.get('hostSystemId'),
-        rescan=__ret__.get('rescan'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        rescan=__ret__.get('rescan'))

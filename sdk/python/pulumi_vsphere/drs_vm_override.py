@@ -38,17 +38,19 @@ class DrsVmOverride(pulumi.CustomResource):
         cluster for a specific virtual machine. With this resource, one can enable or
         disable DRS and control the automation level for a single virtual machine
         without affecting the rest of the cluster.
-        
+
         For more information on vSphere clusters and DRS, see [this
         page][ref-vsphere-drs-clusters].
-        
+
         [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
-        
+
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
-        
+
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/drs_vm_override.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The [managed object reference
@@ -61,8 +63,6 @@ class DrsVmOverride(pulumi.CustomResource):
                machine. Can be either `true` or `false`. Default: `false`.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/drs_vm_override.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -100,7 +100,7 @@ class DrsVmOverride(pulumi.CustomResource):
         """
         Get an existing DrsVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,12 +114,11 @@ class DrsVmOverride(pulumi.CustomResource):
                machine. Can be either `true` or `false`. Default: `false`.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/drs_vm_override.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["compute_cluster_id"] = compute_cluster_id
         __props__["drs_automation_level"] = drs_automation_level
         __props__["drs_enabled"] = drs_enabled

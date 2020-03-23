@@ -40,6 +40,9 @@ class NasDatastore(pulumi.CustomResource):
     Conflicts with `folder`.
     """
     folder: pulumi.Output[str]
+    """
+    The path to the datastore folder to put the datastore in.
+    """
     free_space: pulumi.Output[float]
     """
     Available space of this datastore, in megabytes.
@@ -110,14 +113,16 @@ class NasDatastore(pulumi.CustomResource):
         The `.NasDatastore` resource can be used to create and manage NAS
         datastores on an ESXi host or a set of hosts. The resource supports mounting
         NFS v3 and v4.1 shares to be used as datastores.
-        
+
         > **NOTE:** Unlike [`.VmfsDatastore`][resource-vmfs-datastore], a NAS
         datastore is only mounted on the hosts you choose to mount it on. To mount on
         multiple hosts, you must specify each host that you want to add in the
         `host_system_ids` argument.
-        
+
         [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: Access mode for the mount point. Can be one of
@@ -131,6 +136,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
+        :param pulumi.Input[str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
@@ -148,8 +154,6 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -204,7 +208,7 @@ class NasDatastore(pulumi.CustomResource):
         """
         Get an existing NasDatastore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,6 +226,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_cluster_id: The [managed object
                ID][docs-about-morefs] of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
+        :param pulumi.Input[str] folder: The path to the datastore folder to put the datastore in.
         :param pulumi.Input[float] free_space: Available space of this datastore, in megabytes.
         :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to mount the datastore on.
@@ -248,12 +253,11 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_mode"] = access_mode
         __props__["accessible"] = accessible
         __props__["capacity"] = capacity

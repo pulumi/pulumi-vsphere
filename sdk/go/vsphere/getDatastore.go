@@ -12,9 +12,9 @@ import (
 // datastore in vSphere. This is useful to fetch the ID of a datastore that you
 // want to use to create virtual machines in using the
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-// 
+//
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
 func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.InvokeOption) (*GetDatastoreResult, error) {
 	var rv GetDatastoreResult
