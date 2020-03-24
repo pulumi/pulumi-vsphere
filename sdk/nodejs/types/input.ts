@@ -62,6 +62,8 @@ export interface VirtualMachineCdrom {
 export interface VirtualMachineClone {
     customize?: pulumi.Input<inputs.VirtualMachineCloneCustomize>;
     linkedClone?: pulumi.Input<boolean>;
+    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ovfStorageMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     templateUuid: pulumi.Input<string>;
     timeout?: pulumi.Input<number>;
 }
@@ -270,6 +272,12 @@ export interface VirtualMachineNetworkInterface {
      * ID][docs-about-morefs] of the network to connect this interface to.
      */
     networkId: pulumi.Input<string>;
+    /**
+     * Specifies which OVF NIC the `networkInterface`
+     * should be associated with. Only applies at creation and only when deploying
+     * from an OVF source.
+     */
+    ovfMapping?: pulumi.Input<string>;
     /**
      * If true, the `macAddress` field is treated as
      * a static MAC address and set accordingly. Setting this to `true` requires

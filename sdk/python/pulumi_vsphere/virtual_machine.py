@@ -104,6 +104,8 @@ class VirtualMachine(pulumi.CustomResource):
         * `windowsSysprepText` (`str`)
 
       * `linkedClone` (`bool`)
+      * `ovfNetworkMap` (`dict`)
+      * `ovfStorageMap` (`dict`)
       * `templateUuid` (`str`)
       * `timeout` (`float`)
     """
@@ -393,6 +395,9 @@ class VirtualMachine(pulumi.CustomResource):
         computed value that gives the current MAC address of this interface.
       * `networkId` (`str`) - The [managed object reference
         ID][docs-about-morefs] of the network to connect this interface to.
+      * `ovfMapping` (`str`) - Specifies which OVF NIC the `network_interface`
+        should be associated with. Only applies at creation and only when deploying
+        from an OVF source.
       * `useStaticMac` (`bool`) - If true, the `mac_address` field is treated as
         a static MAC address and set accordingly. Setting this to `true` requires
         `mac_address` to be set. Default: `false`.
@@ -408,6 +413,10 @@ class VirtualMachine(pulumi.CustomResource):
     """
     The total number of virtual processor cores to assign
     to this virtual machine. Default: `1`.
+    """
+    poweron_timeout: pulumi.Output[float]
+    """
+    The amount of time, in seconds, that we will be trying to power on a VM
     """
     reboot_required: pulumi.Output[bool]
     """
@@ -546,7 +555,7 @@ class VirtualMachine(pulumi.CustomResource):
     `wait_for_guest_ip_timeout` waiter can be used
     instead. A value less than 1 disables the waiter. Default: 5 minutes.
     """
-    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, poweron_timeout=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VirtualMachine resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -668,6 +677,7 @@ class VirtualMachine(pulumi.CustomResource):
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
+        :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
                ID][docs-about-morefs] of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -778,6 +788,8 @@ class VirtualMachine(pulumi.CustomResource):
             * `windowsSysprepText` (`pulumi.Input[str]`)
 
           * `linkedClone` (`pulumi.Input[bool]`)
+          * `ovfNetworkMap` (`pulumi.Input[dict]`)
+          * `ovfStorageMap` (`pulumi.Input[dict]`)
           * `templateUuid` (`pulumi.Input[str]`)
           * `timeout` (`pulumi.Input[float]`)
 
@@ -853,6 +865,9 @@ class VirtualMachine(pulumi.CustomResource):
             computed value that gives the current MAC address of this interface.
           * `networkId` (`pulumi.Input[str]`) - The [managed object reference
             ID][docs-about-morefs] of the network to connect this interface to.
+          * `ovfMapping` (`pulumi.Input[str]`) - Specifies which OVF NIC the `network_interface`
+            should be associated with. Only applies at creation and only when deploying
+            from an OVF source.
           * `useStaticMac` (`pulumi.Input[bool]`) - If true, the `mac_address` field is treated as
             a static MAC address and set accordingly. Setting this to `true` requires
             `mac_address` to be set. Default: `false`.
@@ -923,6 +938,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['network_interfaces'] = network_interfaces
             __props__['num_cores_per_socket'] = num_cores_per_socket
             __props__['num_cpus'] = num_cpus
+            __props__['poweron_timeout'] = poweron_timeout
             if resource_pool_id is None:
                 raise TypeError("Missing required property 'resource_pool_id'")
             __props__['resource_pool_id'] = resource_pool_id
@@ -960,7 +976,7 @@ class VirtualMachine(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
+    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, poweron_timeout=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1099,6 +1115,7 @@ class VirtualMachine(pulumi.CustomResource):
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
+        :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
                ID][docs-about-morefs] of the resource pool to put this virtual machine in.
@@ -1219,6 +1236,8 @@ class VirtualMachine(pulumi.CustomResource):
             * `windowsSysprepText` (`pulumi.Input[str]`)
 
           * `linkedClone` (`pulumi.Input[bool]`)
+          * `ovfNetworkMap` (`pulumi.Input[dict]`)
+          * `ovfStorageMap` (`pulumi.Input[dict]`)
           * `templateUuid` (`pulumi.Input[str]`)
           * `timeout` (`pulumi.Input[float]`)
 
@@ -1294,6 +1313,9 @@ class VirtualMachine(pulumi.CustomResource):
             computed value that gives the current MAC address of this interface.
           * `networkId` (`pulumi.Input[str]`) - The [managed object reference
             ID][docs-about-morefs] of the network to connect this interface to.
+          * `ovfMapping` (`pulumi.Input[str]`) - Specifies which OVF NIC the `network_interface`
+            should be associated with. Only applies at creation and only when deploying
+            from an OVF source.
           * `useStaticMac` (`pulumi.Input[bool]`) - If true, the `mac_address` field is treated as
             a static MAC address and set accordingly. Setting this to `true` requires
             `mac_address` to be set. Default: `false`.
@@ -1354,6 +1376,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["network_interfaces"] = network_interfaces
         __props__["num_cores_per_socket"] = num_cores_per_socket
         __props__["num_cpus"] = num_cpus
+        __props__["poweron_timeout"] = poweron_timeout
         __props__["reboot_required"] = reboot_required
         __props__["resource_pool_id"] = resource_pool_id
         __props__["run_tools_scripts_after_power_on"] = run_tools_scripts_after_power_on

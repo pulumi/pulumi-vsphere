@@ -77,6 +77,8 @@ export interface VirtualMachineCdrom {
 export interface VirtualMachineClone {
     customize?: outputs.VirtualMachineCloneCustomize;
     linkedClone?: boolean;
+    ovfNetworkMap?: {[key: string]: string};
+    ovfStorageMap?: {[key: string]: string};
     templateUuid: string;
     timeout?: number;
 }
@@ -285,6 +287,12 @@ export interface VirtualMachineNetworkInterface {
      * ID][docs-about-morefs] of the network to connect this interface to.
      */
     networkId: string;
+    /**
+     * Specifies which OVF NIC the `networkInterface`
+     * should be associated with. Only applies at creation and only when deploying
+     * from an OVF source.
+     */
+    ovfMapping?: string;
     /**
      * If true, the `macAddress` field is treated as
      * a static MAC address and set accordingly. Setting this to `true` requires

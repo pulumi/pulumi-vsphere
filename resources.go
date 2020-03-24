@@ -114,6 +114,8 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_compute_cluster_vm_dependency_rule":      {Tok: vsphereResource(vsphereMod, "ComputeClusterVmDependencyRule")},
 			"vsphere_compute_cluster_vm_group":                {Tok: vsphereResource(vsphereMod, "ComputeClusterVmGroup")},
 			"vsphere_compute_cluster_vm_host_rule":            {Tok: vsphereResource(vsphereMod, "ComputeClusterVmHostRule")},
+			"vsphere_content_library":                         {Tok: vsphereResource(vsphereMod, "ContentLibrary")},
+			"vsphere_content_library_item":                    {Tok: vsphereResource(vsphereMod, "ContentLibraryItem")},
 			"vsphere_custom_attribute":                        {Tok: vsphereResource(vsphereMod, "CustomAttribute")},
 			"vsphere_datacenter":                              {Tok: vsphereResource(vsphereMod, "Datacenter")},
 			"vsphere_datastore_cluster":                       {Tok: vsphereResource(vsphereMod, "DatastoreCluster")},
@@ -144,6 +146,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"vsphere_compute_cluster":            {Tok: vsphereDataSource(vsphereMod, "getComputeCluster")},
+			"vsphere_content_library":            {Tok: vsphereDataSource(vsphereMod, "getContentLibrary")},
+			"vsphere_content_library_item":       {Tok: vsphereDataSource(vsphereMod, "getContentLibraryItem")},
 			"vsphere_custom_attribute":           {Tok: vsphereDataSource(vsphereMod, "getCustomAttribute")},
 			"vsphere_datacenter":                 {Tok: vsphereDataSource(vsphereMod, "getDatacenter")},
 			"vsphere_datastore":                  {Tok: vsphereDataSource(vsphereMod, "getDatastore")},
