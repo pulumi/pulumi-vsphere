@@ -193,6 +193,8 @@ type VirtualMachine struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrOutput `pulumi:"numCpus"`
+	// The amount of time, in seconds, that we will be trying to power on a VM
+	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
 	// The [managed object reference
@@ -497,6 +499,8 @@ type virtualMachineState struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
+	// The amount of time, in seconds, that we will be trying to power on a VM
+	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired *bool `pulumi:"rebootRequired"`
 	// The [managed object reference
@@ -768,6 +772,8 @@ type VirtualMachineState struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
+	// The amount of time, in seconds, that we will be trying to power on a VM
+	PoweronTimeout pulumi.IntPtrInput
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired pulumi.BoolPtrInput
 	// The [managed object reference
@@ -1024,6 +1030,8 @@ type virtualMachineArgs struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
+	// The amount of time, in seconds, that we will be trying to power on a VM
+	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// The [managed object reference
 	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -1262,6 +1270,8 @@ type VirtualMachineArgs struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
+	// The amount of time, in seconds, that we will be trying to power on a VM
+	PoweronTimeout pulumi.IntPtrInput
 	// The [managed object reference
 	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration

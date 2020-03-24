@@ -610,6 +610,8 @@ func (o VirtualMachineCdromPtrOutput) Path() pulumi.StringPtrOutput {
 type VirtualMachineClone struct {
 	Customize *VirtualMachineCloneCustomize `pulumi:"customize"`
 	LinkedClone *bool `pulumi:"linkedClone"`
+	OvfNetworkMap map[string]string `pulumi:"ovfNetworkMap"`
+	OvfStorageMap map[string]string `pulumi:"ovfStorageMap"`
 	TemplateUuid string `pulumi:"templateUuid"`
 	Timeout *int `pulumi:"timeout"`
 }
@@ -624,6 +626,8 @@ type VirtualMachineCloneInput interface {
 type VirtualMachineCloneArgs struct {
 	Customize VirtualMachineCloneCustomizePtrInput `pulumi:"customize"`
 	LinkedClone pulumi.BoolPtrInput `pulumi:"linkedClone"`
+	OvfNetworkMap pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
+	OvfStorageMap pulumi.StringMapInput `pulumi:"ovfStorageMap"`
 	TemplateUuid pulumi.StringInput `pulumi:"templateUuid"`
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
@@ -703,6 +707,14 @@ func (o VirtualMachineCloneOutput) LinkedClone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v VirtualMachineClone) *bool { return v.LinkedClone }).(pulumi.BoolPtrOutput)
 }
 
+func (o VirtualMachineCloneOutput) OvfNetworkMap() pulumi.StringMapOutput {
+	return o.ApplyT(func (v VirtualMachineClone) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
+}
+
+func (o VirtualMachineCloneOutput) OvfStorageMap() pulumi.StringMapOutput {
+	return o.ApplyT(func (v VirtualMachineClone) map[string]string { return v.OvfStorageMap }).(pulumi.StringMapOutput)
+}
+
 func (o VirtualMachineCloneOutput) TemplateUuid() pulumi.StringOutput {
 	return o.ApplyT(func (v VirtualMachineClone) string { return v.TemplateUuid }).(pulumi.StringOutput)
 }
@@ -735,6 +747,14 @@ func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePt
 
 func (o VirtualMachineClonePtrOutput) LinkedClone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v VirtualMachineClone) *bool { return v.LinkedClone }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineClonePtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
+	return o.ApplyT(func (v VirtualMachineClone) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
+}
+
+func (o VirtualMachineClonePtrOutput) OvfStorageMap() pulumi.StringMapOutput {
+	return o.ApplyT(func (v VirtualMachineClone) map[string]string { return v.OvfStorageMap }).(pulumi.StringMapOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringOutput {
@@ -1804,6 +1824,10 @@ type VirtualMachineNetworkInterface struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the network to connect this interface to.
 	NetworkId string `pulumi:"networkId"`
+	// Specifies which OVF NIC the `networkInterface`
+	// should be associated with. Only applies at creation and only when deploying
+	// from an OVF source.
+	OvfMapping *string `pulumi:"ovfMapping"`
 	// If true, the `macAddress` field is treated as
 	// a static MAC address and set accordingly. Setting this to `true` requires
 	// `macAddress` to be set. Default: `false`.
@@ -1844,6 +1868,10 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	// The [managed object reference
 	// ID][docs-about-morefs] of the network to connect this interface to.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// Specifies which OVF NIC the `networkInterface`
+	// should be associated with. Only applies at creation and only when deploying
+	// from an OVF source.
+	OvfMapping pulumi.StringPtrInput `pulumi:"ovfMapping"`
 	// If true, the `macAddress` field is treated as
 	// a static MAC address and set accordingly. Setting this to `true` requires
 	// `macAddress` to be set. Default: `false`.
@@ -1948,6 +1976,13 @@ func (o VirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutpu
 // ID][docs-about-morefs] of the network to connect this interface to.
 func (o VirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func (v VirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Specifies which OVF NIC the `networkInterface`
+// should be associated with. Only applies at creation and only when deploying
+// from an OVF source.
+func (o VirtualMachineNetworkInterfaceOutput) OvfMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v VirtualMachineNetworkInterface) *string { return v.OvfMapping }).(pulumi.StringPtrOutput)
 }
 
 // If true, the `macAddress` field is treated as

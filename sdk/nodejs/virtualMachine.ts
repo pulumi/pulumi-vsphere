@@ -309,6 +309,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
     /**
+     * The amount of time, in seconds, that we will be trying to power on a VM
+     */
+    public readonly poweronTimeout!: pulumi.Output<number | undefined>;
+    /**
      * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
@@ -504,6 +508,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["numCoresPerSocket"] = state ? state.numCoresPerSocket : undefined;
             inputs["numCpus"] = state ? state.numCpus : undefined;
+            inputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
             inputs["rebootRequired"] = state ? state.rebootRequired : undefined;
             inputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = state ? state.runToolsScriptsAfterPowerOn : undefined;
@@ -578,6 +583,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["numCoresPerSocket"] = args ? args.numCoresPerSocket : undefined;
             inputs["numCpus"] = args ? args.numCpus : undefined;
+            inputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
             inputs["resourcePoolId"] = args ? args.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = args ? args.runToolsScriptsAfterPowerOn : undefined;
             inputs["runToolsScriptsAfterResume"] = args ? args.runToolsScriptsAfterResume : undefined;
@@ -897,6 +903,10 @@ export interface VirtualMachineState {
      * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
+    /**
+     * The amount of time, in seconds, that we will be trying to power on a VM
+     */
+    readonly poweronTimeout?: pulumi.Input<number>;
     /**
      * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
@@ -1284,6 +1294,10 @@ export interface VirtualMachineArgs {
      * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
+    /**
+     * The amount of time, in seconds, that we will be trying to power on a VM
+     */
+    readonly poweronTimeout?: pulumi.Input<number>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the resource pool to put this virtual machine in.

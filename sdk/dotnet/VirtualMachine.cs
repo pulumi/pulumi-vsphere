@@ -383,6 +383,12 @@ namespace Pulumi.VSphere
         public Output<int?> NumCpus { get; private set; } = null!;
 
         /// <summary>
+        /// The amount of time, in seconds, that we will be trying to power on a VM
+        /// </summary>
+        [Output("poweronTimeout")]
+        public Output<int?> PoweronTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
         /// </summary>
         [Output("rebootRequired")]
@@ -972,6 +978,12 @@ namespace Pulumi.VSphere
         public Input<int>? NumCpus { get; set; }
 
         /// <summary>
+        /// The amount of time, in seconds, that we will be trying to power on a VM
+        /// </summary>
+        [Input("poweronTimeout")]
+        public Input<int>? PoweronTimeout { get; set; }
+
+        /// <summary>
         /// The [managed object reference
         /// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
         /// See the section on virtual machine migration
@@ -1538,6 +1550,12 @@ namespace Pulumi.VSphere
         public Input<int>? NumCpus { get; set; }
 
         /// <summary>
+        /// The amount of time, in seconds, that we will be trying to power on a VM
+        /// </summary>
+        [Input("poweronTimeout")]
+        public Input<int>? PoweronTimeout { get; set; }
+
+        /// <summary>
         /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
         /// </summary>
         [Input("rebootRequired")]
@@ -1819,6 +1837,22 @@ namespace Pulumi.VSphere
 
         [Input("linkedClone")]
         public Input<bool>? LinkedClone { get; set; }
+
+        [Input("ovfNetworkMap")]
+        private InputMap<string>? _ovfNetworkMap;
+        public InputMap<string> OvfNetworkMap
+        {
+            get => _ovfNetworkMap ?? (_ovfNetworkMap = new InputMap<string>());
+            set => _ovfNetworkMap = value;
+        }
+
+        [Input("ovfStorageMap")]
+        private InputMap<string>? _ovfStorageMap;
+        public InputMap<string> OvfStorageMap
+        {
+            get => _ovfStorageMap ?? (_ovfStorageMap = new InputMap<string>());
+            set => _ovfStorageMap = value;
+        }
 
         [Input("templateUuid", required: true)]
         public Input<string> TemplateUuid { get; set; } = null!;
@@ -2148,6 +2182,22 @@ namespace Pulumi.VSphere
 
         [Input("linkedClone")]
         public Input<bool>? LinkedClone { get; set; }
+
+        [Input("ovfNetworkMap")]
+        private InputMap<string>? _ovfNetworkMap;
+        public InputMap<string> OvfNetworkMap
+        {
+            get => _ovfNetworkMap ?? (_ovfNetworkMap = new InputMap<string>());
+            set => _ovfNetworkMap = value;
+        }
+
+        [Input("ovfStorageMap")]
+        private InputMap<string>? _ovfStorageMap;
+        public InputMap<string> OvfStorageMap
+        {
+            get => _ovfStorageMap ?? (_ovfStorageMap = new InputMap<string>());
+            set => _ovfStorageMap = value;
+        }
 
         [Input("templateUuid", required: true)]
         public Input<string> TemplateUuid { get; set; } = null!;
@@ -2539,6 +2589,14 @@ namespace Pulumi.VSphere
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
+        /// Specifies which OVF NIC the `network_interface`
+        /// should be associated with. Only applies at creation and only when deploying
+        /// from an OVF source.
+        /// </summary>
+        [Input("ovfMapping")]
+        public Input<string>? OvfMapping { get; set; }
+
+        /// <summary>
         /// If true, the `mac_address` field is treated as
         /// a static MAC address and set accordingly. Setting this to `true` requires
         /// `mac_address` to be set. Default: `false`.
@@ -2612,6 +2670,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies which OVF NIC the `network_interface`
+        /// should be associated with. Only applies at creation and only when deploying
+        /// from an OVF source.
+        /// </summary>
+        [Input("ovfMapping")]
+        public Input<string>? OvfMapping { get; set; }
 
         /// <summary>
         /// If true, the `mac_address` field is treated as
@@ -2705,6 +2771,8 @@ namespace Pulumi.VSphere
     {
         public readonly VirtualMachineCloneCustomize? Customize;
         public readonly bool? LinkedClone;
+        public readonly ImmutableDictionary<string, string>? OvfNetworkMap;
+        public readonly ImmutableDictionary<string, string>? OvfStorageMap;
         public readonly string TemplateUuid;
         public readonly int? Timeout;
 
@@ -2712,11 +2780,15 @@ namespace Pulumi.VSphere
         private VirtualMachineClone(
             VirtualMachineCloneCustomize? customize,
             bool? linkedClone,
+            ImmutableDictionary<string, string>? ovfNetworkMap,
+            ImmutableDictionary<string, string>? ovfStorageMap,
             string templateUuid,
             int? timeout)
         {
             Customize = customize;
             LinkedClone = linkedClone;
+            OvfNetworkMap = ovfNetworkMap;
+            OvfStorageMap = ovfStorageMap;
             TemplateUuid = templateUuid;
             Timeout = timeout;
         }
@@ -3070,6 +3142,12 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
+        /// Specifies which OVF NIC the `network_interface`
+        /// should be associated with. Only applies at creation and only when deploying
+        /// from an OVF source.
+        /// </summary>
+        public readonly string? OvfMapping;
+        /// <summary>
         /// If true, the `mac_address` field is treated as
         /// a static MAC address and set accordingly. Setting this to `true` requires
         /// `mac_address` to be set. Default: `false`.
@@ -3087,6 +3165,7 @@ namespace Pulumi.VSphere
             int key,
             string macAddress,
             string networkId,
+            string? ovfMapping,
             bool? useStaticMac)
         {
             AdapterType = adapterType;
@@ -3098,6 +3177,7 @@ namespace Pulumi.VSphere
             Key = key;
             MacAddress = macAddress;
             NetworkId = networkId;
+            OvfMapping = ovfMapping;
             UseStaticMac = useStaticMac;
         }
     }

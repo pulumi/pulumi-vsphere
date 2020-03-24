@@ -17,6 +17,8 @@ from .compute_cluster_vm_anti_affinity_rule import *
 from .compute_cluster_vm_dependency_rule import *
 from .compute_cluster_vm_group import *
 from .compute_cluster_vm_host_rule import *
+from .content_library import *
+from .content_library_item import *
 from .custom_attribute import *
 from .datacenter import *
 from .datastore_cluster import *
@@ -28,6 +30,8 @@ from .drs_vm_override import *
 from .file import *
 from .folder import *
 from .get_compute_cluster import *
+from .get_content_library import *
+from .get_content_library_item import *
 from .get_custom_attribute import *
 from .get_datacenter import *
 from .get_datastore import *
