@@ -233,4 +233,3 @@ type VappEntityArgs struct {
 func (VappEntityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vappEntityArgs)(nil)).Elem()
 }
-

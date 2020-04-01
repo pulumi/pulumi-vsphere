@@ -11,7 +11,13 @@ namespace Pulumi.VSphere
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetComputeCluster.InvokeAsync() instead")]
         public static Task<GetComputeClusterResult> GetComputeCluster(GetComputeClusterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetComputeCluster
+    {
+        public static Task<GetComputeClusterResult> InvokeAsync(GetComputeClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

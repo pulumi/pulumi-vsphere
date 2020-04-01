@@ -160,4 +160,3 @@ type DatastoreClusterVmAntiAffinityRuleArgs struct {
 func (DatastoreClusterVmAntiAffinityRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterVmAntiAffinityRuleArgs)(nil)).Elem()
 }
-

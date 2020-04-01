@@ -20,7 +20,22 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNetwork.InvokeAsync() instead")]
         public static Task<GetNetworkResult> GetNetwork(GetNetworkArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNetwork
+    {
+        /// <summary>
+        /// The `vsphere..getNetwork` data source can be used to discover the ID of a network
+        /// in vSphere. This can be any network that can be used as the backing for a
+        /// network interface for `vsphere..VirtualMachine` or any other vSphere resource
+        /// that requires a network. This includes standard (host-based) port groups, DVS
+        /// port groups, or opaque networks such as those managed by NSX.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
+        /// </summary>
+        public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

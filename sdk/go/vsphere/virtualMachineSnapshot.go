@@ -202,4 +202,3 @@ type VirtualMachineSnapshotArgs struct {
 func (VirtualMachineSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineSnapshotArgs)(nil)).Elem()
 }
-

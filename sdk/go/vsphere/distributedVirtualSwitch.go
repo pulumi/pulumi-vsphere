@@ -1335,4 +1335,3 @@ type DistributedVirtualSwitchArgs struct {
 func (DistributedVirtualSwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedVirtualSwitchArgs)(nil)).Elem()
 }
-

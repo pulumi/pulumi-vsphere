@@ -236,4 +236,3 @@ type HostArgs struct {
 func (HostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostArgs)(nil)).Elem()
 }
-

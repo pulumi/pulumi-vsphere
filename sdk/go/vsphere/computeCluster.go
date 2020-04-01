@@ -1212,4 +1212,3 @@ type ComputeClusterArgs struct {
 func (ComputeClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterArgs)(nil)).Elem()
 }
-

@@ -118,4 +118,3 @@ type TagArgs struct {
 func (TagArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagArgs)(nil)).Elem()
 }
-

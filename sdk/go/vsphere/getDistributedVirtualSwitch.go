@@ -42,13 +42,11 @@ type LookupDistributedVirtualSwitchArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getDistributedVirtualSwitch.
 type LookupDistributedVirtualSwitchResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string   `pulumi:"id"`
+	Name    string   `pulumi:"name"`
 	Uplinks []string `pulumi:"uplinks"`
 }
-

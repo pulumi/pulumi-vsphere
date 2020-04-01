@@ -42,13 +42,12 @@ type LookupVirtualMachineArgs struct {
 	ScsiControllerScanCount *int `pulumi:"scsiControllerScanCount"`
 }
 
-
 // A collection of values returned by getVirtualMachine.
 type LookupVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
 	// guestId is a non-specific operating system, like `otherGuest`.
-	AlternateGuestName string `pulumi:"alternateGuestName"`
-	DatacenterId *string `pulumi:"datacenterId"`
+	AlternateGuestName string  `pulumi:"alternateGuestName"`
+	DatacenterId       *string `pulumi:"datacenterId"`
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `.VirtualMachine` resource in the order the resource expects
@@ -65,7 +64,7 @@ type LookupVirtualMachineResult struct {
 	// A list of IP addresses as reported by VMWare tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
@@ -74,8 +73,8 @@ type LookupVirtualMachineResult struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
-	ScsiBusSharing string `pulumi:"scsiBusSharing"`
-	ScsiControllerScanCount *int `pulumi:"scsiControllerScanCount"`
+	ScsiBusSharing          string `pulumi:"scsiBusSharing"`
+	ScsiControllerScanCount *int   `pulumi:"scsiControllerScanCount"`
 	// The common type of all SCSI controllers on this virtual machine.
 	// Will be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic
 	// SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
@@ -83,4 +82,3 @@ type LookupVirtualMachineResult struct {
 	// defined by `scsiControllerScanCount` are scanned.
 	ScsiType string `pulumi:"scsiType"`
 }
-

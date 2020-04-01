@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVappContainer.InvokeAsync() instead")]
         public static Task<GetVappContainerResult> GetVappContainer(GetVappContainerArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVappContainer
+    {
+        /// <summary>
+        /// The `vsphere..VappContainer` data source can be used to discover the ID of a
+        /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
+        /// that you want to use to create virtual machines in using the
+        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
+        /// </summary>
+        public static Task<GetVappContainerResult> InvokeAsync(GetVappContainerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

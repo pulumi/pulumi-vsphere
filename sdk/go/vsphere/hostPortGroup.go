@@ -319,4 +319,3 @@ type HostPortGroupArgs struct {
 func (HostPortGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostPortGroupArgs)(nil)).Elem()
 }
-

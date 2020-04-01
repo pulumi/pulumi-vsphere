@@ -25,13 +25,11 @@ type LookupTagArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getTag.
 type LookupTagResult struct {
-	CategoryId string `pulumi:"categoryId"`
+	CategoryId  string `pulumi:"categoryId"`
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
-

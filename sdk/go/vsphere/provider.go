@@ -18,7 +18,6 @@ import (
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/index.html.markdown.
 type Provider struct {
 	pulumi.ProviderResourceState
-
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -84,7 +83,7 @@ type providerArgs struct {
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath *string `pulumi:"restSessionPath"`
 	// The user name for vSphere API operations.
-	User *string `pulumi:"user"`
+	User          *string `pulumi:"user"`
 	VcenterServer *string `pulumi:"vcenterServer"`
 	// Keep alive interval for the VIM session in minutes
 	VimKeepAlive *int `pulumi:"vimKeepAlive"`
@@ -111,7 +110,7 @@ type ProviderArgs struct {
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath pulumi.StringPtrInput
 	// The user name for vSphere API operations.
-	User pulumi.StringPtrInput
+	User          pulumi.StringPtrInput
 	VcenterServer pulumi.StringPtrInput
 	// Keep alive interval for the VIM session in minutes
 	VimKeepAlive pulumi.IntPtrInput
@@ -124,4 +123,3 @@ type ProviderArgs struct {
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
 }
-

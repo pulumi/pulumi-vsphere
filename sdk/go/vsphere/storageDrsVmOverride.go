@@ -191,4 +191,3 @@ type StorageDrsVmOverrideArgs struct {
 func (StorageDrsVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageDrsVmOverrideArgs)(nil)).Elem()
 }
-

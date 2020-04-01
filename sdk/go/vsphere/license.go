@@ -113,4 +113,3 @@ type LicenseArgs struct {
 func (LicenseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseArgs)(nil)).Elem()
 }
-

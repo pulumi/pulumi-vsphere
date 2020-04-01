@@ -23,14 +23,12 @@ type LookupTagCategoryArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getTagCategory.
 type LookupTagCategoryResult struct {
 	AssociableTypes []string `pulumi:"associableTypes"`
-	Cardinality string `pulumi:"cardinality"`
-	Description string `pulumi:"description"`
+	Cardinality     string   `pulumi:"cardinality"`
+	Description     string   `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
-

@@ -155,4 +155,3 @@ type DrsVmOverrideArgs struct {
 func (DrsVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*drsVmOverrideArgs)(nil)).Elem()
 }
-

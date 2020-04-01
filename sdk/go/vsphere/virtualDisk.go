@@ -201,4 +201,3 @@ type VirtualDiskArgs struct {
 func (VirtualDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualDiskArgs)(nil)).Elem()
 }
-

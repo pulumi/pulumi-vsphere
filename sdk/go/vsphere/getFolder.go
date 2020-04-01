@@ -10,7 +10,7 @@ import (
 
 // The `.Folder` data source can be used to get the general attributes of a
 // vSphere inventory folder. Paths are absolute and include must include the
-// datacenter.  
+// datacenter.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
@@ -27,11 +27,9 @@ type LookupFolderArgs struct {
 	Path string `pulumi:"path"`
 }
 
-
 // A collection of values returned by getFolder.
 type LookupFolderResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
 }
-

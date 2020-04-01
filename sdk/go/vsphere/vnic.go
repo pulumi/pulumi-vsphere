@@ -17,7 +17,7 @@ import (
 type Vnic struct {
 	pulumi.CustomResourceState
 
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup pulumi.StringPtrOutput `pulumi:"distributedPortGroup"`
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort pulumi.StringPtrOutput `pulumi:"distributedSwitchPort"`
@@ -68,7 +68,7 @@ func GetVnic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vnic resources.
 type vnicState struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup *string `pulumi:"distributedPortGroup"`
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort *string `pulumi:"distributedSwitchPort"`
@@ -89,7 +89,7 @@ type vnicState struct {
 }
 
 type VnicState struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup pulumi.StringPtrInput
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort pulumi.StringPtrInput
@@ -114,7 +114,7 @@ func (VnicState) ElementType() reflect.Type {
 }
 
 type vnicArgs struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup *string `pulumi:"distributedPortGroup"`
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort *string `pulumi:"distributedSwitchPort"`
@@ -136,7 +136,7 @@ type vnicArgs struct {
 
 // The set of arguments for constructing a Vnic resource.
 type VnicArgs struct {
-	// Key of the distributed portgroup the nic will connect to. 
+	// Key of the distributed portgroup the nic will connect to.
 	DistributedPortGroup pulumi.StringPtrInput
 	// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
 	DistributedSwitchPort pulumi.StringPtrInput
@@ -159,4 +159,3 @@ type VnicArgs struct {
 func (VnicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vnicArgs)(nil)).Elem()
 }
-

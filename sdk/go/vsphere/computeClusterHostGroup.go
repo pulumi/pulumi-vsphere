@@ -137,4 +137,3 @@ type ComputeClusterHostGroupArgs struct {
 func (ComputeClusterHostGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterHostGroupArgs)(nil)).Elem()
 }
-

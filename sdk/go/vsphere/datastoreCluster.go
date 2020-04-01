@@ -517,4 +517,3 @@ type DatastoreClusterArgs struct {
 func (DatastoreClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterArgs)(nil)).Elem()
 }
-

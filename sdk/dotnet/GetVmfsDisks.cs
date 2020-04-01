@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVmfsDisks.InvokeAsync() instead")]
         public static Task<GetVmfsDisksResult> GetVmfsDisks(GetVmfsDisksArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVmfsDisks
+    {
+        /// <summary>
+        /// The `vsphere..getVmfsDisks` data source can be used to discover the storage
+        /// devices available on an ESXi host. This data source can be combined with the
+        /// [`vsphere..VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
+        /// datastores based off a set of discovered disks.
+        /// 
+        /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
+        /// </summary>
+        public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
