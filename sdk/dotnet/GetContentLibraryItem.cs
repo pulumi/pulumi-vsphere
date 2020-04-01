@@ -19,7 +19,21 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
         /// </summary>
+        [Obsolete("Use GetContentLibraryItem.InvokeAsync() instead")]
         public static Task<GetContentLibraryItemResult> GetContentLibraryItem(GetContentLibraryItemArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetContentLibraryItem
+    {
+        /// <summary>
+        /// The `vsphere..ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+        /// 
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// connections.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
+        /// </summary>
+        public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

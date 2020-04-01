@@ -437,4 +437,3 @@ type HostVirtualSwitchArgs struct {
 func (HostVirtualSwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostVirtualSwitchArgs)(nil)).Elem()
 }
-

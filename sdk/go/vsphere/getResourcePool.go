@@ -11,7 +11,7 @@ import (
 // The `.ResourcePool` data source can be used to discover the ID of a
 // resource pool in vSphere. This is useful to fetch the ID of a resource pool
 // that you want to use to create virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
 //
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 //
@@ -38,12 +38,10 @@ type LookupResourcePoolArgs struct {
 	Name *string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getResourcePool.
 type LookupResourcePoolResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
 }
-

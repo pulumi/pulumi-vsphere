@@ -168,4 +168,3 @@ type ComputeClusterVmAntiAffinityRuleArgs struct {
 func (ComputeClusterVmAntiAffinityRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmAntiAffinityRuleArgs)(nil)).Elem()
 }
-

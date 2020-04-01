@@ -694,4 +694,3 @@ type DistributedPortGroupArgs struct {
 func (DistributedPortGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedPortGroupArgs)(nil)).Elem()
 }
-

@@ -19,7 +19,7 @@ type VmfsDatastore struct {
 	Accessible pulumi.BoolOutput `pulumi:"accessible"`
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -97,7 +97,7 @@ type vmfsDatastoreState struct {
 	Accessible *bool `pulumi:"accessible"`
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity *int `pulumi:"capacity"`
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -142,7 +142,7 @@ type VmfsDatastoreState struct {
 	Accessible pulumi.BoolPtrInput
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntPtrInput
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -186,7 +186,7 @@ func (VmfsDatastoreState) ElementType() reflect.Type {
 }
 
 type vmfsDatastoreArgs struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -215,7 +215,7 @@ type vmfsDatastoreArgs struct {
 
 // The set of arguments for constructing a VmfsDatastore resource.
 type VmfsDatastoreArgs struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -245,4 +245,3 @@ type VmfsDatastoreArgs struct {
 func (VmfsDatastoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmfsDatastoreArgs)(nil)).Elem()
 }
-

@@ -32,7 +32,7 @@ type File struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrOutput `pulumi:"sourceDatastore"`
-	SourceFile pulumi.StringOutput `pulumi:"sourceFile"`
+	SourceFile      pulumi.StringOutput    `pulumi:"sourceFile"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ type fileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile *string `pulumi:"sourceFile"`
+	SourceFile      *string `pulumi:"sourceFile"`
 }
 
 type FileState struct {
@@ -112,7 +112,7 @@ type FileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile pulumi.StringPtrInput
+	SourceFile      pulumi.StringPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -138,7 +138,7 @@ type fileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile string `pulumi:"sourceFile"`
+	SourceFile      string  `pulumi:"sourceFile"`
 }
 
 // The set of arguments for constructing a File resource.
@@ -161,10 +161,9 @@ type FileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile pulumi.StringInput
+	SourceFile      pulumi.StringInput
 }
 
 func (FileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileArgs)(nil)).Elem()
 }
-

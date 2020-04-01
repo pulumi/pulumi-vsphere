@@ -453,4 +453,3 @@ type HaVmOverrideArgs struct {
 func (HaVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*haVmOverrideArgs)(nil)).Elem()
 }
-

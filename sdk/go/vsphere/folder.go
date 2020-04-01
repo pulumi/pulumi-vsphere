@@ -25,7 +25,7 @@ import (
 type Folder struct {
 	pulumi.CustomResourceState
 
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
@@ -79,7 +79,7 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -100,7 +100,7 @@ type folderState struct {
 }
 
 type FolderState struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes pulumi.StringMapInput
@@ -125,7 +125,7 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
@@ -147,7 +147,7 @@ type folderArgs struct {
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
 	CustomAttributes pulumi.StringMapInput
@@ -170,4 +170,3 @@ type FolderArgs struct {
 func (FolderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderArgs)(nil)).Elem()
 }
-

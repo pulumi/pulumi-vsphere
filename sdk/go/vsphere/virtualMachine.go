@@ -1351,4 +1351,3 @@ type VirtualMachineArgs struct {
 func (VirtualMachineArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineArgs)(nil)).Elem()
 }
-

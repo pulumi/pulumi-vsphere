@@ -11,7 +11,13 @@ namespace Pulumi.VSphere
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetTagCategory.InvokeAsync() instead")]
         public static Task<GetTagCategoryResult> GetTagCategory(GetTagCategoryArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTagCategory
+    {
+        public static Task<GetTagCategoryResult> InvokeAsync(GetTagCategoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

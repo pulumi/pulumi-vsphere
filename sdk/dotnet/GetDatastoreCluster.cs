@@ -26,7 +26,28 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDatastoreCluster.InvokeAsync() instead")]
         public static Task<GetDatastoreClusterResult> GetDatastoreCluster(GetDatastoreClusterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDatastoreCluster
+    {
+        /// <summary>
+        /// The `vsphere..DatastoreCluster` data source can be used to discover the ID of a
+        /// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
+        /// cluster that you want to use to assign datastores to using the
+        /// [`vsphere..NasDatastore`][docs-nas-datastore-resource] or
+        /// [`vsphere..VmfsDatastore`][docs-vmfs-datastore-resource] resources, or create
+        /// virtual machines in using the
+        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
+        /// 
+        /// [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
+        /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
+        /// </summary>
+        public static Task<GetDatastoreClusterResult> InvokeAsync(GetDatastoreClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

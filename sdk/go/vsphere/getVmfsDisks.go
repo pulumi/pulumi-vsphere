@@ -39,16 +39,14 @@ type GetVmfsDisksArgs struct {
 	Rescan *bool `pulumi:"rescan"`
 }
 
-
 // A collection of values returned by getVmfsDisks.
 type GetVmfsDisksResult struct {
 	// A lexicographically sorted list of devices discovered by the
 	// operation, matching the supplied `filter`, if provided.
-	Disks []string `pulumi:"disks"`
-	Filter *string `pulumi:"filter"`
-	HostSystemId string `pulumi:"hostSystemId"`
+	Disks        []string `pulumi:"disks"`
+	Filter       *string  `pulumi:"filter"`
+	HostSystemId string   `pulumi:"hostSystemId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Rescan *bool `pulumi:"rescan"`
+	Id     string `pulumi:"id"`
+	Rescan *bool  `pulumi:"rescan"`
 }
-

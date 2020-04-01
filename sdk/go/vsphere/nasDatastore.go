@@ -36,7 +36,7 @@ type NasDatastore struct {
 	Accessible pulumi.BoolOutput `pulumi:"accessible"`
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -135,7 +135,7 @@ type nasDatastoreState struct {
 	Accessible *bool `pulumi:"accessible"`
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity *int `pulumi:"capacity"`
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -198,7 +198,7 @@ type NasDatastoreState struct {
 	Accessible pulumi.BoolPtrInput
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntPtrInput
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -260,7 +260,7 @@ type nasDatastoreArgs struct {
 	// that the datastore will be read-write depending on the permissions of the
 	// actual share. Default: `readWrite`. Forces a new resource if changed.
 	AccessMode *string `pulumi:"accessMode"`
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -304,7 +304,7 @@ type NasDatastoreArgs struct {
 	// that the datastore will be read-write depending on the permissions of the
 	// actual share. Default: `readWrite`. Forces a new resource if changed.
 	AccessMode pulumi.StringPtrInput
-	// Map of custom attribute ids to attribute 
+	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -344,4 +344,3 @@ type NasDatastoreArgs struct {
 func (NasDatastoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nasDatastoreArgs)(nil)).Elem()
 }
-

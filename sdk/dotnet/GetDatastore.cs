@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDatastore.InvokeAsync() instead")]
         public static Task<GetDatastoreResult> GetDatastore(GetDatastoreArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDatastore
+    {
+        /// <summary>
+        /// The `vsphere..getDatastore` data source can be used to discover the ID of a
+        /// datastore in vSphere. This is useful to fetch the ID of a datastore that you
+        /// want to use to create virtual machines in using the
+        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
+        /// </summary>
+        public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

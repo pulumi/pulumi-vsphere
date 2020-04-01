@@ -14,7 +14,7 @@ import (
 // [`.NasDatastore`][docs-nas-datastore-resource] or
 // [`.VmfsDatastore`][docs-vmfs-datastore-resource] resources, or create
 // virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
 //
 // [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
 // [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
@@ -42,12 +42,10 @@ type LookupDatastoreClusterArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getDatastoreCluster.
 type LookupDatastoreClusterResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
-

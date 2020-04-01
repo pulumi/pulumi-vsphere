@@ -22,7 +22,24 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVirtualMachine.InvokeAsync() instead")]
         public static Task<GetVirtualMachineResult> GetVirtualMachine(GetVirtualMachineArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVirtualMachine
+    {
+        /// <summary>
+        /// The `vsphere..VirtualMachine` data source can be used to find the UUID of an
+        /// existing virtual machine or template. Its most relevant purpose is for finding
+        /// the UUID of a template to be used as the source for cloning into a new
+        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. It also
+        /// reads the guest ID so that can be supplied as well.
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
+        /// </summary>
+        public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

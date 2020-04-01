@@ -18,7 +18,20 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFolder.InvokeAsync() instead")]
         public static Task<GetFolderResult> GetFolder(GetFolderArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFolder
+    {
+        /// <summary>
+        /// The `vsphere..Folder` data source can be used to get the general attributes of a
+        /// vSphere inventory folder. Paths are absolute and include must include the
+        /// datacenter.  
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
+        /// </summary>
+        public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

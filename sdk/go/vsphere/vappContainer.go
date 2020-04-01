@@ -375,4 +375,3 @@ type VappContainerArgs struct {
 func (VappContainerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vappContainerArgs)(nil)).Elem()
 }
-

@@ -11,7 +11,13 @@ namespace Pulumi.VSphere
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetCustomAttribute.InvokeAsync() instead")]
         public static Task<GetCustomAttributeResult> GetCustomAttribute(GetCustomAttributeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCustomAttribute
+    {
+        public static Task<GetCustomAttributeResult> InvokeAsync(GetCustomAttributeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

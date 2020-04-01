@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
         /// </summary>
+        [Obsolete("Use GetPolicy.InvokeAsync() instead")]
         public static Task<GetPolicyResult> GetPolicy(GetPolicyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetPolicy
+    {
+        /// <summary>
+        /// The `vsphere..getPolicy` data source can be used to discover the UUID of a
+        /// vSphere storage policy. This can then be used with resources or data sources that
+        /// require a storage policy.
+        /// 
+        /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
+        /// </summary>
+        public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

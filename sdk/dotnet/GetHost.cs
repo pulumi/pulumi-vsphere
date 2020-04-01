@@ -18,7 +18,20 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
         /// </summary>
+        [Obsolete("Use GetHost.InvokeAsync() instead")]
         public static Task<GetHostResult> GetHost(GetHostArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetHost
+    {
+        /// <summary>
+        /// The `vsphere..Host` data source can be used to discover the ID of a vSphere
+        /// host. This can then be used with resources or data sources that require a host
+        /// managed object reference ID.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
+        /// </summary>
+        public static Task<GetHostResult> InvokeAsync(GetHostArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

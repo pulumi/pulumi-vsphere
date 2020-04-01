@@ -202,4 +202,3 @@ type ComputeClusterVmDependencyRuleArgs struct {
 func (ComputeClusterVmDependencyRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmDependencyRuleArgs)(nil)).Elem()
 }
-

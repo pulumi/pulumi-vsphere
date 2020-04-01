@@ -209,4 +209,3 @@ type ComputeClusterVmHostRuleArgs struct {
 func (ComputeClusterVmHostRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmHostRuleArgs)(nil)).Elem()
 }
-

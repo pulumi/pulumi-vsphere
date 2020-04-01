@@ -23,12 +23,10 @@ type LookupCustomAttributeArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getCustomAttribute.
 type LookupCustomAttributeResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                string `pulumi:"id"`
 	ManagedObjectType string `pulumi:"managedObjectType"`
-	Name string `pulumi:"name"`
+	Name              string `pulumi:"name"`
 }
-

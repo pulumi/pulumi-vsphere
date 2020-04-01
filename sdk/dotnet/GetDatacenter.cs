@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDatacenter.InvokeAsync() instead")]
         public static Task<GetDatacenterResult> GetDatacenter(GetDatacenterArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDatacenter
+    {
+        /// <summary>
+        /// The `vsphere..Datacenter` data source can be used to discover the ID of a
+        /// vSphere datacenter. This can then be used with resources or data sources that
+        /// require a datacenter, such as the [`vsphere..Host`][data-source-vsphere-host]
+        /// data source.
+        /// 
+        /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
+        /// </summary>
+        public static Task<GetDatacenterResult> InvokeAsync(GetDatacenterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `.ContentLibraryItem` resource can be used to create items in a Content Library. Each item can contain 
+// The `.ContentLibraryItem` resource can be used to create items in a Content Library. Each item can contain
 // multiple files. Each `fileUrl` must be accessible from the vSphere environment as it will be downloaded from the
 // specified location and stored on the Content Library's storage backing.
 //
@@ -127,4 +127,3 @@ type ContentLibraryItemArgs struct {
 func (ContentLibraryItemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentLibraryItemArgs)(nil)).Elem()
 }
-

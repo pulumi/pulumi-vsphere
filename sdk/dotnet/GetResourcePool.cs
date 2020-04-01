@@ -21,7 +21,23 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
         /// </summary>
+        [Obsolete("Use GetResourcePool.InvokeAsync() instead")]
         public static Task<GetResourcePoolResult> GetResourcePool(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetResourcePool
+    {
+        /// <summary>
+        /// The `vsphere..ResourcePool` data source can be used to discover the ID of a
+        /// resource pool in vSphere. This is useful to fetch the ID of a resource pool
+        /// that you want to use to create virtual machines in using the
+        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
+        /// 
+        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
+        /// </summary>
+        public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

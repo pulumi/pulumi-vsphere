@@ -350,4 +350,3 @@ type ResourcePoolArgs struct {
 func (ResourcePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcePoolArgs)(nil)).Elem()
 }
-

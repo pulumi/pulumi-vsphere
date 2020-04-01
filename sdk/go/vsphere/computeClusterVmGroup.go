@@ -139,4 +139,3 @@ type ComputeClusterVmGroupArgs struct {
 func (ComputeClusterVmGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmGroupArgs)(nil)).Elem()
 }
-

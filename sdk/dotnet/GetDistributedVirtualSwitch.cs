@@ -25,7 +25,27 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDistributedVirtualSwitch.InvokeAsync() instead")]
         public static Task<GetDistributedVirtualSwitchResult> GetDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDistributedVirtualSwitch
+    {
+        /// <summary>
+        /// The `vsphere..DistributedVirtualSwitch` data source can be used to discover
+        /// the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
+        /// can then be used with resources or data sources that require a DVS, such as the
+        /// [`vsphere..DistributedPortGroup`][distributed-port-group] resource, for which
+        /// an example is shown below.
+        /// 
+        /// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
+        /// 
+        /// &gt; **NOTE:** This data source requires vCenter and is not available on direct
+        /// ESXi connections.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
+        /// </summary>
+        public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

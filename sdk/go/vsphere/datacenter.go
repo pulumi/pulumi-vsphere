@@ -17,7 +17,7 @@ import (
 type Datacenter struct {
 	pulumi.CustomResourceState
 
-	// Map of custom attribute ids to value 
+	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -63,7 +63,7 @@ func GetDatacenter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Datacenter resources.
 type datacenterState struct {
-	// Map of custom attribute ids to value 
+	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -82,7 +82,7 @@ type datacenterState struct {
 }
 
 type DatacenterState struct {
-	// Map of custom attribute ids to value 
+	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -105,7 +105,7 @@ func (DatacenterState) ElementType() reflect.Type {
 }
 
 type datacenterArgs struct {
-	// Map of custom attribute ids to value 
+	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -123,7 +123,7 @@ type datacenterArgs struct {
 
 // The set of arguments for constructing a Datacenter resource.
 type DatacenterArgs struct {
-	// Map of custom attribute ids to value 
+	// Map of custom attribute ids to value
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
@@ -142,4 +142,3 @@ type DatacenterArgs struct {
 func (DatacenterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datacenterArgs)(nil)).Elem()
 }
-
