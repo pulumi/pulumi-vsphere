@@ -16,10 +16,10 @@ if [ "$(go env GOOS)" = "windows" ]; then
     BIN_SUFFIX=".exe"
 fi
 
-go build \
+(cd "${ROOT}/provider" && go build \
    -ldflags "-X github.com/pulumi/pulumi-vsphere/provider/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-vsphere${BIN_SUFFIX}" \
-   "${ROOT}/cmd/pulumi-resource-vsphere"
+   "${ROOT}/cmd/pulumi-resource-vsphere")
 
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .
