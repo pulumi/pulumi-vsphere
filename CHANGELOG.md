@@ -2,9 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+---
+## 1.8.0 (2020-04-01)
 * Update to pulumi-terraform-bridge v1.8.4
 * Switch to go mod layout
----
 
 ## 1.7.0 (2020-03-24)
 * Upgrade to v1.17.0 of the vSphere Terraform Provider
