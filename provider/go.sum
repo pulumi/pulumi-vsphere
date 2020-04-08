@@ -758,8 +758,8 @@ github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2a
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f h1:oqZwtMD9/XcOcCzm/9cz8+pQWRTGF60N1RNcYLg+BCw=
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f/go.mod h1:F4KE9YftuJyMiBth4W1kCrsyOHndtTjAmZ+ZzjqWY+4=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
-github.com/terraform-providers/terraform-provider-vsphere v1.17.0 h1:fvI6FzPDXaNtk5IUt0NabJRNFoiHCb7y4UFqYG4iUGA=
-github.com/terraform-providers/terraform-provider-vsphere v1.17.0/go.mod h1:yTPDOvhy5A/PX5z/sKq0FthWz1m38QKRW+P+SJDYbeo=
+github.com/terraform-providers/terraform-provider-vsphere v1.17.1 h1:6ZTbsgdEB+hhy7PTItz2Afik5lODfJmz/1Z8pH0H6Mo=
+github.com/terraform-providers/terraform-provider-vsphere v1.17.1/go.mod h1:yTPDOvhy5A/PX5z/sKq0FthWz1m38QKRW+P+SJDYbeo=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=

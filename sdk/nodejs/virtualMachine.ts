@@ -201,6 +201,13 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
     /**
+     * The hardware version number. Valid range
+     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
+     * more details.
+     */
+    public readonly hardwareVersion!: pulumi.Output<number>;
+    /**
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the
      * section on virtual machine migration for
@@ -490,6 +497,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["forcePowerOff"] = state ? state.forcePowerOff : undefined;
             inputs["guestId"] = state ? state.guestId : undefined;
             inputs["guestIpAddresses"] = state ? state.guestIpAddresses : undefined;
+            inputs["hardwareVersion"] = state ? state.hardwareVersion : undefined;
             inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
             inputs["hvMode"] = state ? state.hvMode : undefined;
             inputs["ignoredGuestIps"] = state ? state.ignoredGuestIps : undefined;
@@ -567,6 +575,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["folder"] = args ? args.folder : undefined;
             inputs["forcePowerOff"] = args ? args.forcePowerOff : undefined;
             inputs["guestId"] = args ? args.guestId : undefined;
+            inputs["hardwareVersion"] = args ? args.hardwareVersion : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
             inputs["hvMode"] = args ? args.hvMode : undefined;
             inputs["ignoredGuestIps"] = args ? args.ignoredGuestIps : undefined;
@@ -795,6 +804,13 @@ export interface VirtualMachineState {
      * virtual machine.
      */
     readonly guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The hardware version number. Valid range
+     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
+     * more details.
+     */
+    readonly hardwareVersion?: pulumi.Input<number>;
     /**
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the
@@ -1197,6 +1213,13 @@ export interface VirtualMachineArgs {
      * full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
      */
     readonly guestId?: pulumi.Input<string>;
+    /**
+     * The hardware version number. Valid range
+     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
+     * more details.
+     */
+    readonly hardwareVersion?: pulumi.Input<number>;
     /**
      * An optional [managed object reference
      * ID][docs-about-morefs] of a host to put this virtual machine on. See the

@@ -32,13 +32,19 @@ type GetNetworkArgs struct {
 	// datacenters, use the id attribute from an empty `.Datacenter` data
 	// source.
 	DatacenterId *string `pulumi:"datacenterId"`
+	// For distributed port group type
+	// network objects, the ID of the distributed virtual switch the given port group
+	// belongs to. It is useful to differentiate port groups with same name using the
+	// Distributed virtual switch ID.
+	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
 	// The name of the network. This can be a name or path.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getNetwork.
 type GetNetworkResult struct {
-	DatacenterId *string `pulumi:"datacenterId"`
+	DatacenterId                 *string `pulumi:"datacenterId"`
+	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`

@@ -13,10 +13,13 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, datacenter_id=None, id=None, name=None, type=None):
+    def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, id=None, name=None, type=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
+        if distributed_virtual_switch_uuid and not isinstance(distributed_virtual_switch_uuid, str):
+            raise TypeError("Expected argument 'distributed_virtual_switch_uuid' to be a str")
+        __self__.distributed_virtual_switch_uuid = distributed_virtual_switch_uuid
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -36,11 +39,12 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             yield self
         return GetNetworkResult(
             datacenter_id=self.datacenter_id,
+            distributed_virtual_switch_uuid=self.distributed_virtual_switch_uuid,
             id=self.id,
             name=self.name,
             type=self.type)
 
-def get_network(datacenter_id=None,name=None,opts=None):
+def get_network(datacenter_id=None,distributed_virtual_switch_uuid=None,name=None,opts=None):
     """
     The `.getNetwork` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
@@ -56,12 +60,17 @@ def get_network(datacenter_id=None,name=None,opts=None):
            be omitted if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `.Datacenter` data
            source.
+    :param str distributed_virtual_switch_uuid: For distributed port group type 
+           network objects, the ID of the distributed virtual switch the given port group
+           belongs to. It is useful to differentiate port groups with same name using the
+           Distributed virtual switch ID.
     :param str name: The name of the network. This can be a name or path.
     """
     __args__ = dict()
 
 
     __args__['datacenterId'] = datacenter_id
+    __args__['distributedVirtualSwitchUuid'] = distributed_virtual_switch_uuid
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -71,6 +80,7 @@ def get_network(datacenter_id=None,name=None,opts=None):
 
     return AwaitableGetNetworkResult(
         datacenter_id=__ret__.get('datacenterId'),
+        distributed_virtual_switch_uuid=__ret__.get('distributedVirtualSwitchUuid'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         type=__ret__.get('type'))

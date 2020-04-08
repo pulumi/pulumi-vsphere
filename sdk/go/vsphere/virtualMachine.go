@@ -121,6 +121,11 @@ type VirtualMachine struct {
 	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 	// virtual machine.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
+	// The hardware version number. Valid range
+	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+	// more details.
+	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
@@ -427,6 +432,11 @@ type virtualMachineState struct {
 	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 	// virtual machine.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
+	// The hardware version number. Valid range
+	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+	// more details.
+	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
@@ -700,6 +710,11 @@ type VirtualMachineState struct {
 	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
 	// virtual machine.
 	GuestIpAddresses pulumi.StringArrayInput
+	// The hardware version number. Valid range
+	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+	// more details.
+	HardwareVersion pulumi.IntPtrInput
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
@@ -965,6 +980,11 @@ type virtualMachineArgs struct {
 	// The guest ID for the operating system type. For a
 	// full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
 	GuestId *string `pulumi:"guestId"`
+	// The hardware version number. Valid range
+	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+	// more details.
+	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
@@ -1205,6 +1225,11 @@ type VirtualMachineArgs struct {
 	// The guest ID for the operating system type. For a
 	// full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
 	GuestId pulumi.StringPtrInput
+	// The hardware version number. Valid range
+	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+	// more details.
+	HardwareVersion pulumi.IntPtrInput
 	// An optional [managed object reference
 	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
