@@ -239,6 +239,15 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> GuestIpAddresses { get; private set; } = null!;
 
         /// <summary>
+        /// The hardware version number. Valid range
+        /// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+        /// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+        /// more details.
+        /// </summary>
+        [Output("hardwareVersion")]
+        public Output<int> HardwareVersion { get; private set; } = null!;
+
+        /// <summary>
         /// An optional [managed object reference
         /// ID][docs-about-morefs] of a host to put this virtual machine on. See the
         /// section on virtual machine migration for
@@ -837,6 +846,15 @@ namespace Pulumi.VSphere
         public Input<string>? GuestId { get; set; }
 
         /// <summary>
+        /// The hardware version number. Valid range
+        /// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+        /// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+        /// more details.
+        /// </summary>
+        [Input("hardwareVersion")]
+        public Input<int>? HardwareVersion { get; set; }
+
+        /// <summary>
         /// An optional [managed object reference
         /// ID][docs-about-morefs] of a host to put this virtual machine on. See the
         /// section on virtual machine migration for
@@ -1392,6 +1410,15 @@ namespace Pulumi.VSphere
             get => _guestIpAddresses ?? (_guestIpAddresses = new InputList<string>());
             set => _guestIpAddresses = value;
         }
+
+        /// <summary>
+        /// The hardware version number. Valid range
+        /// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+        /// machine hardware compatibility][virtual-machine-hardware-compatibility] for
+        /// more details.
+        /// </summary>
+        [Input("hardwareVersion")]
+        public Input<int>? HardwareVersion { get; set; }
 
         /// <summary>
         /// An optional [managed object reference

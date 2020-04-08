@@ -16,6 +16,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
     }
     const promise: Promise<GetNetworkResult> = pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,
+        "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
         "name": args.name,
     }, opts);
 
@@ -35,6 +36,13 @@ export interface GetNetworkArgs {
      */
     readonly datacenterId?: string;
     /**
+     * For distributed port group type 
+     * network objects, the ID of the distributed virtual switch the given port group
+     * belongs to. It is useful to differentiate port groups with same name using the
+     * Distributed virtual switch ID.
+     */
+    readonly distributedVirtualSwitchUuid?: string;
+    /**
      * The name of the network. This can be a name or path.
      */
     readonly name: string;
@@ -45,6 +53,7 @@ export interface GetNetworkArgs {
  */
 export interface GetNetworkResult {
     readonly datacenterId?: string;
+    readonly distributedVirtualSwitchUuid?: string;
     readonly name: string;
     readonly type: string;
     /**

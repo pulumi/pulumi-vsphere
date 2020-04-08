@@ -52,6 +52,15 @@ namespace Pulumi.VSphere
         public string? DatacenterId { get; set; }
 
         /// <summary>
+        /// For distributed port group type 
+        /// network objects, the ID of the distributed virtual switch the given port group
+        /// belongs to. It is useful to differentiate port groups with same name using the
+        /// Distributed virtual switch ID.
+        /// </summary>
+        [Input("distributedVirtualSwitchUuid")]
+        public string? DistributedVirtualSwitchUuid { get; set; }
+
+        /// <summary>
         /// The name of the network. This can be a name or path.
         /// </summary>
         [Input("name", required: true)]
@@ -66,6 +75,7 @@ namespace Pulumi.VSphere
     public sealed class GetNetworkResult
     {
         public readonly string? DatacenterId;
+        public readonly string? DistributedVirtualSwitchUuid;
         public readonly string Name;
         public readonly string Type;
         /// <summary>
@@ -76,11 +86,13 @@ namespace Pulumi.VSphere
         [OutputConstructor]
         private GetNetworkResult(
             string? datacenterId,
+            string? distributedVirtualSwitchUuid,
             string name,
             string type,
             string id)
         {
             DatacenterId = datacenterId;
+            DistributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
             Name = name;
             Type = type;
             Id = id;
