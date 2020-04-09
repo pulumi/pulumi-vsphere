@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-vsphere/sdk
+module github.com/pulumi/pulumi-vsphere/sdk/v2
 
 go 1.13
 
