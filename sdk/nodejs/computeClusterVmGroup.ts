@@ -29,13 +29,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below creates two virtual machines in a cluster using the
- * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
- * virtual machine in the cluster looked up by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source. It
- * then creates a group from these two virtual machines.
  * 
- * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

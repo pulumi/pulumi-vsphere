@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.DistributedPortGroup` resource can be used to manage vSphere
@@ -30,6 +30,8 @@ import (
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
 type DistributedPortGroup struct {

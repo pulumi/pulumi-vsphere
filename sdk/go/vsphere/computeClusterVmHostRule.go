@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ComputeClusterVmHostRule` resource can be used to manage
@@ -34,6 +34,8 @@ import (
 // connections.
 //
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
 type ComputeClusterVmHostRule struct {

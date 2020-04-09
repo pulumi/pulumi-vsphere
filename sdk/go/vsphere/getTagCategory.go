@@ -5,7 +5,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 func LookupTagCategory(ctx *pulumi.Context, args *LookupTagCategoryArgs, opts ...pulumi.InvokeOption) (*LookupTagCategoryResult, error) {

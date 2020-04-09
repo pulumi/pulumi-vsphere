@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.NasDatastore` resource can be used to create and manage NAS
@@ -21,6 +21,8 @@ import (
 // `hostSystemIds` argument.
 //
 // [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
 type NasDatastore struct {

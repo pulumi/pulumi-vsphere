@@ -22,23 +22,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below creates a virtual machine in a cluster using the
- * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
- * virtual machine in the cluster looked up by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
  * 
- * Considering a scenario where this virtual machine is of high value to the
- * application or organization for which it does its work, it's been determined in
- * the event of a host failure, that this should be one of the first virtual
- * machines to be started by vSphere HA during recovery. Hence, its
- * `haVmRestartPriority` as been set to `highest`,
- * which, assuming that the default restart priority is `medium` and no other
- * virtual machine has been assigned the `highest` priority, will mean that this
- * VM will be started before any other virtual machine in the event of host
- * failure.
- * 
- * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
- * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

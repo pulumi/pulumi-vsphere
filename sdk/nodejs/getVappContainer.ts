@@ -16,6 +16,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -31,7 +33,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
  */
-export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> & GetVappContainerResult {
+export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
     if (!opts) {
         opts = {}
     }
@@ -39,12 +41,10 @@ export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetVappContainerResult> = pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
+    return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

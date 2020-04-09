@@ -30,6 +30,8 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown.
     /// </summary>
     public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource

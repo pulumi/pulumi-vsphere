@@ -24,6 +24,8 @@ namespace Pulumi.VSphere
         /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
         /// </summary>
         [Obsolete("Use GetDatastoreCluster.InvokeAsync() instead")]
@@ -44,6 +46,8 @@ namespace Pulumi.VSphere
         /// [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
         /// [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
         /// </summary>

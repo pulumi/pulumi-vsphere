@@ -18,6 +18,8 @@ namespace Pulumi.VSphere
         /// that requires a network. This includes standard (host-based) port groups, DVS
         /// port groups, or opaque networks such as those managed by NSX.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
         /// </summary>
         [Obsolete("Use GetNetwork.InvokeAsync() instead")]
@@ -32,6 +34,8 @@ namespace Pulumi.VSphere
         /// network interface for `vsphere..VirtualMachine` or any other vSphere resource
         /// that requires a network. This includes standard (host-based) port groups, DVS
         /// port groups, or opaque networks such as those managed by NSX.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
         /// </summary>

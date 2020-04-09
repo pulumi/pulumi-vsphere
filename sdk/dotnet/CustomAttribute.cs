@@ -22,6 +22,7 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
     /// and require vCenter.
     /// 
+    /// 
     /// ## Managed Object Types
     /// 
     /// The following table will help you determine what value you need to enter for 

@@ -38,6 +38,8 @@ def get_folder(path=None,opts=None):
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
     """
     __args__ = dict()

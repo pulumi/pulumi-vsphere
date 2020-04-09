@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ContentLibraryItem` resource can be used to create items in a Content Library. Each item can contain
@@ -17,6 +17,8 @@ import (
 //
 // To make a `contentLibraryItem` a functioning template, the template must be in OVF format. The .ovf and .vmdk
 // file(s) can then be set as the `fileUrl` list.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/content_library_item.html.markdown.
 type ContentLibraryItem struct {

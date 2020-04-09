@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ContentLibrary` resource can be used to manage Content Libraries.
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/content_library.html.markdown.
 type ContentLibrary struct {

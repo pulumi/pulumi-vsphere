@@ -7,7 +7,7 @@ package vsphere
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.CustomAttribute` resource can be used to create and manage custom
@@ -21,6 +21,7 @@ import (
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi connections
 // and require vCenter.
+//
 //
 // ## Managed Object Types
 //

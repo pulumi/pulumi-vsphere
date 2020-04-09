@@ -25,6 +25,8 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/dpm_host_override.html.markdown.
     /// </summary>
     public partial class DpmHostOverride : Pulumi.CustomResource

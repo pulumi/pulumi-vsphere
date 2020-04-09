@@ -20,6 +20,8 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
         /// </summary>
         [Obsolete("Use GetVirtualMachine.InvokeAsync() instead")]
@@ -36,6 +38,8 @@ namespace Pulumi.VSphere
         /// reads the guest ID so that can be supplied as well.
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
         /// </summary>

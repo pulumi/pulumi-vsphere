@@ -19,6 +19,8 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
         /// </summary>
         [Obsolete("Use GetPolicy.InvokeAsync() instead")]
@@ -34,6 +36,8 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
         /// </summary>

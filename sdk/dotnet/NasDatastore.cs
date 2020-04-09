@@ -21,6 +21,8 @@ namespace Pulumi.VSphere
     /// 
     /// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
     /// </summary>
     public partial class NasDatastore : Pulumi.CustomResource

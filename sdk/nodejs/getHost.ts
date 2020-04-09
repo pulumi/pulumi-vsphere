@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
  */
-export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> & GetHostResult {
+export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
     if (!opts) {
         opts = {}
     }
@@ -36,12 +38,10 @@ export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetHostResult> = pulumi.runtime.invoke("vsphere:index/getHost:getHost", {
+    return pulumi.runtime.invoke("vsphere:index/getHost:getHost", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

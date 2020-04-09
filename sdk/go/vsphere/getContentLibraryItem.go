@@ -5,13 +5,15 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {

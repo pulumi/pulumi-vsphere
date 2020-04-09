@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.DpmHostOverride` resource can be used to add a DPM override to a
@@ -25,6 +25,8 @@ import (
 // connections.
 //
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/dpm_host_override.html.markdown.
 type DpmHostOverride struct {

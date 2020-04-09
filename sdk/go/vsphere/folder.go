@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.Folder` resource can be used to manage vSphere inventory folders.
@@ -20,6 +20,8 @@ import (
 // Subfolders are discovered by parsing the relative path specified in `path`, so
 // `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
 // as that folder exists.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
 type Folder struct {

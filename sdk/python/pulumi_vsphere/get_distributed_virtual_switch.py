@@ -53,6 +53,8 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     > **NOTE:** This data source requires vCenter and is not available on direct
     ESXi connections.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
 
 

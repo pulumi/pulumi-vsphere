@@ -19,6 +19,8 @@ namespace Pulumi.VSphere
         /// 
         /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
         /// </summary>
         [Obsolete("Use GetVmfsDisks.InvokeAsync() instead")]
@@ -34,6 +36,8 @@ namespace Pulumi.VSphere
         /// datastores based off a set of discovered disks.
         /// 
         /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
         /// </summary>

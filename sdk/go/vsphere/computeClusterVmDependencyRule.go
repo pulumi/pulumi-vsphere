@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ComputeClusterVmDependencyRule` resource can be used to manage
@@ -29,6 +29,8 @@ import (
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
 type ComputeClusterVmDependencyRule struct {

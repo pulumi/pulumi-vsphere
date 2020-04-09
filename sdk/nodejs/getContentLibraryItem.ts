@@ -11,10 +11,11 @@ import * as utilities from "./utilities";
  * 
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
  */
-export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> & GetContentLibraryItemResult {
+export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,12 +23,10 @@ export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetContentLibraryItemResult> = pulumi.runtime.invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
+    return pulumi.runtime.invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
         "libraryId": args.libraryId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -5,7 +5,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.Datacenter` data source can be used to discover the ID of a
@@ -14,6 +14,8 @@ import (
 // data source.
 //
 // [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
 func LookupDatacenter(ctx *pulumi.Context, args *LookupDatacenterArgs, opts ...pulumi.InvokeOption) (*LookupDatacenterResult, error) {

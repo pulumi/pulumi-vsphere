@@ -16,6 +16,8 @@ namespace Pulumi.VSphere
         /// vSphere inventory folder. Paths are absolute and include must include the
         /// datacenter.  
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
         /// </summary>
         [Obsolete("Use GetFolder.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.VSphere
         /// The `vsphere..Folder` data source can be used to get the general attributes of a
         /// vSphere inventory folder. Paths are absolute and include must include the
         /// datacenter.  
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
         /// </summary>

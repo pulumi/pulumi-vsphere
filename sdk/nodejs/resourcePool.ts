@@ -17,9 +17,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example sets up a resource pool in a compute cluster which uses
- * the default settings for CPU and memory reservations, shares, and limits. The
- * compute cluster needs to already exist in vSphere.  
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

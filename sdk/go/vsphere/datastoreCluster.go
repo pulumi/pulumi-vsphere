@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.DatastoreCluster` resource can be used to create and manage
@@ -25,6 +25,8 @@ import (
 // connections.
 //
 // > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
 type DatastoreCluster struct {

@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> & GetTagCategoryResult {
+export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,11 +14,9 @@ export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTagCategoryResult> = pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
+    return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

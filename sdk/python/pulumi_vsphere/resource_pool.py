@@ -103,6 +103,8 @@ class ResourcePool(pulumi.CustomResource):
 
         [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/resource_pool.html.markdown.
 
         :param str resource_name: The name of the resource.

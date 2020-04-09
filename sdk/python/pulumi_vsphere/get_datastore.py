@@ -45,6 +45,8 @@ def get_datastore(datacenter_id=None,name=None,opts=None):
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
 
 

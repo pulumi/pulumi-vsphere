@@ -5,7 +5,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.getVmfsDisks` data source can be used to discover the storage
@@ -14,6 +14,8 @@ import (
 // datastores based off a set of discovered disks.
 //
 // [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
 func GetVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs, opts ...pulumi.InvokeOption) (*GetVmfsDisksResult, error) {

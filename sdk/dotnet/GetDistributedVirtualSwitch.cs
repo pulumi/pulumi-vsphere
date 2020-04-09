@@ -23,6 +23,8 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** This data source requires vCenter and is not available on direct
         /// ESXi connections.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
         /// </summary>
         [Obsolete("Use GetDistributedVirtualSwitch.InvokeAsync() instead")]
@@ -42,6 +44,8 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** This data source requires vCenter and is not available on direct
         /// ESXi connections.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
         /// </summary>

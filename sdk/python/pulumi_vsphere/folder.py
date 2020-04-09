@@ -50,6 +50,8 @@ class Folder(pulumi.CustomResource):
         `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
         as that folder exists.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
 
         :param str resource_name: The name of the resource.

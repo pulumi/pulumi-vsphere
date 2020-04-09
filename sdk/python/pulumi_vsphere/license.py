@@ -38,6 +38,8 @@ class License(pulumi.CustomResource):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
 
         :param str resource_name: The name of the resource.

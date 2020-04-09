@@ -20,6 +20,8 @@ namespace Pulumi.VSphere
     /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
     /// as that folder exists.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
     /// </summary>
     public partial class Folder : Pulumi.CustomResource

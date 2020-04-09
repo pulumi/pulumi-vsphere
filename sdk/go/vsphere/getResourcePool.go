@@ -5,7 +5,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ResourcePool` data source can be used to discover the ID of a
@@ -14,6 +14,8 @@ import (
 // [`.VirtualMachine`][docs-virtual-machine-resource] resource.
 //
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {

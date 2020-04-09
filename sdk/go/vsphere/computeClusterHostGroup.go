@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.ComputeClusterHostGroup` resource can be used to manage groups
@@ -30,6 +30,8 @@ import (
 // connections.
 //
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
 type ComputeClusterHostGroup struct {

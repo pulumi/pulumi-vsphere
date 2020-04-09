@@ -17,9 +17,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The basic example below sets up a vApp container in a compute cluster which uses
- * the default settings for CPU and memory reservations, shares, and limits. The
- * compute cluster needs to already exist in vSphere.  
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,10 +40,6 @@ import * as utilities from "./utilities";
  * ```
  * 
  * ### Example with virtual machine
- * 
- * The below example builds off the basic example, but includes a virtual machine
- * in the new vApp container. To accomplish this, the `resourcePoolId` of the
- * virtual machine is set to the `id` of the vApp container.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -24,17 +24,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The following example creates a compute cluster comprised of three hosts,
- * making use of the
- * [`vsphere..ComputeCluster`][tf-vsphere-compute-cluster-resource] resource. DPM
- * will be disabled in the cluster as it is the default setting, but we override
- * the setting of the first host referenced by the
- * [`vsphere..Host`][tf-vsphere-host-data-source] data source (`esxi1`) by using
- * the `vsphere..DpmHostOverride` resource so it will be powered off when the
- * cluster does not need it to service virtual machines.
  * 
- * [tf-vsphere-compute-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
- * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -50,6 +50,8 @@ def get_host(datacenter_id=None,name=None,opts=None):
     host. This can then be used with resources or data sources that require a host
     managed object reference ID.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
 
 

@@ -129,6 +129,8 @@ class HaVmOverride(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
 
         :param str resource_name: The name of the resource.

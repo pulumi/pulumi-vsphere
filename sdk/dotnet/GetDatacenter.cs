@@ -19,6 +19,8 @@ namespace Pulumi.VSphere
         /// 
         /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
         /// </summary>
         [Obsolete("Use GetDatacenter.InvokeAsync() instead")]
@@ -34,6 +36,8 @@ namespace Pulumi.VSphere
         /// data source.
         /// 
         /// [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
         /// </summary>

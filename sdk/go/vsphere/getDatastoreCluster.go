@@ -5,7 +5,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.DatastoreCluster` data source can be used to discover the ID of a
@@ -19,6 +19,8 @@ import (
 // [docs-nas-datastore-resource]: /docs/providers/vsphere/r/nas_datastore.html
 // [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
 // [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
 func LookupDatastoreCluster(ctx *pulumi.Context, args *LookupDatastoreClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreClusterResult, error) {

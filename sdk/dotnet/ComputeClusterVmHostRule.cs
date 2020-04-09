@@ -34,6 +34,8 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
     /// </summary>
     public partial class ComputeClusterVmHostRule : Pulumi.CustomResource

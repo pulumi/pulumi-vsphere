@@ -65,6 +65,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
 
         :param str resource_name: The name of the resource.

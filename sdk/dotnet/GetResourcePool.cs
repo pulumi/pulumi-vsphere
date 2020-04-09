@@ -19,6 +19,8 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
         /// </summary>
         [Obsolete("Use GetResourcePool.InvokeAsync() instead")]
@@ -34,6 +36,8 @@ namespace Pulumi.VSphere
         /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
         /// </summary>

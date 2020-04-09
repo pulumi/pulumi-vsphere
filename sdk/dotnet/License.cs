@@ -12,6 +12,8 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere license resource. This can be used to add and remove license keys.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/license.html.markdown.
     /// </summary>
     public partial class License : Pulumi.CustomResource

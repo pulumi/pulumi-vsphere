@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.Tag` resource can be used to create and manage tags, which allow
@@ -21,6 +21,8 @@ import (
 //
 // > **NOTE:** Tagging support is unsupported on direct ESXi connections and
 // requires vCenter 6.0 or higher.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag.html.markdown.
 type Tag struct {

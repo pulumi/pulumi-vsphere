@@ -21,6 +21,8 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
     /// requires vCenter 6.0 or higher.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag.html.markdown.
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
