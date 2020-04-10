@@ -55,8 +55,6 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
-
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the DVS is located in. This can be

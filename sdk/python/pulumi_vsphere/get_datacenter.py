@@ -43,8 +43,6 @@ def get_datacenter(name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
-
 
     :param str name: The name of the datacenter. This can be a name or path.
            Can be omitted if there is only one datacenter in your inventory.

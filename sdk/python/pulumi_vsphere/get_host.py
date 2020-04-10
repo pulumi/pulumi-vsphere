@@ -52,8 +52,6 @@ def get_host(datacenter_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
-
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of a datacenter.

@@ -47,8 +47,6 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
-
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the resource pool is located in.

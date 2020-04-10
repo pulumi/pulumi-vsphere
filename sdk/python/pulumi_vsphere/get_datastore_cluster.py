@@ -52,8 +52,6 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
-
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the datastore cluster is located in.

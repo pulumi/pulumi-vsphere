@@ -124,8 +124,6 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
-
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the virtual machine is located in.

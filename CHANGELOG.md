@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.17.1 of the vSphere Terraform Provider
+* Update to pulumi-terraform-bridge v2.0.0-beta.1
+* Update to pulumi  v2.0.0-beta.3
 
 ---
 

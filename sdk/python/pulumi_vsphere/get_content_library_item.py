@@ -45,8 +45,6 @@ def get_content_library_item(library_id=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
-
 
     :param str library_id: The ID of the Content Library the item exists in.
     :param str name: The name of the Content Library.
