@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -25,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library.html.markdown.
  */
-export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> & GetContentLibraryResult {
+export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
     if (!opts) {
         opts = {}
     }
@@ -33,11 +35,9 @@ export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetContentLibraryResult> = pulumi.runtime.invoke("vsphere:index/getContentLibrary:getContentLibrary", {
+    return pulumi.runtime.invoke("vsphere:index/getContentLibrary:getContentLibrary", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

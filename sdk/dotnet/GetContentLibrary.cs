@@ -9,20 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..ContentLibrary` data source can be used to discover the ID of a Content Library.
-        /// 
-        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        /// connections.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetContentLibrary.InvokeAsync() instead")]
-        public static Task<GetContentLibraryResult> GetContentLibrary(GetContentLibraryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetContentLibrary
     {
         /// <summary>
@@ -31,11 +17,13 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
         /// connections.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryResult> InvokeAsync(GetContentLibraryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithVersion());
     }
+
 
     public sealed class GetContentLibraryArgs : Pulumi.InvokeArgs
     {
@@ -50,22 +38,24 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetContentLibraryResult
     {
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetContentLibraryResult(
-            string name,
-            string id)
+            string id,
+
+            string name)
         {
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

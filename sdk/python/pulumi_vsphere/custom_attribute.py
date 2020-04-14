@@ -35,6 +35,7 @@ class CustomAttribute(pulumi.CustomResource):
         > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
         and require vCenter.
 
+
         ## Managed Object Types
 
         The following table will help you determine what value you need to enter for 
@@ -60,8 +61,6 @@ class CustomAttribute(pulumi.CustomResource):
         <tr><td>vApps</td><td>`VirtualApp`</td></tr>
         <tr><td>Virtual Machines</td><td>`VirtualMachine`</td></tr>
         </table>
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

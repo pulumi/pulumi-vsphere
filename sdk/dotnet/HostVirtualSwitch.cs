@@ -20,8 +20,6 @@ namespace Pulumi.VSphere
     /// 
     /// [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_virtual_switch.html.markdown.
     /// </summary>
     public partial class HostVirtualSwitch : Pulumi.CustomResource
     {
@@ -188,7 +186,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HostVirtualSwitch(string name, HostVirtualSwitchArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", name, args ?? new HostVirtualSwitchArgs(), MakeResourceOptions(options, ""))
         {
         }
 

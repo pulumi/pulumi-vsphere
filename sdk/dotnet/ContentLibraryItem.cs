@@ -16,8 +16,6 @@ namespace Pulumi.VSphere
     /// 
     /// To make a `content_library_item` a functioning template, the template must be in OVF format. The .ovf and .vmdk
     /// file(s) can then be set as the `file_url` list.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/content_library_item.html.markdown.
     /// </summary>
     public partial class ContentLibraryItem : Pulumi.CustomResource
     {
@@ -60,7 +58,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ContentLibraryItem(string name, ContentLibraryItemArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/contentLibraryItem:ContentLibraryItem", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/contentLibraryItem:ContentLibraryItem", name, args ?? new ContentLibraryItemArgs(), MakeResourceOptions(options, ""))
         {
         }
 

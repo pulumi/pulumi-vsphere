@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> & GetNetworkResult {
+export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,13 +14,11 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNetworkResult> = pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
+    return pulumi.runtime.invoke("vsphere:index/getNetwork:getNetwork", {
         "datacenterId": args.datacenterId,
         "distributedVirtualSwitchUuid": args.distributedVirtualSwitchUuid,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

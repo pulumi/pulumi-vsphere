@@ -29,8 +29,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
     /// </summary>
     public partial class DistributedPortGroup : Pulumi.CustomResource
     {
@@ -41,8 +39,8 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> ActiveUplinks { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Output("allowForgedTransmits")]
         public Output<bool> AllowForgedTransmits { get; private set; } = null!;
@@ -54,8 +52,7 @@ namespace Pulumi.VSphere
         public Output<bool> AllowMacChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Output("allowPromiscuous")]
         public Output<bool> AllowPromiscuous { get; private set; } = null!;
@@ -168,8 +165,7 @@ namespace Pulumi.VSphere
         public Output<bool> IngressShapingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the
-        /// port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Output("ingressShapingPeakBandwidth")]
         public Output<int> IngressShapingPeakBandwidth { get; private set; } = null!;
@@ -311,8 +307,8 @@ namespace Pulumi.VSphere
         public Output<bool?> TrafficFilterOverrideAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the
-        /// regular packet forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Output("txUplink")]
         public Output<bool> TxUplink { get; private set; } = null!;
@@ -349,7 +345,7 @@ namespace Pulumi.VSphere
         /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
         [Output("vlanRanges")]
-        public Output<ImmutableArray<Outputs.DistributedPortGroupVlanRanges>> VlanRanges { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DistributedPortGroupVlanRange>> VlanRanges { get; private set; } = null!;
 
 
         /// <summary>
@@ -360,7 +356,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DistributedPortGroup(string name, DistributedPortGroupArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/distributedPortGroup:DistributedPortGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/distributedPortGroup:DistributedPortGroup", name, args ?? new DistributedPortGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -410,8 +406,8 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -423,8 +419,7 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
@@ -537,8 +532,7 @@ namespace Pulumi.VSphere
         public Input<bool>? IngressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the
-        /// port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingPeakBandwidth")]
         public Input<int>? IngressShapingPeakBandwidth { get; set; }
@@ -686,8 +680,8 @@ namespace Pulumi.VSphere
         public Input<bool>? TrafficFilterOverrideAllowed { get; set; }
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the
-        /// regular packet forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -721,14 +715,14 @@ namespace Pulumi.VSphere
         public Input<bool>? VlanOverrideAllowed { get; set; }
 
         [Input("vlanRanges")]
-        private InputList<Inputs.DistributedPortGroupVlanRangesArgs>? _vlanRanges;
+        private InputList<Inputs.DistributedPortGroupVlanRangeArgs>? _vlanRanges;
 
         /// <summary>
         /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
-        public InputList<Inputs.DistributedPortGroupVlanRangesArgs> VlanRanges
+        public InputList<Inputs.DistributedPortGroupVlanRangeArgs> VlanRanges
         {
-            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedPortGroupVlanRangesArgs>());
+            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedPortGroupVlanRangeArgs>());
             set => _vlanRanges = value;
         }
 
@@ -752,8 +746,8 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -765,8 +759,7 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
@@ -885,8 +878,7 @@ namespace Pulumi.VSphere
         public Input<bool>? IngressShapingEnabled { get; set; }
 
         /// <summary>
-        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the
-        /// port.
+        /// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
         [Input("ingressShapingPeakBandwidth")]
         public Input<int>? IngressShapingPeakBandwidth { get; set; }
@@ -1040,8 +1032,8 @@ namespace Pulumi.VSphere
         public Input<bool>? TrafficFilterOverrideAllowed { get; set; }
 
         /// <summary>
-        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the
-        /// regular packet forwarded done by the switch.
+        /// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+        /// forwarded done by the switch.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1075,69 +1067,19 @@ namespace Pulumi.VSphere
         public Input<bool>? VlanOverrideAllowed { get; set; }
 
         [Input("vlanRanges")]
-        private InputList<Inputs.DistributedPortGroupVlanRangesGetArgs>? _vlanRanges;
+        private InputList<Inputs.DistributedPortGroupVlanRangeGetArgs>? _vlanRanges;
 
         /// <summary>
         /// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         /// </summary>
-        public InputList<Inputs.DistributedPortGroupVlanRangesGetArgs> VlanRanges
+        public InputList<Inputs.DistributedPortGroupVlanRangeGetArgs> VlanRanges
         {
-            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedPortGroupVlanRangesGetArgs>());
+            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedPortGroupVlanRangeGetArgs>());
             set => _vlanRanges = value;
         }
 
         public DistributedPortGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DistributedPortGroupVlanRangesArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxVlan", required: true)]
-        public Input<int> MaxVlan { get; set; } = null!;
-
-        [Input("minVlan", required: true)]
-        public Input<int> MinVlan { get; set; } = null!;
-
-        public DistributedPortGroupVlanRangesArgs()
-        {
-        }
-    }
-
-    public sealed class DistributedPortGroupVlanRangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxVlan", required: true)]
-        public Input<int> MaxVlan { get; set; } = null!;
-
-        [Input("minVlan", required: true)]
-        public Input<int> MinVlan { get; set; } = null!;
-
-        public DistributedPortGroupVlanRangesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DistributedPortGroupVlanRanges
-    {
-        public readonly int MaxVlan;
-        public readonly int MinVlan;
-
-        [OutputConstructor]
-        private DistributedPortGroupVlanRanges(
-            int maxVlan,
-            int minVlan)
-        {
-            MaxVlan = maxVlan;
-            MinVlan = minVlan;
-        }
-    }
     }
 }

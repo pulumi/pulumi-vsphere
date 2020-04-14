@@ -57,7 +57,7 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
 
     [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
+
 
 
     :param str filter: A regular expression to filter the disks against. Only

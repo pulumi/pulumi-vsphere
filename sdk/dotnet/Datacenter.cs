@@ -12,8 +12,6 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere datacenter resource. This can be used as the primary
     /// container of inventory objects such as hosts and virtual machines.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
     /// </summary>
     public partial class Datacenter : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Datacenter(string name, DatacenterArgs? args = null, CustomResourceOptions? options = null)
-            : base("vsphere:index/datacenter:Datacenter", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/datacenter:Datacenter", name, args ?? new DatacenterArgs(), MakeResourceOptions(options, ""))
         {
         }
 

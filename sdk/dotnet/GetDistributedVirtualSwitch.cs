@@ -9,26 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..DistributedVirtualSwitch` data source can be used to discover
-        /// the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
-        /// can then be used with resources or data sources that require a DVS, such as the
-        /// [`vsphere..DistributedPortGroup`][distributed-port-group] resource, for which
-        /// an example is shown below.
-        /// 
-        /// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
-        /// 
-        /// &gt; **NOTE:** This data source requires vCenter and is not available on direct
-        /// ESXi connections.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDistributedVirtualSwitch.InvokeAsync() instead")]
-        public static Task<GetDistributedVirtualSwitchResult> GetDistributedVirtualSwitch(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDistributedVirtualSwitch
     {
         /// <summary>
@@ -43,11 +23,13 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** This data source requires vCenter and is not available on direct
         /// ESXi connections.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDistributedVirtualSwitchArgs : Pulumi.InvokeArgs
     {
@@ -73,28 +55,32 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetDistributedVirtualSwitchResult
     {
         public readonly string? DatacenterId;
-        public readonly string Name;
-        public readonly ImmutableArray<string> Uplinks;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
+        public readonly ImmutableArray<string> Uplinks;
 
         [OutputConstructor]
         private GetDistributedVirtualSwitchResult(
             string? datacenterId,
+
+            string id,
+
             string name,
-            ImmutableArray<string> uplinks,
-            string id)
+
+            ImmutableArray<string> uplinks)
         {
             DatacenterId = datacenterId;
+            Id = id;
             Name = name;
             Uplinks = uplinks;
-            Id = id;
         }
     }
 }

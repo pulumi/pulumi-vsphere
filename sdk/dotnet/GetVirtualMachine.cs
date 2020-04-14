@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. Its most relevant purpose is for finding
-        /// the UUID of a template to be used as the source for cloning into a new
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. It also
-        /// reads the guest ID so that can be supplied as well.
-        /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetVirtualMachine.InvokeAsync() instead")]
-        public static Task<GetVirtualMachineResult> GetVirtualMachine(GetVirtualMachineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVirtualMachine
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVirtualMachineArgs : Pulumi.InvokeArgs
     {
@@ -74,6 +59,7 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetVirtualMachineResult
     {
@@ -93,7 +79,7 @@ namespace Pulumi.VSphere
         /// Only the first number of controllers defined by `scsi_controller_scan_count`
         /// are scanned for disks. The sub-attributes are:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetVirtualMachineDisksResult> Disks;
+        public readonly ImmutableArray<Outputs.GetVirtualMachineDiskResult> Disks;
         /// <summary>
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
         /// </summary>
@@ -106,6 +92,10 @@ namespace Pulumi.VSphere
         /// A list of IP addresses as reported by VMWare tools.
         /// </summary>
         public readonly ImmutableArray<string> GuestIpAddresses;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         /// <summary>
         /// The network interface types for each network
@@ -128,25 +118,32 @@ namespace Pulumi.VSphere
         /// defined by `scsi_controller_scan_count` are scanned.
         /// </summary>
         public readonly string ScsiType;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetVirtualMachineResult(
             string alternateGuestName,
+
             string? datacenterId,
-            ImmutableArray<Outputs.GetVirtualMachineDisksResult> disks,
+
+            ImmutableArray<Outputs.GetVirtualMachineDiskResult> disks,
+
             string firmware,
+
             string guestId,
+
             ImmutableArray<string> guestIpAddresses,
+
+            string id,
+
             string name,
+
             ImmutableArray<string> networkInterfaceTypes,
+
             string scsiBusSharing,
+
             int? scsiControllerScanCount,
-            string scsiType,
-            string id)
+
+            string scsiType)
         {
             AlternateGuestName = alternateGuestName;
             DatacenterId = datacenterId;
@@ -154,44 +151,12 @@ namespace Pulumi.VSphere
             Firmware = firmware;
             GuestId = guestId;
             GuestIpAddresses = guestIpAddresses;
+            Id = id;
             Name = name;
             NetworkInterfaceTypes = networkInterfaceTypes;
             ScsiBusSharing = scsiBusSharing;
             ScsiControllerScanCount = scsiControllerScanCount;
             ScsiType = scsiType;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetVirtualMachineDisksResult
-    {
-        /// <summary>
-        /// Set to `true` if the disk has been eager zeroed.
-        /// </summary>
-        public readonly bool EagerlyScrub;
-        /// <summary>
-        /// The size of the disk, in GIB.
-        /// </summary>
-        public readonly int Size;
-        /// <summary>
-        /// Set to `true` if the disk has been thin provisioned.
-        /// </summary>
-        public readonly bool ThinProvisioned;
-
-        [OutputConstructor]
-        private GetVirtualMachineDisksResult(
-            bool eagerlyScrub,
-            int size,
-            bool thinProvisioned)
-        {
-            EagerlyScrub = eagerlyScrub;
-            Size = size;
-            ThinProvisioned = thinProvisioned;
-        }
-    }
     }
 }

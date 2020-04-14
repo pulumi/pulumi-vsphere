@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> & GetCustomAttributeResult {
+export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,11 +14,9 @@ export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCustomAttributeResult> = pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {
+    return pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

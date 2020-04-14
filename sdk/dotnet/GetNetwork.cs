@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..getNetwork` data source can be used to discover the ID of a network
-        /// in vSphere. This can be any network that can be used as the backing for a
-        /// network interface for `vsphere..VirtualMachine` or any other vSphere resource
-        /// that requires a network. This includes standard (host-based) port groups, DVS
-        /// port groups, or opaque networks such as those managed by NSX.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetwork.InvokeAsync() instead")]
-        public static Task<GetNetworkResult> GetNetwork(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetwork
     {
         /// <summary>
@@ -33,11 +18,13 @@ namespace Pulumi.VSphere
         /// that requires a network. This includes standard (host-based) port groups, DVS
         /// port groups, or opaque networks such as those managed by NSX.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/network.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworkArgs : Pulumi.InvokeArgs
     {
@@ -71,31 +58,36 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworkResult
     {
         public readonly string? DatacenterId;
         public readonly string? DistributedVirtualSwitchUuid;
-        public readonly string Name;
-        public readonly string Type;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
+        public readonly string Type;
 
         [OutputConstructor]
         private GetNetworkResult(
             string? datacenterId,
+
             string? distributedVirtualSwitchUuid,
+
+            string id,
+
             string name,
-            string type,
-            string id)
+
+            string type)
         {
             DatacenterId = datacenterId;
             DistributedVirtualSwitchUuid = distributedVirtualSwitchUuid;
+            Id = id;
             Name = name;
             Type = type;
-            Id = id;
         }
     }
 }

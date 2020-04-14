@@ -118,7 +118,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VmfsDatastore(string name, VmfsDatastoreArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/vmfsDatastore:VmfsDatastore", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/vmfsDatastore:VmfsDatastore", name, args ?? new VmfsDatastoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 

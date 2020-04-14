@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..getDatastore` data source can be used to discover the ID of a
-        /// datastore in vSphere. This is useful to fetch the ID of a datastore that you
-        /// want to use to create virtual machines in using the
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
-        /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDatastore.InvokeAsync() instead")]
-        public static Task<GetDatastoreResult> GetDatastore(GetDatastoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDatastore
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDatastoreArgs : Pulumi.InvokeArgs
     {
@@ -64,25 +50,28 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetDatastoreResult
     {
         public readonly string? DatacenterId;
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetDatastoreResult(
             string? datacenterId,
-            string name,
-            string id)
+
+            string id,
+
+            string name)
         {
             DatacenterId = datacenterId;
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

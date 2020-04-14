@@ -32,8 +32,6 @@ namespace Pulumi.VSphere
     /// 
     /// [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
     /// [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/virtual_machine_snapshot.html.markdown.
     /// </summary>
     public partial class VirtualMachineSnapshot : Pulumi.CustomResource
     {
@@ -94,7 +92,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VirtualMachineSnapshot(string name, VirtualMachineSnapshotArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, args ?? new VirtualMachineSnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
 

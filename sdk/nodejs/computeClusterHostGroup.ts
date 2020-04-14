@@ -27,13 +27,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below is the exact same configuration as the
- * [example][tf-vsphere-cluster-resource-example] in the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource, but in
- * addition, it creates a host group with the same hosts that get put into the
- * cluster.
  * 
- * [tf-vsphere-cluster-resource-example]: /docs/providers/vsphere/r/compute_cluster.html#example-usage
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

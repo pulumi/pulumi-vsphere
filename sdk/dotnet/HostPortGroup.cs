@@ -19,8 +19,6 @@ namespace Pulumi.VSphere
     /// 
     /// [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
     /// </summary>
     public partial class HostPortGroup : Pulumi.CustomResource
     {
@@ -31,8 +29,8 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> ActiveNics { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Output("allowForgedTransmits")]
         public Output<bool?> AllowForgedTransmits { get; private set; } = null!;
@@ -44,15 +42,14 @@ namespace Pulumi.VSphere
         public Output<bool?> AllowMacChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Output("allowPromiscuous")]
         public Output<bool?> AllowPromiscuous { get; private set; } = null!;
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link
-        /// status is used only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+        /// only.
         /// </summary>
         [Output("checkBeacon")]
         public Output<bool?> CheckBeacon { get; private set; } = null!;
@@ -165,7 +162,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HostPortGroup(string name, HostPortGroupArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/hostPortGroup:HostPortGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/hostPortGroup:HostPortGroup", name, args ?? new HostPortGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -215,8 +212,8 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -228,15 +225,14 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link
-        /// status is used only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+        /// only.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -346,8 +342,8 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC
-        /// address than that of its own.
+        /// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+        /// that of its own.
         /// </summary>
         [Input("allowForgedTransmits")]
         public Input<bool>? AllowForgedTransmits { get; set; }
@@ -359,15 +355,14 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowMacChanges { get; set; }
 
         /// <summary>
-        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given
-        /// port.
+        /// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
 
         /// <summary>
-        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link
-        /// status is used only.
+        /// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+        /// only.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -486,59 +481,5 @@ namespace Pulumi.VSphere
         public HostPortGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class HostPortGroupPortsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The key for this port group as returned from the vSphere API.
-        /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
-
-        [Input("macAddresses")]
-        private InputList<string>? _macAddresses;
-        public InputList<string> MacAddresses
-        {
-            get => _macAddresses ?? (_macAddresses = new InputList<string>());
-            set => _macAddresses = value;
-        }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public HostPortGroupPortsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class HostPortGroupPorts
-    {
-        /// <summary>
-        /// The key for this port group as returned from the vSphere API.
-        /// </summary>
-        public readonly string Key;
-        public readonly ImmutableArray<string> MacAddresses;
-        public readonly string Type;
-
-        [OutputConstructor]
-        private HostPortGroupPorts(
-            string key,
-            ImmutableArray<string> macAddresses,
-            string type)
-        {
-            Key = key;
-            MacAddresses = macAddresses;
-            Type = type;
-        }
-    }
     }
 }

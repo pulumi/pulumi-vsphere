@@ -29,10 +29,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The configuration below builds on the example given in the
- * [`vsphere..DistributedVirtualSwitch`][distributed-virtual-switch] resource by
- * adding the `vsphere..DistributedPortGroup` resource, attaching itself to the
- * DVS created here and assigning VLAN ID 1000.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,19 +96,6 @@ import * as utilities from "./utilities";
  * ```
  * 
  * ### Overriding DVS policies
- * 
- * All of the [default port policies][dvs-default-port-policies] available in the
- * `vsphere..DistributedVirtualSwitch` resource can be overridden on the port
- * group level by specifying new settings for them.
- * 
- * [dvs-default-port-policies]: /docs/providers/vsphere/r/distributed_virtual_switch.html#default-port-group-policy-arguments
- * 
- * As an example, we also take this example from the
- * `vsphere..DistributedVirtualSwitch` resource where we manually specify our
- * uplink count and uplink order. While the DVS has a default policy of using the
- * first uplink as an active uplink and the second one as a standby, the
- * overridden port group policy means that both uplinks will be used as active
- * uplinks in this specific port group.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

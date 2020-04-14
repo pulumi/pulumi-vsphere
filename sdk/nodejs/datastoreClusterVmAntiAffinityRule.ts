@@ -27,14 +27,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below creates two virtual machines in a cluster using the
- * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
- * virtual machines in the datastore cluster looked up by the
- * [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data
- * source. It then creates an anti-affinity rule for these two virtual machines,
- * ensuring they will run on different datastores whenever possible.
  * 
- * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

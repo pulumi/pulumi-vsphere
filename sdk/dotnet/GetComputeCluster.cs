@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetComputeCluster.InvokeAsync() instead")]
-        public static Task<GetComputeClusterResult> GetComputeCluster(GetComputeClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetComputeCluster
     {
         public static Task<GetComputeClusterResult> InvokeAsync(GetComputeClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterArgs(), options.WithVersion());
     }
+
 
     public sealed class GetComputeClusterArgs : Pulumi.InvokeArgs
     {
@@ -44,28 +39,32 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetComputeClusterResult
     {
         public readonly string? DatacenterId;
-        public readonly string Name;
-        public readonly string ResourcePoolId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
+        public readonly string ResourcePoolId;
 
         [OutputConstructor]
         private GetComputeClusterResult(
             string? datacenterId,
+
+            string id,
+
             string name,
-            string resourcePoolId,
-            string id)
+
+            string resourcePoolId)
         {
             DatacenterId = datacenterId;
+            Id = id;
             Name = name;
             ResourcePoolId = resourcePoolId;
-            Id = id;
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Pulumi.VSphere
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("vsphere");
-
         /// <summary>
         /// If set, VMware vSphere client will permit unverifiable SSL certificates.
         /// </summary>
@@ -66,8 +65,5 @@ namespace Pulumi.VSphere
         /// </summary>
         public static string? VsphereServer { get; set; } = __config.Get("vsphereServer") ?? Utilities.GetEnv("VSPHERE_SERVER");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

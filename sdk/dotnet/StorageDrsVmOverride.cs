@@ -20,8 +20,6 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-datastore-clusters].
     /// 
     /// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
     /// </summary>
     public partial class StorageDrsVmOverride : Pulumi.CustomResource
     {
@@ -76,7 +74,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StorageDrsVmOverride(string name, StorageDrsVmOverrideArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride", name, args ?? new StorageDrsVmOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 

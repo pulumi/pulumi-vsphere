@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..Folder` data source can be used to get the general attributes of a
-        /// vSphere inventory folder. Paths are absolute and include must include the
-        /// datacenter.  
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFolder.InvokeAsync() instead")]
-        public static Task<GetFolderResult> GetFolder(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFolder
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.VSphere
         /// vSphere inventory folder. Paths are absolute and include must include the
         /// datacenter.  
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFolderArgs : Pulumi.InvokeArgs
     {
@@ -45,22 +34,24 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetFolderResult
     {
-        public readonly string Path;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Path;
 
         [OutputConstructor]
         private GetFolderResult(
-            string path,
-            string id)
+            string id,
+
+            string path)
         {
-            Path = path;
             Id = id;
+            Path = path;
         }
     }
 }

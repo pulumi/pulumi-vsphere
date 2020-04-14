@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..VappContainer` data source can be used to discover the ID of a
-        /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
-        /// that you want to use to create virtual machines in using the
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
-        /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetVappContainer.InvokeAsync() instead")]
-        public static Task<GetVappContainerResult> GetVappContainer(GetVappContainerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVappContainer
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVappContainerResult> InvokeAsync(GetVappContainerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVappContainerArgs : Pulumi.InvokeArgs
     {
@@ -62,25 +48,28 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetVappContainerResult
     {
         public readonly string DatacenterId;
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetVappContainerResult(
             string datacenterId,
-            string name,
-            string id)
+
+            string id,
+
+            string name)
         {
             DatacenterId = datacenterId;
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

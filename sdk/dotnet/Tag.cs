@@ -20,8 +20,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
     /// requires vCenter 6.0 or higher.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/tag.html.markdown.
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
     {
@@ -54,7 +52,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tag(string name, TagArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/tag:Tag", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/tag:Tag", name, args ?? new TagArgs(), MakeResourceOptions(options, ""))
         {
         }
 

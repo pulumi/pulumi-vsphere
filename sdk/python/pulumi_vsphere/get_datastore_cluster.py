@@ -50,7 +50,7 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
+
 
 
     :param str datacenter_id: The [managed object reference

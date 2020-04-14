@@ -31,26 +31,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below creates a virtual machine in a cluster using the
- * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource in a cluster
- * looked up by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source]
- * data source. It then creates a group with this virtual machine. It also creates
- * a host group off of the host looked up via the
- * [`vsphere..Host`][tf-vsphere-host-data-source] data source. Finally, this
- * virtual machine is configured to run specifically on that host via a
- * `vsphere..ComputeClusterVmHostRule` resource.
  * 
- * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
- * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
- * 
- * > Note how `vmGroupName` and
- * `affinityHostGroupName` are sourced off of the
- * `name` attributes from the
- * [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource] and
- * [`vsphere..ComputeClusterHostGroup`][tf-vsphere-cluster-host-group-resource]
- * resources. This is to ensure that the rule is not created before the groups
- * exist, which may not possibly happen in the event that the names came from a
- * "static" source such as a variable.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

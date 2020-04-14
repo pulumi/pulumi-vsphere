@@ -20,21 +20,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below builds on the [Storage DRS
- * example][tf-vsphere-vm-storage-drs-example] in the `vsphere..VirtualMachine`
- * resource. However, rather than use the output of the
- * [`vsphere..DatastoreCluster` data
- * source][tf-vsphere-datastore-cluster-data-source] for the location of the
- * virtual machine, we instead get what is assumed to be a member datastore using
- * the [`vsphere..getDatastore` data source][tf-vsphere-datastore-data-source] and put
- * the virtual machine there instead. We then use the
- * `vsphere..StorageDrsVmOverride` resource to ensure that Storage DRS does not
- * apply to this virtual machine, and hence the VM will never be migrated off of
- * the datastore.
  * 
- * [tf-vsphere-vm-storage-drs-example]: /docs/providers/vsphere/r/virtual_machine.html#using-storage-drs
- * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
- * [tf-vsphere-datastore-data-source]: /docs/providers/vsphere/d/datastore.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -43,7 +43,7 @@ def get_content_library_item(library_id=None,name=None,opts=None):
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
+
 
 
     :param str library_id: The ID of the Content Library the item exists in.

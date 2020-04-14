@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetTag.InvokeAsync() instead")]
-        public static Task<GetTagResult> GetTag(GetTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTag
     {
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTagArgs : Pulumi.InvokeArgs
     {
@@ -40,28 +35,32 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetTagResult
     {
         public readonly string CategoryId;
         public readonly string Description;
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetTagResult(
             string categoryId,
+
             string description,
-            string name,
-            string id)
+
+            string id,
+
+            string name)
         {
             CategoryId = categoryId;
             Description = description;
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

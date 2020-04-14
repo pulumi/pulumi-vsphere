@@ -29,8 +29,6 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown.
     /// </summary>
     public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource
     {
@@ -77,7 +75,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatastoreClusterVmAntiAffinityRule(string name, DatastoreClusterVmAntiAffinityRuleArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule", name, args ?? new DatastoreClusterVmAntiAffinityRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

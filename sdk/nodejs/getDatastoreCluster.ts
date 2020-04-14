@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -36,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
  */
-export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> & GetDatastoreClusterResult {
+export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
     if (!opts) {
         opts = {}
     }
@@ -44,12 +46,10 @@ export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDatastoreClusterResult> = pulumi.runtime.invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", {
+    return pulumi.runtime.invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

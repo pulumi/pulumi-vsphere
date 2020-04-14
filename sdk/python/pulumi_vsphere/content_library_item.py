@@ -39,7 +39,7 @@ class ContentLibraryItem(pulumi.CustomResource):
         To make a `content_library_item` a functioning template, the template must be in OVF format. The .ovf and .vmdk
         file(s) can then be set as the `file_url` list.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/content_library_item.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..ResourcePool` data source can be used to discover the ID of a
-        /// resource pool in vSphere. This is useful to fetch the ID of a resource pool
-        /// that you want to use to create virtual machines in using the
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
-        /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetResourcePool.InvokeAsync() instead")]
-        public static Task<GetResourcePoolResult> GetResourcePool(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetResourcePool
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.VSphere
         /// 
         /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithVersion());
     }
+
 
     public sealed class GetResourcePoolArgs : Pulumi.InvokeArgs
     {
@@ -65,25 +51,28 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetResourcePoolResult
     {
         public readonly string? DatacenterId;
-        public readonly string? Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? Name;
 
         [OutputConstructor]
         private GetResourcePoolResult(
             string? datacenterId,
-            string? name,
-            string id)
+
+            string id,
+
+            string? name)
         {
             DatacenterId = datacenterId;
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

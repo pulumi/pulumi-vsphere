@@ -33,8 +33,6 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
     /// </summary>
     public partial class ComputeClusterVmHostRule : Pulumi.CustomResource
     {
@@ -98,7 +96,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ComputeClusterVmHostRule(string name, ComputeClusterVmHostRuleArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, args ?? new ComputeClusterVmHostRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

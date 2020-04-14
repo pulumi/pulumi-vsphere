@@ -20,8 +20,6 @@ namespace Pulumi.VSphere
     /// `host_system_ids` argument.
     /// 
     /// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
     /// </summary>
     public partial class NasDatastore : Pulumi.CustomResource
     {
@@ -170,7 +168,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NasDatastore(string name, NasDatastoreArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/nasDatastore:NasDatastore", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/nasDatastore:NasDatastore", name, args ?? new NasDatastoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 

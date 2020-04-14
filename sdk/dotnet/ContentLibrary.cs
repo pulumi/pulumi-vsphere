@@ -14,8 +14,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/content_library.html.markdown.
     /// </summary>
     public partial class ContentLibrary : Pulumi.CustomResource
     {
@@ -47,7 +45,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ContentLibrary(string name, ContentLibraryArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/contentLibrary:ContentLibrary", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/contentLibrary:ContentLibrary", name, args ?? new ContentLibraryArgs(), MakeResourceOptions(options, ""))
         {
         }
 

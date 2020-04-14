@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 // If set, VMware vSphere client will permit unverifiable SSL certificates.
@@ -14,10 +14,7 @@ func GetAllowUnverifiedSsl(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool)
 }
 
 // govmomi debug
@@ -26,10 +23,7 @@ func GetClientDebug(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_CLIENT_DEBUG").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "VSPHERE_CLIENT_DEBUG").(bool)
 }
 
 // govmomi debug path for debug
@@ -38,10 +32,7 @@ func GetClientDebugPath(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH").(string)
 }
 
 // govmomi debug path for a single run
@@ -50,10 +41,7 @@ func GetClientDebugPathRun(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string)
 }
 
 // The user password for vSphere API operations.
@@ -62,10 +50,7 @@ func GetPassword(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_PASSWORD").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_PASSWORD").(string)
 }
 
 // Persist vSphere client sessions to disk
@@ -74,10 +59,7 @@ func GetPersistSession(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool)
 }
 
 // The directory to save vSphere REST API sessions to
@@ -86,10 +68,7 @@ func GetRestSessionPath(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string)
 }
 
 // The user name for vSphere API operations.
@@ -98,12 +77,8 @@ func GetUser(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_USER").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_USER").(string)
 }
-
 func GetVcenterServer(ctx *pulumi.Context) string {
 	return config.Get(ctx, "vsphere:vcenterServer")
 }
@@ -114,10 +89,7 @@ func GetVimKeepAlive(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int)
 }
 
 // The directory to save vSphere SOAP API sessions to
@@ -126,10 +98,7 @@ func GetVimSessionPath(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string)
 }
 
 // The vSphere Server name for vSphere API operations.
@@ -138,8 +107,5 @@ func GetVsphereServer(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "VSPHERE_SERVER").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "VSPHERE_SERVER").(string)
 }

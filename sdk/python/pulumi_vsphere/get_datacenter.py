@@ -41,7 +41,7 @@ def get_datacenter(name=None,opts=None):
 
     [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datacenter.html.markdown.
+
 
 
     :param str name: The name of the datacenter. This can be a name or path.

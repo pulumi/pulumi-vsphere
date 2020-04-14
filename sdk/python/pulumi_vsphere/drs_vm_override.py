@@ -49,7 +49,7 @@ class DrsVmOverride(pulumi.CustomResource):
 
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/drs_vm_override.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

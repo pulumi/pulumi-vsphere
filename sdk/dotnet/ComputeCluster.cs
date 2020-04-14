@@ -104,8 +104,8 @@ namespace Pulumi.VSphere
         public Output<string?> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag
-        /// mainly exists for testing and is not recommended in normal use.
+        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+        /// for testing and is not recommended in normal use.
         /// </summary>
         [Output("forceEvacuateOnDestroy")]
         public Output<bool?> ForceEvacuateOnDestroy { get; private set; } = null!;
@@ -462,7 +462,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ComputeCluster(string name, ComputeClusterArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/computeCluster:ComputeCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/computeCluster:ComputeCluster", name, args ?? new ComputeClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -604,8 +604,8 @@ namespace Pulumi.VSphere
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag
-        /// mainly exists for testing and is not recommended in normal use.
+        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+        /// for testing and is not recommended in normal use.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
         public Input<bool>? ForceEvacuateOnDestroy { get; set; }
@@ -1095,8 +1095,8 @@ namespace Pulumi.VSphere
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag
-        /// mainly exists for testing and is not recommended in normal use.
+        /// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
+        /// for testing and is not recommended in normal use.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
         public Input<bool>? ForceEvacuateOnDestroy { get; set; }

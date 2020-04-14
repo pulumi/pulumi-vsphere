@@ -22,8 +22,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
     /// </summary>
     public partial class HaVmOverride : Pulumi.CustomResource
     {
@@ -170,7 +168,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HaVmOverride(string name, HaVmOverrideArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/haVmOverride:HaVmOverride", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/haVmOverride:HaVmOverride", name, args ?? new HaVmOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 

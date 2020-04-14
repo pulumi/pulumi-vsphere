@@ -24,20 +24,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below creates a virtual machine in a cluster using the
- * [`vsphere..VirtualMachine`][tf-vsphere-vm-resource] resource, creating the
- * virtual machine in the cluster looked up by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source, but also
- * pinning the VM to a host defined by the
- * [`vsphere..Host`][tf-vsphere-host-data-source] data source, which is assumed to
- * be a host within the cluster. To ensure that the VM stays on this host and does
- * not need to be migrated back at any point in time, an override is entered using
- * the `vsphere..DrsVmOverride` resource that disables DRS for this virtual
- * machine, ensuring that it does not move.
  * 
- * [tf-vsphere-vm-resource]: /docs/providers/vsphere/r/virtual_machine.html
- * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
- * [tf-vsphere-host-data-source]: /docs/providers/vsphere/d/host.html
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

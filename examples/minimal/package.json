@@ -8,12 +8,12 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "dev"
+        "@pulumi/pulumi": "2.0.0-beta.3"
     },
     "devDependencies": {
         "typescript": "^2.6.2"
     },
     "peerDependencies": {
-        "@pulumi/vsphere": "latest"
+        "@pulumi/vsphere": "dev"
     }
 }

@@ -16,6 +16,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
@@ -31,7 +33,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
  */
-export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> & GetDatastoreResult {
+export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
     if (!opts) {
         opts = {}
     }
@@ -39,12 +41,10 @@ export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDatastoreResult> = pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
+    return pulumi.runtime.invoke("vsphere:index/getDatastore:getDatastore", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

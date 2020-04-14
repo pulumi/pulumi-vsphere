@@ -69,8 +69,6 @@ class Host(pulumi.CustomResource):
         Provides a VMware vSphere host resource. This represents an ESXi host that
         can be used either as part of a Compute Cluster or Standalone.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should

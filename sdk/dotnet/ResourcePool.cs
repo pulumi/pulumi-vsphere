@@ -17,8 +17,6 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-resource_pools].
     /// 
     /// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/resource_pool.html.markdown.
     /// </summary>
     public partial class ResourcePool : Pulumi.CustomResource
     {
@@ -142,7 +140,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePool(string name, ResourcePoolArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/resourcePool:ResourcePool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/resourcePool:ResourcePool", name, args ?? new ResourcePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 

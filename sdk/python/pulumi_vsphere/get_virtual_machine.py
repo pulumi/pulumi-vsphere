@@ -122,7 +122,7 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
+
 
 
     :param str datacenter_id: The [managed object reference

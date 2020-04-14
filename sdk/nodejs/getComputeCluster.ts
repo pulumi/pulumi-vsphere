@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> & GetComputeClusterResult {
+export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,12 +14,10 @@ export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetComputeClusterResult> = pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {
+    return pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {
         "datacenterId": args.datacenterId,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

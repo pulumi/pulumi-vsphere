@@ -24,8 +24,6 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
     /// </summary>
     public partial class DatastoreCluster : Pulumi.CustomResource
     {
@@ -95,8 +93,8 @@ namespace Pulumi.VSphere
         public Output<int?> SdrsFreeSpaceThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when
-        /// set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+        /// freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Output("sdrsFreeSpaceThresholdMode")]
         public Output<string?> SdrsFreeSpaceThresholdMode { get; private set; } = null!;
@@ -197,8 +195,7 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsSpaceBalanceAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a
-        /// datastore.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Output("sdrsSpaceUtilizationThreshold")]
         public Output<int?> SdrsSpaceUtilizationThreshold { get; private set; } = null!;
@@ -226,7 +223,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatastoreCluster(string name, DatastoreClusterArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/datastoreCluster:DatastoreCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/datastoreCluster:DatastoreCluster", name, args ?? new DatastoreClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -341,8 +338,8 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when
-        /// set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+        /// freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
@@ -443,8 +440,7 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a
-        /// datastore.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }
@@ -554,8 +550,8 @@ namespace Pulumi.VSphere
         public Input<int>? SdrsFreeSpaceThreshold { get; set; }
 
         /// <summary>
-        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when
-        /// set to freeSpace, drs_free_space_threshold is used.
+        /// The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
+        /// freeSpace, drs_free_space_threshold is used.
         /// </summary>
         [Input("sdrsFreeSpaceThresholdMode")]
         public Input<string>? SdrsFreeSpaceThresholdMode { get; set; }
@@ -656,8 +652,7 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a
-        /// datastore.
+        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }

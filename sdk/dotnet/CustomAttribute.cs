@@ -22,6 +22,7 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
     /// and require vCenter.
     /// 
+    /// 
     /// ## Managed Object Types
     /// 
     /// The following table will help you determine what value you need to enter for 
@@ -47,8 +48,6 @@ namespace Pulumi.VSphere
     /// &lt;tr&gt;&lt;td&gt;vApps&lt;/td&gt;&lt;td&gt;`VirtualApp`&lt;/td&gt;&lt;/tr&gt;
     /// &lt;tr&gt;&lt;td&gt;Virtual Machines&lt;/td&gt;&lt;td&gt;`VirtualMachine`&lt;/td&gt;&lt;/tr&gt;
     /// &lt;/table&gt;
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/custom_attribute.html.markdown.
     /// </summary>
     public partial class CustomAttribute : Pulumi.CustomResource
     {
@@ -76,7 +75,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CustomAttribute(string name, CustomAttributeArgs? args = null, CustomResourceOptions? options = null)
-            : base("vsphere:index/customAttribute:CustomAttribute", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/customAttribute:CustomAttribute", name, args ?? new CustomAttributeArgs(), MakeResourceOptions(options, ""))
         {
         }
 

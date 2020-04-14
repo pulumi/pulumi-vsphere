@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..getVmfsDisks` data source can be used to discover the storage
-        /// devices available on an ESXi host. This data source can be combined with the
-        /// [`vsphere..VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
-        /// datastores based off a set of discovered disks.
-        /// 
-        /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetVmfsDisks.InvokeAsync() instead")]
-        public static Task<GetVmfsDisksResult> GetVmfsDisks(GetVmfsDisksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVmfsDisks
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.VSphere
         /// 
         /// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVmfsDisksArgs : Pulumi.InvokeArgs
     {
@@ -70,6 +56,7 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetVmfsDisksResult
     {
@@ -80,25 +67,29 @@ namespace Pulumi.VSphere
         public readonly ImmutableArray<string> Disks;
         public readonly string? Filter;
         public readonly string HostSystemId;
-        public readonly bool? Rescan;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? Rescan;
 
         [OutputConstructor]
         private GetVmfsDisksResult(
             ImmutableArray<string> disks,
+
             string? filter,
+
             string hostSystemId,
-            bool? rescan,
-            string id)
+
+            string id,
+
+            bool? rescan)
         {
             Disks = disks;
             Filter = filter;
             HostSystemId = hostSystemId;
-            Rescan = rescan;
             Id = id;
+            Rescan = rescan;
         }
     }
 }

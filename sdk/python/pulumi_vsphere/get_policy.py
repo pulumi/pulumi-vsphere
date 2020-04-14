@@ -41,7 +41,7 @@ def get_policy(name=None,opts=None):
     > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
     requires vCenter 6.0 or higher.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
+
 
 
     :param str name: The name of the storage policy.

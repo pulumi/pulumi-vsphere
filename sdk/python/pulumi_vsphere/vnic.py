@@ -60,8 +60,6 @@ class Vnic(pulumi.CustomResource):
         """
         Provides a VMware vSphere vnic resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to. 

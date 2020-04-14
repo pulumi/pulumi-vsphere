@@ -28,8 +28,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
     /// </summary>
     public partial class ComputeClusterVmDependencyRule : Pulumi.CustomResource
     {
@@ -88,7 +86,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ComputeClusterVmDependencyRule(string name, ComputeClusterVmDependencyRuleArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, args ?? new ComputeClusterVmDependencyRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

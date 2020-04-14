@@ -31,8 +31,6 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_virtual_switch.html.markdown.
     /// </summary>
     public partial class DistributedVirtualSwitch : Pulumi.CustomResource
     {
@@ -226,7 +224,7 @@ namespace Pulumi.VSphere
         /// options are:
         /// </summary>
         [Output("hosts")]
-        public Output<ImmutableArray<Outputs.DistributedVirtualSwitchHosts>> Hosts { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DistributedVirtualSwitchHost>> Hosts { get; private set; } = null!;
 
         /// <summary>
         /// The average bandwidth in
@@ -592,7 +590,7 @@ namespace Pulumi.VSphere
         /// below:
         /// </summary>
         [Output("vlanRanges")]
-        public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRanges>> VlanRanges { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
 
         /// <summary>
         /// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
@@ -651,7 +649,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DistributedVirtualSwitch(string name, DistributedVirtualSwitchArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args ?? new DistributedVirtualSwitchArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -880,15 +878,15 @@ namespace Pulumi.VSphere
         public Input<string>? HbrShareLevel { get; set; }
 
         [Input("hosts")]
-        private InputList<Inputs.DistributedVirtualSwitchHostsArgs>? _hosts;
+        private InputList<Inputs.DistributedVirtualSwitchHostArgs>? _hosts;
 
         /// <summary>
         /// Use the `host` block to declare a host specification. The
         /// options are:
         /// </summary>
-        public InputList<Inputs.DistributedVirtualSwitchHostsArgs> Hosts
+        public InputList<Inputs.DistributedVirtualSwitchHostArgs> Hosts
         {
-            get => _hosts ?? (_hosts = new InputList<Inputs.DistributedVirtualSwitchHostsArgs>());
+            get => _hosts ?? (_hosts = new InputList<Inputs.DistributedVirtualSwitchHostArgs>());
             set => _hosts = value;
         }
 
@@ -1268,7 +1266,7 @@ namespace Pulumi.VSphere
         public Input<int>? VlanId { get; set; }
 
         [Input("vlanRanges")]
-        private InputList<Inputs.DistributedVirtualSwitchVlanRangesArgs>? _vlanRanges;
+        private InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs>? _vlanRanges;
 
         /// <summary>
         /// Used to denote VLAN trunking. Use the `min_vlan`
@@ -1276,9 +1274,9 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// </summary>
-        public InputList<Inputs.DistributedVirtualSwitchVlanRangesArgs> VlanRanges
+        public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
-            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedVirtualSwitchVlanRangesArgs>());
+            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs>());
             set => _vlanRanges = value;
         }
 
@@ -1535,15 +1533,15 @@ namespace Pulumi.VSphere
         public Input<string>? HbrShareLevel { get; set; }
 
         [Input("hosts")]
-        private InputList<Inputs.DistributedVirtualSwitchHostsGetArgs>? _hosts;
+        private InputList<Inputs.DistributedVirtualSwitchHostGetArgs>? _hosts;
 
         /// <summary>
         /// Use the `host` block to declare a host specification. The
         /// options are:
         /// </summary>
-        public InputList<Inputs.DistributedVirtualSwitchHostsGetArgs> Hosts
+        public InputList<Inputs.DistributedVirtualSwitchHostGetArgs> Hosts
         {
-            get => _hosts ?? (_hosts = new InputList<Inputs.DistributedVirtualSwitchHostsGetArgs>());
+            get => _hosts ?? (_hosts = new InputList<Inputs.DistributedVirtualSwitchHostGetArgs>());
             set => _hosts = value;
         }
 
@@ -1923,7 +1921,7 @@ namespace Pulumi.VSphere
         public Input<int>? VlanId { get; set; }
 
         [Input("vlanRanges")]
-        private InputList<Inputs.DistributedVirtualSwitchVlanRangesGetArgs>? _vlanRanges;
+        private InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs>? _vlanRanges;
 
         /// <summary>
         /// Used to denote VLAN trunking. Use the `min_vlan`
@@ -1931,9 +1929,9 @@ namespace Pulumi.VSphere
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
         /// </summary>
-        public InputList<Inputs.DistributedVirtualSwitchVlanRangesGetArgs> VlanRanges
+        public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {
-            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedVirtualSwitchVlanRangesGetArgs>());
+            get => _vlanRanges ?? (_vlanRanges = new InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs>());
             set => _vlanRanges = value;
         }
 
@@ -1988,133 +1986,5 @@ namespace Pulumi.VSphere
         public DistributedVirtualSwitchState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DistributedVirtualSwitchHostsArgs : Pulumi.ResourceArgs
-    {
-        [Input("devices", required: true)]
-        private InputList<string>? _devices;
-
-        /// <summary>
-        /// The list of NIC devices to map to uplinks on the DVS,
-        /// added in order they are specified.
-        /// </summary>
-        public InputList<string> Devices
-        {
-            get => _devices ?? (_devices = new InputList<string>());
-            set => _devices = value;
-        }
-
-        /// <summary>
-        /// The host system ID of the host to add to the
-        /// DVS.
-        /// </summary>
-        [Input("hostSystemId", required: true)]
-        public Input<string> HostSystemId { get; set; } = null!;
-
-        public DistributedVirtualSwitchHostsArgs()
-        {
-        }
-    }
-
-    public sealed class DistributedVirtualSwitchHostsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("devices", required: true)]
-        private InputList<string>? _devices;
-
-        /// <summary>
-        /// The list of NIC devices to map to uplinks on the DVS,
-        /// added in order they are specified.
-        /// </summary>
-        public InputList<string> Devices
-        {
-            get => _devices ?? (_devices = new InputList<string>());
-            set => _devices = value;
-        }
-
-        /// <summary>
-        /// The host system ID of the host to add to the
-        /// DVS.
-        /// </summary>
-        [Input("hostSystemId", required: true)]
-        public Input<string> HostSystemId { get; set; } = null!;
-
-        public DistributedVirtualSwitchHostsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DistributedVirtualSwitchVlanRangesArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxVlan", required: true)]
-        public Input<int> MaxVlan { get; set; } = null!;
-
-        [Input("minVlan", required: true)]
-        public Input<int> MinVlan { get; set; } = null!;
-
-        public DistributedVirtualSwitchVlanRangesArgs()
-        {
-        }
-    }
-
-    public sealed class DistributedVirtualSwitchVlanRangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxVlan", required: true)]
-        public Input<int> MaxVlan { get; set; } = null!;
-
-        [Input("minVlan", required: true)]
-        public Input<int> MinVlan { get; set; } = null!;
-
-        public DistributedVirtualSwitchVlanRangesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DistributedVirtualSwitchHosts
-    {
-        /// <summary>
-        /// The list of NIC devices to map to uplinks on the DVS,
-        /// added in order they are specified.
-        /// </summary>
-        public readonly ImmutableArray<string> Devices;
-        /// <summary>
-        /// The host system ID of the host to add to the
-        /// DVS.
-        /// </summary>
-        public readonly string HostSystemId;
-
-        [OutputConstructor]
-        private DistributedVirtualSwitchHosts(
-            ImmutableArray<string> devices,
-            string hostSystemId)
-        {
-            Devices = devices;
-            HostSystemId = hostSystemId;
-        }
-    }
-
-    [OutputType]
-    public sealed class DistributedVirtualSwitchVlanRanges
-    {
-        public readonly int MaxVlan;
-        public readonly int MinVlan;
-
-        [OutputConstructor]
-        private DistributedVirtualSwitchVlanRanges(
-            int maxVlan,
-            int minVlan)
-        {
-            MaxVlan = maxVlan;
-            MinVlan = minVlan;
-        }
-    }
     }
 }

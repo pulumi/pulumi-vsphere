@@ -19,8 +19,6 @@ namespace Pulumi.VSphere
     /// Subfolders are discovered by parsing the relative path specified in `path`, so
     /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
     /// as that folder exists.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
     /// </summary>
     public partial class Folder : Pulumi.CustomResource
     {
@@ -71,7 +69,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/folder:Folder", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/folder:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

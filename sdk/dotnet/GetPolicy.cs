@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..getPolicy` data source can be used to discover the UUID of a
-        /// vSphere storage policy. This can then be used with resources or data sources that
-        /// require a storage policy.
-        /// 
-        /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetPolicy.InvokeAsync() instead")]
-        public static Task<GetPolicyResult> GetPolicy(GetPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPolicy
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.VSphere
         /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
         /// requires vCenter 6.0 or higher.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPolicyArgs : Pulumi.InvokeArgs
     {
@@ -54,22 +40,24 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetPolicyResult
     {
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetPolicyResult(
-            string name,
-            string id)
+            string id,
+
+            string name)
         {
-            Name = name;
             Id = id;
+            Name = name;
         }
     }
 }

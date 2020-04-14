@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `vsphere..Host` data source can be used to discover the ID of a vSphere
-        /// host. This can then be used with resources or data sources that require a host
-        /// managed object reference ID.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetHost.InvokeAsync() instead")]
-        public static Task<GetHostResult> GetHost(GetHostArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetHost
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.VSphere
         /// host. This can then be used with resources or data sources that require a host
         /// managed object reference ID.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/host.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostResult> InvokeAsync(GetHostArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostArgs(), options.WithVersion());
     }
+
 
     public sealed class GetHostArgs : Pulumi.InvokeArgs
     {
@@ -56,32 +45,36 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetHostResult
     {
         public readonly string DatacenterId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Name;
         /// <summary>
         /// The [managed object ID][docs-about-morefs] of the host's
         /// root resource pool.
         /// </summary>
         public readonly string ResourcePoolId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetHostResult(
             string datacenterId,
+
+            string id,
+
             string? name,
-            string resourcePoolId,
-            string id)
+
+            string resourcePoolId)
         {
             DatacenterId = datacenterId;
+            Id = id;
             Name = name;
             ResourcePoolId = resourcePoolId;
-            Id = id;
         }
     }
 }

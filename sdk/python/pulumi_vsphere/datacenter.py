@@ -41,8 +41,6 @@ class Datacenter(pulumi.CustomResource):
         Provides a VMware vSphere datacenter resource. This can be used as the primary
         container of inventory objects such as hosts and virtual machines.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to value 

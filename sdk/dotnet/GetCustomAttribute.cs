@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetCustomAttribute.InvokeAsync() instead")]
-        public static Task<GetCustomAttributeResult> GetCustomAttribute(GetCustomAttributeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCustomAttribute
     {
         public static Task<GetCustomAttributeResult> InvokeAsync(GetCustomAttributeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCustomAttributeArgs : Pulumi.InvokeArgs
     {
@@ -34,25 +29,28 @@ namespace Pulumi.VSphere
         }
     }
 
+
     [OutputType]
     public sealed class GetCustomAttributeResult
     {
-        public readonly string ManagedObjectType;
-        public readonly string Name;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string ManagedObjectType;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetCustomAttributeResult(
+            string id,
+
             string managedObjectType,
-            string name,
-            string id)
+
+            string name)
         {
+            Id = id;
             ManagedObjectType = managedObjectType;
             Name = name;
-            Id = id;
         }
     }
 }

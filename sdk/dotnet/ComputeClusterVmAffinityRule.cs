@@ -36,8 +36,6 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown.
     /// </summary>
     public partial class ComputeClusterVmAffinityRule : Pulumi.CustomResource
     {
@@ -84,7 +82,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ComputeClusterVmAffinityRule(string name, ComputeClusterVmAffinityRuleArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule", name, args ?? new ComputeClusterVmAffinityRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

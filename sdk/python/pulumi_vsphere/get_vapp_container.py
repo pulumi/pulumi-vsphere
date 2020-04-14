@@ -45,7 +45,7 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vapp_container.html.markdown.
+
 
 
     :param str datacenter_id: The [managed object reference

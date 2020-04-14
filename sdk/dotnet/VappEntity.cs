@@ -17,8 +17,6 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-vapp].
     /// 
     /// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_entity.html.markdown.
     /// </summary>
     public partial class VappEntity : Pulumi.CustomResource
     {
@@ -102,7 +100,7 @@ namespace Pulumi.VSphere
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VappEntity(string name, VappEntityArgs args, CustomResourceOptions? options = null)
-            : base("vsphere:index/vappEntity:VappEntity", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("vsphere:index/vappEntity:VappEntity", name, args ?? new VappEntityArgs(), MakeResourceOptions(options, ""))
         {
         }
 
