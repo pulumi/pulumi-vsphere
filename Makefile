@@ -47,7 +47,7 @@ build:: provider
 
 provider:: generate_schema
 	cd provider && go generate cmd/${PROVIDER}/main.go
-	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provide/v2/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${PROVIDER}
+	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/v2/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${PROVIDER}
 
 generate_schema:: tfgen
 	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
