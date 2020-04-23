@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.17.3 of the vSphere Terraform Provider
+_(none)_
 
 ---
+
+## 2.1.1 (2020-04-24)
+* Upgrade to v1.17.3 of the vSphere Terraform Provider
 
 ## 2.1.0 (2020-04-20)
 * Upgrade to v1.17.2 of the vSphere Terraform Provider
