@@ -12,7 +12,7 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell scripts/get-py-version)
 
-PROVIDER_LATEST_SHA := $(shell curl -q -s https://api.github.com/repos/${PROVIDER_ORG}/terraform-provider-${PACK}/tags | jq -r '.[0].commit.sha')
+PROVIDER_LATEST_SHA := $(shell scripts/get-tfprovider-sha ${PACK})
 
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
