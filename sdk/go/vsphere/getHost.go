@@ -32,7 +32,7 @@ type LookupHostArgs struct {
 // A collection of values returned by getHost.
 type LookupHostResult struct {
 	DatacenterId string `pulumi:"datacenterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
 	// The [managed object ID][docs-about-morefs] of the host's

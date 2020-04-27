@@ -31,7 +31,7 @@ type LookupComputeClusterArgs struct {
 // A collection of values returned by getComputeCluster.
 type LookupComputeClusterResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id             string `pulumi:"id"`
 	Name           string `pulumi:"name"`
 	ResourcePoolId string `pulumi:"resourcePoolId"`
