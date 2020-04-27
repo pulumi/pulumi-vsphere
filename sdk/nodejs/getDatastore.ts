@@ -22,13 +22,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * });
- * const datastore = vsphere.getDatastore({
+ * }, { async: true }));
+ * const datastore = datacenter.apply(datacenter => vsphere.getDatastore({
  *     datacenterId: datacenter.id,
  *     name: "datastore1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.

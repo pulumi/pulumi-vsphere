@@ -22,9 +22,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const policy = vsphere.getPolicy({
+ * const policy = pulumi.output(vsphere.getPolicy({
  *     name: "policy1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.

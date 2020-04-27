@@ -22,13 +22,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * });
- * const pool = vsphere.getResourcePool({
+ * }, { async: true }));
+ * const pool = datacenter.apply(datacenter => vsphere.getResourcePool({
  *     datacenterId: datacenter.id,
  *     name: "resource-pool-1",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ### Specifying the root resource pool for a standalone host
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * const pool = vsphere_datacenter_dc.id.apply(id => vsphere.getResourcePool({
  *     datacenterId: id,
  *     name: "esxi1/Resources",
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
