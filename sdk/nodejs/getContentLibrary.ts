@@ -20,9 +20,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const library = vsphere.getContentLibrary({
+ * const library = pulumi.output(vsphere.getContentLibrary({
  *     name: "Content Library Test",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library.html.markdown.
@@ -56,7 +56,7 @@ export interface GetContentLibraryArgs {
 export interface GetContentLibraryResult {
     readonly name: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

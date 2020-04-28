@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const folder = vsphere.getFolder({
+ * const folder = pulumi.output(vsphere.getFolder({
  *     path: "/dc1/datastore/folder1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/folder.html.markdown.
@@ -52,7 +52,7 @@ export interface GetFolderArgs {
 export interface GetFolderResult {
     readonly path: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

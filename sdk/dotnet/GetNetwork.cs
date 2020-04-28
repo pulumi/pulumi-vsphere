@@ -65,7 +65,7 @@ namespace Pulumi.VSphere
         public readonly string? DatacenterId;
         public readonly string? DistributedVirtualSwitchUuid;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;

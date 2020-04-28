@@ -42,7 +42,7 @@ type GetNetworkArgs struct {
 type GetNetworkResult struct {
 	DatacenterId                 *string `pulumi:"datacenterId"`
 	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	Type string `pulumi:"type"`

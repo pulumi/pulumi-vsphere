@@ -48,15 +48,15 @@ import * as utilities from "./utilities";
  *     "vmnic3",
  * ];
  * 
- * const dc = vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * });
- * const host: vsphere.GetHostResult[] = [];
+ * }, { async: true }));
+ * const host: pulumi.Output<vsphere.GetHostResult>[] = [];
  * for (let i = 0; i < esxiHosts.length; i++) {
- *     host.push(vsphere.getHost({
+ *     host.push(dc.apply(dc => vsphere.getHost({
  *         datacenterId: dc.id,
  *         name: esxiHosts[i],
- *     }));
+ *     }, { async: true })));
  * }
  * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
  *     activeUplinks: [

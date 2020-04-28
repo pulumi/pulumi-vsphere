@@ -43,7 +43,7 @@ type GetVmfsDisksResult struct {
 	Disks        []string `pulumi:"disks"`
 	Filter       *string  `pulumi:"filter"`
 	HostSystemId string   `pulumi:"hostSystemId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id     string `pulumi:"id"`
 	Rescan *bool  `pulumi:"rescan"`
 }

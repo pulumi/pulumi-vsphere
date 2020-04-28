@@ -42,7 +42,7 @@ type LookupDatastoreClusterArgs struct {
 // A collection of values returned by getDatastoreCluster.
 type LookupDatastoreClusterResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }

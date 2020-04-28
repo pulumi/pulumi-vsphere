@@ -22,18 +22,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  * 
- * const datacenter = vsphere.getDatacenter({
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * });
- * const host = vsphere.getHost({
+ * }, { async: true }));
+ * const host = datacenter.apply(datacenter => vsphere.getHost({
  *     datacenterId: datacenter.id,
  *     name: "esxi1",
- * });
- * const available = vsphere.getVmfsDisks({
+ * }, { async: true }));
+ * const available = host.apply(host => vsphere.getVmfsDisks({
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
  *     hostSystemId: host.id,
  *     rescan: true,
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
@@ -88,7 +88,7 @@ export interface GetVmfsDisksResult {
     readonly hostSystemId: string;
     readonly rescan?: boolean;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

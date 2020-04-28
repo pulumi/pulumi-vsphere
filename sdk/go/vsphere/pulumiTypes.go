@@ -465,15 +465,30 @@ func (o HostPortGroupPortsPtrOutput) Elem() HostPortGroupPortsOutput {
 
 // The key for this port group as returned from the vSphere API.
 func (o HostPortGroupPortsPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) *string { return v.Key }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *HostPortGroupPorts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o HostPortGroupPortsPtrOutput) MacAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) []string { return v.MacAddresses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *HostPortGroupPorts) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MacAddresses
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o HostPortGroupPortsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *HostPortGroupPorts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineCdrom struct {
@@ -644,28 +659,53 @@ func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
 // Indicates whether the device should be backed by
 // remote client device. Conflicts with `datastoreId` and `path`.
 func (o VirtualMachineCdromPtrOutput) ClientDevice() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.ClientDevice }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientDevice
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The datastore ID that the ISO is located in.
 // Requried for using a datastore ISO. Conflicts with `clientDevice`.
 func (o VirtualMachineCdromPtrOutput) DatastoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCdromPtrOutput) DeviceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 // The ID of the device within the virtual machine.
 func (o VirtualMachineCdromPtrOutput) Key() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *int { return v.Key }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.IntPtrOutput)
 }
 
 // The path to the ISO file. Required for using a datastore
 // ISO. Conflicts with `clientDevice`.
 func (o VirtualMachineCdromPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineClone struct {
@@ -818,27 +858,57 @@ func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
 }
 
 func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
-	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomize { return v.Customize }).(VirtualMachineCloneCustomizePtrOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) *VirtualMachineCloneCustomize {
+		if v == nil {
+			return nil
+		}
+		return v.Customize
+	}).(VirtualMachineCloneCustomizePtrOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) LinkedClone() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineClone) *bool { return v.LinkedClone }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedClone
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineClone) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.OvfNetworkMap
+	}).(pulumi.StringMapOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) OvfStorageMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineClone) map[string]string { return v.OvfStorageMap }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.OvfStorageMap
+	}).(pulumi.StringMapOutput)
 }
 
-func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineClone) string { return v.TemplateUuid }).(pulumi.StringOutput)
+func (o VirtualMachineClonePtrOutput) TemplateUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateUuid
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineClone) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type VirtualMachineCloneCustomize struct {
@@ -1022,46 +1092,87 @@ func (o VirtualMachineCloneCustomizePtrOutput) Elem() VirtualMachineCloneCustomi
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) DnsServerLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServerLists
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) DnsSuffixLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) []string { return v.DnsSuffixLists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSuffixLists
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) Ipv4Gateway() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.Ipv4Gateway }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Gateway
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) Ipv6Gateway() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.Ipv6Gateway }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Gateway
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) LinuxOptions() VirtualMachineCloneCustomizeLinuxOptionsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeLinuxOptions { return v.LinuxOptions }).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeLinuxOptions {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxOptions
+	}).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
 
 // A specification for a virtual NIC on this
 // virtual machine. See network interface options
 // below.
 func (o VirtualMachineCloneCustomizePtrOutput) NetworkInterfaces() VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) []VirtualMachineCloneCustomizeNetworkInterface {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) []VirtualMachineCloneCustomizeNetworkInterface {
+		if v == nil {
+			return nil
+		}
 		return v.NetworkInterfaces
 	}).(VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) WindowsOptions() VirtualMachineCloneCustomizeWindowsOptionsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeWindowsOptions {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *VirtualMachineCloneCustomizeWindowsOptions {
+		if v == nil {
+			return nil
+		}
 		return v.WindowsOptions
 	}).(VirtualMachineCloneCustomizeWindowsOptionsPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) WindowsSysprepText() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *string { return v.WindowsSysprepText }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsSysprepText
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineCloneCustomizeLinuxOptions struct {
@@ -1201,20 +1312,40 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Elem() VirtualMachine
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) VirtualMachineCloneCustomizeLinuxOptions { return *v }).(VirtualMachineCloneCustomizeLinuxOptionsOutput)
 }
 
-func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) string { return v.Domain }).(pulumi.StringOutput)
+func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HostName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) string { return v.HostName }).(pulumi.StringOutput)
+func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HwClockUtc() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *bool { return v.HwClockUtc }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HwClockUtc
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineCloneCustomizeNetworkInterface struct {
@@ -1537,55 +1668,120 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Elem() VirtualMachi
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogon() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *bool { return v.AutoLogon }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogon
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) AutoLogonCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *int { return v.AutoLogonCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogonCount
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ComputerName() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) string { return v.ComputerName }).(pulumi.StringOutput)
+func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ComputerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputerName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainAdminPassword }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainAdminPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) DomainAdminUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.DomainAdminUser }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainAdminUser
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) FullName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.FullName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) JoinDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.JoinDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JoinDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) OrganizationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ProductKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.ProductKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) RunOnceCommandLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) []string { return v.RunOnceCommandLists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RunOnceCommandLists
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) TimeZone() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *int { return v.TimeZone }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Workgroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.Workgroup }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Workgroup
+	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineDisk struct {
@@ -2293,7 +2489,12 @@ func (o VirtualMachineVappPtrOutput) Elem() VirtualMachineVappOutput {
 }
 
 func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *VirtualMachineVapp) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
 }
 
 type VnicIpv4 struct {
@@ -2448,22 +2649,42 @@ func (o VnicIpv4PtrOutput) Elem() VnicIpv4Output {
 
 // Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv4PtrOutput) Dhcp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VnicIpv4) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VnicIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Dhcp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // IP address of the default gateway, if DHCP or autoconfig is not set.
 func (o VnicIpv4PtrOutput) Gw() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnicIpv4) *string { return v.Gw }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VnicIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gw
+	}).(pulumi.StringPtrOutput)
 }
 
 // Address of the interface, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnicIpv4) *string { return v.Ip }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VnicIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
 }
 
 // Netmask of the interface, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Netmask() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnicIpv4) *string { return v.Netmask }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VnicIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Netmask
+	}).(pulumi.StringPtrOutput)
 }
 
 type VnicIpv6 struct {
@@ -2618,22 +2839,42 @@ func (o VnicIpv6PtrOutput) Elem() VnicIpv6Output {
 
 // List of IPv6 addresses
 func (o VnicIpv6PtrOutput) Addresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VnicIpv6) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *VnicIpv6) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(pulumi.StringArrayOutput)
 }
 
 // Use IPv6 Autoconfiguration (RFC2462).
 func (o VnicIpv6PtrOutput) Autoconfig() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VnicIpv6) *bool { return v.Autoconfig }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VnicIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Autoconfig
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Use DHCP to configure the interface's IPv4 stack.
 func (o VnicIpv6PtrOutput) Dhcp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VnicIpv6) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *VnicIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Dhcp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // IP address of the default gateway, if DHCP or autoconfig is not set.
 func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VnicIpv6) *string { return v.Gw }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *VnicIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gw
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetVirtualMachineDisk struct {

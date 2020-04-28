@@ -18,7 +18,7 @@ class GetCustomAttributeResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if managed_object_type and not isinstance(managed_object_type, str):
             raise TypeError("Expected argument 'managed_object_type' to be a str")

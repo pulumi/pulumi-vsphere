@@ -60,7 +60,7 @@ type LookupVirtualMachineResult struct {
 	GuestId string `pulumi:"guestId"`
 	// A list of IP addresses as reported by VMWare tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The network interface types for each network

@@ -38,15 +38,15 @@ import * as utilities from "./utilities";
  *     "esxi3",
  * ];
  * 
- * const dc = vsphere.getDatacenter({
+ * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
- * });
- * const hostsHost: vsphere.GetHostResult[] = [];
+ * }, { async: true }));
+ * const hostsHost: pulumi.Output<vsphere.GetHostResult>[] = [];
  * for (let i = 0; i < hosts.length; i++) {
- *     hostsHost.push(vsphere.getHost({
+ *     hostsHost.push(dc.apply(dc => vsphere.getHost({
  *         datacenterId: dc.id,
  *         name: hosts[i],
- *     }));
+ *     }, { async: true })));
  * }
  * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
  *     datacenterId: dc.id,
