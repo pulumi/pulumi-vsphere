@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.17.4 of the vSphere Terraform Provider
+_(none)_
 
 ---
+
+## 2.2.1 (2020-04-29)
+* Upgrade to v1.17.4 of the vSphere Terraform Provider
 
 ## 2.2.0 (2020-04-28)
 * Regenerate datasource examples to be async
