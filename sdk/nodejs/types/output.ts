@@ -301,6 +301,15 @@ export interface VirtualMachineNetworkInterface {
     useStaticMac?: boolean;
 }
 
+export interface VirtualMachineOvfDeploy {
+    diskProvisioning?: string;
+    ipAllocationPolicy?: string;
+    ipProtocol?: string;
+    localOvfPath?: string;
+    ovfNetworkMap?: {[key: string]: string};
+    remoteOvfUrl?: string;
+}
+
 export interface VirtualMachineVapp {
     properties?: {[key: string]: string};
 }

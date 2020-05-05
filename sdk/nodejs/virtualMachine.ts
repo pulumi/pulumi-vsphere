@@ -122,6 +122,11 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The datacenter id. Required only when deploying
+     * an ovf template.
+     */
+    public readonly datacenterId!: pulumi.Output<string | undefined>;
+    /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
      * applies to entire virtual machine and implies that you wish to use Storage
@@ -302,7 +307,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * virtual machine. See network interface options
      * below.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[]>;
+    public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
     /**
      * The number of cores per socket in this
      * virtual machine. The number of vCPUs on the virtual machine will be
@@ -315,6 +320,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      * to this virtual machine. Default: `1`.
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
+    /**
+     * When specified, the VM will be deployed from the
+     * provided ovf template. See creating a virtual machine from a
+     * ovf template for more details.
+     */
+    public readonly ovfDeploy!: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
@@ -483,6 +494,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["cpuShareCount"] = state ? state.cpuShareCount : undefined;
             inputs["cpuShareLevel"] = state ? state.cpuShareLevel : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
+            inputs["datacenterId"] = state ? state.datacenterId : undefined;
             inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
             inputs["datastoreId"] = state ? state.datastoreId : undefined;
             inputs["defaultIpAddress"] = state ? state.defaultIpAddress : undefined;
@@ -516,6 +528,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["numCoresPerSocket"] = state ? state.numCoresPerSocket : undefined;
             inputs["numCpus"] = state ? state.numCpus : undefined;
+            inputs["ovfDeploy"] = state ? state.ovfDeploy : undefined;
             inputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
             inputs["rebootRequired"] = state ? state.rebootRequired : undefined;
             inputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
@@ -542,9 +555,6 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
-            if (!args || args.networkInterfaces === undefined) {
-                throw new Error("Missing required property 'networkInterfaces'");
-            }
             if (!args || args.resourcePoolId === undefined) {
                 throw new Error("Missing required property 'resourcePoolId'");
             }
@@ -563,6 +573,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["cpuShareCount"] = args ? args.cpuShareCount : undefined;
             inputs["cpuShareLevel"] = args ? args.cpuShareLevel : undefined;
             inputs["customAttributes"] = args ? args.customAttributes : undefined;
+            inputs["datacenterId"] = args ? args.datacenterId : undefined;
             inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
             inputs["datastoreId"] = args ? args.datastoreId : undefined;
             inputs["disks"] = args ? args.disks : undefined;
@@ -592,6 +603,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["numCoresPerSocket"] = args ? args.numCoresPerSocket : undefined;
             inputs["numCpus"] = args ? args.numCpus : undefined;
+            inputs["ovfDeploy"] = args ? args.ovfDeploy : undefined;
             inputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
             inputs["resourcePoolId"] = args ? args.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = args ? args.runToolsScriptsAfterPowerOn : undefined;
@@ -725,6 +737,11 @@ export interface VirtualMachineState {
      * for custom attributes.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The datacenter id. Required only when deploying
+     * an ovf template.
+     */
+    readonly datacenterId?: pulumi.Input<string>;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
@@ -919,6 +936,12 @@ export interface VirtualMachineState {
      * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
+    /**
+     * When specified, the VM will be deployed from the
+     * provided ovf template. See creating a virtual machine from a
+     * ovf template for more details.
+     */
+    readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
@@ -1147,6 +1170,11 @@ export interface VirtualMachineArgs {
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The datacenter id. Required only when deploying
+     * an ovf template.
+     */
+    readonly datacenterId?: pulumi.Input<string>;
+    /**
      * The [managed object reference
      * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
      * applies to entire virtual machine and implies that you wish to use Storage
@@ -1304,7 +1332,7 @@ export interface VirtualMachineArgs {
      * virtual machine. See network interface options
      * below.
      */
-    readonly networkInterfaces: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
      * The number of cores per socket in this
      * virtual machine. The number of vCPUs on the virtual machine will be
@@ -1317,6 +1345,12 @@ export interface VirtualMachineArgs {
      * to this virtual machine. Default: `1`.
      */
     readonly numCpus?: pulumi.Input<number>;
+    /**
+     * When specified, the VM will be deployed from the
+     * provided ovf template. See creating a virtual machine from a
+     * ovf template for more details.
+     */
+    readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */

@@ -152,6 +152,11 @@ class VirtualMachine(pulumi.CustomResource):
     [here][docs-setting-custom-attributes] for a reference on how to set values
     for custom attributes.
     """
+    datacenter_id: pulumi.Output[str]
+    """
+    The datacenter id. Required only when deploying
+    an ovf template.
+    """
     datastore_cluster_id: pulumi.Output[str]
     """
     The [managed object reference
@@ -421,6 +426,19 @@ class VirtualMachine(pulumi.CustomResource):
     The total number of virtual processor cores to assign
     to this virtual machine. Default: `1`.
     """
+    ovf_deploy: pulumi.Output[dict]
+    """
+    When specified, the VM will be deployed from the
+    provided ovf template. See creating a virtual machine from a
+    ovf template for more details.
+
+      * `diskProvisioning` (`str`)
+      * `ipAllocationPolicy` (`str`)
+      * `ipProtocol` (`str`)
+      * `localOvfPath` (`str`)
+      * `ovfNetworkMap` (`dict`)
+      * `remoteOvfUrl` (`str`)
+    """
     poweron_timeout: pulumi.Output[float]
     """
     The amount of time, in seconds, that we will be trying to power on a VM
@@ -562,7 +580,7 @@ class VirtualMachine(pulumi.CustomResource):
     `wait_for_guest_ip_timeout` waiter can be used
     instead. A value less than 1 disables the waiter. Default: 5 minutes.
     """
-    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, poweron_timeout=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, poweron_timeout=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VirtualMachine resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -604,6 +622,8 @@ class VirtualMachine(pulumi.CustomResource):
                value strings to set for virtual machine. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+        :param pulumi.Input[str] datacenter_id: The datacenter id. Required only when deploying
+               an ovf template.
         :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster ID to use. This setting
                applies to entire virtual machine and implies that you wish to use Storage
@@ -688,6 +708,9 @@ class VirtualMachine(pulumi.CustomResource):
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
+        :param pulumi.Input[dict] ovf_deploy: When specified, the VM will be deployed from the
+               provided ovf template. See creating a virtual machine from a
+               ovf template for more details.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
                ID][docs-about-morefs] of the resource pool to put this virtual machine in.
@@ -883,6 +906,15 @@ class VirtualMachine(pulumi.CustomResource):
             a static MAC address and set accordingly. Setting this to `true` requires
             `mac_address` to be set. Default: `false`.
 
+        The **ovf_deploy** object supports the following:
+
+          * `diskProvisioning` (`pulumi.Input[str]`)
+          * `ipAllocationPolicy` (`pulumi.Input[str]`)
+          * `ipProtocol` (`pulumi.Input[str]`)
+          * `localOvfPath` (`pulumi.Input[str]`)
+          * `ovfNetworkMap` (`pulumi.Input[dict]`)
+          * `remoteOvfUrl` (`pulumi.Input[str]`)
+
         The **vapp** object supports the following:
 
           * `properties` (`pulumi.Input[dict]`)
@@ -919,6 +951,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['cpu_share_count'] = cpu_share_count
             __props__['cpu_share_level'] = cpu_share_level
             __props__['custom_attributes'] = custom_attributes
+            __props__['datacenter_id'] = datacenter_id
             __props__['datastore_cluster_id'] = datastore_cluster_id
             __props__['datastore_id'] = datastore_id
             __props__['disks'] = disks
@@ -945,11 +978,10 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['migrate_wait_timeout'] = migrate_wait_timeout
             __props__['name'] = name
             __props__['nested_hv_enabled'] = nested_hv_enabled
-            if network_interfaces is None:
-                raise TypeError("Missing required property 'network_interfaces'")
             __props__['network_interfaces'] = network_interfaces
             __props__['num_cores_per_socket'] = num_cores_per_socket
             __props__['num_cpus'] = num_cpus
+            __props__['ovf_deploy'] = ovf_deploy
             __props__['poweron_timeout'] = poweron_timeout
             if resource_pool_id is None:
                 raise TypeError("Missing required property 'resource_pool_id'")
@@ -988,7 +1020,7 @@ class VirtualMachine(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, poweron_timeout=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
+    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, poweron_timeout=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1036,6 +1068,8 @@ class VirtualMachine(pulumi.CustomResource):
                value strings to set for virtual machine. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+        :param pulumi.Input[str] datacenter_id: The datacenter id. Required only when deploying
+               an ovf template.
         :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
                ID][docs-about-morefs] of the datastore cluster ID to use. This setting
                applies to entire virtual machine and implies that you wish to use Storage
@@ -1131,6 +1165,9 @@ class VirtualMachine(pulumi.CustomResource):
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
+        :param pulumi.Input[dict] ovf_deploy: When specified, the VM will be deployed from the
+               provided ovf template. See creating a virtual machine from a
+               ovf template for more details.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] resource_pool_id: The [managed object reference
@@ -1336,6 +1373,15 @@ class VirtualMachine(pulumi.CustomResource):
             a static MAC address and set accordingly. Setting this to `true` requires
             `mac_address` to be set. Default: `false`.
 
+        The **ovf_deploy** object supports the following:
+
+          * `diskProvisioning` (`pulumi.Input[str]`)
+          * `ipAllocationPolicy` (`pulumi.Input[str]`)
+          * `ipProtocol` (`pulumi.Input[str]`)
+          * `localOvfPath` (`pulumi.Input[str]`)
+          * `ovfNetworkMap` (`pulumi.Input[dict]`)
+          * `remoteOvfUrl` (`pulumi.Input[str]`)
+
         The **vapp** object supports the following:
 
           * `properties` (`pulumi.Input[dict]`)
@@ -1360,6 +1406,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["cpu_share_count"] = cpu_share_count
         __props__["cpu_share_level"] = cpu_share_level
         __props__["custom_attributes"] = custom_attributes
+        __props__["datacenter_id"] = datacenter_id
         __props__["datastore_cluster_id"] = datastore_cluster_id
         __props__["datastore_id"] = datastore_id
         __props__["default_ip_address"] = default_ip_address
@@ -1393,6 +1440,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["network_interfaces"] = network_interfaces
         __props__["num_cores_per_socket"] = num_cores_per_socket
         __props__["num_cpus"] = num_cpus
+        __props__["ovf_deploy"] = ovf_deploy
         __props__["poweron_timeout"] = poweron_timeout
         __props__["reboot_required"] = reboot_required
         __props__["resource_pool_id"] = resource_pool_id
