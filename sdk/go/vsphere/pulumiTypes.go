@@ -2369,6 +2369,209 @@ func (o VirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Virt
 	}).(VirtualMachineNetworkInterfaceOutput)
 }
 
+type VirtualMachineOvfDeploy struct {
+	DiskProvisioning   *string           `pulumi:"diskProvisioning"`
+	IpAllocationPolicy *string           `pulumi:"ipAllocationPolicy"`
+	IpProtocol         *string           `pulumi:"ipProtocol"`
+	LocalOvfPath       *string           `pulumi:"localOvfPath"`
+	OvfNetworkMap      map[string]string `pulumi:"ovfNetworkMap"`
+	RemoteOvfUrl       *string           `pulumi:"remoteOvfUrl"`
+}
+
+// VirtualMachineOvfDeployInput is an input type that accepts VirtualMachineOvfDeployArgs and VirtualMachineOvfDeployOutput values.
+// You can construct a concrete instance of `VirtualMachineOvfDeployInput` via:
+//
+// 		 VirtualMachineOvfDeployArgs{...}
+//
+type VirtualMachineOvfDeployInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOvfDeployOutput() VirtualMachineOvfDeployOutput
+	ToVirtualMachineOvfDeployOutputWithContext(context.Context) VirtualMachineOvfDeployOutput
+}
+
+type VirtualMachineOvfDeployArgs struct {
+	DiskProvisioning   pulumi.StringPtrInput `pulumi:"diskProvisioning"`
+	IpAllocationPolicy pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
+	IpProtocol         pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	LocalOvfPath       pulumi.StringPtrInput `pulumi:"localOvfPath"`
+	OvfNetworkMap      pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
+	RemoteOvfUrl       pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
+}
+
+func (VirtualMachineOvfDeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineOvfDeploy)(nil)).Elem()
+}
+
+func (i VirtualMachineOvfDeployArgs) ToVirtualMachineOvfDeployOutput() VirtualMachineOvfDeployOutput {
+	return i.ToVirtualMachineOvfDeployOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineOvfDeployArgs) ToVirtualMachineOvfDeployOutputWithContext(ctx context.Context) VirtualMachineOvfDeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOvfDeployOutput)
+}
+
+func (i VirtualMachineOvfDeployArgs) ToVirtualMachineOvfDeployPtrOutput() VirtualMachineOvfDeployPtrOutput {
+	return i.ToVirtualMachineOvfDeployPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineOvfDeployArgs) ToVirtualMachineOvfDeployPtrOutputWithContext(ctx context.Context) VirtualMachineOvfDeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOvfDeployOutput).ToVirtualMachineOvfDeployPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineOvfDeployPtrInput is an input type that accepts VirtualMachineOvfDeployArgs, VirtualMachineOvfDeployPtr and VirtualMachineOvfDeployPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineOvfDeployPtrInput` via:
+//
+// 		 VirtualMachineOvfDeployArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type VirtualMachineOvfDeployPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOvfDeployPtrOutput() VirtualMachineOvfDeployPtrOutput
+	ToVirtualMachineOvfDeployPtrOutputWithContext(context.Context) VirtualMachineOvfDeployPtrOutput
+}
+
+type virtualMachineOvfDeployPtrType VirtualMachineOvfDeployArgs
+
+func VirtualMachineOvfDeployPtr(v *VirtualMachineOvfDeployArgs) VirtualMachineOvfDeployPtrInput {
+	return (*virtualMachineOvfDeployPtrType)(v)
+}
+
+func (*virtualMachineOvfDeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineOvfDeploy)(nil)).Elem()
+}
+
+func (i *virtualMachineOvfDeployPtrType) ToVirtualMachineOvfDeployPtrOutput() VirtualMachineOvfDeployPtrOutput {
+	return i.ToVirtualMachineOvfDeployPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineOvfDeployPtrType) ToVirtualMachineOvfDeployPtrOutputWithContext(ctx context.Context) VirtualMachineOvfDeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOvfDeployPtrOutput)
+}
+
+type VirtualMachineOvfDeployOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineOvfDeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineOvfDeploy)(nil)).Elem()
+}
+
+func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployOutput() VirtualMachineOvfDeployOutput {
+	return o
+}
+
+func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployOutputWithContext(ctx context.Context) VirtualMachineOvfDeployOutput {
+	return o
+}
+
+func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutput() VirtualMachineOvfDeployPtrOutput {
+	return o.ToVirtualMachineOvfDeployPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutputWithContext(ctx context.Context) VirtualMachineOvfDeployPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *VirtualMachineOvfDeploy {
+		return &v
+	}).(VirtualMachineOvfDeployPtrOutput)
+}
+func (o VirtualMachineOvfDeployOutput) DiskProvisioning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DiskProvisioning }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.IpAllocationPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployOutput) LocalOvfPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.LocalOvfPath }).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployOutput) OvfNetworkMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) map[string]string { return v.OvfNetworkMap }).(pulumi.StringMapOutput)
+}
+
+func (o VirtualMachineOvfDeployOutput) RemoteOvfUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.RemoteOvfUrl }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineOvfDeployPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineOvfDeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineOvfDeploy)(nil)).Elem()
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) ToVirtualMachineOvfDeployPtrOutput() VirtualMachineOvfDeployPtrOutput {
+	return o
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) ToVirtualMachineOvfDeployPtrOutputWithContext(ctx context.Context) VirtualMachineOvfDeployPtrOutput {
+	return o
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) Elem() VirtualMachineOvfDeployOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) VirtualMachineOvfDeploy { return *v }).(VirtualMachineOvfDeployOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskProvisioning
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocationPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) LocalOvfPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalOvfPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) OvfNetworkMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.OvfNetworkMap
+	}).(pulumi.StringMapOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) RemoteOvfUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteOvfUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineVapp struct {
 	Properties map[string]string `pulumi:"properties"`
 }
@@ -3019,6 +3222,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineDiskArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(VirtualMachineNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineOvfDeployOutput{})
+	pulumi.RegisterOutputType(VirtualMachineOvfDeployPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappPtrOutput{})
 	pulumi.RegisterOutputType(VnicIpv4Output{})

@@ -132,6 +132,13 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
+        /// The datacenter id. Required only when deploying
+        /// an ovf template.
+        /// </summary>
+        [Output("datacenterId")]
+        public Output<string?> DatacenterId { get; private set; } = null!;
+
+        /// <summary>
         /// The [managed object reference
         /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
@@ -390,6 +397,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("numCpus")]
         public Output<int?> NumCpus { get; private set; } = null!;
+
+        /// <summary>
+        /// When specified, the VM will be deployed from the
+        /// provided ovf template. See creating a virtual machine from a
+        /// ovf template for more details.
+        /// </summary>
+        [Output("ovfDeploy")]
+        public Output<Outputs.VirtualMachineOvfDeploy?> OvfDeploy { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM
@@ -743,6 +758,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// The datacenter id. Required only when deploying
+        /// an ovf template.
+        /// </summary>
+        [Input("datacenterId")]
+        public Input<string>? DatacenterId { get; set; }
+
+        /// <summary>
         /// The [managed object reference
         /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
@@ -965,7 +987,7 @@ namespace Pulumi.VSphere
         [Input("nestedHvEnabled")]
         public Input<bool>? NestedHvEnabled { get; set; }
 
-        [Input("networkInterfaces", required: true)]
+        [Input("networkInterfaces")]
         private InputList<Inputs.VirtualMachineNetworkInterfaceArgs>? _networkInterfaces;
 
         /// <summary>
@@ -994,6 +1016,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("numCpus")]
         public Input<int>? NumCpus { get; set; }
+
+        /// <summary>
+        /// When specified, the VM will be deployed from the
+        /// provided ovf template. See creating a virtual machine from a
+        /// ovf template for more details.
+        /// </summary>
+        [Input("ovfDeploy")]
+        public Input<Inputs.VirtualMachineOvfDeployArgs>? OvfDeploy { get; set; }
 
         /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM
@@ -1287,6 +1317,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// The datacenter id. Required only when deploying
+        /// an ovf template.
+        /// </summary>
+        [Input("datacenterId")]
+        public Input<string>? DatacenterId { get; set; }
+
+        /// <summary>
         /// The [managed object reference
         /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
@@ -1575,6 +1612,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("numCpus")]
         public Input<int>? NumCpus { get; set; }
+
+        /// <summary>
+        /// When specified, the VM will be deployed from the
+        /// provided ovf template. See creating a virtual machine from a
+        /// ovf template for more details.
+        /// </summary>
+        [Input("ovfDeploy")]
+        public Input<Inputs.VirtualMachineOvfDeployGetArgs>? OvfDeploy { get; set; }
 
         /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM

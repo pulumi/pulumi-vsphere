@@ -69,6 +69,9 @@ type VirtualMachine struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
+	// The datacenter id. Required only when deploying
+	// an ovf template.
+	DatacenterId pulumi.StringPtrOutput `pulumi:"datacenterId"`
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
@@ -197,6 +200,10 @@ type VirtualMachine struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrOutput `pulumi:"numCpus"`
+	// When specified, the VM will be deployed from the
+	// provided ovf template. See creating a virtual machine from a
+	// ovf template for more details.
+	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
@@ -293,9 +300,6 @@ type VirtualMachine struct {
 // NewVirtualMachine registers a new resource with the given unique name, arguments, and options.
 func NewVirtualMachine(ctx *pulumi.Context,
 	name string, args *VirtualMachineArgs, opts ...pulumi.ResourceOption) (*VirtualMachine, error) {
-	if args == nil || args.NetworkInterfaces == nil {
-		return nil, errors.New("missing required argument 'NetworkInterfaces'")
-	}
 	if args == nil || args.ResourcePoolId == nil {
 		return nil, errors.New("missing required argument 'ResourcePoolId'")
 	}
@@ -380,6 +384,9 @@ type virtualMachineState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
+	// The datacenter id. Required only when deploying
+	// an ovf template.
+	DatacenterId *string `pulumi:"datacenterId"`
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
@@ -508,6 +515,10 @@ type virtualMachineState struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
+	// When specified, the VM will be deployed from the
+	// provided ovf template. See creating a virtual machine from a
+	// ovf template for more details.
+	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
@@ -658,6 +669,9 @@ type VirtualMachineState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapInput
+	// The datacenter id. Required only when deploying
+	// an ovf template.
+	DatacenterId pulumi.StringPtrInput
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
@@ -786,6 +800,10 @@ type VirtualMachineState struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
+	// When specified, the VM will be deployed from the
+	// provided ovf template. See creating a virtual machine from a
+	// ovf template for more details.
+	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
@@ -936,6 +954,9 @@ type virtualMachineArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
+	// The datacenter id. Required only when deploying
+	// an ovf template.
+	DatacenterId *string `pulumi:"datacenterId"`
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
@@ -1049,6 +1070,10 @@ type virtualMachineArgs struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
+	// When specified, the VM will be deployed from the
+	// provided ovf template. See creating a virtual machine from a
+	// ovf template for more details.
+	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// The [managed object reference
@@ -1181,6 +1206,9 @@ type VirtualMachineArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapInput
+	// The datacenter id. Required only when deploying
+	// an ovf template.
+	DatacenterId pulumi.StringPtrInput
 	// The [managed object reference
 	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
@@ -1294,6 +1322,10 @@ type VirtualMachineArgs struct {
 	// The total number of virtual processor cores to assign
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
+	// When specified, the VM will be deployed from the
+	// provided ovf template. See creating a virtual machine from a
+	// ovf template for more details.
+	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
 	// The [managed object reference

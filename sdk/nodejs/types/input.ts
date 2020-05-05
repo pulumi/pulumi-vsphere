@@ -286,6 +286,15 @@ export interface VirtualMachineNetworkInterface {
     useStaticMac?: pulumi.Input<boolean>;
 }
 
+export interface VirtualMachineOvfDeploy {
+    diskProvisioning?: pulumi.Input<string>;
+    ipAllocationPolicy?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
+    localOvfPath?: pulumi.Input<string>;
+    ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    remoteOvfUrl?: pulumi.Input<string>;
+}
+
 export interface VirtualMachineVapp {
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
