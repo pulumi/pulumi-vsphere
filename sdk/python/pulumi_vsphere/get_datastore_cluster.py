@@ -50,6 +50,18 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     [docs-vmfs-datastore-resource]: /docs/providers/vsphere/r/vmfs_datastore.html
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=data[".Datacenter"]["dc"]["id"],
+        name="datastore-cluster1")
+    ```
 
 
 

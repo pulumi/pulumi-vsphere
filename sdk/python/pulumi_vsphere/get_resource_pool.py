@@ -45,6 +45,28 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    pool = vsphere.get_resource_pool(datacenter_id=datacenter.id,
+        name="resource-pool-1")
+    ```
+
+    ### Specifying the root resource pool for a standalone host
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    pool = vsphere.get_resource_pool(datacenter_id=data[".Datacenter"]["dc"]["id"],
+        name="esxi1/Resources")
+    ```
 
 
 

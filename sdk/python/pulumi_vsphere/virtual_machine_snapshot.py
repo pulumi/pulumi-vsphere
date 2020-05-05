@@ -69,6 +69,23 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
         [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        demo1 = vsphere.VirtualMachineSnapshot("demo1",
+            consolidate="true",
+            description="This is Demo Snapshot",
+            memory="true",
+            quiesce="true",
+            remove_children="false",
+            snapshot_name="Snapshot Name",
+            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
+        ```
 
 
         :param str resource_name: The name of the resource.

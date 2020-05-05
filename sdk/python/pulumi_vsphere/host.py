@@ -69,6 +69,53 @@ class Host(pulumi.CustomResource):
         Provides a VMware vSphere host resource. This represents an ESXi host that
         can be used either as part of a Compute Cluster or Standalone.
 
+        ## Example Usages
+
+        **Create a standalone host:**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="my-datacenter")
+        h1 = vsphere.Host("h1",
+            hostname="10.10.10.1",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000i-00000",
+            datacenter=dc.id)
+        ```
+
+        **Create host in a compute cluster:**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="TfDatacenter")
+        c1 = vsphere.get_compute_cluster(name="DC0_C0",
+            datacenter_id=dc.id)
+        h1 = vsphere.Host("h1",
+            hostname="10.10.10.1",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000i-00000",
+            cluster=c1.id)
+        ```
+
+        ## Importing 
+
+        An existing host can be [imported][docs-import] into this resource
+        via supplying the host's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the host with ID `host-123`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should

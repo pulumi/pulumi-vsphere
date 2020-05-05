@@ -254,6 +254,31 @@ class DistributedPortGroup(pulumi.CustomResource):
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
 
+        ## Example Usage
+
+        ### Overriding DVS policies
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dvs = vsphere.DistributedVirtualSwitch("dvs",
+            active_uplinks=["tfup1"],
+            datacenter_id=data[".Datacenter"]["dc"]["id"],
+            standby_uplinks=["tfup2"],
+            uplinks=[
+                "tfup1",
+                "tfup2",
+            ])
+        pg = vsphere.DistributedPortGroup("pg",
+            active_uplinks=[
+                "tfup1",
+                "tfup2",
+            ],
+            distributed_virtual_switch_uuid=dvs.id,
+            standby_uplinks=[],
+            vlan_id=1000)
+        ```
 
 
         :param str resource_name: The name of the resource.
