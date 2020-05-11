@@ -58,6 +58,21 @@ class VirtualDisk(pulumi.CustomResource):
         [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
         [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        my_disk = vsphere.VirtualDisk("myDisk",
+            datacenter="Datacenter",
+            datastore="local",
+            size=2,
+            type="thin",
+            vmdk_path="myDisk.vmdk")
+        ```
 
 
         :param str resource_name: The name of the resource.

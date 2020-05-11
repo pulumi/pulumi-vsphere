@@ -12,6 +12,22 @@ import * as utilities from "./utilities";
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const library = vsphere.getContentLibrary({
+ *     name: "Content Library Test",
+ * });
+ * const item = library.then(library => vsphere.getContentLibraryItem({
+ *     name: "Ubuntu Bionic 18.04",
+ *     libraryId: library.id,
+ * }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
  */

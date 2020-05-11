@@ -122,6 +122,18 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    template = vsphere.get_virtual_machine(datacenter_id=datacenter.id,
+        name="test-vm-template")
+    ```
 
 
 

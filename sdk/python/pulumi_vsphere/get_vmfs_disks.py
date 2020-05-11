@@ -57,6 +57,21 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
 
     [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(datacenter_id=datacenter.id,
+        name="esxi1")
+    available = vsphere.get_vmfs_disks(filter="mpx.vmhba1:C0:T[12]:L0",
+        host_system_id=host.id,
+        rescan=True)
+    ```
 
 
 

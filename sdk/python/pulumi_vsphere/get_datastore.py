@@ -45,6 +45,18 @@ def get_datastore(datacenter_id=None,name=None,opts=None):
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    datastore = vsphere.get_datastore(datacenter_id=datacenter.id,
+        name="datastore1")
+    ```
 
 
 

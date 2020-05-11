@@ -41,6 +41,16 @@ def get_datacenter(name=None,opts=None):
 
     [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    ```
 
 
 

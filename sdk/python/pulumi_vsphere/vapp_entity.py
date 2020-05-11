@@ -63,16 +63,7 @@ class VappEntity(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, container_id=None, custom_attributes=None, start_action=None, start_delay=None, start_order=None, stop_action=None, stop_delay=None, tags=None, target_id=None, wait_for_guest=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.VappEntity` resource can be used to describe the behavior of an
-        entity (virtual machine or sub-vApp container) in a vApp container.
-
-        For more information on vSphere vApps, see [this
-        page][ref-vsphere-vapp].
-
-        [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
-
-
-
+        Create a VappEntity resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp

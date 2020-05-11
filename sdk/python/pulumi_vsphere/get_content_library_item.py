@@ -43,6 +43,18 @@ def get_content_library_item(library_id=None,name=None,opts=None):
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library Test")
+    item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
+        library_id=library.id)
+    ```
 
 
 

@@ -124,17 +124,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, beacon_interval=None, check_beacon=None, failback=None, host_system_id=None, link_discovery_operation=None, link_discovery_protocol=None, mtu=None, name=None, network_adapters=None, notify_switches=None, number_of_ports=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.HostVirtualSwitch` resource can be used to manage vSphere
-        standard switches on an ESXi host. These switches can be used as a backing for
-        standard port groups, which can be managed by the
-        [`.HostPortGroup`][host-port-group] resource.
-
-        For an overview on vSphere networking concepts, see [this
-        page][ref-vsphere-net-concepts].
-
-        [host-port-group]: /docs/providers/vsphere/r/host_port_group.html
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-
+        Create a HostVirtualSwitch resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_nics: The list of active network adapters used for load

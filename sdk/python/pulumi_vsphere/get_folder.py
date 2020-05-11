@@ -37,6 +37,17 @@ def get_folder(path=None,opts=None):
     The `.Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    folder = vsphere.get_folder(path="/dc1/datastore/folder1")
+    ```
     """
     __args__ = dict()
 

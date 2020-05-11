@@ -110,6 +110,62 @@ class VappContainer(pulumi.CustomResource):
 
         [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc1"
+        cluster = config.get("cluster")
+        if cluster is None:
+            cluster = "cluster1"
+        dc = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
+            name=cluster)
+        vapp_container = vsphere.VappContainer("vappContainer", parent_resource_pool_id=compute_cluster.id)
+        ```
+
+        ### Example with virtual machine
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        config = pulumi.Config()
+        datacenter = config.get("datacenter")
+        if datacenter is None:
+            datacenter = "dc1"
+        cluster = config.get("cluster")
+        if cluster is None:
+            cluster = "cluster1"
+        dc = vsphere.get_datacenter(name=datacenter)
+        compute_cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
+            name=cluster)
+        network = vsphere.get_network(datacenter_id=dc.id,
+            name="network1")
+        datastore = vsphere.get_datastore(datacenter_id=dc.id,
+            name="datastore1")
+        vapp_container = vsphere.VappContainer("vappContainer", parent_resource_pool_id=compute_cluster.id)
+        vm = vsphere.VirtualMachine("vm",
+            datastore_id=datastore.id,
+            disks=[{
+                "label": "disk0",
+                "size": 1,
+            }],
+            guest_id="ubuntu64Guest",
+            memory=1024,
+            network_interfaces=[{
+                "networkId": network.id,
+            }],
+            num_cpus=2,
+            resource_pool_id=vapp_container.id)
+        ```
 
 
         :param str resource_name: The name of the resource.
