@@ -50,6 +50,18 @@ def get_host(datacenter_id=None,name=None,opts=None):
     host. This can then be used with resources or data sources that require a host
     managed object reference ID.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(datacenter_id=datacenter.id,
+        name="esxi1")
+    ```
 
 
 

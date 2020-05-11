@@ -25,13 +25,7 @@ class ContentLibrary(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, storage_backings=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.ContentLibrary` resource can be used to manage Content Libraries.
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-
-
+        Create a ContentLibrary resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.

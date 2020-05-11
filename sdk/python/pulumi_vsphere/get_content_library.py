@@ -39,6 +39,16 @@ def get_content_library(name=None,opts=None):
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library Test")
+    ```
 
 
 

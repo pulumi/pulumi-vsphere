@@ -46,14 +46,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 
 def get_network(datacenter_id=None,distributed_virtual_switch_uuid=None,name=None,opts=None):
     """
-    The `.getNetwork` data source can be used to discover the ID of a network
-    in vSphere. This can be any network that can be used as the backing for a
-    network interface for `.VirtualMachine` or any other vSphere resource
-    that requires a network. This includes standard (host-based) port groups, DVS
-    port groups, or opaque networks such as those managed by NSX.
-
-
-
+    Use this data source to access information about an existing resource.
 
     :param str datacenter_id: The [managed object reference
            ID][docs-about-morefs] of the datacenter the network is located in. This can

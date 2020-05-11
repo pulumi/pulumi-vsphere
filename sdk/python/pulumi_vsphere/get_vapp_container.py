@@ -45,6 +45,18 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
 
     [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    pool = vsphere.get_vapp_container(datacenter_id=datacenter.id,
+        name="vapp-container-1")
+    ```
 
 
 

@@ -165,7 +165,6 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_storage_policy":             {Tok: vsphereDataSource(vsphereMod, "getPolicy")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "^2.0.0",
 				"builtin-modules":   "3.0.0",
