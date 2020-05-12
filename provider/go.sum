@@ -698,6 +698,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200501132939-93a7dbe41201/go.mod h1:Q
 github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200505193935-7b446d6c55ad/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200508232528-aa313aecf8a0 h1:SBAyocmZrsPOkDJjrwTuof8s/qu/kjEN90I2CSup/M4=
 github.com/pulumi/pulumi/sdk/v2 v2.1.1-0.20200508232528-aa313aecf8a0/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200512231103-62886ac006b5 h1:4ky6n2mjLMnBRHwkozp4WQ5x4qTqod1P2B5KFaZJ2+c=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200512231103-62886ac006b5/go.mod h1:a1mEaZ0sy5RL+ukbqPvY1N6dw9K0yG7EYWZZkfJUeyA=
 github.com/pulumi/tf2pulumi v0.6.1-0.20200501223834-18f6ecca3b82 h1:gl5fVOnqlXMBXlsLsa15Qx65yiIEP5er28JGxIGwC8s=
 github.com/pulumi/tf2pulumi v0.6.1-0.20200501223834-18f6ecca3b82/go.mod h1:x3k7VU4kyHYe5xnPh7T7VN++RtSCFENFSw3zFC3wlvc=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
@@ -772,8 +774,6 @@ github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2a
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f h1:oqZwtMD9/XcOcCzm/9cz8+pQWRTGF60N1RNcYLg+BCw=
 github.com/terraform-providers/terraform-provider-random v1.3.2-0.20190925210718-83518d96ae4f/go.mod h1:F4KE9YftuJyMiBth4W1kCrsyOHndtTjAmZ+ZzjqWY+4=
 github.com/terraform-providers/terraform-provider-template v1.0.0/go.mod h1:/J+B8me5DCMa0rEBH5ic2aKPjhtpWNeScmxFJWxB1EU=
-github.com/terraform-providers/terraform-provider-vsphere v1.18.0 h1:G7OtnEWrvi9RvNiBu+DE7ifc1OpJVaqVdrjKedojd3g=
-github.com/terraform-providers/terraform-provider-vsphere v1.18.0/go.mod h1:a1mEaZ0sy5RL+ukbqPvY1N6dw9K0yG7EYWZZkfJUeyA=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
