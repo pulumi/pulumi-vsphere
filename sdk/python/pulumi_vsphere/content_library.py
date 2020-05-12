@@ -20,7 +20,7 @@ class ContentLibrary(pulumi.CustomResource):
     """
     storage_backings: pulumi.Output[list]
     """
-    The [managed object reference ID][docs-about-morefs] on which to store Content Library
+    The managed object reference ID on which to store Content Library
     items.
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, storage_backings=None, __props__=None, __name__=None, __opts__=None):
@@ -30,7 +30,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[list] storage_backings: The [managed object reference ID][docs-about-morefs] on which to store Content Library
+        :param pulumi.Input[list] storage_backings: The managed object reference ID on which to store Content Library
                items.
         """
         if __name__ is not None:
@@ -72,7 +72,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[list] storage_backings: The [managed object reference ID][docs-about-morefs] on which to store Content Library
+        :param pulumi.Input[list] storage_backings: The managed object reference ID on which to store Content Library
                items.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

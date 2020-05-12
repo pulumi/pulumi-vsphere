@@ -6,6 +6,54 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..Folder` resource can be used to manage vSphere inventory folders.
+ * The resource supports creating folders of the 5 major types - datacenter
+ * folders, host and cluster folders, virtual machine folders, datastore folders,
+ * and network folders.
+ * 
+ * Paths are always relative to the specific type of folder you are creating.
+ * Subfolders are discovered by parsing the relative path specified in `path`, so
+ * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+ * as that folder exists.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const dc = pulumi.output(vsphere.getDatacenter({ async: true }));
+ * const folder = new vsphere.Folder("folder", {
+ *     datacenterId: dc.id,
+ *     path: "test-folder",
+ *     type: "vm",
+ * });
+ * ```
+ * 
+ * ### Example with subfolders
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const dc = pulumi.output(vsphere.getDatacenter({ async: true }));
+ * const parent = new vsphere.Folder("parent", {
+ *     datacenterId: dc.id,
+ *     path: "test-parent",
+ *     type: "vm",
+ * });
+ * const folder = new vsphere.Folder("folder", {
+ *     datacenterId: dc.id,
+ *     path: pulumi.interpolate`${parent.path}/test-folder`,
+ *     type: "vm",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/folder.html.markdown.
+ */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra
@@ -46,12 +94,16 @@ export class Folder extends pulumi.CustomResource {
      */
     public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
-     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
+     * The path of the folder to be created. This is relative to
+     * the root of the type of folder you are creating, and the supplied datacenter.
+     * For example, given a default datacenter of `default-dc`, a folder of type
+     * `vm` (denoting a virtual machine folder), and a supplied folder of
+     * `test-folder`, the resulting path would be
+     * `/default-dc/vm/test-folder`.
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -121,12 +173,16 @@ export interface FolderState {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
+     * The path of the folder to be created. This is relative to
+     * the root of the type of folder you are creating, and the supplied datacenter.
+     * For example, given a default datacenter of `default-dc`, a folder of type
+     * `vm` (denoting a virtual machine folder), and a supplied folder of
+     * `test-folder`, the resulting path would be
+     * `/default-dc/vm/test-folder`.
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -155,12 +211,16 @@ export interface FolderArgs {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The path of the folder and any parents, relative to the datacenter and folder type being defined.
+     * The path of the folder to be created. This is relative to
+     * the root of the type of folder you are creating, and the supplied datacenter.
+     * For example, given a default datacenter of `default-dc`, a folder of type
+     * `vm` (denoting a virtual machine folder), and a supplied folder of
+     * `test-folder`, the resulting path would be
+     * `/default-dc/vm/test-folder`.
      */
     readonly path: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

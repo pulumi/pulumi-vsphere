@@ -34,8 +34,8 @@ import (
 type ComputeClusterVmGroup struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
@@ -77,8 +77,8 @@ func GetComputeClusterVmGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmGroup resources.
 type computeClusterVmGroupState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
@@ -90,8 +90,8 @@ type computeClusterVmGroupState struct {
 }
 
 type ComputeClusterVmGroupState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// The name of the VM group. This must be unique in the
@@ -107,8 +107,8 @@ func (ComputeClusterVmGroupState) ElementType() reflect.Type {
 }
 
 type computeClusterVmGroupArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the VM group. This must be unique in the
@@ -121,8 +121,8 @@ type computeClusterVmGroupArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmGroup resource.
 type ComputeClusterVmGroupArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// The name of the VM group. This must be unique in the

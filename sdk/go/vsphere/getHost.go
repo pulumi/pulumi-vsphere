@@ -21,8 +21,8 @@ func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getHost.
 type LookupHostArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of a datacenter.
+	// The managed object reference
+	// ID of a datacenter.
 	DatacenterId string `pulumi:"datacenterId"`
 	// The name of the host. This can be a name or path. Can be
 	// omitted if there is only one host in your inventory.
@@ -35,7 +35,7 @@ type LookupHostResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs] of the host's
+	// The managed object ID of the host's
 	// root resource pool.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }

@@ -10,9 +10,7 @@ import (
 // The `.getDatastore` data source can be used to discover the ID of a
 // datastore in vSphere. This is useful to fetch the ID of a datastore that you
 // want to use to create virtual machines in using the
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource.
-//
-// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+// `.VirtualMachine` resource.
 func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.InvokeOption) (*GetDatastoreResult, error) {
 	var rv GetDatastoreResult
 	err := ctx.Invoke("vsphere:index/getDatastore:getDatastore", args, &rv, opts...)
@@ -24,8 +22,8 @@ func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDatastore.
 type GetDatastoreArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datacenter the datastore is located in. This
+	// The managed object reference
+	// ID of the datacenter the datastore is located in. This
 	// can be omitted if the search path used in `name` is an absolute path. For
 	// default datacenters, use the id attribute from an empty `.Datacenter`
 	// data source.

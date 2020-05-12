@@ -117,10 +117,8 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
     The `.VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
     the UUID of a template to be used as the source for cloning into a new
-    [`.VirtualMachine`][docs-virtual-machine-resource] resource. It also
+    `.VirtualMachine` resource. It also
     reads the guest ID so that can be supplied as well.
-
-    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -137,8 +135,8 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
 
 
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the virtual machine is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the `id` attribute from an empty
            `.Datacenter` data source.

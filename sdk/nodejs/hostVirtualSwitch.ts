@@ -75,7 +75,7 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly failback!: pulumi.Output<boolean | undefined>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      */
     public readonly hostSystemId!: pulumi.Output<string>;
@@ -272,7 +272,7 @@ export interface HostVirtualSwitchState {
      */
     readonly failback?: pulumi.Input<boolean>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      */
     readonly hostSystemId?: pulumi.Input<string>;
@@ -390,7 +390,7 @@ export interface HostVirtualSwitchArgs {
      */
     readonly failback?: pulumi.Input<boolean>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the virtual switch up on. Forces a new resource if changed.
      */
     readonly hostSystemId: pulumi.Input<string>;

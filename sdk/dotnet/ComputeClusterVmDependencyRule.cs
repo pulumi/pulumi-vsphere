@@ -12,19 +12,14 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere..ComputeClusterVmDependencyRule` resource can be used to manage
     /// VM dependency rules in a cluster, either created by the
-    /// [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-    /// by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-    /// 
-    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+    /// `vsphere..ComputeCluster` resource or looked up
+    /// by the `vsphere..ComputeCluster` data source.
     /// 
     /// A virtual machine dependency rule applies to vSphere HA, and allows
     /// user-defined startup orders for virtual machines in the case of host failure.
     /// Virtual machines are supplied via groups, which can be managed via the
-    /// [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
+    /// `vsphere..ComputeClusterVmGroup`
     /// resource.
-    /// 
-    /// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -32,8 +27,8 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterVmDependencyRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Output("computeClusterId")]
@@ -124,8 +119,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmDependencyRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId", required: true)]
@@ -177,8 +172,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmDependencyRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId")]

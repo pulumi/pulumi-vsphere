@@ -92,8 +92,8 @@ export class DpmHostOverride extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
     public readonly computeClusterId!: pulumi.Output<string>;
@@ -158,8 +158,8 @@ export class DpmHostOverride extends pulumi.CustomResource {
  */
 export interface DpmHostOverrideState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId?: pulumi.Input<string>;
@@ -185,8 +185,8 @@ export interface DpmHostOverrideState {
  */
 export interface DpmHostOverrideArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId: pulumi.Input<string>;

@@ -27,8 +27,8 @@ namespace Pulumi.VSphere
     public sealed class GetHostArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of a datacenter.
+        /// The managed object reference
+        /// ID of a datacenter.
         /// </summary>
         [Input("datacenterId", required: true)]
         public string DatacenterId { get; set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string? Name;
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of the host's
+        /// The managed object ID of the host's
         /// root resource pool.
         /// </summary>
         public readonly string ResourcePoolId;

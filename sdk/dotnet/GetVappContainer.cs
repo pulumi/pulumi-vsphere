@@ -15,9 +15,7 @@ namespace Pulumi.VSphere
         /// The `vsphere..VappContainer` data source can be used to discover the ID of a
         /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
-        /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+        /// `vsphere..VirtualMachine` resource. 
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -30,8 +28,8 @@ namespace Pulumi.VSphere
     public sealed class GetVappContainerArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datacenter the vApp container is located in.
+        /// The managed object reference
+        /// ID of the datacenter the vApp container is located in.
         /// </summary>
         [Input("datacenterId", required: true)]
         public string DatacenterId { get; set; } = null!;

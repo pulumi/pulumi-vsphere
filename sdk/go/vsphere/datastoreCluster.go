@@ -32,15 +32,22 @@ type DatastoreCluster struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, The provider will place a datastore cluster named
+	// `datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Advanced configuration options for storage DRS.
+	// A key/value map of advanced Storage DRS
+	// settings that are not exposed via the provider or the vSphere client.
 	SdrsAdvancedOptions pulumi.StringMapOutput `pulumi:"sdrsAdvancedOptions"`
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -111,8 +118,7 @@ type DatastoreCluster struct {
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -152,15 +158,22 @@ type datastoreClusterState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, The provider will place a datastore cluster named
+	// `datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
-	// Advanced configuration options for storage DRS.
+	// A key/value map of advanced Storage DRS
+	// settings that are not exposed via the provider or the vSphere client.
 	SdrsAdvancedOptions map[string]string `pulumi:"sdrsAdvancedOptions"`
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -231,8 +244,7 @@ type datastoreClusterState struct {
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -242,15 +254,22 @@ type DatastoreClusterState struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringPtrInput
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, The provider will place a datastore cluster named
+	// `datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
-	// Advanced configuration options for storage DRS.
+	// A key/value map of advanced Storage DRS
+	// settings that are not exposed via the provider or the vSphere client.
 	SdrsAdvancedOptions pulumi.StringMapInput
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -321,8 +340,7 @@ type DatastoreClusterState struct {
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -336,15 +354,22 @@ type datastoreClusterArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId string `pulumi:"datacenterId"`
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, The provider will place a datastore cluster named
+	// `datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
 	// The name of the datastore cluster.
 	Name *string `pulumi:"name"`
-	// Advanced configuration options for storage DRS.
+	// A key/value map of advanced Storage DRS
+	// settings that are not exposed via the provider or the vSphere client.
 	SdrsAdvancedOptions map[string]string `pulumi:"sdrsAdvancedOptions"`
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -415,8 +440,7 @@ type datastoreClusterArgs struct {
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -427,15 +451,22 @@ type DatastoreClusterArgs struct {
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
 	// changed.
 	DatacenterId pulumi.StringInput
-	// The name of the folder to locate the datastore cluster in.
+	// The relative path to a folder to put this datastore
+	// cluster in.  This is a path relative to the datacenter you are deploying the
+	// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+	// `foo/bar`, The provider will place a datastore cluster named
+	// `datastore-cluster-test` in a datastore folder located at
+	// `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
 	// The name of the datastore cluster.
 	Name pulumi.StringPtrInput
-	// Advanced configuration options for storage DRS.
+	// A key/value map of advanced Storage DRS
+	// settings that are not exposed via the provider or the vSphere client.
 	SdrsAdvancedOptions pulumi.StringMapInput
 	// The global automation level for all
 	// virtual machines in this datastore cluster. Default: `manual`.
@@ -506,8 +537,7 @@ type DatastoreClusterArgs struct {
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 

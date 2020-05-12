@@ -12,8 +12,8 @@ from . import utilities, tables
 class ComputeClusterVmGroup(pulumi.CustomResource):
     compute_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+    The managed object reference
+    ID of the cluster to put the group in.  Forces a new
     resource if changed.
     """
     name: pulumi.Output[str]
@@ -88,8 +88,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -133,8 +133,8 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.

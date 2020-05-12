@@ -9,10 +9,8 @@ import (
 
 // The `.getVmfsDisks` data source can be used to discover the storage
 // devices available on an ESXi host. This data source can be combined with the
-// [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
+// `.VmfsDatastore` resource to create VMFS
 // datastores based off a set of discovered disks.
-//
-// [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 func GetVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs, opts ...pulumi.InvokeOption) (*GetVmfsDisksResult, error) {
 	var rv GetVmfsDisksResult
 	err := ctx.Invoke("vsphere:index/getVmfsDisks:getVmfsDisks", args, &rv, opts...)
@@ -27,7 +25,7 @@ type GetVmfsDisksArgs struct {
 	// A regular expression to filter the disks against. Only
 	// disks with canonical names that match will be included.
 	Filter *string `pulumi:"filter"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to look for disks on.
 	HostSystemId string `pulumi:"hostSystemId"`
 	// Whether or not to rescan storage adapters before

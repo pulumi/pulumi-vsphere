@@ -7,11 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..DatastoreClusterVmAntiAffinityRule` resource can be used to
  * manage VM anti-affinity rules in a datastore cluster, either created by the
- * [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
- * by the [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
- * 
- * [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
- * [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+ * `vsphere..DatastoreCluster` resource or looked up
+ * by the `vsphere..DatastoreCluster` data source.
  * 
  * This rule can be used to tell a set to virtual machines to run on different
  * datastores within a cluster, useful for preventing single points of failure in
@@ -101,8 +98,8 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+     * The managed object reference
+     * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
     public readonly datastoreClusterId!: pulumi.Output<string>;
@@ -172,8 +169,8 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
  */
 export interface DatastoreClusterVmAntiAffinityRuleState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+     * The managed object reference
+     * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
@@ -202,8 +199,8 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
  */
 export interface DatastoreClusterVmAntiAffinityRuleArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+     * The managed object reference
+     * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
     readonly datastoreClusterId: pulumi.Input<string>;

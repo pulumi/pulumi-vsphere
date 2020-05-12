@@ -13,13 +13,11 @@ class ComputeCluster(pulumi.CustomResource):
     custom_attributes: pulumi.Output[dict]
     """
     A map of custom attribute ids to attribute
-    value strings to set for the datastore cluster. See
-    [here][docs-setting-custom-attributes] for a reference on how to set values
-    for custom attributes.
+    value strings to set for the datastore cluster.
     """
     datacenter_id: pulumi.Output[str]
     """
-    The [managed object ID][docs-about-morefs] of
+    The managed object ID of
     the datacenter to create the cluster in. Forces a new resource if changed.
     """
     dpm_automation_level: pulumi.Output[str]
@@ -76,17 +74,25 @@ class ComputeCluster(pulumi.CustomResource):
     """
     folder: pulumi.Output[str]
     """
-    The name of the folder to locate the cluster in.
+    The relative path to a folder to put this cluster in.
+    This is a path relative to the datacenter you are deploying the cluster to.
+    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+    The provider will place a cluster named `compute-cluster-test` in a
+    host folder located at `/dc1/host/foo/bar`, with the final inventory path
+    being `/dc1/host/foo/bar/datastore-cluster-test`.
     """
     force_evacuate_on_destroy: pulumi.Output[bool]
     """
-    Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-    for testing and is not recommended in normal use.
+    When destroying the resource, setting this to
+    `true` will auto-remove any hosts that are currently a member of the cluster,
+    as if they were removed by taking their entry out of `host_system_ids` (see
+    below). This is an advanced
+    option and should only be used for testing. Default: `false`.
     """
     ha_admission_control_failover_host_system_ids: pulumi.Output[list]
     """
     Defines the
-    [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+    managed object IDs of hosts to use as dedicated failover
     hosts. These hosts are kept as available as possible - admission control will
     block access to the host, and DRS will ignore the host when making
     recommendations.
@@ -294,7 +300,7 @@ class ComputeCluster(pulumi.CustomResource):
     """
     host_system_ids: pulumi.Output[list]
     """
-    The [managed object IDs][docs-about-morefs] of
+    The managed object IDs of
     the hosts to put in the cluster.
     """
     name: pulumi.Output[str]
@@ -343,19 +349,83 @@ class ComputeCluster(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource.
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ComputeCluster resource with the given unique name, props, and options.
+        > **A note on the naming of this resource:** VMware refers to clusters of
+        hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+        clusters_. All of these refer to the same kind of resource (with the latter two
+        referring to specific features of clustering). We use
+        `.ComputeCluster` to differentiate host clusters from _datastore
+        clusters_, which are clusters of datastores that can be used to distribute load
+        and ensure fault tolerance via distribution of virtual machines. Datastore
+        clusters can also be managed through the provider, via the
+        `.DatastoreCluster` resource.
+
+        The `.ComputeCluster` resource can be used to create and manage
+        clusters of hosts allowing for resource control of compute resources, load
+        balancing through DRS, and high availability through vSphere HA.
+
+        For more information on vSphere clusters and DRS, see [this
+        page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+        page][ref-vsphere-ha-clusters].
+
+        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+        [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+
+
+        ## vSphere Version Requirements
+
+        A large number of settings in the `.ComputeCluster` resource require a
+        specific version of vSphere to function. Rather than include warnings at every
+        setting or section, these settings are documented below.  Note that this list
+        is for cluster-specific attributes only, and does not include the
+        `tags` parameter, which requires vSphere 6.0 or higher across all
+        resources that can be tagged.
+
+        All settings are footnoted by an asterisk (`*`) in their specific section in
+        the documentation, which takes you here.
+
+        ### Settings that require vSphere version 6.0 or higher
+
+        These settings require vSphere 6.0 or higher:
+
+        * `ha_datastore_apd_recovery_action`
+        * `ha_datastore_apd_response`
+        * `ha_datastore_apd_response_delay`
+        * `ha_datastore_pdl_response`
+        * `ha_vm_component_protection`
+
+        ### Settings that require vSphere version 6.5 or higher
+
+        These settings require vSphere 6.5 or higher:
+
+        * `drs_enable_predictive_drs`
+        * `ha_admission_control_host_failure_tolerance`
+          (When `ha_admission_control_policy` is set to
+          `resourcePercentage` or `slotPolicy`. Permitted in all versions under
+          `failoverHosts`)
+        * `ha_admission_control_resource_percentage_auto_compute`
+        * `ha_vm_restart_timeout`
+        * `ha_vm_dependency_restart_condition`
+        * `ha_vm_restart_additional_delay`
+        * `proactive_ha_automation_level`
+        * `proactive_ha_enabled`
+        * `proactive_ha_moderate_remediation`
+        * `proactive_ha_provider_ids`
+        * `proactive_ha_severe_remediation`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
-        :param pulumi.Input[str] datacenter_id: The [managed object ID][docs-about-morefs] of
+               value strings to set for the datastore cluster.
+        :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations in this cluster. Can be one of `manual` or `automated`. Default:
@@ -382,11 +452,19 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
-        :param pulumi.Input[str] folder: The name of the folder to locate the cluster in.
-        :param pulumi.Input[bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
+        :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               The provider will place a cluster named `compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
+               `true` will auto-remove any hosts that are currently a member of the cluster,
+               as if they were removed by taking their entry out of `host_system_ids` (see
+               below). This is an advanced
+               option and should only be used for testing. Default: `false`.
         :param pulumi.Input[list] ha_admission_control_failover_host_system_ids: Defines the
-               [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+               managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
                block access to the host, and DRS will ignore the host when making
                recommendations.
@@ -501,7 +579,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
-        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[list] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -525,8 +603,7 @@ class ComputeCluster(pulumi.CustomResource):
                `proactive_ha_moderate_remediation` is
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -616,10 +693,8 @@ class ComputeCluster(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute
-               value strings to set for the datastore cluster. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
-        :param pulumi.Input[str] datacenter_id: The [managed object ID][docs-about-morefs] of
+               value strings to set for the datastore cluster.
+        :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations in this cluster. Can be one of `manual` or `automated`. Default:
@@ -646,11 +721,19 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
-        :param pulumi.Input[str] folder: The name of the folder to locate the cluster in.
-        :param pulumi.Input[bool] force_evacuate_on_destroy: Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-               for testing and is not recommended in normal use.
+        :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
+               This is a path relative to the datacenter you are deploying the cluster to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               The provider will place a cluster named `compute-cluster-test` in a
+               host folder located at `/dc1/host/foo/bar`, with the final inventory path
+               being `/dc1/host/foo/bar/datastore-cluster-test`.
+        :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
+               `true` will auto-remove any hosts that are currently a member of the cluster,
+               as if they were removed by taking their entry out of `host_system_ids` (see
+               below). This is an advanced
+               option and should only be used for testing. Default: `false`.
         :param pulumi.Input[list] ha_admission_control_failover_host_system_ids: Defines the
-               [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+               managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
                block access to the host, and DRS will ignore the host when making
                recommendations.
@@ -765,7 +848,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
-        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[list] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -790,8 +873,7 @@ class ComputeCluster(pulumi.CustomResource):
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
         :param pulumi.Input[str] resource_pool_id: The managed object ID of the cluster's root resource pool.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

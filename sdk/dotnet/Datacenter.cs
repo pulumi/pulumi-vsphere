@@ -32,7 +32,7 @@ namespace Pulumi.VSphere
         public Output<string?> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// [Managed object ID][docs-about-morefs] of this datacenter.
+        /// Managed object ID of this datacenter.
         /// </summary>
         [Output("moid")]
         public Output<string> Moid { get; private set; } = null!;
@@ -45,8 +45,7 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -130,8 +129,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -169,7 +167,7 @@ namespace Pulumi.VSphere
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// [Managed object ID][docs-about-morefs] of this datacenter.
+        /// Managed object ID of this datacenter.
         /// </summary>
         [Input("moid")]
         public Input<string>? Moid { get; set; }
@@ -185,8 +183,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

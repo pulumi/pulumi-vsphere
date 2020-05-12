@@ -4,6 +4,67 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..DatastoreCluster` resource can be used to create and manage
+ * datastore clusters. This can be used to create groups of datastores with a
+ * shared management interface, allowing for resource control and load balancing
+ * through Storage DRS.
+ * 
+ * For more information on vSphere datastore clusters and Storage DRS, see [this
+ * page][ref-vsphere-datastore-clusters].
+ * 
+ * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+ * 
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
+ * const esxiHosts: pulumi.Output<vsphere.GetHostResult>[] = [];
+ * for (let i = 0; i < hosts.length; i++) {
+ *     esxiHosts.push(datacenter.apply(datacenter => vsphere.getHost({
+ *         datacenterId: datacenter.id,
+ *         name: hosts[i],
+ *     }, { async: true })));
+ * }
+ * const datastoreCluster = new vsphere.DatastoreCluster("datastoreCluster", {
+ *     datacenterId: datacenter.id,
+ *     sdrsEnabled: true,
+ * });
+ * const datastore1 = new vsphere.NasDatastore("datastore1", {
+ *     datastoreClusterId: datastoreCluster.id,
+ *     hostSystemIds: esxiHosts.map(v => v.id),
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test1",
+ *     type: "NFS",
+ * });
+ * const datastore2 = new vsphere.NasDatastore("datastore2", {
+ *     datastoreClusterId: datastoreCluster.id,
+ *     hostSystemIds: esxiHosts.map(v => v.id),
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test2",
+ *     type: "NFS",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
+ */
 export class DatastoreCluster extends pulumi.CustomResource {
     /**
      * Get an existing DatastoreCluster resource's state with the given name, ID, and optional extra
@@ -39,13 +100,19 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     public readonly datacenterId!: pulumi.Output<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, The provider will place a datastore cluster named
+     * `datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -53,7 +120,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Advanced configuration options for storage DRS.
+     * A key/value map of advanced Storage DRS
+     * settings that are not exposed via the provider or the vSphere client.
      */
     public readonly sdrsAdvancedOptions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -164,8 +232,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsVmEvacuationAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -260,13 +327,19 @@ export interface DatastoreClusterState {
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, The provider will place a datastore cluster named
+     * `datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -274,7 +347,8 @@ export interface DatastoreClusterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Advanced configuration options for storage DRS.
+     * A key/value map of advanced Storage DRS
+     * settings that are not exposed via the provider or the vSphere client.
      */
     readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -385,8 +459,7 @@ export interface DatastoreClusterState {
      */
     readonly sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -403,13 +476,19 @@ export interface DatastoreClusterArgs {
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
     readonly datacenterId: pulumi.Input<string>;
     /**
-     * The name of the folder to locate the datastore cluster in.
+     * The relative path to a folder to put this datastore
+     * cluster in.  This is a path relative to the datacenter you are deploying the
+     * datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+     * `foo/bar`, The provider will place a datastore cluster named
+     * `datastore-cluster-test` in a datastore folder located at
+     * `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -417,7 +496,8 @@ export interface DatastoreClusterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Advanced configuration options for storage DRS.
+     * A key/value map of advanced Storage DRS
+     * settings that are not exposed via the provider or the vSphere client.
      */
     readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -528,8 +608,7 @@ export interface DatastoreClusterArgs {
      */
     readonly sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

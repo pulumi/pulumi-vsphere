@@ -12,11 +12,8 @@ import (
 
 // The `.ComputeClusterVmAffinityRule` resource can be used to manage
 // VM affinity rules in a cluster, either created by the
-// [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-// by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-//
-// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+// `.ComputeCluster` resource or looked up
+// by the `.ComputeCluster` data source.
 //
 // This rule can be used to tell a set to virtual machines to run together on a
 // single host within a cluster. When configured, DRS will make a best effort to
@@ -27,10 +24,8 @@ import (
 // > Keep in mind that this rule can only be used to tell VMs to run together on
 // a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
 // the
-// [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+// `.ComputeClusterVmHostRule`
 // resource.
-//
-// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
@@ -39,8 +34,8 @@ import (
 type ComputeClusterVmAffinityRule struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -89,8 +84,8 @@ func GetComputeClusterVmAffinityRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmAffinityRule resources.
 type computeClusterVmAffinityRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -106,8 +101,8 @@ type computeClusterVmAffinityRuleState struct {
 }
 
 type ComputeClusterVmAffinityRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// Enable this rule in the cluster. Default: `true`.
@@ -127,8 +122,8 @@ func (ComputeClusterVmAffinityRuleState) ElementType() reflect.Type {
 }
 
 type computeClusterVmAffinityRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -145,8 +140,8 @@ type computeClusterVmAffinityRuleArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmAffinityRule resource.
 type ComputeClusterVmAffinityRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// Enable this rule in the cluster. Default: `true`.

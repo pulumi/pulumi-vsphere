@@ -30,10 +30,14 @@ type Folder struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId pulumi.StringPtrOutput `pulumi:"datacenterId"`
-	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+	// The path of the folder to be created. This is relative to
+	// the root of the type of folder you are creating, and the supplied datacenter.
+	// For example, given a default datacenter of `default-dc`, a folder of type
+	// `vm` (denoting a virtual machine folder), and a supplied folder of
+	// `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`.
 	Path pulumi.StringOutput `pulumi:"path"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -84,10 +88,14 @@ type folderState struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+	// The path of the folder to be created. This is relative to
+	// the root of the type of folder you are creating, and the supplied datacenter.
+	// For example, given a default datacenter of `default-dc`, a folder of type
+	// `vm` (denoting a virtual machine folder), and a supplied folder of
+	// `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`.
 	Path *string `pulumi:"path"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -105,10 +113,14 @@ type FolderState struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId pulumi.StringPtrInput
-	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+	// The path of the folder to be created. This is relative to
+	// the root of the type of folder you are creating, and the supplied datacenter.
+	// For example, given a default datacenter of `default-dc`, a folder of type
+	// `vm` (denoting a virtual machine folder), and a supplied folder of
+	// `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`.
 	Path pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -130,10 +142,14 @@ type folderArgs struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+	// The path of the folder to be created. This is relative to
+	// the root of the type of folder you are creating, and the supplied datacenter.
+	// For example, given a default datacenter of `default-dc`, a folder of type
+	// `vm` (denoting a virtual machine folder), and a supplied folder of
+	// `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`.
 	Path string `pulumi:"path"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -152,10 +168,14 @@ type FolderArgs struct {
 	// Required for all folder types except for datacenter folders. Forces a new
 	// resource if changed.
 	DatacenterId pulumi.StringPtrInput
-	// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+	// The path of the folder to be created. This is relative to
+	// the root of the type of folder you are creating, and the supplied datacenter.
+	// For example, given a default datacenter of `default-dc`, a folder of type
+	// `vm` (denoting a virtual machine folder), and a supplied folder of
+	// `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`.
 	Path pulumi.StringInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,

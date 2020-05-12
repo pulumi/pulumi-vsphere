@@ -26,8 +26,8 @@ namespace Pulumi.VSphere
     public partial class HaVmOverride : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Output("computeClusterId")]
@@ -38,7 +38,6 @@ namespace Pulumi.VSphere
         /// on this virtual machine if an APD status on an affected datastore clears in
         /// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
         /// `reset`.  Default: `useClusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Output("haDatastoreApdRecoveryAction")]
         public Output<string?> HaDatastoreApdRecoveryAction { get; private set; } = null!;
@@ -48,7 +47,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected loss to all paths to a relevant
         /// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
         /// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Output("haDatastoreApdResponse")]
         public Output<string?> HaDatastoreApdResponse { get; private set; } = null!;
@@ -58,7 +56,6 @@ namespace Pulumi.VSphere
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Output("haDatastoreApdResponseDelay")]
         public Output<int?> HaDatastoreApdResponseDelay { get; private set; } = null!;
@@ -68,7 +65,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected a permanent device loss to a
         /// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
         /// `restartAggressive`. Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Output("haDatastorePdlResponse")]
         public Output<string?> HaDatastorePdlResponse { get; private set; } = null!;
@@ -147,7 +143,6 @@ namespace Pulumi.VSphere
         /// The maximum time, in seconds, that
         /// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
         /// specify the cluster default.  Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Output("haVmRestartTimeout")]
         public Output<int?> HaVmRestartTimeout { get; private set; } = null!;
@@ -206,8 +201,8 @@ namespace Pulumi.VSphere
     public sealed class HaVmOverrideArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId", required: true)]
@@ -218,7 +213,6 @@ namespace Pulumi.VSphere
         /// on this virtual machine if an APD status on an affected datastore clears in
         /// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
         /// `reset`.  Default: `useClusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdRecoveryAction")]
         public Input<string>? HaDatastoreApdRecoveryAction { get; set; }
@@ -228,7 +222,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected loss to all paths to a relevant
         /// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
         /// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponse")]
         public Input<string>? HaDatastoreApdResponse { get; set; }
@@ -238,7 +231,6 @@ namespace Pulumi.VSphere
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponseDelay")]
         public Input<int>? HaDatastoreApdResponseDelay { get; set; }
@@ -248,7 +240,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected a permanent device loss to a
         /// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
         /// `restartAggressive`. Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastorePdlResponse")]
         public Input<string>? HaDatastorePdlResponse { get; set; }
@@ -327,7 +318,6 @@ namespace Pulumi.VSphere
         /// The maximum time, in seconds, that
         /// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
         /// specify the cluster default.  Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartTimeout")]
         public Input<int>? HaVmRestartTimeout { get; set; }
@@ -347,8 +337,8 @@ namespace Pulumi.VSphere
     public sealed class HaVmOverrideState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId")]
@@ -359,7 +349,6 @@ namespace Pulumi.VSphere
         /// on this virtual machine if an APD status on an affected datastore clears in
         /// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
         /// `reset`.  Default: `useClusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdRecoveryAction")]
         public Input<string>? HaDatastoreApdRecoveryAction { get; set; }
@@ -369,7 +358,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected loss to all paths to a relevant
         /// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
         /// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponse")]
         public Input<string>? HaDatastoreApdResponse { get; set; }
@@ -379,7 +367,6 @@ namespace Pulumi.VSphere
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponseDelay")]
         public Input<int>? HaDatastoreApdResponseDelay { get; set; }
@@ -389,7 +376,6 @@ namespace Pulumi.VSphere
         /// virtual machine when the cluster has detected a permanent device loss to a
         /// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
         /// `restartAggressive`. Default: `clusterDefault`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haDatastorePdlResponse")]
         public Input<string>? HaDatastorePdlResponse { get; set; }
@@ -468,7 +454,6 @@ namespace Pulumi.VSphere
         /// The maximum time, in seconds, that
         /// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
         /// specify the cluster default.  Default: `-1`.
-        /// &lt;sup&gt;[\*][tf-vsphere-cluster-resource-version-restrictions]&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartTimeout")]
         public Input<int>? HaVmRestartTimeout { get; set; }

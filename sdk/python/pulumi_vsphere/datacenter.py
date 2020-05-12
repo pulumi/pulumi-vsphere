@@ -24,7 +24,7 @@ class Datacenter(pulumi.CustomResource):
     """
     moid: pulumi.Output[str]
     """
-    [Managed object ID][docs-about-morefs] of this datacenter.
+    Managed object ID of this datacenter.
     """
     name: pulumi.Output[str]
     """
@@ -33,17 +33,16 @@ class Datacenter(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource.
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, folder=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a VMware vSphere datacenter resource. This can be used as the primary
         container of inventory objects such as hosts and virtual machines.
 
-        ## Example Usages
+        ## Example Usage
 
-        **Create datacenter on the root folder:**
+        ### Create datacenter on the root folder
 
         ```python
         import pulumi
@@ -52,7 +51,7 @@ class Datacenter(pulumi.CustomResource):
         prod_datacenter = vsphere.Datacenter("prodDatacenter")
         ```
 
-        **Create datacenter on a subfolder:**
+        ### Create datacenter on a subfolder
 
         ```python
         import pulumi
@@ -60,6 +59,7 @@ class Datacenter(pulumi.CustomResource):
 
         research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -71,8 +71,7 @@ class Datacenter(pulumi.CustomResource):
                Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,11 +116,10 @@ class Datacenter(pulumi.CustomResource):
                for custom attributes.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
-        :param pulumi.Input[str] moid: [Managed object ID][docs-about-morefs] of this datacenter.
+        :param pulumi.Input[str] moid: Managed object ID of this datacenter.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -15,9 +15,8 @@ namespace Pulumi.VSphere
         /// The `vsphere..getDatastore` data source can be used to discover the ID of a
         /// datastore in vSphere. This is useful to fetch the ID of a datastore that you
         /// want to use to create virtual machines in using the
-        /// [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
+        /// `vsphere..VirtualMachine` resource. 
         /// 
-        /// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -30,8 +29,8 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datacenter the datastore is located in. This
+        /// The managed object reference
+        /// ID of the datacenter the datastore is located in. This
         /// can be omitted if the search path used in `name` is an absolute path. For
         /// default datacenters, use the id attribute from an empty `vsphere..Datacenter`
         /// data source.

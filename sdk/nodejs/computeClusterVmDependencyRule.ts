@@ -7,19 +7,14 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..ComputeClusterVmDependencyRule` resource can be used to manage
  * VM dependency rules in a cluster, either created by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
- * 
- * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
- * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * `vsphere..ComputeCluster` resource or looked up
+ * by the `vsphere..ComputeCluster` data source.
  * 
  * A virtual machine dependency rule applies to vSphere HA, and allows
  * user-defined startup orders for virtual machines in the case of host failure.
  * Virtual machines are supplied via groups, which can be managed via the
- * [`vsphere..ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
+ * `vsphere..ComputeClusterVmGroup`
  * resource.
- * 
- * [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
  * 
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -120,8 +115,8 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     public readonly computeClusterId!: pulumi.Output<string>;
@@ -206,8 +201,8 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmDependencyRuleState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId?: pulumi.Input<string>;
@@ -246,8 +241,8 @@ export interface ComputeClusterVmDependencyRuleState {
  */
 export interface ComputeClusterVmDependencyRuleArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId: pulumi.Input<string>;

@@ -41,9 +41,57 @@ class File(pulumi.CustomResource):
     be copied from. Forces a new resource if changed.
     """
     source_file: pulumi.Output[str]
+    """
+    The path to the file being uploaded from the
+    host to vSphere or copied within vSphere. Forces a new resource if
+    changed.
+    """
     def __init__(__self__, resource_name, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a File resource with the given unique name, props, and options.
+        The `.File` resource can be used to upload files (such as virtual disk
+        files) from the host machine that this provider is running on to a target
+        datastore.  The resource can also be used to copy files between datastores, or
+        from one location to another on the same datastore.
+
+        Updates to destination parameters such as `datacenter`, `datastore`, or
+        `destination_file` will move the managed file a new destination based on the
+        values of the new settings.  If any source parameter is changed, such as
+        `source_datastore`, `source_datacenter` or `source_file`), the resource will be
+        re-created. Depending on if destination parameters are being changed as well,
+        this may result in the destination file either being overwritten or deleted at
+        the old location.
+
+        ## Example Usage
+
+        ### Uploading a file
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_disk_upload = vsphere.File("ubuntuDiskUpload",
+            datacenter="my_datacenter",
+            datastore="local",
+            destination_file="/my_path/disks/custom_ubuntu.vmdk",
+            source_file="/home/ubuntu/my_disks/custom_ubuntu.vmdk")
+        ```
+
+        ### Copying a file
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_disk_copy = vsphere.File("ubuntuDiskCopy",
+            datacenter="my_datacenter",
+            datastore="local",
+            destination_file="/my_path/custom_ubuntu_id.vmdk",
+            source_datacenter="my_datacenter",
+            source_datastore="local",
+            source_file="/my_path/disks/custom_ubuntu.vmdk")
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
@@ -58,6 +106,9 @@ class File(pulumi.CustomResource):
                will be copied from. Forces a new resource if changed.
         :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
                be copied from. Forces a new resource if changed.
+        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
+               host to vSphere or copied within vSphere. Forces a new resource if
+               changed.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,6 +167,9 @@ class File(pulumi.CustomResource):
                will be copied from. Forces a new resource if changed.
         :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
                be copied from. Forces a new resource if changed.
+        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
+               host to vSphere or copied within vSphere. Forces a new resource if
+               changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

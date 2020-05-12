@@ -116,9 +116,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual machine.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -127,8 +125,8 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+     * The managed object reference
+     * ID of the datastore cluster ID to use. This setting
      * applies to entire virtual machine and implies that you wish to use Storage
      * DRS with this virtual machine. See the section on virtual machine
      * migration for details on changing this value.
@@ -140,7 +138,13 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * The IP address selected by Terraform to be used for the provisioner.
+     * The IP address selected by the provider to be used with
+     * any provisioners configured on this resource.
+     * Whenever possible, this is the first IPv4 address that is reachable through
+     * the default gateway configured on the machine, then the first reachable IPv6
+     * address, and then the first general discovered address if neither exist. If
+     * VMware tools is not running on the virtual machine, or if the VM is powered
+     * off, this value will be blank.
      */
     public /*out*/ readonly defaultIpAddress!: pulumi.Output<string>;
     /**
@@ -201,7 +205,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The current list of IP addresses on this machine,
      * including the value of `defaultIpAddress`. If VMware tools is not running
      * on the virtual machine, or if the VM is powered off, this list will be empty.
-     * * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+     * * `moid`: The managed object reference ID of the created
      * virtual machine.
      */
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
@@ -213,8 +217,8 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly hardwareVersion!: pulumi.Output<number>;
     /**
-     * An optional [managed object reference
-     * ID][docs-about-morefs] of a host to put this virtual machine on. See the
+     * An optional managed object reference
+     * ID of a host to put this virtual machine on. See the
      * section on virtual machine migration for
      * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
@@ -331,12 +335,14 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly poweronTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
+     * Value internal to the provider used to determine if a
+     * configuration set change requires a reboot. This value is only useful during
+     * an update process and gets reset on refresh.
      */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+     * The managed object reference
+     * ID of the resource pool to put this virtual machine in.
      * See the section on virtual machine migration
      * for details on changing this value.
      */
@@ -372,9 +378,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
     /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
-     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
-     * remove controllers.
+     * The number of SCSI controllers that
+     * this provider manages on this virtual machine. This directly affects the amount
+     * of disks you can add to the virtual machine and the maximum disk unit number.
+     * Note that lowering this value does not remove controllers. Default: `1`.
      */
     public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
     /**
@@ -406,8 +413,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -732,9 +738,7 @@ export interface VirtualMachineState {
     readonly cpuShareLevel?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual machine.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -743,8 +747,8 @@ export interface VirtualMachineState {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+     * The managed object reference
+     * ID of the datastore cluster ID to use. This setting
      * applies to entire virtual machine and implies that you wish to use Storage
      * DRS with this virtual machine. See the section on virtual machine
      * migration for details on changing this value.
@@ -756,7 +760,13 @@ export interface VirtualMachineState {
      */
     readonly datastoreId?: pulumi.Input<string>;
     /**
-     * The IP address selected by Terraform to be used for the provisioner.
+     * The IP address selected by the provider to be used with
+     * any provisioners configured on this resource.
+     * Whenever possible, this is the first IPv4 address that is reachable through
+     * the default gateway configured on the machine, then the first reachable IPv6
+     * address, and then the first general discovered address if neither exist. If
+     * VMware tools is not running on the virtual machine, or if the VM is powered
+     * off, this value will be blank.
      */
     readonly defaultIpAddress?: pulumi.Input<string>;
     /**
@@ -817,7 +827,7 @@ export interface VirtualMachineState {
      * The current list of IP addresses on this machine,
      * including the value of `defaultIpAddress`. If VMware tools is not running
      * on the virtual machine, or if the VM is powered off, this list will be empty.
-     * * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+     * * `moid`: The managed object reference ID of the created
      * virtual machine.
      */
     readonly guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
@@ -829,8 +839,8 @@ export interface VirtualMachineState {
      */
     readonly hardwareVersion?: pulumi.Input<number>;
     /**
-     * An optional [managed object reference
-     * ID][docs-about-morefs] of a host to put this virtual machine on. See the
+     * An optional managed object reference
+     * ID of a host to put this virtual machine on. See the
      * section on virtual machine migration for
      * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
@@ -947,12 +957,14 @@ export interface VirtualMachineState {
      */
     readonly poweronTimeout?: pulumi.Input<number>;
     /**
-     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
+     * Value internal to the provider used to determine if a
+     * configuration set change requires a reboot. This value is only useful during
+     * an update process and gets reset on refresh.
      */
     readonly rebootRequired?: pulumi.Input<boolean>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+     * The managed object reference
+     * ID of the resource pool to put this virtual machine in.
      * See the section on virtual machine migration
      * for details on changing this value.
      */
@@ -988,9 +1000,10 @@ export interface VirtualMachineState {
      */
     readonly scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
-     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
-     * remove controllers.
+     * The number of SCSI controllers that
+     * this provider manages on this virtual machine. This directly affects the amount
+     * of disks you can add to the virtual machine and the maximum disk unit number.
+     * Note that lowering this value does not remove controllers. Default: `1`.
      */
     readonly scsiControllerCount?: pulumi.Input<number>;
     /**
@@ -1022,8 +1035,7 @@ export interface VirtualMachineState {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1164,9 +1176,7 @@ export interface VirtualMachineArgs {
     readonly cpuShareLevel?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual machine.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1175,8 +1185,8 @@ export interface VirtualMachineArgs {
      */
     readonly datacenterId?: pulumi.Input<string>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+     * The managed object reference
+     * ID of the datastore cluster ID to use. This setting
      * applies to entire virtual machine and implies that you wish to use Storage
      * DRS with this virtual machine. See the section on virtual machine
      * migration for details on changing this value.
@@ -1249,8 +1259,8 @@ export interface VirtualMachineArgs {
      */
     readonly hardwareVersion?: pulumi.Input<number>;
     /**
-     * An optional [managed object reference
-     * ID][docs-about-morefs] of a host to put this virtual machine on. See the
+     * An optional managed object reference
+     * ID of a host to put this virtual machine on. See the
      * section on virtual machine migration for
      * details on changing this value. If a `hostSystemId` is not supplied,
      * vSphere will select a host in the resource pool to place the virtual machine,
@@ -1356,8 +1366,8 @@ export interface VirtualMachineArgs {
      */
     readonly poweronTimeout?: pulumi.Input<number>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+     * The managed object reference
+     * ID of the resource pool to put this virtual machine in.
      * See the section on virtual machine migration
      * for details on changing this value.
      */
@@ -1393,9 +1403,10 @@ export interface VirtualMachineArgs {
      */
     readonly scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of
-     * disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not
-     * remove controllers.
+     * The number of SCSI controllers that
+     * this provider manages on this virtual machine. This directly affects the amount
+     * of disks you can add to the virtual machine and the maximum disk unit number.
+     * Note that lowering this value does not remove controllers. Default: `1`.
      */
     readonly scsiControllerCount?: pulumi.Input<number>;
     /**
@@ -1427,8 +1438,7 @@ export interface VirtualMachineArgs {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

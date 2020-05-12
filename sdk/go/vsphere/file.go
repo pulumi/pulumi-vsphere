@@ -10,6 +10,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// The `.File` resource can be used to upload files (such as virtual disk
+// files) from the host machine that this provider is running on to a target
+// datastore.  The resource can also be used to copy files between datastores, or
+// from one location to another on the same datastore.
+//
+// Updates to destination parameters such as `datacenter`, `datastore`, or
+// `destinationFile` will move the managed file a new destination based on the
+// values of the new settings.  If any source parameter is changed, such as
+// `sourceDatastore`, `sourceDatacenter` or `sourceFile`), the resource will be
+// re-created. Depending on if destination parameters are being changed as well,
+// this may result in the destination file either being overwritten or deleted at
+// the old location.
 type File struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +43,10 @@ type File struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrOutput `pulumi:"sourceDatastore"`
-	SourceFile      pulumi.StringOutput    `pulumi:"sourceFile"`
+	// The path to the file being uploaded from the
+	// host to vSphere or copied within vSphere. Forces a new resource if
+	// changed.
+	SourceFile pulumi.StringOutput `pulumi:"sourceFile"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -89,7 +104,10 @@ type fileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile      *string `pulumi:"sourceFile"`
+	// The path to the file being uploaded from the
+	// host to vSphere or copied within vSphere. Forces a new resource if
+	// changed.
+	SourceFile *string `pulumi:"sourceFile"`
 }
 
 type FileState struct {
@@ -111,7 +129,10 @@ type FileState struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile      pulumi.StringPtrInput
+	// The path to the file being uploaded from the
+	// host to vSphere or copied within vSphere. Forces a new resource if
+	// changed.
+	SourceFile pulumi.StringPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -137,7 +158,10 @@ type fileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	SourceFile      string  `pulumi:"sourceFile"`
+	// The path to the file being uploaded from the
+	// host to vSphere or copied within vSphere. Forces a new resource if
+	// changed.
+	SourceFile string `pulumi:"sourceFile"`
 }
 
 // The set of arguments for constructing a File resource.
@@ -160,7 +184,10 @@ type FileArgs struct {
 	// The name of the datastore in which file will
 	// be copied from. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	SourceFile      pulumi.StringInput
+	// The path to the file being uploaded from the
+	// host to vSphere or copied within vSphere. Forces a new resource if
+	// changed.
+	SourceFile pulumi.StringInput
 }
 
 func (FileArgs) ElementType() reflect.Type {

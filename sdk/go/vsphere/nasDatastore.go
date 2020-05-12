@@ -14,12 +14,10 @@ import (
 // datastores on an ESXi host or a set of hosts. The resource supports mounting
 // NFS v3 and v4.1 shares to be used as datastores.
 //
-// > **NOTE:** Unlike [`.VmfsDatastore`][resource-vmfs-datastore], a NAS
+// > **NOTE:** Unlike `.VmfsDatastore`, a NAS
 // datastore is only mounted on the hosts you choose to mount it on. To mount on
 // multiple hosts, you must specify each host that you want to add in the
 // `hostSystemIds` argument.
-//
-// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 type NasDatastore struct {
 	pulumi.CustomResourceState
 
@@ -34,19 +32,23 @@ type NasDatastore struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
-	// value strings to set on datasource resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set on datasource resource.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntOutput `pulumi:"freeSpace"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to mount the datastore on.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The current maintenance mode state of the datastore.
@@ -71,8 +73,7 @@ type NasDatastore struct {
 	// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 	// if changed.
 	SecurityType pulumi.StringPtrOutput `pulumi:"securityType"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -133,19 +134,23 @@ type nasDatastoreState struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity *int `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
-	// value strings to set on datasource resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set on datasource resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace *int `pulumi:"freeSpace"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to mount the datastore on.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The current maintenance mode state of the datastore.
@@ -170,8 +175,7 @@ type nasDatastoreState struct {
 	// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 	// if changed.
 	SecurityType *string `pulumi:"securityType"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -196,19 +200,23 @@ type NasDatastoreState struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set on datasource resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set on datasource resource.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to mount the datastore on.
 	HostSystemIds pulumi.StringArrayInput
 	// The current maintenance mode state of the datastore.
@@ -233,8 +241,7 @@ type NasDatastoreState struct {
 	// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 	// if changed.
 	SecurityType pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -258,17 +265,21 @@ type nasDatastoreArgs struct {
 	// actual share. Default: `readWrite`. Forces a new resource if changed.
 	AccessMode *string `pulumi:"accessMode"`
 	// Map of custom attribute ids to attribute
-	// value strings to set on datasource resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set on datasource resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to mount the datastore on.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the datastore. Forces a new resource if
@@ -285,8 +296,7 @@ type nasDatastoreArgs struct {
 	// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 	// if changed.
 	SecurityType *string `pulumi:"securityType"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -302,17 +312,21 @@ type NasDatastoreArgs struct {
 	// actual share. Default: `readWrite`. Forces a new resource if changed.
 	AccessMode pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set on datasource resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set on datasource resource.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to mount the datastore on.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the datastore. Forces a new resource if
@@ -329,8 +343,7 @@ type NasDatastoreArgs struct {
 	// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
 	// if changed.
 	SecurityType pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if

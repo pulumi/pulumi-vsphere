@@ -497,7 +497,11 @@ type VirtualMachineCdrom struct {
 	ClientDevice *bool `pulumi:"clientDevice"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   *string `pulumi:"datastoreId"`
+	DatastoreId *string `pulumi:"datastoreId"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
@@ -524,7 +528,11 @@ type VirtualMachineCdromArgs struct {
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
@@ -623,6 +631,10 @@ func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// An address internal to this provider that helps locate the
+// device when `key` is unavailable. This follows a convention of
+// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+// unit 1 on SCSI bus 0.
 func (o VirtualMachineCdromOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -678,6 +690,10 @@ func (o VirtualMachineCdromPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An address internal to this provider that helps locate the
+// device when `key` is unavailable. This follows a convention of
+// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+// unit 1 on SCSI bus 0.
 func (o VirtualMachineCdromPtrOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
 		if v == nil {
@@ -1791,7 +1807,11 @@ type VirtualMachineDisk struct {
 	Attach *bool `pulumi:"attach"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   *string `pulumi:"datastoreId"`
+	DatastoreId *string `pulumi:"datastoreId"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of
 	// writes and snapshotting. Can be one of `append`, `independentNonpersistent`,
@@ -1875,7 +1895,11 @@ type VirtualMachineDiskArgs struct {
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
-	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of
 	// writes and snapshotting. Can be one of `append`, `independentNonpersistent`,
@@ -2005,6 +2029,10 @@ func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// An address internal to this provider that helps locate the
+// device when `key` is unavailable. This follows a convention of
+// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+// unit 1 on SCSI bus 0.
 func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -2161,15 +2189,19 @@ type VirtualMachineNetworkInterface struct {
 	// this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
 	// `normal`.
 	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
-	DeviceAddress       *string `pulumi:"deviceAddress"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
+	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// The MAC address of this network interface. Can
 	// only be manually set if `useStaticMac` is true, otherwise this is a
 	// computed value that gives the current MAC address of this interface.
 	MacAddress *string `pulumi:"macAddress"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the network to connect this interface to.
+	// The managed object reference
+	// ID of the network to connect this interface to.
 	NetworkId string `pulumi:"networkId"`
 	// Specifies which OVF NIC the `networkInterface`
 	// should be associated with. Only applies at creation and only when deploying
@@ -2210,15 +2242,19 @@ type VirtualMachineNetworkInterfaceArgs struct {
 	// this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
 	// `normal`.
 	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
-	DeviceAddress       pulumi.StringPtrInput `pulumi:"deviceAddress"`
+	// An address internal to this provider that helps locate the
+	// device when `key` is unavailable. This follows a convention of
+	// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+	// unit 1 on SCSI bus 0.
+	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// The MAC address of this network interface. Can
 	// only be manually set if `useStaticMac` is true, otherwise this is a
 	// computed value that gives the current MAC address of this interface.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the network to connect this interface to.
+	// The managed object reference
+	// ID of the network to connect this interface to.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// Specifies which OVF NIC the `networkInterface`
 	// should be associated with. Only applies at creation and only when deploying
@@ -2313,6 +2349,10 @@ func (o VirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.Strin
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
 }
 
+// An address internal to this provider that helps locate the
+// device when `key` is unavailable. This follows a convention of
+// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+// unit 1 on SCSI bus 0.
 func (o VirtualMachineNetworkInterfaceOutput) DeviceAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.DeviceAddress }).(pulumi.StringPtrOutput)
 }
@@ -2329,8 +2369,8 @@ func (o VirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
 }
 
-// The [managed object reference
-// ID][docs-about-morefs] of the network to connect this interface to.
+// The managed object reference
+// ID of the network to connect this interface to.
 func (o VirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
 }

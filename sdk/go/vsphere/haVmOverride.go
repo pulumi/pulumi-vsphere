@@ -25,33 +25,29 @@ import (
 type HaVmOverride struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// Controls the action to take
 	// on this virtual machine if an APD status on an affected datastore clears in
 	// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 	// `reset`.  Default: `useClusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdRecoveryAction pulumi.StringPtrOutput `pulumi:"haDatastoreApdRecoveryAction"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected loss to all paths to a relevant
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponse pulumi.StringPtrOutput `pulumi:"haDatastoreApdResponse"`
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrOutput `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected a permanent device loss to a
 	// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 	// `restartAggressive`. Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastorePdlResponse pulumi.StringPtrOutput `pulumi:"haDatastorePdlResponse"`
 	// The action to take on this virtual
 	// machine when a host has detected that it has been isolated from the rest of
@@ -94,7 +90,6 @@ type HaVmOverride struct {
 	// The maximum time, in seconds, that
 	// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 	// specify the cluster default.  Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaVmRestartTimeout pulumi.IntPtrOutput `pulumi:"haVmRestartTimeout"`
 	// The UUID of the virtual machine to create
 	// the override for.  Forces a new resource if changed.
@@ -135,33 +130,29 @@ func GetHaVmOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HaVmOverride resources.
 type haVmOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// Controls the action to take
 	// on this virtual machine if an APD status on an affected datastore clears in
 	// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 	// `reset`.  Default: `useClusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdRecoveryAction *string `pulumi:"haDatastoreApdRecoveryAction"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected loss to all paths to a relevant
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected a permanent device loss to a
 	// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 	// `restartAggressive`. Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastorePdlResponse *string `pulumi:"haDatastorePdlResponse"`
 	// The action to take on this virtual
 	// machine when a host has detected that it has been isolated from the rest of
@@ -204,7 +195,6 @@ type haVmOverrideState struct {
 	// The maximum time, in seconds, that
 	// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 	// specify the cluster default.  Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
 	// The UUID of the virtual machine to create
 	// the override for.  Forces a new resource if changed.
@@ -212,33 +202,29 @@ type haVmOverrideState struct {
 }
 
 type HaVmOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// Controls the action to take
 	// on this virtual machine if an APD status on an affected datastore clears in
 	// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 	// `reset`.  Default: `useClusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdRecoveryAction pulumi.StringPtrInput
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected loss to all paths to a relevant
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponse pulumi.StringPtrInput
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected a permanent device loss to a
 	// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 	// `restartAggressive`. Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastorePdlResponse pulumi.StringPtrInput
 	// The action to take on this virtual
 	// machine when a host has detected that it has been isolated from the rest of
@@ -281,7 +267,6 @@ type HaVmOverrideState struct {
 	// The maximum time, in seconds, that
 	// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 	// specify the cluster default.  Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaVmRestartTimeout pulumi.IntPtrInput
 	// The UUID of the virtual machine to create
 	// the override for.  Forces a new resource if changed.
@@ -293,33 +278,29 @@ func (HaVmOverrideState) ElementType() reflect.Type {
 }
 
 type haVmOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// Controls the action to take
 	// on this virtual machine if an APD status on an affected datastore clears in
 	// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 	// `reset`.  Default: `useClusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdRecoveryAction *string `pulumi:"haDatastoreApdRecoveryAction"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected loss to all paths to a relevant
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected a permanent device loss to a
 	// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 	// `restartAggressive`. Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastorePdlResponse *string `pulumi:"haDatastorePdlResponse"`
 	// The action to take on this virtual
 	// machine when a host has detected that it has been isolated from the rest of
@@ -362,7 +343,6 @@ type haVmOverrideArgs struct {
 	// The maximum time, in seconds, that
 	// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 	// specify the cluster default.  Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
 	// The UUID of the virtual machine to create
 	// the override for.  Forces a new resource if changed.
@@ -371,33 +351,29 @@ type haVmOverrideArgs struct {
 
 // The set of arguments for constructing a HaVmOverride resource.
 type HaVmOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// Controls the action to take
 	// on this virtual machine if an APD status on an affected datastore clears in
 	// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
 	// `reset`.  Default: `useClusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdRecoveryAction pulumi.StringPtrInput
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected loss to all paths to a relevant
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponse pulumi.StringPtrInput
 	// Controls the delay in minutes
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
 	// Controls the action to take on this
 	// virtual machine when the cluster has detected a permanent device loss to a
 	// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
 	// `restartAggressive`. Default: `clusterDefault`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaDatastorePdlResponse pulumi.StringPtrInput
 	// The action to take on this virtual
 	// machine when a host has detected that it has been isolated from the rest of
@@ -440,7 +416,6 @@ type HaVmOverrideArgs struct {
 	// The maximum time, in seconds, that
 	// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
 	// specify the cluster default.  Default: `-1`.
-	// <sup>[\*][tf-vsphere-cluster-resource-version-restrictions]</sup>
 	HaVmRestartTimeout pulumi.IntPtrInput
 	// The UUID of the virtual machine to create
 	// the override for.  Forces a new resource if changed.

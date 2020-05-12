@@ -52,10 +52,9 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     """
     The `.getVmfsDisks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
-    [`.VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
+    `.VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
 
-    [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
 
     ## Example Usage
 
@@ -77,7 +76,7 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
 
     :param str filter: A regular expression to filter the disks against. Only
            disks with canonical names that match will be included.
-    :param str host_system_id: The [managed object ID][docs-about-morefs] of
+    :param str host_system_id: The managed object ID of
            the host to look for disks on.
     :param bool rescan: Whether or not to rescan storage adapters before
            searching for disks. This may lengthen the time it takes to perform the

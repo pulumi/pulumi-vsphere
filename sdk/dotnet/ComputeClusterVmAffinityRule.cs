@@ -12,11 +12,8 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere..ComputeClusterVmAffinityRule` resource can be used to manage
     /// VM affinity rules in a cluster, either created by the
-    /// [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-    /// by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-    /// 
-    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+    /// `vsphere..ComputeCluster` resource or looked up
+    /// by the `vsphere..ComputeCluster` data source.
     /// 
     /// This rule can be used to tell a set to virtual machines to run together on a
     /// single host within a cluster. When configured, DRS will make a best effort to
@@ -27,10 +24,8 @@ namespace Pulumi.VSphere
     /// &gt; Keep in mind that this rule can only be used to tell VMs to run together on
     /// a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
     /// the
-    /// [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+    /// `vsphere..ComputeClusterVmHostRule`
     /// resource.
-    /// 
-    /// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -40,8 +35,8 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterVmAffinityRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Output("computeClusterId")]
@@ -120,8 +115,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmAffinityRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId", required: true)]
@@ -167,8 +162,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterVmAffinityRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId")]

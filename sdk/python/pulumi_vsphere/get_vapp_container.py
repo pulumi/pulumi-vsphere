@@ -41,9 +41,7 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
     The `.VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to fetch the ID of a vApp container
     that you want to use to create virtual machines in using the
-    [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
-
-    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+    `.VirtualMachine` resource. 
 
     ## Example Usage
 
@@ -60,8 +58,8 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
 
 
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of the datacenter the vApp container is located in.
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the vApp container is located in.
     :param str name: The name of the vApp container. This can be a name or
            path.
     """

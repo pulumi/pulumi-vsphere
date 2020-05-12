@@ -21,7 +21,7 @@ namespace Pulumi.VSphere
     public partial class VappEntity : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the vApp
+        /// Managed object ID of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Output("containerId")]
@@ -77,7 +77,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the entity
+        /// Managed object ID of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Output("targetId")]
@@ -138,7 +138,7 @@ namespace Pulumi.VSphere
     public sealed class VappEntityArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the vApp
+        /// Managed object ID of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Input("containerId", required: true)]
@@ -206,7 +206,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the entity
+        /// Managed object ID of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Input("targetId", required: true)]
@@ -228,7 +228,7 @@ namespace Pulumi.VSphere
     public sealed class VappEntityState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the vApp
+        /// Managed object ID of the vApp
         /// container the entity is a member of.
         /// </summary>
         [Input("containerId")]
@@ -296,7 +296,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// [Managed object ID|docs-about-morefs] of the entity
+        /// Managed object ID of the entity
         /// to power on or power off. This can be a virtual machine or a vApp.
         /// </summary>
         [Input("targetId")]

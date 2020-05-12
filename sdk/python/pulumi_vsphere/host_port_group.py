@@ -34,8 +34,8 @@ class HostPortGroup(pulumi.CustomResource):
     """
     computed_policy: pulumi.Output[dict]
     """
-    A map with a full set of the [policy
-    options][host-vswitch-policy-options] computed from defaults and overrides,
+    A map with a full set of the policy
+    options computed from defaults and overrides,
     explaining the effective policy for this port group.
     """
     failback: pulumi.Output[bool]
@@ -44,7 +44,7 @@ class HostPortGroup(pulumi.CustomResource):
     """
     host_system_id: pulumi.Output[str]
     """
-    The [managed object ID][docs-about-morefs] of
+    The managed object ID of
     the host to set the port group up on. Forces a new resource if changed.
     """
     key: pulumi.Output[str]
@@ -110,16 +110,15 @@ class HostPortGroup(pulumi.CustomResource):
         The `.HostPortGroup` resource can be used to manage vSphere standard
         port groups on an ESXi host. These port groups are connected to standard
         virtual switches, which can be managed by the
-        [`.HostVirtualSwitch`][host-virtual-switch] resource.
+        `.HostVirtualSwitch` resource.
 
         For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
 
-        [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 
-        ## Example Usages
+        ## Example Usage
 
-        **Create a virtual switch and bind a port group to it:**
+        ### Create a virtual switch and bind a port group to it
 
         ```python
         import pulumi
@@ -141,13 +140,7 @@ class HostPortGroup(pulumi.CustomResource):
             virtual_switch_name=switch.name)
         ```
 
-        **Create a port group with VLAN set and some overrides:**
-
-        This example sets the trunk mode VLAN (`4095`, which passes through all tags)
-        and sets
-        [`allow_promiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
-        to ensure that all traffic is seen on the port. The latter setting overrides
-        the implicit default of `false` set on the virtual switch.
+        ### Create a port group with VLAN set and some overrides
 
         ```python
         import pulumi
@@ -171,6 +164,7 @@ class HostPortGroup(pulumi.CustomResource):
             vlan_id=4095)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_nics: List of active network adapters used for load balancing.
@@ -181,7 +175,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
                only.
         :param pulumi.Input[bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] host_system_id: The managed object ID of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
                changed.
@@ -263,11 +257,11 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         :param pulumi.Input[bool] check_beacon: Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
                only.
-        :param pulumi.Input[dict] computed_policy: A map with a full set of the [policy
-               options][host-vswitch-policy-options] computed from defaults and overrides,
+        :param pulumi.Input[dict] computed_policy: A map with a full set of the policy
+               options computed from defaults and overrides,
                explaining the effective policy for this port group.
         :param pulumi.Input[bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] host_system_id: The managed object ID of
                the host to set the port group up on. Forces a new resource if changed.
         :param pulumi.Input[str] key: The key for this port group as returned from the vSphere API.
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if

@@ -39,6 +39,12 @@ namespace Pulumi.VSphere.Outputs
         /// `normal`.
         /// </summary>
         public readonly string? BandwidthShareLevel;
+        /// <summary>
+        /// An address internal to this provider that helps locate the
+        /// device when `key` is unavailable. This follows a convention of
+        /// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+        /// unit 1 on SCSI bus 0.
+        /// </summary>
         public readonly string? DeviceAddress;
         /// <summary>
         /// The ID of the device within the virtual machine.
@@ -51,8 +57,8 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly string? MacAddress;
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the network to connect this interface to.
+        /// The managed object reference
+        /// ID of the network to connect this interface to.
         /// </summary>
         public readonly string NetworkId;
         /// <summary>

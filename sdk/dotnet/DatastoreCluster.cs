@@ -37,7 +37,7 @@ namespace Pulumi.VSphere
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -45,7 +45,13 @@ namespace Pulumi.VSphere
         public Output<string> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// `foo/bar`, The provider will place a datastore cluster named
+        /// `datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -57,7 +63,8 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Advanced configuration options for storage DRS.
+        /// A key/value map of advanced Storage DRS
+        /// settings that are not exposed via the provider or the vSphere client.
         /// </summary>
         [Output("sdrsAdvancedOptions")]
         public Output<ImmutableDictionary<string, string>?> SdrsAdvancedOptions { get; private set; } = null!;
@@ -208,8 +215,7 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsVmEvacuationAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -276,7 +282,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -284,7 +290,13 @@ namespace Pulumi.VSphere
         public Input<string> DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// `foo/bar`, The provider will place a datastore cluster named
+        /// `datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -299,7 +311,8 @@ namespace Pulumi.VSphere
         private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
-        /// Advanced configuration options for storage DRS.
+        /// A key/value map of advanced Storage DRS
+        /// settings that are not exposed via the provider or the vSphere client.
         /// </summary>
         public InputMap<string> SdrsAdvancedOptions
         {
@@ -456,8 +469,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -488,7 +500,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the datacenter to create the datastore cluster in. Forces a new resource if
         /// changed.
         /// </summary>
@@ -496,7 +508,13 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The name of the folder to locate the datastore cluster in.
+        /// The relative path to a folder to put this datastore
+        /// cluster in.  This is a path relative to the datacenter you are deploying the
+        /// datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
+        /// `foo/bar`, The provider will place a datastore cluster named
+        /// `datastore-cluster-test` in a datastore folder located at
+        /// `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/datastore-cluster-test`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -511,7 +529,8 @@ namespace Pulumi.VSphere
         private InputMap<string>? _sdrsAdvancedOptions;
 
         /// <summary>
-        /// Advanced configuration options for storage DRS.
+        /// A key/value map of advanced Storage DRS
+        /// settings that are not exposed via the provider or the vSphere client.
         /// </summary>
         public InputMap<string> SdrsAdvancedOptions
         {
@@ -668,8 +687,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

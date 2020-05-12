@@ -10,9 +10,7 @@ import * as utilities from "./utilities";
  * The `vsphere..VappContainer` data source can be used to discover the ID of a
  * vApp container in vSphere. This is useful to fetch the ID of a vApp container
  * that you want to use to create virtual machines in using the
- * [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
- * 
- * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * `vsphere..VirtualMachine` resource. 
  * 
  * ## Example Usage
  * 
@@ -52,8 +50,8 @@ export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.Invok
  */
 export interface GetVappContainerArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datacenter the vApp container is located in.
+     * The managed object reference
+     * ID of the datacenter the vApp container is located in.
      */
     readonly datacenterId: string;
     /**

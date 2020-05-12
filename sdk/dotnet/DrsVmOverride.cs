@@ -28,8 +28,8 @@ namespace Pulumi.VSphere
     public partial class DrsVmOverride : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Output("computeClusterId")]
@@ -104,8 +104,8 @@ namespace Pulumi.VSphere
     public sealed class DrsVmOverrideArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId", required: true)]
@@ -141,8 +141,8 @@ namespace Pulumi.VSphere
     public sealed class DrsVmOverrideState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the override in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId")]

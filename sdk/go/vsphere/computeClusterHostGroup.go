@@ -12,18 +12,14 @@ import (
 
 // The `.ComputeClusterHostGroup` resource can be used to manage groups
 // of hosts in a cluster, either created by the
-// [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-// by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+// `.ComputeCluster` resource or looked up
+// by the `.ComputeCluster` data source.
 //
-// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 //
 // This resource mainly serves as an input to the
-// [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+// `.ComputeClusterVmHostRule`
 // resource - see the documentation for that resource for further details on how
 // to use host groups.
-//
-// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
@@ -32,11 +28,11 @@ import (
 type ComputeClusterHostGroup struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
@@ -75,11 +71,11 @@ func GetComputeClusterHostGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterHostGroup resources.
 type computeClusterHostGroupState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
@@ -88,11 +84,11 @@ type computeClusterHostGroupState struct {
 }
 
 type ComputeClusterHostGroupState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the
@@ -105,11 +101,11 @@ func (ComputeClusterHostGroupState) ElementType() reflect.Type {
 }
 
 type computeClusterHostGroupArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
@@ -119,11 +115,11 @@ type computeClusterHostGroupArgs struct {
 
 // The set of arguments for constructing a ComputeClusterHostGroup resource.
 type ComputeClusterHostGroupArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the

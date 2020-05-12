@@ -10,15 +10,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// > **A note on the naming of this resource:** VMware refers to clusters of
+// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
+// clusters_. All of these refer to the same kind of resource (with the latter two
+// referring to specific features of clustering). We use
+// `.ComputeCluster` to differentiate host clusters from _datastore
+// clusters_, which are clusters of datastores that can be used to distribute load
+// and ensure fault tolerance via distribution of virtual machines. Datastore
+// clusters can also be managed through the provider, via the
+// `.DatastoreCluster` resource.
+//
+// The `.ComputeCluster` resource can be used to create and manage
+// clusters of hosts allowing for resource control of compute resources, load
+// balancing through DRS, and high availability through vSphere HA.
+//
+// For more information on vSphere clusters and DRS, see [this
+// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
+// page][ref-vsphere-ha-clusters].
+//
+// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
+// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
+//
+// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+// connections.
+//
+// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+//
+// ## vSphere Version Requirements
+//
+// A large number of settings in the `.ComputeCluster` resource require a
+// specific version of vSphere to function. Rather than include warnings at every
+// setting or section, these settings are documented below.  Note that this list
+// is for cluster-specific attributes only, and does not include the
+// `tags` parameter, which requires vSphere 6.0 or higher across all
+// resources that can be tagged.
+//
+// All settings are footnoted by an asterisk (`*`) in their specific section in
+// the documentation, which takes you here.
+//
+// ### Settings that require vSphere version 6.0 or higher
+//
+// These settings require vSphere 6.0 or higher:
+//
+// * `haDatastoreApdRecoveryAction`
+// * `haDatastoreApdResponse`
+// * `haDatastoreApdResponseDelay`
+// * `haDatastorePdlResponse`
+// * `haVmComponentProtection`
+//
+// ### Settings that require vSphere version 6.5 or higher
+//
+// These settings require vSphere 6.5 or higher:
+//
+// * `drsEnablePredictiveDrs`
+// * `haAdmissionControlHostFailureTolerance`
+//   (When `haAdmissionControlPolicy` is set to
+//   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
+//   `failoverHosts`)
+// * `haAdmissionControlResourcePercentageAutoCompute`
+// * `haVmRestartTimeout`
+// * `haVmDependencyRestartCondition`
+// * `haVmRestartAdditionalDelay`
+// * `proactiveHaAutomationLevel`
+// * `proactiveHaEnabled`
+// * `proactiveHaModerateRemediation`
+// * `proactiveHaProviderIds`
+// * `proactiveHaSevereRemediation`
 type ComputeCluster struct {
 	pulumi.CustomResourceState
 
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for the datastore cluster.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
 	// The automation level for host power
@@ -55,13 +120,21 @@ type ComputeCluster struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrOutput `pulumi:"drsMigrationThreshold"`
-	// The name of the folder to locate the cluster in.
+	// The relative path to a folder to put this cluster in.
+	// This is a path relative to the datacenter you are deploying the cluster to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a cluster named `compute-cluster-test` in a
+	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+	// being `/dc1/host/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
-	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-	// for testing and is not recommended in normal use.
+	// When destroying the resource, setting this to
+	// `true` will auto-remove any hosts that are currently a member of the cluster,
+	// as if they were removed by taking their entry out of `hostSystemIds` (see
+	// below). This is an advanced
+	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrOutput `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
-	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+	// managed object IDs of hosts to use as dedicated failover
 	// hosts. These hosts are kept as available as possible - admission control will
 	// block access to the host, and DRS will ignore the host when making
 	// recommendations.
@@ -207,7 +280,7 @@ type ComputeCluster struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrOutput `pulumi:"hostClusterExitTimeout"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -240,8 +313,7 @@ type ComputeCluster struct {
 	ProactiveHaSevereRemediation pulumi.StringPtrOutput `pulumi:"proactiveHaSevereRemediation"`
 	// The managed object ID of the cluster's root resource pool.
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -277,11 +349,9 @@ func GetComputeCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ComputeCluster resources.
 type computeClusterState struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for the datastore cluster.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The automation level for host power
@@ -318,13 +388,21 @@ type computeClusterState struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
-	// The name of the folder to locate the cluster in.
+	// The relative path to a folder to put this cluster in.
+	// This is a path relative to the datacenter you are deploying the cluster to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a cluster named `compute-cluster-test` in a
+	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+	// being `/dc1/host/foo/bar/datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
-	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-	// for testing and is not recommended in normal use.
+	// When destroying the resource, setting this to
+	// `true` will auto-remove any hosts that are currently a member of the cluster,
+	// as if they were removed by taking their entry out of `hostSystemIds` (see
+	// below). This is an advanced
+	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
-	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+	// managed object IDs of hosts to use as dedicated failover
 	// hosts. These hosts are kept as available as possible - admission control will
 	// block access to the host, and DRS will ignore the host when making
 	// recommendations.
@@ -470,7 +548,7 @@ type computeClusterState struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -503,18 +581,15 @@ type computeClusterState struct {
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
 	// The managed object ID of the cluster's root resource pool.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 type ComputeClusterState struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for the datastore cluster.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringPtrInput
 	// The automation level for host power
@@ -551,13 +626,21 @@ type ComputeClusterState struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrInput
-	// The name of the folder to locate the cluster in.
+	// The relative path to a folder to put this cluster in.
+	// This is a path relative to the datacenter you are deploying the cluster to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a cluster named `compute-cluster-test` in a
+	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+	// being `/dc1/host/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
-	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-	// for testing and is not recommended in normal use.
+	// When destroying the resource, setting this to
+	// `true` will auto-remove any hosts that are currently a member of the cluster,
+	// as if they were removed by taking their entry out of `hostSystemIds` (see
+	// below). This is an advanced
+	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
-	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+	// managed object IDs of hosts to use as dedicated failover
 	// hosts. These hosts are kept as available as possible - admission control will
 	// block access to the host, and DRS will ignore the host when making
 	// recommendations.
@@ -703,7 +786,7 @@ type ComputeClusterState struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.
@@ -736,8 +819,7 @@ type ComputeClusterState struct {
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
 	// The managed object ID of the cluster's root resource pool.
 	ResourcePoolId pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -747,11 +829,9 @@ func (ComputeClusterState) ElementType() reflect.Type {
 
 type computeClusterArgs struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for the datastore cluster.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId string `pulumi:"datacenterId"`
 	// The automation level for host power
@@ -788,13 +868,21 @@ type computeClusterArgs struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
-	// The name of the folder to locate the cluster in.
+	// The relative path to a folder to put this cluster in.
+	// This is a path relative to the datacenter you are deploying the cluster to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a cluster named `compute-cluster-test` in a
+	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+	// being `/dc1/host/foo/bar/datastore-cluster-test`.
 	Folder *string `pulumi:"folder"`
-	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-	// for testing and is not recommended in normal use.
+	// When destroying the resource, setting this to
+	// `true` will auto-remove any hosts that are currently a member of the cluster,
+	// as if they were removed by taking their entry out of `hostSystemIds` (see
+	// below). This is an advanced
+	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
-	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+	// managed object IDs of hosts to use as dedicated failover
 	// hosts. These hosts are kept as available as possible - admission control will
 	// block access to the host, and DRS will ignore the host when making
 	// recommendations.
@@ -940,7 +1028,7 @@ type computeClusterArgs struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -971,19 +1059,16 @@ type computeClusterArgs struct {
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ComputeCluster resource.
 type ComputeClusterArgs struct {
 	// A map of custom attribute ids to attribute
-	// value strings to set for the datastore cluster. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for the datastore cluster.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
 	DatacenterId pulumi.StringInput
 	// The automation level for host power
@@ -1020,13 +1105,21 @@ type ComputeClusterArgs struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrInput
-	// The name of the folder to locate the cluster in.
+	// The relative path to a folder to put this cluster in.
+	// This is a path relative to the datacenter you are deploying the cluster to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a cluster named `compute-cluster-test` in a
+	// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+	// being `/dc1/host/foo/bar/datastore-cluster-test`.
 	Folder pulumi.StringPtrInput
-	// Force removal of all hosts in the cluster during destroy and make them standalone hosts. Use of this flag mainly exists
-	// for testing and is not recommended in normal use.
+	// When destroying the resource, setting this to
+	// `true` will auto-remove any hosts that are currently a member of the cluster,
+	// as if they were removed by taking their entry out of `hostSystemIds` (see
+	// below). This is an advanced
+	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
-	// [managed object IDs][docs-about-morefs] of hosts to use as dedicated failover
+	// managed object IDs of hosts to use as dedicated failover
 	// hosts. These hosts are kept as available as possible - admission control will
 	// block access to the host, and DRS will ignore the host when making
 	// recommendations.
@@ -1172,7 +1265,7 @@ type ComputeClusterArgs struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.
@@ -1203,8 +1296,7 @@ type ComputeClusterArgs struct {
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 

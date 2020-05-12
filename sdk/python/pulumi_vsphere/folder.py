@@ -24,12 +24,16 @@ class Folder(pulumi.CustomResource):
     """
     path: pulumi.Output[str]
     """
-    The path of the folder and any parents, relative to the datacenter and folder type being defined.
+    The path of the folder to be created. This is relative to
+    the root of the type of folder you are creating, and the supplied datacenter.
+    For example, given a default datacenter of `default-dc`, a folder of type
+    `vm` (denoting a virtual machine folder), and a supplied folder of
+    `test-folder`, the resulting path would be
+    `/default-dc/vm/test-folder`.
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource.
     """
     type: pulumi.Output[str]
     """
@@ -40,7 +44,49 @@ class Folder(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, path=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Folder resource with the given unique name, props, and options.
+        The `.Folder` resource can be used to manage vSphere inventory folders.
+        The resource supports creating folders of the 5 major types - datacenter
+        folders, host and cluster folders, virtual machine folders, datastore folders,
+        and network folders.
+
+        Paths are always relative to the specific type of folder you are creating.
+        Subfolders are discovered by parsing the relative path specified in `path`, so
+        `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
+        as that folder exists.
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter()
+        folder = vsphere.Folder("folder",
+            datacenter_id=dc.id,
+            path="test-folder",
+            type="vm")
+        ```
+
+        ### Example with subfolders
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter()
+        parent = vsphere.Folder("parent",
+            datacenter_id=dc.id,
+            path="test-parent",
+            type="vm")
+        folder = vsphere.Folder("folder",
+            datacenter_id=dc.id,
+            path=parent.path.apply(lambda path: f"{path}/test-folder"),
+            type="vm")
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
@@ -49,9 +95,13 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
-        :param pulumi.Input[str] path: The path of the folder and any parents, relative to the datacenter and folder type being defined.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[str] path: The path of the folder to be created. This is relative to
+               the root of the type of folder you are creating, and the supplied datacenter.
+               For example, given a default datacenter of `default-dc`, a folder of type
+               `vm` (denoting a virtual machine folder), and a supplied folder of
+               `test-folder`, the resulting path would be
+               `/default-dc/vm/test-folder`.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -104,9 +154,13 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
                Required for all folder types except for datacenter folders. Forces a new
                resource if changed.
-        :param pulumi.Input[str] path: The path of the folder and any parents, relative to the datacenter and folder type being defined.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[str] path: The path of the folder to be created. This is relative to
+               the root of the type of folder you are creating, and the supplied datacenter.
+               For example, given a default datacenter of `default-dc`, a folder of type
+               `vm` (denoting a virtual machine folder), and a supplied folder of
+               `test-folder`, the resulting path would be
+               `/default-dc/vm/test-folder`.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and

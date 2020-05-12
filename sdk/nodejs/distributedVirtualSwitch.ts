@@ -6,6 +6,111 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..DistributedVirtualSwitch` resource can be used to manage VMware
+ * Distributed Virtual Switches.
+ * 
+ * An essential component of a distributed, scalable VMware datacenter, the
+ * vSphere Distributed Virtual Switch (DVS) provides centralized management and
+ * monitoring of the networking configuration of all the hosts that are associated
+ * with the switch. In addition to adding port groups (see the
+ * `vsphere..DistributedPortGroup` resource) that can
+ * be used as networks for virtual machines, a DVS can be configured to perform
+ * advanced high availability, traffic shaping, network monitoring, and more.
+ * 
+ * For an overview on vSphere networking concepts, see [this
+ * page][ref-vsphere-net-concepts]. For more information on vSphere DVS, see [this
+ * page][ref-vsphere-dvs].
+ * 
+ * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+ * [ref-vsphere-dvs]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+ * 
+ * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+ * connections.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const esxiHosts = config.get("esxiHosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * const networkInterfaces = config.get("networkInterfaces") || [
+ *     "vmnic0",
+ *     "vmnic1",
+ *     "vmnic2",
+ *     "vmnic3",
+ * ];
+ * 
+ * const dc = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }, { async: true }));
+ * const host: pulumi.Output<vsphere.GetHostResult>[] = [];
+ * for (let i = 0; i < esxiHosts.length; i++) {
+ *     host.push(dc.apply(dc => vsphere.getHost({
+ *         datacenterId: dc.id,
+ *         name: esxiHosts[i],
+ *     }, { async: true })));
+ * }
+ * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
+ *     activeUplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *     ],
+ *     datacenterId: dc.id,
+ *     hosts: [
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[0].id,
+ *         },
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[1].id,
+ *         },
+ *         {
+ *             devices: networkInterfaces,
+ *             hostSystemId: host[2].id,
+ *         },
+ *     ],
+ *     standbyUplinks: [
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ *     uplinks: [
+ *         "uplink1",
+ *         "uplink2",
+ *         "uplink3",
+ *         "uplink4",
+ *     ],
+ * });
+ * ```
+ * 
+ * ### Uplink name and count control
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
+ *     activeUplinks: ["tfup1"],
+ *     datacenterId: vsphere_datacenter_dc.id,
+ *     standbyUplinks: ["tfup2"],
+ *     uplinks: [
+ *         "tfup1",
+ *         "tfup2",
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_virtual_switch.html.markdown.
+ */
 export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * Get an existing DistributedVirtualSwitch resource's state with the given name, ID, and optional extra
@@ -83,9 +188,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly contactName!: pulumi.Output<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual switch.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -356,8 +459,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -723,9 +825,7 @@ export interface DistributedVirtualSwitchState {
     readonly contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual switch.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -996,8 +1096,7 @@ export interface DistributedVirtualSwitchState {
      */
     readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1153,9 +1252,7 @@ export interface DistributedVirtualSwitchArgs {
     readonly contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set for virtual switch.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1426,8 +1523,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

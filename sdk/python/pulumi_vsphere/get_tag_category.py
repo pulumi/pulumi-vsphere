@@ -46,7 +46,27 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
 
 def get_tag_category(name=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    The `.TagCategory` data source can be used to reference tag categories
+    that are not managed by this provider. Its attributes are exactly the same as the
+    `.TagCategory` resource, and, like importing,
+    the data source takes a name to search on. The `id` and other attributes are
+    then populated with the data found by the search.
+
+    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+    requires vCenter 6.0 or higher.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    category = vsphere.get_tag_category(name="test-category")
+    ```
+
+
 
     :param str name: The name of the tag category.
     """

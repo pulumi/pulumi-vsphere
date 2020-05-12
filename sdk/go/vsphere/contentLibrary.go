@@ -21,7 +21,7 @@ type ContentLibrary struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the Content Library.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayOutput `pulumi:"storageBackings"`
 }
@@ -61,7 +61,7 @@ type contentLibraryState struct {
 	Description *string `pulumi:"description"`
 	// The name of the Content Library.
 	Name *string `pulumi:"name"`
-	// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings []string `pulumi:"storageBackings"`
 }
@@ -71,7 +71,7 @@ type ContentLibraryState struct {
 	Description pulumi.StringPtrInput
 	// The name of the Content Library.
 	Name pulumi.StringPtrInput
-	// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayInput
 }
@@ -85,7 +85,7 @@ type contentLibraryArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the Content Library.
 	Name *string `pulumi:"name"`
-	// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings []string `pulumi:"storageBackings"`
 }
@@ -96,7 +96,7 @@ type ContentLibraryArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the Content Library.
 	Name pulumi.StringPtrInput
-	// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayInput
 }

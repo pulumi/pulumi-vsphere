@@ -8,9 +8,9 @@ import * as utilities from "./utilities";
  * Provides a VMware vSphere datacenter resource. This can be used as the primary
  * container of inventory objects such as hosts and virtual machines.
  * 
- * ## Example Usages
+ * ## Example Usage
  * 
- * **Create datacenter on the root folder:**
+ * ### Create datacenter on the root folder
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
  * ```
  * 
- * **Create datacenter on a subfolder:**
+ * ### Create datacenter on a subfolder
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +72,7 @@ export class Datacenter extends pulumi.CustomResource {
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
-     * [Managed object ID][docs-about-morefs] of this datacenter.
+     * Managed object ID of this datacenter.
      */
     public /*out*/ readonly moid!: pulumi.Output<string>;
     /**
@@ -81,8 +81,7 @@ export class Datacenter extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -139,7 +138,7 @@ export interface DatacenterState {
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * [Managed object ID][docs-about-morefs] of this datacenter.
+     * Managed object ID of this datacenter.
      */
     readonly moid?: pulumi.Input<string>;
     /**
@@ -148,8 +147,7 @@ export interface DatacenterState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -176,8 +174,7 @@ export interface DatacenterArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

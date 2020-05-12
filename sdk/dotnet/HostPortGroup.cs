@@ -13,11 +13,10 @@ namespace Pulumi.VSphere
     /// The `vsphere..HostPortGroup` resource can be used to manage vSphere standard
     /// port groups on an ESXi host. These port groups are connected to standard
     /// virtual switches, which can be managed by the
-    /// [`vsphere..HostVirtualSwitch`][host-virtual-switch] resource.
+    /// `vsphere..HostVirtualSwitch` resource.
     /// 
     /// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
     /// 
-    /// [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
     /// </summary>
     public partial class HostPortGroup : Pulumi.CustomResource
@@ -55,8 +54,8 @@ namespace Pulumi.VSphere
         public Output<bool?> CheckBeacon { get; private set; } = null!;
 
         /// <summary>
-        /// A map with a full set of the [policy
-        /// options][host-vswitch-policy-options] computed from defaults and overrides,
+        /// A map with a full set of the policy
+        /// options computed from defaults and overrides,
         /// explaining the effective policy for this port group.
         /// </summary>
         [Output("computedPolicy")]
@@ -69,7 +68,7 @@ namespace Pulumi.VSphere
         public Output<bool?> Failback { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Output("hostSystemId")]
@@ -244,7 +243,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId", required: true)]
@@ -371,8 +370,8 @@ namespace Pulumi.VSphere
         private InputMap<string>? _computedPolicy;
 
         /// <summary>
-        /// A map with a full set of the [policy
-        /// options][host-vswitch-policy-options] computed from defaults and overrides,
+        /// A map with a full set of the policy
+        /// options computed from defaults and overrides,
         /// explaining the effective policy for this port group.
         /// </summary>
         public InputMap<string> ComputedPolicy
@@ -388,7 +387,7 @@ namespace Pulumi.VSphere
         public Input<bool>? Failback { get; set; }
 
         /// <summary>
-        /// The [managed object ID][docs-about-morefs] of
+        /// The managed object ID of
         /// the host to set the port group up on. Forces a new resource if changed.
         /// </summary>
         [Input("hostSystemId")]

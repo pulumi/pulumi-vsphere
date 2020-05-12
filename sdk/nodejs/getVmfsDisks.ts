@@ -9,10 +9,9 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..getVmfsDisks` data source can be used to discover the storage
  * devices available on an ESXi host. This data source can be combined with the
- * [`vsphere..VmfsDatastore`][data-source-vmfs-datastore] resource to create VMFS
+ * `vsphere..VmfsDatastore` resource to create VMFS
  * datastores based off a set of discovered disks.
  * 
- * [data-source-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
  * 
  * ## Example Usage
  * 
@@ -63,7 +62,7 @@ export interface GetVmfsDisksArgs {
      */
     readonly filter?: string;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to look for disks on.
      */
     readonly hostSystemId: string;

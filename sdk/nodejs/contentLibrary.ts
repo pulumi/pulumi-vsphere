@@ -40,7 +40,7 @@ export class ContentLibrary extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] on which to store Content Library
+     * The managed object reference ID on which to store Content Library
      * items.
      */
     public readonly storageBackings!: pulumi.Output<string[]>;
@@ -93,7 +93,7 @@ export interface ContentLibraryState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] on which to store Content Library
+     * The managed object reference ID on which to store Content Library
      * items.
      */
     readonly storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
@@ -112,7 +112,7 @@ export interface ContentLibraryArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] on which to store Content Library
+     * The managed object reference ID on which to store Content Library
      * items.
      */
     readonly storageBackings: pulumi.Input<pulumi.Input<string>[]>;

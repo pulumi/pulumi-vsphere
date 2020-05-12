@@ -36,10 +36,8 @@ def get_datacenter(name=None,opts=None):
     """
     The `.Datacenter` data source can be used to discover the ID of a
     vSphere datacenter. This can then be used with resources or data sources that
-    require a datacenter, such as the [`.Host`][data-source-vsphere-host]
+    require a datacenter, such as the `.Host`
     data source.
-
-    [data-source-vsphere-host]: /docs/providers/vsphere/d/host.html
 
     ## Example Usage
 

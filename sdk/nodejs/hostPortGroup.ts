@@ -10,16 +10,15 @@ import * as utilities from "./utilities";
  * The `vsphere..HostPortGroup` resource can be used to manage vSphere standard
  * port groups on an ESXi host. These port groups are connected to standard
  * virtual switches, which can be managed by the
- * [`vsphere..HostVirtualSwitch`][host-virtual-switch] resource.
+ * `vsphere..HostVirtualSwitch` resource.
  * 
  * For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
  * 
- * [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  * 
- * ## Example Usages
+ * ## Example Usage
  * 
- * **Create a virtual switch and bind a port group to it:**
+ * ### Create a virtual switch and bind a port group to it
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,13 +46,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  * 
- * **Create a port group with VLAN set and some overrides:**
- * 
- * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
- * and sets
- * [`allowPromiscuous`](https://www.terraform.io/docs/providers/vsphere/r/host_virtual_switch.html#allow_promiscuous)
- * to ensure that all traffic is seen on the port. The latter setting overrides
- * the implicit default of `false` set on the virtual switch.
+ * ### Create a port group with VLAN set and some overrides
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -135,8 +128,8 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     public readonly checkBeacon!: pulumi.Output<boolean | undefined>;
     /**
-     * A map with a full set of the [policy
-     * options][host-vswitch-policy-options] computed from defaults and overrides,
+     * A map with a full set of the policy
+     * options computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
     public /*out*/ readonly computedPolicy!: pulumi.Output<{[key: string]: string}>;
@@ -145,7 +138,7 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     public readonly failback!: pulumi.Output<boolean | undefined>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     public readonly hostSystemId!: pulumi.Output<string>;
@@ -303,8 +296,8 @@ export interface HostPortGroupState {
      */
     readonly checkBeacon?: pulumi.Input<boolean>;
     /**
-     * A map with a full set of the [policy
-     * options][host-vswitch-policy-options] computed from defaults and overrides,
+     * A map with a full set of the policy
+     * options computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
     readonly computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -313,7 +306,7 @@ export interface HostPortGroupState {
      */
     readonly failback?: pulumi.Input<boolean>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     readonly hostSystemId?: pulumi.Input<string>;
@@ -404,7 +397,7 @@ export interface HostPortGroupArgs {
      */
     readonly failback?: pulumi.Input<boolean>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the port group up on. Forces a new resource if changed.
      */
     readonly hostSystemId: pulumi.Input<string>;

@@ -68,17 +68,16 @@ type VappContainer struct {
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrOutput `pulumi:"parentFolderId"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringOutput `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -161,17 +160,16 @@ type vappContainerState struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the vApp container's parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -224,17 +222,16 @@ type VappContainerState struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -291,17 +288,16 @@ type vappContainerArgs struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the vApp container.
 	Name *string `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the vApp container's parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -355,17 +351,16 @@ type VappContainerArgs struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the vApp container.
 	Name pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the vApp container's parent folder.
 	ParentFolderId pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a vApp container
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 

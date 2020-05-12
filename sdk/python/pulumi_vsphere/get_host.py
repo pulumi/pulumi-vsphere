@@ -30,7 +30,7 @@ class GetHostResult:
             raise TypeError("Expected argument 'resource_pool_id' to be a str")
         __self__.resource_pool_id = resource_pool_id
         """
-        The [managed object ID][docs-about-morefs] of the host's
+        The managed object ID of the host's
         root resource pool.
         """
 class AwaitableGetHostResult(GetHostResult):
@@ -65,8 +65,8 @@ def get_host(datacenter_id=None,name=None,opts=None):
 
 
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of a datacenter.
+    :param str datacenter_id: The managed object reference
+           ID of a datacenter.
     :param str name: The name of the host. This can be a name or path. Can be
            omitted if there is only one host in your inventory.
     """

@@ -139,7 +139,7 @@ export class ResourcePool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -147,8 +147,7 @@ export class ResourcePool extends pulumi.CustomResource {
      */
     public readonly parentResourcePoolId!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -284,7 +283,7 @@ export interface ResourcePoolState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -292,8 +291,7 @@ export interface ResourcePoolState {
      */
     readonly parentResourcePoolId?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -373,7 +371,7 @@ export interface ResourcePoolArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a resource pool
      * from one parent resource pool to another, both must share a common root
@@ -381,8 +379,7 @@ export interface ResourcePoolArgs {
      */
     readonly parentResourcePoolId: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
