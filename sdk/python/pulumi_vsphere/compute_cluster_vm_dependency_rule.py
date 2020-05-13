@@ -12,8 +12,8 @@ from . import utilities, tables
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     compute_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+    The managed object reference
+    ID of the cluster to put the group in.  Forces a new
     resource if changed.
     """
     dependency_vm_group_name: pulumi.Output[str]
@@ -48,19 +48,14 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """
         The `.ComputeClusterVmDependencyRule` resource can be used to manage
         VM dependency rules in a cluster, either created by the
-        [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-        by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-
-        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+        `.ComputeCluster` resource or looked up
+        by the `.ComputeCluster` data source.
 
         A virtual machine dependency rule applies to vSphere HA, and allows
         user-defined startup orders for virtual machines in the case of host failure.
         Virtual machines are supplied via groups, which can be managed via the
-        [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
+        `.ComputeClusterVmGroup`
         resource.
-
-        [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -121,8 +116,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by
@@ -182,8 +177,8 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] dependency_vm_group_name: The name of the VM group that this
                rule depends on. The VMs defined in the group specified by

@@ -10,6 +10,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// The `.VmfsDatastore` resource can be used to create and manage VMFS
+// datastores on an ESXi host or a set of hosts. The resource supports using any
+// SCSI device that can generally be used in a datastore, such as local disks, or
+// disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
+// Devices can be specified manually, or discovered using the
+// [`.getVmfsDisks`][data-source-vmfs-disks] data source.
+//
+// [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html
+//
+// ## Auto-Mounting of Datastores Within vCenter
+//
+// Note that the current behaviour of this resource will auto-mount any created
+// datastores to any other host within vCenter that has access to the same disk.
+//
+// Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+// hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+// create the datastore on `esxi1`, the datastore will be automatically mounted on
+// `esxi2` and `esxi3`, without the need to configure the resource on either of
+// those two hosts.
+//
+// Future versions of this resource may allow you to control the hosts that a
+// datastore is mounted to, but currently, this automatic behaviour cannot be
+// changed, so keep this in mind when writing your configurations and deploying
+// your disks.
+//
+// ## Increasing Datastore Size
+//
+// To increase the size of a datastore, you must add additional disks to the
+// `disks` attribute. Expanding the size of a datastore by increasing the size of
+// an already provisioned disk is currently not supported (but may be in future
+// versions of this resource).
+//
+// > **NOTE:** You cannot decrease the size of a datastore. If the resource
+// detects disks removed from the configuration, the provider will give an error.
+//
+// [cmd-taint]: /docs/commands/taint.html
 type VmfsDatastore struct {
 	pulumi.CustomResourceState
 
@@ -19,21 +55,25 @@ type VmfsDatastore struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
-	// value string to set on datastore resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value string to set on datastore resource.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
 	// The disks to use with the datastore.
 	Disks pulumi.StringArrayOutput `pulumi:"disks"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntOutput `pulumi:"freeSpace"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the datastore up on. Note that this is not necessarily the
 	// only host that the datastore will be set up on - see
 	// here for more info. Forces a
@@ -47,8 +87,7 @@ type VmfsDatastore struct {
 	// The name of the datastore. Forces a new resource if
 	// changed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -97,21 +136,25 @@ type vmfsDatastoreState struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity *int `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
-	// value string to set on datastore resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value string to set on datastore resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The disks to use with the datastore.
 	Disks []string `pulumi:"disks"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
 	// Available space of this datastore, in megabytes.
 	FreeSpace *int `pulumi:"freeSpace"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the datastore up on. Note that this is not necessarily the
 	// only host that the datastore will be set up on - see
 	// here for more info. Forces a
@@ -125,8 +168,7 @@ type vmfsDatastoreState struct {
 	// The name of the datastore. Forces a new resource if
 	// changed.
 	Name *string `pulumi:"name"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -142,21 +184,25 @@ type VmfsDatastoreState struct {
 	// Maximum capacity of the datastore, in megabytes.
 	Capacity pulumi.IntPtrInput
 	// Map of custom attribute ids to attribute
-	// value string to set on datastore resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value string to set on datastore resource.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The disks to use with the datastore.
 	Disks pulumi.StringArrayInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
 	// Available space of this datastore, in megabytes.
 	FreeSpace pulumi.IntPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the datastore up on. Note that this is not necessarily the
 	// only host that the datastore will be set up on - see
 	// here for more info. Forces a
@@ -170,8 +216,7 @@ type VmfsDatastoreState struct {
 	// The name of the datastore. Forces a new resource if
 	// changed.
 	Name pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -186,19 +231,23 @@ func (VmfsDatastoreState) ElementType() reflect.Type {
 
 type vmfsDatastoreArgs struct {
 	// Map of custom attribute ids to attribute
-	// value string to set on datastore resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value string to set on datastore resource.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The disks to use with the datastore.
 	Disks []string `pulumi:"disks"`
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder *string `pulumi:"folder"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the datastore up on. Note that this is not necessarily the
 	// only host that the datastore will be set up on - see
 	// here for more info. Forces a
@@ -207,27 +256,30 @@ type vmfsDatastoreArgs struct {
 	// The name of the datastore. Forces a new resource if
 	// changed.
 	Name *string `pulumi:"name"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a VmfsDatastore resource.
 type VmfsDatastoreArgs struct {
 	// Map of custom attribute ids to attribute
-	// value string to set on datastore resource. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value string to set on datastore resource.
 	CustomAttributes pulumi.StringMapInput
-	// The [managed object
-	// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+	// The managed object
+	// ID of a datastore cluster to put this datastore in.
 	// Conflicts with `folder`.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The disks to use with the datastore.
 	Disks pulumi.StringArrayInput
-	// The path to the datastore folder to put the datastore in.
+	// The relative path to a folder to put this datastore in.
+	// This is a path relative to the datacenter you are deploying the datastore to.
+	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+	// The provider will place a datastore named `test` in a datastore folder
+	// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+	// `/dc1/datastore/foo/bar/test`. Conflicts with
+	// `datastoreClusterId`.
 	Folder pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the datastore up on. Note that this is not necessarily the
 	// only host that the datastore will be set up on - see
 	// here for more info. Forces a
@@ -236,8 +288,7 @@ type VmfsDatastoreArgs struct {
 	// The name of the datastore. Forces a new resource if
 	// changed.
 	Name pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 

@@ -48,6 +48,12 @@ namespace Pulumi.VSphere.Inputs
         [Input("bandwidthShareLevel")]
         public Input<string>? BandwidthShareLevel { get; set; }
 
+        /// <summary>
+        /// An address internal to this provider that helps locate the
+        /// device when `key` is unavailable. This follows a convention of
+        /// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+        /// unit 1 on SCSI bus 0.
+        /// </summary>
         [Input("deviceAddress")]
         public Input<string>? DeviceAddress { get; set; }
 
@@ -66,8 +72,8 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the network to connect this interface to.
+        /// The managed object reference
+        /// ID of the network to connect this interface to.
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;

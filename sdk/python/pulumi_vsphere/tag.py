@@ -26,7 +26,38 @@ class Tag(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, category_id=None, description=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Tag resource with the given unique name, props, and options.
+        The `.Tag` resource can be used to create and manage tags, which allow
+        you to attach metadata to objects in the vSphere inventory to make these
+        objects more sortable and searchable.
+
+        For more information about tags, click [here][ext-tags-general].
+
+        [ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html
+
+        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        requires vCenter 6.0 or higher.
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ],
+            cardinality="SINGLE",
+            description="Managed by Pulumi")
+        tag = vsphere.Tag("tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category_id: The unique identifier of the parent category in

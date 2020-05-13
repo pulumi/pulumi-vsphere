@@ -124,9 +124,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual machine. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set for virtual machine.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -139,8 +137,8 @@ namespace Pulumi.VSphere
         public Output<string?> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+        /// The managed object reference
+        /// ID of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
         /// DRS with this virtual machine. See the section on virtual machine
         /// migration for details on changing this value.
@@ -156,7 +154,13 @@ namespace Pulumi.VSphere
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address selected by Terraform to be used for the provisioner.
+        /// The IP address selected by the provider to be used with
+        /// any provisioners configured on this resource.
+        /// Whenever possible, this is the first IPv4 address that is reachable through
+        /// the default gateway configured on the machine, then the first reachable IPv6
+        /// address, and then the first general discovered address if neither exist. If
+        /// VMware tools is not running on the virtual machine, or if the VM is powered
+        /// off, this value will be blank.
         /// </summary>
         [Output("defaultIpAddress")]
         public Output<string> DefaultIpAddress { get; private set; } = null!;
@@ -239,7 +243,7 @@ namespace Pulumi.VSphere
         /// The current list of IP addresses on this machine,
         /// including the value of `default_ip_address`. If VMware tools is not running
         /// on the virtual machine, or if the VM is powered off, this list will be empty.
-        /// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+        /// * `moid`: The managed object reference ID of the created
         /// virtual machine.
         /// </summary>
         [Output("guestIpAddresses")]
@@ -255,8 +259,8 @@ namespace Pulumi.VSphere
         public Output<int> HardwareVersion { get; private set; } = null!;
 
         /// <summary>
-        /// An optional [managed object reference
-        /// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+        /// An optional managed object reference
+        /// ID of a host to put this virtual machine on. See the
         /// section on virtual machine migration for
         /// details on changing this value. If a `host_system_id` is not supplied,
         /// vSphere will select a host in the resource pool to place the virtual machine,
@@ -413,14 +417,16 @@ namespace Pulumi.VSphere
         public Output<int?> PoweronTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+        /// Value internal to the provider used to determine if a
+        /// configuration set change requires a reboot. This value is only useful during
+        /// an update process and gets reset on refresh.
         /// </summary>
         [Output("rebootRequired")]
         public Output<bool> RebootRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+        /// The managed object reference
+        /// ID of the resource pool to put this virtual machine in.
         /// See the section on virtual machine migration
         /// for details on changing this value.
         /// </summary>
@@ -470,9 +476,10 @@ namespace Pulumi.VSphere
         public Output<string?> ScsiBusSharing { get; private set; } = null!;
 
         /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
+        /// The number of SCSI controllers that
+        /// this provider manages on this virtual machine. This directly affects the amount
+        /// of disks you can add to the virtual machine and the maximum disk unit number.
+        /// Note that lowering this value does not remove controllers. Default: `1`.
         /// </summary>
         [Output("scsiControllerCount")]
         public Output<int?> ScsiControllerCount { get; private set; } = null!;
@@ -516,8 +523,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -747,9 +753,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual machine. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set for virtual machine.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -765,8 +769,8 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+        /// The managed object reference
+        /// ID of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
         /// DRS with this virtual machine. See the section on virtual machine
         /// migration for details on changing this value.
@@ -877,8 +881,8 @@ namespace Pulumi.VSphere
         public Input<int>? HardwareVersion { get; set; }
 
         /// <summary>
-        /// An optional [managed object reference
-        /// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+        /// An optional managed object reference
+        /// ID of a host to put this virtual machine on. See the
         /// section on virtual machine migration for
         /// details on changing this value. If a `host_system_id` is not supplied,
         /// vSphere will select a host in the resource pool to place the virtual machine,
@@ -1032,8 +1036,8 @@ namespace Pulumi.VSphere
         public Input<int>? PoweronTimeout { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+        /// The managed object reference
+        /// ID of the resource pool to put this virtual machine in.
         /// See the section on virtual machine migration
         /// for details on changing this value.
         /// </summary>
@@ -1083,9 +1087,10 @@ namespace Pulumi.VSphere
         public Input<string>? ScsiBusSharing { get; set; }
 
         /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
+        /// The number of SCSI controllers that
+        /// this provider manages on this virtual machine. This directly affects the amount
+        /// of disks you can add to the virtual machine and the maximum disk unit number.
+        /// Note that lowering this value does not remove controllers. Default: `1`.
         /// </summary>
         [Input("scsiControllerCount")]
         public Input<int>? ScsiControllerCount { get; set; }
@@ -1132,8 +1137,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         public InputList<string> Tags
         {
@@ -1306,9 +1310,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual machine. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set for virtual machine.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1324,8 +1326,8 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+        /// The managed object reference
+        /// ID of the datastore cluster ID to use. This setting
         /// applies to entire virtual machine and implies that you wish to use Storage
         /// DRS with this virtual machine. See the section on virtual machine
         /// migration for details on changing this value.
@@ -1341,7 +1343,13 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// The IP address selected by Terraform to be used for the provisioner.
+        /// The IP address selected by the provider to be used with
+        /// any provisioners configured on this resource.
+        /// Whenever possible, this is the first IPv4 address that is reachable through
+        /// the default gateway configured on the machine, then the first reachable IPv6
+        /// address, and then the first general discovered address if neither exist. If
+        /// VMware tools is not running on the virtual machine, or if the VM is powered
+        /// off, this value will be blank.
         /// </summary>
         [Input("defaultIpAddress")]
         public Input<string>? DefaultIpAddress { get; set; }
@@ -1439,7 +1447,7 @@ namespace Pulumi.VSphere
         /// The current list of IP addresses on this machine,
         /// including the value of `default_ip_address`. If VMware tools is not running
         /// on the virtual machine, or if the VM is powered off, this list will be empty.
-        /// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+        /// * `moid`: The managed object reference ID of the created
         /// virtual machine.
         /// </summary>
         public InputList<string> GuestIpAddresses
@@ -1458,8 +1466,8 @@ namespace Pulumi.VSphere
         public Input<int>? HardwareVersion { get; set; }
 
         /// <summary>
-        /// An optional [managed object reference
-        /// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+        /// An optional managed object reference
+        /// ID of a host to put this virtual machine on. See the
         /// section on virtual machine migration for
         /// details on changing this value. If a `host_system_id` is not supplied,
         /// vSphere will select a host in the resource pool to place the virtual machine,
@@ -1628,14 +1636,16 @@ namespace Pulumi.VSphere
         public Input<int>? PoweronTimeout { get; set; }
 
         /// <summary>
-        /// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+        /// Value internal to the provider used to determine if a
+        /// configuration set change requires a reboot. This value is only useful during
+        /// an update process and gets reset on refresh.
         /// </summary>
         [Input("rebootRequired")]
         public Input<bool>? RebootRequired { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+        /// The managed object reference
+        /// ID of the resource pool to put this virtual machine in.
         /// See the section on virtual machine migration
         /// for details on changing this value.
         /// </summary>
@@ -1685,9 +1695,10 @@ namespace Pulumi.VSphere
         public Input<string>? ScsiBusSharing { get; set; }
 
         /// <summary>
-        /// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-        /// controllers.
+        /// The number of SCSI controllers that
+        /// this provider manages on this virtual machine. This directly affects the amount
+        /// of disks you can add to the virtual machine and the maximum disk unit number.
+        /// Note that lowering this value does not remove controllers. Default: `1`.
         /// </summary>
         [Input("scsiControllerCount")]
         public Input<int>? ScsiControllerCount { get; set; }
@@ -1734,8 +1745,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         public InputList<string> Tags
         {

@@ -17,7 +17,7 @@ import (
 // vSphere Distributed Virtual Switch (DVS) provides centralized management and
 // monitoring of the networking configuration of all the hosts that are associated
 // with the switch. In addition to adding port groups (see the
-// [`.DistributedPortGroup`][distributed-port-group] resource) that can
+// `.DistributedPortGroup` resource) that can
 // be used as networks for virtual machines, a DVS can be configured to perform
 // advanced high availability, traffic shaping, network monitoring, and more.
 //
@@ -25,7 +25,6 @@ import (
 // page][ref-vsphere-net-concepts]. For more information on vSphere DVS, see [this
 // page][ref-vsphere-dvs].
 //
-// [distributed-port-group]: /docs/providers/vsphere/r/distributed_port_group.html
 // [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 // [ref-vsphere-dvs]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
 //
@@ -65,9 +64,7 @@ type DistributedVirtualSwitch struct {
 	// DVS.
 	ContactName pulumi.StringPtrOutput `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual switch.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter where the distributed
 	// virtual switch will be created. Forces a new resource if changed.
@@ -224,8 +221,7 @@ type DistributedVirtualSwitch struct {
 	// `uplinks` DVS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
@@ -348,9 +344,7 @@ type distributedVirtualSwitchState struct {
 	// DVS.
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual switch.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter where the distributed
 	// virtual switch will be created. Forces a new resource if changed.
@@ -507,8 +501,7 @@ type distributedVirtualSwitchState struct {
 	// `uplinks` DVS argument. See
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
@@ -601,9 +594,7 @@ type DistributedVirtualSwitchState struct {
 	// DVS.
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual switch.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter where the distributed
 	// virtual switch will be created. Forces a new resource if changed.
@@ -760,8 +751,7 @@ type DistributedVirtualSwitchState struct {
 	// `uplinks` DVS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
@@ -856,9 +846,7 @@ type distributedVirtualSwitchArgs struct {
 	// DVS.
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual switch.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter where the distributed
 	// virtual switch will be created. Forces a new resource if changed.
@@ -1015,8 +1003,7 @@ type distributedVirtualSwitchArgs struct {
 	// `uplinks` DVS argument. See
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
@@ -1108,9 +1095,7 @@ type DistributedVirtualSwitchArgs struct {
 	// DVS.
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual switch.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter where the distributed
 	// virtual switch will be created. Forces a new resource if changed.
@@ -1267,8 +1252,7 @@ type DistributedVirtualSwitchArgs struct {
 	// `uplinks` DVS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or

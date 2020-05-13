@@ -39,14 +39,18 @@ namespace Pulumi.VSphere
         public Output<string?> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+        /// The path of the folder to be created. This is relative to
+        /// the root of the type of folder you are creating, and the supplied datacenter.
+        /// For example, given a default datacenter of `default-dc`, a folder of type
+        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `test-folder`, the resulting path would be
+        /// `/default-dc/vm/test-folder`.
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -129,7 +133,12 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+        /// The path of the folder to be created. This is relative to
+        /// the root of the type of folder you are creating, and the supplied datacenter.
+        /// For example, given a default datacenter of `default-dc`, a folder of type
+        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `test-folder`, the resulting path would be
+        /// `/default-dc/vm/test-folder`.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -138,8 +147,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -186,7 +194,12 @@ namespace Pulumi.VSphere
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// The path of the folder and any parents, relative to the datacenter and folder type being defined.
+        /// The path of the folder to be created. This is relative to
+        /// the root of the type of folder you are creating, and the supplied datacenter.
+        /// For example, given a default datacenter of `default-dc`, a folder of type
+        /// `vm` (denoting a virtual machine folder), and a supplied folder of
+        /// `test-folder`, the resulting path would be
+        /// `/default-dc/vm/test-folder`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -195,8 +208,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

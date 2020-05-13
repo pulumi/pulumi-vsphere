@@ -30,7 +30,7 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+        /// The managed object reference ID on which to store Content Library
         /// items.
         /// </summary>
         [Output("storageBackings")]
@@ -98,7 +98,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+        /// The managed object reference ID on which to store Content Library
         /// items.
         /// </summary>
         public InputList<string> StorageBackings
@@ -130,7 +130,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The [managed object reference ID][docs-about-morefs] on which to store Content Library
+        /// The managed object reference ID on which to store Content Library
         /// items.
         /// </summary>
         public InputList<string> StorageBackings

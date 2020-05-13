@@ -11,6 +11,19 @@ namespace Pulumi.VSphere
 {
     public static class GetTag
     {
+        /// <summary>
+        /// The `vsphere..Tag` data source can be used to reference tags that are not
+        /// managed by this provider. Its attributes are exactly the same as the `vsphere..Tag`
+        /// resource, and, like importing, the data source takes a name and
+        /// category to search on. The `id` and other attributes are then populated with
+        /// the data found by the search.
+        /// 
+        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithVersion());
     }

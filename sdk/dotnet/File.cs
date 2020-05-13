@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// The `vsphere..File` resource can be used to upload files (such as virtual disk
+    /// files) from the host machine that this provider is running on to a target
+    /// datastore.  The resource can also be used to copy files between datastores, or
+    /// from one location to another on the same datastore.
+    /// 
+    /// Updates to destination parameters such as `datacenter`, `datastore`, or
+    /// `destination_file` will move the managed file a new destination based on the
+    /// values of the new settings.  If any source parameter is changed, such as
+    /// `source_datastore`, `source_datacenter` or `source_file`), the resource will be
+    /// re-created. Depending on if destination parameters are being changed as well,
+    /// this may result in the destination file either being overwritten or deleted at
+    /// the old location.
+    /// </summary>
     public partial class File : Pulumi.CustomResource
     {
         /// <summary>
@@ -53,6 +67,11 @@ namespace Pulumi.VSphere
         [Output("sourceDatastore")]
         public Output<string?> SourceDatastore { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to the file being uploaded from the
+        /// host to vSphere or copied within vSphere. Forces a new resource if
+        /// changed.
+        /// </summary>
         [Output("sourceFile")]
         public Output<string> SourceFile { get; private set; } = null!;
 
@@ -144,6 +163,11 @@ namespace Pulumi.VSphere
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
+        /// <summary>
+        /// The path to the file being uploaded from the
+        /// host to vSphere or copied within vSphere. Forces a new resource if
+        /// changed.
+        /// </summary>
         [Input("sourceFile", required: true)]
         public Input<string> SourceFile { get; set; } = null!;
 
@@ -196,6 +220,11 @@ namespace Pulumi.VSphere
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
+        /// <summary>
+        /// The path to the file being uploaded from the
+        /// host to vSphere or copied within vSphere. Forces a new resource if
+        /// changed.
+        /// </summary>
         [Input("sourceFile")]
         public Input<string>? SourceFile { get; set; }
 

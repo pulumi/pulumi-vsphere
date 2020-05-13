@@ -6,6 +6,54 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..File` resource can be used to upload files (such as virtual disk
+ * files) from the host machine that this provider is running on to a target
+ * datastore.  The resource can also be used to copy files between datastores, or
+ * from one location to another on the same datastore.
+ * 
+ * Updates to destination parameters such as `datacenter`, `datastore`, or
+ * `destinationFile` will move the managed file a new destination based on the
+ * values of the new settings.  If any source parameter is changed, such as
+ * `sourceDatastore`, `sourceDatacenter` or `sourceFile`), the resource will be
+ * re-created. Depending on if destination parameters are being changed as well,
+ * this may result in the destination file either being overwritten or deleted at
+ * the old location.
+ * 
+ * ## Example Usage
+ * 
+ * ### Uploading a file
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const ubuntuDiskUpload = new vsphere.File("ubuntuDiskUpload", {
+ *     datacenter: "myDatacenter",
+ *     datastore: "local",
+ *     destinationFile: "/my_path/disks/custom_ubuntu.vmdk",
+ *     sourceFile: "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
+ * });
+ * ```
+ * 
+ * ### Copying a file
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const ubuntuDiskCopy = new vsphere.File("ubuntuDiskCopy", {
+ *     datacenter: "myDatacenter",
+ *     datastore: "local",
+ *     destinationFile: "/my_path/custom_ubuntu_id.vmdk",
+ *     sourceDatacenter: "myDatacenter",
+ *     sourceDatastore: "local",
+ *     sourceFile: "/my_path/disks/custom_ubuntu.vmdk",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/file.html.markdown.
+ */
 export class File extends pulumi.CustomResource {
     /**
      * Get an existing File resource's state with the given name, ID, and optional extra
@@ -63,6 +111,11 @@ export class File extends pulumi.CustomResource {
      * be copied from. Forces a new resource if changed.
      */
     public readonly sourceDatastore!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the file being uploaded from the
+     * host to vSphere or copied within vSphere. Forces a new resource if
+     * changed.
+     */
     public readonly sourceFile!: pulumi.Output<string>;
 
     /**
@@ -148,6 +201,11 @@ export interface FileState {
      * be copied from. Forces a new resource if changed.
      */
     readonly sourceDatastore?: pulumi.Input<string>;
+    /**
+     * The path to the file being uploaded from the
+     * host to vSphere or copied within vSphere. Forces a new resource if
+     * changed.
+     */
     readonly sourceFile?: pulumi.Input<string>;
 }
 
@@ -185,5 +243,10 @@ export interface FileArgs {
      * be copied from. Forces a new resource if changed.
      */
     readonly sourceDatastore?: pulumi.Input<string>;
+    /**
+     * The path to the file being uploaded from the
+     * host to vSphere or copied within vSphere. Forces a new resource if
+     * changed.
+     */
     readonly sourceFile: pulumi.Input<string>;
 }

@@ -13,11 +13,10 @@ import (
 // The `.HostPortGroup` resource can be used to manage vSphere standard
 // port groups on an ESXi host. These port groups are connected to standard
 // virtual switches, which can be managed by the
-// [`.HostVirtualSwitch`][host-virtual-switch] resource.
+// `.HostVirtualSwitch` resource.
 //
 // For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
 //
-// [host-virtual-switch]: /docs/providers/vsphere/r/host_virtual_switch.html
 // [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 type HostPortGroup struct {
 	pulumi.CustomResourceState
@@ -34,13 +33,13 @@ type HostPortGroup struct {
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
 	// only.
 	CheckBeacon pulumi.BoolPtrOutput `pulumi:"checkBeacon"`
-	// A map with a full set of the [policy
-	// options][host-vswitch-policy-options] computed from defaults and overrides,
+	// A map with a full set of the policy
+	// options computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy pulumi.StringMapOutput `pulumi:"computedPolicy"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrOutput `pulumi:"failback"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
 	// The key for this port group as returned from the vSphere API.
@@ -121,13 +120,13 @@ type hostPortGroupState struct {
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
 	// only.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
-	// A map with a full set of the [policy
-	// options][host-vswitch-policy-options] computed from defaults and overrides,
+	// A map with a full set of the policy
+	// options computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy map[string]string `pulumi:"computedPolicy"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId *string `pulumi:"hostSystemId"`
 	// The key for this port group as returned from the vSphere API.
@@ -175,13 +174,13 @@ type HostPortGroupState struct {
 	// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
 	// only.
 	CheckBeacon pulumi.BoolPtrInput
-	// A map with a full set of the [policy
-	// options][host-vswitch-policy-options] computed from defaults and overrides,
+	// A map with a full set of the policy
+	// options computed from defaults and overrides,
 	// explaining the effective policy for this port group.
 	ComputedPolicy pulumi.StringMapInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringPtrInput
 	// The key for this port group as returned from the vSphere API.
@@ -235,7 +234,7 @@ type hostPortGroupArgs struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback *bool `pulumi:"failback"`
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId string `pulumi:"hostSystemId"`
 	// The name of the port group.  Forces a new resource if
@@ -282,7 +281,7 @@ type HostPortGroupArgs struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
 	Failback pulumi.BoolPtrInput
-	// The [managed object ID][docs-about-morefs] of
+	// The managed object ID of
 	// the host to set the port group up on. Forces a new resource if changed.
 	HostSystemId pulumi.StringInput
 	// The name of the port group.  Forces a new resource if

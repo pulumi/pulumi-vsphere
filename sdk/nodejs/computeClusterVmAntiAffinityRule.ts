@@ -7,11 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..ComputeClusterVmAntiAffinityRule` resource can be used to
  * manage VM anti-affinity rules in a cluster, either created by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
- * 
- * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
- * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+ * `vsphere..ComputeCluster` resource or looked up
+ * by the `vsphere..ComputeCluster` data source.
  * 
  * This rule can be used to tell a set to virtual machines to run on different
  * hosts within a cluster, useful for preventing single points of failure in
@@ -23,10 +20,8 @@ import * as utilities from "./utilities";
  * > Keep in mind that this rule can only be used to tell VMs to run separately
  * on _non-specific_ hosts - specific hosts cannot be specified with this rule.
  * For that, see the
- * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * `vsphere..ComputeClusterVmHostRule`
  * resource.
- * 
- * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
  * 
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -109,8 +104,8 @@ export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     public readonly computeClusterId!: pulumi.Output<string>;
@@ -180,8 +175,8 @@ export class ComputeClusterVmAntiAffinityRule extends pulumi.CustomResource {
  */
 export interface ComputeClusterVmAntiAffinityRuleState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId?: pulumi.Input<string>;
@@ -210,8 +205,8 @@ export interface ComputeClusterVmAntiAffinityRuleState {
  */
 export interface ComputeClusterVmAntiAffinityRuleArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId: pulumi.Input<string>;

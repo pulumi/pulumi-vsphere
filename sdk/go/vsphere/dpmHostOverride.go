@@ -27,8 +27,8 @@ import (
 type DpmHostOverride struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The automation level for host power
@@ -76,8 +76,8 @@ func GetDpmHostOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DpmHostOverride resources.
 type dpmHostOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The automation level for host power
@@ -92,8 +92,8 @@ type dpmHostOverrideState struct {
 }
 
 type DpmHostOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// The automation level for host power
@@ -112,8 +112,8 @@ func (DpmHostOverrideState) ElementType() reflect.Type {
 }
 
 type dpmHostOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The automation level for host power
@@ -129,8 +129,8 @@ type dpmHostOverrideArgs struct {
 
 // The set of arguments for constructing a DpmHostOverride resource.
 type DpmHostOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// The automation level for host power

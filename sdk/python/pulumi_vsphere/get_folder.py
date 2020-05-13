@@ -48,6 +48,14 @@ def get_folder(path=None,opts=None):
 
     folder = vsphere.get_folder(path="/dc1/datastore/folder1")
     ```
+
+
+
+    :param str path: The absolute path of the folder. For example, given a
+           default datacenter of `default-dc`, a folder of type `vm`, and a folder name
+           of `test-folder`, the resulting path would be
+           `/default-dc/vm/test-folder`. The valid folder types to be used in
+           the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
     """
     __args__ = dict()
 

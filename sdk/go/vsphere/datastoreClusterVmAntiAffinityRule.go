@@ -12,11 +12,8 @@ import (
 
 // The `.DatastoreClusterVmAntiAffinityRule` resource can be used to
 // manage VM anti-affinity rules in a datastore cluster, either created by the
-// [`.DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
-// by the [`.DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
-//
-// [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
-// [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+// `.DatastoreCluster` resource or looked up
+// by the `.DatastoreCluster` data source.
 //
 // This rule can be used to tell a set to virtual machines to run on different
 // datastores within a cluster, useful for preventing single points of failure in
@@ -32,8 +29,8 @@ import (
 type DatastoreClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+	// The managed object reference
+	// ID of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
 	DatastoreClusterId pulumi.StringOutput `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -82,8 +79,8 @@ func GetDatastoreClusterVmAntiAffinityRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatastoreClusterVmAntiAffinityRule resources.
 type datastoreClusterVmAntiAffinityRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+	// The managed object reference
+	// ID of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -99,8 +96,8 @@ type datastoreClusterVmAntiAffinityRuleState struct {
 }
 
 type DatastoreClusterVmAntiAffinityRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+	// The managed object reference
+	// ID of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
 	DatastoreClusterId pulumi.StringPtrInput
 	// Enable this rule in the cluster. Default: `true`.
@@ -120,8 +117,8 @@ func (DatastoreClusterVmAntiAffinityRuleState) ElementType() reflect.Type {
 }
 
 type datastoreClusterVmAntiAffinityRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+	// The managed object reference
+	// ID of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
 	DatastoreClusterId string `pulumi:"datastoreClusterId"`
 	// Enable this rule in the cluster. Default: `true`.
@@ -138,8 +135,8 @@ type datastoreClusterVmAntiAffinityRuleArgs struct {
 
 // The set of arguments for constructing a DatastoreClusterVmAntiAffinityRule resource.
 type DatastoreClusterVmAntiAffinityRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+	// The managed object reference
+	// ID of the datastore cluster to put the group in.  Forces
 	// a new resource if changed.
 	DatastoreClusterId pulumi.StringInput
 	// Enable this rule in the cluster. Default: `true`.

@@ -12,7 +12,7 @@ from . import utilities, tables
 class VappEntity(pulumi.CustomResource):
     container_id: pulumi.Output[str]
     """
-    [Managed object ID|docs-about-morefs] of the vApp
+    Managed object ID of the vApp
     container the entity is a member of.
     """
     custom_attributes: pulumi.Output[dict]
@@ -52,7 +52,7 @@ class VappEntity(pulumi.CustomResource):
     """
     target_id: pulumi.Output[str]
     """
-    [Managed object ID|docs-about-morefs] of the entity
+    Managed object ID of the entity
     to power on or power off. This can be a virtual machine or a vApp.
     """
     wait_for_guest: pulumi.Output[bool]
@@ -66,7 +66,7 @@ class VappEntity(pulumi.CustomResource):
         Create a VappEntity resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
+        :param pulumi.Input[str] container_id: Managed object ID of the vApp
                container the entity is a member of.
         :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
@@ -82,7 +82,7 @@ class VappEntity(pulumi.CustomResource):
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
         :param pulumi.Input[list] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
+        :param pulumi.Input[str] target_id: Managed object ID of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This
@@ -134,7 +134,7 @@ class VappEntity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] container_id: [Managed object ID|docs-about-morefs] of the vApp
+        :param pulumi.Input[str] container_id: Managed object ID of the vApp
                container the entity is a member of.
         :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[str] start_action: How to start the entity. Valid settings are none
@@ -150,7 +150,7 @@ class VappEntity(pulumi.CustomResource):
                entity in the order sequence. This is only used if the stopAction is
                guestShutdown. Default: 120
         :param pulumi.Input[list] tags: A list of tag IDs to apply to this object.
-        :param pulumi.Input[str] target_id: [Managed object ID|docs-about-morefs] of the entity
+        :param pulumi.Input[str] target_id: Managed object ID of the entity
                to power on or power off. This can be a virtual machine or a vApp.
         :param pulumi.Input[bool] wait_for_guest: Determines if the VM should be marked as being
                started when VMware Tools are ready instead of waiting for `start_delay`. This

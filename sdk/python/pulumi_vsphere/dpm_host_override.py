@@ -12,8 +12,8 @@ from . import utilities, tables
 class DpmHostOverride(pulumi.CustomResource):
     compute_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+    The managed object reference
+    ID of the cluster to put the override in.  Forces a new
     resource if changed.
     """
     dpm_automation_level: pulumi.Output[str]
@@ -52,8 +52,8 @@ class DpmHostOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the override in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
@@ -102,8 +102,8 @@ class DpmHostOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the override in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:

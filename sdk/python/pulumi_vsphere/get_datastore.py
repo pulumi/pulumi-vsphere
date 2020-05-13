@@ -41,9 +41,8 @@ def get_datastore(datacenter_id=None,name=None,opts=None):
     The `.getDatastore` data source can be used to discover the ID of a
     datastore in vSphere. This is useful to fetch the ID of a datastore that you
     want to use to create virtual machines in using the
-    [`.VirtualMachine`][docs-virtual-machine-resource] resource. 
+    `.VirtualMachine` resource. 
 
-    [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 
     ## Example Usage
 
@@ -60,8 +59,8 @@ def get_datastore(datacenter_id=None,name=None,opts=None):
 
 
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of the datacenter the datastore is located in. This
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the datastore is located in. This
            can be omitted if the search path used in `name` is an absolute path. For
            default datacenters, use the id attribute from an empty `.Datacenter`
            data source.

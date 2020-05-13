@@ -10,9 +10,7 @@ import * as utilities from "./utilities";
  * The `vsphere..ResourcePool` data source can be used to discover the ID of a
  * resource pool in vSphere. This is useful to fetch the ID of a resource pool
  * that you want to use to create virtual machines in using the
- * [`vsphere..VirtualMachine`][docs-virtual-machine-resource] resource. 
- * 
- * [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
+ * `vsphere..VirtualMachine` resource. 
  * 
  * ## Example Usage
  * 
@@ -65,8 +63,8 @@ export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.Invoke
  */
 export interface GetResourcePoolArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datacenter the resource pool is located in.
+     * The managed object reference
+     * ID of the datacenter the resource pool is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
      * For default datacenters, use the id attribute from an empty
      * `vsphere..Datacenter` data source.

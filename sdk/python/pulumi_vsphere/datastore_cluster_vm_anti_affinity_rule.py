@@ -12,8 +12,8 @@ from . import utilities, tables
 class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     datastore_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+    The managed object reference
+    ID of the datastore cluster to put the group in.  Forces
     a new resource if changed.
     """
     enabled: pulumi.Output[bool]
@@ -38,11 +38,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         The `.DatastoreClusterVmAntiAffinityRule` resource can be used to
         manage VM anti-affinity rules in a datastore cluster, either created by the
-        [`.DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
-        by the [`.DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
-
-        [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
-        [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+        `.DatastoreCluster` resource or looked up
+        by the `.DatastoreCluster` data source.
 
         This rule can be used to tell a set to virtual machines to run on different
         datastores within a cluster, useful for preventing single points of failure in
@@ -94,8 +91,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster to put the group in.  Forces
                a new resource if changed.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
@@ -145,8 +142,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster to put the group in.  Forces
                a new resource if changed.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual

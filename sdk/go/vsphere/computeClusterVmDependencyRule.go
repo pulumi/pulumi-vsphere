@@ -12,27 +12,22 @@ import (
 
 // The `.ComputeClusterVmDependencyRule` resource can be used to manage
 // VM dependency rules in a cluster, either created by the
-// [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-// by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-//
-// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+// `.ComputeCluster` resource or looked up
+// by the `.ComputeCluster` data source.
 //
 // A virtual machine dependency rule applies to vSphere HA, and allows
 // user-defined startup orders for virtual machines in the case of host failure.
 // Virtual machines are supplied via groups, which can be managed via the
-// [`.ComputeClusterVmGroup`][tf-vsphere-cluster-vm-group-resource]
+// `.ComputeClusterVmGroup`
 // resource.
-//
-// [tf-vsphere-cluster-vm-group-resource]: /docs/providers/vsphere/r/compute_cluster_vm_group.html
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
 type ComputeClusterVmDependencyRule struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The name of the VM group that this
@@ -92,8 +87,8 @@ func GetComputeClusterVmDependencyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ComputeClusterVmDependencyRule resources.
 type computeClusterVmDependencyRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The name of the VM group that this
@@ -117,8 +112,8 @@ type computeClusterVmDependencyRuleState struct {
 }
 
 type ComputeClusterVmDependencyRuleState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// The name of the VM group that this
@@ -146,8 +141,8 @@ func (ComputeClusterVmDependencyRuleState) ElementType() reflect.Type {
 }
 
 type computeClusterVmDependencyRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The name of the VM group that this
@@ -172,8 +167,8 @@ type computeClusterVmDependencyRuleArgs struct {
 
 // The set of arguments for constructing a ComputeClusterVmDependencyRule resource.
 type ComputeClusterVmDependencyRuleArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the group in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// The name of the VM group that this

@@ -61,9 +61,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     custom_attributes: pulumi.Output[dict]
     """
     Map of custom attribute ids to attribute
-    value strings to set for virtual switch. See
-    [here][docs-setting-custom-attributes] for a reference on how to set values
-    for custom attributes.
+    value strings to set for virtual switch.
     """
     datacenter_id: pulumi.Output[str]
     """
@@ -339,8 +337,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource.
     """
     teaming_policy: pulumi.Output[str]
     """
@@ -448,7 +445,46 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, block_all_ports=None, check_beacon=None, contact_detail=None, contact_name=None, custom_attributes=None, datacenter_id=None, description=None, directpath_gen2_allowed=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, faulttolerance_maximum_mbit=None, faulttolerance_reservation_mbit=None, faulttolerance_share_count=None, faulttolerance_share_level=None, folder=None, hbr_maximum_mbit=None, hbr_reservation_mbit=None, hbr_share_count=None, hbr_share_level=None, hosts=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, ipv4_address=None, iscsi_maximum_mbit=None, iscsi_reservation_mbit=None, iscsi_share_count=None, iscsi_share_level=None, lacp_api_version=None, lacp_enabled=None, lacp_mode=None, link_discovery_operation=None, link_discovery_protocol=None, management_maximum_mbit=None, management_reservation_mbit=None, management_share_count=None, management_share_level=None, max_mtu=None, multicast_filtering_mode=None, name=None, netflow_active_flow_timeout=None, netflow_collector_ip_address=None, netflow_collector_port=None, netflow_enabled=None, netflow_idle_flow_timeout=None, netflow_internal_flows_only=None, netflow_observation_domain_id=None, netflow_sampling_rate=None, network_resource_control_enabled=None, network_resource_control_version=None, nfs_maximum_mbit=None, nfs_reservation_mbit=None, nfs_share_count=None, nfs_share_level=None, notify_switches=None, port_private_secondary_vlan_id=None, standby_uplinks=None, tags=None, teaming_policy=None, tx_uplink=None, uplinks=None, vdp_maximum_mbit=None, vdp_reservation_mbit=None, vdp_share_count=None, vdp_share_level=None, version=None, virtualmachine_maximum_mbit=None, virtualmachine_reservation_mbit=None, virtualmachine_share_count=None, virtualmachine_share_level=None, vlan_id=None, vlan_ranges=None, vmotion_maximum_mbit=None, vmotion_reservation_mbit=None, vmotion_share_count=None, vmotion_share_level=None, vsan_maximum_mbit=None, vsan_reservation_mbit=None, vsan_share_count=None, vsan_share_level=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DistributedVirtualSwitch resource with the given unique name, props, and options.
+        The `.DistributedVirtualSwitch` resource can be used to manage VMware
+        Distributed Virtual Switches.
+
+        An essential component of a distributed, scalable VMware datacenter, the
+        vSphere Distributed Virtual Switch (DVS) provides centralized management and
+        monitoring of the networking configuration of all the hosts that are associated
+        with the switch. In addition to adding port groups (see the
+        `.DistributedPortGroup` resource) that can
+        be used as networks for virtual machines, a DVS can be configured to perform
+        advanced high availability, traffic shaping, network monitoring, and more.
+
+        For an overview on vSphere networking concepts, see [this
+        page][ref-vsphere-net-concepts]. For more information on vSphere DVS, see [this
+        page][ref-vsphere-dvs].
+
+        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+        [ref-vsphere-dvs]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-375B45C7-684C-4C51-BA3C-70E48DFABF04.html
+
+        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        connections.
+
+        ## Example Usage
+
+        ### Uplink name and count control
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dvs = vsphere.DistributedVirtualSwitch("dvs",
+            active_uplinks=["tfup1"],
+            datacenter_id=data[".Datacenter"]["dc"]["id"],
+            standby_uplinks=["tfup2"],
+            uplinks=[
+                "tfup1",
+                "tfup2",
+            ])
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_uplinks: A list of active uplinks to be used in load
@@ -472,9 +508,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
                DVS.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
+               value strings to set for virtual switch.
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
                virtual switch will be created. Forces a new resource if changed.
         :param pulumi.Input[str] description: A detailed description for the DVS.
@@ -574,8 +608,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                failover. These uplinks need to match the definitions in the
                `uplinks` DVS argument. See
                here for more details.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`.
@@ -769,9 +802,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
                DVS.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
+               value strings to set for virtual switch.
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
                virtual switch will be created. Forces a new resource if changed.
         :param pulumi.Input[str] description: A detailed description for the DVS.
@@ -871,8 +902,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                failover. These uplinks need to match the definitions in the
                `uplinks` DVS argument. See
                here for more details.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`.

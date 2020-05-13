@@ -42,10 +42,37 @@ class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResu
 
 def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    The `.DistributedVirtualSwitch` data source can be used to discover
+    the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
+    can then be used with resources or data sources that require a DVS, such as the
+    `.DistributedPortGroup` resource, for which
+    an example is shown below.
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of the datacenter the DVS is located in. This can be
+
+    > **NOTE:** This data source requires vCenter and is not available on direct
+    ESXi connections.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    dvs = vsphere.get_distributed_virtual_switch(datacenter_id=datacenter.id,
+        name="test-dvs")
+    pg = vsphere.DistributedPortGroup("pg",
+        active_uplinks=[dvs.uplinks[0]],
+        distributed_virtual_switch_uuid=dvs.id,
+        standby_uplinks=[dvs.uplinks[1]])
+    ```
+
+
+
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the DVS is located in. This can be
            omitted if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `.Datacenter` data
            source.

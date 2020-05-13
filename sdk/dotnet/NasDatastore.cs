@@ -14,12 +14,10 @@ namespace Pulumi.VSphere
     /// datastores on an ESXi host or a set of hosts. The resource supports mounting
     /// NFS v3 and v4.1 shares to be used as datastores.
     /// 
-    /// &gt; **NOTE:** Unlike [`vsphere..VmfsDatastore`][resource-vmfs-datastore], a NAS
+    /// &gt; **NOTE:** Unlike `vsphere..VmfsDatastore`, a NAS
     /// datastore is only mounted on the hosts you choose to mount it on. To mount on
     /// multiple hosts, you must specify each host that you want to add in the
     /// `host_system_ids` argument.
-    /// 
-    /// [resource-vmfs-datastore]: /docs/providers/vsphere/r/vmfs_datastore.html
     /// </summary>
     public partial class NasDatastore : Pulumi.CustomResource
     {
@@ -47,23 +45,27 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set on datasource resource.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object
-        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+        /// The managed object
+        /// ID of a datastore cluster to put this datastore in.
         /// Conflicts with `folder`.
         /// </summary>
         [Output("datastoreClusterId")]
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        /// The provider will place a datastore named `test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/test`. Conflicts with
+        /// `datastore_cluster_id`.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -75,7 +77,7 @@ namespace Pulumi.VSphere
         public Output<int> FreeSpace { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to mount the datastore on.
         /// </summary>
         [Output("hostSystemIds")]
@@ -132,8 +134,7 @@ namespace Pulumi.VSphere
         public Output<string?> SecurityType { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -219,9 +220,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set on datasource resource.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -230,15 +229,21 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object
-        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+        /// The managed object
+        /// ID of a datastore cluster to put this datastore in.
         /// Conflicts with `folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        /// The provider will place a datastore named `test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/test`. Conflicts with
+        /// `datastore_cluster_id`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -247,7 +252,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to mount the datastore on.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -296,8 +301,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         public InputList<string> Tags
         {
@@ -347,9 +351,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute 
-        /// value strings to set on datasource resource. See
-        /// [here][docs-setting-custom-attributes] for a reference on how to set values
-        /// for custom attributes.
+        /// value strings to set on datasource resource.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -358,15 +360,21 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The [managed object
-        /// ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+        /// The managed object
+        /// ID of a datastore cluster to put this datastore in.
         /// Conflicts with `folder`.
         /// </summary>
         [Input("datastoreClusterId")]
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The path to the datastore folder to put the datastore in.
+        /// The relative path to a folder to put this datastore in.
+        /// This is a path relative to the datacenter you are deploying the datastore to.
+        /// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        /// The provider will place a datastore named `test` in a datastore folder
+        /// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        /// `/dc1/datastore/foo/bar/test`. Conflicts with
+        /// `datastore_cluster_id`.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -381,7 +389,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to mount the datastore on.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -450,8 +458,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. See
-        /// [here][docs-applying-tags] for a reference on how to apply tags.
+        /// The IDs of any tags to attach to this resource. 
         /// </summary>
         public InputList<string> Tags
         {

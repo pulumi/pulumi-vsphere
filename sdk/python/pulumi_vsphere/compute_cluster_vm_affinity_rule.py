@@ -12,8 +12,8 @@ from . import utilities, tables
 class ComputeClusterVmAffinityRule(pulumi.CustomResource):
     compute_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+    The managed object reference
+    ID of the cluster to put the group in.  Forces a new
     resource if changed.
     """
     enabled: pulumi.Output[bool]
@@ -38,11 +38,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         """
         The `.ComputeClusterVmAffinityRule` resource can be used to manage
         VM affinity rules in a cluster, either created by the
-        [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-        by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-
-        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
+        `.ComputeCluster` resource or looked up
+        by the `.ComputeCluster` data source.
 
         This rule can be used to tell a set to virtual machines to run together on a
         single host within a cluster. When configured, DRS will make a best effort to
@@ -53,10 +50,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         > Keep in mind that this rule can only be used to tell VMs to run together on
         a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
         the
-        [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+        `.ComputeClusterVmHostRule`
         resource.
-
-        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -101,8 +96,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
@@ -152,8 +147,8 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual

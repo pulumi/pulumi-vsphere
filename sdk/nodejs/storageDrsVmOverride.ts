@@ -96,8 +96,8 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the override in.
+     * The managed object reference
+     * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
     public readonly datastoreClusterId!: pulumi.Output<string>;
@@ -105,7 +105,7 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
-     * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+     * specific SDRS subsystem.
      */
     public readonly sdrsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
@@ -175,8 +175,8 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
  */
 export interface StorageDrsVmOverrideState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the override in.
+     * The managed object reference
+     * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
@@ -184,7 +184,7 @@ export interface StorageDrsVmOverrideState {
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
-     * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+     * specific SDRS subsystem.
      */
     readonly sdrsAutomationLevel?: pulumi.Input<string>;
     /**
@@ -213,8 +213,8 @@ export interface StorageDrsVmOverrideState {
  */
 export interface StorageDrsVmOverrideArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the datastore cluster to put the override in.
+     * The managed object reference
+     * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
     readonly datastoreClusterId: pulumi.Input<string>;
@@ -222,7 +222,7 @@ export interface StorageDrsVmOverrideArgs {
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
-     * [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+     * specific SDRS subsystem.
      */
     readonly sdrsAutomationLevel?: pulumi.Input<string>;
     /**

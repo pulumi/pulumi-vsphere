@@ -84,12 +84,12 @@ class VappContainer(pulumi.CustomResource):
     """
     parent_folder_id: pulumi.Output[str]
     """
-    The [managed object ID][docs-about-morefs] of
+    The managed object ID of
     the vApp container's parent folder.
     """
     parent_resource_pool_id: pulumi.Output[str]
     """
-    The [managed object ID][docs-about-morefs]
+    The managed object ID
     of the parent resource pool. This can be the root resource pool for a cluster
     or standalone host, or a resource pool itself. When moving a vApp container
     from one parent resource pool to another, both must share a common root
@@ -97,8 +97,7 @@ class VappContainer(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource.
     """
     def __init__(__self__, resource_name, opts=None, cpu_expandable=None, cpu_limit=None, cpu_reservation=None, cpu_share_level=None, cpu_shares=None, custom_attributes=None, memory_expandable=None, memory_limit=None, memory_reservation=None, memory_share_level=None, memory_shares=None, name=None, parent_folder_id=None, parent_resource_pool_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -206,15 +205,14 @@ class VappContainer(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the vApp container.
-        :param pulumi.Input[str] parent_folder_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] parent_folder_id: The managed object ID of
                the vApp container's parent folder.
-        :param pulumi.Input[str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
+        :param pulumi.Input[str] parent_resource_pool_id: The managed object ID
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -301,15 +299,14 @@ class VappContainer(pulumi.CustomResource):
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the vApp container.
-        :param pulumi.Input[str] parent_folder_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] parent_folder_id: The managed object ID of
                the vApp container's parent folder.
-        :param pulumi.Input[str] parent_resource_pool_id: The [managed object ID][docs-about-morefs]
+        :param pulumi.Input[str] parent_resource_pool_id: The managed object ID
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

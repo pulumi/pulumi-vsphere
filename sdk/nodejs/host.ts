@@ -10,9 +10,9 @@ import * as utilities from "./utilities";
  * Provides a VMware vSphere host resource. This represents an ESXi host that
  * can be used either as part of a Compute Cluster or Standalone.
  * 
- * ## Example Usages
+ * ## Example Usage
  * 
- * **Create a standalone host:**
+ * ### Create a standalone host
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  * 
- * **Create host in a compute cluster:**
+ * ### Create host in a compute cluster
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

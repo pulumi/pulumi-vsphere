@@ -53,7 +53,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
     """
     host_system_id: pulumi.Output[str]
     """
-    The [managed object ID][docs-about-morefs] of
+    The managed object ID of
     the host to set the virtual switch up on. Forces a new resource if changed.
     """
     link_discovery_operation: pulumi.Output[str]
@@ -147,7 +147,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[bool] failback: If set to `true`, the teaming policy will re-activate
                failed interfaces higher in precedence when they come back up.  Default:
                `true`.
-        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] host_system_id: The managed object ID of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
                for link discovery traffic. Default: `listen`.
@@ -258,7 +258,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[bool] failback: If set to `true`, the teaming policy will re-activate
                failed interfaces higher in precedence when they come back up.  Default:
                `true`.
-        :param pulumi.Input[str] host_system_id: The [managed object ID][docs-about-morefs] of
+        :param pulumi.Input[str] host_system_id: The managed object ID of
                the host to set the virtual switch up on. Forces a new resource if changed.
         :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
                for link discovery traffic. Default: `listen`.

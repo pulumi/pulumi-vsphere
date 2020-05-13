@@ -7,6 +7,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// The `.TagCategory` data source can be used to reference tag categories
+// that are not managed by this provider. Its attributes are exactly the same as the
+// `.TagCategory` resource, and, like importing,
+// the data source takes a name to search on. The `id` and other attributes are
+// then populated with the data found by the search.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// requires vCenter 6.0 or higher.
 func LookupTagCategory(ctx *pulumi.Context, args *LookupTagCategoryArgs, opts ...pulumi.InvokeOption) (*LookupTagCategoryResult, error) {
 	var rv LookupTagCategoryResult
 	err := ctx.Invoke("vsphere:index/getTagCategory:getTagCategory", args, &rv, opts...)

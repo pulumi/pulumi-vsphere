@@ -69,9 +69,9 @@ class Host(pulumi.CustomResource):
         Provides a VMware vSphere host resource. This represents an ESXi host that
         can be used either as part of a Compute Cluster or Standalone.
 
-        ## Example Usages
+        ## Example Usage
 
-        **Create a standalone host:**
+        ### Create a standalone host
 
         ```python
         import pulumi
@@ -86,7 +86,7 @@ class Host(pulumi.CustomResource):
             datacenter=dc.id)
         ```
 
-        **Create host in a compute cluster:**
+        ### Create host in a compute cluster
 
         ```python
         import pulumi

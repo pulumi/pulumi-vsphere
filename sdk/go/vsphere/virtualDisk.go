@@ -11,12 +11,9 @@ import (
 )
 
 // The `.VirtualDisk` resource can be used to create virtual disks outside
-// of any given [`.VirtualMachine`][docs-vsphere-virtual-machine]
+// of any given `.VirtualMachine`
 // resource. These disks can be attached to a virtual machine by creating a disk
-// block with the [`attach`][docs-vsphere-virtual-machine-disk-attach] parameter.
-//
-// [docs-vsphere-virtual-machine]: /docs/providers/vsphere/r/virtual_machine.html
-// [docs-vsphere-virtual-machine-disk-attach]: /docs/providers/vsphere/r/virtual_machine.html#attach
+// block with the `attach` parameter.
 type VirtualDisk struct {
 	pulumi.CustomResourceState
 

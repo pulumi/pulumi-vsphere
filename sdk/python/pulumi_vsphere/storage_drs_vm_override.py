@@ -12,8 +12,8 @@ from . import utilities, tables
 class StorageDrsVmOverride(pulumi.CustomResource):
     datastore_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the datastore cluster to put the override in.
+    The managed object reference
+    ID of the datastore cluster to put the override in.
     Forces a new resource if changed.
     """
     sdrs_automation_level: pulumi.Output[str]
@@ -21,7 +21,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     Overrides any Storage DRS automation
     levels for this virtual machine. Can be one of `automated` or `manual`. When
     not specified, the datastore cluster's settings are used according to the
-    [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+    specific SDRS subsystem.
     """
     sdrs_enabled: pulumi.Output[str]
     """
@@ -94,13 +94,13 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster to put the override in.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster to put the override in.
                Forces a new resource if changed.
         :param pulumi.Input[str] sdrs_automation_level: Overrides any Storage DRS automation
                levels for this virtual machine. Can be one of `automated` or `manual`. When
                not specified, the datastore cluster's settings are used according to the
-               [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+               specific SDRS subsystem.
         :param pulumi.Input[str] sdrs_enabled: Overrides the default Storage DRS setting for
                this virtual machine. When not specified, the datastore cluster setting is
                used.
@@ -153,13 +153,13 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster to put the override in.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster to put the override in.
                Forces a new resource if changed.
         :param pulumi.Input[str] sdrs_automation_level: Overrides any Storage DRS automation
                levels for this virtual machine. Can be one of `automated` or `manual`. When
                not specified, the datastore cluster's settings are used according to the
-               [specific SDRS subsystem][tf-vsphere-datastore-cluster-sdrs-levels].
+               specific SDRS subsystem.
         :param pulumi.Input[str] sdrs_enabled: Overrides the default Storage DRS setting for
                this virtual machine. When not specified, the datastore cluster setting is
                used.

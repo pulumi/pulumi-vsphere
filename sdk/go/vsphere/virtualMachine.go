@@ -65,15 +65,13 @@ type VirtualMachine struct {
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrOutput `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual machine. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual machine.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The datacenter id. Required only when deploying
 	// an ovf template.
 	DatacenterId pulumi.StringPtrOutput `pulumi:"datacenterId"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+	// The managed object reference
+	// ID of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
 	// DRS with this virtual machine. See the section on virtual machine
 	// migration for details on changing this value.
@@ -81,7 +79,13 @@ type VirtualMachine struct {
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
-	// The IP address selected by Terraform to be used for the provisioner.
+	// The IP address selected by the provider to be used with
+	// any provisioners configured on this resource.
+	// Whenever possible, this is the first IPv4 address that is reachable through
+	// the default gateway configured on the machine, then the first reachable IPv6
+	// address, and then the first general discovered address if neither exist. If
+	// VMware tools is not running on the virtual machine, or if the VM is powered
+	// off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual
 	// machine. See disk options below.
@@ -120,7 +124,7 @@ type VirtualMachine struct {
 	// The current list of IP addresses on this machine,
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
-	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+	// * `moid`: The managed object reference ID of the created
 	// virtual machine.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range
@@ -128,8 +132,8 @@ type VirtualMachine struct {
 	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
 	// more details.
 	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
-	// An optional [managed object reference
-	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+	// An optional managed object reference
+	// ID of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
 	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
@@ -206,10 +210,12 @@ type VirtualMachine struct {
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+	// Value internal to the provider used to determine if a
+	// configuration set change requires a reboot. This value is only useful during
+	// an update process and gets reset on refresh.
 	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+	// The managed object reference
+	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
 	// for details on changing this value.
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
@@ -231,9 +237,10 @@ type VirtualMachine struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	// The number of SCSI controllers that
+	// this provider manages on this virtual machine. This directly affects the amount
+	// of disks you can add to the virtual machine and the maximum disk unit number.
+	// Note that lowering this value does not remove controllers. Default: `1`.
 	ScsiControllerCount pulumi.IntPtrOutput `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have.
 	// Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -253,8 +260,7 @@ type VirtualMachine struct {
 	// Enable guest clock synchronization with
 	// the host. Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrOutput `pulumi:"syncTimeWithHost"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
 	// virtual disk on the virtual machine.
@@ -380,15 +386,13 @@ type virtualMachineState struct {
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual machine. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual machine.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The datacenter id. Required only when deploying
 	// an ovf template.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+	// The managed object reference
+	// ID of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
 	// DRS with this virtual machine. See the section on virtual machine
 	// migration for details on changing this value.
@@ -396,7 +400,13 @@ type virtualMachineState struct {
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The IP address selected by Terraform to be used for the provisioner.
+	// The IP address selected by the provider to be used with
+	// any provisioners configured on this resource.
+	// Whenever possible, this is the first IPv4 address that is reachable through
+	// the default gateway configured on the machine, then the first reachable IPv6
+	// address, and then the first general discovered address if neither exist. If
+	// VMware tools is not running on the virtual machine, or if the VM is powered
+	// off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on this virtual
 	// machine. See disk options below.
@@ -435,7 +445,7 @@ type virtualMachineState struct {
 	// The current list of IP addresses on this machine,
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
-	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+	// * `moid`: The managed object reference ID of the created
 	// virtual machine.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range
@@ -443,8 +453,8 @@ type virtualMachineState struct {
 	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
 	// more details.
 	HardwareVersion *int `pulumi:"hardwareVersion"`
-	// An optional [managed object reference
-	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+	// An optional managed object reference
+	// ID of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
 	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
@@ -521,10 +531,12 @@ type virtualMachineState struct {
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+	// Value internal to the provider used to determine if a
+	// configuration set change requires a reboot. This value is only useful during
+	// an update process and gets reset on refresh.
 	RebootRequired *bool `pulumi:"rebootRequired"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+	// The managed object reference
+	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
 	// for details on changing this value.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
@@ -546,9 +558,10 @@ type virtualMachineState struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	// The number of SCSI controllers that
+	// this provider manages on this virtual machine. This directly affects the amount
+	// of disks you can add to the virtual machine and the maximum disk unit number.
+	// Note that lowering this value does not remove controllers. Default: `1`.
 	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have.
 	// Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -568,8 +581,7 @@ type virtualMachineState struct {
 	// Enable guest clock synchronization with
 	// the host. Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
 	// virtual disk on the virtual machine.
@@ -665,15 +677,13 @@ type VirtualMachineState struct {
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual machine. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual machine.
 	CustomAttributes pulumi.StringMapInput
 	// The datacenter id. Required only when deploying
 	// an ovf template.
 	DatacenterId pulumi.StringPtrInput
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+	// The managed object reference
+	// ID of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
 	// DRS with this virtual machine. See the section on virtual machine
 	// migration for details on changing this value.
@@ -681,7 +691,13 @@ type VirtualMachineState struct {
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringPtrInput
-	// The IP address selected by Terraform to be used for the provisioner.
+	// The IP address selected by the provider to be used with
+	// any provisioners configured on this resource.
+	// Whenever possible, this is the first IPv4 address that is reachable through
+	// the default gateway configured on the machine, then the first reachable IPv6
+	// address, and then the first general discovered address if neither exist. If
+	// VMware tools is not running on the virtual machine, or if the VM is powered
+	// off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
 	// A specification for a virtual disk device on this virtual
 	// machine. See disk options below.
@@ -720,7 +736,7 @@ type VirtualMachineState struct {
 	// The current list of IP addresses on this machine,
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
-	// * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+	// * `moid`: The managed object reference ID of the created
 	// virtual machine.
 	GuestIpAddresses pulumi.StringArrayInput
 	// The hardware version number. Valid range
@@ -728,8 +744,8 @@ type VirtualMachineState struct {
 	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
 	// more details.
 	HardwareVersion pulumi.IntPtrInput
-	// An optional [managed object reference
-	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+	// An optional managed object reference
+	// ID of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
 	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
@@ -806,10 +822,12 @@ type VirtualMachineState struct {
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
-	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
+	// Value internal to the provider used to determine if a
+	// configuration set change requires a reboot. This value is only useful during
+	// an update process and gets reset on refresh.
 	RebootRequired pulumi.BoolPtrInput
-	// The [managed object reference
-	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+	// The managed object reference
+	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
 	// for details on changing this value.
 	ResourcePoolId pulumi.StringPtrInput
@@ -831,9 +849,10 @@ type VirtualMachineState struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrInput
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	// The number of SCSI controllers that
+	// this provider manages on this virtual machine. This directly affects the amount
+	// of disks you can add to the virtual machine and the maximum disk unit number.
+	// Note that lowering this value does not remove controllers. Default: `1`.
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have.
 	// Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -853,8 +872,7 @@ type VirtualMachineState struct {
 	// Enable guest clock synchronization with
 	// the host. Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The UUID of the virtual disk's VMDK file. This is used to track the
 	// virtual disk on the virtual machine.
@@ -950,15 +968,13 @@ type virtualMachineArgs struct {
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual machine. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual machine.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The datacenter id. Required only when deploying
 	// an ovf template.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+	// The managed object reference
+	// ID of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
 	// DRS with this virtual machine. See the section on virtual machine
 	// migration for details on changing this value.
@@ -1005,8 +1021,8 @@ type virtualMachineArgs struct {
 	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
 	// more details.
 	HardwareVersion *int `pulumi:"hardwareVersion"`
-	// An optional [managed object reference
-	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+	// An optional managed object reference
+	// ID of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
 	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
@@ -1076,8 +1092,8 @@ type virtualMachineArgs struct {
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+	// The managed object reference
+	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
 	// for details on changing this value.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
@@ -1099,9 +1115,10 @@ type virtualMachineArgs struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	// The number of SCSI controllers that
+	// this provider manages on this virtual machine. This directly affects the amount
+	// of disks you can add to the virtual machine and the maximum disk unit number.
+	// Note that lowering this value does not remove controllers. Default: `1`.
 	ScsiControllerCount *int `pulumi:"scsiControllerCount"`
 	// The type of SCSI bus this virtual machine will have.
 	// Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -1121,8 +1138,7 @@ type virtualMachineArgs struct {
 	// Enable guest clock synchronization with
 	// the host. Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// Optional vApp configuration. The only sub-key available
 	// is `properties`, which is a key/value map of properties for virtual machines
@@ -1202,15 +1218,13 @@ type VirtualMachineArgs struct {
 	// one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual machine. See
-	// [here][docs-setting-custom-attributes] for a reference on how to set values
-	// for custom attributes.
+	// value strings to set for virtual machine.
 	CustomAttributes pulumi.StringMapInput
 	// The datacenter id. Required only when deploying
 	// an ovf template.
 	DatacenterId pulumi.StringPtrInput
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+	// The managed object reference
+	// ID of the datastore cluster ID to use. This setting
 	// applies to entire virtual machine and implies that you wish to use Storage
 	// DRS with this virtual machine. See the section on virtual machine
 	// migration for details on changing this value.
@@ -1257,8 +1271,8 @@ type VirtualMachineArgs struct {
 	// machine hardware compatibility][virtual-machine-hardware-compatibility] for
 	// more details.
 	HardwareVersion pulumi.IntPtrInput
-	// An optional [managed object reference
-	// ID][docs-about-morefs] of a host to put this virtual machine on. See the
+	// An optional managed object reference
+	// ID of a host to put this virtual machine on. See the
 	// section on virtual machine migration for
 	// details on changing this value. If a `hostSystemId` is not supplied,
 	// vSphere will select a host in the resource pool to place the virtual machine,
@@ -1328,8 +1342,8 @@ type VirtualMachineArgs struct {
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
-	// The [managed object reference
-	// ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+	// The managed object reference
+	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
 	// for details on changing this value.
 	ResourcePoolId pulumi.StringInput
@@ -1351,9 +1365,10 @@ type VirtualMachineArgs struct {
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrInput
-	// The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-	// controllers.
+	// The number of SCSI controllers that
+	// this provider manages on this virtual machine. This directly affects the amount
+	// of disks you can add to the virtual machine and the maximum disk unit number.
+	// Note that lowering this value does not remove controllers. Default: `1`.
 	ScsiControllerCount pulumi.IntPtrInput
 	// The type of SCSI bus this virtual machine will have.
 	// Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -1373,8 +1388,7 @@ type VirtualMachineArgs struct {
 	// Enable guest clock synchronization with
 	// the host. Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// Optional vApp configuration. The only sub-key available
 	// is `properties`, which is a key/value map of properties for virtual machines

@@ -27,8 +27,8 @@ import (
 type DrsVmOverride struct {
 	pulumi.CustomResourceState
 
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
@@ -77,8 +77,8 @@ func GetDrsVmOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DrsVmOverride resources.
 type drsVmOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
@@ -94,8 +94,8 @@ type drsVmOverrideState struct {
 }
 
 type DrsVmOverrideState struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringPtrInput
 	// Overrides the automation level for this virtual
@@ -115,8 +115,8 @@ func (DrsVmOverrideState) ElementType() reflect.Type {
 }
 
 type drsVmOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// Overrides the automation level for this virtual
@@ -133,8 +133,8 @@ type drsVmOverrideArgs struct {
 
 // The set of arguments for constructing a DrsVmOverride resource.
 type DrsVmOverrideArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the cluster to put the override in.  Forces a new
+	// The managed object reference
+	// ID of the cluster to put the override in.  Forces a new
 	// resource if changed.
 	ComputeClusterId pulumi.StringInput
 	// Overrides the automation level for this virtual

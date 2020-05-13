@@ -46,7 +46,10 @@ class VirtualMachine(pulumi.CustomResource):
         remote client device. Conflicts with `datastore_id` and `path`.
       * `datastore_id` (`str`) - The datastore ID that the ISO is located in.
         Requried for using a datastore ISO. Conflicts with `client_device`.
-      * `deviceAddress` (`str`)
+      * `deviceAddress` (`str`) - An address internal to this provider that helps locate the
+        device when `key` is unavailable. This follows a convention of
+        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+        unit 1 on SCSI bus 0.
       * `key` (`float`) - The ID of the device within the virtual machine.
       * `path` (`str`) - The path to the ISO file. Required for using a datastore
         ISO. Conflicts with `client_device`.
@@ -148,9 +151,7 @@ class VirtualMachine(pulumi.CustomResource):
     custom_attributes: pulumi.Output[dict]
     """
     Map of custom attribute ids to attribute
-    value strings to set for virtual machine. See
-    [here][docs-setting-custom-attributes] for a reference on how to set values
-    for custom attributes.
+    value strings to set for virtual machine.
     """
     datacenter_id: pulumi.Output[str]
     """
@@ -159,8 +160,8 @@ class VirtualMachine(pulumi.CustomResource):
     """
     datastore_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+    The managed object reference
+    ID of the datastore cluster ID to use. This setting
     applies to entire virtual machine and implies that you wish to use Storage
     DRS with this virtual machine. See the section on virtual machine
     migration for details on changing this value.
@@ -172,7 +173,13 @@ class VirtualMachine(pulumi.CustomResource):
     """
     default_ip_address: pulumi.Output[str]
     """
-    The IP address selected by Terraform to be used for the provisioner.
+    The IP address selected by the provider to be used with
+    any provisioners configured on this resource.
+    Whenever possible, this is the first IPv4 address that is reachable through
+    the default gateway configured on the machine, then the first reachable IPv6
+    address, and then the first general discovered address if neither exist. If
+    VMware tools is not running on the virtual machine, or if the VM is powered
+    off, this value will be blank.
     """
     disks: pulumi.Output[list]
     """
@@ -184,7 +191,10 @@ class VirtualMachine(pulumi.CustomResource):
         `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
       * `datastore_id` (`str`) - The datastore ID that the ISO is located in.
         Requried for using a datastore ISO. Conflicts with `client_device`.
-      * `deviceAddress` (`str`)
+      * `deviceAddress` (`str`) - An address internal to this provider that helps locate the
+        device when `key` is unavailable. This follows a convention of
+        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+        unit 1 on SCSI bus 0.
       * `diskMode` (`str`) - The mode of this this virtual disk for purposes of
         writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
         `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
@@ -283,7 +293,7 @@ class VirtualMachine(pulumi.CustomResource):
     The current list of IP addresses on this machine,
     including the value of `default_ip_address`. If VMware tools is not running
     on the virtual machine, or if the VM is powered off, this list will be empty.
-    * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+    * `moid`: The managed object reference ID of the created
     virtual machine.
     """
     hardware_version: pulumi.Output[float]
@@ -295,8 +305,8 @@ class VirtualMachine(pulumi.CustomResource):
     """
     host_system_id: pulumi.Output[str]
     """
-    An optional [managed object reference
-    ID][docs-about-morefs] of a host to put this virtual machine on. See the
+    An optional managed object reference
+    ID of a host to put this virtual machine on. See the
     section on virtual machine migration for
     details on changing this value. If a `host_system_id` is not supplied,
     vSphere will select a host in the resource pool to place the virtual machine,
@@ -400,13 +410,16 @@ class VirtualMachine(pulumi.CustomResource):
       * `bandwidthShareLevel` (`str`) - The bandwidth share allocation level for
         this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
         `normal`.
-      * `deviceAddress` (`str`)
+      * `deviceAddress` (`str`) - An address internal to this provider that helps locate the
+        device when `key` is unavailable. This follows a convention of
+        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+        unit 1 on SCSI bus 0.
       * `key` (`float`) - The ID of the device within the virtual machine.
       * `macAddress` (`str`) - The MAC address of this network interface. Can
         only be manually set if `use_static_mac` is true, otherwise this is a
         computed value that gives the current MAC address of this interface.
-      * `networkId` (`str`) - The [managed object reference
-        ID][docs-about-morefs] of the network to connect this interface to.
+      * `networkId` (`str`) - The managed object reference
+        ID of the network to connect this interface to.
       * `ovfMapping` (`str`) - Specifies which OVF NIC the `network_interface`
         should be associated with. Only applies at creation and only when deploying
         from an OVF source.
@@ -445,12 +458,14 @@ class VirtualMachine(pulumi.CustomResource):
     """
     reboot_required: pulumi.Output[bool]
     """
-    Value internal to Terraform used to determine if a configuration set change requires a reboot.
+    Value internal to the provider used to determine if a
+    configuration set change requires a reboot. This value is only useful during
+    an update process and gets reset on refresh.
     """
     resource_pool_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+    The managed object reference
+    ID of the resource pool to put this virtual machine in.
     See the section on virtual machine migration
     for details on changing this value.
     """
@@ -486,9 +501,10 @@ class VirtualMachine(pulumi.CustomResource):
     """
     scsi_controller_count: pulumi.Output[float]
     """
-    The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-    you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-    controllers.
+    The number of SCSI controllers that
+    this provider manages on this virtual machine. This directly affects the amount
+    of disks you can add to the virtual machine and the maximum disk unit number.
+    Note that lowering this value does not remove controllers. Default: `1`.
     """
     scsi_type: pulumi.Output[str]
     """
@@ -520,8 +536,7 @@ class VirtualMachine(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. See
-    [here][docs-applying-tags] for a reference on how to apply tags.
+    The IDs of any tags to attach to this resource. 
     """
     uuid: pulumi.Output[str]
     """
@@ -619,13 +634,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_share_level: The allocation level for CPU resources. Can be
                one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual machine. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
+               value strings to set for virtual machine.
         :param pulumi.Input[str] datacenter_id: The datacenter id. Required only when deploying
                an ovf template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster ID to use. This setting
                applies to entire virtual machine and implies that you wish to use Storage
                DRS with this virtual machine. See the section on virtual machine
                migration for details on changing this value.
@@ -659,8 +672,8 @@ class VirtualMachine(pulumi.CustomResource):
                is from 4 to 15. The hardware version cannot be downgraded. See [virtual
                machine hardware compatibility][virtual-machine-hardware-compatibility] for
                more details.
-        :param pulumi.Input[str] host_system_id: An optional [managed object reference
-               ID][docs-about-morefs] of a host to put this virtual machine on. See the
+        :param pulumi.Input[str] host_system_id: An optional managed object reference
+               ID of a host to put this virtual machine on. See the
                section on virtual machine migration for
                details on changing this value. If a `host_system_id` is not supplied,
                vSphere will select a host in the resource pool to place the virtual machine,
@@ -712,8 +725,8 @@ class VirtualMachine(pulumi.CustomResource):
                provided ovf template. See creating a virtual machine from a
                ovf template for more details.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference
-               ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference
+               ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
                for details on changing this value.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the execution of
@@ -728,9 +741,10 @@ class VirtualMachine(pulumi.CustomResource):
                pre-standby scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
-        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
+        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
+               this provider manages on this virtual machine. This directly affects the amount
+               of disks you can add to the virtual machine and the maximum disk unit number.
+               Note that lowering this value does not remove controllers. Default: `1`.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have.
                Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
                pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
@@ -744,8 +758,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
@@ -775,7 +788,10 @@ class VirtualMachine(pulumi.CustomResource):
             remote client device. Conflicts with `datastore_id` and `path`.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
           * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
@@ -834,7 +850,10 @@ class VirtualMachine(pulumi.CustomResource):
             `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `diskMode` (`pulumi.Input[str]`) - The mode of this this virtual disk for purposes of
             writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
             `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
@@ -892,13 +911,16 @@ class VirtualMachine(pulumi.CustomResource):
           * `bandwidthShareLevel` (`pulumi.Input[str]`) - The bandwidth share allocation level for
             this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
             `normal`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
           * `macAddress` (`pulumi.Input[str]`) - The MAC address of this network interface. Can
             only be manually set if `use_static_mac` is true, otherwise this is a
             computed value that gives the current MAC address of this interface.
-          * `networkId` (`pulumi.Input[str]`) - The [managed object reference
-            ID][docs-about-morefs] of the network to connect this interface to.
+          * `networkId` (`pulumi.Input[str]`) - The managed object reference
+            ID of the network to connect this interface to.
           * `ovfMapping` (`pulumi.Input[str]`) - Specifies which OVF NIC the `network_interface`
             should be associated with. Only applies at creation and only when deploying
             from an OVF source.
@@ -1065,19 +1087,23 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_share_level: The allocation level for CPU resources. Can be
                one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual machine. See
-               [here][docs-setting-custom-attributes] for a reference on how to set values
-               for custom attributes.
+               value strings to set for virtual machine.
         :param pulumi.Input[str] datacenter_id: The datacenter id. Required only when deploying
                an ovf template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the datastore cluster ID to use. This setting
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster ID to use. This setting
                applies to entire virtual machine and implies that you wish to use Storage
                DRS with this virtual machine. See the section on virtual machine
                migration for details on changing this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that the ISO is located in.
                Requried for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] default_ip_address: The IP address selected by Terraform to be used for the provisioner.
+        :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with
+               any provisioners configured on this resource.
+               Whenever possible, this is the first IPv4 address that is reachable through
+               the default gateway configured on the machine, then the first reachable IPv6
+               address, and then the first general discovered address if neither exist. If
+               VMware tools is not running on the virtual machine, or if the VM is powered
+               off, this value will be blank.
         :param pulumi.Input[list] disks: A specification for a virtual disk device on this virtual
                machine. See disk options below.
         :param pulumi.Input[bool] efi_secure_boot_enabled: When the `firmware` type is set to is
@@ -1105,14 +1131,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[list] guest_ip_addresses: The current list of IP addresses on this machine,
                including the value of `default_ip_address`. If VMware tools is not running
                on the virtual machine, or if the VM is powered off, this list will be empty.
-               * `moid`: The [managed object reference ID][docs-about-morefs] of the created
+               * `moid`: The managed object reference ID of the created
                virtual machine.
         :param pulumi.Input[float] hardware_version: The hardware version number. Valid range
                is from 4 to 15. The hardware version cannot be downgraded. See [virtual
                machine hardware compatibility][virtual-machine-hardware-compatibility] for
                more details.
-        :param pulumi.Input[str] host_system_id: An optional [managed object reference
-               ID][docs-about-morefs] of a host to put this virtual machine on. See the
+        :param pulumi.Input[str] host_system_id: An optional managed object reference
+               ID of a host to put this virtual machine on. See the
                section on virtual machine migration for
                details on changing this value. If a `host_system_id` is not supplied,
                vSphere will select a host in the resource pool to place the virtual machine,
@@ -1169,9 +1195,11 @@ class VirtualMachine(pulumi.CustomResource):
                provided ovf template. See creating a virtual machine from a
                ovf template for more details.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
-        :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference
-               ID][docs-about-morefs] of the resource pool to put this virtual machine in.
+        :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
+               configuration set change requires a reboot. This value is only useful during
+               an update process and gets reset on refresh.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference
+               ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
                for details on changing this value.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the execution of
@@ -1186,9 +1214,10 @@ class VirtualMachine(pulumi.CustomResource):
                pre-standby scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
-        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-               controllers.
+        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
+               this provider manages on this virtual machine. This directly affects the amount
+               of disks you can add to the virtual machine and the maximum disk unit number.
+               Note that lowering this value does not remove controllers. Default: `1`.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have.
                Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
                pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
@@ -1202,8 +1231,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. See
-               [here][docs-applying-tags] for a reference on how to apply tags.
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available
@@ -1242,7 +1270,10 @@ class VirtualMachine(pulumi.CustomResource):
             remote client device. Conflicts with `datastore_id` and `path`.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
           * `path` (`pulumi.Input[str]`) - The path to the ISO file. Required for using a datastore
             ISO. Conflicts with `client_device`.
@@ -1301,7 +1332,10 @@ class VirtualMachine(pulumi.CustomResource):
             `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `diskMode` (`pulumi.Input[str]`) - The mode of this this virtual disk for purposes of
             writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
             `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
@@ -1359,13 +1393,16 @@ class VirtualMachine(pulumi.CustomResource):
           * `bandwidthShareLevel` (`pulumi.Input[str]`) - The bandwidth share allocation level for
             this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
             `normal`.
-          * `deviceAddress` (`pulumi.Input[str]`)
+          * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
+            device when `key` is unavailable. This follows a convention of
+            `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
+            unit 1 on SCSI bus 0.
           * `key` (`pulumi.Input[float]`) - The ID of the device within the virtual machine.
           * `macAddress` (`pulumi.Input[str]`) - The MAC address of this network interface. Can
             only be manually set if `use_static_mac` is true, otherwise this is a
             computed value that gives the current MAC address of this interface.
-          * `networkId` (`pulumi.Input[str]`) - The [managed object reference
-            ID][docs-about-morefs] of the network to connect this interface to.
+          * `networkId` (`pulumi.Input[str]`) - The managed object reference
+            ID of the network to connect this interface to.
           * `ovfMapping` (`pulumi.Input[str]`) - Specifies which OVF NIC the `network_interface`
             should be associated with. Only applies at creation and only when deploying
             from an OVF source.

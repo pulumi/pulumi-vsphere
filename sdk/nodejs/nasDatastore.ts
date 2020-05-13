@@ -6,6 +6,49 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..NasDatastore` resource can be used to create and manage NAS
+ * datastores on an ESXi host or a set of hosts. The resource supports mounting
+ * NFS v3 and v4.1 shares to be used as datastores.
+ * 
+ * > **NOTE:** Unlike `vsphere..VmfsDatastore`, a NAS
+ * datastore is only mounted on the hosts you choose to mount it on. To mount on
+ * multiple hosts, you must specify each host that you want to add in the
+ * `hostSystemIds` argument.
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const config = new pulumi.Config();
+ * const hosts = config.get("hosts") || [
+ *     "esxi1",
+ *     "esxi2",
+ *     "esxi3",
+ * ];
+ * 
+ * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
+ * const esxiHosts: pulumi.Output<vsphere.GetHostResult>[] = [];
+ * for (let i = 0; i < hosts.length; i++) {
+ *     esxiHosts.push(datacenter.apply(datacenter => vsphere.getHost({
+ *         datacenterId: datacenter.id,
+ *         name: hosts[i],
+ *     }, { async: true })));
+ * }
+ * const datastore = new vsphere.NasDatastore("datastore", {
+ *     hostSystemIds: esxiHosts.map(v => v.id),
+ *     remoteHosts: ["nfs"],
+ *     remotePath: "/export/test",
+ *     type: "NFS",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/nas_datastore.html.markdown.
+ */
 export class NasDatastore extends pulumi.CustomResource {
     /**
      * Get an existing NasDatastore resource's state with the given name, ID, and optional extra
@@ -51,19 +94,23 @@ export class NasDatastore extends pulumi.CustomResource {
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set on datasource resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set on datasource resource.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -71,7 +118,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public /*out*/ readonly freeSpace!: pulumi.Output<number>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to mount the datastore on.
      */
     public readonly hostSystemIds!: pulumi.Output<string[]>;
@@ -112,8 +159,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public readonly securityType!: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -227,19 +273,23 @@ export interface NasDatastoreState {
     readonly capacity?: pulumi.Input<number>;
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set on datasource resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set on datasource resource.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -247,7 +297,7 @@ export interface NasDatastoreState {
      */
     readonly freeSpace?: pulumi.Input<number>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to mount the datastore on.
      */
     readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -288,8 +338,7 @@ export interface NasDatastoreState {
      */
     readonly securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -322,23 +371,27 @@ export interface NasDatastoreArgs {
     readonly accessMode?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute 
-     * value strings to set on datasource resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value strings to set on datasource resource.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to mount the datastore on.
      */
     readonly hostSystemIds: pulumi.Input<pulumi.Input<string>[]>;
@@ -365,8 +418,7 @@ export interface NasDatastoreArgs {
      */
     readonly securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

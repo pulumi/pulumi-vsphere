@@ -34,7 +34,7 @@ export class VappEntity extends pulumi.CustomResource {
     }
 
     /**
-     * [Managed object ID|docs-about-morefs] of the vApp
+     * Managed object ID of the vApp
      * container the entity is a member of.
      */
     public readonly containerId!: pulumi.Output<string>;
@@ -74,7 +74,7 @@ export class VappEntity extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * [Managed object ID|docs-about-morefs] of the entity
+     * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     public readonly targetId!: pulumi.Output<string>;
@@ -142,7 +142,7 @@ export class VappEntity extends pulumi.CustomResource {
  */
 export interface VappEntityState {
     /**
-     * [Managed object ID|docs-about-morefs] of the vApp
+     * Managed object ID of the vApp
      * container the entity is a member of.
      */
     readonly containerId?: pulumi.Input<string>;
@@ -182,7 +182,7 @@ export interface VappEntityState {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * [Managed object ID|docs-about-morefs] of the entity
+     * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     readonly targetId?: pulumi.Input<string>;
@@ -199,7 +199,7 @@ export interface VappEntityState {
  */
 export interface VappEntityArgs {
     /**
-     * [Managed object ID|docs-about-morefs] of the vApp
+     * Managed object ID of the vApp
      * container the entity is a member of.
      */
     readonly containerId: pulumi.Input<string>;
@@ -239,7 +239,7 @@ export interface VappEntityArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * [Managed object ID|docs-about-morefs] of the entity
+     * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
     readonly targetId: pulumi.Input<string>;

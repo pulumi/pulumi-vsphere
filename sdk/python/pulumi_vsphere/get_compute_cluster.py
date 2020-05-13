@@ -42,10 +42,35 @@ class AwaitableGetComputeClusterResult(GetComputeClusterResult):
 
 def get_compute_cluster(datacenter_id=None,name=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    The `.ComputeCluster` data source can be used to discover the ID of a
+    cluster in vSphere. This is useful to fetch the ID of a cluster that you want
+    to use for virtual machine placement via the
+    `.VirtualMachine` resource, allowing
+    you to specify the cluster's root resource pool directly versus using the alias
+    available through the `.ResourcePool`
+    data source.
 
-    :param str datacenter_id: The [managed object reference
-           ID][docs-about-morefs] of the datacenter the cluster is located in.  This can
+    > You may also wish to see the
+    `.ComputeCluster` resource for further
+    details about clusters or how to work with them.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    compute_cluster = vsphere.get_compute_cluster(datacenter_id=data[".Datacenter"]["dc"]["id"],
+        name="compute-cluster1")
+    ```
+
+
+
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the cluster is located in.  This can
            be omitted if the search path used in `name` is an absolute path.  For
            default datacenters, use the id attribute from an empty `.Datacenter`
            data source.

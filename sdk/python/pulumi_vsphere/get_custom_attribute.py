@@ -38,7 +38,27 @@ class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
 
 def get_custom_attribute(name=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    The `.CustomAttribute` data source can be used to reference custom 
+    attributes that are not managed by this provider. Its attributes are exactly the 
+    same as the `.CustomAttribute` resource, 
+    and, like importing, the data source takes a name to search on. The `id` and 
+    other attributes are then populated with the data found by the search.
+
+    > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
+    and require vCenter.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    attribute = vsphere.get_custom_attribute(name="test-attribute")
+    ```
+
+
 
     :param str name: The name of the custom attribute.
     """

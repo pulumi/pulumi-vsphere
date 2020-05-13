@@ -6,6 +6,93 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `vsphere..VmfsDatastore` resource can be used to create and manage VMFS
+ * datastores on an ESXi host or a set of hosts. The resource supports using any
+ * SCSI device that can generally be used in a datastore, such as local disks, or
+ * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
+ * Devices can be specified manually, or discovered using the
+ * [`vsphere..getVmfsDisks`][data-source-vmfs-disks] data source.
+ * 
+ * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
+ * 
+ * ## Auto-Mounting of Datastores Within vCenter
+ * 
+ * Note that the current behaviour of this resource will auto-mount any created
+ * datastores to any other host within vCenter that has access to the same disk.
+ * 
+ * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
+ * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
+ * create the datastore on `esxi1`, the datastore will be automatically mounted on
+ * `esxi2` and `esxi3`, without the need to configure the resource on either of
+ * those two hosts.
+ * 
+ * Future versions of this resource may allow you to control the hosts that a
+ * datastore is mounted to, but currently, this automatic behaviour cannot be
+ * changed, so keep this in mind when writing your configurations and deploying
+ * your disks.
+ * 
+ * ## Increasing Datastore Size
+ * 
+ * To increase the size of a datastore, you must add additional disks to the
+ * `disks` attribute. Expanding the size of a datastore by increasing the size of
+ * an already provisioned disk is currently not supported (but may be in future
+ * versions of this resource).
+ * 
+ * > **NOTE:** You cannot decrease the size of a datastore. If the resource
+ * detects disks removed from the configuration, the provider will give an error. 
+ * 
+ * [cmd-taint]: /docs/commands/taint.html
+ * 
+ * ## Example Usage
+ * 
+ * ### Addition of local disks on a single host
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
+ * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
+ * }, { async: true }));
+ * const datastore = new vsphere.VmfsDatastore("datastore", {
+ *     disks: [
+ *         "mpx.vmhba1:C0:T1:L0",
+ *         "mpx.vmhba1:C0:T2:L0",
+ *         "mpx.vmhba1:C0:T2:L0",
+ *     ],
+ *     hostSystemId: esxiHost.id,
+ * });
+ * ```
+ * 
+ * ### Auto-detection of disks via `vsphere..getVmfsDisks`
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ * 
+ * const datacenter = pulumi.output(vsphere.getDatacenter({
+ *     name: "dc1",
+ * }, { async: true }));
+ * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ *     datacenterId: datacenter.id,
+ *     name: "esxi1",
+ * }, { async: true }));
+ * const available = esxiHost.apply(esxiHost => vsphere.getVmfsDisks({
+ *     filter: "naa.60a98000",
+ *     hostSystemId: esxiHost.id,
+ *     rescan: true,
+ * }, { async: true }));
+ * const datastore = new vsphere.VmfsDatastore("datastore", {
+ *     disks: available.disks,
+ *     folder: "datastore-folder",
+ *     hostSystemId: esxiHost.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vmfs_datastore.html.markdown.
+ */
 export class VmfsDatastore extends pulumi.CustomResource {
     /**
      * Get an existing VmfsDatastore resource's state with the given name, ID, and optional extra
@@ -44,14 +131,12 @@ export class VmfsDatastore extends pulumi.CustomResource {
     public /*out*/ readonly capacity!: pulumi.Output<number>;
     /**
      * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value string to set on datastore resource.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
@@ -60,7 +145,13 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<string[]>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -68,7 +159,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public /*out*/ readonly freeSpace!: pulumi.Output<number>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -90,8 +181,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -179,14 +269,12 @@ export interface VmfsDatastoreState {
     readonly capacity?: pulumi.Input<number>;
     /**
      * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value string to set on datastore resource.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
@@ -195,7 +283,13 @@ export interface VmfsDatastoreState {
      */
     readonly disks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
@@ -203,7 +297,7 @@ export interface VmfsDatastoreState {
      */
     readonly freeSpace?: pulumi.Input<number>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -225,8 +319,7 @@ export interface VmfsDatastoreState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -246,14 +339,12 @@ export interface VmfsDatastoreState {
 export interface VmfsDatastoreArgs {
     /**
      * Map of custom attribute ids to attribute 
-     * value string to set on datastore resource. See
-     * [here][docs-setting-custom-attributes] for a reference on how to set values
-     * for custom attributes.
+     * value string to set on datastore resource.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The [managed object
-     * ID][docs-about-morefs] of a datastore cluster to put this datastore in.
+     * The managed object
+     * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
     readonly datastoreClusterId?: pulumi.Input<string>;
@@ -262,11 +353,17 @@ export interface VmfsDatastoreArgs {
      */
     readonly disks: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path to the datastore folder to put the datastore in.
+     * The relative path to a folder to put this datastore in.
+     * This is a path relative to the datacenter you are deploying the datastore to.
+     * Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+     * The provider will place a datastore named `test` in a datastore folder
+     * located at `/dc1/datastore/foo/bar`, with the final inventory path being
+     * `/dc1/datastore/foo/bar/test`. Conflicts with
+     * `datastoreClusterId`.
      */
     readonly folder?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
      * only host that the datastore will be set up on - see
      * here for more info. Forces a
@@ -279,8 +376,7 @@ export interface VmfsDatastoreArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource. 
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -12,11 +12,8 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere..DatastoreClusterVmAntiAffinityRule` resource can be used to
     /// manage VM anti-affinity rules in a datastore cluster, either created by the
-    /// [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-resource] resource or looked up
-    /// by the [`vsphere..DatastoreCluster`][tf-vsphere-datastore-cluster-data-source] data source.
-    /// 
-    /// [tf-vsphere-datastore-cluster-resource]: /docs/providers/vsphere/r/datastore_cluster.html
-    /// [tf-vsphere-datastore-cluster-data-source]: /docs/providers/vsphere/d/datastore_cluster.html
+    /// `vsphere..DatastoreCluster` resource or looked up
+    /// by the `vsphere..DatastoreCluster` data source.
     /// 
     /// This rule can be used to tell a set to virtual machines to run on different
     /// datastores within a cluster, useful for preventing single points of failure in
@@ -33,8 +30,8 @@ namespace Pulumi.VSphere
     public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+        /// The managed object reference
+        /// ID of the datastore cluster to put the group in.  Forces
         /// a new resource if changed.
         /// </summary>
         [Output("datastoreClusterId")]
@@ -113,8 +110,8 @@ namespace Pulumi.VSphere
     public sealed class DatastoreClusterVmAntiAffinityRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+        /// The managed object reference
+        /// ID of the datastore cluster to put the group in.  Forces
         /// a new resource if changed.
         /// </summary>
         [Input("datastoreClusterId", required: true)]
@@ -160,8 +157,8 @@ namespace Pulumi.VSphere
     public sealed class DatastoreClusterVmAntiAffinityRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the datastore cluster to put the group in.  Forces
+        /// The managed object reference
+        /// ID of the datastore cluster to put the group in.  Forces
         /// a new resource if changed.
         /// </summary>
         [Input("datastoreClusterId")]

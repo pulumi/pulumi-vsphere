@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * The `vsphere..DistributedPortGroup` resource can be used to manage vSphere
  * distributed virtual port groups. These port groups are connected to distributed
  * virtual switches, which can be managed by the
- * [`vsphere..DistributedVirtualSwitch`][distributed-virtual-switch] resource.
+ * `vsphere..DistributedVirtualSwitch` resource.
  * 
  * Distributed port groups can be used as networks for virtual machines, allowing
  * VMs to use the networking supplied by a distributed virtual switch (DVS), with
@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * page][ref-vsphere-net-concepts]. For more information on vSphere DVS
  * portgroups, see [this page][ref-vsphere-dvportgroup].
  * 
- * [distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  * [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
  * 
@@ -177,8 +176,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly blockAllPorts!: pulumi.Output<boolean>;
     /**
-     * Allow the [port shutdown
-     * policy][port-shutdown-policy] to be overridden on an individual port.
+     * Allow the port shutdown
+     * policy to be overridden on an individual port.
      */
     public readonly blockOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
@@ -191,8 +190,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     public /*out*/ readonly configVersion!: pulumi.Output<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
-     * for a reference on how to set values for custom attributes.
+     * value string to set for port group.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -270,8 +268,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly netflowEnabled!: pulumi.Output<boolean>;
     /**
-     * Allow the [Netflow
-     * policy][netflow-policy] on this port group to be overridden on an individual
+     * Allow the Netflow
+     * policy on this port group to be overridden on an individual
      * port.
      */
     public readonly netflowOverrideAllowed!: pulumi.Output<boolean | undefined>;
@@ -311,14 +309,14 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
     /**
-     * Allow the [security policy
-     * settings][sec-policy-settings] defined in this port group policy to be
+     * Allow the security policy
+     * settings defined in this port group policy to be
      * overridden on an individual port.
      */
     public readonly securityPolicyOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
-     * Allow the [traffic shaping
-     * options][traffic-shaping-settings] on this port group policy to be overridden
+     * Allow the traffic shaping
+     * options on this port group policy to be overridden
      * on an individual port.
      */
     public readonly shapingOverrideAllowed!: pulumi.Output<boolean | undefined>;
@@ -351,8 +349,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * Allow the [uplink teaming
-     * options][uplink-teaming-settings] on this port group to be overridden on an
+     * Allow the uplink teaming
+     * options on this port group to be overridden on an
      * individual port.
      */
     public readonly uplinkTeamingOverrideAllowed!: pulumi.Output<boolean | undefined>;
@@ -361,7 +359,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly vlanId!: pulumi.Output<number>;
     /**
-     * Allow the [VLAN settings][vlan-settings]
+     * Allow the VLAN settings
      * on this port group to be overridden on an individual port.
      */
     public readonly vlanOverrideAllowed!: pulumi.Output<boolean | undefined>;
@@ -526,8 +524,8 @@ export interface DistributedPortGroupState {
      */
     readonly blockAllPorts?: pulumi.Input<boolean>;
     /**
-     * Allow the [port shutdown
-     * policy][port-shutdown-policy] to be overridden on an individual port.
+     * Allow the port shutdown
+     * policy to be overridden on an individual port.
      */
     readonly blockOverrideAllowed?: pulumi.Input<boolean>;
     /**
@@ -540,8 +538,7 @@ export interface DistributedPortGroupState {
     readonly configVersion?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
-     * for a reference on how to set values for custom attributes.
+     * value string to set for port group.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -619,8 +616,8 @@ export interface DistributedPortGroupState {
      */
     readonly netflowEnabled?: pulumi.Input<boolean>;
     /**
-     * Allow the [Netflow
-     * policy][netflow-policy] on this port group to be overridden on an individual
+     * Allow the Netflow
+     * policy on this port group to be overridden on an individual
      * port.
      */
     readonly netflowOverrideAllowed?: pulumi.Input<boolean>;
@@ -660,14 +657,14 @@ export interface DistributedPortGroupState {
      */
     readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
-     * Allow the [security policy
-     * settings][sec-policy-settings] defined in this port group policy to be
+     * Allow the security policy
+     * settings defined in this port group policy to be
      * overridden on an individual port.
      */
     readonly securityPolicyOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * Allow the [traffic shaping
-     * options][traffic-shaping-settings] on this port group policy to be overridden
+     * Allow the traffic shaping
+     * options on this port group policy to be overridden
      * on an individual port.
      */
     readonly shapingOverrideAllowed?: pulumi.Input<boolean>;
@@ -700,8 +697,8 @@ export interface DistributedPortGroupState {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * Allow the [uplink teaming
-     * options][uplink-teaming-settings] on this port group to be overridden on an
+     * Allow the uplink teaming
+     * options on this port group to be overridden on an
      * individual port.
      */
     readonly uplinkTeamingOverrideAllowed?: pulumi.Input<boolean>;
@@ -710,7 +707,7 @@ export interface DistributedPortGroupState {
      */
     readonly vlanId?: pulumi.Input<number>;
     /**
-     * Allow the [VLAN settings][vlan-settings]
+     * Allow the VLAN settings
      * on this port group to be overridden on an individual port.
      */
     readonly vlanOverrideAllowed?: pulumi.Input<boolean>;
@@ -751,8 +748,8 @@ export interface DistributedPortGroupArgs {
      */
     readonly blockAllPorts?: pulumi.Input<boolean>;
     /**
-     * Allow the [port shutdown
-     * policy][port-shutdown-policy] to be overridden on an individual port.
+     * Allow the port shutdown
+     * policy to be overridden on an individual port.
      */
     readonly blockOverrideAllowed?: pulumi.Input<boolean>;
     /**
@@ -761,8 +758,7 @@ export interface DistributedPortGroupArgs {
     readonly checkBeacon?: pulumi.Input<boolean>;
     /**
      * Map of custom attribute ids to attribute
-     * value string to set for port group. See [here][docs-setting-custom-attributes]
-     * for a reference on how to set values for custom attributes.
+     * value string to set for port group.
      */
     readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -836,8 +832,8 @@ export interface DistributedPortGroupArgs {
      */
     readonly netflowEnabled?: pulumi.Input<boolean>;
     /**
-     * Allow the [Netflow
-     * policy][netflow-policy] on this port group to be overridden on an individual
+     * Allow the Netflow
+     * policy on this port group to be overridden on an individual
      * port.
      */
     readonly netflowOverrideAllowed?: pulumi.Input<boolean>;
@@ -877,14 +873,14 @@ export interface DistributedPortGroupArgs {
      */
     readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
-     * Allow the [security policy
-     * settings][sec-policy-settings] defined in this port group policy to be
+     * Allow the security policy
+     * settings defined in this port group policy to be
      * overridden on an individual port.
      */
     readonly securityPolicyOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * Allow the [traffic shaping
-     * options][traffic-shaping-settings] on this port group policy to be overridden
+     * Allow the traffic shaping
+     * options on this port group policy to be overridden
      * on an individual port.
      */
     readonly shapingOverrideAllowed?: pulumi.Input<boolean>;
@@ -917,8 +913,8 @@ export interface DistributedPortGroupArgs {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * Allow the [uplink teaming
-     * options][uplink-teaming-settings] on this port group to be overridden on an
+     * Allow the uplink teaming
+     * options on this port group to be overridden on an
      * individual port.
      */
     readonly uplinkTeamingOverrideAllowed?: pulumi.Input<boolean>;
@@ -927,7 +923,7 @@ export interface DistributedPortGroupArgs {
      */
     readonly vlanId?: pulumi.Input<number>;
     /**
-     * Allow the [VLAN settings][vlan-settings]
+     * Allow the VLAN settings
      * on this port group to be overridden on an individual port.
      */
     readonly vlanOverrideAllowed?: pulumi.Input<boolean>;

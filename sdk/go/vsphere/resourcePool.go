@@ -66,14 +66,13 @@ type ResourcePool struct {
 	MemoryShares pulumi.IntOutput `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringOutput `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -154,14 +153,13 @@ type resourcePoolState struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -212,14 +210,13 @@ type ResourcePoolState struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringPtrInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 
@@ -274,14 +271,13 @@ type resourcePoolArgs struct {
 	MemoryShares *int `pulumi:"memoryShares"`
 	// The name of the resource pool.
 	Name *string `pulumi:"name"`
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId string `pulumi:"parentResourcePoolId"`
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -333,14 +329,13 @@ type ResourcePoolArgs struct {
 	MemoryShares pulumi.IntPtrInput
 	// The name of the resource pool.
 	Name pulumi.StringPtrInput
-	// The [managed object ID][docs-about-morefs]
+	// The managed object ID
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
 	// resource pool or the move will fail.
 	ParentResourcePoolId pulumi.StringInput
-	// The IDs of any tags to attach to this resource. See
-	// [here][docs-applying-tags] for a reference on how to apply tags.
+	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
 

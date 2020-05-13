@@ -12,18 +12,14 @@ namespace Pulumi.VSphere
     /// <summary>
     /// The `vsphere..ComputeClusterHostGroup` resource can be used to manage groups
     /// of hosts in a cluster, either created by the
-    /// [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-    /// by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+    /// `vsphere..ComputeCluster` resource or looked up
+    /// by the `vsphere..ComputeCluster` data source.
     /// 
-    /// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-    /// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
     /// 
     /// This resource mainly serves as an input to the
-    /// [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+    /// `vsphere..ComputeClusterVmHostRule`
     /// resource - see the documentation for that resource for further details on how
     /// to use host groups.
-    /// 
-    /// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
@@ -33,15 +29,15 @@ namespace Pulumi.VSphere
     public partial class ComputeClusterHostGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Output("computeClusterId")]
         public Output<string> ComputeClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster.
         /// </summary>
         [Output("hostSystemIds")]
@@ -101,8 +97,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterHostGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId", required: true)]
@@ -112,7 +108,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -136,8 +132,8 @@ namespace Pulumi.VSphere
     public sealed class ComputeClusterHostGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        /// The managed object reference
+        /// ID of the cluster to put the group in.  Forces a new
         /// resource if changed.
         /// </summary>
         [Input("computeClusterId")]
@@ -147,7 +143,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster.
         /// </summary>
         public InputList<string> HostSystemIds

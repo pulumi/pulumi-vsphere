@@ -13,7 +13,7 @@ namespace Pulumi.VSphere
     /// The `vsphere..DistributedPortGroup` resource can be used to manage vSphere
     /// distributed virtual port groups. These port groups are connected to distributed
     /// virtual switches, which can be managed by the
-    /// [`vsphere..DistributedVirtualSwitch`][distributed-virtual-switch] resource.
+    /// `vsphere..DistributedVirtualSwitch` resource.
     /// 
     /// Distributed port groups can be used as networks for virtual machines, allowing
     /// VMs to use the networking supplied by a distributed virtual switch (DVS), with
@@ -23,7 +23,6 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-net-concepts]. For more information on vSphere DVS
     /// portgroups, see [this page][ref-vsphere-dvportgroup].
     /// 
-    /// [distributed-virtual-switch]: /docs/providers/vsphere/r/distributed_virtual_switch.html
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
     /// [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
     /// 
@@ -71,8 +70,8 @@ namespace Pulumi.VSphere
         public Output<bool> BlockAllPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [port shutdown
-        /// policy][port-shutdown-policy] to be overridden on an individual port.
+        /// Allow the port shutdown
+        /// policy to be overridden on an individual port.
         /// </summary>
         [Output("blockOverrideAllowed")]
         public Output<bool?> BlockOverrideAllowed { get; private set; } = null!;
@@ -91,8 +90,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
-        /// for a reference on how to set values for custom attributes.
+        /// value string to set for port group.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -208,8 +206,8 @@ namespace Pulumi.VSphere
         public Output<bool> NetflowEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [Netflow
-        /// policy][netflow-policy] on this port group to be overridden on an individual
+        /// Allow the Netflow
+        /// policy on this port group to be overridden on an individual
         /// port.
         /// </summary>
         [Output("netflowOverrideAllowed")]
@@ -265,16 +263,16 @@ namespace Pulumi.VSphere
         public Output<int> PortPrivateSecondaryVlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [security policy
-        /// settings][sec-policy-settings] defined in this port group policy to be
+        /// Allow the security policy
+        /// settings defined in this port group policy to be
         /// overridden on an individual port.
         /// </summary>
         [Output("securityPolicyOverrideAllowed")]
         public Output<bool?> SecurityPolicyOverrideAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [traffic shaping
-        /// options][traffic-shaping-settings] on this port group policy to be overridden
+        /// Allow the traffic shaping
+        /// options on this port group policy to be overridden
         /// on an individual port.
         /// </summary>
         [Output("shapingOverrideAllowed")]
@@ -321,8 +319,8 @@ namespace Pulumi.VSphere
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [uplink teaming
-        /// options][uplink-teaming-settings] on this port group to be overridden on an
+        /// Allow the uplink teaming
+        /// options on this port group to be overridden on an
         /// individual port.
         /// </summary>
         [Output("uplinkTeamingOverrideAllowed")]
@@ -335,7 +333,7 @@ namespace Pulumi.VSphere
         public Output<int> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the [VLAN settings][vlan-settings]
+        /// Allow the VLAN settings
         /// on this port group to be overridden on an individual port.
         /// </summary>
         [Output("vlanOverrideAllowed")]
@@ -438,8 +436,8 @@ namespace Pulumi.VSphere
         public Input<bool>? BlockAllPorts { get; set; }
 
         /// <summary>
-        /// Allow the [port shutdown
-        /// policy][port-shutdown-policy] to be overridden on an individual port.
+        /// Allow the port shutdown
+        /// policy to be overridden on an individual port.
         /// </summary>
         [Input("blockOverrideAllowed")]
         public Input<bool>? BlockOverrideAllowed { get; set; }
@@ -455,8 +453,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
-        /// for a reference on how to set values for custom attributes.
+        /// value string to set for port group.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -569,8 +566,8 @@ namespace Pulumi.VSphere
         public Input<bool>? NetflowEnabled { get; set; }
 
         /// <summary>
-        /// Allow the [Netflow
-        /// policy][netflow-policy] on this port group to be overridden on an individual
+        /// Allow the Netflow
+        /// policy on this port group to be overridden on an individual
         /// port.
         /// </summary>
         [Input("netflowOverrideAllowed")]
@@ -626,16 +623,16 @@ namespace Pulumi.VSphere
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
 
         /// <summary>
-        /// Allow the [security policy
-        /// settings][sec-policy-settings] defined in this port group policy to be
+        /// Allow the security policy
+        /// settings defined in this port group policy to be
         /// overridden on an individual port.
         /// </summary>
         [Input("securityPolicyOverrideAllowed")]
         public Input<bool>? SecurityPolicyOverrideAllowed { get; set; }
 
         /// <summary>
-        /// Allow the [traffic shaping
-        /// options][traffic-shaping-settings] on this port group policy to be overridden
+        /// Allow the traffic shaping
+        /// options on this port group policy to be overridden
         /// on an individual port.
         /// </summary>
         [Input("shapingOverrideAllowed")]
@@ -694,8 +691,8 @@ namespace Pulumi.VSphere
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Allow the [uplink teaming
-        /// options][uplink-teaming-settings] on this port group to be overridden on an
+        /// Allow the uplink teaming
+        /// options on this port group to be overridden on an
         /// individual port.
         /// </summary>
         [Input("uplinkTeamingOverrideAllowed")]
@@ -708,7 +705,7 @@ namespace Pulumi.VSphere
         public Input<int>? VlanId { get; set; }
 
         /// <summary>
-        /// Allow the [VLAN settings][vlan-settings]
+        /// Allow the VLAN settings
         /// on this port group to be overridden on an individual port.
         /// </summary>
         [Input("vlanOverrideAllowed")]
@@ -778,8 +775,8 @@ namespace Pulumi.VSphere
         public Input<bool>? BlockAllPorts { get; set; }
 
         /// <summary>
-        /// Allow the [port shutdown
-        /// policy][port-shutdown-policy] to be overridden on an individual port.
+        /// Allow the port shutdown
+        /// policy to be overridden on an individual port.
         /// </summary>
         [Input("blockOverrideAllowed")]
         public Input<bool>? BlockOverrideAllowed { get; set; }
@@ -801,8 +798,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value string to set for port group. See [here][docs-setting-custom-attributes]
-        /// for a reference on how to set values for custom attributes.
+        /// value string to set for port group.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -921,8 +917,8 @@ namespace Pulumi.VSphere
         public Input<bool>? NetflowEnabled { get; set; }
 
         /// <summary>
-        /// Allow the [Netflow
-        /// policy][netflow-policy] on this port group to be overridden on an individual
+        /// Allow the Netflow
+        /// policy on this port group to be overridden on an individual
         /// port.
         /// </summary>
         [Input("netflowOverrideAllowed")]
@@ -978,16 +974,16 @@ namespace Pulumi.VSphere
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
 
         /// <summary>
-        /// Allow the [security policy
-        /// settings][sec-policy-settings] defined in this port group policy to be
+        /// Allow the security policy
+        /// settings defined in this port group policy to be
         /// overridden on an individual port.
         /// </summary>
         [Input("securityPolicyOverrideAllowed")]
         public Input<bool>? SecurityPolicyOverrideAllowed { get; set; }
 
         /// <summary>
-        /// Allow the [traffic shaping
-        /// options][traffic-shaping-settings] on this port group policy to be overridden
+        /// Allow the traffic shaping
+        /// options on this port group policy to be overridden
         /// on an individual port.
         /// </summary>
         [Input("shapingOverrideAllowed")]
@@ -1046,8 +1042,8 @@ namespace Pulumi.VSphere
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Allow the [uplink teaming
-        /// options][uplink-teaming-settings] on this port group to be overridden on an
+        /// Allow the uplink teaming
+        /// options on this port group to be overridden on an
         /// individual port.
         /// </summary>
         [Input("uplinkTeamingOverrideAllowed")]
@@ -1060,7 +1056,7 @@ namespace Pulumi.VSphere
         public Input<int>? VlanId { get; set; }
 
         /// <summary>
-        /// Allow the [VLAN settings][vlan-settings]
+        /// Allow the VLAN settings
         /// on this port group to be overridden on an individual port.
         /// </summary>
         [Input("vlanOverrideAllowed")]

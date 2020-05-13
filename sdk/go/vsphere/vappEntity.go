@@ -20,7 +20,7 @@ import (
 type VappEntity struct {
 	pulumi.CustomResourceState
 
-	// [Managed object ID|docs-about-morefs] of the vApp
+	// Managed object ID of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringOutput `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -44,7 +44,7 @@ type VappEntity struct {
 	StopDelay pulumi.IntPtrOutput `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// [Managed object ID|docs-about-morefs] of the entity
+	// Managed object ID of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
@@ -87,7 +87,7 @@ func GetVappEntity(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VappEntity resources.
 type vappEntityState struct {
-	// [Managed object ID|docs-about-morefs] of the vApp
+	// Managed object ID of the vApp
 	// container the entity is a member of.
 	ContainerId *string `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -111,7 +111,7 @@ type vappEntityState struct {
 	StopDelay *int `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// [Managed object ID|docs-about-morefs] of the entity
+	// Managed object ID of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId *string `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
@@ -121,7 +121,7 @@ type vappEntityState struct {
 }
 
 type VappEntityState struct {
-	// [Managed object ID|docs-about-morefs] of the vApp
+	// Managed object ID of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringPtrInput
 	// A list of custom attributes to set on this resource.
@@ -145,7 +145,7 @@ type VappEntityState struct {
 	StopDelay pulumi.IntPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// [Managed object ID|docs-about-morefs] of the entity
+	// Managed object ID of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringPtrInput
 	// Determines if the VM should be marked as being
@@ -159,7 +159,7 @@ func (VappEntityState) ElementType() reflect.Type {
 }
 
 type vappEntityArgs struct {
-	// [Managed object ID|docs-about-morefs] of the vApp
+	// Managed object ID of the vApp
 	// container the entity is a member of.
 	ContainerId string `pulumi:"containerId"`
 	// A list of custom attributes to set on this resource.
@@ -183,7 +183,7 @@ type vappEntityArgs struct {
 	StopDelay *int `pulumi:"stopDelay"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
-	// [Managed object ID|docs-about-morefs] of the entity
+	// Managed object ID of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId string `pulumi:"targetId"`
 	// Determines if the VM should be marked as being
@@ -194,7 +194,7 @@ type vappEntityArgs struct {
 
 // The set of arguments for constructing a VappEntity resource.
 type VappEntityArgs struct {
-	// [Managed object ID|docs-about-morefs] of the vApp
+	// Managed object ID of the vApp
 	// container the entity is a member of.
 	ContainerId pulumi.StringInput
 	// A list of custom attributes to set on this resource.
@@ -218,7 +218,7 @@ type VappEntityArgs struct {
 	StopDelay pulumi.IntPtrInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
-	// [Managed object ID|docs-about-morefs] of the entity
+	// Managed object ID of the entity
 	// to power on or power off. This can be a virtual machine or a vApp.
 	TargetId pulumi.StringInput
 	// Determines if the VM should be marked as being

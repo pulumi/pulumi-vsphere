@@ -185,12 +185,12 @@ export class VappContainer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the vApp container's parent folder.
      */
     public readonly parentFolderId!: pulumi.Output<string | undefined>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a vApp container
      * from one parent resource pool to another, both must share a common root
@@ -198,8 +198,7 @@ export class VappContainer extends pulumi.CustomResource {
      */
     public readonly parentResourcePoolId!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -339,12 +338,12 @@ export interface VappContainerState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the vApp container's parent folder.
      */
     readonly parentFolderId?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a vApp container
      * from one parent resource pool to another, both must share a common root
@@ -352,8 +351,7 @@ export interface VappContainerState {
      */
     readonly parentResourcePoolId?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -435,12 +433,12 @@ export interface VappContainerArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs] of
+     * The managed object ID of
      * the vApp container's parent folder.
      */
     readonly parentFolderId?: pulumi.Input<string>;
     /**
-     * The [managed object ID][docs-about-morefs]
+     * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
      * or standalone host, or a resource pool itself. When moving a vApp container
      * from one parent resource pool to another, both must share a common root
@@ -448,8 +446,7 @@ export interface VappContainerArgs {
      */
     readonly parentResourcePoolId: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. See
-     * [here][docs-applying-tags] for a reference on how to apply tags.
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

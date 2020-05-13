@@ -10,10 +10,8 @@ import (
 // The `.VirtualMachine` data source can be used to find the UUID of an
 // existing virtual machine or template. Its most relevant purpose is for finding
 // the UUID of a template to be used as the source for cloning into a new
-// [`.VirtualMachine`][docs-virtual-machine-resource] resource. It also
+// `.VirtualMachine` resource. It also
 // reads the guest ID so that can be supplied as well.
-//
-// [docs-virtual-machine-resource]: /docs/providers/vsphere/r/virtual_machine.html
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
 	err := ctx.Invoke("vsphere:index/getVirtualMachine:getVirtualMachine", args, &rv, opts...)
@@ -25,8 +23,8 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineArgs struct {
-	// The [managed object reference
-	// ID][docs-about-morefs] of the datacenter the virtual machine is located in.
+	// The managed object reference
+	// ID of the datacenter the virtual machine is located in.
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
 	// `.Datacenter` data source.

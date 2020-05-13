@@ -7,18 +7,14 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..ComputeClusterHostGroup` resource can be used to manage groups
  * of hosts in a cluster, either created by the
- * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
- * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+ * `vsphere..ComputeCluster` resource or looked up
+ * by the `vsphere..ComputeCluster` data source.
  * 
- * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
- * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
  * 
  * This resource mainly serves as an input to the
- * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+ * `vsphere..ComputeClusterVmHostRule`
  * resource - see the documentation for that resource for further details on how
  * to use host groups.
- * 
- * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
  * 
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
@@ -94,13 +90,13 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     public readonly computeClusterId!: pulumi.Output<string>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to put in the cluster.
      */
     public readonly hostSystemIds!: pulumi.Output<string[] | undefined>;
@@ -150,13 +146,13 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
  */
 export interface ComputeClusterHostGroupState {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId?: pulumi.Input<string>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to put in the cluster.
      */
     readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -172,13 +168,13 @@ export interface ComputeClusterHostGroupState {
  */
 export interface ComputeClusterHostGroupArgs {
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+     * The managed object reference
+     * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
     readonly computeClusterId: pulumi.Input<string>;
     /**
-     * The [managed object IDs][docs-about-morefs] of
+     * The managed object IDs of
      * the hosts to put in the cluster.
      */
     readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;

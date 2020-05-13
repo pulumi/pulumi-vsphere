@@ -12,13 +12,13 @@ from . import utilities, tables
 class ComputeClusterHostGroup(pulumi.CustomResource):
     compute_cluster_id: pulumi.Output[str]
     """
-    The [managed object reference
-    ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+    The managed object reference
+    ID of the cluster to put the group in.  Forces a new
     resource if changed.
     """
     host_system_ids: pulumi.Output[list]
     """
-    The [managed object IDs][docs-about-morefs] of
+    The managed object IDs of
     the hosts to put in the cluster.
     """
     name: pulumi.Output[str]
@@ -30,18 +30,14 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         The `.ComputeClusterHostGroup` resource can be used to manage groups
         of hosts in a cluster, either created by the
-        [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-        by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
+        `.ComputeCluster` resource or looked up
+        by the `.ComputeCluster` data source.
 
-        [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-        [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
 
         This resource mainly serves as an input to the
-        [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
+        `.ComputeClusterVmHostRule`
         resource - see the documentation for that resource for further details on how
         to use host groups.
-
-        [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
 
         > **NOTE:** This resource requires vCenter and is not available on direct ESXi
         connections.
@@ -52,10 +48,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[list] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -97,10 +93,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compute_cluster_id: The [managed object reference
-               ID][docs-about-morefs] of the cluster to put the group in.  Forces a new
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[list] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
