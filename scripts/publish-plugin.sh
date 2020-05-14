@@ -24,11 +24,19 @@ fi
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .
 
-# Push the current AWS credentials, since we'll need them to assume a second role.
+# Store the current AWS credentials, since they will be replaced after we assume an
+# IAM Role, but will need to use them again after that.
 export INITIAL_AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
 export INITIAL_AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
 
-# rel.pulumi.com is in our production account, so assume that role first
+# Function to restore AWS credentials to their initial values.
+restore_initial_aws_keys() {
+    unset {AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_SECURITY_TOKEN}
+    export AWS_ACCESS_KEY_ID="${INITIAL_AWS_ACCESS_KEY_ID}"
+    export AWS_SECRET_ACCESS_KEY="${INITIAL_AWS_SECRET_ACCESS_KEY}"
+}
+
+# rel.pulumi.com is in our production account, so assume that role first.
 CREDS_JSON=$(aws sts assume-role \
                  --role-arn "arn:aws:iam::058607598222:role/UploadPulumiReleases" \
                  --role-session-name "upload-plugin-pulumi-resource-vsphere" \
@@ -42,16 +50,12 @@ export AWS_SECURITY_TOKEN=$(echo ${CREDS_JSON}    | jq ".Credentials.SessionToke
 echo "Uploading ${PLUGIN_PACKAGE_NAME} to s3://rel.pulumi.com..."
 
 aws s3 cp --only-show-errors "${PLUGIN_PACKAGE_PATH}" "s3://rel.pulumi.com/releases/plugins/${PLUGIN_PACKAGE_NAME}"
+# Restore the initial AWS creds, so that we don't use the assumed creds moving forward.
+restore_initial_aws_keys
 
 # Assume the role to publish plugins to s3://get.pulumi.com. We upload the plugins to two buckets while
 # we transition to only publishing/serving them from get.pulumi.com.
 echo "Uploading ${PLUGIN_PACKAGE_NAME} to s3://get.pulumi.com..."
-
-# Restore the initial AWS credentials we had, since the assumed role doesn't have the
-# ability to assume this other role to publish into a different bucket.
-unset {AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_SECURITY_TOKEN}
-export AWS_ACCESS_KEY_ID="${INITIAL_AWS_ACCESS_KEY_ID}"
-export AWS_SECRET_ACCESS_KEY="${INITIAL_AWS_SECRET_ACCESS_KEY}"
 
 CREDS_JSON=$(aws sts assume-role \
                  --role-arn "arn:aws:iam::058607598222:role/PulumiUploadRelease" \
@@ -64,6 +68,8 @@ export AWS_SECURITY_TOKEN=$(echo ${CREDS_JSON}    | jq ".Credentials.SessionToke
 aws s3 cp \
     --only-show-errors --acl public-read \
     "${PLUGIN_PACKAGE_PATH}" "s3://get.pulumi.com/releases/plugins/${PLUGIN_PACKAGE_NAME}"
+# Restore the initial AWS creds, so that we don't use the assumed creds moving forward.
+restore_initial_aws_keys
 
 rm -rf "${PLUGIN_PACKAGE_DIR}"
 rm -rf "${WORK_PATH}"
