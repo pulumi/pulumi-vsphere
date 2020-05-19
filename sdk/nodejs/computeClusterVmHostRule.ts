@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  * VM-to-host rules in a cluster, either created by the
  * `vsphere..ComputeCluster` resource or looked up
  * by the `vsphere..ComputeCluster` data source.
- * 
+ *
  * This resource can create both _affinity rules_, where virtual machines run on
  * specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
  * outside of the ones specified in the rule. Virtual machines and hosts are
@@ -17,20 +17,20 @@ import * as utilities from "./utilities";
  * `vsphere..ComputeClusterVmGroup` and
  * `vsphere..ComputeClusterHostGroup`
  * resources.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -78,8 +78,6 @@ import * as utilities from "./utilities";
  *     vmGroupName: clusterVmGroup.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_host_rule.html.markdown.
  */
 export class ComputeClusterVmHostRule extends pulumi.CustomResource {
     /**

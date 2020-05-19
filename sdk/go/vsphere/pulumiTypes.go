@@ -1848,6 +1848,17 @@ type VirtualMachineDisk struct {
 	Label *string `pulumi:"label"`
 	// An alias for both `label` and `path`, the latter when
 	// using `attach`. Required if not using `label`.
+	//
+	// Deprecated:
+	// The name attribute for virtual disks will be removed in favor of "label" in
+	// future releases. To transition existing disks, rename the "name" attribute to
+	// "label". When doing so, ensure the value of the attribute stays the same.
+	//
+	// Note that "label" does not control the name of a VMDK and does not need to bear
+	// the name of one on new disks or virtual machines. For more information, see the
+	// documentation for the label attribute at:
+	//
+	// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 	Name *string `pulumi:"name"`
 	// The path to the ISO file. Required for using a datastore
 	// ISO. Conflicts with `clientDevice`.
@@ -1936,6 +1947,17 @@ type VirtualMachineDiskArgs struct {
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// An alias for both `label` and `path`, the latter when
 	// using `attach`. Required if not using `label`.
+	//
+	// Deprecated:
+	// The name attribute for virtual disks will be removed in favor of "label" in
+	// future releases. To transition existing disks, rename the "name" attribute to
+	// "label". When doing so, ensure the value of the attribute stays the same.
+	//
+	// Note that "label" does not control the name of a VMDK and does not need to bear
+	// the name of one on new disks or virtual machines. For more information, see the
+	// documentation for the label attribute at:
+	//
+	// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The path to the ISO file. Required for using a datastore
 	// ISO. Conflicts with `clientDevice`.
@@ -2102,6 +2124,17 @@ func (o VirtualMachineDiskOutput) Label() pulumi.StringPtrOutput {
 
 // An alias for both `label` and `path`, the latter when
 // using `attach`. Required if not using `label`.
+//
+// Deprecated:
+// The name attribute for virtual disks will be removed in favor of "label" in
+// future releases. To transition existing disks, rename the "name" attribute to
+// "label". When doing so, ensure the value of the attribute stays the same.
+//
+// Note that "label" does not control the name of a VMDK and does not need to bear
+// the name of one on new disks or virtual machines. For more information, see the
+// documentation for the label attribute at:
+//
+// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 func (o VirtualMachineDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

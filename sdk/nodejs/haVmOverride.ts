@@ -12,22 +12,22 @@ import * as utilities from "./utilities";
  * resource, one can control specific HA settings so that they are different than
  * the cluster default, accommodating the needs of that specific virtual machine,
  * while not affecting the rest of the cluster.
- * 
+ *
  * For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
- * 
+ *
  * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -63,8 +63,6 @@ import * as utilities from "./utilities";
  *     virtualMachineId: vm.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/ha_vm_override.html.markdown.
  */
 export class HaVmOverride extends pulumi.CustomResource {
     /**

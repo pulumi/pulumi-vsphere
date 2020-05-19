@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a VMware vSphere vnic resource.
- * 
+ *
  * ## Example Usages
- * 
+ *
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = vsphere.getDatacenter({
  *     name: "mydc",
  * });
@@ -45,13 +45,13 @@ import * as utilities from "./utilities";
  *     netstack: "vmotion",
  * });
  * ```
- * 
+ *
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = vsphere.getDatacenter({
  *     name: "mydc",
  * });
@@ -80,21 +80,19 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ## Importing 
- * 
+ *
  * An existing vNic can be [imported][docs-import] into this resource
  * via supplying the vNic's ID. An example is below:
- * 
+ *
  * [docs-import]: /docs/import/index.html
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
- * The above would import the the vnic `vmk2` from host with ID `host-123`.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vnic.html.markdown.
+ * The above would import the the vnic `vmk2` from host with ID `host-123`.
  */
 export class Vnic extends pulumi.CustomResource {
     /**

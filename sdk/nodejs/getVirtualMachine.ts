@@ -12,15 +12,15 @@ import * as utilities from "./utilities";
  * the UUID of a template to be used as the source for cloning into a new
  * `vsphere..VirtualMachine` resource. It also
  * reads the guest ID so that can be supplied as well.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     name: "test-vm-template",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/virtual_machine.html.markdown.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     if (!opts) {

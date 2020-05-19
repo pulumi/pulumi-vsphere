@@ -12,24 +12,22 @@ import * as utilities from "./utilities";
  * same as the `vsphere..CustomAttribute` resource, 
  * and, like importing, the data source takes a name to search on. The `id` and 
  * other attributes are then populated with the data found by the search.
- * 
+ *
  * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
  * and require vCenter.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const attribute = pulumi.output(vsphere.getCustomAttribute({
  *     name: "test-attribute",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/custom_attribute.html.markdown.
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
     if (!opts) {

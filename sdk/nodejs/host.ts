@@ -9,15 +9,15 @@ import * as utilities from "./utilities";
 /**
  * Provides a VMware vSphere host resource. This represents an ESXi host that
  * can be used either as part of a Compute Cluster or Standalone.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a standalone host
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = vsphere.getDatacenter({
  *     name: "my-datacenter",
  * });
@@ -29,13 +29,13 @@ import * as utilities from "./utilities";
  *     datacenter: dc.then(dc => dc.id),
  * });
  * ```
- * 
+ *
  * ### Create host in a compute cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = vsphere.getDatacenter({
  *     name: "TfDatacenter",
  * });
@@ -51,21 +51,19 @@ import * as utilities from "./utilities";
  *     cluster: c1.then(c1 => c1.id),
  * });
  * ```
- * 
+ *
  * ## Importing 
- * 
+ *
  * An existing host can be [imported][docs-import] into this resource
  * via supplying the host's ID. An example is below:
- * 
+ *
  * [docs-import]: /docs/import/index.html
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * 
- * The above would import the host with ID `host-123`.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host.html.markdown.
+ * The above would import the host with ID `host-123`.
  */
 export class Host extends pulumi.CustomResource {
     /**

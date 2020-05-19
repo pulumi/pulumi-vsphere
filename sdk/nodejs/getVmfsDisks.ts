@@ -11,16 +11,16 @@ import * as utilities from "./utilities";
  * devices available on an ESXi host. This data source can be combined with the
  * `vsphere..VmfsDatastore` resource to create VMFS
  * datastores based off a set of discovered disks.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -34,8 +34,6 @@ import * as utilities from "./utilities";
  *     rescan: true,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/vmfs_disks.html.markdown.
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
     if (!opts) {

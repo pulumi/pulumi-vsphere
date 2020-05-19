@@ -10,24 +10,22 @@ import * as utilities from "./utilities";
  * The `vsphere..getPolicy` data source can be used to discover the UUID of a
  * vSphere storage policy. This can then be used with resources or data sources that
  * require a storage policy.
- * 
+ *
  * > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
  * requires vCenter 6.0 or higher.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const policy = pulumi.output(vsphere.getPolicy({
  *     name: "policy1",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/storage_policy.html.markdown.
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     if (!opts) {

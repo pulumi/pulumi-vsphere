@@ -9,24 +9,24 @@ import * as utilities from "./utilities";
  * VM dependency rules in a cluster, either created by the
  * `vsphere..ComputeCluster` resource or looked up
  * by the `vsphere..ComputeCluster` data source.
- * 
+ *
  * A virtual machine dependency rule applies to vSphere HA, and allows
  * user-defined startup orders for virtual machines in the case of host failure.
  * Virtual machines are supplied via groups, which can be managed via the
  * `vsphere..ComputeClusterVmGroup`
  * resource.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -84,8 +84,6 @@ import * as utilities from "./utilities";
  *     vmGroupName: clusterVmGroup2.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_dependency_rule.html.markdown.
  */
 export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     /**

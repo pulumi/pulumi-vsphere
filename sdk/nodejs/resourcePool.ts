@@ -9,24 +9,24 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..ResourcePool` resource can be used to create and manage
  * resource pools in standalone hosts or on compute clusters.
- * 
+ *
  * For more information on vSphere resource pools, see [this
  * page][ref-vsphere-resource_pools].
- * 
+ *
  * [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const datacenter = config.get("datacenter") || "dc1";
  * const cluster = config.get("cluster") || "cluster1";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }, { async: true }));
@@ -38,8 +38,6 @@ import * as utilities from "./utilities";
  *     parentResourcePoolId: computeCluster.resourcePoolId,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/resource_pool.html.markdown.
  */
 export class ResourcePool extends pulumi.CustomResource {
     /**

@@ -19,6 +19,8 @@ type VirtualDisk struct {
 
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+	//
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrOutput `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -82,6 +84,8 @@ func GetVirtualDisk(ctx *pulumi.Context,
 type virtualDiskState struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+	//
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -109,6 +113,8 @@ type virtualDiskState struct {
 type VirtualDiskState struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+	//
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -140,6 +146,8 @@ func (VirtualDiskState) ElementType() reflect.Type {
 type virtualDiskArgs struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+	//
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
@@ -168,6 +176,8 @@ type virtualDiskArgs struct {
 type VirtualDiskArgs struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+	//
+	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.

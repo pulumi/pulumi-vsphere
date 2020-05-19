@@ -14,19 +14,19 @@ import * as utilities from "./utilities";
  * you to specify the cluster's root resource pool directly versus using the alias
  * available through the `vsphere..ResourcePool`
  * data source.
- * 
+ *
  * > You may also wish to see the
  * `vsphere..ComputeCluster` resource for further
  * details about clusters or how to work with them.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -35,8 +35,6 @@ import * as utilities from "./utilities";
  *     name: "compute-cluster1",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/compute_cluster.html.markdown.
  */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
     if (!opts) {

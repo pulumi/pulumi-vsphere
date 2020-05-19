@@ -9,32 +9,32 @@ import * as utilities from "./utilities";
  * VM affinity rules in a cluster, either created by the
  * `vsphere..ComputeCluster` resource or looked up
  * by the `vsphere..ComputeCluster` data source.
- * 
+ *
  * This rule can be used to tell a set to virtual machines to run together on a
  * single host within a cluster. When configured, DRS will make a best effort to
  * ensure that the virtual machines run on the same host, or prevent any operation
  * that would keep that from happening, depending on the value of the
  * `mandatory` flag.
- * 
+ *
  * > Keep in mind that this rule can only be used to tell VMs to run together on
  * a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
  * the
  * `vsphere..ComputeClusterVmHostRule`
  * resource.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -72,8 +72,6 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_affinity_rule.html.markdown.
  */
 export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     /**

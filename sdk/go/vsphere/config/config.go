@@ -79,6 +79,8 @@ func GetUser(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "VSPHERE_USER").(string)
 }
+
+// Deprecated: This field has been renamed to vsphere_server.
 func GetVcenterServer(ctx *pulumi.Context) string {
 	return config.Get(ctx, "vsphere:vcenterServer")
 }
