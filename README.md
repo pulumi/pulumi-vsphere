@@ -31,6 +31,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-vsphere/sdk/go/...
     
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Aws   
+ 
 ## Configuration
 
 The following configuration points are available:
@@ -64,6 +70,4 @@ The following configuration points are available:
 
 ## Reference
 
-* NodeJS: https://www.pulumi.com/docs/reference/pkg/nodejs/pulumi/vsphere/
-* Python: https://www.pulumi.com/docs/reference/pkg/python/pulumi_vsphere/
-* Go: https://godoc.org/github.com/pulumi/pulumi-vsphere/sdk/go/vsphere
+For further information, please visit [the vSphere provider docs](https://www.pulumi.com/docs/intro/cloud-providers/vsphere) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/vsphere).
