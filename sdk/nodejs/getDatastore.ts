@@ -11,16 +11,16 @@ import * as utilities from "./utilities";
  * datastore in vSphere. This is useful to fetch the ID of a datastore that you
  * want to use to create virtual machines in using the
  * `vsphere..VirtualMachine` resource. 
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     name: "datastore1",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore.html.markdown.
  */
 export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
     if (!opts) {

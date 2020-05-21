@@ -11,29 +11,29 @@ import * as utilities from "./utilities";
  * distributed virtual port groups. These port groups are connected to distributed
  * virtual switches, which can be managed by the
  * `vsphere..DistributedVirtualSwitch` resource.
- * 
+ *
  * Distributed port groups can be used as networks for virtual machines, allowing
  * VMs to use the networking supplied by a distributed virtual switch (DVS), with
  * a set of policies that apply to that individual newtork, if desired.
- * 
+ *
  * For an overview on vSphere networking concepts, see [this
  * page][ref-vsphere-net-concepts]. For more information on vSphere DVS
  * portgroups, see [this page][ref-vsphere-dvportgroup].
- * 
+ *
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  * [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const esxiHosts = config.get("esxiHosts") || [
  *     "esxi1",
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *     "vmnic2",
  *     "vmnic3",
  * ];
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -93,13 +93,13 @@ import * as utilities from "./utilities";
  *     vlanId: 1000,
  * });
  * ```
- * 
+ *
  * ### Overriding DVS policies
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dvs = new vsphere.DistributedVirtualSwitch("dvs", {
  *     activeUplinks: ["tfup1"],
  *     datacenterId: vsphere_datacenter_dc.id,
@@ -119,8 +119,6 @@ import * as utilities from "./utilities";
  *     vlanId: 1000,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/distributed_port_group.html.markdown.
  */
 export class DistributedPortGroup extends pulumi.CustomResource {
     /**

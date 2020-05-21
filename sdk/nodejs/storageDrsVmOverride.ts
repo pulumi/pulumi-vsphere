@@ -12,20 +12,20 @@ import * as utilities from "./utilities";
  * resource, one can enable or disable Storage DRS, and control the automation
  * level and disk affinity for a single virtual machine without affecting the rest
  * of the datastore cluster.
- * 
+ *
  * For more information on vSphere datastore clusters and Storage DRS, see [this
  * page][ref-vsphere-datastore-clusters].
- * 
+ *
  * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -65,8 +65,6 @@ import * as utilities from "./utilities";
  *     virtualMachineId: vm.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/storage_drs_vm_override.html.markdown.
  */
 export class StorageDrsVmOverride extends pulumi.CustomResource {
     /**

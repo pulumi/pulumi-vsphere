@@ -12,19 +12,19 @@ import * as utilities from "./utilities";
  * can then be used with resources or data sources that require a DVS, such as the
  * `vsphere..DistributedPortGroup` resource, for which
  * an example is shown below.
- * 
- * 
+ *
+ *
  * > **NOTE:** This data source requires vCenter and is not available on direct
  * ESXi connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -38,8 +38,6 @@ import * as utilities from "./utilities";
  *     standbyUplinks: [dvs.apply(dvs => dvs.uplinks[1])],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/distributed_virtual_switch.html.markdown.
  */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
     if (!opts) {

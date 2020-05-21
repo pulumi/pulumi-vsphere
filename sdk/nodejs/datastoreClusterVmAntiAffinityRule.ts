@@ -9,27 +9,27 @@ import * as utilities from "./utilities";
  * manage VM anti-affinity rules in a datastore cluster, either created by the
  * `vsphere..DatastoreCluster` resource or looked up
  * by the `vsphere..DatastoreCluster` data source.
- * 
+ *
  * This rule can be used to tell a set to virtual machines to run on different
  * datastores within a cluster, useful for preventing single points of failure in
  * application cluster scenarios. When configured, Storage DRS will make a best effort to
  * ensure that the virtual machines run on different datastores, or prevent any
  * operation that would keep that from happening, depending on the value of the
  * `mandatory` flag.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -67,8 +67,6 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster_vm_anti_affinity_rule.html.markdown.
  */
 export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**

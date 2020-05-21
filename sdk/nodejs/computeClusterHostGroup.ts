@@ -9,26 +9,26 @@ import * as utilities from "./utilities";
  * of hosts in a cluster, either created by the
  * `vsphere..ComputeCluster` resource or looked up
  * by the `vsphere..ComputeCluster` data source.
- * 
- * 
+ *
+ *
  * This resource mainly serves as an input to the
  * `vsphere..ComputeClusterVmHostRule`
  * resource - see the documentation for that resource for further details on how
  * to use host groups.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const datacenter = config.get("datacenter") || "dc1";
  * const hosts = config.get("hosts") || [
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *     "esxi2",
  *     "esxi3",
  * ];
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }, { async: true }));
@@ -59,8 +59,6 @@ import * as utilities from "./utilities";
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_host_group.html.markdown.
  */
 export class ComputeClusterHostGroup extends pulumi.CustomResource {
     /**

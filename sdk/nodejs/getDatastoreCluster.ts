@@ -14,15 +14,15 @@ import * as utilities from "./utilities";
  * `vsphere..VmfsDatastore` resources, or create
  * virtual machines in using the
  * `vsphere..VirtualMachine` resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *     name: "datastore-cluster1",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/datastore_cluster.html.markdown.
  */
 export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
     if (!opts) {

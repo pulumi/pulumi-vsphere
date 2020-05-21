@@ -7,30 +7,28 @@ import * as utilities from "./utilities";
 /**
  * Provides a VMware vSphere datacenter resource. This can be used as the primary
  * container of inventory objects such as hosts and virtual machines.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create datacenter on the root folder
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
  * ```
- * 
+ *
  * ### Create datacenter on a subfolder
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {
  *     folder: "/research/",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datacenter.html.markdown.
  */
 export class Datacenter extends pulumi.CustomResource {
     /**

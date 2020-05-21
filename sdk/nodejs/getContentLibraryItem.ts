@@ -8,18 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere..ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const library = vsphere.getContentLibrary({
  *     name: "Content Library Test",
  * });
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     libraryId: library.id,
  * }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/content_library_item.html.markdown.
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
     if (!opts) {

@@ -14,31 +14,31 @@ import * as utilities from "./utilities";
  * and ensure fault tolerance via distribution of virtual machines. Datastore
  * clusters can also be managed through the provider, via the
  * `vsphere..DatastoreCluster` resource.
- * 
+ *
  * The `vsphere..ComputeCluster` resource can be used to create and manage
  * clusters of hosts allowing for resource control of compute resources, load
  * balancing through DRS, and high availability through vSphere HA.
- * 
+ *
  * For more information on vSphere clusters and DRS, see [this
  * page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
  * page][ref-vsphere-ha-clusters].
- * 
+ *
  * [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
  * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const datacenter = config.get("datacenter") || "dc1";
  * const hosts = config.get("hosts") || [
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *     "esxi2",
  *     "esxi3",
  * ];
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }, { async: true }));
@@ -65,33 +65,33 @@ import * as utilities from "./utilities";
  *     hostSystemIds: hostsHost.map(v => v.id),
  * });
  * ```
- * 
+ *
  * ## vSphere Version Requirements
- * 
+ *
  * A large number of settings in the `vsphere..ComputeCluster` resource require a
  * specific version of vSphere to function. Rather than include warnings at every
  * setting or section, these settings are documented below.  Note that this list
  * is for cluster-specific attributes only, and does not include the
  * `tags` parameter, which requires vSphere 6.0 or higher across all
  * resources that can be tagged.
- * 
+ *
  * All settings are footnoted by an asterisk (`*`) in their specific section in
  * the documentation, which takes you here.
- * 
+ *
  * ### Settings that require vSphere version 6.0 or higher
- * 
+ *
  * These settings require vSphere 6.0 or higher:
- * 
+ *
  * * `haDatastoreApdRecoveryAction`
  * * `haDatastoreApdResponse`
  * * `haDatastoreApdResponseDelay`
  * * `haDatastorePdlResponse`
  * * `haVmComponentProtection`
- * 
+ *
  * ### Settings that require vSphere version 6.5 or higher
- * 
+ *
  * These settings require vSphere 6.5 or higher:
- * 
+ *
  * * `drsEnablePredictiveDrs`
  * * `haAdmissionControlHostFailureTolerance`
  *   (When `haAdmissionControlPolicy` is set to
@@ -106,8 +106,6 @@ import * as utilities from "./utilities";
  * * `proactiveHaModerateRemediation`
  * * `proactiveHaProviderIds`
  * * `proactiveHaSevereRemediation`
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster.html.markdown.
  */
 export class ComputeCluster extends pulumi.CustomResource {
     /**
@@ -245,7 +243,7 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly haAdmissionControlPolicy!: pulumi.Output<string | undefined>;
     /**
-     * 
+     *
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
      * `haAdmissionControlHostFailureTolerance`
@@ -726,7 +724,7 @@ export interface ComputeClusterState {
      */
     readonly haAdmissionControlPolicy?: pulumi.Input<string>;
     /**
-     * 
+     *
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
      * `haAdmissionControlHostFailureTolerance`
@@ -1073,7 +1071,7 @@ export interface ComputeClusterArgs {
      */
     readonly haAdmissionControlPolicy?: pulumi.Input<string>;
     /**
-     * 
+     *
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
      * `haAdmissionControlHostFailureTolerance`

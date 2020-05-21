@@ -9,24 +9,24 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere..VappContainer` resource can be used to create and manage
  * vApps.
- * 
+ *
  * For more information on vSphere vApps, see [this
  * page][ref-vsphere-vapp].
- * 
+ *
  * [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const datacenter = config.get("datacenter") || "dc1";
  * const cluster = config.get("cluster") || "cluster1";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }, { async: true }));
@@ -38,17 +38,17 @@ import * as utilities from "./utilities";
  *     parentResourcePoolId: computeCluster.id,
  * });
  * ```
- * 
+ *
  * ### Example with virtual machine
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const datacenter = config.get("datacenter") || "dc1";
  * const cluster = config.get("cluster") || "cluster1";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: datacenter,
  * }, { async: true }));
@@ -82,8 +82,6 @@ import * as utilities from "./utilities";
  *     resourcePoolId: vappContainer.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/vapp_container.html.markdown.
  */
 export class VappContainer extends pulumi.CustomResource {
     /**

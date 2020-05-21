@@ -9,32 +9,32 @@ import * as utilities from "./utilities";
  * virtual machines in a cluster, either created by the
  * [`vsphere..ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
  * by the [`vsphere..ComputeCluster`][tf-vsphere-cluster-data-source] data source.
- * 
+ *
  * [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
  * [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
- * 
+ *
  * This resource mainly serves as an input to the
  * [`vsphere..ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
  * and
  * [`vsphere..ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
  * resources. See the individual resource documentation pages for more information.
- * 
+ *
  * [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
  * [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const dc = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -72,8 +72,6 @@ import * as utilities from "./utilities";
  *     virtualMachineIds: vm.map(v => v.id),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/compute_cluster_vm_group.html.markdown.
  */
 export class ComputeClusterVmGroup extends pulumi.CustomResource {
     /**

@@ -11,19 +11,19 @@ import * as utilities from "./utilities";
  * port groups on an ESXi host. These port groups are connected to standard
  * virtual switches, which can be managed by the
  * `vsphere..HostVirtualSwitch` resource.
- * 
+ *
  * For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
- * 
+ *
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a virtual switch and bind a port group to it
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -45,13 +45,13 @@ import * as utilities from "./utilities";
  *     virtualSwitchName: switchHostVirtualSwitch.name,
  * });
  * ```
- * 
+ *
  * ### Create a port group with VLAN set and some overrides
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -75,8 +75,6 @@ import * as utilities from "./utilities";
  *     vlanId: 4095,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/host_port_group.html.markdown.
  */
 export class HostPortGroup extends pulumi.CustomResource {
     /**

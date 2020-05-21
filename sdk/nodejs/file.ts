@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * files) from the host machine that this provider is running on to a target
  * datastore.  The resource can also be used to copy files between datastores, or
  * from one location to another on the same datastore.
- * 
+ *
  * Updates to destination parameters such as `datacenter`, `datastore`, or
  * `destinationFile` will move the managed file a new destination based on the
  * values of the new settings.  If any source parameter is changed, such as
@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  * re-created. Depending on if destination parameters are being changed as well,
  * this may result in the destination file either being overwritten or deleted at
  * the old location.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Uploading a file
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const ubuntuDiskUpload = new vsphere.File("ubuntuDiskUpload", {
  *     datacenter: "myDatacenter",
  *     datastore: "local",
@@ -35,13 +35,13 @@ import * as utilities from "./utilities";
  *     sourceFile: "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
  * });
  * ```
- * 
+ *
  * ### Copying a file
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const ubuntuDiskCopy = new vsphere.File("ubuntuDiskCopy", {
  *     datacenter: "myDatacenter",
  *     datastore: "local",
@@ -51,8 +51,6 @@ import * as utilities from "./utilities";
  *     sourceFile: "/my_path/disks/custom_ubuntu.vmdk",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/file.html.markdown.
  */
 export class File extends pulumi.CustomResource {
     /**

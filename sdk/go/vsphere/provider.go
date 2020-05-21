@@ -80,7 +80,8 @@ type providerArgs struct {
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath *string `pulumi:"restSessionPath"`
 	// The user name for vSphere API operations.
-	User          *string `pulumi:"user"`
+	User *string `pulumi:"user"`
+	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer *string `pulumi:"vcenterServer"`
 	// Keep alive interval for the VIM session in minutes
 	VimKeepAlive *int `pulumi:"vimKeepAlive"`
@@ -107,7 +108,8 @@ type ProviderArgs struct {
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath pulumi.StringPtrInput
 	// The user name for vSphere API operations.
-	User          pulumi.StringPtrInput
+	User pulumi.StringPtrInput
+	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer pulumi.StringPtrInput
 	// Keep alive interval for the VIM session in minutes
 	VimKeepAlive pulumi.IntPtrInput

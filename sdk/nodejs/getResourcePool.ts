@@ -11,15 +11,15 @@ import * as utilities from "./utilities";
  * resource pool in vSphere. This is useful to fetch the ID of a resource pool
  * that you want to use to create virtual machines in using the
  * `vsphere..VirtualMachine` resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
  * }, { async: true }));
@@ -28,20 +28,18 @@ import * as utilities from "./utilities";
  *     name: "resource-pool-1",
  * }, { async: true }));
  * ```
- * 
+ *
  * ### Specifying the root resource pool for a standalone host
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const pool = vsphere_datacenter_dc.id.apply(id => vsphere.getResourcePool({
  *     datacenterId: id,
  *     name: "esxi1/Resources",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/d/resource_pool.html.markdown.
  */
 export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
     args = args || {};

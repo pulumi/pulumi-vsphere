@@ -9,32 +9,32 @@ import * as utilities from "./utilities";
  * datastore clusters. This can be used to create groups of datastores with a
  * shared management interface, allowing for resource control and load balancing
  * through Storage DRS.
- * 
+ *
  * For more information on vSphere datastore clusters and Storage DRS, see [this
  * page][ref-vsphere-datastore-clusters].
- * 
+ *
  * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
- * 
+ *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- * 
+ *
  * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
- * 
+ *
  * const config = new pulumi.Config();
  * const hosts = config.get("hosts") || [
  *     "esxi1",
  *     "esxi2",
  *     "esxi3",
  * ];
- * 
+ *
  * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
  * const esxiHosts: pulumi.Output<vsphere.GetHostResult>[] = [];
  * for (let i = 0; i < hosts.length; i++) {
@@ -62,8 +62,6 @@ import * as utilities from "./utilities";
  *     type: "NFS",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/website/docs/r/datastore_cluster.html.markdown.
  */
 export class DatastoreCluster extends pulumi.CustomResource {
     /**
