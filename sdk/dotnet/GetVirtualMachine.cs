@@ -19,6 +19,32 @@ namespace Pulumi.VSphere
         /// reads the guest ID so that can be supplied as well.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "test-vm-template",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)

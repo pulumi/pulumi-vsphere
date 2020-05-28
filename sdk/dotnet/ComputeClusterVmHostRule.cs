@@ -27,6 +27,92 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var datastore = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore1",
+    ///         })));
+    ///         var cluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "cluster1",
+    ///         })));
+    ///         var host = dc.Apply(dc =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "esxi1",
+    ///         })));
+    ///         var network = dc.Apply(dc =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "network1",
+    ///         })));
+    ///         var vm = new VSphere.VirtualMachine("vm", new VSphere.VirtualMachineArgs
+    ///         {
+    ///             DatastoreId = datastore.Apply(datastore =&gt; datastore.Id),
+    ///             Disks = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///             GuestId = "other3xLinux64Guest",
+    ///             Memory = 2048,
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(network =&gt; network.Id),
+    ///                 },
+    ///             },
+    ///             NumCpus = 2,
+    ///             ResourcePoolId = cluster.Apply(cluster =&gt; cluster.ResourcePoolId),
+    ///         });
+    ///         var clusterVmGroup = new VSphere.ComputeClusterVmGroup("clusterVmGroup", new VSphere.ComputeClusterVmGroupArgs
+    ///         {
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             VirtualMachineIds = 
+    ///             {
+    ///                 vm.Id,
+    ///             },
+    ///         });
+    ///         var clusterHostGroup = new VSphere.ComputeClusterHostGroup("clusterHostGroup", new VSphere.ComputeClusterHostGroupArgs
+    ///         {
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             HostSystemIds = 
+    ///             {
+    ///                 host.Apply(host =&gt; host.Id),
+    ///             },
+    ///         });
+    ///         var clusterVmHostRule = new VSphere.ComputeClusterVmHostRule("clusterVmHostRule", new VSphere.ComputeClusterVmHostRuleArgs
+    ///         {
+    ///             AffinityHostGroupName = clusterHostGroup.Name,
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             VmGroupName = clusterVmGroup.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ComputeClusterVmHostRule : Pulumi.CustomResource
     {

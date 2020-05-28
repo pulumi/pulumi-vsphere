@@ -19,6 +19,38 @@ namespace Pulumi.VSphere
         /// 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "esxi1",
+        ///         })));
+        ///         var available = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
+        ///         {
+        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
+        ///             HostSystemId = host.Id,
+        ///             Rescan = true,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)

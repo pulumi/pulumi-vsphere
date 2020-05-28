@@ -12,6 +12,45 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere datacenter resource. This can be used as the primary
     /// container of inventory objects such as hosts and virtual machines.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create datacenter on the root folder
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prodDatacenter = new VSphere.Datacenter("prodDatacenter", new VSphere.DatacenterArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create datacenter on a subfolder
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var researchDatacenter = new VSphere.Datacenter("researchDatacenter", new VSphere.DatacenterArgs
+    ///         {
+    ///             Folder = "/research/",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Datacenter : Pulumi.CustomResource
     {

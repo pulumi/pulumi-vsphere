@@ -23,6 +23,110 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var datastore = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore1",
+    ///         })));
+    ///         var cluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "cluster1",
+    ///         })));
+    ///         var network = dc.Apply(dc =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "network1",
+    ///         })));
+    ///         var vm1 = new VSphere.VirtualMachine("vm1", new VSphere.VirtualMachineArgs
+    ///         {
+    ///             DatastoreId = datastore.Apply(datastore =&gt; datastore.Id),
+    ///             Disks = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///             GuestId = "other3xLinux64Guest",
+    ///             Memory = 2048,
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(network =&gt; network.Id),
+    ///                 },
+    ///             },
+    ///             NumCpus = 2,
+    ///             ResourcePoolId = cluster.Apply(cluster =&gt; cluster.ResourcePoolId),
+    ///         });
+    ///         var vm2 = new VSphere.VirtualMachine("vm2", new VSphere.VirtualMachineArgs
+    ///         {
+    ///             DatastoreId = datastore.Apply(datastore =&gt; datastore.Id),
+    ///             Disks = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///             GuestId = "other3xLinux64Guest",
+    ///             Memory = 2048,
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(network =&gt; network.Id),
+    ///                 },
+    ///             },
+    ///             NumCpus = 2,
+    ///             ResourcePoolId = cluster.Apply(cluster =&gt; cluster.ResourcePoolId),
+    ///         });
+    ///         var clusterVmGroup1 = new VSphere.ComputeClusterVmGroup("clusterVmGroup1", new VSphere.ComputeClusterVmGroupArgs
+    ///         {
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             VirtualMachineIds = 
+    ///             {
+    ///                 vm1.Id,
+    ///             },
+    ///         });
+    ///         var clusterVmGroup2 = new VSphere.ComputeClusterVmGroup("clusterVmGroup2", new VSphere.ComputeClusterVmGroupArgs
+    ///         {
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             VirtualMachineIds = 
+    ///             {
+    ///                 vm2.Id,
+    ///             },
+    ///         });
+    ///         var clusterVmDependencyRule = new VSphere.ComputeClusterVmDependencyRule("clusterVmDependencyRule", new VSphere.ComputeClusterVmDependencyRuleArgs
+    ///         {
+    ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
+    ///             DependencyVmGroupName = clusterVmGroup1.Name,
+    ///             VmGroupName = clusterVmGroup2.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ComputeClusterVmDependencyRule : Pulumi.CustomResource
     {

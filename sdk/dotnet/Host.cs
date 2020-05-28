@@ -12,6 +12,88 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere host resource. This represents an ESXi host that
     /// can be used either as part of a Compute Cluster or Standalone.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a standalone host
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "my-datacenter",
+    ///         }));
+    ///         var h1 = new VSphere.Host("h1", new VSphere.HostArgs
+    ///         {
+    ///             Hostname = "10.10.10.1",
+    ///             Username = "root",
+    ///             Password = "password",
+    ///             License = "00000-00000-00000-00000i-00000",
+    ///             Datacenter = dc.Apply(dc =&gt; dc.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create host in a compute cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "TfDatacenter",
+    ///         }));
+    ///         var c1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             Name = "DC0_C0",
+    ///             DatacenterId = dc.Id,
+    ///         })));
+    ///         var h1 = new VSphere.Host("h1", new VSphere.HostArgs
+    ///         {
+    ///             Hostname = "10.10.10.1",
+    ///             Username = "root",
+    ///             Password = "password",
+    ///             License = "00000-00000-00000-00000i-00000",
+    ///             Cluster = c1.Apply(c1 =&gt; c1.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Importing 
+    /// 
+    /// An existing host can be [imported][docs-import] into this resource
+    /// via supplying the host's ID. An example is below:
+    /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// The above would import the host with ID `host-123`.
     /// </summary>
     public partial class Host : Pulumi.CustomResource
     {

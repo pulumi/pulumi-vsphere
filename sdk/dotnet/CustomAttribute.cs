@@ -9,46 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..CustomAttribute` resource can be used to create and manage custom
-    /// attributes, which allow users to associate user-specific meta-information with 
-    /// vSphere managed objects. Custom attribute values must be strings and are stored 
-    /// on the vCenter Server and not the managed object.
-    /// 
-    /// For more information about custom attributes, click [here][ext-custom-attributes].
-    /// 
-    /// [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
-    /// 
-    /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
-    /// and require vCenter.
-    /// 
-    /// 
-    /// ## Managed Object Types
-    /// 
-    /// The following table will help you determine what value you need to enter for 
-    /// the managed object type you want the attribute to apply to.
-    /// 
-    /// Note that if you want a attribute to apply to all objects, leave the type 
-    /// unspecified.
-    /// 
-    /// &lt;table&gt;
-    /// &lt;tr&gt;&lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Value&lt;/th&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Folders&lt;/td&gt;&lt;td&gt;`Folder`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Clusters&lt;/td&gt;&lt;td&gt;`ClusterComputeResource`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Datacenters&lt;/td&gt;&lt;td&gt;`Datacenter`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Datastores&lt;/td&gt;&lt;td&gt;`Datastore`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Datastore Clusters&lt;/td&gt;&lt;td&gt;`StoragePod`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;DVS Portgroups&lt;/td&gt;&lt;td&gt;`DistributedVirtualPortgroup`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Distributed vSwitches&lt;/td&gt;&lt;td&gt;`DistributedVirtualSwitch`&lt;br&gt;`VmwareDistributedVirtualSwitch`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Hosts&lt;/td&gt;&lt;td&gt;`HostSystem`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Content Libraries&lt;/td&gt;&lt;td&gt;`com.vmware.content.Library`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Content Library Items&lt;/td&gt;&lt;td&gt;`com.vmware.content.library.Item`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Networks&lt;/td&gt;&lt;td&gt;`HostNetwork`&lt;br&gt;`Network`&lt;br&gt;`OpaqueNetwork`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Resource Pools&lt;/td&gt;&lt;td&gt;`ResourcePool`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;vApps&lt;/td&gt;&lt;td&gt;`VirtualApp`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;tr&gt;&lt;td&gt;Virtual Machines&lt;/td&gt;&lt;td&gt;`VirtualMachine`&lt;/td&gt;&lt;/tr&gt;
-    /// &lt;/table&gt;
-    /// </summary>
     public partial class CustomAttribute : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,6 +11,84 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// Provides a VMware vSphere vnic resource.
+    /// 
+    /// ## Example Usages
+    /// 
+    /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "mydc",
+    ///         }));
+    ///         var h1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             Name = "esxi1.host.test",
+    ///             DatacenterId = dc.Id,
+    ///         })));
+    ///         var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new VSphere.HostVirtualSwitchArgs
+    ///         {
+    ///             HostSystemId = h1.Apply(h1 =&gt; h1.Id),
+    ///             NetworkAdapters = 
+    ///             {
+    ///                 "vmnic3",
+    ///                 "vmnic4",
+    ///             },
+    ///             ActiveNics = 
+    ///             {
+    ///                 "vmnic3",
+    ///             },
+    ///             StandbyNics = 
+    ///             {
+    ///                 "vmnic4",
+    ///             },
+    ///         });
+    ///         var p1 = new VSphere.HostPortGroup("p1", new VSphere.HostPortGroupArgs
+    ///         {
+    ///             VirtualSwitchName = hvs1.Name,
+    ///             HostSystemId = h1.Apply(h1 =&gt; h1.Id),
+    ///         });
+    ///         var v1 = new VSphere.Vnic("v1", new VSphere.VnicArgs
+    ///         {
+    ///             Host = h1.Apply(h1 =&gt; h1.Id),
+    ///             Portgroup = p1.Name,
+    ///             Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///             {
+    ///                 Dhcp = true,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Importing 
+    /// 
+    /// An existing vNic can be [imported][docs-import] into this resource
+    /// via supplying the vNic's ID. An example is below:
+    /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// The above would import the the vnic `vmk2` from host with ID `host-123`.
     /// </summary>
     public partial class Vnic : Pulumi.CustomResource
     {

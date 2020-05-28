@@ -26,6 +26,77 @@ namespace Pulumi.VSphere
     /// connections.
     /// 
     /// &gt; **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var datastoreCluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore-cluster1",
+    ///         })));
+    ///         var cluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "cluster1",
+    ///         })));
+    ///         var network = dc.Apply(dc =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "network1",
+    ///         })));
+    ///         var vm = new List&lt;VSphere.VirtualMachine&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new VSphere.VirtualMachineArgs
+    ///             {
+    ///                 DatastoreClusterId = datastoreCluster.Apply(datastoreCluster =&gt; datastoreCluster.Id),
+    ///                 Disks = 
+    ///                 {
+    ///                     new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                     {
+    ///                         Label = "disk0",
+    ///                         Size = 20,
+    ///                     },
+    ///                 },
+    ///                 GuestId = "other3xLinux64Guest",
+    ///                 Memory = 2048,
+    ///                 NetworkInterfaces = 
+    ///                 {
+    ///                     new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                     {
+    ///                         NetworkId = network.Apply(network =&gt; network.Id),
+    ///                     },
+    ///                 },
+    ///                 NumCpus = 2,
+    ///                 ResourcePoolId = cluster.Apply(cluster =&gt; cluster.ResourcePoolId),
+    ///             }));
+    ///         }
+    ///         var clusterVmAntiAffinityRule = new VSphere.DatastoreClusterVmAntiAffinityRule("clusterVmAntiAffinityRule", new VSphere.DatastoreClusterVmAntiAffinityRuleArgs
+    ///         {
+    ///             DatastoreClusterId = datastoreCluster.Apply(datastoreCluster =&gt; datastoreCluster.Id),
+    ///             VirtualMachineIds = vm.Select(__item =&gt; __item.Id).ToList(),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource
     {

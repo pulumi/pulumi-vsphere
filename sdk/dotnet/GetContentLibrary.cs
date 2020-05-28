@@ -18,6 +18,27 @@ namespace Pulumi.VSphere
         /// connections.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
+        ///         {
+        ///             Name = "Content Library Test",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryResult> InvokeAsync(GetContentLibraryArgs args, InvokeOptions? options = null)

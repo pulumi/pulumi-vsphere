@@ -30,6 +30,40 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Uplink name and count control
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dvs = new VSphere.DistributedVirtualSwitch("dvs", new VSphere.DistributedVirtualSwitchArgs
+    ///         {
+    ///             ActiveUplinks = 
+    ///             {
+    ///                 "tfup1",
+    ///             },
+    ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
+    ///             StandbyUplinks = 
+    ///             {
+    ///                 "tfup2",
+    ///             },
+    ///             Uplinks = 
+    ///             {
+    ///                 "tfup1",
+    ///                 "tfup2",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DistributedVirtualSwitch : Pulumi.CustomResource
     {

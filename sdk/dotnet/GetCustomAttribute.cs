@@ -22,6 +22,27 @@ namespace Pulumi.VSphere
         /// and require vCenter.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var attribute = Output.Create(VSphere.GetCustomAttribute.InvokeAsync(new VSphere.GetCustomAttributeArgs
+        ///         {
+        ///             Name = "test-attribute",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomAttributeResult> InvokeAsync(GetCustomAttributeArgs args, InvokeOptions? options = null)
