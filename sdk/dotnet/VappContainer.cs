@@ -17,6 +17,103 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-vapp].
     /// 
     /// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var datacenter = config.Get("datacenter") ?? "dc1";
+    ///         var cluster = config.Get("cluster") ?? "cluster1";
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = datacenter,
+    ///         }));
+    ///         var computeCluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = cluster,
+    ///         })));
+    ///         var vappContainer = new VSphere.VappContainer("vappContainer", new VSphere.VappContainerArgs
+    ///         {
+    ///             ParentResourcePoolId = computeCluster.Apply(computeCluster =&gt; computeCluster.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Example with virtual machine
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var datacenter = config.Get("datacenter") ?? "dc1";
+    ///         var cluster = config.Get("cluster") ?? "cluster1";
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = datacenter,
+    ///         }));
+    ///         var computeCluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = cluster,
+    ///         })));
+    ///         var network = dc.Apply(dc =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "network1",
+    ///         })));
+    ///         var datastore = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore1",
+    ///         })));
+    ///         var vappContainer = new VSphere.VappContainer("vappContainer", new VSphere.VappContainerArgs
+    ///         {
+    ///             ParentResourcePoolId = computeCluster.Apply(computeCluster =&gt; computeCluster.Id),
+    ///         });
+    ///         var vm = new VSphere.VirtualMachine("vm", new VSphere.VirtualMachineArgs
+    ///         {
+    ///             DatastoreId = datastore.Apply(datastore =&gt; datastore.Id),
+    ///             Disks = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 1,
+    ///                 },
+    ///             },
+    ///             GuestId = "ubuntu64Guest",
+    ///             Memory = 1024,
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(network =&gt; network.Id),
+    ///                 },
+    ///             },
+    ///             NumCpus = 2,
+    ///             ResourcePoolId = vappContainer.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VappContainer : Pulumi.CustomResource
     {

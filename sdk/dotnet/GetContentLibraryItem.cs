@@ -18,6 +18,32 @@ namespace Pulumi.VSphere
         /// connections.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
+        ///         {
+        ///             Name = "Content Library Test",
+        ///         }));
+        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
+        ///         {
+        ///             Name = "Ubuntu Bionic 18.04",
+        ///             LibraryId = library.Id,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)

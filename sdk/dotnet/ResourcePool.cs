@@ -17,6 +17,39 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-resource_pools].
     /// 
     /// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var datacenter = config.Get("datacenter") ?? "dc1";
+    ///         var cluster = config.Get("cluster") ?? "cluster1";
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = datacenter,
+    ///         }));
+    ///         var computeCluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = cluster,
+    ///         })));
+    ///         var resourcePool = new VSphere.ResourcePool("resourcePool", new VSphere.ResourcePoolArgs
+    ///         {
+    ///             ParentResourcePoolId = computeCluster.Apply(computeCluster =&gt; computeCluster.ResourcePoolId),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ResourcePool : Pulumi.CustomResource
     {

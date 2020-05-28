@@ -9,12 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..ContentLibrary` resource can be used to manage Content Libraries.
-    /// 
-    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    /// connections.
-    /// </summary>
     public partial class ContentLibrary : Pulumi.CustomResource
     {
         /// <summary>

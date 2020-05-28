@@ -20,6 +20,38 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
     /// requires vCenter 6.0 or higher.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var category = new VSphere.TagCategory("category", new VSphere.TagCategoryArgs
+    ///         {
+    ///             AssociableTypes = 
+    ///             {
+    ///                 "VirtualMachine",
+    ///                 "Datastore",
+    ///             },
+    ///             Cardinality = "SINGLE",
+    ///             Description = "Managed by Pulumi",
+    ///         });
+    ///         var tag = new VSphere.Tag("tag", new VSphere.TagArgs
+    ///         {
+    ///             CategoryId = category.Id,
+    ///             Description = "Managed by Pulumi",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
     {

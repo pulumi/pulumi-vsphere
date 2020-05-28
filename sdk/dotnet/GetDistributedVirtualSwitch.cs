@@ -23,6 +23,49 @@ namespace Pulumi.VSphere
         /// ESXi connections.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example locates a DVS that is named `test-dvs`, in the
+        /// datacenter `dc1`. It then uses this DVS to set up a
+        /// `vsphere..DistributedPortGroup` resource that uses the first uplink as a
+        /// primary uplink and the second uplink as a secondary.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var dvs = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDistributedVirtualSwitch.InvokeAsync(new VSphere.GetDistributedVirtualSwitchArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "test-dvs",
+        ///         })));
+        ///         var pg = new VSphere.DistributedPortGroup("pg", new VSphere.DistributedPortGroupArgs
+        ///         {
+        ///             ActiveUplinks = 
+        ///             {
+        ///                 dvs.Apply(dvs =&gt; dvs.Uplinks[0]),
+        ///             },
+        ///             DistributedVirtualSwitchUuid = dvs.Apply(dvs =&gt; dvs.Id),
+        ///             StandbyUplinks = 
+        ///             {
+        ///                 dvs.Apply(dvs =&gt; dvs.Uplinks[1]),
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)

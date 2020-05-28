@@ -46,6 +46,74 @@ namespace Pulumi.VSphere
     /// detects disks removed from the configuration, the provider will give an error. 
     /// 
     /// [cmd-taint]: /docs/commands/taint.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Addition of local disks on a single host
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync());
+    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             DatacenterId = datacenter.Id,
+    ///         })));
+    ///         var datastore = new VSphere.VmfsDatastore("datastore", new VSphere.VmfsDatastoreArgs
+    ///         {
+    ///             Disks = 
+    ///             {
+    ///                 "mpx.vmhba1:C0:T1:L0",
+    ///                 "mpx.vmhba1:C0:T2:L0",
+    ///                 "mpx.vmhba1:C0:T2:L0",
+    ///             },
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Auto-detection of disks via `vsphere..getVmfsDisks`
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             DatacenterId = datacenter.Id,
+    ///             Name = "esxi1",
+    ///         })));
+    ///         var available = esxiHost.Apply(esxiHost =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
+    ///         {
+    ///             Filter = "naa.60a98000",
+    ///             HostSystemId = esxiHost.Id,
+    ///             Rescan = true,
+    ///         })));
+    ///         var datastore = new VSphere.VmfsDatastore("datastore", new VSphere.VmfsDatastoreArgs
+    ///         {
+    ///             Disks = available.Apply(available =&gt; available.Disks),
+    ///             Folder = "datastore-folder",
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VmfsDatastore : Pulumi.CustomResource
     {

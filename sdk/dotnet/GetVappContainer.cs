@@ -18,6 +18,32 @@ namespace Pulumi.VSphere
         /// `vsphere..VirtualMachine` resource. 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVappContainer.InvokeAsync(new VSphere.GetVappContainerArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "vapp-container-1",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVappContainerResult> InvokeAsync(GetVappContainerArgs args, InvokeOptions? options = null)

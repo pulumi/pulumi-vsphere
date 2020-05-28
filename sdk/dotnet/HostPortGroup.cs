@@ -18,6 +18,102 @@ namespace Pulumi.VSphere
     /// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
     /// 
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a virtual switch and bind a port group to it
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             DatacenterId = datacenter.Id,
+    ///             Name = "esxi1",
+    ///         })));
+    ///         var @switch = new VSphere.HostVirtualSwitch("switch", new VSphere.HostVirtualSwitchArgs
+    ///         {
+    ///             ActiveNics = 
+    ///             {
+    ///                 "vmnic0",
+    ///             },
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             NetworkAdapters = 
+    ///             {
+    ///                 "vmnic0",
+    ///                 "vmnic1",
+    ///             },
+    ///             StandbyNics = 
+    ///             {
+    ///                 "vmnic1",
+    ///             },
+    ///         });
+    ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
+    ///         {
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             VirtualSwitchName = @switch.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Create a port group with VLAN set and some overrides
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             DatacenterId = datacenter.Id,
+    ///             Name = "esxi1",
+    ///         })));
+    ///         var @switch = new VSphere.HostVirtualSwitch("switch", new VSphere.HostVirtualSwitchArgs
+    ///         {
+    ///             ActiveNics = 
+    ///             {
+    ///                 "vmnic0",
+    ///             },
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             NetworkAdapters = 
+    ///             {
+    ///                 "vmnic0",
+    ///                 "vmnic1",
+    ///             },
+    ///             StandbyNics = 
+    ///             {
+    ///                 "vmnic1",
+    ///             },
+    ///         });
+    ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
+    ///         {
+    ///             AllowPromiscuous = true,
+    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             VirtualSwitchName = @switch.Name,
+    ///             VlanId = 4095,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class HostPortGroup : Pulumi.CustomResource
     {

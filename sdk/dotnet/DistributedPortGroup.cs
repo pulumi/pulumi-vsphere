@@ -28,6 +28,51 @@ namespace Pulumi.VSphere
     /// 
     /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
     /// connections.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Overriding DVS policies
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dvs = new VSphere.DistributedVirtualSwitch("dvs", new VSphere.DistributedVirtualSwitchArgs
+    ///         {
+    ///             ActiveUplinks = 
+    ///             {
+    ///                 "tfup1",
+    ///             },
+    ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
+    ///             StandbyUplinks = 
+    ///             {
+    ///                 "tfup2",
+    ///             },
+    ///             Uplinks = 
+    ///             {
+    ///                 "tfup1",
+    ///                 "tfup2",
+    ///             },
+    ///         });
+    ///         var pg = new VSphere.DistributedPortGroup("pg", new VSphere.DistributedPortGroupArgs
+    ///         {
+    ///             ActiveUplinks = 
+    ///             {
+    ///                 "tfup1",
+    ///                 "tfup2",
+    ///             },
+    ///             DistributedVirtualSwitchUuid = dvs.Id,
+    ///             StandbyUplinks = {},
+    ///             VlanId = 1000,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DistributedPortGroup : Pulumi.CustomResource
     {

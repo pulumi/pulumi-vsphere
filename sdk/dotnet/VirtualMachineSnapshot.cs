@@ -31,6 +31,33 @@ namespace Pulumi.VSphere
     /// limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
     /// 
     /// [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var demo1 = new VSphere.VirtualMachineSnapshot("demo1", new VSphere.VirtualMachineSnapshotArgs
+    ///         {
+    ///             Consolidate = "true",
+    ///             Description = "This is Demo Snapshot",
+    ///             Memory = "true",
+    ///             Quiesce = "true",
+    ///             RemoveChildren = "false",
+    ///             SnapshotName = "Snapshot Name",
+    ///             VirtualMachineUuid = "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VirtualMachineSnapshot : Pulumi.CustomResource
     {

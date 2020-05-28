@@ -19,6 +19,32 @@ namespace Pulumi.VSphere
         /// 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var datastore = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "datastore1",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)

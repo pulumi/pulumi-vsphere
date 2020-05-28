@@ -25,6 +25,32 @@ namespace Pulumi.VSphere
         /// details about clusters or how to work with them.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var computeCluster = Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+        ///         {
+        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
+        ///             Name = "compute-cluster1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeClusterResult> InvokeAsync(GetComputeClusterArgs args, InvokeOptions? options = null)

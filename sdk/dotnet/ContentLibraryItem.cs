@@ -9,14 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..ContentLibraryItem` resource can be used to create items in a Content Library. Each item can contain 
-    /// multiple files. Each `file_url` must be accessible from the vSphere environment as it will be downloaded from the
-    /// specified location and stored on the Content Library's storage backing.
-    /// 
-    /// To make a `content_library_item` a functioning template, the template must be in OVF format. The .ovf and .vmdk
-    /// file(s) can then be set as the `file_url` list.
-    /// </summary>
     public partial class ContentLibraryItem : Pulumi.CustomResource
     {
         /// <summary>

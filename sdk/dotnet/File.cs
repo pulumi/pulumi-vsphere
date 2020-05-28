@@ -22,6 +22,54 @@ namespace Pulumi.VSphere
     /// re-created. Depending on if destination parameters are being changed as well,
     /// this may result in the destination file either being overwritten or deleted at
     /// the old location.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Uploading a file
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ubuntuDiskUpload = new VSphere.File("ubuntuDiskUpload", new VSphere.FileArgs
+    ///         {
+    ///             Datacenter = "my_datacenter",
+    ///             Datastore = "local",
+    ///             DestinationFile = "/my_path/disks/custom_ubuntu.vmdk",
+    ///             SourceFile = "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Copying a file
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ubuntuDiskCopy = new VSphere.File("ubuntuDiskCopy", new VSphere.FileArgs
+    ///         {
+    ///             Datacenter = "my_datacenter",
+    ///             Datastore = "local",
+    ///             DestinationFile = "/my_path/custom_ubuntu_id.vmdk",
+    ///             SourceDatacenter = "my_datacenter",
+    ///             SourceDatastore = "local",
+    ///             SourceFile = "/my_path/disks/custom_ubuntu.vmdk",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class File : Pulumi.CustomResource
     {

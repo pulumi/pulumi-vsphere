@@ -74,7 +74,7 @@ class Vnic(pulumi.CustomResource):
         d1 = vsphere.DistributedVirtualSwitch("d1",
             datacenter_id=dc.id,
             host=[{
-                "hostSystemId": h1.id,
+                "host_system_id": h1.id,
                 "devices": ["vnic3"],
             }])
         p1 = vsphere.DistributedPortGroup("p1",

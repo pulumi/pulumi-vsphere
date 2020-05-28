@@ -22,6 +22,32 @@ namespace Pulumi.VSphere
         /// requires vCenter 6.0 or higher.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         {
+        ///             Name = "test-category",
+        ///         }));
+        ///         var tag = category.Apply(category =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         {
+        ///             CategoryId = category.Id,
+        ///             Name = "test-tag",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)

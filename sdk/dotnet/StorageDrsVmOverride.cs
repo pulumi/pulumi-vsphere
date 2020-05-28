@@ -20,6 +20,76 @@ namespace Pulumi.VSphere
     /// page][ref-vsphere-datastore-clusters].
     /// 
     /// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "dc1",
+    ///         }));
+    ///         var datastoreCluster = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore-cluster1",
+    ///         })));
+    ///         var memberDatastore = dc.Apply(dc =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "datastore-cluster1-member1",
+    ///         })));
+    ///         var pool = dc.Apply(dc =&gt; Output.Create(VSphere.GetResourcePool.InvokeAsync(new VSphere.GetResourcePoolArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "cluster1/Resources",
+    ///         })));
+    ///         var network = dc.Apply(dc =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+    ///         {
+    ///             DatacenterId = dc.Id,
+    ///             Name = "public",
+    ///         })));
+    ///         var vm = new VSphere.VirtualMachine("vm", new VSphere.VirtualMachineArgs
+    ///         {
+    ///             DatastoreId = memberDatastore.Apply(memberDatastore =&gt; memberDatastore.Id),
+    ///             Disks = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///             GuestId = "other3xLinux64Guest",
+    ///             Memory = 1024,
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(network =&gt; network.Id),
+    ///                 },
+    ///             },
+    ///             NumCpus = 2,
+    ///             ResourcePoolId = pool.Apply(pool =&gt; pool.Id),
+    ///         });
+    ///         var drsVmOverride = new VSphere.StorageDrsVmOverride("drsVmOverride", new VSphere.StorageDrsVmOverrideArgs
+    ///         {
+    ///             DatastoreClusterId = datastoreCluster.Apply(datastoreCluster =&gt; datastoreCluster.Id),
+    ///             SdrsEnabled = false,
+    ///             VirtualMachineId = vm.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class StorageDrsVmOverride : Pulumi.CustomResource
     {

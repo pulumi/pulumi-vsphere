@@ -14,6 +14,31 @@ namespace Pulumi.VSphere
     /// of any given `vsphere..VirtualMachine`
     /// resource. These disks can be attached to a virtual machine by creating a disk
     /// block with the `attach` parameter.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myDisk = new VSphere.VirtualDisk("myDisk", new VSphere.VirtualDiskArgs
+    ///         {
+    ///             Datacenter = "Datacenter",
+    ///             Datastore = "local",
+    ///             Size = 2,
+    ///             Type = "thin",
+    ///             VmdkPath = "myDisk.vmdk",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VirtualDisk : Pulumi.CustomResource
     {

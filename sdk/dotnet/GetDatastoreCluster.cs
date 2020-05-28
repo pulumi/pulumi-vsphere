@@ -21,6 +21,32 @@ namespace Pulumi.VSphere
         /// `vsphere..VirtualMachine` resource. 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var datastoreCluster = Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+        ///         {
+        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
+        ///             Name = "datastore-cluster1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreClusterResult> InvokeAsync(GetDatastoreClusterArgs args, InvokeOptions? options = null)
