@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.18.3 of the vSphere Terraform Provider
+_(none)_
 
 ---
+
+## 2.3.4 (2020-06-02)
+* Upgrade to v1.18.3 of the vSphere Terraform Provider
 
 ## 2.3.3 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
