@@ -1448,12 +1448,16 @@
                     "type": "integer",
                     "description": "The timeout for each host maintenance mode\noperation when removing hosts from a cluster. The value is specified in\nseconds. Default: `3600` (1 hour).\n"
                 },
+                "hostManaged": {
+                    "type": "boolean",
+                    "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `host` resource rather than the\n`compute_cluster` resource. Conflicts with: `host_system_ids`.\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e v1.18.3\n"
+                },
                 "hostSystemIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The managed object IDs of\nthe hosts to put in the cluster.\n"
+                    "description": "The [managed object IDs][docs-about-morefs] of\nthe hosts to put in the cluster. Conflicts with: `host_managed`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1691,12 +1695,16 @@
                     "type": "integer",
                     "description": "The timeout for each host maintenance mode\noperation when removing hosts from a cluster. The value is specified in\nseconds. Default: `3600` (1 hour).\n"
                 },
+                "hostManaged": {
+                    "type": "boolean",
+                    "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `host` resource rather than the\n`compute_cluster` resource. Conflicts with: `host_system_ids`.\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e v1.18.3\n"
+                },
                 "hostSystemIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The managed object IDs of\nthe hosts to put in the cluster.\n"
+                    "description": "The [managed object IDs][docs-about-morefs] of\nthe hosts to put in the cluster. Conflicts with: `host_managed`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1930,12 +1938,16 @@
                         "type": "integer",
                         "description": "The timeout for each host maintenance mode\noperation when removing hosts from a cluster. The value is specified in\nseconds. Default: `3600` (1 hour).\n"
                     },
+                    "hostManaged": {
+                        "type": "boolean",
+                        "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `host` resource rather than the\n`compute_cluster` resource. Conflicts with: `host_system_ids`.\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e v1.18.3\n"
+                    },
                     "hostSystemIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The managed object IDs of\nthe hosts to put in the cluster.\n"
+                        "description": "The [managed object IDs][docs-about-morefs] of\nthe hosts to put in the cluster. Conflicts with: `host_managed`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -5643,7 +5655,11 @@
             "properties": {
                 "cluster": {
                     "type": "string",
-                    "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set.\n"
+                    "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set. Conflicts with:\n`cluster`.\n"
+                },
+                "clusterManaged": {
+                    "type": "boolean",
+                    "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `compute_cluster` resource rather\nthan the`host` resource. Conflicts with: `cluster`.\n"
                 },
                 "connected": {
                     "type": "boolean",
@@ -5694,7 +5710,11 @@
             "inputProperties": {
                 "cluster": {
                     "type": "string",
-                    "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set.\n"
+                    "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set. Conflicts with:\n`cluster`.\n"
+                },
+                "clusterManaged": {
+                    "type": "boolean",
+                    "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `compute_cluster` resource rather\nthan the`host` resource. Conflicts with: `cluster`.\n"
                 },
                 "connected": {
                     "type": "boolean",
@@ -5747,7 +5767,11 @@
                 "properties": {
                     "cluster": {
                         "type": "string",
-                        "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set.\n"
+                        "description": "The ID of the Compute Cluster this host should\nbe added to. This should not be set if `datacenter` is set. Conflicts with:\n`cluster`.\n"
+                    },
+                    "clusterManaged": {
+                        "type": "boolean",
+                        "description": "Can be set to `true` if compute cluster\nmembership will be managed through the `compute_cluster` resource rather\nthan the`host` resource. Conflicts with: `cluster`.\n"
                     },
                     "connected": {
                         "type": "boolean",

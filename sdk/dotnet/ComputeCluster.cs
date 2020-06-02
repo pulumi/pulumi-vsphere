@@ -457,8 +457,17 @@ namespace Pulumi.VSphere
         public Output<int?> HostClusterExitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object IDs of
-        /// the hosts to put in the cluster.
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `host` resource rather than the
+        /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
+        /// </summary>
+        [Output("hostManaged")]
+        public Output<bool?> HostManaged { get; private set; } = null!;
+
+        /// <summary>
+        /// The [managed object IDs][docs-about-morefs] of
+        /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         [Output("hostSystemIds")]
         public Output<ImmutableArray<string>> HostSystemIds { get; private set; } = null!;
@@ -979,12 +988,21 @@ namespace Pulumi.VSphere
         [Input("hostClusterExitTimeout")]
         public Input<int>? HostClusterExitTimeout { get; set; }
 
+        /// <summary>
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `host` resource rather than the
+        /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
+        /// </summary>
+        [Input("hostManaged")]
+        public Input<bool>? HostManaged { get; set; }
+
         [Input("hostSystemIds")]
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
-        /// the hosts to put in the cluster.
+        /// The [managed object IDs][docs-about-morefs] of
+        /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         public InputList<string> HostSystemIds
         {
@@ -1475,12 +1493,21 @@ namespace Pulumi.VSphere
         [Input("hostClusterExitTimeout")]
         public Input<int>? HostClusterExitTimeout { get; set; }
 
+        /// <summary>
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `host` resource rather than the
+        /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
+        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
+        /// </summary>
+        [Input("hostManaged")]
+        public Input<bool>? HostManaged { get; set; }
+
         [Input("hostSystemIds")]
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The managed object IDs of
-        /// the hosts to put in the cluster.
+        /// The [managed object IDs][docs-about-morefs] of
+        /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         public InputList<string> HostSystemIds
         {

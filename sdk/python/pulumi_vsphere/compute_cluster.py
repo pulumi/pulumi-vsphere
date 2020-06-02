@@ -298,10 +298,17 @@ class ComputeCluster(pulumi.CustomResource):
     operation when removing hosts from a cluster. The value is specified in
     seconds. Default: `3600` (1 hour).
     """
+    host_managed: pulumi.Output[bool]
+    """
+    Can be set to `true` if compute cluster
+    membership will be managed through the `host` resource rather than the
+    `compute_cluster` resource. Conflicts with: `host_system_ids`.
+    >>>>>>> v1.18.3
+    """
     host_system_ids: pulumi.Output[list]
     """
-    The managed object IDs of
-    the hosts to put in the cluster.
+    The [managed object IDs][docs-about-morefs] of
+    the hosts to put in the cluster. Conflicts with: `host_managed`.
     """
     name: pulumi.Output[str]
     """
@@ -351,7 +358,7 @@ class ComputeCluster(pulumi.CustomResource):
     """
     The IDs of any tags to attach to this resource.
     """
-    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         > **A note on the naming of this resource:** VMware refers to clusters of
         hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
@@ -579,8 +586,12 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
-        :param pulumi.Input[list] host_system_ids: The managed object IDs of
-               the hosts to put in the cluster.
+        :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
+               membership will be managed through the `host` resource rather than the
+               `compute_cluster` resource. Conflicts with: `host_system_ids`.
+               >>>>>>> v1.18.3
+        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+               the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
                quarantine, maintenance mode, or virtual machine migration recommendations
@@ -668,6 +679,7 @@ class ComputeCluster(pulumi.CustomResource):
             __props__['ha_vm_restart_priority'] = ha_vm_restart_priority
             __props__['ha_vm_restart_timeout'] = ha_vm_restart_timeout
             __props__['host_cluster_exit_timeout'] = host_cluster_exit_timeout
+            __props__['host_managed'] = host_managed
             __props__['host_system_ids'] = host_system_ids
             __props__['name'] = name
             __props__['proactive_ha_automation_level'] = proactive_ha_automation_level
@@ -684,7 +696,7 @@ class ComputeCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, resource_pool_id=None, tags=None):
+    def get(resource_name, id, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, resource_pool_id=None, tags=None):
         """
         Get an existing ComputeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -848,8 +860,12 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
-        :param pulumi.Input[list] host_system_ids: The managed object IDs of
-               the hosts to put in the cluster.
+        :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
+               membership will be managed through the `host` resource rather than the
+               `compute_cluster` resource. Conflicts with: `host_system_ids`.
+               >>>>>>> v1.18.3
+        :param pulumi.Input[list] host_system_ids: The [managed object IDs][docs-about-morefs] of
+               the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
                quarantine, maintenance mode, or virtual machine migration recommendations
@@ -923,6 +939,7 @@ class ComputeCluster(pulumi.CustomResource):
         __props__["ha_vm_restart_priority"] = ha_vm_restart_priority
         __props__["ha_vm_restart_timeout"] = ha_vm_restart_timeout
         __props__["host_cluster_exit_timeout"] = host_cluster_exit_timeout
+        __props__["host_managed"] = host_managed
         __props__["host_system_ids"] = host_system_ids
         __props__["name"] = name
         __props__["proactive_ha_automation_level"] = proactive_ha_automation_level

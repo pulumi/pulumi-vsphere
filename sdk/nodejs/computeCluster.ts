@@ -423,8 +423,15 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly hostClusterExitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The managed object IDs of
-     * the hosts to put in the cluster.
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `host` resource rather than the
+     * `computeCluster` resource. Conflicts with: `hostSystemIds`.
+     * >>>>>>> v1.18.3
+     */
+    public readonly hostManaged!: pulumi.Output<boolean | undefined>;
+    /**
+     * The [managed object IDs][docs-about-morefs] of
+     * the hosts to put in the cluster. Conflicts with: `hostManaged`.
      */
     public readonly hostSystemIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -532,6 +539,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["haVmRestartPriority"] = state ? state.haVmRestartPriority : undefined;
             inputs["haVmRestartTimeout"] = state ? state.haVmRestartTimeout : undefined;
             inputs["hostClusterExitTimeout"] = state ? state.hostClusterExitTimeout : undefined;
+            inputs["hostManaged"] = state ? state.hostManaged : undefined;
             inputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["proactiveHaAutomationLevel"] = state ? state.proactiveHaAutomationLevel : undefined;
@@ -590,6 +598,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["haVmRestartPriority"] = args ? args.haVmRestartPriority : undefined;
             inputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
             inputs["hostClusterExitTimeout"] = args ? args.hostClusterExitTimeout : undefined;
+            inputs["hostManaged"] = args ? args.hostManaged : undefined;
             inputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["proactiveHaAutomationLevel"] = args ? args.proactiveHaAutomationLevel : undefined;
@@ -904,8 +913,15 @@ export interface ComputeClusterState {
      */
     readonly hostClusterExitTimeout?: pulumi.Input<number>;
     /**
-     * The managed object IDs of
-     * the hosts to put in the cluster.
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `host` resource rather than the
+     * `computeCluster` resource. Conflicts with: `hostSystemIds`.
+     * >>>>>>> v1.18.3
+     */
+    readonly hostManaged?: pulumi.Input<boolean>;
+    /**
+     * The [managed object IDs][docs-about-morefs] of
+     * the hosts to put in the cluster. Conflicts with: `hostManaged`.
      */
     readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1251,8 +1267,15 @@ export interface ComputeClusterArgs {
      */
     readonly hostClusterExitTimeout?: pulumi.Input<number>;
     /**
-     * The managed object IDs of
-     * the hosts to put in the cluster.
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `host` resource rather than the
+     * `computeCluster` resource. Conflicts with: `hostSystemIds`.
+     * >>>>>>> v1.18.3
+     */
+    readonly hostManaged?: pulumi.Input<boolean>;
+    /**
+     * The [managed object IDs][docs-about-morefs] of
+     * the hosts to put in the cluster. Conflicts with: `hostManaged`.
      */
     readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

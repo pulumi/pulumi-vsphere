@@ -706,8 +706,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+o
 github.com/pulumi/pulumi/sdk/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.3.0 h1:uvRYCmoHILKlyyIbXa5CcLSKKt9n2s8j+GKTffpXQf4=
 github.com/pulumi/pulumi/sdk/v2 v2.3.0/go.mod h1:cvivzHVRA5Xu3NSE/obmHzO3L693IJSd5QccQuBOMUE=
-github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200512231103-62886ac006b5 h1:4ky6n2mjLMnBRHwkozp4WQ5x4qTqod1P2B5KFaZJ2+c=
-github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200512231103-62886ac006b5/go.mod h1:a1mEaZ0sy5RL+ukbqPvY1N6dw9K0yG7EYWZZkfJUeyA=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200602092320-28748e1841c5 h1:p0gkP6veixjWCspg9LJjJfG0zo+a4moE5gArq3/YrJ8=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200602092320-28748e1841c5/go.mod h1:a1mEaZ0sy5RL+ukbqPvY1N6dw9K0yG7EYWZZkfJUeyA=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=

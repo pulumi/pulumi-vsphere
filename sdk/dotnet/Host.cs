@@ -99,10 +99,19 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set.
+        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
+        /// `cluster`.
         /// </summary>
         [Output("cluster")]
         public Output<string?> Cluster { get; private set; } = null!;
+
+        /// <summary>
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `compute_cluster` resource rather
+        /// than the`host` resource. Conflicts with: `cluster`.
+        /// </summary>
+        [Output("clusterManaged")]
+        public Output<bool?> ClusterManaged { get; private set; } = null!;
 
         /// <summary>
         /// If set to false then the host will be disconected.
@@ -221,10 +230,19 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set.
+        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
+        /// `cluster`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `compute_cluster` resource rather
+        /// than the`host` resource. Conflicts with: `cluster`.
+        /// </summary>
+        [Input("clusterManaged")]
+        public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
         /// If set to false then the host will be disconected.
@@ -304,10 +322,19 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
-        /// be added to. This should not be set if `datacenter` is set.
+        /// be added to. This should not be set if `datacenter` is set. Conflicts with:
+        /// `cluster`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Can be set to `true` if compute cluster
+        /// membership will be managed through the `compute_cluster` resource rather
+        /// than the`host` resource. Conflicts with: `cluster`.
+        /// </summary>
+        [Input("clusterManaged")]
+        public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
         /// If set to false then the host will be disconected.
