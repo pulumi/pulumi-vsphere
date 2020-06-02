@@ -94,9 +94,16 @@ export class Host extends pulumi.CustomResource {
 
     /**
      * The ID of the Compute Cluster this host should
-     * be added to. This should not be set if `datacenter` is set.
+     * be added to. This should not be set if `datacenter` is set. Conflicts with:
+     * `cluster`.
      */
     public readonly cluster!: pulumi.Output<string | undefined>;
+    /**
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `computeCluster` resource rather
+     * than the`host` resource. Conflicts with: `cluster`.
+     */
+    public readonly clusterManaged!: pulumi.Output<boolean | undefined>;
     /**
      * If set to false then the host will be disconected.
      * Default is `false`.
@@ -160,6 +167,7 @@ export class Host extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as HostState | undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
+            inputs["clusterManaged"] = state ? state.clusterManaged : undefined;
             inputs["connected"] = state ? state.connected : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -182,6 +190,7 @@ export class Host extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
+            inputs["clusterManaged"] = args ? args.clusterManaged : undefined;
             inputs["connected"] = args ? args.connected : undefined;
             inputs["datacenter"] = args ? args.datacenter : undefined;
             inputs["force"] = args ? args.force : undefined;
@@ -210,9 +219,16 @@ export class Host extends pulumi.CustomResource {
 export interface HostState {
     /**
      * The ID of the Compute Cluster this host should
-     * be added to. This should not be set if `datacenter` is set.
+     * be added to. This should not be set if `datacenter` is set. Conflicts with:
+     * `cluster`.
      */
     readonly cluster?: pulumi.Input<string>;
+    /**
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `computeCluster` resource rather
+     * than the`host` resource. Conflicts with: `cluster`.
+     */
+    readonly clusterManaged?: pulumi.Input<boolean>;
     /**
      * If set to false then the host will be disconected.
      * Default is `false`.
@@ -270,9 +286,16 @@ export interface HostState {
 export interface HostArgs {
     /**
      * The ID of the Compute Cluster this host should
-     * be added to. This should not be set if `datacenter` is set.
+     * be added to. This should not be set if `datacenter` is set. Conflicts with:
+     * `cluster`.
      */
     readonly cluster?: pulumi.Input<string>;
+    /**
+     * Can be set to `true` if compute cluster
+     * membership will be managed through the `computeCluster` resource rather
+     * than the`host` resource. Conflicts with: `cluster`.
+     */
+    readonly clusterManaged?: pulumi.Input<boolean>;
     /**
      * If set to false then the host will be disconected.
      * Default is `false`.

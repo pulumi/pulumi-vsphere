@@ -13,7 +13,14 @@ class Host(pulumi.CustomResource):
     cluster: pulumi.Output[str]
     """
     The ID of the Compute Cluster this host should
-    be added to. This should not be set if `datacenter` is set.
+    be added to. This should not be set if `datacenter` is set. Conflicts with:
+    `cluster`.
+    """
+    cluster_managed: pulumi.Output[bool]
+    """
+    Can be set to `true` if compute cluster
+    membership will be managed through the `compute_cluster` resource rather
+    than the`host` resource. Conflicts with: `cluster`.
     """
     connected: pulumi.Output[bool]
     """
@@ -64,7 +71,7 @@ class Host(pulumi.CustomResource):
     Username that will be used by vSphere to authenticate
     to the host.
     """
-    def __init__(__self__, resource_name, opts=None, cluster=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster=None, cluster_managed=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a VMware vSphere host resource. This represents an ESXi host that
         can be used either as part of a Compute Cluster or Standalone.
@@ -119,7 +126,11 @@ class Host(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
-               be added to. This should not be set if `datacenter` is set.
+               be added to. This should not be set if `datacenter` is set. Conflicts with:
+               `cluster`.
+        :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
+               membership will be managed through the `compute_cluster` resource rather
+               than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
@@ -158,6 +169,7 @@ class Host(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['cluster'] = cluster
+            __props__['cluster_managed'] = cluster_managed
             __props__['connected'] = connected
             __props__['datacenter'] = datacenter
             __props__['force'] = force
@@ -181,7 +193,7 @@ class Host(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None):
+    def get(resource_name, id, opts=None, cluster=None, cluster_managed=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None):
         """
         Get an existing Host resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -190,7 +202,11 @@ class Host(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
-               be added to. This should not be set if `datacenter` is set.
+               be added to. This should not be set if `datacenter` is set. Conflicts with:
+               `cluster`.
+        :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
+               membership will be managed through the `compute_cluster` resource rather
+               than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
@@ -216,6 +232,7 @@ class Host(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["cluster"] = cluster
+        __props__["cluster_managed"] = cluster_managed
         __props__["connected"] = connected
         __props__["datacenter"] = datacenter
         __props__["force"] = force

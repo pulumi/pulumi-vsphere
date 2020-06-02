@@ -280,8 +280,13 @@ type ComputeCluster struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrOutput `pulumi:"hostClusterExitTimeout"`
-	// The managed object IDs of
-	// the hosts to put in the cluster.
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `host` resource rather than the
+	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+	// >>>>>>> v1.18.3
+	HostManaged pulumi.BoolPtrOutput `pulumi:"hostManaged"`
+	// The [managed object IDs][docs-about-morefs] of
+	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -548,8 +553,13 @@ type computeClusterState struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
-	// The managed object IDs of
-	// the hosts to put in the cluster.
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `host` resource rather than the
+	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+	// >>>>>>> v1.18.3
+	HostManaged *bool `pulumi:"hostManaged"`
+	// The [managed object IDs][docs-about-morefs] of
+	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
 	Name *string `pulumi:"name"`
@@ -786,8 +796,13 @@ type ComputeClusterState struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
-	// The managed object IDs of
-	// the hosts to put in the cluster.
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `host` resource rather than the
+	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+	// >>>>>>> v1.18.3
+	HostManaged pulumi.BoolPtrInput
+	// The [managed object IDs][docs-about-morefs] of
+	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.
 	Name pulumi.StringPtrInput
@@ -1028,8 +1043,13 @@ type computeClusterArgs struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
-	// The managed object IDs of
-	// the hosts to put in the cluster.
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `host` resource rather than the
+	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+	// >>>>>>> v1.18.3
+	HostManaged *bool `pulumi:"hostManaged"`
+	// The [managed object IDs][docs-about-morefs] of
+	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
 	Name *string `pulumi:"name"`
@@ -1265,8 +1285,13 @@ type ComputeClusterArgs struct {
 	// operation when removing hosts from a cluster. The value is specified in
 	// seconds. Default: `3600` (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
-	// The managed object IDs of
-	// the hosts to put in the cluster.
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `host` resource rather than the
+	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+	// >>>>>>> v1.18.3
+	HostManaged pulumi.BoolPtrInput
+	// The [managed object IDs][docs-about-morefs] of
+	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.
 	Name pulumi.StringPtrInput

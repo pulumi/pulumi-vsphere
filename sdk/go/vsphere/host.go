@@ -16,8 +16,13 @@ type Host struct {
 	pulumi.CustomResourceState
 
 	// The ID of the Compute Cluster this host should
-	// be added to. This should not be set if `datacenter` is set.
+	// be added to. This should not be set if `datacenter` is set. Conflicts with:
+	// `cluster`.
 	Cluster pulumi.StringPtrOutput `pulumi:"cluster"`
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `computeCluster` resource rather
+	// than the`host` resource. Conflicts with: `cluster`.
+	ClusterManaged pulumi.BoolPtrOutput `pulumi:"clusterManaged"`
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrOutput `pulumi:"connected"`
@@ -87,8 +92,13 @@ func GetHost(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Host resources.
 type hostState struct {
 	// The ID of the Compute Cluster this host should
-	// be added to. This should not be set if `datacenter` is set.
+	// be added to. This should not be set if `datacenter` is set. Conflicts with:
+	// `cluster`.
 	Cluster *string `pulumi:"cluster"`
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `computeCluster` resource rather
+	// than the`host` resource. Conflicts with: `cluster`.
+	ClusterManaged *bool `pulumi:"clusterManaged"`
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
@@ -122,8 +132,13 @@ type hostState struct {
 
 type HostState struct {
 	// The ID of the Compute Cluster this host should
-	// be added to. This should not be set if `datacenter` is set.
+	// be added to. This should not be set if `datacenter` is set. Conflicts with:
+	// `cluster`.
 	Cluster pulumi.StringPtrInput
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `computeCluster` resource rather
+	// than the`host` resource. Conflicts with: `cluster`.
+	ClusterManaged pulumi.BoolPtrInput
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
@@ -161,8 +176,13 @@ func (HostState) ElementType() reflect.Type {
 
 type hostArgs struct {
 	// The ID of the Compute Cluster this host should
-	// be added to. This should not be set if `datacenter` is set.
+	// be added to. This should not be set if `datacenter` is set. Conflicts with:
+	// `cluster`.
 	Cluster *string `pulumi:"cluster"`
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `computeCluster` resource rather
+	// than the`host` resource. Conflicts with: `cluster`.
+	ClusterManaged *bool `pulumi:"clusterManaged"`
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
@@ -197,8 +217,13 @@ type hostArgs struct {
 // The set of arguments for constructing a Host resource.
 type HostArgs struct {
 	// The ID of the Compute Cluster this host should
-	// be added to. This should not be set if `datacenter` is set.
+	// be added to. This should not be set if `datacenter` is set. Conflicts with:
+	// `cluster`.
 	Cluster pulumi.StringPtrInput
+	// Can be set to `true` if compute cluster
+	// membership will be managed through the `computeCluster` resource rather
+	// than the`host` resource. Conflicts with: `cluster`.
+	ClusterManaged pulumi.BoolPtrInput
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
