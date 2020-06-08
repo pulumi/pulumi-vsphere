@@ -77,10 +77,10 @@ export interface GetDistributedVirtualSwitchArgs {
  */
 export interface GetDistributedVirtualSwitchResult {
     readonly datacenterId?: string;
-    readonly name: string;
-    readonly uplinks: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
+    readonly uplinks: string[];
 }

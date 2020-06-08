@@ -55,9 +55,9 @@ export interface GetFolderArgs {
  * A collection of values returned by getFolder.
  */
 export interface GetFolderResult {
-    readonly path: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly path: string;
 }

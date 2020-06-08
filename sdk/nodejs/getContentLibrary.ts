@@ -52,9 +52,9 @@ export interface GetContentLibraryArgs {
  * A collection of values returned by getContentLibrary.
  */
 export interface GetContentLibraryResult {
-    readonly name: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
 }

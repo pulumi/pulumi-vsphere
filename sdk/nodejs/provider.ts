@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,20 +35,18 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        {
-            inputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) || utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
-            inputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) || utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
-            inputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
-            inputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
-            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("VSPHERE_PASSWORD");
-            inputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) || utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
-            inputs["restSessionPath"] = (args ? args.restSessionPath : undefined) || utilities.getEnv("VSPHERE_REST_SESSION_PATH");
-            inputs["user"] = (args ? args.user : undefined) || utilities.getEnv("VSPHERE_USER");
-            inputs["vcenterServer"] = args ? args.vcenterServer : undefined;
-            inputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) || utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
-            inputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) || utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
-            inputs["vsphereServer"] = (args ? args.vsphereServer : undefined) || utilities.getEnv("VSPHERE_SERVER");
-        }
+        inputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) || <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
+        inputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) || <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
+        inputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+        inputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+        inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("VSPHERE_PASSWORD");
+        inputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) || <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
+        inputs["restSessionPath"] = (args ? args.restSessionPath : undefined) || utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+        inputs["user"] = (args ? args.user : undefined) || utilities.getEnv("VSPHERE_USER");
+        inputs["vcenterServer"] = args ? args.vcenterServer : undefined;
+        inputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) || <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
+        inputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) || utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+        inputs["vsphereServer"] = (args ? args.vsphereServer : undefined) || utilities.getEnv("VSPHERE_SERVER");
         if (!opts) {
             opts = {}
         }
@@ -98,6 +94,9 @@ export interface ProviderArgs {
      * The user name for vSphere API operations.
      */
     readonly user?: pulumi.Input<string>;
+    /**
+     * @deprecated This field has been renamed to vsphere_server.
+     */
     readonly vcenterServer?: pulumi.Input<string>;
     /**
      * Keep alive interval for the VIM session in minutes

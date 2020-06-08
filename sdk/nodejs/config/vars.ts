@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("vsphere");
@@ -9,11 +11,11 @@ let __config = new pulumi.Config("vsphere");
 /**
  * If set, VMware vSphere client will permit unverifiable SSL certificates.
  */
-export let allowUnverifiedSsl: boolean | undefined = __config.getObject<boolean>("allowUnverifiedSsl") || utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
+export let allowUnverifiedSsl: boolean | undefined = __config.getObject<boolean>("allowUnverifiedSsl") || <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
 /**
  * govmomi debug
  */
-export let clientDebug: boolean | undefined = __config.getObject<boolean>("clientDebug") || utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
+export let clientDebug: boolean | undefined = __config.getObject<boolean>("clientDebug") || <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
 /**
  * govmomi debug path for debug
  */
@@ -29,7 +31,7 @@ export let password: string | undefined = __config.get("password") || utilities.
 /**
  * Persist vSphere client sessions to disk
  */
-export let persistSession: boolean | undefined = __config.getObject<boolean>("persistSession") || utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
+export let persistSession: boolean | undefined = __config.getObject<boolean>("persistSession") || <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
 /**
  * The directory to save vSphere REST API sessions to
  */
@@ -42,7 +44,7 @@ export let vcenterServer: string | undefined = __config.get("vcenterServer");
 /**
  * Keep alive interval for the VIM session in minutes
  */
-export let vimKeepAlive: number | undefined = __config.getObject<number>("vimKeepAlive") || utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
+export let vimKeepAlive: number | undefined = __config.getObject<number>("vimKeepAlive") || <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
 /**
  * The directory to save vSphere SOAP API sessions to
  */

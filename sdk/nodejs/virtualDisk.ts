@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -37,6 +35,7 @@ export class VirtualDisk extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VirtualDiskState, opts?: pulumi.CustomResourceOptions): VirtualDisk {
         return new VirtualDisk(name, <any>state, { ...opts, id: id });
@@ -59,6 +58,8 @@ export class VirtualDisk extends pulumi.CustomResource {
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     *
+     * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
     public readonly adapterType!: pulumi.Output<string | undefined>;
     /**
@@ -151,6 +152,7 @@ export interface VirtualDiskState {
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     *
      * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
     readonly adapterType?: pulumi.Input<string>;
@@ -196,6 +198,7 @@ export interface VirtualDiskArgs {
     /**
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     *
      * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
     readonly adapterType?: pulumi.Input<string>;

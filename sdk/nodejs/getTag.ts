@@ -67,9 +67,9 @@ export interface GetTagArgs {
 export interface GetTagResult {
     readonly categoryId: string;
     readonly description: string;
-    readonly name: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
 }

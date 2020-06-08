@@ -84,6 +84,7 @@ export class HostPortGroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HostPortGroupState, opts?: pulumi.CustomResourceOptions): HostPortGroup {
         return new HostPortGroup(name, <any>state, { ...opts, id: id });
@@ -108,8 +109,8 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     public readonly activeNics!: pulumi.Output<string[] | undefined>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     public readonly allowForgedTransmits!: pulumi.Output<boolean | undefined>;
     /**
@@ -121,8 +122,8 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     public readonly allowPromiscuous!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is
-     * used only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     public readonly checkBeacon!: pulumi.Output<boolean | undefined>;
     /**
@@ -276,8 +277,8 @@ export interface HostPortGroupState {
      */
     readonly activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     readonly allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -289,8 +290,8 @@ export interface HostPortGroupState {
      */
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is
-     * used only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     readonly checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -373,8 +374,8 @@ export interface HostPortGroupArgs {
      */
     readonly activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     readonly allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -386,8 +387,8 @@ export interface HostPortGroupArgs {
      */
     readonly allowPromiscuous?: pulumi.Input<boolean>;
     /**
-     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is
-     * used only.
+     * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+     * only.
      */
     readonly checkBeacon?: pulumi.Input<boolean>;
     /**

@@ -76,10 +76,10 @@ export interface GetNetworkArgs {
 export interface GetNetworkResult {
     readonly datacenterId?: string;
     readonly distributedVirtualSwitchUuid?: string;
-    readonly name: string;
-    readonly type: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
+    readonly type: string;
 }
