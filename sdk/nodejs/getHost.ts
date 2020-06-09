@@ -63,14 +63,14 @@ export interface GetHostArgs {
  */
 export interface GetHostResult {
     readonly datacenterId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name?: string;
     /**
      * The managed object ID of the host's
      * root resource pool.
      */
     readonly resourcePoolId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

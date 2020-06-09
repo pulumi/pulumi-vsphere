@@ -48,7 +48,7 @@ build:: install_plugins provider
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 install_plugins::
-	pulumi plugin install resource $(PACK) 2.3.3
+	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
 
 provider:: generate_schema
 	cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go

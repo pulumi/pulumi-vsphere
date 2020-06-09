@@ -59,9 +59,9 @@ export interface GetTagCategoryResult {
     readonly associableTypes: string[];
     readonly cardinality: string;
     readonly description: string;
-    readonly name: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
 }

@@ -69,9 +69,9 @@ export interface GetDatastoreClusterArgs {
  */
 export interface GetDatastoreClusterResult {
     readonly datacenterId?: string;
-    readonly name: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
 }

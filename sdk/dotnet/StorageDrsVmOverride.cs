@@ -83,7 +83,7 @@ namespace Pulumi.VSphere
     ///         var drsVmOverride = new VSphere.StorageDrsVmOverride("drsVmOverride", new VSphere.StorageDrsVmOverrideArgs
     ///         {
     ///             DatastoreClusterId = datastoreCluster.Apply(datastoreCluster =&gt; datastoreCluster.Id),
-    ///             SdrsEnabled = false,
+    ///             SdrsEnabled = "false",
     ///             VirtualMachineId = vm.Id,
     ///         });
     ///     }

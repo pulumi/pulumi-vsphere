@@ -102,6 +102,10 @@ export interface GetVirtualMachineResult {
      * A list of IP addresses as reported by VMWare tools.
      */
     readonly guestIpAddresses: string[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     /**
      * The network interface types for each network
@@ -124,8 +128,4 @@ export interface GetVirtualMachineResult {
      * defined by `scsiControllerScanCount` are scanned.
      */
     readonly scsiType: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

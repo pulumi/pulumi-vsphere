@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DistributedPortGroupVlanRange {
     maxVlan: pulumi.Input<number>;
@@ -198,6 +199,18 @@ export interface VirtualMachineDisk {
     /**
      * An alias for both `label` and `path`, the latter when
      * using `attach`. Required if not using `label`.
+     *
+     * @deprecated 
+The name attribute for virtual disks will be removed in favor of "label" in
+future releases. To transition existing disks, rename the "name" attribute to
+"label". When doing so, ensure the value of the attribute stays the same.
+
+Note that "label" does not control the name of a VMDK and does not need to bear
+the name of one on new disks or virtual machines. For more information, see the
+documentation for the label attribute at: 
+
+https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
+
      */
     name?: pulumi.Input<string>;
     /**

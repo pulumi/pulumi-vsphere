@@ -59,6 +59,6 @@ export * from "./vmfsDatastore";
 export * from "./vnic";
 
 // Export sub-modules:
-import * as config from "./config/index";
-import * as types from "./types/index";
+import * as config from "./config";
+import * as types from "./types";
 export {config, types};

@@ -128,6 +128,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DistributedPortGroupState, opts?: pulumi.CustomResourceOptions): DistributedPortGroup {
         return new DistributedPortGroup(name, <any>state, { ...opts, id: id });
@@ -152,8 +153,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly activeUplinks!: pulumi.Output<string[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     public readonly allowForgedTransmits!: pulumi.Output<boolean>;
     /**
@@ -337,8 +338,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly trafficFilterOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular
-     * packet forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     public readonly txUplink!: pulumi.Output<boolean>;
     /**
@@ -500,8 +501,8 @@ export interface DistributedPortGroupState {
      */
     readonly activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     readonly allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -685,8 +686,8 @@ export interface DistributedPortGroupState {
      */
     readonly trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular
-     * packet forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     readonly txUplink?: pulumi.Input<boolean>;
     /**
@@ -724,8 +725,8 @@ export interface DistributedPortGroupArgs {
      */
     readonly activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address
-     * than that of its own.
+     * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+     * that of its own.
      */
     readonly allowForgedTransmits?: pulumi.Input<boolean>;
     /**
@@ -901,8 +902,8 @@ export interface DistributedPortGroupArgs {
      */
     readonly trafficFilterOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular
-     * packet forwarded done by the switch.
+     * If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+     * forwarded done by the switch.
      */
     readonly txUplink?: pulumi.Input<boolean>;
     /**

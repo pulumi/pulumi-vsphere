@@ -109,6 +109,9 @@ class VirtualDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if adapter_type is not None:
+                warnings.warn("this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead", DeprecationWarning)
+                pulumi.log.warn("adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead")
             __props__['adapter_type'] = adapter_type
             __props__['create_directories'] = create_directories
             __props__['datacenter'] = datacenter
