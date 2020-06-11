@@ -11,6 +11,7 @@ import (
 )
 
 func TestAccMinimal(t *testing.T) {
+	skipIfNoVsphereConfig(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "minimal"),
@@ -20,6 +21,7 @@ func TestAccMinimal(t *testing.T) {
 }
 
 func TestAccWebserver(t *testing.T) {
+	skipIfNoVsphereConfig(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:           path.Join(getCwd(t), "webserver"),

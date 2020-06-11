@@ -21,3 +21,18 @@ func getCwd(t *testing.T) string {
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{}
 }
+
+func skipIfNoVsphereConfig(t *testing.T) {
+	_, server := os.LookupEnv("VSPHERE_SERVER")
+	if !server {
+		t.Skipf("Skipping: VSPHERE_SERVER is not set")
+	}
+	_, user := os.LookupEnv("VSPHERE_USER")
+	if !user {
+		t.Skipf("Skipping: VSPHERE_USER is not set")
+	}
+	_, pass := os.LookupEnv("VSPHERE_PASSWORD")
+	if !pass {
+		t.Skipf("Skipping: VSPHERE_PASSWORD is not set")
+	}
+}
