@@ -4,30 +4,10 @@ package examples
 
 import (
 	"os"
-	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
-
-func TestAccMinimal(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "minimal"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-
-func TestAccWebserver(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "webserver"),
-			RunUpdateTest: true,
-		})
-
-	integration.ProgramTest(t, &test)
-}
 
 func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
@@ -40,15 +20,4 @@ func getCwd(t *testing.T) string {
 
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{}
-}
-
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
-	baseJS := base.With(integration.ProgramTestOptions{
-		Dependencies: []string{
-			"@pulumi/vsphere",
-		},
-	})
-
-	return baseJS
 }
