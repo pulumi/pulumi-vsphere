@@ -109,9 +109,9 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_compute_cluster":                         {Tok: vsphereResource(vsphereMod, "ComputeCluster")},
 			"vsphere_compute_cluster_host_group":              {Tok: vsphereResource(vsphereMod, "ComputeClusterHostGroup")},
-			"vsphere_compute_cluster_vm_affinity_rule":        {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAffinityRule")},
-			"vsphere_compute_cluster_vm_anti_affinity_rule":   {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAntiAffinityRule")},
-			"vsphere_compute_cluster_vm_dependency_rule":      {Tok: vsphereResource(vsphereMod, "ComputeClusterVmDependencyRule")},
+			"vsphere_compute_cluster_vm_affinity_rule":        {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAffinityRule")}, // nolint[:lll]
+			"vsphere_compute_cluster_vm_anti_affinity_rule":   {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAntiAffinityRule")}, // nolint[:lll]
+			"vsphere_compute_cluster_vm_dependency_rule":      {Tok: vsphereResource(vsphereMod, "ComputeClusterVmDependencyRule")}, // nolint[:lll]
 			"vsphere_compute_cluster_vm_group":                {Tok: vsphereResource(vsphereMod, "ComputeClusterVmGroup")},
 			"vsphere_compute_cluster_vm_host_rule":            {Tok: vsphereResource(vsphereMod, "ComputeClusterVmHostRule")},
 			"vsphere_content_library":                         {Tok: vsphereResource(vsphereMod, "ContentLibrary")},
@@ -119,7 +119,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_custom_attribute":                        {Tok: vsphereResource(vsphereMod, "CustomAttribute")},
 			"vsphere_datacenter":                              {Tok: vsphereResource(vsphereMod, "Datacenter")},
 			"vsphere_datastore_cluster":                       {Tok: vsphereResource(vsphereMod, "DatastoreCluster")},
-			"vsphere_datastore_cluster_vm_anti_affinity_rule": {Tok: vsphereResource(vsphereMod, "DatastoreClusterVmAntiAffinityRule")},
+			"vsphere_datastore_cluster_vm_anti_affinity_rule": {Tok: vsphereResource(vsphereMod, "DatastoreClusterVmAntiAffinityRule")}, // nolint[:lll]
 			"vsphere_distributed_port_group":                  {Tok: vsphereResource(vsphereMod, "DistributedPortGroup")},
 			"vsphere_distributed_virtual_switch":              {Tok: vsphereResource(vsphereMod, "DistributedVirtualSwitch")},
 			"vsphere_dpm_host_override":                       {Tok: vsphereResource(vsphereMod, "DpmHostOverride")},
