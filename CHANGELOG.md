@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.3.5 (2020-06-11)
+* Switch to GitHub actions for build
+
 ## 2.3.4 (2020-06-02)
 * Upgrade to v1.18.3 of the vSphere Terraform Provider
 
