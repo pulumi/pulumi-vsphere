@@ -46,7 +46,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, consolidate=None, description=None, memory=None, quiesce=None, remove_children=None, snapshot_name=None, virtual_machine_uuid=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.VirtualMachineSnapshot` resource can be used to manage snapshots
+        The `VirtualMachineSnapshot` resource can be used to manage snapshots
         for a virtual machine.
 
         For more information on managing snapshots and how they work in VMware, see
@@ -58,7 +58,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         can contain the actual running state of the virtual machine, data for all disks
         that have not been set to be independent from the snapshot (including ones that
         have been attached via the `attach`
-        parameter to the `.VirtualMachine` `disk` block), and even the
+        parameter to the `VirtualMachine` `disk` block), and even the
         configuration of the virtual machine at the time of the snapshot. Virtual
         machine, disk activity, and configuration changes post-snapshot are not
         included in the original state. Use this resource with care! Neither VMware nor
@@ -85,7 +85,6 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
             snapshot_name="Snapshot Name",
             virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

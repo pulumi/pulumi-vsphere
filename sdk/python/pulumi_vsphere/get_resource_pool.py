@@ -38,10 +38,10 @@ class AwaitableGetResourcePoolResult(GetResourcePoolResult):
 
 def get_resource_pool(datacenter_id=None,name=None,opts=None):
     """
-    The `.ResourcePool` data source can be used to discover the ID of a
+    The `ResourcePool` data source can be used to discover the ID of a
     resource pool in vSphere. This is useful to fetch the ID of a resource pool
     that you want to use to create virtual machines in using the
-    `.VirtualMachine` resource. 
+    `VirtualMachine` resource. 
 
     ## Example Usage
 
@@ -62,17 +62,16 @@ def get_resource_pool(datacenter_id=None,name=None,opts=None):
     import pulumi
     import pulumi_vsphere as vsphere
 
-    pool = vsphere.get_resource_pool(datacenter_id=data[".Datacenter"]["dc"]["id"],
+    pool = vsphere.get_resource_pool(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
         name="esxi1/Resources")
     ```
-
 
 
     :param str datacenter_id: The managed object reference
            ID of the datacenter the resource pool is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the id attribute from an empty
-           `.Datacenter` data source.
+           `Datacenter` data source.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
     """

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..Folder` data source can be used to get the general attributes of a
+ * The `vsphere.Folder` data source can be used to get the general attributes of a
  * vSphere inventory folder. Paths are absolute and include must include the
  * datacenter.  
  *

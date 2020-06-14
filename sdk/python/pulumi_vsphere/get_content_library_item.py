@@ -38,7 +38,7 @@ class AwaitableGetContentLibraryItemResult(GetContentLibraryItemResult):
 
 def get_content_library_item(library_id=None,name=None,opts=None):
     """
-    The `.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+    The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
 
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
@@ -55,7 +55,6 @@ def get_content_library_item(library_id=None,name=None,opts=None):
     item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
         library_id=library.id)
     ```
-
 
 
     :param str library_id: The ID of the Content Library the item exists in.

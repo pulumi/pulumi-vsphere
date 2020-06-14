@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere..File` resource can be used to upload files (such as virtual disk
+    /// The `vsphere.File` resource can be used to upload files (such as virtual disk
     /// files) from the host machine that this provider is running on to a target
     /// datastore.  The resource can also be used to copy files between datastores, or
     /// from one location to another on the same datastore.

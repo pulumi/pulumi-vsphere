@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetContentLibrary
     {
         /// <summary>
-        /// The `vsphere..ContentLibrary` data source can be used to discover the ID of a Content Library.
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a Content Library.
         /// 
         /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
         /// connections.
@@ -37,7 +37,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

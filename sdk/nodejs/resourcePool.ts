@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..ResourcePool` resource can be used to create and manage
- * resource pools in standalone hosts or on compute clusters.
- *
- * For more information on vSphere resource pools, see [this
- * page][ref-vsphere-resource_pools].
- *
- * [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const config = new pulumi.Config();
- * const datacenter = config.get("datacenter") || "dc1";
- * const cluster = config.get("cluster") || "cluster1";
- *
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: datacenter,
- * }, { async: true }));
- * const computeCluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: cluster,
- * }, { async: true }));
- * const resourcePool = new vsphere.ResourcePool("resourcePool", {
- *     parentResourcePoolId: computeCluster.resourcePoolId,
- * });
- * ```
- */
 export class ResourcePool extends pulumi.CustomResource {
     /**
      * Get an existing ResourcePool resource's state with the given name, ID, and optional extra
@@ -144,7 +111,7 @@ export class ResourcePool extends pulumi.CustomResource {
      */
     public readonly parentResourcePoolId!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -288,7 +255,7 @@ export interface ResourcePoolState {
      */
     readonly parentResourcePoolId?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -376,7 +343,7 @@ export interface ResourcePoolArgs {
      */
     readonly parentResourcePoolId: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

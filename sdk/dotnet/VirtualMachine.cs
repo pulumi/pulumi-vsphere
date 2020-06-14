@@ -523,7 +523,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -1137,7 +1137,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -1745,7 +1745,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

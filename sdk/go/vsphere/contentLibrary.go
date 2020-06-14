@@ -10,10 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ContentLibrary` resource can be used to manage Content Libraries.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
 type ContentLibrary struct {
 	pulumi.CustomResourceState
 

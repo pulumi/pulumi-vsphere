@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+ * The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.

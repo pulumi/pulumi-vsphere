@@ -44,49 +44,7 @@ class Folder(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, path=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.Folder` resource can be used to manage vSphere inventory folders.
-        The resource supports creating folders of the 5 major types - datacenter
-        folders, host and cluster folders, virtual machine folders, datastore folders,
-        and network folders.
-
-        Paths are always relative to the specific type of folder you are creating.
-        Subfolders are discovered by parsing the relative path specified in `path`, so
-        `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-        as that folder exists.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter()
-        folder = vsphere.Folder("folder",
-            datacenter_id=dc.id,
-            path="test-folder",
-            type="vm")
-        ```
-
-        ### Example with subfolders
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter()
-        parent = vsphere.Folder("parent",
-            datacenter_id=dc.id,
-            path="test-parent",
-            type="vm")
-        folder = vsphere.Folder("folder",
-            datacenter_id=dc.id,
-            path=parent.path.apply(lambda path: f"{path}/test-folder"),
-            type="vm")
-        ```
-
-
+        Create a Folder resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 

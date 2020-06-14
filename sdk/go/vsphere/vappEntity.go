@@ -10,13 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VappEntity` resource can be used to describe the behavior of an
-// entity (virtual machine or sub-vApp container) in a vApp container.
-//
-// For more information on vSphere vApps, see [this
-// page][ref-vsphere-vapp].
-//
-// [ref-vsphere-vapp]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A95EBB8-1779-40FA-B4FB-4D0845750879.html
 type VappEntity struct {
 	pulumi.CustomResourceState
 

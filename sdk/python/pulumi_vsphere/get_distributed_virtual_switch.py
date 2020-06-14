@@ -42,10 +42,10 @@ class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResu
 
 def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     """
-    The `.DistributedVirtualSwitch` data source can be used to discover
+    The `DistributedVirtualSwitch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
     can then be used with resources or data sources that require a DVS, such as the
-    `.DistributedPortGroup` resource, for which
+    `DistributedPortGroup` resource, for which
     an example is shown below.
 
 
@@ -70,11 +70,10 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
     ```
 
 
-
     :param str datacenter_id: The managed object reference
            ID of the datacenter the DVS is located in. This can be
            omitted if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `.Datacenter` data
+           datacenters, use the id attribute from an empty `Datacenter` data
            source.
     :param str name: The name of the distributed virtual switch. This can be a
            name or path.

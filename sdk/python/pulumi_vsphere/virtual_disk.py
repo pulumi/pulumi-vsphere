@@ -50,8 +50,8 @@ class VirtualDisk(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, adapter_type=None, create_directories=None, datacenter=None, datastore=None, size=None, type=None, vmdk_path=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.VirtualDisk` resource can be used to create virtual disks outside
-        of any given `.VirtualMachine`
+        The `VirtualDisk` resource can be used to create virtual disks outside
+        of any given `VirtualMachine`
         resource. These disks can be attached to a virtual machine by creating a disk
         block with the `attach` parameter.
 
@@ -70,7 +70,6 @@ class VirtualDisk(pulumi.CustomResource):
             type="thin",
             vmdk_path="myDisk.vmdk")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

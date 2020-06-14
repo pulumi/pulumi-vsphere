@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..Datacenter` data source can be used to discover the ID of a
+ * The `vsphere.Datacenter` data source can be used to discover the ID of a
  * vSphere datacenter. This can then be used with resources or data sources that
- * require a datacenter, such as the `vsphere..Host`
+ * require a datacenter, such as the `vsphere.Host`
  * data source.
  *
  * ## Example Usage

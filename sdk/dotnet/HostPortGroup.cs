@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere..HostPortGroup` resource can be used to manage vSphere standard
+    /// The `vsphere.HostPortGroup` resource can be used to manage vSphere standard
     /// port groups on an ESXi host. These port groups are connected to standard
     /// virtual switches, which can be managed by the
-    /// `vsphere..HostVirtualSwitch` resource.
+    /// `vsphere.HostVirtualSwitch` resource.
     /// 
     /// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
     /// 

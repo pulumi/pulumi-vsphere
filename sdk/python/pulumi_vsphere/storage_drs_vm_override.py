@@ -44,54 +44,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, datastore_cluster_id=None, sdrs_automation_level=None, sdrs_enabled=None, sdrs_intra_vm_affinity=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.StorageDrsVmOverride` resource can be used to add a Storage DRS
-        override to a datastore cluster for a specific virtual machine. With this
-        resource, one can enable or disable Storage DRS, and control the automation
-        level and disk affinity for a single virtual machine without affecting the rest
-        of the datastore cluster.
-
-        For more information on vSphere datastore clusters and Storage DRS, see [this
-        page][ref-vsphere-datastore-clusters].
-
-        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter(name="dc1")
-        datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=dc.id,
-            name="datastore-cluster1")
-        member_datastore = vsphere.get_datastore(datacenter_id=dc.id,
-            name="datastore-cluster1-member1")
-        pool = vsphere.get_resource_pool(datacenter_id=dc.id,
-            name="cluster1/Resources")
-        network = vsphere.get_network(datacenter_id=dc.id,
-            name="public")
-        vm = vsphere.VirtualMachine("vm",
-            datastore_id=member_datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            memory=1024,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=pool.id)
-        drs_vm_override = vsphere.StorageDrsVmOverride("drsVmOverride",
-            datastore_cluster_id=datastore_cluster.id,
-            sdrs_enabled=False,
-            virtual_machine_id=vm.id)
-        ```
-
-
+        Create a StorageDrsVmOverride resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object reference

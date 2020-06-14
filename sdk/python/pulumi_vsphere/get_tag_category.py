@@ -46,9 +46,9 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
 
 def get_tag_category(name=None,opts=None):
     """
-    The `.TagCategory` data source can be used to reference tag categories
+    The `TagCategory` data source can be used to reference tag categories
     that are not managed by this provider. Its attributes are exactly the same as the
-    `.TagCategory` resource, and, like importing,
+    `TagCategory` resource, and, like importing,
     the data source takes a name to search on. The `id` and other attributes are
     then populated with the data found by the search.
 
@@ -65,7 +65,6 @@ def get_tag_category(name=None,opts=None):
 
     category = vsphere.get_tag_category(name="test-category")
     ```
-
 
 
     :param str name: The name of the tag category.

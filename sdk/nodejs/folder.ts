@@ -4,52 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..Folder` resource can be used to manage vSphere inventory folders.
- * The resource supports creating folders of the 5 major types - datacenter
- * folders, host and cluster folders, virtual machine folders, datastore folders,
- * and network folders.
- *
- * Paths are always relative to the specific type of folder you are creating.
- * Subfolders are discovered by parsing the relative path specified in `path`, so
- * `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
- * as that folder exists.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const dc = pulumi.output(vsphere.getDatacenter({ async: true }));
- * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.id,
- *     path: "test-folder",
- *     type: "vm",
- * });
- * ```
- *
- * ### Example with subfolders
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const dc = pulumi.output(vsphere.getDatacenter({ async: true }));
- * const parent = new vsphere.Folder("parent", {
- *     datacenterId: dc.id,
- *     path: "test-parent",
- *     type: "vm",
- * });
- * const folder = new vsphere.Folder("folder", {
- *     datacenterId: dc.id,
- *     path: pulumi.interpolate`${parent.path}/test-folder`,
- *     type: "vm",
- * });
- * ```
- */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra

@@ -11,6 +11,30 @@ import (
 )
 
 // Provides a VMware vSphere vnic resource.
+//
+//
+// ## Importing
+//
+// An existing vNic can be [imported][docs-import] into this resource
+// via supplying the vNic's ID. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The above would import the the vnic `vmk2` from host with ID `host-123`.
 type Vnic struct {
 	pulumi.CustomResourceState
 

@@ -49,67 +49,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, affinity_host_group_name=None, anti_affinity_host_group_name=None, compute_cluster_id=None, enabled=None, mandatory=None, name=None, vm_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.ComputeClusterVmHostRule` resource can be used to manage
-        VM-to-host rules in a cluster, either created by the
-        `.ComputeCluster` resource or looked up
-        by the `.ComputeCluster` data source.
-
-        This resource can create both _affinity rules_, where virtual machines run on
-        specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
-        outside of the ones specified in the rule. Virtual machines and hosts are
-        supplied via groups, which can be managed via the
-        `.ComputeClusterVmGroup` and
-        `.ComputeClusterHostGroup`
-        resources.
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter(name="dc1")
-        datastore = vsphere.get_datastore(datacenter_id=dc.id,
-            name="datastore1")
-        cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
-            name="cluster1")
-        host = vsphere.get_host(datacenter_id=dc.id,
-            name="esxi1")
-        network = vsphere.get_network(datacenter_id=dc.id,
-            name="network1")
-        vm = vsphere.VirtualMachine("vm",
-            datastore_id=datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            memory=2048,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=cluster.resource_pool_id)
-        cluster_vm_group = vsphere.ComputeClusterVmGroup("clusterVmGroup",
-            compute_cluster_id=cluster.id,
-            virtual_machine_ids=[vm.id])
-        cluster_host_group = vsphere.ComputeClusterHostGroup("clusterHostGroup",
-            compute_cluster_id=cluster.id,
-            host_system_ids=[host.id])
-        cluster_vm_host_rule = vsphere.ComputeClusterVmHostRule("clusterVmHostRule",
-            affinity_host_group_name=cluster_host_group.name,
-            compute_cluster_id=cluster.id,
-            vm_group_name=cluster_vm_group.name)
-        ```
-
-
+        Create a ComputeClusterVmHostRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] affinity_host_group_name: When this field is used, the virtual

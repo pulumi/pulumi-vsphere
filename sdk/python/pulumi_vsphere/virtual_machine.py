@@ -536,7 +536,7 @@ class VirtualMachine(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. 
+    The IDs of any tags to attach to this resource.
     """
     uuid: pulumi.Output[str]
     """
@@ -758,7 +758,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
@@ -1231,7 +1231,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available

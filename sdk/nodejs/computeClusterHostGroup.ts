@@ -4,62 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..ComputeClusterHostGroup` resource can be used to manage groups
- * of hosts in a cluster, either created by the
- * `vsphere..ComputeCluster` resource or looked up
- * by the `vsphere..ComputeCluster` data source.
- *
- *
- * This resource mainly serves as an input to the
- * `vsphere..ComputeClusterVmHostRule`
- * resource - see the documentation for that resource for further details on how
- * to use host groups.
- *
- * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
- * connections.
- *
- * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const config = new pulumi.Config();
- * const datacenter = config.get("datacenter") || "dc1";
- * const hosts = config.get("hosts") || [
- *     "esxi1",
- *     "esxi2",
- *     "esxi3",
- * ];
- *
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: datacenter,
- * }, { async: true }));
- * const hostsHost: pulumi.Output<vsphere.GetHostResult>[] = [];
- * for (let i = 0; i < hosts.length; i++) {
- *     hostsHost.push(dc.apply(dc => vsphere.getHost({
- *         datacenterId: dc.id,
- *         name: hosts[i],
- *     }, { async: true })));
- * }
- * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
- *     datacenterId: dc.id,
- *     drsAutomationLevel: "fullyAutomated",
- *     drsEnabled: true,
- *     haEnabled: true,
- *     hostSystemIds: hostsHost.map(v => v.id),
- * });
- * const clusterHostGroup = new vsphere.ComputeClusterHostGroup("clusterHostGroup", {
- *     computeClusterId: computeCluster.id,
- *     hostSystemIds: hostsHost.map(v => v.id),
- * });
- * ```
- */
 export class ComputeClusterHostGroup extends pulumi.CustomResource {
     /**
      * Get an existing ComputeClusterHostGroup resource's state with the given name, ID, and optional extra

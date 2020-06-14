@@ -34,7 +34,7 @@ class AwaitableGetFolderResult(GetFolderResult):
 
 def get_folder(path=None,opts=None):
     """
-    The `.Folder` data source can be used to get the general attributes of a
+    The `Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
     datacenter.  
 
@@ -48,7 +48,6 @@ def get_folder(path=None,opts=None):
 
     folder = vsphere.get_folder(path="/dc1/datastore/folder1")
     ```
-
 
 
     :param str path: The absolute path of the folder. For example, given a

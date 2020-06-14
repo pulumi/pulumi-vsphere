@@ -414,7 +414,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -1036,7 +1036,7 @@ export interface VirtualMachineState {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1439,7 +1439,7 @@ export interface VirtualMachineArgs {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

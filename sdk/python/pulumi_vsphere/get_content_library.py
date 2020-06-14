@@ -34,7 +34,7 @@ class AwaitableGetContentLibraryResult(GetContentLibraryResult):
 
 def get_content_library(name=None,opts=None):
     """
-    The `.ContentLibrary` data source can be used to discover the ID of a Content Library.
+    The `ContentLibrary` data source can be used to discover the ID of a Content Library.
 
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
@@ -49,7 +49,6 @@ def get_content_library(name=None,opts=None):
 
     library = vsphere.get_content_library(name="Content Library Test")
     ```
-
 
 
     :param str name: The name of the Content Library.

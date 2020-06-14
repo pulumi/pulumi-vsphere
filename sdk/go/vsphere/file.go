@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.File` resource can be used to upload files (such as virtual disk
+// The `File` resource can be used to upload files (such as virtual disk
 // files) from the host machine that this provider is running on to a target
 // datastore.  The resource can also be used to copy files between datastores, or
 // from one location to another on the same datastore.

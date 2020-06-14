@@ -46,9 +46,9 @@ class AwaitableGetNetworkResult(GetNetworkResult):
 
 def get_network(datacenter_id=None,distributed_virtual_switch_uuid=None,name=None,opts=None):
     """
-    The `.getNetwork` data source can be used to discover the ID of a network
+    The `getNetwork` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
-    network interface for `.VirtualMachine` or any other vSphere resource
+    network interface for `VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups, DVS
     port groups, or opaque networks such as those managed by NSX.
 
@@ -66,11 +66,10 @@ def get_network(datacenter_id=None,distributed_virtual_switch_uuid=None,name=Non
     ```
 
 
-
     :param str datacenter_id: The managed object reference
            ID of the datacenter the network is located in. This can
            be omitted if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `.Datacenter` data
+           datacenters, use the id attribute from an empty `Datacenter` data
            source.
     :param str distributed_virtual_switch_uuid: For distributed port group type 
            network objects, the ID of the distributed virtual switch the given port group

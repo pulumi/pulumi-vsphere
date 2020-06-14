@@ -9,75 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// &gt; **A note on the naming of this resource:** VMware refers to clusters of
-    /// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-    /// clusters_. All of these refer to the same kind of resource (with the latter two
-    /// referring to specific features of clustering). We use
-    /// `vsphere..ComputeCluster` to differentiate host clusters from _datastore
-    /// clusters_, which are clusters of datastores that can be used to distribute load
-    /// and ensure fault tolerance via distribution of virtual machines. Datastore
-    /// clusters can also be managed through the provider, via the
-    /// `vsphere..DatastoreCluster` resource.
-    /// 
-    /// The `vsphere..ComputeCluster` resource can be used to create and manage
-    /// clusters of hosts allowing for resource control of compute resources, load
-    /// balancing through DRS, and high availability through vSphere HA.
-    /// 
-    /// For more information on vSphere clusters and DRS, see [this
-    /// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-    /// page][ref-vsphere-ha-clusters].
-    /// 
-    /// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
-    /// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-    /// 
-    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    /// connections.
-    /// 
-    /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-    /// 
-    /// 
-    /// ## vSphere Version Requirements
-    /// 
-    /// A large number of settings in the `vsphere..ComputeCluster` resource require a
-    /// specific version of vSphere to function. Rather than include warnings at every
-    /// setting or section, these settings are documented below.  Note that this list
-    /// is for cluster-specific attributes only, and does not include the
-    /// `tags` parameter, which requires vSphere 6.0 or higher across all
-    /// resources that can be tagged.
-    /// 
-    /// All settings are footnoted by an asterisk (`*`) in their specific section in
-    /// the documentation, which takes you here.
-    /// 
-    /// ### Settings that require vSphere version 6.0 or higher
-    /// 
-    /// These settings require vSphere 6.0 or higher:
-    /// 
-    /// * `ha_datastore_apd_recovery_action`
-    /// * `ha_datastore_apd_response`
-    /// * `ha_datastore_apd_response_delay`
-    /// * `ha_datastore_pdl_response`
-    /// * `ha_vm_component_protection`
-    /// 
-    /// ### Settings that require vSphere version 6.5 or higher
-    /// 
-    /// These settings require vSphere 6.5 or higher:
-    /// 
-    /// * `drs_enable_predictive_drs`
-    /// * `ha_admission_control_host_failure_tolerance`
-    ///   (When `ha_admission_control_policy` is set to
-    ///   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
-    ///   `failoverHosts`)
-    /// * `ha_admission_control_resource_percentage_auto_compute`
-    /// * `ha_vm_restart_timeout`
-    /// * `ha_vm_dependency_restart_condition`
-    /// * `ha_vm_restart_additional_delay`
-    /// * `proactive_ha_automation_level`
-    /// * `proactive_ha_enabled`
-    /// * `proactive_ha_moderate_remediation`
-    /// * `proactive_ha_provider_ids`
-    /// * `proactive_ha_severe_remediation`
-    /// </summary>
     public partial class ComputeCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -223,7 +154,6 @@ namespace Pulumi.VSphere
         public Output<string?> HaAdmissionControlPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// 
         /// Automatically determine available resource percentages by subtracting the
         /// average number of host resources represented by the
         /// `ha_admission_control_host_failure_tolerance`
@@ -743,7 +673,6 @@ namespace Pulumi.VSphere
         public Input<string>? HaAdmissionControlPolicy { get; set; }
 
         /// <summary>
-        /// 
         /// Automatically determine available resource percentages by subtracting the
         /// average number of host resources represented by the
         /// `ha_admission_control_host_failure_tolerance`
@@ -1248,7 +1177,6 @@ namespace Pulumi.VSphere
         public Input<string>? HaAdmissionControlPolicy { get; set; }
 
         /// <summary>
-        /// 
         /// Automatically determine available resource percentages by subtracting the
         /// average number of host resources represented by the
         /// `ha_admission_control_host_failure_tolerance`

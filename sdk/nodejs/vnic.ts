@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a VMware vSphere vnic resource.
  *
- * ## Example Usages
+ * ## Example Usage
  *
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  *
@@ -123,7 +123,7 @@ export class Vnic extends pulumi.CustomResource {
     }
 
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     public readonly distributedPortGroup!: pulumi.Output<string | undefined>;
     /**
@@ -211,7 +211,7 @@ export class Vnic extends pulumi.CustomResource {
  */
 export interface VnicState {
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     readonly distributedPortGroup?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface VnicState {
  */
 export interface VnicArgs {
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     readonly distributedPortGroup?: pulumi.Input<string>;
     /**

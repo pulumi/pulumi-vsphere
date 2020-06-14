@@ -38,9 +38,9 @@ class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
 
 def get_custom_attribute(name=None,opts=None):
     """
-    The `.CustomAttribute` data source can be used to reference custom 
+    The `CustomAttribute` data source can be used to reference custom 
     attributes that are not managed by this provider. Its attributes are exactly the 
-    same as the `.CustomAttribute` resource, 
+    same as the `CustomAttribute` resource, 
     and, like importing, the data source takes a name to search on. The `id` and 
     other attributes are then populated with the data found by the search.
 
@@ -57,7 +57,6 @@ def get_custom_attribute(name=None,opts=None):
 
     attribute = vsphere.get_custom_attribute(name="test-attribute")
     ```
-
 
 
     :param str name: The name of the custom attribute.

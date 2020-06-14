@@ -7,13 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.DatastoreCluster` data source can be used to discover the ID of a
+// The `DatastoreCluster` data source can be used to discover the ID of a
 // datastore cluster in vSphere. This is useful to fetch the ID of a datastore
 // cluster that you want to use to assign datastores to using the
-// `.NasDatastore` or
-// `.VmfsDatastore` resources, or create
+// `NasDatastore` or
+// `VmfsDatastore` resources, or create
 // virtual machines in using the
-// `.VirtualMachine` resource.
+// `VirtualMachine` resource.
 func LookupDatastoreCluster(ctx *pulumi.Context, args *LookupDatastoreClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreClusterResult, error) {
 	var rv LookupDatastoreClusterResult
 	err := ctx.Invoke("vsphere:index/getDatastoreCluster:getDatastoreCluster", args, &rv, opts...)
@@ -29,7 +29,7 @@ type LookupDatastoreClusterArgs struct {
 	// ID of the datacenter the datastore cluster is located in.
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the id attribute from an empty
-	// `.Datacenter` data source.
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name or absolute path to the datastore cluster.
 	Name string `pulumi:"name"`

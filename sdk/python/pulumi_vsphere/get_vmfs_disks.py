@@ -50,9 +50,9 @@ class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
 
 def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
     """
-    The `.getVmfsDisks` data source can be used to discover the storage
+    The `getVmfsDisks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
-    `.VmfsDatastore` resource to create VMFS
+    `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
 
 
@@ -71,7 +71,6 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
         host_system_id=host.id,
         rescan=True)
     ```
-
 
 
     :param str filter: A regular expression to filter the disks against. Only

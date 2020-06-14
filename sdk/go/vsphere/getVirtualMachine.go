@@ -7,10 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VirtualMachine` data source can be used to find the UUID of an
+// The `VirtualMachine` data source can be used to find the UUID of an
 // existing virtual machine or template. Its most relevant purpose is for finding
 // the UUID of a template to be used as the source for cloning into a new
-// `.VirtualMachine` resource. It also
+// `VirtualMachine` resource. It also
 // reads the guest ID so that can be supplied as well.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	var rv LookupVirtualMachineResult
@@ -27,7 +27,7 @@ type LookupVirtualMachineArgs struct {
 	// ID of the datacenter the virtual machine is located in.
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
-	// `.Datacenter` data source.
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the virtual machine. This can be a name or
 	// path.
@@ -45,7 +45,7 @@ type LookupVirtualMachineResult struct {
 	DatacenterId       *string `pulumi:"datacenterId"`
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
-	// to a `.VirtualMachine` resource in the order the resource expects
+	// to a `VirtualMachine` resource in the order the resource expects
 	// while cloning. This is useful for discovering certain disk settings while
 	// performing a linked clone, as all settings that are output by this data
 	// source must be the same on the destination virtual machine as the source.

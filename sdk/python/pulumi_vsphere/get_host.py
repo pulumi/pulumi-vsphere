@@ -46,7 +46,7 @@ class AwaitableGetHostResult(GetHostResult):
 
 def get_host(datacenter_id=None,name=None,opts=None):
     """
-    The `.Host` data source can be used to discover the ID of a vSphere
+    The `Host` data source can be used to discover the ID of a vSphere
     host. This can then be used with resources or data sources that require a host
     managed object reference ID.
 
@@ -62,7 +62,6 @@ def get_host(datacenter_id=None,name=None,opts=None):
     host = vsphere.get_host(datacenter_id=datacenter.id,
         name="esxi1")
     ```
-
 
 
     :param str datacenter_id: The managed object reference

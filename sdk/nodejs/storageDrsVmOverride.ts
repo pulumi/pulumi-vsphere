@@ -4,66 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..StorageDrsVmOverride` resource can be used to add a Storage DRS
- * override to a datastore cluster for a specific virtual machine. With this
- * resource, one can enable or disable Storage DRS, and control the automation
- * level and disk affinity for a single virtual machine without affecting the rest
- * of the datastore cluster.
- *
- * For more information on vSphere datastore clusters and Storage DRS, see [this
- * page][ref-vsphere-datastore-clusters].
- *
- * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }, { async: true }));
- * const datastoreCluster = dc.apply(dc => vsphere.getDatastoreCluster({
- *     datacenterId: dc.id,
- *     name: "datastore-cluster1",
- * }, { async: true }));
- * const memberDatastore = dc.apply(dc => vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore-cluster1-member1",
- * }, { async: true }));
- * const pool = dc.apply(dc => vsphere.getResourcePool({
- *     datacenterId: dc.id,
- *     name: "cluster1/Resources",
- * }, { async: true }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "public",
- * }, { async: true }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: memberDatastore.id,
- *     disks: [{
- *         label: "disk0",
- *         size: 20,
- *     }],
- *     guestId: "other3xLinux64Guest",
- *     memory: 1024,
- *     networkInterfaces: [{
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: pool.id,
- * });
- * const drsVmOverride = new vsphere.StorageDrsVmOverride("drsVmOverride", {
- *     datastoreClusterId: datastoreCluster.id,
- *     sdrsEnabled: "false",
- *     virtualMachineId: vm.id,
- * });
- * ```
- */
 export class StorageDrsVmOverride extends pulumi.CustomResource {
     /**
      * Get an existing StorageDrsVmOverride resource's state with the given name, ID, and optional extra

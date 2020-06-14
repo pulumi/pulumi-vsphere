@@ -48,7 +48,7 @@ class File(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.File` resource can be used to upload files (such as virtual disk
+        The `File` resource can be used to upload files (such as virtual disk
         files) from the host machine that this provider is running on to a target
         datastore.  The resource can also be used to copy files between datastores, or
         from one location to another on the same datastore.
@@ -90,7 +90,6 @@ class File(pulumi.CustomResource):
             source_datastore="local",
             source_file="/my_path/disks/custom_ubuntu.vmdk")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

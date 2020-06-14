@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ContentLibrary` data source can be used to discover the ID of a Content Library.
+// The `ContentLibrary` data source can be used to discover the ID of a Content Library.
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.

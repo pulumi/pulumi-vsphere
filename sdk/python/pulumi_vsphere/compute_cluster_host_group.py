@@ -28,24 +28,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, host_system_ids=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.ComputeClusterHostGroup` resource can be used to manage groups
-        of hosts in a cluster, either created by the
-        `.ComputeCluster` resource or looked up
-        by the `.ComputeCluster` data source.
-
-
-        This resource mainly serves as an input to the
-        `.ComputeClusterVmHostRule`
-        resource - see the documentation for that resource for further details on how
-        to use host groups.
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-
-
-
+        Create a ComputeClusterHostGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference

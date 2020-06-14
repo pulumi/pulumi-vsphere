@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VirtualDisk` resource can be used to create virtual disks outside
-// of any given `.VirtualMachine`
+// The `VirtualDisk` resource can be used to create virtual disks outside
+// of any given `VirtualMachine`
 // resource. These disks can be attached to a virtual machine by creating a disk
 // block with the `attach` parameter.
 type VirtualDisk struct {

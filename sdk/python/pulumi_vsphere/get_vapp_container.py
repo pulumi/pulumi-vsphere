@@ -38,10 +38,10 @@ class AwaitableGetVappContainerResult(GetVappContainerResult):
 
 def get_vapp_container(datacenter_id=None,name=None,opts=None):
     """
-    The `.VappContainer` data source can be used to discover the ID of a
+    The `VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to fetch the ID of a vApp container
     that you want to use to create virtual machines in using the
-    `.VirtualMachine` resource. 
+    `VirtualMachine` resource. 
 
     ## Example Usage
 
@@ -55,7 +55,6 @@ def get_vapp_container(datacenter_id=None,name=None,opts=None):
     pool = vsphere.get_vapp_container(datacenter_id=datacenter.id,
         name="vapp-container-1")
     ```
-
 
 
     :param str datacenter_id: The managed object reference

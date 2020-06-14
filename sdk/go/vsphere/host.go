@@ -12,6 +12,30 @@ import (
 
 // Provides a VMware vSphere host resource. This represents an ESXi host that
 // can be used either as part of a Compute Cluster or Standalone.
+//
+//
+// ## Importing
+//
+// An existing host can be [imported][docs-import] into this resource
+// via supplying the host's ID. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The above would import the host with ID `host-123`.
 type Host struct {
 	pulumi.CustomResourceState
 

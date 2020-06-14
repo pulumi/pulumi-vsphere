@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getPolicy` data source can be used to discover the UUID of a
+// The `getPolicy` data source can be used to discover the UUID of a
 // vSphere storage policy. This can then be used with resources or data sources that
 // require a storage policy.
 //

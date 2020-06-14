@@ -155,23 +155,7 @@ class DatastoreCluster(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, folder=None, name=None, sdrs_advanced_options=None, sdrs_automation_level=None, sdrs_default_intra_vm_affinity=None, sdrs_enabled=None, sdrs_free_space_threshold=None, sdrs_free_space_threshold_mode=None, sdrs_free_space_utilization_difference=None, sdrs_io_balance_automation_level=None, sdrs_io_latency_threshold=None, sdrs_io_load_balance_enabled=None, sdrs_io_load_imbalance_threshold=None, sdrs_io_reservable_iops_threshold=None, sdrs_io_reservable_percent_threshold=None, sdrs_io_reservable_threshold_mode=None, sdrs_load_balance_interval=None, sdrs_policy_enforcement_automation_level=None, sdrs_rule_enforcement_automation_level=None, sdrs_space_balance_automation_level=None, sdrs_space_utilization_threshold=None, sdrs_vm_evacuation_automation_level=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.DatastoreCluster` resource can be used to create and manage
-        datastore clusters. This can be used to create groups of datastores with a
-        shared management interface, allowing for resource control and load balancing
-        through Storage DRS.
-
-        For more information on vSphere datastore clusters and Storage DRS, see [this
-        page][ref-vsphere-datastore-clusters].
-
-        [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
-
-
-
+        Create a DatastoreCluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: A map of custom attribute ids to attribute

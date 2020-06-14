@@ -10,27 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterVmGroup` resource can be used to manage groups of
-// virtual machines in a cluster, either created by the
-// [`.ComputeCluster`][tf-vsphere-cluster-resource] resource or looked up
-// by the [`.ComputeCluster`][tf-vsphere-cluster-data-source] data source.
-//
-// [tf-vsphere-cluster-resource]: /docs/providers/vsphere/r/compute_cluster.html
-// [tf-vsphere-cluster-data-source]: /docs/providers/vsphere/d/compute_cluster.html
-//
-// This resource mainly serves as an input to the
-// [`.ComputeClusterVmDependencyRule`][tf-vsphere-cluster-vm-dependency-rule-resource]
-// and
-// [`.ComputeClusterVmHostRule`][tf-vsphere-cluster-vm-host-rule-resource]
-// resources. See the individual resource documentation pages for more information.
-//
-// [tf-vsphere-cluster-vm-dependency-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_dependency_rule.html
-// [tf-vsphere-cluster-vm-host-rule-resource]: /docs/providers/vsphere/r/compute_cluster_vm_host_rule.html
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterVmGroup struct {
 	pulumi.CustomResourceState
 

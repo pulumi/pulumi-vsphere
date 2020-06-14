@@ -12,7 +12,7 @@ from . import utilities, tables
 class Vnic(pulumi.CustomResource):
     distributed_port_group: pulumi.Output[str]
     """
-    Key of the distributed portgroup the nic will connect to. 
+    Key of the distributed portgroup the nic will connect to.
     """
     distributed_switch_port: pulumi.Output[str]
     """
@@ -60,7 +60,7 @@ class Vnic(pulumi.CustomResource):
         """
         Provides a VMware vSphere vnic resource.
 
-        ## Example Usages
+        ## Example Usage
 
         ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
 
@@ -133,7 +133,7 @@ class Vnic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to. 
+        :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
@@ -200,7 +200,7 @@ class Vnic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to. 
+        :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
         :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.

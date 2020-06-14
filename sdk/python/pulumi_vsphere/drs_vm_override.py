@@ -34,59 +34,7 @@ class DrsVmOverride(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, drs_automation_level=None, drs_enabled=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.DrsVmOverride` resource can be used to add a DRS override to a
-        cluster for a specific virtual machine. With this resource, one can enable or
-        disable DRS and control the automation level for a single virtual machine
-        without affecting the rest of the cluster.
-
-        For more information on vSphere clusters and DRS, see [this
-        page][ref-vsphere-drs-clusters].
-
-        [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter(name="dc1")
-        datastore = vsphere.get_datastore(datacenter_id=dc.id,
-            name="datastore1")
-        cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
-            name="cluster1")
-        host = vsphere.get_host(datacenter_id=dc.id,
-            name="esxi1")
-        network = vsphere.get_network(datacenter_id=dc.id,
-            name="network1")
-        vm = vsphere.VirtualMachine("vm",
-            datastore_id=datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            host_system_id=host.id,
-            memory=2048,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=cluster.resource_pool_id)
-        drs_vm_override = vsphere.DrsVmOverride("drsVmOverride",
-            compute_cluster_id=cluster.id,
-            drs_enabled=False,
-            virtual_machine_id=vm.id)
-        ```
-
-
+        Create a DrsVmOverride resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference

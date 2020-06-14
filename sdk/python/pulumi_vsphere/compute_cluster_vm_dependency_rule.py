@@ -46,74 +46,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, dependency_vm_group_name=None, enabled=None, mandatory=None, name=None, vm_group_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.ComputeClusterVmDependencyRule` resource can be used to manage
-        VM dependency rules in a cluster, either created by the
-        `.ComputeCluster` resource or looked up
-        by the `.ComputeCluster` data source.
-
-        A virtual machine dependency rule applies to vSphere HA, and allows
-        user-defined startup orders for virtual machines in the case of host failure.
-        Virtual machines are supplied via groups, which can be managed via the
-        `.ComputeClusterVmGroup`
-        resource.
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter(name="dc1")
-        datastore = vsphere.get_datastore(datacenter_id=dc.id,
-            name="datastore1")
-        cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
-            name="cluster1")
-        network = vsphere.get_network(datacenter_id=dc.id,
-            name="network1")
-        vm1 = vsphere.VirtualMachine("vm1",
-            datastore_id=datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            memory=2048,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=cluster.resource_pool_id)
-        vm2 = vsphere.VirtualMachine("vm2",
-            datastore_id=datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            memory=2048,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=cluster.resource_pool_id)
-        cluster_vm_group1 = vsphere.ComputeClusterVmGroup("clusterVmGroup1",
-            compute_cluster_id=cluster.id,
-            virtual_machine_ids=[vm1.id])
-        cluster_vm_group2 = vsphere.ComputeClusterVmGroup("clusterVmGroup2",
-            compute_cluster_id=cluster.id,
-            virtual_machine_ids=[vm2.id])
-        cluster_vm_dependency_rule = vsphere.ComputeClusterVmDependencyRule("clusterVmDependencyRule",
-            compute_cluster_id=cluster.id,
-            dependency_vm_group_name=cluster_vm_group1.name,
-            vm_group_name=cluster_vm_group2.name)
-        ```
-
-
+        Create a ComputeClusterVmDependencyRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference

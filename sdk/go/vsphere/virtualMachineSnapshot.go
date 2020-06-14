@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VirtualMachineSnapshot` resource can be used to manage snapshots
+// The `VirtualMachineSnapshot` resource can be used to manage snapshots
 // for a virtual machine.
 //
 // For more information on managing snapshots and how they work in VMware, see
@@ -22,7 +22,7 @@ import (
 // can contain the actual running state of the virtual machine, data for all disks
 // that have not been set to be independent from the snapshot (including ones that
 // have been attached via the `attach`
-// parameter to the `.VirtualMachine` `disk` block), and even the
+// parameter to the `VirtualMachine` `disk` block), and even the
 // configuration of the virtual machine at the time of the snapshot. Virtual
 // machine, disk activity, and configuration changes post-snapshot are not
 // included in the original state. Use this resource with care! Neither VMware nor

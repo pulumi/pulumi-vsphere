@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere vnic resource.
     /// 
-    /// ## Example Usages
+    /// ## Example Usage
     /// 
     /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.VSphere
     public partial class Vnic : Pulumi.CustomResource
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Output("distributedPortGroup")]
         public Output<string?> DistributedPortGroup { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.VSphere
     public sealed class VnicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Input("distributedPortGroup")]
         public Input<string>? DistributedPortGroup { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.VSphere
     public sealed class VnicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Input("distributedPortGroup")]
         public Input<string>? DistributedPortGroup { get; set; }

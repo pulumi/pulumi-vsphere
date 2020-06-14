@@ -34,7 +34,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 
 def get_policy(name=None,opts=None):
     """
-    The `.getPolicy` data source can be used to discover the UUID of a
+    The `getPolicy` data source can be used to discover the UUID of a
     vSphere storage policy. This can then be used with resources or data sources that
     require a storage policy.
 
@@ -51,7 +51,6 @@ def get_policy(name=None,opts=None):
 
     policy = vsphere.get_policy(name="policy1")
     ```
-
 
 
     :param str name: The name of the storage policy.

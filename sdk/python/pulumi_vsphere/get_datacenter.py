@@ -34,9 +34,9 @@ class AwaitableGetDatacenterResult(GetDatacenterResult):
 
 def get_datacenter(name=None,opts=None):
     """
-    The `.Datacenter` data source can be used to discover the ID of a
+    The `Datacenter` data source can be used to discover the ID of a
     vSphere datacenter. This can then be used with resources or data sources that
-    require a datacenter, such as the `.Host`
+    require a datacenter, such as the `Host`
     data source.
 
     ## Example Usage
@@ -49,7 +49,6 @@ def get_datacenter(name=None,opts=None):
 
     datacenter = vsphere.get_datacenter(name="dc1")
     ```
-
 
 
     :param str name: The name of the datacenter. This can be a name or path.

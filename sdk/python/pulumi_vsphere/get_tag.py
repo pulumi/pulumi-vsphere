@@ -42,8 +42,8 @@ class AwaitableGetTagResult(GetTagResult):
 
 def get_tag(category_id=None,name=None,opts=None):
     """
-    The `.Tag` data source can be used to reference tags that are not
-    managed by this provider. Its attributes are exactly the same as the `.Tag`
+    The `Tag` data source can be used to reference tags that are not
+    managed by this provider. Its attributes are exactly the same as the `Tag`
     resource, and, like importing, the data source takes a name and
     category to search on. The `id` and other attributes are then populated with
     the data found by the search.
@@ -63,7 +63,6 @@ def get_tag(category_id=None,name=None,opts=None):
     tag = vsphere.get_tag(category_id=category.id,
         name="test-tag")
     ```
-
 
 
     :param str category_id: The ID of the tag category the tag is located in.

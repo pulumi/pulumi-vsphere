@@ -60,7 +60,6 @@ class Datacenter(pulumi.CustomResource):
         research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to value 

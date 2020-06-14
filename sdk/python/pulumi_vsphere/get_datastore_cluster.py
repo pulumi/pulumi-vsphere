@@ -38,13 +38,13 @@ class AwaitableGetDatastoreClusterResult(GetDatastoreClusterResult):
 
 def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     """
-    The `.DatastoreCluster` data source can be used to discover the ID of a
+    The `DatastoreCluster` data source can be used to discover the ID of a
     datastore cluster in vSphere. This is useful to fetch the ID of a datastore
     cluster that you want to use to assign datastores to using the
-    `.NasDatastore` or
-    `.VmfsDatastore` resources, or create
+    `NasDatastore` or
+    `VmfsDatastore` resources, or create
     virtual machines in using the
-    `.VirtualMachine` resource. 
+    `VirtualMachine` resource. 
 
     ## Example Usage
 
@@ -55,17 +55,16 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     import pulumi_vsphere as vsphere
 
     datacenter = vsphere.get_datacenter(name="dc1")
-    datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=data[".Datacenter"]["dc"]["id"],
+    datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
         name="datastore-cluster1")
     ```
-
 
 
     :param str datacenter_id: The managed object reference
            ID of the datacenter the datastore cluster is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the id attribute from an empty
-           `.Datacenter` data source.
+           `Datacenter` data source.
     :param str name: The name or absolute path to the datastore cluster.
     """
     __args__ = dict()

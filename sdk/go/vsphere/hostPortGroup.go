@@ -10,10 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.HostPortGroup` resource can be used to manage vSphere standard
+// The `HostPortGroup` resource can be used to manage vSphere standard
 // port groups on an ESXi host. These port groups are connected to standard
 // virtual switches, which can be managed by the
-// `.HostVirtualSwitch` resource.
+// `HostVirtualSwitch` resource.
 //
 // For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
 //

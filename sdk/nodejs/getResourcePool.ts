@@ -7,10 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..ResourcePool` data source can be used to discover the ID of a
+ * The `vsphere.ResourcePool` data source can be used to discover the ID of a
  * resource pool in vSphere. This is useful to fetch the ID of a resource pool
  * that you want to use to create virtual machines in using the
- * `vsphere..VirtualMachine` resource. 
+ * `vsphere.VirtualMachine` resource. 
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export interface GetResourcePoolArgs {
      * ID of the datacenter the resource pool is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
      * For default datacenters, use the id attribute from an empty
-     * `vsphere..Datacenter` data source.
+     * `vsphere.Datacenter` data source.
      */
     readonly datacenterId?: string;
     /**

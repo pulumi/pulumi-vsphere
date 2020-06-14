@@ -7,9 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.CustomAttribute` data source can be used to reference custom
+// The `CustomAttribute` data source can be used to reference custom
 // attributes that are not managed by this provider. Its attributes are exactly the
-// same as the `.CustomAttribute` resource,
+// same as the `CustomAttribute` resource,
 // and, like importing, the data source takes a name to search on. The `id` and
 // other attributes are then populated with the data found by the search.
 //

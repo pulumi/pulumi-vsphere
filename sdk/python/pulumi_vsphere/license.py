@@ -54,7 +54,6 @@ class License(pulumi.CustomResource):
             license_key="452CQ-2EK54-K8742-00000-00000")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: A map of key/value pairs to be attached as labels (tags) to the license key.

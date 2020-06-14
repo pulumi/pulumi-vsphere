@@ -107,10 +107,10 @@ class HostPortGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, active_nics=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, check_beacon=None, failback=None, host_system_id=None, name=None, notify_switches=None, shaping_average_bandwidth=None, shaping_burst_size=None, shaping_enabled=None, shaping_peak_bandwidth=None, standby_nics=None, teaming_policy=None, virtual_switch_name=None, vlan_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.HostPortGroup` resource can be used to manage vSphere standard
+        The `HostPortGroup` resource can be used to manage vSphere standard
         port groups on an ESXi host. These port groups are connected to standard
         virtual switches, which can be managed by the
-        `.HostVirtualSwitch` resource.
+        `HostVirtualSwitch` resource.
 
         For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
 
@@ -163,7 +163,6 @@ class HostPortGroup(pulumi.CustomResource):
             virtual_switch_name=switch.name,
             vlan_id=4095)
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

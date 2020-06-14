@@ -7,10 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.DistributedVirtualSwitch` data source can be used to discover
+// The `DistributedVirtualSwitch` data source can be used to discover
 // the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
 // can then be used with resources or data sources that require a DVS, such as the
-// `.DistributedPortGroup` resource, for which
+// `DistributedPortGroup` resource, for which
 // an example is shown below.
 //
 //
@@ -30,7 +30,7 @@ type LookupDistributedVirtualSwitchArgs struct {
 	// The managed object reference
 	// ID of the datacenter the DVS is located in. This can be
 	// omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `.Datacenter` data
+	// datacenters, use the id attribute from an empty `Datacenter` data
 	// source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the distributed virtual switch. This can be a

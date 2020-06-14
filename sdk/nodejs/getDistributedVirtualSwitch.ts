@@ -7,10 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..DistributedVirtualSwitch` data source can be used to discover
+ * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
  * the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
  * can then be used with resources or data sources that require a DVS, such as the
- * `vsphere..DistributedPortGroup` resource, for which
+ * `vsphere.DistributedPortGroup` resource, for which
  * an example is shown below.
  *
  *
@@ -61,7 +61,7 @@ export interface GetDistributedVirtualSwitchArgs {
      * The managed object reference
      * ID of the datacenter the DVS is located in. This can be
      * omitted if the search path used in `name` is an absolute path. For default
-     * datacenters, use the id attribute from an empty `vsphere..Datacenter` data
+     * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
      */
     readonly datacenterId?: string;

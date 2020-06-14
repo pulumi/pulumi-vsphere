@@ -7,9 +7,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getVmfsDisks` data source can be used to discover the storage
+// The `getVmfsDisks` data source can be used to discover the storage
 // devices available on an ESXi host. This data source can be combined with the
-// `.VmfsDatastore` resource to create VMFS
+// `VmfsDatastore` resource to create VMFS
 // datastores based off a set of discovered disks.
 func GetVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs, opts ...pulumi.InvokeOption) (*GetVmfsDisksResult, error) {
 	var rv GetVmfsDisksResult

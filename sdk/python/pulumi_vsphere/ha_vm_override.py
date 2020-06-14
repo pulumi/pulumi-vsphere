@@ -111,54 +111,7 @@ class HaVmOverride(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_host_isolation_response=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_monitoring_use_cluster_defaults=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.HaVmOverride` resource can be used to add an override for
-        vSphere HA settings on a cluster for a specific virtual machine. With this
-        resource, one can control specific HA settings so that they are different than
-        the cluster default, accommodating the needs of that specific virtual machine,
-        while not affecting the rest of the cluster.
-
-        For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
-
-        [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dc = vsphere.get_datacenter(name="dc1")
-        datastore = vsphere.get_datastore(datacenter_id=dc.id,
-            name="datastore1")
-        cluster = vsphere.get_compute_cluster(datacenter_id=dc.id,
-            name="cluster1")
-        network = vsphere.get_network(datacenter_id=dc.id,
-            name="network1")
-        vm = vsphere.VirtualMachine("vm",
-            datastore_id=datastore.id,
-            disks=[{
-                "label": "disk0",
-                "size": 20,
-            }],
-            guest_id="other3xLinux64Guest",
-            memory=2048,
-            network_interfaces=[{
-                "networkId": network.id,
-            }],
-            num_cpus=2,
-            resource_pool_id=cluster.resource_pool_id)
-        ha_vm_override = vsphere.HaVmOverride("haVmOverride",
-            compute_cluster_id=cluster.id,
-            ha_vm_restart_priority="highest",
-            virtual_machine_id=vm.id)
-        ```
-
-
+        Create a HaVmOverride resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference

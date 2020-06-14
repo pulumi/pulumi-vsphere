@@ -72,7 +72,7 @@ class VmfsDatastore(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. 
+    The IDs of any tags to attach to this resource.
     """
     uncommitted_space: pulumi.Output[float]
     """
@@ -85,81 +85,7 @@ class VmfsDatastore(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.VmfsDatastore` resource can be used to create and manage VMFS
-        datastores on an ESXi host or a set of hosts. The resource supports using any
-        SCSI device that can generally be used in a datastore, such as local disks, or
-        disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
-        Devices can be specified manually, or discovered using the
-        [`.getVmfsDisks`][data-source-vmfs-disks] data source.
-
-        [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
-
-        ## Auto-Mounting of Datastores Within vCenter
-
-        Note that the current behaviour of this resource will auto-mount any created
-        datastores to any other host within vCenter that has access to the same disk.
-
-        Example: You want to create a datastore with a iSCSI LUN that is visible on 3
-        hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
-        create the datastore on `esxi1`, the datastore will be automatically mounted on
-        `esxi2` and `esxi3`, without the need to configure the resource on either of
-        those two hosts.
-
-        Future versions of this resource may allow you to control the hosts that a
-        datastore is mounted to, but currently, this automatic behaviour cannot be
-        changed, so keep this in mind when writing your configurations and deploying
-        your disks.
-
-        ## Increasing Datastore Size
-
-        To increase the size of a datastore, you must add additional disks to the
-        `disks` attribute. Expanding the size of a datastore by increasing the size of
-        an already provisioned disk is currently not supported (but may be in future
-        versions of this resource).
-
-        > **NOTE:** You cannot decrease the size of a datastore. If the resource
-        detects disks removed from the configuration, the provider will give an error. 
-
-        [cmd-taint]: /docs/commands/taint.html
-
-        ## Example Usage
-
-        ### Addition of local disks on a single host
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter()
-        esxi_host = vsphere.get_host(datacenter_id=datacenter.id)
-        datastore = vsphere.VmfsDatastore("datastore",
-            disks=[
-                "mpx.vmhba1:C0:T1:L0",
-                "mpx.vmhba1:C0:T2:L0",
-                "mpx.vmhba1:C0:T2:L0",
-            ],
-            host_system_id=esxi_host.id)
-        ```
-
-        ### Auto-detection of disks via `.getVmfsDisks`
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc1")
-        esxi_host = vsphere.get_host(datacenter_id=datacenter.id,
-            name="esxi1")
-        available = vsphere.get_vmfs_disks(filter="naa.60a98000",
-            host_system_id=esxi_host.id,
-            rescan=True)
-        datastore = vsphere.VmfsDatastore("datastore",
-            disks=available.disks,
-            folder="datastore-folder",
-            host_system_id=esxi_host.id)
-        ```
-
-
+        Create a VmfsDatastore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
@@ -182,7 +108,7 @@ class VmfsDatastore(pulumi.CustomResource):
                new resource if changed.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -261,7 +187,7 @@ class VmfsDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.

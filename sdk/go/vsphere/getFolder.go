@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.Folder` data source can be used to get the general attributes of a
+// The `Folder` data source can be used to get the general attributes of a
 // vSphere inventory folder. Paths are absolute and include must include the
 // datacenter.
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {

@@ -233,52 +233,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, active_uplinks=None, allow_forged_transmits=None, allow_mac_changes=None, allow_promiscuous=None, auto_expand=None, block_all_ports=None, block_override_allowed=None, check_beacon=None, custom_attributes=None, description=None, directpath_gen2_allowed=None, distributed_virtual_switch_uuid=None, egress_shaping_average_bandwidth=None, egress_shaping_burst_size=None, egress_shaping_enabled=None, egress_shaping_peak_bandwidth=None, failback=None, ingress_shaping_average_bandwidth=None, ingress_shaping_burst_size=None, ingress_shaping_enabled=None, ingress_shaping_peak_bandwidth=None, lacp_enabled=None, lacp_mode=None, live_port_moving_allowed=None, name=None, netflow_enabled=None, netflow_override_allowed=None, network_resource_pool_key=None, network_resource_pool_override_allowed=None, notify_switches=None, number_of_ports=None, port_config_reset_at_disconnect=None, port_name_format=None, port_private_secondary_vlan_id=None, security_policy_override_allowed=None, shaping_override_allowed=None, standby_uplinks=None, tags=None, teaming_policy=None, traffic_filter_override_allowed=None, tx_uplink=None, type=None, uplink_teaming_override_allowed=None, vlan_id=None, vlan_override_allowed=None, vlan_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
-        The `.DistributedPortGroup` resource can be used to manage vSphere
-        distributed virtual port groups. These port groups are connected to distributed
-        virtual switches, which can be managed by the
-        `.DistributedVirtualSwitch` resource.
-
-        Distributed port groups can be used as networks for virtual machines, allowing
-        VMs to use the networking supplied by a distributed virtual switch (DVS), with
-        a set of policies that apply to that individual newtork, if desired.
-
-        For an overview on vSphere networking concepts, see [this
-        page][ref-vsphere-net-concepts]. For more information on vSphere DVS
-        portgroups, see [this page][ref-vsphere-dvportgroup].
-
-        [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-        [ref-vsphere-dvportgroup]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-69933F6E-2442-46CF-AA17-1196CB9A0A09.html
-
-        > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        connections.
-
-        ## Example Usage
-
-        ### Overriding DVS policies
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        dvs = vsphere.DistributedVirtualSwitch("dvs",
-            active_uplinks=["tfup1"],
-            datacenter_id=data[".Datacenter"]["dc"]["id"],
-            standby_uplinks=["tfup2"],
-            uplinks=[
-                "tfup1",
-                "tfup2",
-            ])
-        pg = vsphere.DistributedPortGroup("pg",
-            active_uplinks=[
-                "tfup1",
-                "tfup2",
-            ],
-            distributed_virtual_switch_uuid=dvs.id,
-            standby_uplinks=[],
-            vlan_id=1000)
-        ```
-
-
+        Create a DistributedPortGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.

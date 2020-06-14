@@ -12,13 +12,13 @@ namespace Pulumi.VSphere
     public static class GetDatastoreCluster
     {
         /// <summary>
-        /// The `vsphere..DatastoreCluster` data source can be used to discover the ID of a
+        /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
         /// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
         /// cluster that you want to use to assign datastores to using the
-        /// `vsphere..NasDatastore` or
-        /// `vsphere..VmfsDatastore` resources, or create
+        /// `vsphere.NasDatastore` or
+        /// `vsphere.VmfsDatastore` resources, or create
         /// virtual machines in using the
-        /// `vsphere..VirtualMachine` resource. 
+        /// `vsphere.VirtualMachine` resource. 
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -45,7 +45,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -61,7 +60,7 @@ namespace Pulumi.VSphere
         /// ID of the datacenter the datastore cluster is located in.
         /// This can be omitted if the search path used in `name` is an absolute path.
         /// For default datacenters, use the id attribute from an empty
-        /// `vsphere..Datacenter` data source.
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
