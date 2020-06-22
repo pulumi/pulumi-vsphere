@@ -42,8 +42,10 @@
         "getDatastore.ts",
         "getDatastoreCluster.ts",
         "getDistributedVirtualSwitch.ts",
+        "getDynamic.ts",
         "getFolder.ts",
         "getHost.ts",
+        "getHostPciDevice.ts",
         "getNetwork.ts",
         "getPolicy.ts",
         "getResourcePool.ts",
@@ -73,6 +75,7 @@
         "virtualDisk.ts",
         "virtualMachine.ts",
         "virtualMachineSnapshot.ts",
+        "vmStoragePolicy.ts",
         "vmfsDatastore.ts",
         "vnic.ts"
     ]

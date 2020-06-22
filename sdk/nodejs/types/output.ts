@@ -345,6 +345,22 @@ export interface VirtualMachineVapp {
     properties?: {[key: string]: string};
 }
 
+export interface VmStoragePolicyTagRule {
+    /**
+     * Whether to include datastores with the given tags or exclude. Default 
+     * value is true i.e. include datastores with the given tags.
+     */
+    includeDatastoresWithTags?: boolean;
+    /**
+     * Name of the tag category.
+     */
+    tagCategory: string;
+    /**
+     * List of Name of tags to select from the given category.
+     */
+    tags: string[];
+}
+
 export interface VnicIpv4 {
     /**
      * Use DHCP to configure the interface's IPv4 stack.

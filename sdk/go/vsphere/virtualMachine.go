@@ -208,6 +208,9 @@ type VirtualMachine struct {
 	// provided ovf template. See creating a virtual machine from a
 	// ovf template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
+	// List of host PCI device IDs to create PCI
+	// passthroughs for.
+	PciDeviceIds pulumi.StringArrayOutput `pulumi:"pciDeviceIds"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrOutput `pulumi:"poweronTimeout"`
 	// Value internal to the provider used to determine if a
@@ -529,6 +532,9 @@ type virtualMachineState struct {
 	// provided ovf template. See creating a virtual machine from a
 	// ovf template for more details.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
+	// List of host PCI device IDs to create PCI
+	// passthroughs for.
+	PciDeviceIds []string `pulumi:"pciDeviceIds"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// Value internal to the provider used to determine if a
@@ -820,6 +826,9 @@ type VirtualMachineState struct {
 	// provided ovf template. See creating a virtual machine from a
 	// ovf template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
+	// List of host PCI device IDs to create PCI
+	// passthroughs for.
+	PciDeviceIds pulumi.StringArrayInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
 	// Value internal to the provider used to determine if a
@@ -1090,6 +1099,9 @@ type virtualMachineArgs struct {
 	// provided ovf template. See creating a virtual machine from a
 	// ovf template for more details.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
+	// List of host PCI device IDs to create PCI
+	// passthroughs for.
+	PciDeviceIds []string `pulumi:"pciDeviceIds"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// The managed object reference
@@ -1340,6 +1352,9 @@ type VirtualMachineArgs struct {
 	// provided ovf template. See creating a virtual machine from a
 	// ovf template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
+	// List of host PCI device IDs to create PCI
+	// passthroughs for.
+	PciDeviceIds pulumi.StringArrayInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
 	// The managed object reference

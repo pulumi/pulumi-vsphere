@@ -1060,6 +1060,45 @@
             },
             "type": "object"
         },
+        "vsphere:/VmStoragePolicyTagRule:VmStoragePolicyTagRule": {
+            "properties": {
+                "includeDatastoresWithTags": {
+                    "type": "boolean",
+                    "description": "Whether to include datastores with the given tags or exclude. Default \nvalue is true i.e. include datastores with the given tags.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tagCategory": {
+                    "type": "string",
+                    "description": "Name of the tag category.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Name of tags to select from the given category.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "tagCategory",
+                "tags"
+            ]
+        },
         "vsphere:/VnicIpv4:VnicIpv4": {
             "properties": {
                 "dhcp": {
@@ -7928,6 +7967,13 @@
                     "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
                     "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
                 },
+                "pciDeviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                },
                 "poweronTimeout": {
                     "type": "integer",
                     "description": "The amount of time, in seconds, that we will be trying to power on a VM\n"
@@ -8251,6 +8297,13 @@
                     "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
                     "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
                 },
+                "pciDeviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                },
                 "poweronTimeout": {
                     "type": "integer",
                     "description": "The amount of time, in seconds, that we will be trying to power on a VM\n"
@@ -8559,6 +8612,13 @@
                         "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
                         "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
                     },
+                    "pciDeviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                    },
                     "poweronTimeout": {
                         "type": "integer",
                         "description": "The amount of time, in seconds, that we will be trying to power on a VM\n"
@@ -8771,6 +8831,71 @@
                     "virtualMachineUuid": {
                         "type": "string",
                         "description": "The virtual machine UUID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "vsphere:index/vmStoragePolicy:VmStoragePolicy": {
+            "description": "The `vsphere..VmStoragePolicy` resource can be used to create and manage storage \npolicies. Using this storage policy, tag based placement rules can be created to \nplace a VM on a particular tagged datastore.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the storage policy. \n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the storage policy.\n"
+                },
+                "tagRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/VmStoragePolicyTagRule:VmStoragePolicyTagRule"
+                    },
+                    "description": "List of tag rules. The tag category and tags to be associated to this storage policy.\n"
+                }
+            },
+            "required": [
+                "name",
+                "tagRules"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the storage policy. \n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the storage policy.\n"
+                },
+                "tagRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/VmStoragePolicyTagRule:VmStoragePolicyTagRule"
+                    },
+                    "description": "List of tag rules. The tag category and tags to be associated to this storage policy.\n"
+                }
+            },
+            "requiredInputs": [
+                "tagRules"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VmStoragePolicy resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the storage policy. \n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the storage policy.\n"
+                    },
+                    "tagRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:/VmStoragePolicyTagRule:VmStoragePolicyTagRule"
+                        },
+                        "description": "List of tag rules. The tag category and tags to be associated to this storage policy.\n"
                     }
                 },
                 "type": "object"
@@ -9415,6 +9540,59 @@
                 ]
             }
         },
+        "vsphere:index/getDynamic:getDynamic": {
+            "description": "[docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider\n\nThe `vsphere..getDynamic` data source can be used to get the [managed object \n  reference ID][docs-about-morefs] of any tagged managed object in vCenter\n  by providing a list of tag IDs and an optional regular expression to filter\n  objects by name.\n   \n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDynamic.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tag IDs that must be present on an object to\nbe a match.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regular expression that will be used to match\nthe object's name.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The managed object type the returned object must match.\nFor a full list, click [here](https://code.vmware.com/apis/196/vsphere).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "filters"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDynamic.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "filters",
+                    "id"
+                ]
+            }
+        },
         "vsphere:index/getFolder:getFolder": {
             "description": "The `vsphere..Folder` data source can be used to get the general attributes of a\nvSphere inventory folder. Paths are absolute and include must include the\ndatacenter.  \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst folder = pulumi.output(vsphere.getFolder({\n    path: \"/dc1/datastore/folder1\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nfolder = vsphere.get_folder(path=\"/dc1/datastore/folder1\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs\n        {\n            Path = \"/dc1/datastore/folder1\",\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -9489,6 +9667,65 @@
                 "required": [
                     "datacenterId",
                     "resourcePoolId",
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getHostPciDevice:getHostPciDevice": {
+            "description": "The `vsphere..getHostPciDevice` data source can be used to discover the DeviceID\nof a vSphere host's PCI device. This can then be used with \n`vsphere..VirtualMachine`'s `pci_device_id`.\n\n## Example Usage With Name Regular Expression\n \n ```hcl\n data \"vsphere..Datacenter\" \"datacenter\" {\n   name = \"dc1\"\n }\n \n data \"vsphere..Host\" \"host\" {\n   name          = \"esxi1\"\n   datacenter_id = data.vsphere_datacenter.datacenter.id\n }\n \n data \"vsphere..getHostPciDevice\" \"dev\" {\n   host_id    = data.vsphere_host.host.id\n   name_regex = \"MMC\"\n }\n ```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHostPciDevice.\n",
+                "properties": {
+                    "classId": {
+                        "type": "string",
+                        "description": "The hexadecimal PCI device class ID\n"
+                    },
+                    "hostId": {
+                        "type": "string",
+                        "description": "The [managed object reference\nID][docs-about-morefs] of a host.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regular expression that will be used to match\nthe host PCI device name.\n"
+                    },
+                    "vendorId": {
+                        "type": "string",
+                        "description": "The hexadecimal PCI device vendor ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHostPciDevice.\n",
+                "properties": {
+                    "classId": {
+                        "type": "string"
+                    },
+                    "hostId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the PCI device.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "vendorId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostId",
+                    "name",
                     "id"
                 ]
             }

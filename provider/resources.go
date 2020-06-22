@@ -109,9 +109,9 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"vsphere_compute_cluster":                         {Tok: vsphereResource(vsphereMod, "ComputeCluster")},
 			"vsphere_compute_cluster_host_group":              {Tok: vsphereResource(vsphereMod, "ComputeClusterHostGroup")},
-			"vsphere_compute_cluster_vm_affinity_rule":        {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAffinityRule")}, // nolint[:lll]
+			"vsphere_compute_cluster_vm_affinity_rule":        {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAffinityRule")},     // nolint[:lll]
 			"vsphere_compute_cluster_vm_anti_affinity_rule":   {Tok: vsphereResource(vsphereMod, "ComputeClusterVmAntiAffinityRule")}, // nolint[:lll]
-			"vsphere_compute_cluster_vm_dependency_rule":      {Tok: vsphereResource(vsphereMod, "ComputeClusterVmDependencyRule")}, // nolint[:lll]
+			"vsphere_compute_cluster_vm_dependency_rule":      {Tok: vsphereResource(vsphereMod, "ComputeClusterVmDependencyRule")},   // nolint[:lll]
 			"vsphere_compute_cluster_vm_group":                {Tok: vsphereResource(vsphereMod, "ComputeClusterVmGroup")},
 			"vsphere_compute_cluster_vm_host_rule":            {Tok: vsphereResource(vsphereMod, "ComputeClusterVmHostRule")},
 			"vsphere_content_library":                         {Tok: vsphereResource(vsphereMod, "ContentLibrary")},
@@ -143,6 +143,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_virtual_machine_snapshot":                {Tok: vsphereResource(vsphereMod, "VirtualMachineSnapshot")},
 			"vsphere_vmfs_datastore":                          {Tok: vsphereResource(vsphereMod, "VmfsDatastore")},
 			"vsphere_vnic":                                    {Tok: vsphereResource(vsphereMod, "Vnic")},
+			"vsphere_vm_storage_policy":                       {Tok: vsphereResource(vsphereMod, "VmStoragePolicy")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"vsphere_compute_cluster":            {Tok: vsphereDataSource(vsphereMod, "getComputeCluster")},
@@ -163,6 +164,8 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_virtual_machine":            {Tok: vsphereDataSource(vsphereMod, "getVirtualMachine")},
 			"vsphere_vmfs_disks":                 {Tok: vsphereDataSource(vsphereMod, "getVmfsDisks")},
 			"vsphere_storage_policy":             {Tok: vsphereDataSource(vsphereMod, "getPolicy")},
+			"vsphere_dynamic":                    {Tok: vsphereDataSource(vsphereMod, "getDynamic")},
+			"vsphere_host_pci_device":            {Tok: vsphereDataSource(vsphereMod, "getHostPciDevice")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

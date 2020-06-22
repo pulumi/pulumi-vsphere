@@ -29,8 +29,10 @@ export * from "./getDatacenter";
 export * from "./getDatastore";
 export * from "./getDatastoreCluster";
 export * from "./getDistributedVirtualSwitch";
+export * from "./getDynamic";
 export * from "./getFolder";
 export * from "./getHost";
+export * from "./getHostPciDevice";
 export * from "./getNetwork";
 export * from "./getPolicy";
 export * from "./getResourcePool";
@@ -55,6 +57,7 @@ export * from "./vappEntity";
 export * from "./virtualDisk";
 export * from "./virtualMachine";
 export * from "./virtualMachineSnapshot";
+export * from "./vmStoragePolicy";
 export * from "./vmfsDatastore";
 export * from "./vnic";
 

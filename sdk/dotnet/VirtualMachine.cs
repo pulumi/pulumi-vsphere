@@ -411,6 +411,13 @@ namespace Pulumi.VSphere
         public Output<Outputs.VirtualMachineOvfDeploy?> OvfDeploy { get; private set; } = null!;
 
         /// <summary>
+        /// List of host PCI device IDs to create PCI 
+        /// passthroughs for.
+        /// </summary>
+        [Output("pciDeviceIds")]
+        public Output<ImmutableArray<string>> PciDeviceIds { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM
         /// </summary>
         [Output("poweronTimeout")]
@@ -1029,6 +1036,19 @@ namespace Pulumi.VSphere
         [Input("ovfDeploy")]
         public Input<Inputs.VirtualMachineOvfDeployArgs>? OvfDeploy { get; set; }
 
+        [Input("pciDeviceIds")]
+        private InputList<string>? _pciDeviceIds;
+
+        /// <summary>
+        /// List of host PCI device IDs to create PCI 
+        /// passthroughs for.
+        /// </summary>
+        public InputList<string> PciDeviceIds
+        {
+            get => _pciDeviceIds ?? (_pciDeviceIds = new InputList<string>());
+            set => _pciDeviceIds = value;
+        }
+
         /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM
         /// </summary>
@@ -1628,6 +1648,19 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("ovfDeploy")]
         public Input<Inputs.VirtualMachineOvfDeployGetArgs>? OvfDeploy { get; set; }
+
+        [Input("pciDeviceIds")]
+        private InputList<string>? _pciDeviceIds;
+
+        /// <summary>
+        /// List of host PCI device IDs to create PCI 
+        /// passthroughs for.
+        /// </summary>
+        public InputList<string> PciDeviceIds
+        {
+            get => _pciDeviceIds ?? (_pciDeviceIds = new InputList<string>());
+            set => _pciDeviceIds = value;
+        }
 
         /// <summary>
         /// The amount of time, in seconds, that we will be trying to power on a VM
