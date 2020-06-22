@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.19.0 of the vSphere Terraform Provider
+_(none)_
 
 ---
+
+## v2.4.0 (2020-06-23)
+* Upgrade to v1.19.0 of the vSphere Terraform Provider
 
 ## 2.3.5 (2020-06-11)
 * Switch to GitHub actions for build
