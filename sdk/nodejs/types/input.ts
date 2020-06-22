@@ -330,6 +330,22 @@ export interface VirtualMachineVapp {
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface VmStoragePolicyTagRule {
+    /**
+     * Whether to include datastores with the given tags or exclude. Default 
+     * value is true i.e. include datastores with the given tags.
+     */
+    includeDatastoresWithTags?: pulumi.Input<boolean>;
+    /**
+     * Name of the tag category.
+     */
+    tagCategory: pulumi.Input<string>;
+    /**
+     * List of Name of tags to select from the given category.
+     */
+    tags: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface VnicIpv4 {
     /**
      * Use DHCP to configure the interface's IPv4 stack.

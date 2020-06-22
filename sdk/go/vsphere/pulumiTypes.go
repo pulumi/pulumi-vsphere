@@ -2773,6 +2773,126 @@ func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type VmStoragePolicyTagRule struct {
+	// Whether to include datastores with the given tags or exclude. Default
+	// value is true i.e. include datastores with the given tags.
+	IncludeDatastoresWithTags *bool `pulumi:"includeDatastoresWithTags"`
+	// Name of the tag category.
+	TagCategory string `pulumi:"tagCategory"`
+	// List of Name of tags to select from the given category.
+	Tags []string `pulumi:"tags"`
+}
+
+// VmStoragePolicyTagRuleInput is an input type that accepts VmStoragePolicyTagRuleArgs and VmStoragePolicyTagRuleOutput values.
+// You can construct a concrete instance of `VmStoragePolicyTagRuleInput` via:
+//
+// 		 VmStoragePolicyTagRuleArgs{...}
+//
+type VmStoragePolicyTagRuleInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyTagRuleOutput() VmStoragePolicyTagRuleOutput
+	ToVmStoragePolicyTagRuleOutputWithContext(context.Context) VmStoragePolicyTagRuleOutput
+}
+
+type VmStoragePolicyTagRuleArgs struct {
+	// Whether to include datastores with the given tags or exclude. Default
+	// value is true i.e. include datastores with the given tags.
+	IncludeDatastoresWithTags pulumi.BoolPtrInput `pulumi:"includeDatastoresWithTags"`
+	// Name of the tag category.
+	TagCategory pulumi.StringInput `pulumi:"tagCategory"`
+	// List of Name of tags to select from the given category.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (VmStoragePolicyTagRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmStoragePolicyTagRule)(nil)).Elem()
+}
+
+func (i VmStoragePolicyTagRuleArgs) ToVmStoragePolicyTagRuleOutput() VmStoragePolicyTagRuleOutput {
+	return i.ToVmStoragePolicyTagRuleOutputWithContext(context.Background())
+}
+
+func (i VmStoragePolicyTagRuleArgs) ToVmStoragePolicyTagRuleOutputWithContext(ctx context.Context) VmStoragePolicyTagRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyTagRuleOutput)
+}
+
+// VmStoragePolicyTagRuleArrayInput is an input type that accepts VmStoragePolicyTagRuleArray and VmStoragePolicyTagRuleArrayOutput values.
+// You can construct a concrete instance of `VmStoragePolicyTagRuleArrayInput` via:
+//
+// 		 VmStoragePolicyTagRuleArray{ VmStoragePolicyTagRuleArgs{...} }
+//
+type VmStoragePolicyTagRuleArrayInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyTagRuleArrayOutput() VmStoragePolicyTagRuleArrayOutput
+	ToVmStoragePolicyTagRuleArrayOutputWithContext(context.Context) VmStoragePolicyTagRuleArrayOutput
+}
+
+type VmStoragePolicyTagRuleArray []VmStoragePolicyTagRuleInput
+
+func (VmStoragePolicyTagRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmStoragePolicyTagRule)(nil)).Elem()
+}
+
+func (i VmStoragePolicyTagRuleArray) ToVmStoragePolicyTagRuleArrayOutput() VmStoragePolicyTagRuleArrayOutput {
+	return i.ToVmStoragePolicyTagRuleArrayOutputWithContext(context.Background())
+}
+
+func (i VmStoragePolicyTagRuleArray) ToVmStoragePolicyTagRuleArrayOutputWithContext(ctx context.Context) VmStoragePolicyTagRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyTagRuleArrayOutput)
+}
+
+type VmStoragePolicyTagRuleOutput struct{ *pulumi.OutputState }
+
+func (VmStoragePolicyTagRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmStoragePolicyTagRule)(nil)).Elem()
+}
+
+func (o VmStoragePolicyTagRuleOutput) ToVmStoragePolicyTagRuleOutput() VmStoragePolicyTagRuleOutput {
+	return o
+}
+
+func (o VmStoragePolicyTagRuleOutput) ToVmStoragePolicyTagRuleOutputWithContext(ctx context.Context) VmStoragePolicyTagRuleOutput {
+	return o
+}
+
+// Whether to include datastores with the given tags or exclude. Default
+// value is true i.e. include datastores with the given tags.
+func (o VmStoragePolicyTagRuleOutput) IncludeDatastoresWithTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmStoragePolicyTagRule) *bool { return v.IncludeDatastoresWithTags }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the tag category.
+func (o VmStoragePolicyTagRuleOutput) TagCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v VmStoragePolicyTagRule) string { return v.TagCategory }).(pulumi.StringOutput)
+}
+
+// List of Name of tags to select from the given category.
+func (o VmStoragePolicyTagRuleOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmStoragePolicyTagRule) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type VmStoragePolicyTagRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (VmStoragePolicyTagRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmStoragePolicyTagRule)(nil)).Elem()
+}
+
+func (o VmStoragePolicyTagRuleArrayOutput) ToVmStoragePolicyTagRuleArrayOutput() VmStoragePolicyTagRuleArrayOutput {
+	return o
+}
+
+func (o VmStoragePolicyTagRuleArrayOutput) ToVmStoragePolicyTagRuleArrayOutputWithContext(ctx context.Context) VmStoragePolicyTagRuleArrayOutput {
+	return o
+}
+
+func (o VmStoragePolicyTagRuleArrayOutput) Index(i pulumi.IntInput) VmStoragePolicyTagRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmStoragePolicyTagRule {
+		return vs[0].([]VmStoragePolicyTagRule)[vs[1].(int)]
+	}).(VmStoragePolicyTagRuleOutput)
+}
+
 type VnicIpv4 struct {
 	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp *bool `pulumi:"dhcp"`
@@ -3299,6 +3419,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineOvfDeployPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappOutput{})
 	pulumi.RegisterOutputType(VirtualMachineVappPtrOutput{})
+	pulumi.RegisterOutputType(VmStoragePolicyTagRuleOutput{})
+	pulumi.RegisterOutputType(VmStoragePolicyTagRuleArrayOutput{})
 	pulumi.RegisterOutputType(VnicIpv4Output{})
 	pulumi.RegisterOutputType(VnicIpv4PtrOutput{})
 	pulumi.RegisterOutputType(VnicIpv6Output{})

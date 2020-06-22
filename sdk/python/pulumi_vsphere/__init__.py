@@ -37,8 +37,10 @@ from .get_datacenter import *
 from .get_datastore import *
 from .get_datastore_cluster import *
 from .get_distributed_virtual_switch import *
+from .get_dynamic import *
 from .get_folder import *
 from .get_host import *
+from .get_host_pci_device import *
 from .get_network import *
 from .get_policy import *
 from .get_resource_pool import *
@@ -63,5 +65,6 @@ from .vapp_entity import *
 from .virtual_disk import *
 from .virtual_machine import *
 from .virtual_machine_snapshot import *
+from .vm_storage_policy import *
 from .vmfs_datastore import *
 from .vnic import *

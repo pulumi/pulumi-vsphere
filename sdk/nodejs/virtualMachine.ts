@@ -332,6 +332,11 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly ovfDeploy!: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
     /**
+     * List of host PCI device IDs to create PCI 
+     * passthroughs for.
+     */
+    public readonly pciDeviceIds!: pulumi.Output<string[] | undefined>;
+    /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     public readonly poweronTimeout!: pulumi.Output<number | undefined>;
@@ -536,6 +541,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["numCoresPerSocket"] = state ? state.numCoresPerSocket : undefined;
             inputs["numCpus"] = state ? state.numCpus : undefined;
             inputs["ovfDeploy"] = state ? state.ovfDeploy : undefined;
+            inputs["pciDeviceIds"] = state ? state.pciDeviceIds : undefined;
             inputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
             inputs["rebootRequired"] = state ? state.rebootRequired : undefined;
             inputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
@@ -611,6 +617,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["numCoresPerSocket"] = args ? args.numCoresPerSocket : undefined;
             inputs["numCpus"] = args ? args.numCpus : undefined;
             inputs["ovfDeploy"] = args ? args.ovfDeploy : undefined;
+            inputs["pciDeviceIds"] = args ? args.pciDeviceIds : undefined;
             inputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
             inputs["resourcePoolId"] = args ? args.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = args ? args.runToolsScriptsAfterPowerOn : undefined;
@@ -953,6 +960,11 @@ export interface VirtualMachineState {
      * ovf template for more details.
      */
     readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
+    /**
+     * List of host PCI device IDs to create PCI 
+     * passthroughs for.
+     */
+    readonly pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
@@ -1362,6 +1374,11 @@ export interface VirtualMachineArgs {
      * ovf template for more details.
      */
     readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
+    /**
+     * List of host PCI device IDs to create PCI 
+     * passthroughs for.
+     */
+    readonly pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
