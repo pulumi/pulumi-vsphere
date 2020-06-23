@@ -12,6 +12,9 @@ namespace Pulumi.VSphere.Inputs
 
     public sealed class VirtualMachineOvfDeployGetArgs : Pulumi.ResourceArgs
     {
+        [Input("allowUnverifiedSslCert")]
+        public Input<bool>? AllowUnverifiedSslCert { get; set; }
+
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
 

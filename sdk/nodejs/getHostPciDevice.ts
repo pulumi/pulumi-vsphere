@@ -11,6 +11,25 @@ import * as utilities from "./utilities";
  * of a vSphere host's PCI device. This can then be used with 
  * `vsphere..VirtualMachine`'s `pciDeviceId`.
  *
+ * ## Example Usage With Vendor ID and Class ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc1",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi1",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const dev = host.then(host => vsphere.getHostPciDevice({
+ *     hostId: host.id,
+ *     classId: 123,
+ *     vendorId: 456,
+ * }));
+ * ```
  * ## Example Usage With Name Regular Expression
  *  
  *  ```hcl

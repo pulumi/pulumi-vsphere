@@ -16,6 +16,35 @@ namespace Pulumi.VSphere
         /// of a vSphere host's PCI device. This can then be used with 
         /// `vsphere..VirtualMachine`'s `pci_device_id`.
         /// 
+        /// ## Example Usage With Vendor ID and Class ID
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+        ///         {
+        ///             Name = "esxi1",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
+        ///         var dev = host.Apply(host =&gt; Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs
+        ///         {
+        ///             HostId = host.Id,
+        ///             ClassId = "123",
+        ///             VendorId = "456",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// ## Example Usage With Name Regular Expression
         ///  
         ///  ```hcl

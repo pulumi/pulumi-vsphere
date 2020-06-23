@@ -442,9 +442,10 @@ class VirtualMachine(pulumi.CustomResource):
     ovf_deploy: pulumi.Output[dict]
     """
     When specified, the VM will be deployed from the
-    provided ovf template. See creating a virtual machine from a
-    ovf template for more details.
+    provided ovf/ova template. See creating a virtual machine from a
+    ovf/ova template for more details.
 
+      * `allowUnverifiedSslCert` (`bool`)
       * `diskProvisioning` (`str`)
       * `ipAllocationPolicy` (`str`)
       * `ipProtocol` (`str`)
@@ -454,7 +455,7 @@ class VirtualMachine(pulumi.CustomResource):
     """
     pci_device_ids: pulumi.Output[list]
     """
-    List of host PCI device IDs to create PCI 
+    List of host PCI device IDs to create PCI
     passthroughs for.
     """
     poweron_timeout: pulumi.Output[float]
@@ -541,7 +542,7 @@ class VirtualMachine(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    The IDs of any tags to attach to this resource. 
+    The IDs of any tags to attach to this resource.
     """
     uuid: pulumi.Output[str]
     """
@@ -727,9 +728,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
         :param pulumi.Input[dict] ovf_deploy: When specified, the VM will be deployed from the
-               provided ovf template. See creating a virtual machine from a
-               ovf template for more details.
-        :param pulumi.Input[list] pci_device_ids: List of host PCI device IDs to create PCI 
+               provided ovf/ova template. See creating a virtual machine from a
+               ovf/ova template for more details.
+        :param pulumi.Input[list] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] resource_pool_id: The managed object reference
@@ -765,7 +766,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
@@ -937,6 +938,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         The **ovf_deploy** object supports the following:
 
+          * `allowUnverifiedSslCert` (`pulumi.Input[bool]`)
           * `diskProvisioning` (`pulumi.Input[str]`)
           * `ipAllocationPolicy` (`pulumi.Input[str]`)
           * `ipProtocol` (`pulumi.Input[str]`)
@@ -1200,9 +1202,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
         :param pulumi.Input[dict] ovf_deploy: When specified, the VM will be deployed from the
-               provided ovf template. See creating a virtual machine from a
-               ovf template for more details.
-        :param pulumi.Input[list] pci_device_ids: List of host PCI device IDs to create PCI 
+               provided ovf/ova template. See creating a virtual machine from a
+               ovf/ova template for more details.
+        :param pulumi.Input[list] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
         :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
@@ -1241,7 +1243,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource. 
+        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
         :param pulumi.Input[dict] vapp: Optional vApp configuration. The only sub-key available
@@ -1422,6 +1424,7 @@ class VirtualMachine(pulumi.CustomResource):
 
         The **ovf_deploy** object supports the following:
 
+          * `allowUnverifiedSslCert` (`pulumi.Input[bool]`)
           * `diskProvisioning` (`pulumi.Input[str]`)
           * `ipAllocationPolicy` (`pulumi.Input[str]`)
           * `ipProtocol` (`pulumi.Input[str]`)

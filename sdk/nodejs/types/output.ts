@@ -333,6 +333,7 @@ export interface VirtualMachineNetworkInterface {
 }
 
 export interface VirtualMachineOvfDeploy {
+    allowUnverifiedSslCert?: boolean;
     diskProvisioning?: string;
     ipAllocationPolicy?: string;
     ipProtocol?: string;

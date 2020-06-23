@@ -404,14 +404,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When specified, the VM will be deployed from the
-        /// provided ovf template. See creating a virtual machine from a
-        /// ovf template for more details.
+        /// provided ovf/ova template. See creating a virtual machine from a
+        /// ovf/ova template for more details.
         /// </summary>
         [Output("ovfDeploy")]
         public Output<Outputs.VirtualMachineOvfDeploy?> OvfDeploy { get; private set; } = null!;
 
         /// <summary>
-        /// List of host PCI device IDs to create PCI 
+        /// List of host PCI device IDs to create PCI
         /// passthroughs for.
         /// </summary>
         [Output("pciDeviceIds")]
@@ -530,7 +530,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -1030,8 +1030,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When specified, the VM will be deployed from the
-        /// provided ovf template. See creating a virtual machine from a
-        /// ovf template for more details.
+        /// provided ovf/ova template. See creating a virtual machine from a
+        /// ovf/ova template for more details.
         /// </summary>
         [Input("ovfDeploy")]
         public Input<Inputs.VirtualMachineOvfDeployArgs>? OvfDeploy { get; set; }
@@ -1040,7 +1040,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _pciDeviceIds;
 
         /// <summary>
-        /// List of host PCI device IDs to create PCI 
+        /// List of host PCI device IDs to create PCI
         /// passthroughs for.
         /// </summary>
         public InputList<string> PciDeviceIds
@@ -1157,7 +1157,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -1643,8 +1643,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When specified, the VM will be deployed from the
-        /// provided ovf template. See creating a virtual machine from a
-        /// ovf template for more details.
+        /// provided ovf/ova template. See creating a virtual machine from a
+        /// ovf/ova template for more details.
         /// </summary>
         [Input("ovfDeploy")]
         public Input<Inputs.VirtualMachineOvfDeployGetArgs>? OvfDeploy { get; set; }
@@ -1653,7 +1653,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _pciDeviceIds;
 
         /// <summary>
-        /// List of host PCI device IDs to create PCI 
+        /// List of host PCI device IDs to create PCI
         /// passthroughs for.
         /// </summary>
         public InputList<string> PciDeviceIds
@@ -1778,7 +1778,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

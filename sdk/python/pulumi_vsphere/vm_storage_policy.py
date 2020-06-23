@@ -33,6 +33,31 @@ class VmStoragePolicy(pulumi.CustomResource):
         policies. Using this storage policy, tag based placement rules can be created to 
         place a VM on a particular tagged datastore.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="DC")
+        tag_category = vsphere.get_tag_category(name="cat1")
+        tag1 = vsphere.get_tag(name="tag1",
+            category_id=tag_category.id)
+        tag2 = vsphere.get_tag(name="tag2",
+            category_id=tag_category.id)
+        policy_tag_based_placement = vsphere.VmStoragePolicy("policyTagBasedPlacement",
+            description="description",
+            tag_rules=[{
+                "tagCategory": tag_category.name,
+                "tags": [
+                    tag1.name,
+                    tag2.name,
+                ],
+                "includeDatastoresWithTags": True,
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

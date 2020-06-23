@@ -205,8 +205,8 @@ type VirtualMachine struct {
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrOutput `pulumi:"numCpus"`
 	// When specified, the VM will be deployed from the
-	// provided ovf template. See creating a virtual machine from a
-	// ovf template for more details.
+	// provided ovf/ova template. See creating a virtual machine from a
+	// ovf/ova template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs to create PCI
 	// passthroughs for.
@@ -529,8 +529,8 @@ type virtualMachineState struct {
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
 	// When specified, the VM will be deployed from the
-	// provided ovf template. See creating a virtual machine from a
-	// ovf template for more details.
+	// provided ovf/ova template. See creating a virtual machine from a
+	// ovf/ova template for more details.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs to create PCI
 	// passthroughs for.
@@ -823,8 +823,8 @@ type VirtualMachineState struct {
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
 	// When specified, the VM will be deployed from the
-	// provided ovf template. See creating a virtual machine from a
-	// ovf template for more details.
+	// provided ovf/ova template. See creating a virtual machine from a
+	// ovf/ova template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// List of host PCI device IDs to create PCI
 	// passthroughs for.
@@ -1096,8 +1096,8 @@ type virtualMachineArgs struct {
 	// to this virtual machine. Default: `1`.
 	NumCpus *int `pulumi:"numCpus"`
 	// When specified, the VM will be deployed from the
-	// provided ovf template. See creating a virtual machine from a
-	// ovf template for more details.
+	// provided ovf/ova template. See creating a virtual machine from a
+	// ovf/ova template for more details.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs to create PCI
 	// passthroughs for.
@@ -1349,8 +1349,8 @@ type VirtualMachineArgs struct {
 	// to this virtual machine. Default: `1`.
 	NumCpus pulumi.IntPtrInput
 	// When specified, the VM will be deployed from the
-	// provided ovf template. See creating a virtual machine from a
-	// ovf template for more details.
+	// provided ovf/ova template. See creating a virtual machine from a
+	// ovf/ova template for more details.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// List of host PCI device IDs to create PCI
 	// passthroughs for.

@@ -10,6 +10,41 @@ import * as utilities from "./utilities";
  * The `vsphere..VmStoragePolicy` resource can be used to create and manage storage 
  * policies. Using this storage policy, tag based placement rules can be created to 
  * place a VM on a particular tagged datastore.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const dc = vsphere.getDatacenter({
+ *     name: "DC",
+ * });
+ * const tagCategory = vsphere.getTagCategory({
+ *     name: "cat1",
+ * });
+ * const tag1 = tagCategory.then(tagCategory => vsphere.getTag({
+ *     name: "tag1",
+ *     categoryId: tagCategory.id,
+ * }));
+ * const tag2 = tagCategory.then(tagCategory => vsphere.getTag({
+ *     name: "tag2",
+ *     categoryId: tagCategory.id,
+ * }));
+ * const policyTagBasedPlacement = new vsphere.VmStoragePolicy("policyTagBasedPlacement", {
+ *     description: "description",
+ *     tag_rules: [{
+ *         tagCategory: tagCategory.then(tagCategory => tagCategory.name),
+ *         tags: [
+ *             tag1.then(tag1 => tag1.name),
+ *             tag2.then(tag2 => tag2.name),
+ *         ],
+ *         includeDatastoresWithTags: true,
+ *     }],
+ * });
+ * ```
  */
 export class VmStoragePolicy extends pulumi.CustomResource {
     /**
