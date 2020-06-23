@@ -57,6 +57,19 @@ def get_host_pci_device(class_id=None,host_id=None,name_regex=None,vendor_id=Non
     of a vSphere host's PCI device. This can then be used with 
     `.VirtualMachine`'s `pci_device_id`.
 
+    ## Example Usage With Vendor ID and Class ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(name="esxi1",
+        datacenter_id=datacenter.id)
+    dev = vsphere.get_host_pci_device(host_id=host.id,
+        class_id=123,
+        vendor_id=456)
+    ```
     ## Example Usage With Name Regular Expression
      
      ```hcl

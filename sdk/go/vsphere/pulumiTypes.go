@@ -2443,12 +2443,13 @@ func (o VirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Virt
 }
 
 type VirtualMachineOvfDeploy struct {
-	DiskProvisioning   *string           `pulumi:"diskProvisioning"`
-	IpAllocationPolicy *string           `pulumi:"ipAllocationPolicy"`
-	IpProtocol         *string           `pulumi:"ipProtocol"`
-	LocalOvfPath       *string           `pulumi:"localOvfPath"`
-	OvfNetworkMap      map[string]string `pulumi:"ovfNetworkMap"`
-	RemoteOvfUrl       *string           `pulumi:"remoteOvfUrl"`
+	AllowUnverifiedSslCert *bool             `pulumi:"allowUnverifiedSslCert"`
+	DiskProvisioning       *string           `pulumi:"diskProvisioning"`
+	IpAllocationPolicy     *string           `pulumi:"ipAllocationPolicy"`
+	IpProtocol             *string           `pulumi:"ipProtocol"`
+	LocalOvfPath           *string           `pulumi:"localOvfPath"`
+	OvfNetworkMap          map[string]string `pulumi:"ovfNetworkMap"`
+	RemoteOvfUrl           *string           `pulumi:"remoteOvfUrl"`
 }
 
 // VirtualMachineOvfDeployInput is an input type that accepts VirtualMachineOvfDeployArgs and VirtualMachineOvfDeployOutput values.
@@ -2464,12 +2465,13 @@ type VirtualMachineOvfDeployInput interface {
 }
 
 type VirtualMachineOvfDeployArgs struct {
-	DiskProvisioning   pulumi.StringPtrInput `pulumi:"diskProvisioning"`
-	IpAllocationPolicy pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
-	IpProtocol         pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	LocalOvfPath       pulumi.StringPtrInput `pulumi:"localOvfPath"`
-	OvfNetworkMap      pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
-	RemoteOvfUrl       pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
+	AllowUnverifiedSslCert pulumi.BoolPtrInput   `pulumi:"allowUnverifiedSslCert"`
+	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
+	IpAllocationPolicy     pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
+	IpProtocol             pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	LocalOvfPath           pulumi.StringPtrInput `pulumi:"localOvfPath"`
+	OvfNetworkMap          pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
+	RemoteOvfUrl           pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
 }
 
 func (VirtualMachineOvfDeployArgs) ElementType() reflect.Type {
@@ -2549,6 +2551,10 @@ func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutputWithCon
 		return &v
 	}).(VirtualMachineOvfDeployPtrOutput)
 }
+func (o VirtualMachineOvfDeployOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.AllowUnverifiedSslCert }).(pulumi.BoolPtrOutput)
+}
+
 func (o VirtualMachineOvfDeployOutput) DiskProvisioning() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DiskProvisioning }).(pulumi.StringPtrOutput)
 }
@@ -2589,6 +2595,15 @@ func (o VirtualMachineOvfDeployPtrOutput) ToVirtualMachineOvfDeployPtrOutputWith
 
 func (o VirtualMachineOvfDeployPtrOutput) Elem() VirtualMachineOvfDeployOutput {
 	return o.ApplyT(func(v *VirtualMachineOvfDeploy) VirtualMachineOvfDeploy { return *v }).(VirtualMachineOvfDeployOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowUnverifiedSslCert
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOutput {

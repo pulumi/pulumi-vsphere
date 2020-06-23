@@ -327,12 +327,12 @@ export class VirtualMachine extends pulumi.CustomResource {
     public readonly numCpus!: pulumi.Output<number | undefined>;
     /**
      * When specified, the VM will be deployed from the
-     * provided ovf template. See creating a virtual machine from a
-     * ovf template for more details.
+     * provided ovf/ova template. See creating a virtual machine from a
+     * ovf/ova template for more details.
      */
     public readonly ovfDeploy!: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
     /**
-     * List of host PCI device IDs to create PCI 
+     * List of host PCI device IDs to create PCI
      * passthroughs for.
      */
     public readonly pciDeviceIds!: pulumi.Output<string[] | undefined>;
@@ -419,7 +419,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -956,12 +956,12 @@ export interface VirtualMachineState {
     readonly numCpus?: pulumi.Input<number>;
     /**
      * When specified, the VM will be deployed from the
-     * provided ovf template. See creating a virtual machine from a
-     * ovf template for more details.
+     * provided ovf/ova template. See creating a virtual machine from a
+     * ovf/ova template for more details.
      */
     readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
-     * List of host PCI device IDs to create PCI 
+     * List of host PCI device IDs to create PCI
      * passthroughs for.
      */
     readonly pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1048,7 +1048,7 @@ export interface VirtualMachineState {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1370,12 +1370,12 @@ export interface VirtualMachineArgs {
     readonly numCpus?: pulumi.Input<number>;
     /**
      * When specified, the VM will be deployed from the
-     * provided ovf template. See creating a virtual machine from a
-     * ovf template for more details.
+     * provided ovf/ova template. See creating a virtual machine from a
+     * ovf/ova template for more details.
      */
     readonly ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
-     * List of host PCI device IDs to create PCI 
+     * List of host PCI device IDs to create PCI
      * passthroughs for.
      */
     readonly pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1456,7 +1456,7 @@ export interface VirtualMachineArgs {
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

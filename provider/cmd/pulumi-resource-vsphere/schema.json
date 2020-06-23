@@ -990,6 +990,14 @@
         },
         "vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy": {
             "properties": {
+                "allowUnverifiedSslCert": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "diskProvisioning": {
                     "type": "string",
                     "language": {
@@ -7965,14 +7973,14 @@
                 },
                 "ovfDeploy": {
                     "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
-                    "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
+                    "description": "When specified, the VM will be deployed from the\nprovided ovf/ova template. See creating a virtual machine from a\novf/ova template for more details.\n"
                 },
                 "pciDeviceIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                    "description": "List of host PCI device IDs to create PCI\npassthroughs for.\n"
                 },
                 "poweronTimeout": {
                     "type": "integer",
@@ -8039,7 +8047,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n"
+                    "description": "The IDs of any tags to attach to this resource.\n"
                 },
                 "uuid": {
                     "type": "string",
@@ -8295,14 +8303,14 @@
                 },
                 "ovfDeploy": {
                     "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
-                    "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
+                    "description": "When specified, the VM will be deployed from the\nprovided ovf/ova template. See creating a virtual machine from a\novf/ova template for more details.\n"
                 },
                 "pciDeviceIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                    "description": "List of host PCI device IDs to create PCI\npassthroughs for.\n"
                 },
                 "poweronTimeout": {
                     "type": "integer",
@@ -8365,7 +8373,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of any tags to attach to this resource. \n"
+                    "description": "The IDs of any tags to attach to this resource.\n"
                 },
                 "vapp": {
                     "$ref": "#/types/vsphere:/VirtualMachineVapp:VirtualMachineVapp",
@@ -8610,14 +8618,14 @@
                     },
                     "ovfDeploy": {
                         "$ref": "#/types/vsphere:/VirtualMachineOvfDeploy:VirtualMachineOvfDeploy",
-                        "description": "When specified, the VM will be deployed from the\nprovided ovf template. See creating a virtual machine from a\novf template for more details.\n"
+                        "description": "When specified, the VM will be deployed from the\nprovided ovf/ova template. See creating a virtual machine from a\novf/ova template for more details.\n"
                     },
                     "pciDeviceIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of host PCI device IDs to create PCI \npassthroughs for.\n"
+                        "description": "List of host PCI device IDs to create PCI\npassthroughs for.\n"
                     },
                     "poweronTimeout": {
                         "type": "integer",
@@ -8684,7 +8692,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of any tags to attach to this resource. \n"
+                        "description": "The IDs of any tags to attach to this resource.\n"
                     },
                     "uuid": {
                         "type": "string",
@@ -9672,7 +9680,7 @@
             }
         },
         "vsphere:index/getHostPciDevice:getHostPciDevice": {
-            "description": "The `vsphere..getHostPciDevice` data source can be used to discover the DeviceID\nof a vSphere host's PCI device. This can then be used with \n`vsphere..VirtualMachine`'s `pci_device_id`.\n\n## Example Usage With Name Regular Expression\n \n ```hcl\n data \"vsphere..Datacenter\" \"datacenter\" {\n   name = \"dc1\"\n }\n \n data \"vsphere..Host\" \"host\" {\n   name          = \"esxi1\"\n   datacenter_id = data.vsphere_datacenter.datacenter.id\n }\n \n data \"vsphere..getHostPciDevice\" \"dev\" {\n   host_id    = data.vsphere_host.host.id\n   name_regex = \"MMC\"\n }\n ```\n",
+            "description": "The `vsphere..getHostPciDevice` data source can be used to discover the DeviceID\nof a vSphere host's PCI device. This can then be used with \n`vsphere..VirtualMachine`'s `pci_device_id`.\n\n## Example Usage With Vendor ID and Class ID\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = vsphere.getDatacenter({\n    name: \"dc1\",\n});\nconst host = datacenter.then(datacenter =\u003e vsphere.getHost({\n    name: \"esxi1\",\n    datacenterId: datacenter.id,\n}));\nconst dev = host.then(host =\u003e vsphere.getHostPciDevice({\n    hostId: host.id,\n    classId: 123,\n    vendorId: 456,\n}));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc1\")\nhost = vsphere.get_host(name=\"esxi1\",\n    datacenter_id=datacenter.id)\ndev = vsphere.get_host_pci_device(host_id=host.id,\n    class_id=123,\n    vendor_id=456)\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs\n        {\n            Name = \"dc1\",\n        }));\n        var host = datacenter.Apply(datacenter =\u003e Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs\n        {\n            Name = \"esxi1\",\n            DatacenterId = datacenter.Id,\n        })));\n        var dev = host.Apply(host =\u003e Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs\n        {\n            HostId = host.Id,\n            ClassId = \"123\",\n            VendorId = \"456\",\n        })));\n    }\n\n}\n```\n## Example Usage With Name Regular Expression\n \n ```hcl\n data \"vsphere..Datacenter\" \"datacenter\" {\n   name = \"dc1\"\n }\n \n data \"vsphere..Host\" \"host\" {\n   name          = \"esxi1\"\n   datacenter_id = data.vsphere_datacenter.datacenter.id\n }\n \n data \"vsphere..getHostPciDevice\" \"dev\" {\n   host_id    = data.vsphere_host.host.id\n   name_regex = \"MMC\"\n }\n ```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getHostPciDevice.\n",
                 "properties": {
