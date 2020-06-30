@@ -278,6 +278,14 @@ namespace Pulumi.VSphere
         public Output<string?> HvMode { get; private set; } = null!;
 
         /// <summary>
+        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Output("ideControllerCount")]
+        public Output<int?> IdeControllerCount { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses and CIDR networks to
         /// ignore while waiting for an available IP address using either of the waiters.
         /// Any IP addresses in this list will be ignored if they show up so that the
@@ -474,6 +482,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("runToolsScriptsBeforeGuestStandby")]
         public Output<bool?> RunToolsScriptsBeforeGuestStandby { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Output("sataControllerCount")]
+        public Output<int?> SataControllerCount { get; private set; } = null!;
 
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
@@ -906,6 +922,14 @@ namespace Pulumi.VSphere
         [Input("hvMode")]
         public Input<string>? HvMode { get; set; }
 
+        /// <summary>
+        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Input("ideControllerCount")]
+        public Input<int>? IdeControllerCount { get; set; }
+
         [Input("ignoredGuestIps")]
         private InputList<string>? _ignoredGuestIps;
 
@@ -1098,6 +1122,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("runToolsScriptsBeforeGuestStandby")]
         public Input<bool>? RunToolsScriptsBeforeGuestStandby { get; set; }
+
+        /// <summary>
+        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Input("sataControllerCount")]
+        public Input<int>? SataControllerCount { get; set; }
 
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
@@ -1504,6 +1536,14 @@ namespace Pulumi.VSphere
         [Input("hvMode")]
         public Input<string>? HvMode { get; set; }
 
+        /// <summary>
+        /// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Input("ideControllerCount")]
+        public Input<int>? IdeControllerCount { get; set; }
+
         [Input("ignoredGuestIps")]
         private InputList<string>? _ignoredGuestIps;
 
@@ -1719,6 +1759,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("runToolsScriptsBeforeGuestStandby")]
         public Input<bool>? RunToolsScriptsBeforeGuestStandby { get; set; }
+
+        /// <summary>
+        /// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        /// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        /// controllers.
+        /// </summary>
+        [Input("sataControllerCount")]
+        public Input<int>? SataControllerCount { get; set; }
 
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are

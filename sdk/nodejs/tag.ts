@@ -37,6 +37,29 @@ import * as utilities from "./utilities";
  *     description: "Managed by Pulumi",
  * });
  * ```
+ *
+ * ### Using Tags in a Supported Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const category = new vsphere.TagCategory("category", {
+ *     associableTypes: [
+ *         "VirtualMachine",
+ *         "Datastore",
+ *     ],
+ *     cardinality: "SINGLE",
+ *     description: "Managed by Pulumi",
+ * });
+ * const tag = new vsphere.Tag("tag", {
+ *     categoryId: category.id,
+ *     description: "Managed by Pulumi",
+ * });
+ * const web = new vsphere.VirtualMachine("web", {
+ *     tags: [tag.id],
+ * });
+ * ```
  */
 export class Tag extends pulumi.CustomResource {
     /**

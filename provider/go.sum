@@ -710,6 +710,8 @@ github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200617121428-2f4f61ab72
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200617121428-2f4f61ab7231/go.mod h1:Icwja6/X3lgoLf6dHTiaz9rW6ZmFU7kdUK07RHplWUg=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200623130117-3102db6cd83e h1:y0DwM5hZ5yMK8L4V5sQC6vTmCEAQMUnNcnyn4ayDbd8=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200623130117-3102db6cd83e/go.mod h1:Icwja6/X3lgoLf6dHTiaz9rW6ZmFU7kdUK07RHplWUg=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200630201708-beb84a3e9eac h1:NIITfwsHgEt+auYpxrny7CE4XLuwKDoAUKV6YWiPL6g=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200630201708-beb84a3e9eac/go.mod h1:FgcsrcPpnjLUO4XWpudYiBho9ETIXYRxVXWV7R3Iz6k=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=

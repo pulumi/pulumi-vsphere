@@ -143,6 +143,10 @@ type VirtualMachine struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode pulumi.StringPtrOutput `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	IdeControllerCount pulumi.IntPtrOutput `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to
 	// ignore while waiting for an available IP address using either of the waiters.
 	// Any IP addresses in this list will be ignored if they show up so that the
@@ -237,6 +241,10 @@ type VirtualMachine struct {
 	// Enable the execution of
 	// pre-standby scripts when VMware tools is installed. Default: `true`.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrOutput `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	SataControllerCount pulumi.IntPtrOutput `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrOutput `pulumi:"scsiBusSharing"`
@@ -467,6 +475,10 @@ type virtualMachineState struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode *string `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	IdeControllerCount *int `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to
 	// ignore while waiting for an available IP address using either of the waiters.
 	// Any IP addresses in this list will be ignored if they show up so that the
@@ -561,6 +573,10 @@ type virtualMachineState struct {
 	// Enable the execution of
 	// pre-standby scripts when VMware tools is installed. Default: `true`.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	SataControllerCount *int `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
@@ -761,6 +777,10 @@ type VirtualMachineState struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode pulumi.StringPtrInput
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to
 	// ignore while waiting for an available IP address using either of the waiters.
 	// Any IP addresses in this list will be ignored if they show up so that the
@@ -855,6 +875,10 @@ type VirtualMachineState struct {
 	// Enable the execution of
 	// pre-standby scripts when VMware tools is installed. Default: `true`.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	SataControllerCount pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrInput
@@ -1041,6 +1065,10 @@ type virtualMachineArgs struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode *string `pulumi:"hvMode"`
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	IdeControllerCount *int `pulumi:"ideControllerCount"`
 	// List of IP addresses and CIDR networks to
 	// ignore while waiting for an available IP address using either of the waiters.
 	// Any IP addresses in this list will be ignored if they show up so that the
@@ -1124,6 +1152,10 @@ type virtualMachineArgs struct {
 	// Enable the execution of
 	// pre-standby scripts when VMware tools is installed. Default: `true`.
 	RunToolsScriptsBeforeGuestStandby *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	SataControllerCount *int `pulumi:"sataControllerCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing *string `pulumi:"scsiBusSharing"`
@@ -1294,6 +1326,10 @@ type VirtualMachineArgs struct {
 	// this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
 	// `hvAuto`.
 	HvMode pulumi.StringPtrInput
+	// The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	IdeControllerCount pulumi.IntPtrInput
 	// List of IP addresses and CIDR networks to
 	// ignore while waiting for an available IP address using either of the waiters.
 	// Any IP addresses in this list will be ignored if they show up so that the
@@ -1377,6 +1413,10 @@ type VirtualMachineArgs struct {
 	// Enable the execution of
 	// pre-standby scripts when VMware tools is installed. Default: `true`.
 	RunToolsScriptsBeforeGuestStandby pulumi.BoolPtrInput
+	// The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+	// you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+	// controllers.
+	SataControllerCount pulumi.IntPtrInput
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
 	ScsiBusSharing pulumi.StringPtrInput

@@ -4,9 +4,9 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-vsphere/vsphere"
 )
 
 const (
@@ -49,6 +49,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-vsphere",
+		GitHubOrg:   "hashicorp",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"user": {
 				Default: &tfbridge.DefaultInfo{
