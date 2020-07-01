@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`vsphere` Terraform Provider](https://github.com/terraform-providers/terraform-provider-vsphere).",
+    "attribution": "This Pulumi package is based on the [`vsphere` Terraform Provider](https://github.com/hashicorp/terraform-provider-vsphere).",
     "repository": "https://github.com/pulumi/pulumi-vsphere",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -676,6 +676,15 @@
                         }
                     }
                 },
+                "controllerType": {
+                    "type": "string",
+                    "description": "The type of storage controller to attach the\ndisk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate\nnumber of controllers enabled for the selected type. Default `scsi`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "datastoreId": {
                     "type": "string",
                     "description": "The datastore ID that the ISO is located in.\nRequried for using a datastore ISO. Conflicts with `client_device`.\n",
@@ -832,7 +841,7 @@
                 },
                 "unitNumber": {
                     "type": "integer",
-                    "description": "The disk number on the SCSI bus. The maximum value\nfor this setting is the value of\n`scsi_controller_count` times 15, minus 1 (so `14`,\n`29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,\nfor which one disk must be set to. Duplicate unit numbers are not allowed.\n",
+                    "description": "The disk number on the storage bus. The maximum\nvalue for this setting is the value of the controller count times the\ncontroller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).\nThe default is `0`, for which one disk must be set to. Duplicate unit numbers\nare not allowed.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7130,7 +7139,7 @@
             }
         },
         "vsphere:index/tag:Tag": {
-            "description": "The `vsphere..Tag` resource can be used to create and manage tags, which allow\nyou to attach metadata to objects in the vSphere inventory to make these\nobjects more sortable and searchable.\n\nFor more information about tags, click [here][ext-tags-general].\n\n[ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThis example creates a tag named `test-tag`. This tag is assigned the\n`test-category` category, which was created by the\n`vsphere..TagCategory` resource. The resulting\ntag can be assigned to VMs and datastores only, and can be the only value in\nthe category that can be assigned, as per the restrictions defined by the\ncategory.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst category = new vsphere.TagCategory(\"category\", {\n    associableTypes: [\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality: \"SINGLE\",\n    description: \"Managed by Pulumi\",\n});\nconst tag = new vsphere.Tag(\"tag\", {\n    categoryId: category.id,\n    description: \"Managed by Pulumi\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncategory = vsphere.TagCategory(\"category\",\n    associable_types=[\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality=\"SINGLE\",\n    description=\"Managed by Pulumi\")\ntag = vsphere.Tag(\"tag\",\n    category_id=category.id,\n    description=\"Managed by Pulumi\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var category = new VSphere.TagCategory(\"category\", new VSphere.TagCategoryArgs\n        {\n            AssociableTypes = \n            {\n                \"VirtualMachine\",\n                \"Datastore\",\n            },\n            Cardinality = \"SINGLE\",\n            Description = \"Managed by Pulumi\",\n        });\n        var tag = new VSphere.Tag(\"tag\", new VSphere.TagArgs\n        {\n            CategoryId = category.Id,\n            Description = \"Managed by Pulumi\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "The `vsphere..Tag` resource can be used to create and manage tags, which allow\nyou to attach metadata to objects in the vSphere inventory to make these\nobjects more sortable and searchable.\n\nFor more information about tags, click [here][ext-tags-general].\n\n[ext-tags-general]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-E8E854DD-AA97-4E0C-8419-CE84F93C4058.html\n\n\u003e **NOTE:** Tagging support is unsupported on direct ESXi connections and\nrequires vCenter 6.0 or higher.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThis example creates a tag named `test-tag`. This tag is assigned the\n`test-category` category, which was created by the\n`vsphere..TagCategory` resource. The resulting\ntag can be assigned to VMs and datastores only, and can be the only value in\nthe category that can be assigned, as per the restrictions defined by the\ncategory.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst category = new vsphere.TagCategory(\"category\", {\n    associableTypes: [\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality: \"SINGLE\",\n    description: \"Managed by Pulumi\",\n});\nconst tag = new vsphere.Tag(\"tag\", {\n    categoryId: category.id,\n    description: \"Managed by Pulumi\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncategory = vsphere.TagCategory(\"category\",\n    associable_types=[\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality=\"SINGLE\",\n    description=\"Managed by Pulumi\")\ntag = vsphere.Tag(\"tag\",\n    category_id=category.id,\n    description=\"Managed by Pulumi\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var category = new VSphere.TagCategory(\"category\", new VSphere.TagCategoryArgs\n        {\n            AssociableTypes = \n            {\n                \"VirtualMachine\",\n                \"Datastore\",\n            },\n            Cardinality = \"SINGLE\",\n            Description = \"Managed by Pulumi\",\n        });\n        var tag = new VSphere.Tag(\"tag\", new VSphere.TagArgs\n        {\n            CategoryId = category.Id,\n            Description = \"Managed by Pulumi\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### Using Tags in a Supported Resource\n\nTags can be applied to vSphere resources via the `tags` argument\nin any supported resource.\n\nThe following example builds on the above example by creating a\n`vsphere..VirtualMachine` and applying the\ncreated tag to it:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst category = new vsphere.TagCategory(\"category\", {\n    associableTypes: [\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality: \"SINGLE\",\n    description: \"Managed by Pulumi\",\n});\nconst tag = new vsphere.Tag(\"tag\", {\n    categoryId: category.id,\n    description: \"Managed by Pulumi\",\n});\nconst web = new vsphere.VirtualMachine(\"web\", {\n    tags: [tag.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ncategory = vsphere.TagCategory(\"category\",\n    associable_types=[\n        \"VirtualMachine\",\n        \"Datastore\",\n    ],\n    cardinality=\"SINGLE\",\n    description=\"Managed by Pulumi\")\ntag = vsphere.Tag(\"tag\",\n    category_id=category.id,\n    description=\"Managed by Pulumi\")\nweb = vsphere.VirtualMachine(\"web\", tags=[tag.id])\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var category = new VSphere.TagCategory(\"category\", new VSphere.TagCategoryArgs\n        {\n            AssociableTypes = \n            {\n                \"VirtualMachine\",\n                \"Datastore\",\n            },\n            Cardinality = \"SINGLE\",\n            Description = \"Managed by Pulumi\",\n        });\n        var tag = new VSphere.Tag(\"tag\", new VSphere.TagArgs\n        {\n            CategoryId = category.Id,\n            Description = \"Managed by Pulumi\",\n        });\n        var web = new VSphere.VirtualMachine(\"web\", new VSphere.VirtualMachineArgs\n        {\n            Tags = \n            {\n                tag.Id,\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "categoryId": {
                     "type": "string",
@@ -7901,6 +7910,10 @@
                     "type": "string",
                     "description": "The (non-nested) hardware virtualization setting for\nthis virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:\n`hvAuto`.\n"
                 },
+                "ideControllerCount": {
+                    "type": "integer",
+                    "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                },
                 "ignoredGuestIps": {
                     "type": "array",
                     "items": {
@@ -8013,6 +8026,10 @@
                 "runToolsScriptsBeforeGuestStandby": {
                     "type": "boolean",
                     "description": "Enable the execution of\npre-standby scripts when VMware tools is installed. Default: `true`.\n"
+                },
+                "sataControllerCount": {
+                    "type": "integer",
+                    "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
                 },
                 "scsiBusSharing": {
                     "type": "string",
@@ -8239,6 +8256,10 @@
                     "type": "string",
                     "description": "The (non-nested) hardware virtualization setting for\nthis virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:\n`hvAuto`.\n"
                 },
+                "ideControllerCount": {
+                    "type": "integer",
+                    "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                },
                 "ignoredGuestIps": {
                     "type": "array",
                     "items": {
@@ -8339,6 +8360,10 @@
                 "runToolsScriptsBeforeGuestStandby": {
                     "type": "boolean",
                     "description": "Enable the execution of\npre-standby scripts when VMware tools is installed. Default: `true`.\n"
+                },
+                "sataControllerCount": {
+                    "type": "integer",
+                    "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
                 },
                 "scsiBusSharing": {
                     "type": "string",
@@ -8546,6 +8571,10 @@
                         "type": "string",
                         "description": "The (non-nested) hardware virtualization setting for\nthis virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:\n`hvAuto`.\n"
                     },
+                    "ideControllerCount": {
+                        "type": "integer",
+                        "description": "The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
+                    },
                     "ignoredGuestIps": {
                         "type": "array",
                         "items": {
@@ -8658,6 +8687,10 @@
                     "runToolsScriptsBeforeGuestStandby": {
                         "type": "boolean",
                         "description": "Enable the execution of\npre-standby scripts when VMware tools is installed. Default: `true`.\n"
+                    },
+                    "sataControllerCount": {
+                        "type": "integer",
+                        "description": "The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks\nyou can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove\ncontrollers.\n"
                     },
                     "scsiBusSharing": {
                         "type": "string",
@@ -10003,9 +10036,15 @@
                         "type": "string",
                         "description": "The managed object reference\nID of the datacenter the virtual machine is located in.\nThis can be omitted if the search path used in `name` is an absolute path.\nFor default datacenters, use the `id` attribute from an empty\n`vsphere..Datacenter` data source.\n"
                     },
+                    "ideControllerScanCount": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the virtual machine. This can be a name or\npath.\n"
+                    },
+                    "sataControllerScanCount": {
+                        "type": "integer"
                     },
                     "scsiControllerScanCount": {
                         "type": "integer",
@@ -10053,6 +10092,9 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "ideControllerScanCount": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -10062,6 +10104,9 @@
                             "type": "string"
                         },
                         "description": "The network interface types for each network\ninterface found on the virtual machine, in device bus order. Will be one of\n`e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.\n"
+                    },
+                    "sataControllerScanCount": {
+                        "type": "integer"
                     },
                     "scsiBusSharing": {
                         "type": "string",
@@ -10169,7 +10214,7 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating vsphere resources",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-vsphere)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-vsphere` repo](https://github.com/pulumi/pulumi-vsphere/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-vsphere` repo](https://github.com/terraform-providers/terraform-provider-vsphere/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/hashicorp/terraform-provider-vsphere)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-vsphere` repo](https://github.com/pulumi/pulumi-vsphere/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`hashicorp/terraform-provider-vsphere` repo](https://github.com/hashicorp/terraform-provider-vsphere/issues).",
             "typescriptVersion": ""
         },
         "python": {

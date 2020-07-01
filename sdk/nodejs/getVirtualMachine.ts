@@ -40,7 +40,9 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
     }
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
         "datacenterId": args.datacenterId,
+        "ideControllerScanCount": args.ideControllerScanCount,
         "name": args.name,
+        "sataControllerScanCount": args.sataControllerScanCount,
         "scsiControllerScanCount": args.scsiControllerScanCount,
     }, opts);
 }
@@ -57,11 +59,13 @@ export interface GetVirtualMachineArgs {
      * `vsphere..Datacenter` data source.
      */
     readonly datacenterId?: string;
+    readonly ideControllerScanCount?: number;
     /**
      * The name of the virtual machine. This can be a name or
      * path.
      */
     readonly name: string;
+    readonly sataControllerScanCount?: number;
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
@@ -106,6 +110,7 @@ export interface GetVirtualMachineResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ideControllerScanCount?: number;
     readonly name: string;
     /**
      * The network interface types for each network
@@ -113,6 +118,7 @@ export interface GetVirtualMachineResult {
      * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
      */
     readonly networkInterfaceTypes: string[];
+    readonly sataControllerScanCount?: number;
     /**
      * Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Only the first number of

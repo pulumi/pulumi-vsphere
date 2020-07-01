@@ -233,6 +233,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly hvMode!: pulumi.Output<string | undefined>;
     /**
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    public readonly ideControllerCount!: pulumi.Output<number | undefined>;
+    /**
      * List of IP addresses and CIDR networks to
      * ignore while waiting for an available IP address using either of the waiters.
      * Any IP addresses in this list will be ignored if they show up so that the
@@ -379,6 +385,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly runToolsScriptsBeforeGuestStandby!: pulumi.Output<boolean | undefined>;
     /**
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    public readonly sataControllerCount!: pulumi.Output<number | undefined>;
+    /**
      * Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
      */
@@ -524,6 +536,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["hardwareVersion"] = state ? state.hardwareVersion : undefined;
             inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
             inputs["hvMode"] = state ? state.hvMode : undefined;
+            inputs["ideControllerCount"] = state ? state.ideControllerCount : undefined;
             inputs["ignoredGuestIps"] = state ? state.ignoredGuestIps : undefined;
             inputs["imported"] = state ? state.imported : undefined;
             inputs["latencySensitivity"] = state ? state.latencySensitivity : undefined;
@@ -550,6 +563,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["runToolsScriptsBeforeGuestReboot"] = state ? state.runToolsScriptsBeforeGuestReboot : undefined;
             inputs["runToolsScriptsBeforeGuestShutdown"] = state ? state.runToolsScriptsBeforeGuestShutdown : undefined;
             inputs["runToolsScriptsBeforeGuestStandby"] = state ? state.runToolsScriptsBeforeGuestStandby : undefined;
+            inputs["sataControllerCount"] = state ? state.sataControllerCount : undefined;
             inputs["scsiBusSharing"] = state ? state.scsiBusSharing : undefined;
             inputs["scsiControllerCount"] = state ? state.scsiControllerCount : undefined;
             inputs["scsiType"] = state ? state.scsiType : undefined;
@@ -602,6 +616,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["hardwareVersion"] = args ? args.hardwareVersion : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
             inputs["hvMode"] = args ? args.hvMode : undefined;
+            inputs["ideControllerCount"] = args ? args.ideControllerCount : undefined;
             inputs["ignoredGuestIps"] = args ? args.ignoredGuestIps : undefined;
             inputs["latencySensitivity"] = args ? args.latencySensitivity : undefined;
             inputs["memory"] = args ? args.memory : undefined;
@@ -625,6 +640,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["runToolsScriptsBeforeGuestReboot"] = args ? args.runToolsScriptsBeforeGuestReboot : undefined;
             inputs["runToolsScriptsBeforeGuestShutdown"] = args ? args.runToolsScriptsBeforeGuestShutdown : undefined;
             inputs["runToolsScriptsBeforeGuestStandby"] = args ? args.runToolsScriptsBeforeGuestStandby : undefined;
+            inputs["sataControllerCount"] = args ? args.sataControllerCount : undefined;
             inputs["scsiBusSharing"] = args ? args.scsiBusSharing : undefined;
             inputs["scsiControllerCount"] = args ? args.scsiControllerCount : undefined;
             inputs["scsiType"] = args ? args.scsiType : undefined;
@@ -862,6 +878,12 @@ export interface VirtualMachineState {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    readonly ideControllerCount?: pulumi.Input<number>;
+    /**
      * List of IP addresses and CIDR networks to
      * ignore while waiting for an available IP address using either of the waiters.
      * Any IP addresses in this list will be ignored if they show up so that the
@@ -1007,6 +1029,12 @@ export interface VirtualMachineState {
      * pre-standby scripts when VMware tools is installed. Default: `true`.
      */
     readonly runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
+    /**
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    readonly sataControllerCount?: pulumi.Input<number>;
     /**
      * Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
@@ -1287,6 +1315,12 @@ export interface VirtualMachineArgs {
      */
     readonly hvMode?: pulumi.Input<string>;
     /**
+     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    readonly ideControllerCount?: pulumi.Input<number>;
+    /**
      * List of IP addresses and CIDR networks to
      * ignore while waiting for an available IP address using either of the waiters.
      * Any IP addresses in this list will be ignored if they show up so that the
@@ -1415,6 +1449,12 @@ export interface VirtualMachineArgs {
      * pre-standby scripts when VMware tools is installed. Default: `true`.
      */
     readonly runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
+    /**
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
+     */
+    readonly sataControllerCount?: pulumi.Input<number>;
     /**
      * Mode for sharing the SCSI bus. The modes are
      * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.

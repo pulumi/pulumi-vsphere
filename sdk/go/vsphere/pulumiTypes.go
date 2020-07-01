@@ -1805,6 +1805,10 @@ type VirtualMachineDisk struct {
 	// Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`,
 	// `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
 	Attach *bool `pulumi:"attach"`
+	// The type of storage controller to attach the
+	// disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+	// number of controllers enabled for the selected type. Default `scsi`.
+	ControllerType *string `pulumi:"controllerType"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId *string `pulumi:"datastoreId"`
@@ -1872,11 +1876,11 @@ type VirtualMachineDisk struct {
 	// to `true` when `eagerlyScrub` is `true`. See the section on picking a disk
 	// type. Default: `true`.
 	ThinProvisioned *bool `pulumi:"thinProvisioned"`
-	// The disk number on the SCSI bus. The maximum value
-	// for this setting is the value of
-	// `scsiControllerCount` times 15, minus 1 (so `14`,
-	// `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-	// for which one disk must be set to. Duplicate unit numbers are not allowed.
+	// The disk number on the storage bus. The maximum
+	// value for this setting is the value of the controller count times the
+	// controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+	// The default is `0`, for which one disk must be set to. Duplicate unit numbers
+	// are not allowed.
 	UnitNumber *int `pulumi:"unitNumber"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
 	// virtual disk on the virtual machine.
@@ -1904,6 +1908,10 @@ type VirtualMachineDiskArgs struct {
 	// Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`,
 	// `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
+	// The type of storage controller to attach the
+	// disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+	// number of controllers enabled for the selected type. Default `scsi`.
+	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
 	// The datastore ID that the ISO is located in.
 	// Requried for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
@@ -1971,11 +1979,11 @@ type VirtualMachineDiskArgs struct {
 	// to `true` when `eagerlyScrub` is `true`. See the section on picking a disk
 	// type. Default: `true`.
 	ThinProvisioned pulumi.BoolPtrInput `pulumi:"thinProvisioned"`
-	// The disk number on the SCSI bus. The maximum value
-	// for this setting is the value of
-	// `scsiControllerCount` times 15, minus 1 (so `14`,
-	// `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-	// for which one disk must be set to. Duplicate unit numbers are not allowed.
+	// The disk number on the storage bus. The maximum
+	// value for this setting is the value of the controller count times the
+	// controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+	// The default is `0`, for which one disk must be set to. Duplicate unit numbers
+	// are not allowed.
 	UnitNumber pulumi.IntPtrInput `pulumi:"unitNumber"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
 	// virtual disk on the virtual machine.
@@ -2043,6 +2051,13 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx cont
 // `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
 func (o VirtualMachineDiskOutput) Attach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Attach }).(pulumi.BoolPtrOutput)
+}
+
+// The type of storage controller to attach the
+// disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+// number of controllers enabled for the selected type. Default `scsi`.
+func (o VirtualMachineDiskOutput) ControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ControllerType }).(pulumi.StringPtrOutput)
 }
 
 // The datastore ID that the ISO is located in.
@@ -2163,11 +2178,11 @@ func (o VirtualMachineDiskOutput) ThinProvisioned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.ThinProvisioned }).(pulumi.BoolPtrOutput)
 }
 
-// The disk number on the SCSI bus. The maximum value
-// for this setting is the value of
-// `scsiControllerCount` times 15, minus 1 (so `14`,
-// `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-// for which one disk must be set to. Duplicate unit numbers are not allowed.
+// The disk number on the storage bus. The maximum
+// value for this setting is the value of the controller count times the
+// controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+// The default is `0`, for which one disk must be set to. Duplicate unit numbers
+// are not allowed.
 func (o VirtualMachineDiskOutput) UnitNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.UnitNumber }).(pulumi.IntPtrOutput)
 }

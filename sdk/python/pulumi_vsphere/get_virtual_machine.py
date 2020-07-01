@@ -13,7 +13,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, id=None, name=None, network_interface_types=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None):
+    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, id=None, ide_controller_scan_count=None, name=None, network_interface_types=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         __self__.alternate_guest_name = alternate_guest_name
@@ -61,6 +61,9 @@ class GetVirtualMachineResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+        if ide_controller_scan_count and not isinstance(ide_controller_scan_count, float):
+            raise TypeError("Expected argument 'ide_controller_scan_count' to be a float")
+        __self__.ide_controller_scan_count = ide_controller_scan_count
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -72,6 +75,9 @@ class GetVirtualMachineResult:
         interface found on the virtual machine, in device bus order. Will be one of
         `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         """
+        if sata_controller_scan_count and not isinstance(sata_controller_scan_count, float):
+            raise TypeError("Expected argument 'sata_controller_scan_count' to be a float")
+        __self__.sata_controller_scan_count = sata_controller_scan_count
         if scsi_bus_sharing and not isinstance(scsi_bus_sharing, str):
             raise TypeError("Expected argument 'scsi_bus_sharing' to be a str")
         __self__.scsi_bus_sharing = scsi_bus_sharing
@@ -106,13 +112,15 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             guest_id=self.guest_id,
             guest_ip_addresses=self.guest_ip_addresses,
             id=self.id,
+            ide_controller_scan_count=self.ide_controller_scan_count,
             name=self.name,
             network_interface_types=self.network_interface_types,
+            sata_controller_scan_count=self.sata_controller_scan_count,
             scsi_bus_sharing=self.scsi_bus_sharing,
             scsi_controller_scan_count=self.scsi_controller_scan_count,
             scsi_type=self.scsi_type)
 
-def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=None,opts=None):
+def get_virtual_machine(datacenter_id=None,ide_controller_scan_count=None,name=None,sata_controller_scan_count=None,scsi_controller_scan_count=None,opts=None):
     """
     The `.VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
@@ -149,7 +157,9 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
 
 
     __args__['datacenterId'] = datacenter_id
+    __args__['ideControllerScanCount'] = ide_controller_scan_count
     __args__['name'] = name
+    __args__['sataControllerScanCount'] = sata_controller_scan_count
     __args__['scsiControllerScanCount'] = scsi_controller_scan_count
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -165,8 +175,10 @@ def get_virtual_machine(datacenter_id=None,name=None,scsi_controller_scan_count=
         guest_id=__ret__.get('guestId'),
         guest_ip_addresses=__ret__.get('guestIpAddresses'),
         id=__ret__.get('id'),
+        ide_controller_scan_count=__ret__.get('ideControllerScanCount'),
         name=__ret__.get('name'),
         network_interface_types=__ret__.get('networkInterfaceTypes'),
+        sata_controller_scan_count=__ret__.get('sataControllerScanCount'),
         scsi_bus_sharing=__ret__.get('scsiBusSharing'),
         scsi_controller_scan_count=__ret__.get('scsiControllerScanCount'),
         scsi_type=__ret__.get('scsiType'))

@@ -21,6 +21,14 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Attach { get; set; }
 
         /// <summary>
+        /// The type of storage controller to attach the
+        /// disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+        /// number of controllers enabled for the selected type. Default `scsi`.
+        /// </summary>
+        [Input("controllerType")]
+        public Input<string>? ControllerType { get; set; }
+
+        /// <summary>
         /// The datastore ID that the ISO is located in.
         /// Requried for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
@@ -145,11 +153,11 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? ThinProvisioned { get; set; }
 
         /// <summary>
-        /// The disk number on the SCSI bus. The maximum value
-        /// for this setting is the value of
-        /// `scsi_controller_count` times 15, minus 1 (so `14`,
-        /// `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-        /// for which one disk must be set to. Duplicate unit numbers are not allowed.
+        /// The disk number on the storage bus. The maximum
+        /// value for this setting is the value of the controller count times the
+        /// controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+        /// The default is `0`, for which one disk must be set to. Duplicate unit numbers
+        /// are not allowed.
         /// </summary>
         [Input("unitNumber")]
         public Input<int>? UnitNumber { get; set; }

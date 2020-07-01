@@ -147,6 +147,12 @@ export interface VirtualMachineDisk {
      */
     attach?: boolean;
     /**
+     * The type of storage controller to attach the
+     * disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+     * number of controllers enabled for the selected type. Default `scsi`.
+     */
+    controllerType?: string;
+    /**
      * The datastore ID that the ISO is located in.
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
@@ -249,11 +255,11 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
      */
     thinProvisioned?: boolean;
     /**
-     * The disk number on the SCSI bus. The maximum value
-     * for this setting is the value of
-     * `scsiControllerCount` times 15, minus 1 (so `14`,
-     * `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-     * for which one disk must be set to. Duplicate unit numbers are not allowed.
+     * The disk number on the storage bus. The maximum
+     * value for this setting is the value of the controller count times the
+     * controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+     * The default is `0`, for which one disk must be set to. Duplicate unit numbers
+     * are not allowed.
      */
     unitNumber?: number;
     /**

@@ -64,12 +64,18 @@ namespace Pulumi.VSphere
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
 
+        [Input("ideControllerScanCount")]
+        public int? IdeControllerScanCount { get; set; }
+
         /// <summary>
         /// The name of the virtual machine. This can be a name or
         /// path.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        [Input("sataControllerScanCount")]
+        public int? SataControllerScanCount { get; set; }
 
         /// <summary>
         /// The number of SCSI controllers to
@@ -120,6 +126,7 @@ namespace Pulumi.VSphere
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? IdeControllerScanCount;
         public readonly string Name;
         /// <summary>
         /// The network interface types for each network
@@ -127,6 +134,7 @@ namespace Pulumi.VSphere
         /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
+        public readonly int? SataControllerScanCount;
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
         /// physicalSharing, virtualSharing, and noSharing. Only the first number of
@@ -159,9 +167,13 @@ namespace Pulumi.VSphere
 
             string id,
 
+            int? ideControllerScanCount,
+
             string name,
 
             ImmutableArray<string> networkInterfaceTypes,
+
+            int? sataControllerScanCount,
 
             string scsiBusSharing,
 
@@ -176,8 +188,10 @@ namespace Pulumi.VSphere
             GuestId = guestId;
             GuestIpAddresses = guestIpAddresses;
             Id = id;
+            IdeControllerScanCount = ideControllerScanCount;
             Name = name;
             NetworkInterfaceTypes = networkInterfaceTypes;
+            SataControllerScanCount = sataControllerScanCount;
             ScsiBusSharing = scsiBusSharing;
             ScsiControllerScanCount = scsiControllerScanCount;
             ScsiType = scsiType;

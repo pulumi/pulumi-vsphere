@@ -189,6 +189,9 @@ class VirtualMachine(pulumi.CustomResource):
       * `attach` (`bool`) - Attach an external disk instead of creating a new one.
         Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
         `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+      * `controllerType` (`str`) - The type of storage controller to attach the
+        disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+        number of controllers enabled for the selected type. Default `scsi`.
       * `datastore_id` (`str`) - The datastore ID that the ISO is located in.
         Requried for using a datastore ISO. Conflicts with `client_device`.
       * `deviceAddress` (`str`) - An address internal to this provider that helps locate the
@@ -228,11 +231,11 @@ class VirtualMachine(pulumi.CustomResource):
         with space for the file being allocated on an as-needed basis. Cannot be set
         to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
         type. Default: `true`.
-      * `unitNumber` (`float`) - The disk number on the SCSI bus. The maximum value
-        for this setting is the value of
-        `scsi_controller_count` times 15, minus 1 (so `14`,
-        `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-        for which one disk must be set to. Duplicate unit numbers are not allowed.
+      * `unitNumber` (`float`) - The disk number on the storage bus. The maximum
+        value for this setting is the value of the controller count times the
+        controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+        The default is `0`, for which one disk must be set to. Duplicate unit numbers
+        are not allowed.
       * `uuid` (`str`) - The UUID of the virtual disk's VMDK file. This is used to track the
         virtual disk on the virtual machine.
       * `writeThrough` (`bool`) - If `true`, writes for this disk are sent
@@ -317,6 +320,12 @@ class VirtualMachine(pulumi.CustomResource):
     The (non-nested) hardware virtualization setting for
     this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
     `hvAuto`.
+    """
+    ide_controller_count: pulumi.Output[float]
+    """
+    The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+    you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+    controllers.
     """
     ignored_guest_ips: pulumi.Output[list]
     """
@@ -500,6 +509,12 @@ class VirtualMachine(pulumi.CustomResource):
     Enable the execution of
     pre-standby scripts when VMware tools is installed. Default: `true`.
     """
+    sata_controller_count: pulumi.Output[float]
+    """
+    The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+    you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+    controllers.
+    """
     scsi_bus_sharing: pulumi.Output[str]
     """
     Mode for sharing the SCSI bus. The modes are
@@ -601,7 +616,7 @@ class VirtualMachine(pulumi.CustomResource):
     `wait_for_guest_ip_timeout` waiter can be used
     instead. A value less than 1 disables the waiter. Default: 5 minutes.
     """
-    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, pci_device_ids=None, poweron_timeout=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, hardware_version=None, host_system_id=None, hv_mode=None, ide_controller_count=None, ignored_guest_ips=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, pci_device_ids=None, poweron_timeout=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_count=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, vapp=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VirtualMachine resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -687,6 +702,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
+        :param pulumi.Input[float] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[list] ignored_guest_ips: List of IP addresses and CIDR networks to
                ignore while waiting for an available IP address using either of the waiters.
                Any IP addresses in this list will be ignored if they show up so that the
@@ -747,6 +765,9 @@ class VirtualMachine(pulumi.CustomResource):
                of pre-shutdown scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the execution of
                pre-standby scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[float] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
         :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
@@ -856,6 +877,9 @@ class VirtualMachine(pulumi.CustomResource):
           * `attach` (`pulumi.Input[bool]`) - Attach an external disk instead of creating a new one.
             Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
             `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+          * `controllerType` (`pulumi.Input[str]`) - The type of storage controller to attach the
+            disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+            number of controllers enabled for the selected type. Default `scsi`.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
           * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
@@ -895,11 +919,11 @@ class VirtualMachine(pulumi.CustomResource):
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
             type. Default: `true`.
-          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the SCSI bus. The maximum value
-            for this setting is the value of
-            `scsi_controller_count` times 15, minus 1 (so `14`,
-            `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-            for which one disk must be set to. Duplicate unit numbers are not allowed.
+          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the storage bus. The maximum
+            value for this setting is the value of the controller count times the
+            controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+            The default is `0`, for which one disk must be set to. Duplicate unit numbers
+            are not allowed.
           * `uuid` (`pulumi.Input[str]`) - The UUID of the virtual disk's VMDK file. This is used to track the
             virtual disk on the virtual machine.
           * `writeThrough` (`pulumi.Input[bool]`) - If `true`, writes for this disk are sent
@@ -998,6 +1022,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['hardware_version'] = hardware_version
             __props__['host_system_id'] = host_system_id
             __props__['hv_mode'] = hv_mode
+            __props__['ide_controller_count'] = ide_controller_count
             __props__['ignored_guest_ips'] = ignored_guest_ips
             __props__['latency_sensitivity'] = latency_sensitivity
             __props__['memory'] = memory
@@ -1023,6 +1048,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['run_tools_scripts_before_guest_reboot'] = run_tools_scripts_before_guest_reboot
             __props__['run_tools_scripts_before_guest_shutdown'] = run_tools_scripts_before_guest_shutdown
             __props__['run_tools_scripts_before_guest_standby'] = run_tools_scripts_before_guest_standby
+            __props__['sata_controller_count'] = sata_controller_count
             __props__['scsi_bus_sharing'] = scsi_bus_sharing
             __props__['scsi_controller_count'] = scsi_controller_count
             __props__['scsi_type'] = scsi_type
@@ -1052,7 +1078,7 @@ class VirtualMachine(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, host_system_id=None, hv_mode=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, pci_device_ids=None, poweron_timeout=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
+    def get(resource_name, id, opts=None, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cdrom=None, change_version=None, clone=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, custom_attributes=None, datacenter_id=None, datastore_cluster_id=None, datastore_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, folder=None, force_power_off=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, host_system_id=None, hv_mode=None, ide_controller_count=None, ignored_guest_ips=None, imported=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, migrate_wait_timeout=None, moid=None, name=None, nested_hv_enabled=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, ovf_deploy=None, pci_device_ids=None, poweron_timeout=None, reboot_required=None, resource_pool_id=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_count=None, scsi_bus_sharing=None, scsi_controller_count=None, scsi_type=None, shutdown_wait_timeout=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, tags=None, uuid=None, vapp=None, vapp_transports=None, vmware_tools_status=None, vmx_path=None, wait_for_guest_ip_timeout=None, wait_for_guest_net_routable=None, wait_for_guest_net_timeout=None):
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1156,6 +1182,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
+        :param pulumi.Input[float] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[list] ignored_guest_ips: List of IP addresses and CIDR networks to
                ignore while waiting for an available IP address using either of the waiters.
                Any IP addresses in this list will be ignored if they show up so that the
@@ -1224,6 +1253,9 @@ class VirtualMachine(pulumi.CustomResource):
                of pre-shutdown scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the execution of
                pre-standby scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[float] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
         :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
@@ -1342,6 +1374,9 @@ class VirtualMachine(pulumi.CustomResource):
           * `attach` (`pulumi.Input[bool]`) - Attach an external disk instead of creating a new one.
             Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
             `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+          * `controllerType` (`pulumi.Input[str]`) - The type of storage controller to attach the
+            disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
+            number of controllers enabled for the selected type. Default `scsi`.
           * `datastore_id` (`pulumi.Input[str]`) - The datastore ID that the ISO is located in.
             Requried for using a datastore ISO. Conflicts with `client_device`.
           * `deviceAddress` (`pulumi.Input[str]`) - An address internal to this provider that helps locate the
@@ -1381,11 +1416,11 @@ class VirtualMachine(pulumi.CustomResource):
             with space for the file being allocated on an as-needed basis. Cannot be set
             to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
             type. Default: `true`.
-          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the SCSI bus. The maximum value
-            for this setting is the value of
-            `scsi_controller_count` times 15, minus 1 (so `14`,
-            `29`, `44`, and `59`, for 1-4 controllers respectively). The default is `0`,
-            for which one disk must be set to. Duplicate unit numbers are not allowed.
+          * `unitNumber` (`pulumi.Input[float]`) - The disk number on the storage bus. The maximum
+            value for this setting is the value of the controller count times the
+            controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
+            The default is `0`, for which one disk must be set to. Duplicate unit numbers
+            are not allowed.
           * `uuid` (`pulumi.Input[str]`) - The UUID of the virtual disk's VMDK file. This is used to track the
             virtual disk on the virtual machine.
           * `writeThrough` (`pulumi.Input[bool]`) - If `true`, writes for this disk are sent
@@ -1474,6 +1509,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["hardware_version"] = hardware_version
         __props__["host_system_id"] = host_system_id
         __props__["hv_mode"] = hv_mode
+        __props__["ide_controller_count"] = ide_controller_count
         __props__["ignored_guest_ips"] = ignored_guest_ips
         __props__["imported"] = imported
         __props__["latency_sensitivity"] = latency_sensitivity
@@ -1500,6 +1536,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__["run_tools_scripts_before_guest_reboot"] = run_tools_scripts_before_guest_reboot
         __props__["run_tools_scripts_before_guest_shutdown"] = run_tools_scripts_before_guest_shutdown
         __props__["run_tools_scripts_before_guest_standby"] = run_tools_scripts_before_guest_standby
+        __props__["sata_controller_count"] = sata_controller_count
         __props__["scsi_bus_sharing"] = scsi_bus_sharing
         __props__["scsi_controller_count"] = scsi_controller_count
         __props__["scsi_type"] = scsi_type

@@ -57,6 +57,25 @@ class Tag(pulumi.CustomResource):
             description="Managed by Pulumi")
         ```
 
+        ### Using Tags in a Supported Resource
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        category = vsphere.TagCategory("category",
+            associable_types=[
+                "VirtualMachine",
+                "Datastore",
+            ],
+            cardinality="SINGLE",
+            description="Managed by Pulumi")
+        tag = vsphere.Tag("tag",
+            category_id=category.id,
+            description="Managed by Pulumi")
+        web = vsphere.VirtualMachine("web", tags=[tag.id])
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

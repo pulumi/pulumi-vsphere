@@ -28,10 +28,12 @@ type LookupVirtualMachineArgs struct {
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
 	// `.Datacenter` data source.
-	DatacenterId *string `pulumi:"datacenterId"`
+	DatacenterId           *string `pulumi:"datacenterId"`
+	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
 	// The name of the virtual machine. This can be a name or
 	// path.
-	Name string `pulumi:"name"`
+	Name                    string `pulumi:"name"`
+	SataControllerScanCount *int   `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
 	ScsiControllerScanCount *int `pulumi:"scsiControllerScanCount"`
@@ -59,12 +61,14 @@ type LookupVirtualMachineResult struct {
 	// A list of IP addresses as reported by VMWare tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id                     string `pulumi:"id"`
+	IdeControllerScanCount *int   `pulumi:"ideControllerScanCount"`
+	Name                   string `pulumi:"name"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
-	NetworkInterfaceTypes []string `pulumi:"networkInterfaceTypes"`
+	NetworkInterfaceTypes   []string `pulumi:"networkInterfaceTypes"`
+	SataControllerScanCount *int     `pulumi:"sataControllerScanCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
