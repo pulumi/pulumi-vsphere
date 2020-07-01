@@ -12,9 +12,9 @@ namespace Pulumi.VSphere
     public static class GetVmfsDisks
     {
         /// <summary>
-        /// The `vsphere..getVmfsDisks` data source can be used to discover the storage
+        /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
         /// devices available on an ESXi host. This data source can be combined with the
-        /// `vsphere..VmfsDatastore` resource to create VMFS
+        /// `vsphere.VmfsDatastore` resource to create VMFS
         /// datastores based off a set of discovered disks.
         /// 
         /// 
@@ -49,7 +49,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

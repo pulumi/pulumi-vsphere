@@ -10,73 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// > **A note on the naming of this resource:** VMware refers to clusters of
-// hosts in the UI and documentation as _clusters_, _HA clusters_, or _DRS
-// clusters_. All of these refer to the same kind of resource (with the latter two
-// referring to specific features of clustering). We use
-// `.ComputeCluster` to differentiate host clusters from _datastore
-// clusters_, which are clusters of datastores that can be used to distribute load
-// and ensure fault tolerance via distribution of virtual machines. Datastore
-// clusters can also be managed through the provider, via the
-// `.DatastoreCluster` resource.
-//
-// The `.ComputeCluster` resource can be used to create and manage
-// clusters of hosts allowing for resource control of compute resources, load
-// balancing through DRS, and high availability through vSphere HA.
-//
-// For more information on vSphere clusters and DRS, see [this
-// page][ref-vsphere-drs-clusters]. For more information on vSphere HA, see [this
-// page][ref-vsphere-ha-clusters].
-//
-// [ref-vsphere-drs-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-8ACF3502-5314-469F-8CC9-4A9BD5925BC2.html
-// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-//
-//
-// ## vSphere Version Requirements
-//
-// A large number of settings in the `.ComputeCluster` resource require a
-// specific version of vSphere to function. Rather than include warnings at every
-// setting or section, these settings are documented below.  Note that this list
-// is for cluster-specific attributes only, and does not include the
-// `tags` parameter, which requires vSphere 6.0 or higher across all
-// resources that can be tagged.
-//
-// All settings are footnoted by an asterisk (`*`) in their specific section in
-// the documentation, which takes you here.
-//
-// ### Settings that require vSphere version 6.0 or higher
-//
-// These settings require vSphere 6.0 or higher:
-//
-// * `haDatastoreApdRecoveryAction`
-// * `haDatastoreApdResponse`
-// * `haDatastoreApdResponseDelay`
-// * `haDatastorePdlResponse`
-// * `haVmComponentProtection`
-//
-// ### Settings that require vSphere version 6.5 or higher
-//
-// These settings require vSphere 6.5 or higher:
-//
-// * `drsEnablePredictiveDrs`
-// * `haAdmissionControlHostFailureTolerance`
-//   (When `haAdmissionControlPolicy` is set to
-//   `resourcePercentage` or `slotPolicy`. Permitted in all versions under
-//   `failoverHosts`)
-// * `haAdmissionControlResourcePercentageAutoCompute`
-// * `haVmRestartTimeout`
-// * `haVmDependencyRestartCondition`
-// * `haVmRestartAdditionalDelay`
-// * `proactiveHaAutomationLevel`
-// * `proactiveHaEnabled`
-// * `proactiveHaModerateRemediation`
-// * `proactiveHaProviderIds`
-// * `proactiveHaSevereRemediation`
 type ComputeCluster struct {
 	pulumi.CustomResourceState
 
@@ -154,7 +87,6 @@ type ComputeCluster struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrOutput `pulumi:"haAdmissionControlPolicy"`
-	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -283,7 +215,7 @@ type ComputeCluster struct {
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// >>>>>>> v1.18.3
+	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrOutput `pulumi:"hostManaged"`
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
@@ -427,7 +359,6 @@ type computeClusterState struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -556,7 +487,7 @@ type computeClusterState struct {
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// >>>>>>> v1.18.3
+	// > > > > > > > v1.18.3
 	HostManaged *bool `pulumi:"hostManaged"`
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
@@ -670,7 +601,6 @@ type ComputeClusterState struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -799,7 +729,7 @@ type ComputeClusterState struct {
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// >>>>>>> v1.18.3
+	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrInput
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
@@ -917,7 +847,6 @@ type computeClusterArgs struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy *string `pulumi:"haAdmissionControlPolicy"`
-	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -1046,7 +975,7 @@ type computeClusterArgs struct {
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// >>>>>>> v1.18.3
+	// > > > > > > > v1.18.3
 	HostManaged *bool `pulumi:"hostManaged"`
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
@@ -1159,7 +1088,6 @@ type ComputeClusterArgs struct {
 	// policy to use with vSphere HA. Can be one of `resourcePercentage`,
 	// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
 	HaAdmissionControlPolicy pulumi.StringPtrInput
-	//
 	// Automatically determine available resource percentages by subtracting the
 	// average number of host resources represented by the
 	// `haAdmissionControlHostFailureTolerance`
@@ -1288,7 +1216,7 @@ type ComputeClusterArgs struct {
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// >>>>>>> v1.18.3
+	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrInput
 	// The [managed object IDs][docs-about-morefs] of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.

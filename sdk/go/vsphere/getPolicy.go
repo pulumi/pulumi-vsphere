@@ -7,12 +7,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getPolicy` data source can be used to discover the UUID of a
+// The `getPolicy` data source can be used to discover the UUID of a
 // vSphere storage policy. This can then be used with resources or data sources that
 // require a storage policy.
 //
 // > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
 // requires vCenter 6.0 or higher.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
+// 			Name: "policy1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetPolicy(ctx *pulumi.Context, args *GetPolicyArgs, opts ...pulumi.InvokeOption) (*GetPolicyResult, error) {
 	var rv GetPolicyResult
 	err := ctx.Invoke("vsphere:index/getPolicy:getPolicy", args, &rv, opts...)

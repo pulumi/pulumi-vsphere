@@ -7,13 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..VmStoragePolicy` resource can be used to create and manage storage 
- * policies. Using this storage policy, tag based placement rules can be created to 
+ * The `vsphere.VmStoragePolicy` resource can be used to create and manage storage
+ * policies. Using this storage policy, tag based placement rules can be created to
  * place a VM on a particular tagged datastore.
  *
  * ## Example Usage
  *
- *
+ * This example creates a storage policy with tagRule having cat1 as tagCategory and
+ * tag1, tag2 as the tags. While creating a VM, this policy can be referenced to place
+ * the VM in any of the compatible datastore tagged with these tags.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +37,7 @@ import * as utilities from "./utilities";
  * }));
  * const policyTagBasedPlacement = new vsphere.VmStoragePolicy("policyTagBasedPlacement", {
  *     description: "description",
- *     tag_rules: [{
+ *     tagRules: [{
  *         tagCategory: tagCategory.then(tagCategory => tagCategory.name),
  *         tags: [
  *             tag1.then(tag1 => tag1.name),
@@ -75,7 +77,7 @@ export class VmStoragePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the storage policy. 
+     * Description of the storage policy.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +129,7 @@ export class VmStoragePolicy extends pulumi.CustomResource {
  */
 export interface VmStoragePolicyState {
     /**
-     * Description of the storage policy. 
+     * Description of the storage policy.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -145,7 +147,7 @@ export interface VmStoragePolicyState {
  */
 export interface VmStoragePolicyArgs {
     /**
-     * Description of the storage policy. 
+     * Description of the storage policy.
      */
     readonly description?: pulumi.Input<string>;
     /**

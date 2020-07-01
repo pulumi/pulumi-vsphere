@@ -12,11 +12,14 @@ namespace Pulumi.VSphere
     public static class GetHostPciDevice
     {
         /// <summary>
-        /// The `vsphere..getHostPciDevice` data source can be used to discover the DeviceID
+        /// The `vsphere.getHostPciDevice` data source can be used to discover the DeviceID
         /// of a vSphere host's PCI device. This can then be used with 
-        /// `vsphere..VirtualMachine`'s `pci_device_id`.
+        /// `vsphere.VirtualMachine`'s `pci_device_id`.
         /// 
-        /// ## Example Usage With Vendor ID and Class ID
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### With Vendor ID And Class ID
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -45,23 +48,25 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// ## Example Usage With Name Regular Expression
+        /// {{% /example %}}
+        /// ### With Name Regular Expression
         ///  
         ///  ```hcl
-        ///  data "vsphere..Datacenter" "datacenter" {
+        ///  data "vsphere_datacenter" "datacenter" {
         ///    name = "dc1"
         ///  }
         ///  
-        ///  data "vsphere..Host" "host" {
+        ///  data "vsphere_host" "host" {
         ///    name          = "esxi1"
         ///    datacenter_id = data.vsphere_datacenter.datacenter.id
         ///  }
         ///  
-        ///  data "vsphere..getHostPciDevice" "dev" {
+        ///  data "vsphere_host_pci_device" "dev" {
         ///    host_id    = data.vsphere_host.host.id
         ///    name_regex = "MMC"
         ///  }
         ///  ```
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostPciDeviceResult> InvokeAsync(GetHostPciDeviceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceArgs(), options.WithVersion());

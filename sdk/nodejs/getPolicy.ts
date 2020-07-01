@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..getPolicy` data source can be used to discover the UUID of a
+ * The `vsphere.getPolicy` data source can be used to discover the UUID of a
  * vSphere storage policy. This can then be used with resources or data sources that
  * require a storage policy.
  *
@@ -15,8 +15,6 @@ import * as utilities from "./utilities";
  * requires vCenter 6.0 or higher.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

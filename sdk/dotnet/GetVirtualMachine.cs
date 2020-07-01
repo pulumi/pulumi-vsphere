@@ -12,10 +12,10 @@ namespace Pulumi.VSphere
     public static class GetVirtualMachine
     {
         /// <summary>
-        /// The `vsphere..VirtualMachine` data source can be used to find the UUID of an
+        /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
         /// existing virtual machine or template. Its most relevant purpose is for finding
         /// the UUID of a template to be used as the source for cloning into a new
-        /// `vsphere..VirtualMachine` resource. It also
+        /// `vsphere.VirtualMachine` resource. It also
         /// reads the guest ID so that can be supplied as well.
         /// 
         /// {{% examples %}}
@@ -43,7 +43,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -59,7 +58,7 @@ namespace Pulumi.VSphere
         /// ID of the datacenter the virtual machine is located in.
         /// This can be omitted if the search path used in `name` is an absolute path.
         /// For default datacenters, use the `id` attribute from an empty
-        /// `vsphere..Datacenter` data source.
+        /// `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -102,7 +101,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Information about each of the disks on this virtual machine or
         /// template. These are sorted by bus and unit number so that they can be applied
-        /// to a `vsphere..VirtualMachine` resource in the order the resource expects
+        /// to a `vsphere.VirtualMachine` resource in the order the resource expects
         /// while cloning. This is useful for discovering certain disk settings while
         /// performing a linked clone, as all settings that are output by this data
         /// source must be the same on the destination virtual machine as the source.

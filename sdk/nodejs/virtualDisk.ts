@@ -5,14 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..VirtualDisk` resource can be used to create virtual disks outside
- * of any given `vsphere..VirtualMachine`
+ * The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
+ * of any given `vsphere.VirtualMachine`
  * resource. These disks can be attached to a virtual machine by creating a disk
  * block with the `attach` parameter.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

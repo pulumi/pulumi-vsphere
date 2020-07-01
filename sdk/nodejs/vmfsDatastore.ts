@@ -4,91 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..VmfsDatastore` resource can be used to create and manage VMFS
- * datastores on an ESXi host or a set of hosts. The resource supports using any
- * SCSI device that can generally be used in a datastore, such as local disks, or
- * disks presented to a host or multiple hosts over Fibre Channel or iSCSI.
- * Devices can be specified manually, or discovered using the
- * [`vsphere..getVmfsDisks`][data-source-vmfs-disks] data source.
- *
- * [data-source-vmfs-disks]: /docs/providers/vsphere/d/vmfs_disks.html 
- *
- * ## Auto-Mounting of Datastores Within vCenter
- *
- * Note that the current behaviour of this resource will auto-mount any created
- * datastores to any other host within vCenter that has access to the same disk.
- *
- * Example: You want to create a datastore with a iSCSI LUN that is visible on 3
- * hosts in a single vSphere cluster (`esxi1`, `esxi2` and `esxi3`). When you
- * create the datastore on `esxi1`, the datastore will be automatically mounted on
- * `esxi2` and `esxi3`, without the need to configure the resource on either of
- * those two hosts.
- *
- * Future versions of this resource may allow you to control the hosts that a
- * datastore is mounted to, but currently, this automatic behaviour cannot be
- * changed, so keep this in mind when writing your configurations and deploying
- * your disks.
- *
- * ## Increasing Datastore Size
- *
- * To increase the size of a datastore, you must add additional disks to the
- * `disks` attribute. Expanding the size of a datastore by increasing the size of
- * an already provisioned disk is currently not supported (but may be in future
- * versions of this resource).
- *
- * > **NOTE:** You cannot decrease the size of a datastore. If the resource
- * detects disks removed from the configuration, the provider will give an error. 
- *
- * [cmd-taint]: /docs/commands/taint.html
- *
- * ## Example Usage
- *
- * ### Addition of local disks on a single host
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
- *     datacenterId: datacenter.id,
- * }, { async: true }));
- * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: [
- *         "mpx.vmhba1:C0:T1:L0",
- *         "mpx.vmhba1:C0:T2:L0",
- *         "mpx.vmhba1:C0:T2:L0",
- *     ],
- *     hostSystemId: esxiHost.id,
- * });
- * ```
- *
- * ### Auto-detection of disks via `vsphere..getVmfsDisks`
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }, { async: true }));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
- *     datacenterId: datacenter.id,
- *     name: "esxi1",
- * }, { async: true }));
- * const available = esxiHost.apply(esxiHost => vsphere.getVmfsDisks({
- *     filter: "naa.60a98000",
- *     hostSystemId: esxiHost.id,
- *     rescan: true,
- * }, { async: true }));
- * const datastore = new vsphere.VmfsDatastore("datastore", {
- *     disks: available.disks,
- *     folder: "datastore-folder",
- *     hostSystemId: esxiHost.id,
- * });
- * ```
- */
 export class VmfsDatastore extends pulumi.CustomResource {
     /**
      * Get an existing VmfsDatastore resource's state with the given name, ID, and optional extra
@@ -178,7 +93,7 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -316,7 +231,7 @@ export interface VmfsDatastoreState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -373,7 +288,7 @@ export interface VmfsDatastoreArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VirtualMachineSnapshot` resource can be used to manage snapshots
+// The `VirtualMachineSnapshot` resource can be used to manage snapshots
 // for a virtual machine.
 //
 // For more information on managing snapshots and how they work in VMware, see
@@ -22,7 +22,7 @@ import (
 // can contain the actual running state of the virtual machine, data for all disks
 // that have not been set to be independent from the snapshot (including ones that
 // have been attached via the `attach`
-// parameter to the `.VirtualMachine` `disk` block), and even the
+// parameter to the `VirtualMachine` `disk` block), and even the
 // configuration of the virtual machine at the time of the snapshot. Virtual
 // machine, disk activity, and configuration changes post-snapshot are not
 // included in the original state. Use this resource with care! Neither VMware nor
@@ -31,6 +31,35 @@ import (
 // limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
 //
 // [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewVirtualMachineSnapshot(ctx, "demo1", &vsphere.VirtualMachineSnapshotArgs{
+// 			Consolidate:        pulumi.Bool(true),
+// 			Description:        pulumi.String("This is Demo Snapshot"),
+// 			Memory:             pulumi.Bool(true),
+// 			Quiesce:            pulumi.Bool(true),
+// 			RemoveChildren:     pulumi.Bool(false),
+// 			SnapshotName:       pulumi.String("Snapshot Name"),
+// 			VirtualMachineUuid: pulumi.String("9aac5551-a351-4158-8c5c-15a71e8ec5c9"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VirtualMachineSnapshot struct {
 	pulumi.CustomResourceState
 

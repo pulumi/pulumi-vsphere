@@ -9,23 +9,21 @@ import * as utilities from "./utilities";
  * container of inventory objects such as hosts and virtual machines.
  *
  * ## Example Usage
- *
  * ### Create datacenter on the root folder
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
+ * const prodDatacenter = new vsphere.Datacenter("prod_datacenter", {});
  * ```
- *
  * ### Create datacenter on a subfolder
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {
+ * const researchDatacenter = new vsphere.Datacenter("research_datacenter", {
  *     folder: "/research/",
  * });
  * ```

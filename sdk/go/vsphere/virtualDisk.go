@@ -10,10 +10,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.VirtualDisk` resource can be used to create virtual disks outside
-// of any given `.VirtualMachine`
+// The `VirtualDisk` resource can be used to create virtual disks outside
+// of any given `VirtualMachine`
 // resource. These disks can be attached to a virtual machine by creating a disk
 // block with the `attach` parameter.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewVirtualDisk(ctx, "myDisk", &vsphere.VirtualDiskArgs{
+// 			Datacenter: pulumi.String("Datacenter"),
+// 			Datastore:  pulumi.String("local"),
+// 			Size:       pulumi.Int(2),
+// 			Type:       pulumi.String("thin"),
+// 			VmdkPath:   pulumi.String("myDisk.vmdk"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VirtualDisk struct {
 	pulumi.CustomResourceState
 

@@ -10,28 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterVmAntiAffinityRule` resource can be used to
-// manage VM anti-affinity rules in a cluster, either created by the
-// `.ComputeCluster` resource or looked up
-// by the `.ComputeCluster` data source.
-//
-// This rule can be used to tell a set to virtual machines to run on different
-// hosts within a cluster, useful for preventing single points of failure in
-// application cluster scenarios. When configured, DRS will make a best effort to
-// ensure that the virtual machines run on different hosts, or prevent any
-// operation that would keep that from happening, depending on the value of the
-// `mandatory` flag.
-//
-// > Keep in mind that this rule can only be used to tell VMs to run separately
-// on _non-specific_ hosts - specific hosts cannot be specified with this rule.
-// For that, see the
-// `.ComputeClusterVmHostRule`
-// resource.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 

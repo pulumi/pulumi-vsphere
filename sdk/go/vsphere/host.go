@@ -12,6 +12,104 @@ import (
 
 // Provides a VMware vSphere host resource. This represents an ESXi host that
 // can be used either as part of a Compute Cluster or Standalone.
+//
+// ## Example Usage
+// ### Create a standalone host
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "my-datacenter"
+// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewHost(ctx, "h1", &vsphere.HostArgs{
+// 			Hostname:   pulumi.String("10.10.10.1"),
+// 			Username:   pulumi.String("root"),
+// 			Password:   pulumi.String("password"),
+// 			License:    pulumi.String("00000-00000-00000-00000i-00000"),
+// 			Datacenter: pulumi.String(dc.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Create host in a compute cluster
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "TfDatacenter"
+// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := dc.Id
+// 		c1, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+// 			Name:         "DC0_C0",
+// 			DatacenterId: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewHost(ctx, "h1", &vsphere.HostArgs{
+// 			Hostname: pulumi.String("10.10.10.1"),
+// 			Username: pulumi.String("root"),
+// 			Password: pulumi.String("password"),
+// 			License:  pulumi.String("00000-00000-00000-00000i-00000"),
+// 			Cluster:  pulumi.String(c1.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Importing
+//
+// An existing host can be [imported][docs-import] into this resource
+// via supplying the host's ID. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The above would import the host with ID `host-123`.
 type Host struct {
 	pulumi.CustomResourceState
 

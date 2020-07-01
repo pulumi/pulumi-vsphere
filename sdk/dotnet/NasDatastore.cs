@@ -9,16 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..NasDatastore` resource can be used to create and manage NAS
-    /// datastores on an ESXi host or a set of hosts. The resource supports mounting
-    /// NFS v3 and v4.1 shares to be used as datastores.
-    /// 
-    /// &gt; **NOTE:** Unlike `vsphere..VmfsDatastore`, a NAS
-    /// datastore is only mounted on the hosts you choose to mount it on. To mount on
-    /// multiple hosts, you must specify each host that you want to add in the
-    /// `host_system_ids` argument.
-    /// </summary>
     public partial class NasDatastore : Pulumi.CustomResource
     {
         /// <summary>
@@ -134,7 +124,7 @@ namespace Pulumi.VSphere
         public Output<string?> SecurityType { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -301,7 +291,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -458,7 +448,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The IDs of any tags to attach to this resource. 
+        /// The IDs of any tags to attach to this resource.
         /// </summary>
         public InputList<string> Tags
         {

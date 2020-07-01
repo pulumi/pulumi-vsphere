@@ -14,8 +14,6 @@ namespace Pulumi.VSphere
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;

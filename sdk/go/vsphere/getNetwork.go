@@ -7,11 +7,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getNetwork` data source can be used to discover the ID of a network
+// The `getNetwork` data source can be used to discover the ID of a network
 // in vSphere. This can be any network that can be used as the backing for a
-// network interface for `.VirtualMachine` or any other vSphere resource
+// network interface for `VirtualMachine` or any other vSphere resource
 // that requires a network. This includes standard (host-based) port groups, DVS
 // port groups, or opaque networks such as those managed by NSX.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc1"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := datacenter.Id
+// 		_, err = vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+// 			DatacenterId: &opt1,
+// 			Name:         "test-net",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.InvokeOption) (*GetNetworkResult, error) {
 	var rv GetNetworkResult
 	err := ctx.Invoke("vsphere:index/getNetwork:getNetwork", args, &rv, opts...)
@@ -26,7 +58,7 @@ type GetNetworkArgs struct {
 	// The managed object reference
 	// ID of the datacenter the network is located in. This can
 	// be omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `.Datacenter` data
+	// datacenters, use the id attribute from an empty `Datacenter` data
 	// source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// For distributed port group type

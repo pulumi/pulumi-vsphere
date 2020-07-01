@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetHost
     {
         /// <summary>
-        /// The `vsphere..Host` data source can be used to discover the ID of a vSphere
+        /// The `vsphere.Host` data source can be used to discover the ID of a vSphere
         /// host. This can then be used with resources or data sources that require a host
         /// managed object reference ID.
         /// 
@@ -41,7 +41,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

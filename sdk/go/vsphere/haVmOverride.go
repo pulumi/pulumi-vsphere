@@ -10,18 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.HaVmOverride` resource can be used to add an override for
-// vSphere HA settings on a cluster for a specific virtual machine. With this
-// resource, one can control specific HA settings so that they are different than
-// the cluster default, accommodating the needs of that specific virtual machine,
-// while not affecting the rest of the cluster.
-//
-// For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
-//
-// [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
 type HaVmOverride struct {
 	pulumi.CustomResourceState
 

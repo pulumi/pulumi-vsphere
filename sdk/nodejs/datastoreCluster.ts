@@ -4,65 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..DatastoreCluster` resource can be used to create and manage
- * datastore clusters. This can be used to create groups of datastores with a
- * shared management interface, allowing for resource control and load balancing
- * through Storage DRS.
- *
- * For more information on vSphere datastore clusters and Storage DRS, see [this
- * page][ref-vsphere-datastore-clusters].
- *
- * [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
- *
- * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
- * connections.
- *
- * > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const config = new pulumi.Config();
- * const hosts = config.get("hosts") || [
- *     "esxi1",
- *     "esxi2",
- *     "esxi3",
- * ];
- *
- * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
- * const esxiHosts: pulumi.Output<vsphere.GetHostResult>[] = [];
- * for (let i = 0; i < hosts.length; i++) {
- *     esxiHosts.push(datacenter.apply(datacenter => vsphere.getHost({
- *         datacenterId: datacenter.id,
- *         name: hosts[i],
- *     }, { async: true })));
- * }
- * const datastoreCluster = new vsphere.DatastoreCluster("datastoreCluster", {
- *     datacenterId: datacenter.id,
- *     sdrsEnabled: true,
- * });
- * const datastore1 = new vsphere.NasDatastore("datastore1", {
- *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/test1",
- *     type: "NFS",
- * });
- * const datastore2 = new vsphere.NasDatastore("datastore2", {
- *     datastoreClusterId: datastoreCluster.id,
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/test2",
- *     type: "NFS",
- * });
- * ```
- */
 export class DatastoreCluster extends pulumi.CustomResource {
     /**
      * Get an existing DatastoreCluster resource's state with the given name, ID, and optional extra

@@ -9,8 +9,9 @@ import * as utilities from "./utilities";
 /**
  * Provides a VMware vSphere vnic resource.
  *
- * ## Example Usages
+ * ## Example Usage
  *
+ * ### S
  * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
  *
  * ```typescript
@@ -26,7 +27,7 @@ import * as utilities from "./utilities";
  * }));
  * const d1 = new vsphere.DistributedVirtualSwitch("d1", {
  *     datacenterId: dc.then(dc => dc.id),
- *     host: [{
+ *     hosts: [{
  *         hostSystemId: h1.then(h1 => h1.id),
  *         devices: ["vnic3"],
  *     }],
@@ -45,7 +46,6 @@ import * as utilities from "./utilities";
  *     netstack: "vmotion",
  * });
  * ```
- *
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
  *
  * ```typescript
@@ -80,8 +80,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * ## Importing 
+ * ## Importing
  *
  * An existing vNic can be [imported][docs-import] into this resource
  * via supplying the vNic's ID. An example is below:
@@ -123,7 +122,7 @@ export class Vnic extends pulumi.CustomResource {
     }
 
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     public readonly distributedPortGroup!: pulumi.Output<string | undefined>;
     /**
@@ -211,7 +210,7 @@ export class Vnic extends pulumi.CustomResource {
  */
 export interface VnicState {
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     readonly distributedPortGroup?: pulumi.Input<string>;
     /**
@@ -253,7 +252,7 @@ export interface VnicState {
  */
 export interface VnicArgs {
     /**
-     * Key of the distributed portgroup the nic will connect to. 
+     * Key of the distributed portgroup the nic will connect to.
      */
     readonly distributedPortGroup?: pulumi.Input<string>;
     /**

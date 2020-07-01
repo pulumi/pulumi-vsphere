@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetFolder
     {
         /// <summary>
-        /// The `vsphere..Folder` data source can be used to get the general attributes of a
+        /// The `vsphere.Folder` data source can be used to get the general attributes of a
         /// vSphere inventory folder. Paths are absolute and include must include the
         /// datacenter.  
         /// 
@@ -36,7 +36,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -12,10 +12,10 @@ namespace Pulumi.VSphere
     public static class GetVappContainer
     {
         /// <summary>
-        /// The `vsphere..VappContainer` data source can be used to discover the ID of a
+        /// The `vsphere.VappContainer` data source can be used to discover the ID of a
         /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere..VirtualMachine` resource. 
+        /// `vsphere.VirtualMachine` resource. 
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,7 +42,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

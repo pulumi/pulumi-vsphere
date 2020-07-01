@@ -7,10 +7,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+// The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		library, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+// 			Name: "Content Library Test",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupContentLibraryItem(ctx, &vsphere.LookupContentLibraryItemArgs{
+// 			Name:      "Ubuntu Bionic 18.04",
+// 			LibraryId: library.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
 	var rv LookupContentLibraryItemResult
 	err := ctx.Invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, opts...)

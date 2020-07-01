@@ -12,8 +12,63 @@ namespace Pulumi.VSphere
     /// <summary>
     /// Provides a VMware vSphere vnic resource.
     /// 
-    /// ## Example Usages
+    /// ## Example Usage
     /// 
+    /// ### S
+    /// ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "mydc",
+    ///         }));
+    ///         var h1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         {
+    ///             Name = "esxi1.host.test",
+    ///             DatacenterId = dc.Id,
+    ///         })));
+    ///         var d1 = new VSphere.DistributedVirtualSwitch("d1", new VSphere.DistributedVirtualSwitchArgs
+    ///         {
+    ///             DatacenterId = dc.Apply(dc =&gt; dc.Id),
+    ///             Hosts = 
+    ///             {
+    ///                 new VSphere.Inputs.DistributedVirtualSwitchHostArgs
+    ///                 {
+    ///                     HostSystemId = h1.Apply(h1 =&gt; h1.Id),
+    ///                     Devices = 
+    ///                     {
+    ///                         "vnic3",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var p1 = new VSphere.DistributedPortGroup("p1", new VSphere.DistributedPortGroupArgs
+    ///         {
+    ///             VlanId = 1234,
+    ///             DistributedVirtualSwitchUuid = d1.Id,
+    ///         });
+    ///         var v1 = new VSphere.Vnic("v1", new VSphere.VnicArgs
+    ///         {
+    ///             Host = h1.Apply(h1 =&gt; h1.Id),
+    ///             DistributedSwitchPort = d1.Id,
+    ///             DistributedPortGroup = p1.Id,
+    ///             Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///             {
+    ///                 Dhcp = true,
+    ///             },
+    ///             Netstack = "vmotion",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
     /// 
     /// ```csharp
@@ -68,8 +123,7 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
-    /// 
-    /// ## Importing 
+    /// ## Importing
     /// 
     /// An existing vNic can be [imported][docs-import] into this resource
     /// via supplying the vNic's ID. An example is below:
@@ -93,7 +147,7 @@ namespace Pulumi.VSphere
     public partial class Vnic : Pulumi.CustomResource
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Output("distributedPortGroup")]
         public Output<string?> DistributedPortGroup { get; private set; } = null!;
@@ -193,7 +247,7 @@ namespace Pulumi.VSphere
     public sealed class VnicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Input("distributedPortGroup")]
         public Input<string>? DistributedPortGroup { get; set; }
@@ -254,7 +308,7 @@ namespace Pulumi.VSphere
     public sealed class VnicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Key of the distributed portgroup the nic will connect to. 
+        /// Key of the distributed portgroup the nic will connect to.
         /// </summary>
         [Input("distributedPortGroup")]
         public Input<string>? DistributedPortGroup { get; set; }

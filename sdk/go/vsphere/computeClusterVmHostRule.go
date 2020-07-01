@@ -10,23 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterVmHostRule` resource can be used to manage
-// VM-to-host rules in a cluster, either created by the
-// `.ComputeCluster` resource or looked up
-// by the `.ComputeCluster` data source.
-//
-// This resource can create both _affinity rules_, where virtual machines run on
-// specified hosts, or _anti-affinity_ rules, where virtual machines run on hosts
-// outside of the ones specified in the rule. Virtual machines and hosts are
-// supplied via groups, which can be managed via the
-// `.ComputeClusterVmGroup` and
-// `.ComputeClusterHostGroup`
-// resources.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterVmHostRule struct {
 	pulumi.CustomResourceState
 

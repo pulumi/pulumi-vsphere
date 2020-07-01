@@ -7,10 +7,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getDatastore` data source can be used to discover the ID of a
+// The `getDatastore` data source can be used to discover the ID of a
 // datastore in vSphere. This is useful to fetch the ID of a datastore that you
 // want to use to create virtual machines in using the
-// `.VirtualMachine` resource.
+// `VirtualMachine` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc1"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := datacenter.Id
+// 		_, err = vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+// 			DatacenterId: &opt1,
+// 			Name:         "datastore1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.InvokeOption) (*GetDatastoreResult, error) {
 	var rv GetDatastoreResult
 	err := ctx.Invoke("vsphere:index/getDatastore:getDatastore", args, &rv, opts...)
@@ -25,7 +57,7 @@ type GetDatastoreArgs struct {
 	// The managed object reference
 	// ID of the datacenter the datastore is located in. This
 	// can be omitted if the search path used in `name` is an absolute path. For
-	// default datacenters, use the id attribute from an empty `.Datacenter`
+	// default datacenters, use the id attribute from an empty `Datacenter`
 	// data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the datastore. This can be a name or path.

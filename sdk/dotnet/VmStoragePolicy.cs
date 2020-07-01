@@ -10,14 +10,68 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere..VmStoragePolicy` resource can be used to create and manage storage 
-    /// policies. Using this storage policy, tag based placement rules can be created to 
+    /// The `vsphere.VmStoragePolicy` resource can be used to create and manage storage
+    /// policies. Using this storage policy, tag based placement rules can be created to
     /// place a VM on a particular tagged datastore.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This example creates a storage policy with tag_rule having cat1 as tag_category and
+    /// tag1, tag2 as the tags. While creating a VM, this policy can be referenced to place
+    /// the VM in any of the compatible datastore tagged with these tags.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         {
+    ///             Name = "DC",
+    ///         }));
+    ///         var tagCategory = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+    ///         {
+    ///             Name = "cat1",
+    ///         }));
+    ///         var tag1 = tagCategory.Apply(tagCategory =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+    ///         {
+    ///             Name = "tag1",
+    ///             CategoryId = tagCategory.Id,
+    ///         })));
+    ///         var tag2 = tagCategory.Apply(tagCategory =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+    ///         {
+    ///             Name = "tag2",
+    ///             CategoryId = tagCategory.Id,
+    ///         })));
+    ///         var policyTagBasedPlacement = new VSphere.VmStoragePolicy("policyTagBasedPlacement", new VSphere.VmStoragePolicyArgs
+    ///         {
+    ///             Description = "description",
+    ///             TagRules = 
+    ///             {
+    ///                 new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///                 {
+    ///                     TagCategory = tagCategory.Apply(tagCategory =&gt; tagCategory.Name),
+    ///                     Tags = 
+    ///                     {
+    ///                         tag1.Apply(tag1 =&gt; tag1.Name),
+    ///                         tag2.Apply(tag2 =&gt; tag2.Name),
+    ///                     },
+    ///                     IncludeDatastoresWithTags = true,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VmStoragePolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the storage policy. 
+        /// Description of the storage policy.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -81,7 +135,7 @@ namespace Pulumi.VSphere
     public sealed class VmStoragePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the storage policy. 
+        /// Description of the storage policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -112,7 +166,7 @@ namespace Pulumi.VSphere
     public sealed class VmStoragePolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the storage policy. 
+        /// Description of the storage policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

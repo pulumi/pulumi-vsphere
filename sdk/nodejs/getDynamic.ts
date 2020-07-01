@@ -9,11 +9,10 @@ import * as utilities from "./utilities";
 /**
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
- * The `vsphere..getDynamic` data source can be used to get the [managed object 
+ * The `vsphere.getDynamic` data source can be used to get the [managed object
  *   reference ID][docs-about-morefs] of any tagged managed object in vCenter
  *   by providing a list of tag IDs and an optional regular expression to filter
  *   objects by name.
- *    
  */
 export function getDynamic(args: GetDynamicArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicResult> {
     if (!opts) {

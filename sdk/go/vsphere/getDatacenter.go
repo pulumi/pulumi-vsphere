@@ -7,10 +7,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.Datacenter` data source can be used to discover the ID of a
+// The `Datacenter` data source can be used to discover the ID of a
 // vSphere datacenter. This can then be used with resources or data sources that
-// require a datacenter, such as the `.Host`
+// require a datacenter, such as the `Host`
 // data source.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc1"
+// 		_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDatacenter(ctx *pulumi.Context, args *LookupDatacenterArgs, opts ...pulumi.InvokeOption) (*LookupDatacenterResult, error) {
 	var rv LookupDatacenterResult
 	err := ctx.Invoke("vsphere:index/getDatacenter:getDatacenter", args, &rv, opts...)
