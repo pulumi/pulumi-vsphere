@@ -7,14 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..ContentLibrary` data source can be used to discover the ID of a Content Library.
+ * The `vsphere.ContentLibrary` data source can be used to discover the ID of a Content Library.
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

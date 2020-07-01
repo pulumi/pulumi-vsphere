@@ -125,7 +125,7 @@ type VirtualMachine struct {
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
 	// * `moid`: The managed object reference ID of the created
-	// virtual machine.
+	//   virtual machine.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range
 	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
@@ -457,7 +457,7 @@ type virtualMachineState struct {
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
 	// * `moid`: The managed object reference ID of the created
-	// virtual machine.
+	//   virtual machine.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range
 	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual
@@ -759,7 +759,7 @@ type VirtualMachineState struct {
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.
 	// * `moid`: The managed object reference ID of the created
-	// virtual machine.
+	//   virtual machine.
 	GuestIpAddresses pulumi.StringArrayInput
 	// The hardware version number. Valid range
 	// is from 4 to 15. The hardware version cannot be downgraded. See [virtual

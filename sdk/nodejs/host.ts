@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * can be used either as part of a Compute Cluster or Standalone.
  *
  * ## Example Usage
- *
  * ### Create a standalone host
  *
  * ```typescript
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  *     datacenter: dc.then(dc => dc.id),
  * });
  * ```
- *
  * ### Create host in a compute cluster
  *
  * ```typescript
@@ -49,8 +47,7 @@ import * as utilities from "./utilities";
  *     cluster: c1.then(c1 => c1.id),
  * });
  * ```
- *
- * ## Importing 
+ * ## Importing
  *
  * An existing host can be [imported][docs-import] into this resource
  * via supplying the host's ID. An example is below:

@@ -12,7 +12,7 @@ namespace Pulumi.VSphere
     public static class GetPolicy
     {
         /// <summary>
-        /// The `vsphere..getPolicy` data source can be used to discover the UUID of a
+        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
         /// vSphere storage policy. This can then be used with resources or data sources that
         /// require a storage policy.
         /// 
@@ -39,7 +39,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

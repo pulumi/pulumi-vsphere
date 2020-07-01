@@ -18,8 +18,7 @@ type DistributedPortGroupVlanRange struct {
 // DistributedPortGroupVlanRangeInput is an input type that accepts DistributedPortGroupVlanRangeArgs and DistributedPortGroupVlanRangeOutput values.
 // You can construct a concrete instance of `DistributedPortGroupVlanRangeInput` via:
 //
-// 		 DistributedPortGroupVlanRangeArgs{...}
-//
+//          DistributedPortGroupVlanRangeArgs{...}
 type DistributedPortGroupVlanRangeInput interface {
 	pulumi.Input
 
@@ -47,8 +46,7 @@ func (i DistributedPortGroupVlanRangeArgs) ToDistributedPortGroupVlanRangeOutput
 // DistributedPortGroupVlanRangeArrayInput is an input type that accepts DistributedPortGroupVlanRangeArray and DistributedPortGroupVlanRangeArrayOutput values.
 // You can construct a concrete instance of `DistributedPortGroupVlanRangeArrayInput` via:
 //
-// 		 DistributedPortGroupVlanRangeArray{ DistributedPortGroupVlanRangeArgs{...} }
-//
+//          DistributedPortGroupVlanRangeArray{ DistributedPortGroupVlanRangeArgs{...} }
 type DistributedPortGroupVlanRangeArrayInput interface {
 	pulumi.Input
 
@@ -124,8 +122,7 @@ type DistributedVirtualSwitchHost struct {
 // DistributedVirtualSwitchHostInput is an input type that accepts DistributedVirtualSwitchHostArgs and DistributedVirtualSwitchHostOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchHostInput` via:
 //
-// 		 DistributedVirtualSwitchHostArgs{...}
-//
+//          DistributedVirtualSwitchHostArgs{...}
 type DistributedVirtualSwitchHostInput interface {
 	pulumi.Input
 
@@ -157,8 +154,7 @@ func (i DistributedVirtualSwitchHostArgs) ToDistributedVirtualSwitchHostOutputWi
 // DistributedVirtualSwitchHostArrayInput is an input type that accepts DistributedVirtualSwitchHostArray and DistributedVirtualSwitchHostArrayOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchHostArrayInput` via:
 //
-// 		 DistributedVirtualSwitchHostArray{ DistributedVirtualSwitchHostArgs{...} }
-//
+//          DistributedVirtualSwitchHostArray{ DistributedVirtualSwitchHostArgs{...} }
 type DistributedVirtualSwitchHostArrayInput interface {
 	pulumi.Input
 
@@ -234,8 +230,7 @@ type DistributedVirtualSwitchVlanRange struct {
 // DistributedVirtualSwitchVlanRangeInput is an input type that accepts DistributedVirtualSwitchVlanRangeArgs and DistributedVirtualSwitchVlanRangeOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchVlanRangeInput` via:
 //
-// 		 DistributedVirtualSwitchVlanRangeArgs{...}
-//
+//          DistributedVirtualSwitchVlanRangeArgs{...}
 type DistributedVirtualSwitchVlanRangeInput interface {
 	pulumi.Input
 
@@ -263,8 +258,7 @@ func (i DistributedVirtualSwitchVlanRangeArgs) ToDistributedVirtualSwitchVlanRan
 // DistributedVirtualSwitchVlanRangeArrayInput is an input type that accepts DistributedVirtualSwitchVlanRangeArray and DistributedVirtualSwitchVlanRangeArrayOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchVlanRangeArrayInput` via:
 //
-// 		 DistributedVirtualSwitchVlanRangeArray{ DistributedVirtualSwitchVlanRangeArgs{...} }
-//
+//          DistributedVirtualSwitchVlanRangeArray{ DistributedVirtualSwitchVlanRangeArgs{...} }
 type DistributedVirtualSwitchVlanRangeArrayInput interface {
 	pulumi.Input
 
@@ -338,8 +332,7 @@ type HostPortGroupPorts struct {
 // HostPortGroupPortsInput is an input type that accepts HostPortGroupPortsArgs and HostPortGroupPortsOutput values.
 // You can construct a concrete instance of `HostPortGroupPortsInput` via:
 //
-// 		 HostPortGroupPortsArgs{...}
-//
+//          HostPortGroupPortsArgs{...}
 type HostPortGroupPortsInput interface {
 	pulumi.Input
 
@@ -377,12 +370,11 @@ func (i HostPortGroupPortsArgs) ToHostPortGroupPortsPtrOutputWithContext(ctx con
 // HostPortGroupPortsPtrInput is an input type that accepts HostPortGroupPortsArgs, HostPortGroupPortsPtr and HostPortGroupPortsPtrOutput values.
 // You can construct a concrete instance of `HostPortGroupPortsPtrInput` via:
 //
-// 		 HostPortGroupPortsArgs{...}
+//          HostPortGroupPortsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type HostPortGroupPortsPtrInput interface {
 	pulumi.Input
 
@@ -513,8 +505,7 @@ type VirtualMachineCdrom struct {
 // VirtualMachineCdromInput is an input type that accepts VirtualMachineCdromArgs and VirtualMachineCdromOutput values.
 // You can construct a concrete instance of `VirtualMachineCdromInput` via:
 //
-// 		 VirtualMachineCdromArgs{...}
-//
+//          VirtualMachineCdromArgs{...}
 type VirtualMachineCdromInput interface {
 	pulumi.Input
 
@@ -564,12 +555,11 @@ func (i VirtualMachineCdromArgs) ToVirtualMachineCdromPtrOutputWithContext(ctx c
 // VirtualMachineCdromPtrInput is an input type that accepts VirtualMachineCdromArgs, VirtualMachineCdromPtr and VirtualMachineCdromPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCdromPtrInput` via:
 //
-// 		 VirtualMachineCdromArgs{...}
+//          VirtualMachineCdromArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineCdromPtrInput interface {
 	pulumi.Input
 
@@ -736,8 +726,7 @@ type VirtualMachineClone struct {
 // VirtualMachineCloneInput is an input type that accepts VirtualMachineCloneArgs and VirtualMachineCloneOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneInput` via:
 //
-// 		 VirtualMachineCloneArgs{...}
-//
+//          VirtualMachineCloneArgs{...}
 type VirtualMachineCloneInput interface {
 	pulumi.Input
 
@@ -777,12 +766,11 @@ func (i VirtualMachineCloneArgs) ToVirtualMachineClonePtrOutputWithContext(ctx c
 // VirtualMachineClonePtrInput is an input type that accepts VirtualMachineCloneArgs, VirtualMachineClonePtr and VirtualMachineClonePtrOutput values.
 // You can construct a concrete instance of `VirtualMachineClonePtrInput` via:
 //
-// 		 VirtualMachineCloneArgs{...}
+//          VirtualMachineCloneArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineClonePtrInput interface {
 	pulumi.Input
 
@@ -945,8 +933,7 @@ type VirtualMachineCloneCustomize struct {
 // VirtualMachineCloneCustomizeInput is an input type that accepts VirtualMachineCloneCustomizeArgs and VirtualMachineCloneCustomizeOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeInput` via:
 //
-// 		 VirtualMachineCloneCustomizeArgs{...}
-//
+//          VirtualMachineCloneCustomizeArgs{...}
 type VirtualMachineCloneCustomizeInput interface {
 	pulumi.Input
 
@@ -992,12 +979,11 @@ func (i VirtualMachineCloneCustomizeArgs) ToVirtualMachineCloneCustomizePtrOutpu
 // VirtualMachineCloneCustomizePtrInput is an input type that accepts VirtualMachineCloneCustomizeArgs, VirtualMachineCloneCustomizePtr and VirtualMachineCloneCustomizePtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizePtrInput` via:
 //
-// 		 VirtualMachineCloneCustomizeArgs{...}
+//          VirtualMachineCloneCustomizeArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineCloneCustomizePtrInput interface {
 	pulumi.Input
 
@@ -1201,8 +1187,7 @@ type VirtualMachineCloneCustomizeLinuxOptions struct {
 // VirtualMachineCloneCustomizeLinuxOptionsInput is an input type that accepts VirtualMachineCloneCustomizeLinuxOptionsArgs and VirtualMachineCloneCustomizeLinuxOptionsOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeLinuxOptionsInput` via:
 //
-// 		 VirtualMachineCloneCustomizeLinuxOptionsArgs{...}
-//
+//          VirtualMachineCloneCustomizeLinuxOptionsArgs{...}
 type VirtualMachineCloneCustomizeLinuxOptionsInput interface {
 	pulumi.Input
 
@@ -1240,12 +1225,11 @@ func (i VirtualMachineCloneCustomizeLinuxOptionsArgs) ToVirtualMachineCloneCusto
 // VirtualMachineCloneCustomizeLinuxOptionsPtrInput is an input type that accepts VirtualMachineCloneCustomizeLinuxOptionsArgs, VirtualMachineCloneCustomizeLinuxOptionsPtr and VirtualMachineCloneCustomizeLinuxOptionsPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeLinuxOptionsPtrInput` via:
 //
-// 		 VirtualMachineCloneCustomizeLinuxOptionsArgs{...}
+//          VirtualMachineCloneCustomizeLinuxOptionsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineCloneCustomizeLinuxOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1376,8 +1360,7 @@ type VirtualMachineCloneCustomizeNetworkInterface struct {
 // VirtualMachineCloneCustomizeNetworkInterfaceInput is an input type that accepts VirtualMachineCloneCustomizeNetworkInterfaceArgs and VirtualMachineCloneCustomizeNetworkInterfaceOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeNetworkInterfaceInput` via:
 //
-// 		 VirtualMachineCloneCustomizeNetworkInterfaceArgs{...}
-//
+//          VirtualMachineCloneCustomizeNetworkInterfaceArgs{...}
 type VirtualMachineCloneCustomizeNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -1409,8 +1392,7 @@ func (i VirtualMachineCloneCustomizeNetworkInterfaceArgs) ToVirtualMachineCloneC
 // VirtualMachineCloneCustomizeNetworkInterfaceArrayInput is an input type that accepts VirtualMachineCloneCustomizeNetworkInterfaceArray and VirtualMachineCloneCustomizeNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeNetworkInterfaceArrayInput` via:
 //
-// 		 VirtualMachineCloneCustomizeNetworkInterfaceArray{ VirtualMachineCloneCustomizeNetworkInterfaceArgs{...} }
-//
+//          VirtualMachineCloneCustomizeNetworkInterfaceArray{ VirtualMachineCloneCustomizeNetworkInterfaceArgs{...} }
 type VirtualMachineCloneCustomizeNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -1509,8 +1491,7 @@ type VirtualMachineCloneCustomizeWindowsOptions struct {
 // VirtualMachineCloneCustomizeWindowsOptionsInput is an input type that accepts VirtualMachineCloneCustomizeWindowsOptionsArgs and VirtualMachineCloneCustomizeWindowsOptionsOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeWindowsOptionsInput` via:
 //
-// 		 VirtualMachineCloneCustomizeWindowsOptionsArgs{...}
-//
+//          VirtualMachineCloneCustomizeWindowsOptionsArgs{...}
 type VirtualMachineCloneCustomizeWindowsOptionsInput interface {
 	pulumi.Input
 
@@ -1557,12 +1538,11 @@ func (i VirtualMachineCloneCustomizeWindowsOptionsArgs) ToVirtualMachineCloneCus
 // VirtualMachineCloneCustomizeWindowsOptionsPtrInput is an input type that accepts VirtualMachineCloneCustomizeWindowsOptionsArgs, VirtualMachineCloneCustomizeWindowsOptionsPtr and VirtualMachineCloneCustomizeWindowsOptionsPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineCloneCustomizeWindowsOptionsPtrInput` via:
 //
-// 		 VirtualMachineCloneCustomizeWindowsOptionsArgs{...}
+//          VirtualMachineCloneCustomizeWindowsOptionsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineCloneCustomizeWindowsOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1894,8 +1874,7 @@ type VirtualMachineDisk struct {
 // VirtualMachineDiskInput is an input type that accepts VirtualMachineDiskArgs and VirtualMachineDiskOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskInput` via:
 //
-// 		 VirtualMachineDiskArgs{...}
-//
+//          VirtualMachineDiskArgs{...}
 type VirtualMachineDiskInput interface {
 	pulumi.Input
 
@@ -2009,8 +1988,7 @@ func (i VirtualMachineDiskArgs) ToVirtualMachineDiskOutputWithContext(ctx contex
 // VirtualMachineDiskArrayInput is an input type that accepts VirtualMachineDiskArray and VirtualMachineDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineDiskArrayInput` via:
 //
-// 		 VirtualMachineDiskArray{ VirtualMachineDiskArgs{...} }
-//
+//          VirtualMachineDiskArray{ VirtualMachineDiskArgs{...} }
 type VirtualMachineDiskArrayInput interface {
 	pulumi.Input
 
@@ -2264,8 +2242,7 @@ type VirtualMachineNetworkInterface struct {
 // VirtualMachineNetworkInterfaceInput is an input type that accepts VirtualMachineNetworkInterfaceArgs and VirtualMachineNetworkInterfaceOutput values.
 // You can construct a concrete instance of `VirtualMachineNetworkInterfaceInput` via:
 //
-// 		 VirtualMachineNetworkInterfaceArgs{...}
-//
+//          VirtualMachineNetworkInterfaceArgs{...}
 type VirtualMachineNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -2329,8 +2306,7 @@ func (i VirtualMachineNetworkInterfaceArgs) ToVirtualMachineNetworkInterfaceOutp
 // VirtualMachineNetworkInterfaceArrayInput is an input type that accepts VirtualMachineNetworkInterfaceArray and VirtualMachineNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineNetworkInterfaceArrayInput` via:
 //
-// 		 VirtualMachineNetworkInterfaceArray{ VirtualMachineNetworkInterfaceArgs{...} }
-//
+//          VirtualMachineNetworkInterfaceArray{ VirtualMachineNetworkInterfaceArgs{...} }
 type VirtualMachineNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -2470,8 +2446,7 @@ type VirtualMachineOvfDeploy struct {
 // VirtualMachineOvfDeployInput is an input type that accepts VirtualMachineOvfDeployArgs and VirtualMachineOvfDeployOutput values.
 // You can construct a concrete instance of `VirtualMachineOvfDeployInput` via:
 //
-// 		 VirtualMachineOvfDeployArgs{...}
-//
+//          VirtualMachineOvfDeployArgs{...}
 type VirtualMachineOvfDeployInput interface {
 	pulumi.Input
 
@@ -2512,12 +2487,11 @@ func (i VirtualMachineOvfDeployArgs) ToVirtualMachineOvfDeployPtrOutputWithConte
 // VirtualMachineOvfDeployPtrInput is an input type that accepts VirtualMachineOvfDeployArgs, VirtualMachineOvfDeployPtr and VirtualMachineOvfDeployPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineOvfDeployPtrInput` via:
 //
-// 		 VirtualMachineOvfDeployArgs{...}
+//          VirtualMachineOvfDeployArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineOvfDeployPtrInput interface {
 	pulumi.Input
 
@@ -2682,8 +2656,7 @@ type VirtualMachineVapp struct {
 // VirtualMachineVappInput is an input type that accepts VirtualMachineVappArgs and VirtualMachineVappOutput values.
 // You can construct a concrete instance of `VirtualMachineVappInput` via:
 //
-// 		 VirtualMachineVappArgs{...}
-//
+//          VirtualMachineVappArgs{...}
 type VirtualMachineVappInput interface {
 	pulumi.Input
 
@@ -2718,12 +2691,11 @@ func (i VirtualMachineVappArgs) ToVirtualMachineVappPtrOutputWithContext(ctx con
 // VirtualMachineVappPtrInput is an input type that accepts VirtualMachineVappArgs, VirtualMachineVappPtr and VirtualMachineVappPtrOutput values.
 // You can construct a concrete instance of `VirtualMachineVappPtrInput` via:
 //
-// 		 VirtualMachineVappArgs{...}
+//          VirtualMachineVappArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VirtualMachineVappPtrInput interface {
 	pulumi.Input
 
@@ -2816,8 +2788,7 @@ type VmStoragePolicyTagRule struct {
 // VmStoragePolicyTagRuleInput is an input type that accepts VmStoragePolicyTagRuleArgs and VmStoragePolicyTagRuleOutput values.
 // You can construct a concrete instance of `VmStoragePolicyTagRuleInput` via:
 //
-// 		 VmStoragePolicyTagRuleArgs{...}
-//
+//          VmStoragePolicyTagRuleArgs{...}
 type VmStoragePolicyTagRuleInput interface {
 	pulumi.Input
 
@@ -2850,8 +2821,7 @@ func (i VmStoragePolicyTagRuleArgs) ToVmStoragePolicyTagRuleOutputWithContext(ct
 // VmStoragePolicyTagRuleArrayInput is an input type that accepts VmStoragePolicyTagRuleArray and VmStoragePolicyTagRuleArrayOutput values.
 // You can construct a concrete instance of `VmStoragePolicyTagRuleArrayInput` via:
 //
-// 		 VmStoragePolicyTagRuleArray{ VmStoragePolicyTagRuleArgs{...} }
-//
+//          VmStoragePolicyTagRuleArray{ VmStoragePolicyTagRuleArgs{...} }
 type VmStoragePolicyTagRuleArrayInput interface {
 	pulumi.Input
 
@@ -2937,8 +2907,7 @@ type VnicIpv4 struct {
 // VnicIpv4Input is an input type that accepts VnicIpv4Args and VnicIpv4Output values.
 // You can construct a concrete instance of `VnicIpv4Input` via:
 //
-// 		 VnicIpv4Args{...}
-//
+//          VnicIpv4Args{...}
 type VnicIpv4Input interface {
 	pulumi.Input
 
@@ -2980,12 +2949,11 @@ func (i VnicIpv4Args) ToVnicIpv4PtrOutputWithContext(ctx context.Context) VnicIp
 // VnicIpv4PtrInput is an input type that accepts VnicIpv4Args, VnicIpv4Ptr and VnicIpv4PtrOutput values.
 // You can construct a concrete instance of `VnicIpv4PtrInput` via:
 //
-// 		 VnicIpv4Args{...}
+//          VnicIpv4Args{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VnicIpv4PtrInput interface {
 	pulumi.Input
 
@@ -3127,8 +3095,7 @@ type VnicIpv6 struct {
 // VnicIpv6Input is an input type that accepts VnicIpv6Args and VnicIpv6Output values.
 // You can construct a concrete instance of `VnicIpv6Input` via:
 //
-// 		 VnicIpv6Args{...}
-//
+//          VnicIpv6Args{...}
 type VnicIpv6Input interface {
 	pulumi.Input
 
@@ -3170,12 +3137,11 @@ func (i VnicIpv6Args) ToVnicIpv6PtrOutputWithContext(ctx context.Context) VnicIp
 // VnicIpv6PtrInput is an input type that accepts VnicIpv6Args, VnicIpv6Ptr and VnicIpv6PtrOutput values.
 // You can construct a concrete instance of `VnicIpv6PtrInput` via:
 //
-// 		 VnicIpv6Args{...}
+//          VnicIpv6Args{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type VnicIpv6PtrInput interface {
 	pulumi.Input
 
@@ -3315,8 +3281,7 @@ type GetVirtualMachineDisk struct {
 // GetVirtualMachineDiskInput is an input type that accepts GetVirtualMachineDiskArgs and GetVirtualMachineDiskOutput values.
 // You can construct a concrete instance of `GetVirtualMachineDiskInput` via:
 //
-// 		 GetVirtualMachineDiskArgs{...}
-//
+//          GetVirtualMachineDiskArgs{...}
 type GetVirtualMachineDiskInput interface {
 	pulumi.Input
 
@@ -3348,8 +3313,7 @@ func (i GetVirtualMachineDiskArgs) ToGetVirtualMachineDiskOutputWithContext(ctx 
 // GetVirtualMachineDiskArrayInput is an input type that accepts GetVirtualMachineDiskArray and GetVirtualMachineDiskArrayOutput values.
 // You can construct a concrete instance of `GetVirtualMachineDiskArrayInput` via:
 //
-// 		 GetVirtualMachineDiskArray{ GetVirtualMachineDiskArgs{...} }
-//
+//          GetVirtualMachineDiskArray{ GetVirtualMachineDiskArgs{...} }
 type GetVirtualMachineDiskArrayInput interface {
 	pulumi.Input
 

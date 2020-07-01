@@ -7,27 +7,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getHostPciDevice` data source can be used to discover the DeviceID
+// The `getHostPciDevice` data source can be used to discover the DeviceID
 // of a vSphere host's PCI device. This can then be used with
-// `.VirtualMachine`'s `pciDeviceId`.
+// `VirtualMachine`'s `pciDeviceId`.
 //
-// ## Example Usage With Name Regular Expression
+// ## Example Usage
+// ### With Vendor ID And Class ID
 //
-//  ```hcl
-//  data ".Datacenter" "datacenter" {
-//    name = "dc1"
-//  }
+// ```go
+// package main
 //
-//  data ".Host" "host" {
-//    name          = "esxi1"
-//    datacenterId = data.vsphere_datacenter.datacenter.id
-//  }
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
 //
-//  data ".getHostPciDevice" "dev" {
-//    hostId    = data.vsphere_host.host.id
-//    nameRegex = "MMC"
-//  }
-//  ```
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc1"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := "esxi1"
+// 		host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 			Name:         &opt1,
+// 			DatacenterId: datacenter.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := "123"
+// 		opt3 := "456"
+// 		_, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
+// 			HostId:   host.Id,
+// 			ClassId:  &opt2,
+// 			VendorId: &opt3,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With Name Regular Expression
 func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...pulumi.InvokeOption) (*GetHostPciDeviceResult, error) {
 	var rv GetHostPciDeviceResult
 	err := ctx.Invoke("vsphere:index/getHostPciDevice:getHostPciDevice", args, &rv, opts...)

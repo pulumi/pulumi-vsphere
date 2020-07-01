@@ -7,14 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..ResourcePool` data source can be used to discover the ID of a
+ * The `vsphere.ResourcePool` data source can be used to discover the ID of a
  * resource pool in vSphere. This is useful to fetch the ID of a resource pool
  * that you want to use to create virtual machines in using the
- * `vsphere..VirtualMachine` resource. 
+ * `vsphere.VirtualMachine` resource.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,8 +26,16 @@ import * as utilities from "./utilities";
  *     name: "resource-pool-1",
  * }, { async: true }));
  * ```
- *
  * ### Specifying the root resource pool for a standalone host
+ *
+ * > **NOTE:** Fetching the root resource pool for a cluster can now be done
+ * directly via the `vsphere.ComputeCluster`
+ * data source.
+ *
+ * All compute resources in vSphere (clusters, standalone hosts, and standalone
+ * ESXi) have a resource pool, even if one has not been explicitly created. This
+ * resource pool is referred to as the _root resource pool_ and can be looked up
+ * by specifying the path as per the example below:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +46,11 @@ import * as utilities from "./utilities";
  *     name: "esxi1/Resources",
  * }, { async: true }));
  * ```
+ *
+ * For more information on the root resource pool, see [Managing Resource
+ * Pools][vmware-docs-resource-pools] in the vSphere documentation.
+ *
+ * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  */
 export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
     args = args || {};
@@ -65,7 +76,7 @@ export interface GetResourcePoolArgs {
      * ID of the datacenter the resource pool is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
      * For default datacenters, use the id attribute from an empty
-     * `vsphere..Datacenter` data source.
+     * `vsphere.Datacenter` data source.
      */
     readonly datacenterId?: string;
     /**

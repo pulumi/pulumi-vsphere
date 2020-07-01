@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..NasDatastore` resource can be used to create and manage NAS
- * datastores on an ESXi host or a set of hosts. The resource supports mounting
- * NFS v3 and v4.1 shares to be used as datastores.
- *
- * > **NOTE:** Unlike `vsphere..VmfsDatastore`, a NAS
- * datastore is only mounted on the hosts you choose to mount it on. To mount on
- * multiple hosts, you must specify each host that you want to add in the
- * `hostSystemIds` argument.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const config = new pulumi.Config();
- * const hosts = config.get("hosts") || [
- *     "esxi1",
- *     "esxi2",
- *     "esxi3",
- * ];
- *
- * const datacenter = pulumi.output(vsphere.getDatacenter({ async: true }));
- * const esxiHosts: pulumi.Output<vsphere.GetHostResult>[] = [];
- * for (let i = 0; i < hosts.length; i++) {
- *     esxiHosts.push(datacenter.apply(datacenter => vsphere.getHost({
- *         datacenterId: datacenter.id,
- *         name: hosts[i],
- *     }, { async: true })));
- * }
- * const datastore = new vsphere.NasDatastore("datastore", {
- *     hostSystemIds: esxiHosts.map(v => v.id),
- *     remoteHosts: ["nfs"],
- *     remotePath: "/export/test",
- *     type: "NFS",
- * });
- * ```
- */
 export class NasDatastore extends pulumi.CustomResource {
     /**
      * Get an existing NasDatastore resource's state with the given name, ID, and optional extra
@@ -156,7 +115,7 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     public readonly securityType!: pulumi.Output<string | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -335,7 +294,7 @@ export interface NasDatastoreState {
      */
     readonly securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -415,7 +374,7 @@ export interface NasDatastoreArgs {
      */
     readonly securityType?: pulumi.Input<string>;
     /**
-     * The IDs of any tags to attach to this resource. 
+     * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

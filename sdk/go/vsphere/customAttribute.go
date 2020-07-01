@@ -9,44 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.CustomAttribute` resource can be used to create and manage custom
-// attributes, which allow users to associate user-specific meta-information with
-// vSphere managed objects. Custom attribute values must be strings and are stored
-// on the vCenter Server and not the managed object.
-//
-// For more information about custom attributes, click [here][ext-custom-attributes].
-//
-// [ext-custom-attributes]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vcenterhost.doc/GUID-73606C4C-763C-4E27-A1DA-032E4C46219D.html
-//
-// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-// and require vCenter.
-//
-//
-// ## Managed Object Types
-//
-// The following table will help you determine what value you need to enter for
-// the managed object type you want the attribute to apply to.
-//
-// Note that if you want a attribute to apply to all objects, leave the type
-// unspecified.
-//
-// <table>
-// <tr><th>Type</th><th>Value</th></tr>
-// <tr><td>Folders</td><td>`Folder`</td></tr>
-// <tr><td>Clusters</td><td>`ClusterComputeResource`</td></tr>
-// <tr><td>Datacenters</td><td>`Datacenter`</td></tr>
-// <tr><td>Datastores</td><td>`Datastore`</td></tr>
-// <tr><td>Datastore Clusters</td><td>`StoragePod`</td></tr>
-// <tr><td>DVS Portgroups</td><td>`DistributedVirtualPortgroup`</td></tr>
-// <tr><td>Distributed vSwitches</td><td>`DistributedVirtualSwitch`<br>`VmwareDistributedVirtualSwitch`</td></tr>
-// <tr><td>Hosts</td><td>`HostSystem`</td></tr>
-// <tr><td>Content Libraries</td><td>`com.vmware.content.Library`</td></tr>
-// <tr><td>Content Library Items</td><td>`com.vmware.content.library.Item`</td></tr>
-// <tr><td>Networks</td><td>`HostNetwork`<br>`Network`<br>`OpaqueNetwork`</td></tr>
-// <tr><td>Resource Pools</td><td>`ResourcePool`</td></tr>
-// <tr><td>vApps</td><td>`VirtualApp`</td></tr>
-// <tr><td>Virtual Machines</td><td>`VirtualMachine`</td></tr>
-// </table>
 type CustomAttribute struct {
 	pulumi.CustomResourceState
 

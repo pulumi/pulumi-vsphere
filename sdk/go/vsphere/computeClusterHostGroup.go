@@ -10,21 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterHostGroup` resource can be used to manage groups
-// of hosts in a cluster, either created by the
-// `.ComputeCluster` resource or looked up
-// by the `.ComputeCluster` data source.
-//
-//
-// This resource mainly serves as an input to the
-// `.ComputeClusterVmHostRule`
-// resource - see the documentation for that resource for further details on how
-// to use host groups.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterHostGroup struct {
 	pulumi.CustomResourceState
 

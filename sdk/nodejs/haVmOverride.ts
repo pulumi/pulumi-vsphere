@@ -4,64 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere..HaVmOverride` resource can be used to add an override for
- * vSphere HA settings on a cluster for a specific virtual machine. With this
- * resource, one can control specific HA settings so that they are different than
- * the cluster default, accommodating the needs of that specific virtual machine,
- * while not affecting the rest of the cluster.
- *
- * For more information on vSphere HA, see [this page][ref-vsphere-ha-clusters].
- *
- * [ref-vsphere-ha-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html
- *
- * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
- * connections.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const dc = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }, { async: true }));
- * const datastore = dc.apply(dc => vsphere.getDatastore({
- *     datacenterId: dc.id,
- *     name: "datastore1",
- * }, { async: true }));
- * const cluster = dc.apply(dc => vsphere.getComputeCluster({
- *     datacenterId: dc.id,
- *     name: "cluster1",
- * }, { async: true }));
- * const network = dc.apply(dc => vsphere.getNetwork({
- *     datacenterId: dc.id,
- *     name: "network1",
- * }, { async: true }));
- * const vm = new vsphere.VirtualMachine("vm", {
- *     datastoreId: datastore.id,
- *     disks: [{
- *         label: "disk0",
- *         size: 20,
- *     }],
- *     guestId: "other3xLinux64Guest",
- *     memory: 2048,
- *     networkInterfaces: [{
- *         networkId: network.id,
- *     }],
- *     numCpus: 2,
- *     resourcePoolId: cluster.resourcePoolId,
- * });
- * const haVmOverride = new vsphere.HaVmOverride("haVmOverride", {
- *     computeClusterId: cluster.id,
- *     haVmRestartPriority: "highest",
- *     virtualMachineId: vm.id,
- * });
- * ```
- */
 export class HaVmOverride extends pulumi.CustomResource {
     /**
      * Get an existing HaVmOverride resource's state with the given name, ID, and optional extra

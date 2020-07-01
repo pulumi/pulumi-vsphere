@@ -7,11 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..getHostPciDevice` data source can be used to discover the DeviceID
- * of a vSphere host's PCI device. This can then be used with 
- * `vsphere..VirtualMachine`'s `pciDeviceId`.
+ * The `vsphere.getHostPciDevice` data source can be used to discover the DeviceID
+ * of a vSphere host's PCI device. This can then be used with
+ * `vsphere.VirtualMachine`'s `pciDeviceId`.
  *
- * ## Example Usage With Vendor ID and Class ID
+ * ## Example Usage
+ * ### With Vendor ID And Class ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,23 +31,7 @@ import * as utilities from "./utilities";
  *     vendorId: 456,
  * }));
  * ```
- * ## Example Usage With Name Regular Expression
- *  
- *  ```hcl
- *  data "vsphere..Datacenter" "datacenter" {
- *    name = "dc1"
- *  }
- *  
- *  data "vsphere..Host" "host" {
- *    name          = "esxi1"
- *    datacenterId = data.vsphere_datacenter.datacenter.id
- *  }
- *  
- *  data "vsphere..getHostPciDevice" "dev" {
- *    hostId    = data.vsphere_host.host.id
- *    nameRegex = "MMC"
- *  }
- *  ```
+ * ### With Name Regular Expression
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
     if (!opts) {

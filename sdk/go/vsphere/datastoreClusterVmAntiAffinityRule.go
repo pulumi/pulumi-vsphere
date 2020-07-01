@@ -10,22 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.DatastoreClusterVmAntiAffinityRule` resource can be used to
-// manage VM anti-affinity rules in a datastore cluster, either created by the
-// `.DatastoreCluster` resource or looked up
-// by the `.DatastoreCluster` data source.
-//
-// This rule can be used to tell a set to virtual machines to run on different
-// datastores within a cluster, useful for preventing single points of failure in
-// application cluster scenarios. When configured, Storage DRS will make a best effort to
-// ensure that the virtual machines run on different datastores, or prevent any
-// operation that would keep that from happening, depending on the value of the
-// `mandatory` flag.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 type DatastoreClusterVmAntiAffinityRule struct {
 	pulumi.CustomResourceState
 

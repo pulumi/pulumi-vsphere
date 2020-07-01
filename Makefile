@@ -10,8 +10,6 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell scripts/get-version)
 PYPI_VERSION    := $(shell cd scripts && ./get-py-version)
-LATEST_RESOURCE_PROVIDER_VERSION := $(shell curl --silent "https://api.github.com/repos/pulumi/pulumi-${PACK}/tags" | jq ".[0]".name -r)
-PROVIDER_VERSION := ${LATEST_RESOURCE_PROVIDER_VERSION:v%=%}
 
 DOTNET_PREFIX  := $(firstword $(subst -, ,${VERSION:v%=%})) # e.g. 1.5.0
 DOTNET_SUFFIX  := $(word 2,$(subst -, ,${VERSION:v%=%}))    # e.g. alpha.1
@@ -44,11 +42,11 @@ build:: install_plugins provider
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
 	cd ${PACKDIR}/dotnet/ && \
-  	echo "${VERSION:v%=%}" >version.txt && \
-  	dotnet build /p:Version=${DOTNET_VERSION}
+		echo "${VERSION:v%=%}" >version.txt && \
+		dotnet build /p:Version=${DOTNET_VERSION}
 
 install_plugins::
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
+	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
 
 provider:: generate_schema
 	cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go

@@ -9,69 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..Folder` resource can be used to manage vSphere inventory folders.
-    /// The resource supports creating folders of the 5 major types - datacenter
-    /// folders, host and cluster folders, virtual machine folders, datastore folders,
-    /// and network folders.
-    /// 
-    /// Paths are always relative to the specific type of folder you are creating.
-    /// Subfolders are discovered by parsing the relative path specified in `path`, so
-    /// `foo/bar` will create a folder named `bar` in the parent folder `foo`, as long
-    /// as that folder exists.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync());
-    ///         var folder = new VSphere.Folder("folder", new VSphere.FolderArgs
-    ///         {
-    ///             DatacenterId = dc.Apply(dc =&gt; dc.Id),
-    ///             Path = "test-folder",
-    ///             Type = "vm",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ### Example with subfolders
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync());
-    ///         var parent = new VSphere.Folder("parent", new VSphere.FolderArgs
-    ///         {
-    ///             DatacenterId = dc.Apply(dc =&gt; dc.Id),
-    ///             Path = "test-parent",
-    ///             Type = "vm",
-    ///         });
-    ///         var folder = new VSphere.Folder("folder", new VSphere.FolderArgs
-    ///         {
-    ///             DatacenterId = dc.Apply(dc =&gt; dc.Id),
-    ///             Path = parent.Path.Apply(path =&gt; $"{path}/test-folder"),
-    ///             Type = "vm",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>

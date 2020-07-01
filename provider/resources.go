@@ -179,7 +179,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.9.2",
 			},
 			Overlay: &tfbridge.OverlayInfo{
-				Files:   []string{},
 				Modules: map[string]*tfbridge.OverlayInfo{},
 			},
 		},

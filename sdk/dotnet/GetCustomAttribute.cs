@@ -12,9 +12,9 @@ namespace Pulumi.VSphere
     public static class GetCustomAttribute
     {
         /// <summary>
-        /// The `vsphere..CustomAttribute` data source can be used to reference custom 
+        /// The `vsphere.CustomAttribute` data source can be used to reference custom 
         /// attributes that are not managed by this provider. Its attributes are exactly the 
-        /// same as the `vsphere..CustomAttribute` resource, 
+        /// same as the `vsphere.CustomAttribute` resource, 
         /// and, like importing, the data source takes a name to search on. The `id` and 
         /// other attributes are then populated with the data found by the search.
         /// 
@@ -41,7 +41,6 @@ namespace Pulumi.VSphere
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

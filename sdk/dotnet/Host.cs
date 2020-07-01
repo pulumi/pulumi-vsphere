@@ -14,7 +14,6 @@ namespace Pulumi.VSphere
     /// can be used either as part of a Compute Cluster or Standalone.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a standalone host
     /// 
     /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create host in a compute cluster
     /// 
     /// ```csharp
@@ -73,8 +71,7 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
-    /// 
-    /// ## Importing 
+    /// ## Importing
     /// 
     /// An existing host can be [imported][docs-import] into this resource
     /// via supplying the host's ID. An example is below:

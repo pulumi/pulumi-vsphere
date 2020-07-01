@@ -10,19 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterVmDependencyRule` resource can be used to manage
-// VM dependency rules in a cluster, either created by the
-// `.ComputeCluster` resource or looked up
-// by the `.ComputeCluster` data source.
-//
-// A virtual machine dependency rule applies to vSphere HA, and allows
-// user-defined startup orders for virtual machines in the case of host failure.
-// Virtual machines are supplied via groups, which can be managed via the
-// `.ComputeClusterVmGroup`
-// resource.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
 type ComputeClusterVmDependencyRule struct {
 	pulumi.CustomResourceState
 

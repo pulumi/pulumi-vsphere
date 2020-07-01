@@ -7,15 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..getNetwork` data source can be used to discover the ID of a network
+ * The `vsphere.getNetwork` data source can be used to discover the ID of a network
  * in vSphere. This can be any network that can be used as the backing for a
- * network interface for `vsphere..VirtualMachine` or any other vSphere resource
+ * network interface for `vsphere.VirtualMachine` or any other vSphere resource
  * that requires a network. This includes standard (host-based) port groups, DVS
  * port groups, or opaque networks such as those managed by NSX.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,7 +51,7 @@ export interface GetNetworkArgs {
      * The managed object reference
      * ID of the datacenter the network is located in. This can
      * be omitted if the search path used in `name` is an absolute path. For default
-     * datacenters, use the id attribute from an empty `vsphere..Datacenter` data
+     * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
      */
     readonly datacenterId?: string;

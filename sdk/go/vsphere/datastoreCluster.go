@@ -10,20 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.DatastoreCluster` resource can be used to create and manage
-// datastore clusters. This can be used to create groups of datastores with a
-// shared management interface, allowing for resource control and load balancing
-// through Storage DRS.
-//
-// For more information on vSphere datastore clusters and Storage DRS, see [this
-// page][ref-vsphere-datastore-clusters].
-//
-// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** Storage DRS requires a vSphere Enterprise Plus license.
 type DatastoreCluster struct {
 	pulumi.CustomResourceState
 

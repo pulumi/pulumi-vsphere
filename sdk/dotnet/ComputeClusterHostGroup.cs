@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere..ComputeClusterHostGroup` resource can be used to manage groups
-    /// of hosts in a cluster, either created by the
-    /// `vsphere..ComputeCluster` resource or looked up
-    /// by the `vsphere..ComputeCluster` data source.
-    /// 
-    /// 
-    /// This resource mainly serves as an input to the
-    /// `vsphere..ComputeClusterVmHostRule`
-    /// resource - see the documentation for that resource for further details on how
-    /// to use host groups.
-    /// 
-    /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    /// connections.
-    /// 
-    /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
-    /// </summary>
     public partial class ComputeClusterHostGroup : Pulumi.CustomResource
     {
         /// <summary>

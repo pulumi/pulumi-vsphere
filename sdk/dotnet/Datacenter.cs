@@ -14,7 +14,6 @@ namespace Pulumi.VSphere
     /// container of inventory objects such as hosts and virtual machines.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create datacenter on the root folder
     /// 
     /// ```csharp
@@ -32,7 +31,6 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create datacenter on a subfolder
     /// 
     /// ```csharp

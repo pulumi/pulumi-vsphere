@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.File` resource can be used to upload files (such as virtual disk
+// The `File` resource can be used to upload files (such as virtual disk
 // files) from the host machine that this provider is running on to a target
 // datastore.  The resource can also be used to copy files between datastores, or
 // from one location to another on the same datastore.
@@ -22,6 +22,60 @@ import (
 // re-created. Depending on if destination parameters are being changed as well,
 // this may result in the destination file either being overwritten or deleted at
 // the old location.
+//
+// ## Example Usage
+// ### Uploading a file
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewFile(ctx, "ubuntuDiskUpload", &vsphere.FileArgs{
+// 			Datacenter:      pulumi.String("my_datacenter"),
+// 			Datastore:       pulumi.String("local"),
+// 			DestinationFile: pulumi.String("/my_path/disks/custom_ubuntu.vmdk"),
+// 			SourceFile:      pulumi.String("/home/ubuntu/my_disks/custom_ubuntu.vmdk"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Copying a file
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewFile(ctx, "ubuntuDiskCopy", &vsphere.FileArgs{
+// 			Datacenter:       pulumi.String("my_datacenter"),
+// 			Datastore:        pulumi.String("local"),
+// 			DestinationFile:  pulumi.String("/my_path/custom_ubuntu_id.vmdk"),
+// 			SourceDatacenter: pulumi.String("my_datacenter"),
+// 			SourceDatastore:  pulumi.String("local"),
+// 			SourceFile:       pulumi.String("/my_path/disks/custom_ubuntu.vmdk"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type File struct {
 	pulumi.CustomResourceState
 

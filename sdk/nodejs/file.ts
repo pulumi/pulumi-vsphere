@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..File` resource can be used to upload files (such as virtual disk
+ * The `vsphere.File` resource can be used to upload files (such as virtual disk
  * files) from the host machine that this provider is running on to a target
  * datastore.  The resource can also be used to copy files between datastores, or
  * from one location to another on the same datastore.
@@ -19,32 +19,30 @@ import * as utilities from "./utilities";
  * the old location.
  *
  * ## Example Usage
- *
  * ### Uploading a file
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuDiskUpload = new vsphere.File("ubuntuDiskUpload", {
- *     datacenter: "myDatacenter",
+ * const ubuntuDiskUpload = new vsphere.File("ubuntu_disk_upload", {
+ *     datacenter: "my_datacenter",
  *     datastore: "local",
  *     destinationFile: "/my_path/disks/custom_ubuntu.vmdk",
  *     sourceFile: "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
  * });
  * ```
- *
  * ### Copying a file
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuDiskCopy = new vsphere.File("ubuntuDiskCopy", {
- *     datacenter: "myDatacenter",
+ * const ubuntuDiskCopy = new vsphere.File("ubuntu_disk_copy", {
+ *     datacenter: "my_datacenter",
  *     datastore: "local",
  *     destinationFile: "/my_path/custom_ubuntu_id.vmdk",
- *     sourceDatacenter: "myDatacenter",
+ *     sourceDatacenter: "my_datacenter",
  *     sourceDatastore: "local",
  *     sourceFile: "/my_path/disks/custom_ubuntu.vmdk",
  * });

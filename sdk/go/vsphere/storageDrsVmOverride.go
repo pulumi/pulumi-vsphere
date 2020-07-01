@@ -10,16 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.StorageDrsVmOverride` resource can be used to add a Storage DRS
-// override to a datastore cluster for a specific virtual machine. With this
-// resource, one can enable or disable Storage DRS, and control the automation
-// level and disk affinity for a single virtual machine without affecting the rest
-// of the datastore cluster.
-//
-// For more information on vSphere datastore clusters and Storage DRS, see [this
-// page][ref-vsphere-datastore-clusters].
-//
-// [ref-vsphere-datastore-clusters]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-598DF695-107E-406B-9C95-0AF961FC227A.html
 type StorageDrsVmOverride struct {
 	pulumi.CustomResourceState
 

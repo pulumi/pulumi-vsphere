@@ -7,10 +7,82 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ResourcePool` data source can be used to discover the ID of a
+// The `ResourcePool` data source can be used to discover the ID of a
 // resource pool in vSphere. This is useful to fetch the ID of a resource pool
 // that you want to use to create virtual machines in using the
-// `.VirtualMachine` resource.
+// `VirtualMachine` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc1"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := datacenter.Id
+// 		opt2 := "resource-pool-1"
+// 		_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+// 			DatacenterId: &opt1,
+// 			Name:         &opt2,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Specifying the root resource pool for a standalone host
+//
+// > **NOTE:** Fetching the root resource pool for a cluster can now be done
+// directly via the `ComputeCluster`
+// data source.
+//
+// All compute resources in vSphere (clusters, standalone hosts, and standalone
+// ESXi) have a resource pool, even if one has not been explicitly created. This
+// resource pool is referred to as the _root resource pool_ and can be looked up
+// by specifying the path as per the example below:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := data.Vsphere_datacenter.Dc.Id
+// 		opt1 := "esxi1/Resources"
+// 		_, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+// 			DatacenterId: &opt0,
+// 			Name:         &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// For more information on the root resource pool, see [Managing Resource
+// Pools][vmware-docs-resource-pools] in the vSphere documentation.
+//
+// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("vsphere:index/getResourcePool:getResourcePool", args, &rv, opts...)
@@ -26,7 +98,7 @@ type LookupResourcePoolArgs struct {
 	// ID of the datacenter the resource pool is located in.
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the id attribute from an empty
-	// `.Datacenter` data source.
+	// `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.

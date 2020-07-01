@@ -10,17 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere..HostPortGroup` resource can be used to manage vSphere standard
+    /// The `vsphere.HostPortGroup` resource can be used to manage vSphere standard
     /// port groups on an ESXi host. These port groups are connected to standard
     /// virtual switches, which can be managed by the
-    /// `vsphere..HostVirtualSwitch` resource.
+    /// `vsphere.HostVirtualSwitch` resource.
     /// 
     /// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
     /// 
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
     /// 
     /// ## Example Usage
-    /// 
     /// ### Create a virtual switch and bind a port group to it
     /// 
     /// ```csharp
@@ -66,8 +65,13 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create a port group with VLAN set and some overrides
+    /// 
+    /// This example sets the trunk mode VLAN (`4095`, which passes through all tags)
+    /// and sets
+    /// `allow_promiscuous`
+    /// to ensure that all traffic is seen on the port. The latter setting overrides
+    /// the implicit default of `false` set on the virtual switch.
     /// 
     /// ```csharp
     /// using Pulumi;

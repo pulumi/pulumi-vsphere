@@ -10,13 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ResourcePool` resource can be used to create and manage
-// resource pools in standalone hosts or on compute clusters.
-//
-// For more information on vSphere resource pools, see [this
-// page][ref-vsphere-resource_pools].
-//
-// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 type ResourcePool struct {
 	pulumi.CustomResourceState
 

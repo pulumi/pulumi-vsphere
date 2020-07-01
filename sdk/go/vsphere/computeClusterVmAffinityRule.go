@@ -10,27 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ComputeClusterVmAffinityRule` resource can be used to manage
-// VM affinity rules in a cluster, either created by the
-// `.ComputeCluster` resource or looked up
-// by the `.ComputeCluster` data source.
-//
-// This rule can be used to tell a set to virtual machines to run together on a
-// single host within a cluster. When configured, DRS will make a best effort to
-// ensure that the virtual machines run on the same host, or prevent any operation
-// that would keep that from happening, depending on the value of the
-// `mandatory` flag.
-//
-// > Keep in mind that this rule can only be used to tell VMs to run together on
-// a _non-specific_ host - it can't be used to pin VMs to a host. For that, see
-// the
-// `.ComputeClusterVmHostRule`
-// resource.
-//
-// > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-// connections.
-//
-// > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 type ComputeClusterVmAffinityRule struct {
 	pulumi.CustomResourceState
 

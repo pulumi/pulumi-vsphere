@@ -10,12 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.ContentLibraryItem` resource can be used to create items in a Content Library. Each item can contain
-// multiple files. Each `fileUrl` must be accessible from the vSphere environment as it will be downloaded from the
-// specified location and stored on the Content Library's storage backing.
-//
-// To make a `contentLibraryItem` a functioning template, the template must be in OVF format. The .ovf and .vmdk
-// file(s) can then be set as the `fileUrl` list.
 type ContentLibraryItem struct {
 	pulumi.CustomResourceState
 

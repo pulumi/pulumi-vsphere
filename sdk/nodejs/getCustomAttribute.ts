@@ -7,18 +7,16 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere..CustomAttribute` data source can be used to reference custom 
- * attributes that are not managed by this provider. Its attributes are exactly the 
- * same as the `vsphere..CustomAttribute` resource, 
- * and, like importing, the data source takes a name to search on. The `id` and 
+ * The `vsphere.CustomAttribute` data source can be used to reference custom
+ * attributes that are not managed by this provider. Its attributes are exactly the
+ * same as the `vsphere.CustomAttribute` resource,
+ * and, like importing, the data source takes a name to search on. The `id` and
  * other attributes are then populated with the data found by the search.
  *
- * > **NOTE:** Custom attributes are unsupported on direct ESXi connections 
+ * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
  * and require vCenter.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
