@@ -201,7 +201,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The guest ID for the operating system type. For a
      * full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
      */
-    public readonly guestId!: pulumi.Output<string | undefined>;
+    public readonly guestId!: pulumi.Output<string>;
     /**
      * The current list of IP addresses on this machine,
      * including the value of `defaultIpAddress`. If VMware tools is not running
