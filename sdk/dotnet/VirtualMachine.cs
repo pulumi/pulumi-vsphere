@@ -237,7 +237,7 @@ namespace Pulumi.VSphere
         /// full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
         /// </summary>
         [Output("guestId")]
-        public Output<string?> GuestId { get; private set; } = null!;
+        public Output<string> GuestId { get; private set; } = null!;
 
         /// <summary>
         /// The current list of IP addresses on this machine,

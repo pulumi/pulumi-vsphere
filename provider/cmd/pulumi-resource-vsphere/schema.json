@@ -8088,6 +8088,7 @@
                 "datastoreId",
                 "defaultIpAddress",
                 "disks",
+                "guestId",
                 "guestIpAddresses",
                 "hardwareVersion",
                 "hostSystemId",

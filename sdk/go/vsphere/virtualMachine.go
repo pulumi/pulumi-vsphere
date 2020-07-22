@@ -120,7 +120,7 @@ type VirtualMachine struct {
 	ForcePowerOff pulumi.BoolPtrOutput `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a
 	// full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
-	GuestId pulumi.StringPtrOutput `pulumi:"guestId"`
+	GuestId pulumi.StringOutput `pulumi:"guestId"`
 	// The current list of IP addresses on this machine,
 	// including the value of `defaultIpAddress`. If VMware tools is not running
 	// on the virtual machine, or if the VM is powered off, this list will be empty.

@@ -11,6 +11,6 @@ require (
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/hashicorp/terraform-provider-vsphere => github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200630201708-beb84a3e9eac
+	github.com/hashicorp/terraform-provider-vsphere => github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200721131838-4443b5e1fe22
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
