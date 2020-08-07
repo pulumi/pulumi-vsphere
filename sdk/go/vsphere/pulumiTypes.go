@@ -10,6 +10,106 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type ComputeClusterVsanDiskGroup struct {
+	Cache    *string  `pulumi:"cache"`
+	Storages []string `pulumi:"storages"`
+}
+
+// ComputeClusterVsanDiskGroupInput is an input type that accepts ComputeClusterVsanDiskGroupArgs and ComputeClusterVsanDiskGroupOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanDiskGroupInput` via:
+//
+//          ComputeClusterVsanDiskGroupArgs{...}
+type ComputeClusterVsanDiskGroupInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanDiskGroupOutput() ComputeClusterVsanDiskGroupOutput
+	ToComputeClusterVsanDiskGroupOutputWithContext(context.Context) ComputeClusterVsanDiskGroupOutput
+}
+
+type ComputeClusterVsanDiskGroupArgs struct {
+	Cache    pulumi.StringPtrInput   `pulumi:"cache"`
+	Storages pulumi.StringArrayInput `pulumi:"storages"`
+}
+
+func (ComputeClusterVsanDiskGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanDiskGroup)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanDiskGroupArgs) ToComputeClusterVsanDiskGroupOutput() ComputeClusterVsanDiskGroupOutput {
+	return i.ToComputeClusterVsanDiskGroupOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanDiskGroupArgs) ToComputeClusterVsanDiskGroupOutputWithContext(ctx context.Context) ComputeClusterVsanDiskGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanDiskGroupOutput)
+}
+
+// ComputeClusterVsanDiskGroupArrayInput is an input type that accepts ComputeClusterVsanDiskGroupArray and ComputeClusterVsanDiskGroupArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterVsanDiskGroupArrayInput` via:
+//
+//          ComputeClusterVsanDiskGroupArray{ ComputeClusterVsanDiskGroupArgs{...} }
+type ComputeClusterVsanDiskGroupArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterVsanDiskGroupArrayOutput() ComputeClusterVsanDiskGroupArrayOutput
+	ToComputeClusterVsanDiskGroupArrayOutputWithContext(context.Context) ComputeClusterVsanDiskGroupArrayOutput
+}
+
+type ComputeClusterVsanDiskGroupArray []ComputeClusterVsanDiskGroupInput
+
+func (ComputeClusterVsanDiskGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanDiskGroup)(nil)).Elem()
+}
+
+func (i ComputeClusterVsanDiskGroupArray) ToComputeClusterVsanDiskGroupArrayOutput() ComputeClusterVsanDiskGroupArrayOutput {
+	return i.ToComputeClusterVsanDiskGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVsanDiskGroupArray) ToComputeClusterVsanDiskGroupArrayOutputWithContext(ctx context.Context) ComputeClusterVsanDiskGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVsanDiskGroupArrayOutput)
+}
+
+type ComputeClusterVsanDiskGroupOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanDiskGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVsanDiskGroup)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanDiskGroupOutput) ToComputeClusterVsanDiskGroupOutput() ComputeClusterVsanDiskGroupOutput {
+	return o
+}
+
+func (o ComputeClusterVsanDiskGroupOutput) ToComputeClusterVsanDiskGroupOutputWithContext(ctx context.Context) ComputeClusterVsanDiskGroupOutput {
+	return o
+}
+
+func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) *string { return v.Cache }).(pulumi.StringPtrOutput)
+}
+
+func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
+}
+
+type ComputeClusterVsanDiskGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVsanDiskGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVsanDiskGroup)(nil)).Elem()
+}
+
+func (o ComputeClusterVsanDiskGroupArrayOutput) ToComputeClusterVsanDiskGroupArrayOutput() ComputeClusterVsanDiskGroupArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanDiskGroupArrayOutput) ToComputeClusterVsanDiskGroupArrayOutputWithContext(ctx context.Context) ComputeClusterVsanDiskGroupArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVsanDiskGroupArrayOutput) Index(i pulumi.IntInput) ComputeClusterVsanDiskGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVsanDiskGroup {
+		return vs[0].([]ComputeClusterVsanDiskGroup)[vs[1].(int)]
+	}).(ComputeClusterVsanDiskGroupOutput)
+}
+
 type DistributedPortGroupVlanRange struct {
 	MaxVlan int `pulumi:"maxVlan"`
 	MinVlan int `pulumi:"minVlan"`
@@ -3385,6 +3485,8 @@ func (o GetVirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) GetVirtualMac
 }
 
 func init() {
+	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupVlanRangeOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchHostOutput{})

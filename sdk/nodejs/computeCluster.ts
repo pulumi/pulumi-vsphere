@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ComputeCluster extends pulumi.CustomResource {
@@ -379,6 +381,14 @@ export class ComputeCluster extends pulumi.CustomResource {
      * The IDs of any tags to attach to this resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of disk UUIDs to add to the vSAN cluster.
+     */
+    public readonly vsanDiskGroups!: pulumi.Output<outputs.ComputeClusterVsanDiskGroup[]>;
+    /**
+     * Whether the VSAN service is enabled for the cluster.
+     */
+    public readonly vsanEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a ComputeCluster resource with the given unique name, arguments, and options.
@@ -446,6 +456,8 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["proactiveHaSevereRemediation"] = state ? state.proactiveHaSevereRemediation : undefined;
             inputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["vsanDiskGroups"] = state ? state.vsanDiskGroups : undefined;
+            inputs["vsanEnabled"] = state ? state.vsanEnabled : undefined;
         } else {
             const args = argsOrState as ComputeClusterArgs | undefined;
             if (!args || args.datacenterId === undefined) {
@@ -504,6 +516,8 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["proactiveHaProviderIds"] = args ? args.proactiveHaProviderIds : undefined;
             inputs["proactiveHaSevereRemediation"] = args ? args.proactiveHaSevereRemediation : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["vsanDiskGroups"] = args ? args.vsanDiskGroups : undefined;
+            inputs["vsanEnabled"] = args ? args.vsanEnabled : undefined;
             inputs["resourcePoolId"] = undefined /*out*/;
         }
         if (!opts) {
@@ -868,6 +882,14 @@ export interface ComputeClusterState {
      * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of disk UUIDs to add to the vSAN cluster.
+     */
+    readonly vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
+    /**
+     * Whether the VSAN service is enabled for the cluster.
+     */
+    readonly vsanEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -1217,4 +1239,12 @@ export interface ComputeClusterArgs {
      * The IDs of any tags to attach to this resource.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of disk UUIDs to add to the vSAN cluster.
+     */
+    readonly vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
+    /**
+     * Whether the VSAN service is enabled for the cluster.
+     */
+    readonly vsanEnabled?: pulumi.Input<boolean>;
 }

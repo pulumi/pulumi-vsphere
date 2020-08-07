@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ComputeClusterVsanDiskGroup {
+    cache?: pulumi.Input<string>;
+    storages?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface DistributedPortGroupVlanRange {
     maxVlan: pulumi.Input<number>;
     minVlan: pulumi.Input<number>;

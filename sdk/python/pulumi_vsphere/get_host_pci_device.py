@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetHostPciDeviceResult:
     """
@@ -37,6 +38,8 @@ class GetHostPciDeviceResult:
         if vendor_id and not isinstance(vendor_id, str):
             raise TypeError("Expected argument 'vendor_id' to be a str")
         __self__.vendor_id = vendor_id
+
+
 class AwaitableGetHostPciDeviceResult(GetHostPciDeviceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +53,8 @@ class AwaitableGetHostPciDeviceResult(GetHostPciDeviceResult):
             name_regex=self.name_regex,
             vendor_id=self.vendor_id)
 
-def get_host_pci_device(class_id=None,host_id=None,name_regex=None,vendor_id=None,opts=None):
+
+def get_host_pci_device(class_id=None, host_id=None, name_regex=None, vendor_id=None, opts=None):
     """
     The `getHostPciDevice` data source can be used to discover the DeviceID
     of a vSphere host's PCI device. This can then be used with
@@ -81,8 +85,6 @@ def get_host_pci_device(class_id=None,host_id=None,name_regex=None,vendor_id=Non
     :param str vendor_id: The hexadecimal PCI device vendor ID.
     """
     __args__ = dict()
-
-
     __args__['classId'] = class_id
     __args__['hostId'] = host_id
     __args__['nameRegex'] = name_regex
@@ -90,7 +92,7 @@ def get_host_pci_device(class_id=None,host_id=None,name_regex=None,vendor_id=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHostPciDevice:getHostPciDevice', __args__, opts=opts).value
 
     return AwaitableGetHostPciDeviceResult(

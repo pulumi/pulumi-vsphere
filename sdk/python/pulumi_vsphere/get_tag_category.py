@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetTagCategoryResult:
     """
@@ -31,6 +32,8 @@ class GetTagCategoryResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetTagCategoryResult(GetTagCategoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
             id=self.id,
             name=self.name)
 
-def get_tag_category(name=None,opts=None):
+
+def get_tag_category(name=None, opts=None):
     """
     The `TagCategory` data source can be used to reference tag categories
     that are not managed by this provider. Its attributes are exactly the same as the
@@ -67,13 +71,11 @@ def get_tag_category(name=None,opts=None):
     :param str name: The name of the tag category.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts).value
 
     return AwaitableGetTagCategoryResult(

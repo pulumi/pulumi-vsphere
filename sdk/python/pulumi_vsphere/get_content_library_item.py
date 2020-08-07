@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetContentLibraryItemResult:
     """
@@ -25,6 +26,8 @@ class GetContentLibraryItemResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetContentLibraryItemResult(GetContentLibraryItemResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,7 +38,8 @@ class AwaitableGetContentLibraryItemResult(GetContentLibraryItemResult):
             library_id=self.library_id,
             name=self.name)
 
-def get_content_library_item(library_id=None,name=None,opts=None):
+
+def get_content_library_item(library_id=None, name=None, opts=None):
     """
     The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
 
@@ -58,14 +62,12 @@ def get_content_library_item(library_id=None,name=None,opts=None):
     :param str name: The name of the Content Library.
     """
     __args__ = dict()
-
-
     __args__['libraryId'] = library_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getContentLibraryItem:getContentLibraryItem', __args__, opts=opts).value
 
     return AwaitableGetContentLibraryItemResult(

@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
 
 
 class Provider(pulumi.ProviderResource):
@@ -43,48 +43,48 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             if allow_unverified_ssl is None:
-                allow_unverified_ssl = utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
+                allow_unverified_ssl = _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
             __props__['allow_unverified_ssl'] = pulumi.Output.from_input(allow_unverified_ssl).apply(json.dumps) if allow_unverified_ssl is not None else None
             if client_debug is None:
-                client_debug = utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
+                client_debug = _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
             __props__['client_debug'] = pulumi.Output.from_input(client_debug).apply(json.dumps) if client_debug is not None else None
             if client_debug_path is None:
-                client_debug_path = utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
+                client_debug_path = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
             __props__['client_debug_path'] = client_debug_path
             if client_debug_path_run is None:
-                client_debug_path_run = utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
+                client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
             __props__['client_debug_path_run'] = client_debug_path_run
             if password is None:
-                password = utilities.get_env('VSPHERE_PASSWORD')
+                password = _utilities.get_env('VSPHERE_PASSWORD')
             __props__['password'] = password
             if persist_session is None:
-                persist_session = utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
+                persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
             __props__['persist_session'] = pulumi.Output.from_input(persist_session).apply(json.dumps) if persist_session is not None else None
             if rest_session_path is None:
-                rest_session_path = utilities.get_env('VSPHERE_REST_SESSION_PATH')
+                rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
             __props__['rest_session_path'] = rest_session_path
             if user is None:
-                user = utilities.get_env('VSPHERE_USER')
+                user = _utilities.get_env('VSPHERE_USER')
             __props__['user'] = user
             if vcenter_server is not None:
                 warnings.warn("This field has been renamed to vsphere_server.", DeprecationWarning)
                 pulumi.log.warn("vcenter_server is deprecated: This field has been renamed to vsphere_server.")
             __props__['vcenter_server'] = vcenter_server
             if vim_keep_alive is None:
-                vim_keep_alive = utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
+                vim_keep_alive = _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
             __props__['vim_keep_alive'] = pulumi.Output.from_input(vim_keep_alive).apply(json.dumps) if vim_keep_alive is not None else None
             if vim_session_path is None:
-                vim_session_path = utilities.get_env('VSPHERE_VIM_SESSION_PATH')
+                vim_session_path = _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
             __props__['vim_session_path'] = vim_session_path
             if vsphere_server is None:
-                vsphere_server = utilities.get_env('VSPHERE_SERVER')
+                vsphere_server = _utilities.get_env('VSPHERE_SERVER')
             __props__['vsphere_server'] = vsphere_server
         super(Provider, __self__).__init__(
             'vsphere',
@@ -93,7 +93,7 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop

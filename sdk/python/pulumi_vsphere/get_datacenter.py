@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetDatacenterResult:
     """
@@ -22,6 +23,8 @@ class GetDatacenterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetDatacenterResult(GetDatacenterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +34,8 @@ class AwaitableGetDatacenterResult(GetDatacenterResult):
             id=self.id,
             name=self.name)
 
-def get_datacenter(name=None,opts=None):
+
+def get_datacenter(name=None, opts=None):
     """
     The `Datacenter` data source can be used to discover the ID of a
     vSphere datacenter. This can then be used with resources or data sources that
@@ -52,13 +56,11 @@ def get_datacenter(name=None,opts=None):
            Can be omitted if there is only one datacenter in your inventory.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts).value
 
     return AwaitableGetDatacenterResult(

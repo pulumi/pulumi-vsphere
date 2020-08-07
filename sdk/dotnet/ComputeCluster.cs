@@ -466,6 +466,18 @@ namespace Pulumi.VSphere
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of disk UUIDs to add to the vSAN cluster.
+        /// </summary>
+        [Output("vsanDiskGroups")]
+        public Output<ImmutableArray<Outputs.ComputeClusterVsanDiskGroup>> VsanDiskGroups { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the VSAN service is enabled for the cluster.
+        /// </summary>
+        [Output("vsanEnabled")]
+        public Output<bool> VsanEnabled { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ComputeCluster resource with the given unique name, arguments, and options.
@@ -1009,6 +1021,24 @@ namespace Pulumi.VSphere
             set => _tags = value;
         }
 
+        [Input("vsanDiskGroups")]
+        private InputList<Inputs.ComputeClusterVsanDiskGroupArgs>? _vsanDiskGroups;
+
+        /// <summary>
+        /// A list of disk UUIDs to add to the vSAN cluster.
+        /// </summary>
+        public InputList<Inputs.ComputeClusterVsanDiskGroupArgs> VsanDiskGroups
+        {
+            get => _vsanDiskGroups ?? (_vsanDiskGroups = new InputList<Inputs.ComputeClusterVsanDiskGroupArgs>());
+            set => _vsanDiskGroups = value;
+        }
+
+        /// <summary>
+        /// Whether the VSAN service is enabled for the cluster.
+        /// </summary>
+        [Input("vsanEnabled")]
+        public Input<bool>? VsanEnabled { get; set; }
+
         public ComputeClusterArgs()
         {
         }
@@ -1518,6 +1548,24 @@ namespace Pulumi.VSphere
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("vsanDiskGroups")]
+        private InputList<Inputs.ComputeClusterVsanDiskGroupGetArgs>? _vsanDiskGroups;
+
+        /// <summary>
+        /// A list of disk UUIDs to add to the vSAN cluster.
+        /// </summary>
+        public InputList<Inputs.ComputeClusterVsanDiskGroupGetArgs> VsanDiskGroups
+        {
+            get => _vsanDiskGroups ?? (_vsanDiskGroups = new InputList<Inputs.ComputeClusterVsanDiskGroupGetArgs>());
+            set => _vsanDiskGroups = value;
+        }
+
+        /// <summary>
+        /// Whether the VSAN service is enabled for the cluster.
+        /// </summary>
+        [Input("vsanEnabled")]
+        public Input<bool>? VsanEnabled { get; set; }
 
         public ComputeClusterState()
         {

@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetDynamicResult:
     """
@@ -28,6 +29,8 @@ class GetDynamicResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
+
+
 class AwaitableGetDynamicResult(GetDynamicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +42,8 @@ class AwaitableGetDynamicResult(GetDynamicResult):
             name_regex=self.name_regex,
             type=self.type)
 
-def get_dynamic(filters=None,name_regex=None,type=None,opts=None):
+
+def get_dynamic(filters=None, name_regex=None, type=None, opts=None):
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
@@ -57,15 +61,13 @@ def get_dynamic(filters=None,name_regex=None,type=None,opts=None):
            For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['nameRegex'] = name_regex
     __args__['type'] = type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDynamic:getDynamic', __args__, opts=opts).value
 
     return AwaitableGetDynamicResult(

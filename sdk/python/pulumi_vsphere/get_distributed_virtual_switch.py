@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetDistributedVirtualSwitchResult:
     """
@@ -28,6 +29,8 @@ class GetDistributedVirtualSwitchResult:
         if uplinks and not isinstance(uplinks, list):
             raise TypeError("Expected argument 'uplinks' to be a list")
         __self__.uplinks = uplinks
+
+
 class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +42,8 @@ class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResu
             name=self.name,
             uplinks=self.uplinks)
 
-def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
+
+def get_distributed_virtual_switch(datacenter_id=None, name=None, opts=None):
     """
     The `DistributedVirtualSwitch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
@@ -80,14 +84,12 @@ def get_distributed_virtual_switch(datacenter_id=None,name=None,opts=None):
            name or path.
     """
     __args__ = dict()
-
-
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts).value
 
     return AwaitableGetDistributedVirtualSwitchResult(

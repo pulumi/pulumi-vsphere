@@ -252,6 +252,10 @@ type ComputeCluster struct {
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// A list of disk UUIDs to add to the vSAN cluster.
+	VsanDiskGroups ComputeClusterVsanDiskGroupArrayOutput `pulumi:"vsanDiskGroups"`
+	// Whether the VSAN service is enabled for the cluster.
+	VsanEnabled pulumi.BoolOutput `pulumi:"vsanEnabled"`
 }
 
 // NewComputeCluster registers a new resource with the given unique name, arguments, and options.
@@ -524,6 +528,10 @@ type computeClusterState struct {
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
+	// A list of disk UUIDs to add to the vSAN cluster.
+	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
+	// Whether the VSAN service is enabled for the cluster.
+	VsanEnabled *bool `pulumi:"vsanEnabled"`
 }
 
 type ComputeClusterState struct {
@@ -766,6 +774,10 @@ type ComputeClusterState struct {
 	ResourcePoolId pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
+	// A list of disk UUIDs to add to the vSAN cluster.
+	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
+	// Whether the VSAN service is enabled for the cluster.
+	VsanEnabled pulumi.BoolPtrInput
 }
 
 func (ComputeClusterState) ElementType() reflect.Type {
@@ -1010,6 +1022,10 @@ type computeClusterArgs struct {
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
+	// A list of disk UUIDs to add to the vSAN cluster.
+	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
+	// Whether the VSAN service is enabled for the cluster.
+	VsanEnabled *bool `pulumi:"vsanEnabled"`
 }
 
 // The set of arguments for constructing a ComputeCluster resource.
@@ -1251,6 +1267,10 @@ type ComputeClusterArgs struct {
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
+	// A list of disk UUIDs to add to the vSAN cluster.
+	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
+	// Whether the VSAN service is enabled for the cluster.
+	VsanEnabled pulumi.BoolPtrInput
 }
 
 func (ComputeClusterArgs) ElementType() reflect.Type {

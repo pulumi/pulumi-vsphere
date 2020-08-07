@@ -198,6 +198,7 @@ github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf/go.mod h1:E3G3o1h8I7cfc
 github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f/go.mod h1:E3G3o1h8I7cfcXa63jLwjI0eiQQMgzzUDFVpN/nH/eA=
 github.com/cpuguy83/go-md2man/v2 v2.0.0/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/creack/pty v1.1.7/go.mod h1:lj5s0c3V2DBrqTV7llrYr5NG6My20zk30Fl46Y7DoTY=
+github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -539,12 +540,14 @@ github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxv
 github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515/go.mod h1:+0opPa2QZZtGFBFZlji/RkVcI2GknAs/DXo4wKdlNEc=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
+github.com/kr/pretty v0.2.0/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfnI=
 github.com/kr/pty v1.0.0/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/pty v1.1.4/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/pty v1.1.8/go.mod h1:O1sed60cT9XZ5uDucP5qwvh+TE3NnUj51EiZO/lmSfw=
 github.com/kr/text v0.1.0 h1:45sCR5RtlFHMR4UwH9sdQ5TC8v0qDQCHnXt+kaKSTVE=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/kr/text v0.2.0/go.mod h1:eLer722TekiGuMkidMxC/pM04lWEeraHUUmBw8l2grE=
 github.com/kylelemons/godebug v0.0.0-20170820004349-d65d576e9348/go.mod h1:B69LEHPfb2qLo0BaaOLcbitczOKLWTsrBG9LczfCD4k=
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
@@ -701,6 +704,8 @@ github.com/pulumi/pulumi-terraform-bridge/v2 v2.4.1-0.20200608011815-6feeb51f2d3
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.4.1-0.20200608011815-6feeb51f2d39/go.mod h1:GI/1DagEgBD0PJUCt5wmaPLI8cx66IMzLRpy0oeucoo=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.5.2 h1:2fZdQQ1uO1D7J1O8D5ytsaPwze3jsxOlfb0OUxJZpMI=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.5.2/go.mod h1:lxWrXLYAMbse0AJeY570Iy2KYI3uUwNg6JOUZ6U7M+Q=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.6.0 h1:VSg0nVCf/IdslwOlHmoVQcAmIao2BIbPcqVS9r/6MMs=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.6.0/go.mod h1:+OsFzDf6+9dY73x6icyXR8NasSnTXx7F1x/B6LBAlZI=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
 github.com/pulumi/pulumi/pkg/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:GV88eCIrqfFcBWd5QUdN3qMsR0h+x+iRIBnBhhvB78A=
 github.com/pulumi/pulumi/pkg/v2 v2.3.1-0.20200607162109-9754465b04db h1:5HrO1GNA53QEp+yN1UCX7BUsJD2I5/k1u2KLO4hOxOA=
@@ -708,6 +713,8 @@ github.com/pulumi/pulumi/pkg/v2 v2.3.1-0.20200607162109-9754465b04db/go.mod h1:a
 github.com/pulumi/pulumi/pkg/v2 v2.3.1-0.20200610172153-45a901d3e77c/go.mod h1:aqo0wBboEEdy+T5EYKUB6YnzbL80VPjgJPwjttuHqT0=
 github.com/pulumi/pulumi/pkg/v2 v2.5.1-0.20200630091945-bb358c4d2173 h1:7nc8B91aEP2MTlty6MMzVLS/IGyX12k/UJ9loeCHcqE=
 github.com/pulumi/pulumi/pkg/v2 v2.5.1-0.20200630091945-bb358c4d2173/go.mod h1:zfUm4/GH2dVRlHZ3Yeb9bRweCQM7icVBdplu6MUDRrQ=
+github.com/pulumi/pulumi/pkg/v2 v2.6.2-0.20200715231137-1a10e06588f6 h1:3AvdiZZW/wURR0TnBWYCptTmgX73R23EAywILZvT6js=
+github.com/pulumi/pulumi/pkg/v2 v2.6.2-0.20200715231137-1a10e06588f6/go.mod h1:zfUm4/GH2dVRlHZ3Yeb9bRweCQM7icVBdplu6MUDRrQ=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0 h1:3VMXbEo3bqeaU+YDt8ufVBLD0WhLYE3tG3t/nIZ3Iac=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
 github.com/pulumi/pulumi/sdk/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
@@ -717,6 +724,9 @@ github.com/pulumi/pulumi/sdk/v2 v2.3.1-0.20200610172153-45a901d3e77c/go.mod h1:l
 github.com/pulumi/pulumi/sdk/v2 v2.5.0/go.mod h1:llk6tmXss8kJrt3vEXAkwiwgZOuINEFmKIfMveVIwO8=
 github.com/pulumi/pulumi/sdk/v2 v2.5.1-0.20200630091945-bb358c4d2173 h1:tKAYUvIWlr6PTeC7OHL2aEMW92x+XqEPsy+NwOcY4R4=
 github.com/pulumi/pulumi/sdk/v2 v2.5.1-0.20200630091945-bb358c4d2173/go.mod h1:llk6tmXss8kJrt3vEXAkwiwgZOuINEFmKIfMveVIwO8=
+github.com/pulumi/pulumi/sdk/v2 v2.6.2-0.20200715231137-1a10e06588f6/go.mod h1:llk6tmXss8kJrt3vEXAkwiwgZOuINEFmKIfMveVIwO8=
+github.com/pulumi/pulumi/sdk/v2 v2.7.1 h1:nv/bgZ4Q55Pvv2OVqAJ8wSKL4Fo8/oqK4WrKjZcK8p0=
+github.com/pulumi/pulumi/sdk/v2 v2.7.1/go.mod h1:uZynzlmQbvvoNLuB7H7RQV9l4+eEpKI+J1UI1qqeuUM=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200617121428-2f4f61ab7231 h1:dJwdAD5bzdQnqCJyIYgQ0y76IqJGlN0iyWDCtMAvtgM=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200617121428-2f4f61ab7231/go.mod h1:Icwja6/X3lgoLf6dHTiaz9rW6ZmFU7kdUK07RHplWUg=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200623130117-3102db6cd83e h1:y0DwM5hZ5yMK8L4V5sQC6vTmCEAQMUnNcnyn4ayDbd8=
@@ -725,12 +735,16 @@ github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200630201708-beb84a3e9e
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200630201708-beb84a3e9eac/go.mod h1:FgcsrcPpnjLUO4XWpudYiBho9ETIXYRxVXWV7R3Iz6k=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200721131838-4443b5e1fe22 h1:omsOXkN7E9NeaWW4dQnXPEFg5uJMqNCQBG7ms9fokyM=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200721131838-4443b5e1fe22/go.mod h1:FgcsrcPpnjLUO4XWpudYiBho9ETIXYRxVXWV7R3Iz6k=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200807194018-06041a716d3e h1:SE8EUqZ7NeAfCLf+1OTEXLsIA8sON9sTo45uTcgiu08=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20200807194018-06041a716d3e/go.mod h1:FgcsrcPpnjLUO4XWpudYiBho9ETIXYRxVXWV7R3Iz6k=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5/go.mod h1:WuOTC7l/5TV0+/v8Djbgz/zPxqwiCYCxf9zoffDFGuM=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec h1:C0l29EHsfhH+reeRSmqr0sIzJipQpXssof3YZurRrVo=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
+github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34 h1:u1NyO0NXvl+b6kXq2iuQgU95U3O1muXMZLEglS/k+zM=
+github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=

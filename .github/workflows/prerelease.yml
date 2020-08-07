@@ -25,7 +25,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -102,7 +102,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -136,7 +136,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -168,7 +168,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -236,7 +236,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -297,7 +297,7 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow
+      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v2
       with:

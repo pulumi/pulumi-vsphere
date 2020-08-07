@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetVmfsDisksResult:
     """
@@ -35,6 +36,8 @@ class GetVmfsDisksResult:
         if rescan and not isinstance(rescan, bool):
             raise TypeError("Expected argument 'rescan' to be a bool")
         __self__.rescan = rescan
+
+
 class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,7 +50,8 @@ class AwaitableGetVmfsDisksResult(GetVmfsDisksResult):
             id=self.id,
             rescan=self.rescan)
 
-def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
+
+def get_vmfs_disks(filter=None, host_system_id=None, rescan=None, opts=None):
     """
     The `getVmfsDisks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
@@ -78,15 +82,13 @@ def get_vmfs_disks(filter=None,host_system_id=None,rescan=None,opts=None):
            search. Default: `false`.
     """
     __args__ = dict()
-
-
     __args__['filter'] = filter
     __args__['hostSystemId'] = host_system_id
     __args__['rescan'] = rescan
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts).value
 
     return AwaitableGetVmfsDisksResult(
