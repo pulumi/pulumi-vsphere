@@ -124,6 +124,30 @@
         ]
     },
     "types": {
+        "vsphere:/ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup": {
+            "properties": {
+                "cache": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "storages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "vsphere:/DistributedPortGroupVlanRange:DistributedPortGroupVlanRange": {
             "properties": {
                 "maxVlan": {
@@ -1594,12 +1618,25 @@
                         "type": "string"
                     },
                     "description": "The IDs of any tags to attach to this resource.\n"
+                },
+                "vsanDiskGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup"
+                    },
+                    "description": "A list of disk UUIDs to add to the vSAN cluster.\n"
+                },
+                "vsanEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the VSAN service is enabled for the cluster.\n"
                 }
             },
             "required": [
                 "datacenterId",
                 "name",
-                "resourcePoolId"
+                "resourcePoolId",
+                "vsanDiskGroups",
+                "vsanEnabled"
             ],
             "inputProperties": {
                 "customAttributes": {
@@ -1837,6 +1874,17 @@
                         "type": "string"
                     },
                     "description": "The IDs of any tags to attach to this resource.\n"
+                },
+                "vsanDiskGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup"
+                    },
+                    "description": "A list of disk UUIDs to add to the vSAN cluster.\n"
+                },
+                "vsanEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the VSAN service is enabled for the cluster.\n"
                 }
             },
             "requiredInputs": [
@@ -2084,6 +2132,17 @@
                             "type": "string"
                         },
                         "description": "The IDs of any tags to attach to this resource.\n"
+                    },
+                    "vsanDiskGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:/ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup"
+                        },
+                        "description": "A list of disk UUIDs to add to the vSAN cluster.\n"
+                    },
+                    "vsanEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the VSAN service is enabled for the cluster.\n"
                     }
                 },
                 "type": "object"

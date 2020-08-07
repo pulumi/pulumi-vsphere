@@ -357,7 +357,18 @@ class ComputeCluster(pulumi.CustomResource):
     """
     The IDs of any tags to attach to this resource.
     """
-    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    vsan_disk_groups: pulumi.Output[list]
+    """
+    A list of disk UUIDs to add to the vSAN cluster.
+
+      * `cache` (`str`)
+      * `storages` (`list`)
+    """
+    vsan_enabled: pulumi.Output[bool]
+    """
+    Whether the VSAN service is enabled for the cluster.
+    """
+    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, tags=None, vsan_disk_groups=None, vsan_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ComputeCluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -546,6 +557,13 @@ class ComputeCluster(pulumi.CustomResource):
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[list] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[bool] vsan_enabled: Whether the VSAN service is enabled for the cluster.
+
+        The **vsan_disk_groups** object supports the following:
+
+          * `cache` (`pulumi.Input[str]`)
+          * `storages` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -619,6 +637,8 @@ class ComputeCluster(pulumi.CustomResource):
             __props__['proactive_ha_provider_ids'] = proactive_ha_provider_ids
             __props__['proactive_ha_severe_remediation'] = proactive_ha_severe_remediation
             __props__['tags'] = tags
+            __props__['vsan_disk_groups'] = vsan_disk_groups
+            __props__['vsan_enabled'] = vsan_enabled
             __props__['resource_pool_id'] = None
         super(ComputeCluster, __self__).__init__(
             'vsphere:index/computeCluster:ComputeCluster',
@@ -627,7 +647,7 @@ class ComputeCluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, resource_pool_id=None, tags=None):
+    def get(resource_name, id, opts=None, custom_attributes=None, datacenter_id=None, dpm_automation_level=None, dpm_enabled=None, dpm_threshold=None, drs_advanced_options=None, drs_automation_level=None, drs_enable_predictive_drs=None, drs_enable_vm_overrides=None, drs_enabled=None, drs_migration_threshold=None, folder=None, force_evacuate_on_destroy=None, ha_admission_control_failover_host_system_ids=None, ha_admission_control_host_failure_tolerance=None, ha_admission_control_performance_tolerance=None, ha_admission_control_policy=None, ha_admission_control_resource_percentage_auto_compute=None, ha_admission_control_resource_percentage_cpu=None, ha_admission_control_resource_percentage_memory=None, ha_admission_control_slot_policy_explicit_cpu=None, ha_admission_control_slot_policy_explicit_memory=None, ha_admission_control_slot_policy_use_explicit_size=None, ha_advanced_options=None, ha_datastore_apd_recovery_action=None, ha_datastore_apd_response=None, ha_datastore_apd_response_delay=None, ha_datastore_pdl_response=None, ha_enabled=None, ha_heartbeat_datastore_ids=None, ha_heartbeat_datastore_policy=None, ha_host_isolation_response=None, ha_host_monitoring=None, ha_vm_component_protection=None, ha_vm_dependency_restart_condition=None, ha_vm_failure_interval=None, ha_vm_maximum_failure_window=None, ha_vm_maximum_resets=None, ha_vm_minimum_uptime=None, ha_vm_monitoring=None, ha_vm_restart_additional_delay=None, ha_vm_restart_priority=None, ha_vm_restart_timeout=None, host_cluster_exit_timeout=None, host_managed=None, host_system_ids=None, name=None, proactive_ha_automation_level=None, proactive_ha_enabled=None, proactive_ha_moderate_remediation=None, proactive_ha_provider_ids=None, proactive_ha_severe_remediation=None, resource_pool_id=None, tags=None, vsan_disk_groups=None, vsan_enabled=None):
         """
         Get an existing ComputeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -820,6 +840,13 @@ class ComputeCluster(pulumi.CustomResource):
                <sup>\*</sup>
         :param pulumi.Input[str] resource_pool_id: The managed object ID of the cluster's root resource pool.
         :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[list] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[bool] vsan_enabled: Whether the VSAN service is enabled for the cluster.
+
+        The **vsan_disk_groups** object supports the following:
+
+          * `cache` (`pulumi.Input[str]`)
+          * `storages` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -879,6 +906,8 @@ class ComputeCluster(pulumi.CustomResource):
         __props__["proactive_ha_severe_remediation"] = proactive_ha_severe_remediation
         __props__["resource_pool_id"] = resource_pool_id
         __props__["tags"] = tags
+        __props__["vsan_disk_groups"] = vsan_disk_groups
+        __props__["vsan_enabled"] = vsan_enabled
         return ComputeCluster(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
