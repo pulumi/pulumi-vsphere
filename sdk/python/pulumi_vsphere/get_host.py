@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetHostResult:
     """
@@ -32,6 +33,8 @@ class GetHostResult:
         The managed object ID of the host's
         root resource pool.
         """
+
+
 class AwaitableGetHostResult(GetHostResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetHostResult(GetHostResult):
             name=self.name,
             resource_pool_id=self.resource_pool_id)
 
-def get_host(datacenter_id=None,name=None,opts=None):
+
+def get_host(datacenter_id=None, name=None, opts=None):
     """
     The `Host` data source can be used to discover the ID of a vSphere
     host. This can then be used with resources or data sources that require a host
@@ -67,14 +71,12 @@ def get_host(datacenter_id=None,name=None,opts=None):
            omitted if there is only one host in your inventory.
     """
     __args__ = dict()
-
-
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__, opts=opts).value
 
     return AwaitableGetHostResult(

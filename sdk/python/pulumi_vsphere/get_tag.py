@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetTagResult:
     """
@@ -28,6 +29,8 @@ class GetTagResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetTagResult(GetTagResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +42,8 @@ class AwaitableGetTagResult(GetTagResult):
             id=self.id,
             name=self.name)
 
-def get_tag(category_id=None,name=None,opts=None):
+
+def get_tag(category_id=None, name=None, opts=None):
     """
     The `Tag` data source can be used to reference tags that are not
     managed by this provider. Its attributes are exactly the same as the `Tag`
@@ -66,14 +70,12 @@ def get_tag(category_id=None,name=None,opts=None):
     :param str name: The name of the tag.
     """
     __args__ = dict()
-
-
     __args__['categoryId'] = category_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts).value
 
     return AwaitableGetTagResult(

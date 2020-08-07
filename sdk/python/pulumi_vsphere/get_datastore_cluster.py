@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetDatastoreClusterResult:
     """
@@ -25,6 +26,8 @@ class GetDatastoreClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetDatastoreClusterResult(GetDatastoreClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,7 +38,8 @@ class AwaitableGetDatastoreClusterResult(GetDatastoreClusterResult):
             id=self.id,
             name=self.name)
 
-def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
+
+def get_datastore_cluster(datacenter_id=None, name=None, opts=None):
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
     datastore cluster in vSphere. This is useful to fetch the ID of a datastore
@@ -65,14 +69,12 @@ def get_datastore_cluster(datacenter_id=None,name=None,opts=None):
     :param str name: The name or absolute path to the datastore cluster.
     """
     __args__ = dict()
-
-
     __args__['datacenterId'] = datacenter_id
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts).value
 
     return AwaitableGetDatastoreClusterResult(

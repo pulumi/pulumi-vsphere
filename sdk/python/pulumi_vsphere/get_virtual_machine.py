@@ -6,7 +6,8 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
+
 
 class GetVirtualMachineResult:
     """
@@ -98,6 +99,8 @@ class GetVirtualMachineResult:
         there are multiple controller types. Only the first number of controllers
         defined by `scsi_controller_scan_count` are scanned.
         """
+
+
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -119,7 +122,8 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             scsi_controller_scan_count=self.scsi_controller_scan_count,
             scsi_type=self.scsi_type)
 
-def get_virtual_machine(datacenter_id=None,ide_controller_scan_count=None,name=None,sata_controller_scan_count=None,scsi_controller_scan_count=None,opts=None):
+
+def get_virtual_machine(datacenter_id=None, ide_controller_scan_count=None, name=None, sata_controller_scan_count=None, scsi_controller_scan_count=None, opts=None):
     """
     The `VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
@@ -150,8 +154,6 @@ def get_virtual_machine(datacenter_id=None,ide_controller_scan_count=None,name=N
            scan for disk attributes and controller types on. Default: `1`.
     """
     __args__ = dict()
-
-
     __args__['datacenterId'] = datacenter_id
     __args__['ideControllerScanCount'] = ide_controller_scan_count
     __args__['name'] = name
@@ -160,7 +162,7 @@ def get_virtual_machine(datacenter_id=None,ide_controller_scan_count=None,name=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVirtualMachine:getVirtualMachine', __args__, opts=opts).value
 
     return AwaitableGetVirtualMachineResult(
