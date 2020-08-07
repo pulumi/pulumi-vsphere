@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.7.0 (2020-08-07)
 * Upgrade to v1.22.0 of the vSphere Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.6.0
 * Upgrade to Pulumi v2.7.1
-
----
 
 ## 2.6.1 (2020-07-22)
 * Upgrade to v1.21.1 of the vSphere Terraform Provider
