@@ -33,6 +33,29 @@ export interface DistributedVirtualSwitchVlanRange {
     minVlan: pulumi.Input<number>;
 }
 
+export interface EntityPermissionsPermission {
+    /**
+     * Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+     */
+    isGroup: pulumi.Input<boolean>;
+    /**
+     * Whether or not this permission propagates down the hierarchy to sub-entities.
+     */
+    propagate: pulumi.Input<boolean>;
+    /**
+     * The role id of the role to be given to the user on the specified entity.
+     */
+    roleId: pulumi.Input<string>;
+    /**
+     * The user/group getting the permission.
+     */
+    userOrGroup: pulumi.Input<string>;
+}
+
+export interface GetVirtualMachineVapp {
+    properties?: {[key: string]: string};
+}
+
 export interface HostPortGroupPorts {
     /**
      * The key for this port group as returned from the vSphere API.

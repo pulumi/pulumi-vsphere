@@ -20,6 +20,7 @@ from .distributed_port_group import *
 from .distributed_virtual_switch import *
 from .dpm_host_override import *
 from .drs_vm_override import *
+from .entity_permissions import *
 from .file import *
 from .folder import *
 from .get_compute_cluster import *
@@ -34,9 +35,11 @@ from .get_dynamic import *
 from .get_folder import *
 from .get_host import *
 from .get_host_pci_device import *
+from .get_host_thumbprint import *
 from .get_network import *
 from .get_policy import *
 from .get_resource_pool import *
+from .get_role import *
 from .get_tag import *
 from .get_tag_category import *
 from .get_vapp_container import *
@@ -50,6 +53,7 @@ from .license import *
 from .nas_datastore import *
 from .provider import *
 from .resource_pool import *
+from .role import *
 from .storage_drs_vm_override import *
 from .tag import *
 from .tag_category import *

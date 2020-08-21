@@ -37,11 +37,51 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
+        "alternateGuestName": args.alternateGuestName,
+        "annotation": args.annotation,
+        "bootDelay": args.bootDelay,
+        "bootRetryDelay": args.bootRetryDelay,
+        "bootRetryEnabled": args.bootRetryEnabled,
+        "cpuHotAddEnabled": args.cpuHotAddEnabled,
+        "cpuHotRemoveEnabled": args.cpuHotRemoveEnabled,
+        "cpuLimit": args.cpuLimit,
+        "cpuPerformanceCountersEnabled": args.cpuPerformanceCountersEnabled,
+        "cpuReservation": args.cpuReservation,
+        "cpuShareCount": args.cpuShareCount,
+        "cpuShareLevel": args.cpuShareLevel,
         "datacenterId": args.datacenterId,
+        "efiSecureBootEnabled": args.efiSecureBootEnabled,
+        "enableDiskUuid": args.enableDiskUuid,
+        "enableLogging": args.enableLogging,
+        "eptRviMode": args.eptRviMode,
+        "extraConfig": args.extraConfig,
+        "firmware": args.firmware,
+        "guestId": args.guestId,
+        "hardwareVersion": args.hardwareVersion,
+        "hvMode": args.hvMode,
         "ideControllerScanCount": args.ideControllerScanCount,
+        "latencySensitivity": args.latencySensitivity,
+        "memory": args.memory,
+        "memoryHotAddEnabled": args.memoryHotAddEnabled,
+        "memoryLimit": args.memoryLimit,
+        "memoryReservation": args.memoryReservation,
+        "memoryShareCount": args.memoryShareCount,
+        "memoryShareLevel": args.memoryShareLevel,
         "name": args.name,
+        "nestedHvEnabled": args.nestedHvEnabled,
+        "numCoresPerSocket": args.numCoresPerSocket,
+        "numCpus": args.numCpus,
+        "runToolsScriptsAfterPowerOn": args.runToolsScriptsAfterPowerOn,
+        "runToolsScriptsAfterResume": args.runToolsScriptsAfterResume,
+        "runToolsScriptsBeforeGuestReboot": args.runToolsScriptsBeforeGuestReboot,
+        "runToolsScriptsBeforeGuestShutdown": args.runToolsScriptsBeforeGuestShutdown,
+        "runToolsScriptsBeforeGuestStandby": args.runToolsScriptsBeforeGuestStandby,
         "sataControllerScanCount": args.sataControllerScanCount,
         "scsiControllerScanCount": args.scsiControllerScanCount,
+        "storagePolicyId": args.storagePolicyId,
+        "swapPlacementPolicy": args.swapPlacementPolicy,
+        "syncTimeWithHost": args.syncTimeWithHost,
+        "vapp": args.vapp,
     }, opts);
 }
 
@@ -50,6 +90,25 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
  */
 export interface GetVirtualMachineArgs {
     /**
+     * The alternate guest name of the virtual machine when
+     * guestId is a non-specific operating system, like `otherGuest`.
+     */
+    readonly alternateGuestName?: string;
+    /**
+     * The user-provided description of this virtual machine.
+     */
+    readonly annotation?: string;
+    readonly bootDelay?: number;
+    readonly bootRetryDelay?: number;
+    readonly bootRetryEnabled?: boolean;
+    readonly cpuHotAddEnabled?: boolean;
+    readonly cpuHotRemoveEnabled?: boolean;
+    readonly cpuLimit?: number;
+    readonly cpuPerformanceCountersEnabled?: boolean;
+    readonly cpuReservation?: number;
+    readonly cpuShareCount?: number;
+    readonly cpuShareLevel?: string;
+    /**
      * The managed object reference
      * ID of the datacenter the virtual machine is located in.
      * This can be omitted if the search path used in `name` is an absolute path.
@@ -57,18 +116,65 @@ export interface GetVirtualMachineArgs {
      * `vsphere.Datacenter` data source.
      */
     readonly datacenterId?: string;
+    readonly efiSecureBootEnabled?: boolean;
+    readonly enableDiskUuid?: boolean;
+    readonly enableLogging?: boolean;
+    readonly eptRviMode?: string;
+    readonly extraConfig?: {[key: string]: string};
+    /**
+     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     */
+    readonly firmware?: string;
+    /**
+     * The guest ID of the virtual machine or template.
+     */
+    readonly guestId?: string;
+    /**
+     * The hardware version number on this virtual machine.
+     */
+    readonly hardwareVersion?: number;
+    readonly hvMode?: string;
     readonly ideControllerScanCount?: number;
+    readonly latencySensitivity?: string;
+    /**
+     * The size of the virtual machine's memory, in MB.
+     */
+    readonly memory?: number;
+    readonly memoryHotAddEnabled?: boolean;
+    readonly memoryLimit?: number;
+    readonly memoryReservation?: number;
+    readonly memoryShareCount?: number;
+    readonly memoryShareLevel?: string;
     /**
      * The name of the virtual machine. This can be a name or
      * path.
      */
     readonly name: string;
+    readonly nestedHvEnabled?: boolean;
+    /**
+     * The number of cores per socket for this virtual machine.
+     */
+    readonly numCoresPerSocket?: number;
+    /**
+     * The total number of virtual processor cores assigned to this
+     * virtual machine.
+     */
+    readonly numCpus?: number;
+    readonly runToolsScriptsAfterPowerOn?: boolean;
+    readonly runToolsScriptsAfterResume?: boolean;
+    readonly runToolsScriptsBeforeGuestReboot?: boolean;
+    readonly runToolsScriptsBeforeGuestShutdown?: boolean;
+    readonly runToolsScriptsBeforeGuestStandby?: boolean;
     readonly sataControllerScanCount?: number;
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      */
     readonly scsiControllerScanCount?: number;
+    readonly storagePolicyId?: string;
+    readonly swapPlacementPolicy?: string;
+    readonly syncTimeWithHost?: boolean;
+    readonly vapp?: inputs.GetVirtualMachineVapp;
 }
 
 /**
@@ -79,7 +185,22 @@ export interface GetVirtualMachineResult {
      * The alternate guest name of the virtual machine when
      * guestId is a non-specific operating system, like `otherGuest`.
      */
-    readonly alternateGuestName: string;
+    readonly alternateGuestName?: string;
+    /**
+     * The user-provided description of this virtual machine.
+     */
+    readonly annotation?: string;
+    readonly bootDelay?: number;
+    readonly bootRetryDelay?: number;
+    readonly bootRetryEnabled?: boolean;
+    readonly changeVersion: string;
+    readonly cpuHotAddEnabled?: boolean;
+    readonly cpuHotRemoveEnabled?: boolean;
+    readonly cpuLimit?: number;
+    readonly cpuPerformanceCountersEnabled?: boolean;
+    readonly cpuReservation?: number;
+    readonly cpuShareCount: number;
+    readonly cpuShareLevel?: string;
     readonly datacenterId?: string;
     /**
      * Information about each of the disks on this virtual machine or
@@ -92,10 +213,15 @@ export interface GetVirtualMachineResult {
      * are scanned for disks. The sub-attributes are:
      */
     readonly disks: outputs.GetVirtualMachineDisk[];
+    readonly efiSecureBootEnabled?: boolean;
+    readonly enableDiskUuid?: boolean;
+    readonly enableLogging?: boolean;
+    readonly eptRviMode?: string;
+    readonly extraConfig?: {[key: string]: string};
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */
-    readonly firmware: string;
+    readonly firmware?: string;
     /**
      * The guest ID of the virtual machine or template.
      */
@@ -105,17 +231,47 @@ export interface GetVirtualMachineResult {
      */
     readonly guestIpAddresses: string[];
     /**
+     * The hardware version number on this virtual machine.
+     */
+    readonly hardwareVersion: number;
+    readonly hvMode?: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ideControllerScanCount?: number;
+    readonly latencySensitivity?: string;
+    /**
+     * The size of the virtual machine's memory, in MB.
+     */
+    readonly memory?: number;
+    readonly memoryHotAddEnabled?: boolean;
+    readonly memoryLimit?: number;
+    readonly memoryReservation?: number;
+    readonly memoryShareCount: number;
+    readonly memoryShareLevel?: string;
     readonly name: string;
+    readonly nestedHvEnabled?: boolean;
     /**
      * The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
      * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
      */
     readonly networkInterfaceTypes: string[];
+    /**
+     * The number of cores per socket for this virtual machine.
+     */
+    readonly numCoresPerSocket?: number;
+    /**
+     * The total number of virtual processor cores assigned to this
+     * virtual machine.
+     */
+    readonly numCpus?: number;
+    readonly runToolsScriptsAfterPowerOn?: boolean;
+    readonly runToolsScriptsAfterResume?: boolean;
+    readonly runToolsScriptsBeforeGuestReboot?: boolean;
+    readonly runToolsScriptsBeforeGuestShutdown?: boolean;
+    readonly runToolsScriptsBeforeGuestStandby?: boolean;
     readonly sataControllerScanCount?: number;
     /**
      * Mode for sharing the SCSI bus. The modes are
@@ -132,4 +288,10 @@ export interface GetVirtualMachineResult {
      * defined by `scsiControllerScanCount` are scanned.
      */
     readonly scsiType: string;
+    readonly storagePolicyId?: string;
+    readonly swapPlacementPolicy?: string;
+    readonly syncTimeWithHost?: boolean;
+    readonly uuid: string;
+    readonly vapp?: outputs.GetVirtualMachineVapp;
+    readonly vappTransports: string[];
 }

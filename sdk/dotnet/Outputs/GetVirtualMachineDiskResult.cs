@@ -18,6 +18,10 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool EagerlyScrub;
         /// <summary>
+        /// The label for the disk.
+        /// </summary>
+        public readonly string Label;
+        /// <summary>
         /// The size of the disk, in GIB.
         /// </summary>
         public readonly int Size;
@@ -25,18 +29,28 @@ namespace Pulumi.VSphere.Outputs
         /// Set to `true` if the disk has been thin provisioned.
         /// </summary>
         public readonly bool ThinProvisioned;
+        /// <summary>
+        /// The disk number on the storage bus.
+        /// </summary>
+        public readonly int UnitNumber;
 
         [OutputConstructor]
         private GetVirtualMachineDiskResult(
             bool eagerlyScrub,
 
+            string label,
+
             int size,
 
-            bool thinProvisioned)
+            bool thinProvisioned,
+
+            int unitNumber)
         {
             EagerlyScrub = eagerlyScrub;
+            Label = label;
             Size = size;
             ThinProvisioned = thinProvisioned;
+            UnitNumber = unitNumber;
         }
     }
 }

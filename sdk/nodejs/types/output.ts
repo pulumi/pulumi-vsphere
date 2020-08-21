@@ -33,11 +33,34 @@ export interface DistributedVirtualSwitchVlanRange {
     minVlan: number;
 }
 
+export interface EntityPermissionsPermission {
+    /**
+     * Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+     */
+    isGroup: boolean;
+    /**
+     * Whether or not this permission propagates down the hierarchy to sub-entities.
+     */
+    propagate: boolean;
+    /**
+     * The role id of the role to be given to the user on the specified entity.
+     */
+    roleId: string;
+    /**
+     * The user/group getting the permission.
+     */
+    userOrGroup: string;
+}
+
 export interface GetVirtualMachineDisk {
     /**
      * Set to `true` if the disk has been eager zeroed.
      */
     eagerlyScrub: boolean;
+    /**
+     * The label for the disk.
+     */
+    label: string;
     /**
      * The size of the disk, in GIB.
      */
@@ -46,6 +69,14 @@ export interface GetVirtualMachineDisk {
      * Set to `true` if the disk has been thin provisioned.
      */
     thinProvisioned: boolean;
+    /**
+     * The disk number on the storage bus.
+     */
+    unitNumber: number;
+}
+
+export interface GetVirtualMachineVapp {
+    properties?: {[key: string]: string};
 }
 
 export interface HostPortGroupPorts {

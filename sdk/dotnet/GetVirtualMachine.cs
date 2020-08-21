@@ -54,6 +54,49 @@ namespace Pulumi.VSphere
     public sealed class GetVirtualMachineArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The alternate guest name of the virtual machine when
+        /// guest_id is a non-specific operating system, like `otherGuest`.
+        /// </summary>
+        [Input("alternateGuestName")]
+        public string? AlternateGuestName { get; set; }
+
+        /// <summary>
+        /// The user-provided description of this virtual machine.
+        /// </summary>
+        [Input("annotation")]
+        public string? Annotation { get; set; }
+
+        [Input("bootDelay")]
+        public int? BootDelay { get; set; }
+
+        [Input("bootRetryDelay")]
+        public int? BootRetryDelay { get; set; }
+
+        [Input("bootRetryEnabled")]
+        public bool? BootRetryEnabled { get; set; }
+
+        [Input("cpuHotAddEnabled")]
+        public bool? CpuHotAddEnabled { get; set; }
+
+        [Input("cpuHotRemoveEnabled")]
+        public bool? CpuHotRemoveEnabled { get; set; }
+
+        [Input("cpuLimit")]
+        public int? CpuLimit { get; set; }
+
+        [Input("cpuPerformanceCountersEnabled")]
+        public bool? CpuPerformanceCountersEnabled { get; set; }
+
+        [Input("cpuReservation")]
+        public int? CpuReservation { get; set; }
+
+        [Input("cpuShareCount")]
+        public int? CpuShareCount { get; set; }
+
+        [Input("cpuShareLevel")]
+        public string? CpuShareLevel { get; set; }
+
+        /// <summary>
         /// The managed object reference
         /// ID of the datacenter the virtual machine is located in.
         /// This can be omitted if the search path used in `name` is an absolute path.
@@ -63,8 +106,73 @@ namespace Pulumi.VSphere
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
 
+        [Input("efiSecureBootEnabled")]
+        public bool? EfiSecureBootEnabled { get; set; }
+
+        [Input("enableDiskUuid")]
+        public bool? EnableDiskUuid { get; set; }
+
+        [Input("enableLogging")]
+        public bool? EnableLogging { get; set; }
+
+        [Input("eptRviMode")]
+        public string? EptRviMode { get; set; }
+
+        [Input("extraConfig")]
+        private Dictionary<string, string>? _extraConfig;
+        public Dictionary<string, string> ExtraConfig
+        {
+            get => _extraConfig ?? (_extraConfig = new Dictionary<string, string>());
+            set => _extraConfig = value;
+        }
+
+        /// <summary>
+        /// The firmware type for this virtual machine. Can be `bios` or `efi`.
+        /// </summary>
+        [Input("firmware")]
+        public string? Firmware { get; set; }
+
+        /// <summary>
+        /// The guest ID of the virtual machine or template.
+        /// </summary>
+        [Input("guestId")]
+        public string? GuestId { get; set; }
+
+        /// <summary>
+        /// The hardware version number on this virtual machine.
+        /// </summary>
+        [Input("hardwareVersion")]
+        public int? HardwareVersion { get; set; }
+
+        [Input("hvMode")]
+        public string? HvMode { get; set; }
+
         [Input("ideControllerScanCount")]
         public int? IdeControllerScanCount { get; set; }
+
+        [Input("latencySensitivity")]
+        public string? LatencySensitivity { get; set; }
+
+        /// <summary>
+        /// The size of the virtual machine's memory, in MB.
+        /// </summary>
+        [Input("memory")]
+        public int? Memory { get; set; }
+
+        [Input("memoryHotAddEnabled")]
+        public bool? MemoryHotAddEnabled { get; set; }
+
+        [Input("memoryLimit")]
+        public int? MemoryLimit { get; set; }
+
+        [Input("memoryReservation")]
+        public int? MemoryReservation { get; set; }
+
+        [Input("memoryShareCount")]
+        public int? MemoryShareCount { get; set; }
+
+        [Input("memoryShareLevel")]
+        public string? MemoryShareLevel { get; set; }
 
         /// <summary>
         /// The name of the virtual machine. This can be a name or
@@ -72,6 +180,37 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        [Input("nestedHvEnabled")]
+        public bool? NestedHvEnabled { get; set; }
+
+        /// <summary>
+        /// The number of cores per socket for this virtual machine.
+        /// </summary>
+        [Input("numCoresPerSocket")]
+        public int? NumCoresPerSocket { get; set; }
+
+        /// <summary>
+        /// The total number of virtual processor cores assigned to this
+        /// virtual machine.
+        /// </summary>
+        [Input("numCpus")]
+        public int? NumCpus { get; set; }
+
+        [Input("runToolsScriptsAfterPowerOn")]
+        public bool? RunToolsScriptsAfterPowerOn { get; set; }
+
+        [Input("runToolsScriptsAfterResume")]
+        public bool? RunToolsScriptsAfterResume { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestReboot")]
+        public bool? RunToolsScriptsBeforeGuestReboot { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestShutdown")]
+        public bool? RunToolsScriptsBeforeGuestShutdown { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestStandby")]
+        public bool? RunToolsScriptsBeforeGuestStandby { get; set; }
 
         [Input("sataControllerScanCount")]
         public int? SataControllerScanCount { get; set; }
@@ -82,6 +221,18 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("scsiControllerScanCount")]
         public int? ScsiControllerScanCount { get; set; }
+
+        [Input("storagePolicyId")]
+        public string? StoragePolicyId { get; set; }
+
+        [Input("swapPlacementPolicy")]
+        public string? SwapPlacementPolicy { get; set; }
+
+        [Input("syncTimeWithHost")]
+        public bool? SyncTimeWithHost { get; set; }
+
+        [Input("vapp")]
+        public Inputs.GetVirtualMachineVappArgs? Vapp { get; set; }
 
         public GetVirtualMachineArgs()
         {
@@ -96,7 +247,22 @@ namespace Pulumi.VSphere
         /// The alternate guest name of the virtual machine when
         /// guest_id is a non-specific operating system, like `otherGuest`.
         /// </summary>
-        public readonly string AlternateGuestName;
+        public readonly string? AlternateGuestName;
+        /// <summary>
+        /// The user-provided description of this virtual machine.
+        /// </summary>
+        public readonly string? Annotation;
+        public readonly int? BootDelay;
+        public readonly int? BootRetryDelay;
+        public readonly bool? BootRetryEnabled;
+        public readonly string ChangeVersion;
+        public readonly bool? CpuHotAddEnabled;
+        public readonly bool? CpuHotRemoveEnabled;
+        public readonly int? CpuLimit;
+        public readonly bool? CpuPerformanceCountersEnabled;
+        public readonly int? CpuReservation;
+        public readonly int CpuShareCount;
+        public readonly string? CpuShareLevel;
         public readonly string? DatacenterId;
         /// <summary>
         /// Information about each of the disks on this virtual machine or
@@ -109,10 +275,15 @@ namespace Pulumi.VSphere
         /// are scanned for disks. The sub-attributes are:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualMachineDiskResult> Disks;
+        public readonly bool? EfiSecureBootEnabled;
+        public readonly bool? EnableDiskUuid;
+        public readonly bool? EnableLogging;
+        public readonly string? EptRviMode;
+        public readonly ImmutableDictionary<string, string>? ExtraConfig;
         /// <summary>
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
         /// </summary>
-        public readonly string Firmware;
+        public readonly string? Firmware;
         /// <summary>
         /// The guest ID of the virtual machine or template.
         /// </summary>
@@ -122,17 +293,47 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly ImmutableArray<string> GuestIpAddresses;
         /// <summary>
+        /// The hardware version number on this virtual machine.
+        /// </summary>
+        public readonly int HardwareVersion;
+        public readonly string? HvMode;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly int? IdeControllerScanCount;
+        public readonly string? LatencySensitivity;
+        /// <summary>
+        /// The size of the virtual machine's memory, in MB.
+        /// </summary>
+        public readonly int? Memory;
+        public readonly bool? MemoryHotAddEnabled;
+        public readonly int? MemoryLimit;
+        public readonly int? MemoryReservation;
+        public readonly int MemoryShareCount;
+        public readonly string? MemoryShareLevel;
         public readonly string Name;
+        public readonly bool? NestedHvEnabled;
         /// <summary>
         /// The network interface types for each network
         /// interface found on the virtual machine, in device bus order. Will be one of
         /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
+        /// <summary>
+        /// The number of cores per socket for this virtual machine.
+        /// </summary>
+        public readonly int? NumCoresPerSocket;
+        /// <summary>
+        /// The total number of virtual processor cores assigned to this
+        /// virtual machine.
+        /// </summary>
+        public readonly int? NumCpus;
+        public readonly bool? RunToolsScriptsAfterPowerOn;
+        public readonly bool? RunToolsScriptsAfterResume;
+        public readonly bool? RunToolsScriptsBeforeGuestReboot;
+        public readonly bool? RunToolsScriptsBeforeGuestShutdown;
+        public readonly bool? RunToolsScriptsBeforeGuestStandby;
         public readonly int? SataControllerScanCount;
         /// <summary>
         /// Mode for sharing the SCSI bus. The modes are
@@ -149,28 +350,102 @@ namespace Pulumi.VSphere
         /// defined by `scsi_controller_scan_count` are scanned.
         /// </summary>
         public readonly string ScsiType;
+        public readonly string? StoragePolicyId;
+        public readonly string? SwapPlacementPolicy;
+        public readonly bool? SyncTimeWithHost;
+        public readonly string Uuid;
+        public readonly Outputs.GetVirtualMachineVappResult? Vapp;
+        public readonly ImmutableArray<string> VappTransports;
 
         [OutputConstructor]
         private GetVirtualMachineResult(
-            string alternateGuestName,
+            string? alternateGuestName,
+
+            string? annotation,
+
+            int? bootDelay,
+
+            int? bootRetryDelay,
+
+            bool? bootRetryEnabled,
+
+            string changeVersion,
+
+            bool? cpuHotAddEnabled,
+
+            bool? cpuHotRemoveEnabled,
+
+            int? cpuLimit,
+
+            bool? cpuPerformanceCountersEnabled,
+
+            int? cpuReservation,
+
+            int cpuShareCount,
+
+            string? cpuShareLevel,
 
             string? datacenterId,
 
             ImmutableArray<Outputs.GetVirtualMachineDiskResult> disks,
 
-            string firmware,
+            bool? efiSecureBootEnabled,
+
+            bool? enableDiskUuid,
+
+            bool? enableLogging,
+
+            string? eptRviMode,
+
+            ImmutableDictionary<string, string>? extraConfig,
+
+            string? firmware,
 
             string guestId,
 
             ImmutableArray<string> guestIpAddresses,
 
+            int hardwareVersion,
+
+            string? hvMode,
+
             string id,
 
             int? ideControllerScanCount,
 
+            string? latencySensitivity,
+
+            int? memory,
+
+            bool? memoryHotAddEnabled,
+
+            int? memoryLimit,
+
+            int? memoryReservation,
+
+            int memoryShareCount,
+
+            string? memoryShareLevel,
+
             string name,
 
+            bool? nestedHvEnabled,
+
             ImmutableArray<string> networkInterfaceTypes,
+
+            int? numCoresPerSocket,
+
+            int? numCpus,
+
+            bool? runToolsScriptsAfterPowerOn,
+
+            bool? runToolsScriptsAfterResume,
+
+            bool? runToolsScriptsBeforeGuestReboot,
+
+            bool? runToolsScriptsBeforeGuestShutdown,
+
+            bool? runToolsScriptsBeforeGuestStandby,
 
             int? sataControllerScanCount,
 
@@ -178,22 +453,74 @@ namespace Pulumi.VSphere
 
             int? scsiControllerScanCount,
 
-            string scsiType)
+            string scsiType,
+
+            string? storagePolicyId,
+
+            string? swapPlacementPolicy,
+
+            bool? syncTimeWithHost,
+
+            string uuid,
+
+            Outputs.GetVirtualMachineVappResult? vapp,
+
+            ImmutableArray<string> vappTransports)
         {
             AlternateGuestName = alternateGuestName;
+            Annotation = annotation;
+            BootDelay = bootDelay;
+            BootRetryDelay = bootRetryDelay;
+            BootRetryEnabled = bootRetryEnabled;
+            ChangeVersion = changeVersion;
+            CpuHotAddEnabled = cpuHotAddEnabled;
+            CpuHotRemoveEnabled = cpuHotRemoveEnabled;
+            CpuLimit = cpuLimit;
+            CpuPerformanceCountersEnabled = cpuPerformanceCountersEnabled;
+            CpuReservation = cpuReservation;
+            CpuShareCount = cpuShareCount;
+            CpuShareLevel = cpuShareLevel;
             DatacenterId = datacenterId;
             Disks = disks;
+            EfiSecureBootEnabled = efiSecureBootEnabled;
+            EnableDiskUuid = enableDiskUuid;
+            EnableLogging = enableLogging;
+            EptRviMode = eptRviMode;
+            ExtraConfig = extraConfig;
             Firmware = firmware;
             GuestId = guestId;
             GuestIpAddresses = guestIpAddresses;
+            HardwareVersion = hardwareVersion;
+            HvMode = hvMode;
             Id = id;
             IdeControllerScanCount = ideControllerScanCount;
+            LatencySensitivity = latencySensitivity;
+            Memory = memory;
+            MemoryHotAddEnabled = memoryHotAddEnabled;
+            MemoryLimit = memoryLimit;
+            MemoryReservation = memoryReservation;
+            MemoryShareCount = memoryShareCount;
+            MemoryShareLevel = memoryShareLevel;
             Name = name;
+            NestedHvEnabled = nestedHvEnabled;
             NetworkInterfaceTypes = networkInterfaceTypes;
+            NumCoresPerSocket = numCoresPerSocket;
+            NumCpus = numCpus;
+            RunToolsScriptsAfterPowerOn = runToolsScriptsAfterPowerOn;
+            RunToolsScriptsAfterResume = runToolsScriptsAfterResume;
+            RunToolsScriptsBeforeGuestReboot = runToolsScriptsBeforeGuestReboot;
+            RunToolsScriptsBeforeGuestShutdown = runToolsScriptsBeforeGuestShutdown;
+            RunToolsScriptsBeforeGuestStandby = runToolsScriptsBeforeGuestStandby;
             SataControllerScanCount = sataControllerScanCount;
             ScsiBusSharing = scsiBusSharing;
             ScsiControllerScanCount = scsiControllerScanCount;
             ScsiType = scsiType;
+            StoragePolicyId = storagePolicyId;
+            SwapPlacementPolicy = swapPlacementPolicy;
+            SyncTimeWithHost = syncTimeWithHost;
+            Uuid = uuid;
+            Vapp = vapp;
+            VappTransports = vappTransports;
         }
     }
 }
