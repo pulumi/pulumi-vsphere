@@ -55,28 +55,91 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineArgs struct {
+	// The alternate guest name of the virtual machine when
+	// guestId is a non-specific operating system, like `otherGuest`.
+	AlternateGuestName *string `pulumi:"alternateGuestName"`
+	// The user-provided description of this virtual machine.
+	Annotation                    *string `pulumi:"annotation"`
+	BootDelay                     *int    `pulumi:"bootDelay"`
+	BootRetryDelay                *int    `pulumi:"bootRetryDelay"`
+	BootRetryEnabled              *bool   `pulumi:"bootRetryEnabled"`
+	CpuHotAddEnabled              *bool   `pulumi:"cpuHotAddEnabled"`
+	CpuHotRemoveEnabled           *bool   `pulumi:"cpuHotRemoveEnabled"`
+	CpuLimit                      *int    `pulumi:"cpuLimit"`
+	CpuPerformanceCountersEnabled *bool   `pulumi:"cpuPerformanceCountersEnabled"`
+	CpuReservation                *int    `pulumi:"cpuReservation"`
+	CpuShareCount                 *int    `pulumi:"cpuShareCount"`
+	CpuShareLevel                 *string `pulumi:"cpuShareLevel"`
 	// The managed object reference
 	// ID of the datacenter the virtual machine is located in.
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
 	// `Datacenter` data source.
-	DatacenterId           *string `pulumi:"datacenterId"`
+	DatacenterId         *string           `pulumi:"datacenterId"`
+	EfiSecureBootEnabled *bool             `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid       *bool             `pulumi:"enableDiskUuid"`
+	EnableLogging        *bool             `pulumi:"enableLogging"`
+	EptRviMode           *string           `pulumi:"eptRviMode"`
+	ExtraConfig          map[string]string `pulumi:"extraConfig"`
+	// The firmware type for this virtual machine. Can be `bios` or `efi`.
+	Firmware *string `pulumi:"firmware"`
+	// The guest ID of the virtual machine or template.
+	GuestId *string `pulumi:"guestId"`
+	// The hardware version number on this virtual machine.
+	HardwareVersion        *int    `pulumi:"hardwareVersion"`
+	HvMode                 *string `pulumi:"hvMode"`
 	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
+	LatencySensitivity     *string `pulumi:"latencySensitivity"`
+	// The size of the virtual machine's memory, in MB.
+	Memory              *int    `pulumi:"memory"`
+	MemoryHotAddEnabled *bool   `pulumi:"memoryHotAddEnabled"`
+	MemoryLimit         *int    `pulumi:"memoryLimit"`
+	MemoryReservation   *int    `pulumi:"memoryReservation"`
+	MemoryShareCount    *int    `pulumi:"memoryShareCount"`
+	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
 	// The name of the virtual machine. This can be a name or
 	// path.
-	Name                    string `pulumi:"name"`
-	SataControllerScanCount *int   `pulumi:"sataControllerScanCount"`
+	Name            string `pulumi:"name"`
+	NestedHvEnabled *bool  `pulumi:"nestedHvEnabled"`
+	// The number of cores per socket for this virtual machine.
+	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
+	// The total number of virtual processor cores assigned to this
+	// virtual machine.
+	NumCpus                            *int  `pulumi:"numCpus"`
+	RunToolsScriptsAfterPowerOn        *bool `pulumi:"runToolsScriptsAfterPowerOn"`
+	RunToolsScriptsAfterResume         *bool `pulumi:"runToolsScriptsAfterResume"`
+	RunToolsScriptsBeforeGuestReboot   *bool `pulumi:"runToolsScriptsBeforeGuestReboot"`
+	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
+	RunToolsScriptsBeforeGuestStandby  *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	SataControllerScanCount            *int  `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	ScsiControllerScanCount *int `pulumi:"scsiControllerScanCount"`
+	ScsiControllerScanCount *int                   `pulumi:"scsiControllerScanCount"`
+	StoragePolicyId         *string                `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy     *string                `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost        *bool                  `pulumi:"syncTimeWithHost"`
+	Vapp                    *GetVirtualMachineVapp `pulumi:"vapp"`
 }
 
 // A collection of values returned by getVirtualMachine.
 type LookupVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
 	// guestId is a non-specific operating system, like `otherGuest`.
-	AlternateGuestName string  `pulumi:"alternateGuestName"`
-	DatacenterId       *string `pulumi:"datacenterId"`
+	AlternateGuestName *string `pulumi:"alternateGuestName"`
+	// The user-provided description of this virtual machine.
+	Annotation                    *string `pulumi:"annotation"`
+	BootDelay                     *int    `pulumi:"bootDelay"`
+	BootRetryDelay                *int    `pulumi:"bootRetryDelay"`
+	BootRetryEnabled              *bool   `pulumi:"bootRetryEnabled"`
+	ChangeVersion                 string  `pulumi:"changeVersion"`
+	CpuHotAddEnabled              *bool   `pulumi:"cpuHotAddEnabled"`
+	CpuHotRemoveEnabled           *bool   `pulumi:"cpuHotRemoveEnabled"`
+	CpuLimit                      *int    `pulumi:"cpuLimit"`
+	CpuPerformanceCountersEnabled *bool   `pulumi:"cpuPerformanceCountersEnabled"`
+	CpuReservation                *int    `pulumi:"cpuReservation"`
+	CpuShareCount                 int     `pulumi:"cpuShareCount"`
+	CpuShareLevel                 *string `pulumi:"cpuShareLevel"`
+	DatacenterId                  *string `pulumi:"datacenterId"`
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `VirtualMachine` resource in the order the resource expects
@@ -85,22 +148,49 @@ type LookupVirtualMachineResult struct {
 	// source must be the same on the destination virtual machine as the source.
 	// Only the first number of controllers defined by `scsiControllerScanCount`
 	// are scanned for disks. The sub-attributes are:
-	Disks []GetVirtualMachineDisk `pulumi:"disks"`
+	Disks                []GetVirtualMachineDisk `pulumi:"disks"`
+	EfiSecureBootEnabled *bool                   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid       *bool                   `pulumi:"enableDiskUuid"`
+	EnableLogging        *bool                   `pulumi:"enableLogging"`
+	EptRviMode           *string                 `pulumi:"eptRviMode"`
+	ExtraConfig          map[string]string       `pulumi:"extraConfig"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
-	Firmware string `pulumi:"firmware"`
+	Firmware *string `pulumi:"firmware"`
 	// The guest ID of the virtual machine or template.
 	GuestId string `pulumi:"guestId"`
 	// A list of IP addresses as reported by VMWare tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
+	// The hardware version number on this virtual machine.
+	HardwareVersion int     `pulumi:"hardwareVersion"`
+	HvMode          *string `pulumi:"hvMode"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string `pulumi:"id"`
-	IdeControllerScanCount *int   `pulumi:"ideControllerScanCount"`
-	Name                   string `pulumi:"name"`
+	Id                     string  `pulumi:"id"`
+	IdeControllerScanCount *int    `pulumi:"ideControllerScanCount"`
+	LatencySensitivity     *string `pulumi:"latencySensitivity"`
+	// The size of the virtual machine's memory, in MB.
+	Memory              *int    `pulumi:"memory"`
+	MemoryHotAddEnabled *bool   `pulumi:"memoryHotAddEnabled"`
+	MemoryLimit         *int    `pulumi:"memoryLimit"`
+	MemoryReservation   *int    `pulumi:"memoryReservation"`
+	MemoryShareCount    int     `pulumi:"memoryShareCount"`
+	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
+	Name                string  `pulumi:"name"`
+	NestedHvEnabled     *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
-	NetworkInterfaceTypes   []string `pulumi:"networkInterfaceTypes"`
-	SataControllerScanCount *int     `pulumi:"sataControllerScanCount"`
+	NetworkInterfaceTypes []string `pulumi:"networkInterfaceTypes"`
+	// The number of cores per socket for this virtual machine.
+	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
+	// The total number of virtual processor cores assigned to this
+	// virtual machine.
+	NumCpus                            *int  `pulumi:"numCpus"`
+	RunToolsScriptsAfterPowerOn        *bool `pulumi:"runToolsScriptsAfterPowerOn"`
+	RunToolsScriptsAfterResume         *bool `pulumi:"runToolsScriptsAfterResume"`
+	RunToolsScriptsBeforeGuestReboot   *bool `pulumi:"runToolsScriptsBeforeGuestReboot"`
+	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
+	RunToolsScriptsBeforeGuestStandby  *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	SataControllerScanCount            *int  `pulumi:"sataControllerScanCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
@@ -111,5 +201,11 @@ type LookupVirtualMachineResult struct {
 	// SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
 	// there are multiple controller types. Only the first number of controllers
 	// defined by `scsiControllerScanCount` are scanned.
-	ScsiType string `pulumi:"scsiType"`
+	ScsiType            string                 `pulumi:"scsiType"`
+	StoragePolicyId     *string                `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy *string                `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost    *bool                  `pulumi:"syncTimeWithHost"`
+	Uuid                string                 `pulumi:"uuid"`
+	Vapp                *GetVirtualMachineVapp `pulumi:"vapp"`
+	VappTransports      []string               `pulumi:"vappTransports"`
 }

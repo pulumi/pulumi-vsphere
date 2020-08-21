@@ -422,6 +422,130 @@ func (o DistributedVirtualSwitchVlanRangeArrayOutput) Index(i pulumi.IntInput) D
 	}).(DistributedVirtualSwitchVlanRangeOutput)
 }
 
+type EntityPermissionsPermission struct {
+	// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+	IsGroup bool `pulumi:"isGroup"`
+	// Whether or not this permission propagates down the hierarchy to sub-entities.
+	Propagate bool `pulumi:"propagate"`
+	// The role id of the role to be given to the user on the specified entity.
+	RoleId string `pulumi:"roleId"`
+	// The user/group getting the permission.
+	UserOrGroup string `pulumi:"userOrGroup"`
+}
+
+// EntityPermissionsPermissionInput is an input type that accepts EntityPermissionsPermissionArgs and EntityPermissionsPermissionOutput values.
+// You can construct a concrete instance of `EntityPermissionsPermissionInput` via:
+//
+//          EntityPermissionsPermissionArgs{...}
+type EntityPermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToEntityPermissionsPermissionOutput() EntityPermissionsPermissionOutput
+	ToEntityPermissionsPermissionOutputWithContext(context.Context) EntityPermissionsPermissionOutput
+}
+
+type EntityPermissionsPermissionArgs struct {
+	// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+	IsGroup pulumi.BoolInput `pulumi:"isGroup"`
+	// Whether or not this permission propagates down the hierarchy to sub-entities.
+	Propagate pulumi.BoolInput `pulumi:"propagate"`
+	// The role id of the role to be given to the user on the specified entity.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+	// The user/group getting the permission.
+	UserOrGroup pulumi.StringInput `pulumi:"userOrGroup"`
+}
+
+func (EntityPermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPermissionsPermission)(nil)).Elem()
+}
+
+func (i EntityPermissionsPermissionArgs) ToEntityPermissionsPermissionOutput() EntityPermissionsPermissionOutput {
+	return i.ToEntityPermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i EntityPermissionsPermissionArgs) ToEntityPermissionsPermissionOutputWithContext(ctx context.Context) EntityPermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsPermissionOutput)
+}
+
+// EntityPermissionsPermissionArrayInput is an input type that accepts EntityPermissionsPermissionArray and EntityPermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `EntityPermissionsPermissionArrayInput` via:
+//
+//          EntityPermissionsPermissionArray{ EntityPermissionsPermissionArgs{...} }
+type EntityPermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToEntityPermissionsPermissionArrayOutput() EntityPermissionsPermissionArrayOutput
+	ToEntityPermissionsPermissionArrayOutputWithContext(context.Context) EntityPermissionsPermissionArrayOutput
+}
+
+type EntityPermissionsPermissionArray []EntityPermissionsPermissionInput
+
+func (EntityPermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityPermissionsPermission)(nil)).Elem()
+}
+
+func (i EntityPermissionsPermissionArray) ToEntityPermissionsPermissionArrayOutput() EntityPermissionsPermissionArrayOutput {
+	return i.ToEntityPermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i EntityPermissionsPermissionArray) ToEntityPermissionsPermissionArrayOutputWithContext(ctx context.Context) EntityPermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsPermissionArrayOutput)
+}
+
+type EntityPermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (EntityPermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPermissionsPermission)(nil)).Elem()
+}
+
+func (o EntityPermissionsPermissionOutput) ToEntityPermissionsPermissionOutput() EntityPermissionsPermissionOutput {
+	return o
+}
+
+func (o EntityPermissionsPermissionOutput) ToEntityPermissionsPermissionOutputWithContext(ctx context.Context) EntityPermissionsPermissionOutput {
+	return o
+}
+
+// Whether userOrGroup field refers to a user or a group. True for a group and false for a user.
+func (o EntityPermissionsPermissionOutput) IsGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v EntityPermissionsPermission) bool { return v.IsGroup }).(pulumi.BoolOutput)
+}
+
+// Whether or not this permission propagates down the hierarchy to sub-entities.
+func (o EntityPermissionsPermissionOutput) Propagate() pulumi.BoolOutput {
+	return o.ApplyT(func(v EntityPermissionsPermission) bool { return v.Propagate }).(pulumi.BoolOutput)
+}
+
+// The role id of the role to be given to the user on the specified entity.
+func (o EntityPermissionsPermissionOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPermissionsPermission) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The user/group getting the permission.
+func (o EntityPermissionsPermissionOutput) UserOrGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityPermissionsPermission) string { return v.UserOrGroup }).(pulumi.StringOutput)
+}
+
+type EntityPermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (EntityPermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityPermissionsPermission)(nil)).Elem()
+}
+
+func (o EntityPermissionsPermissionArrayOutput) ToEntityPermissionsPermissionArrayOutput() EntityPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o EntityPermissionsPermissionArrayOutput) ToEntityPermissionsPermissionArrayOutputWithContext(ctx context.Context) EntityPermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o EntityPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) EntityPermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityPermissionsPermission {
+		return vs[0].([]EntityPermissionsPermission)[vs[1].(int)]
+	}).(EntityPermissionsPermissionOutput)
+}
+
 type HostPortGroupPorts struct {
 	// The key for this port group as returned from the vSphere API.
 	Key          *string  `pulumi:"key"`
@@ -3372,10 +3496,14 @@ func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
 type GetVirtualMachineDisk struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub bool `pulumi:"eagerlyScrub"`
+	// The label for the disk.
+	Label string `pulumi:"label"`
 	// The size of the disk, in GIB.
 	Size int `pulumi:"size"`
 	// Set to `true` if the disk has been thin provisioned.
 	ThinProvisioned bool `pulumi:"thinProvisioned"`
+	// The disk number on the storage bus.
+	UnitNumber int `pulumi:"unitNumber"`
 }
 
 // GetVirtualMachineDiskInput is an input type that accepts GetVirtualMachineDiskArgs and GetVirtualMachineDiskOutput values.
@@ -3392,10 +3520,14 @@ type GetVirtualMachineDiskInput interface {
 type GetVirtualMachineDiskArgs struct {
 	// Set to `true` if the disk has been eager zeroed.
 	EagerlyScrub pulumi.BoolInput `pulumi:"eagerlyScrub"`
+	// The label for the disk.
+	Label pulumi.StringInput `pulumi:"label"`
 	// The size of the disk, in GIB.
 	Size pulumi.IntInput `pulumi:"size"`
 	// Set to `true` if the disk has been thin provisioned.
 	ThinProvisioned pulumi.BoolInput `pulumi:"thinProvisioned"`
+	// The disk number on the storage bus.
+	UnitNumber pulumi.IntInput `pulumi:"unitNumber"`
 }
 
 func (GetVirtualMachineDiskArgs) ElementType() reflect.Type {
@@ -3454,6 +3586,11 @@ func (o GetVirtualMachineDiskOutput) EagerlyScrub() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVirtualMachineDisk) bool { return v.EagerlyScrub }).(pulumi.BoolOutput)
 }
 
+// The label for the disk.
+func (o GetVirtualMachineDiskOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
+}
+
 // The size of the disk, in GIB.
 func (o GetVirtualMachineDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVirtualMachineDisk) int { return v.Size }).(pulumi.IntOutput)
@@ -3462,6 +3599,11 @@ func (o GetVirtualMachineDiskOutput) Size() pulumi.IntOutput {
 // Set to `true` if the disk has been thin provisioned.
 func (o GetVirtualMachineDiskOutput) ThinProvisioned() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVirtualMachineDisk) bool { return v.ThinProvisioned }).(pulumi.BoolOutput)
+}
+
+// The disk number on the storage bus.
+func (o GetVirtualMachineDiskOutput) UnitNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachineDisk) int { return v.UnitNumber }).(pulumi.IntOutput)
 }
 
 type GetVirtualMachineDiskArrayOutput struct{ *pulumi.OutputState }
@@ -3484,6 +3626,55 @@ func (o GetVirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) GetVirtualMac
 	}).(GetVirtualMachineDiskOutput)
 }
 
+type GetVirtualMachineVapp struct {
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// GetVirtualMachineVappInput is an input type that accepts GetVirtualMachineVappArgs and GetVirtualMachineVappOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVappInput` via:
+//
+//          GetVirtualMachineVappArgs{...}
+type GetVirtualMachineVappInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVappOutput() GetVirtualMachineVappOutput
+	ToGetVirtualMachineVappOutputWithContext(context.Context) GetVirtualMachineVappOutput
+}
+
+type GetVirtualMachineVappArgs struct {
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (GetVirtualMachineVappArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVapp)(nil)).Elem()
+}
+
+func (i GetVirtualMachineVappArgs) ToGetVirtualMachineVappOutput() GetVirtualMachineVappOutput {
+	return i.ToGetVirtualMachineVappOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVappArgs) ToGetVirtualMachineVappOutputWithContext(ctx context.Context) GetVirtualMachineVappOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVappOutput)
+}
+
+type GetVirtualMachineVappOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVappOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineVapp)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappOutput() GetVirtualMachineVappOutput {
+	return o
+}
+
+func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappOutputWithContext(ctx context.Context) GetVirtualMachineVappOutput {
+	return o
+}
+
+func (o GetVirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
@@ -3493,6 +3684,8 @@ func init() {
 	pulumi.RegisterOutputType(DistributedVirtualSwitchHostArrayOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeArrayOutput{})
+	pulumi.RegisterOutputType(EntityPermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(EntityPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortsOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
@@ -3523,4 +3716,5 @@ func init() {
 	pulumi.RegisterOutputType(VnicIpv6PtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVappOutput{})
 }

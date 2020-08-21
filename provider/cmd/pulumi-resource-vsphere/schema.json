@@ -228,6 +228,53 @@
                 "minVlan"
             ]
         },
+        "vsphere:/EntityPermissionsPermission:EntityPermissionsPermission": {
+            "properties": {
+                "isGroup": {
+                    "type": "boolean",
+                    "description": "Whether user_or_group field refers to a user or a group. True for a group and false for a user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "propagate": {
+                    "type": "boolean",
+                    "description": "Whether or not this permission propagates down the hierarchy to sub-entities.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id of the role to be given to the user on the specified entity.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userOrGroup": {
+                    "type": "string",
+                    "description": "The user/group getting the permission.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "isGroup",
+                "propagate",
+                "roleId",
+                "userOrGroup"
+            ]
+        },
         "vsphere:/HostPortGroupPorts:HostPortGroupPorts": {
             "properties": {
                 "key": {
@@ -1236,6 +1283,15 @@
                         }
                     }
                 },
+                "label": {
+                    "type": "string",
+                    "description": "The label for the disk.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "size": {
                     "type": "integer",
                     "description": "The size of the disk, in GIB.\n",
@@ -1253,19 +1309,46 @@
                             "mapCase": false
                         }
                     }
+                },
+                "unitNumber": {
+                    "type": "integer",
+                    "description": "The disk number on the storage bus.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "eagerlyScrub",
+                "label",
                 "size",
-                "thinProvisioned"
+                "thinProvisioned",
+                "unitNumber"
             ],
             "language": {
                 "nodejs": {
                     "requiredInputs": []
                 }
             }
+        },
+        "vsphere:/getVirtualMachineVapp:getVirtualMachineVapp": {
+            "properties": {
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -5388,6 +5471,73 @@
                 "type": "object"
             }
         },
+        "vsphere:index/entityPermissions:EntityPermissions": {
+            "properties": {
+                "entityId": {
+                    "type": "string",
+                    "description": "The managed object id (uuid for some entities) on which permissions are to be created.\n"
+                },
+                "entityType": {
+                    "type": "string",
+                    "description": "The managed object type, types can be found in the managed object type section \n[here](https://code.vmware.com/apis/968/vsphere).\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/EntityPermissionsPermission:EntityPermissionsPermission"
+                    },
+                    "description": "The permissions to be given on this entity. Keep the permissions sorted\nalphabetically on `user_or_group` for a better user experience.\n"
+                }
+            },
+            "required": [
+                "entityId",
+                "entityType",
+                "permissions"
+            ],
+            "inputProperties": {
+                "entityId": {
+                    "type": "string",
+                    "description": "The managed object id (uuid for some entities) on which permissions are to be created.\n"
+                },
+                "entityType": {
+                    "type": "string",
+                    "description": "The managed object type, types can be found in the managed object type section \n[here](https://code.vmware.com/apis/968/vsphere).\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/vsphere:/EntityPermissionsPermission:EntityPermissionsPermission"
+                    },
+                    "description": "The permissions to be given on this entity. Keep the permissions sorted\nalphabetically on `user_or_group` for a better user experience.\n"
+                }
+            },
+            "requiredInputs": [
+                "entityId",
+                "entityType",
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EntityPermissions resources.\n",
+                "properties": {
+                    "entityId": {
+                        "type": "string",
+                        "description": "The managed object id (uuid for some entities) on which permissions are to be created.\n"
+                    },
+                    "entityType": {
+                        "type": "string",
+                        "description": "The managed object type, types can be found in the managed object type section \n[here](https://code.vmware.com/apis/968/vsphere).\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/vsphere:/EntityPermissionsPermission:EntityPermissionsPermission"
+                        },
+                        "description": "The permissions to be given on this entity. Keep the permissions sorted\nalphabetically on `user_or_group` for a better user experience.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "vsphere:index/file:File": {
             "description": "The `vsphere.File` resource can be used to upload files (such as virtual disk\nfiles) from the host machine that this provider is running on to a target\ndatastore.  The resource can also be used to copy files between datastores, or\nfrom one location to another on the same datastore.\n\nUpdates to destination parameters such as `datacenter`, `datastore`, or\n`destination_file` will move the managed file a new destination based on the\nvalues of the new settings.  If any source parameter is changed, such as\n`source_datastore`, `source_datacenter` or `source_file`), the resource will be\nre-created. Depending on if destination parameters are being changed as well,\nthis may result in the destination file either being overwritten or deleted at\nthe old location.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Uploading a file\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst ubuntuDiskUpload = new vsphere.File(\"ubuntu_disk_upload\", {\n    datacenter: \"my_datacenter\",\n    datastore: \"local\",\n    destinationFile: \"/my_path/disks/custom_ubuntu.vmdk\",\n    sourceFile: \"/home/ubuntu/my_disks/custom_ubuntu.vmdk\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nubuntu_disk_upload = vsphere.File(\"ubuntuDiskUpload\",\n    datacenter=\"my_datacenter\",\n    datastore=\"local\",\n    destination_file=\"/my_path/disks/custom_ubuntu.vmdk\",\n    source_file=\"/home/ubuntu/my_disks/custom_ubuntu.vmdk\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ubuntuDiskUpload = new VSphere.File(\"ubuntuDiskUpload\", new VSphere.FileArgs\n        {\n            Datacenter = \"my_datacenter\",\n            Datastore = \"local\",\n            DestinationFile = \"/my_path/disks/custom_ubuntu.vmdk\",\n            SourceFile = \"/home/ubuntu/my_disks/custom_ubuntu.vmdk\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewFile(ctx, \"ubuntuDiskUpload\", \u0026vsphere.FileArgs{\n\t\t\tDatacenter:      pulumi.String(\"my_datacenter\"),\n\t\t\tDatastore:       pulumi.String(\"local\"),\n\t\t\tDestinationFile: pulumi.String(\"/my_path/disks/custom_ubuntu.vmdk\"),\n\t\t\tSourceFile:      pulumi.String(\"/home/ubuntu/my_disks/custom_ubuntu.vmdk\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Copying a file\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst ubuntuDiskCopy = new vsphere.File(\"ubuntu_disk_copy\", {\n    datacenter: \"my_datacenter\",\n    datastore: \"local\",\n    destinationFile: \"/my_path/custom_ubuntu_id.vmdk\",\n    sourceDatacenter: \"my_datacenter\",\n    sourceDatastore: \"local\",\n    sourceFile: \"/my_path/disks/custom_ubuntu.vmdk\",\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nubuntu_disk_copy = vsphere.File(\"ubuntuDiskCopy\",\n    datacenter=\"my_datacenter\",\n    datastore=\"local\",\n    destination_file=\"/my_path/custom_ubuntu_id.vmdk\",\n    source_datacenter=\"my_datacenter\",\n    source_datastore=\"local\",\n    source_file=\"/my_path/disks/custom_ubuntu.vmdk\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ubuntuDiskCopy = new VSphere.File(\"ubuntuDiskCopy\", new VSphere.FileArgs\n        {\n            Datacenter = \"my_datacenter\",\n            Datastore = \"local\",\n            DestinationFile = \"/my_path/custom_ubuntu_id.vmdk\",\n            SourceDatacenter = \"my_datacenter\",\n            SourceDatastore = \"local\",\n            SourceFile = \"/my_path/disks/custom_ubuntu.vmdk\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.NewFile(ctx, \"ubuntuDiskCopy\", \u0026vsphere.FileArgs{\n\t\t\tDatacenter:       pulumi.String(\"my_datacenter\"),\n\t\t\tDatastore:        pulumi.String(\"local\"),\n\t\t\tDestinationFile:  pulumi.String(\"/my_path/custom_ubuntu_id.vmdk\"),\n\t\t\tSourceDatacenter: pulumi.String(\"my_datacenter\"),\n\t\t\tSourceDatastore:  pulumi.String(\"local\"),\n\t\t\tSourceFile:       pulumi.String(\"/my_path/disks/custom_ubuntu.vmdk\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -7094,6 +7244,63 @@
                             "type": "string"
                         },
                         "description": "The IDs of any tags to attach to this resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "vsphere:index/role:Role": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "The display label of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the role.\n"
+                },
+                "rolePrivileges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The privileges to be associated with this role.\n"
+                }
+            },
+            "required": [
+                "label",
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the role.\n"
+                },
+                "rolePrivileges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The privileges to be associated with this role.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Role resources.\n",
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "description": "The display label of the role.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the role.\n"
+                    },
+                    "rolePrivileges": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The privileges to be associated with this role.\n"
                     }
                 },
                 "type": "object"
@@ -9810,6 +10017,53 @@
                 ]
             }
         },
+        "vsphere:index/getHostThumbprint:getHostThumbprint": {
+            "description": "The `vsphere_thumbprint` data source can be used to discover the host\nthumbprint of an ESXi host. This can be used when adding the `vsphere.Host`\nresource. If the host is using a certificate chain, the first one returned\nwill be used to generate the thumbprint.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst thumbprint = pulumi.output(vsphere.getHostThumbprint({\n    address: \"esxi.example.internal\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nthumbprint = vsphere.get_host_thumbprint(address=\"esxi.example.internal\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var thumbprint = Output.Create(VSphere.GetHostThumbprint.InvokeAsync(new VSphere.GetHostThumbprintArgs\n        {\n            Address = \"esxi.example.internal\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.GetHostThumbprint(ctx, \u0026vsphere.GetHostThumbprintArgs{\n\t\t\tAddress: \"esxi.example.internal\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHostThumbprint.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The address of the ESXi host to retrieve the\nthumbprint from.\n"
+                    },
+                    "insecure": {
+                        "type": "boolean",
+                        "description": "Boolean that can be set to true to disable SSL \ncertificate verification. Default: false\n"
+                    },
+                    "port": {
+                        "type": "string",
+                        "description": "The port to use connecting to the ESXi host. Default: 443\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "address"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHostThumbprint.\n",
+                "properties": {
+                    "address": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "insecure": {
+                        "type": "boolean"
+                    },
+                    "port": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "address",
+                    "id"
+                ]
+            }
+        },
         "vsphere:index/getNetwork:getNetwork": {
             "description": "The `vsphere.getNetwork` data source can be used to discover the ID of a network\nin vSphere. This can be any network that can be used as the backing for a\nnetwork interface for `vsphere.VirtualMachine` or any other vSphere resource\nthat requires a network. This includes standard (host-based) port groups, DVS\nport groups, or opaque networks such as those managed by NSX.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst datacenter = pulumi.output(vsphere.getDatacenter({\n    name: \"dc1\",\n}, { async: true }));\nconst net = datacenter.apply(datacenter =\u003e vsphere.getNetwork({\n    datacenterId: datacenter.id,\n    name: \"test-net\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\ndatacenter = vsphere.get_datacenter(name=\"dc1\")\nnet = vsphere.get_network(datacenter_id=datacenter.id,\n    name=\"test-net\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs\n        {\n            Name = \"dc1\",\n        }));\n        var net = datacenter.Apply(datacenter =\u003e Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs\n        {\n            DatacenterId = datacenter.Id,\n            Name = \"test-net\",\n        })));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"dc1\"\n\t\tdatacenter, err := vsphere.LookupDatacenter(ctx, \u0026vsphere.LookupDatacenterArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\topt1 := datacenter.Id\n\t\t_, err = vsphere.GetNetwork(ctx, \u0026vsphere.GetNetworkArgs{\n\t\t\tDatacenterId: \u0026opt1,\n\t\t\tName:         \"test-net\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -9926,6 +10180,68 @@
                 },
                 "type": "object",
                 "required": [
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getRole:getRole": {
+            "description": "The `vsphere.Role` data source can be used to discover the id and privileges associated\nwith a role given its name or display label in vsphere UI.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst role1 = pulumi.output(vsphere.getRole({\n    label: \"Virtual machine user (sample)\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\nrole1 = vsphere.get_role(label=\"Virtual machine user (sample)\")\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var role1 = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs\n        {\n            Label = \"Virtual machine user (sample)\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vsphere.LookupRole(ctx, \u0026vsphere.LookupRoleArgs{\n\t\t\tLabel: \"Virtual machine user (sample)\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the role.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The label of the role.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rolePrivileges": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The privileges associated with the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "label"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the role.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "The display label of the role.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rolePrivileges": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The privileges associated with the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "label",
                     "id"
                 ]
             }
@@ -10071,16 +10387,135 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getVirtualMachine.\n",
                 "properties": {
+                    "alternateGuestName": {
+                        "type": "string",
+                        "description": "The alternate guest name of the virtual machine when\nguest_id is a non-specific operating system, like `otherGuest`.\n"
+                    },
+                    "annotation": {
+                        "type": "string",
+                        "description": "The user-provided description of this virtual machine.\n"
+                    },
+                    "bootDelay": {
+                        "type": "integer"
+                    },
+                    "bootRetryDelay": {
+                        "type": "integer"
+                    },
+                    "bootRetryEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuHotAddEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuHotRemoveEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuLimit": {
+                        "type": "integer"
+                    },
+                    "cpuPerformanceCountersEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuReservation": {
+                        "type": "integer"
+                    },
+                    "cpuShareCount": {
+                        "type": "integer"
+                    },
+                    "cpuShareLevel": {
+                        "type": "string"
+                    },
                     "datacenterId": {
                         "type": "string",
                         "description": "The managed object reference\nID of the datacenter the virtual machine is located in.\nThis can be omitted if the search path used in `name` is an absolute path.\nFor default datacenters, use the `id` attribute from an empty\n`vsphere.Datacenter` data source.\n"
                     },
+                    "efiSecureBootEnabled": {
+                        "type": "boolean"
+                    },
+                    "enableDiskUuid": {
+                        "type": "boolean"
+                    },
+                    "enableLogging": {
+                        "type": "boolean"
+                    },
+                    "eptRviMode": {
+                        "type": "string"
+                    },
+                    "extraConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "firmware": {
+                        "type": "string",
+                        "description": "The firmware type for this virtual machine. Can be `bios` or `efi`.\n"
+                    },
+                    "guestId": {
+                        "type": "string",
+                        "description": "The guest ID of the virtual machine or template.\n"
+                    },
+                    "hardwareVersion": {
+                        "type": "integer",
+                        "description": "The hardware version number on this virtual machine.\n"
+                    },
+                    "hvMode": {
+                        "type": "string"
+                    },
                     "ideControllerScanCount": {
                         "type": "integer"
+                    },
+                    "latencySensitivity": {
+                        "type": "string"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "The size of the virtual machine's memory, in MB.\n"
+                    },
+                    "memoryHotAddEnabled": {
+                        "type": "boolean"
+                    },
+                    "memoryLimit": {
+                        "type": "integer"
+                    },
+                    "memoryReservation": {
+                        "type": "integer"
+                    },
+                    "memoryShareCount": {
+                        "type": "integer"
+                    },
+                    "memoryShareLevel": {
+                        "type": "string"
                     },
                     "name": {
                         "type": "string",
                         "description": "The name of the virtual machine. This can be a name or\npath.\n"
+                    },
+                    "nestedHvEnabled": {
+                        "type": "boolean"
+                    },
+                    "numCoresPerSocket": {
+                        "type": "integer",
+                        "description": "The number of cores per socket for this virtual machine.\n"
+                    },
+                    "numCpus": {
+                        "type": "integer",
+                        "description": "The total number of virtual processor cores assigned to this\nvirtual machine.\n"
+                    },
+                    "runToolsScriptsAfterPowerOn": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsAfterResume": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestReboot": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestShutdown": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestStandby": {
+                        "type": "boolean"
                     },
                     "sataControllerScanCount": {
                         "type": "integer"
@@ -10088,6 +10523,18 @@
                     "scsiControllerScanCount": {
                         "type": "integer",
                         "description": "The number of SCSI controllers to\nscan for disk attributes and controller types on. Default: `1`.\n"
+                    },
+                    "storagePolicyId": {
+                        "type": "string"
+                    },
+                    "swapPlacementPolicy": {
+                        "type": "string"
+                    },
+                    "syncTimeWithHost": {
+                        "type": "boolean"
+                    },
+                    "vapp": {
+                        "$ref": "#/types/vsphere:/getVirtualMachineVapp:getVirtualMachineVapp"
                     }
                 },
                 "type": "object",
@@ -10102,6 +10549,43 @@
                         "type": "string",
                         "description": "The alternate guest name of the virtual machine when\nguest_id is a non-specific operating system, like `otherGuest`.\n"
                     },
+                    "annotation": {
+                        "type": "string",
+                        "description": "The user-provided description of this virtual machine.\n"
+                    },
+                    "bootDelay": {
+                        "type": "integer"
+                    },
+                    "bootRetryDelay": {
+                        "type": "integer"
+                    },
+                    "bootRetryEnabled": {
+                        "type": "boolean"
+                    },
+                    "changeVersion": {
+                        "type": "string"
+                    },
+                    "cpuHotAddEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuHotRemoveEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuLimit": {
+                        "type": "integer"
+                    },
+                    "cpuPerformanceCountersEnabled": {
+                        "type": "boolean"
+                    },
+                    "cpuReservation": {
+                        "type": "integer"
+                    },
+                    "cpuShareCount": {
+                        "type": "integer"
+                    },
+                    "cpuShareLevel": {
+                        "type": "string"
+                    },
                     "datacenterId": {
                         "type": "string"
                     },
@@ -10111,6 +10595,24 @@
                             "$ref": "#/types/vsphere:/getVirtualMachineDisk:getVirtualMachineDisk"
                         },
                         "description": "Information about each of the disks on this virtual machine or\ntemplate. These are sorted by bus and unit number so that they can be applied\nto a `vsphere.VirtualMachine` resource in the order the resource expects\nwhile cloning. This is useful for discovering certain disk settings while\nperforming a linked clone, as all settings that are output by this data\nsource must be the same on the destination virtual machine as the source.\nOnly the first number of controllers defined by `scsi_controller_scan_count`\nare scanned for disks. The sub-attributes are:\n"
+                    },
+                    "efiSecureBootEnabled": {
+                        "type": "boolean"
+                    },
+                    "enableDiskUuid": {
+                        "type": "boolean"
+                    },
+                    "enableLogging": {
+                        "type": "boolean"
+                    },
+                    "eptRviMode": {
+                        "type": "string"
+                    },
+                    "extraConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     },
                     "firmware": {
                         "type": "string",
@@ -10127,6 +10629,13 @@
                         },
                         "description": "A list of IP addresses as reported by VMWare tools.\n"
                     },
+                    "hardwareVersion": {
+                        "type": "integer",
+                        "description": "The hardware version number on this virtual machine.\n"
+                    },
+                    "hvMode": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -10134,8 +10643,33 @@
                     "ideControllerScanCount": {
                         "type": "integer"
                     },
+                    "latencySensitivity": {
+                        "type": "string"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "The size of the virtual machine's memory, in MB.\n"
+                    },
+                    "memoryHotAddEnabled": {
+                        "type": "boolean"
+                    },
+                    "memoryLimit": {
+                        "type": "integer"
+                    },
+                    "memoryReservation": {
+                        "type": "integer"
+                    },
+                    "memoryShareCount": {
+                        "type": "integer"
+                    },
+                    "memoryShareLevel": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
+                    },
+                    "nestedHvEnabled": {
+                        "type": "boolean"
                     },
                     "networkInterfaceTypes": {
                         "type": "array",
@@ -10143,6 +10677,29 @@
                             "type": "string"
                         },
                         "description": "The network interface types for each network\ninterface found on the virtual machine, in device bus order. Will be one of\n`e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.\n"
+                    },
+                    "numCoresPerSocket": {
+                        "type": "integer",
+                        "description": "The number of cores per socket for this virtual machine.\n"
+                    },
+                    "numCpus": {
+                        "type": "integer",
+                        "description": "The total number of virtual processor cores assigned to this\nvirtual machine.\n"
+                    },
+                    "runToolsScriptsAfterPowerOn": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsAfterResume": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestReboot": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestShutdown": {
+                        "type": "boolean"
+                    },
+                    "runToolsScriptsBeforeGuestStandby": {
+                        "type": "boolean"
                     },
                     "sataControllerScanCount": {
                         "type": "integer"
@@ -10157,19 +10714,44 @@
                     "scsiType": {
                         "type": "string",
                         "description": "The common type of all SCSI controllers on this virtual machine.\nWill be one of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic\nSAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when\nthere are multiple controller types. Only the first number of controllers\ndefined by `scsi_controller_scan_count` are scanned.\n"
+                    },
+                    "storagePolicyId": {
+                        "type": "string"
+                    },
+                    "swapPlacementPolicy": {
+                        "type": "string"
+                    },
+                    "syncTimeWithHost": {
+                        "type": "boolean"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    },
+                    "vapp": {
+                        "$ref": "#/types/vsphere:/getVirtualMachineVapp:getVirtualMachineVapp"
+                    },
+                    "vappTransports": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object",
                 "required": [
-                    "alternateGuestName",
+                    "changeVersion",
+                    "cpuShareCount",
                     "disks",
-                    "firmware",
                     "guestId",
                     "guestIpAddresses",
+                    "hardwareVersion",
+                    "memoryShareCount",
                     "name",
                     "networkInterfaceTypes",
                     "scsiBusSharing",
                     "scsiType",
+                    "uuid",
+                    "vappTransports",
                     "id"
                 ]
             }

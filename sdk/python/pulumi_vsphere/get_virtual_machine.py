@@ -13,7 +13,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, datacenter_id=None, disks=None, firmware=None, guest_id=None, guest_ip_addresses=None, id=None, ide_controller_scan_count=None, name=None, network_interface_types=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, num_cores_per_socket=None, num_cpus=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, uuid=None, vapp=None, vapp_transports=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         __self__.alternate_guest_name = alternate_guest_name
@@ -21,6 +21,45 @@ class GetVirtualMachineResult:
         The alternate guest name of the virtual machine when
         guest_id is a non-specific operating system, like `otherGuest`.
         """
+        if annotation and not isinstance(annotation, str):
+            raise TypeError("Expected argument 'annotation' to be a str")
+        __self__.annotation = annotation
+        """
+        The user-provided description of this virtual machine.
+        """
+        if boot_delay and not isinstance(boot_delay, float):
+            raise TypeError("Expected argument 'boot_delay' to be a float")
+        __self__.boot_delay = boot_delay
+        if boot_retry_delay and not isinstance(boot_retry_delay, float):
+            raise TypeError("Expected argument 'boot_retry_delay' to be a float")
+        __self__.boot_retry_delay = boot_retry_delay
+        if boot_retry_enabled and not isinstance(boot_retry_enabled, bool):
+            raise TypeError("Expected argument 'boot_retry_enabled' to be a bool")
+        __self__.boot_retry_enabled = boot_retry_enabled
+        if change_version and not isinstance(change_version, str):
+            raise TypeError("Expected argument 'change_version' to be a str")
+        __self__.change_version = change_version
+        if cpu_hot_add_enabled and not isinstance(cpu_hot_add_enabled, bool):
+            raise TypeError("Expected argument 'cpu_hot_add_enabled' to be a bool")
+        __self__.cpu_hot_add_enabled = cpu_hot_add_enabled
+        if cpu_hot_remove_enabled and not isinstance(cpu_hot_remove_enabled, bool):
+            raise TypeError("Expected argument 'cpu_hot_remove_enabled' to be a bool")
+        __self__.cpu_hot_remove_enabled = cpu_hot_remove_enabled
+        if cpu_limit and not isinstance(cpu_limit, float):
+            raise TypeError("Expected argument 'cpu_limit' to be a float")
+        __self__.cpu_limit = cpu_limit
+        if cpu_performance_counters_enabled and not isinstance(cpu_performance_counters_enabled, bool):
+            raise TypeError("Expected argument 'cpu_performance_counters_enabled' to be a bool")
+        __self__.cpu_performance_counters_enabled = cpu_performance_counters_enabled
+        if cpu_reservation and not isinstance(cpu_reservation, float):
+            raise TypeError("Expected argument 'cpu_reservation' to be a float")
+        __self__.cpu_reservation = cpu_reservation
+        if cpu_share_count and not isinstance(cpu_share_count, float):
+            raise TypeError("Expected argument 'cpu_share_count' to be a float")
+        __self__.cpu_share_count = cpu_share_count
+        if cpu_share_level and not isinstance(cpu_share_level, str):
+            raise TypeError("Expected argument 'cpu_share_level' to be a str")
+        __self__.cpu_share_level = cpu_share_level
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         __self__.datacenter_id = datacenter_id
@@ -37,6 +76,21 @@ class GetVirtualMachineResult:
         Only the first number of controllers defined by `scsi_controller_scan_count`
         are scanned for disks. The sub-attributes are:
         """
+        if efi_secure_boot_enabled and not isinstance(efi_secure_boot_enabled, bool):
+            raise TypeError("Expected argument 'efi_secure_boot_enabled' to be a bool")
+        __self__.efi_secure_boot_enabled = efi_secure_boot_enabled
+        if enable_disk_uuid and not isinstance(enable_disk_uuid, bool):
+            raise TypeError("Expected argument 'enable_disk_uuid' to be a bool")
+        __self__.enable_disk_uuid = enable_disk_uuid
+        if enable_logging and not isinstance(enable_logging, bool):
+            raise TypeError("Expected argument 'enable_logging' to be a bool")
+        __self__.enable_logging = enable_logging
+        if ept_rvi_mode and not isinstance(ept_rvi_mode, str):
+            raise TypeError("Expected argument 'ept_rvi_mode' to be a str")
+        __self__.ept_rvi_mode = ept_rvi_mode
+        if extra_config and not isinstance(extra_config, dict):
+            raise TypeError("Expected argument 'extra_config' to be a dict")
+        __self__.extra_config = extra_config
         if firmware and not isinstance(firmware, str):
             raise TypeError("Expected argument 'firmware' to be a str")
         __self__.firmware = firmware
@@ -55,6 +109,15 @@ class GetVirtualMachineResult:
         """
         A list of IP addresses as reported by VMWare tools.
         """
+        if hardware_version and not isinstance(hardware_version, float):
+            raise TypeError("Expected argument 'hardware_version' to be a float")
+        __self__.hardware_version = hardware_version
+        """
+        The hardware version number on this virtual machine.
+        """
+        if hv_mode and not isinstance(hv_mode, str):
+            raise TypeError("Expected argument 'hv_mode' to be a str")
+        __self__.hv_mode = hv_mode
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -64,9 +127,36 @@ class GetVirtualMachineResult:
         if ide_controller_scan_count and not isinstance(ide_controller_scan_count, float):
             raise TypeError("Expected argument 'ide_controller_scan_count' to be a float")
         __self__.ide_controller_scan_count = ide_controller_scan_count
+        if latency_sensitivity and not isinstance(latency_sensitivity, str):
+            raise TypeError("Expected argument 'latency_sensitivity' to be a str")
+        __self__.latency_sensitivity = latency_sensitivity
+        if memory and not isinstance(memory, float):
+            raise TypeError("Expected argument 'memory' to be a float")
+        __self__.memory = memory
+        """
+        The size of the virtual machine's memory, in MB.
+        """
+        if memory_hot_add_enabled and not isinstance(memory_hot_add_enabled, bool):
+            raise TypeError("Expected argument 'memory_hot_add_enabled' to be a bool")
+        __self__.memory_hot_add_enabled = memory_hot_add_enabled
+        if memory_limit and not isinstance(memory_limit, float):
+            raise TypeError("Expected argument 'memory_limit' to be a float")
+        __self__.memory_limit = memory_limit
+        if memory_reservation and not isinstance(memory_reservation, float):
+            raise TypeError("Expected argument 'memory_reservation' to be a float")
+        __self__.memory_reservation = memory_reservation
+        if memory_share_count and not isinstance(memory_share_count, float):
+            raise TypeError("Expected argument 'memory_share_count' to be a float")
+        __self__.memory_share_count = memory_share_count
+        if memory_share_level and not isinstance(memory_share_level, str):
+            raise TypeError("Expected argument 'memory_share_level' to be a str")
+        __self__.memory_share_level = memory_share_level
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if nested_hv_enabled and not isinstance(nested_hv_enabled, bool):
+            raise TypeError("Expected argument 'nested_hv_enabled' to be a bool")
+        __self__.nested_hv_enabled = nested_hv_enabled
         if network_interface_types and not isinstance(network_interface_types, list):
             raise TypeError("Expected argument 'network_interface_types' to be a list")
         __self__.network_interface_types = network_interface_types
@@ -75,6 +165,34 @@ class GetVirtualMachineResult:
         interface found on the virtual machine, in device bus order. Will be one of
         `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
         """
+        if num_cores_per_socket and not isinstance(num_cores_per_socket, float):
+            raise TypeError("Expected argument 'num_cores_per_socket' to be a float")
+        __self__.num_cores_per_socket = num_cores_per_socket
+        """
+        The number of cores per socket for this virtual machine.
+        """
+        if num_cpus and not isinstance(num_cpus, float):
+            raise TypeError("Expected argument 'num_cpus' to be a float")
+        __self__.num_cpus = num_cpus
+        """
+        The total number of virtual processor cores assigned to this
+        virtual machine.
+        """
+        if run_tools_scripts_after_power_on and not isinstance(run_tools_scripts_after_power_on, bool):
+            raise TypeError("Expected argument 'run_tools_scripts_after_power_on' to be a bool")
+        __self__.run_tools_scripts_after_power_on = run_tools_scripts_after_power_on
+        if run_tools_scripts_after_resume and not isinstance(run_tools_scripts_after_resume, bool):
+            raise TypeError("Expected argument 'run_tools_scripts_after_resume' to be a bool")
+        __self__.run_tools_scripts_after_resume = run_tools_scripts_after_resume
+        if run_tools_scripts_before_guest_reboot and not isinstance(run_tools_scripts_before_guest_reboot, bool):
+            raise TypeError("Expected argument 'run_tools_scripts_before_guest_reboot' to be a bool")
+        __self__.run_tools_scripts_before_guest_reboot = run_tools_scripts_before_guest_reboot
+        if run_tools_scripts_before_guest_shutdown and not isinstance(run_tools_scripts_before_guest_shutdown, bool):
+            raise TypeError("Expected argument 'run_tools_scripts_before_guest_shutdown' to be a bool")
+        __self__.run_tools_scripts_before_guest_shutdown = run_tools_scripts_before_guest_shutdown
+        if run_tools_scripts_before_guest_standby and not isinstance(run_tools_scripts_before_guest_standby, bool):
+            raise TypeError("Expected argument 'run_tools_scripts_before_guest_standby' to be a bool")
+        __self__.run_tools_scripts_before_guest_standby = run_tools_scripts_before_guest_standby
         if sata_controller_scan_count and not isinstance(sata_controller_scan_count, float):
             raise TypeError("Expected argument 'sata_controller_scan_count' to be a float")
         __self__.sata_controller_scan_count = sata_controller_scan_count
@@ -99,6 +217,24 @@ class GetVirtualMachineResult:
         there are multiple controller types. Only the first number of controllers
         defined by `scsi_controller_scan_count` are scanned.
         """
+        if storage_policy_id and not isinstance(storage_policy_id, str):
+            raise TypeError("Expected argument 'storage_policy_id' to be a str")
+        __self__.storage_policy_id = storage_policy_id
+        if swap_placement_policy and not isinstance(swap_placement_policy, str):
+            raise TypeError("Expected argument 'swap_placement_policy' to be a str")
+        __self__.swap_placement_policy = swap_placement_policy
+        if sync_time_with_host and not isinstance(sync_time_with_host, bool):
+            raise TypeError("Expected argument 'sync_time_with_host' to be a bool")
+        __self__.sync_time_with_host = sync_time_with_host
+        if uuid and not isinstance(uuid, str):
+            raise TypeError("Expected argument 'uuid' to be a str")
+        __self__.uuid = uuid
+        if vapp and not isinstance(vapp, dict):
+            raise TypeError("Expected argument 'vapp' to be a dict")
+        __self__.vapp = vapp
+        if vapp_transports and not isinstance(vapp_transports, list):
+            raise TypeError("Expected argument 'vapp_transports' to be a list")
+        __self__.vapp_transports = vapp_transports
 
 
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
@@ -108,22 +244,62 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             yield self
         return GetVirtualMachineResult(
             alternate_guest_name=self.alternate_guest_name,
+            annotation=self.annotation,
+            boot_delay=self.boot_delay,
+            boot_retry_delay=self.boot_retry_delay,
+            boot_retry_enabled=self.boot_retry_enabled,
+            change_version=self.change_version,
+            cpu_hot_add_enabled=self.cpu_hot_add_enabled,
+            cpu_hot_remove_enabled=self.cpu_hot_remove_enabled,
+            cpu_limit=self.cpu_limit,
+            cpu_performance_counters_enabled=self.cpu_performance_counters_enabled,
+            cpu_reservation=self.cpu_reservation,
+            cpu_share_count=self.cpu_share_count,
+            cpu_share_level=self.cpu_share_level,
             datacenter_id=self.datacenter_id,
             disks=self.disks,
+            efi_secure_boot_enabled=self.efi_secure_boot_enabled,
+            enable_disk_uuid=self.enable_disk_uuid,
+            enable_logging=self.enable_logging,
+            ept_rvi_mode=self.ept_rvi_mode,
+            extra_config=self.extra_config,
             firmware=self.firmware,
             guest_id=self.guest_id,
             guest_ip_addresses=self.guest_ip_addresses,
+            hardware_version=self.hardware_version,
+            hv_mode=self.hv_mode,
             id=self.id,
             ide_controller_scan_count=self.ide_controller_scan_count,
+            latency_sensitivity=self.latency_sensitivity,
+            memory=self.memory,
+            memory_hot_add_enabled=self.memory_hot_add_enabled,
+            memory_limit=self.memory_limit,
+            memory_reservation=self.memory_reservation,
+            memory_share_count=self.memory_share_count,
+            memory_share_level=self.memory_share_level,
             name=self.name,
+            nested_hv_enabled=self.nested_hv_enabled,
             network_interface_types=self.network_interface_types,
+            num_cores_per_socket=self.num_cores_per_socket,
+            num_cpus=self.num_cpus,
+            run_tools_scripts_after_power_on=self.run_tools_scripts_after_power_on,
+            run_tools_scripts_after_resume=self.run_tools_scripts_after_resume,
+            run_tools_scripts_before_guest_reboot=self.run_tools_scripts_before_guest_reboot,
+            run_tools_scripts_before_guest_shutdown=self.run_tools_scripts_before_guest_shutdown,
+            run_tools_scripts_before_guest_standby=self.run_tools_scripts_before_guest_standby,
             sata_controller_scan_count=self.sata_controller_scan_count,
             scsi_bus_sharing=self.scsi_bus_sharing,
             scsi_controller_scan_count=self.scsi_controller_scan_count,
-            scsi_type=self.scsi_type)
+            scsi_type=self.scsi_type,
+            storage_policy_id=self.storage_policy_id,
+            swap_placement_policy=self.swap_placement_policy,
+            sync_time_with_host=self.sync_time_with_host,
+            uuid=self.uuid,
+            vapp=self.vapp,
+            vapp_transports=self.vapp_transports)
 
 
-def get_virtual_machine(datacenter_id=None, ide_controller_scan_count=None, name=None, sata_controller_scan_count=None, scsi_controller_scan_count=None, opts=None):
+def get_virtual_machine(alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, hardware_version=None, hv_mode=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, num_cores_per_socket=None, num_cpus=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_controller_scan_count=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, vapp=None, opts=None):
     """
     The `VirtualMachine` data source can be used to find the UUID of an
     existing virtual machine or template. Its most relevant purpose is for finding
@@ -143,22 +319,76 @@ def get_virtual_machine(datacenter_id=None, ide_controller_scan_count=None, name
     ```
 
 
+    :param str alternate_guest_name: The alternate guest name of the virtual machine when
+           guest_id is a non-specific operating system, like `otherGuest`.
+    :param str annotation: The user-provided description of this virtual machine.
     :param str datacenter_id: The managed object reference
            ID of the datacenter the virtual machine is located in.
            This can be omitted if the search path used in `name` is an absolute path.
            For default datacenters, use the `id` attribute from an empty
            `Datacenter` data source.
+    :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str guest_id: The guest ID of the virtual machine or template.
+    :param float hardware_version: The hardware version number on this virtual machine.
+    :param float memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
            path.
+    :param float num_cores_per_socket: The number of cores per socket for this virtual machine.
+    :param float num_cpus: The total number of virtual processor cores assigned to this
+           virtual machine.
     :param float scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
+
+    The **vapp** object supports the following:
+
+      * `properties` (`dict`)
     """
     __args__ = dict()
+    __args__['alternateGuestName'] = alternate_guest_name
+    __args__['annotation'] = annotation
+    __args__['bootDelay'] = boot_delay
+    __args__['bootRetryDelay'] = boot_retry_delay
+    __args__['bootRetryEnabled'] = boot_retry_enabled
+    __args__['cpuHotAddEnabled'] = cpu_hot_add_enabled
+    __args__['cpuHotRemoveEnabled'] = cpu_hot_remove_enabled
+    __args__['cpuLimit'] = cpu_limit
+    __args__['cpuPerformanceCountersEnabled'] = cpu_performance_counters_enabled
+    __args__['cpuReservation'] = cpu_reservation
+    __args__['cpuShareCount'] = cpu_share_count
+    __args__['cpuShareLevel'] = cpu_share_level
     __args__['datacenterId'] = datacenter_id
+    __args__['efiSecureBootEnabled'] = efi_secure_boot_enabled
+    __args__['enableDiskUuid'] = enable_disk_uuid
+    __args__['enableLogging'] = enable_logging
+    __args__['eptRviMode'] = ept_rvi_mode
+    __args__['extraConfig'] = extra_config
+    __args__['firmware'] = firmware
+    __args__['guestId'] = guest_id
+    __args__['hardwareVersion'] = hardware_version
+    __args__['hvMode'] = hv_mode
     __args__['ideControllerScanCount'] = ide_controller_scan_count
+    __args__['latencySensitivity'] = latency_sensitivity
+    __args__['memory'] = memory
+    __args__['memoryHotAddEnabled'] = memory_hot_add_enabled
+    __args__['memoryLimit'] = memory_limit
+    __args__['memoryReservation'] = memory_reservation
+    __args__['memoryShareCount'] = memory_share_count
+    __args__['memoryShareLevel'] = memory_share_level
     __args__['name'] = name
+    __args__['nestedHvEnabled'] = nested_hv_enabled
+    __args__['numCoresPerSocket'] = num_cores_per_socket
+    __args__['numCpus'] = num_cpus
+    __args__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
+    __args__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
+    __args__['runToolsScriptsBeforeGuestReboot'] = run_tools_scripts_before_guest_reboot
+    __args__['runToolsScriptsBeforeGuestShutdown'] = run_tools_scripts_before_guest_shutdown
+    __args__['runToolsScriptsBeforeGuestStandby'] = run_tools_scripts_before_guest_standby
     __args__['sataControllerScanCount'] = sata_controller_scan_count
     __args__['scsiControllerScanCount'] = scsi_controller_scan_count
+    __args__['storagePolicyId'] = storage_policy_id
+    __args__['swapPlacementPolicy'] = swap_placement_policy
+    __args__['syncTimeWithHost'] = sync_time_with_host
+    __args__['vapp'] = vapp
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -167,16 +397,56 @@ def get_virtual_machine(datacenter_id=None, ide_controller_scan_count=None, name
 
     return AwaitableGetVirtualMachineResult(
         alternate_guest_name=__ret__.get('alternateGuestName'),
+        annotation=__ret__.get('annotation'),
+        boot_delay=__ret__.get('bootDelay'),
+        boot_retry_delay=__ret__.get('bootRetryDelay'),
+        boot_retry_enabled=__ret__.get('bootRetryEnabled'),
+        change_version=__ret__.get('changeVersion'),
+        cpu_hot_add_enabled=__ret__.get('cpuHotAddEnabled'),
+        cpu_hot_remove_enabled=__ret__.get('cpuHotRemoveEnabled'),
+        cpu_limit=__ret__.get('cpuLimit'),
+        cpu_performance_counters_enabled=__ret__.get('cpuPerformanceCountersEnabled'),
+        cpu_reservation=__ret__.get('cpuReservation'),
+        cpu_share_count=__ret__.get('cpuShareCount'),
+        cpu_share_level=__ret__.get('cpuShareLevel'),
         datacenter_id=__ret__.get('datacenterId'),
         disks=__ret__.get('disks'),
+        efi_secure_boot_enabled=__ret__.get('efiSecureBootEnabled'),
+        enable_disk_uuid=__ret__.get('enableDiskUuid'),
+        enable_logging=__ret__.get('enableLogging'),
+        ept_rvi_mode=__ret__.get('eptRviMode'),
+        extra_config=__ret__.get('extraConfig'),
         firmware=__ret__.get('firmware'),
         guest_id=__ret__.get('guestId'),
         guest_ip_addresses=__ret__.get('guestIpAddresses'),
+        hardware_version=__ret__.get('hardwareVersion'),
+        hv_mode=__ret__.get('hvMode'),
         id=__ret__.get('id'),
         ide_controller_scan_count=__ret__.get('ideControllerScanCount'),
+        latency_sensitivity=__ret__.get('latencySensitivity'),
+        memory=__ret__.get('memory'),
+        memory_hot_add_enabled=__ret__.get('memoryHotAddEnabled'),
+        memory_limit=__ret__.get('memoryLimit'),
+        memory_reservation=__ret__.get('memoryReservation'),
+        memory_share_count=__ret__.get('memoryShareCount'),
+        memory_share_level=__ret__.get('memoryShareLevel'),
         name=__ret__.get('name'),
+        nested_hv_enabled=__ret__.get('nestedHvEnabled'),
         network_interface_types=__ret__.get('networkInterfaceTypes'),
+        num_cores_per_socket=__ret__.get('numCoresPerSocket'),
+        num_cpus=__ret__.get('numCpus'),
+        run_tools_scripts_after_power_on=__ret__.get('runToolsScriptsAfterPowerOn'),
+        run_tools_scripts_after_resume=__ret__.get('runToolsScriptsAfterResume'),
+        run_tools_scripts_before_guest_reboot=__ret__.get('runToolsScriptsBeforeGuestReboot'),
+        run_tools_scripts_before_guest_shutdown=__ret__.get('runToolsScriptsBeforeGuestShutdown'),
+        run_tools_scripts_before_guest_standby=__ret__.get('runToolsScriptsBeforeGuestStandby'),
         sata_controller_scan_count=__ret__.get('sataControllerScanCount'),
         scsi_bus_sharing=__ret__.get('scsiBusSharing'),
         scsi_controller_scan_count=__ret__.get('scsiControllerScanCount'),
-        scsi_type=__ret__.get('scsiType'))
+        scsi_type=__ret__.get('scsiType'),
+        storage_policy_id=__ret__.get('storagePolicyId'),
+        swap_placement_policy=__ret__.get('swapPlacementPolicy'),
+        sync_time_with_host=__ret__.get('syncTimeWithHost'),
+        uuid=__ret__.get('uuid'),
+        vapp=__ret__.get('vapp'),
+        vapp_transports=__ret__.get('vappTransports'))
