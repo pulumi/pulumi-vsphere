@@ -5,31 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['EntityPermissions']
 
 
 class EntityPermissions(pulumi.CustomResource):
-    entity_id: pulumi.Output[str]
-    """
-    The managed object id (uuid for some entities) on which permissions are to be created.
-    """
-    entity_type: pulumi.Output[str]
-    """
-    The managed object type, types can be found in the managed object type section 
-    [here](https://code.vmware.com/apis/968/vsphere).
-    """
-    permissions: pulumi.Output[list]
-    """
-    The permissions to be given on this entity. Keep the permissions sorted
-    alphabetically on `user_or_group` for a better user experience.
-
-      * `isGroup` (`bool`) - Whether user_or_group field refers to a user or a group. True for a group and false for a user.
-      * `propagate` (`bool`) - Whether or not this permission propagates down the hierarchy to sub-entities.
-      * `roleId` (`str`) - The role id of the role to be given to the user on the specified entity.
-      * `userOrGroup` (`str`) - The user/group getting the permission.
-    """
-    def __init__(__self__, resource_name, opts=None, entity_id=None, entity_type=None, permissions=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
+                 entity_type: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a EntityPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -37,15 +30,8 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
                [here](https://code.vmware.com/apis/968/vsphere).
-        :param pulumi.Input[list] permissions: The permissions to be given on this entity. Keep the permissions sorted
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
-
-        The **permissions** object supports the following:
-
-          * `isGroup` (`pulumi.Input[bool]`) - Whether user_or_group field refers to a user or a group. True for a group and false for a user.
-          * `propagate` (`pulumi.Input[bool]`) - Whether or not this permission propagates down the hierarchy to sub-entities.
-          * `roleId` (`pulumi.Input[str]`) - The role id of the role to be given to the user on the specified entity.
-          * `userOrGroup` (`pulumi.Input[str]`) - The user/group getting the permission.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,26 +66,24 @@ class EntityPermissions(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, entity_id=None, entity_type=None, permissions=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            entity_id: Optional[pulumi.Input[str]] = None,
+            entity_type: Optional[pulumi.Input[str]] = None,
+            permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None) -> 'EntityPermissions':
         """
         Get an existing EntityPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
                [here](https://code.vmware.com/apis/968/vsphere).
-        :param pulumi.Input[list] permissions: The permissions to be given on this entity. Keep the permissions sorted
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
-
-        The **permissions** object supports the following:
-
-          * `isGroup` (`pulumi.Input[bool]`) - Whether user_or_group field refers to a user or a group. True for a group and false for a user.
-          * `propagate` (`pulumi.Input[bool]`) - Whether or not this permission propagates down the hierarchy to sub-entities.
-          * `roleId` (`pulumi.Input[str]`) - The role id of the role to be given to the user on the specified entity.
-          * `userOrGroup` (`pulumi.Input[str]`) - The user/group getting the permission.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -110,8 +94,35 @@ class EntityPermissions(pulumi.CustomResource):
         __props__["permissions"] = permissions
         return EntityPermissions(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The managed object id (uuid for some entities) on which permissions are to be created.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> str:
+        """
+        The managed object type, types can be found in the managed object type section 
+        [here](https://code.vmware.com/apis/968/vsphere).
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> List['outputs.EntityPermissionsPermission']:
+        """
+        The permissions to be given on this entity. Keep the permissions sorted
+        alphabetically on `user_or_group` for a better user experience.
+        """
+        return pulumi.get(self, "permissions")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

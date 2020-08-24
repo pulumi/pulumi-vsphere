@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetTagResult',
+    'AwaitableGetTagResult',
+    'get_tag',
+]
 
+@pulumi.output_type
 class GetTagResult:
     """
     A collection of values returned by getTag.
@@ -16,19 +22,39 @@ class GetTagResult:
     def __init__(__self__, category_id=None, description=None, id=None, name=None):
         if category_id and not isinstance(category_id, str):
             raise TypeError("Expected argument 'category_id' to be a str")
-        __self__.category_id = category_id
+        pulumi.set(__self__, "category_id", category_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="categoryId")
+    def category_id(self) -> str:
+        return pulumi.get(self, "category_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 class AwaitableGetTagResult(GetTagResult):
@@ -43,7 +69,9 @@ class AwaitableGetTagResult(GetTagResult):
             name=self.name)
 
 
-def get_tag(category_id=None, name=None, opts=None):
+def get_tag(category_id: Optional[str] = None,
+            name: Optional[str] = None,
+            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
     The `Tag` data source can be used to reference tags that are not
     managed by this provider. Its attributes are exactly the same as the `Tag`
@@ -76,10 +104,10 @@ def get_tag(category_id=None, name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(
-        category_id=__ret__.get('categoryId'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'))
+        category_id=__ret__.category_id,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name)

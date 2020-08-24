@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetNetworkResult',
+    'AwaitableGetNetworkResult',
+    'get_network',
+]
 
+@pulumi.output_type
 class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
@@ -16,22 +22,47 @@ class GetNetworkResult:
     def __init__(__self__, datacenter_id=None, distributed_virtual_switch_uuid=None, id=None, name=None, type=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
-        __self__.datacenter_id = datacenter_id
+        pulumi.set(__self__, "datacenter_id", datacenter_id)
         if distributed_virtual_switch_uuid and not isinstance(distributed_virtual_switch_uuid, str):
             raise TypeError("Expected argument 'distributed_virtual_switch_uuid' to be a str")
-        __self__.distributed_virtual_switch_uuid = distributed_virtual_switch_uuid
+        pulumi.set(__self__, "distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> Optional[str]:
+        return pulumi.get(self, "datacenter_id")
+
+    @property
+    @pulumi.getter(name="distributedVirtualSwitchUuid")
+    def distributed_virtual_switch_uuid(self) -> Optional[str]:
+        return pulumi.get(self, "distributed_virtual_switch_uuid")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 class AwaitableGetNetworkResult(GetNetworkResult):
@@ -47,7 +78,10 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             type=self.type)
 
 
-def get_network(datacenter_id=None, distributed_virtual_switch_uuid=None, name=None, opts=None):
+def get_network(datacenter_id: Optional[str] = None,
+                distributed_virtual_switch_uuid: Optional[str] = None,
+                name: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
     The `getNetwork` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
@@ -86,11 +120,11 @@ def get_network(datacenter_id=None, distributed_virtual_switch_uuid=None, name=N
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
-        datacenter_id=__ret__.get('datacenterId'),
-        distributed_virtual_switch_uuid=__ret__.get('distributedVirtualSwitchUuid'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        type=__ret__.get('type'))
+        datacenter_id=__ret__.datacenter_id,
+        distributed_virtual_switch_uuid=__ret__.distributed_virtual_switch_uuid,
+        id=__ret__.id,
+        name=__ret__.name,
+        type=__ret__.type)

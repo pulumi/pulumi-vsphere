@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetDynamicResult',
+    'AwaitableGetDynamicResult',
+    'get_dynamic',
+]
 
+@pulumi.output_type
 class GetDynamicResult:
     """
     A collection of values returned by getDynamic.
@@ -16,19 +22,39 @@ class GetDynamicResult:
     def __init__(__self__, filters=None, id=None, name_regex=None, type=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
-        __self__.filters = filters
+        pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> List[str]:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name_regex and not isinstance(name_regex, str):
-            raise TypeError("Expected argument 'name_regex' to be a str")
-        __self__.name_regex = name_regex
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
 
 
 class AwaitableGetDynamicResult(GetDynamicResult):
@@ -43,7 +69,10 @@ class AwaitableGetDynamicResult(GetDynamicResult):
             type=self.type)
 
 
-def get_dynamic(filters=None, name_regex=None, type=None, opts=None):
+def get_dynamic(filters: Optional[List[str]] = None,
+                name_regex: Optional[str] = None,
+                type: Optional[str] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDynamicResult:
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
@@ -53,7 +82,7 @@ def get_dynamic(filters=None, name_regex=None, type=None, opts=None):
       objects by name.
 
 
-    :param list filters: A list of tag IDs that must be present on an object to
+    :param List[str] filters: A list of tag IDs that must be present on an object to
            be a match.
     :param str name_regex: A regular expression that will be used to match
            the object's name.
@@ -68,10 +97,10 @@ def get_dynamic(filters=None, name_regex=None, type=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getDynamic:getDynamic', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getDynamic:getDynamic', __args__, opts=opts, typ=GetDynamicResult).value
 
     return AwaitableGetDynamicResult(
-        filters=__ret__.get('filters'),
-        id=__ret__.get('id'),
-        name_regex=__ret__.get('nameRegex'),
-        type=__ret__.get('type'))
+        filters=__ret__.filters,
+        id=__ret__.id,
+        name_regex=__ret__.name_regex,
+        type=__ret__.type)

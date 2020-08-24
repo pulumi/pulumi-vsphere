@@ -5,8 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
+
+__all__ = [
+    'allow_unverified_ssl',
+    'client_debug',
+    'client_debug_path',
+    'client_debug_path_run',
+    'password',
+    'persist_session',
+    'rest_session_path',
+    'user',
+    'vcenter_server',
+    'vim_keep_alive',
+    'vim_session_path',
+    'vsphere_server',
+]
 
 __config__ = pulumi.Config('vsphere')
 

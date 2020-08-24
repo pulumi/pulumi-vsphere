@@ -5,38 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['TagCategory']
 
 
 class TagCategory(pulumi.CustomResource):
-    associable_types: pulumi.Output[list]
-    """
-    A list object types that this category is
-    valid to be assigned to. For a full list, click
-    here.
-    """
-    cardinality: pulumi.Output[str]
-    """
-    The number of tags that can be assigned from this
-    category to a single object at once. Can be one of `SINGLE` (object can only
-    be assigned one tag in this category), to `MULTIPLE` (object can be assigned
-    multiple tags in this category). Forces a new resource if changed.
-    """
-    description: pulumi.Output[str]
-    """
-    A description for the category.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the category.
-    """
-    def __init__(__self__, resource_name, opts=None, associable_types=None, cardinality=None, description=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 associable_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 cardinality: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a TagCategory resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] associable_types: A list object types that this category is
+        :param pulumi.Input[List[pulumi.Input[str]]] associable_types: A list object types that this category is
                valid to be assigned to. For a full list, click
                here.
         :param pulumi.Input[str] cardinality: The number of tags that can be assigned from this
@@ -78,15 +68,21 @@ class TagCategory(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, associable_types=None, cardinality=None, description=None, name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associable_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            cardinality: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'TagCategory':
         """
         Get an existing TagCategory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] associable_types: A list object types that this category is
+        :param pulumi.Input[List[pulumi.Input[str]]] associable_types: A list object types that this category is
                valid to be assigned to. For a full list, click
                here.
         :param pulumi.Input[str] cardinality: The number of tags that can be assigned from this
@@ -106,8 +102,46 @@ class TagCategory(pulumi.CustomResource):
         __props__["name"] = name
         return TagCategory(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="associableTypes")
+    def associable_types(self) -> List[str]:
+        """
+        A list object types that this category is
+        valid to be assigned to. For a full list, click
+        here.
+        """
+        return pulumi.get(self, "associable_types")
+
+    @property
+    @pulumi.getter
+    def cardinality(self) -> str:
+        """
+        The number of tags that can be assigned from this
+        category to a single object at once. Can be one of `SINGLE` (object can only
+        be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+        multiple tags in this category). Forces a new resource if changed.
+        """
+        return pulumi.get(self, "cardinality")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for the category.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the category.
+        """
+        return pulumi.get(self, "name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ComputeClusterHostGroup']
 
 
 class ComputeClusterHostGroup(pulumi.CustomResource):
-    compute_cluster_id: pulumi.Output[str]
-    """
-    The managed object reference
-    ID of the cluster to put the group in.  Forces a new
-    resource if changed.
-    """
-    host_system_ids: pulumi.Output[list]
-    """
-    The managed object IDs of
-    the hosts to put in the cluster.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the host group. This must be unique in the
-    cluster. Forces a new resource if changed.
-    """
-    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, host_system_ids=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ComputeClusterHostGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -34,7 +28,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[list] host_system_ids: The managed object IDs of
+        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -68,18 +62,23 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, compute_cluster_id=None, host_system_ids=None, name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: Optional[pulumi.Input[str]] = None,
+            host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'ComputeClusterHostGroup':
         """
         Get an existing ComputeClusterHostGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[list] host_system_ids: The managed object IDs of
+        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -93,8 +92,37 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         __props__["name"] = name
         return ComputeClusterHostGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> str:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @property
+    @pulumi.getter(name="hostSystemIds")
+    def host_system_ids(self) -> Optional[List[str]]:
+        """
+        The managed object IDs of
+        the hosts to put in the cluster.
+        """
+        return pulumi.get(self, "host_system_ids")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the host group. This must be unique in the
+        cluster. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

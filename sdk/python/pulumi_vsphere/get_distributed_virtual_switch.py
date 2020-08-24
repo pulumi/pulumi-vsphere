@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetDistributedVirtualSwitchResult',
+    'AwaitableGetDistributedVirtualSwitchResult',
+    'get_distributed_virtual_switch',
+]
 
+@pulumi.output_type
 class GetDistributedVirtualSwitchResult:
     """
     A collection of values returned by getDistributedVirtualSwitch.
@@ -16,19 +22,39 @@ class GetDistributedVirtualSwitchResult:
     def __init__(__self__, datacenter_id=None, id=None, name=None, uplinks=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
-        __self__.datacenter_id = datacenter_id
+        pulumi.set(__self__, "datacenter_id", datacenter_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if uplinks and not isinstance(uplinks, list):
+            raise TypeError("Expected argument 'uplinks' to be a list")
+        pulumi.set(__self__, "uplinks", uplinks)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> Optional[str]:
+        return pulumi.get(self, "datacenter_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if uplinks and not isinstance(uplinks, list):
-            raise TypeError("Expected argument 'uplinks' to be a list")
-        __self__.uplinks = uplinks
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uplinks(self) -> List[str]:
+        return pulumi.get(self, "uplinks")
 
 
 class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResult):
@@ -43,7 +69,9 @@ class AwaitableGetDistributedVirtualSwitchResult(GetDistributedVirtualSwitchResu
             uplinks=self.uplinks)
 
 
-def get_distributed_virtual_switch(datacenter_id=None, name=None, opts=None):
+def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
+                                   name: Optional[str] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributedVirtualSwitchResult:
     """
     The `DistributedVirtualSwitch` data source can be used to discover
     the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
@@ -90,10 +118,10 @@ def get_distributed_virtual_switch(datacenter_id=None, name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch', __args__, opts=opts, typ=GetDistributedVirtualSwitchResult).value
 
     return AwaitableGetDistributedVirtualSwitchResult(
-        datacenter_id=__ret__.get('datacenterId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        uplinks=__ret__.get('uplinks'))
+        datacenter_id=__ret__.datacenter_id,
+        id=__ret__.id,
+        name=__ret__.name,
+        uplinks=__ret__.uplinks)

@@ -5,58 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Vnic']
 
 
 class Vnic(pulumi.CustomResource):
-    distributed_port_group: pulumi.Output[str]
-    """
-    Key of the distributed portgroup the nic will connect to.
-    """
-    distributed_switch_port: pulumi.Output[str]
-    """
-    UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
-    """
-    host: pulumi.Output[str]
-    """
-    ESX host the interface belongs to
-    """
-    ipv4: pulumi.Output[dict]
-    """
-    IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
-
-      * `dhcp` (`bool`) - Use DHCP to configure the interface's IPv4 stack.
-      * `gw` (`str`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-      * `ip` (`str`) - Address of the interface, if DHCP is not set.
-      * `netmask` (`str`) - Netmask of the interface, if DHCP is not set.
-    """
-    ipv6: pulumi.Output[dict]
-    """
-    IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
-
-      * `addresses` (`list`) - List of IPv6 addresses
-      * `autoconfig` (`bool`) - Use IPv6 Autoconfiguration (RFC2462).
-      * `dhcp` (`bool`) - Use DHCP to configure the interface's IPv4 stack.
-      * `gw` (`str`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-    """
-    mac: pulumi.Output[str]
-    """
-    MAC address of the interface.
-    """
-    mtu: pulumi.Output[float]
-    """
-    MTU of the interface.
-    """
-    netstack: pulumi.Output[str]
-    """
-    TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
-    """
-    portgroup: pulumi.Output[str]
-    """
-    Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
-    """
-    def __init__(__self__, resource_name, opts=None, distributed_port_group=None, distributed_switch_port=None, host=None, ipv4=None, ipv6=None, mac=None, mtu=None, netstack=None, portgroup=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 distributed_port_group: Optional[pulumi.Input[str]] = None,
+                 distributed_switch_port: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 ipv4: Optional[pulumi.Input[pulumi.InputType['VnicIpv4Args']]] = None,
+                 ipv6: Optional[pulumi.Input[pulumi.InputType['VnicIpv6Args']]] = None,
+                 mac: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[float]] = None,
+                 netstack: Optional[pulumi.Input[str]] = None,
+                 portgroup: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a VMware vSphere vnic resource.
 
@@ -74,10 +46,10 @@ class Vnic(pulumi.CustomResource):
             datacenter_id=dc.id)
         d1 = vsphere.DistributedVirtualSwitch("d1",
             datacenter_id=dc.id,
-            hosts=[{
-                "host_system_id": h1.id,
-                "devices": ["vnic3"],
-            }])
+            hosts=[vsphere.DistributedVirtualSwitchHostArgs(
+                host_system_id=h1.id,
+                devices=["vnic3"],
+            )])
         p1 = vsphere.DistributedPortGroup("p1",
             vlan_id=1234,
             distributed_virtual_switch_uuid=d1.id)
@@ -85,9 +57,9 @@ class Vnic(pulumi.CustomResource):
             host=h1.id,
             distributed_switch_port=d1.id,
             distributed_port_group=p1.id,
-            ipv4={
-                "dhcp": True,
-            },
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
             netstack="vmotion")
         ```
         ### Create a vnic attached to a portgroup using the default TCP/IP stack
@@ -113,9 +85,9 @@ class Vnic(pulumi.CustomResource):
         v1 = vsphere.Vnic("v1",
             host=h1.id,
             portgroup=p1.name,
-            ipv4={
-                "dhcp": True,
-            })
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ))
         ```
         ## Importing
 
@@ -135,26 +107,12 @@ class Vnic(pulumi.CustomResource):
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
-        :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
-        :param pulumi.Input[dict] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        :param pulumi.Input[pulumi.InputType['VnicIpv4Args']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        :param pulumi.Input[pulumi.InputType['VnicIpv6Args']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
         :param pulumi.Input[str] mac: MAC address of the interface.
         :param pulumi.Input[float] mtu: MTU of the interface.
         :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
-
-        The **ipv4** object supports the following:
-
-          * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
-          * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-          * `ip` (`pulumi.Input[str]`) - Address of the interface, if DHCP is not set.
-          * `netmask` (`pulumi.Input[str]`) - Netmask of the interface, if DHCP is not set.
-
-        The **ipv6** object supports the following:
-
-          * `addresses` (`pulumi.Input[list]`) - List of IPv6 addresses
-          * `autoconfig` (`pulumi.Input[bool]`) - Use IPv6 Autoconfiguration (RFC2462).
-          * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
-          * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -191,37 +149,34 @@ class Vnic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, distributed_port_group=None, distributed_switch_port=None, host=None, ipv4=None, ipv6=None, mac=None, mtu=None, netstack=None, portgroup=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            distributed_port_group: Optional[pulumi.Input[str]] = None,
+            distributed_switch_port: Optional[pulumi.Input[str]] = None,
+            host: Optional[pulumi.Input[str]] = None,
+            ipv4: Optional[pulumi.Input[pulumi.InputType['VnicIpv4Args']]] = None,
+            ipv6: Optional[pulumi.Input[pulumi.InputType['VnicIpv6Args']]] = None,
+            mac: Optional[pulumi.Input[str]] = None,
+            mtu: Optional[pulumi.Input[float]] = None,
+            netstack: Optional[pulumi.Input[str]] = None,
+            portgroup: Optional[pulumi.Input[str]] = None) -> 'Vnic':
         """
         Get an existing Vnic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
         :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
         :param pulumi.Input[str] host: ESX host the interface belongs to
-        :param pulumi.Input[dict] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
-        :param pulumi.Input[dict] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        :param pulumi.Input[pulumi.InputType['VnicIpv4Args']] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        :param pulumi.Input[pulumi.InputType['VnicIpv6Args']] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
         :param pulumi.Input[str] mac: MAC address of the interface.
         :param pulumi.Input[float] mtu: MTU of the interface.
         :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
-
-        The **ipv4** object supports the following:
-
-          * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
-          * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
-          * `ip` (`pulumi.Input[str]`) - Address of the interface, if DHCP is not set.
-          * `netmask` (`pulumi.Input[str]`) - Netmask of the interface, if DHCP is not set.
-
-        The **ipv6** object supports the following:
-
-          * `addresses` (`pulumi.Input[list]`) - List of IPv6 addresses
-          * `autoconfig` (`pulumi.Input[bool]`) - Use IPv6 Autoconfiguration (RFC2462).
-          * `dhcp` (`pulumi.Input[bool]`) - Use DHCP to configure the interface's IPv4 stack.
-          * `gw` (`pulumi.Input[str]`) - IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -238,8 +193,81 @@ class Vnic(pulumi.CustomResource):
         __props__["portgroup"] = portgroup
         return Vnic(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="distributedPortGroup")
+    def distributed_port_group(self) -> Optional[str]:
+        """
+        Key of the distributed portgroup the nic will connect to.
+        """
+        return pulumi.get(self, "distributed_port_group")
+
+    @property
+    @pulumi.getter(name="distributedSwitchPort")
+    def distributed_switch_port(self) -> Optional[str]:
+        """
+        UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        """
+        return pulumi.get(self, "distributed_switch_port")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        ESX host the interface belongs to
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.VnicIpv4']:
+        """
+        IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.VnicIpv6']:
+        """
+        IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> str:
+        """
+        MAC address of the interface.
+        """
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> float:
+        """
+        MTU of the interface.
+        """
+        return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter
+    def netstack(self) -> Optional[str]:
+        """
+        TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        """
+        return pulumi.get(self, "netstack")
+
+    @property
+    @pulumi.getter
+    def portgroup(self) -> Optional[str]:
+        """
+        Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
+        """
+        return pulumi.get(self, "portgroup")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetRoleResult',
+    'AwaitableGetRoleResult',
+    'get_role',
+]
 
+@pulumi.output_type
 class GetRoleResult:
     """
     A collection of values returned by getRole.
@@ -16,31 +22,56 @@ class GetRoleResult:
     def __init__(__self__, description=None, id=None, label=None, name=None, role_privileges=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if label and not isinstance(label, str):
+            raise TypeError("Expected argument 'label' to be a str")
+        pulumi.set(__self__, "label", label)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if role_privileges and not isinstance(role_privileges, list):
+            raise TypeError("Expected argument 'role_privileges' to be a list")
+        pulumi.set(__self__, "role_privileges", role_privileges)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         The description of the role.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if label and not isinstance(label, str):
-            raise TypeError("Expected argument 'label' to be a str")
-        __self__.label = label
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
         """
         The display label of the role.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if role_privileges and not isinstance(role_privileges, list):
-            raise TypeError("Expected argument 'role_privileges' to be a list")
-        __self__.role_privileges = role_privileges
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rolePrivileges")
+    def role_privileges(self) -> Optional[List[str]]:
         """
         The privileges associated with the role.
         """
+        return pulumi.get(self, "role_privileges")
 
 
 class AwaitableGetRoleResult(GetRoleResult):
@@ -56,7 +87,11 @@ class AwaitableGetRoleResult(GetRoleResult):
             role_privileges=self.role_privileges)
 
 
-def get_role(description=None, label=None, name=None, role_privileges=None, opts=None):
+def get_role(description: Optional[str] = None,
+             label: Optional[str] = None,
+             name: Optional[str] = None,
+             role_privileges: Optional[List[str]] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
     The `Role` data source can be used to discover the id and privileges associated
     with a role given its name or display label in vsphere UI.
@@ -73,7 +108,7 @@ def get_role(description=None, label=None, name=None, role_privileges=None, opts
 
     :param str description: The description of the role.
     :param str label: The label of the role.
-    :param list role_privileges: The privileges associated with the role.
+    :param List[str] role_privileges: The privileges associated with the role.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -84,11 +119,11 @@ def get_role(description=None, label=None, name=None, role_privileges=None, opts
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getRole:getRole', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        label=__ret__.get('label'),
-        name=__ret__.get('name'),
-        role_privileges=__ret__.get('rolePrivileges'))
+        description=__ret__.description,
+        id=__ret__.id,
+        label=__ret__.label,
+        name=__ret__.name,
+        role_privileges=__ret__.role_privileges)

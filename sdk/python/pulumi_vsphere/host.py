@@ -5,73 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Host']
 
 
 class Host(pulumi.CustomResource):
-    cluster: pulumi.Output[str]
-    """
-    The ID of the Compute Cluster this host should
-    be added to. This should not be set if `datacenter` is set. Conflicts with:
-    `cluster`.
-    """
-    cluster_managed: pulumi.Output[bool]
-    """
-    Can be set to `true` if compute cluster
-    membership will be managed through the `compute_cluster` resource rather
-    than the`host` resource. Conflicts with: `cluster`.
-    """
-    connected: pulumi.Output[bool]
-    """
-    If set to false then the host will be disconected.
-    Default is `false`.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The ID of the datacenter this host should
-    be added to. This should not be set if `cluster` is set.
-    """
-    force: pulumi.Output[bool]
-    """
-    If set to true then it will force the host to be added, even
-    if the host is already connected to a different vSphere instance. Default is `false`
-    """
-    hostname: pulumi.Output[str]
-    """
-    FQDN or IP address of the host to be added.
-    """
-    license: pulumi.Output[str]
-    """
-    The license key that will be applied to the host.
-    The license key is expected to be present in vSphere.
-    """
-    lockdown: pulumi.Output[str]
-    """
-    Set the lockdown state of the host. Valid options are
-    `disabled`, `normal`, and `strict`. Default is `disabled`.
-    """
-    maintenance: pulumi.Output[bool]
-    """
-    Set the management state of the host. Default is `false`.
-    """
-    password: pulumi.Output[str]
-    """
-    Password that will be used by vSphere to authenticate
-    to the host.
-    """
-    thumbprint: pulumi.Output[str]
-    """
-    Host's certificate SHA-1 thumbprint. If not set the the
-    CA that signed the host's certificate should be trusted. If the CA is not trusted
-    and no thumbprint is set then the operation will fail.
-    """
-    username: pulumi.Output[str]
-    """
-    Username that will be used by vSphere to authenticate
-    to the host.
-    """
-    def __init__(__self__, resource_name, opts=None, cluster=None, cluster_managed=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 cluster_managed: Optional[pulumi.Input[bool]] = None,
+                 connected: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 lockdown: Optional[pulumi.Input[str]] = None,
+                 maintenance: Optional[pulumi.Input[bool]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 thumbprint: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a VMware vSphere host resource. This represents an ESXi host that
         can be used either as part of a Compute Cluster or Standalone.
@@ -190,13 +148,27 @@ class Host(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster=None, cluster_managed=None, connected=None, datacenter=None, force=None, hostname=None, license=None, lockdown=None, maintenance=None, password=None, thumbprint=None, username=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster: Optional[pulumi.Input[str]] = None,
+            cluster_managed: Optional[pulumi.Input[bool]] = None,
+            connected: Optional[pulumi.Input[bool]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            license: Optional[pulumi.Input[str]] = None,
+            lockdown: Optional[pulumi.Input[str]] = None,
+            maintenance: Optional[pulumi.Input[bool]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            thumbprint: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'Host':
         """
         Get an existing Host resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
@@ -242,8 +214,118 @@ class Host(pulumi.CustomResource):
         __props__["username"] = username
         return Host(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[str]:
+        """
+        The ID of the Compute Cluster this host should
+        be added to. This should not be set if `datacenter` is set. Conflicts with:
+        `cluster`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="clusterManaged")
+    def cluster_managed(self) -> Optional[bool]:
+        """
+        Can be set to `true` if compute cluster
+        membership will be managed through the `compute_cluster` resource rather
+        than the`host` resource. Conflicts with: `cluster`.
+        """
+        return pulumi.get(self, "cluster_managed")
+
+    @property
+    @pulumi.getter
+    def connected(self) -> Optional[bool]:
+        """
+        If set to false then the host will be disconected.
+        Default is `false`.
+        """
+        return pulumi.get(self, "connected")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        The ID of the datacenter this host should
+        be added to. This should not be set if `cluster` is set.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[bool]:
+        """
+        If set to true then it will force the host to be added, even
+        if the host is already connected to a different vSphere instance. Default is `false`
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        FQDN or IP address of the host to be added.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[str]:
+        """
+        The license key that will be applied to the host.
+        The license key is expected to be present in vSphere.
+        """
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def lockdown(self) -> Optional[str]:
+        """
+        Set the lockdown state of the host. Valid options are
+        `disabled`, `normal`, and `strict`. Default is `disabled`.
+        """
+        return pulumi.get(self, "lockdown")
+
+    @property
+    @pulumi.getter
+    def maintenance(self) -> Optional[bool]:
+        """
+        Set the management state of the host. Default is `false`.
+        """
+        return pulumi.get(self, "maintenance")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password that will be used by vSphere to authenticate
+        to the host.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        Host's certificate SHA-1 thumbprint. If not set the the
+        CA that signed the host's certificate should be trusted. If the CA is not trusted
+        and no thumbprint is set then the operation will fail.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username that will be used by vSphere to authenticate
+        to the host.
+        """
+        return pulumi.get(self, "username")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

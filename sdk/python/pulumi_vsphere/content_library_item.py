@@ -5,38 +5,30 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ContentLibraryItem']
 
 
 class ContentLibraryItem(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description for the item.
-    """
-    file_urls: pulumi.Output[list]
-    """
-    A list of files to download for the Content Library item.
-    """
-    library_id: pulumi.Output[str]
-    """
-    The ID of the Content Library the item should be created in.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the item to be created in the Content Library.
-    """
-    type: pulumi.Output[str]
-    """
-    Type of content library item.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, file_urls=None, library_id=None, name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ContentLibraryItem resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[list] file_urls: A list of files to download for the Content Library item.
+        :param pulumi.Input[List[pulumi.Input[str]]] file_urls: A list of files to download for the Content Library item.
         :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
         :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
         :param pulumi.Input[str] type: Type of content library item.
@@ -74,16 +66,23 @@ class ContentLibraryItem(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, file_urls=None, library_id=None, name=None, type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            file_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            library_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'ContentLibraryItem':
         """
         Get an existing ContentLibraryItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[list] file_urls: A list of files to download for the Content Library item.
+        :param pulumi.Input[List[pulumi.Input[str]]] file_urls: A list of files to download for the Content Library item.
         :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
         :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
         :param pulumi.Input[str] type: Type of content library item.
@@ -99,8 +98,49 @@ class ContentLibraryItem(pulumi.CustomResource):
         __props__["type"] = type
         return ContentLibraryItem(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description for the item.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="fileUrls")
+    def file_urls(self) -> List[str]:
+        """
+        A list of files to download for the Content Library item.
+        """
+        return pulumi.get(self, "file_urls")
+
+    @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> str:
+        """
+        The ID of the Content Library the item should be created in.
+        """
+        return pulumi.get(self, "library_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the item to be created in the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of content library item.
+        """
+        return pulumi.get(self, "type")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,34 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['DrsVmOverride']
 
 
 class DrsVmOverride(pulumi.CustomResource):
-    compute_cluster_id: pulumi.Output[str]
-    """
-    The managed object reference
-    ID of the cluster to put the override in.  Forces a new
-    resource if changed.
-    """
-    drs_automation_level: pulumi.Output[str]
-    """
-    Overrides the automation level for this virtual
-    machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
-    `fullyAutomated`. Default: `manual`.
-    """
-    drs_enabled: pulumi.Output[bool]
-    """
-    Overrides the default DRS setting for this virtual
-    machine. Can be either `true` or `false`. Default: `false`.
-    """
-    virtual_machine_id: pulumi.Output[str]
-    """
-    The UUID of the virtual machine to create
-    the override for.  Forces a new resource if changed.
-    """
-    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, drs_automation_level=None, drs_enabled=None, virtual_machine_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 drs_automation_level: Optional[pulumi.Input[str]] = None,
+                 drs_enabled: Optional[pulumi.Input[bool]] = None,
+                 virtual_machine_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a DrsVmOverride resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -80,13 +69,19 @@ class DrsVmOverride(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, compute_cluster_id=None, drs_automation_level=None, drs_enabled=None, virtual_machine_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: Optional[pulumi.Input[str]] = None,
+            drs_automation_level: Optional[pulumi.Input[str]] = None,
+            drs_enabled: Optional[pulumi.Input[bool]] = None,
+            virtual_machine_id: Optional[pulumi.Input[str]] = None) -> 'DrsVmOverride':
         """
         Get an existing DrsVmOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the override in.  Forces a new
@@ -109,8 +104,47 @@ class DrsVmOverride(pulumi.CustomResource):
         __props__["virtual_machine_id"] = virtual_machine_id
         return DrsVmOverride(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> str:
+        """
+        The managed object reference
+        ID of the cluster to put the override in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @property
+    @pulumi.getter(name="drsAutomationLevel")
+    def drs_automation_level(self) -> Optional[str]:
+        """
+        Overrides the automation level for this virtual
+        machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
+        `fullyAutomated`. Default: `manual`.
+        """
+        return pulumi.get(self, "drs_automation_level")
+
+    @property
+    @pulumi.getter(name="drsEnabled")
+    def drs_enabled(self) -> Optional[bool]:
+        """
+        Overrides the default DRS setting for this virtual
+        machine. Can be either `true` or `false`. Default: `false`.
+        """
+        return pulumi.get(self, "drs_enabled")
+
+    @property
+    @pulumi.getter(name="virtualMachineId")
+    def virtual_machine_id(self) -> str:
+        """
+        The UUID of the virtual machine to create
+        the override for.  Forces a new resource if changed.
+        """
+        return pulumi.get(self, "virtual_machine_id")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

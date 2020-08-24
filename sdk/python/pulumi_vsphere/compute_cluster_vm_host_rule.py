@@ -5,49 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ComputeClusterVmHostRule']
 
 
 class ComputeClusterVmHostRule(pulumi.CustomResource):
-    affinity_host_group_name: pulumi.Output[str]
-    """
-    When this field is used, the virtual
-    machines defined in `vm_group_name` will be run on the
-    hosts defined in this host group.
-    """
-    anti_affinity_host_group_name: pulumi.Output[str]
-    """
-    When this field is used, the
-    virtual machines defined in `vm_group_name` will _not_ be
-    run on the hosts defined in this host group.
-    """
-    compute_cluster_id: pulumi.Output[str]
-    """
-    The managed object reference
-    ID of the cluster to put the group in.  Forces a new
-    resource if changed.
-    """
-    enabled: pulumi.Output[bool]
-    """
-    Enable this rule in the cluster. Default: `true`.
-    """
-    mandatory: pulumi.Output[bool]
-    """
-    When this value is `true`, prevents any virtual
-    machine operations that may violate this rule. Default: `false`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the rule. This must be unique in the
-    cluster.
-    """
-    vm_group_name: pulumi.Output[str]
-    """
-    The name of the virtual machine group to use
-    with this rule.
-    """
-    def __init__(__self__, resource_name, opts=None, affinity_host_group_name=None, anti_affinity_host_group_name=None, compute_cluster_id=None, enabled=None, mandatory=None, name=None, vm_group_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 vm_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ComputeClusterVmHostRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -104,13 +81,22 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, affinity_host_group_name=None, anti_affinity_host_group_name=None, compute_cluster_id=None, enabled=None, mandatory=None, name=None, vm_group_name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+            anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+            compute_cluster_id: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            mandatory: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            vm_group_name: Optional[pulumi.Input[str]] = None) -> 'ComputeClusterVmHostRule':
         """
         Get an existing ComputeClusterVmHostRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] affinity_host_group_name: When this field is used, the virtual
                machines defined in `vm_group_name` will be run on the
@@ -142,8 +128,74 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         __props__["vm_group_name"] = vm_group_name
         return ComputeClusterVmHostRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="affinityHostGroupName")
+    def affinity_host_group_name(self) -> Optional[str]:
+        """
+        When this field is used, the virtual
+        machines defined in `vm_group_name` will be run on the
+        hosts defined in this host group.
+        """
+        return pulumi.get(self, "affinity_host_group_name")
+
+    @property
+    @pulumi.getter(name="antiAffinityHostGroupName")
+    def anti_affinity_host_group_name(self) -> Optional[str]:
+        """
+        When this field is used, the
+        virtual machines defined in `vm_group_name` will _not_ be
+        run on the hosts defined in this host group.
+        """
+        return pulumi.get(self, "anti_affinity_host_group_name")
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> str:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable this rule in the cluster. Default: `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> Optional[bool]:
+        """
+        When this value is `true`, prevents any virtual
+        machine operations that may violate this rule. Default: `false`.
+        """
+        return pulumi.get(self, "mandatory")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the rule. This must be unique in the
+        cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="vmGroupName")
+    def vm_group_name(self) -> str:
+        """
+        The name of the virtual machine group to use
+        with this rule.
+        """
+        return pulumi.get(self, "vm_group_name")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetTagCategoryResult',
+    'AwaitableGetTagCategoryResult',
+    'get_tag_category',
+]
 
+@pulumi.output_type
 class GetTagCategoryResult:
     """
     A collection of values returned by getTagCategory.
@@ -16,22 +22,47 @@ class GetTagCategoryResult:
     def __init__(__self__, associable_types=None, cardinality=None, description=None, id=None, name=None):
         if associable_types and not isinstance(associable_types, list):
             raise TypeError("Expected argument 'associable_types' to be a list")
-        __self__.associable_types = associable_types
+        pulumi.set(__self__, "associable_types", associable_types)
         if cardinality and not isinstance(cardinality, str):
             raise TypeError("Expected argument 'cardinality' to be a str")
-        __self__.cardinality = cardinality
+        pulumi.set(__self__, "cardinality", cardinality)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="associableTypes")
+    def associable_types(self) -> List[str]:
+        return pulumi.get(self, "associable_types")
+
+    @property
+    @pulumi.getter
+    def cardinality(self) -> str:
+        return pulumi.get(self, "cardinality")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 class AwaitableGetTagCategoryResult(GetTagCategoryResult):
@@ -47,7 +78,8 @@ class AwaitableGetTagCategoryResult(GetTagCategoryResult):
             name=self.name)
 
 
-def get_tag_category(name=None, opts=None):
+def get_tag_category(name: Optional[str] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagCategoryResult:
     """
     The `TagCategory` data source can be used to reference tag categories
     that are not managed by this provider. Its attributes are exactly the same as the
@@ -76,11 +108,11 @@ def get_tag_category(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult).value
 
     return AwaitableGetTagCategoryResult(
-        associable_types=__ret__.get('associableTypes'),
-        cardinality=__ret__.get('cardinality'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'))
+        associable_types=__ret__.associable_types,
+        cardinality=__ret__.cardinality,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name)

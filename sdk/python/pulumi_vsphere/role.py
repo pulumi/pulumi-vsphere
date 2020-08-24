@@ -5,30 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Role']
 
 
 class Role(pulumi.CustomResource):
-    label: pulumi.Output[str]
-    """
-    The display label of the role.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the role.
-    """
-    role_privileges: pulumi.Output[list]
-    """
-    The privileges to be associated with this role.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, role_privileges=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the role.
-        :param pulumi.Input[list] role_privileges: The privileges to be associated with this role.
+        :param pulumi.Input[List[pulumi.Input[str]]] role_privileges: The privileges to be associated with this role.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -57,17 +54,22 @@ class Role(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, label=None, name=None, role_privileges=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            label: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            role_privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] label: The display label of the role.
         :param pulumi.Input[str] name: The name of the role.
-        :param pulumi.Input[list] role_privileges: The privileges to be associated with this role.
+        :param pulumi.Input[List[pulumi.Input[str]]] role_privileges: The privileges to be associated with this role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -78,8 +80,33 @@ class Role(pulumi.CustomResource):
         __props__["role_privileges"] = role_privileges
         return Role(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        The display label of the role.
+        """
+        return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the role.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rolePrivileges")
+    def role_privileges(self) -> Optional[List[str]]:
+        """
+        The privileges to be associated with this role.
+        """
+        return pulumi.get(self, "role_privileges")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

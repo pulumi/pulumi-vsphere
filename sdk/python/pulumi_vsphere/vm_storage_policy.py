@@ -5,29 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['VmStoragePolicy']
 
 
 class VmStoragePolicy(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    Description of the storage policy.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the storage policy.
-    """
-    tag_rules: pulumi.Output[list]
-    """
-    List of tag rules. The tag category and tags to be associated to this storage policy.
-
-      * `includeDatastoresWithTags` (`bool`) - Whether to include datastores with the given tags or exclude. Default 
-        value is true i.e. include datastores with the given tags.
-      * `tagCategory` (`str`) - Name of the tag category.
-      * `tags` (`list`) - List of Name of tags to select from the given category.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, tag_rules=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tag_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The `VmStoragePolicy` resource can be used to create and manage storage
         policies. Using this storage policy, tag based placement rules can be created to
@@ -51,28 +46,21 @@ class VmStoragePolicy(pulumi.CustomResource):
             category_id=tag_category.id)
         policy_tag_based_placement = vsphere.VmStoragePolicy("policyTagBasedPlacement",
             description="description",
-            tag_rules=[{
-                "tagCategory": tag_category.name,
-                "tags": [
+            tag_rules=[vsphere.VmStoragePolicyTagRuleArgs(
+                tag_category=tag_category.name,
+                tags=[
                     tag1.name,
                     tag2.name,
                 ],
-                "includeDatastoresWithTags": True,
-            }])
+                include_datastores_with_tags=True,
+            )])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the storage policy.
         :param pulumi.Input[str] name: The name of the storage policy.
-        :param pulumi.Input[list] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
-
-        The **tag_rules** object supports the following:
-
-          * `includeDatastoresWithTags` (`pulumi.Input[bool]`) - Whether to include datastores with the given tags or exclude. Default 
-            value is true i.e. include datastores with the given tags.
-          * `tagCategory` (`pulumi.Input[str]`) - Name of the tag category.
-          * `tags` (`pulumi.Input[list]`) - List of Name of tags to select from the given category.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,24 +91,22 @@ class VmStoragePolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, tag_rules=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            tag_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]]] = None) -> 'VmStoragePolicy':
         """
         Get an existing VmStoragePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the storage policy.
         :param pulumi.Input[str] name: The name of the storage policy.
-        :param pulumi.Input[list] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
-
-        The **tag_rules** object supports the following:
-
-          * `includeDatastoresWithTags` (`pulumi.Input[bool]`) - Whether to include datastores with the given tags or exclude. Default 
-            value is true i.e. include datastores with the given tags.
-          * `tagCategory` (`pulumi.Input[str]`) - Name of the tag category.
-          * `tags` (`pulumi.Input[list]`) - List of Name of tags to select from the given category.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VmStoragePolicyTagRuleArgs']]]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -131,8 +117,33 @@ class VmStoragePolicy(pulumi.CustomResource):
         __props__["tag_rules"] = tag_rules
         return VmStoragePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the storage policy.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the storage policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="tagRules")
+    def tag_rules(self) -> List['outputs.VmStoragePolicyTagRule']:
+        """
+        List of tag rules. The tag category and tags to be associated to this storage policy.
+        """
+        return pulumi.get(self, "tag_rules")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

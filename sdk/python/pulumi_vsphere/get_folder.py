@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetFolderResult',
+    'AwaitableGetFolderResult',
+    'get_folder',
+]
 
+@pulumi.output_type
 class GetFolderResult:
     """
     A collection of values returned by getFolder.
@@ -16,13 +22,23 @@ class GetFolderResult:
     def __init__(__self__, id=None, path=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if path and not isinstance(path, str):
+            raise TypeError("Expected argument 'path' to be a str")
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if path and not isinstance(path, str):
-            raise TypeError("Expected argument 'path' to be a str")
-        __self__.path = path
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
 
 
 class AwaitableGetFolderResult(GetFolderResult):
@@ -35,7 +51,8 @@ class AwaitableGetFolderResult(GetFolderResult):
             path=self.path)
 
 
-def get_folder(path=None, opts=None):
+def get_folder(path: Optional[str] = None,
+               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFolderResult:
     """
     The `Folder` data source can be used to get the general attributes of a
     vSphere inventory folder. Paths are absolute and include must include the
@@ -63,8 +80,8 @@ def get_folder(path=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
-        id=__ret__.get('id'),
-        path=__ret__.get('path'))
+        id=__ret__.id,
+        path=__ret__.path)

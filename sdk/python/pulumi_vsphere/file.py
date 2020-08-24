@@ -5,48 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['File']
 
 
 class File(pulumi.CustomResource):
-    create_directories: pulumi.Output[bool]
-    """
-    Create directories in `destination_file`
-    path parameter if any missing for copy operation.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The name of a datacenter in which the file will be
-    uploaded to.
-    """
-    datastore: pulumi.Output[str]
-    """
-    The name of the datastore in which to upload the
-    file to.
-    """
-    destination_file: pulumi.Output[str]
-    """
-    The path to where the file should be uploaded
-    or copied to on vSphere.
-    """
-    source_datacenter: pulumi.Output[str]
-    """
-    The name of a datacenter in which the file
-    will be copied from. Forces a new resource if changed.
-    """
-    source_datastore: pulumi.Output[str]
-    """
-    The name of the datastore in which file will
-    be copied from. Forces a new resource if changed.
-    """
-    source_file: pulumi.Output[str]
-    """
-    The path to the file being uploaded from the
-    host to vSphere or copied within vSphere. Forces a new resource if
-    changed.
-    """
-    def __init__(__self__, resource_name, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 create_directories: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 destination_file: Optional[pulumi.Input[str]] = None,
+                 source_datacenter: Optional[pulumi.Input[str]] = None,
+                 source_datastore: Optional[pulumi.Input[str]] = None,
+                 source_file: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The `File` resource can be used to upload files (such as virtual disk
         files) from the host machine that this provider is running on to a target
@@ -144,13 +122,22 @@ class File(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_directories=None, datacenter=None, datastore=None, destination_file=None, source_datacenter=None, source_datastore=None, source_file=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_directories: Optional[pulumi.Input[bool]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            datastore: Optional[pulumi.Input[str]] = None,
+            destination_file: Optional[pulumi.Input[str]] = None,
+            source_datacenter: Optional[pulumi.Input[str]] = None,
+            source_datastore: Optional[pulumi.Input[str]] = None,
+            source_file: Optional[pulumi.Input[str]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter if any missing for copy operation.
@@ -181,8 +168,73 @@ class File(pulumi.CustomResource):
         __props__["source_file"] = source_file
         return File(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createDirectories")
+    def create_directories(self) -> Optional[bool]:
+        """
+        Create directories in `destination_file`
+        path parameter if any missing for copy operation.
+        """
+        return pulumi.get(self, "create_directories")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        The name of a datacenter in which the file will be
+        uploaded to.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> str:
+        """
+        The name of the datastore in which to upload the
+        file to.
+        """
+        return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter(name="destinationFile")
+    def destination_file(self) -> str:
+        """
+        The path to where the file should be uploaded
+        or copied to on vSphere.
+        """
+        return pulumi.get(self, "destination_file")
+
+    @property
+    @pulumi.getter(name="sourceDatacenter")
+    def source_datacenter(self) -> Optional[str]:
+        """
+        The name of a datacenter in which the file
+        will be copied from. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "source_datacenter")
+
+    @property
+    @pulumi.getter(name="sourceDatastore")
+    def source_datastore(self) -> Optional[str]:
+        """
+        The name of the datastore in which file will
+        be copied from. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "source_datastore")
+
+    @property
+    @pulumi.getter(name="sourceFile")
+    def source_file(self) -> str:
+        """
+        The path to the file being uploaded from the
+        host to vSphere or copied within vSphere. Forces a new resource if
+        changed.
+        """
+        return pulumi.get(self, "source_file")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ComputeClusterVmGroup']
 
 
 class ComputeClusterVmGroup(pulumi.CustomResource):
-    compute_cluster_id: pulumi.Output[str]
-    """
-    The managed object reference
-    ID of the cluster to put the group in.  Forces a new
-    resource if changed.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the VM group. This must be unique in the
-    cluster. Forces a new resource if changed.
-    """
-    virtual_machine_ids: pulumi.Output[list]
-    """
-    The UUIDs of the virtual machines in this
-    group.
-    """
-    def __init__(__self__, resource_name, opts=None, compute_cluster_id=None, name=None, virtual_machine_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ComputeClusterVmGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -36,7 +30,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                resource if changed.
         :param pulumi.Input[str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
-        :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines in this
+        :param pulumi.Input[List[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
         """
         if __name__ is not None:
@@ -68,20 +62,25 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, compute_cluster_id=None, name=None, virtual_machine_ids=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_cluster_id: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            virtual_machine_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ComputeClusterVmGroup':
         """
         Get an existing ComputeClusterVmGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
                resource if changed.
         :param pulumi.Input[str] name: The name of the VM group. This must be unique in the
                cluster. Forces a new resource if changed.
-        :param pulumi.Input[list] virtual_machine_ids: The UUIDs of the virtual machines in this
+        :param pulumi.Input[List[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -93,8 +92,37 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         __props__["virtual_machine_ids"] = virtual_machine_ids
         return ComputeClusterVmGroup(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> str:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the VM group. This must be unique in the
+        cluster. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="virtualMachineIds")
+    def virtual_machine_ids(self) -> Optional[List[str]]:
+        """
+        The UUIDs of the virtual machines in this
+        group.
+        """
+        return pulumi.get(self, "virtual_machine_ids")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
