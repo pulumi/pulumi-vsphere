@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetCustomAttributeResult',
+    'AwaitableGetCustomAttributeResult',
+    'get_custom_attribute',
+]
 
+@pulumi.output_type
 class GetCustomAttributeResult:
     """
     A collection of values returned by getCustomAttribute.
@@ -16,16 +22,31 @@ class GetCustomAttributeResult:
     def __init__(__self__, id=None, managed_object_type=None, name=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if managed_object_type and not isinstance(managed_object_type, str):
+            raise TypeError("Expected argument 'managed_object_type' to be a str")
+        pulumi.set(__self__, "managed_object_type", managed_object_type)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if managed_object_type and not isinstance(managed_object_type, str):
-            raise TypeError("Expected argument 'managed_object_type' to be a str")
-        __self__.managed_object_type = managed_object_type
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="managedObjectType")
+    def managed_object_type(self) -> str:
+        return pulumi.get(self, "managed_object_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
@@ -39,7 +60,8 @@ class AwaitableGetCustomAttributeResult(GetCustomAttributeResult):
             name=self.name)
 
 
-def get_custom_attribute(name=None, opts=None):
+def get_custom_attribute(name: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomAttributeResult:
     """
     The `CustomAttribute` data source can be used to reference custom
     attributes that are not managed by this provider. Its attributes are exactly the
@@ -68,9 +90,9 @@ def get_custom_attribute(name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts, typ=GetCustomAttributeResult).value
 
     return AwaitableGetCustomAttributeResult(
-        id=__ret__.get('id'),
-        managed_object_type=__ret__.get('managedObjectType'),
-        name=__ret__.get('name'))
+        id=__ret__.id,
+        managed_object_type=__ret__.managed_object_type,
+        name=__ret__.name)

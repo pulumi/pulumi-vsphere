@@ -65,6 +65,8 @@ from .virtual_machine_snapshot import *
 from .vm_storage_policy import *
 from .vmfs_datastore import *
 from .vnic import *
+from ._inputs import *
+from . import outputs
 
 # Make subpackages available:
 from . import (

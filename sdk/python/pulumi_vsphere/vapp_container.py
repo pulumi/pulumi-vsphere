@@ -5,101 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['VappContainer']
 
 
 class VappContainer(pulumi.CustomResource):
-    cpu_expandable: pulumi.Output[bool]
-    """
-    Determines if the reservation on a vApp
-    container can grow beyond the specified value if the parent resource pool has
-    unreserved resources. Default: `true`
-    """
-    cpu_limit: pulumi.Output[float]
-    """
-    The CPU utilization of a vApp container will not
-    exceed this limit, even if there are available resources. Set to `-1` for
-    unlimited.
-    Default: `-1`
-    """
-    cpu_reservation: pulumi.Output[float]
-    """
-    Amount of CPU (MHz) that is guaranteed
-    available to the vApp container. Default: `0`
-    """
-    cpu_share_level: pulumi.Output[str]
-    """
-    The CPU allocation level. The level is a
-    simplified view of shares. Levels map to a pre-determined set of numeric
-    values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-    `low`, `normal`, or `high` are specified values in `cpu_shares` will be
-    ignored.  Default: `normal`
-    """
-    cpu_shares: pulumi.Output[float]
-    """
-    The number of shares allocated for CPU. Used to
-    determine resource allocation in case of resource contention. If this is set,
-    `cpu_share_level` must be `custom`.
-    """
-    custom_attributes: pulumi.Output[dict]
-    """
-    A list of custom attributes to set on this resource.
-    """
-    memory_expandable: pulumi.Output[bool]
-    """
-    Determines if the reservation on a vApp
-    container can grow beyond the specified value if the parent resource pool has
-    unreserved resources. Default: `true`
-    """
-    memory_limit: pulumi.Output[float]
-    """
-    The CPU utilization of a vApp container will not
-    exceed this limit, even if there are available resources. Set to `-1` for
-    unlimited.
-    Default: `-1`
-    """
-    memory_reservation: pulumi.Output[float]
-    """
-    Amount of CPU (MHz) that is guaranteed
-    available to the vApp container. Default: `0`
-    """
-    memory_share_level: pulumi.Output[str]
-    """
-    The CPU allocation level. The level is a
-    simplified view of shares. Levels map to a pre-determined set of numeric
-    values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
-    `low`, `normal`, or `high` are specified values in `memory_shares` will be
-    ignored.  Default: `normal`
-    """
-    memory_shares: pulumi.Output[float]
-    """
-    The number of shares allocated for CPU. Used to
-    determine resource allocation in case of resource contention. If this is set,
-    `memory_share_level` must be `custom`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the vApp container.
-    """
-    parent_folder_id: pulumi.Output[str]
-    """
-    The managed object ID of
-    the vApp container's parent folder.
-    """
-    parent_resource_pool_id: pulumi.Output[str]
-    """
-    The managed object ID
-    of the parent resource pool. This can be the root resource pool for a cluster
-    or standalone host, or a resource pool itself. When moving a vApp container
-    from one parent resource pool to another, both must share a common root
-    resource pool or the move will fail.
-    """
-    tags: pulumi.Output[list]
-    """
-    The IDs of any tags to attach to this resource.
-    """
-    def __init__(__self__, resource_name, opts=None, cpu_expandable=None, cpu_limit=None, cpu_reservation=None, cpu_share_level=None, cpu_shares=None, custom_attributes=None, memory_expandable=None, memory_limit=None, memory_reservation=None, memory_share_level=None, memory_shares=None, name=None, parent_folder_id=None, parent_resource_pool_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cpu_expandable: Optional[pulumi.Input[bool]] = None,
+                 cpu_limit: Optional[pulumi.Input[float]] = None,
+                 cpu_reservation: Optional[pulumi.Input[float]] = None,
+                 cpu_share_level: Optional[pulumi.Input[str]] = None,
+                 cpu_shares: Optional[pulumi.Input[float]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 memory_expandable: Optional[pulumi.Input[bool]] = None,
+                 memory_limit: Optional[pulumi.Input[float]] = None,
+                 memory_reservation: Optional[pulumi.Input[float]] = None,
+                 memory_share_level: Optional[pulumi.Input[str]] = None,
+                 memory_shares: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_folder_id: Optional[pulumi.Input[str]] = None,
+                 parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a VappContainer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -121,7 +54,7 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
-        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -147,7 +80,7 @@ class VappContainer(pulumi.CustomResource):
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -190,13 +123,30 @@ class VappContainer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cpu_expandable=None, cpu_limit=None, cpu_reservation=None, cpu_share_level=None, cpu_shares=None, custom_attributes=None, memory_expandable=None, memory_limit=None, memory_reservation=None, memory_share_level=None, memory_shares=None, name=None, parent_folder_id=None, parent_resource_pool_id=None, tags=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cpu_expandable: Optional[pulumi.Input[bool]] = None,
+            cpu_limit: Optional[pulumi.Input[float]] = None,
+            cpu_reservation: Optional[pulumi.Input[float]] = None,
+            cpu_share_level: Optional[pulumi.Input[str]] = None,
+            cpu_shares: Optional[pulumi.Input[float]] = None,
+            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            memory_expandable: Optional[pulumi.Input[bool]] = None,
+            memory_limit: Optional[pulumi.Input[float]] = None,
+            memory_reservation: Optional[pulumi.Input[float]] = None,
+            memory_share_level: Optional[pulumi.Input[str]] = None,
+            memory_shares: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            parent_folder_id: Optional[pulumi.Input[str]] = None,
+            parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'VappContainer':
         """
         Get an existing VappContainer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
@@ -215,7 +165,7 @@ class VappContainer(pulumi.CustomResource):
         :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
-        :param pulumi.Input[dict] custom_attributes: A list of custom attributes to set on this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a vApp
                container can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
@@ -241,7 +191,7 @@ class VappContainer(pulumi.CustomResource):
                or standalone host, or a resource pool itself. When moving a vApp container
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -264,8 +214,158 @@ class VappContainer(pulumi.CustomResource):
         __props__["tags"] = tags
         return VappContainer(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cpuExpandable")
+    def cpu_expandable(self) -> Optional[bool]:
+        """
+        Determines if the reservation on a vApp
+        container can grow beyond the specified value if the parent resource pool has
+        unreserved resources. Default: `true`
+        """
+        return pulumi.get(self, "cpu_expandable")
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[float]:
+        """
+        The CPU utilization of a vApp container will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited.
+        Default: `-1`
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @property
+    @pulumi.getter(name="cpuReservation")
+    def cpu_reservation(self) -> Optional[float]:
+        """
+        Amount of CPU (MHz) that is guaranteed
+        available to the vApp container. Default: `0`
+        """
+        return pulumi.get(self, "cpu_reservation")
+
+    @property
+    @pulumi.getter(name="cpuShareLevel")
+    def cpu_share_level(self) -> Optional[str]:
+        """
+        The CPU allocation level. The level is a
+        simplified view of shares. Levels map to a pre-determined set of numeric
+        values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+        `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+        ignored.  Default: `normal`
+        """
+        return pulumi.get(self, "cpu_share_level")
+
+    @property
+    @pulumi.getter(name="cpuShares")
+    def cpu_shares(self) -> float:
+        """
+        The number of shares allocated for CPU. Used to
+        determine resource allocation in case of resource contention. If this is set,
+        `cpu_share_level` must be `custom`.
+        """
+        return pulumi.get(self, "cpu_shares")
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+        """
+        A list of custom attributes to set on this resource.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter(name="memoryExpandable")
+    def memory_expandable(self) -> Optional[bool]:
+        """
+        Determines if the reservation on a vApp
+        container can grow beyond the specified value if the parent resource pool has
+        unreserved resources. Default: `true`
+        """
+        return pulumi.get(self, "memory_expandable")
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[float]:
+        """
+        The CPU utilization of a vApp container will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited.
+        Default: `-1`
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @property
+    @pulumi.getter(name="memoryReservation")
+    def memory_reservation(self) -> Optional[float]:
+        """
+        Amount of CPU (MHz) that is guaranteed
+        available to the vApp container. Default: `0`
+        """
+        return pulumi.get(self, "memory_reservation")
+
+    @property
+    @pulumi.getter(name="memoryShareLevel")
+    def memory_share_level(self) -> Optional[str]:
+        """
+        The CPU allocation level. The level is a
+        simplified view of shares. Levels map to a pre-determined set of numeric
+        values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+        `low`, `normal`, or `high` are specified values in `memory_shares` will be
+        ignored.  Default: `normal`
+        """
+        return pulumi.get(self, "memory_share_level")
+
+    @property
+    @pulumi.getter(name="memoryShares")
+    def memory_shares(self) -> float:
+        """
+        The number of shares allocated for CPU. Used to
+        determine resource allocation in case of resource contention. If this is set,
+        `memory_share_level` must be `custom`.
+        """
+        return pulumi.get(self, "memory_shares")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the vApp container.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentFolderId")
+    def parent_folder_id(self) -> Optional[str]:
+        """
+        The managed object ID of
+        the vApp container's parent folder.
+        """
+        return pulumi.get(self, "parent_folder_id")
+
+    @property
+    @pulumi.getter(name="parentResourcePoolId")
+    def parent_resource_pool_id(self) -> str:
+        """
+        The managed object ID
+        of the parent resource pool. This can be the root resource pool for a cluster
+        or standalone host, or a resource pool itself. When moving a vApp container
+        from one parent resource pool to another, both must share a common root
+        resource pool or the move will fail.
+        """
+        return pulumi.get(self, "parent_resource_pool_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

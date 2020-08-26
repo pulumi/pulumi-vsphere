@@ -5,32 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['ContentLibrary']
 
 
 class ContentLibrary(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A description of the Content Library.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the Content Library.
-    """
-    storage_backings: pulumi.Output[list]
-    """
-    The managed object reference ID on which to store Content Library
-    items.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, storage_backings=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a ContentLibrary resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[list] storage_backings: The managed object reference ID on which to store Content Library
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
         """
         if __name__ is not None:
@@ -62,17 +59,22 @@ class ContentLibrary(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, storage_backings=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ContentLibrary':
         """
         Get an existing ContentLibrary resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[list] storage_backings: The managed object reference ID on which to store Content Library
+        :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -84,8 +86,34 @@ class ContentLibrary(pulumi.CustomResource):
         __props__["storage_backings"] = storage_backings
         return ContentLibrary(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the Content Library.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="storageBackings")
+    def storage_backings(self) -> List[str]:
+        """
+        The managed object reference ID on which to store Content Library
+        items.
+        """
+        return pulumi.get(self, "storage_backings")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

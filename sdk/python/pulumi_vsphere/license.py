@@ -5,36 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['License']
 
 
 class License(pulumi.CustomResource):
-    edition_key: pulumi.Output[str]
-    """
-    The product edition of the license key.
-    """
-    labels: pulumi.Output[dict]
-    """
-    A map of key/value pairs to be attached as labels (tags) to the license key.
-    """
-    license_key: pulumi.Output[str]
-    """
-    The license key to add.
-    """
-    name: pulumi.Output[str]
-    """
-    The display name for the license.
-    """
-    total: pulumi.Output[float]
-    """
-    Total number of units (example: CPUs) contained in the license.
-    """
-    used: pulumi.Output[float]
-    """
-    The number of units (example: CPUs) assigned to this license.
-    """
-    def __init__(__self__, resource_name, opts=None, labels=None, license_key=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 license_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
 
@@ -54,7 +39,7 @@ class License(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
         """
         if __name__ is not None:
@@ -89,16 +74,24 @@ class License(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, edition_key=None, labels=None, license_key=None, name=None, total=None, used=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            edition_key: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            license_key: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            total: Optional[pulumi.Input[float]] = None,
+            used: Optional[pulumi.Input[float]] = None) -> 'License':
         """
         Get an existing License resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] edition_key: The product edition of the license key.
-        :param pulumi.Input[dict] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
         :param pulumi.Input[str] name: The display name for the license.
         :param pulumi.Input[float] total: Total number of units (example: CPUs) contained in the license.
@@ -116,8 +109,57 @@ class License(pulumi.CustomResource):
         __props__["used"] = used
         return License(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="editionKey")
+    def edition_key(self) -> str:
+        """
+        The product edition of the license key.
+        """
+        return pulumi.get(self, "edition_key")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key/value pairs to be attached as labels (tags) to the license key.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> str:
+        """
+        The license key to add.
+        """
+        return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The display name for the license.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def total(self) -> float:
+        """
+        Total number of units (example: CPUs) contained in the license.
+        """
+        return pulumi.get(self, "total")
+
+    @property
+    @pulumi.getter
+    def used(self) -> float:
+        """
+        The number of units (example: CPUs) assigned to this license.
+        """
+        return pulumi.get(self, "used")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

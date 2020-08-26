@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetHostThumbprintResult',
+    'AwaitableGetHostThumbprintResult',
+    'get_host_thumbprint',
+]
 
+@pulumi.output_type
 class GetHostThumbprintResult:
     """
     A collection of values returned by getHostThumbprint.
@@ -16,19 +22,39 @@ class GetHostThumbprintResult:
     def __init__(__self__, address=None, id=None, insecure=None, port=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
-        __self__.address = address
+        pulumi.set(__self__, "address", address)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if insecure and not isinstance(insecure, bool):
+            raise TypeError("Expected argument 'insecure' to be a bool")
+        pulumi.set(__self__, "insecure", insecure)
+        if port and not isinstance(port, str):
+            raise TypeError("Expected argument 'port' to be a str")
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if insecure and not isinstance(insecure, bool):
-            raise TypeError("Expected argument 'insecure' to be a bool")
-        __self__.insecure = insecure
-        if port and not isinstance(port, str):
-            raise TypeError("Expected argument 'port' to be a str")
-        __self__.port = port
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> Optional[bool]:
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        return pulumi.get(self, "port")
 
 
 class AwaitableGetHostThumbprintResult(GetHostThumbprintResult):
@@ -43,7 +69,10 @@ class AwaitableGetHostThumbprintResult(GetHostThumbprintResult):
             port=self.port)
 
 
-def get_host_thumbprint(address=None, insecure=None, port=None, opts=None):
+def get_host_thumbprint(address: Optional[str] = None,
+                        insecure: Optional[bool] = None,
+                        port: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostThumbprintResult:
     """
     The `vsphere_thumbprint` data source can be used to discover the host
     thumbprint of an ESXi host. This can be used when adding the `Host`
@@ -74,10 +103,10 @@ def get_host_thumbprint(address=None, insecure=None, port=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getHostThumbprint:getHostThumbprint', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getHostThumbprint:getHostThumbprint', __args__, opts=opts, typ=GetHostThumbprintResult).value
 
     return AwaitableGetHostThumbprintResult(
-        address=__ret__.get('address'),
-        id=__ret__.get('id'),
-        insecure=__ret__.get('insecure'),
-        port=__ret__.get('port'))
+        address=__ret__.address,
+        id=__ret__.id,
+        insecure=__ret__.insecure,
+        port=__ret__.port)

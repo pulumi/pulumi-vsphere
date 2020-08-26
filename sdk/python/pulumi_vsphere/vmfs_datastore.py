@@ -5,95 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['VmfsDatastore']
 
 
 class VmfsDatastore(pulumi.CustomResource):
-    accessible: pulumi.Output[bool]
-    """
-    The connectivity status of the datastore. If this is `false`,
-    some other computed attributes may be out of date.
-    """
-    capacity: pulumi.Output[float]
-    """
-    Maximum capacity of the datastore, in megabytes.
-    """
-    custom_attributes: pulumi.Output[dict]
-    """
-    Map of custom attribute ids to attribute 
-    value string to set on datastore resource.
-    """
-    datastore_cluster_id: pulumi.Output[str]
-    """
-    The managed object
-    ID of a datastore cluster to put this datastore in.
-    Conflicts with `folder`.
-    """
-    disks: pulumi.Output[list]
-    """
-    The disks to use with the datastore.
-    """
-    folder: pulumi.Output[str]
-    """
-    The relative path to a folder to put this datastore in.
-    This is a path relative to the datacenter you are deploying the datastore to.
-    Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
-    The provider will place a datastore named `test` in a datastore folder
-    located at `/dc1/datastore/foo/bar`, with the final inventory path being
-    `/dc1/datastore/foo/bar/test`. Conflicts with
-    `datastore_cluster_id`.
-    """
-    free_space: pulumi.Output[float]
-    """
-    Available space of this datastore, in megabytes.
-    """
-    host_system_id: pulumi.Output[str]
-    """
-    The managed object ID of
-    the host to set the datastore up on. Note that this is not necessarily the
-    only host that the datastore will be set up on - see
-    here for more info. Forces a
-    new resource if changed.
-    """
-    maintenance_mode: pulumi.Output[str]
-    """
-    The current maintenance mode state of the datastore.
-    """
-    multiple_host_access: pulumi.Output[bool]
-    """
-    If `true`, more than one host in the datacenter has
-    been configured with access to the datastore.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the datastore. Forces a new resource if
-    changed.
-    """
-    tags: pulumi.Output[list]
-    """
-    The IDs of any tags to attach to this resource.
-    """
-    uncommitted_space: pulumi.Output[float]
-    """
-    Total additional storage space, in megabytes,
-    potentially used by all virtual machines on this datastore.
-    """
-    url: pulumi.Output[str]
-    """
-    The unique locator for the datastore.
-    """
-    def __init__(__self__, resource_name, opts=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, host_system_id=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 host_system_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a VmfsDatastore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[list] disks: The disks to use with the datastore.
+        :param pulumi.Input[List[pulumi.Input[str]]] disks: The disks to use with the datastore.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
                This is a path relative to the datacenter you are deploying the datastore to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -108,7 +49,7 @@ class VmfsDatastore(pulumi.CustomResource):
                new resource if changed.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -152,23 +93,39 @@ class VmfsDatastore(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, accessible=None, capacity=None, custom_attributes=None, datastore_cluster_id=None, disks=None, folder=None, free_space=None, host_system_id=None, maintenance_mode=None, multiple_host_access=None, name=None, tags=None, uncommitted_space=None, url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessible: Optional[pulumi.Input[bool]] = None,
+            capacity: Optional[pulumi.Input[float]] = None,
+            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+            disks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            folder: Optional[pulumi.Input[str]] = None,
+            free_space: Optional[pulumi.Input[float]] = None,
+            host_system_id: Optional[pulumi.Input[str]] = None,
+            maintenance_mode: Optional[pulumi.Input[str]] = None,
+            multiple_host_access: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            uncommitted_space: Optional[pulumi.Input[float]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'VmfsDatastore':
         """
         Get an existing VmfsDatastore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
         :param pulumi.Input[float] capacity: Maximum capacity of the datastore, in megabytes.
-        :param pulumi.Input[dict] custom_attributes: Map of custom attribute ids to attribute 
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[list] disks: The disks to use with the datastore.
+        :param pulumi.Input[List[pulumi.Input[str]]] disks: The disks to use with the datastore.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
                This is a path relative to the datacenter you are deploying the datastore to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -187,7 +144,7 @@ class VmfsDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[list] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
@@ -212,8 +169,138 @@ class VmfsDatastore(pulumi.CustomResource):
         __props__["url"] = url
         return VmfsDatastore(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def accessible(self) -> bool:
+        """
+        The connectivity status of the datastore. If this is `false`,
+        some other computed attributes may be out of date.
+        """
+        return pulumi.get(self, "accessible")
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> float:
+        """
+        Maximum capacity of the datastore, in megabytes.
+        """
+        return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+        """
+        Map of custom attribute ids to attribute 
+        value string to set on datastore resource.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter(name="datastoreClusterId")
+    def datastore_cluster_id(self) -> Optional[str]:
+        """
+        The managed object
+        ID of a datastore cluster to put this datastore in.
+        Conflicts with `folder`.
+        """
+        return pulumi.get(self, "datastore_cluster_id")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> List[str]:
+        """
+        The disks to use with the datastore.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[str]:
+        """
+        The relative path to a folder to put this datastore in.
+        This is a path relative to the datacenter you are deploying the datastore to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        The provider will place a datastore named `test` in a datastore folder
+        located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/test`. Conflicts with
+        `datastore_cluster_id`.
+        """
+        return pulumi.get(self, "folder")
+
+    @property
+    @pulumi.getter(name="freeSpace")
+    def free_space(self) -> float:
+        """
+        Available space of this datastore, in megabytes.
+        """
+        return pulumi.get(self, "free_space")
+
+    @property
+    @pulumi.getter(name="hostSystemId")
+    def host_system_id(self) -> str:
+        """
+        The managed object ID of
+        the host to set the datastore up on. Note that this is not necessarily the
+        only host that the datastore will be set up on - see
+        here for more info. Forces a
+        new resource if changed.
+        """
+        return pulumi.get(self, "host_system_id")
+
+    @property
+    @pulumi.getter(name="maintenanceMode")
+    def maintenance_mode(self) -> str:
+        """
+        The current maintenance mode state of the datastore.
+        """
+        return pulumi.get(self, "maintenance_mode")
+
+    @property
+    @pulumi.getter(name="multipleHostAccess")
+    def multiple_host_access(self) -> bool:
+        """
+        If `true`, more than one host in the datacenter has
+        been configured with access to the datastore.
+        """
+        return pulumi.get(self, "multiple_host_access")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the datastore. Forces a new resource if
+        changed.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="uncommittedSpace")
+    def uncommitted_space(self) -> float:
+        """
+        Total additional storage space, in megabytes,
+        potentially used by all virtual machines on this datastore.
+        """
+        return pulumi.get(self, "uncommitted_space")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The unique locator for the datastore.
+        """
+        return pulumi.get(self, "url")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

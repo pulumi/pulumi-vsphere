@@ -5,10 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
+__all__ = [
+    'GetVappContainerResult',
+    'AwaitableGetVappContainerResult',
+    'get_vapp_container',
+]
 
+@pulumi.output_type
 class GetVappContainerResult:
     """
     A collection of values returned by getVappContainer.
@@ -16,16 +22,31 @@ class GetVappContainerResult:
     def __init__(__self__, datacenter_id=None, id=None, name=None):
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
-        __self__.datacenter_id = datacenter_id
+        pulumi.set(__self__, "datacenter_id", datacenter_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> str:
+        return pulumi.get(self, "datacenter_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 class AwaitableGetVappContainerResult(GetVappContainerResult):
@@ -39,7 +60,9 @@ class AwaitableGetVappContainerResult(GetVappContainerResult):
             name=self.name)
 
 
-def get_vapp_container(datacenter_id=None, name=None, opts=None):
+def get_vapp_container(datacenter_id: Optional[str] = None,
+                       name: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVappContainerResult:
     """
     The `VappContainer` data source can be used to discover the ID of a
     vApp container in vSphere. This is useful to fetch the ID of a vApp container
@@ -70,9 +93,9 @@ def get_vapp_container(datacenter_id=None, name=None, opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('vsphere:index/getVappContainer:getVappContainer', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('vsphere:index/getVappContainer:getVappContainer', __args__, opts=opts, typ=GetVappContainerResult).value
 
     return AwaitableGetVappContainerResult(
-        datacenter_id=__ret__.get('datacenterId'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'))
+        datacenter_id=__ret__.datacenter_id,
+        id=__ret__.id,
+        name=__ret__.name)

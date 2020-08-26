@@ -6,12 +6,31 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, allow_unverified_ssl=None, client_debug=None, client_debug_path=None, client_debug_path_run=None, password=None, persist_session=None, rest_session_path=None, user=None, vcenter_server=None, vim_keep_alive=None, vim_session_path=None, vsphere_server=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_unverified_ssl: Optional[pulumi.Input[bool]] = None,
+                 client_debug: Optional[pulumi.Input[bool]] = None,
+                 client_debug_path: Optional[pulumi.Input[str]] = None,
+                 client_debug_path_run: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 persist_session: Optional[pulumi.Input[bool]] = None,
+                 rest_session_path: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 vcenter_server: Optional[pulumi.Input[str]] = None,
+                 vim_keep_alive: Optional[pulumi.Input[float]] = None,
+                 vim_session_path: Optional[pulumi.Input[str]] = None,
+                 vsphere_server: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the vsphere package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -97,3 +116,4 @@ class Provider(pulumi.ProviderResource):
 
     def translate_input_property(self, prop):
         return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
