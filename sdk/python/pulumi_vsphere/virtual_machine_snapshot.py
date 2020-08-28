@@ -13,7 +13,7 @@ __all__ = ['VirtualMachineSnapshot']
 
 class VirtualMachineSnapshot(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  consolidate: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -167,7 +167,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def consolidate(self) -> Optional[bool]:
+    def consolidate(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the delta disks involved in this
         snapshot will be consolidated into the parent when this resource is
@@ -177,7 +177,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A description for the snapshot.
         """
@@ -185,7 +185,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def memory(self) -> bool:
+    def memory(self) -> pulumi.Output[bool]:
         """
         If set to `true`, a dump of the internal state of the
         virtual machine is included in the snapshot.
@@ -194,7 +194,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def quiesce(self) -> bool:
+    def quiesce(self) -> pulumi.Output[bool]:
         """
         If set to `true`, and the virtual machine is powered
         on when the snapshot is taken, VMware Tools is used to quiesce the file
@@ -204,7 +204,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="removeChildren")
-    def remove_children(self) -> Optional[bool]:
+    def remove_children(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the entire snapshot subtree
         is removed when this resource is destroyed.
@@ -213,7 +213,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> str:
+    def snapshot_name(self) -> pulumi.Output[str]:
         """
         The name of the snapshot.
         """
@@ -221,7 +221,7 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineUuid")
-    def virtual_machine_uuid(self) -> str:
+    def virtual_machine_uuid(self) -> pulumi.Output[str]:
         """
         The virtual machine UUID.
         """

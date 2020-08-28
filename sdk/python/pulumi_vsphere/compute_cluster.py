@@ -15,7 +15,7 @@ __all__ = ['ComputeCluster']
 
 class ComputeCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter_id: Optional[pulumi.Input[str]] = None,
@@ -666,7 +666,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster.
@@ -675,7 +675,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> str:
+    def datacenter_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of
         the datacenter to create the cluster in. Forces a new resource if changed.
@@ -684,7 +684,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmAutomationLevel")
-    def dpm_automation_level(self) -> Optional[str]:
+    def dpm_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         The automation level for host power
         operations in this cluster. Can be one of `manual` or `automated`. Default:
@@ -694,7 +694,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmEnabled")
-    def dpm_enabled(self) -> Optional[bool]:
+    def dpm_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable DPM support for DRS in this cluster.
         Requires `drs_enabled` to be `true` in order to be effective.
@@ -704,7 +704,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmThreshold")
-    def dpm_threshold(self) -> Optional[float]:
+    def dpm_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A value between `1` and `5` indicating the
         threshold of load within the cluster that influences host power operations.
@@ -715,7 +715,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsAdvancedOptions")
-    def drs_advanced_options(self) -> Optional[Mapping[str, str]]:
+    def drs_advanced_options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A key/value map that specifies advanced
         options for DRS and DPM.
@@ -724,7 +724,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsAutomationLevel")
-    def drs_automation_level(self) -> Optional[str]:
+    def drs_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         The default automation level for all
         virtual machines in this cluster. Can be one of `manual`,
@@ -734,7 +734,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsEnablePredictiveDrs")
-    def drs_enable_predictive_drs(self) -> Optional[bool]:
+    def drs_enable_predictive_drs(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
@@ -744,7 +744,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsEnableVmOverrides")
-    def drs_enable_vm_overrides(self) -> Optional[bool]:
+    def drs_enable_vm_overrides(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow individual DRS overrides to be
         set for virtual machines in the cluster. Default: `true`.
@@ -753,7 +753,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsEnabled")
-    def drs_enabled(self) -> Optional[bool]:
+    def drs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable DRS for this cluster. Default: `false`.
         """
@@ -761,7 +761,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsMigrationThreshold")
-    def drs_migration_threshold(self) -> Optional[float]:
+    def drs_migration_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         A value between `1` and `5` indicating
         the threshold of imbalance tolerated between hosts. A lower setting will
@@ -772,7 +772,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The relative path to a folder to put this cluster in.
         This is a path relative to the datacenter you are deploying the cluster to.
@@ -785,7 +785,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceEvacuateOnDestroy")
-    def force_evacuate_on_destroy(self) -> Optional[bool]:
+    def force_evacuate_on_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         When destroying the resource, setting this to
         `true` will auto-remove any hosts that are currently a member of the cluster,
@@ -797,7 +797,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
-    def ha_admission_control_failover_host_system_ids(self) -> Optional[List[str]]:
+    def ha_admission_control_failover_host_system_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Defines the
         managed object IDs of hosts to use as dedicated failover
@@ -809,7 +809,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
-    def ha_admission_control_host_failure_tolerance(self) -> Optional[float]:
+    def ha_admission_control_host_failure_tolerance(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number
         of failed hosts that admission control tolerates when making decisions on
@@ -821,7 +821,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
-    def ha_admission_control_performance_tolerance(self) -> Optional[float]:
+    def ha_admission_control_performance_tolerance(self) -> pulumi.Output[Optional[float]]:
         """
         The percentage of
         resource reduction that a cluster of virtual machines can tolerate in case of
@@ -832,7 +832,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlPolicy")
-    def ha_admission_control_policy(self) -> Optional[str]:
+    def ha_admission_control_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The type of admission control
         policy to use with vSphere HA. Can be one of `resourcePercentage`,
@@ -842,7 +842,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlResourcePercentageAutoCompute")
-    def ha_admission_control_resource_percentage_auto_compute(self) -> Optional[bool]:
+    def ha_admission_control_resource_percentage_auto_compute(self) -> pulumi.Output[Optional[bool]]:
         """
         Automatically determine available resource percentages by subtracting the
         average number of host resources represented by the
@@ -855,7 +855,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
-    def ha_admission_control_resource_percentage_cpu(self) -> Optional[float]:
+    def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the
         user-defined percentage of CPU resources in the cluster to reserve for
@@ -865,7 +865,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
-    def ha_admission_control_resource_percentage_memory(self) -> Optional[float]:
+    def ha_admission_control_resource_percentage_memory(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the
         user-defined percentage of memory resources in the cluster to reserve for
@@ -875,7 +875,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitCpu")
-    def ha_admission_control_slot_policy_explicit_cpu(self) -> Optional[float]:
+    def ha_admission_control_slot_policy_explicit_cpu(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the
         user-defined CPU slot size, in MHz. Default: `32`.
@@ -884,7 +884,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitMemory")
-    def ha_admission_control_slot_policy_explicit_memory(self) -> Optional[float]:
+    def ha_admission_control_slot_policy_explicit_memory(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the
         user-defined memory slot size, in MB. Default: `100`.
@@ -893,7 +893,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlSlotPolicyUseExplicitSize")
-    def ha_admission_control_slot_policy_use_explicit_size(self) -> Optional[bool]:
+    def ha_admission_control_slot_policy_use_explicit_size(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls
         whether or not you wish to supply explicit values to CPU and memory slot
@@ -904,7 +904,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdvancedOptions")
-    def ha_advanced_options(self) -> Optional[Mapping[str, str]]:
+    def ha_advanced_options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A key/value map that specifies advanced
         options for vSphere HA.
@@ -913,7 +913,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[str]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take
         on virtual machines if an APD status on an affected datastore clears in the
@@ -924,7 +924,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[str]:
+    def ha_datastore_apd_response(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take on
         virtual machines when the cluster has detected loss to all paths to a
@@ -936,7 +936,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[float]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the delay in minutes
         to wait after an APD timeout event to execute the response action defined in
@@ -947,7 +947,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[str]:
+    def ha_datastore_pdl_response(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take on
         virtual machines when the cluster has detected a permanent device loss to a
@@ -959,7 +959,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haEnabled")
-    def ha_enabled(self) -> Optional[bool]:
+    def ha_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable vSphere HA for this cluster. Default:
         `false`.
@@ -968,7 +968,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHeartbeatDatastoreIds")
-    def ha_heartbeat_datastore_ids(self) -> Optional[List[str]]:
+    def ha_heartbeat_datastore_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of managed object IDs for
         preferred datastores to use for HA heartbeating. This setting is only useful
@@ -979,7 +979,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHeartbeatDatastorePolicy")
-    def ha_heartbeat_datastore_policy(self) -> Optional[str]:
+    def ha_heartbeat_datastore_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The selection policy for HA
         heartbeat datastores. Can be one of `allFeasibleDs`, `userSelectedDs`, or
@@ -990,7 +990,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[str]:
+    def ha_host_isolation_response(self) -> pulumi.Output[Optional[str]]:
         """
         The action to take on virtual
         machines when a host has detected that it has been isolated from the rest of
@@ -1001,7 +1001,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHostMonitoring")
-    def ha_host_monitoring(self) -> Optional[str]:
+    def ha_host_monitoring(self) -> pulumi.Output[Optional[str]]:
         """
         Global setting that controls whether
         vSphere HA remediates virtual machines on host failure. Can be one of `enabled`
@@ -1011,7 +1011,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmComponentProtection")
-    def ha_vm_component_protection(self) -> Optional[str]:
+    def ha_vm_component_protection(self) -> pulumi.Output[Optional[str]]:
         """
         Controls vSphere VM component
         protection for virtual machines in this cluster. Can be one of `enabled` or
@@ -1022,7 +1022,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmDependencyRestartCondition")
-    def ha_vm_dependency_restart_condition(self) -> Optional[str]:
+    def ha_vm_dependency_restart_condition(self) -> pulumi.Output[Optional[str]]:
         """
         The condition used to
         determine whether or not virtual machines in a certain restart priority class
@@ -1036,7 +1036,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[float]:
+    def ha_vm_failure_interval(self) -> pulumi.Output[Optional[float]]:
         """
         If a heartbeat from a virtual machine
         is not received within this configured interval, the virtual machine is
@@ -1046,7 +1046,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[float]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[float]]:
         """
         The length of the reset window in
         which `ha_vm_maximum_resets` can operate. When this
@@ -1059,7 +1059,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[float]:
+    def ha_vm_maximum_resets(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number of resets that HA will
         perform to a virtual machine when responding to a failure event. Default: `3`
@@ -1068,7 +1068,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[float]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Output[Optional[float]]:
         """
         The time, in seconds, that HA waits after
         powering on a virtual machine before monitoring for heartbeats. Default:
@@ -1078,7 +1078,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[str]:
+    def ha_vm_monitoring(self) -> pulumi.Output[Optional[str]]:
         """
         The type of virtual machine monitoring to use
         when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
@@ -1088,7 +1088,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartAdditionalDelay")
-    def ha_vm_restart_additional_delay(self) -> Optional[float]:
+    def ha_vm_restart_additional_delay(self) -> pulumi.Output[Optional[float]]:
         """
         Additional delay in seconds
         after ready condition is met. A VM is considered ready at this point.
@@ -1098,7 +1098,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[str]:
+    def ha_vm_restart_priority(self) -> pulumi.Output[Optional[str]]:
         """
         The default restart priority
         for affected virtual machines when vSphere detects a host failure. Can be one
@@ -1108,7 +1108,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[float]:
+    def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum time, in seconds,
         that vSphere HA will wait for virtual machines in one priority to be ready
@@ -1119,7 +1119,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostClusterExitTimeout")
-    def host_cluster_exit_timeout(self) -> Optional[float]:
+    def host_cluster_exit_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The timeout for each host maintenance mode
         operation when removing hosts from a cluster. The value is specified in
@@ -1129,7 +1129,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostManaged")
-    def host_managed(self) -> Optional[bool]:
+    def host_managed(self) -> pulumi.Output[Optional[bool]]:
         """
         Can be set to `true` if compute cluster
         membership will be managed through the `host` resource rather than the
@@ -1140,7 +1140,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> Optional[List[str]]:
+    def host_system_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The [managed object IDs][docs-about-morefs] of
         the hosts to put in the cluster. Conflicts with: `host_managed`.
@@ -1149,7 +1149,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the cluster.
         """
@@ -1157,7 +1157,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaAutomationLevel")
-    def proactive_ha_automation_level(self) -> Optional[str]:
+    def proactive_ha_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Determines how the host
         quarantine, maintenance mode, or virtual machine migration recommendations
@@ -1168,7 +1168,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaEnabled")
-    def proactive_ha_enabled(self) -> Optional[bool]:
+    def proactive_ha_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables Proactive HA. Default: `false`.
         <sup>\*</sup>
@@ -1177,7 +1177,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaModerateRemediation")
-    def proactive_ha_moderate_remediation(self) -> Optional[str]:
+    def proactive_ha_moderate_remediation(self) -> pulumi.Output[Optional[str]]:
         """
         The configured remediation
         for moderately degraded hosts. Can be one of `MaintenanceMode` or
@@ -1190,7 +1190,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaProviderIds")
-    def proactive_ha_provider_ids(self) -> Optional[List[str]]:
+    def proactive_ha_provider_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of IDs for health update
         providers configured for this cluster.
@@ -1200,7 +1200,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaSevereRemediation")
-    def proactive_ha_severe_remediation(self) -> Optional[str]:
+    def proactive_ha_severe_remediation(self) -> pulumi.Output[Optional[str]]:
         """
         The configured remediation for
         severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
@@ -1213,7 +1213,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> str:
+    def resource_pool_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of the cluster's root resource pool.
         """
@@ -1221,7 +1221,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -1229,7 +1229,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanDiskGroups")
-    def vsan_disk_groups(self) -> List['outputs.ComputeClusterVsanDiskGroup']:
+    def vsan_disk_groups(self) -> pulumi.Output[List['outputs.ComputeClusterVsanDiskGroup']]:
         """
         A list of disk UUIDs to add to the vSAN cluster.
         """
@@ -1237,7 +1237,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanEnabled")
-    def vsan_enabled(self) -> bool:
+    def vsan_enabled(self) -> pulumi.Output[bool]:
         """
         Whether the VSAN service is enabled for the cluster.
         """

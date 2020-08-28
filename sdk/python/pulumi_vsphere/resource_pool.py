@@ -13,7 +13,7 @@ __all__ = ['ResourcePool']
 
 class ResourcePool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cpu_expandable: Optional[pulumi.Input[bool]] = None,
                  cpu_limit: Optional[pulumi.Input[float]] = None,
@@ -204,7 +204,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuExpandable")
-    def cpu_expandable(self) -> Optional[bool]:
+    def cpu_expandable(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -214,7 +214,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[float]:
+    def cpu_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The CPU utilization of a resource pool will not exceed
         this limit, even if there are available resources. Set to `-1` for unlimited.
@@ -224,7 +224,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[float]:
+    def cpu_reservation(self) -> pulumi.Output[Optional[float]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -233,7 +233,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[str]:
+    def cpu_share_level(self) -> pulumi.Output[Optional[str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -245,7 +245,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShares")
-    def cpu_shares(self) -> float:
+    def cpu_shares(self) -> pulumi.Output[float]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -255,7 +255,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A list of custom attributes to set on this resource.
         """
@@ -263,7 +263,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryExpandable")
-    def memory_expandable(self) -> Optional[bool]:
+    def memory_expandable(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines if the reservation on a resource
         pool can grow beyond the specified value if the parent resource pool has
@@ -273,7 +273,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[float]:
+    def memory_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The CPU utilization of a resource pool will not exceed
         this limit, even if there are available resources. Set to `-1` for unlimited.
@@ -283,7 +283,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[float]:
+    def memory_reservation(self) -> pulumi.Output[Optional[float]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -292,7 +292,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[str]:
+    def memory_share_level(self) -> pulumi.Output[Optional[str]]:
         """
         The CPU allocation level. The level is a
         simplified view of shares. Levels map to a pre-determined set of numeric
@@ -304,7 +304,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShares")
-    def memory_shares(self) -> float:
+    def memory_shares(self) -> pulumi.Output[float]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -314,7 +314,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the resource pool.
         """
@@ -322,7 +322,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="parentResourcePoolId")
-    def parent_resource_pool_id(self) -> str:
+    def parent_resource_pool_id(self) -> pulumi.Output[str]:
         """
         The managed object ID
         of the parent resource pool. This can be the root resource pool for a cluster
@@ -334,7 +334,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

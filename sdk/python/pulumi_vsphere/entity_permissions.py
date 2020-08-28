@@ -15,7 +15,7 @@ __all__ = ['EntityPermissions']
 
 class EntityPermissions(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
@@ -96,7 +96,7 @@ class EntityPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> str:
+    def entity_id(self) -> pulumi.Output[str]:
         """
         The managed object id (uuid for some entities) on which permissions are to be created.
         """
@@ -104,7 +104,7 @@ class EntityPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> str:
+    def entity_type(self) -> pulumi.Output[str]:
         """
         The managed object type, types can be found in the managed object type section 
         [here](https://code.vmware.com/apis/968/vsphere).
@@ -113,7 +113,7 @@ class EntityPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> List['outputs.EntityPermissionsPermission']:
+    def permissions(self) -> pulumi.Output[List['outputs.EntityPermissionsPermission']]:
         """
         The permissions to be given on this entity. Keep the permissions sorted
         alphabetically on `user_or_group` for a better user experience.

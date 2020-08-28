@@ -13,7 +13,7 @@ __all__ = ['HaVmOverride']
 
 class HaVmOverride(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_cluster_id: Optional[pulumi.Input[str]] = None,
                  ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
@@ -238,7 +238,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> str:
+    def compute_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the cluster to put the override in.  Forces a new
@@ -248,7 +248,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdRecoveryAction")
-    def ha_datastore_apd_recovery_action(self) -> Optional[str]:
+    def ha_datastore_apd_recovery_action(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take
         on this virtual machine if an APD status on an affected datastore clears in
@@ -259,7 +259,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdResponse")
-    def ha_datastore_apd_response(self) -> Optional[str]:
+    def ha_datastore_apd_response(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take on this
         virtual machine when the cluster has detected loss to all paths to a relevant
@@ -270,7 +270,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> Optional[float]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[float]]:
         """
         Controls the delay in minutes
         to wait after an APD timeout event to execute the response action defined in
@@ -281,7 +281,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastorePdlResponse")
-    def ha_datastore_pdl_response(self) -> Optional[str]:
+    def ha_datastore_pdl_response(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the action to take on this
         virtual machine when the cluster has detected a permanent device loss to a
@@ -292,7 +292,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHostIsolationResponse")
-    def ha_host_isolation_response(self) -> Optional[str]:
+    def ha_host_isolation_response(self) -> pulumi.Output[Optional[str]]:
         """
         The action to take on this virtual
         machine when a host has detected that it has been isolated from the rest of
@@ -303,7 +303,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> Optional[float]:
+    def ha_vm_failure_interval(self) -> pulumi.Output[Optional[float]]:
         """
         If a heartbeat from this virtual
         machine is not received within this configured interval, the virtual machine
@@ -313,7 +313,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> Optional[float]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[float]]:
         """
         The length of the reset window in
         which `ha_vm_maximum_resets` can operate. When this
@@ -326,7 +326,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> Optional[float]:
+    def ha_vm_maximum_resets(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number of resets that HA will
         perform to this virtual machine when responding to a failure event. Default:
@@ -336,7 +336,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> Optional[float]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Output[Optional[float]]:
         """
         The time, in seconds, that HA waits after
         powering on this virtual machine before monitoring for heartbeats. Default:
@@ -346,7 +346,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMonitoring")
-    def ha_vm_monitoring(self) -> Optional[str]:
+    def ha_vm_monitoring(self) -> pulumi.Output[Optional[str]]:
         """
         The type of virtual machine monitoring to use
         when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
@@ -356,7 +356,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMonitoringUseClusterDefaults")
-    def ha_vm_monitoring_use_cluster_defaults(self) -> Optional[bool]:
+    def ha_vm_monitoring_use_cluster_defaults(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines whether or
         not the cluster's default settings or the VM override settings specified in
@@ -367,7 +367,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartPriority")
-    def ha_vm_restart_priority(self) -> Optional[str]:
+    def ha_vm_restart_priority(self) -> pulumi.Output[Optional[str]]:
         """
         The restart priority for the virtual
         machine when vSphere detects a host failure. Can be one of
@@ -378,7 +378,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> Optional[float]:
+    def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum time, in seconds, that
         vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -388,7 +388,7 @@ class HaVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineId")
-    def virtual_machine_id(self) -> str:
+    def virtual_machine_id(self) -> pulumi.Output[str]:
         """
         The UUID of the virtual machine to create
         the override for.  Forces a new resource if changed.

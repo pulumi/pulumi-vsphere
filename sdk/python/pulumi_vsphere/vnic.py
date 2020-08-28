@@ -15,7 +15,7 @@ __all__ = ['Vnic']
 
 class Vnic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  distributed_port_group: Optional[pulumi.Input[str]] = None,
                  distributed_switch_port: Optional[pulumi.Input[str]] = None,
@@ -195,7 +195,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributedPortGroup")
-    def distributed_port_group(self) -> Optional[str]:
+    def distributed_port_group(self) -> pulumi.Output[Optional[str]]:
         """
         Key of the distributed portgroup the nic will connect to.
         """
@@ -203,7 +203,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributedSwitchPort")
-    def distributed_switch_port(self) -> Optional[str]:
+    def distributed_switch_port(self) -> pulumi.Output[Optional[str]]:
         """
         UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
         """
@@ -211,7 +211,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> str:
+    def host(self) -> pulumi.Output[str]:
         """
         ESX host the interface belongs to
         """
@@ -219,7 +219,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ipv4(self) -> Optional['outputs.VnicIpv4']:
+    def ipv4(self) -> pulumi.Output[Optional['outputs.VnicIpv4']]:
         """
         IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
         """
@@ -227,7 +227,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ipv6(self) -> Optional['outputs.VnicIpv6']:
+    def ipv6(self) -> pulumi.Output[Optional['outputs.VnicIpv6']]:
         """
         IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
         """
@@ -235,7 +235,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mac(self) -> str:
+    def mac(self) -> pulumi.Output[str]:
         """
         MAC address of the interface.
         """
@@ -243,7 +243,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> float:
+    def mtu(self) -> pulumi.Output[float]:
         """
         MTU of the interface.
         """
@@ -251,7 +251,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def netstack(self) -> Optional[str]:
+    def netstack(self) -> pulumi.Output[Optional[str]]:
         """
         TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         """
@@ -259,7 +259,7 @@ class Vnic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def portgroup(self) -> Optional[str]:
+    def portgroup(self) -> pulumi.Output[Optional[str]]:
         """
         Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         """

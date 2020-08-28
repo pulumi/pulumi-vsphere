@@ -13,7 +13,7 @@ __all__ = ['TagCategory']
 
 class TagCategory(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associable_types: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  cardinality: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class TagCategory(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="associableTypes")
-    def associable_types(self) -> List[str]:
+    def associable_types(self) -> pulumi.Output[List[str]]:
         """
         A list object types that this category is
         valid to be assigned to. For a full list, click
@@ -114,7 +114,7 @@ class TagCategory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cardinality(self) -> str:
+    def cardinality(self) -> pulumi.Output[str]:
         """
         The number of tags that can be assigned from this
         category to a single object at once. Can be one of `SINGLE` (object can only
@@ -125,7 +125,7 @@ class TagCategory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the category.
         """
@@ -133,7 +133,7 @@ class TagCategory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the category.
         """

@@ -13,7 +13,7 @@ __all__ = ['VappEntity']
 
 class VappEntity(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_id: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -152,7 +152,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> str:
+    def container_id(self) -> pulumi.Output[str]:
         """
         Managed object ID of the vApp
         container the entity is a member of.
@@ -161,7 +161,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A list of custom attributes to set on this resource.
         """
@@ -169,7 +169,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startAction")
-    def start_action(self) -> Optional[str]:
+    def start_action(self) -> pulumi.Output[Optional[str]]:
         """
         How to start the entity. Valid settings are none
         or powerOn. If set to none, then the entity does not participate in auto-start.
@@ -179,7 +179,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startDelay")
-    def start_delay(self) -> Optional[float]:
+    def start_delay(self) -> pulumi.Output[Optional[float]]:
         """
         Delay in seconds before continuing with the next
         entity in the order of entities to be started. Default: 120
@@ -188,7 +188,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startOrder")
-    def start_order(self) -> Optional[float]:
+    def start_order(self) -> pulumi.Output[Optional[float]]:
         """
         Order to start and stop target in vApp. Default: 1
         """
@@ -196,7 +196,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stopAction")
-    def stop_action(self) -> Optional[str]:
+    def stop_action(self) -> pulumi.Output[Optional[str]]:
         """
         Defines the stop action for the entity. Can be set
         to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
@@ -206,7 +206,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stopDelay")
-    def stop_delay(self) -> Optional[float]:
+    def stop_delay(self) -> pulumi.Output[Optional[float]]:
         """
         Delay in seconds before continuing with the next
         entity in the order sequence. This is only used if the stopAction is
@@ -216,7 +216,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tag IDs to apply to this object.
         """
@@ -224,7 +224,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> str:
+    def target_id(self) -> pulumi.Output[str]:
         """
         Managed object ID of the entity
         to power on or power off. This can be a virtual machine or a vApp.
@@ -233,7 +233,7 @@ class VappEntity(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuest")
-    def wait_for_guest(self) -> Optional[bool]:
+    def wait_for_guest(self) -> pulumi.Output[Optional[bool]]:
         """
         Determines if the VM should be marked as being
         started when VMware Tools are ready instead of waiting for `start_delay`. This

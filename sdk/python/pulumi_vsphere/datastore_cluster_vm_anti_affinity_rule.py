@@ -13,7 +13,7 @@ __all__ = ['DatastoreClusterVmAntiAffinityRule']
 
 class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -108,7 +108,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> str:
+    def datastore_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the datastore cluster to put the group in.  Forces
@@ -118,7 +118,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
@@ -126,7 +126,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mandatory(self) -> Optional[bool]:
+    def mandatory(self) -> pulumi.Output[Optional[bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -135,7 +135,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the rule. This must be unique in the cluster.
         """
@@ -143,7 +143,7 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> List[str]:
+    def virtual_machine_ids(self) -> pulumi.Output[List[str]]:
         """
         The UUIDs of the virtual machines to run
         on different datastores from each other.

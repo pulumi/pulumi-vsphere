@@ -13,7 +13,7 @@ __all__ = ['HostVirtualSwitch']
 
 class HostVirtualSwitch(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
@@ -256,7 +256,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeNics")
-    def active_nics(self) -> List[str]:
+    def active_nics(self) -> pulumi.Output[List[str]]:
         """
         The list of active network adapters used for load
         balancing.
@@ -265,7 +265,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> Optional[bool]:
+    def allow_forged_transmits(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether or not the virtual
         network adapter is allowed to send network traffic with a different MAC
@@ -275,7 +275,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> Optional[bool]:
+    def allow_mac_changes(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether or not the Media Access
         Control (MAC) address can be changed. Default: `true`.
@@ -284,7 +284,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> Optional[bool]:
+    def allow_promiscuous(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable promiscuous mode on the network. This
         flag indicates whether or not all traffic is seen on a given port. Default:
@@ -294,7 +294,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="beaconInterval")
-    def beacon_interval(self) -> Optional[float]:
+    def beacon_interval(self) -> pulumi.Output[Optional[float]]:
         """
         The interval, in seconds, that a NIC beacon
         packet is sent out. This can be used with `check_beacon` to
@@ -304,7 +304,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> Optional[bool]:
+    def check_beacon(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable beacon probing - this requires that the
         `beacon_interval` option has been set in the bridge
@@ -315,7 +315,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def failback(self) -> Optional[bool]:
+    def failback(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the teaming policy will re-activate
         failed interfaces higher in precedence when they come back up.  Default:
@@ -325,7 +325,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> str:
+    def host_system_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of
         the host to set the virtual switch up on. Forces a new resource if changed.
@@ -334,7 +334,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linkDiscoveryOperation")
-    def link_discovery_operation(self) -> Optional[str]:
+    def link_discovery_operation(self) -> pulumi.Output[Optional[str]]:
         """
         Whether to `advertise` or `listen`
         for link discovery traffic. Default: `listen`.
@@ -343,7 +343,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linkDiscoveryProtocol")
-    def link_discovery_protocol(self) -> Optional[str]:
+    def link_discovery_protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The discovery protocol type.  Valid
         types are `cpd` and `lldp`. Default: `cdp`.
@@ -352,7 +352,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mtu(self) -> Optional[float]:
+    def mtu(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum transmission unit (MTU) for the virtual
         switch. Default: `1500`.
@@ -361,7 +361,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the virtual switch. Forces a new resource if
         changed.
@@ -370,7 +370,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkAdapters")
-    def network_adapters(self) -> List[str]:
+    def network_adapters(self) -> pulumi.Output[List[str]]:
         """
         The network interfaces to bind to the bridge.
         """
@@ -378,7 +378,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> Optional[bool]:
+    def notify_switches(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to `true`, the teaming policy will
         notify the broadcast network of a NIC failover, triggering cache updates.
@@ -388,7 +388,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberOfPorts")
-    def number_of_ports(self) -> Optional[float]:
+    def number_of_ports(self) -> pulumi.Output[Optional[float]]:
         """
         The number of ports to create with this
         virtual switch. Default: `128`.
@@ -397,7 +397,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingAverageBandwidth")
-    def shaping_average_bandwidth(self) -> Optional[float]:
+    def shaping_average_bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         The average bandwidth in bits per
         second if traffic shaping is enabled. Default: `0`
@@ -406,7 +406,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingBurstSize")
-    def shaping_burst_size(self) -> Optional[float]:
+    def shaping_burst_size(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum burst size allowed in bytes if
         shaping is enabled. Default: `0`
@@ -415,7 +415,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingEnabled")
-    def shaping_enabled(self) -> Optional[bool]:
+    def shaping_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Set to `true` to enable the traffic shaper for
         ports managed by this virtual switch. Default: `false`.
@@ -424,7 +424,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingPeakBandwidth")
-    def shaping_peak_bandwidth(self) -> Optional[float]:
+    def shaping_peak_bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         The peak bandwidth during bursts in
         bits per second if traffic shaping is enabled. Default: `0`
@@ -433,7 +433,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyNics")
-    def standby_nics(self) -> List[str]:
+    def standby_nics(self) -> pulumi.Output[List[str]]:
         """
         The list of standby network adapters used for
         failover.
@@ -442,7 +442,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> Optional[str]:
+    def teaming_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The network adapter teaming policy. Can be one
         of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or

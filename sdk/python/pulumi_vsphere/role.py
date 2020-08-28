@@ -13,7 +13,7 @@ __all__ = ['Role']
 
 class Role(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role_privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -82,7 +82,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> pulumi.Output[str]:
         """
         The display label of the role.
         """
@@ -90,7 +90,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the role.
         """
@@ -98,7 +98,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rolePrivileges")
-    def role_privileges(self) -> Optional[List[str]]:
+    def role_privileges(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The privileges to be associated with this role.
         """

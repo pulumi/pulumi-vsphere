@@ -15,7 +15,7 @@ __all__ = ['HostPortGroup']
 
 class HostPortGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
@@ -266,7 +266,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeNics")
-    def active_nics(self) -> Optional[List[str]]:
+    def active_nics(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of active network adapters used for load balancing.
         """
@@ -274,7 +274,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> Optional[bool]:
+    def allow_forged_transmits(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
         that of its own.
@@ -283,7 +283,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> Optional[bool]:
+    def allow_mac_changes(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether or not the Media Access Control (MAC) address can be changed.
         """
@@ -291,7 +291,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> Optional[bool]:
+    def allow_promiscuous(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         """
@@ -299,7 +299,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> Optional[bool]:
+    def check_beacon(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
         only.
@@ -308,7 +308,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computedPolicy")
-    def computed_policy(self) -> Mapping[str, str]:
+    def computed_policy(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A map with a full set of the policy
         options computed from defaults and overrides,
@@ -318,7 +318,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def failback(self) -> Optional[bool]:
+    def failback(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         """
@@ -326,7 +326,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> str:
+    def host_system_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of
         the host to set the port group up on. Forces a new resource if changed.
@@ -335,7 +335,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The key for this port group as returned from the vSphere API.
         """
@@ -343,7 +343,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the port group.  Forces a new resource if
         changed.
@@ -352,7 +352,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> Optional[bool]:
+    def notify_switches(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         """
@@ -360,7 +360,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ports(self) -> 'outputs.HostPortGroupPorts':
+    def ports(self) -> pulumi.Output['outputs.HostPortGroupPorts']:
         """
         A list of ports that currently exist and are used on this port group.
         """
@@ -368,7 +368,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingAverageBandwidth")
-    def shaping_average_bandwidth(self) -> Optional[float]:
+    def shaping_average_bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         The average bandwidth in bits per second if traffic shaping is enabled.
         """
@@ -376,7 +376,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingBurstSize")
-    def shaping_burst_size(self) -> Optional[float]:
+    def shaping_burst_size(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum burst size allowed in bytes if traffic shaping is enabled.
         """
@@ -384,7 +384,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingEnabled")
-    def shaping_enabled(self) -> Optional[bool]:
+    def shaping_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable traffic shaping on this virtual switch or port group.
         """
@@ -392,7 +392,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingPeakBandwidth")
-    def shaping_peak_bandwidth(self) -> Optional[float]:
+    def shaping_peak_bandwidth(self) -> pulumi.Output[Optional[float]]:
         """
         The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         """
@@ -400,7 +400,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyNics")
-    def standby_nics(self) -> Optional[List[str]]:
+    def standby_nics(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of standby network adapters used for failover.
         """
@@ -408,7 +408,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> Optional[str]:
+    def teaming_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
         failover_explicit.
@@ -417,7 +417,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualSwitchName")
-    def virtual_switch_name(self) -> str:
+    def virtual_switch_name(self) -> pulumi.Output[str]:
         """
         The name of the virtual switch to bind
         this port group to. Forces a new resource if changed.
@@ -426,7 +426,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[float]:
+    def vlan_id(self) -> pulumi.Output[Optional[float]]:
         """
         The VLAN ID/trunk mode for this port group.  An ID of
         `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an

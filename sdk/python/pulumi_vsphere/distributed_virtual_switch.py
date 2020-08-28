@@ -15,7 +15,7 @@ __all__ = ['DistributedVirtualSwitch']
 
 class DistributedVirtualSwitch(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
@@ -740,7 +740,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeUplinks")
-    def active_uplinks(self) -> List[str]:
+    def active_uplinks(self) -> pulumi.Output[List[str]]:
         """
         A list of active uplinks to be used in load
         balancing. These uplinks need to match the definitions in the
@@ -751,7 +751,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> bool:
+    def allow_forged_transmits(self) -> pulumi.Output[bool]:
         """
         Controls whether or not a virtual
         network adapter is allowed to send network traffic with a different MAC
@@ -761,7 +761,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> bool:
+    def allow_mac_changes(self) -> pulumi.Output[bool]:
         """
         Controls whether or not the Media Access
         Control (MAC) address can be changed.
@@ -770,7 +770,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> bool:
+    def allow_promiscuous(self) -> pulumi.Output[bool]:
         """
         Enable promiscuous mode on the network. This
         flag indicates whether or not all traffic is seen on a given port.
@@ -779,7 +779,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockAllPorts")
-    def block_all_ports(self) -> bool:
+    def block_all_ports(self) -> pulumi.Output[bool]:
         """
         Shuts down all ports in the port groups that
         this policy applies to, effectively blocking all network access to connected
@@ -789,7 +789,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> bool:
+    def check_beacon(self) -> pulumi.Output[bool]:
         """
         Enables beacon probing as an additional measure
         to detect NIC failure.
@@ -798,7 +798,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configVersion")
-    def config_version(self) -> str:
+    def config_version(self) -> pulumi.Output[str]:
         """
         The version string of the configuration that this spec is trying to change.
         """
@@ -806,7 +806,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contactDetail")
-    def contact_detail(self) -> Optional[str]:
+    def contact_detail(self) -> pulumi.Output[Optional[str]]:
         """
         The detailed contact information for the person
         who is responsible for the DVS.
@@ -815,7 +815,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contactName")
-    def contact_name(self) -> Optional[str]:
+    def contact_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the person who is responsible for the
         DVS.
@@ -824,7 +824,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute
         value strings to set for virtual switch.
@@ -833,7 +833,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> str:
+    def datacenter_id(self) -> pulumi.Output[str]:
         """
         The ID of the datacenter where the distributed
         virtual switch will be created. Forces a new resource if changed.
@@ -842,7 +842,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A detailed description for the DVS.
         """
@@ -850,7 +850,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="directpathGen2Allowed")
-    def directpath_gen2_allowed(self) -> bool:
+    def directpath_gen2_allowed(self) -> pulumi.Output[bool]:
         """
         Allow VMDirectPath Gen2 for the ports
         for which this policy applies to.
@@ -859,7 +859,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingAverageBandwidth")
-    def egress_shaping_average_bandwidth(self) -> float:
+    def egress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
         """
         The average bandwidth in bits
         per second if egress traffic shaping is enabled on the port.
@@ -868,7 +868,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingBurstSize")
-    def egress_shaping_burst_size(self) -> float:
+    def egress_shaping_burst_size(self) -> pulumi.Output[float]:
         """
         The maximum burst size allowed in
         bytes if egress traffic shaping is enabled on the port.
@@ -877,7 +877,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingEnabled")
-    def egress_shaping_enabled(self) -> bool:
+    def egress_shaping_enabled(self) -> pulumi.Output[bool]:
         """
         `true` if the traffic shaper is enabled
         on the port for egress traffic.
@@ -886,7 +886,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingPeakBandwidth")
-    def egress_shaping_peak_bandwidth(self) -> float:
+    def egress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
         """
         The peak bandwidth during bursts
         in bits per second if egress traffic shaping is enabled on the port.
@@ -895,7 +895,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def failback(self) -> bool:
+    def failback(self) -> pulumi.Output[bool]:
         """
         If `true`, the teaming policy will re-activate failed
         uplinks higher in precedence when they come back up.
@@ -904,7 +904,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="faulttoleranceMaximumMbit")
-    def faulttolerance_maximum_mbit(self) -> float:
+    def faulttolerance_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
         """
@@ -912,7 +912,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="faulttoleranceReservationMbit")
-    def faulttolerance_reservation_mbit(self) -> float:
+    def faulttolerance_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
         """
@@ -920,7 +920,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="faulttoleranceShareCount")
-    def faulttolerance_share_count(self) -> float:
+    def faulttolerance_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
         """
@@ -928,7 +928,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="faulttoleranceShareLevel")
-    def faulttolerance_share_level(self) -> str:
+    def faulttolerance_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
         """
@@ -936,7 +936,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The folder to create the DVS in. Forces a new resource
         if changed.
@@ -945,7 +945,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hbrMaximumMbit")
-    def hbr_maximum_mbit(self) -> float:
+    def hbr_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the hbr traffic class, in Mbits/sec.
         """
@@ -953,7 +953,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hbrReservationMbit")
-    def hbr_reservation_mbit(self) -> float:
+    def hbr_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         """
@@ -961,7 +961,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hbrShareCount")
-    def hbr_share_count(self) -> float:
+    def hbr_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the hbr traffic class for a custom share level.
         """
@@ -969,7 +969,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hbrShareLevel")
-    def hbr_share_level(self) -> str:
+    def hbr_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         """
@@ -977,7 +977,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hosts(self) -> Optional[List['outputs.DistributedVirtualSwitchHost']]:
+    def hosts(self) -> pulumi.Output[Optional[List['outputs.DistributedVirtualSwitchHost']]]:
         """
         Use the `host` block to declare a host specification. The
         options are:
@@ -986,7 +986,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
-    def ingress_shaping_average_bandwidth(self) -> float:
+    def ingress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
         """
         The average bandwidth in
         bits per second if ingress traffic shaping is enabled on the port.
@@ -995,7 +995,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingBurstSize")
-    def ingress_shaping_burst_size(self) -> float:
+    def ingress_shaping_burst_size(self) -> pulumi.Output[float]:
         """
         The maximum burst size allowed in
         bytes if ingress traffic shaping is enabled on the port.
@@ -1004,7 +1004,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingEnabled")
-    def ingress_shaping_enabled(self) -> bool:
+    def ingress_shaping_enabled(self) -> pulumi.Output[bool]:
         """
         `true` if the traffic shaper is
         enabled on the port for ingress traffic.
@@ -1013,7 +1013,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingPeakBandwidth")
-    def ingress_shaping_peak_bandwidth(self) -> float:
+    def ingress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
         """
         The peak bandwidth during
         bursts in bits per second if ingress traffic shaping is enabled on the port.
@@ -1022,7 +1022,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> Optional[str]:
+    def ipv4_address(self) -> pulumi.Output[Optional[str]]:
         """
         An IPv4 address to identify the switch. This is
         mostly useful when used with the Netflow arguments found
@@ -1032,7 +1032,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iscsiMaximumMbit")
-    def iscsi_maximum_mbit(self) -> float:
+    def iscsi_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
         """
@@ -1040,7 +1040,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iscsiReservationMbit")
-    def iscsi_reservation_mbit(self) -> float:
+    def iscsi_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
         """
@@ -1048,7 +1048,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iscsiShareCount")
-    def iscsi_share_count(self) -> float:
+    def iscsi_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the iSCSI traffic class for a custom share level.
         """
@@ -1056,7 +1056,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iscsiShareLevel")
-    def iscsi_share_level(self) -> str:
+    def iscsi_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1064,7 +1064,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lacpApiVersion")
-    def lacp_api_version(self) -> str:
+    def lacp_api_version(self) -> pulumi.Output[str]:
         """
         The Link Aggregation Control Protocol group
         version to use with the switch. Possible values are `singleLag` and
@@ -1074,7 +1074,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lacpEnabled")
-    def lacp_enabled(self) -> bool:
+    def lacp_enabled(self) -> pulumi.Output[bool]:
         """
         Enables LACP for the ports that this policy
         applies to.
@@ -1083,7 +1083,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lacpMode")
-    def lacp_mode(self) -> str:
+    def lacp_mode(self) -> pulumi.Output[str]:
         """
         The LACP mode. Can be one of `active` or `passive`.
         """
@@ -1091,7 +1091,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linkDiscoveryOperation")
-    def link_discovery_operation(self) -> Optional[str]:
+    def link_discovery_operation(self) -> pulumi.Output[Optional[str]]:
         """
         Whether to `advertise` or `listen`
         for link discovery traffic.
@@ -1100,7 +1100,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="linkDiscoveryProtocol")
-    def link_discovery_protocol(self) -> Optional[str]:
+    def link_discovery_protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The discovery protocol type. Valid
         types are `cdp` and `lldp`.
@@ -1109,7 +1109,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementMaximumMbit")
-    def management_maximum_mbit(self) -> float:
+    def management_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the management traffic class, in Mbits/sec.
         """
@@ -1117,7 +1117,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementReservationMbit")
-    def management_reservation_mbit(self) -> float:
+    def management_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
         """
@@ -1125,7 +1125,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementShareCount")
-    def management_share_count(self) -> float:
+    def management_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the management traffic class for a custom share level.
         """
@@ -1133,7 +1133,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managementShareLevel")
-    def management_share_level(self) -> str:
+    def management_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1141,7 +1141,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxMtu")
-    def max_mtu(self) -> float:
+    def max_mtu(self) -> pulumi.Output[float]:
         """
         The maximum transmission unit (MTU) for the virtual
         switch.
@@ -1150,7 +1150,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multicastFilteringMode")
-    def multicast_filtering_mode(self) -> str:
+    def multicast_filtering_mode(self) -> pulumi.Output[str]:
         """
         The multicast filtering mode to use
         with the switch. Can be one of `legacyFiltering` or `snooping`.
@@ -1159,7 +1159,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the distributed virtual switch.
         """
@@ -1167,7 +1167,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowActiveFlowTimeout")
-    def netflow_active_flow_timeout(self) -> Optional[float]:
+    def netflow_active_flow_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The number of seconds after which
         active flows are forced to be exported to the collector. Allowed range is
@@ -1177,7 +1177,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowCollectorIpAddress")
-    def netflow_collector_ip_address(self) -> Optional[str]:
+    def netflow_collector_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         IP address for the Netflow
         collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
@@ -1187,7 +1187,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowCollectorPort")
-    def netflow_collector_port(self) -> Optional[float]:
+    def netflow_collector_port(self) -> pulumi.Output[Optional[float]]:
         """
         Port for the Netflow collector. This
         must be set before Netflow can be enabled.
@@ -1196,7 +1196,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowEnabled")
-    def netflow_enabled(self) -> bool:
+    def netflow_enabled(self) -> pulumi.Output[bool]:
         """
         Enables Netflow on all ports that this policy
         applies to.
@@ -1205,7 +1205,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowIdleFlowTimeout")
-    def netflow_idle_flow_timeout(self) -> Optional[float]:
+    def netflow_idle_flow_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The number of seconds after which
         idle flows are forced to be exported to the collector. Allowed range is `10`
@@ -1215,7 +1215,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowInternalFlowsOnly")
-    def netflow_internal_flows_only(self) -> Optional[bool]:
+    def netflow_internal_flows_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to limit analysis to
         traffic that has both source and destination served by the same host.
@@ -1225,7 +1225,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowObservationDomainId")
-    def netflow_observation_domain_id(self) -> Optional[float]:
+    def netflow_observation_domain_id(self) -> pulumi.Output[Optional[float]]:
         """
         The observation domain ID for
         the Netflow collector.
@@ -1234,7 +1234,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowSamplingRate")
-    def netflow_sampling_rate(self) -> Optional[float]:
+    def netflow_sampling_rate(self) -> pulumi.Output[Optional[float]]:
         """
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
@@ -1245,7 +1245,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkResourceControlEnabled")
-    def network_resource_control_enabled(self) -> Optional[bool]:
+    def network_resource_control_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Set to `true` to enable
         network I/O control. Default: `false`.
@@ -1254,7 +1254,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkResourceControlVersion")
-    def network_resource_control_version(self) -> str:
+    def network_resource_control_version(self) -> pulumi.Output[str]:
         """
         The version of network I/O
         control to use. Can be one of `version2` or `version3`. Default: `version2`.
@@ -1263,7 +1263,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nfsMaximumMbit")
-    def nfs_maximum_mbit(self) -> float:
+    def nfs_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the nfs traffic class, in Mbits/sec.
         """
@@ -1271,7 +1271,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nfsReservationMbit")
-    def nfs_reservation_mbit(self) -> float:
+    def nfs_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
         """
@@ -1279,7 +1279,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nfsShareCount")
-    def nfs_share_count(self) -> float:
+    def nfs_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the nfs traffic class for a custom share level.
         """
@@ -1287,7 +1287,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nfsShareLevel")
-    def nfs_share_level(self) -> str:
+    def nfs_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1295,7 +1295,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> bool:
+    def notify_switches(self) -> pulumi.Output[bool]:
         """
         If `true`, the teaming policy will notify the
         broadcast network of an uplink failover, triggering cache updates.
@@ -1304,7 +1304,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portPrivateSecondaryVlanId")
-    def port_private_secondary_vlan_id(self) -> float:
+    def port_private_secondary_vlan_id(self) -> pulumi.Output[float]:
         """
         Used to define a secondary VLAN
         ID when using private VLANs.
@@ -1313,7 +1313,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyUplinks")
-    def standby_uplinks(self) -> List[str]:
+    def standby_uplinks(self) -> pulumi.Output[List[str]]:
         """
         A list of standby uplinks to be used in
         failover. These uplinks need to match the definitions in the
@@ -1324,7 +1324,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -1332,7 +1332,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> str:
+    def teaming_policy(self) -> pulumi.Output[str]:
         """
         The uplink teaming policy. Can be one of
         `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
@@ -1342,7 +1342,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="txUplink")
-    def tx_uplink(self) -> bool:
+    def tx_uplink(self) -> pulumi.Output[bool]:
         """
         Forward all traffic transmitted by ports for which
         this policy applies to its DVS uplinks.
@@ -1351,7 +1351,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def uplinks(self) -> List[str]:
+    def uplinks(self) -> pulumi.Output[List[str]]:
         """
         A list of strings that uniquely identifies the names
         of the uplinks on the DVS across hosts. The number of items in this list
@@ -1363,7 +1363,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vdpMaximumMbit")
-    def vdp_maximum_mbit(self) -> float:
+    def vdp_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         """
@@ -1371,7 +1371,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vdpReservationMbit")
-    def vdp_reservation_mbit(self) -> float:
+    def vdp_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         """
@@ -1379,7 +1379,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vdpShareCount")
-    def vdp_share_count(self) -> float:
+    def vdp_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the vdp traffic class for a custom share level.
         """
@@ -1387,7 +1387,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vdpShareLevel")
-    def vdp_share_level(self) -> str:
+    def vdp_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1395,7 +1395,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         - The version of the DVS to create. The default is to
         create the DVS at the latest version supported by the version of vSphere
@@ -1406,7 +1406,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualmachineMaximumMbit")
-    def virtualmachine_maximum_mbit(self) -> float:
+    def virtualmachine_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
         """
@@ -1414,7 +1414,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualmachineReservationMbit")
-    def virtualmachine_reservation_mbit(self) -> float:
+    def virtualmachine_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
         """
@@ -1422,7 +1422,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualmachineShareCount")
-    def virtualmachine_share_count(self) -> float:
+    def virtualmachine_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
         """
@@ -1430,7 +1430,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualmachineShareLevel")
-    def virtualmachine_share_level(self) -> str:
+    def virtualmachine_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1438,7 +1438,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> float:
+    def vlan_id(self) -> pulumi.Output[float]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
@@ -1446,7 +1446,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanRanges")
-    def vlan_ranges(self) -> List['outputs.DistributedVirtualSwitchVlanRange']:
+    def vlan_ranges(self) -> pulumi.Output[List['outputs.DistributedVirtualSwitchVlanRange']]:
         """
         Used to denote VLAN trunking. Use the `min_vlan`
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
@@ -1457,7 +1457,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmotionMaximumMbit")
-    def vmotion_maximum_mbit(self) -> float:
+    def vmotion_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         """
@@ -1465,7 +1465,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmotionReservationMbit")
-    def vmotion_reservation_mbit(self) -> float:
+    def vmotion_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         """
@@ -1473,7 +1473,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmotionShareCount")
-    def vmotion_share_count(self) -> float:
+    def vmotion_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the vmotion traffic class for a custom share level.
         """
@@ -1481,7 +1481,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmotionShareLevel")
-    def vmotion_share_level(self) -> str:
+    def vmotion_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
         """
@@ -1489,7 +1489,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanMaximumMbit")
-    def vsan_maximum_mbit(self) -> float:
+    def vsan_maximum_mbit(self) -> pulumi.Output[float]:
         """
         The maximum allowed usage for the vsan traffic class, in Mbits/sec.
         """
@@ -1497,7 +1497,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanReservationMbit")
-    def vsan_reservation_mbit(self) -> float:
+    def vsan_reservation_mbit(self) -> pulumi.Output[float]:
         """
         The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
         """
@@ -1505,7 +1505,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanShareCount")
-    def vsan_share_count(self) -> float:
+    def vsan_share_count(self) -> pulumi.Output[float]:
         """
         The amount of shares to allocate to the vsan traffic class for a custom share level.
         """
@@ -1513,7 +1513,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanShareLevel")
-    def vsan_share_level(self) -> str:
+    def vsan_share_level(self) -> pulumi.Output[str]:
         """
         The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
         """

@@ -13,7 +13,7 @@ __all__ = ['CustomAttribute']
 
 class CustomAttribute(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  managed_object_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -84,7 +84,7 @@ class CustomAttribute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="managedObjectType")
-    def managed_object_type(self) -> Optional[str]:
+    def managed_object_type(self) -> pulumi.Output[Optional[str]]:
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
@@ -95,7 +95,7 @@ class CustomAttribute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the custom attribute.
         """

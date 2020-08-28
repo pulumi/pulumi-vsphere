@@ -13,7 +13,7 @@ __all__ = ['ContentLibrary']
 
 class ContentLibrary(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -88,7 +88,7 @@ class ContentLibrary(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the Content Library.
         """
@@ -96,7 +96,7 @@ class ContentLibrary(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Content Library.
         """
@@ -104,7 +104,7 @@ class ContentLibrary(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageBackings")
-    def storage_backings(self) -> List[str]:
+    def storage_backings(self) -> pulumi.Output[List[str]]:
         """
         The managed object reference ID on which to store Content Library
         items.
