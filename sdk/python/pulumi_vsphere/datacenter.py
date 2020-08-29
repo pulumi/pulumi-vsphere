@@ -13,7 +13,7 @@ __all__ = ['Datacenter']
 
 class Datacenter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to value 
         strings to set for datacenter resource. See
@@ -135,7 +135,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The folder where the datacenter should be created.
         Forces a new resource if changed.
@@ -144,7 +144,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def moid(self) -> str:
+    def moid(self) -> pulumi.Output[str]:
         """
         Managed object ID of this datacenter.
         """
@@ -152,7 +152,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the datacenter. This name needs to be unique
         within the folder. Forces a new resource if changed.
@@ -161,7 +161,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

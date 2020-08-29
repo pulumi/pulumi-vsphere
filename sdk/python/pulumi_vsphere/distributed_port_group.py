@@ -15,7 +15,7 @@ __all__ = ['DistributedPortGroup']
 
 class DistributedPortGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
@@ -406,7 +406,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeUplinks")
-    def active_uplinks(self) -> List[str]:
+    def active_uplinks(self) -> pulumi.Output[List[str]]:
         """
         List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
@@ -414,7 +414,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowForgedTransmits")
-    def allow_forged_transmits(self) -> bool:
+    def allow_forged_transmits(self) -> pulumi.Output[bool]:
         """
         Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
         that of its own.
@@ -423,7 +423,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowMacChanges")
-    def allow_mac_changes(self) -> bool:
+    def allow_mac_changes(self) -> pulumi.Output[bool]:
         """
         Controls whether or not the Media Access Control (MAC) address can be changed.
         """
@@ -431,7 +431,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowPromiscuous")
-    def allow_promiscuous(self) -> bool:
+    def allow_promiscuous(self) -> pulumi.Output[bool]:
         """
         Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
         """
@@ -439,7 +439,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoExpand")
-    def auto_expand(self) -> Optional[bool]:
+    def auto_expand(self) -> pulumi.Output[Optional[bool]]:
         """
         Allows the port group to create additional ports
         past the limit specified in `number_of_ports` if necessary. Default: `true`.
@@ -448,7 +448,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockAllPorts")
-    def block_all_ports(self) -> bool:
+    def block_all_ports(self) -> pulumi.Output[bool]:
         """
         Indicates whether to block all ports by default.
         """
@@ -456,7 +456,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blockOverrideAllowed")
-    def block_override_allowed(self) -> Optional[bool]:
+    def block_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the port shutdown
         policy to be overridden on an individual port.
@@ -465,7 +465,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkBeacon")
-    def check_beacon(self) -> bool:
+    def check_beacon(self) -> pulumi.Output[bool]:
         """
         Enable beacon probing on the ports this policy applies to.
         """
@@ -473,7 +473,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configVersion")
-    def config_version(self) -> str:
+    def config_version(self) -> pulumi.Output[str]:
         """
         Version string of the configuration that this spec is trying to change.
         """
@@ -481,7 +481,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute
         value string to set for port group.
@@ -490,7 +490,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         An optional description for the port group.
         """
@@ -498,7 +498,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="directpathGen2Allowed")
-    def directpath_gen2_allowed(self) -> bool:
+    def directpath_gen2_allowed(self) -> pulumi.Output[bool]:
         """
         Allow VMDirectPath Gen2 on the ports this policy applies to.
         """
@@ -506,7 +506,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="distributedVirtualSwitchUuid")
-    def distributed_virtual_switch_uuid(self) -> str:
+    def distributed_virtual_switch_uuid(self) -> pulumi.Output[str]:
         """
         The ID of the DVS to add the
         port group to. Forces a new resource if changed.
@@ -515,7 +515,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingAverageBandwidth")
-    def egress_shaping_average_bandwidth(self) -> float:
+    def egress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
         """
         The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         """
@@ -523,7 +523,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingBurstSize")
-    def egress_shaping_burst_size(self) -> float:
+    def egress_shaping_burst_size(self) -> pulumi.Output[float]:
         """
         The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         """
@@ -531,7 +531,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingEnabled")
-    def egress_shaping_enabled(self) -> bool:
+    def egress_shaping_enabled(self) -> pulumi.Output[bool]:
         """
         True if the traffic shaper is enabled for egress traffic on the port.
         """
@@ -539,7 +539,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingPeakBandwidth")
-    def egress_shaping_peak_bandwidth(self) -> float:
+    def egress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
         """
         The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         """
@@ -547,7 +547,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def failback(self) -> bool:
+    def failback(self) -> pulumi.Output[bool]:
         """
         If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
         """
@@ -555,7 +555,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
-    def ingress_shaping_average_bandwidth(self) -> float:
+    def ingress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
         """
         The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         """
@@ -563,7 +563,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingBurstSize")
-    def ingress_shaping_burst_size(self) -> float:
+    def ingress_shaping_burst_size(self) -> pulumi.Output[float]:
         """
         The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         """
@@ -571,7 +571,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingEnabled")
-    def ingress_shaping_enabled(self) -> bool:
+    def ingress_shaping_enabled(self) -> pulumi.Output[bool]:
         """
         True if the traffic shaper is enabled for ingress traffic on the port.
         """
@@ -579,7 +579,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingPeakBandwidth")
-    def ingress_shaping_peak_bandwidth(self) -> float:
+    def ingress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
         """
         The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         """
@@ -587,7 +587,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The generated UUID of the portgroup.
         """
@@ -595,7 +595,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lacpEnabled")
-    def lacp_enabled(self) -> bool:
+    def lacp_enabled(self) -> pulumi.Output[bool]:
         """
         Whether or not to enable LACP on all uplink ports.
         """
@@ -603,7 +603,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lacpMode")
-    def lacp_mode(self) -> str:
+    def lacp_mode(self) -> pulumi.Output[str]:
         """
         The uplink LACP mode to use. Can be one of active or passive.
         """
@@ -611,7 +611,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="livePortMovingAllowed")
-    def live_port_moving_allowed(self) -> Optional[bool]:
+    def live_port_moving_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow a port in this port group to be
         moved to another port group while it is connected.
@@ -620,7 +620,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the port group.
         """
@@ -628,7 +628,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowEnabled")
-    def netflow_enabled(self) -> bool:
+    def netflow_enabled(self) -> pulumi.Output[bool]:
         """
         Indicates whether to enable netflow on all ports.
         """
@@ -636,7 +636,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="netflowOverrideAllowed")
-    def netflow_override_allowed(self) -> Optional[bool]:
+    def netflow_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the Netflow
         policy on this port group to be overridden on an individual
@@ -646,7 +646,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkResourcePoolKey")
-    def network_resource_pool_key(self) -> Optional[str]:
+    def network_resource_pool_key(self) -> pulumi.Output[Optional[str]]:
         """
         The key of a network resource pool
         to associate with this port group. The default is `-1`, which implies no
@@ -656,7 +656,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkResourcePoolOverrideAllowed")
-    def network_resource_pool_override_allowed(self) -> Optional[bool]:
+    def network_resource_pool_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the network
         resource pool set on this port group to be overridden on an individual port.
@@ -665,7 +665,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notifySwitches")
-    def notify_switches(self) -> bool:
+    def notify_switches(self) -> pulumi.Output[bool]:
         """
         If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         """
@@ -673,7 +673,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberOfPorts")
-    def number_of_ports(self) -> float:
+    def number_of_ports(self) -> pulumi.Output[float]:
         """
         The number of ports available on this port
         group. Cannot be decreased below the amount of used ports on the port group.
@@ -682,7 +682,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portConfigResetAtDisconnect")
-    def port_config_reset_at_disconnect(self) -> Optional[bool]:
+    def port_config_reset_at_disconnect(self) -> pulumi.Output[Optional[bool]]:
         """
         Reset a port's settings to the
         settings defined on this port group policy when the port disconnects.
@@ -691,7 +691,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portNameFormat")
-    def port_name_format(self) -> Optional[str]:
+    def port_name_format(self) -> pulumi.Output[Optional[str]]:
         """
         An optional formatting policy for naming of
         the ports in this port group. See the `portNameFormat` attribute listed
@@ -701,7 +701,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portPrivateSecondaryVlanId")
-    def port_private_secondary_vlan_id(self) -> float:
+    def port_private_secondary_vlan_id(self) -> pulumi.Output[float]:
         """
         The secondary VLAN ID for this port.
         """
@@ -709,7 +709,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityPolicyOverrideAllowed")
-    def security_policy_override_allowed(self) -> Optional[bool]:
+    def security_policy_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the security policy
         settings defined in this port group policy to be
@@ -719,7 +719,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingOverrideAllowed")
-    def shaping_override_allowed(self) -> Optional[bool]:
+    def shaping_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the traffic shaping
         options on this port group policy to be overridden
@@ -729,7 +729,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyUplinks")
-    def standby_uplinks(self) -> List[str]:
+    def standby_uplinks(self) -> pulumi.Output[List[str]]:
         """
         List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
@@ -737,7 +737,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tag IDs to apply to this object.
         """
@@ -745,7 +745,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamingPolicy")
-    def teaming_policy(self) -> str:
+    def teaming_policy(self) -> pulumi.Output[str]:
         """
         The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
         failover_explicit, or loadbalance_loadbased.
@@ -754,7 +754,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trafficFilterOverrideAllowed")
-    def traffic_filter_override_allowed(self) -> Optional[bool]:
+    def traffic_filter_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow any traffic filters on
         this port group to be overridden on an individual port.
@@ -763,7 +763,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="txUplink")
-    def tx_uplink(self) -> bool:
+    def tx_uplink(self) -> pulumi.Output[bool]:
         """
         If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
         forwarded done by the switch.
@@ -772,7 +772,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The port group type. Can be one of `earlyBinding` (static
         binding) or `ephemeral`. Default: `earlyBinding`.
@@ -781,7 +781,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uplinkTeamingOverrideAllowed")
-    def uplink_teaming_override_allowed(self) -> Optional[bool]:
+    def uplink_teaming_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the uplink teaming
         options on this port group to be overridden on an
@@ -791,7 +791,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> float:
+    def vlan_id(self) -> pulumi.Output[float]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
@@ -799,7 +799,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanOverrideAllowed")
-    def vlan_override_allowed(self) -> Optional[bool]:
+    def vlan_override_allowed(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow the VLAN settings
         on this port group to be overridden on an individual port.
@@ -808,7 +808,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanRanges")
-    def vlan_ranges(self) -> List['outputs.DistributedPortGroupVlanRange']:
+    def vlan_ranges(self) -> pulumi.Output[List['outputs.DistributedPortGroupVlanRange']]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """

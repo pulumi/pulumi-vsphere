@@ -13,7 +13,7 @@ __all__ = ['ComputeClusterVmGroup']
 
 class ComputeClusterVmGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_cluster_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> str:
+    def compute_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the cluster to put the group in.  Forces a new
@@ -104,7 +104,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the VM group. This must be unique in the
         cluster. Forces a new resource if changed.
@@ -113,7 +113,7 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> Optional[List[str]]:
+    def virtual_machine_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The UUIDs of the virtual machines in this
         group.

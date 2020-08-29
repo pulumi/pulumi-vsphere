@@ -15,7 +15,7 @@ __all__ = ['VirtualMachine']
 
 class VirtualMachine(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate_guest_name: Optional[pulumi.Input[str]] = None,
                  annotation: Optional[pulumi.Input[str]] = None,
@@ -782,7 +782,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="alternateGuestName")
-    def alternate_guest_name(self) -> Optional[str]:
+    def alternate_guest_name(self) -> pulumi.Output[Optional[str]]:
         """
         The guest name for the operating system
         when `guest_id` is `other` or `other-64`.
@@ -791,7 +791,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotation(self) -> Optional[str]:
+    def annotation(self) -> pulumi.Output[Optional[str]]:
         """
         A user-provided description of the virtual machine.
         The default is no annotation.
@@ -800,7 +800,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootDelay")
-    def boot_delay(self) -> Optional[float]:
+    def boot_delay(self) -> pulumi.Output[Optional[float]]:
         """
         The number of milliseconds to wait before starting
         the boot sequence. The default is no delay.
@@ -809,7 +809,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootRetryDelay")
-    def boot_retry_delay(self) -> Optional[float]:
+    def boot_retry_delay(self) -> pulumi.Output[Optional[float]]:
         """
         The number of milliseconds to wait before
         retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
@@ -819,7 +819,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootRetryEnabled")
-    def boot_retry_enabled(self) -> Optional[bool]:
+    def boot_retry_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, a virtual machine that
         fails to boot will try again after the delay defined in `boot_retry_delay`.
@@ -829,7 +829,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cdrom(self) -> Optional['outputs.VirtualMachineCdrom']:
+    def cdrom(self) -> pulumi.Output[Optional['outputs.VirtualMachineCdrom']]:
         """
         A specification for a CDROM device on this virtual
         machine. See CDROM options below.
@@ -838,7 +838,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="changeVersion")
-    def change_version(self) -> str:
+    def change_version(self) -> pulumi.Output[str]:
         """
         A unique identifier for a given version of the last
         configuration applied, such the timestamp of the last update to the
@@ -848,7 +848,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def clone(self) -> Optional['outputs.VirtualMachineClone']:
+    def clone(self) -> pulumi.Output[Optional['outputs.VirtualMachineClone']]:
         """
         When specified, the VM will be created as a clone of a
         specified template. Optional customization options can be submitted as well.
@@ -859,7 +859,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuHotAddEnabled")
-    def cpu_hot_add_enabled(self) -> Optional[bool]:
+    def cpu_hot_add_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow CPUs to be added to this virtual
         machine while it is running.
@@ -868,7 +868,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuHotRemoveEnabled")
-    def cpu_hot_remove_enabled(self) -> Optional[bool]:
+    def cpu_hot_remove_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow CPUs to be removed to this
         virtual machine while it is running.
@@ -877,7 +877,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[float]:
+    def cpu_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum amount of CPU (in MHz) that this virtual
         machine can consume, regardless of available resources. The default is no
@@ -887,7 +887,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuPerformanceCountersEnabled")
-    def cpu_performance_counters_enabled(self) -> Optional[bool]:
+    def cpu_performance_counters_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable CPU performance
         counters on this virtual machine. Default: `false`.
@@ -896,7 +896,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[float]:
+    def cpu_reservation(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of CPU (in MHz) that this virtual
         machine is guaranteed. The default is no reservation.
@@ -905,7 +905,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShareCount")
-    def cpu_share_count(self) -> float:
+    def cpu_share_count(self) -> pulumi.Output[float]:
         """
         The number of CPU shares allocated to the
         virtual machine when the `cpu_share_level` is `custom`.
@@ -914,7 +914,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShareLevel")
-    def cpu_share_level(self) -> Optional[str]:
+    def cpu_share_level(self) -> pulumi.Output[Optional[str]]:
         """
         The allocation level for CPU resources. Can be
         one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -923,7 +923,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute
         value strings to set for virtual machine.
@@ -932,7 +932,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[str]:
+    def datacenter_id(self) -> pulumi.Output[Optional[str]]:
         """
         The datacenter id. Required only when deploying
         an ovf template.
@@ -941,7 +941,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[str]:
+    def datastore_cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         The managed object reference
         ID of the datastore cluster ID to use. This setting
@@ -953,7 +953,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> str:
+    def datastore_id(self) -> pulumi.Output[str]:
         """
         The datastore ID that the ISO is located in.
         Requried for using a datastore ISO. Conflicts with `client_device`.
@@ -962,7 +962,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultIpAddress")
-    def default_ip_address(self) -> str:
+    def default_ip_address(self) -> pulumi.Output[str]:
         """
         The IP address selected by the provider to be used with
         any provisioners configured on this resource.
@@ -976,7 +976,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> List['outputs.VirtualMachineDisk']:
+    def disks(self) -> pulumi.Output[List['outputs.VirtualMachineDisk']]:
         """
         A specification for a virtual disk device on this virtual
         machine. See disk options below.
@@ -985,7 +985,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="efiSecureBootEnabled")
-    def efi_secure_boot_enabled(self) -> Optional[bool]:
+    def efi_secure_boot_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         When the `firmware` type is set to is
         `efi`, this enables EFI secure boot. Default: `false`.
@@ -994,7 +994,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableDiskUuid")
-    def enable_disk_uuid(self) -> Optional[bool]:
+    def enable_disk_uuid(self) -> pulumi.Output[Optional[bool]]:
         """
         Expose the UUIDs of attached virtual disks to
         the virtual machine, allowing access to them in the guest. Default: `false`.
@@ -1003,7 +1003,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[bool]:
+    def enable_logging(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable logging of virtual machine events to a
         log file stored in the virtual machine directory. Default: `false`.
@@ -1012,7 +1012,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eptRviMode")
-    def ept_rvi_mode(self) -> Optional[str]:
+    def ept_rvi_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The EPT/RVI (hardware memory virtualization)
         setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
@@ -1022,7 +1022,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraConfig")
-    def extra_config(self) -> Optional[Mapping[str, str]]:
+    def extra_config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Extra configuration data for this virtual
         machine. Can be used to supply advanced parameters not normally in
@@ -1032,7 +1032,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def firmware(self) -> Optional[str]:
+    def firmware(self) -> pulumi.Output[Optional[str]]:
         """
         The firmware interface to use on the virtual machine.
         Can be one of `bios` or `EFI`. Default: `bios`.
@@ -1041,7 +1041,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The path to the folder to put this virtual machine in,
         relative to the datacenter that the resource pool is in.
@@ -1050,7 +1050,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forcePowerOff")
-    def force_power_off(self) -> Optional[bool]:
+    def force_power_off(self) -> pulumi.Output[Optional[bool]]:
         """
         If a guest shutdown failed or timed out while
         updating or destroying (see
@@ -1061,7 +1061,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestId")
-    def guest_id(self) -> str:
+    def guest_id(self) -> pulumi.Output[str]:
         """
         The guest ID for the operating system type. For a
         full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
@@ -1070,7 +1070,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestIpAddresses")
-    def guest_ip_addresses(self) -> List[str]:
+    def guest_ip_addresses(self) -> pulumi.Output[List[str]]:
         """
         The current list of IP addresses on this machine,
         including the value of `default_ip_address`. If VMware tools is not running
@@ -1082,7 +1082,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hardwareVersion")
-    def hardware_version(self) -> float:
+    def hardware_version(self) -> pulumi.Output[float]:
         """
         The hardware version number. Valid range
         is from 4 to 15. The hardware version cannot be downgraded. See [virtual
@@ -1093,7 +1093,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> str:
+    def host_system_id(self) -> pulumi.Output[str]:
         """
         An optional managed object reference
         ID of a host to put this virtual machine on. See the
@@ -1106,7 +1106,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hvMode")
-    def hv_mode(self) -> Optional[str]:
+    def hv_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The (non-nested) hardware virtualization setting for
         this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
@@ -1116,7 +1116,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ideControllerCount")
-    def ide_controller_count(self) -> Optional[float]:
+    def ide_controller_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
         you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
@@ -1126,7 +1126,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoredGuestIps")
-    def ignored_guest_ips(self) -> Optional[List[str]]:
+    def ignored_guest_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of IP addresses and CIDR networks to
         ignore while waiting for an available IP address using either of the waiters.
@@ -1137,7 +1137,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def imported(self) -> bool:
+    def imported(self) -> pulumi.Output[bool]:
         """
         This is flagged if the virtual machine has been imported, or the
         state has been migrated from a previous version of the resource. It
@@ -1148,7 +1148,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="latencySensitivity")
-    def latency_sensitivity(self) -> Optional[str]:
+    def latency_sensitivity(self) -> pulumi.Output[Optional[str]]:
         """
         Controls the scheduling delay of the
         virtual machine. Use a higher sensitivity for applications that require lower
@@ -1160,7 +1160,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def memory(self) -> Optional[float]:
+    def memory(self) -> pulumi.Output[Optional[float]]:
         """
         The size of the virtual machine's memory, in MB.
         Default: `1024` (1 GB).
@@ -1169,7 +1169,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryHotAddEnabled")
-    def memory_hot_add_enabled(self) -> Optional[bool]:
+    def memory_hot_add_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Allow memory to be added to this
         virtual machine while it is running.
@@ -1178,7 +1178,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[float]:
+    def memory_limit(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum amount of memory (in MB) that this
         virtual machine can consume, regardless of available resources. The default
@@ -1188,7 +1188,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[float]:
+    def memory_reservation(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of memory (in MB) that this
         virtual machine is guaranteed. The default is no reservation.
@@ -1197,7 +1197,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShareCount")
-    def memory_share_count(self) -> float:
+    def memory_share_count(self) -> pulumi.Output[float]:
         """
         The number of memory shares allocated to
         the virtual machine when the `memory_share_level` is `custom`.
@@ -1206,7 +1206,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShareLevel")
-    def memory_share_level(self) -> Optional[str]:
+    def memory_share_level(self) -> pulumi.Output[Optional[str]]:
         """
         The allocation level for memory resources.
         Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -1215,7 +1215,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="migrateWaitTimeout")
-    def migrate_wait_timeout(self) -> Optional[float]:
+    def migrate_wait_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in minutes, to wait
         for a virtual machine migration to complete before failing. Default: 10
@@ -1226,7 +1226,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def moid(self) -> str:
+    def moid(self) -> pulumi.Output[str]:
         """
         The machine object ID from VMWare
         """
@@ -1234,7 +1234,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         An alias for both `label` and `path`, the latter when
         using `attach`. Required if not using `label`.
@@ -1243,7 +1243,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nestedHvEnabled")
-    def nested_hv_enabled(self) -> Optional[bool]:
+    def nested_hv_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable nested hardware virtualization on
         this virtual machine, facilitating nested virtualization in the guest.
@@ -1253,7 +1253,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.VirtualMachineNetworkInterface']]:
+    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.VirtualMachineNetworkInterface']]]:
         """
         A specification for a virtual NIC on this
         virtual machine. See network interface options
@@ -1263,7 +1263,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numCoresPerSocket")
-    def num_cores_per_socket(self) -> Optional[float]:
+    def num_cores_per_socket(self) -> pulumi.Output[Optional[float]]:
         """
         The number of cores per socket in this
         virtual machine. The number of vCPUs on the virtual machine will be
@@ -1274,7 +1274,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numCpus")
-    def num_cpus(self) -> Optional[float]:
+    def num_cpus(self) -> pulumi.Output[Optional[float]]:
         """
         The total number of virtual processor cores to assign
         to this virtual machine. Default: `1`.
@@ -1283,7 +1283,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ovfDeploy")
-    def ovf_deploy(self) -> Optional['outputs.VirtualMachineOvfDeploy']:
+    def ovf_deploy(self) -> pulumi.Output[Optional['outputs.VirtualMachineOvfDeploy']]:
         """
         When specified, the VM will be deployed from the
         provided ovf/ova template. See creating a virtual machine from a
@@ -1293,7 +1293,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pciDeviceIds")
-    def pci_device_ids(self) -> Optional[List[str]]:
+    def pci_device_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of host PCI device IDs to create PCI
         passthroughs for.
@@ -1302,7 +1302,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poweronTimeout")
-    def poweron_timeout(self) -> Optional[float]:
+    def poweron_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in seconds, that we will be trying to power on a VM
         """
@@ -1310,7 +1310,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rebootRequired")
-    def reboot_required(self) -> bool:
+    def reboot_required(self) -> pulumi.Output[bool]:
         """
         Value internal to the provider used to determine if a
         configuration set change requires a reboot. This value is only useful during
@@ -1320,7 +1320,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> str:
+    def resource_pool_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the resource pool to put this virtual machine in.
@@ -1331,7 +1331,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runToolsScriptsAfterPowerOn")
-    def run_tools_scripts_after_power_on(self) -> Optional[bool]:
+    def run_tools_scripts_after_power_on(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the execution of
         post-power-on scripts when VMware tools is installed. Default: `true`.
@@ -1340,7 +1340,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runToolsScriptsAfterResume")
-    def run_tools_scripts_after_resume(self) -> Optional[bool]:
+    def run_tools_scripts_after_resume(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the execution of
         post-resume scripts when VMware tools is installed. Default: `true`.
@@ -1349,7 +1349,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runToolsScriptsBeforeGuestReboot")
-    def run_tools_scripts_before_guest_reboot(self) -> Optional[bool]:
+    def run_tools_scripts_before_guest_reboot(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the execution of
         pre-reboot scripts when VMware tools is installed. Default: `false`.
@@ -1358,7 +1358,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runToolsScriptsBeforeGuestShutdown")
-    def run_tools_scripts_before_guest_shutdown(self) -> Optional[bool]:
+    def run_tools_scripts_before_guest_shutdown(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the execution
         of pre-shutdown scripts when VMware tools is installed. Default: `true`.
@@ -1367,7 +1367,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runToolsScriptsBeforeGuestStandby")
-    def run_tools_scripts_before_guest_standby(self) -> Optional[bool]:
+    def run_tools_scripts_before_guest_standby(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the execution of
         pre-standby scripts when VMware tools is installed. Default: `true`.
@@ -1376,7 +1376,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sataControllerCount")
-    def sata_controller_count(self) -> Optional[float]:
+    def sata_controller_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
         you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
@@ -1386,7 +1386,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scsiBusSharing")
-    def scsi_bus_sharing(self) -> Optional[str]:
+    def scsi_bus_sharing(self) -> pulumi.Output[Optional[str]]:
         """
         Mode for sharing the SCSI bus. The modes are
         physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
@@ -1395,7 +1395,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scsiControllerCount")
-    def scsi_controller_count(self) -> Optional[float]:
+    def scsi_controller_count(self) -> pulumi.Output[Optional[float]]:
         """
         The number of SCSI controllers that
         this provider manages on this virtual machine. This directly affects the amount
@@ -1406,7 +1406,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scsiType")
-    def scsi_type(self) -> Optional[str]:
+    def scsi_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of SCSI bus this virtual machine will have.
         Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
@@ -1416,7 +1416,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shutdownWaitTimeout")
-    def shutdown_wait_timeout(self) -> Optional[float]:
+    def shutdown_wait_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in minutes, to wait
         for a graceful guest shutdown when making necessary updates to the virtual
@@ -1427,7 +1427,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storagePolicyId")
-    def storage_policy_id(self) -> Optional[str]:
+    def storage_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
         The UUID of the storage policy to assign to this disk.
         """
@@ -1435,7 +1435,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="swapPlacementPolicy")
-    def swap_placement_policy(self) -> Optional[str]:
+    def swap_placement_policy(self) -> pulumi.Output[Optional[str]]:
         """
         The swap file placement policy for this
         virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
@@ -1445,7 +1445,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="syncTimeWithHost")
-    def sync_time_with_host(self) -> Optional[bool]:
+    def sync_time_with_host(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable guest clock synchronization with
         the host. Requires VMware tools to be installed. Default: `false`.
@@ -1454,7 +1454,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -1462,7 +1462,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> pulumi.Output[str]:
         """
         The UUID of the virtual disk's VMDK file. This is used to track the
         virtual disk on the virtual machine.
@@ -1471,7 +1471,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vapp(self) -> Optional['outputs.VirtualMachineVapp']:
+    def vapp(self) -> pulumi.Output[Optional['outputs.VirtualMachineVapp']]:
         """
         Optional vApp configuration. The only sub-key available
         is `properties`, which is a key/value map of properties for virtual machines
@@ -1483,7 +1483,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vappTransports")
-    def vapp_transports(self) -> List[str]:
+    def vapp_transports(self) -> pulumi.Output[List[str]]:
         """
         Computed value which is only valid for cloned virtual
         machines. A list of vApp transport methods supported by the source virtual
@@ -1493,7 +1493,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmwareToolsStatus")
-    def vmware_tools_status(self) -> str:
+    def vmware_tools_status(self) -> pulumi.Output[str]:
         """
         The state of VMware tools in the guest. This will
         determine the proper course of action for some device operations.
@@ -1502,7 +1502,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmxPath")
-    def vmx_path(self) -> str:
+    def vmx_path(self) -> pulumi.Output[str]:
         """
         The path of the virtual machine's configuration file in the VM's
         datastore.
@@ -1511,7 +1511,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuestIpTimeout")
-    def wait_for_guest_ip_timeout(self) -> Optional[float]:
+    def wait_for_guest_ip_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in minutes, to
         wait for an available guest IP address on this virtual machine. This should
@@ -1523,7 +1523,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuestNetRoutable")
-    def wait_for_guest_net_routable(self) -> Optional[bool]:
+    def wait_for_guest_net_routable(self) -> pulumi.Output[Optional[bool]]:
         """
         Controls whether or not the guest
         network waiter waits for a routable address. When `false`, the waiter does
@@ -1536,7 +1536,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuestNetTimeout")
-    def wait_for_guest_net_timeout(self) -> Optional[float]:
+    def wait_for_guest_net_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The amount of time, in minutes, to
         wait for an available IP address on this virtual machine's NICs. Older

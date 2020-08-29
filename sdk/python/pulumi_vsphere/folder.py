@@ -13,7 +13,7 @@ __all__ = ['Folder']
 
 class Folder(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter_id: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute 
         value strings to set for folder. See [here][docs-setting-custom-attributes]
@@ -134,7 +134,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> Optional[str]:
+    def datacenter_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the datacenter the folder will be created in.
         Required for all folder types except for datacenter folders. Forces a new
@@ -144,7 +144,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> pulumi.Output[str]:
         """
         The path of the folder to be created. This is relative to
         the root of the type of folder you are creating, and the supplied datacenter.
@@ -157,7 +157,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -165,7 +165,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of folder to create. Allowed options are
         `datacenter` for datacenter folders, `host` for host and cluster folders,

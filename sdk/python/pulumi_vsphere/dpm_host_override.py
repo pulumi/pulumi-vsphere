@@ -13,7 +13,7 @@ __all__ = ['DpmHostOverride']
 
 class DpmHostOverride(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_cluster_id: Optional[pulumi.Input[str]] = None,
                  dpm_automation_level: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class DpmHostOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> str:
+    def compute_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the cluster to put the override in.  Forces a new
@@ -114,7 +114,7 @@ class DpmHostOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmAutomationLevel")
-    def dpm_automation_level(self) -> Optional[str]:
+    def dpm_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         The automation level for host power
         operations on this host. Can be one of `manual` or `automated`. Default:
@@ -124,7 +124,7 @@ class DpmHostOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmEnabled")
-    def dpm_enabled(self) -> Optional[bool]:
+    def dpm_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable DPM support for this host. Default:
         `false`.
@@ -133,7 +133,7 @@ class DpmHostOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemId")
-    def host_system_id(self) -> str:
+    def host_system_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of the host.
         """

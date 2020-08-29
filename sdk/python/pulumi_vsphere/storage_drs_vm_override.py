@@ -13,7 +13,7 @@ __all__ = ['StorageDrsVmOverride']
 
 class StorageDrsVmOverride(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  sdrs_automation_level: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> str:
+    def datastore_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the datastore cluster to put the override in.
@@ -134,7 +134,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[str]:
+    def sdrs_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides any Storage DRS automation
         levels for this virtual machine. Can be one of `automated` or `manual`. When
@@ -145,7 +145,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[str]:
+    def sdrs_enabled(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default Storage DRS setting for
         this virtual machine. When not specified, the datastore cluster setting is
@@ -155,7 +155,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIntraVmAffinity")
-    def sdrs_intra_vm_affinity(self) -> Optional[str]:
+    def sdrs_intra_vm_affinity(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the intra-VM affinity setting
         for this virtual machine. When `true`, all disks for this virtual machine
@@ -167,7 +167,7 @@ class StorageDrsVmOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineId")
-    def virtual_machine_id(self) -> str:
+    def virtual_machine_id(self) -> pulumi.Output[str]:
         """
         The UUID of the virtual machine to create
         the override for.  Forces a new resource if changed.

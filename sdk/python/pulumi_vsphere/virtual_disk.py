@@ -13,7 +13,7 @@ __all__ = ['VirtualDisk']
 
 class VirtualDisk(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adapter_type: Optional[pulumi.Input[str]] = None,
                  create_directories: Optional[pulumi.Input[bool]] = None,
@@ -155,7 +155,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="adapterType")
-    def adapter_type(self) -> Optional[str]:
+    def adapter_type(self) -> pulumi.Output[Optional[str]]:
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
@@ -164,7 +164,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDirectories")
-    def create_directories(self) -> Optional[bool]:
+    def create_directories(self) -> pulumi.Output[Optional[bool]]:
         """
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
@@ -174,7 +174,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> Optional[str]:
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the datacenter in which to create the
         disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -184,7 +184,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datastore(self) -> str:
+    def datastore(self) -> pulumi.Output[str]:
         """
         The name of the datastore in which to create the
         disk.
@@ -193,7 +193,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> pulumi.Output[float]:
         """
         Size of the disk (in GB).
         """
@@ -201,7 +201,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of disk to create. Can be one of
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
@@ -212,7 +212,7 @@ class VirtualDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmdkPath")
-    def vmdk_path(self) -> str:
+    def vmdk_path(self) -> pulumi.Output[str]:
         """
         The path, including filename, of the virtual disk to
         be created.  This needs to end in `.vmdk`.

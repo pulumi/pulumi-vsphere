@@ -13,7 +13,7 @@ __all__ = ['License']
 
 class License(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_key: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="editionKey")
-    def edition_key(self) -> str:
+    def edition_key(self) -> pulumi.Output[str]:
         """
         The product edition of the license key.
         """
@@ -119,7 +119,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of key/value pairs to be attached as labels (tags) to the license key.
         """
@@ -127,7 +127,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="licenseKey")
-    def license_key(self) -> str:
+    def license_key(self) -> pulumi.Output[str]:
         """
         The license key to add.
         """
@@ -135,7 +135,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The display name for the license.
         """
@@ -143,7 +143,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def total(self) -> float:
+    def total(self) -> pulumi.Output[float]:
         """
         Total number of units (example: CPUs) contained in the license.
         """
@@ -151,7 +151,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def used(self) -> float:
+    def used(self) -> pulumi.Output[float]:
         """
         The number of units (example: CPUs) assigned to this license.
         """

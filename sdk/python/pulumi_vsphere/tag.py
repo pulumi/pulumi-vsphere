@@ -13,7 +13,7 @@ __all__ = ['Tag']
 
 class Tag(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -90,7 +90,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> str:
+    def category_id(self) -> pulumi.Output[str]:
         """
         The unique identifier of the parent category in
         which this tag will be created. Forces a new resource if changed.
@@ -99,7 +99,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the tag.
         """
@@ -107,7 +107,7 @@ class Tag(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The display name of the tag. The name must be unique
         within its category.

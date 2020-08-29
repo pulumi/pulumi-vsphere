@@ -13,7 +13,7 @@ __all__ = ['ComputeClusterVmHostRule']
 
 class ComputeClusterVmHostRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_host_group_name: Optional[pulumi.Input[str]] = None,
                  anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="affinityHostGroupName")
-    def affinity_host_group_name(self) -> Optional[str]:
+    def affinity_host_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         When this field is used, the virtual
         machines defined in `vm_group_name` will be run on the
@@ -140,7 +140,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="antiAffinityHostGroupName")
-    def anti_affinity_host_group_name(self) -> Optional[str]:
+    def anti_affinity_host_group_name(self) -> pulumi.Output[Optional[str]]:
         """
         When this field is used, the
         virtual machines defined in `vm_group_name` will _not_ be
@@ -150,7 +150,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> str:
+    def compute_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the cluster to put the group in.  Forces a new
@@ -160,7 +160,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
@@ -168,7 +168,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mandatory(self) -> Optional[bool]:
+    def mandatory(self) -> pulumi.Output[Optional[bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -177,7 +177,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -186,7 +186,7 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmGroupName")
-    def vm_group_name(self) -> str:
+    def vm_group_name(self) -> pulumi.Output[str]:
         """
         The name of the virtual machine group to use
         with this rule.

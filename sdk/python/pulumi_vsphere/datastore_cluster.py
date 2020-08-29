@@ -13,7 +13,7 @@ __all__ = ['DatastoreCluster']
 
 class DatastoreCluster(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter_id: Optional[pulumi.Input[str]] = None,
@@ -304,7 +304,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster. See
@@ -315,7 +315,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datacenterId")
-    def datacenter_id(self) -> str:
+    def datacenter_id(self) -> pulumi.Output[str]:
         """
         The managed object ID of
         the datacenter to create the datastore cluster in. Forces a new resource if
@@ -325,7 +325,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The relative path to a folder to put this datastore
         cluster in.  This is a path relative to the datacenter you are deploying the
@@ -339,7 +339,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the datastore cluster.
         """
@@ -347,7 +347,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsAdvancedOptions")
-    def sdrs_advanced_options(self) -> Optional[Mapping[str, str]]:
+    def sdrs_advanced_options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A key/value map of advanced Storage DRS
         settings that are not exposed via the provider or the vSphere client.
@@ -356,7 +356,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsAutomationLevel")
-    def sdrs_automation_level(self) -> Optional[str]:
+    def sdrs_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         The global automation level for all
         virtual machines in this datastore cluster. Default: `manual`.
@@ -365,7 +365,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsDefaultIntraVmAffinity")
-    def sdrs_default_intra_vm_affinity(self) -> Optional[bool]:
+    def sdrs_default_intra_vm_affinity(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, all disks in a
         single virtual machine will be kept on the same datastore. Default: `true`.
@@ -374,7 +374,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsEnabled")
-    def sdrs_enabled(self) -> Optional[bool]:
+    def sdrs_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable Storage DRS for this datastore cluster.
         Default: `false`.
@@ -383,7 +383,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
-    def sdrs_free_space_threshold(self) -> Optional[float]:
+    def sdrs_free_space_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The free space threshold to use.
         When set to `utilization`, `drs_space_utilization_threshold` is used, and
@@ -394,7 +394,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsFreeSpaceThresholdMode")
-    def sdrs_free_space_threshold_mode(self) -> Optional[str]:
+    def sdrs_free_space_threshold_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
         freeSpace, drs_free_space_threshold is used.
@@ -403,7 +403,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsFreeSpaceUtilizationDifference")
-    def sdrs_free_space_utilization_difference(self) -> Optional[float]:
+    def sdrs_free_space_utilization_difference(self) -> pulumi.Output[Optional[float]]:
         """
         The threshold, in
         percent, of difference between space utilization in datastores before storage
@@ -413,7 +413,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoBalanceAutomationLevel")
-    def sdrs_io_balance_automation_level(self) -> Optional[str]:
+    def sdrs_io_balance_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default
         automation settings when correcting I/O load imbalances.
@@ -422,7 +422,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoLatencyThreshold")
-    def sdrs_io_latency_threshold(self) -> Optional[float]:
+    def sdrs_io_latency_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The I/O latency threshold, in
         milliseconds, that storage DRS uses to make recommendations to move disks
@@ -432,7 +432,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoLoadBalanceEnabled")
-    def sdrs_io_load_balance_enabled(self) -> Optional[bool]:
+    def sdrs_io_load_balance_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable I/O load balancing for
         this datastore cluster. Default: `true`.
@@ -441,7 +441,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoLoadImbalanceThreshold")
-    def sdrs_io_load_imbalance_threshold(self) -> Optional[float]:
+    def sdrs_io_load_imbalance_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The difference between load
         in datastores in the cluster before storage DRS makes recommendations to
@@ -451,7 +451,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoReservableIopsThreshold")
-    def sdrs_io_reservable_iops_threshold(self) -> Optional[float]:
+    def sdrs_io_reservable_iops_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The threshold of reservable
         IOPS of all virtual machines on the datastore before storage DRS makes
@@ -464,7 +464,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoReservablePercentThreshold")
-    def sdrs_io_reservable_percent_threshold(self) -> Optional[float]:
+    def sdrs_io_reservable_percent_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The threshold, in
         percent, of actual estimated performance of the datastore (in IOPS) that
@@ -475,7 +475,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsIoReservableThresholdMode")
-    def sdrs_io_reservable_threshold_mode(self) -> Optional[str]:
+    def sdrs_io_reservable_threshold_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The reservable IOPS
         threshold setting to use, `sdrs_io_reservable_percent_threshold` in the event
@@ -486,7 +486,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsLoadBalanceInterval")
-    def sdrs_load_balance_interval(self) -> Optional[float]:
+    def sdrs_load_balance_interval(self) -> pulumi.Output[Optional[float]]:
         """
         The storage DRS poll interval, in
         minutes. Default: `480` minutes.
@@ -495,7 +495,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsPolicyEnforcementAutomationLevel")
-    def sdrs_policy_enforcement_automation_level(self) -> Optional[str]:
+    def sdrs_policy_enforcement_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default
         automation settings when correcting storage and VM policy violations.
@@ -504,7 +504,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsRuleEnforcementAutomationLevel")
-    def sdrs_rule_enforcement_automation_level(self) -> Optional[str]:
+    def sdrs_rule_enforcement_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default
         automation settings when correcting affinity rule violations.
@@ -513,7 +513,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsSpaceBalanceAutomationLevel")
-    def sdrs_space_balance_automation_level(self) -> Optional[str]:
+    def sdrs_space_balance_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default
         automation settings when correcting disk space imbalances.
@@ -522,7 +522,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
-    def sdrs_space_utilization_threshold(self) -> Optional[float]:
+    def sdrs_space_utilization_threshold(self) -> pulumi.Output[Optional[float]]:
         """
         The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
         """
@@ -530,7 +530,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdrsVmEvacuationAutomationLevel")
-    def sdrs_vm_evacuation_automation_level(self) -> Optional[str]:
+    def sdrs_vm_evacuation_automation_level(self) -> pulumi.Output[Optional[str]]:
         """
         Overrides the default
         automation settings when generating recommendations for datastore evacuation.
@@ -539,7 +539,7 @@ class DatastoreCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

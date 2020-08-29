@@ -13,7 +13,7 @@ __all__ = ['ContentLibraryItem']
 
 class ContentLibraryItem(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -100,7 +100,7 @@ class ContentLibraryItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the item.
         """
@@ -108,7 +108,7 @@ class ContentLibraryItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileUrls")
-    def file_urls(self) -> List[str]:
+    def file_urls(self) -> pulumi.Output[List[str]]:
         """
         A list of files to download for the Content Library item.
         """
@@ -116,7 +116,7 @@ class ContentLibraryItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="libraryId")
-    def library_id(self) -> str:
+    def library_id(self) -> pulumi.Output[str]:
         """
         The ID of the Content Library the item should be created in.
         """
@@ -124,7 +124,7 @@ class ContentLibraryItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the item to be created in the Content Library.
         """
@@ -132,7 +132,7 @@ class ContentLibraryItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of content library item.
         """

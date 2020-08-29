@@ -13,7 +13,7 @@ __all__ = ['ComputeClusterVmDependencyRule']
 
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_cluster_id: Optional[pulumi.Input[str]] = None,
                  dependency_vm_group_name: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeClusterId")
-    def compute_cluster_id(self) -> str:
+    def compute_cluster_id(self) -> pulumi.Output[str]:
         """
         The managed object reference
         ID of the cluster to put the group in.  Forces a new
@@ -138,7 +138,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dependencyVmGroupName")
-    def dependency_vm_group_name(self) -> str:
+    def dependency_vm_group_name(self) -> pulumi.Output[str]:
         """
         The name of the VM group that this
         rule depends on. The VMs defined in the group specified by
@@ -149,7 +149,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable this rule in the cluster. Default: `true`.
         """
@@ -157,7 +157,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mandatory(self) -> Optional[bool]:
+    def mandatory(self) -> pulumi.Output[Optional[bool]]:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
@@ -166,7 +166,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the rule. This must be unique in the
         cluster.
@@ -175,7 +175,7 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vmGroupName")
-    def vm_group_name(self) -> str:
+    def vm_group_name(self) -> pulumi.Output[str]:
         """
         The name of the VM group that is the subject of
         this rule. The VMs defined in this group will not be started until the VMs in

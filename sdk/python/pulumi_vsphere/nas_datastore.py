@@ -13,7 +13,7 @@ __all__ = ['NasDatastore']
 
 class NasDatastore(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -216,7 +216,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[str]:
+    def access_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Access mode for the mount point. Can be one of
         `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
@@ -227,7 +227,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accessible(self) -> bool:
+    def accessible(self) -> pulumi.Output[bool]:
         """
         The connectivity status of the datastore. If this is `false`,
         some other computed attributes may be out of date.
@@ -236,7 +236,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capacity(self) -> float:
+    def capacity(self) -> pulumi.Output[float]:
         """
         Maximum capacity of the datastore, in megabytes.
         """
@@ -244,7 +244,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute 
         value strings to set on datasource resource.
@@ -253,7 +253,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="datastoreClusterId")
-    def datastore_cluster_id(self) -> Optional[str]:
+    def datastore_cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
         The managed object
         ID of a datastore cluster to put this datastore in.
@@ -263,7 +263,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def folder(self) -> Optional[str]:
+    def folder(self) -> pulumi.Output[Optional[str]]:
         """
         The relative path to a folder to put this datastore in.
         This is a path relative to the datacenter you are deploying the datastore to.
@@ -277,7 +277,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="freeSpace")
-    def free_space(self) -> float:
+    def free_space(self) -> pulumi.Output[float]:
         """
         Available space of this datastore, in megabytes.
         """
@@ -285,7 +285,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> List[str]:
+    def host_system_ids(self) -> pulumi.Output[List[str]]:
         """
         The managed object IDs of
         the hosts to mount the datastore on.
@@ -294,7 +294,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceMode")
-    def maintenance_mode(self) -> str:
+    def maintenance_mode(self) -> pulumi.Output[str]:
         """
         The current maintenance mode state of the datastore.
         """
@@ -302,7 +302,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="multipleHostAccess")
-    def multiple_host_access(self) -> bool:
+    def multiple_host_access(self) -> pulumi.Output[bool]:
         """
         If `true`, more than one host in the datacenter has
         been configured with access to the datastore.
@@ -311,7 +311,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the datastore. Forces a new resource if
         changed.
@@ -320,7 +320,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolEndpoint")
-    def protocol_endpoint(self) -> str:
+    def protocol_endpoint(self) -> pulumi.Output[str]:
         """
         Indicates that this NAS volume is a protocol endpoint.
         This field is only populated if the host supports virtual datastores.
@@ -329,7 +329,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteHosts")
-    def remote_hosts(self) -> List[str]:
+    def remote_hosts(self) -> pulumi.Output[List[str]]:
         """
         The hostnames or IP addresses of the remote
         server or servers. Only one element should be present for NFS v3 but multiple
@@ -339,7 +339,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remotePath")
-    def remote_path(self) -> str:
+    def remote_path(self) -> pulumi.Output[str]:
         """
         The remote path of the mount point. Forces a new
         resource if changed.
@@ -348,7 +348,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityType")
-    def security_type(self) -> Optional[str]:
+    def security_type(self) -> pulumi.Output[Optional[str]]:
         """
         The security type to use when using NFS v4.1.
         Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
@@ -358,7 +358,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -366,7 +366,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of NAS volume. Can be one of `NFS` (to denote
         v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -376,7 +376,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uncommittedSpace")
-    def uncommitted_space(self) -> float:
+    def uncommitted_space(self) -> pulumi.Output[float]:
         """
         Total additional storage space, in megabytes,
         potentially used by all virtual machines on this datastore.
@@ -385,7 +385,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         The unique locator for the datastore.
         """

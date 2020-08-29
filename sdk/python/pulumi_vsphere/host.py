@@ -13,7 +13,7 @@ __all__ = ['Host']
 
 class Host(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  cluster_managed: Optional[pulumi.Input[bool]] = None,
@@ -216,7 +216,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cluster(self) -> Optional[str]:
+    def cluster(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
@@ -226,7 +226,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clusterManaged")
-    def cluster_managed(self) -> Optional[bool]:
+    def cluster_managed(self) -> pulumi.Output[Optional[bool]]:
         """
         Can be set to `true` if compute cluster
         membership will be managed through the `compute_cluster` resource rather
@@ -236,7 +236,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connected(self) -> Optional[bool]:
+    def connected(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to false then the host will be disconected.
         Default is `false`.
@@ -245,7 +245,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> Optional[str]:
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the datacenter this host should
         be added to. This should not be set if `cluster` is set.
@@ -254,7 +254,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[bool]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true then it will force the host to be added, even
         if the host is already connected to a different vSphere instance. Default is `false`
@@ -263,7 +263,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def hostname(self) -> pulumi.Output[str]:
         """
         FQDN or IP address of the host to be added.
         """
@@ -271,7 +271,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def license(self) -> Optional[str]:
+    def license(self) -> pulumi.Output[Optional[str]]:
         """
         The license key that will be applied to the host.
         The license key is expected to be present in vSphere.
@@ -280,7 +280,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lockdown(self) -> Optional[str]:
+    def lockdown(self) -> pulumi.Output[Optional[str]]:
         """
         Set the lockdown state of the host. Valid options are
         `disabled`, `normal`, and `strict`. Default is `disabled`.
@@ -289,7 +289,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def maintenance(self) -> Optional[bool]:
+    def maintenance(self) -> pulumi.Output[Optional[bool]]:
         """
         Set the management state of the host. Default is `false`.
         """
@@ -297,7 +297,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         Password that will be used by vSphere to authenticate
         to the host.
@@ -306,7 +306,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def thumbprint(self) -> Optional[str]:
+    def thumbprint(self) -> pulumi.Output[Optional[str]]:
         """
         Host's certificate SHA-1 thumbprint. If not set the the
         CA that signed the host's certificate should be trusted. If the CA is not trusted
@@ -316,7 +316,7 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> pulumi.Output[str]:
         """
         Username that will be used by vSphere to authenticate
         to the host.
