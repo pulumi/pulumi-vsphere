@@ -17,9 +17,13 @@ type ContentLibrary struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the Content Library.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Options to publish a local Content Library.
+	Publication ContentLibraryPublicationOutput `pulumi:"publication"`
 	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayOutput `pulumi:"storageBackings"`
+	// Options to publish a local Content Library.
+	Subscription ContentLibrarySubscriptionPtrOutput `pulumi:"subscription"`
 }
 
 // NewContentLibrary registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +61,13 @@ type contentLibraryState struct {
 	Description *string `pulumi:"description"`
 	// The name of the Content Library.
 	Name *string `pulumi:"name"`
+	// Options to publish a local Content Library.
+	Publication *ContentLibraryPublication `pulumi:"publication"`
 	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings []string `pulumi:"storageBackings"`
+	// Options to publish a local Content Library.
+	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
 }
 
 type ContentLibraryState struct {
@@ -67,9 +75,13 @@ type ContentLibraryState struct {
 	Description pulumi.StringPtrInput
 	// The name of the Content Library.
 	Name pulumi.StringPtrInput
+	// Options to publish a local Content Library.
+	Publication ContentLibraryPublicationPtrInput
 	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayInput
+	// Options to publish a local Content Library.
+	Subscription ContentLibrarySubscriptionPtrInput
 }
 
 func (ContentLibraryState) ElementType() reflect.Type {
@@ -81,9 +93,13 @@ type contentLibraryArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the Content Library.
 	Name *string `pulumi:"name"`
+	// Options to publish a local Content Library.
+	Publication *ContentLibraryPublication `pulumi:"publication"`
 	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings []string `pulumi:"storageBackings"`
+	// Options to publish a local Content Library.
+	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
 }
 
 // The set of arguments for constructing a ContentLibrary resource.
@@ -92,9 +108,13 @@ type ContentLibraryArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the Content Library.
 	Name pulumi.StringPtrInput
+	// Options to publish a local Content Library.
+	Publication ContentLibraryPublicationPtrInput
 	// The managed object reference ID on which to store Content Library
 	// items.
 	StorageBackings pulumi.StringArrayInput
+	// Options to publish a local Content Library.
+	Subscription ContentLibrarySubscriptionPtrInput
 }
 
 func (ContentLibraryArgs) ElementType() reflect.Type {

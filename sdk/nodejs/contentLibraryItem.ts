@@ -37,9 +37,10 @@ export class ContentLibraryItem extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A list of files to download for the Content Library item.
+     * File to import into the Content Library item. OVFs and
+     * OVAs will be parsed and associated files will also be imported.
      */
-    public readonly fileUrls!: pulumi.Output<string[]>;
+    public readonly fileUrl!: pulumi.Output<string | undefined>;
     /**
      * The ID of the Content Library the item should be created in.
      */
@@ -48,6 +49,10 @@ export class ContentLibraryItem extends pulumi.CustomResource {
      * The name of the item to be created in the Content Library.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Virtual machine UUID to clone to Content Library.
+     */
+    public readonly sourceUuid!: pulumi.Output<string | undefined>;
     /**
      * Type of content library item.
      */
@@ -66,22 +71,21 @@ export class ContentLibraryItem extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ContentLibraryItemState | undefined;
             inputs["description"] = state ? state.description : undefined;
-            inputs["fileUrls"] = state ? state.fileUrls : undefined;
+            inputs["fileUrl"] = state ? state.fileUrl : undefined;
             inputs["libraryId"] = state ? state.libraryId : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["sourceUuid"] = state ? state.sourceUuid : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ContentLibraryItemArgs | undefined;
-            if (!args || args.fileUrls === undefined) {
-                throw new Error("Missing required property 'fileUrls'");
-            }
             if (!args || args.libraryId === undefined) {
                 throw new Error("Missing required property 'libraryId'");
             }
             inputs["description"] = args ? args.description : undefined;
-            inputs["fileUrls"] = args ? args.fileUrls : undefined;
+            inputs["fileUrl"] = args ? args.fileUrl : undefined;
             inputs["libraryId"] = args ? args.libraryId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["sourceUuid"] = args ? args.sourceUuid : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
         if (!opts) {
@@ -104,9 +108,10 @@ export interface ContentLibraryItemState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A list of files to download for the Content Library item.
+     * File to import into the Content Library item. OVFs and
+     * OVAs will be parsed and associated files will also be imported.
      */
-    readonly fileUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly fileUrl?: pulumi.Input<string>;
     /**
      * The ID of the Content Library the item should be created in.
      */
@@ -115,6 +120,10 @@ export interface ContentLibraryItemState {
      * The name of the item to be created in the Content Library.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Virtual machine UUID to clone to Content Library.
+     */
+    readonly sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
      */
@@ -130,9 +139,10 @@ export interface ContentLibraryItemArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A list of files to download for the Content Library item.
+     * File to import into the Content Library item. OVFs and
+     * OVAs will be parsed and associated files will also be imported.
      */
-    readonly fileUrls: pulumi.Input<pulumi.Input<string>[]>;
+    readonly fileUrl?: pulumi.Input<string>;
     /**
      * The ID of the Content Library the item should be created in.
      */
@@ -141,6 +151,10 @@ export interface ContentLibraryItemArgs {
      * The name of the item to be created in the Content Library.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Virtual machine UUID to clone to Content Library.
+     */
+    readonly sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
      */

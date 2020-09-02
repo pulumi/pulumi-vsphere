@@ -110,6 +110,439 @@ func (o ComputeClusterVsanDiskGroupArrayOutput) Index(i pulumi.IntInput) Compute
 	}).(ComputeClusterVsanDiskGroupOutput)
 }
 
+type ContentLibraryPublication struct {
+	// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	// Password to log in with.
+	Password *string `pulumi:"password"`
+	// URL to remotely access the published Content Library.
+	PublishUrl *string `pulumi:"publishUrl"`
+	// Bool determining if Content Library is published.
+	Published *bool `pulumi:"published"`
+	// User name to log in with.
+	Username *string `pulumi:"username"`
+}
+
+// ContentLibraryPublicationInput is an input type that accepts ContentLibraryPublicationArgs and ContentLibraryPublicationOutput values.
+// You can construct a concrete instance of `ContentLibraryPublicationInput` via:
+//
+//          ContentLibraryPublicationArgs{...}
+type ContentLibraryPublicationInput interface {
+	pulumi.Input
+
+	ToContentLibraryPublicationOutput() ContentLibraryPublicationOutput
+	ToContentLibraryPublicationOutputWithContext(context.Context) ContentLibraryPublicationOutput
+}
+
+type ContentLibraryPublicationArgs struct {
+	// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	// Password to log in with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// URL to remotely access the published Content Library.
+	PublishUrl pulumi.StringPtrInput `pulumi:"publishUrl"`
+	// Bool determining if Content Library is published.
+	Published pulumi.BoolPtrInput `pulumi:"published"`
+	// User name to log in with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ContentLibraryPublicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryPublication)(nil)).Elem()
+}
+
+func (i ContentLibraryPublicationArgs) ToContentLibraryPublicationOutput() ContentLibraryPublicationOutput {
+	return i.ToContentLibraryPublicationOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryPublicationArgs) ToContentLibraryPublicationOutputWithContext(ctx context.Context) ContentLibraryPublicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryPublicationOutput)
+}
+
+func (i ContentLibraryPublicationArgs) ToContentLibraryPublicationPtrOutput() ContentLibraryPublicationPtrOutput {
+	return i.ToContentLibraryPublicationPtrOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryPublicationArgs) ToContentLibraryPublicationPtrOutputWithContext(ctx context.Context) ContentLibraryPublicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryPublicationOutput).ToContentLibraryPublicationPtrOutputWithContext(ctx)
+}
+
+// ContentLibraryPublicationPtrInput is an input type that accepts ContentLibraryPublicationArgs, ContentLibraryPublicationPtr and ContentLibraryPublicationPtrOutput values.
+// You can construct a concrete instance of `ContentLibraryPublicationPtrInput` via:
+//
+//          ContentLibraryPublicationArgs{...}
+//
+//  or:
+//
+//          nil
+type ContentLibraryPublicationPtrInput interface {
+	pulumi.Input
+
+	ToContentLibraryPublicationPtrOutput() ContentLibraryPublicationPtrOutput
+	ToContentLibraryPublicationPtrOutputWithContext(context.Context) ContentLibraryPublicationPtrOutput
+}
+
+type contentLibraryPublicationPtrType ContentLibraryPublicationArgs
+
+func ContentLibraryPublicationPtr(v *ContentLibraryPublicationArgs) ContentLibraryPublicationPtrInput {
+	return (*contentLibraryPublicationPtrType)(v)
+}
+
+func (*contentLibraryPublicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibraryPublication)(nil)).Elem()
+}
+
+func (i *contentLibraryPublicationPtrType) ToContentLibraryPublicationPtrOutput() ContentLibraryPublicationPtrOutput {
+	return i.ToContentLibraryPublicationPtrOutputWithContext(context.Background())
+}
+
+func (i *contentLibraryPublicationPtrType) ToContentLibraryPublicationPtrOutputWithContext(ctx context.Context) ContentLibraryPublicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryPublicationPtrOutput)
+}
+
+type ContentLibraryPublicationOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryPublicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryPublication)(nil)).Elem()
+}
+
+func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationOutput() ContentLibraryPublicationOutput {
+	return o
+}
+
+func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationOutputWithContext(ctx context.Context) ContentLibraryPublicationOutput {
+	return o
+}
+
+func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutput() ContentLibraryPublicationPtrOutput {
+	return o.ToContentLibraryPublicationPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutputWithContext(ctx context.Context) ContentLibraryPublicationPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *ContentLibraryPublication {
+		return &v
+	}).(ContentLibraryPublicationPtrOutput)
+}
+
+// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+func (o ContentLibraryPublicationOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Password to log in with.
+func (o ContentLibraryPublicationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// URL to remotely access the published Content Library.
+func (o ContentLibraryPublicationOutput) PublishUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.PublishUrl }).(pulumi.StringPtrOutput)
+}
+
+// Bool determining if Content Library is published.
+func (o ContentLibraryPublicationOutput) Published() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *bool { return v.Published }).(pulumi.BoolPtrOutput)
+}
+
+// User name to log in with.
+func (o ContentLibraryPublicationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibraryPublication) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ContentLibraryPublicationPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryPublicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibraryPublication)(nil)).Elem()
+}
+
+func (o ContentLibraryPublicationPtrOutput) ToContentLibraryPublicationPtrOutput() ContentLibraryPublicationPtrOutput {
+	return o
+}
+
+func (o ContentLibraryPublicationPtrOutput) ToContentLibraryPublicationPtrOutputWithContext(ctx context.Context) ContentLibraryPublicationPtrOutput {
+	return o
+}
+
+func (o ContentLibraryPublicationPtrOutput) Elem() ContentLibraryPublicationOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) ContentLibraryPublication { return *v }).(ContentLibraryPublicationOutput)
+}
+
+// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+func (o ContentLibraryPublicationPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password to log in with.
+func (o ContentLibraryPublicationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL to remotely access the published Content Library.
+func (o ContentLibraryPublicationPtrOutput) PublishUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublishUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bool determining if Content Library is published.
+func (o ContentLibraryPublicationPtrOutput) Published() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Published
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User name to log in with.
+func (o ContentLibraryPublicationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryPublication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContentLibrarySubscription struct {
+	// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	// Enable automatic synchronization with the external content library.
+	AutomaticSync *bool `pulumi:"automaticSync"`
+	// Download all library content immediately.
+	OnDemand *bool `pulumi:"onDemand"`
+	// Password to log in with.
+	Password *string `pulumi:"password"`
+	// URL of remote Content Library.
+	SubscriptionUrl *string `pulumi:"subscriptionUrl"`
+	// User name to log in with.
+	Username *string `pulumi:"username"`
+}
+
+// ContentLibrarySubscriptionInput is an input type that accepts ContentLibrarySubscriptionArgs and ContentLibrarySubscriptionOutput values.
+// You can construct a concrete instance of `ContentLibrarySubscriptionInput` via:
+//
+//          ContentLibrarySubscriptionArgs{...}
+type ContentLibrarySubscriptionInput interface {
+	pulumi.Input
+
+	ToContentLibrarySubscriptionOutput() ContentLibrarySubscriptionOutput
+	ToContentLibrarySubscriptionOutputWithContext(context.Context) ContentLibrarySubscriptionOutput
+}
+
+type ContentLibrarySubscriptionArgs struct {
+	// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	// Enable automatic synchronization with the external content library.
+	AutomaticSync pulumi.BoolPtrInput `pulumi:"automaticSync"`
+	// Download all library content immediately.
+	OnDemand pulumi.BoolPtrInput `pulumi:"onDemand"`
+	// Password to log in with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// URL of remote Content Library.
+	SubscriptionUrl pulumi.StringPtrInput `pulumi:"subscriptionUrl"`
+	// User name to log in with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ContentLibrarySubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibrarySubscription)(nil)).Elem()
+}
+
+func (i ContentLibrarySubscriptionArgs) ToContentLibrarySubscriptionOutput() ContentLibrarySubscriptionOutput {
+	return i.ToContentLibrarySubscriptionOutputWithContext(context.Background())
+}
+
+func (i ContentLibrarySubscriptionArgs) ToContentLibrarySubscriptionOutputWithContext(ctx context.Context) ContentLibrarySubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibrarySubscriptionOutput)
+}
+
+func (i ContentLibrarySubscriptionArgs) ToContentLibrarySubscriptionPtrOutput() ContentLibrarySubscriptionPtrOutput {
+	return i.ToContentLibrarySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i ContentLibrarySubscriptionArgs) ToContentLibrarySubscriptionPtrOutputWithContext(ctx context.Context) ContentLibrarySubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibrarySubscriptionOutput).ToContentLibrarySubscriptionPtrOutputWithContext(ctx)
+}
+
+// ContentLibrarySubscriptionPtrInput is an input type that accepts ContentLibrarySubscriptionArgs, ContentLibrarySubscriptionPtr and ContentLibrarySubscriptionPtrOutput values.
+// You can construct a concrete instance of `ContentLibrarySubscriptionPtrInput` via:
+//
+//          ContentLibrarySubscriptionArgs{...}
+//
+//  or:
+//
+//          nil
+type ContentLibrarySubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToContentLibrarySubscriptionPtrOutput() ContentLibrarySubscriptionPtrOutput
+	ToContentLibrarySubscriptionPtrOutputWithContext(context.Context) ContentLibrarySubscriptionPtrOutput
+}
+
+type contentLibrarySubscriptionPtrType ContentLibrarySubscriptionArgs
+
+func ContentLibrarySubscriptionPtr(v *ContentLibrarySubscriptionArgs) ContentLibrarySubscriptionPtrInput {
+	return (*contentLibrarySubscriptionPtrType)(v)
+}
+
+func (*contentLibrarySubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibrarySubscription)(nil)).Elem()
+}
+
+func (i *contentLibrarySubscriptionPtrType) ToContentLibrarySubscriptionPtrOutput() ContentLibrarySubscriptionPtrOutput {
+	return i.ToContentLibrarySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *contentLibrarySubscriptionPtrType) ToContentLibrarySubscriptionPtrOutputWithContext(ctx context.Context) ContentLibrarySubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibrarySubscriptionPtrOutput)
+}
+
+type ContentLibrarySubscriptionOutput struct{ *pulumi.OutputState }
+
+func (ContentLibrarySubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibrarySubscription)(nil)).Elem()
+}
+
+func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionOutput() ContentLibrarySubscriptionOutput {
+	return o
+}
+
+func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionOutputWithContext(ctx context.Context) ContentLibrarySubscriptionOutput {
+	return o
+}
+
+func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionPtrOutput() ContentLibrarySubscriptionPtrOutput {
+	return o.ToContentLibrarySubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionPtrOutputWithContext(ctx context.Context) ContentLibrarySubscriptionPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *ContentLibrarySubscription {
+		return &v
+	}).(ContentLibrarySubscriptionPtrOutput)
+}
+
+// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+func (o ContentLibrarySubscriptionOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Enable automatic synchronization with the external content library.
+func (o ContentLibrarySubscriptionOutput) AutomaticSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *bool { return v.AutomaticSync }).(pulumi.BoolPtrOutput)
+}
+
+// Download all library content immediately.
+func (o ContentLibrarySubscriptionOutput) OnDemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *bool { return v.OnDemand }).(pulumi.BoolPtrOutput)
+}
+
+// Password to log in with.
+func (o ContentLibrarySubscriptionOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// URL of remote Content Library.
+func (o ContentLibrarySubscriptionOutput) SubscriptionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *string { return v.SubscriptionUrl }).(pulumi.StringPtrOutput)
+}
+
+// User name to log in with.
+func (o ContentLibrarySubscriptionOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentLibrarySubscription) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ContentLibrarySubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentLibrarySubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibrarySubscription)(nil)).Elem()
+}
+
+func (o ContentLibrarySubscriptionPtrOutput) ToContentLibrarySubscriptionPtrOutput() ContentLibrarySubscriptionPtrOutput {
+	return o
+}
+
+func (o ContentLibrarySubscriptionPtrOutput) ToContentLibrarySubscriptionPtrOutputWithContext(ctx context.Context) ContentLibrarySubscriptionPtrOutput {
+	return o
+}
+
+func (o ContentLibrarySubscriptionPtrOutput) Elem() ContentLibrarySubscriptionOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) ContentLibrarySubscription { return *v }).(ContentLibrarySubscriptionOutput)
+}
+
+// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+func (o ContentLibrarySubscriptionPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable automatic synchronization with the external content library.
+func (o ContentLibrarySubscriptionPtrOutput) AutomaticSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticSync
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Download all library content immediately.
+func (o ContentLibrarySubscriptionPtrOutput) OnDemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemand
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Password to log in with.
+func (o ContentLibrarySubscriptionPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of remote Content Library.
+func (o ContentLibrarySubscriptionPtrOutput) SubscriptionUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// User name to log in with.
+func (o ContentLibrarySubscriptionPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibrarySubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type DistributedPortGroupVlanRange struct {
 	MaxVlan int `pulumi:"maxVlan"`
 	MinVlan int `pulumi:"minVlan"`
@@ -3678,6 +4111,10 @@ func (o GetVirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
 func init() {
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
+	pulumi.RegisterOutputType(ContentLibraryPublicationOutput{})
+	pulumi.RegisterOutputType(ContentLibraryPublicationPtrOutput{})
+	pulumi.RegisterOutputType(ContentLibrarySubscriptionOutput{})
+	pulumi.RegisterOutputType(ContentLibrarySubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupVlanRangeOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchHostOutput{})

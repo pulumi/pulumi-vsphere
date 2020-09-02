@@ -263,7 +263,7 @@ type VirtualMachine struct {
 	// after this timeout, otherwise an error is returned. Default: 3 minutes.
 	ShutdownWaitTimeout pulumi.IntPtrOutput `pulumi:"shutdownWaitTimeout"`
 	// The UUID of the storage policy to assign to this disk.
-	StoragePolicyId pulumi.StringPtrOutput `pulumi:"storagePolicyId"`
+	StoragePolicyId pulumi.StringOutput `pulumi:"storagePolicyId"`
 	// The swap file placement policy for this
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.

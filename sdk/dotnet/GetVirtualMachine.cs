@@ -350,7 +350,7 @@ namespace Pulumi.VSphere
         /// defined by `scsi_controller_scan_count` are scanned.
         /// </summary>
         public readonly string ScsiType;
-        public readonly string? StoragePolicyId;
+        public readonly string StoragePolicyId;
         public readonly string? SwapPlacementPolicy;
         public readonly bool? SyncTimeWithHost;
         public readonly string Uuid;
@@ -455,7 +455,7 @@ namespace Pulumi.VSphere
 
             string scsiType,
 
-            string? storagePolicyId,
+            string storagePolicyId,
 
             string? swapPlacementPolicy,
 

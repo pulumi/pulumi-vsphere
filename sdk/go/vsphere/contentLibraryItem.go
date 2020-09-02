@@ -15,12 +15,15 @@ type ContentLibraryItem struct {
 
 	// A description for the item.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A list of files to download for the Content Library item.
-	FileUrls pulumi.StringArrayOutput `pulumi:"fileUrls"`
+	// File to import into the Content Library item. OVFs and
+	// OVAs will be parsed and associated files will also be imported.
+	FileUrl pulumi.StringPtrOutput `pulumi:"fileUrl"`
 	// The ID of the Content Library the item should be created in.
 	LibraryId pulumi.StringOutput `pulumi:"libraryId"`
 	// The name of the item to be created in the Content Library.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Virtual machine UUID to clone to Content Library.
+	SourceUuid pulumi.StringPtrOutput `pulumi:"sourceUuid"`
 	// Type of content library item.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
@@ -28,9 +31,6 @@ type ContentLibraryItem struct {
 // NewContentLibraryItem registers a new resource with the given unique name, arguments, and options.
 func NewContentLibraryItem(ctx *pulumi.Context,
 	name string, args *ContentLibraryItemArgs, opts ...pulumi.ResourceOption) (*ContentLibraryItem, error) {
-	if args == nil || args.FileUrls == nil {
-		return nil, errors.New("missing required argument 'FileUrls'")
-	}
 	if args == nil || args.LibraryId == nil {
 		return nil, errors.New("missing required argument 'LibraryId'")
 	}
@@ -61,12 +61,15 @@ func GetContentLibraryItem(ctx *pulumi.Context,
 type contentLibraryItemState struct {
 	// A description for the item.
 	Description *string `pulumi:"description"`
-	// A list of files to download for the Content Library item.
-	FileUrls []string `pulumi:"fileUrls"`
+	// File to import into the Content Library item. OVFs and
+	// OVAs will be parsed and associated files will also be imported.
+	FileUrl *string `pulumi:"fileUrl"`
 	// The ID of the Content Library the item should be created in.
 	LibraryId *string `pulumi:"libraryId"`
 	// The name of the item to be created in the Content Library.
 	Name *string `pulumi:"name"`
+	// Virtual machine UUID to clone to Content Library.
+	SourceUuid *string `pulumi:"sourceUuid"`
 	// Type of content library item.
 	Type *string `pulumi:"type"`
 }
@@ -74,12 +77,15 @@ type contentLibraryItemState struct {
 type ContentLibraryItemState struct {
 	// A description for the item.
 	Description pulumi.StringPtrInput
-	// A list of files to download for the Content Library item.
-	FileUrls pulumi.StringArrayInput
+	// File to import into the Content Library item. OVFs and
+	// OVAs will be parsed and associated files will also be imported.
+	FileUrl pulumi.StringPtrInput
 	// The ID of the Content Library the item should be created in.
 	LibraryId pulumi.StringPtrInput
 	// The name of the item to be created in the Content Library.
 	Name pulumi.StringPtrInput
+	// Virtual machine UUID to clone to Content Library.
+	SourceUuid pulumi.StringPtrInput
 	// Type of content library item.
 	Type pulumi.StringPtrInput
 }
@@ -91,12 +97,15 @@ func (ContentLibraryItemState) ElementType() reflect.Type {
 type contentLibraryItemArgs struct {
 	// A description for the item.
 	Description *string `pulumi:"description"`
-	// A list of files to download for the Content Library item.
-	FileUrls []string `pulumi:"fileUrls"`
+	// File to import into the Content Library item. OVFs and
+	// OVAs will be parsed and associated files will also be imported.
+	FileUrl *string `pulumi:"fileUrl"`
 	// The ID of the Content Library the item should be created in.
 	LibraryId string `pulumi:"libraryId"`
 	// The name of the item to be created in the Content Library.
 	Name *string `pulumi:"name"`
+	// Virtual machine UUID to clone to Content Library.
+	SourceUuid *string `pulumi:"sourceUuid"`
 	// Type of content library item.
 	Type *string `pulumi:"type"`
 }
@@ -105,12 +114,15 @@ type contentLibraryItemArgs struct {
 type ContentLibraryItemArgs struct {
 	// A description for the item.
 	Description pulumi.StringPtrInput
-	// A list of files to download for the Content Library item.
-	FileUrls pulumi.StringArrayInput
+	// File to import into the Content Library item. OVFs and
+	// OVAs will be parsed and associated files will also be imported.
+	FileUrl pulumi.StringPtrInput
 	// The ID of the Content Library the item should be created in.
 	LibraryId pulumi.StringInput
 	// The name of the item to be created in the Content Library.
 	Name pulumi.StringPtrInput
+	// Virtual machine UUID to clone to Content Library.
+	SourceUuid pulumi.StringPtrInput
 	// Type of content library item.
 	Type pulumi.StringPtrInput
 }

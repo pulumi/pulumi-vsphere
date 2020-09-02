@@ -1427,7 +1427,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storagePolicyId")
-    def storage_policy_id(self) -> pulumi.Output[Optional[str]]:
+    def storage_policy_id(self) -> pulumi.Output[str]:
         """
         The UUID of the storage policy to assign to this disk.
         """

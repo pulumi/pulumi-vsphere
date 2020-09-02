@@ -10,6 +10,8 @@ from . import _utilities, _tables
 
 __all__ = [
     'ComputeClusterVsanDiskGroupArgs',
+    'ContentLibraryPublicationArgs',
+    'ContentLibrarySubscriptionArgs',
     'DistributedPortGroupVlanRangeArgs',
     'DistributedVirtualSwitchHostArgs',
     'DistributedVirtualSwitchVlanRangeArgs',
@@ -58,6 +60,196 @@ class ComputeClusterVsanDiskGroupArgs:
     @storages.setter
     def storages(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
         pulumi.set(self, "storages", value)
+
+
+@pulumi.input_type
+class ContentLibraryPublicationArgs:
+    def __init__(__self__, *,
+                 authentication_method: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 publish_url: Optional[pulumi.Input[str]] = None,
+                 published: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] authentication_method: Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        :param pulumi.Input[str] password: Password to log in with.
+        :param pulumi.Input[str] publish_url: URL to remotely access the published Content Library.
+        :param pulumi.Input[bool] published: Bool determining if Content Library is published.
+        :param pulumi.Input[str] username: User name to log in with.
+        """
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if publish_url is not None:
+            pulumi.set(__self__, "publish_url", publish_url)
+        if published is not None:
+            pulumi.set(__self__, "published", published)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        """
+        return pulumi.get(self, "authentication_method")
+
+    @authentication_method.setter
+    def authentication_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication_method", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password to log in with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="publishUrl")
+    def publish_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL to remotely access the published Content Library.
+        """
+        return pulumi.get(self, "publish_url")
+
+    @publish_url.setter
+    def publish_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "publish_url", value)
+
+    @property
+    @pulumi.getter
+    def published(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool determining if Content Library is published.
+        """
+        return pulumi.get(self, "published")
+
+    @published.setter
+    def published(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "published", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name to log in with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ContentLibrarySubscriptionArgs:
+    def __init__(__self__, *,
+                 authentication_method: Optional[pulumi.Input[str]] = None,
+                 automatic_sync: Optional[pulumi.Input[bool]] = None,
+                 on_demand: Optional[pulumi.Input[bool]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 subscription_url: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] authentication_method: Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        :param pulumi.Input[bool] automatic_sync: Enable automatic synchronization with the external content library.
+        :param pulumi.Input[bool] on_demand: Download all library content immediately.
+        :param pulumi.Input[str] password: Password to log in with.
+        :param pulumi.Input[str] subscription_url: URL of remote Content Library.
+        :param pulumi.Input[str] username: User name to log in with.
+        """
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if automatic_sync is not None:
+            pulumi.set(__self__, "automatic_sync", automatic_sync)
+        if on_demand is not None:
+            pulumi.set(__self__, "on_demand", on_demand)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if subscription_url is not None:
+            pulumi.set(__self__, "subscription_url", subscription_url)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        """
+        return pulumi.get(self, "authentication_method")
+
+    @authentication_method.setter
+    def authentication_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication_method", value)
+
+    @property
+    @pulumi.getter(name="automaticSync")
+    def automatic_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable automatic synchronization with the external content library.
+        """
+        return pulumi.get(self, "automatic_sync")
+
+    @automatic_sync.setter
+    def automatic_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "automatic_sync", value)
+
+    @property
+    @pulumi.getter(name="onDemand")
+    def on_demand(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Download all library content immediately.
+        """
+        return pulumi.get(self, "on_demand")
+
+    @on_demand.setter
+    def on_demand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "on_demand", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password to log in with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="subscriptionUrl")
+    def subscription_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of remote Content Library.
+        """
+        return pulumi.get(self, "subscription_url")
+
+    @subscription_url.setter
+    def subscription_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_url", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name to log in with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type

@@ -288,7 +288,7 @@ export interface GetVirtualMachineResult {
      * defined by `scsiControllerScanCount` are scanned.
      */
     readonly scsiType: string;
-    readonly storagePolicyId?: string;
+    readonly storagePolicyId: string;
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
     readonly uuid: string;
