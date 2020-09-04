@@ -10,6 +10,56 @@ export interface ComputeClusterVsanDiskGroup {
     storages?: string[];
 }
 
+export interface ContentLibraryPublication {
+    /**
+     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     */
+    authenticationMethod?: string;
+    /**
+     * Password to log in with.
+     */
+    password: string;
+    /**
+     * URL to remotely access the published Content Library.
+     */
+    publishUrl: string;
+    /**
+     * Bool determining if Content Library is published.
+     */
+    published?: boolean;
+    /**
+     * User name to log in with.
+     */
+    username: string;
+}
+
+export interface ContentLibrarySubscription {
+    /**
+     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     */
+    authenticationMethod?: string;
+    /**
+     * Enable automatic synchronization with the external content library.
+     */
+    automaticSync?: boolean;
+    /**
+     * Download all library content immediately.
+     */
+    onDemand?: boolean;
+    /**
+     * Password to log in with.
+     */
+    password: string;
+    /**
+     * URL of remote Content Library.
+     */
+    subscriptionUrl?: string;
+    /**
+     * User name to log in with.
+     */
+    username: string;
+}
+
 export interface DistributedPortGroupVlanRange {
     maxVlan: number;
     minVlan: number;
@@ -282,7 +332,7 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
     /**
      * The UUID of the storage policy to assign to this disk.
      */
-    storagePolicyId?: string;
+    storagePolicyId: string;
     /**
      * If `true`, this disk is thin provisioned,
      * with space for the file being allocated on an as-needed basis. Cannot be set

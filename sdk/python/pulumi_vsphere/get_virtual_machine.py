@@ -486,7 +486,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="storagePolicyId")
-    def storage_policy_id(self) -> Optional[str]:
+    def storage_policy_id(self) -> str:
         return pulumi.get(self, "storage_policy_id")
 
     @property

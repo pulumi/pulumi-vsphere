@@ -24,11 +24,23 @@ namespace Pulumi.VSphere
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Output("publication")]
+        public Output<Outputs.ContentLibraryPublication> Publication { get; private set; } = null!;
+
+        /// <summary>
         /// The managed object reference ID on which to store Content Library
         /// items.
         /// </summary>
         [Output("storageBackings")]
         public Output<ImmutableArray<string>> StorageBackings { get; private set; } = null!;
+
+        /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Output("subscription")]
+        public Output<Outputs.ContentLibrarySubscription?> Subscription { get; private set; } = null!;
 
 
         /// <summary>
@@ -88,6 +100,12 @@ namespace Pulumi.VSphere
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Input("publication")]
+        public Input<Inputs.ContentLibraryPublicationArgs>? Publication { get; set; }
+
         [Input("storageBackings", required: true)]
         private InputList<string>? _storageBackings;
 
@@ -100,6 +118,12 @@ namespace Pulumi.VSphere
             get => _storageBackings ?? (_storageBackings = new InputList<string>());
             set => _storageBackings = value;
         }
+
+        /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Input("subscription")]
+        public Input<Inputs.ContentLibrarySubscriptionArgs>? Subscription { get; set; }
 
         public ContentLibraryArgs()
         {
@@ -120,6 +144,12 @@ namespace Pulumi.VSphere
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Input("publication")]
+        public Input<Inputs.ContentLibraryPublicationGetArgs>? Publication { get; set; }
+
         [Input("storageBackings")]
         private InputList<string>? _storageBackings;
 
@@ -132,6 +162,12 @@ namespace Pulumi.VSphere
             get => _storageBackings ?? (_storageBackings = new InputList<string>());
             set => _storageBackings = value;
         }
+
+        /// <summary>
+        /// Options to publish a local Content Library.
+        /// </summary>
+        [Input("subscription")]
+        public Input<Inputs.ContentLibrarySubscriptionGetArgs>? Subscription { get; set; }
 
         public ContentLibraryState()
         {

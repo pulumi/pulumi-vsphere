@@ -148,6 +148,132 @@
             },
             "type": "object"
         },
+        "vsphere:/ContentLibraryPublication:ContentLibraryPublication": {
+            "properties": {
+                "authenticationMethod": {
+                    "type": "string",
+                    "description": "Method to log into remote Content Library. Must be `NONE` or `BASIC`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password to log in with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publishUrl": {
+                    "type": "string",
+                    "description": "URL to remotely access the published Content Library.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Bool determining if Content Library is published.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name to log in with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "password",
+                        "publishUrl",
+                        "username"
+                    ]
+                }
+            }
+        },
+        "vsphere:/ContentLibrarySubscription:ContentLibrarySubscription": {
+            "properties": {
+                "authenticationMethod": {
+                    "type": "string",
+                    "description": "Method to log into remote Content Library. Must be `NONE` or `BASIC`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "automaticSync": {
+                    "type": "boolean",
+                    "description": "Enable automatic synchronization with the external content library.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onDemand": {
+                    "type": "boolean",
+                    "description": "Download all library content immediately.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password to log in with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subscriptionUrl": {
+                    "type": "string",
+                    "description": "URL of remote Content Library.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name to log in with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "password",
+                        "username"
+                    ]
+                }
+            }
+        },
         "vsphere:/DistributedPortGroupVlanRange:DistributedPortGroupVlanRange": {
             "properties": {
                 "maxVlan": {
@@ -945,6 +1071,7 @@
                         "deviceAddress",
                         "key",
                         "path",
+                        "storagePolicyId",
                         "uuid"
                     ]
                 }
@@ -2749,16 +2876,25 @@
                     "type": "string",
                     "description": "The name of the Content Library.\n"
                 },
+                "publication": {
+                    "$ref": "#/types/vsphere:/ContentLibraryPublication:ContentLibraryPublication",
+                    "description": "Options to publish a local Content Library.\n"
+                },
                 "storageBackings": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "The managed object reference ID on which to store Content Library\nitems.\n"
+                },
+                "subscription": {
+                    "$ref": "#/types/vsphere:/ContentLibrarySubscription:ContentLibrarySubscription",
+                    "description": "Options to publish a local Content Library.\n"
                 }
             },
             "required": [
                 "name",
+                "publication",
                 "storageBackings"
             ],
             "inputProperties": {
@@ -2770,12 +2906,20 @@
                     "type": "string",
                     "description": "The name of the Content Library.\n"
                 },
+                "publication": {
+                    "$ref": "#/types/vsphere:/ContentLibraryPublication:ContentLibraryPublication",
+                    "description": "Options to publish a local Content Library.\n"
+                },
                 "storageBackings": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "The managed object reference ID on which to store Content Library\nitems.\n"
+                },
+                "subscription": {
+                    "$ref": "#/types/vsphere:/ContentLibrarySubscription:ContentLibrarySubscription",
+                    "description": "Options to publish a local Content Library.\n"
                 }
             },
             "requiredInputs": [
@@ -2792,12 +2936,20 @@
                         "type": "string",
                         "description": "The name of the Content Library.\n"
                     },
+                    "publication": {
+                        "$ref": "#/types/vsphere:/ContentLibraryPublication:ContentLibraryPublication",
+                        "description": "Options to publish a local Content Library.\n"
+                    },
                     "storageBackings": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
                         "description": "The managed object reference ID on which to store Content Library\nitems.\n"
+                    },
+                    "subscription": {
+                        "$ref": "#/types/vsphere:/ContentLibrarySubscription:ContentLibrarySubscription",
+                        "description": "Options to publish a local Content Library.\n"
                     }
                 },
                 "type": "object"
@@ -2809,12 +2961,9 @@
                     "type": "string",
                     "description": "A description for the item.\n"
                 },
-                "fileUrls": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of files to download for the Content Library item.\n"
+                "fileUrl": {
+                    "type": "string",
+                    "description": "File to import into the Content Library item. OVFs and\nOVAs will be parsed and associated files will also be imported.\n"
                 },
                 "libraryId": {
                     "type": "string",
@@ -2824,13 +2973,16 @@
                     "type": "string",
                     "description": "The name of the item to be created in the Content Library.\n"
                 },
+                "sourceUuid": {
+                    "type": "string",
+                    "description": "Virtual machine UUID to clone to Content Library.\n"
+                },
                 "type": {
                     "type": "string",
                     "description": "Type of content library item.\n"
                 }
             },
             "required": [
-                "fileUrls",
                 "libraryId",
                 "name"
             ],
@@ -2839,12 +2991,9 @@
                     "type": "string",
                     "description": "A description for the item.\n"
                 },
-                "fileUrls": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of files to download for the Content Library item.\n"
+                "fileUrl": {
+                    "type": "string",
+                    "description": "File to import into the Content Library item. OVFs and\nOVAs will be parsed and associated files will also be imported.\n"
                 },
                 "libraryId": {
                     "type": "string",
@@ -2854,13 +3003,16 @@
                     "type": "string",
                     "description": "The name of the item to be created in the Content Library.\n"
                 },
+                "sourceUuid": {
+                    "type": "string",
+                    "description": "Virtual machine UUID to clone to Content Library.\n"
+                },
                 "type": {
                     "type": "string",
                     "description": "Type of content library item.\n"
                 }
             },
             "requiredInputs": [
-                "fileUrls",
                 "libraryId"
             ],
             "stateInputs": {
@@ -2870,12 +3022,9 @@
                         "type": "string",
                         "description": "A description for the item.\n"
                     },
-                    "fileUrls": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "A list of files to download for the Content Library item.\n"
+                    "fileUrl": {
+                        "type": "string",
+                        "description": "File to import into the Content Library item. OVFs and\nOVAs will be parsed and associated files will also be imported.\n"
                     },
                     "libraryId": {
                         "type": "string",
@@ -2884,6 +3033,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the item to be created in the Content Library.\n"
+                    },
+                    "sourceUuid": {
+                        "type": "string",
+                        "description": "Virtual machine UUID to clone to Content Library.\n"
                     },
                     "type": {
                         "type": "string",
@@ -8364,6 +8517,7 @@
                 "name",
                 "rebootRequired",
                 "resourcePoolId",
+                "storagePolicyId",
                 "uuid",
                 "vappTransports",
                 "vmwareToolsStatus",
@@ -10750,6 +10904,7 @@
                     "networkInterfaceTypes",
                     "scsiBusSharing",
                     "scsiType",
+                    "storagePolicyId",
                     "uuid",
                     "vappTransports",
                     "id"

@@ -528,7 +528,7 @@ namespace Pulumi.VSphere
         /// The UUID of the storage policy to assign to this disk.
         /// </summary>
         [Output("storagePolicyId")]
-        public Output<string?> StoragePolicyId { get; private set; } = null!;
+        public Output<string> StoragePolicyId { get; private set; } = null!;
 
         /// <summary>
         /// The swap file placement policy for this

@@ -18,10 +18,11 @@ namespace Pulumi.VSphere
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of files to download for the Content Library item.
+        /// File to import into the Content Library item. OVFs and
+        /// OVAs will be parsed and associated files will also be imported.
         /// </summary>
-        [Output("fileUrls")]
-        public Output<ImmutableArray<string>> FileUrls { get; private set; } = null!;
+        [Output("fileUrl")]
+        public Output<string?> FileUrl { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Content Library the item should be created in.
@@ -34,6 +35,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Virtual machine UUID to clone to Content Library.
+        /// </summary>
+        [Output("sourceUuid")]
+        public Output<string?> SourceUuid { get; private set; } = null!;
 
         /// <summary>
         /// Type of content library item.
@@ -93,17 +100,12 @@ namespace Pulumi.VSphere
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("fileUrls", required: true)]
-        private InputList<string>? _fileUrls;
-
         /// <summary>
-        /// A list of files to download for the Content Library item.
+        /// File to import into the Content Library item. OVFs and
+        /// OVAs will be parsed and associated files will also be imported.
         /// </summary>
-        public InputList<string> FileUrls
-        {
-            get => _fileUrls ?? (_fileUrls = new InputList<string>());
-            set => _fileUrls = value;
-        }
+        [Input("fileUrl")]
+        public Input<string>? FileUrl { get; set; }
 
         /// <summary>
         /// The ID of the Content Library the item should be created in.
@@ -116,6 +118,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Virtual machine UUID to clone to Content Library.
+        /// </summary>
+        [Input("sourceUuid")]
+        public Input<string>? SourceUuid { get; set; }
 
         /// <summary>
         /// Type of content library item.
@@ -136,17 +144,12 @@ namespace Pulumi.VSphere
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("fileUrls")]
-        private InputList<string>? _fileUrls;
-
         /// <summary>
-        /// A list of files to download for the Content Library item.
+        /// File to import into the Content Library item. OVFs and
+        /// OVAs will be parsed and associated files will also be imported.
         /// </summary>
-        public InputList<string> FileUrls
-        {
-            get => _fileUrls ?? (_fileUrls = new InputList<string>());
-            set => _fileUrls = value;
-        }
+        [Input("fileUrl")]
+        public Input<string>? FileUrl { get; set; }
 
         /// <summary>
         /// The ID of the Content Library the item should be created in.
@@ -159,6 +162,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Virtual machine UUID to clone to Content Library.
+        /// </summary>
+        [Input("sourceUuid")]
+        public Input<string>? SourceUuid { get; set; }
 
         /// <summary>
         /// Type of content library item.

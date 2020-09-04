@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ContentLibrary extends pulumi.CustomResource {
@@ -41,10 +43,18 @@ export class ContentLibrary extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Options to publish a local Content Library.
+     */
+    public readonly publication!: pulumi.Output<outputs.ContentLibraryPublication>;
+    /**
      * The managed object reference ID on which to store Content Library
      * items.
      */
     public readonly storageBackings!: pulumi.Output<string[]>;
+    /**
+     * Options to publish a local Content Library.
+     */
+    public readonly subscription!: pulumi.Output<outputs.ContentLibrarySubscription | undefined>;
 
     /**
      * Create a ContentLibrary resource with the given unique name, arguments, and options.
@@ -60,7 +70,9 @@ export class ContentLibrary extends pulumi.CustomResource {
             const state = argsOrState as ContentLibraryState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["publication"] = state ? state.publication : undefined;
             inputs["storageBackings"] = state ? state.storageBackings : undefined;
+            inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as ContentLibraryArgs | undefined;
             if (!args || args.storageBackings === undefined) {
@@ -68,7 +80,9 @@ export class ContentLibrary extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["publication"] = args ? args.publication : undefined;
             inputs["storageBackings"] = args ? args.storageBackings : undefined;
+            inputs["subscription"] = args ? args.subscription : undefined;
         }
         if (!opts) {
             opts = {}
@@ -94,10 +108,18 @@ export interface ContentLibraryState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Options to publish a local Content Library.
+     */
+    readonly publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    /**
      * The managed object reference ID on which to store Content Library
      * items.
      */
     readonly storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Options to publish a local Content Library.
+     */
+    readonly subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }
 
 /**
@@ -113,8 +135,16 @@ export interface ContentLibraryArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Options to publish a local Content Library.
+     */
+    readonly publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    /**
      * The managed object reference ID on which to store Content Library
      * items.
      */
     readonly storageBackings: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Options to publish a local Content Library.
+     */
+    readonly subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }

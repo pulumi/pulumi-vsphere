@@ -16,9 +16,10 @@ class ContentLibraryItem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 file_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 file_url: Optional[pulumi.Input[str]] = None,
                  library_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 source_uuid: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -28,9 +29,11 @@ class ContentLibraryItem(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[List[pulumi.Input[str]]] file_urls: A list of files to download for the Content Library item.
+        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
+               OVAs will be parsed and associated files will also be imported.
         :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
         :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
         :param pulumi.Input[str] type: Type of content library item.
         """
         if __name__ is not None:
@@ -51,13 +54,12 @@ class ContentLibraryItem(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if file_urls is None:
-                raise TypeError("Missing required property 'file_urls'")
-            __props__['file_urls'] = file_urls
+            __props__['file_url'] = file_url
             if library_id is None:
                 raise TypeError("Missing required property 'library_id'")
             __props__['library_id'] = library_id
             __props__['name'] = name
+            __props__['source_uuid'] = source_uuid
             __props__['type'] = type
         super(ContentLibraryItem, __self__).__init__(
             'vsphere:index/contentLibraryItem:ContentLibraryItem',
@@ -70,9 +72,10 @@ class ContentLibraryItem(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            file_urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            file_url: Optional[pulumi.Input[str]] = None,
             library_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            source_uuid: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'ContentLibraryItem':
         """
         Get an existing ContentLibraryItem resource's state with the given name, id, and optional extra
@@ -82,9 +85,11 @@ class ContentLibraryItem(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[List[pulumi.Input[str]]] file_urls: A list of files to download for the Content Library item.
+        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
+               OVAs will be parsed and associated files will also be imported.
         :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
         :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
         :param pulumi.Input[str] type: Type of content library item.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -92,9 +97,10 @@ class ContentLibraryItem(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["description"] = description
-        __props__["file_urls"] = file_urls
+        __props__["file_url"] = file_url
         __props__["library_id"] = library_id
         __props__["name"] = name
+        __props__["source_uuid"] = source_uuid
         __props__["type"] = type
         return ContentLibraryItem(resource_name, opts=opts, __props__=__props__)
 
@@ -107,12 +113,13 @@ class ContentLibraryItem(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="fileUrls")
-    def file_urls(self) -> pulumi.Output[List[str]]:
+    @pulumi.getter(name="fileUrl")
+    def file_url(self) -> pulumi.Output[Optional[str]]:
         """
-        A list of files to download for the Content Library item.
+        File to import into the Content Library item. OVFs and
+        OVAs will be parsed and associated files will also be imported.
         """
-        return pulumi.get(self, "file_urls")
+        return pulumi.get(self, "file_url")
 
     @property
     @pulumi.getter(name="libraryId")
@@ -129,6 +136,14 @@ class ContentLibraryItem(pulumi.CustomResource):
         The name of the item to be created in the Content Library.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sourceUuid")
+    def source_uuid(self) -> pulumi.Output[Optional[str]]:
+        """
+        Virtual machine UUID to clone to Content Library.
+        """
+        return pulumi.get(self, "source_uuid")
 
     @property
     @pulumi.getter

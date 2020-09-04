@@ -418,7 +418,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The UUID of the storage policy to assign to this disk.
      */
-    public readonly storagePolicyId!: pulumi.Output<string | undefined>;
+    public readonly storagePolicyId!: pulumi.Output<string>;
     /**
      * The swap file placement policy for this
      * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.

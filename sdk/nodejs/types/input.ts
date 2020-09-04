@@ -10,6 +10,56 @@ export interface ComputeClusterVsanDiskGroup {
     storages?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ContentLibraryPublication {
+    /**
+     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     */
+    authenticationMethod?: pulumi.Input<string>;
+    /**
+     * Password to log in with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * URL to remotely access the published Content Library.
+     */
+    publishUrl?: pulumi.Input<string>;
+    /**
+     * Bool determining if Content Library is published.
+     */
+    published?: pulumi.Input<boolean>;
+    /**
+     * User name to log in with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ContentLibrarySubscription {
+    /**
+     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     */
+    authenticationMethod?: pulumi.Input<string>;
+    /**
+     * Enable automatic synchronization with the external content library.
+     */
+    automaticSync?: pulumi.Input<boolean>;
+    /**
+     * Download all library content immediately.
+     */
+    onDemand?: pulumi.Input<boolean>;
+    /**
+     * Password to log in with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * URL of remote Content Library.
+     */
+    subscriptionUrl?: pulumi.Input<string>;
+    /**
+     * User name to log in with.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface DistributedPortGroupVlanRange {
     maxVlan: pulumi.Input<number>;
     minVlan: pulumi.Input<number>;

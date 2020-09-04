@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ContentLibrary']
 
@@ -17,7 +19,9 @@ class ContentLibrary(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
                  storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,8 +31,10 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
+        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
         :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
+        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -49,9 +55,11 @@ class ContentLibrary(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
+            __props__['publication'] = publication
             if storage_backings is None:
                 raise TypeError("Missing required property 'storage_backings'")
             __props__['storage_backings'] = storage_backings
+            __props__['subscription'] = subscription
         super(ContentLibrary, __self__).__init__(
             'vsphere:index/contentLibrary:ContentLibrary',
             resource_name,
@@ -64,7 +72,9 @@ class ContentLibrary(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ContentLibrary':
+            publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
+            storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None) -> 'ContentLibrary':
         """
         Get an existing ContentLibrary resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -74,8 +84,10 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
+        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
         :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
+        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -83,7 +95,9 @@ class ContentLibrary(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["name"] = name
+        __props__["publication"] = publication
         __props__["storage_backings"] = storage_backings
+        __props__["subscription"] = subscription
         return ContentLibrary(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -103,6 +117,14 @@ class ContentLibrary(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def publication(self) -> pulumi.Output['outputs.ContentLibraryPublication']:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "publication")
+
+    @property
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> pulumi.Output[List[str]]:
         """
@@ -110,6 +132,14 @@ class ContentLibrary(pulumi.CustomResource):
         items.
         """
         return pulumi.get(self, "storage_backings")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> pulumi.Output[Optional['outputs.ContentLibrarySubscription']]:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "subscription")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

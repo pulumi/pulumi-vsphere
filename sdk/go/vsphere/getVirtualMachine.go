@@ -202,7 +202,7 @@ type LookupVirtualMachineResult struct {
 	// there are multiple controller types. Only the first number of controllers
 	// defined by `scsiControllerScanCount` are scanned.
 	ScsiType            string                 `pulumi:"scsiType"`
-	StoragePolicyId     *string                `pulumi:"storagePolicyId"`
+	StoragePolicyId     string                 `pulumi:"storagePolicyId"`
 	SwapPlacementPolicy *string                `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost    *bool                  `pulumi:"syncTimeWithHost"`
 	Uuid                string                 `pulumi:"uuid"`
