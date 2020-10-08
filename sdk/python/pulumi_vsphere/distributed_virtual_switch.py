@@ -44,6 +44,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  hbr_share_count: Optional[pulumi.Input[float]] = None,
                  hbr_share_level: Optional[pulumi.Input[str]] = None,
                  hosts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchHostArgs']]]]] = None,
+                 ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
                  ingress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
                  ingress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
                  ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
@@ -81,6 +82,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  nfs_share_level: Optional[pulumi.Input[str]] = None,
                  notify_switches: Optional[pulumi.Input[bool]] = None,
                  port_private_secondary_vlan_id: Optional[pulumi.Input[float]] = None,
+                 pvlan_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]]] = None,
                  standby_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  teaming_policy: Optional[pulumi.Input[str]] = None,
@@ -161,6 +163,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchHostArgs']]]] hosts: Use the `host` block to declare a host specification. The
                options are:
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN
+               mappings not managed by this resource. Defaults to false.
         :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average bandwidth in
                bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[float] ingress_shaping_burst_size: The maximum burst size allowed in
@@ -229,6 +233,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                broadcast network of an uplink failover, triggering cache updates.
         :param pulumi.Input[float] port_private_secondary_vlan_id: Used to define a secondary VLAN
                ID when using private VLANs.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]] pvlan_mappings: Use the `pvlan_mapping` block to declare a
+               private VLAN mapping. The options are:
         :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
                `uplinks` DVS argument. See
@@ -316,6 +322,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             __props__['hbr_share_count'] = hbr_share_count
             __props__['hbr_share_level'] = hbr_share_level
             __props__['hosts'] = hosts
+            __props__['ignore_other_pvlan_mappings'] = ignore_other_pvlan_mappings
             __props__['ingress_shaping_average_bandwidth'] = ingress_shaping_average_bandwidth
             __props__['ingress_shaping_burst_size'] = ingress_shaping_burst_size
             __props__['ingress_shaping_enabled'] = ingress_shaping_enabled
@@ -353,6 +360,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             __props__['nfs_share_level'] = nfs_share_level
             __props__['notify_switches'] = notify_switches
             __props__['port_private_secondary_vlan_id'] = port_private_secondary_vlan_id
+            __props__['pvlan_mappings'] = pvlan_mappings
             __props__['standby_uplinks'] = standby_uplinks
             __props__['tags'] = tags
             __props__['teaming_policy'] = teaming_policy
@@ -416,6 +424,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             hbr_share_count: Optional[pulumi.Input[float]] = None,
             hbr_share_level: Optional[pulumi.Input[str]] = None,
             hosts: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchHostArgs']]]]] = None,
+            ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
             ingress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
             ingress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
@@ -453,6 +462,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             nfs_share_level: Optional[pulumi.Input[str]] = None,
             notify_switches: Optional[pulumi.Input[bool]] = None,
             port_private_secondary_vlan_id: Optional[pulumi.Input[float]] = None,
+            pvlan_mappings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]]] = None,
             standby_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             teaming_policy: Optional[pulumi.Input[str]] = None,
@@ -534,6 +544,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchHostArgs']]]] hosts: Use the `host` block to declare a host specification. The
                options are:
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN
+               mappings not managed by this resource. Defaults to false.
         :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average bandwidth in
                bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[float] ingress_shaping_burst_size: The maximum burst size allowed in
@@ -602,6 +614,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                broadcast network of an uplink failover, triggering cache updates.
         :param pulumi.Input[float] port_private_secondary_vlan_id: Used to define a secondary VLAN
                ID when using private VLANs.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]] pvlan_mappings: Use the `pvlan_mapping` block to declare a
+               private VLAN mapping. The options are:
         :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
                `uplinks` DVS argument. See
@@ -675,6 +689,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         __props__["hbr_share_count"] = hbr_share_count
         __props__["hbr_share_level"] = hbr_share_level
         __props__["hosts"] = hosts
+        __props__["ignore_other_pvlan_mappings"] = ignore_other_pvlan_mappings
         __props__["ingress_shaping_average_bandwidth"] = ingress_shaping_average_bandwidth
         __props__["ingress_shaping_burst_size"] = ingress_shaping_burst_size
         __props__["ingress_shaping_enabled"] = ingress_shaping_enabled
@@ -712,6 +727,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         __props__["nfs_share_level"] = nfs_share_level
         __props__["notify_switches"] = notify_switches
         __props__["port_private_secondary_vlan_id"] = port_private_secondary_vlan_id
+        __props__["pvlan_mappings"] = pvlan_mappings
         __props__["standby_uplinks"] = standby_uplinks
         __props__["tags"] = tags
         __props__["teaming_policy"] = teaming_policy
@@ -983,6 +999,15 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         options are:
         """
         return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter(name="ignoreOtherPvlanMappings")
+    def ignore_other_pvlan_mappings(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to ignore existing PVLAN
+        mappings not managed by this resource. Defaults to false.
+        """
+        return pulumi.get(self, "ignore_other_pvlan_mappings")
 
     @property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
@@ -1310,6 +1335,15 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         ID when using private VLANs.
         """
         return pulumi.get(self, "port_private_secondary_vlan_id")
+
+    @property
+    @pulumi.getter(name="pvlanMappings")
+    def pvlan_mappings(self) -> pulumi.Output[Optional[List['outputs.DistributedVirtualSwitchPvlanMapping']]]:
+        """
+        Use the `pvlan_mapping` block to declare a
+        private VLAN mapping. The options are:
+        """
+        return pulumi.get(self, "pvlan_mappings")
 
     @property
     @pulumi.getter(name="standbyUplinks")

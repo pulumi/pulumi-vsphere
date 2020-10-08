@@ -91,7 +91,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * The above would import the the vnic `vmk2` from host with ID `host-123`.
+ * The above would import the vnic `vmk2` from host with ID `host-123`.
  */
 export class Vnic extends pulumi.CustomResource {
     /**

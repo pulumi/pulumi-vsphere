@@ -16,34 +16,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
         /// connections.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
-        ///         {
-        ///             Name = "Content Library Test",
-        ///         }));
-        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
-        ///         {
-        ///             Name = "Ubuntu Bionic 18.04",
-        ///             LibraryId = library.Id,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithVersion());
@@ -64,6 +36,12 @@ namespace Pulumi.VSphere
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The Content Library type. Can be ovf, iso, or vm-template.
+        /// </summary>
+        [Input("type", required: true)]
+        public string Type { get; set; } = null!;
+
         public GetContentLibraryItemArgs()
         {
         }
@@ -79,6 +57,10 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string LibraryId;
         public readonly string Name;
+        /// <summary>
+        /// The Content Library type. Can be ovf, iso, or vm-template.
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetContentLibraryItemResult(
@@ -86,11 +68,14 @@ namespace Pulumi.VSphere
 
             string libraryId,
 
-            string name)
+            string name,
+
+            string type)
         {
             Id = id;
             LibraryId = libraryId;
             Name = name;
+            Type = type;
         }
     }
 }

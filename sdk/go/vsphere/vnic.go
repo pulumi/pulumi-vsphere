@@ -164,7 +164,7 @@ import (
 // }
 // ```
 //
-// The above would import the the vnic `vmk2` from host with ID `host-123`.
+// The above would import the vnic `vmk2` from host with ID `host-123`.
 type Vnic struct {
 	pulumi.CustomResourceState
 

@@ -98,6 +98,18 @@ class HostPortGroup(pulumi.CustomResource):
             virtual_switch_name=switch.name,
             vlan_id=4095)
         ```
+        ## Importing
+
+        An existing host port group can be [imported][docs-import] into this resource
+        using the host port group's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the `Management` host port group from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -169,6 +169,11 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly hosts!: pulumi.Output<outputs.DistributedVirtualSwitchHost[] | undefined>;
     /**
+     * Whether to ignore existing PVLAN
+     * mappings not managed by this resource. Defaults to false.
+     */
+    public readonly ignoreOtherPvlanMappings!: pulumi.Output<boolean | undefined>;
+    /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
      */
@@ -348,6 +353,11 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly portPrivateSecondaryVlanId!: pulumi.Output<number>;
     /**
+     * Use the `pvlanMapping` block to declare a
+     * private VLAN mapping. The options are:
+     */
+    public readonly pvlanMappings!: pulumi.Output<outputs.DistributedVirtualSwitchPvlanMapping[] | undefined>;
+    /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
      * `uplinks` DVS argument. See
@@ -500,6 +510,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["hbrShareCount"] = state ? state.hbrShareCount : undefined;
             inputs["hbrShareLevel"] = state ? state.hbrShareLevel : undefined;
             inputs["hosts"] = state ? state.hosts : undefined;
+            inputs["ignoreOtherPvlanMappings"] = state ? state.ignoreOtherPvlanMappings : undefined;
             inputs["ingressShapingAverageBandwidth"] = state ? state.ingressShapingAverageBandwidth : undefined;
             inputs["ingressShapingBurstSize"] = state ? state.ingressShapingBurstSize : undefined;
             inputs["ingressShapingEnabled"] = state ? state.ingressShapingEnabled : undefined;
@@ -537,6 +548,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["nfsShareLevel"] = state ? state.nfsShareLevel : undefined;
             inputs["notifySwitches"] = state ? state.notifySwitches : undefined;
             inputs["portPrivateSecondaryVlanId"] = state ? state.portPrivateSecondaryVlanId : undefined;
+            inputs["pvlanMappings"] = state ? state.pvlanMappings : undefined;
             inputs["standbyUplinks"] = state ? state.standbyUplinks : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
@@ -593,6 +605,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["hbrShareCount"] = args ? args.hbrShareCount : undefined;
             inputs["hbrShareLevel"] = args ? args.hbrShareLevel : undefined;
             inputs["hosts"] = args ? args.hosts : undefined;
+            inputs["ignoreOtherPvlanMappings"] = args ? args.ignoreOtherPvlanMappings : undefined;
             inputs["ingressShapingAverageBandwidth"] = args ? args.ingressShapingAverageBandwidth : undefined;
             inputs["ingressShapingBurstSize"] = args ? args.ingressShapingBurstSize : undefined;
             inputs["ingressShapingEnabled"] = args ? args.ingressShapingEnabled : undefined;
@@ -630,6 +643,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["nfsShareLevel"] = args ? args.nfsShareLevel : undefined;
             inputs["notifySwitches"] = args ? args.notifySwitches : undefined;
             inputs["portPrivateSecondaryVlanId"] = args ? args.portPrivateSecondaryVlanId : undefined;
+            inputs["pvlanMappings"] = args ? args.pvlanMappings : undefined;
             inputs["standbyUplinks"] = args ? args.standbyUplinks : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
@@ -805,6 +819,11 @@ export interface DistributedVirtualSwitchState {
      * options are:
      */
     readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
+    /**
+     * Whether to ignore existing PVLAN
+     * mappings not managed by this resource. Defaults to false.
+     */
+    readonly ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
@@ -984,6 +1003,11 @@ export interface DistributedVirtualSwitchState {
      * ID when using private VLANs.
      */
     readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    /**
+     * Use the `pvlanMapping` block to declare a
+     * private VLAN mapping. The options are:
+     */
+    readonly pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
@@ -1233,6 +1257,11 @@ export interface DistributedVirtualSwitchArgs {
      */
     readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
+     * Whether to ignore existing PVLAN
+     * mappings not managed by this resource. Defaults to false.
+     */
+    readonly ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
+    /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
      */
@@ -1411,6 +1440,11 @@ export interface DistributedVirtualSwitchArgs {
      * ID when using private VLANs.
      */
     readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    /**
+     * Use the `pvlanMapping` block to declare a
+     * private VLAN mapping. The options are:
+     */
+    readonly pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the

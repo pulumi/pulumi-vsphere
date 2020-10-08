@@ -142,7 +142,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// 
-    /// The above would import the the vnic `vmk2` from host with ID `host-123`.
+    /// The above would import the vnic `vmk2` from host with ID `host-123`.
     /// </summary>
     public partial class Vnic : Pulumi.CustomResource
     {

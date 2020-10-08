@@ -100,7 +100,7 @@ class Vnic(pulumi.CustomResource):
         import pulumi
         ```
 
-        The above would import the the vnic `vmk2` from host with ID `host-123`.
+        The above would import the vnic `vmk2` from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

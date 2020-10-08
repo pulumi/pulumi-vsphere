@@ -19,6 +19,53 @@ namespace Pulumi.VSphere
         ///   by providing a list of tag IDs and an optional regular expression to filter
         ///   objects by name.
         ///    
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cat = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         {
+        ///             Name = "SomeCategory",
+        ///         }));
+        ///         var tag1 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         {
+        ///             Name = "FirstTag",
+        ///             CategoryId = cat.Id,
+        ///         })));
+        ///         var tag2 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         {
+        ///             Name = "SecondTag",
+        ///             CategoryId = cat.Id,
+        ///         })));
+        ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
+        ///         {
+        ///             var tag1 = values.Item1;
+        ///             var tag11 = values.Item2;
+        ///             return Output.Create(VSphere.GetDynamic.InvokeAsync(new VSphere.GetDynamicArgs
+        ///             {
+        ///                 Filters = 
+        ///                 {
+        ///                     tag1.Id,
+        ///                     tag11.Id,
+        ///                 },
+        ///                 NameRegex = "ubuntu",
+        ///                 Type = "Datacenter",
+        ///             }));
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDynamicResult> InvokeAsync(GetDynamicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithVersion());

@@ -79,6 +79,18 @@ import * as utilities from "./utilities";
  *     vlanId: 4095,
  * });
  * ```
+ * ## Importing
+ *
+ * An existing host port group can be [imported][docs-import] into this resource
+ * using the host port group's ID. An example is below:
+ *
+ * [docs-import]: /docs/import/index.html
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * The above would import the `Management` host port group from host with ID `host-123`.
  */
 export class HostPortGroup extends pulumi.CustomResource {
     /**
