@@ -259,7 +259,7 @@ namespace Pulumi.VSphere
         public Output<bool?> ShapingOverrideAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         [Output("standbyUplinks")]
         public Output<ImmutableArray<string>> StandbyUplinks { get; private set; } = null!;
@@ -622,7 +622,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _standbyUplinks;
 
         /// <summary>
-        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> StandbyUplinks
         {
@@ -973,7 +973,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _standbyUplinks;
 
         /// <summary>
-        /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        /// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         /// </summary>
         public InputList<string> StandbyUplinks
         {

@@ -91,6 +91,9 @@ type DistributedVirtualSwitch struct {
 	// Use the `host` block to declare a host specification. The
 	// options are:
 	Hosts DistributedVirtualSwitchHostArrayOutput `pulumi:"hosts"`
+	// Whether to ignore existing PVLAN
+	// mappings not managed by this resource. Defaults to false.
+	IgnoreOtherPvlanMappings pulumi.BoolPtrOutput `pulumi:"ignoreOtherPvlanMappings"`
 	// The average bandwidth in
 	// bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntOutput `pulumi:"ingressShapingAverageBandwidth"`
@@ -196,6 +199,9 @@ type DistributedVirtualSwitch struct {
 	// Used to define a secondary VLAN
 	// ID when using private VLANs.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
+	// Use the `pvlanMapping` block to declare a
+	// private VLAN mapping. The options are:
+	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayOutput `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
 	// `uplinks` DVS argument. See
@@ -371,6 +377,9 @@ type distributedVirtualSwitchState struct {
 	// Use the `host` block to declare a host specification. The
 	// options are:
 	Hosts []DistributedVirtualSwitchHost `pulumi:"hosts"`
+	// Whether to ignore existing PVLAN
+	// mappings not managed by this resource. Defaults to false.
+	IgnoreOtherPvlanMappings *bool `pulumi:"ignoreOtherPvlanMappings"`
 	// The average bandwidth in
 	// bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingAverageBandwidth *int `pulumi:"ingressShapingAverageBandwidth"`
@@ -476,6 +485,9 @@ type distributedVirtualSwitchState struct {
 	// Used to define a secondary VLAN
 	// ID when using private VLANs.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
+	// Use the `pvlanMapping` block to declare a
+	// private VLAN mapping. The options are:
+	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
 	// `uplinks` DVS argument. See
@@ -621,6 +633,9 @@ type DistributedVirtualSwitchState struct {
 	// Use the `host` block to declare a host specification. The
 	// options are:
 	Hosts DistributedVirtualSwitchHostArrayInput
+	// Whether to ignore existing PVLAN
+	// mappings not managed by this resource. Defaults to false.
+	IgnoreOtherPvlanMappings pulumi.BoolPtrInput
 	// The average bandwidth in
 	// bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntPtrInput
@@ -726,6 +741,9 @@ type DistributedVirtualSwitchState struct {
 	// Used to define a secondary VLAN
 	// ID when using private VLANs.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
+	// Use the `pvlanMapping` block to declare a
+	// private VLAN mapping. The options are:
+	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
 	// `uplinks` DVS argument. See
@@ -873,6 +891,9 @@ type distributedVirtualSwitchArgs struct {
 	// Use the `host` block to declare a host specification. The
 	// options are:
 	Hosts []DistributedVirtualSwitchHost `pulumi:"hosts"`
+	// Whether to ignore existing PVLAN
+	// mappings not managed by this resource. Defaults to false.
+	IgnoreOtherPvlanMappings *bool `pulumi:"ignoreOtherPvlanMappings"`
 	// The average bandwidth in
 	// bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingAverageBandwidth *int `pulumi:"ingressShapingAverageBandwidth"`
@@ -978,6 +999,9 @@ type distributedVirtualSwitchArgs struct {
 	// Used to define a secondary VLAN
 	// ID when using private VLANs.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
+	// Use the `pvlanMapping` block to declare a
+	// private VLAN mapping. The options are:
+	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
 	// `uplinks` DVS argument. See
@@ -1122,6 +1146,9 @@ type DistributedVirtualSwitchArgs struct {
 	// Use the `host` block to declare a host specification. The
 	// options are:
 	Hosts DistributedVirtualSwitchHostArrayInput
+	// Whether to ignore existing PVLAN
+	// mappings not managed by this resource. Defaults to false.
+	IgnoreOtherPvlanMappings pulumi.BoolPtrInput
 	// The average bandwidth in
 	// bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingAverageBandwidth pulumi.IntPtrInput
@@ -1227,6 +1254,9 @@ type DistributedVirtualSwitchArgs struct {
 	// Used to define a secondary VLAN
 	// ID when using private VLANs.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
+	// Use the `pvlanMapping` block to declare a
+	// private VLAN mapping. The options are:
+	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
 	// `uplinks` DVS argument. See

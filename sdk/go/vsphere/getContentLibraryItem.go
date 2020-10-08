@@ -11,36 +11,6 @@ import (
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		library, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
-// 			Name: "Content Library Test",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupContentLibraryItem(ctx, &vsphere.LookupContentLibraryItemArgs{
-// 			Name:      "Ubuntu Bionic 18.04",
-// 			LibraryId: library.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
 	var rv LookupContentLibraryItemResult
 	err := ctx.Invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, opts...)
@@ -56,6 +26,8 @@ type LookupContentLibraryItemArgs struct {
 	LibraryId string `pulumi:"libraryId"`
 	// The name of the Content Library.
 	Name string `pulumi:"name"`
+	// The Content Library type. Can be ovf, iso, or vm-template.
+	Type string `pulumi:"type"`
 }
 
 // A collection of values returned by getContentLibraryItem.
@@ -64,4 +36,6 @@ type LookupContentLibraryItemResult struct {
 	Id        string `pulumi:"id"`
 	LibraryId string `pulumi:"libraryId"`
 	Name      string `pulumi:"name"`
+	// The Content Library type. Can be ovf, iso, or vm-template.
+	Type string `pulumi:"type"`
 }

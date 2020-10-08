@@ -78,6 +78,24 @@ export interface DistributedVirtualSwitchHost {
     hostSystemId: pulumi.Input<string>;
 }
 
+export interface DistributedVirtualSwitchPvlanMapping {
+    /**
+     * The primary VLAN ID. The VLAN IDs of 0 and
+     * 4095 are reserved and cannot be used in this property.
+     */
+    primaryVlanId: pulumi.Input<number>;
+    /**
+     * The private VLAN type. Valid values are
+     * promiscuous, community and isolated.
+     */
+    pvlanType: pulumi.Input<string>;
+    /**
+     * The secondary VLAN ID. The VLAN IDs of 0
+     * and 4095 are reserved and cannot be used in this property.
+     */
+    secondaryVlanId: pulumi.Input<number>;
+}
+
 export interface DistributedVirtualSwitchVlanRange {
     maxVlan: pulumi.Input<number>;
     minVlan: pulumi.Input<number>;

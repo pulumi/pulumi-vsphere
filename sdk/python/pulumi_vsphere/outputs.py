@@ -15,6 +15,7 @@ __all__ = [
     'ContentLibrarySubscription',
     'DistributedPortGroupVlanRange',
     'DistributedVirtualSwitchHost',
+    'DistributedVirtualSwitchPvlanMapping',
     'DistributedVirtualSwitchVlanRange',
     'EntityPermissionsPermission',
     'HostPortGroupPorts',
@@ -264,6 +265,55 @@ class DistributedVirtualSwitchHost(dict):
         DVS.
         """
         return pulumi.get(self, "host_system_id")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DistributedVirtualSwitchPvlanMapping(dict):
+    def __init__(__self__, *,
+                 primary_vlan_id: float,
+                 pvlan_type: str,
+                 secondary_vlan_id: float):
+        """
+        :param float primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
+               4095 are reserved and cannot be used in this property.
+        :param str pvlan_type: The private VLAN type. Valid values are
+               promiscuous, community and isolated.
+        :param float secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
+               and 4095 are reserved and cannot be used in this property.
+        """
+        pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
+        pulumi.set(__self__, "pvlan_type", pvlan_type)
+        pulumi.set(__self__, "secondary_vlan_id", secondary_vlan_id)
+
+    @property
+    @pulumi.getter(name="primaryVlanId")
+    def primary_vlan_id(self) -> float:
+        """
+        The primary VLAN ID. The VLAN IDs of 0 and
+        4095 are reserved and cannot be used in this property.
+        """
+        return pulumi.get(self, "primary_vlan_id")
+
+    @property
+    @pulumi.getter(name="pvlanType")
+    def pvlan_type(self) -> str:
+        """
+        The private VLAN type. Valid values are
+        promiscuous, community and isolated.
+        """
+        return pulumi.get(self, "pvlan_type")
+
+    @property
+    @pulumi.getter(name="secondaryVlanId")
+    def secondary_vlan_id(self) -> float:
+        """
+        The secondary VLAN ID. The VLAN IDs of 0
+        and 4095 are reserved and cannot be used in this property.
+        """
+        return pulumi.get(self, "secondary_vlan_id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

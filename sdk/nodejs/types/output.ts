@@ -78,6 +78,24 @@ export interface DistributedVirtualSwitchHost {
     hostSystemId: string;
 }
 
+export interface DistributedVirtualSwitchPvlanMapping {
+    /**
+     * The primary VLAN ID. The VLAN IDs of 0 and
+     * 4095 are reserved and cannot be used in this property.
+     */
+    primaryVlanId: number;
+    /**
+     * The private VLAN type. Valid values are
+     * promiscuous, community and isolated.
+     */
+    pvlanType: string;
+    /**
+     * The secondary VLAN ID. The VLAN IDs of 0
+     * and 4095 are reserved and cannot be used in this property.
+     */
+    secondaryVlanId: number;
+}
+
 export interface DistributedVirtualSwitchVlanRange {
     maxVlan: number;
     minVlan: number;
@@ -242,7 +260,7 @@ export interface VirtualMachineDisk {
      * The datastore ID that the ISO is located in.
      * Requried for using a datastore ISO. Conflicts with `clientDevice`.
      */
-    datastoreId?: string;
+    datastoreId: string;
     /**
      * An address internal to this provider that helps locate the
      * device when `key` is unavailable. This follows a convention of

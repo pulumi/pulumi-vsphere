@@ -81,6 +81,25 @@ def get_dynamic(filters: Optional[List[str]] = None,
       by providing a list of tag IDs and an optional regular expression to filter
       objects by name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    cat = vsphere.get_tag_category(name="SomeCategory")
+    tag1 = vsphere.get_tag(name="FirstTag",
+        category_id=cat.id)
+    tag2 = vsphere.get_tag(name="SecondTag",
+        category_id=cat.id)
+    dyn = vsphere.get_dynamic(filters=[
+            tag1.id,
+            tag1.id,
+        ],
+        name_regex="ubuntu",
+        type="Datacenter")
+    ```
+
 
     :param List[str] filters: A list of tag IDs that must be present on an object to
            be a match.

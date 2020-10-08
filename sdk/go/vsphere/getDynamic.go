@@ -13,6 +13,56 @@ import (
 //   reference ID][docs-about-morefs] of any tagged managed object in vCenter
 //   by providing a list of tag IDs and an optional regular expression to filter
 //   objects by name.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cat, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+// 			Name: "SomeCategory",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tag1, err := vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+// 			Name:       "FirstTag",
+// 			CategoryId: cat.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+// 			Name:       "SecondTag",
+// 			CategoryId: cat.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "ubuntu"
+// 		opt1 := "Datacenter"
+// 		_, err = vsphere.GetDynamic(ctx, &vsphere.GetDynamicArgs{
+// 			Filters: []string{
+// 				tag1.Id,
+// 				tag1.Id,
+// 			},
+// 			NameRegex: &opt0,
+// 			Type:      &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDynamic(ctx *pulumi.Context, args *GetDynamicArgs, opts ...pulumi.InvokeOption) (*GetDynamicResult, error) {
 	var rv GetDynamicResult
 	err := ctx.Invoke("vsphere:index/getDynamic:getDynamic", args, &rv, opts...)

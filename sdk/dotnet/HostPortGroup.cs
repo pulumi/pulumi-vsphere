@@ -118,6 +118,26 @@ namespace Pulumi.VSphere
     /// 
     /// }
     /// ```
+    /// ## Importing
+    /// 
+    /// An existing host port group can be [imported][docs-import] into this resource
+    /// using the host port group's ID. An example is below:
+    /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// The above would import the `Management` host port group from host with ID `host-123`.
     /// </summary>
     public partial class HostPortGroup : Pulumi.CustomResource
     {

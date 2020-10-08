@@ -108,7 +108,7 @@ type DistributedPortGroup struct {
 	// options on this port group policy to be overridden
 	// on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrOutput `pulumi:"shapingOverrideAllowed"`
-	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -263,7 +263,7 @@ type distributedPortGroupState struct {
 	// options on this port group policy to be overridden
 	// on an individual port.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
-	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -388,7 +388,7 @@ type DistributedPortGroupState struct {
 	// options on this port group policy to be overridden
 	// on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
-	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput
@@ -513,7 +513,7 @@ type distributedPortGroupArgs struct {
 	// options on this port group policy to be overridden
 	// on an individual port.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
-	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// A list of tag IDs to apply to this object.
 	Tags []string `pulumi:"tags"`
@@ -635,7 +635,7 @@ type DistributedPortGroupArgs struct {
 	// options on this port group policy to be overridden
 	// on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
-	// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
 	// A list of tag IDs to apply to this object.
 	Tags pulumi.StringArrayInput

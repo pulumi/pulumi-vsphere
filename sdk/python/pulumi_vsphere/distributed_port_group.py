@@ -125,7 +125,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping
                options on this port group policy to be overridden
                on an individual port.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
@@ -332,7 +332,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping
                options on this port group policy to be overridden
                on an individual port.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
@@ -731,7 +731,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     @pulumi.getter(name="standbyUplinks")
     def standby_uplinks(self) -> pulumi.Output[List[str]]:
         """
-        List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
         return pulumi.get(self, "standby_uplinks")
 

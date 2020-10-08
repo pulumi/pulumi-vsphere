@@ -13,6 +13,33 @@ import * as utilities from "./utilities";
  *   reference ID][docs-about-morefs] of any tagged managed object in vCenter
  *   by providing a list of tag IDs and an optional regular expression to filter
  *   objects by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const cat = vsphere.getTagCategory({
+ *     name: "SomeCategory",
+ * });
+ * const tag1 = cat.then(cat => vsphere.getTag({
+ *     name: "FirstTag",
+ *     categoryId: cat.id,
+ * }));
+ * const tag2 = cat.then(cat => vsphere.getTag({
+ *     name: "SecondTag",
+ *     categoryId: cat.id,
+ * }));
+ * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
+ *     filters: [
+ *         tag1.id,
+ *         tag11.id,
+ *     ],
+ *     nameRegex: "ubuntu",
+ *     type: "Datacenter",
+ * }));
+ * ```
  */
 export function getDynamic(args: GetDynamicArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicResult> {
     if (!opts) {

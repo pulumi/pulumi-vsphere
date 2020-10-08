@@ -755,6 +755,130 @@ func (o DistributedVirtualSwitchHostArrayOutput) Index(i pulumi.IntInput) Distri
 	}).(DistributedVirtualSwitchHostOutput)
 }
 
+type DistributedVirtualSwitchPvlanMapping struct {
+	// The primary VLAN ID. The VLAN IDs of 0 and
+	// 4095 are reserved and cannot be used in this property.
+	PrimaryVlanId int `pulumi:"primaryVlanId"`
+	// The private VLAN type. Valid values are
+	// promiscuous, community and isolated.
+	PvlanType string `pulumi:"pvlanType"`
+	// The secondary VLAN ID. The VLAN IDs of 0
+	// and 4095 are reserved and cannot be used in this property.
+	SecondaryVlanId int `pulumi:"secondaryVlanId"`
+}
+
+// DistributedVirtualSwitchPvlanMappingInput is an input type that accepts DistributedVirtualSwitchPvlanMappingArgs and DistributedVirtualSwitchPvlanMappingOutput values.
+// You can construct a concrete instance of `DistributedVirtualSwitchPvlanMappingInput` via:
+//
+//          DistributedVirtualSwitchPvlanMappingArgs{...}
+type DistributedVirtualSwitchPvlanMappingInput interface {
+	pulumi.Input
+
+	ToDistributedVirtualSwitchPvlanMappingOutput() DistributedVirtualSwitchPvlanMappingOutput
+	ToDistributedVirtualSwitchPvlanMappingOutputWithContext(context.Context) DistributedVirtualSwitchPvlanMappingOutput
+}
+
+type DistributedVirtualSwitchPvlanMappingArgs struct {
+	// The primary VLAN ID. The VLAN IDs of 0 and
+	// 4095 are reserved and cannot be used in this property.
+	PrimaryVlanId pulumi.IntInput `pulumi:"primaryVlanId"`
+	// The private VLAN type. Valid values are
+	// promiscuous, community and isolated.
+	PvlanType pulumi.StringInput `pulumi:"pvlanType"`
+	// The secondary VLAN ID. The VLAN IDs of 0
+	// and 4095 are reserved and cannot be used in this property.
+	SecondaryVlanId pulumi.IntInput `pulumi:"secondaryVlanId"`
+}
+
+func (DistributedVirtualSwitchPvlanMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedVirtualSwitchPvlanMapping)(nil)).Elem()
+}
+
+func (i DistributedVirtualSwitchPvlanMappingArgs) ToDistributedVirtualSwitchPvlanMappingOutput() DistributedVirtualSwitchPvlanMappingOutput {
+	return i.ToDistributedVirtualSwitchPvlanMappingOutputWithContext(context.Background())
+}
+
+func (i DistributedVirtualSwitchPvlanMappingArgs) ToDistributedVirtualSwitchPvlanMappingOutputWithContext(ctx context.Context) DistributedVirtualSwitchPvlanMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchPvlanMappingOutput)
+}
+
+// DistributedVirtualSwitchPvlanMappingArrayInput is an input type that accepts DistributedVirtualSwitchPvlanMappingArray and DistributedVirtualSwitchPvlanMappingArrayOutput values.
+// You can construct a concrete instance of `DistributedVirtualSwitchPvlanMappingArrayInput` via:
+//
+//          DistributedVirtualSwitchPvlanMappingArray{ DistributedVirtualSwitchPvlanMappingArgs{...} }
+type DistributedVirtualSwitchPvlanMappingArrayInput interface {
+	pulumi.Input
+
+	ToDistributedVirtualSwitchPvlanMappingArrayOutput() DistributedVirtualSwitchPvlanMappingArrayOutput
+	ToDistributedVirtualSwitchPvlanMappingArrayOutputWithContext(context.Context) DistributedVirtualSwitchPvlanMappingArrayOutput
+}
+
+type DistributedVirtualSwitchPvlanMappingArray []DistributedVirtualSwitchPvlanMappingInput
+
+func (DistributedVirtualSwitchPvlanMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributedVirtualSwitchPvlanMapping)(nil)).Elem()
+}
+
+func (i DistributedVirtualSwitchPvlanMappingArray) ToDistributedVirtualSwitchPvlanMappingArrayOutput() DistributedVirtualSwitchPvlanMappingArrayOutput {
+	return i.ToDistributedVirtualSwitchPvlanMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DistributedVirtualSwitchPvlanMappingArray) ToDistributedVirtualSwitchPvlanMappingArrayOutputWithContext(ctx context.Context) DistributedVirtualSwitchPvlanMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchPvlanMappingArrayOutput)
+}
+
+type DistributedVirtualSwitchPvlanMappingOutput struct{ *pulumi.OutputState }
+
+func (DistributedVirtualSwitchPvlanMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedVirtualSwitchPvlanMapping)(nil)).Elem()
+}
+
+func (o DistributedVirtualSwitchPvlanMappingOutput) ToDistributedVirtualSwitchPvlanMappingOutput() DistributedVirtualSwitchPvlanMappingOutput {
+	return o
+}
+
+func (o DistributedVirtualSwitchPvlanMappingOutput) ToDistributedVirtualSwitchPvlanMappingOutputWithContext(ctx context.Context) DistributedVirtualSwitchPvlanMappingOutput {
+	return o
+}
+
+// The primary VLAN ID. The VLAN IDs of 0 and
+// 4095 are reserved and cannot be used in this property.
+func (o DistributedVirtualSwitchPvlanMappingOutput) PrimaryVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) int { return v.PrimaryVlanId }).(pulumi.IntOutput)
+}
+
+// The private VLAN type. Valid values are
+// promiscuous, community and isolated.
+func (o DistributedVirtualSwitchPvlanMappingOutput) PvlanType() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) string { return v.PvlanType }).(pulumi.StringOutput)
+}
+
+// The secondary VLAN ID. The VLAN IDs of 0
+// and 4095 are reserved and cannot be used in this property.
+func (o DistributedVirtualSwitchPvlanMappingOutput) SecondaryVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v DistributedVirtualSwitchPvlanMapping) int { return v.SecondaryVlanId }).(pulumi.IntOutput)
+}
+
+type DistributedVirtualSwitchPvlanMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DistributedVirtualSwitchPvlanMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributedVirtualSwitchPvlanMapping)(nil)).Elem()
+}
+
+func (o DistributedVirtualSwitchPvlanMappingArrayOutput) ToDistributedVirtualSwitchPvlanMappingArrayOutput() DistributedVirtualSwitchPvlanMappingArrayOutput {
+	return o
+}
+
+func (o DistributedVirtualSwitchPvlanMappingArrayOutput) ToDistributedVirtualSwitchPvlanMappingArrayOutputWithContext(ctx context.Context) DistributedVirtualSwitchPvlanMappingArrayOutput {
+	return o
+}
+
+func (o DistributedVirtualSwitchPvlanMappingArrayOutput) Index(i pulumi.IntInput) DistributedVirtualSwitchPvlanMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DistributedVirtualSwitchPvlanMapping {
+		return vs[0].([]DistributedVirtualSwitchPvlanMapping)[vs[1].(int)]
+	}).(DistributedVirtualSwitchPvlanMappingOutput)
+}
+
 type DistributedVirtualSwitchVlanRange struct {
 	MaxVlan int `pulumi:"maxVlan"`
 	MinVlan int `pulumi:"minVlan"`
@@ -4119,6 +4243,8 @@ func init() {
 	pulumi.RegisterOutputType(DistributedPortGroupVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchHostOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchHostArrayOutput{})
+	pulumi.RegisterOutputType(DistributedVirtualSwitchPvlanMappingOutput{})
+	pulumi.RegisterOutputType(DistributedVirtualSwitchPvlanMappingArrayOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPermissionOutput{})

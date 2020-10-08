@@ -206,7 +206,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly shapingOverrideAllowed!: pulumi.Output<boolean | undefined>;
     /**
-     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
@@ -554,7 +554,7 @@ export interface DistributedPortGroupState {
      */
     readonly shapingOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -770,7 +770,7 @@ export interface DistributedPortGroupArgs {
      */
     readonly shapingOverrideAllowed?: pulumi.Input<boolean>;
     /**
-     * List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+     * List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
      */
     readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**

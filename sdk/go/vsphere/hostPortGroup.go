@@ -136,6 +136,28 @@ import (
 // 	})
 // }
 // ```
+// ## Importing
+//
+// An existing host port group can be [imported][docs-import] into this resource
+// using the host port group's ID. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The above would import the `Management` host port group from host with ID `host-123`.
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 

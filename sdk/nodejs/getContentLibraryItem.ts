@@ -11,21 +11,6 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const library = vsphere.getContentLibrary({
- *     name: "Content Library Test",
- * });
- * const item = library.then(library => vsphere.getContentLibraryItem({
- *     name: "Ubuntu Bionic 18.04",
- *     libraryId: library.id,
- * }));
- * ```
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
     if (!opts) {
@@ -38,6 +23,7 @@ export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pu
     return pulumi.runtime.invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
         "libraryId": args.libraryId,
         "name": args.name,
+        "type": args.type,
     }, opts);
 }
 
@@ -53,6 +39,10 @@ export interface GetContentLibraryItemArgs {
      * The name of the Content Library.
      */
     readonly name: string;
+    /**
+     * The Content Library type. Can be ovf, iso, or vm-template.
+     */
+    readonly type: string;
 }
 
 /**
@@ -65,4 +55,8 @@ export interface GetContentLibraryItemResult {
     readonly id: string;
     readonly libraryId: string;
     readonly name: string;
+    /**
+     * The Content Library type. Can be ovf, iso, or vm-template.
+     */
+    readonly type: string;
 }

@@ -14,6 +14,7 @@ __all__ = [
     'ContentLibrarySubscriptionArgs',
     'DistributedPortGroupVlanRangeArgs',
     'DistributedVirtualSwitchHostArgs',
+    'DistributedVirtualSwitchPvlanMappingArgs',
     'DistributedVirtualSwitchVlanRangeArgs',
     'EntityPermissionsPermissionArgs',
     'HostPortGroupPortsArgs',
@@ -318,6 +319,64 @@ class DistributedVirtualSwitchHostArgs:
     @host_system_id.setter
     def host_system_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "host_system_id", value)
+
+
+@pulumi.input_type
+class DistributedVirtualSwitchPvlanMappingArgs:
+    def __init__(__self__, *,
+                 primary_vlan_id: pulumi.Input[float],
+                 pvlan_type: pulumi.Input[str],
+                 secondary_vlan_id: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
+               4095 are reserved and cannot be used in this property.
+        :param pulumi.Input[str] pvlan_type: The private VLAN type. Valid values are
+               promiscuous, community and isolated.
+        :param pulumi.Input[float] secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
+               and 4095 are reserved and cannot be used in this property.
+        """
+        pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
+        pulumi.set(__self__, "pvlan_type", pvlan_type)
+        pulumi.set(__self__, "secondary_vlan_id", secondary_vlan_id)
+
+    @property
+    @pulumi.getter(name="primaryVlanId")
+    def primary_vlan_id(self) -> pulumi.Input[float]:
+        """
+        The primary VLAN ID. The VLAN IDs of 0 and
+        4095 are reserved and cannot be used in this property.
+        """
+        return pulumi.get(self, "primary_vlan_id")
+
+    @primary_vlan_id.setter
+    def primary_vlan_id(self, value: pulumi.Input[float]):
+        pulumi.set(self, "primary_vlan_id", value)
+
+    @property
+    @pulumi.getter(name="pvlanType")
+    def pvlan_type(self) -> pulumi.Input[str]:
+        """
+        The private VLAN type. Valid values are
+        promiscuous, community and isolated.
+        """
+        return pulumi.get(self, "pvlan_type")
+
+    @pvlan_type.setter
+    def pvlan_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pvlan_type", value)
+
+    @property
+    @pulumi.getter(name="secondaryVlanId")
+    def secondary_vlan_id(self) -> pulumi.Input[float]:
+        """
+        The secondary VLAN ID. The VLAN IDs of 0
+        and 4095 are reserved and cannot be used in this property.
+        """
+        return pulumi.get(self, "secondary_vlan_id")
+
+    @secondary_vlan_id.setter
+    def secondary_vlan_id(self, value: pulumi.Input[float]):
+        pulumi.set(self, "secondary_vlan_id", value)
 
 
 @pulumi.input_type

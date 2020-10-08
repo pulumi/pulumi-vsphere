@@ -202,6 +202,13 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchHost>> Hosts { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to ignore existing PVLAN
+        /// mappings not managed by this resource. Defaults to false.
+        /// </summary>
+        [Output("ignoreOtherPvlanMappings")]
+        public Output<bool?> IgnoreOtherPvlanMappings { get; private set; } = null!;
+
+        /// <summary>
         /// The average bandwidth in
         /// bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
@@ -453,6 +460,13 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("portPrivateSecondaryVlanId")]
         public Output<int> PortPrivateSecondaryVlanId { get; private set; } = null!;
+
+        /// <summary>
+        /// Use the `pvlan_mapping` block to declare a
+        /// private VLAN mapping. The options are:
+        /// </summary>
+        [Output("pvlanMappings")]
+        public Output<ImmutableArray<Outputs.DistributedVirtualSwitchPvlanMapping>> PvlanMappings { get; private set; } = null!;
 
         /// <summary>
         /// A list of standby uplinks to be used in
@@ -863,6 +877,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// Whether to ignore existing PVLAN
+        /// mappings not managed by this resource. Defaults to false.
+        /// </summary>
+        [Input("ignoreOtherPvlanMappings")]
+        public Input<bool>? IgnoreOtherPvlanMappings { get; set; }
+
+        /// <summary>
         /// The average bandwidth in
         /// bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
@@ -1114,6 +1135,19 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("portPrivateSecondaryVlanId")]
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
+
+        [Input("pvlanMappings")]
+        private InputList<Inputs.DistributedVirtualSwitchPvlanMappingArgs>? _pvlanMappings;
+
+        /// <summary>
+        /// Use the `pvlan_mapping` block to declare a
+        /// private VLAN mapping. The options are:
+        /// </summary>
+        public InputList<Inputs.DistributedVirtualSwitchPvlanMappingArgs> PvlanMappings
+        {
+            get => _pvlanMappings ?? (_pvlanMappings = new InputList<Inputs.DistributedVirtualSwitchPvlanMappingArgs>());
+            set => _pvlanMappings = value;
+        }
 
         [Input("standbyUplinks")]
         private InputList<string>? _standbyUplinks;
@@ -1515,6 +1549,13 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// Whether to ignore existing PVLAN
+        /// mappings not managed by this resource. Defaults to false.
+        /// </summary>
+        [Input("ignoreOtherPvlanMappings")]
+        public Input<bool>? IgnoreOtherPvlanMappings { get; set; }
+
+        /// <summary>
         /// The average bandwidth in
         /// bits per second if ingress traffic shaping is enabled on the port.
         /// </summary>
@@ -1766,6 +1807,19 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("portPrivateSecondaryVlanId")]
         public Input<int>? PortPrivateSecondaryVlanId { get; set; }
+
+        [Input("pvlanMappings")]
+        private InputList<Inputs.DistributedVirtualSwitchPvlanMappingGetArgs>? _pvlanMappings;
+
+        /// <summary>
+        /// Use the `pvlan_mapping` block to declare a
+        /// private VLAN mapping. The options are:
+        /// </summary>
+        public InputList<Inputs.DistributedVirtualSwitchPvlanMappingGetArgs> PvlanMappings
+        {
+            get => _pvlanMappings ?? (_pvlanMappings = new InputList<Inputs.DistributedVirtualSwitchPvlanMappingGetArgs>());
+            set => _pvlanMappings = value;
+        }
 
         [Input("standbyUplinks")]
         private InputList<string>? _standbyUplinks;
