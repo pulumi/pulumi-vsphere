@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.10.2 (2020-10-12)
+_(none)_
+
 ## 2.10.1 (2020-10-09)
 * Upgrade to v1.24.1 of the vSphere Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.8.0
