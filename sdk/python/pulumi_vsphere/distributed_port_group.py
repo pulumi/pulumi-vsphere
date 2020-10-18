@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
@@ -29,15 +29,15 @@ class DistributedPortGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
                  distributed_virtual_switch_uuid: Optional[pulumi.Input[str]] = None,
-                 egress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-                 egress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
+                 egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
                  egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
+                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
                  failback: Optional[pulumi.Input[bool]] = None,
-                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-                 ingress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
+                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
                  ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
+                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
                  lacp_enabled: Optional[pulumi.Input[bool]] = None,
                  lacp_mode: Optional[pulumi.Input[str]] = None,
                  live_port_moving_allowed: Optional[pulumi.Input[bool]] = None,
@@ -47,22 +47,22 @@ class DistributedPortGroup(pulumi.CustomResource):
                  network_resource_pool_key: Optional[pulumi.Input[str]] = None,
                  network_resource_pool_override_allowed: Optional[pulumi.Input[bool]] = None,
                  notify_switches: Optional[pulumi.Input[bool]] = None,
-                 number_of_ports: Optional[pulumi.Input[float]] = None,
+                 number_of_ports: Optional[pulumi.Input[int]] = None,
                  port_config_reset_at_disconnect: Optional[pulumi.Input[bool]] = None,
                  port_name_format: Optional[pulumi.Input[str]] = None,
-                 port_private_secondary_vlan_id: Optional[pulumi.Input[float]] = None,
+                 port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
                  security_policy_override_allowed: Optional[pulumi.Input[bool]] = None,
                  shaping_override_allowed: Optional[pulumi.Input[bool]] = None,
-                 standby_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teaming_policy: Optional[pulumi.Input[str]] = None,
                  traffic_filter_override_allowed: Optional[pulumi.Input[bool]] = None,
                  tx_uplink: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
-                 vlan_id: Optional[pulumi.Input[float]] = None,
+                 vlan_id: Optional[pulumi.Input[int]] = None,
                  vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-                 vlan_ranges: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None,
+                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -70,7 +70,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         Create a DistributedPortGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
                that of its own.
         :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -87,15 +87,15 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 on the ports this policy applies to.
         :param pulumi.Input[str] distributed_virtual_switch_uuid: The ID of the DVS to add the
                port group to. Forces a new resource if changed.
-        :param pulumi.Input[float] egress_shaping_average_bandwidth: The average egress bandwidth in bits per second if egress shaping is enabled on the port.
-        :param pulumi.Input[float] egress_shaping_burst_size: The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_average_bandwidth: The average egress bandwidth in bits per second if egress shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_burst_size: The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         :param pulumi.Input[bool] egress_shaping_enabled: True if the traffic shaper is enabled for egress traffic on the port.
-        :param pulumi.Input[float] egress_shaping_peak_bandwidth: The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_peak_bandwidth: The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
-        :param pulumi.Input[float] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
-        :param pulumi.Input[float] ingress_shaping_peak_bandwidth: The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] lacp_enabled: Whether or not to enable LACP on all uplink ports.
         :param pulumi.Input[str] lacp_mode: The uplink LACP mode to use. Can be one of active or passive.
         :param pulumi.Input[bool] live_port_moving_allowed: Allow a port in this port group to be
@@ -111,22 +111,22 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] network_resource_pool_override_allowed: Allow the network
                resource pool set on this port group to be overridden on an individual port.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[float] number_of_ports: The number of ports available on this port
+        :param pulumi.Input[int] number_of_ports: The number of ports available on this port
                group. Cannot be decreased below the amount of used ports on the port group.
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset a port's settings to the
                settings defined on this port group policy when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
-        :param pulumi.Input[float] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
+        :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow the security policy
                settings defined in this port group policy to be
                overridden on an individual port.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping
                options on this port group policy to be overridden
                on an individual port.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] traffic_filter_override_allowed: Allow any traffic filters on
@@ -138,10 +138,10 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the uplink teaming
                options on this port group to be overridden on an
                individual port.
-        :param pulumi.Input[float] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[bool] vlan_override_allowed: Allow the VLAN settings
                on this port group to be overridden on an individual port.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -220,7 +220,7 @@ class DistributedPortGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
@@ -233,15 +233,15 @@ class DistributedPortGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
             distributed_virtual_switch_uuid: Optional[pulumi.Input[str]] = None,
-            egress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-            egress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
+            egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+            egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
             egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-            egress_shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
+            egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
             failback: Optional[pulumi.Input[bool]] = None,
-            ingress_shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-            ingress_shaping_burst_size: Optional[pulumi.Input[float]] = None,
+            ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+            ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-            ingress_shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
+            ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
             key: Optional[pulumi.Input[str]] = None,
             lacp_enabled: Optional[pulumi.Input[bool]] = None,
             lacp_mode: Optional[pulumi.Input[str]] = None,
@@ -252,22 +252,22 @@ class DistributedPortGroup(pulumi.CustomResource):
             network_resource_pool_key: Optional[pulumi.Input[str]] = None,
             network_resource_pool_override_allowed: Optional[pulumi.Input[bool]] = None,
             notify_switches: Optional[pulumi.Input[bool]] = None,
-            number_of_ports: Optional[pulumi.Input[float]] = None,
+            number_of_ports: Optional[pulumi.Input[int]] = None,
             port_config_reset_at_disconnect: Optional[pulumi.Input[bool]] = None,
             port_name_format: Optional[pulumi.Input[str]] = None,
-            port_private_secondary_vlan_id: Optional[pulumi.Input[float]] = None,
+            port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
             security_policy_override_allowed: Optional[pulumi.Input[bool]] = None,
             shaping_override_allowed: Optional[pulumi.Input[bool]] = None,
-            standby_uplinks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             teaming_policy: Optional[pulumi.Input[str]] = None,
             traffic_filter_override_allowed: Optional[pulumi.Input[bool]] = None,
             tx_uplink: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
-            vlan_id: Optional[pulumi.Input[float]] = None,
+            vlan_id: Optional[pulumi.Input[int]] = None,
             vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-            vlan_ranges: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None) -> 'DistributedPortGroup':
+            vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]]] = None) -> 'DistributedPortGroup':
         """
         Get an existing DistributedPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -275,7 +275,7 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
                that of its own.
         :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -293,15 +293,15 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 on the ports this policy applies to.
         :param pulumi.Input[str] distributed_virtual_switch_uuid: The ID of the DVS to add the
                port group to. Forces a new resource if changed.
-        :param pulumi.Input[float] egress_shaping_average_bandwidth: The average egress bandwidth in bits per second if egress shaping is enabled on the port.
-        :param pulumi.Input[float] egress_shaping_burst_size: The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_average_bandwidth: The average egress bandwidth in bits per second if egress shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_burst_size: The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         :param pulumi.Input[bool] egress_shaping_enabled: True if the traffic shaper is enabled for egress traffic on the port.
-        :param pulumi.Input[float] egress_shaping_peak_bandwidth: The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_peak_bandwidth: The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         :param pulumi.Input[bool] failback: If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
-        :param pulumi.Input[float] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
-        :param pulumi.Input[float] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_burst_size: The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         :param pulumi.Input[bool] ingress_shaping_enabled: True if the traffic shaper is enabled for ingress traffic on the port.
-        :param pulumi.Input[float] ingress_shaping_peak_bandwidth: The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] key: The generated UUID of the portgroup.
         :param pulumi.Input[bool] lacp_enabled: Whether or not to enable LACP on all uplink ports.
         :param pulumi.Input[str] lacp_mode: The uplink LACP mode to use. Can be one of active or passive.
@@ -318,22 +318,22 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] network_resource_pool_override_allowed: Allow the network
                resource pool set on this port group to be overridden on an individual port.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[float] number_of_ports: The number of ports available on this port
+        :param pulumi.Input[int] number_of_ports: The number of ports available on this port
                group. Cannot be decreased below the amount of used ports on the port group.
         :param pulumi.Input[bool] port_config_reset_at_disconnect: Reset a port's settings to the
                settings defined on this port group policy when the port disconnects.
         :param pulumi.Input[str] port_name_format: An optional formatting policy for naming of
                the ports in this port group. See the `portNameFormat` attribute listed
                [here][ext-vsphere-portname-format] for details on the format syntax.
-        :param pulumi.Input[float] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
+        :param pulumi.Input[int] port_private_secondary_vlan_id: The secondary VLAN ID for this port.
         :param pulumi.Input[bool] security_policy_override_allowed: Allow the security policy
                settings defined in this port group policy to be
                overridden on an individual port.
         :param pulumi.Input[bool] shaping_override_allowed: Allow the traffic shaping
                options on this port group policy to be overridden
                on an individual port.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tag IDs to apply to this object.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
                failover_explicit, or loadbalance_loadbased.
         :param pulumi.Input[bool] traffic_filter_override_allowed: Allow any traffic filters on
@@ -345,10 +345,10 @@ class DistributedPortGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] uplink_teaming_override_allowed: Allow the uplink teaming
                options on this port group to be overridden on an
                individual port.
-        :param pulumi.Input[float] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         :param pulumi.Input[bool] vlan_override_allowed: Allow the VLAN settings
                on this port group to be overridden on an individual port.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedPortGroupVlanRangeArgs']]]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,7 +406,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeUplinks")
-    def active_uplinks(self) -> pulumi.Output[List[str]]:
+    def active_uplinks(self) -> pulumi.Output[Sequence[str]]:
         """
         List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
@@ -515,7 +515,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingAverageBandwidth")
-    def egress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
+    def egress_shaping_average_bandwidth(self) -> pulumi.Output[int]:
         """
         The average egress bandwidth in bits per second if egress shaping is enabled on the port.
         """
@@ -523,7 +523,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingBurstSize")
-    def egress_shaping_burst_size(self) -> pulumi.Output[float]:
+    def egress_shaping_burst_size(self) -> pulumi.Output[int]:
         """
         The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
         """
@@ -539,7 +539,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="egressShapingPeakBandwidth")
-    def egress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
+    def egress_shaping_peak_bandwidth(self) -> pulumi.Output[int]:
         """
         The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
         """
@@ -555,7 +555,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingAverageBandwidth")
-    def ingress_shaping_average_bandwidth(self) -> pulumi.Output[float]:
+    def ingress_shaping_average_bandwidth(self) -> pulumi.Output[int]:
         """
         The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
         """
@@ -563,7 +563,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingBurstSize")
-    def ingress_shaping_burst_size(self) -> pulumi.Output[float]:
+    def ingress_shaping_burst_size(self) -> pulumi.Output[int]:
         """
         The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
         """
@@ -579,7 +579,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ingressShapingPeakBandwidth")
-    def ingress_shaping_peak_bandwidth(self) -> pulumi.Output[float]:
+    def ingress_shaping_peak_bandwidth(self) -> pulumi.Output[int]:
         """
         The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
         """
@@ -673,7 +673,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numberOfPorts")
-    def number_of_ports(self) -> pulumi.Output[float]:
+    def number_of_ports(self) -> pulumi.Output[int]:
         """
         The number of ports available on this port
         group. Cannot be decreased below the amount of used ports on the port group.
@@ -701,7 +701,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portPrivateSecondaryVlanId")
-    def port_private_secondary_vlan_id(self) -> pulumi.Output[float]:
+    def port_private_secondary_vlan_id(self) -> pulumi.Output[int]:
         """
         The secondary VLAN ID for this port.
         """
@@ -729,7 +729,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyUplinks")
-    def standby_uplinks(self) -> pulumi.Output[List[str]]:
+    def standby_uplinks(self) -> pulumi.Output[Sequence[str]]:
         """
         List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
         """
@@ -737,7 +737,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tag IDs to apply to this object.
         """
@@ -791,7 +791,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> pulumi.Output[float]:
+    def vlan_id(self) -> pulumi.Output[int]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
@@ -808,7 +808,7 @@ class DistributedPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanRanges")
-    def vlan_ranges(self) -> pulumi.Output[List['outputs.DistributedPortGroupVlanRange']]:
+    def vlan_ranges(self) -> pulumi.Output[Sequence['outputs.DistributedPortGroupVlanRange']]:
         """
         The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """

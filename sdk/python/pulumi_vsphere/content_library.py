@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,7 +20,7 @@ class ContentLibrary(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
-                 storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -32,7 +32,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
         :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
-        :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
         :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
         """
@@ -73,7 +73,7 @@ class ContentLibrary(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
-            storage_backings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None) -> 'ContentLibrary':
         """
         Get an existing ContentLibrary resource's state with the given name, id, and optional extra
@@ -85,7 +85,7 @@ class ContentLibrary(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the Content Library.
         :param pulumi.Input[str] name: The name of the Content Library.
         :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
-        :param pulumi.Input[List[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
                items.
         :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
         """
@@ -126,7 +126,7 @@ class ContentLibrary(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageBackings")
-    def storage_backings(self) -> pulumi.Output[List[str]]:
+    def storage_backings(self) -> pulumi.Output[Sequence[str]]:
         """
         The managed object reference ID on which to store Content Library
         items.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -35,7 +35,7 @@ class GetDynamicResult:
 
     @property
     @pulumi.getter
-    def filters(self) -> List[str]:
+    def filters(self) -> Sequence[str]:
         return pulumi.get(self, "filters")
 
     @property
@@ -69,7 +69,7 @@ class AwaitableGetDynamicResult(GetDynamicResult):
             type=self.type)
 
 
-def get_dynamic(filters: Optional[List[str]] = None,
+def get_dynamic(filters: Optional[Sequence[str]] = None,
                 name_regex: Optional[str] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDynamicResult:
@@ -101,7 +101,7 @@ def get_dynamic(filters: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] filters: A list of tag IDs that must be present on an object to
+    :param Sequence[str] filters: A list of tag IDs that must be present on an object to
            be a match.
     :param str name_regex: A regular expression that will be used to match
            the object's name.

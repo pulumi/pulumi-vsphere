@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ComputeClusterVmAffinityRule']
@@ -19,7 +19,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  mandatory: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 virtual_machine_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,7 +34,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[List[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on the same host together.
         """
         if __name__ is not None:
@@ -77,7 +77,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             mandatory: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            virtual_machine_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ComputeClusterVmAffinityRule':
+            virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ComputeClusterVmAffinityRule':
         """
         Get an existing ComputeClusterVmAffinityRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -92,7 +92,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
-        :param pulumi.Input[List[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on the same host together.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -143,7 +143,7 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualMachineIds")
-    def virtual_machine_ids(self) -> pulumi.Output[List[str]]:
+    def virtual_machine_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The UUIDs of the virtual machines to run
         on the same host together.

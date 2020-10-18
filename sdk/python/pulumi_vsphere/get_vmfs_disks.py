@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -38,7 +38,7 @@ class GetVmfsDisksResult:
 
     @property
     @pulumi.getter
-    def disks(self) -> List[str]:
+    def disks(self) -> Sequence[str]:
         """
         A lexicographically sorted list of devices discovered by the
         operation, matching the supplied `filter`, if provided.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ComputeClusterHostGroup']
@@ -16,7 +16,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_cluster_id: Optional[pulumi.Input[str]] = None,
-                 host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -28,7 +28,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -66,7 +66,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             compute_cluster_id: Optional[pulumi.Input[str]] = None,
-            host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'ComputeClusterHostGroup':
         """
         Get an existing ComputeClusterHostGroup resource's state with the given name, id, and optional extra
@@ -78,7 +78,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
                ID of the cluster to put the group in.  Forces a new
                resource if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
@@ -104,7 +104,7 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def host_system_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The managed object IDs of
         the hosts to put in the cluster.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Folder']
@@ -18,7 +18,7 @@ class Folder(pulumi.CustomResource):
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter_id: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -39,7 +39,7 @@ class Folder(pulumi.CustomResource):
                `vm` (denoting a virtual machine folder), and a supplied folder of
                `test-folder`, the resulting path would be
                `/default-dc/vm/test-folder`.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -84,7 +84,7 @@ class Folder(pulumi.CustomResource):
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             datacenter_id: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
@@ -105,7 +105,7 @@ class Folder(pulumi.CustomResource):
                `vm` (denoting a virtual machine folder), and a supplied folder of
                `test-folder`, the resulting path would be
                `/default-dc/vm/test-folder`.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of folder to create. Allowed options are
                `datacenter` for datacenter folders, `host` for host and cluster folders,
                `vm` for virtual machine folders, `datastore` for datastore folders, and
@@ -157,7 +157,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

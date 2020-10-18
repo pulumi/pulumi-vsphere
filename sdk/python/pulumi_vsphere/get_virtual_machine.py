@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -28,11 +28,11 @@ class GetVirtualMachineResult:
         if annotation and not isinstance(annotation, str):
             raise TypeError("Expected argument 'annotation' to be a str")
         pulumi.set(__self__, "annotation", annotation)
-        if boot_delay and not isinstance(boot_delay, float):
-            raise TypeError("Expected argument 'boot_delay' to be a float")
+        if boot_delay and not isinstance(boot_delay, int):
+            raise TypeError("Expected argument 'boot_delay' to be a int")
         pulumi.set(__self__, "boot_delay", boot_delay)
-        if boot_retry_delay and not isinstance(boot_retry_delay, float):
-            raise TypeError("Expected argument 'boot_retry_delay' to be a float")
+        if boot_retry_delay and not isinstance(boot_retry_delay, int):
+            raise TypeError("Expected argument 'boot_retry_delay' to be a int")
         pulumi.set(__self__, "boot_retry_delay", boot_retry_delay)
         if boot_retry_enabled and not isinstance(boot_retry_enabled, bool):
             raise TypeError("Expected argument 'boot_retry_enabled' to be a bool")
@@ -46,17 +46,17 @@ class GetVirtualMachineResult:
         if cpu_hot_remove_enabled and not isinstance(cpu_hot_remove_enabled, bool):
             raise TypeError("Expected argument 'cpu_hot_remove_enabled' to be a bool")
         pulumi.set(__self__, "cpu_hot_remove_enabled", cpu_hot_remove_enabled)
-        if cpu_limit and not isinstance(cpu_limit, float):
-            raise TypeError("Expected argument 'cpu_limit' to be a float")
+        if cpu_limit and not isinstance(cpu_limit, int):
+            raise TypeError("Expected argument 'cpu_limit' to be a int")
         pulumi.set(__self__, "cpu_limit", cpu_limit)
         if cpu_performance_counters_enabled and not isinstance(cpu_performance_counters_enabled, bool):
             raise TypeError("Expected argument 'cpu_performance_counters_enabled' to be a bool")
         pulumi.set(__self__, "cpu_performance_counters_enabled", cpu_performance_counters_enabled)
-        if cpu_reservation and not isinstance(cpu_reservation, float):
-            raise TypeError("Expected argument 'cpu_reservation' to be a float")
+        if cpu_reservation and not isinstance(cpu_reservation, int):
+            raise TypeError("Expected argument 'cpu_reservation' to be a int")
         pulumi.set(__self__, "cpu_reservation", cpu_reservation)
-        if cpu_share_count and not isinstance(cpu_share_count, float):
-            raise TypeError("Expected argument 'cpu_share_count' to be a float")
+        if cpu_share_count and not isinstance(cpu_share_count, int):
+            raise TypeError("Expected argument 'cpu_share_count' to be a int")
         pulumi.set(__self__, "cpu_share_count", cpu_share_count)
         if cpu_share_level and not isinstance(cpu_share_level, str):
             raise TypeError("Expected argument 'cpu_share_level' to be a str")
@@ -91,8 +91,8 @@ class GetVirtualMachineResult:
         if guest_ip_addresses and not isinstance(guest_ip_addresses, list):
             raise TypeError("Expected argument 'guest_ip_addresses' to be a list")
         pulumi.set(__self__, "guest_ip_addresses", guest_ip_addresses)
-        if hardware_version and not isinstance(hardware_version, float):
-            raise TypeError("Expected argument 'hardware_version' to be a float")
+        if hardware_version and not isinstance(hardware_version, int):
+            raise TypeError("Expected argument 'hardware_version' to be a int")
         pulumi.set(__self__, "hardware_version", hardware_version)
         if hv_mode and not isinstance(hv_mode, str):
             raise TypeError("Expected argument 'hv_mode' to be a str")
@@ -100,26 +100,26 @@ class GetVirtualMachineResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if ide_controller_scan_count and not isinstance(ide_controller_scan_count, float):
-            raise TypeError("Expected argument 'ide_controller_scan_count' to be a float")
+        if ide_controller_scan_count and not isinstance(ide_controller_scan_count, int):
+            raise TypeError("Expected argument 'ide_controller_scan_count' to be a int")
         pulumi.set(__self__, "ide_controller_scan_count", ide_controller_scan_count)
         if latency_sensitivity and not isinstance(latency_sensitivity, str):
             raise TypeError("Expected argument 'latency_sensitivity' to be a str")
         pulumi.set(__self__, "latency_sensitivity", latency_sensitivity)
-        if memory and not isinstance(memory, float):
-            raise TypeError("Expected argument 'memory' to be a float")
+        if memory and not isinstance(memory, int):
+            raise TypeError("Expected argument 'memory' to be a int")
         pulumi.set(__self__, "memory", memory)
         if memory_hot_add_enabled and not isinstance(memory_hot_add_enabled, bool):
             raise TypeError("Expected argument 'memory_hot_add_enabled' to be a bool")
         pulumi.set(__self__, "memory_hot_add_enabled", memory_hot_add_enabled)
-        if memory_limit and not isinstance(memory_limit, float):
-            raise TypeError("Expected argument 'memory_limit' to be a float")
+        if memory_limit and not isinstance(memory_limit, int):
+            raise TypeError("Expected argument 'memory_limit' to be a int")
         pulumi.set(__self__, "memory_limit", memory_limit)
-        if memory_reservation and not isinstance(memory_reservation, float):
-            raise TypeError("Expected argument 'memory_reservation' to be a float")
+        if memory_reservation and not isinstance(memory_reservation, int):
+            raise TypeError("Expected argument 'memory_reservation' to be a int")
         pulumi.set(__self__, "memory_reservation", memory_reservation)
-        if memory_share_count and not isinstance(memory_share_count, float):
-            raise TypeError("Expected argument 'memory_share_count' to be a float")
+        if memory_share_count and not isinstance(memory_share_count, int):
+            raise TypeError("Expected argument 'memory_share_count' to be a int")
         pulumi.set(__self__, "memory_share_count", memory_share_count)
         if memory_share_level and not isinstance(memory_share_level, str):
             raise TypeError("Expected argument 'memory_share_level' to be a str")
@@ -133,11 +133,11 @@ class GetVirtualMachineResult:
         if network_interface_types and not isinstance(network_interface_types, list):
             raise TypeError("Expected argument 'network_interface_types' to be a list")
         pulumi.set(__self__, "network_interface_types", network_interface_types)
-        if num_cores_per_socket and not isinstance(num_cores_per_socket, float):
-            raise TypeError("Expected argument 'num_cores_per_socket' to be a float")
+        if num_cores_per_socket and not isinstance(num_cores_per_socket, int):
+            raise TypeError("Expected argument 'num_cores_per_socket' to be a int")
         pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
-        if num_cpus and not isinstance(num_cpus, float):
-            raise TypeError("Expected argument 'num_cpus' to be a float")
+        if num_cpus and not isinstance(num_cpus, int):
+            raise TypeError("Expected argument 'num_cpus' to be a int")
         pulumi.set(__self__, "num_cpus", num_cpus)
         if run_tools_scripts_after_power_on and not isinstance(run_tools_scripts_after_power_on, bool):
             raise TypeError("Expected argument 'run_tools_scripts_after_power_on' to be a bool")
@@ -154,14 +154,14 @@ class GetVirtualMachineResult:
         if run_tools_scripts_before_guest_standby and not isinstance(run_tools_scripts_before_guest_standby, bool):
             raise TypeError("Expected argument 'run_tools_scripts_before_guest_standby' to be a bool")
         pulumi.set(__self__, "run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
-        if sata_controller_scan_count and not isinstance(sata_controller_scan_count, float):
-            raise TypeError("Expected argument 'sata_controller_scan_count' to be a float")
+        if sata_controller_scan_count and not isinstance(sata_controller_scan_count, int):
+            raise TypeError("Expected argument 'sata_controller_scan_count' to be a int")
         pulumi.set(__self__, "sata_controller_scan_count", sata_controller_scan_count)
         if scsi_bus_sharing and not isinstance(scsi_bus_sharing, str):
             raise TypeError("Expected argument 'scsi_bus_sharing' to be a str")
         pulumi.set(__self__, "scsi_bus_sharing", scsi_bus_sharing)
-        if scsi_controller_scan_count and not isinstance(scsi_controller_scan_count, float):
-            raise TypeError("Expected argument 'scsi_controller_scan_count' to be a float")
+        if scsi_controller_scan_count and not isinstance(scsi_controller_scan_count, int):
+            raise TypeError("Expected argument 'scsi_controller_scan_count' to be a int")
         pulumi.set(__self__, "scsi_controller_scan_count", scsi_controller_scan_count)
         if scsi_type and not isinstance(scsi_type, str):
             raise TypeError("Expected argument 'scsi_type' to be a str")
@@ -204,12 +204,12 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="bootDelay")
-    def boot_delay(self) -> Optional[float]:
+    def boot_delay(self) -> Optional[int]:
         return pulumi.get(self, "boot_delay")
 
     @property
     @pulumi.getter(name="bootRetryDelay")
-    def boot_retry_delay(self) -> Optional[float]:
+    def boot_retry_delay(self) -> Optional[int]:
         return pulumi.get(self, "boot_retry_delay")
 
     @property
@@ -234,7 +234,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[float]:
+    def cpu_limit(self) -> Optional[int]:
         return pulumi.get(self, "cpu_limit")
 
     @property
@@ -244,12 +244,12 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> Optional[float]:
+    def cpu_reservation(self) -> Optional[int]:
         return pulumi.get(self, "cpu_reservation")
 
     @property
     @pulumi.getter(name="cpuShareCount")
-    def cpu_share_count(self) -> float:
+    def cpu_share_count(self) -> int:
         return pulumi.get(self, "cpu_share_count")
 
     @property
@@ -264,7 +264,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter
-    def disks(self) -> List['outputs.GetVirtualMachineDiskResult']:
+    def disks(self) -> Sequence['outputs.GetVirtualMachineDiskResult']:
         """
         Information about each of the disks on this virtual machine or
         template. These are sorted by bus and unit number so that they can be applied
@@ -320,7 +320,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="guestIpAddresses")
-    def guest_ip_addresses(self) -> List[str]:
+    def guest_ip_addresses(self) -> Sequence[str]:
         """
         A list of IP addresses as reported by VMWare tools.
         """
@@ -328,7 +328,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="hardwareVersion")
-    def hardware_version(self) -> float:
+    def hardware_version(self) -> int:
         """
         The hardware version number on this virtual machine.
         """
@@ -349,7 +349,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="ideControllerScanCount")
-    def ide_controller_scan_count(self) -> Optional[float]:
+    def ide_controller_scan_count(self) -> Optional[int]:
         return pulumi.get(self, "ide_controller_scan_count")
 
     @property
@@ -359,7 +359,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter
-    def memory(self) -> Optional[float]:
+    def memory(self) -> Optional[int]:
         """
         The size of the virtual machine's memory, in MB.
         """
@@ -372,17 +372,17 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[float]:
+    def memory_limit(self) -> Optional[int]:
         return pulumi.get(self, "memory_limit")
 
     @property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> Optional[float]:
+    def memory_reservation(self) -> Optional[int]:
         return pulumi.get(self, "memory_reservation")
 
     @property
     @pulumi.getter(name="memoryShareCount")
-    def memory_share_count(self) -> float:
+    def memory_share_count(self) -> int:
         return pulumi.get(self, "memory_share_count")
 
     @property
@@ -402,7 +402,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="networkInterfaceTypes")
-    def network_interface_types(self) -> List[str]:
+    def network_interface_types(self) -> Sequence[str]:
         """
         The network interface types for each network
         interface found on the virtual machine, in device bus order. Will be one of
@@ -412,7 +412,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="numCoresPerSocket")
-    def num_cores_per_socket(self) -> Optional[float]:
+    def num_cores_per_socket(self) -> Optional[int]:
         """
         The number of cores per socket for this virtual machine.
         """
@@ -420,7 +420,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="numCpus")
-    def num_cpus(self) -> Optional[float]:
+    def num_cpus(self) -> Optional[int]:
         """
         The total number of virtual processor cores assigned to this
         virtual machine.
@@ -454,7 +454,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="sataControllerScanCount")
-    def sata_controller_scan_count(self) -> Optional[float]:
+    def sata_controller_scan_count(self) -> Optional[int]:
         return pulumi.get(self, "sata_controller_scan_count")
 
     @property
@@ -469,7 +469,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="scsiControllerScanCount")
-    def scsi_controller_scan_count(self) -> Optional[float]:
+    def scsi_controller_scan_count(self) -> Optional[int]:
         return pulumi.get(self, "scsi_controller_scan_count")
 
     @property
@@ -511,7 +511,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter(name="vappTransports")
-    def vapp_transports(self) -> List[str]:
+    def vapp_transports(self) -> Sequence[str]:
         return pulumi.get(self, "vapp_transports")
 
 
@@ -579,15 +579,15 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
 
 def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         annotation: Optional[str] = None,
-                        boot_delay: Optional[float] = None,
-                        boot_retry_delay: Optional[float] = None,
+                        boot_delay: Optional[int] = None,
+                        boot_retry_delay: Optional[int] = None,
                         boot_retry_enabled: Optional[bool] = None,
                         cpu_hot_add_enabled: Optional[bool] = None,
                         cpu_hot_remove_enabled: Optional[bool] = None,
-                        cpu_limit: Optional[float] = None,
+                        cpu_limit: Optional[int] = None,
                         cpu_performance_counters_enabled: Optional[bool] = None,
-                        cpu_reservation: Optional[float] = None,
-                        cpu_share_count: Optional[float] = None,
+                        cpu_reservation: Optional[int] = None,
+                        cpu_share_count: Optional[int] = None,
                         cpu_share_level: Optional[str] = None,
                         datacenter_id: Optional[str] = None,
                         efi_secure_boot_enabled: Optional[bool] = None,
@@ -597,27 +597,27 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         extra_config: Optional[Mapping[str, str]] = None,
                         firmware: Optional[str] = None,
                         guest_id: Optional[str] = None,
-                        hardware_version: Optional[float] = None,
+                        hardware_version: Optional[int] = None,
                         hv_mode: Optional[str] = None,
-                        ide_controller_scan_count: Optional[float] = None,
+                        ide_controller_scan_count: Optional[int] = None,
                         latency_sensitivity: Optional[str] = None,
-                        memory: Optional[float] = None,
+                        memory: Optional[int] = None,
                         memory_hot_add_enabled: Optional[bool] = None,
-                        memory_limit: Optional[float] = None,
-                        memory_reservation: Optional[float] = None,
-                        memory_share_count: Optional[float] = None,
+                        memory_limit: Optional[int] = None,
+                        memory_reservation: Optional[int] = None,
+                        memory_share_count: Optional[int] = None,
                         memory_share_level: Optional[str] = None,
                         name: Optional[str] = None,
                         nested_hv_enabled: Optional[bool] = None,
-                        num_cores_per_socket: Optional[float] = None,
-                        num_cpus: Optional[float] = None,
+                        num_cores_per_socket: Optional[int] = None,
+                        num_cpus: Optional[int] = None,
                         run_tools_scripts_after_power_on: Optional[bool] = None,
                         run_tools_scripts_after_resume: Optional[bool] = None,
                         run_tools_scripts_before_guest_reboot: Optional[bool] = None,
                         run_tools_scripts_before_guest_shutdown: Optional[bool] = None,
                         run_tools_scripts_before_guest_standby: Optional[bool] = None,
-                        sata_controller_scan_count: Optional[float] = None,
-                        scsi_controller_scan_count: Optional[float] = None,
+                        sata_controller_scan_count: Optional[int] = None,
+                        scsi_controller_scan_count: Optional[int] = None,
                         storage_policy_id: Optional[str] = None,
                         swap_placement_policy: Optional[str] = None,
                         sync_time_with_host: Optional[bool] = None,
@@ -652,14 +652,14 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
            `Datacenter` data source.
     :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
     :param str guest_id: The guest ID of the virtual machine or template.
-    :param float hardware_version: The hardware version number on this virtual machine.
-    :param float memory: The size of the virtual machine's memory, in MB.
+    :param int hardware_version: The hardware version number on this virtual machine.
+    :param int memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
            path.
-    :param float num_cores_per_socket: The number of cores per socket for this virtual machine.
-    :param float num_cpus: The total number of virtual processor cores assigned to this
+    :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
+    :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
-    :param float scsi_controller_scan_count: The number of SCSI controllers to
+    :param int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
     """
     __args__ = dict()

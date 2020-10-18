@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -38,7 +38,7 @@ __all__ = [
 class ComputeClusterVsanDiskGroupArgs:
     def __init__(__self__, *,
                  cache: Optional[pulumi.Input[str]] = None,
-                 storages: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 storages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
         if storages is not None:
@@ -55,11 +55,11 @@ class ComputeClusterVsanDiskGroupArgs:
 
     @property
     @pulumi.getter
-    def storages(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "storages")
 
     @storages.setter
-    def storages(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "storages", value)
 
 
@@ -256,37 +256,37 @@ class ContentLibrarySubscriptionArgs:
 @pulumi.input_type
 class DistributedPortGroupVlanRangeArgs:
     def __init__(__self__, *,
-                 max_vlan: pulumi.Input[float],
-                 min_vlan: pulumi.Input[float]):
+                 max_vlan: pulumi.Input[int],
+                 min_vlan: pulumi.Input[int]):
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
-    def max_vlan(self) -> pulumi.Input[float]:
+    def max_vlan(self) -> pulumi.Input[int]:
         return pulumi.get(self, "max_vlan")
 
     @max_vlan.setter
-    def max_vlan(self, value: pulumi.Input[float]):
+    def max_vlan(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_vlan", value)
 
     @property
     @pulumi.getter(name="minVlan")
-    def min_vlan(self) -> pulumi.Input[float]:
+    def min_vlan(self) -> pulumi.Input[int]:
         return pulumi.get(self, "min_vlan")
 
     @min_vlan.setter
-    def min_vlan(self, value: pulumi.Input[float]):
+    def min_vlan(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_vlan", value)
 
 
 @pulumi.input_type
 class DistributedVirtualSwitchHostArgs:
     def __init__(__self__, *,
-                 devices: pulumi.Input[List[pulumi.Input[str]]],
+                 devices: pulumi.Input[Sequence[pulumi.Input[str]]],
                  host_system_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] devices: The list of NIC devices to map to uplinks on the DVS,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] devices: The list of NIC devices to map to uplinks on the DVS,
                added in order they are specified.
         :param pulumi.Input[str] host_system_id: The host system ID of the host to add to the
                DVS.
@@ -296,7 +296,7 @@ class DistributedVirtualSwitchHostArgs:
 
     @property
     @pulumi.getter
-    def devices(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def devices(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of NIC devices to map to uplinks on the DVS,
         added in order they are specified.
@@ -304,7 +304,7 @@ class DistributedVirtualSwitchHostArgs:
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def devices(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "devices", value)
 
     @property
@@ -324,15 +324,15 @@ class DistributedVirtualSwitchHostArgs:
 @pulumi.input_type
 class DistributedVirtualSwitchPvlanMappingArgs:
     def __init__(__self__, *,
-                 primary_vlan_id: pulumi.Input[float],
+                 primary_vlan_id: pulumi.Input[int],
                  pvlan_type: pulumi.Input[str],
-                 secondary_vlan_id: pulumi.Input[float]):
+                 secondary_vlan_id: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
+        :param pulumi.Input[int] primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
                4095 are reserved and cannot be used in this property.
         :param pulumi.Input[str] pvlan_type: The private VLAN type. Valid values are
                promiscuous, community and isolated.
-        :param pulumi.Input[float] secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
+        :param pulumi.Input[int] secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
                and 4095 are reserved and cannot be used in this property.
         """
         pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
@@ -341,7 +341,7 @@ class DistributedVirtualSwitchPvlanMappingArgs:
 
     @property
     @pulumi.getter(name="primaryVlanId")
-    def primary_vlan_id(self) -> pulumi.Input[float]:
+    def primary_vlan_id(self) -> pulumi.Input[int]:
         """
         The primary VLAN ID. The VLAN IDs of 0 and
         4095 are reserved and cannot be used in this property.
@@ -349,7 +349,7 @@ class DistributedVirtualSwitchPvlanMappingArgs:
         return pulumi.get(self, "primary_vlan_id")
 
     @primary_vlan_id.setter
-    def primary_vlan_id(self, value: pulumi.Input[float]):
+    def primary_vlan_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "primary_vlan_id", value)
 
     @property
@@ -367,7 +367,7 @@ class DistributedVirtualSwitchPvlanMappingArgs:
 
     @property
     @pulumi.getter(name="secondaryVlanId")
-    def secondary_vlan_id(self) -> pulumi.Input[float]:
+    def secondary_vlan_id(self) -> pulumi.Input[int]:
         """
         The secondary VLAN ID. The VLAN IDs of 0
         and 4095 are reserved and cannot be used in this property.
@@ -375,34 +375,34 @@ class DistributedVirtualSwitchPvlanMappingArgs:
         return pulumi.get(self, "secondary_vlan_id")
 
     @secondary_vlan_id.setter
-    def secondary_vlan_id(self, value: pulumi.Input[float]):
+    def secondary_vlan_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "secondary_vlan_id", value)
 
 
 @pulumi.input_type
 class DistributedVirtualSwitchVlanRangeArgs:
     def __init__(__self__, *,
-                 max_vlan: pulumi.Input[float],
-                 min_vlan: pulumi.Input[float]):
+                 max_vlan: pulumi.Input[int],
+                 min_vlan: pulumi.Input[int]):
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
-    def max_vlan(self) -> pulumi.Input[float]:
+    def max_vlan(self) -> pulumi.Input[int]:
         return pulumi.get(self, "max_vlan")
 
     @max_vlan.setter
-    def max_vlan(self, value: pulumi.Input[float]):
+    def max_vlan(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_vlan", value)
 
     @property
     @pulumi.getter(name="minVlan")
-    def min_vlan(self) -> pulumi.Input[float]:
+    def min_vlan(self) -> pulumi.Input[int]:
         return pulumi.get(self, "min_vlan")
 
     @min_vlan.setter
-    def min_vlan(self, value: pulumi.Input[float]):
+    def min_vlan(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_vlan", value)
 
 
@@ -477,7 +477,7 @@ class EntityPermissionsPermissionArgs:
 class HostPortGroupPortsArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
-                 mac_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The key for this port group as returned from the vSphere API.
@@ -503,11 +503,11 @@ class HostPortGroupPortsArgs:
 
     @property
     @pulumi.getter(name="macAddresses")
-    def mac_addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "mac_addresses")
 
     @mac_addresses.setter
-    def mac_addresses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def mac_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "mac_addresses", value)
 
     @property
@@ -526,7 +526,7 @@ class VirtualMachineCdromArgs:
                  client_device: Optional[pulumi.Input[bool]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
                  device_address: Optional[pulumi.Input[str]] = None,
-                 key: Optional[pulumi.Input[float]] = None,
+                 key: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] client_device: Indicates whether the device should be backed by
@@ -537,7 +537,7 @@ class VirtualMachineCdromArgs:
                device when `key` is unavailable. This follows a convention of
                `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
                unit 1 on SCSI bus 0.
-        :param pulumi.Input[float] key: The ID of the device within the virtual machine.
+        :param pulumi.Input[int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
         """
@@ -595,14 +595,14 @@ class VirtualMachineCdromArgs:
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[float]]:
+    def key(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the device within the virtual machine.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[float]]):
+    def key(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key", value)
 
     @property
@@ -627,7 +627,7 @@ class VirtualMachineCloneArgs:
                  linked_clone: Optional[pulumi.Input[bool]] = None,
                  ovf_network_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ovf_storage_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None):
+                 timeout: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "template_uuid", template_uuid)
         if customize is not None:
             pulumi.set(__self__, "customize", customize)
@@ -687,28 +687,28 @@ class VirtualMachineCloneArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[float]]:
+    def timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[float]]):
+    def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
 class VirtualMachineCloneCustomizeArgs:
     def __init__(__self__, *,
-                 dns_server_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 dns_suffix_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dns_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv4_gateway: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway: Optional[pulumi.Input[str]] = None,
                  linux_options: Optional[pulumi.Input['VirtualMachineCloneCustomizeLinuxOptionsArgs']] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]] = None,
-                 timeout: Optional[pulumi.Input[float]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
                  windows_options: Optional[pulumi.Input['VirtualMachineCloneCustomizeWindowsOptionsArgs']] = None,
                  windows_sysprep_text: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
         """
@@ -733,20 +733,20 @@ class VirtualMachineCloneCustomizeArgs:
 
     @property
     @pulumi.getter(name="dnsServerLists")
-    def dns_server_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dns_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "dns_server_lists")
 
     @dns_server_lists.setter
-    def dns_server_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dns_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_server_lists", value)
 
     @property
     @pulumi.getter(name="dnsSuffixLists")
-    def dns_suffix_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dns_suffix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "dns_suffix_lists")
 
     @dns_suffix_lists.setter
-    def dns_suffix_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dns_suffix_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_suffix_lists", value)
 
     @property
@@ -778,7 +778,7 @@ class VirtualMachineCloneCustomizeArgs:
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[List[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]:
         """
         A specification for a virtual NIC on this
         virtual machine. See network interface options
@@ -787,16 +787,16 @@ class VirtualMachineCloneCustomizeArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[List[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[float]]:
+    def timeout(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[float]]):
+    def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
     @property
@@ -873,11 +873,11 @@ class VirtualMachineCloneCustomizeLinuxOptionsArgs:
 class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
     def __init__(__self__, *,
                  dns_domain: Optional[pulumi.Input[str]] = None,
-                 dns_server_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dns_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
-                 ipv4_netmask: Optional[pulumi.Input[float]] = None,
+                 ipv4_netmask: Optional[pulumi.Input[int]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
-                 ipv6_netmask: Optional[pulumi.Input[float]] = None):
+                 ipv6_netmask: Optional[pulumi.Input[int]] = None):
         if dns_domain is not None:
             pulumi.set(__self__, "dns_domain", dns_domain)
         if dns_server_lists is not None:
@@ -902,11 +902,11 @@ class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="dnsServerLists")
-    def dns_server_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def dns_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "dns_server_lists")
 
     @dns_server_lists.setter
-    def dns_server_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def dns_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_server_lists", value)
 
     @property
@@ -920,11 +920,11 @@ class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv4Netmask")
-    def ipv4_netmask(self) -> Optional[pulumi.Input[float]]:
+    def ipv4_netmask(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ipv4_netmask")
 
     @ipv4_netmask.setter
-    def ipv4_netmask(self, value: Optional[pulumi.Input[float]]):
+    def ipv4_netmask(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ipv4_netmask", value)
 
     @property
@@ -938,11 +938,11 @@ class VirtualMachineCloneCustomizeNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="ipv6Netmask")
-    def ipv6_netmask(self) -> Optional[pulumi.Input[float]]:
+    def ipv6_netmask(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ipv6_netmask")
 
     @ipv6_netmask.setter
-    def ipv6_netmask(self, value: Optional[pulumi.Input[float]]):
+    def ipv6_netmask(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ipv6_netmask", value)
 
 
@@ -952,15 +952,15 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
                  computer_name: pulumi.Input[str],
                  admin_password: Optional[pulumi.Input[str]] = None,
                  auto_logon: Optional[pulumi.Input[bool]] = None,
-                 auto_logon_count: Optional[pulumi.Input[float]] = None,
+                 auto_logon_count: Optional[pulumi.Input[int]] = None,
                  domain_admin_password: Optional[pulumi.Input[str]] = None,
                  domain_admin_user: Optional[pulumi.Input[str]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  join_domain: Optional[pulumi.Input[str]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None,
                  product_key: Optional[pulumi.Input[str]] = None,
-                 run_once_command_lists: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 time_zone: Optional[pulumi.Input[float]] = None,
+                 run_once_command_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[int]] = None,
                  workgroup: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "computer_name", computer_name)
         if admin_password is not None:
@@ -1017,11 +1017,11 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
 
     @property
     @pulumi.getter(name="autoLogonCount")
-    def auto_logon_count(self) -> Optional[pulumi.Input[float]]:
+    def auto_logon_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "auto_logon_count")
 
     @auto_logon_count.setter
-    def auto_logon_count(self, value: Optional[pulumi.Input[float]]):
+    def auto_logon_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auto_logon_count", value)
 
     @property
@@ -1080,20 +1080,20 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
 
     @property
     @pulumi.getter(name="runOnceCommandLists")
-    def run_once_command_lists(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def run_once_command_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "run_once_command_lists")
 
     @run_once_command_lists.setter
-    def run_once_command_lists(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def run_once_command_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "run_once_command_lists", value)
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[float]]:
+    def time_zone(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[float]]):
+    def time_zone(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "time_zone", value)
 
     @property
@@ -1116,19 +1116,19 @@ class VirtualMachineDiskArgs:
                  disk_mode: Optional[pulumi.Input[str]] = None,
                  disk_sharing: Optional[pulumi.Input[str]] = None,
                  eagerly_scrub: Optional[pulumi.Input[bool]] = None,
-                 io_limit: Optional[pulumi.Input[float]] = None,
-                 io_reservation: Optional[pulumi.Input[float]] = None,
-                 io_share_count: Optional[pulumi.Input[float]] = None,
+                 io_limit: Optional[pulumi.Input[int]] = None,
+                 io_reservation: Optional[pulumi.Input[int]] = None,
+                 io_share_count: Optional[pulumi.Input[int]] = None,
                  io_share_level: Optional[pulumi.Input[str]] = None,
                  keep_on_remove: Optional[pulumi.Input[bool]] = None,
-                 key: Optional[pulumi.Input[float]] = None,
+                 key: Optional[pulumi.Input[int]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 size: Optional[pulumi.Input[float]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  thin_provisioned: Optional[pulumi.Input[bool]] = None,
-                 unit_number: Optional[pulumi.Input[float]] = None,
+                 unit_number: Optional[pulumi.Input[int]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  write_through: Optional[pulumi.Input[bool]] = None):
         """
@@ -1155,29 +1155,29 @@ class VirtualMachineDiskArgs:
                on VM creation. This will delay the creation of the disk or virtual machine.
                Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
                on picking a disk type.  Default: `false`.
-        :param pulumi.Input[float] io_limit: The upper limit of IOPS that this disk can use. The
+        :param pulumi.Input[int] io_limit: The upper limit of IOPS that this disk can use. The
                default is no limit.
-        :param pulumi.Input[float] io_reservation: The I/O reservation (guarantee) that this disk
+        :param pulumi.Input[int] io_reservation: The I/O reservation (guarantee) that this disk
                has, in IOPS.  The default is no reservation.
-        :param pulumi.Input[float] io_share_count: The share count for this disk when the share
+        :param pulumi.Input[int] io_share_count: The share count for this disk when the share
                level is `custom`.
         :param pulumi.Input[str] io_share_level: The share allocation level for this disk. Can
                be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         :param pulumi.Input[bool] keep_on_remove: Keep this disk when removing the device or
                destroying the virtual machine. Default: `false`.
-        :param pulumi.Input[float] key: The ID of the device within the virtual machine.
+        :param pulumi.Input[int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[str] label: A label for the disk. Forces a new disk if changed.
         :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
                using `attach`. Required if not using `label`.
         :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
-        :param pulumi.Input[float] size: The size of the disk, in GB.
+        :param pulumi.Input[int] size: The size of the disk, in GB.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to this disk.
         :param pulumi.Input[bool] thin_provisioned: If `true`, this disk is thin provisioned,
                with space for the file being allocated on an as-needed basis. Cannot be set
                to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
                type. Default: `true`.
-        :param pulumi.Input[float] unit_number: The disk number on the storage bus. The maximum
+        :param pulumi.Input[int] unit_number: The disk number on the storage bus. The maximum
                value for this setting is the value of the controller count times the
                controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
                The default is `0`, for which one disk must be set to. Duplicate unit numbers
@@ -1358,7 +1358,7 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 
     @property
     @pulumi.getter(name="ioLimit")
-    def io_limit(self) -> Optional[pulumi.Input[float]]:
+    def io_limit(self) -> Optional[pulumi.Input[int]]:
         """
         The upper limit of IOPS that this disk can use. The
         default is no limit.
@@ -1366,12 +1366,12 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
         return pulumi.get(self, "io_limit")
 
     @io_limit.setter
-    def io_limit(self, value: Optional[pulumi.Input[float]]):
+    def io_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "io_limit", value)
 
     @property
     @pulumi.getter(name="ioReservation")
-    def io_reservation(self) -> Optional[pulumi.Input[float]]:
+    def io_reservation(self) -> Optional[pulumi.Input[int]]:
         """
         The I/O reservation (guarantee) that this disk
         has, in IOPS.  The default is no reservation.
@@ -1379,12 +1379,12 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
         return pulumi.get(self, "io_reservation")
 
     @io_reservation.setter
-    def io_reservation(self, value: Optional[pulumi.Input[float]]):
+    def io_reservation(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "io_reservation", value)
 
     @property
     @pulumi.getter(name="ioShareCount")
-    def io_share_count(self) -> Optional[pulumi.Input[float]]:
+    def io_share_count(self) -> Optional[pulumi.Input[int]]:
         """
         The share count for this disk when the share
         level is `custom`.
@@ -1392,7 +1392,7 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
         return pulumi.get(self, "io_share_count")
 
     @io_share_count.setter
-    def io_share_count(self, value: Optional[pulumi.Input[float]]):
+    def io_share_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "io_share_count", value)
 
     @property
@@ -1423,14 +1423,14 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[float]]:
+    def key(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the device within the virtual machine.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[float]]):
+    def key(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key", value)
 
     @property
@@ -1473,14 +1473,14 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[float]]:
+    def size(self) -> Optional[pulumi.Input[int]]:
         """
         The size of the disk, in GB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[float]]):
+    def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
 
     @property
@@ -1512,7 +1512,7 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 
     @property
     @pulumi.getter(name="unitNumber")
-    def unit_number(self) -> Optional[pulumi.Input[float]]:
+    def unit_number(self) -> Optional[pulumi.Input[int]]:
         """
         The disk number on the storage bus. The maximum
         value for this setting is the value of the controller count times the
@@ -1523,7 +1523,7 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
         return pulumi.get(self, "unit_number")
 
     @unit_number.setter
-    def unit_number(self, value: Optional[pulumi.Input[float]]):
+    def unit_number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "unit_number", value)
 
     @property
@@ -1559,12 +1559,12 @@ class VirtualMachineNetworkInterfaceArgs:
     def __init__(__self__, *,
                  network_id: pulumi.Input[str],
                  adapter_type: Optional[pulumi.Input[str]] = None,
-                 bandwidth_limit: Optional[pulumi.Input[float]] = None,
-                 bandwidth_reservation: Optional[pulumi.Input[float]] = None,
-                 bandwidth_share_count: Optional[pulumi.Input[float]] = None,
+                 bandwidth_limit: Optional[pulumi.Input[int]] = None,
+                 bandwidth_reservation: Optional[pulumi.Input[int]] = None,
+                 bandwidth_share_count: Optional[pulumi.Input[int]] = None,
                  bandwidth_share_level: Optional[pulumi.Input[str]] = None,
                  device_address: Optional[pulumi.Input[str]] = None,
-                 key: Optional[pulumi.Input[float]] = None,
+                 key: Optional[pulumi.Input[int]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  ovf_mapping: Optional[pulumi.Input[str]] = None,
                  use_static_mac: Optional[pulumi.Input[bool]] = None):
@@ -1573,11 +1573,11 @@ class VirtualMachineNetworkInterfaceArgs:
                ID of the network to connect this interface to.
         :param pulumi.Input[str] adapter_type: The network interface type. Can be one of
                `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
-        :param pulumi.Input[float] bandwidth_limit: The upper bandwidth limit of this network
+        :param pulumi.Input[int] bandwidth_limit: The upper bandwidth limit of this network
                interface, in Mbits/sec. The default is no limit.
-        :param pulumi.Input[float] bandwidth_reservation: The bandwidth reservation of this
+        :param pulumi.Input[int] bandwidth_reservation: The bandwidth reservation of this
                network interface, in Mbits/sec. The default is no reservation.
-        :param pulumi.Input[float] bandwidth_share_count: The share count for this network
+        :param pulumi.Input[int] bandwidth_share_count: The share count for this network
                interface when the share level is `custom`.
         :param pulumi.Input[str] bandwidth_share_level: The bandwidth share allocation level for
                this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
@@ -1586,7 +1586,7 @@ class VirtualMachineNetworkInterfaceArgs:
                device when `key` is unavailable. This follows a convention of
                `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
                unit 1 on SCSI bus 0.
-        :param pulumi.Input[float] key: The ID of the device within the virtual machine.
+        :param pulumi.Input[int] key: The ID of the device within the virtual machine.
         :param pulumi.Input[str] mac_address: The MAC address of this network interface. Can
                only be manually set if `use_static_mac` is true, otherwise this is a
                computed value that gives the current MAC address of this interface.
@@ -1647,7 +1647,7 @@ class VirtualMachineNetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="bandwidthLimit")
-    def bandwidth_limit(self) -> Optional[pulumi.Input[float]]:
+    def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
         """
         The upper bandwidth limit of this network
         interface, in Mbits/sec. The default is no limit.
@@ -1655,12 +1655,12 @@ class VirtualMachineNetworkInterfaceArgs:
         return pulumi.get(self, "bandwidth_limit")
 
     @bandwidth_limit.setter
-    def bandwidth_limit(self, value: Optional[pulumi.Input[float]]):
+    def bandwidth_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth_limit", value)
 
     @property
     @pulumi.getter(name="bandwidthReservation")
-    def bandwidth_reservation(self) -> Optional[pulumi.Input[float]]:
+    def bandwidth_reservation(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth reservation of this
         network interface, in Mbits/sec. The default is no reservation.
@@ -1668,12 +1668,12 @@ class VirtualMachineNetworkInterfaceArgs:
         return pulumi.get(self, "bandwidth_reservation")
 
     @bandwidth_reservation.setter
-    def bandwidth_reservation(self, value: Optional[pulumi.Input[float]]):
+    def bandwidth_reservation(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth_reservation", value)
 
     @property
     @pulumi.getter(name="bandwidthShareCount")
-    def bandwidth_share_count(self) -> Optional[pulumi.Input[float]]:
+    def bandwidth_share_count(self) -> Optional[pulumi.Input[int]]:
         """
         The share count for this network
         interface when the share level is `custom`.
@@ -1681,7 +1681,7 @@ class VirtualMachineNetworkInterfaceArgs:
         return pulumi.get(self, "bandwidth_share_count")
 
     @bandwidth_share_count.setter
-    def bandwidth_share_count(self, value: Optional[pulumi.Input[float]]):
+    def bandwidth_share_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth_share_count", value)
 
     @property
@@ -1715,14 +1715,14 @@ class VirtualMachineNetworkInterfaceArgs:
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[float]]:
+    def key(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the device within the virtual machine.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[float]]):
+    def key(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key", value)
 
     @property
@@ -1878,11 +1878,11 @@ class VirtualMachineVappArgs:
 class VmStoragePolicyTagRuleArgs:
     def __init__(__self__, *,
                  tag_category: pulumi.Input[str],
-                 tags: pulumi.Input[List[pulumi.Input[str]]],
+                 tags: pulumi.Input[Sequence[pulumi.Input[str]]],
                  include_datastores_with_tags: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] tag_category: Name of the tag category.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: List of Name of tags to select from the given category.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of Name of tags to select from the given category.
         :param pulumi.Input[bool] include_datastores_with_tags: Whether to include datastores with the given tags or exclude. Default 
                value is true i.e. include datastores with the given tags.
         """
@@ -1905,14 +1905,14 @@ class VmStoragePolicyTagRuleArgs:
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def tags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of Name of tags to select from the given category.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def tags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "tags", value)
 
     @property
@@ -2003,12 +2003,12 @@ class VnicIpv4Args:
 @pulumi.input_type
 class VnicIpv6Args:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoconfig: Optional[pulumi.Input[bool]] = None,
                  dhcp: Optional[pulumi.Input[bool]] = None,
                  gw: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] addresses: List of IPv6 addresses
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: List of IPv6 addresses
         :param pulumi.Input[bool] autoconfig: Use IPv6 Autoconfiguration (RFC2462).
         :param pulumi.Input[bool] dhcp: Use DHCP to configure the interface's IPv4 stack.
         :param pulumi.Input[str] gw: IP address of the default gateway, if DHCP or autoconfig is not set.
@@ -2024,14 +2024,14 @@ class VnicIpv6Args:
 
     @property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of IPv6 addresses
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "addresses", value)
 
     @property
