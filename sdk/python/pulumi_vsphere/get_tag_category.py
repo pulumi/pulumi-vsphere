@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -38,7 +38,7 @@ class GetTagCategoryResult:
 
     @property
     @pulumi.getter(name="associableTypes")
-    def associable_types(self) -> List[str]:
+    def associable_types(self) -> Sequence[str]:
         return pulumi.get(self, "associable_types")
 
     @property

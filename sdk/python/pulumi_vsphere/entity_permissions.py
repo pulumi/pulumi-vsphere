@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class EntityPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,7 +30,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
                [here](https://code.vmware.com/apis/968/vsphere).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
         if __name__ is not None:
@@ -71,7 +71,7 @@ class EntityPermissions(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             entity_id: Optional[pulumi.Input[str]] = None,
             entity_type: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None) -> 'EntityPermissions':
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None) -> 'EntityPermissions':
         """
         Get an existing EntityPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -82,7 +82,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
                [here](https://code.vmware.com/apis/968/vsphere).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -113,7 +113,7 @@ class EntityPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[List['outputs.EntityPermissionsPermission']]:
+    def permissions(self) -> pulumi.Output[Sequence['outputs.EntityPermissionsPermission']]:
         """
         The permissions to be given on this entity. Keep the permissions sorted
         alphabetically on `user_or_group` for a better user experience.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Datacenter']
@@ -18,7 +18,7 @@ class Datacenter(pulumi.CustomResource):
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -54,7 +54,7 @@ class Datacenter(pulumi.CustomResource):
                Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +92,7 @@ class Datacenter(pulumi.CustomResource):
             folder: Optional[pulumi.Input[str]] = None,
             moid: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Datacenter':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Datacenter':
         """
         Get an existing Datacenter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -109,7 +109,7 @@ class Datacenter(pulumi.CustomResource):
         :param pulumi.Input[str] moid: Managed object ID of this datacenter.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -161,7 +161,7 @@ class Datacenter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

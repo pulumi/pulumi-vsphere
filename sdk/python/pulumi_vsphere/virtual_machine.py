@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,23 +19,23 @@ class VirtualMachine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate_guest_name: Optional[pulumi.Input[str]] = None,
                  annotation: Optional[pulumi.Input[str]] = None,
-                 boot_delay: Optional[pulumi.Input[float]] = None,
-                 boot_retry_delay: Optional[pulumi.Input[float]] = None,
+                 boot_delay: Optional[pulumi.Input[int]] = None,
+                 boot_retry_delay: Optional[pulumi.Input[int]] = None,
                  boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
                  cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
                  clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
                  cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
                  cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[float]] = None,
+                 cpu_limit: Optional[pulumi.Input[int]] = None,
                  cpu_performance_counters_enabled: Optional[pulumi.Input[bool]] = None,
-                 cpu_reservation: Optional[pulumi.Input[float]] = None,
-                 cpu_share_count: Optional[pulumi.Input[float]] = None,
+                 cpu_reservation: Optional[pulumi.Input[int]] = None,
+                 cpu_share_count: Optional[pulumi.Input[int]] = None,
                  cpu_share_level: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter_id: Optional[pulumi.Input[str]] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
                  efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
                  enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -45,46 +45,46 @@ class VirtualMachine(pulumi.CustomResource):
                  folder: Optional[pulumi.Input[str]] = None,
                  force_power_off: Optional[pulumi.Input[bool]] = None,
                  guest_id: Optional[pulumi.Input[str]] = None,
-                 hardware_version: Optional[pulumi.Input[float]] = None,
+                 hardware_version: Optional[pulumi.Input[int]] = None,
                  host_system_id: Optional[pulumi.Input[str]] = None,
                  hv_mode: Optional[pulumi.Input[str]] = None,
-                 ide_controller_count: Optional[pulumi.Input[float]] = None,
-                 ignored_guest_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ide_controller_count: Optional[pulumi.Input[int]] = None,
+                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  latency_sensitivity: Optional[pulumi.Input[str]] = None,
-                 memory: Optional[pulumi.Input[float]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
                  memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
-                 memory_limit: Optional[pulumi.Input[float]] = None,
-                 memory_reservation: Optional[pulumi.Input[float]] = None,
-                 memory_share_count: Optional[pulumi.Input[float]] = None,
+                 memory_limit: Optional[pulumi.Input[int]] = None,
+                 memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_share_count: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
-                 migrate_wait_timeout: Optional[pulumi.Input[float]] = None,
+                 migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
-                 network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
-                 num_cores_per_socket: Optional[pulumi.Input[float]] = None,
-                 num_cpus: Optional[pulumi.Input[float]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
+                 num_cores_per_socket: Optional[pulumi.Input[int]] = None,
+                 num_cpus: Optional[pulumi.Input[int]] = None,
                  ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
-                 pci_device_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 poweron_timeout: Optional[pulumi.Input[float]] = None,
+                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 poweron_timeout: Optional[pulumi.Input[int]] = None,
                  resource_pool_id: Optional[pulumi.Input[str]] = None,
                  run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_before_guest_standby: Optional[pulumi.Input[bool]] = None,
-                 sata_controller_count: Optional[pulumi.Input[float]] = None,
+                 sata_controller_count: Optional[pulumi.Input[int]] = None,
                  scsi_bus_sharing: Optional[pulumi.Input[str]] = None,
-                 scsi_controller_count: Optional[pulumi.Input[float]] = None,
+                 scsi_controller_count: Optional[pulumi.Input[int]] = None,
                  scsi_type: Optional[pulumi.Input[str]] = None,
-                 shutdown_wait_timeout: Optional[pulumi.Input[float]] = None,
+                 shutdown_wait_timeout: Optional[pulumi.Input[int]] = None,
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  swap_placement_policy: Optional[pulumi.Input[str]] = None,
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
-                 wait_for_guest_ip_timeout: Optional[pulumi.Input[float]] = None,
+                 wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
-                 wait_for_guest_net_timeout: Optional[pulumi.Input[float]] = None,
+                 wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -96,9 +96,9 @@ class VirtualMachine(pulumi.CustomResource):
                when `guest_id` is `other` or `other-64`.
         :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
                The default is no annotation.
-        :param pulumi.Input[float] boot_delay: The number of milliseconds to wait before starting
+        :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting
                the boot sequence. The default is no delay.
-        :param pulumi.Input[float] boot_retry_delay: The number of milliseconds to wait before
+        :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before
                retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
                Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to true, a virtual machine that
@@ -114,14 +114,14 @@ class VirtualMachine(pulumi.CustomResource):
                machine while it is running.
         :param pulumi.Input[bool] cpu_hot_remove_enabled: Allow CPUs to be removed to this
                virtual machine while it is running.
-        :param pulumi.Input[float] cpu_limit: The maximum amount of CPU (in MHz) that this virtual
+        :param pulumi.Input[int] cpu_limit: The maximum amount of CPU (in MHz) that this virtual
                machine can consume, regardless of available resources. The default is no
                limit.
         :param pulumi.Input[bool] cpu_performance_counters_enabled: Enable CPU performance
                counters on this virtual machine. Default: `false`.
-        :param pulumi.Input[float] cpu_reservation: The amount of CPU (in MHz) that this virtual
+        :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that this virtual
                machine is guaranteed. The default is no reservation.
-        :param pulumi.Input[float] cpu_share_count: The number of CPU shares allocated to the
+        :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the
                virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for CPU resources. Can be
                one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -136,7 +136,7 @@ class VirtualMachine(pulumi.CustomResource):
                migration for details on changing this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that the ISO is located in.
                Requried for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual
                machine. See disk options below.
         :param pulumi.Input[bool] efi_secure_boot_enabled: When the `firmware` type is set to is
                `efi`, this enables EFI secure boot. Default: `false`.
@@ -160,7 +160,7 @@ class VirtualMachine(pulumi.CustomResource):
                the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a
                full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
-        :param pulumi.Input[float] hardware_version: The hardware version number. Valid range
+        :param pulumi.Input[int] hardware_version: The hardware version number. Valid range
                is from 4 to 15. The hardware version cannot be downgraded. See [virtual
                machine hardware compatibility][virtual-machine-hardware-compatibility] for
                more details.
@@ -173,10 +173,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
-        :param pulumi.Input[float] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
                you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
                controllers.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to
                ignore while waiting for an available IP address using either of the waiters.
                Any IP addresses in this list will be ignored if they show up so that the
                waiter will continue to wait for a real IP address. Default: [].
@@ -185,20 +185,20 @@ class VirtualMachine(pulumi.CustomResource):
                latency, such as VOIP, media player applications, or applications that
                require frequent access to mouse or keyboard devices. Can be one of `low`,
                `normal`, `medium`, or `high`.
-        :param pulumi.Input[float] memory: The size of the virtual machine's memory, in MB.
+        :param pulumi.Input[int] memory: The size of the virtual machine's memory, in MB.
                Default: `1024` (1 GB).
         :param pulumi.Input[bool] memory_hot_add_enabled: Allow memory to be added to this
                virtual machine while it is running.
-        :param pulumi.Input[float] memory_limit: The maximum amount of memory (in MB) that this
+        :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that this
                virtual machine can consume, regardless of available resources. The default
                is no limit.
-        :param pulumi.Input[float] memory_reservation: The amount of memory (in MB) that this
+        :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that this
                virtual machine is guaranteed. The default is no reservation.
-        :param pulumi.Input[float] memory_share_count: The number of memory shares allocated to
+        :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to
                the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for memory resources.
                Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[float] migrate_wait_timeout: The amount of time, in minutes, to wait
+        :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait
                for a virtual machine migration to complete before failing. Default: 10
                minutes. Also see the section on virtual machine
                migration.
@@ -207,21 +207,21 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
-        :param pulumi.Input[float] num_cores_per_socket: The number of cores per socket in this
+        :param pulumi.Input[int] num_cores_per_socket: The number of cores per socket in this
                virtual machine. The number of vCPUs on the virtual machine will be
                `num_cpus` divided by `num_cores_per_socket`. If specified, the value
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
-        :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
+        :param pulumi.Input[int] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
         :param pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']] ovf_deploy: When specified, the VM will be deployed from the
                provided ovf/ova template. See creating a virtual machine from a
                ovf/ova template for more details.
-        :param pulumi.Input[List[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
-        :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
+        :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] resource_pool_id: The managed object reference
                ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -236,19 +236,19 @@ class VirtualMachine(pulumi.CustomResource):
                of pre-shutdown scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the execution of
                pre-standby scripts when VMware tools is installed. Default: `true`.
-        :param pulumi.Input[float] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
                you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
                controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
-        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that
                this provider manages on this virtual machine. This directly affects the amount
                of disks you can add to the virtual machine and the maximum disk unit number.
                Note that lowering this value does not remove controllers. Default: `1`.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have.
                Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
                pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
-        :param pulumi.Input[float] shutdown_wait_timeout: The amount of time, in minutes, to wait
+        :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait
                for a graceful guest shutdown when making necessary updates to the virtual
                machine. If `force_power_off` is set to true, the VM will be force powered-off
                after this timeout, otherwise an error is returned. Default: 3 minutes.
@@ -258,13 +258,13 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
                configuration for
                more details.
-        :param pulumi.Input[float] wait_for_guest_ip_timeout: The amount of time, in minutes, to
+        :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
                `wait_for_guest_net_timeout` waiter to be
@@ -275,7 +275,7 @@ class VirtualMachine(pulumi.CustomResource):
                discovered default gateways as part of its success criteria. This property is
                ignored if the `wait_for_guest_ip_timeout`
                waiter is used. Default: `true`.
-        :param pulumi.Input[float] wait_for_guest_net_timeout: The amount of time, in minutes, to
+        :param pulumi.Input[int] wait_for_guest_net_timeout: The amount of time, in minutes, to
                wait for an available IP address on this virtual machine's NICs. Older
                versions of VMware Tools do not populate this property. In those cases, this
                waiter can be disabled and the
@@ -391,25 +391,25 @@ class VirtualMachine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alternate_guest_name: Optional[pulumi.Input[str]] = None,
             annotation: Optional[pulumi.Input[str]] = None,
-            boot_delay: Optional[pulumi.Input[float]] = None,
-            boot_retry_delay: Optional[pulumi.Input[float]] = None,
+            boot_delay: Optional[pulumi.Input[int]] = None,
+            boot_retry_delay: Optional[pulumi.Input[int]] = None,
             boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
             cdrom: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCdromArgs']]] = None,
             change_version: Optional[pulumi.Input[str]] = None,
             clone: Optional[pulumi.Input[pulumi.InputType['VirtualMachineCloneArgs']]] = None,
             cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
             cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
-            cpu_limit: Optional[pulumi.Input[float]] = None,
+            cpu_limit: Optional[pulumi.Input[int]] = None,
             cpu_performance_counters_enabled: Optional[pulumi.Input[bool]] = None,
-            cpu_reservation: Optional[pulumi.Input[float]] = None,
-            cpu_share_count: Optional[pulumi.Input[float]] = None,
+            cpu_reservation: Optional[pulumi.Input[int]] = None,
+            cpu_share_count: Optional[pulumi.Input[int]] = None,
             cpu_share_level: Optional[pulumi.Input[str]] = None,
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             datacenter_id: Optional[pulumi.Input[str]] = None,
             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
             datastore_id: Optional[pulumi.Input[str]] = None,
             default_ip_address: Optional[pulumi.Input[str]] = None,
-            disks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]]] = None,
             efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
             enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -419,30 +419,30 @@ class VirtualMachine(pulumi.CustomResource):
             folder: Optional[pulumi.Input[str]] = None,
             force_power_off: Optional[pulumi.Input[bool]] = None,
             guest_id: Optional[pulumi.Input[str]] = None,
-            guest_ip_addresses: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            hardware_version: Optional[pulumi.Input[float]] = None,
+            guest_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            hardware_version: Optional[pulumi.Input[int]] = None,
             host_system_id: Optional[pulumi.Input[str]] = None,
             hv_mode: Optional[pulumi.Input[str]] = None,
-            ide_controller_count: Optional[pulumi.Input[float]] = None,
-            ignored_guest_ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ide_controller_count: Optional[pulumi.Input[int]] = None,
+            ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             imported: Optional[pulumi.Input[bool]] = None,
             latency_sensitivity: Optional[pulumi.Input[str]] = None,
-            memory: Optional[pulumi.Input[float]] = None,
+            memory: Optional[pulumi.Input[int]] = None,
             memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
-            memory_limit: Optional[pulumi.Input[float]] = None,
-            memory_reservation: Optional[pulumi.Input[float]] = None,
-            memory_share_count: Optional[pulumi.Input[float]] = None,
+            memory_limit: Optional[pulumi.Input[int]] = None,
+            memory_reservation: Optional[pulumi.Input[int]] = None,
+            memory_share_count: Optional[pulumi.Input[int]] = None,
             memory_share_level: Optional[pulumi.Input[str]] = None,
-            migrate_wait_timeout: Optional[pulumi.Input[float]] = None,
+            migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
             moid: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
-            network_interfaces: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
-            num_cores_per_socket: Optional[pulumi.Input[float]] = None,
-            num_cpus: Optional[pulumi.Input[float]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]]] = None,
+            num_cores_per_socket: Optional[pulumi.Input[int]] = None,
+            num_cpus: Optional[pulumi.Input[int]] = None,
             ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
-            pci_device_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            poweron_timeout: Optional[pulumi.Input[float]] = None,
+            pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            poweron_timeout: Optional[pulumi.Input[int]] = None,
             reboot_required: Optional[pulumi.Input[bool]] = None,
             resource_pool_id: Optional[pulumi.Input[str]] = None,
             run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
@@ -450,23 +450,23 @@ class VirtualMachine(pulumi.CustomResource):
             run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
             run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[bool]] = None,
             run_tools_scripts_before_guest_standby: Optional[pulumi.Input[bool]] = None,
-            sata_controller_count: Optional[pulumi.Input[float]] = None,
+            sata_controller_count: Optional[pulumi.Input[int]] = None,
             scsi_bus_sharing: Optional[pulumi.Input[str]] = None,
-            scsi_controller_count: Optional[pulumi.Input[float]] = None,
+            scsi_controller_count: Optional[pulumi.Input[int]] = None,
             scsi_type: Optional[pulumi.Input[str]] = None,
-            shutdown_wait_timeout: Optional[pulumi.Input[float]] = None,
+            shutdown_wait_timeout: Optional[pulumi.Input[int]] = None,
             storage_policy_id: Optional[pulumi.Input[str]] = None,
             swap_placement_policy: Optional[pulumi.Input[str]] = None,
             sync_time_with_host: Optional[pulumi.Input[bool]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
-            vapp_transports: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vmware_tools_status: Optional[pulumi.Input[str]] = None,
             vmx_path: Optional[pulumi.Input[str]] = None,
-            wait_for_guest_ip_timeout: Optional[pulumi.Input[float]] = None,
+            wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
             wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
-            wait_for_guest_net_timeout: Optional[pulumi.Input[float]] = None) -> 'VirtualMachine':
+            wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
         """
         Get an existing VirtualMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -478,9 +478,9 @@ class VirtualMachine(pulumi.CustomResource):
                when `guest_id` is `other` or `other-64`.
         :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
                The default is no annotation.
-        :param pulumi.Input[float] boot_delay: The number of milliseconds to wait before starting
+        :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting
                the boot sequence. The default is no delay.
-        :param pulumi.Input[float] boot_retry_delay: The number of milliseconds to wait before
+        :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before
                retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
                Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to true, a virtual machine that
@@ -499,14 +499,14 @@ class VirtualMachine(pulumi.CustomResource):
                machine while it is running.
         :param pulumi.Input[bool] cpu_hot_remove_enabled: Allow CPUs to be removed to this
                virtual machine while it is running.
-        :param pulumi.Input[float] cpu_limit: The maximum amount of CPU (in MHz) that this virtual
+        :param pulumi.Input[int] cpu_limit: The maximum amount of CPU (in MHz) that this virtual
                machine can consume, regardless of available resources. The default is no
                limit.
         :param pulumi.Input[bool] cpu_performance_counters_enabled: Enable CPU performance
                counters on this virtual machine. Default: `false`.
-        :param pulumi.Input[float] cpu_reservation: The amount of CPU (in MHz) that this virtual
+        :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that this virtual
                machine is guaranteed. The default is no reservation.
-        :param pulumi.Input[float] cpu_share_count: The number of CPU shares allocated to the
+        :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the
                virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for CPU resources. Can be
                one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
@@ -528,7 +528,7 @@ class VirtualMachine(pulumi.CustomResource):
                address, and then the first general discovered address if neither exist. If
                VMware tools is not running on the virtual machine, or if the VM is powered
                off, this value will be blank.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on this virtual
                machine. See disk options below.
         :param pulumi.Input[bool] efi_secure_boot_enabled: When the `firmware` type is set to is
                `efi`, this enables EFI secure boot. Default: `false`.
@@ -552,12 +552,12 @@ class VirtualMachine(pulumi.CustomResource):
                the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a
                full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
-        :param pulumi.Input[List[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine,
                including the value of `default_ip_address`. If VMware tools is not running
                on the virtual machine, or if the VM is powered off, this list will be empty.
                * `moid`: The managed object reference ID of the created
                virtual machine.
-        :param pulumi.Input[float] hardware_version: The hardware version number. Valid range
+        :param pulumi.Input[int] hardware_version: The hardware version number. Valid range
                is from 4 to 15. The hardware version cannot be downgraded. See [virtual
                machine hardware compatibility][virtual-machine-hardware-compatibility] for
                more details.
@@ -570,10 +570,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
                this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
                `hvAuto`.
-        :param pulumi.Input[float] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
                you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
                controllers.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to
                ignore while waiting for an available IP address using either of the waiters.
                Any IP addresses in this list will be ignored if they show up so that the
                waiter will continue to wait for a real IP address. Default: [].
@@ -586,20 +586,20 @@ class VirtualMachine(pulumi.CustomResource):
                latency, such as VOIP, media player applications, or applications that
                require frequent access to mouse or keyboard devices. Can be one of `low`,
                `normal`, `medium`, or `high`.
-        :param pulumi.Input[float] memory: The size of the virtual machine's memory, in MB.
+        :param pulumi.Input[int] memory: The size of the virtual machine's memory, in MB.
                Default: `1024` (1 GB).
         :param pulumi.Input[bool] memory_hot_add_enabled: Allow memory to be added to this
                virtual machine while it is running.
-        :param pulumi.Input[float] memory_limit: The maximum amount of memory (in MB) that this
+        :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that this
                virtual machine can consume, regardless of available resources. The default
                is no limit.
-        :param pulumi.Input[float] memory_reservation: The amount of memory (in MB) that this
+        :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that this
                virtual machine is guaranteed. The default is no reservation.
-        :param pulumi.Input[float] memory_share_count: The number of memory shares allocated to
+        :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to
                the virtual machine when the `memory_share_level` is `custom`.
         :param pulumi.Input[str] memory_share_level: The allocation level for memory resources.
                Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[float] migrate_wait_timeout: The amount of time, in minutes, to wait
+        :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait
                for a virtual machine migration to complete before failing. Default: 10
                minutes. Also see the section on virtual machine
                migration.
@@ -609,21 +609,21 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineNetworkInterfaceArgs']]]] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
-        :param pulumi.Input[float] num_cores_per_socket: The number of cores per socket in this
+        :param pulumi.Input[int] num_cores_per_socket: The number of cores per socket in this
                virtual machine. The number of vCPUs on the virtual machine will be
                `num_cpus` divided by `num_cores_per_socket`. If specified, the value
                supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
-        :param pulumi.Input[float] num_cpus: The total number of virtual processor cores to assign
+        :param pulumi.Input[int] num_cpus: The total number of virtual processor cores to assign
                to this virtual machine. Default: `1`.
         :param pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']] ovf_deploy: When specified, the VM will be deployed from the
                provided ovf/ova template. See creating a virtual machine from a
                ovf/ova template for more details.
-        :param pulumi.Input[List[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
-        :param pulumi.Input[float] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
+        :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
                configuration set change requires a reboot. This value is only useful during
                an update process and gets reset on refresh.
@@ -641,19 +641,19 @@ class VirtualMachine(pulumi.CustomResource):
                of pre-shutdown scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the execution of
                pre-standby scripts when VMware tools is installed. Default: `true`.
-        :param pulumi.Input[float] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
                you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
                controllers.
         :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
                physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
-        :param pulumi.Input[float] scsi_controller_count: The number of SCSI controllers that
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that
                this provider manages on this virtual machine. This directly affects the amount
                of disks you can add to the virtual machine and the maximum disk unit number.
                Note that lowering this value does not remove controllers. Default: `1`.
         :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have.
                Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
                pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
-        :param pulumi.Input[float] shutdown_wait_timeout: The amount of time, in minutes, to wait
+        :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait
                for a graceful guest shutdown when making necessary updates to the virtual
                machine. If `force_power_off` is set to true, the VM will be force powered-off
                after this timeout, otherwise an error is returned. Default: 3 minutes.
@@ -663,7 +663,7 @@ class VirtualMachine(pulumi.CustomResource):
                Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
                the host. Requires VMware tools to be installed. Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
         :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: Optional vApp configuration. The only sub-key available
@@ -671,14 +671,14 @@ class VirtualMachine(pulumi.CustomResource):
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
                configuration for
                more details.
-        :param pulumi.Input[List[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual
                machines. A list of vApp transport methods supported by the source virtual
                machine or template.
         :param pulumi.Input[str] vmware_tools_status: The state of VMware tools in the guest. This will
                determine the proper course of action for some device operations.
         :param pulumi.Input[str] vmx_path: The path of the virtual machine's configuration file in the VM's
                datastore.
-        :param pulumi.Input[float] wait_for_guest_ip_timeout: The amount of time, in minutes, to
+        :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
                `wait_for_guest_net_timeout` waiter to be
@@ -689,7 +689,7 @@ class VirtualMachine(pulumi.CustomResource):
                discovered default gateways as part of its success criteria. This property is
                ignored if the `wait_for_guest_ip_timeout`
                waiter is used. Default: `true`.
-        :param pulumi.Input[float] wait_for_guest_net_timeout: The amount of time, in minutes, to
+        :param pulumi.Input[int] wait_for_guest_net_timeout: The amount of time, in minutes, to
                wait for an available IP address on this virtual machine's NICs. Older
                versions of VMware Tools do not populate this property. In those cases, this
                waiter can be disabled and the
@@ -800,7 +800,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootDelay")
-    def boot_delay(self) -> pulumi.Output[Optional[float]]:
+    def boot_delay(self) -> pulumi.Output[Optional[int]]:
         """
         The number of milliseconds to wait before starting
         the boot sequence. The default is no delay.
@@ -809,7 +809,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bootRetryDelay")
-    def boot_retry_delay(self) -> pulumi.Output[Optional[float]]:
+    def boot_retry_delay(self) -> pulumi.Output[Optional[int]]:
         """
         The number of milliseconds to wait before
         retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
@@ -877,7 +877,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> pulumi.Output[Optional[float]]:
+    def cpu_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum amount of CPU (in MHz) that this virtual
         machine can consume, regardless of available resources. The default is no
@@ -896,7 +896,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> pulumi.Output[Optional[float]]:
+    def cpu_reservation(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of CPU (in MHz) that this virtual
         machine is guaranteed. The default is no reservation.
@@ -905,7 +905,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShareCount")
-    def cpu_share_count(self) -> pulumi.Output[float]:
+    def cpu_share_count(self) -> pulumi.Output[int]:
         """
         The number of CPU shares allocated to the
         virtual machine when the `cpu_share_level` is `custom`.
@@ -976,7 +976,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> pulumi.Output[List['outputs.VirtualMachineDisk']]:
+    def disks(self) -> pulumi.Output[Sequence['outputs.VirtualMachineDisk']]:
         """
         A specification for a virtual disk device on this virtual
         machine. See disk options below.
@@ -1070,7 +1070,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="guestIpAddresses")
-    def guest_ip_addresses(self) -> pulumi.Output[List[str]]:
+    def guest_ip_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
         The current list of IP addresses on this machine,
         including the value of `default_ip_address`. If VMware tools is not running
@@ -1082,7 +1082,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hardwareVersion")
-    def hardware_version(self) -> pulumi.Output[float]:
+    def hardware_version(self) -> pulumi.Output[int]:
         """
         The hardware version number. Valid range
         is from 4 to 15. The hardware version cannot be downgraded. See [virtual
@@ -1116,7 +1116,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ideControllerCount")
-    def ide_controller_count(self) -> pulumi.Output[Optional[float]]:
+    def ide_controller_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
         you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
@@ -1126,7 +1126,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoredGuestIps")
-    def ignored_guest_ips(self) -> pulumi.Output[Optional[List[str]]]:
+    def ignored_guest_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of IP addresses and CIDR networks to
         ignore while waiting for an available IP address using either of the waiters.
@@ -1160,7 +1160,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def memory(self) -> pulumi.Output[Optional[float]]:
+    def memory(self) -> pulumi.Output[Optional[int]]:
         """
         The size of the virtual machine's memory, in MB.
         Default: `1024` (1 GB).
@@ -1178,7 +1178,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> pulumi.Output[Optional[float]]:
+    def memory_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum amount of memory (in MB) that this
         virtual machine can consume, regardless of available resources. The default
@@ -1188,7 +1188,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> pulumi.Output[Optional[float]]:
+    def memory_reservation(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of memory (in MB) that this
         virtual machine is guaranteed. The default is no reservation.
@@ -1197,7 +1197,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShareCount")
-    def memory_share_count(self) -> pulumi.Output[float]:
+    def memory_share_count(self) -> pulumi.Output[int]:
         """
         The number of memory shares allocated to
         the virtual machine when the `memory_share_level` is `custom`.
@@ -1215,7 +1215,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="migrateWaitTimeout")
-    def migrate_wait_timeout(self) -> pulumi.Output[Optional[float]]:
+    def migrate_wait_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in minutes, to wait
         for a virtual machine migration to complete before failing. Default: 10
@@ -1253,7 +1253,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> pulumi.Output[Optional[List['outputs.VirtualMachineNetworkInterface']]]:
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualMachineNetworkInterface']]]:
         """
         A specification for a virtual NIC on this
         virtual machine. See network interface options
@@ -1263,7 +1263,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numCoresPerSocket")
-    def num_cores_per_socket(self) -> pulumi.Output[Optional[float]]:
+    def num_cores_per_socket(self) -> pulumi.Output[Optional[int]]:
         """
         The number of cores per socket in this
         virtual machine. The number of vCPUs on the virtual machine will be
@@ -1274,7 +1274,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numCpus")
-    def num_cpus(self) -> pulumi.Output[Optional[float]]:
+    def num_cpus(self) -> pulumi.Output[Optional[int]]:
         """
         The total number of virtual processor cores to assign
         to this virtual machine. Default: `1`.
@@ -1293,7 +1293,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pciDeviceIds")
-    def pci_device_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def pci_device_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of host PCI device IDs to create PCI
         passthroughs for.
@@ -1302,7 +1302,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="poweronTimeout")
-    def poweron_timeout(self) -> pulumi.Output[Optional[float]]:
+    def poweron_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in seconds, that we will be trying to power on a VM
         """
@@ -1376,7 +1376,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sataControllerCount")
-    def sata_controller_count(self) -> pulumi.Output[Optional[float]]:
+    def sata_controller_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
         you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
@@ -1395,7 +1395,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scsiControllerCount")
-    def scsi_controller_count(self) -> pulumi.Output[Optional[float]]:
+    def scsi_controller_count(self) -> pulumi.Output[Optional[int]]:
         """
         The number of SCSI controllers that
         this provider manages on this virtual machine. This directly affects the amount
@@ -1416,7 +1416,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shutdownWaitTimeout")
-    def shutdown_wait_timeout(self) -> pulumi.Output[Optional[float]]:
+    def shutdown_wait_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in minutes, to wait
         for a graceful guest shutdown when making necessary updates to the virtual
@@ -1454,7 +1454,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -1483,7 +1483,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vappTransports")
-    def vapp_transports(self) -> pulumi.Output[List[str]]:
+    def vapp_transports(self) -> pulumi.Output[Sequence[str]]:
         """
         Computed value which is only valid for cloned virtual
         machines. A list of vApp transport methods supported by the source virtual
@@ -1511,7 +1511,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuestIpTimeout")
-    def wait_for_guest_ip_timeout(self) -> pulumi.Output[Optional[float]]:
+    def wait_for_guest_ip_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in minutes, to
         wait for an available guest IP address on this virtual machine. This should
@@ -1536,7 +1536,7 @@ class VirtualMachine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="waitForGuestNetTimeout")
-    def wait_for_guest_net_timeout(self) -> pulumi.Output[Optional[float]]:
+    def wait_for_guest_net_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The amount of time, in minutes, to
         wait for an available IP address on this virtual machine's NICs. Older

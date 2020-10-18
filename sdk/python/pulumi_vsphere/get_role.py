@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -67,7 +67,7 @@ class GetRoleResult:
 
     @property
     @pulumi.getter(name="rolePrivileges")
-    def role_privileges(self) -> Optional[List[str]]:
+    def role_privileges(self) -> Optional[Sequence[str]]:
         """
         The privileges associated with the role.
         """
@@ -90,7 +90,7 @@ class AwaitableGetRoleResult(GetRoleResult):
 def get_role(description: Optional[str] = None,
              label: Optional[str] = None,
              name: Optional[str] = None,
-             role_privileges: Optional[List[str]] = None,
+             role_privileges: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
     The `Role` data source can be used to discover the id and privileges associated
@@ -108,7 +108,7 @@ def get_role(description: Optional[str] = None,
 
     :param str description: The description of the role.
     :param str label: The label of the role.
-    :param List[str] role_privileges: The privileges associated with the role.
+    :param Sequence[str] role_privileges: The privileges associated with the role.
     """
     __args__ = dict()
     __args__['description'] = description

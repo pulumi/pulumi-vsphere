@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -40,7 +40,7 @@ __all__ = [
 class ComputeClusterVsanDiskGroup(dict):
     def __init__(__self__, *,
                  cache: Optional[str] = None,
-                 storages: Optional[List[str]] = None):
+                 storages: Optional[Sequence[str]] = None):
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
         if storages is not None:
@@ -53,7 +53,7 @@ class ComputeClusterVsanDiskGroup(dict):
 
     @property
     @pulumi.getter
-    def storages(self) -> Optional[List[str]]:
+    def storages(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "storages")
 
     def _translate_property(self, prop):
@@ -215,19 +215,19 @@ class ContentLibrarySubscription(dict):
 @pulumi.output_type
 class DistributedPortGroupVlanRange(dict):
     def __init__(__self__, *,
-                 max_vlan: float,
-                 min_vlan: float):
+                 max_vlan: int,
+                 min_vlan: int):
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
-    def max_vlan(self) -> float:
+    def max_vlan(self) -> int:
         return pulumi.get(self, "max_vlan")
 
     @property
     @pulumi.getter(name="minVlan")
-    def min_vlan(self) -> float:
+    def min_vlan(self) -> int:
         return pulumi.get(self, "min_vlan")
 
     def _translate_property(self, prop):
@@ -237,10 +237,10 @@ class DistributedPortGroupVlanRange(dict):
 @pulumi.output_type
 class DistributedVirtualSwitchHost(dict):
     def __init__(__self__, *,
-                 devices: List[str],
+                 devices: Sequence[str],
                  host_system_id: str):
         """
-        :param List[str] devices: The list of NIC devices to map to uplinks on the DVS,
+        :param Sequence[str] devices: The list of NIC devices to map to uplinks on the DVS,
                added in order they are specified.
         :param str host_system_id: The host system ID of the host to add to the
                DVS.
@@ -250,7 +250,7 @@ class DistributedVirtualSwitchHost(dict):
 
     @property
     @pulumi.getter
-    def devices(self) -> List[str]:
+    def devices(self) -> Sequence[str]:
         """
         The list of NIC devices to map to uplinks on the DVS,
         added in order they are specified.
@@ -273,15 +273,15 @@ class DistributedVirtualSwitchHost(dict):
 @pulumi.output_type
 class DistributedVirtualSwitchPvlanMapping(dict):
     def __init__(__self__, *,
-                 primary_vlan_id: float,
+                 primary_vlan_id: int,
                  pvlan_type: str,
-                 secondary_vlan_id: float):
+                 secondary_vlan_id: int):
         """
-        :param float primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
+        :param int primary_vlan_id: The primary VLAN ID. The VLAN IDs of 0 and
                4095 are reserved and cannot be used in this property.
         :param str pvlan_type: The private VLAN type. Valid values are
                promiscuous, community and isolated.
-        :param float secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
+        :param int secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
                and 4095 are reserved and cannot be used in this property.
         """
         pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
@@ -290,7 +290,7 @@ class DistributedVirtualSwitchPvlanMapping(dict):
 
     @property
     @pulumi.getter(name="primaryVlanId")
-    def primary_vlan_id(self) -> float:
+    def primary_vlan_id(self) -> int:
         """
         The primary VLAN ID. The VLAN IDs of 0 and
         4095 are reserved and cannot be used in this property.
@@ -308,7 +308,7 @@ class DistributedVirtualSwitchPvlanMapping(dict):
 
     @property
     @pulumi.getter(name="secondaryVlanId")
-    def secondary_vlan_id(self) -> float:
+    def secondary_vlan_id(self) -> int:
         """
         The secondary VLAN ID. The VLAN IDs of 0
         and 4095 are reserved and cannot be used in this property.
@@ -322,19 +322,19 @@ class DistributedVirtualSwitchPvlanMapping(dict):
 @pulumi.output_type
 class DistributedVirtualSwitchVlanRange(dict):
     def __init__(__self__, *,
-                 max_vlan: float,
-                 min_vlan: float):
+                 max_vlan: int,
+                 min_vlan: int):
         pulumi.set(__self__, "max_vlan", max_vlan)
         pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
-    def max_vlan(self) -> float:
+    def max_vlan(self) -> int:
         return pulumi.get(self, "max_vlan")
 
     @property
     @pulumi.getter(name="minVlan")
-    def min_vlan(self) -> float:
+    def min_vlan(self) -> int:
         return pulumi.get(self, "min_vlan")
 
     def _translate_property(self, prop):
@@ -399,7 +399,7 @@ class EntityPermissionsPermission(dict):
 class HostPortGroupPorts(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
-                 mac_addresses: Optional[List[str]] = None,
+                 mac_addresses: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
         """
         :param str key: The key for this port group as returned from the vSphere API.
@@ -421,7 +421,7 @@ class HostPortGroupPorts(dict):
 
     @property
     @pulumi.getter(name="macAddresses")
-    def mac_addresses(self) -> Optional[List[str]]:
+    def mac_addresses(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "mac_addresses")
 
     @property
@@ -439,7 +439,7 @@ class VirtualMachineCdrom(dict):
                  client_device: Optional[bool] = None,
                  datastore_id: Optional[str] = None,
                  device_address: Optional[str] = None,
-                 key: Optional[float] = None,
+                 key: Optional[int] = None,
                  path: Optional[str] = None):
         """
         :param bool client_device: Indicates whether the device should be backed by
@@ -450,7 +450,7 @@ class VirtualMachineCdrom(dict):
                device when `key` is unavailable. This follows a convention of
                `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
                unit 1 on SCSI bus 0.
-        :param float key: The ID of the device within the virtual machine.
+        :param int key: The ID of the device within the virtual machine.
         :param str path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
         """
@@ -496,7 +496,7 @@ class VirtualMachineCdrom(dict):
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[float]:
+    def key(self) -> Optional[int]:
         """
         The ID of the device within the virtual machine.
         """
@@ -523,7 +523,7 @@ class VirtualMachineClone(dict):
                  linked_clone: Optional[bool] = None,
                  ovf_network_map: Optional[Mapping[str, str]] = None,
                  ovf_storage_map: Optional[Mapping[str, str]] = None,
-                 timeout: Optional[float] = None):
+                 timeout: Optional[int] = None):
         pulumi.set(__self__, "template_uuid", template_uuid)
         if customize is not None:
             pulumi.set(__self__, "customize", customize)
@@ -563,7 +563,7 @@ class VirtualMachineClone(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         return pulumi.get(self, "timeout")
 
     def _translate_property(self, prop):
@@ -573,17 +573,17 @@ class VirtualMachineClone(dict):
 @pulumi.output_type
 class VirtualMachineCloneCustomize(dict):
     def __init__(__self__, *,
-                 dns_server_lists: Optional[List[str]] = None,
-                 dns_suffix_lists: Optional[List[str]] = None,
+                 dns_server_lists: Optional[Sequence[str]] = None,
+                 dns_suffix_lists: Optional[Sequence[str]] = None,
                  ipv4_gateway: Optional[str] = None,
                  ipv6_gateway: Optional[str] = None,
                  linux_options: Optional['outputs.VirtualMachineCloneCustomizeLinuxOptions'] = None,
-                 network_interfaces: Optional[List['outputs.VirtualMachineCloneCustomizeNetworkInterface']] = None,
-                 timeout: Optional[float] = None,
+                 network_interfaces: Optional[Sequence['outputs.VirtualMachineCloneCustomizeNetworkInterface']] = None,
+                 timeout: Optional[int] = None,
                  windows_options: Optional['outputs.VirtualMachineCloneCustomizeWindowsOptions'] = None,
                  windows_sysprep_text: Optional[str] = None):
         """
-        :param List['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification for a virtual NIC on this
+        :param Sequence['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification for a virtual NIC on this
                virtual machine. See network interface options
                below.
         """
@@ -608,12 +608,12 @@ class VirtualMachineCloneCustomize(dict):
 
     @property
     @pulumi.getter(name="dnsServerLists")
-    def dns_server_lists(self) -> Optional[List[str]]:
+    def dns_server_lists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "dns_server_lists")
 
     @property
     @pulumi.getter(name="dnsSuffixLists")
-    def dns_suffix_lists(self) -> Optional[List[str]]:
+    def dns_suffix_lists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "dns_suffix_lists")
 
     @property
@@ -633,7 +633,7 @@ class VirtualMachineCloneCustomize(dict):
 
     @property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[List['outputs.VirtualMachineCloneCustomizeNetworkInterface']]:
+    def network_interfaces(self) -> Optional[Sequence['outputs.VirtualMachineCloneCustomizeNetworkInterface']]:
         """
         A specification for a virtual NIC on this
         virtual machine. See network interface options
@@ -643,7 +643,7 @@ class VirtualMachineCloneCustomize(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         return pulumi.get(self, "timeout")
 
     @property
@@ -702,11 +702,11 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
 class VirtualMachineCloneCustomizeNetworkInterface(dict):
     def __init__(__self__, *,
                  dns_domain: Optional[str] = None,
-                 dns_server_lists: Optional[List[str]] = None,
+                 dns_server_lists: Optional[Sequence[str]] = None,
                  ipv4_address: Optional[str] = None,
-                 ipv4_netmask: Optional[float] = None,
+                 ipv4_netmask: Optional[int] = None,
                  ipv6_address: Optional[str] = None,
-                 ipv6_netmask: Optional[float] = None):
+                 ipv6_netmask: Optional[int] = None):
         if dns_domain is not None:
             pulumi.set(__self__, "dns_domain", dns_domain)
         if dns_server_lists is not None:
@@ -727,7 +727,7 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="dnsServerLists")
-    def dns_server_lists(self) -> Optional[List[str]]:
+    def dns_server_lists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "dns_server_lists")
 
     @property
@@ -737,7 +737,7 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="ipv4Netmask")
-    def ipv4_netmask(self) -> Optional[float]:
+    def ipv4_netmask(self) -> Optional[int]:
         return pulumi.get(self, "ipv4_netmask")
 
     @property
@@ -747,7 +747,7 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="ipv6Netmask")
-    def ipv6_netmask(self) -> Optional[float]:
+    def ipv6_netmask(self) -> Optional[int]:
         return pulumi.get(self, "ipv6_netmask")
 
     def _translate_property(self, prop):
@@ -760,15 +760,15 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
                  computer_name: str,
                  admin_password: Optional[str] = None,
                  auto_logon: Optional[bool] = None,
-                 auto_logon_count: Optional[float] = None,
+                 auto_logon_count: Optional[int] = None,
                  domain_admin_password: Optional[str] = None,
                  domain_admin_user: Optional[str] = None,
                  full_name: Optional[str] = None,
                  join_domain: Optional[str] = None,
                  organization_name: Optional[str] = None,
                  product_key: Optional[str] = None,
-                 run_once_command_lists: Optional[List[str]] = None,
-                 time_zone: Optional[float] = None,
+                 run_once_command_lists: Optional[Sequence[str]] = None,
+                 time_zone: Optional[int] = None,
                  workgroup: Optional[str] = None):
         pulumi.set(__self__, "computer_name", computer_name)
         if admin_password is not None:
@@ -813,7 +813,7 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
 
     @property
     @pulumi.getter(name="autoLogonCount")
-    def auto_logon_count(self) -> Optional[float]:
+    def auto_logon_count(self) -> Optional[int]:
         return pulumi.get(self, "auto_logon_count")
 
     @property
@@ -848,12 +848,12 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
 
     @property
     @pulumi.getter(name="runOnceCommandLists")
-    def run_once_command_lists(self) -> Optional[List[str]]:
+    def run_once_command_lists(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "run_once_command_lists")
 
     @property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[float]:
+    def time_zone(self) -> Optional[int]:
         return pulumi.get(self, "time_zone")
 
     @property
@@ -875,19 +875,19 @@ class VirtualMachineDisk(dict):
                  disk_mode: Optional[str] = None,
                  disk_sharing: Optional[str] = None,
                  eagerly_scrub: Optional[bool] = None,
-                 io_limit: Optional[float] = None,
-                 io_reservation: Optional[float] = None,
-                 io_share_count: Optional[float] = None,
+                 io_limit: Optional[int] = None,
+                 io_reservation: Optional[int] = None,
+                 io_share_count: Optional[int] = None,
                  io_share_level: Optional[str] = None,
                  keep_on_remove: Optional[bool] = None,
-                 key: Optional[float] = None,
+                 key: Optional[int] = None,
                  label: Optional[str] = None,
                  name: Optional[str] = None,
                  path: Optional[str] = None,
-                 size: Optional[float] = None,
+                 size: Optional[int] = None,
                  storage_policy_id: Optional[str] = None,
                  thin_provisioned: Optional[bool] = None,
-                 unit_number: Optional[float] = None,
+                 unit_number: Optional[int] = None,
                  uuid: Optional[str] = None,
                  write_through: Optional[bool] = None):
         """
@@ -914,29 +914,29 @@ class VirtualMachineDisk(dict):
                on VM creation. This will delay the creation of the disk or virtual machine.
                Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
                on picking a disk type.  Default: `false`.
-        :param float io_limit: The upper limit of IOPS that this disk can use. The
+        :param int io_limit: The upper limit of IOPS that this disk can use. The
                default is no limit.
-        :param float io_reservation: The I/O reservation (guarantee) that this disk
+        :param int io_reservation: The I/O reservation (guarantee) that this disk
                has, in IOPS.  The default is no reservation.
-        :param float io_share_count: The share count for this disk when the share
+        :param int io_share_count: The share count for this disk when the share
                level is `custom`.
         :param str io_share_level: The share allocation level for this disk. Can
                be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         :param bool keep_on_remove: Keep this disk when removing the device or
                destroying the virtual machine. Default: `false`.
-        :param float key: The ID of the device within the virtual machine.
+        :param int key: The ID of the device within the virtual machine.
         :param str label: A label for the disk. Forces a new disk if changed.
         :param str name: An alias for both `label` and `path`, the latter when
                using `attach`. Required if not using `label`.
         :param str path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
-        :param float size: The size of the disk, in GB.
+        :param int size: The size of the disk, in GB.
         :param str storage_policy_id: The UUID of the storage policy to assign to this disk.
         :param bool thin_provisioned: If `true`, this disk is thin provisioned,
                with space for the file being allocated on an as-needed basis. Cannot be set
                to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
                type. Default: `true`.
-        :param float unit_number: The disk number on the storage bus. The maximum
+        :param int unit_number: The disk number on the storage bus. The maximum
                value for this setting is the value of the controller count times the
                controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
                The default is `0`, for which one disk must be set to. Duplicate unit numbers
@@ -1066,7 +1066,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter(name="ioLimit")
-    def io_limit(self) -> Optional[float]:
+    def io_limit(self) -> Optional[int]:
         """
         The upper limit of IOPS that this disk can use. The
         default is no limit.
@@ -1075,7 +1075,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter(name="ioReservation")
-    def io_reservation(self) -> Optional[float]:
+    def io_reservation(self) -> Optional[int]:
         """
         The I/O reservation (guarantee) that this disk
         has, in IOPS.  The default is no reservation.
@@ -1084,7 +1084,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter(name="ioShareCount")
-    def io_share_count(self) -> Optional[float]:
+    def io_share_count(self) -> Optional[int]:
         """
         The share count for this disk when the share
         level is `custom`.
@@ -1111,7 +1111,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[float]:
+    def key(self) -> Optional[int]:
         """
         The ID of the device within the virtual machine.
         """
@@ -1145,7 +1145,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[float]:
+    def size(self) -> Optional[int]:
         """
         The size of the disk, in GB.
         """
@@ -1172,7 +1172,7 @@ class VirtualMachineDisk(dict):
 
     @property
     @pulumi.getter(name="unitNumber")
-    def unit_number(self) -> Optional[float]:
+    def unit_number(self) -> Optional[int]:
         """
         The disk number on the storage bus. The maximum
         value for this setting is the value of the controller count times the
@@ -1210,12 +1210,12 @@ class VirtualMachineNetworkInterface(dict):
     def __init__(__self__, *,
                  network_id: str,
                  adapter_type: Optional[str] = None,
-                 bandwidth_limit: Optional[float] = None,
-                 bandwidth_reservation: Optional[float] = None,
-                 bandwidth_share_count: Optional[float] = None,
+                 bandwidth_limit: Optional[int] = None,
+                 bandwidth_reservation: Optional[int] = None,
+                 bandwidth_share_count: Optional[int] = None,
                  bandwidth_share_level: Optional[str] = None,
                  device_address: Optional[str] = None,
-                 key: Optional[float] = None,
+                 key: Optional[int] = None,
                  mac_address: Optional[str] = None,
                  ovf_mapping: Optional[str] = None,
                  use_static_mac: Optional[bool] = None):
@@ -1224,11 +1224,11 @@ class VirtualMachineNetworkInterface(dict):
                ID of the network to connect this interface to.
         :param str adapter_type: The network interface type. Can be one of
                `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
-        :param float bandwidth_limit: The upper bandwidth limit of this network
+        :param int bandwidth_limit: The upper bandwidth limit of this network
                interface, in Mbits/sec. The default is no limit.
-        :param float bandwidth_reservation: The bandwidth reservation of this
+        :param int bandwidth_reservation: The bandwidth reservation of this
                network interface, in Mbits/sec. The default is no reservation.
-        :param float bandwidth_share_count: The share count for this network
+        :param int bandwidth_share_count: The share count for this network
                interface when the share level is `custom`.
         :param str bandwidth_share_level: The bandwidth share allocation level for
                this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
@@ -1237,7 +1237,7 @@ class VirtualMachineNetworkInterface(dict):
                device when `key` is unavailable. This follows a convention of
                `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
                unit 1 on SCSI bus 0.
-        :param float key: The ID of the device within the virtual machine.
+        :param int key: The ID of the device within the virtual machine.
         :param str mac_address: The MAC address of this network interface. Can
                only be manually set if `use_static_mac` is true, otherwise this is a
                computed value that gives the current MAC address of this interface.
@@ -1290,7 +1290,7 @@ class VirtualMachineNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="bandwidthLimit")
-    def bandwidth_limit(self) -> Optional[float]:
+    def bandwidth_limit(self) -> Optional[int]:
         """
         The upper bandwidth limit of this network
         interface, in Mbits/sec. The default is no limit.
@@ -1299,7 +1299,7 @@ class VirtualMachineNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="bandwidthReservation")
-    def bandwidth_reservation(self) -> Optional[float]:
+    def bandwidth_reservation(self) -> Optional[int]:
         """
         The bandwidth reservation of this
         network interface, in Mbits/sec. The default is no reservation.
@@ -1308,7 +1308,7 @@ class VirtualMachineNetworkInterface(dict):
 
     @property
     @pulumi.getter(name="bandwidthShareCount")
-    def bandwidth_share_count(self) -> Optional[float]:
+    def bandwidth_share_count(self) -> Optional[int]:
         """
         The share count for this network
         interface when the share level is `custom`.
@@ -1338,7 +1338,7 @@ class VirtualMachineNetworkInterface(dict):
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[float]:
+    def key(self) -> Optional[int]:
         """
         The ID of the device within the virtual machine.
         """
@@ -1462,11 +1462,11 @@ class VirtualMachineVapp(dict):
 class VmStoragePolicyTagRule(dict):
     def __init__(__self__, *,
                  tag_category: str,
-                 tags: List[str],
+                 tags: Sequence[str],
                  include_datastores_with_tags: Optional[bool] = None):
         """
         :param str tag_category: Name of the tag category.
-        :param List[str] tags: List of Name of tags to select from the given category.
+        :param Sequence[str] tags: List of Name of tags to select from the given category.
         :param bool include_datastores_with_tags: Whether to include datastores with the given tags or exclude. Default 
                value is true i.e. include datastores with the given tags.
         """
@@ -1485,7 +1485,7 @@ class VmStoragePolicyTagRule(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         List of Name of tags to select from the given category.
         """
@@ -1565,12 +1565,12 @@ class VnicIpv4(dict):
 @pulumi.output_type
 class VnicIpv6(dict):
     def __init__(__self__, *,
-                 addresses: Optional[List[str]] = None,
+                 addresses: Optional[Sequence[str]] = None,
                  autoconfig: Optional[bool] = None,
                  dhcp: Optional[bool] = None,
                  gw: Optional[str] = None):
         """
-        :param List[str] addresses: List of IPv6 addresses
+        :param Sequence[str] addresses: List of IPv6 addresses
         :param bool autoconfig: Use IPv6 Autoconfiguration (RFC2462).
         :param bool dhcp: Use DHCP to configure the interface's IPv4 stack.
         :param str gw: IP address of the default gateway, if DHCP or autoconfig is not set.
@@ -1586,7 +1586,7 @@ class VnicIpv6(dict):
 
     @property
     @pulumi.getter
-    def addresses(self) -> Optional[List[str]]:
+    def addresses(self) -> Optional[Sequence[str]]:
         """
         List of IPv6 addresses
         """
@@ -1625,15 +1625,15 @@ class GetVirtualMachineDiskResult(dict):
     def __init__(__self__, *,
                  eagerly_scrub: bool,
                  label: str,
-                 size: float,
+                 size: int,
                  thin_provisioned: bool,
-                 unit_number: float):
+                 unit_number: int):
         """
         :param bool eagerly_scrub: Set to `true` if the disk has been eager zeroed.
         :param str label: The label for the disk.
-        :param float size: The size of the disk, in GIB.
+        :param int size: The size of the disk, in GIB.
         :param bool thin_provisioned: Set to `true` if the disk has been thin provisioned.
-        :param float unit_number: The disk number on the storage bus.
+        :param int unit_number: The disk number on the storage bus.
         """
         pulumi.set(__self__, "eagerly_scrub", eagerly_scrub)
         pulumi.set(__self__, "label", label)
@@ -1659,7 +1659,7 @@ class GetVirtualMachineDiskResult(dict):
 
     @property
     @pulumi.getter
-    def size(self) -> float:
+    def size(self) -> int:
         """
         The size of the disk, in GIB.
         """
@@ -1675,7 +1675,7 @@ class GetVirtualMachineDiskResult(dict):
 
     @property
     @pulumi.getter(name="unitNumber")
-    def unit_number(self) -> float:
+    def unit_number(self) -> int:
         """
         The disk number on the storage bus.
         """

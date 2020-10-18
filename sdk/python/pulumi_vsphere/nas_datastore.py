@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['NasDatastore']
@@ -19,12 +19,12 @@ class NasDatastore(pulumi.CustomResource):
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
-                 host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 remote_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  remote_path: Optional[pulumi.Input[str]] = None,
                  security_type: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -49,11 +49,11 @@ class NasDatastore(pulumi.CustomResource):
                located at `/dc1/datastore/foo/bar`, with the final inventory path being
                `/dc1/datastore/foo/bar/test`. Conflicts with
                `datastore_cluster_id`.
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to mount the datastore on.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
                server or servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
@@ -61,7 +61,7 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
@@ -120,22 +120,22 @@ class NasDatastore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: Optional[pulumi.Input[str]] = None,
             accessible: Optional[pulumi.Input[bool]] = None,
-            capacity: Optional[pulumi.Input[float]] = None,
+            capacity: Optional[pulumi.Input[int]] = None,
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
-            free_space: Optional[pulumi.Input[float]] = None,
-            host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            free_space: Optional[pulumi.Input[int]] = None,
+            host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             maintenance_mode: Optional[pulumi.Input[str]] = None,
             multiple_host_access: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol_endpoint: Optional[pulumi.Input[str]] = None,
-            remote_hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             remote_path: Optional[pulumi.Input[str]] = None,
             security_type: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            uncommitted_space: Optional[pulumi.Input[float]] = None,
+            uncommitted_space: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'NasDatastore':
         """
         Get an existing NasDatastore resource's state with the given name, id, and optional extra
@@ -150,7 +150,7 @@ class NasDatastore(pulumi.CustomResource):
                actual share. Default: `readWrite`. Forces a new resource if changed.
         :param pulumi.Input[bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
-        :param pulumi.Input[float] capacity: Maximum capacity of the datastore, in megabytes.
+        :param pulumi.Input[int] capacity: Maximum capacity of the datastore, in megabytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value strings to set on datasource resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
@@ -163,8 +163,8 @@ class NasDatastore(pulumi.CustomResource):
                located at `/dc1/datastore/foo/bar`, with the final inventory path being
                `/dc1/datastore/foo/bar/test`. Conflicts with
                `datastore_cluster_id`.
-        :param pulumi.Input[float] free_space: Available space of this datastore, in megabytes.
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+        :param pulumi.Input[int] free_space: Available space of this datastore, in megabytes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to mount the datastore on.
         :param pulumi.Input[str] maintenance_mode: The current maintenance mode state of the datastore.
         :param pulumi.Input[bool] multiple_host_access: If `true`, more than one host in the datacenter has
@@ -173,7 +173,7 @@ class NasDatastore(pulumi.CustomResource):
                changed.
         :param pulumi.Input[str] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
                This field is only populated if the host supports virtual datastores.
-        :param pulumi.Input[List[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
                server or servers. Only one element should be present for NFS v3 but multiple
                can be present for NFS v4.1. Forces a new resource if changed.
         :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
@@ -181,11 +181,11 @@ class NasDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
                Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
                if changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] type: The type of NAS volume. Can be one of `NFS` (to denote
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
-        :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
+        :param pulumi.Input[int] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
         """
@@ -236,7 +236,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Output[float]:
+    def capacity(self) -> pulumi.Output[int]:
         """
         Maximum capacity of the datastore, in megabytes.
         """
@@ -277,7 +277,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="freeSpace")
-    def free_space(self) -> pulumi.Output[float]:
+    def free_space(self) -> pulumi.Output[int]:
         """
         Available space of this datastore, in megabytes.
         """
@@ -285,7 +285,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> pulumi.Output[List[str]]:
+    def host_system_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         The managed object IDs of
         the hosts to mount the datastore on.
@@ -329,7 +329,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remoteHosts")
-    def remote_hosts(self) -> pulumi.Output[List[str]]:
+    def remote_hosts(self) -> pulumi.Output[Sequence[str]]:
         """
         The hostnames or IP addresses of the remote
         server or servers. Only one element should be present for NFS v3 but multiple
@@ -358,7 +358,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -376,7 +376,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uncommittedSpace")
-    def uncommitted_space(self) -> pulumi.Output[float]:
+    def uncommitted_space(self) -> pulumi.Output[int]:
         """
         Total additional storage space, in megabytes,
         potentially used by all virtual machines on this datastore.

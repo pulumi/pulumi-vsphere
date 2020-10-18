@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,7 +17,7 @@ class HostPortGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
@@ -26,14 +26,14 @@ class HostPortGroup(pulumi.CustomResource):
                  host_system_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notify_switches: Optional[pulumi.Input[bool]] = None,
-                 shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-                 shaping_burst_size: Optional[pulumi.Input[float]] = None,
+                 shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 shaping_burst_size: Optional[pulumi.Input[int]] = None,
                  shaping_enabled: Optional[pulumi.Input[bool]] = None,
-                 shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
-                 standby_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teaming_policy: Optional[pulumi.Input[str]] = None,
                  virtual_switch_name: Optional[pulumi.Input[str]] = None,
-                 vlan_id: Optional[pulumi.Input[float]] = None,
+                 vlan_id: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -113,7 +113,7 @@ class HostPortGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
                that of its own.
         :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -126,16 +126,16 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
                changed.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[float] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
-        :param pulumi.Input[float] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
+        :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
+        :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
-        :param pulumi.Input[float] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_nics: List of standby network adapters used for failover.
+        :param pulumi.Input[int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_nics: List of standby network adapters used for failover.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
                failover_explicit.
         :param pulumi.Input[str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
-        :param pulumi.Input[float] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
+        :param pulumi.Input[int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
@@ -191,7 +191,7 @@ class HostPortGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
@@ -203,14 +203,14 @@ class HostPortGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notify_switches: Optional[pulumi.Input[bool]] = None,
             ports: Optional[pulumi.Input[pulumi.InputType['HostPortGroupPortsArgs']]] = None,
-            shaping_average_bandwidth: Optional[pulumi.Input[float]] = None,
-            shaping_burst_size: Optional[pulumi.Input[float]] = None,
+            shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+            shaping_burst_size: Optional[pulumi.Input[int]] = None,
             shaping_enabled: Optional[pulumi.Input[bool]] = None,
-            shaping_peak_bandwidth: Optional[pulumi.Input[float]] = None,
-            standby_nics: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+            standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             teaming_policy: Optional[pulumi.Input[str]] = None,
             virtual_switch_name: Optional[pulumi.Input[str]] = None,
-            vlan_id: Optional[pulumi.Input[float]] = None) -> 'HostPortGroup':
+            vlan_id: Optional[pulumi.Input[int]] = None) -> 'HostPortGroup':
         """
         Get an existing HostPortGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -218,7 +218,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
                that of its own.
         :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access Control (MAC) address can be changed.
@@ -236,16 +236,16 @@ class HostPortGroup(pulumi.CustomResource):
                changed.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
         :param pulumi.Input[pulumi.InputType['HostPortGroupPortsArgs']] ports: A list of ports that currently exist and are used on this port group.
-        :param pulumi.Input[float] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
-        :param pulumi.Input[float] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
+        :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
+        :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
-        :param pulumi.Input[float] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
-        :param pulumi.Input[List[pulumi.Input[str]]] standby_nics: List of standby network adapters used for failover.
+        :param pulumi.Input[int] shaping_peak_bandwidth: The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_nics: List of standby network adapters used for failover.
         :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
                failover_explicit.
         :param pulumi.Input[str] virtual_switch_name: The name of the virtual switch to bind
                this port group to. Forces a new resource if changed.
-        :param pulumi.Input[float] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
+        :param pulumi.Input[int] vlan_id: The VLAN ID/trunk mode for this port group.  An ID of
                `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
@@ -278,7 +278,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="activeNics")
-    def active_nics(self) -> pulumi.Output[Optional[List[str]]]:
+    def active_nics(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of active network adapters used for load balancing.
         """
@@ -380,7 +380,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingAverageBandwidth")
-    def shaping_average_bandwidth(self) -> pulumi.Output[Optional[float]]:
+    def shaping_average_bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         The average bandwidth in bits per second if traffic shaping is enabled.
         """
@@ -388,7 +388,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingBurstSize")
-    def shaping_burst_size(self) -> pulumi.Output[Optional[float]]:
+    def shaping_burst_size(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum burst size allowed in bytes if traffic shaping is enabled.
         """
@@ -404,7 +404,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shapingPeakBandwidth")
-    def shaping_peak_bandwidth(self) -> pulumi.Output[Optional[float]]:
+    def shaping_peak_bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
         """
@@ -412,7 +412,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="standbyNics")
-    def standby_nics(self) -> pulumi.Output[Optional[List[str]]]:
+    def standby_nics(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of standby network adapters used for failover.
         """
@@ -438,7 +438,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> pulumi.Output[Optional[float]]:
+    def vlan_id(self) -> pulumi.Output[Optional[int]]:
         """
         The VLAN ID/trunk mode for this port group.  An ID of
         `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an

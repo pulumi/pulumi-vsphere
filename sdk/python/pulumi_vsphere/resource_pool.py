@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['ResourcePool']
@@ -16,19 +16,19 @@ class ResourcePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cpu_expandable: Optional[pulumi.Input[bool]] = None,
-                 cpu_limit: Optional[pulumi.Input[float]] = None,
-                 cpu_reservation: Optional[pulumi.Input[float]] = None,
+                 cpu_limit: Optional[pulumi.Input[int]] = None,
+                 cpu_reservation: Optional[pulumi.Input[int]] = None,
                  cpu_share_level: Optional[pulumi.Input[str]] = None,
-                 cpu_shares: Optional[pulumi.Input[float]] = None,
+                 cpu_shares: Optional[pulumi.Input[int]] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  memory_expandable: Optional[pulumi.Input[bool]] = None,
-                 memory_limit: Optional[pulumi.Input[float]] = None,
-                 memory_reservation: Optional[pulumi.Input[float]] = None,
+                 memory_limit: Optional[pulumi.Input[int]] = None,
+                 memory_reservation: Optional[pulumi.Input[int]] = None,
                  memory_share_level: Optional[pulumi.Input[str]] = None,
-                 memory_shares: Optional[pulumi.Input[float]] = None,
+                 memory_shares: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,34 +39,34 @@ class ResourcePool(pulumi.CustomResource):
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[float] cpu_limit: The CPU utilization of a resource pool will not exceed
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
                this limit, even if there are available resources. Set to `-1` for unlimited.
                Default: `-1`
-        :param pulumi.Input[float] cpu_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `cpu_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[int] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[float] memory_limit: The CPU utilization of a resource pool will not exceed
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
                this limit, even if there are available resources. Set to `-1` for unlimited.
                Default: `-1`
-        :param pulumi.Input[float] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[float] memory_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[int] memory_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the resource pool.
@@ -75,7 +75,7 @@ class ResourcePool(pulumi.CustomResource):
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,19 +121,19 @@ class ResourcePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cpu_expandable: Optional[pulumi.Input[bool]] = None,
-            cpu_limit: Optional[pulumi.Input[float]] = None,
-            cpu_reservation: Optional[pulumi.Input[float]] = None,
+            cpu_limit: Optional[pulumi.Input[int]] = None,
+            cpu_reservation: Optional[pulumi.Input[int]] = None,
             cpu_share_level: Optional[pulumi.Input[str]] = None,
-            cpu_shares: Optional[pulumi.Input[float]] = None,
+            cpu_shares: Optional[pulumi.Input[int]] = None,
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             memory_expandable: Optional[pulumi.Input[bool]] = None,
-            memory_limit: Optional[pulumi.Input[float]] = None,
-            memory_reservation: Optional[pulumi.Input[float]] = None,
+            memory_limit: Optional[pulumi.Input[int]] = None,
+            memory_reservation: Optional[pulumi.Input[int]] = None,
             memory_share_level: Optional[pulumi.Input[str]] = None,
-            memory_shares: Optional[pulumi.Input[float]] = None,
+            memory_shares: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ResourcePool':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ResourcePool':
         """
         Get an existing ResourcePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -144,34 +144,34 @@ class ResourcePool(pulumi.CustomResource):
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[float] cpu_limit: The CPU utilization of a resource pool will not exceed
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
                this limit, even if there are available resources. Set to `-1` for unlimited.
                Default: `-1`
-        :param pulumi.Input[float] cpu_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `cpu_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[float] cpu_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[int] cpu_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `cpu_share_level` must be `custom`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A list of custom attributes to set on this resource.
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[float] memory_limit: The CPU utilization of a resource pool will not exceed
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
                this limit, even if there are available resources. Set to `-1` for unlimited.
                Default: `-1`
-        :param pulumi.Input[float] memory_reservation: Amount of CPU (MHz) that is guaranteed
+        :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
                simplified view of shares. Levels map to a pre-determined set of numeric
                values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
                `low`, `normal`, or `high` are specified values in `memory_shares` will be
                ignored.  Default: `normal`
-        :param pulumi.Input[float] memory_shares: The number of shares allocated for CPU. Used to
+        :param pulumi.Input[int] memory_shares: The number of shares allocated for CPU. Used to
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the resource pool.
@@ -180,7 +180,7 @@ class ResourcePool(pulumi.CustomResource):
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
                resource pool or the move will fail.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -214,7 +214,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> pulumi.Output[Optional[float]]:
+    def cpu_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The CPU utilization of a resource pool will not exceed
         this limit, even if there are available resources. Set to `-1` for unlimited.
@@ -224,7 +224,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuReservation")
-    def cpu_reservation(self) -> pulumi.Output[Optional[float]]:
+    def cpu_reservation(self) -> pulumi.Output[Optional[int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -245,7 +245,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cpuShares")
-    def cpu_shares(self) -> pulumi.Output[float]:
+    def cpu_shares(self) -> pulumi.Output[int]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -273,7 +273,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> pulumi.Output[Optional[float]]:
+    def memory_limit(self) -> pulumi.Output[Optional[int]]:
         """
         The CPU utilization of a resource pool will not exceed
         this limit, even if there are available resources. Set to `-1` for unlimited.
@@ -283,7 +283,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryReservation")
-    def memory_reservation(self) -> pulumi.Output[Optional[float]]:
+    def memory_reservation(self) -> pulumi.Output[Optional[int]]:
         """
         Amount of CPU (MHz) that is guaranteed
         available to the resource pool. Default: `0`
@@ -304,7 +304,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memoryShares")
-    def memory_shares(self) -> pulumi.Output[float]:
+    def memory_shares(self) -> pulumi.Output[int]:
         """
         The number of shares allocated for CPU. Used to
         determine resource allocation in case of resource contention. If this is set,
@@ -334,7 +334,7 @@ class ResourcePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """

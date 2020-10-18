@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['VmfsDatastore']
@@ -17,11 +17,11 @@ class VmfsDatastore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  host_system_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -34,7 +34,7 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[List[pulumi.Input[str]]] disks: The disks to use with the datastore.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disks: The disks to use with the datastore.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
                This is a path relative to the datacenter you are deploying the datastore to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -49,7 +49,7 @@ class VmfsDatastore(pulumi.CustomResource):
                new resource if changed.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,18 +97,18 @@ class VmfsDatastore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accessible: Optional[pulumi.Input[bool]] = None,
-            capacity: Optional[pulumi.Input[float]] = None,
+            capacity: Optional[pulumi.Input[int]] = None,
             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-            disks: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             folder: Optional[pulumi.Input[str]] = None,
-            free_space: Optional[pulumi.Input[float]] = None,
+            free_space: Optional[pulumi.Input[int]] = None,
             host_system_id: Optional[pulumi.Input[str]] = None,
             maintenance_mode: Optional[pulumi.Input[str]] = None,
             multiple_host_access: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            uncommitted_space: Optional[pulumi.Input[float]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            uncommitted_space: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'VmfsDatastore':
         """
         Get an existing VmfsDatastore resource's state with the given name, id, and optional extra
@@ -119,13 +119,13 @@ class VmfsDatastore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accessible: The connectivity status of the datastore. If this is `false`,
                some other computed attributes may be out of date.
-        :param pulumi.Input[float] capacity: Maximum capacity of the datastore, in megabytes.
+        :param pulumi.Input[int] capacity: Maximum capacity of the datastore, in megabytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
                value string to set on datastore resource.
         :param pulumi.Input[str] datastore_cluster_id: The managed object
                ID of a datastore cluster to put this datastore in.
                Conflicts with `folder`.
-        :param pulumi.Input[List[pulumi.Input[str]]] disks: The disks to use with the datastore.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disks: The disks to use with the datastore.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
                This is a path relative to the datacenter you are deploying the datastore to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -133,7 +133,7 @@ class VmfsDatastore(pulumi.CustomResource):
                located at `/dc1/datastore/foo/bar`, with the final inventory path being
                `/dc1/datastore/foo/bar/test`. Conflicts with
                `datastore_cluster_id`.
-        :param pulumi.Input[float] free_space: Available space of this datastore, in megabytes.
+        :param pulumi.Input[int] free_space: Available space of this datastore, in megabytes.
         :param pulumi.Input[str] host_system_id: The managed object ID of
                the host to set the datastore up on. Note that this is not necessarily the
                only host that the datastore will be set up on - see
@@ -144,8 +144,8 @@ class VmfsDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[float] uncommitted_space: Total additional storage space, in megabytes,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[int] uncommitted_space: Total additional storage space, in megabytes,
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
         """
@@ -180,7 +180,7 @@ class VmfsDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Output[float]:
+    def capacity(self) -> pulumi.Output[int]:
         """
         Maximum capacity of the datastore, in megabytes.
         """
@@ -207,7 +207,7 @@ class VmfsDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disks(self) -> pulumi.Output[List[str]]:
+    def disks(self) -> pulumi.Output[Sequence[str]]:
         """
         The disks to use with the datastore.
         """
@@ -229,7 +229,7 @@ class VmfsDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="freeSpace")
-    def free_space(self) -> pulumi.Output[float]:
+    def free_space(self) -> pulumi.Output[int]:
         """
         Available space of this datastore, in megabytes.
         """
@@ -275,7 +275,7 @@ class VmfsDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -283,7 +283,7 @@ class VmfsDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uncommittedSpace")
-    def uncommitted_space(self) -> pulumi.Output[float]:
+    def uncommitted_space(self) -> pulumi.Output[int]:
         """
         Total additional storage space, in megabytes,
         potentially used by all virtual machines on this datastore.

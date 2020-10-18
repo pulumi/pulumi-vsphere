@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,56 +21,56 @@ class ComputeCluster(pulumi.CustomResource):
                  datacenter_id: Optional[pulumi.Input[str]] = None,
                  dpm_automation_level: Optional[pulumi.Input[str]] = None,
                  dpm_enabled: Optional[pulumi.Input[bool]] = None,
-                 dpm_threshold: Optional[pulumi.Input[float]] = None,
+                 dpm_threshold: Optional[pulumi.Input[int]] = None,
                  drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  drs_automation_level: Optional[pulumi.Input[str]] = None,
                  drs_enable_predictive_drs: Optional[pulumi.Input[bool]] = None,
                  drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
                  drs_enabled: Optional[pulumi.Input[bool]] = None,
-                 drs_migration_threshold: Optional[pulumi.Input[float]] = None,
+                 drs_migration_threshold: Optional[pulumi.Input[int]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
-                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[float]] = None,
-                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[float]] = None,
+                 ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[int]] = None,
+                 ha_admission_control_performance_tolerance: Optional[pulumi.Input[int]] = None,
                  ha_admission_control_policy: Optional[pulumi.Input[str]] = None,
                  ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[bool]] = None,
-                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[float]] = None,
-                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[float]] = None,
-                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[float]] = None,
-                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[float]] = None,
+                 ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[int]] = None,
+                 ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[int]] = None,
+                 ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[int]] = None,
+                 ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[int]] = None,
                  ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[bool]] = None,
                  ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
                  ha_datastore_apd_response: Optional[pulumi.Input[str]] = None,
-                 ha_datastore_apd_response_delay: Optional[pulumi.Input[float]] = None,
+                 ha_datastore_apd_response_delay: Optional[pulumi.Input[int]] = None,
                  ha_datastore_pdl_response: Optional[pulumi.Input[str]] = None,
                  ha_enabled: Optional[pulumi.Input[bool]] = None,
-                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ha_heartbeat_datastore_policy: Optional[pulumi.Input[str]] = None,
                  ha_host_isolation_response: Optional[pulumi.Input[str]] = None,
                  ha_host_monitoring: Optional[pulumi.Input[str]] = None,
                  ha_vm_component_protection: Optional[pulumi.Input[str]] = None,
                  ha_vm_dependency_restart_condition: Optional[pulumi.Input[str]] = None,
-                 ha_vm_failure_interval: Optional[pulumi.Input[float]] = None,
-                 ha_vm_maximum_failure_window: Optional[pulumi.Input[float]] = None,
-                 ha_vm_maximum_resets: Optional[pulumi.Input[float]] = None,
-                 ha_vm_minimum_uptime: Optional[pulumi.Input[float]] = None,
+                 ha_vm_failure_interval: Optional[pulumi.Input[int]] = None,
+                 ha_vm_maximum_failure_window: Optional[pulumi.Input[int]] = None,
+                 ha_vm_maximum_resets: Optional[pulumi.Input[int]] = None,
+                 ha_vm_minimum_uptime: Optional[pulumi.Input[int]] = None,
                  ha_vm_monitoring: Optional[pulumi.Input[str]] = None,
-                 ha_vm_restart_additional_delay: Optional[pulumi.Input[float]] = None,
+                 ha_vm_restart_additional_delay: Optional[pulumi.Input[int]] = None,
                  ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
-                 ha_vm_restart_timeout: Optional[pulumi.Input[float]] = None,
-                 host_cluster_exit_timeout: Optional[pulumi.Input[float]] = None,
+                 ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
+                 host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
                  host_managed: Optional[pulumi.Input[bool]] = None,
-                 host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  proactive_ha_automation_level: Optional[pulumi.Input[str]] = None,
                  proactive_ha_enabled: Optional[pulumi.Input[bool]] = None,
                  proactive_ha_moderate_remediation: Optional[pulumi.Input[str]] = None,
-                 proactive_ha_provider_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  proactive_ha_severe_remediation: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 vsan_disk_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
                  vsan_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
@@ -89,7 +89,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for DRS in this cluster.
                Requires `drs_enabled` to be `true` in order to be effective.
                Default: `false`.
-        :param pulumi.Input[float] dpm_threshold: A value between `1` and `5` indicating the
+        :param pulumi.Input[int] dpm_threshold: A value between `1` and `5` indicating the
                threshold of load within the cluster that influences host power operations.
                This affects both power on and power off operations - a lower setting will
                tolerate more of a surplus/deficit than a higher setting. Default: `3`.
@@ -104,7 +104,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
-        :param pulumi.Input[float] drs_migration_threshold: A value between `1` and `5` indicating
+        :param pulumi.Input[int] drs_migration_threshold: A value between `1` and `5` indicating
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
@@ -119,17 +119,17 @@ class ComputeCluster(pulumi.CustomResource):
                as if they were removed by taking their entry out of `host_system_ids` (see
                below). This is an advanced
                option and should only be used for testing. Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
                block access to the host, and DRS will ignore the host when making
                recommendations.
-        :param pulumi.Input[float] ha_admission_control_host_failure_tolerance: The maximum number
+        :param pulumi.Input[int] ha_admission_control_host_failure_tolerance: The maximum number
                of failed hosts that admission control tolerates when making decisions on
                whether to permit virtual machine operations. The maximum is one less than
                the number of hosts in the cluster. Default: `1`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_admission_control_performance_tolerance: The percentage of
+        :param pulumi.Input[int] ha_admission_control_performance_tolerance: The percentage of
                resource reduction that a cluster of virtual machines can tolerate in case of
                a failover. A value of 0 produces warnings only, whereas a value of 100
                disables the setting. Default: `100` (disabled).
@@ -142,15 +142,15 @@ class ComputeCluster(pulumi.CustomResource):
                setting from the total amount of resources in the cluster. Disable to supply
                user-defined values. Default: `true`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_admission_control_resource_percentage_cpu: Controls the
+        :param pulumi.Input[int] ha_admission_control_resource_percentage_cpu: Controls the
                user-defined percentage of CPU resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[float] ha_admission_control_resource_percentage_memory: Controls the
+        :param pulumi.Input[int] ha_admission_control_resource_percentage_memory: Controls the
                user-defined percentage of memory resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_cpu: Controls the
+        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_cpu: Controls the
                user-defined CPU slot size, in MHz. Default: `32`.
-        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_memory: Controls the
+        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_memory: Controls the
                user-defined memory slot size, in MB. Default: `100`.
         :param pulumi.Input[bool] ha_admission_control_slot_policy_use_explicit_size: Controls
                whether or not you wish to supply explicit values to CPU and memory slot
@@ -167,7 +167,7 @@ class ComputeCluster(pulumi.CustomResource):
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Default: `3`
                minutes. <sup>\*</sup>
@@ -178,7 +178,7 @@ class ComputeCluster(pulumi.CustomResource):
                <sup>\*</sup>
         :param pulumi.Input[bool] ha_enabled: Enable vSphere HA for this cluster. Default:
                `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for
                preferred datastores to use for HA heartbeating. This setting is only useful
                when `ha_heartbeat_datastore_policy` is set
                to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
@@ -204,41 +204,41 @@ class ComputeCluster(pulumi.CustomResource):
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_vm_failure_interval: If a heartbeat from a virtual machine
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
                is not received within this configured interval, the virtual machine is
                marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[float] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
                unlimited reset time is allotted. The value is specified in seconds. Default:
                `-1` (no window).
-        :param pulumi.Input[float] ha_vm_maximum_resets: The maximum number of resets that HA will
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
-        :param pulumi.Input[float] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
                `120` (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[float] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
                after ready condition is met. A VM is considered ready at this point.
                Default: `0` (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
-        :param pulumi.Input[float] ha_vm_restart_timeout: The maximum time, in seconds,
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
                before proceeding with the next priority. Default: `600` (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
                >>>>>>> v1.18.3
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -253,7 +253,7 @@ class ComputeCluster(pulumi.CustomResource):
                `proactive_ha_severe_remediation` is set
                to `QuarantineMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
-        :param pulumi.Input[List[pulumi.Input[str]]] proactive_ha_provider_ids: The list of IDs for health update
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] proactive_ha_provider_ids: The list of IDs for health update
                providers configured for this cluster.
                <sup>\*</sup>
         :param pulumi.Input[str] proactive_ha_severe_remediation: The configured remediation for
@@ -262,8 +262,8 @@ class ComputeCluster(pulumi.CustomResource):
                `proactive_ha_moderate_remediation` is
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
         :param pulumi.Input[bool] vsan_enabled: Whether the VSAN service is enabled for the cluster.
         """
         if __name__ is not None:
@@ -355,57 +355,57 @@ class ComputeCluster(pulumi.CustomResource):
             datacenter_id: Optional[pulumi.Input[str]] = None,
             dpm_automation_level: Optional[pulumi.Input[str]] = None,
             dpm_enabled: Optional[pulumi.Input[bool]] = None,
-            dpm_threshold: Optional[pulumi.Input[float]] = None,
+            dpm_threshold: Optional[pulumi.Input[int]] = None,
             drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             drs_automation_level: Optional[pulumi.Input[str]] = None,
             drs_enable_predictive_drs: Optional[pulumi.Input[bool]] = None,
             drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
             drs_enabled: Optional[pulumi.Input[bool]] = None,
-            drs_migration_threshold: Optional[pulumi.Input[float]] = None,
+            drs_migration_threshold: Optional[pulumi.Input[int]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
-            ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[float]] = None,
-            ha_admission_control_performance_tolerance: Optional[pulumi.Input[float]] = None,
+            ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[int]] = None,
+            ha_admission_control_performance_tolerance: Optional[pulumi.Input[int]] = None,
             ha_admission_control_policy: Optional[pulumi.Input[str]] = None,
             ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[bool]] = None,
-            ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[float]] = None,
-            ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[float]] = None,
-            ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[float]] = None,
-            ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[float]] = None,
+            ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[int]] = None,
+            ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[int]] = None,
+            ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[int]] = None,
+            ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[int]] = None,
             ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[bool]] = None,
             ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
             ha_datastore_apd_response: Optional[pulumi.Input[str]] = None,
-            ha_datastore_apd_response_delay: Optional[pulumi.Input[float]] = None,
+            ha_datastore_apd_response_delay: Optional[pulumi.Input[int]] = None,
             ha_datastore_pdl_response: Optional[pulumi.Input[str]] = None,
             ha_enabled: Optional[pulumi.Input[bool]] = None,
-            ha_heartbeat_datastore_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ha_heartbeat_datastore_policy: Optional[pulumi.Input[str]] = None,
             ha_host_isolation_response: Optional[pulumi.Input[str]] = None,
             ha_host_monitoring: Optional[pulumi.Input[str]] = None,
             ha_vm_component_protection: Optional[pulumi.Input[str]] = None,
             ha_vm_dependency_restart_condition: Optional[pulumi.Input[str]] = None,
-            ha_vm_failure_interval: Optional[pulumi.Input[float]] = None,
-            ha_vm_maximum_failure_window: Optional[pulumi.Input[float]] = None,
-            ha_vm_maximum_resets: Optional[pulumi.Input[float]] = None,
-            ha_vm_minimum_uptime: Optional[pulumi.Input[float]] = None,
+            ha_vm_failure_interval: Optional[pulumi.Input[int]] = None,
+            ha_vm_maximum_failure_window: Optional[pulumi.Input[int]] = None,
+            ha_vm_maximum_resets: Optional[pulumi.Input[int]] = None,
+            ha_vm_minimum_uptime: Optional[pulumi.Input[int]] = None,
             ha_vm_monitoring: Optional[pulumi.Input[str]] = None,
-            ha_vm_restart_additional_delay: Optional[pulumi.Input[float]] = None,
+            ha_vm_restart_additional_delay: Optional[pulumi.Input[int]] = None,
             ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
-            ha_vm_restart_timeout: Optional[pulumi.Input[float]] = None,
-            host_cluster_exit_timeout: Optional[pulumi.Input[float]] = None,
+            ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
+            host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
             host_managed: Optional[pulumi.Input[bool]] = None,
-            host_system_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             proactive_ha_automation_level: Optional[pulumi.Input[str]] = None,
             proactive_ha_enabled: Optional[pulumi.Input[bool]] = None,
             proactive_ha_moderate_remediation: Optional[pulumi.Input[str]] = None,
-            proactive_ha_provider_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             proactive_ha_severe_remediation: Optional[pulumi.Input[str]] = None,
             resource_pool_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            vsan_disk_groups: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]]] = None,
             vsan_enabled: Optional[pulumi.Input[bool]] = None) -> 'ComputeCluster':
         """
         Get an existing ComputeCluster resource's state with the given name, id, and optional extra
@@ -424,7 +424,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for DRS in this cluster.
                Requires `drs_enabled` to be `true` in order to be effective.
                Default: `false`.
-        :param pulumi.Input[float] dpm_threshold: A value between `1` and `5` indicating the
+        :param pulumi.Input[int] dpm_threshold: A value between `1` and `5` indicating the
                threshold of load within the cluster that influences host power operations.
                This affects both power on and power off operations - a lower setting will
                tolerate more of a surplus/deficit than a higher setting. Default: `3`.
@@ -439,7 +439,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
-        :param pulumi.Input[float] drs_migration_threshold: A value between `1` and `5` indicating
+        :param pulumi.Input[int] drs_migration_threshold: A value between `1` and `5` indicating
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
@@ -454,17 +454,17 @@ class ComputeCluster(pulumi.CustomResource):
                as if they were removed by taking their entry out of `host_system_ids` (see
                below). This is an advanced
                option and should only be used for testing. Default: `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
                block access to the host, and DRS will ignore the host when making
                recommendations.
-        :param pulumi.Input[float] ha_admission_control_host_failure_tolerance: The maximum number
+        :param pulumi.Input[int] ha_admission_control_host_failure_tolerance: The maximum number
                of failed hosts that admission control tolerates when making decisions on
                whether to permit virtual machine operations. The maximum is one less than
                the number of hosts in the cluster. Default: `1`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_admission_control_performance_tolerance: The percentage of
+        :param pulumi.Input[int] ha_admission_control_performance_tolerance: The percentage of
                resource reduction that a cluster of virtual machines can tolerate in case of
                a failover. A value of 0 produces warnings only, whereas a value of 100
                disables the setting. Default: `100` (disabled).
@@ -477,15 +477,15 @@ class ComputeCluster(pulumi.CustomResource):
                setting from the total amount of resources in the cluster. Disable to supply
                user-defined values. Default: `true`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_admission_control_resource_percentage_cpu: Controls the
+        :param pulumi.Input[int] ha_admission_control_resource_percentage_cpu: Controls the
                user-defined percentage of CPU resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[float] ha_admission_control_resource_percentage_memory: Controls the
+        :param pulumi.Input[int] ha_admission_control_resource_percentage_memory: Controls the
                user-defined percentage of memory resources in the cluster to reserve for
                failover. Default: `100`.
-        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_cpu: Controls the
+        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_cpu: Controls the
                user-defined CPU slot size, in MHz. Default: `32`.
-        :param pulumi.Input[float] ha_admission_control_slot_policy_explicit_memory: Controls the
+        :param pulumi.Input[int] ha_admission_control_slot_policy_explicit_memory: Controls the
                user-defined memory slot size, in MB. Default: `100`.
         :param pulumi.Input[bool] ha_admission_control_slot_policy_use_explicit_size: Controls
                whether or not you wish to supply explicit values to CPU and memory slot
@@ -502,7 +502,7 @@ class ComputeCluster(pulumi.CustomResource):
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Default: `3`
                minutes. <sup>\*</sup>
@@ -513,7 +513,7 @@ class ComputeCluster(pulumi.CustomResource):
                <sup>\*</sup>
         :param pulumi.Input[bool] ha_enabled: Enable vSphere HA for this cluster. Default:
                `false`.
-        :param pulumi.Input[List[pulumi.Input[str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_heartbeat_datastore_ids: The list of managed object IDs for
                preferred datastores to use for HA heartbeating. This setting is only useful
                when `ha_heartbeat_datastore_policy` is set
                to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
@@ -539,41 +539,41 @@ class ComputeCluster(pulumi.CustomResource):
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[float] ha_vm_failure_interval: If a heartbeat from a virtual machine
+        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
                is not received within this configured interval, the virtual machine is
                marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[float] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
                unlimited reset time is allotted. The value is specified in seconds. Default:
                `-1` (no window).
-        :param pulumi.Input[float] ha_vm_maximum_resets: The maximum number of resets that HA will
+        :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
-        :param pulumi.Input[float] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
+        :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
                `120` (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[float] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
                after ready condition is met. A VM is considered ready at this point.
                Default: `0` (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
-        :param pulumi.Input[float] ha_vm_restart_timeout: The maximum time, in seconds,
+        :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
                before proceeding with the next priority. Default: `600` (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[float] host_cluster_exit_timeout: The timeout for each host maintenance mode
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
                operation when removing hosts from a cluster. The value is specified in
                seconds. Default: `3600` (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
                >>>>>>> v1.18.3
-        :param pulumi.Input[List[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -588,7 +588,7 @@ class ComputeCluster(pulumi.CustomResource):
                `proactive_ha_severe_remediation` is set
                to `QuarantineMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
-        :param pulumi.Input[List[pulumi.Input[str]]] proactive_ha_provider_ids: The list of IDs for health update
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] proactive_ha_provider_ids: The list of IDs for health update
                providers configured for this cluster.
                <sup>\*</sup>
         :param pulumi.Input[str] proactive_ha_severe_remediation: The configured remediation for
@@ -598,8 +598,8 @@ class ComputeCluster(pulumi.CustomResource):
                set to `MaintenanceMode`. Default: `QuarantineMode`.
                <sup>\*</sup>
         :param pulumi.Input[str] resource_pool_id: The managed object ID of the cluster's root resource pool.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ComputeClusterVsanDiskGroupArgs']]]] vsan_disk_groups: A list of disk UUIDs to add to the vSAN cluster.
         :param pulumi.Input[bool] vsan_enabled: Whether the VSAN service is enabled for the cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -704,7 +704,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmThreshold")
-    def dpm_threshold(self) -> pulumi.Output[Optional[float]]:
+    def dpm_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         A value between `1` and `5` indicating the
         threshold of load within the cluster that influences host power operations.
@@ -761,7 +761,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drsMigrationThreshold")
-    def drs_migration_threshold(self) -> pulumi.Output[Optional[float]]:
+    def drs_migration_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         A value between `1` and `5` indicating
         the threshold of imbalance tolerated between hosts. A lower setting will
@@ -797,7 +797,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlFailoverHostSystemIds")
-    def ha_admission_control_failover_host_system_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def ha_admission_control_failover_host_system_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Defines the
         managed object IDs of hosts to use as dedicated failover
@@ -809,7 +809,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlHostFailureTolerance")
-    def ha_admission_control_host_failure_tolerance(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_host_failure_tolerance(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum number
         of failed hosts that admission control tolerates when making decisions on
@@ -821,7 +821,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlPerformanceTolerance")
-    def ha_admission_control_performance_tolerance(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_performance_tolerance(self) -> pulumi.Output[Optional[int]]:
         """
         The percentage of
         resource reduction that a cluster of virtual machines can tolerate in case of
@@ -855,7 +855,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlResourcePercentageCpu")
-    def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_resource_percentage_cpu(self) -> pulumi.Output[Optional[int]]:
         """
         Controls the
         user-defined percentage of CPU resources in the cluster to reserve for
@@ -865,7 +865,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlResourcePercentageMemory")
-    def ha_admission_control_resource_percentage_memory(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_resource_percentage_memory(self) -> pulumi.Output[Optional[int]]:
         """
         Controls the
         user-defined percentage of memory resources in the cluster to reserve for
@@ -875,7 +875,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitCpu")
-    def ha_admission_control_slot_policy_explicit_cpu(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_slot_policy_explicit_cpu(self) -> pulumi.Output[Optional[int]]:
         """
         Controls the
         user-defined CPU slot size, in MHz. Default: `32`.
@@ -884,7 +884,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haAdmissionControlSlotPolicyExplicitMemory")
-    def ha_admission_control_slot_policy_explicit_memory(self) -> pulumi.Output[Optional[float]]:
+    def ha_admission_control_slot_policy_explicit_memory(self) -> pulumi.Output[Optional[int]]:
         """
         Controls the
         user-defined memory slot size, in MB. Default: `100`.
@@ -936,7 +936,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haDatastoreApdResponseDelay")
-    def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[float]]:
+    def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[int]]:
         """
         Controls the delay in minutes
         to wait after an APD timeout event to execute the response action defined in
@@ -968,7 +968,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haHeartbeatDatastoreIds")
-    def ha_heartbeat_datastore_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def ha_heartbeat_datastore_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of managed object IDs for
         preferred datastores to use for HA heartbeating. This setting is only useful
@@ -1036,7 +1036,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmFailureInterval")
-    def ha_vm_failure_interval(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_failure_interval(self) -> pulumi.Output[Optional[int]]:
         """
         If a heartbeat from a virtual machine
         is not received within this configured interval, the virtual machine is
@@ -1046,7 +1046,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumFailureWindow")
-    def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[int]]:
         """
         The length of the reset window in
         which `ha_vm_maximum_resets` can operate. When this
@@ -1059,7 +1059,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMaximumResets")
-    def ha_vm_maximum_resets(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_maximum_resets(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum number of resets that HA will
         perform to a virtual machine when responding to a failure event. Default: `3`
@@ -1068,7 +1068,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmMinimumUptime")
-    def ha_vm_minimum_uptime(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_minimum_uptime(self) -> pulumi.Output[Optional[int]]:
         """
         The time, in seconds, that HA waits after
         powering on a virtual machine before monitoring for heartbeats. Default:
@@ -1088,7 +1088,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartAdditionalDelay")
-    def ha_vm_restart_additional_delay(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_restart_additional_delay(self) -> pulumi.Output[Optional[int]]:
         """
         Additional delay in seconds
         after ready condition is met. A VM is considered ready at this point.
@@ -1108,7 +1108,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="haVmRestartTimeout")
-    def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[float]]:
+    def ha_vm_restart_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum time, in seconds,
         that vSphere HA will wait for virtual machines in one priority to be ready
@@ -1119,7 +1119,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostClusterExitTimeout")
-    def host_cluster_exit_timeout(self) -> pulumi.Output[Optional[float]]:
+    def host_cluster_exit_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         The timeout for each host maintenance mode
         operation when removing hosts from a cluster. The value is specified in
@@ -1140,7 +1140,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostSystemIds")
-    def host_system_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def host_system_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The [managed object IDs][docs-about-morefs] of
         the hosts to put in the cluster. Conflicts with: `host_managed`.
@@ -1190,7 +1190,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proactiveHaProviderIds")
-    def proactive_ha_provider_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def proactive_ha_provider_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of IDs for health update
         providers configured for this cluster.
@@ -1221,7 +1221,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
         """
@@ -1229,7 +1229,7 @@ class ComputeCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vsanDiskGroups")
-    def vsan_disk_groups(self) -> pulumi.Output[List['outputs.ComputeClusterVsanDiskGroup']]:
+    def vsan_disk_groups(self) -> pulumi.Output[Sequence['outputs.ComputeClusterVsanDiskGroup']]:
         """
         A list of disk UUIDs to add to the vSAN cluster.
         """

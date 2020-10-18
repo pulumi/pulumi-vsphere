@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['License']
@@ -81,8 +81,8 @@ class License(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             license_key: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            total: Optional[pulumi.Input[float]] = None,
-            used: Optional[pulumi.Input[float]] = None) -> 'License':
+            total: Optional[pulumi.Input[int]] = None,
+            used: Optional[pulumi.Input[int]] = None) -> 'License':
         """
         Get an existing License resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,8 +94,8 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
         :param pulumi.Input[str] name: The display name for the license.
-        :param pulumi.Input[float] total: Total number of units (example: CPUs) contained in the license.
-        :param pulumi.Input[float] used: The number of units (example: CPUs) assigned to this license.
+        :param pulumi.Input[int] total: Total number of units (example: CPUs) contained in the license.
+        :param pulumi.Input[int] used: The number of units (example: CPUs) assigned to this license.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -143,7 +143,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def total(self) -> pulumi.Output[float]:
+    def total(self) -> pulumi.Output[int]:
         """
         Total number of units (example: CPUs) contained in the license.
         """
@@ -151,7 +151,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def used(self) -> pulumi.Output[float]:
+    def used(self) -> pulumi.Output[int]:
         """
         The number of units (example: CPUs) assigned to this license.
         """
