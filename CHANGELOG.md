@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
-* Upgrae to v1.24.2 of the vSphere Terraform Provider
+_(none)_
 
 ---
 
+## 2.10.3 (2020-10-19)
+* Upgrade to Pulumi v2.12.0 and pulumi-terraform-bridge v2.11.0
+* Upgrae to v1.24.2 of the vSphere Terraform Provider
+
 ## 2.10.2 (2020-10-12)
-_(none)_
+* Fix an issue with the license file that was causing a breakage to the Python license module
 
 ## 2.10.1 (2020-10-09)
 * Upgrade to v1.24.1 of the vSphere Terraform Provider
