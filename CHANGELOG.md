@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.12.1
+_(none)_
 
 ---
+
+## 2.11.1 (2020-11-06)
+* Upgrade to pulumi-terraform-bridge v2.12.1
 
 ## 2.11.0 (2020-10-26)
 * Improving the accuracy of previews leading to a more accurate understanding of what will actually change rather than assuming all output properties will change.  
