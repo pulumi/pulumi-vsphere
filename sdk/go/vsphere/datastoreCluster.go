@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -529,4 +530,43 @@ type DatastoreClusterArgs struct {
 
 func (DatastoreClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterArgs)(nil)).Elem()
+}
+
+type DatastoreClusterInput interface {
+	pulumi.Input
+
+	ToDatastoreClusterOutput() DatastoreClusterOutput
+	ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput
+}
+
+func (DatastoreCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreCluster)(nil)).Elem()
+}
+
+func (i DatastoreCluster) ToDatastoreClusterOutput() DatastoreClusterOutput {
+	return i.ToDatastoreClusterOutputWithContext(context.Background())
+}
+
+func (i DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterOutput)
+}
+
+type DatastoreClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatastoreClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreClusterOutput)(nil)).Elem()
+}
+
+func (o DatastoreClusterOutput) ToDatastoreClusterOutput() DatastoreClusterOutput {
+	return o
+}
+
+func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatastoreClusterOutput{})
 }

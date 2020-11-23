@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -177,4 +178,43 @@ type DatacenterArgs struct {
 
 func (DatacenterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datacenterArgs)(nil)).Elem()
+}
+
+type DatacenterInput interface {
+	pulumi.Input
+
+	ToDatacenterOutput() DatacenterOutput
+	ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput
+}
+
+func (Datacenter) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datacenter)(nil)).Elem()
+}
+
+func (i Datacenter) ToDatacenterOutput() DatacenterOutput {
+	return i.ToDatacenterOutputWithContext(context.Background())
+}
+
+func (i Datacenter) ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatacenterOutput)
+}
+
+type DatacenterOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatacenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatacenterOutput)(nil)).Elem()
+}
+
+func (o DatacenterOutput) ToDatacenterOutput() DatacenterOutput {
+	return o
+}
+
+func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatacenterOutput{})
 }

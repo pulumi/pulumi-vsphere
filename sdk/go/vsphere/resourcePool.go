@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -334,4 +335,43 @@ type ResourcePoolArgs struct {
 
 func (ResourcePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcePoolArgs)(nil)).Elem()
+}
+
+type ResourcePoolInput interface {
+	pulumi.Input
+
+	ToResourcePoolOutput() ResourcePoolOutput
+	ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput
+}
+
+func (ResourcePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePool)(nil)).Elem()
+}
+
+func (i ResourcePool) ToResourcePoolOutput() ResourcePoolOutput {
+	return i.ToResourcePoolOutputWithContext(context.Background())
+}
+
+func (i ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
+}
+
+type ResourcePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourcePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePoolOutput)(nil)).Elem()
+}
+
+func (o ResourcePoolOutput) ToResourcePoolOutput() ResourcePoolOutput {
+	return o
+}
+
+func (o ResourcePoolOutput) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ResourcePoolOutput{})
 }

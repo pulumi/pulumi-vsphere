@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -86,4 +87,43 @@ type RoleArgs struct {
 
 func (RoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleArgs)(nil)).Elem()
+}
+
+type RoleInput interface {
+	pulumi.Input
+
+	ToRoleOutput() RoleOutput
+	ToRoleOutputWithContext(ctx context.Context) RoleOutput
+}
+
+func (Role) ElementType() reflect.Type {
+	return reflect.TypeOf((*Role)(nil)).Elem()
+}
+
+func (i Role) ToRoleOutput() RoleOutput {
+	return i.ToRoleOutputWithContext(context.Background())
+}
+
+func (i Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
+}
+
+type RoleOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleOutput)(nil)).Elem()
+}
+
+func (o RoleOutput) ToRoleOutput() RoleOutput {
+	return o
+}
+
+func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RoleOutput{})
 }

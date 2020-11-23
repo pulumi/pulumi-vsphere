@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -177,4 +178,43 @@ type StorageDrsVmOverrideArgs struct {
 
 func (StorageDrsVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageDrsVmOverrideArgs)(nil)).Elem()
+}
+
+type StorageDrsVmOverrideInput interface {
+	pulumi.Input
+
+	ToStorageDrsVmOverrideOutput() StorageDrsVmOverrideOutput
+	ToStorageDrsVmOverrideOutputWithContext(ctx context.Context) StorageDrsVmOverrideOutput
+}
+
+func (StorageDrsVmOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDrsVmOverride)(nil)).Elem()
+}
+
+func (i StorageDrsVmOverride) ToStorageDrsVmOverrideOutput() StorageDrsVmOverrideOutput {
+	return i.ToStorageDrsVmOverrideOutputWithContext(context.Background())
+}
+
+func (i StorageDrsVmOverride) ToStorageDrsVmOverrideOutputWithContext(ctx context.Context) StorageDrsVmOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDrsVmOverrideOutput)
+}
+
+type StorageDrsVmOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (StorageDrsVmOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDrsVmOverrideOutput)(nil)).Elem()
+}
+
+func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverrideOutput() StorageDrsVmOverrideOutput {
+	return o
+}
+
+func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverrideOutputWithContext(ctx context.Context) StorageDrsVmOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StorageDrsVmOverrideOutput{})
 }

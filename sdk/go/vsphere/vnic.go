@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -309,4 +310,43 @@ type VnicArgs struct {
 
 func (VnicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vnicArgs)(nil)).Elem()
+}
+
+type VnicInput interface {
+	pulumi.Input
+
+	ToVnicOutput() VnicOutput
+	ToVnicOutputWithContext(ctx context.Context) VnicOutput
+}
+
+func (Vnic) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vnic)(nil)).Elem()
+}
+
+func (i Vnic) ToVnicOutput() VnicOutput {
+	return i.ToVnicOutputWithContext(context.Background())
+}
+
+func (i Vnic) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VnicOutput)
+}
+
+type VnicOutput struct {
+	*pulumi.OutputState
+}
+
+func (VnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VnicOutput)(nil)).Elem()
+}
+
+func (o VnicOutput) ToVnicOutput() VnicOutput {
+	return o
+}
+
+func (o VnicOutput) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VnicOutput{})
 }

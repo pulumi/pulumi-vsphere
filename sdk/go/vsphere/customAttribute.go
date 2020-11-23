@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -95,4 +96,43 @@ type CustomAttributeArgs struct {
 
 func (CustomAttributeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customAttributeArgs)(nil)).Elem()
+}
+
+type CustomAttributeInput interface {
+	pulumi.Input
+
+	ToCustomAttributeOutput() CustomAttributeOutput
+	ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput
+}
+
+func (CustomAttribute) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttribute)(nil)).Elem()
+}
+
+func (i CustomAttribute) ToCustomAttributeOutput() CustomAttributeOutput {
+	return i.ToCustomAttributeOutputWithContext(context.Background())
+}
+
+func (i CustomAttribute) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput)
+}
+
+type CustomAttributeOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttributeOutput)(nil)).Elem()
+}
+
+func (o CustomAttributeOutput) ToCustomAttributeOutput() CustomAttributeOutput {
+	return o
+}
+
+func (o CustomAttributeOutput) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomAttributeOutput{})
 }

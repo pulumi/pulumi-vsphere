@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -161,4 +162,43 @@ type VmStoragePolicyArgs struct {
 
 func (VmStoragePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmStoragePolicyArgs)(nil)).Elem()
+}
+
+type VmStoragePolicyInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyOutput() VmStoragePolicyOutput
+	ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput
+}
+
+func (VmStoragePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmStoragePolicy)(nil)).Elem()
+}
+
+func (i VmStoragePolicy) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
+	return i.ToVmStoragePolicyOutputWithContext(context.Background())
+}
+
+func (i VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyOutput)
+}
+
+type VmStoragePolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (VmStoragePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmStoragePolicyOutput)(nil)).Elem()
+}
+
+func (o VmStoragePolicyOutput) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
+	return o
+}
+
+func (o VmStoragePolicyOutput) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VmStoragePolicyOutput{})
 }

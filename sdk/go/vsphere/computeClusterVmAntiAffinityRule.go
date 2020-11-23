@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type ComputeClusterVmAntiAffinityRuleArgs struct {
 
 func (ComputeClusterVmAntiAffinityRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmAntiAffinityRuleArgs)(nil)).Elem()
+}
+
+type ComputeClusterVmAntiAffinityRuleInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput
+	ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput
+}
+
+func (ComputeClusterVmAntiAffinityRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRule)(nil)).Elem()
+}
+
+func (i ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput {
+	return i.ToComputeClusterVmAntiAffinityRuleOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRuleOutput)
+}
+
+type ComputeClusterVmAntiAffinityRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterVmAntiAffinityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRuleOutput)(nil)).Elem()
+}
+
+func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ComputeClusterVmAntiAffinityRuleOutput{})
 }

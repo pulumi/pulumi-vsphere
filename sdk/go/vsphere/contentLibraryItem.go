@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -129,4 +130,43 @@ type ContentLibraryItemArgs struct {
 
 func (ContentLibraryItemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentLibraryItemArgs)(nil)).Elem()
+}
+
+type ContentLibraryItemInput interface {
+	pulumi.Input
+
+	ToContentLibraryItemOutput() ContentLibraryItemOutput
+	ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput
+}
+
+func (ContentLibraryItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryItem)(nil)).Elem()
+}
+
+func (i ContentLibraryItem) ToContentLibraryItemOutput() ContentLibraryItemOutput {
+	return i.ToContentLibraryItemOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemOutput)
+}
+
+type ContentLibraryItemOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContentLibraryItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryItemOutput)(nil)).Elem()
+}
+
+func (o ContentLibraryItemOutput) ToContentLibraryItemOutput() ContentLibraryItemOutput {
+	return o
+}
+
+func (o ContentLibraryItemOutput) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContentLibraryItemOutput{})
 }

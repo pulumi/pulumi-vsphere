@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -454,4 +455,43 @@ type HostPortGroupArgs struct {
 
 func (HostPortGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostPortGroupArgs)(nil)).Elem()
+}
+
+type HostPortGroupInput interface {
+	pulumi.Input
+
+	ToHostPortGroupOutput() HostPortGroupOutput
+	ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput
+}
+
+func (HostPortGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortGroup)(nil)).Elem()
+}
+
+func (i HostPortGroup) ToHostPortGroupOutput() HostPortGroupOutput {
+	return i.ToHostPortGroupOutputWithContext(context.Background())
+}
+
+func (i HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupOutput)
+}
+
+type HostPortGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostPortGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortGroupOutput)(nil)).Elem()
+}
+
+func (o HostPortGroupOutput) ToHostPortGroupOutput() HostPortGroupOutput {
+	return o
+}
+
+func (o HostPortGroupOutput) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostPortGroupOutput{})
 }

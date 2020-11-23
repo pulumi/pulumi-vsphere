@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -666,4 +667,43 @@ type DistributedPortGroupArgs struct {
 
 func (DistributedPortGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedPortGroupArgs)(nil)).Elem()
+}
+
+type DistributedPortGroupInput interface {
+	pulumi.Input
+
+	ToDistributedPortGroupOutput() DistributedPortGroupOutput
+	ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput
+}
+
+func (DistributedPortGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedPortGroup)(nil)).Elem()
+}
+
+func (i DistributedPortGroup) ToDistributedPortGroupOutput() DistributedPortGroupOutput {
+	return i.ToDistributedPortGroupOutputWithContext(context.Background())
+}
+
+func (i DistributedPortGroup) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupOutput)
+}
+
+type DistributedPortGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributedPortGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedPortGroupOutput)(nil)).Elem()
+}
+
+func (o DistributedPortGroupOutput) ToDistributedPortGroupOutput() DistributedPortGroupOutput {
+	return o
+}
+
+func (o DistributedPortGroupOutput) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DistributedPortGroupOutput{})
 }

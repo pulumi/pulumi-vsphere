@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -114,4 +115,43 @@ type ComputeClusterVmGroupArgs struct {
 
 func (ComputeClusterVmGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmGroupArgs)(nil)).Elem()
+}
+
+type ComputeClusterVmGroupInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput
+	ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput
+}
+
+func (ComputeClusterVmGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmGroup)(nil)).Elem()
+}
+
+func (i ComputeClusterVmGroup) ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput {
+	return i.ToComputeClusterVmGroupOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmGroup) ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupOutput)
+}
+
+type ComputeClusterVmGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterVmGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmGroupOutput)(nil)).Elem()
+}
+
+func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput {
+	return o
+}
+
+func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ComputeClusterVmGroupOutput{})
 }

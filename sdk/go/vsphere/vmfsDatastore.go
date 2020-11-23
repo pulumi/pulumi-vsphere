@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -258,4 +259,43 @@ type VmfsDatastoreArgs struct {
 
 func (VmfsDatastoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmfsDatastoreArgs)(nil)).Elem()
+}
+
+type VmfsDatastoreInput interface {
+	pulumi.Input
+
+	ToVmfsDatastoreOutput() VmfsDatastoreOutput
+	ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput
+}
+
+func (VmfsDatastore) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmfsDatastore)(nil)).Elem()
+}
+
+func (i VmfsDatastore) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
+	return i.ToVmfsDatastoreOutputWithContext(context.Background())
+}
+
+func (i VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreOutput)
+}
+
+type VmfsDatastoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (VmfsDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmfsDatastoreOutput)(nil)).Elem()
+}
+
+func (o VmfsDatastoreOutput) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
+	return o
+}
+
+func (o VmfsDatastoreOutput) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VmfsDatastoreOutput{})
 }

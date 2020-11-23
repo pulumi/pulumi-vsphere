@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -345,4 +346,43 @@ type NasDatastoreArgs struct {
 
 func (NasDatastoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nasDatastoreArgs)(nil)).Elem()
+}
+
+type NasDatastoreInput interface {
+	pulumi.Input
+
+	ToNasDatastoreOutput() NasDatastoreOutput
+	ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput
+}
+
+func (NasDatastore) ElementType() reflect.Type {
+	return reflect.TypeOf((*NasDatastore)(nil)).Elem()
+}
+
+func (i NasDatastore) ToNasDatastoreOutput() NasDatastoreOutput {
+	return i.ToNasDatastoreOutputWithContext(context.Background())
+}
+
+func (i NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreOutput)
+}
+
+type NasDatastoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (NasDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NasDatastoreOutput)(nil)).Elem()
+}
+
+func (o NasDatastoreOutput) ToNasDatastoreOutput() NasDatastoreOutput {
+	return o
+}
+
+func (o NasDatastoreOutput) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NasDatastoreOutput{})
 }

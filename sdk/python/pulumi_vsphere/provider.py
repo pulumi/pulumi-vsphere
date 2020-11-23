@@ -92,7 +92,7 @@ class Provider(pulumi.ProviderResource):
                 user = _utilities.get_env('VSPHERE_USER')
             __props__['user'] = user
             if vcenter_server is not None:
-                warnings.warn("This field has been renamed to vsphere_server.", DeprecationWarning)
+                warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
                 pulumi.log.warn("vcenter_server is deprecated: This field has been renamed to vsphere_server.")
             __props__['vcenter_server'] = vcenter_server
             if vim_keep_alive is None:

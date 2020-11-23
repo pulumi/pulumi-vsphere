@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -132,4 +133,43 @@ type DpmHostOverrideArgs struct {
 
 func (DpmHostOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dpmHostOverrideArgs)(nil)).Elem()
+}
+
+type DpmHostOverrideInput interface {
+	pulumi.Input
+
+	ToDpmHostOverrideOutput() DpmHostOverrideOutput
+	ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput
+}
+
+func (DpmHostOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*DpmHostOverride)(nil)).Elem()
+}
+
+func (i DpmHostOverride) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
+	return i.ToDpmHostOverrideOutputWithContext(context.Background())
+}
+
+func (i DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideOutput)
+}
+
+type DpmHostOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (DpmHostOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DpmHostOverrideOutput)(nil)).Elem()
+}
+
+func (o DpmHostOverrideOutput) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
+	return o
+}
+
+func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DpmHostOverrideOutput{})
 }

@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -226,4 +227,43 @@ type VirtualMachineSnapshotArgs struct {
 
 func (VirtualMachineSnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualMachineSnapshotArgs)(nil)).Elem()
+}
+
+type VirtualMachineSnapshotInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput
+	ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput
+}
+
+func (VirtualMachineSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSnapshot)(nil)).Elem()
+}
+
+func (i VirtualMachineSnapshot) ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput {
+	return i.ToVirtualMachineSnapshotOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotOutput)
+}
+
+type VirtualMachineSnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSnapshotOutput)(nil)).Elem()
+}
+
+func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualMachineSnapshotOutput{})
 }

@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -182,4 +183,43 @@ type ComputeClusterVmHostRuleArgs struct {
 
 func (ComputeClusterVmHostRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*computeClusterVmHostRuleArgs)(nil)).Elem()
+}
+
+type ComputeClusterVmHostRuleInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput
+	ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput
+}
+
+func (ComputeClusterVmHostRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmHostRule)(nil)).Elem()
+}
+
+func (i ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput {
+	return i.ToComputeClusterVmHostRuleOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmHostRuleOutput)
+}
+
+type ComputeClusterVmHostRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterVmHostRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmHostRuleOutput)(nil)).Elem()
+}
+
+func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput {
+	return o
+}
+
+func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ComputeClusterVmHostRuleOutput{})
 }

@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type DrsVmOverrideArgs struct {
 
 func (DrsVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*drsVmOverrideArgs)(nil)).Elem()
+}
+
+type DrsVmOverrideInput interface {
+	pulumi.Input
+
+	ToDrsVmOverrideOutput() DrsVmOverrideOutput
+	ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput
+}
+
+func (DrsVmOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrsVmOverride)(nil)).Elem()
+}
+
+func (i DrsVmOverride) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
+	return i.ToDrsVmOverrideOutputWithContext(context.Background())
+}
+
+func (i DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideOutput)
+}
+
+type DrsVmOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (DrsVmOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrsVmOverrideOutput)(nil)).Elem()
+}
+
+func (o DrsVmOverrideOutput) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
+	return o
+}
+
+func (o DrsVmOverrideOutput) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DrsVmOverrideOutput{})
 }

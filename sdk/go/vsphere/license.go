@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -136,4 +137,43 @@ type LicenseArgs struct {
 
 func (LicenseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*licenseArgs)(nil)).Elem()
+}
+
+type LicenseInput interface {
+	pulumi.Input
+
+	ToLicenseOutput() LicenseOutput
+	ToLicenseOutputWithContext(ctx context.Context) LicenseOutput
+}
+
+func (License) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil)).Elem()
+}
+
+func (i License) ToLicenseOutput() LicenseOutput {
+	return i.ToLicenseOutputWithContext(context.Background())
+}
+
+func (i License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
+}
+
+type LicenseOutput struct {
+	*pulumi.OutputState
+}
+
+func (LicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseOutput)(nil)).Elem()
+}
+
+func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
+	return o
+}
+
+func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LicenseOutput{})
 }

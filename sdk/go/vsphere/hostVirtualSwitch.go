@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -423,4 +424,43 @@ type HostVirtualSwitchArgs struct {
 
 func (HostVirtualSwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostVirtualSwitchArgs)(nil)).Elem()
+}
+
+type HostVirtualSwitchInput interface {
+	pulumi.Input
+
+	ToHostVirtualSwitchOutput() HostVirtualSwitchOutput
+	ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput
+}
+
+func (HostVirtualSwitch) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostVirtualSwitch)(nil)).Elem()
+}
+
+func (i HostVirtualSwitch) ToHostVirtualSwitchOutput() HostVirtualSwitchOutput {
+	return i.ToHostVirtualSwitchOutputWithContext(context.Background())
+}
+
+func (i HostVirtualSwitch) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchOutput)
+}
+
+type HostVirtualSwitchOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostVirtualSwitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostVirtualSwitchOutput)(nil)).Elem()
+}
+
+func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutput() HostVirtualSwitchOutput {
+	return o
+}
+
+func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostVirtualSwitchOutput{})
 }
