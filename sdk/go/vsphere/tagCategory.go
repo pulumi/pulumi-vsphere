@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -132,4 +133,43 @@ type TagCategoryArgs struct {
 
 func (TagCategoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagCategoryArgs)(nil)).Elem()
+}
+
+type TagCategoryInput interface {
+	pulumi.Input
+
+	ToTagCategoryOutput() TagCategoryOutput
+	ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput
+}
+
+func (TagCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagCategory)(nil)).Elem()
+}
+
+func (i TagCategory) ToTagCategoryOutput() TagCategoryOutput {
+	return i.ToTagCategoryOutputWithContext(context.Background())
+}
+
+func (i TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryOutput)
+}
+
+type TagCategoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (TagCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagCategoryOutput)(nil)).Elem()
+}
+
+func (o TagCategoryOutput) ToTagCategoryOutput() TagCategoryOutput {
+	return o
+}
+
+func (o TagCategoryOutput) ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TagCategoryOutput{})
 }

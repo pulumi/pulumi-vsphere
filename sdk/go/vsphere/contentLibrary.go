@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -119,4 +120,43 @@ type ContentLibraryArgs struct {
 
 func (ContentLibraryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*contentLibraryArgs)(nil)).Elem()
+}
+
+type ContentLibraryInput interface {
+	pulumi.Input
+
+	ToContentLibraryOutput() ContentLibraryOutput
+	ToContentLibraryOutputWithContext(ctx context.Context) ContentLibraryOutput
+}
+
+func (ContentLibrary) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibrary)(nil)).Elem()
+}
+
+func (i ContentLibrary) ToContentLibraryOutput() ContentLibraryOutput {
+	return i.ToContentLibraryOutputWithContext(context.Background())
+}
+
+func (i ContentLibrary) ToContentLibraryOutputWithContext(ctx context.Context) ContentLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryOutput)
+}
+
+type ContentLibraryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContentLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryOutput)(nil)).Elem()
+}
+
+func (o ContentLibraryOutput) ToContentLibraryOutput() ContentLibraryOutput {
+	return o
+}
+
+func (o ContentLibraryOutput) ToContentLibraryOutputWithContext(ctx context.Context) ContentLibraryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ContentLibraryOutput{})
 }

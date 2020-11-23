@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -355,4 +356,43 @@ type HostArgs struct {
 
 func (HostArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostArgs)(nil)).Elem()
+}
+
+type HostInput interface {
+	pulumi.Input
+
+	ToHostOutput() HostOutput
+	ToHostOutputWithContext(ctx context.Context) HostOutput
+}
+
+func (Host) ElementType() reflect.Type {
+	return reflect.TypeOf((*Host)(nil)).Elem()
+}
+
+func (i Host) ToHostOutput() HostOutput {
+	return i.ToHostOutputWithContext(context.Background())
+}
+
+func (i Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
+}
+
+type HostOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostOutput)(nil)).Elem()
+}
+
+func (o HostOutput) ToHostOutput() HostOutput {
+	return o
+}
+
+func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HostOutput{})
 }

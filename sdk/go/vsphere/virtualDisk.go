@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -231,4 +232,43 @@ type VirtualDiskArgs struct {
 
 func (VirtualDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualDiskArgs)(nil)).Elem()
+}
+
+type VirtualDiskInput interface {
+	pulumi.Input
+
+	ToVirtualDiskOutput() VirtualDiskOutput
+	ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput
+}
+
+func (VirtualDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualDisk)(nil)).Elem()
+}
+
+func (i VirtualDisk) ToVirtualDiskOutput() VirtualDiskOutput {
+	return i.ToVirtualDiskOutputWithContext(context.Background())
+}
+
+func (i VirtualDisk) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskOutput)
+}
+
+type VirtualDiskOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualDiskOutput)(nil)).Elem()
+}
+
+func (o VirtualDiskOutput) ToVirtualDiskOutput() VirtualDiskOutput {
+	return o
+}
+
+func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VirtualDiskOutput{})
 }

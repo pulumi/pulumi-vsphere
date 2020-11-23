@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -222,4 +223,43 @@ type VappEntityArgs struct {
 
 func (VappEntityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vappEntityArgs)(nil)).Elem()
+}
+
+type VappEntityInput interface {
+	pulumi.Input
+
+	ToVappEntityOutput() VappEntityOutput
+	ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput
+}
+
+func (VappEntity) ElementType() reflect.Type {
+	return reflect.TypeOf((*VappEntity)(nil)).Elem()
+}
+
+func (i VappEntity) ToVappEntityOutput() VappEntityOutput {
+	return i.ToVappEntityOutputWithContext(context.Background())
+}
+
+func (i VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VappEntityOutput)
+}
+
+type VappEntityOutput struct {
+	*pulumi.OutputState
+}
+
+func (VappEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VappEntityOutput)(nil)).Elem()
+}
+
+func (o VappEntityOutput) ToVappEntityOutput() VappEntityOutput {
+	return o
+}
+
+func (o VappEntityOutput) ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VappEntityOutput{})
 }

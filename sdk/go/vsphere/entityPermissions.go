@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -110,4 +111,43 @@ type EntityPermissionsArgs struct {
 
 func (EntityPermissionsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*entityPermissionsArgs)(nil)).Elem()
+}
+
+type EntityPermissionsInput interface {
+	pulumi.Input
+
+	ToEntityPermissionsOutput() EntityPermissionsOutput
+	ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput
+}
+
+func (EntityPermissions) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPermissions)(nil)).Elem()
+}
+
+func (i EntityPermissions) ToEntityPermissionsOutput() EntityPermissionsOutput {
+	return i.ToEntityPermissionsOutputWithContext(context.Background())
+}
+
+func (i EntityPermissions) ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsOutput)
+}
+
+type EntityPermissionsOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntityPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPermissionsOutput)(nil)).Elem()
+}
+
+func (o EntityPermissionsOutput) ToEntityPermissionsOutput() EntityPermissionsOutput {
+	return o
+}
+
+func (o EntityPermissionsOutput) ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntityPermissionsOutput{})
 }

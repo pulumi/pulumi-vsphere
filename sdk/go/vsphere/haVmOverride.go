@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -412,4 +413,43 @@ type HaVmOverrideArgs struct {
 
 func (HaVmOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*haVmOverrideArgs)(nil)).Elem()
+}
+
+type HaVmOverrideInput interface {
+	pulumi.Input
+
+	ToHaVmOverrideOutput() HaVmOverrideOutput
+	ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput
+}
+
+func (HaVmOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaVmOverride)(nil)).Elem()
+}
+
+func (i HaVmOverride) ToHaVmOverrideOutput() HaVmOverrideOutput {
+	return i.ToHaVmOverrideOutputWithContext(context.Background())
+}
+
+func (i HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideOutput)
+}
+
+type HaVmOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (HaVmOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaVmOverrideOutput)(nil)).Elem()
+}
+
+func (o HaVmOverrideOutput) ToHaVmOverrideOutput() HaVmOverrideOutput {
+	return o
+}
+
+func (o HaVmOverrideOutput) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HaVmOverrideOutput{})
 }

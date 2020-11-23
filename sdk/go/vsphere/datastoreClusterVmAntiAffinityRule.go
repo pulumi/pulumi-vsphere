@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,4 +138,43 @@ type DatastoreClusterVmAntiAffinityRuleArgs struct {
 
 func (DatastoreClusterVmAntiAffinityRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datastoreClusterVmAntiAffinityRuleArgs)(nil)).Elem()
+}
+
+type DatastoreClusterVmAntiAffinityRuleInput interface {
+	pulumi.Input
+
+	ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput
+	ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput
+}
+
+func (DatastoreClusterVmAntiAffinityRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRule)(nil)).Elem()
+}
+
+func (i DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput {
+	return i.ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(context.Background())
+}
+
+func (i DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterVmAntiAffinityRuleOutput)
+}
+
+type DatastoreClusterVmAntiAffinityRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatastoreClusterVmAntiAffinityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRuleOutput)(nil)).Elem()
+}
+
+func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput {
+	return o
+}
+
+func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatastoreClusterVmAntiAffinityRuleOutput{})
 }

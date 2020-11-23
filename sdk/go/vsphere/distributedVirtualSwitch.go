@@ -4,6 +4,7 @@
 package vsphere
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -1325,4 +1326,43 @@ type DistributedVirtualSwitchArgs struct {
 
 func (DistributedVirtualSwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*distributedVirtualSwitchArgs)(nil)).Elem()
+}
+
+type DistributedVirtualSwitchInput interface {
+	pulumi.Input
+
+	ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput
+	ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput
+}
+
+func (DistributedVirtualSwitch) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedVirtualSwitch)(nil)).Elem()
+}
+
+func (i DistributedVirtualSwitch) ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput {
+	return i.ToDistributedVirtualSwitchOutputWithContext(context.Background())
+}
+
+func (i DistributedVirtualSwitch) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchOutput)
+}
+
+type DistributedVirtualSwitchOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributedVirtualSwitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedVirtualSwitchOutput)(nil)).Elem()
+}
+
+func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput {
+	return o
+}
+
+func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DistributedVirtualSwitchOutput{})
 }
