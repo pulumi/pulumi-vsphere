@@ -11,6 +11,10 @@ let __config = new pulumi.Config("vsphere");
  */
 export let allowUnverifiedSsl: boolean | undefined = __config.getObject<boolean>("allowUnverifiedSsl") || <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
 /**
+ * API timeout in minutes (Default: 5)
+ */
+export let apiTimeout: number | undefined = __config.getObject<number>("apiTimeout");
+/**
  * govmomi debug
  */
 export let clientDebug: boolean | undefined = __config.getObject<boolean>("clientDebug") || <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");

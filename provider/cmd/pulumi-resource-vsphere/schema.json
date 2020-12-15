@@ -23,6 +23,10 @@
                     ]
                 }
             },
+            "apiTimeout": {
+                "type": "integer",
+                "description": "API timeout in minutes (Default: 5)\n"
+            },
             "clientDebug": {
                 "type": "boolean",
                 "description": "govmomi debug\n",
@@ -1527,6 +1531,10 @@
                         "VSPHERE_ALLOW_UNVERIFIED_SSL"
                     ]
                 }
+            },
+            "apiTimeout": {
+                "type": "integer",
+                "description": "API timeout in minutes (Default: 5)\n"
             },
             "clientDebug": {
                 "type": "boolean",

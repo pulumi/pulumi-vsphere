@@ -14,6 +14,11 @@ namespace Pulumi.VSphere
         public static bool? AllowUnverifiedSsl { get; set; } = __config.GetBoolean("allowUnverifiedSsl") ?? Utilities.GetEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
 
         /// <summary>
+        /// API timeout in minutes (Default: 5)
+        /// </summary>
+        public static int? ApiTimeout { get; set; } = __config.GetInt32("apiTimeout");
+
+        /// <summary>
         /// govmomi debug
         /// </summary>
         public static bool? ClientDebug { get; set; } = __config.GetBoolean("clientDebug") ?? Utilities.GetEnvBoolean("VSPHERE_CLIENT_DEBUG");

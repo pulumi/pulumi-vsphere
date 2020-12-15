@@ -68,6 +68,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// If set, VMware vSphere client will permit unverifiable SSL certificates.
 	AllowUnverifiedSsl *bool `pulumi:"allowUnverifiedSsl"`
+	// API timeout in minutes (Default: 5)
+	ApiTimeout *int `pulumi:"apiTimeout"`
 	// govmomi debug
 	ClientDebug *bool `pulumi:"clientDebug"`
 	// govmomi debug path for debug
@@ -96,6 +98,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// If set, VMware vSphere client will permit unverifiable SSL certificates.
 	AllowUnverifiedSsl pulumi.BoolPtrInput
+	// API timeout in minutes (Default: 5)
+	ApiTimeout pulumi.IntPtrInput
 	// govmomi debug
 	ClientDebug pulumi.BoolPtrInput
 	// govmomi debug path for debug
