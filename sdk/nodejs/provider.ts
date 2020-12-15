@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) || <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
+            inputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
             inputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) || <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
             inputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
             inputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
@@ -68,6 +69,10 @@ export interface ProviderArgs {
      * If set, VMware vSphere client will permit unverifiable SSL certificates.
      */
     readonly allowUnverifiedSsl?: pulumi.Input<boolean>;
+    /**
+     * API timeout in minutes (Default: 5)
+     */
+    readonly apiTimeout?: pulumi.Input<number>;
     /**
      * govmomi debug
      */

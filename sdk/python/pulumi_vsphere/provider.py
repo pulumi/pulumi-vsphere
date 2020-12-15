@@ -16,6 +16,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_unverified_ssl: Optional[pulumi.Input[bool]] = None,
+                 api_timeout: Optional[pulumi.Input[int]] = None,
                  client_debug: Optional[pulumi.Input[bool]] = None,
                  client_debug_path: Optional[pulumi.Input[str]] = None,
                  client_debug_path_run: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_unverified_ssl: If set, VMware vSphere client will permit unverifiable SSL certificates.
+        :param pulumi.Input[int] api_timeout: API timeout in minutes (Default: 5)
         :param pulumi.Input[bool] client_debug: govmomi debug
         :param pulumi.Input[str] client_debug_path: govmomi debug path for debug
         :param pulumi.Input[str] client_debug_path_run: govmomi debug path for a single run
@@ -70,6 +72,7 @@ class Provider(pulumi.ProviderResource):
             if allow_unverified_ssl is None:
                 allow_unverified_ssl = _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
             __props__['allow_unverified_ssl'] = pulumi.Output.from_input(allow_unverified_ssl).apply(pulumi.runtime.to_json) if allow_unverified_ssl is not None else None
+            __props__['api_timeout'] = pulumi.Output.from_input(api_timeout).apply(pulumi.runtime.to_json) if api_timeout is not None else None
             if client_debug is None:
                 client_debug = _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
             __props__['client_debug'] = pulumi.Output.from_input(client_debug).apply(pulumi.runtime.to_json) if client_debug is not None else None

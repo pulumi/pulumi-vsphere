@@ -51,6 +51,12 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowUnverifiedSsl { get; set; }
 
         /// <summary>
+        /// API timeout in minutes (Default: 5)
+        /// </summary>
+        [Input("apiTimeout", json: true)]
+        public Input<int>? ApiTimeout { get; set; }
+
+        /// <summary>
         /// govmomi debug
         /// </summary>
         [Input("clientDebug", json: true)]

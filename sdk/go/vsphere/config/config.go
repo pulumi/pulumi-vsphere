@@ -17,6 +17,11 @@ func GetAllowUnverifiedSsl(ctx *pulumi.Context) bool {
 	return getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool)
 }
 
+// API timeout in minutes (Default: 5)
+func GetApiTimeout(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "vsphere:apiTimeout")
+}
+
 // govmomi debug
 func GetClientDebug(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "vsphere:clientDebug")

@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'allow_unverified_ssl',
+    'api_timeout',
     'client_debug',
     'client_debug_path',
     'client_debug_path_run',
@@ -28,6 +29,11 @@ __config__ = pulumi.Config('vsphere')
 allow_unverified_ssl = __config__.get('allowUnverifiedSsl') or _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
 """
 If set, VMware vSphere client will permit unverifiable SSL certificates.
+"""
+
+api_timeout = __config__.get('apiTimeout')
+"""
+API timeout in minutes (Default: 5)
 """
 
 client_debug = __config__.get('clientDebug') or _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')

@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.11.2 (2020-12-14)
+* Upgrade to v1.24.3 of the vSphere Terraform Provider
+
 ## 2.11.2 (2020-11-23)
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
