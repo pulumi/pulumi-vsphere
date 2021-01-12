@@ -348,7 +348,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__['ovf_deploy'] = ovf_deploy
             __props__['pci_device_ids'] = pci_device_ids
             __props__['poweron_timeout'] = poweron_timeout
-            if resource_pool_id is None:
+            if resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_pool_id'")
             __props__['resource_pool_id'] = resource_pool_id
             __props__['run_tools_scripts_after_power_on'] = run_tools_scripts_after_power_on

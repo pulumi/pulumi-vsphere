@@ -82,20 +82,20 @@ class VirtualDisk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if adapter_type is not None:
+            if adapter_type is not None and not opts.urn:
                 warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
                 pulumi.log.warn("adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead")
             __props__['adapter_type'] = adapter_type
             __props__['create_directories'] = create_directories
             __props__['datacenter'] = datacenter
-            if datastore is None:
+            if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__['datastore'] = datastore
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['type'] = type
-            if vmdk_path is None:
+            if vmdk_path is None and not opts.urn:
                 raise TypeError("Missing required property 'vmdk_path'")
             __props__['vmdk_path'] = vmdk_path
         super(VirtualDisk, __self__).__init__(

@@ -65,13 +65,13 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
 
             __props__['affinity_host_group_name'] = affinity_host_group_name
             __props__['anti_affinity_host_group_name'] = anti_affinity_host_group_name
-            if compute_cluster_id is None:
+            if compute_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_cluster_id'")
             __props__['compute_cluster_id'] = compute_cluster_id
             __props__['enabled'] = enabled
             __props__['mandatory'] = mandatory
             __props__['name'] = name
-            if vm_group_name is None:
+            if vm_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vm_group_name'")
             __props__['vm_group_name'] = vm_group_name
         super(ComputeClusterVmHostRule, __self__).__init__(

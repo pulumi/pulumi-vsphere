@@ -128,17 +128,17 @@ class Host(pulumi.CustomResource):
             __props__['connected'] = connected
             __props__['datacenter'] = datacenter
             __props__['force'] = force
-            if hostname is None:
+            if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
             __props__['hostname'] = hostname
             __props__['license'] = license
             __props__['lockdown'] = lockdown
             __props__['maintenance'] = maintenance
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['thumbprint'] = thumbprint
-            if username is None:
+            if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__['username'] = username
         super(Host, __self__).__init__(

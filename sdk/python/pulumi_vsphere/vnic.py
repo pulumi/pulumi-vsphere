@@ -133,7 +133,7 @@ class Vnic(pulumi.CustomResource):
 
             __props__['distributed_port_group'] = distributed_port_group
             __props__['distributed_switch_port'] = distributed_switch_port
-            if host is None:
+            if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
             __props__['ipv4'] = ipv4

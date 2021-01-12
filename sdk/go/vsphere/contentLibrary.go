@@ -30,11 +30,12 @@ type ContentLibrary struct {
 // NewContentLibrary registers a new resource with the given unique name, arguments, and options.
 func NewContentLibrary(ctx *pulumi.Context,
 	name string, args *ContentLibraryArgs, opts ...pulumi.ResourceOption) (*ContentLibrary, error) {
-	if args == nil || args.StorageBackings == nil {
-		return nil, errors.New("missing required argument 'StorageBackings'")
-	}
 	if args == nil {
-		args = &ContentLibraryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.StorageBackings == nil {
+		return nil, errors.New("invalid value for required argument 'StorageBackings'")
 	}
 	var resource ContentLibrary
 	err := ctx.RegisterResource("vsphere:index/contentLibrary:ContentLibrary", name, args, &resource, opts...)

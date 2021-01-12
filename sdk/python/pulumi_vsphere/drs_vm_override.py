@@ -54,12 +54,12 @@ class DrsVmOverride(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if compute_cluster_id is None:
+            if compute_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_cluster_id'")
             __props__['compute_cluster_id'] = compute_cluster_id
             __props__['drs_automation_level'] = drs_automation_level
             __props__['drs_enabled'] = drs_enabled
-            if virtual_machine_id is None:
+            if virtual_machine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_machine_id'")
             __props__['virtual_machine_id'] = virtual_machine_id
         super(DrsVmOverride, __self__).__init__(

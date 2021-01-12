@@ -105,7 +105,7 @@ export class VmStoragePolicy extends pulumi.CustomResource {
             inputs["tagRules"] = state ? state.tagRules : undefined;
         } else {
             const args = argsOrState as VmStoragePolicyArgs | undefined;
-            if (!args || args.tagRules === undefined) {
+            if ((!args || args.tagRules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tagRules'");
             }
             inputs["description"] = args ? args.description : undefined;

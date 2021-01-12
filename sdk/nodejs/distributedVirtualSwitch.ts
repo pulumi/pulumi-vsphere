@@ -574,7 +574,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["vsanShareLevel"] = state ? state.vsanShareLevel : undefined;
         } else {
             const args = argsOrState as DistributedVirtualSwitchArgs | undefined;
-            if (!args || args.datacenterId === undefined) {
+            if ((!args || args.datacenterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datacenterId'");
             }
             inputs["activeUplinks"] = args ? args.activeUplinks : undefined;

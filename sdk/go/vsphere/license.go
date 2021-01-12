@@ -59,11 +59,12 @@ type License struct {
 // NewLicense registers a new resource with the given unique name, arguments, and options.
 func NewLicense(ctx *pulumi.Context,
 	name string, args *LicenseArgs, opts ...pulumi.ResourceOption) (*License, error) {
-	if args == nil || args.LicenseKey == nil {
-		return nil, errors.New("missing required argument 'LicenseKey'")
-	}
 	if args == nil {
-		args = &LicenseArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LicenseKey == nil {
+		return nil, errors.New("invalid value for required argument 'LicenseKey'")
 	}
 	var resource License
 	err := ctx.RegisterResource("vsphere:index/license:License", name, args, &resource, opts...)

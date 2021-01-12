@@ -112,11 +112,12 @@ type DatastoreCluster struct {
 // NewDatastoreCluster registers a new resource with the given unique name, arguments, and options.
 func NewDatastoreCluster(ctx *pulumi.Context,
 	name string, args *DatastoreClusterArgs, opts ...pulumi.ResourceOption) (*DatastoreCluster, error) {
-	if args == nil || args.DatacenterId == nil {
-		return nil, errors.New("missing required argument 'DatacenterId'")
-	}
 	if args == nil {
-		args = &DatastoreClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatacenterId == nil {
+		return nil, errors.New("invalid value for required argument 'DatacenterId'")
 	}
 	var resource DatastoreCluster
 	err := ctx.RegisterResource("vsphere:index/datastoreCluster:DatastoreCluster", name, args, &resource, opts...)

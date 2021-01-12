@@ -134,7 +134,7 @@ class DatastoreCluster(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['custom_attributes'] = custom_attributes
-            if datacenter_id is None:
+            if datacenter_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datacenter_id'")
             __props__['datacenter_id'] = datacenter_id
             __props__['folder'] = folder

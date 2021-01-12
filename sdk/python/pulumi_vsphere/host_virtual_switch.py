@@ -110,7 +110,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if active_nics is None:
+            if active_nics is None and not opts.urn:
                 raise TypeError("Missing required property 'active_nics'")
             __props__['active_nics'] = active_nics
             __props__['allow_forged_transmits'] = allow_forged_transmits
@@ -119,14 +119,14 @@ class HostVirtualSwitch(pulumi.CustomResource):
             __props__['beacon_interval'] = beacon_interval
             __props__['check_beacon'] = check_beacon
             __props__['failback'] = failback
-            if host_system_id is None:
+            if host_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_system_id'")
             __props__['host_system_id'] = host_system_id
             __props__['link_discovery_operation'] = link_discovery_operation
             __props__['link_discovery_protocol'] = link_discovery_protocol
             __props__['mtu'] = mtu
             __props__['name'] = name
-            if network_adapters is None:
+            if network_adapters is None and not opts.urn:
                 raise TypeError("Missing required property 'network_adapters'")
             __props__['network_adapters'] = network_adapters
             __props__['notify_switches'] = notify_switches
@@ -135,7 +135,7 @@ class HostVirtualSwitch(pulumi.CustomResource):
             __props__['shaping_burst_size'] = shaping_burst_size
             __props__['shaping_enabled'] = shaping_enabled
             __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
-            if standby_nics is None:
+            if standby_nics is None and not opts.urn:
                 raise TypeError("Missing required property 'standby_nics'")
             __props__['standby_nics'] = standby_nics
             __props__['teaming_policy'] = teaming_policy

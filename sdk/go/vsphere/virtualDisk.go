@@ -76,17 +76,18 @@ type VirtualDisk struct {
 // NewVirtualDisk registers a new resource with the given unique name, arguments, and options.
 func NewVirtualDisk(ctx *pulumi.Context,
 	name string, args *VirtualDiskArgs, opts ...pulumi.ResourceOption) (*VirtualDisk, error) {
-	if args == nil || args.Datastore == nil {
-		return nil, errors.New("missing required argument 'Datastore'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
-	if args == nil || args.VmdkPath == nil {
-		return nil, errors.New("missing required argument 'VmdkPath'")
-	}
 	if args == nil {
-		args = &VirtualDiskArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Datastore == nil {
+		return nil, errors.New("invalid value for required argument 'Datastore'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
+	}
+	if args.VmdkPath == nil {
+		return nil, errors.New("invalid value for required argument 'VmdkPath'")
 	}
 	var resource VirtualDisk
 	err := ctx.RegisterResource("vsphere:index/virtualDisk:VirtualDisk", name, args, &resource, opts...)

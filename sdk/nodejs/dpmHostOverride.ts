@@ -72,10 +72,10 @@ export class DpmHostOverride extends pulumi.CustomResource {
             inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
         } else {
             const args = argsOrState as DpmHostOverrideArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if (!args || args.hostSystemId === undefined) {
+            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

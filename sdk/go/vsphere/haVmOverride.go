@@ -88,14 +88,15 @@ type HaVmOverride struct {
 // NewHaVmOverride registers a new resource with the given unique name, arguments, and options.
 func NewHaVmOverride(ctx *pulumi.Context,
 	name string, args *HaVmOverrideArgs, opts ...pulumi.ResourceOption) (*HaVmOverride, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &HaVmOverrideArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource HaVmOverride
 	err := ctx.RegisterResource("vsphere:index/haVmOverride:HaVmOverride", name, args, &resource, opts...)

@@ -48,7 +48,7 @@ class Tag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if category_id is None:
+            if category_id is None and not opts.urn:
                 raise TypeError("Missing required property 'category_id'")
             __props__['category_id'] = category_id
             __props__['description'] = description

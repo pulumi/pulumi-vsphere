@@ -156,17 +156,18 @@ type Host struct {
 // NewHost registers a new resource with the given unique name, arguments, and options.
 func NewHost(ctx *pulumi.Context,
 	name string, args *HostArgs, opts ...pulumi.ResourceOption) (*Host, error) {
-	if args == nil || args.Hostname == nil {
-		return nil, errors.New("missing required argument 'Hostname'")
-	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
-	if args == nil || args.Username == nil {
-		return nil, errors.New("missing required argument 'Username'")
-	}
 	if args == nil {
-		args = &HostArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Hostname == nil {
+		return nil, errors.New("invalid value for required argument 'Hostname'")
+	}
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	var resource Host
 	err := ctx.RegisterResource("vsphere:index/host:Host", name, args, &resource, opts...)

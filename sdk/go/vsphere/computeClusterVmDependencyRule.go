@@ -41,17 +41,18 @@ type ComputeClusterVmDependencyRule struct {
 // NewComputeClusterVmDependencyRule registers a new resource with the given unique name, arguments, and options.
 func NewComputeClusterVmDependencyRule(ctx *pulumi.Context,
 	name string, args *ComputeClusterVmDependencyRuleArgs, opts ...pulumi.ResourceOption) (*ComputeClusterVmDependencyRule, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
-	if args == nil || args.DependencyVmGroupName == nil {
-		return nil, errors.New("missing required argument 'DependencyVmGroupName'")
-	}
-	if args == nil || args.VmGroupName == nil {
-		return nil, errors.New("missing required argument 'VmGroupName'")
-	}
 	if args == nil {
-		args = &ComputeClusterVmDependencyRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
+	}
+	if args.DependencyVmGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'DependencyVmGroupName'")
+	}
+	if args.VmGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'VmGroupName'")
 	}
 	var resource ComputeClusterVmDependencyRule
 	err := ctx.RegisterResource("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule", name, args, &resource, opts...)

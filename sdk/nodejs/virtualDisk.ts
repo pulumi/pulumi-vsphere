@@ -115,13 +115,13 @@ export class VirtualDisk extends pulumi.CustomResource {
             inputs["vmdkPath"] = state ? state.vmdkPath : undefined;
         } else {
             const args = argsOrState as VirtualDiskArgs | undefined;
-            if (!args || args.datastore === undefined) {
+            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
-            if (!args || args.vmdkPath === undefined) {
+            if ((!args || args.vmdkPath === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vmdkPath'");
             }
             inputs["adapterType"] = args ? args.adapterType : undefined;

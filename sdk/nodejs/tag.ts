@@ -64,7 +64,7 @@ export class Tag extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if (!args || args.categoryId === undefined) {
+            if ((!args || args.categoryId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'categoryId'");
             }
             inputs["categoryId"] = args ? args.categoryId : undefined;

@@ -245,10 +245,10 @@ export class HostPortGroup extends pulumi.CustomResource {
             inputs["vlanId"] = state ? state.vlanId : undefined;
         } else {
             const args = argsOrState as HostPortGroupArgs | undefined;
-            if (!args || args.hostSystemId === undefined) {
+            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            if (!args || args.virtualSwitchName === undefined) {
+            if ((!args || args.virtualSwitchName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'virtualSwitchName'");
             }
             inputs["activeNics"] = args ? args.activeNics : undefined;

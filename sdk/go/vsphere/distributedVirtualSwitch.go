@@ -272,11 +272,12 @@ type DistributedVirtualSwitch struct {
 // NewDistributedVirtualSwitch registers a new resource with the given unique name, arguments, and options.
 func NewDistributedVirtualSwitch(ctx *pulumi.Context,
 	name string, args *DistributedVirtualSwitchArgs, opts ...pulumi.ResourceOption) (*DistributedVirtualSwitch, error) {
-	if args == nil || args.DatacenterId == nil {
-		return nil, errors.New("missing required argument 'DatacenterId'")
-	}
 	if args == nil {
-		args = &DistributedVirtualSwitchArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatacenterId == nil {
+		return nil, errors.New("invalid value for required argument 'DatacenterId'")
 	}
 	var resource DistributedVirtualSwitch
 	err := ctx.RegisterResource("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch", name, args, &resource, opts...)

@@ -65,13 +65,13 @@ export class EntityPermissions extends pulumi.CustomResource {
             inputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as EntityPermissionsArgs | undefined;
-            if (!args || args.entityId === undefined) {
+            if ((!args || args.entityId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entityId'");
             }
-            if (!args || args.entityType === undefined) {
+            if ((!args || args.entityType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entityType'");
             }
-            if (!args || args.permissions === undefined) {
+            if ((!args || args.permissions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'permissions'");
             }
             inputs["entityId"] = args ? args.entityId : undefined;

@@ -581,7 +581,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
-            if (!args || args.resourcePoolId === undefined) {
+            if ((!args || args.resourcePoolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourcePoolId'");
             }
             inputs["alternateGuestName"] = args ? args.alternateGuestName : undefined;

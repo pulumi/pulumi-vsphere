@@ -42,14 +42,15 @@ type ComputeClusterVmHostRule struct {
 // NewComputeClusterVmHostRule registers a new resource with the given unique name, arguments, and options.
 func NewComputeClusterVmHostRule(ctx *pulumi.Context,
 	name string, args *ComputeClusterVmHostRuleArgs, opts ...pulumi.ResourceOption) (*ComputeClusterVmHostRule, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
-	if args == nil || args.VmGroupName == nil {
-		return nil, errors.New("missing required argument 'VmGroupName'")
-	}
 	if args == nil {
-		args = &ComputeClusterVmHostRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
+	}
+	if args.VmGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'VmGroupName'")
 	}
 	var resource ComputeClusterVmHostRule
 	err := ctx.RegisterResource("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule", name, args, &resource, opts...)

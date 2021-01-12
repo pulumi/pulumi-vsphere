@@ -41,14 +41,15 @@ type StorageDrsVmOverride struct {
 // NewStorageDrsVmOverride registers a new resource with the given unique name, arguments, and options.
 func NewStorageDrsVmOverride(ctx *pulumi.Context,
 	name string, args *StorageDrsVmOverrideArgs, opts ...pulumi.ResourceOption) (*StorageDrsVmOverride, error) {
-	if args == nil || args.DatastoreClusterId == nil {
-		return nil, errors.New("missing required argument 'DatastoreClusterId'")
-	}
-	if args == nil || args.VirtualMachineId == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineId'")
-	}
 	if args == nil {
-		args = &StorageDrsVmOverrideArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatastoreClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DatastoreClusterId'")
+	}
+	if args.VirtualMachineId == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
 	var resource StorageDrsVmOverride
 	err := ctx.RegisterResource("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride", name, args, &resource, opts...)

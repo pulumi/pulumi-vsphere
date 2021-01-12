@@ -92,11 +92,12 @@ type VmStoragePolicy struct {
 // NewVmStoragePolicy registers a new resource with the given unique name, arguments, and options.
 func NewVmStoragePolicy(ctx *pulumi.Context,
 	name string, args *VmStoragePolicyArgs, opts ...pulumi.ResourceOption) (*VmStoragePolicy, error) {
-	if args == nil || args.TagRules == nil {
-		return nil, errors.New("missing required argument 'TagRules'")
-	}
 	if args == nil {
-		args = &VmStoragePolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TagRules == nil {
+		return nil, errors.New("invalid value for required argument 'TagRules'")
 	}
 	var resource VmStoragePolicy
 	err := ctx.RegisterResource("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, args, &resource, opts...)

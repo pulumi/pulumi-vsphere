@@ -72,3 +72,155 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "vsphere:index/computeCluster:ComputeCluster":
+                return ComputeCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup":
+                return ComputeClusterHostGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule":
+                return ComputeClusterVmAffinityRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule":
+                return ComputeClusterVmAntiAffinityRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule":
+                return ComputeClusterVmDependencyRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup":
+                return ComputeClusterVmGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule":
+                return ComputeClusterVmHostRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/contentLibrary:ContentLibrary":
+                return ContentLibrary(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/contentLibraryItem:ContentLibraryItem":
+                return ContentLibraryItem(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/customAttribute:CustomAttribute":
+                return CustomAttribute(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/datacenter:Datacenter":
+                return Datacenter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/datastoreCluster:DatastoreCluster":
+                return DatastoreCluster(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule":
+                return DatastoreClusterVmAntiAffinityRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/distributedPortGroup:DistributedPortGroup":
+                return DistributedPortGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch":
+                return DistributedVirtualSwitch(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/dpmHostOverride:DpmHostOverride":
+                return DpmHostOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/drsVmOverride:DrsVmOverride":
+                return DrsVmOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/entityPermissions:EntityPermissions":
+                return EntityPermissions(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/file:File":
+                return File(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/folder:Folder":
+                return Folder(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/haVmOverride:HaVmOverride":
+                return HaVmOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/host:Host":
+                return Host(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/hostPortGroup:HostPortGroup":
+                return HostPortGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/hostVirtualSwitch:HostVirtualSwitch":
+                return HostVirtualSwitch(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/license:License":
+                return License(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/nasDatastore:NasDatastore":
+                return NasDatastore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/resourcePool:ResourcePool":
+                return ResourcePool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/role:Role":
+                return Role(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
+                return StorageDrsVmOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/tag:Tag":
+                return Tag(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/tagCategory:TagCategory":
+                return TagCategory(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/vappContainer:VappContainer":
+                return VappContainer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/vappEntity:VappEntity":
+                return VappEntity(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/virtualDisk:VirtualDisk":
+                return VirtualDisk(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/virtualMachine:VirtualMachine":
+                return VirtualMachine(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot":
+                return VirtualMachineSnapshot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/vmStoragePolicy:VmStoragePolicy":
+                return VmStoragePolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/vmfsDatastore:VmfsDatastore":
+                return VmfsDatastore(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "vsphere:index/vnic:Vnic":
+                return Vnic(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("vsphere", "index/computeCluster", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterHostGroup", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterVmAffinityRule", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterVmAntiAffinityRule", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterVmDependencyRule", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterVmGroup", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/computeClusterVmHostRule", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/contentLibrary", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/contentLibraryItem", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/customAttribute", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/datacenter", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/datastoreCluster", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/datastoreClusterVmAntiAffinityRule", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/distributedPortGroup", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/distributedVirtualSwitch", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/dpmHostOverride", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/drsVmOverride", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/entityPermissions", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/file", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/folder", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/haVmOverride", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/host", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/hostPortGroup", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/hostVirtualSwitch", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/license", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/nasDatastore", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/resourcePool", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/role", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/storageDrsVmOverride", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/tag", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/tagCategory", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/vappContainer", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/vappEntity", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/virtualDisk", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/virtualMachine", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/virtualMachineSnapshot", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/vmStoragePolicy", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/vmfsDatastore", _module_instance)
+    pulumi.runtime.register_resource_module("vsphere", "index/vnic", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:vsphere":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("vsphere", Package())
+
+_register_module()

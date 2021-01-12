@@ -163,7 +163,7 @@ class HostPortGroup(pulumi.CustomResource):
             __props__['allow_promiscuous'] = allow_promiscuous
             __props__['check_beacon'] = check_beacon
             __props__['failback'] = failback
-            if host_system_id is None:
+            if host_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_system_id'")
             __props__['host_system_id'] = host_system_id
             __props__['name'] = name
@@ -174,7 +174,7 @@ class HostPortGroup(pulumi.CustomResource):
             __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
             __props__['standby_nics'] = standby_nics
             __props__['teaming_policy'] = teaming_policy
-            if virtual_switch_name is None:
+            if virtual_switch_name is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_switch_name'")
             __props__['virtual_switch_name'] = virtual_switch_name
             __props__['vlan_id'] = vlan_id

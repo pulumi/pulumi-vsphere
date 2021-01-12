@@ -134,13 +134,13 @@ export class File extends pulumi.CustomResource {
             inputs["sourceFile"] = state ? state.sourceFile : undefined;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if (!args || args.datastore === undefined) {
+            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (!args || args.destinationFile === undefined) {
+            if ((!args || args.destinationFile === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationFile'");
             }
-            if (!args || args.sourceFile === undefined) {
+            if ((!args || args.sourceFile === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceFile'");
             }
             inputs["createDirectories"] = args ? args.createDirectories : undefined;

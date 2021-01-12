@@ -218,14 +218,15 @@ type HostPortGroup struct {
 // NewHostPortGroup registers a new resource with the given unique name, arguments, and options.
 func NewHostPortGroup(ctx *pulumi.Context,
 	name string, args *HostPortGroupArgs, opts ...pulumi.ResourceOption) (*HostPortGroup, error) {
-	if args == nil || args.HostSystemId == nil {
-		return nil, errors.New("missing required argument 'HostSystemId'")
-	}
-	if args == nil || args.VirtualSwitchName == nil {
-		return nil, errors.New("missing required argument 'VirtualSwitchName'")
-	}
 	if args == nil {
-		args = &HostPortGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HostSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'HostSystemId'")
+	}
+	if args.VirtualSwitchName == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualSwitchName'")
 	}
 	var resource HostPortGroup
 	err := ctx.RegisterResource("vsphere:index/hostPortGroup:HostPortGroup", name, args, &resource, opts...)

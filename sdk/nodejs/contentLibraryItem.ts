@@ -78,7 +78,7 @@ export class ContentLibraryItem extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ContentLibraryItemArgs | undefined;
-            if (!args || args.libraryId === undefined) {
+            if ((!args || args.libraryId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'libraryId'");
             }
             inputs["description"] = args ? args.description : undefined;

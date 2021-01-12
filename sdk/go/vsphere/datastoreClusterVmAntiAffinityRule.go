@@ -33,14 +33,15 @@ type DatastoreClusterVmAntiAffinityRule struct {
 // NewDatastoreClusterVmAntiAffinityRule registers a new resource with the given unique name, arguments, and options.
 func NewDatastoreClusterVmAntiAffinityRule(ctx *pulumi.Context,
 	name string, args *DatastoreClusterVmAntiAffinityRuleArgs, opts ...pulumi.ResourceOption) (*DatastoreClusterVmAntiAffinityRule, error) {
-	if args == nil || args.DatastoreClusterId == nil {
-		return nil, errors.New("missing required argument 'DatastoreClusterId'")
-	}
-	if args == nil || args.VirtualMachineIds == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineIds'")
-	}
 	if args == nil {
-		args = &DatastoreClusterVmAntiAffinityRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatastoreClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'DatastoreClusterId'")
+	}
+	if args.VirtualMachineIds == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineIds'")
 	}
 	var resource DatastoreClusterVmAntiAffinityRule
 	err := ctx.RegisterResource("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule", name, args, &resource, opts...)

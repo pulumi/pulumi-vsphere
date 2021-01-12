@@ -91,10 +91,10 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
             inputs["vmGroupName"] = state ? state.vmGroupName : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmHostRuleArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if (!args || args.vmGroupName === undefined) {
+            if ((!args || args.vmGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
             inputs["affinityHostGroupName"] = args ? args.affinityHostGroupName : undefined;

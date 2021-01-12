@@ -33,14 +33,15 @@ type ComputeClusterVmAntiAffinityRule struct {
 // NewComputeClusterVmAntiAffinityRule registers a new resource with the given unique name, arguments, and options.
 func NewComputeClusterVmAntiAffinityRule(ctx *pulumi.Context,
 	name string, args *ComputeClusterVmAntiAffinityRuleArgs, opts ...pulumi.ResourceOption) (*ComputeClusterVmAntiAffinityRule, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
-	if args == nil || args.VirtualMachineIds == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineIds'")
-	}
 	if args == nil {
-		args = &ComputeClusterVmAntiAffinityRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
+	}
+	if args.VirtualMachineIds == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineIds'")
 	}
 	var resource ComputeClusterVmAntiAffinityRule
 	err := ctx.RegisterResource("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule", name, args, &resource, opts...)

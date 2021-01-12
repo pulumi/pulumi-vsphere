@@ -27,17 +27,18 @@ type EntityPermissions struct {
 // NewEntityPermissions registers a new resource with the given unique name, arguments, and options.
 func NewEntityPermissions(ctx *pulumi.Context,
 	name string, args *EntityPermissionsArgs, opts ...pulumi.ResourceOption) (*EntityPermissions, error) {
-	if args == nil || args.EntityId == nil {
-		return nil, errors.New("missing required argument 'EntityId'")
-	}
-	if args == nil || args.EntityType == nil {
-		return nil, errors.New("missing required argument 'EntityType'")
-	}
-	if args == nil || args.Permissions == nil {
-		return nil, errors.New("missing required argument 'Permissions'")
-	}
 	if args == nil {
-		args = &EntityPermissionsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EntityId == nil {
+		return nil, errors.New("invalid value for required argument 'EntityId'")
+	}
+	if args.EntityType == nil {
+		return nil, errors.New("invalid value for required argument 'EntityType'")
+	}
+	if args.Permissions == nil {
+		return nil, errors.New("invalid value for required argument 'Permissions'")
 	}
 	var resource EntityPermissions
 	err := ctx.RegisterResource("vsphere:index/entityPermissions:EntityPermissions", name, args, &resource, opts...)

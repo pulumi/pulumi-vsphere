@@ -192,11 +192,12 @@ type Vnic struct {
 // NewVnic registers a new resource with the given unique name, arguments, and options.
 func NewVnic(ctx *pulumi.Context,
 	name string, args *VnicArgs, opts ...pulumi.ResourceOption) (*Vnic, error) {
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
 	if args == nil {
-		args = &VnicArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
 	}
 	var resource Vnic
 	err := ctx.RegisterResource("vsphere:index/vnic:Vnic", name, args, &resource, opts...)

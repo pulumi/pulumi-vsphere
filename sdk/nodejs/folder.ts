@@ -84,10 +84,10 @@ export class Folder extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if (!args || args.path === undefined) {
+            if ((!args || args.path === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'path'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;

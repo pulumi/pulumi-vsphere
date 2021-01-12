@@ -76,10 +76,10 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as DatastoreClusterVmAntiAffinityRuleArgs | undefined;
-            if (!args || args.datastoreClusterId === undefined) {
+            if ((!args || args.datastoreClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if (!args || args.virtualMachineIds === undefined) {
+            if ((!args || args.virtualMachineIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
             inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;

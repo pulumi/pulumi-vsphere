@@ -41,14 +41,15 @@ type Folder struct {
 // NewFolder registers a new resource with the given unique name, arguments, and options.
 func NewFolder(ctx *pulumi.Context,
 	name string, args *FolderArgs, opts ...pulumi.ResourceOption) (*Folder, error) {
-	if args == nil || args.Path == nil {
-		return nil, errors.New("missing required argument 'Path'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &FolderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Path == nil {
+		return nil, errors.New("invalid value for required argument 'Path'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource Folder
 	err := ctx.RegisterResource("vsphere:index/folder:Folder", name, args, &resource, opts...)

@@ -64,14 +64,15 @@ type VmfsDatastore struct {
 // NewVmfsDatastore registers a new resource with the given unique name, arguments, and options.
 func NewVmfsDatastore(ctx *pulumi.Context,
 	name string, args *VmfsDatastoreArgs, opts ...pulumi.ResourceOption) (*VmfsDatastore, error) {
-	if args == nil || args.Disks == nil {
-		return nil, errors.New("missing required argument 'Disks'")
-	}
-	if args == nil || args.HostSystemId == nil {
-		return nil, errors.New("missing required argument 'HostSystemId'")
-	}
 	if args == nil {
-		args = &VmfsDatastoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Disks == nil {
+		return nil, errors.New("invalid value for required argument 'Disks'")
+	}
+	if args.HostSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'HostSystemId'")
 	}
 	var resource VmfsDatastore
 	err := ctx.RegisterResource("vsphere:index/vmfsDatastore:VmfsDatastore", name, args, &resource, opts...)

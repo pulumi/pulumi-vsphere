@@ -56,7 +56,7 @@ class ContentLibrary(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['publication'] = publication
-            if storage_backings is None:
+            if storage_backings is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_backings'")
             __props__['storage_backings'] = storage_backings
             __props__['subscription'] = subscription

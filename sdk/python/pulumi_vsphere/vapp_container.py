@@ -112,7 +112,7 @@ class VappContainer(pulumi.CustomResource):
             __props__['memory_shares'] = memory_shares
             __props__['name'] = name
             __props__['parent_folder_id'] = parent_folder_id
-            if parent_resource_pool_id is None:
+            if parent_resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_resource_pool_id'")
             __props__['parent_resource_pool_id'] = parent_resource_pool_id
             __props__['tags'] = tags

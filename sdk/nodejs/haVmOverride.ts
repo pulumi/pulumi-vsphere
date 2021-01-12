@@ -161,10 +161,10 @@ export class HaVmOverride extends pulumi.CustomResource {
             inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as HaVmOverrideArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if (!args || args.virtualMachineId === undefined) {
+            if ((!args || args.virtualMachineId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

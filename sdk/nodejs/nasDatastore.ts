@@ -167,13 +167,13 @@ export class NasDatastore extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as NasDatastoreArgs | undefined;
-            if (!args || args.hostSystemIds === undefined) {
+            if ((!args || args.hostSystemIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostSystemIds'");
             }
-            if (!args || args.remoteHosts === undefined) {
+            if ((!args || args.remoteHosts === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'remoteHosts'");
             }
-            if (!args || args.remotePath === undefined) {
+            if ((!args || args.remotePath === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'remotePath'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;

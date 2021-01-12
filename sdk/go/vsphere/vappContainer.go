@@ -78,11 +78,12 @@ type VappContainer struct {
 // NewVappContainer registers a new resource with the given unique name, arguments, and options.
 func NewVappContainer(ctx *pulumi.Context,
 	name string, args *VappContainerArgs, opts ...pulumi.ResourceOption) (*VappContainer, error) {
-	if args == nil || args.ParentResourcePoolId == nil {
-		return nil, errors.New("missing required argument 'ParentResourcePoolId'")
-	}
 	if args == nil {
-		args = &VappContainerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ParentResourcePoolId == nil {
+		return nil, errors.New("invalid value for required argument 'ParentResourcePoolId'")
 	}
 	var resource VappContainer
 	err := ctx.RegisterResource("vsphere:index/vappContainer:VappContainer", name, args, &resource, opts...)

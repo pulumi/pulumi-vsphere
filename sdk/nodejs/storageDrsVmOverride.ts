@@ -84,10 +84,10 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as StorageDrsVmOverrideArgs | undefined;
-            if (!args || args.datastoreClusterId === undefined) {
+            if ((!args || args.datastoreClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if (!args || args.virtualMachineId === undefined) {
+            if ((!args || args.virtualMachineId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
             inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
