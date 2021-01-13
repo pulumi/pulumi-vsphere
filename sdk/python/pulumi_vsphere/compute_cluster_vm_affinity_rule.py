@@ -54,13 +54,13 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if compute_cluster_id is None:
+            if compute_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_cluster_id'")
             __props__['compute_cluster_id'] = compute_cluster_id
             __props__['enabled'] = enabled
             __props__['mandatory'] = mandatory
             __props__['name'] = name
-            if virtual_machine_ids is None:
+            if virtual_machine_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_machine_ids'")
             __props__['virtual_machine_ids'] = virtual_machine_ids
         super(ComputeClusterVmAffinityRule, __self__).__init__(

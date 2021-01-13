@@ -32,11 +32,12 @@ type ContentLibraryItem struct {
 // NewContentLibraryItem registers a new resource with the given unique name, arguments, and options.
 func NewContentLibraryItem(ctx *pulumi.Context,
 	name string, args *ContentLibraryItemArgs, opts ...pulumi.ResourceOption) (*ContentLibraryItem, error) {
-	if args == nil || args.LibraryId == nil {
-		return nil, errors.New("missing required argument 'LibraryId'")
-	}
 	if args == nil {
-		args = &ContentLibraryItemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LibraryId == nil {
+		return nil, errors.New("invalid value for required argument 'LibraryId'")
 	}
 	var resource ContentLibraryItem
 	err := ctx.RegisterResource("vsphere:index/contentLibraryItem:ContentLibraryItem", name, args, &resource, opts...)

@@ -28,6 +28,7 @@ func NewCustomAttribute(ctx *pulumi.Context,
 	if args == nil {
 		args = &CustomAttributeArgs{}
 	}
+
 	var resource CustomAttribute
 	err := ctx.RegisterResource("vsphere:index/customAttribute:CustomAttribute", name, args, &resource, opts...)
 	if err != nil {

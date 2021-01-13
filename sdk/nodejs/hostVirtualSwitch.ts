@@ -180,16 +180,16 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
             inputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
         } else {
             const args = argsOrState as HostVirtualSwitchArgs | undefined;
-            if (!args || args.activeNics === undefined) {
+            if ((!args || args.activeNics === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'activeNics'");
             }
-            if (!args || args.hostSystemId === undefined) {
+            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            if (!args || args.networkAdapters === undefined) {
+            if ((!args || args.networkAdapters === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkAdapters'");
             }
-            if (!args || args.standbyNics === undefined) {
+            if ((!args || args.standbyNics === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'standbyNics'");
             }
             inputs["activeNics"] = args ? args.activeNics : undefined;

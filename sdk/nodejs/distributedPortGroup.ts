@@ -314,7 +314,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
             inputs["vlanRanges"] = state ? state.vlanRanges : undefined;
         } else {
             const args = argsOrState as DistributedPortGroupArgs | undefined;
-            if (!args || args.distributedVirtualSwitchUuid === undefined) {
+            if ((!args || args.distributedVirtualSwitchUuid === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'distributedVirtualSwitchUuid'");
             }
             inputs["activeUplinks"] = args ? args.activeUplinks : undefined;

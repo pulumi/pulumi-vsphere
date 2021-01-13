@@ -50,13 +50,13 @@ class EntityPermissions(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if entity_id is None:
+            if entity_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_id'")
             __props__['entity_id'] = entity_id
-            if entity_type is None:
+            if entity_type is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_type'")
             __props__['entity_type'] = entity_type
-            if permissions is None:
+            if permissions is None and not opts.urn:
                 raise TypeError("Missing required property 'permissions'")
             __props__['permissions'] = permissions
         super(EntityPermissions, __self__).__init__(

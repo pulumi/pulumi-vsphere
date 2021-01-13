@@ -107,17 +107,18 @@ type File struct {
 // NewFile registers a new resource with the given unique name, arguments, and options.
 func NewFile(ctx *pulumi.Context,
 	name string, args *FileArgs, opts ...pulumi.ResourceOption) (*File, error) {
-	if args == nil || args.Datastore == nil {
-		return nil, errors.New("missing required argument 'Datastore'")
-	}
-	if args == nil || args.DestinationFile == nil {
-		return nil, errors.New("missing required argument 'DestinationFile'")
-	}
-	if args == nil || args.SourceFile == nil {
-		return nil, errors.New("missing required argument 'SourceFile'")
-	}
 	if args == nil {
-		args = &FileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Datastore == nil {
+		return nil, errors.New("invalid value for required argument 'Datastore'")
+	}
+	if args.DestinationFile == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationFile'")
+	}
+	if args.SourceFile == nil {
+		return nil, errors.New("invalid value for required argument 'SourceFile'")
 	}
 	var resource File
 	err := ctx.RegisterResource("vsphere:index/file:File", name, args, &resource, opts...)

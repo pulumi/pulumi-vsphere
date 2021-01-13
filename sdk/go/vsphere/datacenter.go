@@ -82,6 +82,7 @@ func NewDatacenter(ctx *pulumi.Context,
 	if args == nil {
 		args = &DatacenterArgs{}
 	}
+
 	var resource Datacenter
 	err := ctx.RegisterResource("vsphere:index/datacenter:Datacenter", name, args, &resource, opts...)
 	if err != nil {

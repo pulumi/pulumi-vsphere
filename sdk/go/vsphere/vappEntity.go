@@ -50,14 +50,15 @@ type VappEntity struct {
 // NewVappEntity registers a new resource with the given unique name, arguments, and options.
 func NewVappEntity(ctx *pulumi.Context,
 	name string, args *VappEntityArgs, opts ...pulumi.ResourceOption) (*VappEntity, error) {
-	if args == nil || args.ContainerId == nil {
-		return nil, errors.New("missing required argument 'ContainerId'")
-	}
-	if args == nil || args.TargetId == nil {
-		return nil, errors.New("missing required argument 'TargetId'")
-	}
 	if args == nil {
-		args = &VappEntityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ContainerId == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerId'")
+	}
+	if args.TargetId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
 	var resource VappEntity
 	err := ctx.RegisterResource("vsphere:index/vappEntity:VappEntity", name, args, &resource, opts...)

@@ -95,7 +95,7 @@ export class License extends pulumi.CustomResource {
             inputs["used"] = state ? state.used : undefined;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if (!args || args.licenseKey === undefined) {
+            if ((!args || args.licenseKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'licenseKey'");
             }
             inputs["labels"] = args ? args.labels : undefined;

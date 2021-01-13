@@ -82,17 +82,18 @@ type NasDatastore struct {
 // NewNasDatastore registers a new resource with the given unique name, arguments, and options.
 func NewNasDatastore(ctx *pulumi.Context,
 	name string, args *NasDatastoreArgs, opts ...pulumi.ResourceOption) (*NasDatastore, error) {
-	if args == nil || args.HostSystemIds == nil {
-		return nil, errors.New("missing required argument 'HostSystemIds'")
-	}
-	if args == nil || args.RemoteHosts == nil {
-		return nil, errors.New("missing required argument 'RemoteHosts'")
-	}
-	if args == nil || args.RemotePath == nil {
-		return nil, errors.New("missing required argument 'RemotePath'")
-	}
 	if args == nil {
-		args = &NasDatastoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HostSystemIds == nil {
+		return nil, errors.New("invalid value for required argument 'HostSystemIds'")
+	}
+	if args.RemoteHosts == nil {
+		return nil, errors.New("invalid value for required argument 'RemoteHosts'")
+	}
+	if args.RemotePath == nil {
+		return nil, errors.New("invalid value for required argument 'RemotePath'")
 	}
 	var resource NasDatastore
 	err := ctx.RegisterResource("vsphere:index/nasDatastore:NasDatastore", name, args, &resource, opts...)

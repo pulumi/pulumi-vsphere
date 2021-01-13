@@ -74,7 +74,7 @@ export class ContentLibrary extends pulumi.CustomResource {
             inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as ContentLibraryArgs | undefined;
-            if (!args || args.storageBackings === undefined) {
+            if ((!args || args.storageBackings === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'storageBackings'");
             }
             inputs["description"] = args ? args.description : undefined;

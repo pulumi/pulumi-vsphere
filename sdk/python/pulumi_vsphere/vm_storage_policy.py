@@ -81,7 +81,7 @@ class VmStoragePolicy(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            if tag_rules is None:
+            if tag_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_rules'")
             __props__['tag_rules'] = tag_rules
         super(VmStoragePolicy, __self__).__init__(

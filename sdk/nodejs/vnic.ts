@@ -180,7 +180,7 @@ export class Vnic extends pulumi.CustomResource {
             inputs["portgroup"] = state ? state.portgroup : undefined;
         } else {
             const args = argsOrState as VnicArgs | undefined;
-            if (!args || args.host === undefined) {
+            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'host'");
             }
             inputs["distributedPortGroup"] = args ? args.distributedPortGroup : undefined;

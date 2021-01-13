@@ -73,11 +73,12 @@ type ResourcePool struct {
 // NewResourcePool registers a new resource with the given unique name, arguments, and options.
 func NewResourcePool(ctx *pulumi.Context,
 	name string, args *ResourcePoolArgs, opts ...pulumi.ResourceOption) (*ResourcePool, error) {
-	if args == nil || args.ParentResourcePoolId == nil {
-		return nil, errors.New("missing required argument 'ParentResourcePoolId'")
-	}
 	if args == nil {
-		args = &ResourcePoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ParentResourcePoolId == nil {
+		return nil, errors.New("invalid value for required argument 'ParentResourcePoolId'")
 	}
 	var resource ResourcePool
 	err := ctx.RegisterResource("vsphere:index/resourcePool:ResourcePool", name, args, &resource, opts...)

@@ -151,7 +151,7 @@ export class VappContainer extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as VappContainerArgs | undefined;
-            if (!args || args.parentResourcePoolId === undefined) {
+            if ((!args || args.parentResourcePoolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parentResourcePoolId'");
             }
             inputs["cpuExpandable"] = args ? args.cpuExpandable : undefined;

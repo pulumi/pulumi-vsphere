@@ -141,11 +141,12 @@ type DistributedPortGroup struct {
 // NewDistributedPortGroup registers a new resource with the given unique name, arguments, and options.
 func NewDistributedPortGroup(ctx *pulumi.Context,
 	name string, args *DistributedPortGroupArgs, opts ...pulumi.ResourceOption) (*DistributedPortGroup, error) {
-	if args == nil || args.DistributedVirtualSwitchUuid == nil {
-		return nil, errors.New("missing required argument 'DistributedVirtualSwitchUuid'")
-	}
 	if args == nil {
-		args = &DistributedPortGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DistributedVirtualSwitchUuid == nil {
+		return nil, errors.New("invalid value for required argument 'DistributedVirtualSwitchUuid'")
 	}
 	var resource DistributedPortGroup
 	err := ctx.RegisterResource("vsphere:index/distributedPortGroup:DistributedPortGroup", name, args, &resource, opts...)

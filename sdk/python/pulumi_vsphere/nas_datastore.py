@@ -87,14 +87,14 @@ class NasDatastore(pulumi.CustomResource):
             __props__['custom_attributes'] = custom_attributes
             __props__['datastore_cluster_id'] = datastore_cluster_id
             __props__['folder'] = folder
-            if host_system_ids is None:
+            if host_system_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'host_system_ids'")
             __props__['host_system_ids'] = host_system_ids
             __props__['name'] = name
-            if remote_hosts is None:
+            if remote_hosts is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_hosts'")
             __props__['remote_hosts'] = remote_hosts
-            if remote_path is None:
+            if remote_path is None and not opts.urn:
                 raise TypeError("Missing required property 'remote_path'")
             __props__['remote_path'] = remote_path
             __props__['security_type'] = security_type

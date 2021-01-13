@@ -104,15 +104,15 @@ class File(pulumi.CustomResource):
 
             __props__['create_directories'] = create_directories
             __props__['datacenter'] = datacenter
-            if datastore is None:
+            if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__['datastore'] = datastore
-            if destination_file is None:
+            if destination_file is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_file'")
             __props__['destination_file'] = destination_file
             __props__['source_datacenter'] = source_datacenter
             __props__['source_datastore'] = source_datastore
-            if source_file is None:
+            if source_file is None and not opts.urn:
                 raise TypeError("Missing required property 'source_file'")
             __props__['source_file'] = source_file
         super(File, __self__).__init__(

@@ -27,11 +27,12 @@ type Tag struct {
 // NewTag registers a new resource with the given unique name, arguments, and options.
 func NewTag(ctx *pulumi.Context,
 	name string, args *TagArgs, opts ...pulumi.ResourceOption) (*Tag, error) {
-	if args == nil || args.CategoryId == nil {
-		return nil, errors.New("missing required argument 'CategoryId'")
-	}
 	if args == nil {
-		args = &TagArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CategoryId == nil {
+		return nil, errors.New("invalid value for required argument 'CategoryId'")
 	}
 	var resource Tag
 	err := ctx.RegisterResource("vsphere:index/tag:Tag", name, args, &resource, opts...)

@@ -32,14 +32,15 @@ type DpmHostOverride struct {
 // NewDpmHostOverride registers a new resource with the given unique name, arguments, and options.
 func NewDpmHostOverride(ctx *pulumi.Context,
 	name string, args *DpmHostOverrideArgs, opts ...pulumi.ResourceOption) (*DpmHostOverride, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
-	if args == nil || args.HostSystemId == nil {
-		return nil, errors.New("missing required argument 'HostSystemId'")
-	}
 	if args == nil {
-		args = &DpmHostOverrideArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
+	}
+	if args.HostSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'HostSystemId'")
 	}
 	var resource DpmHostOverride
 	err := ctx.RegisterResource("vsphere:index/dpmHostOverride:DpmHostOverride", name, args, &resource, opts...)

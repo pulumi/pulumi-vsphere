@@ -32,14 +32,15 @@ type TagCategory struct {
 // NewTagCategory registers a new resource with the given unique name, arguments, and options.
 func NewTagCategory(ctx *pulumi.Context,
 	name string, args *TagCategoryArgs, opts ...pulumi.ResourceOption) (*TagCategory, error) {
-	if args == nil || args.AssociableTypes == nil {
-		return nil, errors.New("missing required argument 'AssociableTypes'")
-	}
-	if args == nil || args.Cardinality == nil {
-		return nil, errors.New("missing required argument 'Cardinality'")
-	}
 	if args == nil {
-		args = &TagCategoryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AssociableTypes == nil {
+		return nil, errors.New("invalid value for required argument 'AssociableTypes'")
+	}
+	if args.Cardinality == nil {
+		return nil, errors.New("invalid value for required argument 'Cardinality'")
 	}
 	var resource TagCategory
 	err := ctx.RegisterResource("vsphere:index/tagCategory:TagCategory", name, args, &resource, opts...)

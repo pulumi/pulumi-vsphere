@@ -459,7 +459,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["vsanEnabled"] = state ? state.vsanEnabled : undefined;
         } else {
             const args = argsOrState as ComputeClusterArgs | undefined;
-            if (!args || args.datacenterId === undefined) {
+            if ((!args || args.datacenterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datacenterId'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;

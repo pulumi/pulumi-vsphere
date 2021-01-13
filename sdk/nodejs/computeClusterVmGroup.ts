@@ -66,7 +66,7 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmGroupArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

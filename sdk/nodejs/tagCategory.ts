@@ -72,10 +72,10 @@ export class TagCategory extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagCategoryArgs | undefined;
-            if (!args || args.associableTypes === undefined) {
+            if ((!args || args.associableTypes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'associableTypes'");
             }
-            if (!args || args.cardinality === undefined) {
+            if ((!args || args.cardinality === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cardinality'");
             }
             inputs["associableTypes"] = args ? args.associableTypes : undefined;

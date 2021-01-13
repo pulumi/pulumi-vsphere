@@ -262,11 +262,12 @@ type ComputeCluster struct {
 // NewComputeCluster registers a new resource with the given unique name, arguments, and options.
 func NewComputeCluster(ctx *pulumi.Context,
 	name string, args *ComputeClusterArgs, opts ...pulumi.ResourceOption) (*ComputeCluster, error) {
-	if args == nil || args.DatacenterId == nil {
-		return nil, errors.New("missing required argument 'DatacenterId'")
-	}
 	if args == nil {
-		args = &ComputeClusterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatacenterId == nil {
+		return nil, errors.New("invalid value for required argument 'DatacenterId'")
 	}
 	var resource ComputeCluster
 	err := ctx.RegisterResource("vsphere:index/computeCluster:ComputeCluster", name, args, &resource, opts...)

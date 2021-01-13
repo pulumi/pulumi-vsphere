@@ -89,20 +89,21 @@ type HostVirtualSwitch struct {
 // NewHostVirtualSwitch registers a new resource with the given unique name, arguments, and options.
 func NewHostVirtualSwitch(ctx *pulumi.Context,
 	name string, args *HostVirtualSwitchArgs, opts ...pulumi.ResourceOption) (*HostVirtualSwitch, error) {
-	if args == nil || args.ActiveNics == nil {
-		return nil, errors.New("missing required argument 'ActiveNics'")
-	}
-	if args == nil || args.HostSystemId == nil {
-		return nil, errors.New("missing required argument 'HostSystemId'")
-	}
-	if args == nil || args.NetworkAdapters == nil {
-		return nil, errors.New("missing required argument 'NetworkAdapters'")
-	}
-	if args == nil || args.StandbyNics == nil {
-		return nil, errors.New("missing required argument 'StandbyNics'")
-	}
 	if args == nil {
-		args = &HostVirtualSwitchArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ActiveNics == nil {
+		return nil, errors.New("invalid value for required argument 'ActiveNics'")
+	}
+	if args.HostSystemId == nil {
+		return nil, errors.New("invalid value for required argument 'HostSystemId'")
+	}
+	if args.NetworkAdapters == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkAdapters'")
+	}
+	if args.StandbyNics == nil {
+		return nil, errors.New("invalid value for required argument 'StandbyNics'")
 	}
 	var resource HostVirtualSwitch
 	err := ctx.RegisterResource("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", name, args, &resource, opts...)

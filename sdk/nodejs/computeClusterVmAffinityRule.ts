@@ -76,10 +76,10 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmAffinityRuleArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if (!args || args.virtualMachineIds === undefined) {
+            if ((!args || args.virtualMachineIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

@@ -87,13 +87,13 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             inputs["vmGroupName"] = state ? state.vmGroupName : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmDependencyRuleArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if (!args || args.dependencyVmGroupName === undefined) {
+            if ((!args || args.dependencyVmGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dependencyVmGroupName'");
             }
-            if (!args || args.vmGroupName === undefined) {
+            if ((!args || args.vmGroupName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

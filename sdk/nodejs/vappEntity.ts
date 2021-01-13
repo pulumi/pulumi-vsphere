@@ -108,10 +108,10 @@ export class VappEntity extends pulumi.CustomResource {
             inputs["waitForGuest"] = state ? state.waitForGuest : undefined;
         } else {
             const args = argsOrState as VappEntityArgs | undefined;
-            if (!args || args.containerId === undefined) {
+            if ((!args || args.containerId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'containerId'");
             }
-            if (!args || args.targetId === undefined) {
+            if ((!args || args.targetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetId'");
             }
             inputs["containerId"] = args ? args.containerId : undefined;

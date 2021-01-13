@@ -89,23 +89,24 @@ type VirtualMachineSnapshot struct {
 // NewVirtualMachineSnapshot registers a new resource with the given unique name, arguments, and options.
 func NewVirtualMachineSnapshot(ctx *pulumi.Context,
 	name string, args *VirtualMachineSnapshotArgs, opts ...pulumi.ResourceOption) (*VirtualMachineSnapshot, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Memory == nil {
-		return nil, errors.New("missing required argument 'Memory'")
-	}
-	if args == nil || args.Quiesce == nil {
-		return nil, errors.New("missing required argument 'Quiesce'")
-	}
-	if args == nil || args.SnapshotName == nil {
-		return nil, errors.New("missing required argument 'SnapshotName'")
-	}
-	if args == nil || args.VirtualMachineUuid == nil {
-		return nil, errors.New("missing required argument 'VirtualMachineUuid'")
-	}
 	if args == nil {
-		args = &VirtualMachineSnapshotArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Memory == nil {
+		return nil, errors.New("invalid value for required argument 'Memory'")
+	}
+	if args.Quiesce == nil {
+		return nil, errors.New("invalid value for required argument 'Quiesce'")
+	}
+	if args.SnapshotName == nil {
+		return nil, errors.New("invalid value for required argument 'SnapshotName'")
+	}
+	if args.VirtualMachineUuid == nil {
+		return nil, errors.New("invalid value for required argument 'VirtualMachineUuid'")
 	}
 	var resource VirtualMachineSnapshot
 	err := ctx.RegisterResource("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot", name, args, &resource, opts...)

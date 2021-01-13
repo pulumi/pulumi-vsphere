@@ -29,11 +29,12 @@ type ComputeClusterHostGroup struct {
 // NewComputeClusterHostGroup registers a new resource with the given unique name, arguments, and options.
 func NewComputeClusterHostGroup(ctx *pulumi.Context,
 	name string, args *ComputeClusterHostGroupArgs, opts ...pulumi.ResourceOption) (*ComputeClusterHostGroup, error) {
-	if args == nil || args.ComputeClusterId == nil {
-		return nil, errors.New("missing required argument 'ComputeClusterId'")
-	}
 	if args == nil {
-		args = &ComputeClusterHostGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ComputeClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ComputeClusterId'")
 	}
 	var resource ComputeClusterHostGroup
 	err := ctx.RegisterResource("vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup", name, args, &resource, opts...)

@@ -134,10 +134,10 @@ export class VmfsDatastore extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as VmfsDatastoreArgs | undefined;
-            if (!args || args.disks === undefined) {
+            if ((!args || args.disks === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'disks'");
             }
-            if (!args || args.hostSystemId === undefined) {
+            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;

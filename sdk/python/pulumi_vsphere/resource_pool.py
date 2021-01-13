@@ -106,7 +106,7 @@ class ResourcePool(pulumi.CustomResource):
             __props__['memory_share_level'] = memory_share_level
             __props__['memory_shares'] = memory_shares
             __props__['name'] = name
-            if parent_resource_pool_id is None:
+            if parent_resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_resource_pool_id'")
             __props__['parent_resource_pool_id'] = parent_resource_pool_id
             __props__['tags'] = tags

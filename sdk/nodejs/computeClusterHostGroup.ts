@@ -66,7 +66,7 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ComputeClusterHostGroupArgs | undefined;
-            if (!args || args.computeClusterId === undefined) {
+            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;

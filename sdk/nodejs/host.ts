@@ -176,13 +176,13 @@ export class Host extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as HostArgs | undefined;
-            if (!args || args.hostname === undefined) {
+            if ((!args || args.hostname === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if (!args || args.password === undefined) {
+            if ((!args || args.password === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'password'");
             }
-            if (!args || args.username === undefined) {
+            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;

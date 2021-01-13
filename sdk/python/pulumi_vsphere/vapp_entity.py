@@ -71,7 +71,7 @@ class VappEntity(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_id is None:
+            if container_id is None and not opts.urn:
                 raise TypeError("Missing required property 'container_id'")
             __props__['container_id'] = container_id
             __props__['custom_attributes'] = custom_attributes
@@ -81,7 +81,7 @@ class VappEntity(pulumi.CustomResource):
             __props__['stop_action'] = stop_action
             __props__['stop_delay'] = stop_delay
             __props__['tags'] = tags
-            if target_id is None:
+            if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__['target_id'] = target_id
             __props__['wait_for_guest'] = wait_for_guest
