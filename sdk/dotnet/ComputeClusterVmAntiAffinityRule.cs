@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule")]
     public partial class ComputeClusterVmAntiAffinityRule : Pulumi.CustomResource
     {
         /// <summary>

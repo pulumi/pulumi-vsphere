@@ -148,15 +148,15 @@ type DatastoreClusterVmAntiAffinityRuleInput interface {
 	ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput
 }
 
-func (DatastoreClusterVmAntiAffinityRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRule)(nil)).Elem()
+func (*DatastoreClusterVmAntiAffinityRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRule)(nil))
 }
 
-func (i DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput {
+func (i *DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput {
 	return i.ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(context.Background())
 }
 
-func (i DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput {
+func (i *DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterVmAntiAffinityRuleOutput)
 }
 
@@ -165,7 +165,7 @@ type DatastoreClusterVmAntiAffinityRuleOutput struct {
 }
 
 func (DatastoreClusterVmAntiAffinityRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatastoreClusterVmAntiAffinityRule)(nil))
 }
 
 func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffinityRuleOutput() DatastoreClusterVmAntiAffinityRuleOutput {

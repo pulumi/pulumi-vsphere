@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/haVmOverride:HaVmOverride")]
     public partial class HaVmOverride : Pulumi.CustomResource
     {
         /// <summary>

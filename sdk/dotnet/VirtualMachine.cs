@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/virtualMachine:VirtualMachine")]
     public partial class VirtualMachine : Pulumi.CustomResource
     {
         /// <summary>

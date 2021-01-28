@@ -144,6 +144,7 @@ namespace Pulumi.VSphere
     /// 
     /// The above would import the vnic `vmk2` from host with ID `host-123`.
     /// </summary>
+    [VSphereResourceType("vsphere:index/vnic:Vnic")]
     public partial class Vnic : Pulumi.CustomResource
     {
         /// <summary>

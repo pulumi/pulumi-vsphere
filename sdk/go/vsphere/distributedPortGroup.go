@@ -677,15 +677,15 @@ type DistributedPortGroupInput interface {
 	ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput
 }
 
-func (DistributedPortGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributedPortGroup)(nil)).Elem()
+func (*DistributedPortGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedPortGroup)(nil))
 }
 
-func (i DistributedPortGroup) ToDistributedPortGroupOutput() DistributedPortGroupOutput {
+func (i *DistributedPortGroup) ToDistributedPortGroupOutput() DistributedPortGroupOutput {
 	return i.ToDistributedPortGroupOutputWithContext(context.Background())
 }
 
-func (i DistributedPortGroup) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
+func (i *DistributedPortGroup) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupOutput)
 }
 
@@ -694,7 +694,7 @@ type DistributedPortGroupOutput struct {
 }
 
 func (DistributedPortGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributedPortGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*DistributedPortGroup)(nil))
 }
 
 func (o DistributedPortGroupOutput) ToDistributedPortGroupOutput() DistributedPortGroupOutput {

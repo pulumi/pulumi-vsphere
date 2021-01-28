@@ -143,15 +143,15 @@ type TagCategoryInput interface {
 	ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput
 }
 
-func (TagCategory) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagCategory)(nil)).Elem()
+func (*TagCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagCategory)(nil))
 }
 
-func (i TagCategory) ToTagCategoryOutput() TagCategoryOutput {
+func (i *TagCategory) ToTagCategoryOutput() TagCategoryOutput {
 	return i.ToTagCategoryOutputWithContext(context.Background())
 }
 
-func (i TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput {
+func (i *TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCategoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryOutput)
 }
 
@@ -160,7 +160,7 @@ type TagCategoryOutput struct {
 }
 
 func (TagCategoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagCategoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*TagCategory)(nil))
 }
 
 func (o TagCategoryOutput) ToTagCategoryOutput() TagCategoryOutput {

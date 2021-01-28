@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/customAttribute:CustomAttribute")]
     public partial class CustomAttribute : Pulumi.CustomResource
     {
         /// <summary>

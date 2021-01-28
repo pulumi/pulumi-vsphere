@@ -434,15 +434,15 @@ type HostVirtualSwitchInput interface {
 	ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput
 }
 
-func (HostVirtualSwitch) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostVirtualSwitch)(nil)).Elem()
+func (*HostVirtualSwitch) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostVirtualSwitch)(nil))
 }
 
-func (i HostVirtualSwitch) ToHostVirtualSwitchOutput() HostVirtualSwitchOutput {
+func (i *HostVirtualSwitch) ToHostVirtualSwitchOutput() HostVirtualSwitchOutput {
 	return i.ToHostVirtualSwitchOutputWithContext(context.Background())
 }
 
-func (i HostVirtualSwitch) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
+func (i *HostVirtualSwitch) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchOutput)
 }
 
@@ -451,7 +451,7 @@ type HostVirtualSwitchOutput struct {
 }
 
 func (HostVirtualSwitchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostVirtualSwitchOutput)(nil)).Elem()
+	return reflect.TypeOf((*HostVirtualSwitch)(nil))
 }
 
 func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutput() HostVirtualSwitchOutput {

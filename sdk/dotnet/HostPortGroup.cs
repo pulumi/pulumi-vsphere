@@ -139,6 +139,7 @@ namespace Pulumi.VSphere
     /// 
     /// The above would import the `Management` host port group from host with ID `host-123`.
     /// </summary>
+    [VSphereResourceType("vsphere:index/hostPortGroup:HostPortGroup")]
     public partial class HostPortGroup : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/resourcePool:ResourcePool")]
     public partial class ResourcePool : Pulumi.CustomResource
     {
         /// <summary>

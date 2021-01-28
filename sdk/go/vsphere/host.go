@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -55,6 +56,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -366,15 +368,15 @@ type HostInput interface {
 	ToHostOutputWithContext(ctx context.Context) HostOutput
 }
 
-func (Host) ElementType() reflect.Type {
-	return reflect.TypeOf((*Host)(nil)).Elem()
+func (*Host) ElementType() reflect.Type {
+	return reflect.TypeOf((*Host)(nil))
 }
 
-func (i Host) ToHostOutput() HostOutput {
+func (i *Host) ToHostOutput() HostOutput {
 	return i.ToHostOutputWithContext(context.Background())
 }
 
-func (i Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
+func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
 }
 
@@ -383,7 +385,7 @@ type HostOutput struct {
 }
 
 func (HostOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostOutput)(nil)).Elem()
+	return reflect.TypeOf((*Host)(nil))
 }
 
 func (o HostOutput) ToHostOutput() HostOutput {

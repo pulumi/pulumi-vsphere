@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")]
     public partial class ComputeClusterVmGroup : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/vappContainer:VappContainer")]
     public partial class VappContainer : Pulumi.CustomResource
     {
         /// <summary>

@@ -1336,15 +1336,15 @@ type DistributedVirtualSwitchInput interface {
 	ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput
 }
 
-func (DistributedVirtualSwitch) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributedVirtualSwitch)(nil)).Elem()
+func (*DistributedVirtualSwitch) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedVirtualSwitch)(nil))
 }
 
-func (i DistributedVirtualSwitch) ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput {
+func (i *DistributedVirtualSwitch) ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput {
 	return i.ToDistributedVirtualSwitchOutputWithContext(context.Background())
 }
 
-func (i DistributedVirtualSwitch) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
+func (i *DistributedVirtualSwitch) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchOutput)
 }
 
@@ -1353,7 +1353,7 @@ type DistributedVirtualSwitchOutput struct {
 }
 
 func (DistributedVirtualSwitchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributedVirtualSwitchOutput)(nil)).Elem()
+	return reflect.TypeOf((*DistributedVirtualSwitch)(nil))
 }
 
 func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutput() DistributedVirtualSwitchOutput {

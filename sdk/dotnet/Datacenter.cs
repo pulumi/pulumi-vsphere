@@ -50,6 +50,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/datacenter:Datacenter")]
     public partial class Datacenter : Pulumi.CustomResource
     {
         /// <summary>

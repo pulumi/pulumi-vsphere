@@ -125,15 +125,15 @@ type ComputeClusterVmGroupInput interface {
 	ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput
 }
 
-func (ComputeClusterVmGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmGroup)(nil)).Elem()
+func (*ComputeClusterVmGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmGroup)(nil))
 }
 
-func (i ComputeClusterVmGroup) ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput {
+func (i *ComputeClusterVmGroup) ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput {
 	return i.ToComputeClusterVmGroupOutputWithContext(context.Background())
 }
 
-func (i ComputeClusterVmGroup) ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput {
+func (i *ComputeClusterVmGroup) ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupOutput)
 }
 
@@ -142,7 +142,7 @@ type ComputeClusterVmGroupOutput struct {
 }
 
 func (ComputeClusterVmGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeClusterVmGroup)(nil))
 }
 
 func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutput() ComputeClusterVmGroupOutput {

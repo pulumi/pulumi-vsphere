@@ -38,6 +38,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/virtualDisk:VirtualDisk")]
     public partial class VirtualDisk : Pulumi.CustomResource
     {
         /// <summary>

@@ -92,6 +92,7 @@ namespace Pulumi.VSphere
     /// 
     /// The above would import the host with ID `host-123`.
     /// </summary>
+    [VSphereResourceType("vsphere:index/host:Host")]
     public partial class Host : Pulumi.CustomResource
     {
         /// <summary>

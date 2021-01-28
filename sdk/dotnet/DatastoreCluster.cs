@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/datastoreCluster:DatastoreCluster")]
     public partial class DatastoreCluster : Pulumi.CustomResource
     {
         /// <summary>

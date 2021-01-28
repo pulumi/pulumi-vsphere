@@ -39,7 +39,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -237,15 +237,15 @@ type VirtualMachineSnapshotInput interface {
 	ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput
 }
 
-func (VirtualMachineSnapshot) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineSnapshot)(nil)).Elem()
+func (*VirtualMachineSnapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSnapshot)(nil))
 }
 
-func (i VirtualMachineSnapshot) ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput {
+func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput {
 	return i.ToVirtualMachineSnapshotOutputWithContext(context.Background())
 }
 
-func (i VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput {
+func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx context.Context) VirtualMachineSnapshotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotOutput)
 }
 
@@ -254,7 +254,7 @@ type VirtualMachineSnapshotOutput struct {
 }
 
 func (VirtualMachineSnapshotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineSnapshotOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualMachineSnapshot)(nil))
 }
 
 func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutput() VirtualMachineSnapshotOutput {

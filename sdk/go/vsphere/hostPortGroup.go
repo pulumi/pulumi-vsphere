@@ -28,6 +28,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -88,6 +89,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -465,15 +467,15 @@ type HostPortGroupInput interface {
 	ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput
 }
 
-func (HostPortGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroup)(nil)).Elem()
+func (*HostPortGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortGroup)(nil))
 }
 
-func (i HostPortGroup) ToHostPortGroupOutput() HostPortGroupOutput {
+func (i *HostPortGroup) ToHostPortGroupOutput() HostPortGroupOutput {
 	return i.ToHostPortGroupOutputWithContext(context.Background())
 }
 
-func (i HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
+func (i *HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupOutput)
 }
 
@@ -482,7 +484,7 @@ type HostPortGroupOutput struct {
 }
 
 func (HostPortGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*HostPortGroup)(nil))
 }
 
 func (o HostPortGroupOutput) ToHostPortGroupOutput() HostPortGroupOutput {

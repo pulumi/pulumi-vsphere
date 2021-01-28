@@ -540,15 +540,15 @@ type DatastoreClusterInput interface {
 	ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput
 }
 
-func (DatastoreCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreCluster)(nil)).Elem()
+func (*DatastoreCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreCluster)(nil))
 }
 
-func (i DatastoreCluster) ToDatastoreClusterOutput() DatastoreClusterOutput {
+func (i *DatastoreCluster) ToDatastoreClusterOutput() DatastoreClusterOutput {
 	return i.ToDatastoreClusterOutputWithContext(context.Background())
 }
 
-func (i DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
+func (i *DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterOutput)
 }
 
@@ -557,7 +557,7 @@ type DatastoreClusterOutput struct {
 }
 
 func (DatastoreClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatastoreCluster)(nil))
 }
 
 func (o DatastoreClusterOutput) ToDatastoreClusterOutput() DatastoreClusterOutput {
