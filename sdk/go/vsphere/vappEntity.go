@@ -233,15 +233,15 @@ type VappEntityInput interface {
 	ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput
 }
 
-func (VappEntity) ElementType() reflect.Type {
-	return reflect.TypeOf((*VappEntity)(nil)).Elem()
+func (*VappEntity) ElementType() reflect.Type {
+	return reflect.TypeOf((*VappEntity)(nil))
 }
 
-func (i VappEntity) ToVappEntityOutput() VappEntityOutput {
+func (i *VappEntity) ToVappEntityOutput() VappEntityOutput {
 	return i.ToVappEntityOutputWithContext(context.Background())
 }
 
-func (i VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput {
+func (i *VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEntityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityOutput)
 }
 
@@ -250,7 +250,7 @@ type VappEntityOutput struct {
 }
 
 func (VappEntityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VappEntityOutput)(nil)).Elem()
+	return reflect.TypeOf((*VappEntity)(nil))
 }
 
 func (o VappEntityOutput) ToVappEntityOutput() VappEntityOutput {

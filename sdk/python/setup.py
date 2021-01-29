@@ -48,7 +48,7 @@ setup(name='pulumi_vsphere',
       packages=find_packages(),
       package_data={
           'pulumi_vsphere': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/contentLibraryItem:ContentLibraryItem")]
     public partial class ContentLibraryItem : Pulumi.CustomResource
     {
         /// <summary>

@@ -345,15 +345,15 @@ type ResourcePoolInput interface {
 	ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput
 }
 
-func (ResourcePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePool)(nil)).Elem()
+func (*ResourcePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePool)(nil))
 }
 
-func (i ResourcePool) ToResourcePoolOutput() ResourcePoolOutput {
+func (i *ResourcePool) ToResourcePoolOutput() ResourcePoolOutput {
 	return i.ToResourcePoolOutputWithContext(context.Background())
 }
 
-func (i ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
+func (i *ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) ResourcePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
 }
 
@@ -362,7 +362,7 @@ type ResourcePoolOutput struct {
 }
 
 func (ResourcePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourcePoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResourcePool)(nil))
 }
 
 func (o ResourcePoolOutput) ToResourcePoolOutput() ResourcePoolOutput {

@@ -68,6 +68,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/vmStoragePolicy:VmStoragePolicy")]
     public partial class VmStoragePolicy : Pulumi.CustomResource
     {
         /// <summary>

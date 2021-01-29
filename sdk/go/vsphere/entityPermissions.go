@@ -121,15 +121,15 @@ type EntityPermissionsInput interface {
 	ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput
 }
 
-func (EntityPermissions) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityPermissions)(nil)).Elem()
+func (*EntityPermissions) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPermissions)(nil))
 }
 
-func (i EntityPermissions) ToEntityPermissionsOutput() EntityPermissionsOutput {
+func (i *EntityPermissions) ToEntityPermissionsOutput() EntityPermissionsOutput {
 	return i.ToEntityPermissionsOutputWithContext(context.Background())
 }
 
-func (i EntityPermissions) ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput {
+func (i *EntityPermissions) ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsOutput)
 }
 
@@ -138,7 +138,7 @@ type EntityPermissionsOutput struct {
 }
 
 func (EntityPermissionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityPermissionsOutput)(nil)).Elem()
+	return reflect.TypeOf((*EntityPermissions)(nil))
 }
 
 func (o EntityPermissionsOutput) ToEntityPermissionsOutput() EntityPermissionsOutput {

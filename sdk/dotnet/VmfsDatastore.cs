@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/vmfsDatastore:VmfsDatastore")]
     public partial class VmfsDatastore : Pulumi.CustomResource
     {
         /// <summary>

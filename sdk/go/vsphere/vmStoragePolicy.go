@@ -26,6 +26,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -172,15 +173,15 @@ type VmStoragePolicyInput interface {
 	ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput
 }
 
-func (VmStoragePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmStoragePolicy)(nil)).Elem()
+func (*VmStoragePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmStoragePolicy)(nil))
 }
 
-func (i VmStoragePolicy) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
+func (i *VmStoragePolicy) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
 	return i.ToVmStoragePolicyOutputWithContext(context.Background())
 }
 
-func (i VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
+func (i *VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyOutput)
 }
 
@@ -189,7 +190,7 @@ type VmStoragePolicyOutput struct {
 }
 
 func (VmStoragePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmStoragePolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*VmStoragePolicy)(nil))
 }
 
 func (o VmStoragePolicyOutput) ToVmStoragePolicyOutput() VmStoragePolicyOutput {

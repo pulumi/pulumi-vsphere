@@ -143,15 +143,15 @@ type DpmHostOverrideInput interface {
 	ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput
 }
 
-func (DpmHostOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpmHostOverride)(nil)).Elem()
+func (*DpmHostOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*DpmHostOverride)(nil))
 }
 
-func (i DpmHostOverride) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
+func (i *DpmHostOverride) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
 	return i.ToDpmHostOverrideOutputWithContext(context.Background())
 }
 
-func (i DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
+func (i *DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideOutput)
 }
 
@@ -160,7 +160,7 @@ type DpmHostOverrideOutput struct {
 }
 
 func (DpmHostOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpmHostOverrideOutput)(nil)).Elem()
+	return reflect.TypeOf((*DpmHostOverride)(nil))
 }
 
 func (o DpmHostOverrideOutput) ToDpmHostOverrideOutput() DpmHostOverrideOutput {

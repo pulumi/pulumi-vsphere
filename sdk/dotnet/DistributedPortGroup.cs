@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/distributedPortGroup:DistributedPortGroup")]
     public partial class DistributedPortGroup : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/nasDatastore:NasDatastore")]
     public partial class NasDatastore : Pulumi.CustomResource
     {
         /// <summary>

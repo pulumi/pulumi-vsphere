@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/folder:Folder")]
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>

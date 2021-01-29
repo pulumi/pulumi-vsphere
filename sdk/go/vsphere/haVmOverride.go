@@ -423,15 +423,15 @@ type HaVmOverrideInput interface {
 	ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput
 }
 
-func (HaVmOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVmOverride)(nil)).Elem()
+func (*HaVmOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaVmOverride)(nil))
 }
 
-func (i HaVmOverride) ToHaVmOverrideOutput() HaVmOverrideOutput {
+func (i *HaVmOverride) ToHaVmOverrideOutput() HaVmOverrideOutput {
 	return i.ToHaVmOverrideOutputWithContext(context.Background())
 }
 
-func (i HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
+func (i *HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideOutput)
 }
 
@@ -440,7 +440,7 @@ type HaVmOverrideOutput struct {
 }
 
 func (HaVmOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVmOverrideOutput)(nil)).Elem()
+	return reflect.TypeOf((*HaVmOverride)(nil))
 }
 
 func (o HaVmOverrideOutput) ToHaVmOverrideOutput() HaVmOverrideOutput {

@@ -106,15 +106,15 @@ type CustomAttributeInput interface {
 	ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput
 }
 
-func (CustomAttribute) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomAttribute)(nil)).Elem()
+func (*CustomAttribute) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttribute)(nil))
 }
 
-func (i CustomAttribute) ToCustomAttributeOutput() CustomAttributeOutput {
+func (i *CustomAttribute) ToCustomAttributeOutput() CustomAttributeOutput {
 	return i.ToCustomAttributeOutputWithContext(context.Background())
 }
 
-func (i CustomAttribute) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
+func (i *CustomAttribute) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput)
 }
 
@@ -123,7 +123,7 @@ type CustomAttributeOutput struct {
 }
 
 func (CustomAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomAttributeOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomAttribute)(nil))
 }
 
 func (o CustomAttributeOutput) ToCustomAttributeOutput() CustomAttributeOutput {

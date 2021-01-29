@@ -370,15 +370,15 @@ type VappContainerInput interface {
 	ToVappContainerOutputWithContext(ctx context.Context) VappContainerOutput
 }
 
-func (VappContainer) ElementType() reflect.Type {
-	return reflect.TypeOf((*VappContainer)(nil)).Elem()
+func (*VappContainer) ElementType() reflect.Type {
+	return reflect.TypeOf((*VappContainer)(nil))
 }
 
-func (i VappContainer) ToVappContainerOutput() VappContainerOutput {
+func (i *VappContainer) ToVappContainerOutput() VappContainerOutput {
 	return i.ToVappContainerOutputWithContext(context.Background())
 }
 
-func (i VappContainer) ToVappContainerOutputWithContext(ctx context.Context) VappContainerOutput {
+func (i *VappContainer) ToVappContainerOutputWithContext(ctx context.Context) VappContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VappContainerOutput)
 }
 
@@ -387,7 +387,7 @@ type VappContainerOutput struct {
 }
 
 func (VappContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VappContainerOutput)(nil)).Elem()
+	return reflect.TypeOf((*VappContainer)(nil))
 }
 
 func (o VappContainerOutput) ToVappContainerOutput() VappContainerOutput {

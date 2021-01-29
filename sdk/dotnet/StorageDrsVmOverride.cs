@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")]
     public partial class StorageDrsVmOverride : Pulumi.CustomResource
     {
         /// <summary>

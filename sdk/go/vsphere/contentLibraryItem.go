@@ -140,15 +140,15 @@ type ContentLibraryItemInput interface {
 	ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput
 }
 
-func (ContentLibraryItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentLibraryItem)(nil)).Elem()
+func (*ContentLibraryItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentLibraryItem)(nil))
 }
 
-func (i ContentLibraryItem) ToContentLibraryItemOutput() ContentLibraryItemOutput {
+func (i *ContentLibraryItem) ToContentLibraryItemOutput() ContentLibraryItemOutput {
 	return i.ToContentLibraryItemOutputWithContext(context.Background())
 }
 
-func (i ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
+func (i *ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemOutput)
 }
 
@@ -157,7 +157,7 @@ type ContentLibraryItemOutput struct {
 }
 
 func (ContentLibraryItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentLibraryItemOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContentLibraryItem)(nil))
 }
 
 func (o ContentLibraryItemOutput) ToContentLibraryItemOutput() ContentLibraryItemOutput {

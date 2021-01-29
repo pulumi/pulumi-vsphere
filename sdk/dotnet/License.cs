@@ -36,6 +36,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/license:License")]
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>

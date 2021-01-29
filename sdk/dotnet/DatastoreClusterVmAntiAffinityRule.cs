@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")]
     public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource
     {
         /// <summary>

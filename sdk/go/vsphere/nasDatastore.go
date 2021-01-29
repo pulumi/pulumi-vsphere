@@ -356,15 +356,15 @@ type NasDatastoreInput interface {
 	ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput
 }
 
-func (NasDatastore) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasDatastore)(nil)).Elem()
+func (*NasDatastore) ElementType() reflect.Type {
+	return reflect.TypeOf((*NasDatastore)(nil))
 }
 
-func (i NasDatastore) ToNasDatastoreOutput() NasDatastoreOutput {
+func (i *NasDatastore) ToNasDatastoreOutput() NasDatastoreOutput {
 	return i.ToNasDatastoreOutputWithContext(context.Background())
 }
 
-func (i NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
+func (i *NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreOutput)
 }
 
@@ -373,7 +373,7 @@ type NasDatastoreOutput struct {
 }
 
 func (NasDatastoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasDatastoreOutput)(nil)).Elem()
+	return reflect.TypeOf((*NasDatastore)(nil))
 }
 
 func (o NasDatastoreOutput) ToNasDatastoreOutput() NasDatastoreOutput {

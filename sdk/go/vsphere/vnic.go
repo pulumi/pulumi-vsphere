@@ -23,6 +23,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -87,6 +88,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -320,15 +322,15 @@ type VnicInput interface {
 	ToVnicOutputWithContext(ctx context.Context) VnicOutput
 }
 
-func (Vnic) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vnic)(nil)).Elem()
+func (*Vnic) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vnic)(nil))
 }
 
-func (i Vnic) ToVnicOutput() VnicOutput {
+func (i *Vnic) ToVnicOutput() VnicOutput {
 	return i.ToVnicOutputWithContext(context.Background())
 }
 
-func (i Vnic) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
+func (i *Vnic) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicOutput)
 }
 
@@ -337,7 +339,7 @@ type VnicOutput struct {
 }
 
 func (VnicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VnicOutput)(nil)).Elem()
+	return reflect.TypeOf((*Vnic)(nil))
 }
 
 func (o VnicOutput) ToVnicOutput() VnicOutput {

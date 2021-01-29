@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -147,15 +147,15 @@ type LicenseInput interface {
 	ToLicenseOutputWithContext(ctx context.Context) LicenseOutput
 }
 
-func (License) ElementType() reflect.Type {
-	return reflect.TypeOf((*License)(nil)).Elem()
+func (*License) ElementType() reflect.Type {
+	return reflect.TypeOf((*License)(nil))
 }
 
-func (i License) ToLicenseOutput() LicenseOutput {
+func (i *License) ToLicenseOutput() LicenseOutput {
 	return i.ToLicenseOutputWithContext(context.Background())
 }
 
-func (i License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
+func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
 }
 
@@ -164,7 +164,7 @@ type LicenseOutput struct {
 }
 
 func (LicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseOutput)(nil)).Elem()
+	return reflect.TypeOf((*License)(nil))
 }
 
 func (o LicenseOutput) ToLicenseOutput() LicenseOutput {

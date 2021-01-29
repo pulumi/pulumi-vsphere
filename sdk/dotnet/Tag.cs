@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/tag:Tag")]
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>

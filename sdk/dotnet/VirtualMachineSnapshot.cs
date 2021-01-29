@@ -57,6 +57,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot")]
     public partial class VirtualMachineSnapshot : Pulumi.CustomResource
     {
         /// <summary>

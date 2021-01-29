@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/hostVirtualSwitch:HostVirtualSwitch")]
     public partial class HostVirtualSwitch : Pulumi.CustomResource
     {
         /// <summary>

@@ -125,15 +125,15 @@ type ComputeClusterHostGroupInput interface {
 	ToComputeClusterHostGroupOutputWithContext(ctx context.Context) ComputeClusterHostGroupOutput
 }
 
-func (ComputeClusterHostGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterHostGroup)(nil)).Elem()
+func (*ComputeClusterHostGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterHostGroup)(nil))
 }
 
-func (i ComputeClusterHostGroup) ToComputeClusterHostGroupOutput() ComputeClusterHostGroupOutput {
+func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutput() ComputeClusterHostGroupOutput {
 	return i.ToComputeClusterHostGroupOutputWithContext(context.Background())
 }
 
-func (i ComputeClusterHostGroup) ToComputeClusterHostGroupOutputWithContext(ctx context.Context) ComputeClusterHostGroupOutput {
+func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutputWithContext(ctx context.Context) ComputeClusterHostGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupOutput)
 }
 
@@ -142,7 +142,7 @@ type ComputeClusterHostGroupOutput struct {
 }
 
 func (ComputeClusterHostGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterHostGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeClusterHostGroup)(nil))
 }
 
 func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutput() ComputeClusterHostGroupOutput {

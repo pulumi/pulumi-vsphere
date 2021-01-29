@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -40,7 +40,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -188,15 +188,15 @@ type DatacenterInput interface {
 	ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput
 }
 
-func (Datacenter) ElementType() reflect.Type {
-	return reflect.TypeOf((*Datacenter)(nil)).Elem()
+func (*Datacenter) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datacenter)(nil))
 }
 
-func (i Datacenter) ToDatacenterOutput() DatacenterOutput {
+func (i *Datacenter) ToDatacenterOutput() DatacenterOutput {
 	return i.ToDatacenterOutputWithContext(context.Background())
 }
 
-func (i Datacenter) ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput {
+func (i *Datacenter) ToDatacenterOutputWithContext(ctx context.Context) DatacenterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterOutput)
 }
 
@@ -205,7 +205,7 @@ type DatacenterOutput struct {
 }
 
 func (DatacenterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatacenterOutput)(nil)).Elem()
+	return reflect.TypeOf((*Datacenter)(nil))
 }
 
 func (o DatacenterOutput) ToDatacenterOutput() DatacenterOutput {

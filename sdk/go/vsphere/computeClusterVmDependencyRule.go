@@ -191,15 +191,15 @@ type ComputeClusterVmDependencyRuleInput interface {
 	ToComputeClusterVmDependencyRuleOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleOutput
 }
 
-func (ComputeClusterVmDependencyRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmDependencyRule)(nil)).Elem()
+func (*ComputeClusterVmDependencyRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmDependencyRule)(nil))
 }
 
-func (i ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutput() ComputeClusterVmDependencyRuleOutput {
+func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutput() ComputeClusterVmDependencyRuleOutput {
 	return i.ToComputeClusterVmDependencyRuleOutputWithContext(context.Background())
 }
 
-func (i ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleOutput {
+func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleOutput)
 }
 
@@ -208,7 +208,7 @@ type ComputeClusterVmDependencyRuleOutput struct {
 }
 
 func (ComputeClusterVmDependencyRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmDependencyRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeClusterVmDependencyRule)(nil))
 }
 
 func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOutput() ComputeClusterVmDependencyRuleOutput {

@@ -1286,15 +1286,15 @@ type ComputeClusterInput interface {
 	ToComputeClusterOutputWithContext(ctx context.Context) ComputeClusterOutput
 }
 
-func (ComputeCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeCluster)(nil)).Elem()
+func (*ComputeCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeCluster)(nil))
 }
 
-func (i ComputeCluster) ToComputeClusterOutput() ComputeClusterOutput {
+func (i *ComputeCluster) ToComputeClusterOutput() ComputeClusterOutput {
 	return i.ToComputeClusterOutputWithContext(context.Background())
 }
 
-func (i ComputeCluster) ToComputeClusterOutputWithContext(ctx context.Context) ComputeClusterOutput {
+func (i *ComputeCluster) ToComputeClusterOutputWithContext(ctx context.Context) ComputeClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterOutput)
 }
 
@@ -1303,7 +1303,7 @@ type ComputeClusterOutput struct {
 }
 
 func (ComputeClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeCluster)(nil))
 }
 
 func (o ComputeClusterOutput) ToComputeClusterOutput() ComputeClusterOutput {

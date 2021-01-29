@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/dpmHostOverride:DpmHostOverride")]
     public partial class DpmHostOverride : Pulumi.CustomResource
     {
         /// <summary>

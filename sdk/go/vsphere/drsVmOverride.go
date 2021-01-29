@@ -148,15 +148,15 @@ type DrsVmOverrideInput interface {
 	ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput
 }
 
-func (DrsVmOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*DrsVmOverride)(nil)).Elem()
+func (*DrsVmOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*DrsVmOverride)(nil))
 }
 
-func (i DrsVmOverride) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
+func (i *DrsVmOverride) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
 	return i.ToDrsVmOverrideOutputWithContext(context.Background())
 }
 
-func (i DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
+func (i *DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideOutput)
 }
 
@@ -165,7 +165,7 @@ type DrsVmOverrideOutput struct {
 }
 
 func (DrsVmOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DrsVmOverrideOutput)(nil)).Elem()
+	return reflect.TypeOf((*DrsVmOverride)(nil))
 }
 
 func (o DrsVmOverrideOutput) ToDrsVmOverrideOutput() DrsVmOverrideOutput {

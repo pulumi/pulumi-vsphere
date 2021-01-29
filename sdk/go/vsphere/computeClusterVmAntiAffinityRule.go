@@ -148,15 +148,15 @@ type ComputeClusterVmAntiAffinityRuleInput interface {
 	ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput
 }
 
-func (ComputeClusterVmAntiAffinityRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRule)(nil)).Elem()
+func (*ComputeClusterVmAntiAffinityRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRule)(nil))
 }
 
-func (i ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput {
+func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput {
 	return i.ToComputeClusterVmAntiAffinityRuleOutputWithContext(context.Background())
 }
 
-func (i ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput {
+func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRuleOutput)
 }
 
@@ -165,7 +165,7 @@ type ComputeClusterVmAntiAffinityRuleOutput struct {
 }
 
 func (ComputeClusterVmAntiAffinityRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeClusterVmAntiAffinityRule)(nil))
 }
 
 func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRuleOutput() ComputeClusterVmAntiAffinityRuleOutput {

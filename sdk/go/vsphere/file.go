@@ -31,7 +31,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -56,7 +56,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -257,15 +257,15 @@ type FileInput interface {
 	ToFileOutputWithContext(ctx context.Context) FileOutput
 }
 
-func (File) ElementType() reflect.Type {
-	return reflect.TypeOf((*File)(nil)).Elem()
+func (*File) ElementType() reflect.Type {
+	return reflect.TypeOf((*File)(nil))
 }
 
-func (i File) ToFileOutput() FileOutput {
+func (i *File) ToFileOutput() FileOutput {
 	return i.ToFileOutputWithContext(context.Background())
 }
 
-func (i File) ToFileOutputWithContext(ctx context.Context) FileOutput {
+func (i *File) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileOutput)
 }
 
@@ -274,7 +274,7 @@ type FileOutput struct {
 }
 
 func (FileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileOutput)(nil)).Elem()
+	return reflect.TypeOf((*File)(nil))
 }
 
 func (o FileOutput) ToFileOutput() FileOutput {

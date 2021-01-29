@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -242,15 +242,15 @@ type VirtualDiskInput interface {
 	ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput
 }
 
-func (VirtualDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualDisk)(nil)).Elem()
+func (*VirtualDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualDisk)(nil))
 }
 
-func (i VirtualDisk) ToVirtualDiskOutput() VirtualDiskOutput {
+func (i *VirtualDisk) ToVirtualDiskOutput() VirtualDiskOutput {
 	return i.ToVirtualDiskOutputWithContext(context.Background())
 }
 
-func (i VirtualDisk) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
+func (i *VirtualDisk) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskOutput)
 }
 
@@ -259,7 +259,7 @@ type VirtualDiskOutput struct {
 }
 
 func (VirtualDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualDiskOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualDisk)(nil))
 }
 
 func (o VirtualDiskOutput) ToVirtualDiskOutput() VirtualDiskOutput {

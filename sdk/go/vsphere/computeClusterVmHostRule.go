@@ -193,15 +193,15 @@ type ComputeClusterVmHostRuleInput interface {
 	ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput
 }
 
-func (ComputeClusterVmHostRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmHostRule)(nil)).Elem()
+func (*ComputeClusterVmHostRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeClusterVmHostRule)(nil))
 }
 
-func (i ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput {
+func (i *ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput {
 	return i.ToComputeClusterVmHostRuleOutputWithContext(context.Background())
 }
 
-func (i ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput {
+func (i *ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutputWithContext(ctx context.Context) ComputeClusterVmHostRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmHostRuleOutput)
 }
 
@@ -210,7 +210,7 @@ type ComputeClusterVmHostRuleOutput struct {
 }
 
 func (ComputeClusterVmHostRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterVmHostRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ComputeClusterVmHostRule)(nil))
 }
 
 func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutput() ComputeClusterVmHostRuleOutput {

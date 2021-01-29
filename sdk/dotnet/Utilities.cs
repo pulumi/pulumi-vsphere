@@ -77,4 +77,11 @@ namespace Pulumi.VSphere
             }
         }
     }
+
+    internal sealed class VSphereResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public VSphereResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

@@ -188,15 +188,15 @@ type FolderInput interface {
 	ToFolderOutputWithContext(ctx context.Context) FolderOutput
 }
 
-func (Folder) ElementType() reflect.Type {
-	return reflect.TypeOf((*Folder)(nil)).Elem()
+func (*Folder) ElementType() reflect.Type {
+	return reflect.TypeOf((*Folder)(nil))
 }
 
-func (i Folder) ToFolderOutput() FolderOutput {
+func (i *Folder) ToFolderOutput() FolderOutput {
 	return i.ToFolderOutputWithContext(context.Background())
 }
 
-func (i Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
+func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderOutput)
 }
 
@@ -205,7 +205,7 @@ type FolderOutput struct {
 }
 
 func (FolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderOutput)(nil)).Elem()
+	return reflect.TypeOf((*Folder)(nil))
 }
 
 func (o FolderOutput) ToFolderOutput() FolderOutput {

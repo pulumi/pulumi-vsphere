@@ -269,15 +269,15 @@ type VmfsDatastoreInput interface {
 	ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput
 }
 
-func (VmfsDatastore) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmfsDatastore)(nil)).Elem()
+func (*VmfsDatastore) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmfsDatastore)(nil))
 }
 
-func (i VmfsDatastore) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
+func (i *VmfsDatastore) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
 	return i.ToVmfsDatastoreOutputWithContext(context.Background())
 }
 
-func (i VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
+func (i *VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreOutput)
 }
 
@@ -286,7 +286,7 @@ type VmfsDatastoreOutput struct {
 }
 
 func (VmfsDatastoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmfsDatastoreOutput)(nil)).Elem()
+	return reflect.TypeOf((*VmfsDatastore)(nil))
 }
 
 func (o VmfsDatastoreOutput) ToVmfsDatastoreOutput() VmfsDatastoreOutput {

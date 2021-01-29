@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    [VSphereResourceType("vsphere:index/entityPermissions:EntityPermissions")]
     public partial class EntityPermissions : Pulumi.CustomResource
     {
         /// <summary>

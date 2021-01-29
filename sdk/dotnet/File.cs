@@ -69,6 +69,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// </summary>
+    [VSphereResourceType("vsphere:index/file:File")]
     public partial class File : Pulumi.CustomResource
     {
         /// <summary>
