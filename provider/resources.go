@@ -55,21 +55,6 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-vsphere",
 		GitHubOrg:   "hashicorp",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"user": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"VSPHERE_USER"},
-				},
-			},
-			"password": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"VSPHERE_PASSWORD"},
-				},
-			},
-			"vsphere_server": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"VSPHERE_SERVER"},
-				},
-			},
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"VSPHERE_ALLOW_UNVERIFIED_SSL"},

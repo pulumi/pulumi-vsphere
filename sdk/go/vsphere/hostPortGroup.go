@@ -28,7 +28,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -89,7 +88,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -479,6 +477,85 @@ func (i *HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) Ho
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupOutput)
 }
 
+func (i *HostPortGroup) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
+	return i.ToHostPortGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *HostPortGroup) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPtrOutput)
+}
+
+type HostPortGroupPtrInput interface {
+	pulumi.Input
+
+	ToHostPortGroupPtrOutput() HostPortGroupPtrOutput
+	ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput
+}
+
+type hostPortGroupPtrType HostPortGroupArgs
+
+func (*hostPortGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostPortGroup)(nil))
+}
+
+func (i *hostPortGroupPtrType) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
+	return i.ToHostPortGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *hostPortGroupPtrType) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPtrOutput)
+}
+
+// HostPortGroupArrayInput is an input type that accepts HostPortGroupArray and HostPortGroupArrayOutput values.
+// You can construct a concrete instance of `HostPortGroupArrayInput` via:
+//
+//          HostPortGroupArray{ HostPortGroupArgs{...} }
+type HostPortGroupArrayInput interface {
+	pulumi.Input
+
+	ToHostPortGroupArrayOutput() HostPortGroupArrayOutput
+	ToHostPortGroupArrayOutputWithContext(context.Context) HostPortGroupArrayOutput
+}
+
+type HostPortGroupArray []HostPortGroupInput
+
+func (HostPortGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*HostPortGroup)(nil))
+}
+
+func (i HostPortGroupArray) ToHostPortGroupArrayOutput() HostPortGroupArrayOutput {
+	return i.ToHostPortGroupArrayOutputWithContext(context.Background())
+}
+
+func (i HostPortGroupArray) ToHostPortGroupArrayOutputWithContext(ctx context.Context) HostPortGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupArrayOutput)
+}
+
+// HostPortGroupMapInput is an input type that accepts HostPortGroupMap and HostPortGroupMapOutput values.
+// You can construct a concrete instance of `HostPortGroupMapInput` via:
+//
+//          HostPortGroupMap{ "key": HostPortGroupArgs{...} }
+type HostPortGroupMapInput interface {
+	pulumi.Input
+
+	ToHostPortGroupMapOutput() HostPortGroupMapOutput
+	ToHostPortGroupMapOutputWithContext(context.Context) HostPortGroupMapOutput
+}
+
+type HostPortGroupMap map[string]HostPortGroupInput
+
+func (HostPortGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*HostPortGroup)(nil))
+}
+
+func (i HostPortGroupMap) ToHostPortGroupMapOutput() HostPortGroupMapOutput {
+	return i.ToHostPortGroupMapOutputWithContext(context.Background())
+}
+
+func (i HostPortGroupMap) ToHostPortGroupMapOutputWithContext(ctx context.Context) HostPortGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupMapOutput)
+}
+
 type HostPortGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -495,6 +572,75 @@ func (o HostPortGroupOutput) ToHostPortGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o HostPortGroupOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
+	return o.ToHostPortGroupPtrOutputWithContext(context.Background())
+}
+
+func (o HostPortGroupOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
+	return o.ApplyT(func(v HostPortGroup) *HostPortGroup {
+		return &v
+	}).(HostPortGroupPtrOutput)
+}
+
+type HostPortGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostPortGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostPortGroup)(nil))
+}
+
+func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
+	return o
+}
+
+func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
+	return o
+}
+
+type HostPortGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (HostPortGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostPortGroup)(nil))
+}
+
+func (o HostPortGroupArrayOutput) ToHostPortGroupArrayOutput() HostPortGroupArrayOutput {
+	return o
+}
+
+func (o HostPortGroupArrayOutput) ToHostPortGroupArrayOutputWithContext(ctx context.Context) HostPortGroupArrayOutput {
+	return o
+}
+
+func (o HostPortGroupArrayOutput) Index(i pulumi.IntInput) HostPortGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostPortGroup {
+		return vs[0].([]HostPortGroup)[vs[1].(int)]
+	}).(HostPortGroupOutput)
+}
+
+type HostPortGroupMapOutput struct{ *pulumi.OutputState }
+
+func (HostPortGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]HostPortGroup)(nil))
+}
+
+func (o HostPortGroupMapOutput) ToHostPortGroupMapOutput() HostPortGroupMapOutput {
+	return o
+}
+
+func (o HostPortGroupMapOutput) ToHostPortGroupMapOutputWithContext(ctx context.Context) HostPortGroupMapOutput {
+	return o
+}
+
+func (o HostPortGroupMapOutput) MapIndex(k pulumi.StringInput) HostPortGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HostPortGroup {
+		return vs[0].(map[string]HostPortGroup)[vs[1].(string)]
+	}).(HostPortGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HostPortGroupOutput{})
+	pulumi.RegisterOutputType(HostPortGroupPtrOutput{})
+	pulumi.RegisterOutputType(HostPortGroupArrayOutput{})
+	pulumi.RegisterOutputType(HostPortGroupMapOutput{})
 }

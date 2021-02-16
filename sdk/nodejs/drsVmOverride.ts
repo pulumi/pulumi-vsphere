@@ -65,7 +65,8 @@ export class DrsVmOverride extends pulumi.CustomResource {
     constructor(name: string, args: DrsVmOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DrsVmOverrideArgs | DrsVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DrsVmOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["drsAutomationLevel"] = state ? state.drsAutomationLevel : undefined;
@@ -73,10 +74,10 @@ export class DrsVmOverride extends pulumi.CustomResource {
             inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as DrsVmOverrideArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.virtualMachineId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
@@ -84,12 +85,8 @@ export class DrsVmOverride extends pulumi.CustomResource {
             inputs["drsEnabled"] = args ? args.drsEnabled : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DrsVmOverride.__pulumiType, name, inputs, opts);
     }

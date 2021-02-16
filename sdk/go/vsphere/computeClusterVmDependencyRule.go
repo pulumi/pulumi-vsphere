@@ -203,6 +203,85 @@ func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleOutput)
 }
 
+func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRulePtrOutput() ComputeClusterVmDependencyRulePtrOutput {
+	return i.ToComputeClusterVmDependencyRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRulePtrOutput)
+}
+
+type ComputeClusterVmDependencyRulePtrInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmDependencyRulePtrOutput() ComputeClusterVmDependencyRulePtrOutput
+	ToComputeClusterVmDependencyRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRulePtrOutput
+}
+
+type computeClusterVmDependencyRulePtrType ComputeClusterVmDependencyRuleArgs
+
+func (*computeClusterVmDependencyRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVmDependencyRule)(nil))
+}
+
+func (i *computeClusterVmDependencyRulePtrType) ToComputeClusterVmDependencyRulePtrOutput() ComputeClusterVmDependencyRulePtrOutput {
+	return i.ToComputeClusterVmDependencyRulePtrOutputWithContext(context.Background())
+}
+
+func (i *computeClusterVmDependencyRulePtrType) ToComputeClusterVmDependencyRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRulePtrOutput)
+}
+
+// ComputeClusterVmDependencyRuleArrayInput is an input type that accepts ComputeClusterVmDependencyRuleArray and ComputeClusterVmDependencyRuleArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterVmDependencyRuleArrayInput` via:
+//
+//          ComputeClusterVmDependencyRuleArray{ ComputeClusterVmDependencyRuleArgs{...} }
+type ComputeClusterVmDependencyRuleArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmDependencyRuleArrayOutput() ComputeClusterVmDependencyRuleArrayOutput
+	ToComputeClusterVmDependencyRuleArrayOutputWithContext(context.Context) ComputeClusterVmDependencyRuleArrayOutput
+}
+
+type ComputeClusterVmDependencyRuleArray []ComputeClusterVmDependencyRuleInput
+
+func (ComputeClusterVmDependencyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ComputeClusterVmDependencyRule)(nil))
+}
+
+func (i ComputeClusterVmDependencyRuleArray) ToComputeClusterVmDependencyRuleArrayOutput() ComputeClusterVmDependencyRuleArrayOutput {
+	return i.ToComputeClusterVmDependencyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmDependencyRuleArray) ToComputeClusterVmDependencyRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleArrayOutput)
+}
+
+// ComputeClusterVmDependencyRuleMapInput is an input type that accepts ComputeClusterVmDependencyRuleMap and ComputeClusterVmDependencyRuleMapOutput values.
+// You can construct a concrete instance of `ComputeClusterVmDependencyRuleMapInput` via:
+//
+//          ComputeClusterVmDependencyRuleMap{ "key": ComputeClusterVmDependencyRuleArgs{...} }
+type ComputeClusterVmDependencyRuleMapInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmDependencyRuleMapOutput() ComputeClusterVmDependencyRuleMapOutput
+	ToComputeClusterVmDependencyRuleMapOutputWithContext(context.Context) ComputeClusterVmDependencyRuleMapOutput
+}
+
+type ComputeClusterVmDependencyRuleMap map[string]ComputeClusterVmDependencyRuleInput
+
+func (ComputeClusterVmDependencyRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ComputeClusterVmDependencyRule)(nil))
+}
+
+func (i ComputeClusterVmDependencyRuleMap) ToComputeClusterVmDependencyRuleMapOutput() ComputeClusterVmDependencyRuleMapOutput {
+	return i.ToComputeClusterVmDependencyRuleMapOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmDependencyRuleMap) ToComputeClusterVmDependencyRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleMapOutput)
+}
+
 type ComputeClusterVmDependencyRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -219,6 +298,75 @@ func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOu
 	return o
 }
 
+func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRulePtrOutput() ComputeClusterVmDependencyRulePtrOutput {
+	return o.ToComputeClusterVmDependencyRulePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRulePtrOutput {
+	return o.ApplyT(func(v ComputeClusterVmDependencyRule) *ComputeClusterVmDependencyRule {
+		return &v
+	}).(ComputeClusterVmDependencyRulePtrOutput)
+}
+
+type ComputeClusterVmDependencyRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterVmDependencyRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVmDependencyRule)(nil))
+}
+
+func (o ComputeClusterVmDependencyRulePtrOutput) ToComputeClusterVmDependencyRulePtrOutput() ComputeClusterVmDependencyRulePtrOutput {
+	return o
+}
+
+func (o ComputeClusterVmDependencyRulePtrOutput) ToComputeClusterVmDependencyRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRulePtrOutput {
+	return o
+}
+
+type ComputeClusterVmDependencyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVmDependencyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVmDependencyRule)(nil))
+}
+
+func (o ComputeClusterVmDependencyRuleArrayOutput) ToComputeClusterVmDependencyRuleArrayOutput() ComputeClusterVmDependencyRuleArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVmDependencyRuleArrayOutput) ToComputeClusterVmDependencyRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVmDependencyRuleArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmDependencyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVmDependencyRule {
+		return vs[0].([]ComputeClusterVmDependencyRule)[vs[1].(int)]
+	}).(ComputeClusterVmDependencyRuleOutput)
+}
+
+type ComputeClusterVmDependencyRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVmDependencyRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ComputeClusterVmDependencyRule)(nil))
+}
+
+func (o ComputeClusterVmDependencyRuleMapOutput) ToComputeClusterVmDependencyRuleMapOutput() ComputeClusterVmDependencyRuleMapOutput {
+	return o
+}
+
+func (o ComputeClusterVmDependencyRuleMapOutput) ToComputeClusterVmDependencyRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleMapOutput {
+	return o
+}
+
+func (o ComputeClusterVmDependencyRuleMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmDependencyRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeClusterVmDependencyRule {
+		return vs[0].(map[string]ComputeClusterVmDependencyRule)[vs[1].(string)]
+	}).(ComputeClusterVmDependencyRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComputeClusterVmDependencyRuleOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmDependencyRulePtrOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmDependencyRuleArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmDependencyRuleMapOutput{})
 }

@@ -357,6 +357,85 @@ func (i *ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) Reso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
 }
 
+func (i *ResourcePool) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
+	return i.ToResourcePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *ResourcePool) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolPtrOutput)
+}
+
+type ResourcePoolPtrInput interface {
+	pulumi.Input
+
+	ToResourcePoolPtrOutput() ResourcePoolPtrOutput
+	ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput
+}
+
+type resourcePoolPtrType ResourcePoolArgs
+
+func (*resourcePoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePool)(nil))
+}
+
+func (i *resourcePoolPtrType) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
+	return i.ToResourcePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePoolPtrType) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolPtrOutput)
+}
+
+// ResourcePoolArrayInput is an input type that accepts ResourcePoolArray and ResourcePoolArrayOutput values.
+// You can construct a concrete instance of `ResourcePoolArrayInput` via:
+//
+//          ResourcePoolArray{ ResourcePoolArgs{...} }
+type ResourcePoolArrayInput interface {
+	pulumi.Input
+
+	ToResourcePoolArrayOutput() ResourcePoolArrayOutput
+	ToResourcePoolArrayOutputWithContext(context.Context) ResourcePoolArrayOutput
+}
+
+type ResourcePoolArray []ResourcePoolInput
+
+func (ResourcePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ResourcePool)(nil))
+}
+
+func (i ResourcePoolArray) ToResourcePoolArrayOutput() ResourcePoolArrayOutput {
+	return i.ToResourcePoolArrayOutputWithContext(context.Background())
+}
+
+func (i ResourcePoolArray) ToResourcePoolArrayOutputWithContext(ctx context.Context) ResourcePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolArrayOutput)
+}
+
+// ResourcePoolMapInput is an input type that accepts ResourcePoolMap and ResourcePoolMapOutput values.
+// You can construct a concrete instance of `ResourcePoolMapInput` via:
+//
+//          ResourcePoolMap{ "key": ResourcePoolArgs{...} }
+type ResourcePoolMapInput interface {
+	pulumi.Input
+
+	ToResourcePoolMapOutput() ResourcePoolMapOutput
+	ToResourcePoolMapOutputWithContext(context.Context) ResourcePoolMapOutput
+}
+
+type ResourcePoolMap map[string]ResourcePoolInput
+
+func (ResourcePoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ResourcePool)(nil))
+}
+
+func (i ResourcePoolMap) ToResourcePoolMapOutput() ResourcePoolMapOutput {
+	return i.ToResourcePoolMapOutputWithContext(context.Background())
+}
+
+func (i ResourcePoolMap) ToResourcePoolMapOutputWithContext(ctx context.Context) ResourcePoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolMapOutput)
+}
+
 type ResourcePoolOutput struct {
 	*pulumi.OutputState
 }
@@ -373,6 +452,75 @@ func (o ResourcePoolOutput) ToResourcePoolOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ResourcePoolOutput) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
+	return o.ToResourcePoolPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePoolOutput) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
+	return o.ApplyT(func(v ResourcePool) *ResourcePool {
+		return &v
+	}).(ResourcePoolPtrOutput)
+}
+
+type ResourcePoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourcePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePool)(nil))
+}
+
+func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
+	return o
+}
+
+func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
+	return o
+}
+
+type ResourcePoolArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourcePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePool)(nil))
+}
+
+func (o ResourcePoolArrayOutput) ToResourcePoolArrayOutput() ResourcePoolArrayOutput {
+	return o
+}
+
+func (o ResourcePoolArrayOutput) ToResourcePoolArrayOutputWithContext(ctx context.Context) ResourcePoolArrayOutput {
+	return o
+}
+
+func (o ResourcePoolArrayOutput) Index(i pulumi.IntInput) ResourcePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcePool {
+		return vs[0].([]ResourcePool)[vs[1].(int)]
+	}).(ResourcePoolOutput)
+}
+
+type ResourcePoolMapOutput struct{ *pulumi.OutputState }
+
+func (ResourcePoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourcePool)(nil))
+}
+
+func (o ResourcePoolMapOutput) ToResourcePoolMapOutput() ResourcePoolMapOutput {
+	return o
+}
+
+func (o ResourcePoolMapOutput) ToResourcePoolMapOutputWithContext(ctx context.Context) ResourcePoolMapOutput {
+	return o
+}
+
+func (o ResourcePoolMapOutput) MapIndex(k pulumi.StringInput) ResourcePoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourcePool {
+		return vs[0].(map[string]ResourcePool)[vs[1].(string)]
+	}).(ResourcePoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourcePoolOutput{})
+	pulumi.RegisterOutputType(ResourcePoolPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePoolArrayOutput{})
+	pulumi.RegisterOutputType(ResourcePoolMapOutput{})
 }

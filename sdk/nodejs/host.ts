@@ -160,7 +160,8 @@ export class Host extends pulumi.CustomResource {
     constructor(name: string, args: HostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostArgs | HostState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HostState | undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["clusterManaged"] = state ? state.clusterManaged : undefined;
@@ -176,13 +177,13 @@ export class Host extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as HostArgs | undefined;
-            if ((!args || args.hostname === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostname === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.password === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
@@ -198,12 +199,8 @@ export class Host extends pulumi.CustomResource {
             inputs["thumbprint"] = args ? args.thumbprint : undefined;
             inputs["username"] = args ? args.username : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Host.__pulumiType, name, inputs, opts);
     }

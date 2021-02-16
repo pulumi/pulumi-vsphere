@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -22,9 +23,15 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		args = &ProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Password == nil {
+		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
+	}
 	if args.AllowUnverifiedSsl == nil {
 		args.AllowUnverifiedSsl = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool))
 	}
@@ -37,26 +44,17 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ClientDebugPathRun == nil {
 		args.ClientDebugPathRun = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string))
 	}
-	if args.Password == nil {
-		args.Password = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_PASSWORD").(string))
-	}
 	if args.PersistSession == nil {
 		args.PersistSession = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool))
 	}
 	if args.RestSessionPath == nil {
 		args.RestSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string))
 	}
-	if args.User == nil {
-		args.User = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_USER").(string))
-	}
 	if args.VimKeepAlive == nil {
 		args.VimKeepAlive = pulumi.IntPtr(getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int))
 	}
 	if args.VimSessionPath == nil {
 		args.VimSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string))
-	}
-	if args.VsphereServer == nil {
-		args.VsphereServer = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_SERVER").(string))
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:vsphere", name, args, &resource, opts...)
@@ -78,13 +76,13 @@ type providerArgs struct {
 	// govmomi debug path for a single run
 	ClientDebugPathRun *string `pulumi:"clientDebugPathRun"`
 	// The user password for vSphere API operations.
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// Persist vSphere client sessions to disk
 	PersistSession *bool `pulumi:"persistSession"`
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath *string `pulumi:"restSessionPath"`
 	// The user name for vSphere API operations.
-	User *string `pulumi:"user"`
+	User string `pulumi:"user"`
 	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer *string `pulumi:"vcenterServer"`
 	// Keep alive interval for the VIM session in minutes
@@ -108,13 +106,13 @@ type ProviderArgs struct {
 	// govmomi debug path for a single run
 	ClientDebugPathRun pulumi.StringPtrInput
 	// The user password for vSphere API operations.
-	Password pulumi.StringPtrInput
+	Password pulumi.StringInput
 	// Persist vSphere client sessions to disk
 	PersistSession pulumi.BoolPtrInput
 	// The directory to save vSphere REST API sessions to
 	RestSessionPath pulumi.StringPtrInput
 	// The user name for vSphere API operations.
-	User pulumi.StringPtrInput
+	User pulumi.StringInput
 	// Deprecated: This field has been renamed to vsphere_server.
 	VcenterServer pulumi.StringPtrInput
 	// Keep alive interval for the VIM session in minutes
@@ -148,6 +146,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -164,6 +191,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

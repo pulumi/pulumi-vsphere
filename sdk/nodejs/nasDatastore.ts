@@ -144,7 +144,8 @@ export class NasDatastore extends pulumi.CustomResource {
     constructor(name: string, args: NasDatastoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NasDatastoreArgs | NasDatastoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NasDatastoreState | undefined;
             inputs["accessMode"] = state ? state.accessMode : undefined;
             inputs["accessible"] = state ? state.accessible : undefined;
@@ -167,13 +168,13 @@ export class NasDatastore extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as NasDatastoreArgs | undefined;
-            if ((!args || args.hostSystemIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostSystemIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemIds'");
             }
-            if ((!args || args.remoteHosts === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.remoteHosts === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remoteHosts'");
             }
-            if ((!args || args.remotePath === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.remotePath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remotePath'");
             }
             inputs["accessMode"] = args ? args.accessMode : undefined;
@@ -196,12 +197,8 @@ export class NasDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NasDatastore.__pulumiType, name, inputs, opts);
     }

@@ -116,7 +116,8 @@ export class VmfsDatastore extends pulumi.CustomResource {
     constructor(name: string, args: VmfsDatastoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VmfsDatastoreArgs | VmfsDatastoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VmfsDatastoreState | undefined;
             inputs["accessible"] = state ? state.accessible : undefined;
             inputs["capacity"] = state ? state.capacity : undefined;
@@ -134,10 +135,10 @@ export class VmfsDatastore extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as VmfsDatastoreArgs | undefined;
-            if ((!args || args.disks === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.disks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disks'");
             }
-            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;
@@ -155,12 +156,8 @@ export class VmfsDatastore extends pulumi.CustomResource {
             inputs["uncommittedSpace"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VmfsDatastore.__pulumiType, name, inputs, opts);
     }

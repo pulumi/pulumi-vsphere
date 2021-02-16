@@ -36,7 +36,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user password for vSphere API operations.
         /// </summary>
-        public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("VSPHERE_PASSWORD");
+        public static string? Password { get; set; } = __config.Get("password");
 
         /// <summary>
         /// Persist vSphere client sessions to disk
@@ -51,7 +51,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user name for vSphere API operations.
         /// </summary>
-        public static string? User { get; set; } = __config.Get("user") ?? Utilities.GetEnv("VSPHERE_USER");
+        public static string? User { get; set; } = __config.Get("user");
 
         public static string? VcenterServer { get; set; } = __config.Get("vcenterServer");
 
@@ -68,7 +68,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The vSphere Server name for vSphere API operations.
         /// </summary>
-        public static string? VsphereServer { get; set; } = __config.Get("vsphereServer") ?? Utilities.GetEnv("VSPHERE_SERVER");
+        public static string? VsphereServer { get; set; } = __config.Get("vsphereServer");
 
     }
 }

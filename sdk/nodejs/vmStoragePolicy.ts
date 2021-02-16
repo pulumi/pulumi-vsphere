@@ -98,26 +98,23 @@ export class VmStoragePolicy extends pulumi.CustomResource {
     constructor(name: string, args: VmStoragePolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VmStoragePolicyArgs | VmStoragePolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VmStoragePolicyState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["tagRules"] = state ? state.tagRules : undefined;
         } else {
             const args = argsOrState as VmStoragePolicyArgs | undefined;
-            if ((!args || args.tagRules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tagRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagRules'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["tagRules"] = args ? args.tagRules : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VmStoragePolicy.__pulumiType, name, inputs, opts);
     }

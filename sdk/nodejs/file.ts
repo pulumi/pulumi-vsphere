@@ -123,7 +123,8 @@ export class File extends pulumi.CustomResource {
     constructor(name: string, args: FileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FileArgs | FileState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FileState | undefined;
             inputs["createDirectories"] = state ? state.createDirectories : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -134,13 +135,13 @@ export class File extends pulumi.CustomResource {
             inputs["sourceFile"] = state ? state.sourceFile : undefined;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datastore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.destinationFile === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destinationFile === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationFile'");
             }
-            if ((!args || args.sourceFile === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceFile === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceFile'");
             }
             inputs["createDirectories"] = args ? args.createDirectories : undefined;
@@ -151,12 +152,8 @@ export class File extends pulumi.CustomResource {
             inputs["sourceDatastore"] = args ? args.sourceDatastore : undefined;
             inputs["sourceFile"] = args ? args.sourceFile : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(File.__pulumiType, name, inputs, opts);
     }

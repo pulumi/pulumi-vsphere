@@ -368,6 +368,85 @@ func (i *NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasD
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreOutput)
 }
 
+func (i *NasDatastore) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
+	return i.ToNasDatastorePtrOutputWithContext(context.Background())
+}
+
+func (i *NasDatastore) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NasDatastorePtrOutput)
+}
+
+type NasDatastorePtrInput interface {
+	pulumi.Input
+
+	ToNasDatastorePtrOutput() NasDatastorePtrOutput
+	ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput
+}
+
+type nasDatastorePtrType NasDatastoreArgs
+
+func (*nasDatastorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NasDatastore)(nil))
+}
+
+func (i *nasDatastorePtrType) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
+	return i.ToNasDatastorePtrOutputWithContext(context.Background())
+}
+
+func (i *nasDatastorePtrType) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NasDatastorePtrOutput)
+}
+
+// NasDatastoreArrayInput is an input type that accepts NasDatastoreArray and NasDatastoreArrayOutput values.
+// You can construct a concrete instance of `NasDatastoreArrayInput` via:
+//
+//          NasDatastoreArray{ NasDatastoreArgs{...} }
+type NasDatastoreArrayInput interface {
+	pulumi.Input
+
+	ToNasDatastoreArrayOutput() NasDatastoreArrayOutput
+	ToNasDatastoreArrayOutputWithContext(context.Context) NasDatastoreArrayOutput
+}
+
+type NasDatastoreArray []NasDatastoreInput
+
+func (NasDatastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NasDatastore)(nil))
+}
+
+func (i NasDatastoreArray) ToNasDatastoreArrayOutput() NasDatastoreArrayOutput {
+	return i.ToNasDatastoreArrayOutputWithContext(context.Background())
+}
+
+func (i NasDatastoreArray) ToNasDatastoreArrayOutputWithContext(ctx context.Context) NasDatastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreArrayOutput)
+}
+
+// NasDatastoreMapInput is an input type that accepts NasDatastoreMap and NasDatastoreMapOutput values.
+// You can construct a concrete instance of `NasDatastoreMapInput` via:
+//
+//          NasDatastoreMap{ "key": NasDatastoreArgs{...} }
+type NasDatastoreMapInput interface {
+	pulumi.Input
+
+	ToNasDatastoreMapOutput() NasDatastoreMapOutput
+	ToNasDatastoreMapOutputWithContext(context.Context) NasDatastoreMapOutput
+}
+
+type NasDatastoreMap map[string]NasDatastoreInput
+
+func (NasDatastoreMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NasDatastore)(nil))
+}
+
+func (i NasDatastoreMap) ToNasDatastoreMapOutput() NasDatastoreMapOutput {
+	return i.ToNasDatastoreMapOutputWithContext(context.Background())
+}
+
+func (i NasDatastoreMap) ToNasDatastoreMapOutputWithContext(ctx context.Context) NasDatastoreMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreMapOutput)
+}
+
 type NasDatastoreOutput struct {
 	*pulumi.OutputState
 }
@@ -384,6 +463,75 @@ func (o NasDatastoreOutput) ToNasDatastoreOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o NasDatastoreOutput) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
+	return o.ToNasDatastorePtrOutputWithContext(context.Background())
+}
+
+func (o NasDatastoreOutput) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
+	return o.ApplyT(func(v NasDatastore) *NasDatastore {
+		return &v
+	}).(NasDatastorePtrOutput)
+}
+
+type NasDatastorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NasDatastorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NasDatastore)(nil))
+}
+
+func (o NasDatastorePtrOutput) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
+	return o
+}
+
+func (o NasDatastorePtrOutput) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
+	return o
+}
+
+type NasDatastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (NasDatastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NasDatastore)(nil))
+}
+
+func (o NasDatastoreArrayOutput) ToNasDatastoreArrayOutput() NasDatastoreArrayOutput {
+	return o
+}
+
+func (o NasDatastoreArrayOutput) ToNasDatastoreArrayOutputWithContext(ctx context.Context) NasDatastoreArrayOutput {
+	return o
+}
+
+func (o NasDatastoreArrayOutput) Index(i pulumi.IntInput) NasDatastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NasDatastore {
+		return vs[0].([]NasDatastore)[vs[1].(int)]
+	}).(NasDatastoreOutput)
+}
+
+type NasDatastoreMapOutput struct{ *pulumi.OutputState }
+
+func (NasDatastoreMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NasDatastore)(nil))
+}
+
+func (o NasDatastoreMapOutput) ToNasDatastoreMapOutput() NasDatastoreMapOutput {
+	return o
+}
+
+func (o NasDatastoreMapOutput) ToNasDatastoreMapOutputWithContext(ctx context.Context) NasDatastoreMapOutput {
+	return o
+}
+
+func (o NasDatastoreMapOutput) MapIndex(k pulumi.StringInput) NasDatastoreOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NasDatastore {
+		return vs[0].(map[string]NasDatastore)[vs[1].(string)]
+	}).(NasDatastoreOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NasDatastoreOutput{})
+	pulumi.RegisterOutputType(NasDatastorePtrOutput{})
+	pulumi.RegisterOutputType(NasDatastoreArrayOutput{})
+	pulumi.RegisterOutputType(NasDatastoreMapOutput{})
 }

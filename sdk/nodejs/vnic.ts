@@ -167,7 +167,8 @@ export class Vnic extends pulumi.CustomResource {
     constructor(name: string, args: VnicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VnicArgs | VnicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VnicState | undefined;
             inputs["distributedPortGroup"] = state ? state.distributedPortGroup : undefined;
             inputs["distributedSwitchPort"] = state ? state.distributedSwitchPort : undefined;
@@ -180,7 +181,7 @@ export class Vnic extends pulumi.CustomResource {
             inputs["portgroup"] = state ? state.portgroup : undefined;
         } else {
             const args = argsOrState as VnicArgs | undefined;
-            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
             inputs["distributedPortGroup"] = args ? args.distributedPortGroup : undefined;
@@ -193,12 +194,8 @@ export class Vnic extends pulumi.CustomResource {
             inputs["netstack"] = args ? args.netstack : undefined;
             inputs["portgroup"] = args ? args.portgroup : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Vnic.__pulumiType, name, inputs, opts);
     }

@@ -26,7 +26,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -185,6 +184,85 @@ func (i *VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyOutput)
 }
 
+func (i *VmStoragePolicy) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
+	return i.ToVmStoragePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *VmStoragePolicy) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyPtrOutput)
+}
+
+type VmStoragePolicyPtrInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput
+	ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput
+}
+
+type vmStoragePolicyPtrType VmStoragePolicyArgs
+
+func (*vmStoragePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmStoragePolicy)(nil))
+}
+
+func (i *vmStoragePolicyPtrType) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
+	return i.ToVmStoragePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *vmStoragePolicyPtrType) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyPtrOutput)
+}
+
+// VmStoragePolicyArrayInput is an input type that accepts VmStoragePolicyArray and VmStoragePolicyArrayOutput values.
+// You can construct a concrete instance of `VmStoragePolicyArrayInput` via:
+//
+//          VmStoragePolicyArray{ VmStoragePolicyArgs{...} }
+type VmStoragePolicyArrayInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyArrayOutput() VmStoragePolicyArrayOutput
+	ToVmStoragePolicyArrayOutputWithContext(context.Context) VmStoragePolicyArrayOutput
+}
+
+type VmStoragePolicyArray []VmStoragePolicyInput
+
+func (VmStoragePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VmStoragePolicy)(nil))
+}
+
+func (i VmStoragePolicyArray) ToVmStoragePolicyArrayOutput() VmStoragePolicyArrayOutput {
+	return i.ToVmStoragePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i VmStoragePolicyArray) ToVmStoragePolicyArrayOutputWithContext(ctx context.Context) VmStoragePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyArrayOutput)
+}
+
+// VmStoragePolicyMapInput is an input type that accepts VmStoragePolicyMap and VmStoragePolicyMapOutput values.
+// You can construct a concrete instance of `VmStoragePolicyMapInput` via:
+//
+//          VmStoragePolicyMap{ "key": VmStoragePolicyArgs{...} }
+type VmStoragePolicyMapInput interface {
+	pulumi.Input
+
+	ToVmStoragePolicyMapOutput() VmStoragePolicyMapOutput
+	ToVmStoragePolicyMapOutputWithContext(context.Context) VmStoragePolicyMapOutput
+}
+
+type VmStoragePolicyMap map[string]VmStoragePolicyInput
+
+func (VmStoragePolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VmStoragePolicy)(nil))
+}
+
+func (i VmStoragePolicyMap) ToVmStoragePolicyMapOutput() VmStoragePolicyMapOutput {
+	return i.ToVmStoragePolicyMapOutputWithContext(context.Background())
+}
+
+func (i VmStoragePolicyMap) ToVmStoragePolicyMapOutputWithContext(ctx context.Context) VmStoragePolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyMapOutput)
+}
+
 type VmStoragePolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -201,6 +279,75 @@ func (o VmStoragePolicyOutput) ToVmStoragePolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o VmStoragePolicyOutput) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
+	return o.ToVmStoragePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o VmStoragePolicyOutput) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
+	return o.ApplyT(func(v VmStoragePolicy) *VmStoragePolicy {
+		return &v
+	}).(VmStoragePolicyPtrOutput)
+}
+
+type VmStoragePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VmStoragePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmStoragePolicy)(nil))
+}
+
+func (o VmStoragePolicyPtrOutput) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
+	return o
+}
+
+func (o VmStoragePolicyPtrOutput) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
+	return o
+}
+
+type VmStoragePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (VmStoragePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmStoragePolicy)(nil))
+}
+
+func (o VmStoragePolicyArrayOutput) ToVmStoragePolicyArrayOutput() VmStoragePolicyArrayOutput {
+	return o
+}
+
+func (o VmStoragePolicyArrayOutput) ToVmStoragePolicyArrayOutputWithContext(ctx context.Context) VmStoragePolicyArrayOutput {
+	return o
+}
+
+func (o VmStoragePolicyArrayOutput) Index(i pulumi.IntInput) VmStoragePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmStoragePolicy {
+		return vs[0].([]VmStoragePolicy)[vs[1].(int)]
+	}).(VmStoragePolicyOutput)
+}
+
+type VmStoragePolicyMapOutput struct{ *pulumi.OutputState }
+
+func (VmStoragePolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VmStoragePolicy)(nil))
+}
+
+func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutput() VmStoragePolicyMapOutput {
+	return o
+}
+
+func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutputWithContext(ctx context.Context) VmStoragePolicyMapOutput {
+	return o
+}
+
+func (o VmStoragePolicyMapOutput) MapIndex(k pulumi.StringInput) VmStoragePolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VmStoragePolicy {
+		return vs[0].(map[string]VmStoragePolicy)[vs[1].(string)]
+	}).(VmStoragePolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VmStoragePolicyOutput{})
+	pulumi.RegisterOutputType(VmStoragePolicyPtrOutput{})
+	pulumi.RegisterOutputType(VmStoragePolicyArrayOutput{})
+	pulumi.RegisterOutputType(VmStoragePolicyMapOutput{})
 }

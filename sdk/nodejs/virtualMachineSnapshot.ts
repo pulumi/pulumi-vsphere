@@ -117,7 +117,8 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
     constructor(name: string, args: VirtualMachineSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualMachineSnapshotArgs | VirtualMachineSnapshotState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VirtualMachineSnapshotState | undefined;
             inputs["consolidate"] = state ? state.consolidate : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -128,19 +129,19 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
             inputs["virtualMachineUuid"] = state ? state.virtualMachineUuid : undefined;
         } else {
             const args = argsOrState as VirtualMachineSnapshotArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.memory === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.memory === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'memory'");
             }
-            if ((!args || args.quiesce === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.quiesce === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'quiesce'");
             }
-            if ((!args || args.snapshotName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.snapshotName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snapshotName'");
             }
-            if ((!args || args.virtualMachineUuid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineUuid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineUuid'");
             }
             inputs["consolidate"] = args ? args.consolidate : undefined;
@@ -151,12 +152,8 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
             inputs["snapshotName"] = args ? args.snapshotName : undefined;
             inputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VirtualMachineSnapshot.__pulumiType, name, inputs, opts);
     }

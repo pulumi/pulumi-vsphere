@@ -499,7 +499,8 @@ export class VirtualMachine extends pulumi.CustomResource {
     constructor(name: string, args: VirtualMachineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualMachineArgs | VirtualMachineState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VirtualMachineState | undefined;
             inputs["alternateGuestName"] = state ? state.alternateGuestName : undefined;
             inputs["annotation"] = state ? state.annotation : undefined;
@@ -581,7 +582,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
         } else {
             const args = argsOrState as VirtualMachineArgs | undefined;
-            if ((!args || args.resourcePoolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourcePoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourcePoolId'");
             }
             inputs["alternateGuestName"] = args ? args.alternateGuestName : undefined;
@@ -663,12 +664,8 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["vmwareToolsStatus"] = undefined /*out*/;
             inputs["vmxPath"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VirtualMachine.__pulumiType, name, inputs, opts);
     }

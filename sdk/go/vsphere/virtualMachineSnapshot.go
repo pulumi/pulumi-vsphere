@@ -39,7 +39,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -249,6 +249,85 @@ func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotOutput)
 }
 
+func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotPtrOutput() VirtualMachineSnapshotPtrOutput {
+	return i.ToVirtualMachineSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotPtrOutputWithContext(ctx context.Context) VirtualMachineSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotPtrOutput)
+}
+
+type VirtualMachineSnapshotPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSnapshotPtrOutput() VirtualMachineSnapshotPtrOutput
+	ToVirtualMachineSnapshotPtrOutputWithContext(ctx context.Context) VirtualMachineSnapshotPtrOutput
+}
+
+type virtualMachineSnapshotPtrType VirtualMachineSnapshotArgs
+
+func (*virtualMachineSnapshotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSnapshot)(nil))
+}
+
+func (i *virtualMachineSnapshotPtrType) ToVirtualMachineSnapshotPtrOutput() VirtualMachineSnapshotPtrOutput {
+	return i.ToVirtualMachineSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineSnapshotPtrType) ToVirtualMachineSnapshotPtrOutputWithContext(ctx context.Context) VirtualMachineSnapshotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotPtrOutput)
+}
+
+// VirtualMachineSnapshotArrayInput is an input type that accepts VirtualMachineSnapshotArray and VirtualMachineSnapshotArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineSnapshotArrayInput` via:
+//
+//          VirtualMachineSnapshotArray{ VirtualMachineSnapshotArgs{...} }
+type VirtualMachineSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSnapshotArrayOutput() VirtualMachineSnapshotArrayOutput
+	ToVirtualMachineSnapshotArrayOutputWithContext(context.Context) VirtualMachineSnapshotArrayOutput
+}
+
+type VirtualMachineSnapshotArray []VirtualMachineSnapshotInput
+
+func (VirtualMachineSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VirtualMachineSnapshot)(nil))
+}
+
+func (i VirtualMachineSnapshotArray) ToVirtualMachineSnapshotArrayOutput() VirtualMachineSnapshotArrayOutput {
+	return i.ToVirtualMachineSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSnapshotArray) ToVirtualMachineSnapshotArrayOutputWithContext(ctx context.Context) VirtualMachineSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotArrayOutput)
+}
+
+// VirtualMachineSnapshotMapInput is an input type that accepts VirtualMachineSnapshotMap and VirtualMachineSnapshotMapOutput values.
+// You can construct a concrete instance of `VirtualMachineSnapshotMapInput` via:
+//
+//          VirtualMachineSnapshotMap{ "key": VirtualMachineSnapshotArgs{...} }
+type VirtualMachineSnapshotMapInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSnapshotMapOutput() VirtualMachineSnapshotMapOutput
+	ToVirtualMachineSnapshotMapOutputWithContext(context.Context) VirtualMachineSnapshotMapOutput
+}
+
+type VirtualMachineSnapshotMap map[string]VirtualMachineSnapshotInput
+
+func (VirtualMachineSnapshotMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VirtualMachineSnapshot)(nil))
+}
+
+func (i VirtualMachineSnapshotMap) ToVirtualMachineSnapshotMapOutput() VirtualMachineSnapshotMapOutput {
+	return i.ToVirtualMachineSnapshotMapOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSnapshotMap) ToVirtualMachineSnapshotMapOutputWithContext(ctx context.Context) VirtualMachineSnapshotMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSnapshotMapOutput)
+}
+
 type VirtualMachineSnapshotOutput struct {
 	*pulumi.OutputState
 }
@@ -265,6 +344,75 @@ func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutputWithContext(
 	return o
 }
 
+func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotPtrOutput() VirtualMachineSnapshotPtrOutput {
+	return o.ToVirtualMachineSnapshotPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotPtrOutputWithContext(ctx context.Context) VirtualMachineSnapshotPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSnapshot) *VirtualMachineSnapshot {
+		return &v
+	}).(VirtualMachineSnapshotPtrOutput)
+}
+
+type VirtualMachineSnapshotPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualMachineSnapshotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSnapshot)(nil))
+}
+
+func (o VirtualMachineSnapshotPtrOutput) ToVirtualMachineSnapshotPtrOutput() VirtualMachineSnapshotPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotPtrOutput) ToVirtualMachineSnapshotPtrOutputWithContext(ctx context.Context) VirtualMachineSnapshotPtrOutput {
+	return o
+}
+
+type VirtualMachineSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineSnapshot)(nil))
+}
+
+func (o VirtualMachineSnapshotArrayOutput) ToVirtualMachineSnapshotArrayOutput() VirtualMachineSnapshotArrayOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotArrayOutput) ToVirtualMachineSnapshotArrayOutputWithContext(ctx context.Context) VirtualMachineSnapshotArrayOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotArrayOutput) Index(i pulumi.IntInput) VirtualMachineSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineSnapshot {
+		return vs[0].([]VirtualMachineSnapshot)[vs[1].(int)]
+	}).(VirtualMachineSnapshotOutput)
+}
+
+type VirtualMachineSnapshotMapOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSnapshotMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VirtualMachineSnapshot)(nil))
+}
+
+func (o VirtualMachineSnapshotMapOutput) ToVirtualMachineSnapshotMapOutput() VirtualMachineSnapshotMapOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotMapOutput) ToVirtualMachineSnapshotMapOutputWithContext(ctx context.Context) VirtualMachineSnapshotMapOutput {
+	return o
+}
+
+func (o VirtualMachineSnapshotMapOutput) MapIndex(k pulumi.StringInput) VirtualMachineSnapshotOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VirtualMachineSnapshot {
+		return vs[0].(map[string]VirtualMachineSnapshot)[vs[1].(string)]
+	}).(VirtualMachineSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualMachineSnapshotOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSnapshotPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSnapshotMapOutput{})
 }

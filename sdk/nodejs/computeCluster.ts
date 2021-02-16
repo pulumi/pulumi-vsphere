@@ -399,7 +399,8 @@ export class ComputeCluster extends pulumi.CustomResource {
     constructor(name: string, args: ComputeClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterArgs | ComputeClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ComputeClusterState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["datacenterId"] = state ? state.datacenterId : undefined;
@@ -459,7 +460,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["vsanEnabled"] = state ? state.vsanEnabled : undefined;
         } else {
             const args = argsOrState as ComputeClusterArgs | undefined;
-            if ((!args || args.datacenterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datacenterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datacenterId'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;
@@ -519,12 +520,8 @@ export class ComputeCluster extends pulumi.CustomResource {
             inputs["vsanEnabled"] = args ? args.vsanEnabled : undefined;
             inputs["resourcePoolId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ComputeCluster.__pulumiType, name, inputs, opts);
     }

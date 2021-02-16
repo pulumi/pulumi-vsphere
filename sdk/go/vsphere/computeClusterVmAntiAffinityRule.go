@@ -160,6 +160,85 @@ func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOut
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRuleOutput)
 }
 
+func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRulePtrOutput() ComputeClusterVmAntiAffinityRulePtrOutput {
+	return i.ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRulePtrOutput)
+}
+
+type ComputeClusterVmAntiAffinityRulePtrInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmAntiAffinityRulePtrOutput() ComputeClusterVmAntiAffinityRulePtrOutput
+	ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRulePtrOutput
+}
+
+type computeClusterVmAntiAffinityRulePtrType ComputeClusterVmAntiAffinityRuleArgs
+
+func (*computeClusterVmAntiAffinityRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (i *computeClusterVmAntiAffinityRulePtrType) ToComputeClusterVmAntiAffinityRulePtrOutput() ComputeClusterVmAntiAffinityRulePtrOutput {
+	return i.ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(context.Background())
+}
+
+func (i *computeClusterVmAntiAffinityRulePtrType) ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRulePtrOutput)
+}
+
+// ComputeClusterVmAntiAffinityRuleArrayInput is an input type that accepts ComputeClusterVmAntiAffinityRuleArray and ComputeClusterVmAntiAffinityRuleArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterVmAntiAffinityRuleArrayInput` via:
+//
+//          ComputeClusterVmAntiAffinityRuleArray{ ComputeClusterVmAntiAffinityRuleArgs{...} }
+type ComputeClusterVmAntiAffinityRuleArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmAntiAffinityRuleArrayOutput() ComputeClusterVmAntiAffinityRuleArrayOutput
+	ToComputeClusterVmAntiAffinityRuleArrayOutputWithContext(context.Context) ComputeClusterVmAntiAffinityRuleArrayOutput
+}
+
+type ComputeClusterVmAntiAffinityRuleArray []ComputeClusterVmAntiAffinityRuleInput
+
+func (ComputeClusterVmAntiAffinityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (i ComputeClusterVmAntiAffinityRuleArray) ToComputeClusterVmAntiAffinityRuleArrayOutput() ComputeClusterVmAntiAffinityRuleArrayOutput {
+	return i.ToComputeClusterVmAntiAffinityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmAntiAffinityRuleArray) ToComputeClusterVmAntiAffinityRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRuleArrayOutput)
+}
+
+// ComputeClusterVmAntiAffinityRuleMapInput is an input type that accepts ComputeClusterVmAntiAffinityRuleMap and ComputeClusterVmAntiAffinityRuleMapOutput values.
+// You can construct a concrete instance of `ComputeClusterVmAntiAffinityRuleMapInput` via:
+//
+//          ComputeClusterVmAntiAffinityRuleMap{ "key": ComputeClusterVmAntiAffinityRuleArgs{...} }
+type ComputeClusterVmAntiAffinityRuleMapInput interface {
+	pulumi.Input
+
+	ToComputeClusterVmAntiAffinityRuleMapOutput() ComputeClusterVmAntiAffinityRuleMapOutput
+	ToComputeClusterVmAntiAffinityRuleMapOutputWithContext(context.Context) ComputeClusterVmAntiAffinityRuleMapOutput
+}
+
+type ComputeClusterVmAntiAffinityRuleMap map[string]ComputeClusterVmAntiAffinityRuleInput
+
+func (ComputeClusterVmAntiAffinityRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (i ComputeClusterVmAntiAffinityRuleMap) ToComputeClusterVmAntiAffinityRuleMapOutput() ComputeClusterVmAntiAffinityRuleMapOutput {
+	return i.ToComputeClusterVmAntiAffinityRuleMapOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterVmAntiAffinityRuleMap) ToComputeClusterVmAntiAffinityRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmAntiAffinityRuleMapOutput)
+}
+
 type ComputeClusterVmAntiAffinityRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRu
 	return o
 }
 
+func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRulePtrOutput() ComputeClusterVmAntiAffinityRulePtrOutput {
+	return o.ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRulePtrOutput {
+	return o.ApplyT(func(v ComputeClusterVmAntiAffinityRule) *ComputeClusterVmAntiAffinityRule {
+		return &v
+	}).(ComputeClusterVmAntiAffinityRulePtrOutput)
+}
+
+type ComputeClusterVmAntiAffinityRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterVmAntiAffinityRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (o ComputeClusterVmAntiAffinityRulePtrOutput) ToComputeClusterVmAntiAffinityRulePtrOutput() ComputeClusterVmAntiAffinityRulePtrOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRulePtrOutput) ToComputeClusterVmAntiAffinityRulePtrOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRulePtrOutput {
+	return o
+}
+
+type ComputeClusterVmAntiAffinityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVmAntiAffinityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (o ComputeClusterVmAntiAffinityRuleArrayOutput) ToComputeClusterVmAntiAffinityRuleArrayOutput() ComputeClusterVmAntiAffinityRuleArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRuleArrayOutput) ToComputeClusterVmAntiAffinityRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleArrayOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRuleArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmAntiAffinityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterVmAntiAffinityRule {
+		return vs[0].([]ComputeClusterVmAntiAffinityRule)[vs[1].(int)]
+	}).(ComputeClusterVmAntiAffinityRuleOutput)
+}
+
+type ComputeClusterVmAntiAffinityRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterVmAntiAffinityRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ComputeClusterVmAntiAffinityRule)(nil))
+}
+
+func (o ComputeClusterVmAntiAffinityRuleMapOutput) ToComputeClusterVmAntiAffinityRuleMapOutput() ComputeClusterVmAntiAffinityRuleMapOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRuleMapOutput) ToComputeClusterVmAntiAffinityRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmAntiAffinityRuleMapOutput {
+	return o
+}
+
+func (o ComputeClusterVmAntiAffinityRuleMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmAntiAffinityRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeClusterVmAntiAffinityRule {
+		return vs[0].(map[string]ComputeClusterVmAntiAffinityRule)[vs[1].(string)]
+	}).(ComputeClusterVmAntiAffinityRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComputeClusterVmAntiAffinityRuleOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmAntiAffinityRulePtrOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmAntiAffinityRuleArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterVmAntiAffinityRuleMapOutput{})
 }

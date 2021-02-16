@@ -221,7 +221,8 @@ export class HostPortGroup extends pulumi.CustomResource {
     constructor(name: string, args: HostPortGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostPortGroupArgs | HostPortGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HostPortGroupState | undefined;
             inputs["activeNics"] = state ? state.activeNics : undefined;
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
@@ -245,10 +246,10 @@ export class HostPortGroup extends pulumi.CustomResource {
             inputs["vlanId"] = state ? state.vlanId : undefined;
         } else {
             const args = argsOrState as HostPortGroupArgs | undefined;
-            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            if ((!args || args.virtualSwitchName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualSwitchName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualSwitchName'");
             }
             inputs["activeNics"] = args ? args.activeNics : undefined;
@@ -272,12 +273,8 @@ export class HostPortGroup extends pulumi.CustomResource {
             inputs["key"] = undefined /*out*/;
             inputs["ports"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HostPortGroup.__pulumiType, name, inputs, opts);
     }

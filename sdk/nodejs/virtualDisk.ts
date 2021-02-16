@@ -104,7 +104,8 @@ export class VirtualDisk extends pulumi.CustomResource {
     constructor(name: string, args: VirtualDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualDiskArgs | VirtualDiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VirtualDiskState | undefined;
             inputs["adapterType"] = state ? state.adapterType : undefined;
             inputs["createDirectories"] = state ? state.createDirectories : undefined;
@@ -115,13 +116,13 @@ export class VirtualDisk extends pulumi.CustomResource {
             inputs["vmdkPath"] = state ? state.vmdkPath : undefined;
         } else {
             const args = argsOrState as VirtualDiskArgs | undefined;
-            if ((!args || args.datastore === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datastore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.vmdkPath === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vmdkPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vmdkPath'");
             }
             inputs["adapterType"] = args ? args.adapterType : undefined;
@@ -132,12 +133,8 @@ export class VirtualDisk extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["vmdkPath"] = args ? args.vmdkPath : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VirtualDisk.__pulumiType, name, inputs, opts);
     }
