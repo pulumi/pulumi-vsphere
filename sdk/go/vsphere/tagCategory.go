@@ -155,6 +155,85 @@ func (i *TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCat
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryOutput)
 }
 
+func (i *TagCategory) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
+	return i.ToTagCategoryPtrOutputWithContext(context.Background())
+}
+
+func (i *TagCategory) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryPtrOutput)
+}
+
+type TagCategoryPtrInput interface {
+	pulumi.Input
+
+	ToTagCategoryPtrOutput() TagCategoryPtrOutput
+	ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput
+}
+
+type tagCategoryPtrType TagCategoryArgs
+
+func (*tagCategoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagCategory)(nil))
+}
+
+func (i *tagCategoryPtrType) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
+	return i.ToTagCategoryPtrOutputWithContext(context.Background())
+}
+
+func (i *tagCategoryPtrType) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryPtrOutput)
+}
+
+// TagCategoryArrayInput is an input type that accepts TagCategoryArray and TagCategoryArrayOutput values.
+// You can construct a concrete instance of `TagCategoryArrayInput` via:
+//
+//          TagCategoryArray{ TagCategoryArgs{...} }
+type TagCategoryArrayInput interface {
+	pulumi.Input
+
+	ToTagCategoryArrayOutput() TagCategoryArrayOutput
+	ToTagCategoryArrayOutputWithContext(context.Context) TagCategoryArrayOutput
+}
+
+type TagCategoryArray []TagCategoryInput
+
+func (TagCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TagCategory)(nil))
+}
+
+func (i TagCategoryArray) ToTagCategoryArrayOutput() TagCategoryArrayOutput {
+	return i.ToTagCategoryArrayOutputWithContext(context.Background())
+}
+
+func (i TagCategoryArray) ToTagCategoryArrayOutputWithContext(ctx context.Context) TagCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryArrayOutput)
+}
+
+// TagCategoryMapInput is an input type that accepts TagCategoryMap and TagCategoryMapOutput values.
+// You can construct a concrete instance of `TagCategoryMapInput` via:
+//
+//          TagCategoryMap{ "key": TagCategoryArgs{...} }
+type TagCategoryMapInput interface {
+	pulumi.Input
+
+	ToTagCategoryMapOutput() TagCategoryMapOutput
+	ToTagCategoryMapOutputWithContext(context.Context) TagCategoryMapOutput
+}
+
+type TagCategoryMap map[string]TagCategoryInput
+
+func (TagCategoryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TagCategory)(nil))
+}
+
+func (i TagCategoryMap) ToTagCategoryMapOutput() TagCategoryMapOutput {
+	return i.ToTagCategoryMapOutputWithContext(context.Background())
+}
+
+func (i TagCategoryMap) ToTagCategoryMapOutputWithContext(ctx context.Context) TagCategoryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryMapOutput)
+}
+
 type TagCategoryOutput struct {
 	*pulumi.OutputState
 }
@@ -171,6 +250,75 @@ func (o TagCategoryOutput) ToTagCategoryOutputWithContext(ctx context.Context) T
 	return o
 }
 
+func (o TagCategoryOutput) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
+	return o.ToTagCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o TagCategoryOutput) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
+	return o.ApplyT(func(v TagCategory) *TagCategory {
+		return &v
+	}).(TagCategoryPtrOutput)
+}
+
+type TagCategoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TagCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagCategory)(nil))
+}
+
+func (o TagCategoryPtrOutput) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
+	return o
+}
+
+func (o TagCategoryPtrOutput) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
+	return o
+}
+
+type TagCategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (TagCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagCategory)(nil))
+}
+
+func (o TagCategoryArrayOutput) ToTagCategoryArrayOutput() TagCategoryArrayOutput {
+	return o
+}
+
+func (o TagCategoryArrayOutput) ToTagCategoryArrayOutputWithContext(ctx context.Context) TagCategoryArrayOutput {
+	return o
+}
+
+func (o TagCategoryArrayOutput) Index(i pulumi.IntInput) TagCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagCategory {
+		return vs[0].([]TagCategory)[vs[1].(int)]
+	}).(TagCategoryOutput)
+}
+
+type TagCategoryMapOutput struct{ *pulumi.OutputState }
+
+func (TagCategoryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TagCategory)(nil))
+}
+
+func (o TagCategoryMapOutput) ToTagCategoryMapOutput() TagCategoryMapOutput {
+	return o
+}
+
+func (o TagCategoryMapOutput) ToTagCategoryMapOutputWithContext(ctx context.Context) TagCategoryMapOutput {
+	return o
+}
+
+func (o TagCategoryMapOutput) MapIndex(k pulumi.StringInput) TagCategoryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagCategory {
+		return vs[0].(map[string]TagCategory)[vs[1].(string)]
+	}).(TagCategoryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TagCategoryOutput{})
+	pulumi.RegisterOutputType(TagCategoryPtrOutput{})
+	pulumi.RegisterOutputType(TagCategoryArrayOutput{})
+	pulumi.RegisterOutputType(TagCategoryMapOutput{})
 }

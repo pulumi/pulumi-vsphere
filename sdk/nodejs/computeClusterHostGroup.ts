@@ -59,26 +59,23 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
     constructor(name: string, args: ComputeClusterHostGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterHostGroupArgs | ComputeClusterHostGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ComputeClusterHostGroupState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ComputeClusterHostGroupArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
             inputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ComputeClusterHostGroup.__pulumiType, name, inputs, opts);
     }

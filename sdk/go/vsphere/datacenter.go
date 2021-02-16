@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -40,7 +40,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -200,6 +200,85 @@ func (i *Datacenter) ToDatacenterOutputWithContext(ctx context.Context) Datacent
 	return pulumi.ToOutputWithContext(ctx, i).(DatacenterOutput)
 }
 
+func (i *Datacenter) ToDatacenterPtrOutput() DatacenterPtrOutput {
+	return i.ToDatacenterPtrOutputWithContext(context.Background())
+}
+
+func (i *Datacenter) ToDatacenterPtrOutputWithContext(ctx context.Context) DatacenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatacenterPtrOutput)
+}
+
+type DatacenterPtrInput interface {
+	pulumi.Input
+
+	ToDatacenterPtrOutput() DatacenterPtrOutput
+	ToDatacenterPtrOutputWithContext(ctx context.Context) DatacenterPtrOutput
+}
+
+type datacenterPtrType DatacenterArgs
+
+func (*datacenterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datacenter)(nil))
+}
+
+func (i *datacenterPtrType) ToDatacenterPtrOutput() DatacenterPtrOutput {
+	return i.ToDatacenterPtrOutputWithContext(context.Background())
+}
+
+func (i *datacenterPtrType) ToDatacenterPtrOutputWithContext(ctx context.Context) DatacenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatacenterPtrOutput)
+}
+
+// DatacenterArrayInput is an input type that accepts DatacenterArray and DatacenterArrayOutput values.
+// You can construct a concrete instance of `DatacenterArrayInput` via:
+//
+//          DatacenterArray{ DatacenterArgs{...} }
+type DatacenterArrayInput interface {
+	pulumi.Input
+
+	ToDatacenterArrayOutput() DatacenterArrayOutput
+	ToDatacenterArrayOutputWithContext(context.Context) DatacenterArrayOutput
+}
+
+type DatacenterArray []DatacenterInput
+
+func (DatacenterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Datacenter)(nil))
+}
+
+func (i DatacenterArray) ToDatacenterArrayOutput() DatacenterArrayOutput {
+	return i.ToDatacenterArrayOutputWithContext(context.Background())
+}
+
+func (i DatacenterArray) ToDatacenterArrayOutputWithContext(ctx context.Context) DatacenterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatacenterArrayOutput)
+}
+
+// DatacenterMapInput is an input type that accepts DatacenterMap and DatacenterMapOutput values.
+// You can construct a concrete instance of `DatacenterMapInput` via:
+//
+//          DatacenterMap{ "key": DatacenterArgs{...} }
+type DatacenterMapInput interface {
+	pulumi.Input
+
+	ToDatacenterMapOutput() DatacenterMapOutput
+	ToDatacenterMapOutputWithContext(context.Context) DatacenterMapOutput
+}
+
+type DatacenterMap map[string]DatacenterInput
+
+func (DatacenterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Datacenter)(nil))
+}
+
+func (i DatacenterMap) ToDatacenterMapOutput() DatacenterMapOutput {
+	return i.ToDatacenterMapOutputWithContext(context.Background())
+}
+
+func (i DatacenterMap) ToDatacenterMapOutputWithContext(ctx context.Context) DatacenterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatacenterMapOutput)
+}
+
 type DatacenterOutput struct {
 	*pulumi.OutputState
 }
@@ -216,6 +295,75 @@ func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+func (o DatacenterOutput) ToDatacenterPtrOutput() DatacenterPtrOutput {
+	return o.ToDatacenterPtrOutputWithContext(context.Background())
+}
+
+func (o DatacenterOutput) ToDatacenterPtrOutputWithContext(ctx context.Context) DatacenterPtrOutput {
+	return o.ApplyT(func(v Datacenter) *Datacenter {
+		return &v
+	}).(DatacenterPtrOutput)
+}
+
+type DatacenterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatacenterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datacenter)(nil))
+}
+
+func (o DatacenterPtrOutput) ToDatacenterPtrOutput() DatacenterPtrOutput {
+	return o
+}
+
+func (o DatacenterPtrOutput) ToDatacenterPtrOutputWithContext(ctx context.Context) DatacenterPtrOutput {
+	return o
+}
+
+type DatacenterArrayOutput struct{ *pulumi.OutputState }
+
+func (DatacenterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Datacenter)(nil))
+}
+
+func (o DatacenterArrayOutput) ToDatacenterArrayOutput() DatacenterArrayOutput {
+	return o
+}
+
+func (o DatacenterArrayOutput) ToDatacenterArrayOutputWithContext(ctx context.Context) DatacenterArrayOutput {
+	return o
+}
+
+func (o DatacenterArrayOutput) Index(i pulumi.IntInput) DatacenterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Datacenter {
+		return vs[0].([]Datacenter)[vs[1].(int)]
+	}).(DatacenterOutput)
+}
+
+type DatacenterMapOutput struct{ *pulumi.OutputState }
+
+func (DatacenterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Datacenter)(nil))
+}
+
+func (o DatacenterMapOutput) ToDatacenterMapOutput() DatacenterMapOutput {
+	return o
+}
+
+func (o DatacenterMapOutput) ToDatacenterMapOutputWithContext(ctx context.Context) DatacenterMapOutput {
+	return o
+}
+
+func (o DatacenterMapOutput) MapIndex(k pulumi.StringInput) DatacenterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Datacenter {
+		return vs[0].(map[string]Datacenter)[vs[1].(string)]
+	}).(DatacenterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatacenterOutput{})
+	pulumi.RegisterOutputType(DatacenterPtrOutput{})
+	pulumi.RegisterOutputType(DatacenterArrayOutput{})
+	pulumi.RegisterOutputType(DatacenterMapOutput{})
 }

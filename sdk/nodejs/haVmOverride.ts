@@ -142,7 +142,8 @@ export class HaVmOverride extends pulumi.CustomResource {
     constructor(name: string, args: HaVmOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HaVmOverrideArgs | HaVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HaVmOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["haDatastoreApdRecoveryAction"] = state ? state.haDatastoreApdRecoveryAction : undefined;
@@ -161,10 +162,10 @@ export class HaVmOverride extends pulumi.CustomResource {
             inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as HaVmOverrideArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.virtualMachineId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
@@ -183,12 +184,8 @@ export class HaVmOverride extends pulumi.CustomResource {
             inputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HaVmOverride.__pulumiType, name, inputs, opts);
     }

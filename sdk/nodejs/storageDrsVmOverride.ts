@@ -75,7 +75,8 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
     constructor(name: string, args: StorageDrsVmOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StorageDrsVmOverrideArgs | StorageDrsVmOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StorageDrsVmOverrideState | undefined;
             inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
             inputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
@@ -84,10 +85,10 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as StorageDrsVmOverrideArgs | undefined;
-            if ((!args || args.datastoreClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if ((!args || args.virtualMachineId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
             inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
@@ -96,12 +97,8 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             inputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
             inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StorageDrsVmOverride.__pulumiType, name, inputs, opts);
     }

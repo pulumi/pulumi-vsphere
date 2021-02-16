@@ -262,7 +262,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     constructor(name: string, args: DistributedPortGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DistributedPortGroupArgs | DistributedPortGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DistributedPortGroupState | undefined;
             inputs["activeUplinks"] = state ? state.activeUplinks : undefined;
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
@@ -314,7 +315,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
             inputs["vlanRanges"] = state ? state.vlanRanges : undefined;
         } else {
             const args = argsOrState as DistributedPortGroupArgs | undefined;
-            if ((!args || args.distributedVirtualSwitchUuid === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.distributedVirtualSwitchUuid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'distributedVirtualSwitchUuid'");
             }
             inputs["activeUplinks"] = args ? args.activeUplinks : undefined;
@@ -366,12 +367,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
             inputs["configVersion"] = undefined /*out*/;
             inputs["key"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DistributedPortGroup.__pulumiType, name, inputs, opts);
     }

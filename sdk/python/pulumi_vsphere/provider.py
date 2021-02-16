@@ -82,8 +82,8 @@ class Provider(pulumi.ProviderResource):
             if client_debug_path_run is None:
                 client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
             __props__['client_debug_path_run'] = client_debug_path_run
-            if password is None:
-                password = _utilities.get_env('VSPHERE_PASSWORD')
+            if password is None and not opts.urn:
+                raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             if persist_session is None:
                 persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
@@ -91,8 +91,8 @@ class Provider(pulumi.ProviderResource):
             if rest_session_path is None:
                 rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
             __props__['rest_session_path'] = rest_session_path
-            if user is None:
-                user = _utilities.get_env('VSPHERE_USER')
+            if user is None and not opts.urn:
+                raise TypeError("Missing required property 'user'")
             __props__['user'] = user
             if vcenter_server is not None and not opts.urn:
                 warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
@@ -104,8 +104,6 @@ class Provider(pulumi.ProviderResource):
             if vim_session_path is None:
                 vim_session_path = _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
             __props__['vim_session_path'] = vim_session_path
-            if vsphere_server is None:
-                vsphere_server = _utilities.get_env('VSPHERE_SERVER')
             __props__['vsphere_server'] = vsphere_server
         super(Provider, __self__).__init__(
             'vsphere',

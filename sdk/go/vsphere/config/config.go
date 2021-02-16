@@ -51,11 +51,7 @@ func GetClientDebugPathRun(ctx *pulumi.Context) string {
 
 // The user password for vSphere API operations.
 func GetPassword(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "vsphere:password")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "VSPHERE_PASSWORD").(string)
+	return config.Get(ctx, "vsphere:password")
 }
 
 // Persist vSphere client sessions to disk
@@ -78,11 +74,7 @@ func GetRestSessionPath(ctx *pulumi.Context) string {
 
 // The user name for vSphere API operations.
 func GetUser(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "vsphere:user")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "VSPHERE_USER").(string)
+	return config.Get(ctx, "vsphere:user")
 }
 
 // Deprecated: This field has been renamed to vsphere_server.
@@ -110,9 +102,5 @@ func GetVimSessionPath(ctx *pulumi.Context) string {
 
 // The vSphere Server name for vSphere API operations.
 func GetVsphereServer(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "vsphere:vsphereServer")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "VSPHERE_SERVER").(string)
+	return config.Get(ctx, "vsphere:vsphereServer")
 }

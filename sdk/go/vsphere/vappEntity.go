@@ -245,6 +245,85 @@ func (i *VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEnti
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityOutput)
 }
 
+func (i *VappEntity) ToVappEntityPtrOutput() VappEntityPtrOutput {
+	return i.ToVappEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *VappEntity) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VappEntityPtrOutput)
+}
+
+type VappEntityPtrInput interface {
+	pulumi.Input
+
+	ToVappEntityPtrOutput() VappEntityPtrOutput
+	ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput
+}
+
+type vappEntityPtrType VappEntityArgs
+
+func (*vappEntityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VappEntity)(nil))
+}
+
+func (i *vappEntityPtrType) ToVappEntityPtrOutput() VappEntityPtrOutput {
+	return i.ToVappEntityPtrOutputWithContext(context.Background())
+}
+
+func (i *vappEntityPtrType) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VappEntityPtrOutput)
+}
+
+// VappEntityArrayInput is an input type that accepts VappEntityArray and VappEntityArrayOutput values.
+// You can construct a concrete instance of `VappEntityArrayInput` via:
+//
+//          VappEntityArray{ VappEntityArgs{...} }
+type VappEntityArrayInput interface {
+	pulumi.Input
+
+	ToVappEntityArrayOutput() VappEntityArrayOutput
+	ToVappEntityArrayOutputWithContext(context.Context) VappEntityArrayOutput
+}
+
+type VappEntityArray []VappEntityInput
+
+func (VappEntityArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VappEntity)(nil))
+}
+
+func (i VappEntityArray) ToVappEntityArrayOutput() VappEntityArrayOutput {
+	return i.ToVappEntityArrayOutputWithContext(context.Background())
+}
+
+func (i VappEntityArray) ToVappEntityArrayOutputWithContext(ctx context.Context) VappEntityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VappEntityArrayOutput)
+}
+
+// VappEntityMapInput is an input type that accepts VappEntityMap and VappEntityMapOutput values.
+// You can construct a concrete instance of `VappEntityMapInput` via:
+//
+//          VappEntityMap{ "key": VappEntityArgs{...} }
+type VappEntityMapInput interface {
+	pulumi.Input
+
+	ToVappEntityMapOutput() VappEntityMapOutput
+	ToVappEntityMapOutputWithContext(context.Context) VappEntityMapOutput
+}
+
+type VappEntityMap map[string]VappEntityInput
+
+func (VappEntityMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VappEntity)(nil))
+}
+
+func (i VappEntityMap) ToVappEntityMapOutput() VappEntityMapOutput {
+	return i.ToVappEntityMapOutputWithContext(context.Background())
+}
+
+func (i VappEntityMap) ToVappEntityMapOutputWithContext(ctx context.Context) VappEntityMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VappEntityMapOutput)
+}
+
 type VappEntityOutput struct {
 	*pulumi.OutputState
 }
@@ -261,6 +340,75 @@ func (o VappEntityOutput) ToVappEntityOutputWithContext(ctx context.Context) Vap
 	return o
 }
 
+func (o VappEntityOutput) ToVappEntityPtrOutput() VappEntityPtrOutput {
+	return o.ToVappEntityPtrOutputWithContext(context.Background())
+}
+
+func (o VappEntityOutput) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
+	return o.ApplyT(func(v VappEntity) *VappEntity {
+		return &v
+	}).(VappEntityPtrOutput)
+}
+
+type VappEntityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VappEntityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VappEntity)(nil))
+}
+
+func (o VappEntityPtrOutput) ToVappEntityPtrOutput() VappEntityPtrOutput {
+	return o
+}
+
+func (o VappEntityPtrOutput) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
+	return o
+}
+
+type VappEntityArrayOutput struct{ *pulumi.OutputState }
+
+func (VappEntityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VappEntity)(nil))
+}
+
+func (o VappEntityArrayOutput) ToVappEntityArrayOutput() VappEntityArrayOutput {
+	return o
+}
+
+func (o VappEntityArrayOutput) ToVappEntityArrayOutputWithContext(ctx context.Context) VappEntityArrayOutput {
+	return o
+}
+
+func (o VappEntityArrayOutput) Index(i pulumi.IntInput) VappEntityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VappEntity {
+		return vs[0].([]VappEntity)[vs[1].(int)]
+	}).(VappEntityOutput)
+}
+
+type VappEntityMapOutput struct{ *pulumi.OutputState }
+
+func (VappEntityMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VappEntity)(nil))
+}
+
+func (o VappEntityMapOutput) ToVappEntityMapOutput() VappEntityMapOutput {
+	return o
+}
+
+func (o VappEntityMapOutput) ToVappEntityMapOutputWithContext(ctx context.Context) VappEntityMapOutput {
+	return o
+}
+
+func (o VappEntityMapOutput) MapIndex(k pulumi.StringInput) VappEntityOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VappEntity {
+		return vs[0].(map[string]VappEntity)[vs[1].(string)]
+	}).(VappEntityOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VappEntityOutput{})
+	pulumi.RegisterOutputType(VappEntityPtrOutput{})
+	pulumi.RegisterOutputType(VappEntityArrayOutput{})
+	pulumi.RegisterOutputType(VappEntityMapOutput{})
 }

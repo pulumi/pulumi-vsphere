@@ -31,7 +31,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -56,7 +56,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -269,6 +269,85 @@ func (i *File) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileOutput)
 }
 
+func (i *File) ToFilePtrOutput() FilePtrOutput {
+	return i.ToFilePtrOutputWithContext(context.Background())
+}
+
+func (i *File) ToFilePtrOutputWithContext(ctx context.Context) FilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilePtrOutput)
+}
+
+type FilePtrInput interface {
+	pulumi.Input
+
+	ToFilePtrOutput() FilePtrOutput
+	ToFilePtrOutputWithContext(ctx context.Context) FilePtrOutput
+}
+
+type filePtrType FileArgs
+
+func (*filePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**File)(nil))
+}
+
+func (i *filePtrType) ToFilePtrOutput() FilePtrOutput {
+	return i.ToFilePtrOutputWithContext(context.Background())
+}
+
+func (i *filePtrType) ToFilePtrOutputWithContext(ctx context.Context) FilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilePtrOutput)
+}
+
+// FileArrayInput is an input type that accepts FileArray and FileArrayOutput values.
+// You can construct a concrete instance of `FileArrayInput` via:
+//
+//          FileArray{ FileArgs{...} }
+type FileArrayInput interface {
+	pulumi.Input
+
+	ToFileArrayOutput() FileArrayOutput
+	ToFileArrayOutputWithContext(context.Context) FileArrayOutput
+}
+
+type FileArray []FileInput
+
+func (FileArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*File)(nil))
+}
+
+func (i FileArray) ToFileArrayOutput() FileArrayOutput {
+	return i.ToFileArrayOutputWithContext(context.Background())
+}
+
+func (i FileArray) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileArrayOutput)
+}
+
+// FileMapInput is an input type that accepts FileMap and FileMapOutput values.
+// You can construct a concrete instance of `FileMapInput` via:
+//
+//          FileMap{ "key": FileArgs{...} }
+type FileMapInput interface {
+	pulumi.Input
+
+	ToFileMapOutput() FileMapOutput
+	ToFileMapOutputWithContext(context.Context) FileMapOutput
+}
+
+type FileMap map[string]FileInput
+
+func (FileMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*File)(nil))
+}
+
+func (i FileMap) ToFileMapOutput() FileMapOutput {
+	return i.ToFileMapOutputWithContext(context.Background())
+}
+
+func (i FileMap) ToFileMapOutputWithContext(ctx context.Context) FileMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileMapOutput)
+}
+
 type FileOutput struct {
 	*pulumi.OutputState
 }
@@ -285,6 +364,75 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
 }
 
+func (o FileOutput) ToFilePtrOutput() FilePtrOutput {
+	return o.ToFilePtrOutputWithContext(context.Background())
+}
+
+func (o FileOutput) ToFilePtrOutputWithContext(ctx context.Context) FilePtrOutput {
+	return o.ApplyT(func(v File) *File {
+		return &v
+	}).(FilePtrOutput)
+}
+
+type FilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**File)(nil))
+}
+
+func (o FilePtrOutput) ToFilePtrOutput() FilePtrOutput {
+	return o
+}
+
+func (o FilePtrOutput) ToFilePtrOutputWithContext(ctx context.Context) FilePtrOutput {
+	return o
+}
+
+type FileArrayOutput struct{ *pulumi.OutputState }
+
+func (FileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]File)(nil))
+}
+
+func (o FileArrayOutput) ToFileArrayOutput() FileArrayOutput {
+	return o
+}
+
+func (o FileArrayOutput) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOutput {
+	return o
+}
+
+func (o FileArrayOutput) Index(i pulumi.IntInput) FileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) File {
+		return vs[0].([]File)[vs[1].(int)]
+	}).(FileOutput)
+}
+
+type FileMapOutput struct{ *pulumi.OutputState }
+
+func (FileMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]File)(nil))
+}
+
+func (o FileMapOutput) ToFileMapOutput() FileMapOutput {
+	return o
+}
+
+func (o FileMapOutput) ToFileMapOutputWithContext(ctx context.Context) FileMapOutput {
+	return o
+}
+
+func (o FileMapOutput) MapIndex(k pulumi.StringInput) FileOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) File {
+		return vs[0].(map[string]File)[vs[1].(string)]
+	}).(FileOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FileOutput{})
+	pulumi.RegisterOutputType(FilePtrOutput{})
+	pulumi.RegisterOutputType(FileArrayOutput{})
+	pulumi.RegisterOutputType(FileMapOutput{})
 }

@@ -64,7 +64,8 @@ export class TagCategory extends pulumi.CustomResource {
     constructor(name: string, args: TagCategoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagCategoryArgs | TagCategoryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TagCategoryState | undefined;
             inputs["associableTypes"] = state ? state.associableTypes : undefined;
             inputs["cardinality"] = state ? state.cardinality : undefined;
@@ -72,10 +73,10 @@ export class TagCategory extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagCategoryArgs | undefined;
-            if ((!args || args.associableTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.associableTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'associableTypes'");
             }
-            if ((!args || args.cardinality === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cardinality === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cardinality'");
             }
             inputs["associableTypes"] = args ? args.associableTypes : undefined;
@@ -83,12 +84,8 @@ export class TagCategory extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TagCategory.__pulumiType, name, inputs, opts);
     }

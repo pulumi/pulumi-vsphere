@@ -552,6 +552,85 @@ func (i *DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterOutput)
 }
 
+func (i *DatastoreCluster) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
+	return i.ToDatastoreClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *DatastoreCluster) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterPtrOutput)
+}
+
+type DatastoreClusterPtrInput interface {
+	pulumi.Input
+
+	ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput
+	ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput
+}
+
+type datastoreClusterPtrType DatastoreClusterArgs
+
+func (*datastoreClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreCluster)(nil))
+}
+
+func (i *datastoreClusterPtrType) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
+	return i.ToDatastoreClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *datastoreClusterPtrType) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterPtrOutput)
+}
+
+// DatastoreClusterArrayInput is an input type that accepts DatastoreClusterArray and DatastoreClusterArrayOutput values.
+// You can construct a concrete instance of `DatastoreClusterArrayInput` via:
+//
+//          DatastoreClusterArray{ DatastoreClusterArgs{...} }
+type DatastoreClusterArrayInput interface {
+	pulumi.Input
+
+	ToDatastoreClusterArrayOutput() DatastoreClusterArrayOutput
+	ToDatastoreClusterArrayOutputWithContext(context.Context) DatastoreClusterArrayOutput
+}
+
+type DatastoreClusterArray []DatastoreClusterInput
+
+func (DatastoreClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatastoreCluster)(nil))
+}
+
+func (i DatastoreClusterArray) ToDatastoreClusterArrayOutput() DatastoreClusterArrayOutput {
+	return i.ToDatastoreClusterArrayOutputWithContext(context.Background())
+}
+
+func (i DatastoreClusterArray) ToDatastoreClusterArrayOutputWithContext(ctx context.Context) DatastoreClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterArrayOutput)
+}
+
+// DatastoreClusterMapInput is an input type that accepts DatastoreClusterMap and DatastoreClusterMapOutput values.
+// You can construct a concrete instance of `DatastoreClusterMapInput` via:
+//
+//          DatastoreClusterMap{ "key": DatastoreClusterArgs{...} }
+type DatastoreClusterMapInput interface {
+	pulumi.Input
+
+	ToDatastoreClusterMapOutput() DatastoreClusterMapOutput
+	ToDatastoreClusterMapOutputWithContext(context.Context) DatastoreClusterMapOutput
+}
+
+type DatastoreClusterMap map[string]DatastoreClusterInput
+
+func (DatastoreClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatastoreCluster)(nil))
+}
+
+func (i DatastoreClusterMap) ToDatastoreClusterMapOutput() DatastoreClusterMapOutput {
+	return i.ToDatastoreClusterMapOutputWithContext(context.Background())
+}
+
+func (i DatastoreClusterMap) ToDatastoreClusterMapOutputWithContext(ctx context.Context) DatastoreClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterMapOutput)
+}
+
 type DatastoreClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -568,6 +647,75 @@ func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.
 	return o
 }
 
+func (o DatastoreClusterOutput) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
+	return o.ToDatastoreClusterPtrOutputWithContext(context.Background())
+}
+
+func (o DatastoreClusterOutput) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
+	return o.ApplyT(func(v DatastoreCluster) *DatastoreCluster {
+		return &v
+	}).(DatastoreClusterPtrOutput)
+}
+
+type DatastoreClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatastoreClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreCluster)(nil))
+}
+
+func (o DatastoreClusterPtrOutput) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
+	return o
+}
+
+func (o DatastoreClusterPtrOutput) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
+	return o
+}
+
+type DatastoreClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (DatastoreClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatastoreCluster)(nil))
+}
+
+func (o DatastoreClusterArrayOutput) ToDatastoreClusterArrayOutput() DatastoreClusterArrayOutput {
+	return o
+}
+
+func (o DatastoreClusterArrayOutput) ToDatastoreClusterArrayOutputWithContext(ctx context.Context) DatastoreClusterArrayOutput {
+	return o
+}
+
+func (o DatastoreClusterArrayOutput) Index(i pulumi.IntInput) DatastoreClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatastoreCluster {
+		return vs[0].([]DatastoreCluster)[vs[1].(int)]
+	}).(DatastoreClusterOutput)
+}
+
+type DatastoreClusterMapOutput struct{ *pulumi.OutputState }
+
+func (DatastoreClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatastoreCluster)(nil))
+}
+
+func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutput() DatastoreClusterMapOutput {
+	return o
+}
+
+func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutputWithContext(ctx context.Context) DatastoreClusterMapOutput {
+	return o
+}
+
+func (o DatastoreClusterMapOutput) MapIndex(k pulumi.StringInput) DatastoreClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatastoreCluster {
+		return vs[0].(map[string]DatastoreCluster)[vs[1].(string)]
+	}).(DatastoreClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatastoreClusterOutput{})
+	pulumi.RegisterOutputType(DatastoreClusterPtrOutput{})
+	pulumi.RegisterOutputType(DatastoreClusterArrayOutput{})
+	pulumi.RegisterOutputType(DatastoreClusterMapOutput{})
 }

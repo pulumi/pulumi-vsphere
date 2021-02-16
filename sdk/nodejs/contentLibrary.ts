@@ -65,7 +65,8 @@ export class ContentLibrary extends pulumi.CustomResource {
     constructor(name: string, args: ContentLibraryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContentLibraryArgs | ContentLibraryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContentLibraryState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -74,7 +75,7 @@ export class ContentLibrary extends pulumi.CustomResource {
             inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as ContentLibraryArgs | undefined;
-            if ((!args || args.storageBackings === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.storageBackings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageBackings'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -83,12 +84,8 @@ export class ContentLibrary extends pulumi.CustomResource {
             inputs["storageBackings"] = args ? args.storageBackings : undefined;
             inputs["subscription"] = args ? args.subscription : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContentLibrary.__pulumiType, name, inputs, opts);
     }

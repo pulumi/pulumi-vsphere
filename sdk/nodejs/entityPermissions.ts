@@ -58,32 +58,29 @@ export class EntityPermissions extends pulumi.CustomResource {
     constructor(name: string, args: EntityPermissionsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntityPermissionsArgs | EntityPermissionsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EntityPermissionsState | undefined;
             inputs["entityId"] = state ? state.entityId : undefined;
             inputs["entityType"] = state ? state.entityType : undefined;
             inputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as EntityPermissionsArgs | undefined;
-            if ((!args || args.entityId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entityId'");
             }
-            if ((!args || args.entityType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entityType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entityType'");
             }
-            if ((!args || args.permissions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.permissions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
             inputs["entityId"] = args ? args.entityId : undefined;
             inputs["entityType"] = args ? args.entityType : undefined;
             inputs["permissions"] = args ? args.permissions : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EntityPermissions.__pulumiType, name, inputs, opts);
     }

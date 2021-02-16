@@ -152,6 +152,85 @@ func (i *ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemOutput)
 }
 
+func (i *ContentLibraryItem) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
+	return i.ToContentLibraryItemPtrOutputWithContext(context.Background())
+}
+
+func (i *ContentLibraryItem) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemPtrOutput)
+}
+
+type ContentLibraryItemPtrInput interface {
+	pulumi.Input
+
+	ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput
+	ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput
+}
+
+type contentLibraryItemPtrType ContentLibraryItemArgs
+
+func (*contentLibraryItemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibraryItem)(nil))
+}
+
+func (i *contentLibraryItemPtrType) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
+	return i.ToContentLibraryItemPtrOutputWithContext(context.Background())
+}
+
+func (i *contentLibraryItemPtrType) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemPtrOutput)
+}
+
+// ContentLibraryItemArrayInput is an input type that accepts ContentLibraryItemArray and ContentLibraryItemArrayOutput values.
+// You can construct a concrete instance of `ContentLibraryItemArrayInput` via:
+//
+//          ContentLibraryItemArray{ ContentLibraryItemArgs{...} }
+type ContentLibraryItemArrayInput interface {
+	pulumi.Input
+
+	ToContentLibraryItemArrayOutput() ContentLibraryItemArrayOutput
+	ToContentLibraryItemArrayOutputWithContext(context.Context) ContentLibraryItemArrayOutput
+}
+
+type ContentLibraryItemArray []ContentLibraryItemInput
+
+func (ContentLibraryItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContentLibraryItem)(nil))
+}
+
+func (i ContentLibraryItemArray) ToContentLibraryItemArrayOutput() ContentLibraryItemArrayOutput {
+	return i.ToContentLibraryItemArrayOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryItemArray) ToContentLibraryItemArrayOutputWithContext(ctx context.Context) ContentLibraryItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemArrayOutput)
+}
+
+// ContentLibraryItemMapInput is an input type that accepts ContentLibraryItemMap and ContentLibraryItemMapOutput values.
+// You can construct a concrete instance of `ContentLibraryItemMapInput` via:
+//
+//          ContentLibraryItemMap{ "key": ContentLibraryItemArgs{...} }
+type ContentLibraryItemMapInput interface {
+	pulumi.Input
+
+	ToContentLibraryItemMapOutput() ContentLibraryItemMapOutput
+	ToContentLibraryItemMapOutputWithContext(context.Context) ContentLibraryItemMapOutput
+}
+
+type ContentLibraryItemMap map[string]ContentLibraryItemInput
+
+func (ContentLibraryItemMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContentLibraryItem)(nil))
+}
+
+func (i ContentLibraryItemMap) ToContentLibraryItemMapOutput() ContentLibraryItemMapOutput {
+	return i.ToContentLibraryItemMapOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryItemMap) ToContentLibraryItemMapOutputWithContext(ctx context.Context) ContentLibraryItemMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemMapOutput)
+}
+
 type ContentLibraryItemOutput struct {
 	*pulumi.OutputState
 }
@@ -168,6 +247,75 @@ func (o ContentLibraryItemOutput) ToContentLibraryItemOutputWithContext(ctx cont
 	return o
 }
 
+func (o ContentLibraryItemOutput) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
+	return o.ToContentLibraryItemPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLibraryItemOutput) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
+	return o.ApplyT(func(v ContentLibraryItem) *ContentLibraryItem {
+		return &v
+	}).(ContentLibraryItemPtrOutput)
+}
+
+type ContentLibraryItemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContentLibraryItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibraryItem)(nil))
+}
+
+func (o ContentLibraryItemPtrOutput) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
+	return o
+}
+
+func (o ContentLibraryItemPtrOutput) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
+	return o
+}
+
+type ContentLibraryItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentLibraryItem)(nil))
+}
+
+func (o ContentLibraryItemArrayOutput) ToContentLibraryItemArrayOutput() ContentLibraryItemArrayOutput {
+	return o
+}
+
+func (o ContentLibraryItemArrayOutput) ToContentLibraryItemArrayOutputWithContext(ctx context.Context) ContentLibraryItemArrayOutput {
+	return o
+}
+
+func (o ContentLibraryItemArrayOutput) Index(i pulumi.IntInput) ContentLibraryItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentLibraryItem {
+		return vs[0].([]ContentLibraryItem)[vs[1].(int)]
+	}).(ContentLibraryItemOutput)
+}
+
+type ContentLibraryItemMapOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryItemMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContentLibraryItem)(nil))
+}
+
+func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutput() ContentLibraryItemMapOutput {
+	return o
+}
+
+func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutputWithContext(ctx context.Context) ContentLibraryItemMapOutput {
+	return o
+}
+
+func (o ContentLibraryItemMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryItemOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContentLibraryItem {
+		return vs[0].(map[string]ContentLibraryItem)[vs[1].(string)]
+	}).(ContentLibraryItemOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContentLibraryItemOutput{})
+	pulumi.RegisterOutputType(ContentLibraryItemPtrOutput{})
+	pulumi.RegisterOutputType(ContentLibraryItemArrayOutput{})
+	pulumi.RegisterOutputType(ContentLibraryItemMapOutput{})
 }

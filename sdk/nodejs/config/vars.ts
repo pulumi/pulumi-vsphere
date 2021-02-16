@@ -29,7 +29,7 @@ export let clientDebugPathRun: string | undefined = __config.get("clientDebugPat
 /**
  * The user password for vSphere API operations.
  */
-export let password: string | undefined = __config.get("password") || utilities.getEnv("VSPHERE_PASSWORD");
+export let password: string | undefined = __config.get("password");
 /**
  * Persist vSphere client sessions to disk
  */
@@ -41,7 +41,7 @@ export let restSessionPath: string | undefined = __config.get("restSessionPath")
 /**
  * The user name for vSphere API operations.
  */
-export let user: string | undefined = __config.get("user") || utilities.getEnv("VSPHERE_USER");
+export let user: string | undefined = __config.get("user");
 export let vcenterServer: string | undefined = __config.get("vcenterServer");
 /**
  * Keep alive interval for the VIM session in minutes
@@ -54,4 +54,4 @@ export let vimSessionPath: string | undefined = __config.get("vimSessionPath") |
 /**
  * The vSphere Server name for vSphere API operations.
  */
-export let vsphereServer: string | undefined = __config.get("vsphereServer") || utilities.getEnv("VSPHERE_SERVER");
+export let vsphereServer: string | undefined = __config.get("vsphereServer");

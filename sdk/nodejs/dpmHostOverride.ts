@@ -64,7 +64,8 @@ export class DpmHostOverride extends pulumi.CustomResource {
     constructor(name: string, args: DpmHostOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DpmHostOverrideArgs | DpmHostOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DpmHostOverrideState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["dpmAutomationLevel"] = state ? state.dpmAutomationLevel : undefined;
@@ -72,10 +73,10 @@ export class DpmHostOverride extends pulumi.CustomResource {
             inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
         } else {
             const args = argsOrState as DpmHostOverrideArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.hostSystemId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hostSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
@@ -83,12 +84,8 @@ export class DpmHostOverride extends pulumi.CustomResource {
             inputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
             inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DpmHostOverride.__pulumiType, name, inputs, opts);
     }

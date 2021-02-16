@@ -67,7 +67,8 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     constructor(name: string, args: DatastoreClusterVmAntiAffinityRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatastoreClusterVmAntiAffinityRuleArgs | DatastoreClusterVmAntiAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatastoreClusterVmAntiAffinityRuleState | undefined;
             inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -76,10 +77,10 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as DatastoreClusterVmAntiAffinityRuleArgs | undefined;
-            if ((!args || args.datastoreClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastoreClusterId'");
             }
-            if ((!args || args.virtualMachineIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
             inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
@@ -88,12 +89,8 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatastoreClusterVmAntiAffinityRule.__pulumiType, name, inputs, opts);
     }

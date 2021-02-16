@@ -1298,6 +1298,85 @@ func (i *ComputeCluster) ToComputeClusterOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterOutput)
 }
 
+func (i *ComputeCluster) ToComputeClusterPtrOutput() ComputeClusterPtrOutput {
+	return i.ToComputeClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *ComputeCluster) ToComputeClusterPtrOutputWithContext(ctx context.Context) ComputeClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterPtrOutput)
+}
+
+type ComputeClusterPtrInput interface {
+	pulumi.Input
+
+	ToComputeClusterPtrOutput() ComputeClusterPtrOutput
+	ToComputeClusterPtrOutputWithContext(ctx context.Context) ComputeClusterPtrOutput
+}
+
+type computeClusterPtrType ComputeClusterArgs
+
+func (*computeClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeCluster)(nil))
+}
+
+func (i *computeClusterPtrType) ToComputeClusterPtrOutput() ComputeClusterPtrOutput {
+	return i.ToComputeClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *computeClusterPtrType) ToComputeClusterPtrOutputWithContext(ctx context.Context) ComputeClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterPtrOutput)
+}
+
+// ComputeClusterArrayInput is an input type that accepts ComputeClusterArray and ComputeClusterArrayOutput values.
+// You can construct a concrete instance of `ComputeClusterArrayInput` via:
+//
+//          ComputeClusterArray{ ComputeClusterArgs{...} }
+type ComputeClusterArrayInput interface {
+	pulumi.Input
+
+	ToComputeClusterArrayOutput() ComputeClusterArrayOutput
+	ToComputeClusterArrayOutputWithContext(context.Context) ComputeClusterArrayOutput
+}
+
+type ComputeClusterArray []ComputeClusterInput
+
+func (ComputeClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ComputeCluster)(nil))
+}
+
+func (i ComputeClusterArray) ToComputeClusterArrayOutput() ComputeClusterArrayOutput {
+	return i.ToComputeClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterArray) ToComputeClusterArrayOutputWithContext(ctx context.Context) ComputeClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterArrayOutput)
+}
+
+// ComputeClusterMapInput is an input type that accepts ComputeClusterMap and ComputeClusterMapOutput values.
+// You can construct a concrete instance of `ComputeClusterMapInput` via:
+//
+//          ComputeClusterMap{ "key": ComputeClusterArgs{...} }
+type ComputeClusterMapInput interface {
+	pulumi.Input
+
+	ToComputeClusterMapOutput() ComputeClusterMapOutput
+	ToComputeClusterMapOutputWithContext(context.Context) ComputeClusterMapOutput
+}
+
+type ComputeClusterMap map[string]ComputeClusterInput
+
+func (ComputeClusterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ComputeCluster)(nil))
+}
+
+func (i ComputeClusterMap) ToComputeClusterMapOutput() ComputeClusterMapOutput {
+	return i.ToComputeClusterMapOutputWithContext(context.Background())
+}
+
+func (i ComputeClusterMap) ToComputeClusterMapOutputWithContext(ctx context.Context) ComputeClusterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterMapOutput)
+}
+
 type ComputeClusterOutput struct {
 	*pulumi.OutputState
 }
@@ -1314,6 +1393,75 @@ func (o ComputeClusterOutput) ToComputeClusterOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ComputeClusterOutput) ToComputeClusterPtrOutput() ComputeClusterPtrOutput {
+	return o.ToComputeClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeClusterOutput) ToComputeClusterPtrOutputWithContext(ctx context.Context) ComputeClusterPtrOutput {
+	return o.ApplyT(func(v ComputeCluster) *ComputeCluster {
+		return &v
+	}).(ComputeClusterPtrOutput)
+}
+
+type ComputeClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComputeClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeCluster)(nil))
+}
+
+func (o ComputeClusterPtrOutput) ToComputeClusterPtrOutput() ComputeClusterPtrOutput {
+	return o
+}
+
+func (o ComputeClusterPtrOutput) ToComputeClusterPtrOutputWithContext(ctx context.Context) ComputeClusterPtrOutput {
+	return o
+}
+
+type ComputeClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComputeCluster)(nil))
+}
+
+func (o ComputeClusterArrayOutput) ToComputeClusterArrayOutput() ComputeClusterArrayOutput {
+	return o
+}
+
+func (o ComputeClusterArrayOutput) ToComputeClusterArrayOutputWithContext(ctx context.Context) ComputeClusterArrayOutput {
+	return o
+}
+
+func (o ComputeClusterArrayOutput) Index(i pulumi.IntInput) ComputeClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeCluster {
+		return vs[0].([]ComputeCluster)[vs[1].(int)]
+	}).(ComputeClusterOutput)
+}
+
+type ComputeClusterMapOutput struct{ *pulumi.OutputState }
+
+func (ComputeClusterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ComputeCluster)(nil))
+}
+
+func (o ComputeClusterMapOutput) ToComputeClusterMapOutput() ComputeClusterMapOutput {
+	return o
+}
+
+func (o ComputeClusterMapOutput) ToComputeClusterMapOutputWithContext(ctx context.Context) ComputeClusterMapOutput {
+	return o
+}
+
+func (o ComputeClusterMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeCluster {
+		return vs[0].(map[string]ComputeCluster)[vs[1].(string)]
+	}).(ComputeClusterOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComputeClusterOutput{})
+	pulumi.RegisterOutputType(ComputeClusterPtrOutput{})
+	pulumi.RegisterOutputType(ComputeClusterArrayOutput{})
+	pulumi.RegisterOutputType(ComputeClusterMapOutput{})
 }

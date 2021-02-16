@@ -479,7 +479,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     constructor(name: string, args: DistributedVirtualSwitchArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DistributedVirtualSwitchArgs | DistributedVirtualSwitchState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DistributedVirtualSwitchState | undefined;
             inputs["activeUplinks"] = state ? state.activeUplinks : undefined;
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
@@ -574,7 +575,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["vsanShareLevel"] = state ? state.vsanShareLevel : undefined;
         } else {
             const args = argsOrState as DistributedVirtualSwitchArgs | undefined;
-            if ((!args || args.datacenterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datacenterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datacenterId'");
             }
             inputs["activeUplinks"] = args ? args.activeUplinks : undefined;
@@ -669,12 +670,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["vsanShareLevel"] = args ? args.vsanShareLevel : undefined;
             inputs["configVersion"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DistributedVirtualSwitch.__pulumiType, name, inputs, opts);
     }

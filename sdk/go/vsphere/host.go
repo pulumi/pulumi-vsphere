@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -56,7 +55,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere"
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v2/go/vsphere/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -380,6 +378,85 @@ func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
 }
 
+func (i *Host) ToHostPtrOutput() HostPtrOutput {
+	return i.ToHostPtrOutputWithContext(context.Background())
+}
+
+func (i *Host) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPtrOutput)
+}
+
+type HostPtrInput interface {
+	pulumi.Input
+
+	ToHostPtrOutput() HostPtrOutput
+	ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput
+}
+
+type hostPtrType HostArgs
+
+func (*hostPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Host)(nil))
+}
+
+func (i *hostPtrType) ToHostPtrOutput() HostPtrOutput {
+	return i.ToHostPtrOutputWithContext(context.Background())
+}
+
+func (i *hostPtrType) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPtrOutput)
+}
+
+// HostArrayInput is an input type that accepts HostArray and HostArrayOutput values.
+// You can construct a concrete instance of `HostArrayInput` via:
+//
+//          HostArray{ HostArgs{...} }
+type HostArrayInput interface {
+	pulumi.Input
+
+	ToHostArrayOutput() HostArrayOutput
+	ToHostArrayOutputWithContext(context.Context) HostArrayOutput
+}
+
+type HostArray []HostInput
+
+func (HostArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Host)(nil))
+}
+
+func (i HostArray) ToHostArrayOutput() HostArrayOutput {
+	return i.ToHostArrayOutputWithContext(context.Background())
+}
+
+func (i HostArray) ToHostArrayOutputWithContext(ctx context.Context) HostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostArrayOutput)
+}
+
+// HostMapInput is an input type that accepts HostMap and HostMapOutput values.
+// You can construct a concrete instance of `HostMapInput` via:
+//
+//          HostMap{ "key": HostArgs{...} }
+type HostMapInput interface {
+	pulumi.Input
+
+	ToHostMapOutput() HostMapOutput
+	ToHostMapOutputWithContext(context.Context) HostMapOutput
+}
+
+type HostMap map[string]HostInput
+
+func (HostMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Host)(nil))
+}
+
+func (i HostMap) ToHostMapOutput() HostMapOutput {
+	return i.ToHostMapOutputWithContext(context.Background())
+}
+
+func (i HostMap) ToHostMapOutputWithContext(ctx context.Context) HostMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostMapOutput)
+}
+
 type HostOutput struct {
 	*pulumi.OutputState
 }
@@ -396,6 +473,75 @@ func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return o
 }
 
+func (o HostOutput) ToHostPtrOutput() HostPtrOutput {
+	return o.ToHostPtrOutputWithContext(context.Background())
+}
+
+func (o HostOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
+	return o.ApplyT(func(v Host) *Host {
+		return &v
+	}).(HostPtrOutput)
+}
+
+type HostPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Host)(nil))
+}
+
+func (o HostPtrOutput) ToHostPtrOutput() HostPtrOutput {
+	return o
+}
+
+func (o HostPtrOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
+	return o
+}
+
+type HostArrayOutput struct{ *pulumi.OutputState }
+
+func (HostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Host)(nil))
+}
+
+func (o HostArrayOutput) ToHostArrayOutput() HostArrayOutput {
+	return o
+}
+
+func (o HostArrayOutput) ToHostArrayOutputWithContext(ctx context.Context) HostArrayOutput {
+	return o
+}
+
+func (o HostArrayOutput) Index(i pulumi.IntInput) HostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Host {
+		return vs[0].([]Host)[vs[1].(int)]
+	}).(HostOutput)
+}
+
+type HostMapOutput struct{ *pulumi.OutputState }
+
+func (HostMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Host)(nil))
+}
+
+func (o HostMapOutput) ToHostMapOutput() HostMapOutput {
+	return o
+}
+
+func (o HostMapOutput) ToHostMapOutputWithContext(ctx context.Context) HostMapOutput {
+	return o
+}
+
+func (o HostMapOutput) MapIndex(k pulumi.StringInput) HostOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Host {
+		return vs[0].(map[string]Host)[vs[1].(string)]
+	}).(HostOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HostOutput{})
+	pulumi.RegisterOutputType(HostPtrOutput{})
+	pulumi.RegisterOutputType(HostArrayOutput{})
+	pulumi.RegisterOutputType(HostMapOutput{})
 }

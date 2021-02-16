@@ -54,7 +54,8 @@ export class CustomAttribute extends pulumi.CustomResource {
     constructor(name: string, args?: CustomAttributeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomAttributeArgs | CustomAttributeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CustomAttributeState | undefined;
             inputs["managedObjectType"] = state ? state.managedObjectType : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -63,12 +64,8 @@ export class CustomAttribute extends pulumi.CustomResource {
             inputs["managedObjectType"] = args ? args.managedObjectType : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CustomAttribute.__pulumiType, name, inputs, opts);
     }

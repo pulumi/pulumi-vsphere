@@ -77,7 +77,8 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     constructor(name: string, args: ComputeClusterVmDependencyRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmDependencyRuleArgs | ComputeClusterVmDependencyRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ComputeClusterVmDependencyRuleState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["dependencyVmGroupName"] = state ? state.dependencyVmGroupName : undefined;
@@ -87,13 +88,13 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             inputs["vmGroupName"] = state ? state.vmGroupName : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmDependencyRuleArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.dependencyVmGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dependencyVmGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dependencyVmGroupName'");
             }
-            if ((!args || args.vmGroupName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.vmGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
@@ -103,12 +104,8 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["vmGroupName"] = args ? args.vmGroupName : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ComputeClusterVmDependencyRule.__pulumiType, name, inputs, opts);
     }

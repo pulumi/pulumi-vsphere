@@ -94,7 +94,8 @@ export class VappEntity extends pulumi.CustomResource {
     constructor(name: string, args: VappEntityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VappEntityArgs | VappEntityState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VappEntityState | undefined;
             inputs["containerId"] = state ? state.containerId : undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
@@ -108,10 +109,10 @@ export class VappEntity extends pulumi.CustomResource {
             inputs["waitForGuest"] = state ? state.waitForGuest : undefined;
         } else {
             const args = argsOrState as VappEntityArgs | undefined;
-            if ((!args || args.containerId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerId'");
             }
-            if ((!args || args.targetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
             inputs["containerId"] = args ? args.containerId : undefined;
@@ -125,12 +126,8 @@ export class VappEntity extends pulumi.CustomResource {
             inputs["targetId"] = args ? args.targetId : undefined;
             inputs["waitForGuest"] = args ? args.waitForGuest : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VappEntity.__pulumiType, name, inputs, opts);
     }

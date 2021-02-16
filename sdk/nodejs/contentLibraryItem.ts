@@ -68,7 +68,8 @@ export class ContentLibraryItem extends pulumi.CustomResource {
     constructor(name: string, args: ContentLibraryItemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContentLibraryItemArgs | ContentLibraryItemState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ContentLibraryItemState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fileUrl"] = state ? state.fileUrl : undefined;
@@ -78,7 +79,7 @@ export class ContentLibraryItem extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ContentLibraryItemArgs | undefined;
-            if ((!args || args.libraryId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.libraryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'libraryId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -88,12 +89,8 @@ export class ContentLibraryItem extends pulumi.CustomResource {
             inputs["sourceUuid"] = args ? args.sourceUuid : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ContentLibraryItem.__pulumiType, name, inputs, opts);
     }

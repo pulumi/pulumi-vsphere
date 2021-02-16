@@ -132,7 +132,8 @@ export class VappContainer extends pulumi.CustomResource {
     constructor(name: string, args: VappContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VappContainerArgs | VappContainerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VappContainerState | undefined;
             inputs["cpuExpandable"] = state ? state.cpuExpandable : undefined;
             inputs["cpuLimit"] = state ? state.cpuLimit : undefined;
@@ -151,7 +152,7 @@ export class VappContainer extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as VappContainerArgs | undefined;
-            if ((!args || args.parentResourcePoolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parentResourcePoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parentResourcePoolId'");
             }
             inputs["cpuExpandable"] = args ? args.cpuExpandable : undefined;
@@ -170,12 +171,8 @@ export class VappContainer extends pulumi.CustomResource {
             inputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VappContainer.__pulumiType, name, inputs, opts);
     }

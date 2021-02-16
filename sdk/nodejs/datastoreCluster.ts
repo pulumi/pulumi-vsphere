@@ -186,7 +186,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
     constructor(name: string, args: DatastoreClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatastoreClusterArgs | DatastoreClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatastoreClusterState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["datacenterId"] = state ? state.datacenterId : undefined;
@@ -215,7 +216,7 @@ export class DatastoreCluster extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DatastoreClusterArgs | undefined;
-            if ((!args || args.datacenterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datacenterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datacenterId'");
             }
             inputs["customAttributes"] = args ? args.customAttributes : undefined;
@@ -244,12 +245,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
             inputs["sdrsVmEvacuationAutomationLevel"] = args ? args.sdrsVmEvacuationAutomationLevel : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatastoreCluster.__pulumiType, name, inputs, opts);
     }

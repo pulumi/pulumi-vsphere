@@ -92,7 +92,8 @@ export class Datacenter extends pulumi.CustomResource {
     constructor(name: string, args?: DatacenterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatacenterArgs | DatacenterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatacenterState | undefined;
             inputs["customAttributes"] = state ? state.customAttributes : undefined;
             inputs["folder"] = state ? state.folder : undefined;
@@ -107,12 +108,8 @@ export class Datacenter extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["moid"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Datacenter.__pulumiType, name, inputs, opts);
     }

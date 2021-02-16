@@ -155,6 +155,85 @@ func (i *DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideOutput)
 }
 
+func (i *DpmHostOverride) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
+	return i.ToDpmHostOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *DpmHostOverride) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverridePtrOutput)
+}
+
+type DpmHostOverridePtrInput interface {
+	pulumi.Input
+
+	ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput
+	ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput
+}
+
+type dpmHostOverridePtrType DpmHostOverrideArgs
+
+func (*dpmHostOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DpmHostOverride)(nil))
+}
+
+func (i *dpmHostOverridePtrType) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
+	return i.ToDpmHostOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *dpmHostOverridePtrType) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverridePtrOutput)
+}
+
+// DpmHostOverrideArrayInput is an input type that accepts DpmHostOverrideArray and DpmHostOverrideArrayOutput values.
+// You can construct a concrete instance of `DpmHostOverrideArrayInput` via:
+//
+//          DpmHostOverrideArray{ DpmHostOverrideArgs{...} }
+type DpmHostOverrideArrayInput interface {
+	pulumi.Input
+
+	ToDpmHostOverrideArrayOutput() DpmHostOverrideArrayOutput
+	ToDpmHostOverrideArrayOutputWithContext(context.Context) DpmHostOverrideArrayOutput
+}
+
+type DpmHostOverrideArray []DpmHostOverrideInput
+
+func (DpmHostOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DpmHostOverride)(nil))
+}
+
+func (i DpmHostOverrideArray) ToDpmHostOverrideArrayOutput() DpmHostOverrideArrayOutput {
+	return i.ToDpmHostOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i DpmHostOverrideArray) ToDpmHostOverrideArrayOutputWithContext(ctx context.Context) DpmHostOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideArrayOutput)
+}
+
+// DpmHostOverrideMapInput is an input type that accepts DpmHostOverrideMap and DpmHostOverrideMapOutput values.
+// You can construct a concrete instance of `DpmHostOverrideMapInput` via:
+//
+//          DpmHostOverrideMap{ "key": DpmHostOverrideArgs{...} }
+type DpmHostOverrideMapInput interface {
+	pulumi.Input
+
+	ToDpmHostOverrideMapOutput() DpmHostOverrideMapOutput
+	ToDpmHostOverrideMapOutputWithContext(context.Context) DpmHostOverrideMapOutput
+}
+
+type DpmHostOverrideMap map[string]DpmHostOverrideInput
+
+func (DpmHostOverrideMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DpmHostOverride)(nil))
+}
+
+func (i DpmHostOverrideMap) ToDpmHostOverrideMapOutput() DpmHostOverrideMapOutput {
+	return i.ToDpmHostOverrideMapOutputWithContext(context.Background())
+}
+
+func (i DpmHostOverrideMap) ToDpmHostOverrideMapOutputWithContext(ctx context.Context) DpmHostOverrideMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideMapOutput)
+}
+
 type DpmHostOverrideOutput struct {
 	*pulumi.OutputState
 }
@@ -171,6 +250,75 @@ func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DpmHostOverrideOutput) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
+	return o.ToDpmHostOverridePtrOutputWithContext(context.Background())
+}
+
+func (o DpmHostOverrideOutput) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
+	return o.ApplyT(func(v DpmHostOverride) *DpmHostOverride {
+		return &v
+	}).(DpmHostOverridePtrOutput)
+}
+
+type DpmHostOverridePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DpmHostOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DpmHostOverride)(nil))
+}
+
+func (o DpmHostOverridePtrOutput) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
+	return o
+}
+
+func (o DpmHostOverridePtrOutput) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
+	return o
+}
+
+type DpmHostOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (DpmHostOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DpmHostOverride)(nil))
+}
+
+func (o DpmHostOverrideArrayOutput) ToDpmHostOverrideArrayOutput() DpmHostOverrideArrayOutput {
+	return o
+}
+
+func (o DpmHostOverrideArrayOutput) ToDpmHostOverrideArrayOutputWithContext(ctx context.Context) DpmHostOverrideArrayOutput {
+	return o
+}
+
+func (o DpmHostOverrideArrayOutput) Index(i pulumi.IntInput) DpmHostOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DpmHostOverride {
+		return vs[0].([]DpmHostOverride)[vs[1].(int)]
+	}).(DpmHostOverrideOutput)
+}
+
+type DpmHostOverrideMapOutput struct{ *pulumi.OutputState }
+
+func (DpmHostOverrideMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DpmHostOverride)(nil))
+}
+
+func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutput() DpmHostOverrideMapOutput {
+	return o
+}
+
+func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutputWithContext(ctx context.Context) DpmHostOverrideMapOutput {
+	return o
+}
+
+func (o DpmHostOverrideMapOutput) MapIndex(k pulumi.StringInput) DpmHostOverrideOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DpmHostOverride {
+		return vs[0].(map[string]DpmHostOverride)[vs[1].(string)]
+	}).(DpmHostOverrideOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DpmHostOverrideOutput{})
+	pulumi.RegisterOutputType(DpmHostOverridePtrOutput{})
+	pulumi.RegisterOutputType(DpmHostOverrideArrayOutput{})
+	pulumi.RegisterOutputType(DpmHostOverrideMapOutput{})
 }

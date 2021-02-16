@@ -25,7 +25,7 @@ namespace Pulumi.VSphere
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("vsphere", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -78,8 +78,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user password for vSphere API operations.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
         /// Persist vSphere client sessions to disk
@@ -96,8 +96,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The user name for vSphere API operations.
         /// </summary>
-        [Input("user")]
-        public Input<string>? User { get; set; }
+        [Input("user", required: true)]
+        public Input<string> User { get; set; } = null!;
 
         [Input("vcenterServer")]
         public Input<string>? VcenterServer { get; set; }
@@ -126,13 +126,10 @@ namespace Pulumi.VSphere
             ClientDebug = Utilities.GetEnvBoolean("VSPHERE_CLIENT_DEBUG");
             ClientDebugPath = Utilities.GetEnv("VSPHERE_CLIENT_DEBUG_PATH");
             ClientDebugPathRun = Utilities.GetEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
-            Password = Utilities.GetEnv("VSPHERE_PASSWORD");
             PersistSession = Utilities.GetEnvBoolean("VSPHERE_PERSIST_SESSION");
             RestSessionPath = Utilities.GetEnv("VSPHERE_REST_SESSION_PATH");
-            User = Utilities.GetEnv("VSPHERE_USER");
             VimKeepAlive = Utilities.GetEnvInt32("VSPHERE_VIM_KEEP_ALIVE");
             VimSessionPath = Utilities.GetEnv("VSPHERE_VIM_SESSION_PATH");
-            VsphereServer = Utilities.GetEnv("VSPHERE_SERVER");
         }
     }
 }

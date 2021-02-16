@@ -142,6 +142,85 @@ func (i *ContentLibrary) ToContentLibraryOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryOutput)
 }
 
+func (i *ContentLibrary) ToContentLibraryPtrOutput() ContentLibraryPtrOutput {
+	return i.ToContentLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i *ContentLibrary) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryPtrOutput)
+}
+
+type ContentLibraryPtrInput interface {
+	pulumi.Input
+
+	ToContentLibraryPtrOutput() ContentLibraryPtrOutput
+	ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput
+}
+
+type contentLibraryPtrType ContentLibraryArgs
+
+func (*contentLibraryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibrary)(nil))
+}
+
+func (i *contentLibraryPtrType) ToContentLibraryPtrOutput() ContentLibraryPtrOutput {
+	return i.ToContentLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i *contentLibraryPtrType) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryPtrOutput)
+}
+
+// ContentLibraryArrayInput is an input type that accepts ContentLibraryArray and ContentLibraryArrayOutput values.
+// You can construct a concrete instance of `ContentLibraryArrayInput` via:
+//
+//          ContentLibraryArray{ ContentLibraryArgs{...} }
+type ContentLibraryArrayInput interface {
+	pulumi.Input
+
+	ToContentLibraryArrayOutput() ContentLibraryArrayOutput
+	ToContentLibraryArrayOutputWithContext(context.Context) ContentLibraryArrayOutput
+}
+
+type ContentLibraryArray []ContentLibraryInput
+
+func (ContentLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ContentLibrary)(nil))
+}
+
+func (i ContentLibraryArray) ToContentLibraryArrayOutput() ContentLibraryArrayOutput {
+	return i.ToContentLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryArray) ToContentLibraryArrayOutputWithContext(ctx context.Context) ContentLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryArrayOutput)
+}
+
+// ContentLibraryMapInput is an input type that accepts ContentLibraryMap and ContentLibraryMapOutput values.
+// You can construct a concrete instance of `ContentLibraryMapInput` via:
+//
+//          ContentLibraryMap{ "key": ContentLibraryArgs{...} }
+type ContentLibraryMapInput interface {
+	pulumi.Input
+
+	ToContentLibraryMapOutput() ContentLibraryMapOutput
+	ToContentLibraryMapOutputWithContext(context.Context) ContentLibraryMapOutput
+}
+
+type ContentLibraryMap map[string]ContentLibraryInput
+
+func (ContentLibraryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ContentLibrary)(nil))
+}
+
+func (i ContentLibraryMap) ToContentLibraryMapOutput() ContentLibraryMapOutput {
+	return i.ToContentLibraryMapOutputWithContext(context.Background())
+}
+
+func (i ContentLibraryMap) ToContentLibraryMapOutputWithContext(ctx context.Context) ContentLibraryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryMapOutput)
+}
+
 type ContentLibraryOutput struct {
 	*pulumi.OutputState
 }
@@ -158,6 +237,75 @@ func (o ContentLibraryOutput) ToContentLibraryOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ContentLibraryOutput) ToContentLibraryPtrOutput() ContentLibraryPtrOutput {
+	return o.ToContentLibraryPtrOutputWithContext(context.Background())
+}
+
+func (o ContentLibraryOutput) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
+	return o.ApplyT(func(v ContentLibrary) *ContentLibrary {
+		return &v
+	}).(ContentLibraryPtrOutput)
+}
+
+type ContentLibraryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContentLibraryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentLibrary)(nil))
+}
+
+func (o ContentLibraryPtrOutput) ToContentLibraryPtrOutput() ContentLibraryPtrOutput {
+	return o
+}
+
+func (o ContentLibraryPtrOutput) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
+	return o
+}
+
+type ContentLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentLibrary)(nil))
+}
+
+func (o ContentLibraryArrayOutput) ToContentLibraryArrayOutput() ContentLibraryArrayOutput {
+	return o
+}
+
+func (o ContentLibraryArrayOutput) ToContentLibraryArrayOutputWithContext(ctx context.Context) ContentLibraryArrayOutput {
+	return o
+}
+
+func (o ContentLibraryArrayOutput) Index(i pulumi.IntInput) ContentLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentLibrary {
+		return vs[0].([]ContentLibrary)[vs[1].(int)]
+	}).(ContentLibraryOutput)
+}
+
+type ContentLibraryMapOutput struct{ *pulumi.OutputState }
+
+func (ContentLibraryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ContentLibrary)(nil))
+}
+
+func (o ContentLibraryMapOutput) ToContentLibraryMapOutput() ContentLibraryMapOutput {
+	return o
+}
+
+func (o ContentLibraryMapOutput) ToContentLibraryMapOutputWithContext(ctx context.Context) ContentLibraryMapOutput {
+	return o
+}
+
+func (o ContentLibraryMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContentLibrary {
+		return vs[0].(map[string]ContentLibrary)[vs[1].(string)]
+	}).(ContentLibraryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContentLibraryOutput{})
+	pulumi.RegisterOutputType(ContentLibraryPtrOutput{})
+	pulumi.RegisterOutputType(ContentLibraryArrayOutput{})
+	pulumi.RegisterOutputType(ContentLibraryMapOutput{})
 }

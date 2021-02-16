@@ -67,7 +67,8 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     constructor(name: string, args: ComputeClusterVmAffinityRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmAffinityRuleArgs | ComputeClusterVmAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ComputeClusterVmAffinityRuleState | undefined;
             inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -76,10 +77,10 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
             inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmAffinityRuleArgs | undefined;
-            if ((!args || args.computeClusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            if ((!args || args.virtualMachineIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
             inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
@@ -88,12 +89,8 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ComputeClusterVmAffinityRule.__pulumiType, name, inputs, opts);
     }
