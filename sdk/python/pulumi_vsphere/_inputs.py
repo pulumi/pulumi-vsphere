@@ -1228,7 +1228,7 @@ documentation for the label attribute at:
 
 https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
 """, DeprecationWarning)
-            pulumi.log.warn("name is deprecated: 
+            pulumi.log.warn("""name is deprecated: 
 The name attribute for virtual disks will be removed in favor of \"label\" in
 future releases. To transition existing disks, rename the \"name\" attribute to
 \"label\". When doing so, ensure the value of the attribute stays the same.
@@ -1238,7 +1238,7 @@ the name of one on new disks or virtual machines. For more information, see the
 documentation for the label attribute at: 
 
 https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-")
+""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if path is not None:
