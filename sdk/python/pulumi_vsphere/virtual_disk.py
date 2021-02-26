@@ -84,7 +84,7 @@ class VirtualDisk(pulumi.CustomResource):
 
             if adapter_type is not None and not opts.urn:
                 warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
-                pulumi.log.warn("adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead")
+                pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
             __props__['adapter_type'] = adapter_type
             __props__['create_directories'] = create_directories
             __props__['datacenter'] = datacenter

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Ensure deprecation warnings are escaped correctly in Python SDK
 
 ---
 
