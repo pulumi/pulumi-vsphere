@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Ensure deprecation warnings are escaped correctly in Python SDK
+_(none)_
 
 ---
+
+## 2.12.2 (2021-02-26)
+* Ensure deprecation warnings are escaped correctly in Python SDK
 
 ## 2.12.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
