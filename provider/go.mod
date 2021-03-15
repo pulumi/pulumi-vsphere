@@ -1,13 +1,12 @@
 module github.com/pulumi/pulumi-vsphere/provider/v2
 
-go 1.14
+go 1.16
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/hashicorp/terraform-provider-vsphere v1.18.2
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.19.0
-	github.com/pulumi/pulumi/pkg/v2 v2.21.3-0.20210226052204-ebb657518593 // indirect
-	github.com/pulumi/pulumi/sdk/v2 v2.21.3-0.20210226052204-ebb657518593
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.21.0
+	github.com/pulumi/pulumi/sdk/v2 v2.22.1-0.20210310211618-1f16423ede4c
 )
 
 replace (
