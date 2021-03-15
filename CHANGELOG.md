@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.13.0 (2021-03-15)
 * Upgrade to pulumi-terraform-bridge v2.21.0
 * Release macOS arm64 binary
----
 
 ## 2.12.2 (2021-02-26)
 * Ensure deprecation warnings are escaped correctly in Python SDK
