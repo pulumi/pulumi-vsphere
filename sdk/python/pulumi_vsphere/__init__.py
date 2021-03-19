@@ -37,6 +37,7 @@ from .get_host import *
 from .get_host_pci_device import *
 from .get_host_thumbprint import *
 from .get_network import *
+from .get_ovf_vm_template import *
 from .get_policy import *
 from .get_resource_pool import *
 from .get_role import *

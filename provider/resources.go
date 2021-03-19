@@ -160,6 +160,7 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_host_pci_device":            {Tok: vsphereDataSource(vsphereMod, "getHostPciDevice")},
 			"vsphere_host_thumbprint":            {Tok: vsphereDataSource(vsphereMod, "getHostThumbprint")},
 			"vsphere_role":                       {Tok: vsphereDataSource(vsphereMod, "getRole")},
+			"vsphere_ovf_vm_template":            {Tok: vsphereDataSource(vsphereMod, "getOvfVmTemplate")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

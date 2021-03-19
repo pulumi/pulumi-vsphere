@@ -420,6 +420,7 @@ export interface VirtualMachineNetworkInterface {
 
 export interface VirtualMachineOvfDeploy {
     allowUnverifiedSslCert?: pulumi.Input<boolean>;
+    deploymentOption?: pulumi.Input<string>;
     diskProvisioning?: pulumi.Input<string>;
     ipAllocationPolicy?: pulumi.Input<string>;
     ipProtocol?: pulumi.Input<string>;

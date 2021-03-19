@@ -1772,6 +1772,7 @@ class VirtualMachineNetworkInterfaceArgs:
 class VirtualMachineOvfDeployArgs:
     def __init__(__self__, *,
                  allow_unverified_ssl_cert: Optional[pulumi.Input[bool]] = None,
+                 deployment_option: Optional[pulumi.Input[str]] = None,
                  disk_provisioning: Optional[pulumi.Input[str]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
@@ -1780,6 +1781,8 @@ class VirtualMachineOvfDeployArgs:
                  remote_ovf_url: Optional[pulumi.Input[str]] = None):
         if allow_unverified_ssl_cert is not None:
             pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
+        if deployment_option is not None:
+            pulumi.set(__self__, "deployment_option", deployment_option)
         if disk_provisioning is not None:
             pulumi.set(__self__, "disk_provisioning", disk_provisioning)
         if ip_allocation_policy is not None:
@@ -1801,6 +1804,15 @@ class VirtualMachineOvfDeployArgs:
     @allow_unverified_ssl_cert.setter
     def allow_unverified_ssl_cert(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_unverified_ssl_cert", value)
+
+    @property
+    @pulumi.getter(name="deploymentOption")
+    def deployment_option(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deployment_option")
+
+    @deployment_option.setter
+    def deployment_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_option", value)
 
     @property
     @pulumi.getter(name="diskProvisioning")

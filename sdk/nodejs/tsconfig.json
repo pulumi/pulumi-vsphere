@@ -49,6 +49,7 @@
         "getHostPciDevice.ts",
         "getHostThumbprint.ts",
         "getNetwork.ts",
+        "getOvfVmTemplate.ts",
         "getPolicy.ts",
         "getResourcePool.ts",
         "getRole.ts",

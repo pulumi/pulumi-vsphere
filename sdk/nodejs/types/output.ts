@@ -443,6 +443,7 @@ export interface VirtualMachineNetworkInterface {
 
 export interface VirtualMachineOvfDeploy {
     allowUnverifiedSslCert?: boolean;
+    deploymentOption?: string;
     diskProvisioning?: string;
     ipAllocationPolicy?: string;
     ipProtocol?: string;

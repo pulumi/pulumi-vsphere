@@ -15,6 +15,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("allowUnverifiedSslCert")]
         public Input<bool>? AllowUnverifiedSslCert { get; set; }
 
+        [Input("deploymentOption")]
+        public Input<string>? DeploymentOption { get; set; }
+
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
 

@@ -3216,6 +3216,7 @@ func (o VirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Virt
 
 type VirtualMachineOvfDeploy struct {
 	AllowUnverifiedSslCert *bool             `pulumi:"allowUnverifiedSslCert"`
+	DeploymentOption       *string           `pulumi:"deploymentOption"`
 	DiskProvisioning       *string           `pulumi:"diskProvisioning"`
 	IpAllocationPolicy     *string           `pulumi:"ipAllocationPolicy"`
 	IpProtocol             *string           `pulumi:"ipProtocol"`
@@ -3237,6 +3238,7 @@ type VirtualMachineOvfDeployInput interface {
 
 type VirtualMachineOvfDeployArgs struct {
 	AllowUnverifiedSslCert pulumi.BoolPtrInput   `pulumi:"allowUnverifiedSslCert"`
+	DeploymentOption       pulumi.StringPtrInput `pulumi:"deploymentOption"`
 	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
 	IpAllocationPolicy     pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
 	IpProtocol             pulumi.StringPtrInput `pulumi:"ipProtocol"`
@@ -3325,6 +3327,10 @@ func (o VirtualMachineOvfDeployOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOu
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.AllowUnverifiedSslCert }).(pulumi.BoolPtrOutput)
 }
 
+func (o VirtualMachineOvfDeployOutput) DeploymentOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DeploymentOption }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineOvfDeployOutput) DiskProvisioning() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DiskProvisioning }).(pulumi.StringPtrOutput)
 }
@@ -3374,6 +3380,15 @@ func (o VirtualMachineOvfDeployPtrOutput) AllowUnverifiedSslCert() pulumi.BoolPt
 		}
 		return v.AllowUnverifiedSslCert
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) DeploymentOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentOption
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOutput {

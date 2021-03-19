@@ -1382,6 +1382,7 @@ class VirtualMachineNetworkInterface(dict):
 class VirtualMachineOvfDeploy(dict):
     def __init__(__self__, *,
                  allow_unverified_ssl_cert: Optional[bool] = None,
+                 deployment_option: Optional[str] = None,
                  disk_provisioning: Optional[str] = None,
                  ip_allocation_policy: Optional[str] = None,
                  ip_protocol: Optional[str] = None,
@@ -1390,6 +1391,8 @@ class VirtualMachineOvfDeploy(dict):
                  remote_ovf_url: Optional[str] = None):
         if allow_unverified_ssl_cert is not None:
             pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
+        if deployment_option is not None:
+            pulumi.set(__self__, "deployment_option", deployment_option)
         if disk_provisioning is not None:
             pulumi.set(__self__, "disk_provisioning", disk_provisioning)
         if ip_allocation_policy is not None:
@@ -1407,6 +1410,11 @@ class VirtualMachineOvfDeploy(dict):
     @pulumi.getter(name="allowUnverifiedSslCert")
     def allow_unverified_ssl_cert(self) -> Optional[bool]:
         return pulumi.get(self, "allow_unverified_ssl_cert")
+
+    @property
+    @pulumi.getter(name="deploymentOption")
+    def deployment_option(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_option")
 
     @property
     @pulumi.getter(name="diskProvisioning")

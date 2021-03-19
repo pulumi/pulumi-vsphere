@@ -1232,6 +1232,14 @@
                         }
                     }
                 },
+                "deploymentOption": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "diskProvisioning": {
                     "type": "string",
                     "language": {
@@ -10328,6 +10336,213 @@
                 "required": [
                     "name",
                     "type",
+                    "id"
+                ]
+            }
+        },
+        "vsphere:index/getOvfVmTemplate:getOvfVmTemplate": {
+            "description": "The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware\nsettings in a form that can be then used as inputs for a `vsphere.VirtualMachine` resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as vsphere from \"@pulumi/vsphere\";\n\nconst ovf = vsphere.getOvfVmTemplate({\n    name: \"testOVF\",\n    resourcePoolId: vsphere_resource_pool.rp.id,\n    datastoreId: data.vsphere_datastore.ds.id,\n    hostSystemId: data.vsphere_host.hs.id,\n    remoteOvfUrl: \"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova\",\n    ovfNetworkMap: {\n        \"Network 1\": data.vsphere_network.net.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_vsphere as vsphere\n\novf = vsphere.get_ovf_vm_template(name=\"testOVF\",\n    resource_pool_id=vsphere_resource_pool[\"rp\"][\"id\"],\n    datastore_id=data[\"vsphere_datastore\"][\"ds\"][\"id\"],\n    host_system_id=data[\"vsphere_host\"][\"hs\"][\"id\"],\n    remote_ovf_url=\"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova\",\n    ovf_network_map={\n        \"Network 1\": data[\"vsphere_network\"][\"net\"][\"id\"],\n    })\n```\n```csharp\nusing Pulumi;\nusing VSphere = Pulumi.VSphere;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var ovf = Output.Create(VSphere.GetOvfVmTemplate.InvokeAsync(new VSphere.GetOvfVmTemplateArgs\n        {\n            Name = \"testOVF\",\n            ResourcePoolId = vsphere_resource_pool.Rp.Id,\n            DatastoreId = data.Vsphere_datastore.Ds.Id,\n            HostSystemId = data.Vsphere_host.Hs.Id,\n            RemoteOvfUrl = \"https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova\",\n            OvfNetworkMap = \n            {\n                { \"Network 1\", data.Vsphere_network.Net.Id },\n            },\n        }));\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOvfVmTemplate.\n",
+                "properties": {
+                    "allowUnverifiedSslCert": {
+                        "type": "boolean",
+                        "description": "Allow unverified ssl certificates while deploying ovf/ova from url.\n"
+                    },
+                    "datastoreId": {
+                        "type": "string",
+                        "description": "The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.\n"
+                    },
+                    "deploymentOption": {
+                        "type": "string",
+                        "description": "The key of the chosen deployment option. If empty, the default option is chosen.\n"
+                    },
+                    "diskProvisioning": {
+                        "type": "string",
+                        "description": "The disk provisioning. If set, all the disks in the deployed OVF will have\nthe same specified disk type (accepted values {thin, flat, thick, sameAsSource}).\n"
+                    },
+                    "folder": {
+                        "type": "string",
+                        "description": "The name of the folder to locate the virtual machine in.\n"
+                    },
+                    "hostSystemId": {
+                        "type": "string",
+                        "description": "The ID of an optional host system to pin the virtual machine to.\n"
+                    },
+                    "ipAllocationPolicy": {
+                        "type": "string",
+                        "description": "The IP allocation policy.\n"
+                    },
+                    "ipProtocol": {
+                        "type": "string",
+                        "description": "The IP protocol.\n"
+                    },
+                    "localOvfPath": {
+                        "type": "string",
+                        "description": "The absolute path to the ovf/ova file in the local system. While deploying from ovf,\nmake sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the virtual machine to create.\n"
+                    },
+                    "ovfNetworkMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The mapping of name of network identifiers from the ovf descriptor to network UUID in the\nVI infrastructure.\n"
+                    },
+                    "remoteOvfUrl": {
+                        "type": "string",
+                        "description": "URL to the remote ovf/ova file to be deployed.\n"
+                    },
+                    "resourcePoolId": {
+                        "type": "string",
+                        "description": "The ID of a resource pool to put the virtual machine in.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hostSystemId",
+                    "name",
+                    "resourcePoolId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOvfVmTemplate.\n",
+                "properties": {
+                    "allowUnverifiedSslCert": {
+                        "type": "boolean"
+                    },
+                    "alternateGuestName": {
+                        "type": "string",
+                        "description": "The guest name for the operating system .\n"
+                    },
+                    "annotation": {
+                        "type": "string",
+                        "description": "User-provided description of the virtual machine.\n"
+                    },
+                    "cpuHotAddEnabled": {
+                        "type": "boolean",
+                        "description": "Allow CPUs to be added to this virtual machine while it is running.\n"
+                    },
+                    "cpuHotRemoveEnabled": {
+                        "type": "boolean",
+                        "description": "Allow CPUs to be added to this virtual machine while it is running.\n"
+                    },
+                    "cpuPerformanceCountersEnabled": {
+                        "type": "boolean"
+                    },
+                    "datastoreId": {
+                        "type": "string"
+                    },
+                    "deploymentOption": {
+                        "type": "string"
+                    },
+                    "diskProvisioning": {
+                        "type": "string"
+                    },
+                    "firmware": {
+                        "type": "string",
+                        "description": "The firmware interface to use on the virtual machine.\n"
+                    },
+                    "folder": {
+                        "type": "string"
+                    },
+                    "guestId": {
+                        "type": "string",
+                        "description": "The guest ID for the operating system\n"
+                    },
+                    "hostSystemId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ideControllerCount": {
+                        "type": "integer"
+                    },
+                    "ipAllocationPolicy": {
+                        "type": "string"
+                    },
+                    "ipProtocol": {
+                        "type": "string"
+                    },
+                    "localOvfPath": {
+                        "type": "string"
+                    },
+                    "memory": {
+                        "type": "integer",
+                        "description": "The size of the virtual machine's memory, in MB.\n"
+                    },
+                    "memoryHotAddEnabled": {
+                        "type": "boolean",
+                        "description": "Allow memory to be added to this virtual machine while it is running.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nestedHvEnabled": {
+                        "type": "boolean",
+                        "description": "Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.\n"
+                    },
+                    "numCoresPerSocket": {
+                        "type": "integer",
+                        "description": "The number of cores to distribute amongst the CPUs in this virtual machine.\n"
+                    },
+                    "numCpus": {
+                        "type": "integer",
+                        "description": "The number of virtual processors to assign to this virtual machine.\n"
+                    },
+                    "ovfNetworkMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "remoteOvfUrl": {
+                        "type": "string"
+                    },
+                    "resourcePoolId": {
+                        "type": "string"
+                    },
+                    "sataControllerCount": {
+                        "type": "integer"
+                    },
+                    "scsiControllerCount": {
+                        "type": "integer"
+                    },
+                    "scsiType": {
+                        "type": "string"
+                    },
+                    "swapPlacementPolicy": {
+                        "type": "string",
+                        "description": "The swap file placement policy for this virtual machine.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "alternateGuestName",
+                    "annotation",
+                    "cpuHotAddEnabled",
+                    "cpuHotRemoveEnabled",
+                    "cpuPerformanceCountersEnabled",
+                    "firmware",
+                    "guestId",
+                    "hostSystemId",
+                    "ideControllerCount",
+                    "memory",
+                    "memoryHotAddEnabled",
+                    "name",
+                    "nestedHvEnabled",
+                    "numCoresPerSocket",
+                    "numCpus",
+                    "resourcePoolId",
+                    "sataControllerCount",
+                    "scsiControllerCount",
+                    "scsiType",
+                    "swapPlacementPolicy",
                     "id"
                 ]
             }
