@@ -14,6 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VirtualMachineOvfDeploy
     {
         public readonly bool? AllowUnverifiedSslCert;
+        public readonly string? DeploymentOption;
         public readonly string? DiskProvisioning;
         public readonly string? IpAllocationPolicy;
         public readonly string? IpProtocol;
@@ -24,6 +25,8 @@ namespace Pulumi.VSphere.Outputs
         [OutputConstructor]
         private VirtualMachineOvfDeploy(
             bool? allowUnverifiedSslCert,
+
+            string? deploymentOption,
 
             string? diskProvisioning,
 
@@ -38,6 +41,7 @@ namespace Pulumi.VSphere.Outputs
             string? remoteOvfUrl)
         {
             AllowUnverifiedSslCert = allowUnverifiedSslCert;
+            DeploymentOption = deploymentOption;
             DiskProvisioning = diskProvisioning;
             IpAllocationPolicy = ipAllocationPolicy;
             IpProtocol = ipProtocol;

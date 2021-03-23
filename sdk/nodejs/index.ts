@@ -39,6 +39,7 @@ export * from "./getHost";
 export * from "./getHostPciDevice";
 export * from "./getHostThumbprint";
 export * from "./getNetwork";
+export * from "./getOvfVmTemplate";
 export * from "./getPolicy";
 export * from "./getResourcePool";
 export * from "./getRole";
