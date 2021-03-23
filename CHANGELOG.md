@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.13.1 (2021-03-23)
 * Upgrade to v1.25.0 of the vSphere Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.22.1  
   **Please Note:** This includes a bug fix to the refresh operation regarding arrays
-
----
 
 ## 2.13.0 (2021-03-15)
 * Upgrade to pulumi-terraform-bridge v2.21.0
