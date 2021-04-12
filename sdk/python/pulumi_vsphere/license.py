@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['License']
+__all__ = ['LicenseArgs', 'License']
+
+@pulumi.input_type
+class LicenseArgs:
+    def __init__(__self__, *,
+                 license_key: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a License resource.
+        :param pulumi.Input[str] license_key: The license key to add.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
+        """
+        pulumi.set(__self__, "license_key", license_key)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> pulumi.Input[str]:
+        """
+        The license key to add.
+        """
+        return pulumi.get(self, "license_key")
+
+    @license_key.setter
+    def license_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "license_key", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of key/value pairs to be attached as labels (tags) to the license key.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
 
 class License(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +81,49 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         :param pulumi.Input[str] license_key: The license key to add.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LicenseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        license_key = vsphere.License("licenseKey",
+            labels={
+                "VpxClientLicenseLabel": "Hello World",
+                "Workflow": "Hello World",
+            },
+            license_key="452CQ-2EK54-K8742-00000-00000")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LicenseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LicenseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 license_key: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

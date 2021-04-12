@@ -5,15 +5,166 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Vnic']
+__all__ = ['VnicArgs', 'Vnic']
+
+@pulumi.input_type
+class VnicArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 distributed_port_group: Optional[pulumi.Input[str]] = None,
+                 distributed_switch_port: Optional[pulumi.Input[str]] = None,
+                 ipv4: Optional[pulumi.Input['VnicIpv4Args']] = None,
+                 ipv6: Optional[pulumi.Input['VnicIpv6Args']] = None,
+                 mac: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
+                 netstack: Optional[pulumi.Input[str]] = None,
+                 portgroup: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Vnic resource.
+        :param pulumi.Input[str] host: ESX host the interface belongs to
+        :param pulumi.Input[str] distributed_port_group: Key of the distributed portgroup the nic will connect to.
+        :param pulumi.Input[str] distributed_switch_port: UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        :param pulumi.Input['VnicIpv4Args'] ipv4: IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        :param pulumi.Input['VnicIpv6Args'] ipv6: IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        :param pulumi.Input[str] mac: MAC address of the interface.
+        :param pulumi.Input[int] mtu: MTU of the interface.
+        :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
+        """
+        pulumi.set(__self__, "host", host)
+        if distributed_port_group is not None:
+            pulumi.set(__self__, "distributed_port_group", distributed_port_group)
+        if distributed_switch_port is not None:
+            pulumi.set(__self__, "distributed_switch_port", distributed_switch_port)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+        if mac is not None:
+            pulumi.set(__self__, "mac", mac)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if netstack is not None:
+            pulumi.set(__self__, "netstack", netstack)
+        if portgroup is not None:
+            pulumi.set(__self__, "portgroup", portgroup)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        ESX host the interface belongs to
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="distributedPortGroup")
+    def distributed_port_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the distributed portgroup the nic will connect to.
+        """
+        return pulumi.get(self, "distributed_port_group")
+
+    @distributed_port_group.setter
+    def distributed_port_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distributed_port_group", value)
+
+    @property
+    @pulumi.getter(name="distributedSwitchPort")
+    def distributed_switch_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+        """
+        return pulumi.get(self, "distributed_switch_port")
+
+    @distributed_switch_port.setter
+    def distributed_switch_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distributed_switch_port", value)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input['VnicIpv4Args']]:
+        """
+        IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input['VnicIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input['VnicIpv6Args']]:
+        """
+        IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input['VnicIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+    @property
+    @pulumi.getter
+    def mac(self) -> Optional[pulumi.Input[str]]:
+        """
+        MAC address of the interface.
+        """
+        return pulumi.get(self, "mac")
+
+    @mac.setter
+    def mac(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mac", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        MTU of the interface.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mtu", value)
+
+    @property
+    @pulumi.getter
+    def netstack(self) -> Optional[pulumi.Input[str]]:
+        """
+        TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        """
+        return pulumi.get(self, "netstack")
+
+    @netstack.setter
+    def netstack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "netstack", value)
+
+    @property
+    @pulumi.getter
+    def portgroup(self) -> Optional[pulumi.Input[str]]:
+        """
+        Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
+        """
+        return pulumi.get(self, "portgroup")
+
+    @portgroup.setter
+    def portgroup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "portgroup", value)
 
 
 class Vnic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -114,6 +265,112 @@ class Vnic(pulumi.CustomResource):
         :param pulumi.Input[str] netstack: TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: VnicArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a VMware vSphere vnic resource.
+
+        ## Example Usage
+
+        ### S
+        ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        d1 = vsphere.DistributedVirtualSwitch("d1",
+            datacenter_id=dc.id,
+            hosts=[vsphere.DistributedVirtualSwitchHostArgs(
+                host_system_id=h1.id,
+                devices=["vnic3"],
+            )])
+        p1 = vsphere.DistributedPortGroup("p1",
+            vlan_id=1234,
+            distributed_virtual_switch_uuid=d1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            distributed_switch_port=d1.id,
+            distributed_port_group=p1.id,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
+            netstack="vmotion")
+        ```
+        ### Create a vnic attached to a portgroup using the default TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        hvs1 = vsphere.HostVirtualSwitch("hvs1",
+            host_system_id=h1.id,
+            network_adapters=[
+                "vmnic3",
+                "vmnic4",
+            ],
+            active_nics=["vmnic3"],
+            standby_nics=["vmnic4"])
+        p1 = vsphere.HostPortGroup("p1",
+            virtual_switch_name=hvs1.name,
+            host_system_id=h1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            portgroup=p1.name,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ))
+        ```
+        ## Importing
+
+        An existing vNic can be [imported][docs-import] into this resource
+        via supplying the vNic's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the vnic `vmk2` from host with ID `host-123`.
+
+        :param str resource_name: The name of the resource.
+        :param VnicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(VnicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 distributed_port_group: Optional[pulumi.Input[str]] = None,
+                 distributed_switch_port: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 ipv4: Optional[pulumi.Input[pulumi.InputType['VnicIpv4Args']]] = None,
+                 ipv6: Optional[pulumi.Input[pulumi.InputType['VnicIpv6Args']]] = None,
+                 mac: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
+                 netstack: Optional[pulumi.Input[str]] = None,
+                 portgroup: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

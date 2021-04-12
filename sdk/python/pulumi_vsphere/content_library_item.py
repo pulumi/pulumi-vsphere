@@ -5,13 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ContentLibraryItem']
+__all__ = ['ContentLibraryItemArgs', 'ContentLibraryItem']
+
+@pulumi.input_type
+class ContentLibraryItemArgs:
+    def __init__(__self__, *,
+                 library_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 source_uuid: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ContentLibraryItem resource.
+        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
+        :param pulumi.Input[str] description: A description for the item.
+        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
+               OVAs will be parsed and associated files will also be imported.
+        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] type: Type of content library item.
+        """
+        pulumi.set(__self__, "library_id", library_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if file_url is not None:
+            pulumi.set(__self__, "file_url", file_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if source_uuid is not None:
+            pulumi.set(__self__, "source_uuid", source_uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Content Library the item should be created in.
+        """
+        return pulumi.get(self, "library_id")
+
+    @library_id.setter
+    def library_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "library_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the item.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fileUrl")
+    def file_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        File to import into the Content Library item. OVFs and
+        OVAs will be parsed and associated files will also be imported.
+        """
+        return pulumi.get(self, "file_url")
+
+    @file_url.setter
+    def file_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the item to be created in the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sourceUuid")
+    def source_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual machine UUID to clone to Content Library.
+        """
+        return pulumi.get(self, "source_uuid")
+
+    @source_uuid.setter
+    def source_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_uuid", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of content library item.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class ContentLibraryItem(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +141,38 @@ class ContentLibraryItem(pulumi.CustomResource):
         :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
         :param pulumi.Input[str] type: Type of content library item.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContentLibraryItemArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ContentLibraryItem resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ContentLibraryItemArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContentLibraryItemArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_url: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 source_uuid: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

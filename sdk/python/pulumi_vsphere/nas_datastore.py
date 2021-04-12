@@ -5,13 +5,236 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['NasDatastore']
+__all__ = ['NasDatastoreArgs', 'NasDatastore']
+
+@pulumi.input_type
+class NasDatastoreArgs:
+    def __init__(__self__, *,
+                 host_system_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 remote_hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 remote_path: pulumi.Input[str],
+                 access_mode: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 security_type: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NasDatastore resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+               the hosts to mount the datastore on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
+               server or servers. Only one element should be present for NFS v3 but multiple
+               can be present for NFS v4.1. Forces a new resource if changed.
+        :param pulumi.Input[str] remote_path: The remote path of the mount point. Forces a new
+               resource if changed.
+        :param pulumi.Input[str] access_mode: Access mode for the mount point. Can be one of
+               `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
+               that the datastore will be read-write depending on the permissions of the
+               actual share. Default: `readWrite`. Forces a new resource if changed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+               value strings to set on datasource resource.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object
+               ID of a datastore cluster to put this datastore in.
+               Conflicts with `folder`.
+        :param pulumi.Input[str] folder: The relative path to a folder to put this datastore in.
+               This is a path relative to the datacenter you are deploying the datastore to.
+               Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+               The provider will place a datastore named `test` in a datastore folder
+               located at `/dc1/datastore/foo/bar`, with the final inventory path being
+               `/dc1/datastore/foo/bar/test`. Conflicts with
+               `datastore_cluster_id`.
+        :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
+               changed.
+        :param pulumi.Input[str] security_type: The security type to use when using NFS v4.1.
+               Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
+               if changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[str] type: The type of NAS volume. Can be one of `NFS` (to denote
+               v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
+               changed.
+        """
+        pulumi.set(__self__, "host_system_ids", host_system_ids)
+        pulumi.set(__self__, "remote_hosts", remote_hosts)
+        pulumi.set(__self__, "remote_path", remote_path)
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if datastore_cluster_id is not None:
+            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="hostSystemIds")
+    def host_system_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The managed object IDs of
+        the hosts to mount the datastore on.
+        """
+        return pulumi.get(self, "host_system_ids")
+
+    @host_system_ids.setter
+    def host_system_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "host_system_ids", value)
+
+    @property
+    @pulumi.getter(name="remoteHosts")
+    def remote_hosts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The hostnames or IP addresses of the remote
+        server or servers. Only one element should be present for NFS v3 but multiple
+        can be present for NFS v4.1. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "remote_hosts")
+
+    @remote_hosts.setter
+    def remote_hosts(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "remote_hosts", value)
+
+    @property
+    @pulumi.getter(name="remotePath")
+    def remote_path(self) -> pulumi.Input[str]:
+        """
+        The remote path of the mount point. Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "remote_path")
+
+    @remote_path.setter
+    def remote_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "remote_path", value)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access mode for the mount point. Can be one of
+        `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
+        that the datastore will be read-write depending on the permissions of the
+        actual share. Default: `readWrite`. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_mode", value)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom attribute ids to attribute 
+        value strings to set on datasource resource.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="datastoreClusterId")
+    def datastore_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object
+        ID of a datastore cluster to put this datastore in.
+        Conflicts with `folder`.
+        """
+        return pulumi.get(self, "datastore_cluster_id")
+
+    @datastore_cluster_id.setter
+    def datastore_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path to a folder to put this datastore in.
+        This is a path relative to the datacenter you are deploying the datastore to.
+        Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+        The provider will place a datastore named `test` in a datastore folder
+        located at `/dc1/datastore/foo/bar`, with the final inventory path being
+        `/dc1/datastore/foo/bar/test`. Conflicts with
+        `datastore_cluster_id`.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datastore. Forces a new resource if
+        changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security type to use when using NFS v4.1.
+        Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
+        if changed.
+        """
+        return pulumi.get(self, "security_type")
+
+    @security_type.setter
+    def security_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_type", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of NAS volume. Can be one of `NFS` (to denote
+        v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
+        changed.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class NasDatastore(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +289,43 @@ class NasDatastore(pulumi.CustomResource):
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NasDatastoreArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a NasDatastore resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param NasDatastoreArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NasDatastoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 remote_path: Optional[pulumi.Input[str]] = None,
+                 security_type: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

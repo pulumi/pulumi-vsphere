@@ -5,15 +5,1604 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DistributedVirtualSwitch']
+__all__ = ['DistributedVirtualSwitchArgs', 'DistributedVirtualSwitch']
+
+@pulumi.input_type
+class DistributedVirtualSwitchArgs:
+    def __init__(__self__, *,
+                 datacenter_id: pulumi.Input[str],
+                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+                 allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+                 allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 block_all_ports: Optional[pulumi.Input[bool]] = None,
+                 check_beacon: Optional[pulumi.Input[bool]] = None,
+                 contact_detail: Optional[pulumi.Input[str]] = None,
+                 contact_name: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
+                 egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+                 egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 failback: Optional[pulumi.Input[bool]] = None,
+                 faulttolerance_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_share_count: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_share_level: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 hbr_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 hbr_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 hbr_share_count: Optional[pulumi.Input[int]] = None,
+                 hbr_share_level: Optional[pulumi.Input[str]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]]] = None,
+                 ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
+                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+                 ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ipv4_address: Optional[pulumi.Input[str]] = None,
+                 iscsi_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 iscsi_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 iscsi_share_count: Optional[pulumi.Input[int]] = None,
+                 iscsi_share_level: Optional[pulumi.Input[str]] = None,
+                 lacp_api_version: Optional[pulumi.Input[str]] = None,
+                 lacp_enabled: Optional[pulumi.Input[bool]] = None,
+                 lacp_mode: Optional[pulumi.Input[str]] = None,
+                 link_discovery_operation: Optional[pulumi.Input[str]] = None,
+                 link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+                 management_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 management_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 management_share_count: Optional[pulumi.Input[int]] = None,
+                 management_share_level: Optional[pulumi.Input[str]] = None,
+                 max_mtu: Optional[pulumi.Input[int]] = None,
+                 multicast_filtering_mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 netflow_active_flow_timeout: Optional[pulumi.Input[int]] = None,
+                 netflow_collector_ip_address: Optional[pulumi.Input[str]] = None,
+                 netflow_collector_port: Optional[pulumi.Input[int]] = None,
+                 netflow_enabled: Optional[pulumi.Input[bool]] = None,
+                 netflow_idle_flow_timeout: Optional[pulumi.Input[int]] = None,
+                 netflow_internal_flows_only: Optional[pulumi.Input[bool]] = None,
+                 netflow_observation_domain_id: Optional[pulumi.Input[int]] = None,
+                 netflow_sampling_rate: Optional[pulumi.Input[int]] = None,
+                 network_resource_control_enabled: Optional[pulumi.Input[bool]] = None,
+                 network_resource_control_version: Optional[pulumi.Input[str]] = None,
+                 nfs_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 nfs_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 nfs_share_count: Optional[pulumi.Input[int]] = None,
+                 nfs_share_level: Optional[pulumi.Input[str]] = None,
+                 notify_switches: Optional[pulumi.Input[bool]] = None,
+                 port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
+                 pvlan_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]]] = None,
+                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teaming_policy: Optional[pulumi.Input[str]] = None,
+                 tx_uplink: Optional[pulumi.Input[bool]] = None,
+                 uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vdp_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vdp_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vdp_share_count: Optional[pulumi.Input[int]] = None,
+                 vdp_share_level: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 virtualmachine_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_share_count: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_share_level: Optional[pulumi.Input[str]] = None,
+                 vlan_id: Optional[pulumi.Input[int]] = None,
+                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]]] = None,
+                 vmotion_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vmotion_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vmotion_share_count: Optional[pulumi.Input[int]] = None,
+                 vmotion_share_level: Optional[pulumi.Input[str]] = None,
+                 vsan_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vsan_share_count: Optional[pulumi.Input[int]] = None,
+                 vsan_share_level: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DistributedVirtualSwitch resource.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
+               virtual switch will be created. Forces a new resource if changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: A list of active uplinks to be used in load
+               balancing. These uplinks need to match the definitions in the
+               `uplinks` DVS argument. See
+               here for more details.
+        :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
+               network adapter is allowed to send network traffic with a different MAC
+               address than that of its own.
+        :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access
+               Control (MAC) address can be changed.
+        :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
+               flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
+               this policy applies to, effectively blocking all network access to connected
+               virtual devices.
+        :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
+               to detect NIC failure.
+        :param pulumi.Input[str] contact_detail: The detailed contact information for the person
+               who is responsible for the DVS.
+        :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
+               DVS.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set for virtual switch.
+        :param pulumi.Input[str] description: A detailed description for the DVS.
+        :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
+               for which this policy applies to.
+        :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
+               per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] egress_shaping_burst_size: The maximum burst size allowed in
+               bytes if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] egress_shaping_enabled: `true` if the traffic shaper is enabled
+               on the port for egress traffic.
+        :param pulumi.Input[int] egress_shaping_peak_bandwidth: The peak bandwidth during bursts
+               in bits per second if egress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] failback: If `true`, the teaming policy will re-activate failed
+               uplinks higher in precedence when they come back up.
+        :param pulumi.Input[int] faulttolerance_maximum_mbit: The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
+        :param pulumi.Input[int] faulttolerance_reservation_mbit: The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
+        :param pulumi.Input[int] faulttolerance_share_count: The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
+        :param pulumi.Input[str] faulttolerance_share_level: The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
+               if changed.
+        :param pulumi.Input[int] hbr_maximum_mbit: The maximum allowed usage for the hbr traffic class, in Mbits/sec.
+        :param pulumi.Input[int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
+        :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
+        :param pulumi.Input[str] hbr_share_level: The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]] hosts: Use the `host` block to declare a host specification. The
+               options are:
+        :param pulumi.Input[bool] ignore_other_pvlan_mappings: Whether to ignore existing PVLAN
+               mappings not managed by this resource. Defaults to false.
+        :param pulumi.Input[int] ingress_shaping_average_bandwidth: The average bandwidth in
+               bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[int] ingress_shaping_burst_size: The maximum burst size allowed in
+               bytes if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[bool] ingress_shaping_enabled: `true` if the traffic shaper is
+               enabled on the port for ingress traffic.
+        :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
+               bursts in bits per second if ingress traffic shaping is enabled on the port.
+        :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
+               mostly useful when used with the Netflow arguments found
+               below.
+        :param pulumi.Input[int] iscsi_maximum_mbit: The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
+        :param pulumi.Input[int] iscsi_reservation_mbit: The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
+        :param pulumi.Input[int] iscsi_share_count: The amount of shares to allocate to the iSCSI traffic class for a custom share level.
+        :param pulumi.Input[str] iscsi_share_level: The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
+               version to use with the switch. Possible values are `singleLag` and
+               `multipleLag`.
+        :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
+               applies to.
+        :param pulumi.Input[str] lacp_mode: The LACP mode. Can be one of `active` or `passive`.
+        :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
+               for link discovery traffic.
+        :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type. Valid
+               types are `cdp` and `lldp`.
+        :param pulumi.Input[int] management_maximum_mbit: The maximum allowed usage for the management traffic class, in Mbits/sec.
+        :param pulumi.Input[int] management_reservation_mbit: The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
+        :param pulumi.Input[int] management_share_count: The amount of shares to allocate to the management traffic class for a custom share level.
+        :param pulumi.Input[str] management_share_level: The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
+               switch.
+        :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
+               with the switch. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+        :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
+               active flows are forced to be exported to the collector. Allowed range is
+               `60` to `3600`. Default: `60`.
+        :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
+               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
+               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
+               must be set before Netflow can be enabled.
+        :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
+               applies to.
+        :param pulumi.Input[int] netflow_idle_flow_timeout: The number of seconds after which
+               idle flows are forced to be exported to the collector. Allowed range is `10`
+               to `600`. Default: `15`.
+        :param pulumi.Input[bool] netflow_internal_flows_only: Whether to limit analysis to
+               traffic that has both source and destination served by the same host.
+               Default: `false`.
+        :param pulumi.Input[int] netflow_observation_domain_id: The observation domain ID for
+               the Netflow collector.
+        :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
+               the number of packets analyzed. The default is `0`, which indicates that the
+               switch should analyze all packets. The maximum value is `1000`, which
+               indicates an analysis rate of 0.001%.
+        :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
+               network I/O control. Default: `false`.
+        :param pulumi.Input[str] network_resource_control_version: The version of network I/O
+               control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        :param pulumi.Input[int] nfs_maximum_mbit: The maximum allowed usage for the nfs traffic class, in Mbits/sec.
+        :param pulumi.Input[int] nfs_reservation_mbit: The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
+        :param pulumi.Input[int] nfs_share_count: The amount of shares to allocate to the nfs traffic class for a custom share level.
+        :param pulumi.Input[str] nfs_share_level: The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[bool] notify_switches: If `true`, the teaming policy will notify the
+               broadcast network of an uplink failover, triggering cache updates.
+        :param pulumi.Input[int] port_private_secondary_vlan_id: Used to define a secondary VLAN
+               ID when using private VLANs.
+        :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]] pvlan_mappings: Use the `pvlan_mapping` block to declare a
+               private VLAN mapping. The options are:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
+               failover. These uplinks need to match the definitions in the
+               `uplinks` DVS argument. See
+               here for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+               `failover_explicit`.
+        :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
+               this policy applies to its DVS uplinks.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uplinks: A list of strings that uniquely identifies the names
+               of the uplinks on the DVS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the DVS, in addition to the
+               names.  See here for an example on how to
+               use this option.
+        :param pulumi.Input[int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
+        :param pulumi.Input[str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
+               create the DVS at the latest version supported by the version of vSphere
+               being used. A DVS can be upgraded to another version, but cannot be
+               downgraded.
+        :param pulumi.Input[int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
+        :param pulumi.Input[int] virtualmachine_reservation_mbit: The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
+        :param pulumi.Input[int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
+        :param pulumi.Input[str] virtualmachine_share_level: The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[int] vlan_id: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        :param pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]] vlan_ranges: Used to denote VLAN trunking. Use the `min_vlan`
+               and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
+               `vlan_range` definitions are allowed, but they must not overlap. Example
+               below:
+        :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
+        :param pulumi.Input[str] vmotion_share_level: The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
+        :param pulumi.Input[int] vsan_maximum_mbit: The maximum allowed usage for the vsan traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vsan_reservation_mbit: The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
+        :param pulumi.Input[int] vsan_share_count: The amount of shares to allocate to the vsan traffic class for a custom share level.
+        :param pulumi.Input[str] vsan_share_level: The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
+        """
+        pulumi.set(__self__, "datacenter_id", datacenter_id)
+        if active_uplinks is not None:
+            pulumi.set(__self__, "active_uplinks", active_uplinks)
+        if allow_forged_transmits is not None:
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+        if allow_mac_changes is not None:
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+        if allow_promiscuous is not None:
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+        if block_all_ports is not None:
+            pulumi.set(__self__, "block_all_ports", block_all_ports)
+        if check_beacon is not None:
+            pulumi.set(__self__, "check_beacon", check_beacon)
+        if contact_detail is not None:
+            pulumi.set(__self__, "contact_detail", contact_detail)
+        if contact_name is not None:
+            pulumi.set(__self__, "contact_name", contact_name)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if directpath_gen2_allowed is not None:
+            pulumi.set(__self__, "directpath_gen2_allowed", directpath_gen2_allowed)
+        if egress_shaping_average_bandwidth is not None:
+            pulumi.set(__self__, "egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
+        if egress_shaping_burst_size is not None:
+            pulumi.set(__self__, "egress_shaping_burst_size", egress_shaping_burst_size)
+        if egress_shaping_enabled is not None:
+            pulumi.set(__self__, "egress_shaping_enabled", egress_shaping_enabled)
+        if egress_shaping_peak_bandwidth is not None:
+            pulumi.set(__self__, "egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
+        if failback is not None:
+            pulumi.set(__self__, "failback", failback)
+        if faulttolerance_maximum_mbit is not None:
+            pulumi.set(__self__, "faulttolerance_maximum_mbit", faulttolerance_maximum_mbit)
+        if faulttolerance_reservation_mbit is not None:
+            pulumi.set(__self__, "faulttolerance_reservation_mbit", faulttolerance_reservation_mbit)
+        if faulttolerance_share_count is not None:
+            pulumi.set(__self__, "faulttolerance_share_count", faulttolerance_share_count)
+        if faulttolerance_share_level is not None:
+            pulumi.set(__self__, "faulttolerance_share_level", faulttolerance_share_level)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if hbr_maximum_mbit is not None:
+            pulumi.set(__self__, "hbr_maximum_mbit", hbr_maximum_mbit)
+        if hbr_reservation_mbit is not None:
+            pulumi.set(__self__, "hbr_reservation_mbit", hbr_reservation_mbit)
+        if hbr_share_count is not None:
+            pulumi.set(__self__, "hbr_share_count", hbr_share_count)
+        if hbr_share_level is not None:
+            pulumi.set(__self__, "hbr_share_level", hbr_share_level)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if ignore_other_pvlan_mappings is not None:
+            pulumi.set(__self__, "ignore_other_pvlan_mappings", ignore_other_pvlan_mappings)
+        if ingress_shaping_average_bandwidth is not None:
+            pulumi.set(__self__, "ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
+        if ingress_shaping_burst_size is not None:
+            pulumi.set(__self__, "ingress_shaping_burst_size", ingress_shaping_burst_size)
+        if ingress_shaping_enabled is not None:
+            pulumi.set(__self__, "ingress_shaping_enabled", ingress_shaping_enabled)
+        if ingress_shaping_peak_bandwidth is not None:
+            pulumi.set(__self__, "ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
+        if ipv4_address is not None:
+            pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if iscsi_maximum_mbit is not None:
+            pulumi.set(__self__, "iscsi_maximum_mbit", iscsi_maximum_mbit)
+        if iscsi_reservation_mbit is not None:
+            pulumi.set(__self__, "iscsi_reservation_mbit", iscsi_reservation_mbit)
+        if iscsi_share_count is not None:
+            pulumi.set(__self__, "iscsi_share_count", iscsi_share_count)
+        if iscsi_share_level is not None:
+            pulumi.set(__self__, "iscsi_share_level", iscsi_share_level)
+        if lacp_api_version is not None:
+            pulumi.set(__self__, "lacp_api_version", lacp_api_version)
+        if lacp_enabled is not None:
+            pulumi.set(__self__, "lacp_enabled", lacp_enabled)
+        if lacp_mode is not None:
+            pulumi.set(__self__, "lacp_mode", lacp_mode)
+        if link_discovery_operation is not None:
+            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+        if link_discovery_protocol is not None:
+            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+        if management_maximum_mbit is not None:
+            pulumi.set(__self__, "management_maximum_mbit", management_maximum_mbit)
+        if management_reservation_mbit is not None:
+            pulumi.set(__self__, "management_reservation_mbit", management_reservation_mbit)
+        if management_share_count is not None:
+            pulumi.set(__self__, "management_share_count", management_share_count)
+        if management_share_level is not None:
+            pulumi.set(__self__, "management_share_level", management_share_level)
+        if max_mtu is not None:
+            pulumi.set(__self__, "max_mtu", max_mtu)
+        if multicast_filtering_mode is not None:
+            pulumi.set(__self__, "multicast_filtering_mode", multicast_filtering_mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if netflow_active_flow_timeout is not None:
+            pulumi.set(__self__, "netflow_active_flow_timeout", netflow_active_flow_timeout)
+        if netflow_collector_ip_address is not None:
+            pulumi.set(__self__, "netflow_collector_ip_address", netflow_collector_ip_address)
+        if netflow_collector_port is not None:
+            pulumi.set(__self__, "netflow_collector_port", netflow_collector_port)
+        if netflow_enabled is not None:
+            pulumi.set(__self__, "netflow_enabled", netflow_enabled)
+        if netflow_idle_flow_timeout is not None:
+            pulumi.set(__self__, "netflow_idle_flow_timeout", netflow_idle_flow_timeout)
+        if netflow_internal_flows_only is not None:
+            pulumi.set(__self__, "netflow_internal_flows_only", netflow_internal_flows_only)
+        if netflow_observation_domain_id is not None:
+            pulumi.set(__self__, "netflow_observation_domain_id", netflow_observation_domain_id)
+        if netflow_sampling_rate is not None:
+            pulumi.set(__self__, "netflow_sampling_rate", netflow_sampling_rate)
+        if network_resource_control_enabled is not None:
+            pulumi.set(__self__, "network_resource_control_enabled", network_resource_control_enabled)
+        if network_resource_control_version is not None:
+            pulumi.set(__self__, "network_resource_control_version", network_resource_control_version)
+        if nfs_maximum_mbit is not None:
+            pulumi.set(__self__, "nfs_maximum_mbit", nfs_maximum_mbit)
+        if nfs_reservation_mbit is not None:
+            pulumi.set(__self__, "nfs_reservation_mbit", nfs_reservation_mbit)
+        if nfs_share_count is not None:
+            pulumi.set(__self__, "nfs_share_count", nfs_share_count)
+        if nfs_share_level is not None:
+            pulumi.set(__self__, "nfs_share_level", nfs_share_level)
+        if notify_switches is not None:
+            pulumi.set(__self__, "notify_switches", notify_switches)
+        if port_private_secondary_vlan_id is not None:
+            pulumi.set(__self__, "port_private_secondary_vlan_id", port_private_secondary_vlan_id)
+        if pvlan_mappings is not None:
+            pulumi.set(__self__, "pvlan_mappings", pvlan_mappings)
+        if standby_uplinks is not None:
+            pulumi.set(__self__, "standby_uplinks", standby_uplinks)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if teaming_policy is not None:
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
+        if tx_uplink is not None:
+            pulumi.set(__self__, "tx_uplink", tx_uplink)
+        if uplinks is not None:
+            pulumi.set(__self__, "uplinks", uplinks)
+        if vdp_maximum_mbit is not None:
+            pulumi.set(__self__, "vdp_maximum_mbit", vdp_maximum_mbit)
+        if vdp_reservation_mbit is not None:
+            pulumi.set(__self__, "vdp_reservation_mbit", vdp_reservation_mbit)
+        if vdp_share_count is not None:
+            pulumi.set(__self__, "vdp_share_count", vdp_share_count)
+        if vdp_share_level is not None:
+            pulumi.set(__self__, "vdp_share_level", vdp_share_level)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if virtualmachine_maximum_mbit is not None:
+            pulumi.set(__self__, "virtualmachine_maximum_mbit", virtualmachine_maximum_mbit)
+        if virtualmachine_reservation_mbit is not None:
+            pulumi.set(__self__, "virtualmachine_reservation_mbit", virtualmachine_reservation_mbit)
+        if virtualmachine_share_count is not None:
+            pulumi.set(__self__, "virtualmachine_share_count", virtualmachine_share_count)
+        if virtualmachine_share_level is not None:
+            pulumi.set(__self__, "virtualmachine_share_level", virtualmachine_share_level)
+        if vlan_id is not None:
+            pulumi.set(__self__, "vlan_id", vlan_id)
+        if vlan_ranges is not None:
+            pulumi.set(__self__, "vlan_ranges", vlan_ranges)
+        if vmotion_maximum_mbit is not None:
+            pulumi.set(__self__, "vmotion_maximum_mbit", vmotion_maximum_mbit)
+        if vmotion_reservation_mbit is not None:
+            pulumi.set(__self__, "vmotion_reservation_mbit", vmotion_reservation_mbit)
+        if vmotion_share_count is not None:
+            pulumi.set(__self__, "vmotion_share_count", vmotion_share_count)
+        if vmotion_share_level is not None:
+            pulumi.set(__self__, "vmotion_share_level", vmotion_share_level)
+        if vsan_maximum_mbit is not None:
+            pulumi.set(__self__, "vsan_maximum_mbit", vsan_maximum_mbit)
+        if vsan_reservation_mbit is not None:
+            pulumi.set(__self__, "vsan_reservation_mbit", vsan_reservation_mbit)
+        if vsan_share_count is not None:
+            pulumi.set(__self__, "vsan_share_count", vsan_share_count)
+        if vsan_share_level is not None:
+            pulumi.set(__self__, "vsan_share_level", vsan_share_level)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the datacenter where the distributed
+        virtual switch will be created. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "datacenter_id")
+
+    @datacenter_id.setter
+    def datacenter_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datacenter_id", value)
+
+    @property
+    @pulumi.getter(name="activeUplinks")
+    def active_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of active uplinks to be used in load
+        balancing. These uplinks need to match the definitions in the
+        `uplinks` DVS argument. See
+        here for more details.
+        """
+        return pulumi.get(self, "active_uplinks")
+
+    @active_uplinks.setter
+    def active_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "active_uplinks", value)
+
+    @property
+    @pulumi.getter(name="allowForgedTransmits")
+    def allow_forged_transmits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether or not a virtual
+        network adapter is allowed to send network traffic with a different MAC
+        address than that of its own.
+        """
+        return pulumi.get(self, "allow_forged_transmits")
+
+    @allow_forged_transmits.setter
+    def allow_forged_transmits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_forged_transmits", value)
+
+    @property
+    @pulumi.getter(name="allowMacChanges")
+    def allow_mac_changes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether or not the Media Access
+        Control (MAC) address can be changed.
+        """
+        return pulumi.get(self, "allow_mac_changes")
+
+    @allow_mac_changes.setter
+    def allow_mac_changes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_mac_changes", value)
+
+    @property
+    @pulumi.getter(name="allowPromiscuous")
+    def allow_promiscuous(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable promiscuous mode on the network. This
+        flag indicates whether or not all traffic is seen on a given port.
+        """
+        return pulumi.get(self, "allow_promiscuous")
+
+    @allow_promiscuous.setter
+    def allow_promiscuous(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_promiscuous", value)
+
+    @property
+    @pulumi.getter(name="blockAllPorts")
+    def block_all_ports(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shuts down all ports in the port groups that
+        this policy applies to, effectively blocking all network access to connected
+        virtual devices.
+        """
+        return pulumi.get(self, "block_all_ports")
+
+    @block_all_ports.setter
+    def block_all_ports(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_all_ports", value)
+
+    @property
+    @pulumi.getter(name="checkBeacon")
+    def check_beacon(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables beacon probing as an additional measure
+        to detect NIC failure.
+        """
+        return pulumi.get(self, "check_beacon")
+
+    @check_beacon.setter
+    def check_beacon(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_beacon", value)
+
+    @property
+    @pulumi.getter(name="contactDetail")
+    def contact_detail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The detailed contact information for the person
+        who is responsible for the DVS.
+        """
+        return pulumi.get(self, "contact_detail")
+
+    @contact_detail.setter
+    def contact_detail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_detail", value)
+
+    @property
+    @pulumi.getter(name="contactName")
+    def contact_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the person who is responsible for the
+        DVS.
+        """
+        return pulumi.get(self, "contact_name")
+
+    @contact_name.setter
+    def contact_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_name", value)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom attribute ids to attribute
+        value strings to set for virtual switch.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description for the DVS.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="directpathGen2Allowed")
+    def directpath_gen2_allowed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow VMDirectPath Gen2 for the ports
+        for which this policy applies to.
+        """
+        return pulumi.get(self, "directpath_gen2_allowed")
+
+    @directpath_gen2_allowed.setter
+    def directpath_gen2_allowed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "directpath_gen2_allowed", value)
+
+    @property
+    @pulumi.getter(name="egressShapingAverageBandwidth")
+    def egress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The average bandwidth in bits
+        per second if egress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "egress_shaping_average_bandwidth")
+
+    @egress_shaping_average_bandwidth.setter
+    def egress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "egress_shaping_average_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="egressShapingBurstSize")
+    def egress_shaping_burst_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum burst size allowed in
+        bytes if egress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "egress_shaping_burst_size")
+
+    @egress_shaping_burst_size.setter
+    def egress_shaping_burst_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "egress_shaping_burst_size", value)
+
+    @property
+    @pulumi.getter(name="egressShapingEnabled")
+    def egress_shaping_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        `true` if the traffic shaper is enabled
+        on the port for egress traffic.
+        """
+        return pulumi.get(self, "egress_shaping_enabled")
+
+    @egress_shaping_enabled.setter
+    def egress_shaping_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "egress_shaping_enabled", value)
+
+    @property
+    @pulumi.getter(name="egressShapingPeakBandwidth")
+    def egress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The peak bandwidth during bursts
+        in bits per second if egress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "egress_shaping_peak_bandwidth")
+
+    @egress_shaping_peak_bandwidth.setter
+    def egress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "egress_shaping_peak_bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def failback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the teaming policy will re-activate failed
+        uplinks higher in precedence when they come back up.
+        """
+        return pulumi.get(self, "failback")
+
+    @failback.setter
+    def failback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "failback", value)
+
+    @property
+    @pulumi.getter(name="faulttoleranceMaximumMbit")
+    def faulttolerance_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "faulttolerance_maximum_mbit")
+
+    @faulttolerance_maximum_mbit.setter
+    def faulttolerance_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "faulttolerance_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="faulttoleranceReservationMbit")
+    def faulttolerance_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "faulttolerance_reservation_mbit")
+
+    @faulttolerance_reservation_mbit.setter
+    def faulttolerance_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "faulttolerance_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="faulttoleranceShareCount")
+    def faulttolerance_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
+        """
+        return pulumi.get(self, "faulttolerance_share_count")
+
+    @faulttolerance_share_count.setter
+    def faulttolerance_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "faulttolerance_share_count", value)
+
+    @property
+    @pulumi.getter(name="faulttoleranceShareLevel")
+    def faulttolerance_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "faulttolerance_share_level")
+
+    @faulttolerance_share_level.setter
+    def faulttolerance_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "faulttolerance_share_level", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The folder to create the DVS in. Forces a new resource
+        if changed.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter(name="hbrMaximumMbit")
+    def hbr_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the hbr traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "hbr_maximum_mbit")
+
+    @hbr_maximum_mbit.setter
+    def hbr_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hbr_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="hbrReservationMbit")
+    def hbr_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "hbr_reservation_mbit")
+
+    @hbr_reservation_mbit.setter
+    def hbr_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hbr_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="hbrShareCount")
+    def hbr_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the hbr traffic class for a custom share level.
+        """
+        return pulumi.get(self, "hbr_share_count")
+
+    @hbr_share_count.setter
+    def hbr_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hbr_share_count", value)
+
+    @property
+    @pulumi.getter(name="hbrShareLevel")
+    def hbr_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "hbr_share_level")
+
+    @hbr_share_level.setter
+    def hbr_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hbr_share_level", value)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]]]:
+        """
+        Use the `host` block to declare a host specification. The
+        options are:
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]]]):
+        pulumi.set(self, "hosts", value)
+
+    @property
+    @pulumi.getter(name="ignoreOtherPvlanMappings")
+    def ignore_other_pvlan_mappings(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to ignore existing PVLAN
+        mappings not managed by this resource. Defaults to false.
+        """
+        return pulumi.get(self, "ignore_other_pvlan_mappings")
+
+    @ignore_other_pvlan_mappings.setter
+    def ignore_other_pvlan_mappings(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_other_pvlan_mappings", value)
+
+    @property
+    @pulumi.getter(name="ingressShapingAverageBandwidth")
+    def ingress_shaping_average_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The average bandwidth in
+        bits per second if ingress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "ingress_shaping_average_bandwidth")
+
+    @ingress_shaping_average_bandwidth.setter
+    def ingress_shaping_average_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ingress_shaping_average_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="ingressShapingBurstSize")
+    def ingress_shaping_burst_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum burst size allowed in
+        bytes if ingress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "ingress_shaping_burst_size")
+
+    @ingress_shaping_burst_size.setter
+    def ingress_shaping_burst_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ingress_shaping_burst_size", value)
+
+    @property
+    @pulumi.getter(name="ingressShapingEnabled")
+    def ingress_shaping_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        `true` if the traffic shaper is
+        enabled on the port for ingress traffic.
+        """
+        return pulumi.get(self, "ingress_shaping_enabled")
+
+    @ingress_shaping_enabled.setter
+    def ingress_shaping_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ingress_shaping_enabled", value)
+
+    @property
+    @pulumi.getter(name="ingressShapingPeakBandwidth")
+    def ingress_shaping_peak_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The peak bandwidth during
+        bursts in bits per second if ingress traffic shaping is enabled on the port.
+        """
+        return pulumi.get(self, "ingress_shaping_peak_bandwidth")
+
+    @ingress_shaping_peak_bandwidth.setter
+    def ingress_shaping_peak_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ingress_shaping_peak_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv4 address to identify the switch. This is
+        mostly useful when used with the Netflow arguments found
+        below.
+        """
+        return pulumi.get(self, "ipv4_address")
+
+    @ipv4_address.setter
+    def ipv4_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_address", value)
+
+    @property
+    @pulumi.getter(name="iscsiMaximumMbit")
+    def iscsi_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "iscsi_maximum_mbit")
+
+    @iscsi_maximum_mbit.setter
+    def iscsi_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iscsi_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="iscsiReservationMbit")
+    def iscsi_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "iscsi_reservation_mbit")
+
+    @iscsi_reservation_mbit.setter
+    def iscsi_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iscsi_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="iscsiShareCount")
+    def iscsi_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the iSCSI traffic class for a custom share level.
+        """
+        return pulumi.get(self, "iscsi_share_count")
+
+    @iscsi_share_count.setter
+    def iscsi_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iscsi_share_count", value)
+
+    @property
+    @pulumi.getter(name="iscsiShareLevel")
+    def iscsi_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "iscsi_share_level")
+
+    @iscsi_share_level.setter
+    def iscsi_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iscsi_share_level", value)
+
+    @property
+    @pulumi.getter(name="lacpApiVersion")
+    def lacp_api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Link Aggregation Control Protocol group
+        version to use with the switch. Possible values are `singleLag` and
+        `multipleLag`.
+        """
+        return pulumi.get(self, "lacp_api_version")
+
+    @lacp_api_version.setter
+    def lacp_api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lacp_api_version", value)
+
+    @property
+    @pulumi.getter(name="lacpEnabled")
+    def lacp_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables LACP for the ports that this policy
+        applies to.
+        """
+        return pulumi.get(self, "lacp_enabled")
+
+    @lacp_enabled.setter
+    def lacp_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lacp_enabled", value)
+
+    @property
+    @pulumi.getter(name="lacpMode")
+    def lacp_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The LACP mode. Can be one of `active` or `passive`.
+        """
+        return pulumi.get(self, "lacp_mode")
+
+    @lacp_mode.setter
+    def lacp_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lacp_mode", value)
+
+    @property
+    @pulumi.getter(name="linkDiscoveryOperation")
+    def link_discovery_operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to `advertise` or `listen`
+        for link discovery traffic.
+        """
+        return pulumi.get(self, "link_discovery_operation")
+
+    @link_discovery_operation.setter
+    def link_discovery_operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_discovery_operation", value)
+
+    @property
+    @pulumi.getter(name="linkDiscoveryProtocol")
+    def link_discovery_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The discovery protocol type. Valid
+        types are `cdp` and `lldp`.
+        """
+        return pulumi.get(self, "link_discovery_protocol")
+
+    @link_discovery_protocol.setter
+    def link_discovery_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_discovery_protocol", value)
+
+    @property
+    @pulumi.getter(name="managementMaximumMbit")
+    def management_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the management traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "management_maximum_mbit")
+
+    @management_maximum_mbit.setter
+    def management_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "management_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="managementReservationMbit")
+    def management_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "management_reservation_mbit")
+
+    @management_reservation_mbit.setter
+    def management_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "management_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="managementShareCount")
+    def management_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the management traffic class for a custom share level.
+        """
+        return pulumi.get(self, "management_share_count")
+
+    @management_share_count.setter
+    def management_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "management_share_count", value)
+
+    @property
+    @pulumi.getter(name="managementShareLevel")
+    def management_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "management_share_level")
+
+    @management_share_level.setter
+    def management_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "management_share_level", value)
+
+    @property
+    @pulumi.getter(name="maxMtu")
+    def max_mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum transmission unit (MTU) for the virtual
+        switch.
+        """
+        return pulumi.get(self, "max_mtu")
+
+    @max_mtu.setter
+    def max_mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_mtu", value)
+
+    @property
+    @pulumi.getter(name="multicastFilteringMode")
+    def multicast_filtering_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multicast filtering mode to use
+        with the switch. Can be one of `legacyFiltering` or `snooping`.
+        """
+        return pulumi.get(self, "multicast_filtering_mode")
+
+    @multicast_filtering_mode.setter
+    def multicast_filtering_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multicast_filtering_mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the distributed virtual switch.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="netflowActiveFlowTimeout")
+    def netflow_active_flow_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds after which
+        active flows are forced to be exported to the collector. Allowed range is
+        `60` to `3600`. Default: `60`.
+        """
+        return pulumi.get(self, "netflow_active_flow_timeout")
+
+    @netflow_active_flow_timeout.setter
+    def netflow_active_flow_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "netflow_active_flow_timeout", value)
+
+    @property
+    @pulumi.getter(name="netflowCollectorIpAddress")
+    def netflow_collector_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address for the Netflow
+        collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
+        Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        """
+        return pulumi.get(self, "netflow_collector_ip_address")
+
+    @netflow_collector_ip_address.setter
+    def netflow_collector_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "netflow_collector_ip_address", value)
+
+    @property
+    @pulumi.getter(name="netflowCollectorPort")
+    def netflow_collector_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for the Netflow collector. This
+        must be set before Netflow can be enabled.
+        """
+        return pulumi.get(self, "netflow_collector_port")
+
+    @netflow_collector_port.setter
+    def netflow_collector_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "netflow_collector_port", value)
+
+    @property
+    @pulumi.getter(name="netflowEnabled")
+    def netflow_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables Netflow on all ports that this policy
+        applies to.
+        """
+        return pulumi.get(self, "netflow_enabled")
+
+    @netflow_enabled.setter
+    def netflow_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "netflow_enabled", value)
+
+    @property
+    @pulumi.getter(name="netflowIdleFlowTimeout")
+    def netflow_idle_flow_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds after which
+        idle flows are forced to be exported to the collector. Allowed range is `10`
+        to `600`. Default: `15`.
+        """
+        return pulumi.get(self, "netflow_idle_flow_timeout")
+
+    @netflow_idle_flow_timeout.setter
+    def netflow_idle_flow_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "netflow_idle_flow_timeout", value)
+
+    @property
+    @pulumi.getter(name="netflowInternalFlowsOnly")
+    def netflow_internal_flows_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to limit analysis to
+        traffic that has both source and destination served by the same host.
+        Default: `false`.
+        """
+        return pulumi.get(self, "netflow_internal_flows_only")
+
+    @netflow_internal_flows_only.setter
+    def netflow_internal_flows_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "netflow_internal_flows_only", value)
+
+    @property
+    @pulumi.getter(name="netflowObservationDomainId")
+    def netflow_observation_domain_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The observation domain ID for
+        the Netflow collector.
+        """
+        return pulumi.get(self, "netflow_observation_domain_id")
+
+    @netflow_observation_domain_id.setter
+    def netflow_observation_domain_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "netflow_observation_domain_id", value)
+
+    @property
+    @pulumi.getter(name="netflowSamplingRate")
+    def netflow_sampling_rate(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ratio of total number of packets to
+        the number of packets analyzed. The default is `0`, which indicates that the
+        switch should analyze all packets. The maximum value is `1000`, which
+        indicates an analysis rate of 0.001%.
+        """
+        return pulumi.get(self, "netflow_sampling_rate")
+
+    @netflow_sampling_rate.setter
+    def netflow_sampling_rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "netflow_sampling_rate", value)
+
+    @property
+    @pulumi.getter(name="networkResourceControlEnabled")
+    def network_resource_control_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to enable
+        network I/O control. Default: `false`.
+        """
+        return pulumi.get(self, "network_resource_control_enabled")
+
+    @network_resource_control_enabled.setter
+    def network_resource_control_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "network_resource_control_enabled", value)
+
+    @property
+    @pulumi.getter(name="networkResourceControlVersion")
+    def network_resource_control_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of network I/O
+        control to use. Can be one of `version2` or `version3`. Default: `version2`.
+        """
+        return pulumi.get(self, "network_resource_control_version")
+
+    @network_resource_control_version.setter
+    def network_resource_control_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_resource_control_version", value)
+
+    @property
+    @pulumi.getter(name="nfsMaximumMbit")
+    def nfs_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the nfs traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "nfs_maximum_mbit")
+
+    @nfs_maximum_mbit.setter
+    def nfs_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nfs_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="nfsReservationMbit")
+    def nfs_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "nfs_reservation_mbit")
+
+    @nfs_reservation_mbit.setter
+    def nfs_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nfs_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="nfsShareCount")
+    def nfs_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the nfs traffic class for a custom share level.
+        """
+        return pulumi.get(self, "nfs_share_count")
+
+    @nfs_share_count.setter
+    def nfs_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nfs_share_count", value)
+
+    @property
+    @pulumi.getter(name="nfsShareLevel")
+    def nfs_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "nfs_share_level")
+
+    @nfs_share_level.setter
+    def nfs_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nfs_share_level", value)
+
+    @property
+    @pulumi.getter(name="notifySwitches")
+    def notify_switches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the teaming policy will notify the
+        broadcast network of an uplink failover, triggering cache updates.
+        """
+        return pulumi.get(self, "notify_switches")
+
+    @notify_switches.setter
+    def notify_switches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "notify_switches", value)
+
+    @property
+    @pulumi.getter(name="portPrivateSecondaryVlanId")
+    def port_private_secondary_vlan_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Used to define a secondary VLAN
+        ID when using private VLANs.
+        """
+        return pulumi.get(self, "port_private_secondary_vlan_id")
+
+    @port_private_secondary_vlan_id.setter
+    def port_private_secondary_vlan_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_private_secondary_vlan_id", value)
+
+    @property
+    @pulumi.getter(name="pvlanMappings")
+    def pvlan_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]]]:
+        """
+        Use the `pvlan_mapping` block to declare a
+        private VLAN mapping. The options are:
+        """
+        return pulumi.get(self, "pvlan_mappings")
+
+    @pvlan_mappings.setter
+    def pvlan_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]]]):
+        pulumi.set(self, "pvlan_mappings", value)
+
+    @property
+    @pulumi.getter(name="standbyUplinks")
+    def standby_uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of standby uplinks to be used in
+        failover. These uplinks need to match the definitions in the
+        `uplinks` DVS argument. See
+        here for more details.
+        """
+        return pulumi.get(self, "standby_uplinks")
+
+    @standby_uplinks.setter
+    def standby_uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "standby_uplinks", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="teamingPolicy")
+    def teaming_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uplink teaming policy. Can be one of
+        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+        `failover_explicit`.
+        """
+        return pulumi.get(self, "teaming_policy")
+
+    @teaming_policy.setter
+    def teaming_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "teaming_policy", value)
+
+    @property
+    @pulumi.getter(name="txUplink")
+    def tx_uplink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Forward all traffic transmitted by ports for which
+        this policy applies to its DVS uplinks.
+        """
+        return pulumi.get(self, "tx_uplink")
+
+    @tx_uplink.setter
+    def tx_uplink(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tx_uplink", value)
+
+    @property
+    @pulumi.getter
+    def uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of strings that uniquely identifies the names
+        of the uplinks on the DVS across hosts. The number of items in this list
+        controls the number of uplinks that exist on the DVS, in addition to the
+        names.  See here for an example on how to
+        use this option.
+        """
+        return pulumi.get(self, "uplinks")
+
+    @uplinks.setter
+    def uplinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uplinks", value)
+
+    @property
+    @pulumi.getter(name="vdpMaximumMbit")
+    def vdp_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the vdp traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vdp_maximum_mbit")
+
+    @vdp_maximum_mbit.setter
+    def vdp_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vdp_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="vdpReservationMbit")
+    def vdp_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vdp_reservation_mbit")
+
+    @vdp_reservation_mbit.setter
+    def vdp_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vdp_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="vdpShareCount")
+    def vdp_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the vdp traffic class for a custom share level.
+        """
+        return pulumi.get(self, "vdp_share_count")
+
+    @vdp_share_count.setter
+    def vdp_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vdp_share_count", value)
+
+    @property
+    @pulumi.getter(name="vdpShareLevel")
+    def vdp_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "vdp_share_level")
+
+    @vdp_share_level.setter
+    def vdp_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vdp_share_level", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        - The version of the DVS to create. The default is to
+        create the DVS at the latest version supported by the version of vSphere
+        being used. A DVS can be upgraded to another version, but cannot be
+        downgraded.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="virtualmachineMaximumMbit")
+    def virtualmachine_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "virtualmachine_maximum_mbit")
+
+    @virtualmachine_maximum_mbit.setter
+    def virtualmachine_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "virtualmachine_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="virtualmachineReservationMbit")
+    def virtualmachine_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "virtualmachine_reservation_mbit")
+
+    @virtualmachine_reservation_mbit.setter
+    def virtualmachine_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "virtualmachine_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="virtualmachineShareCount")
+    def virtualmachine_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
+        """
+        return pulumi.get(self, "virtualmachine_share_count")
+
+    @virtualmachine_share_count.setter
+    def virtualmachine_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "virtualmachine_share_count", value)
+
+    @property
+    @pulumi.getter(name="virtualmachineShareLevel")
+    def virtualmachine_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "virtualmachine_share_level")
+
+    @virtualmachine_share_level.setter
+    def virtualmachine_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtualmachine_share_level", value)
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @vlan_id.setter
+    def vlan_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan_id", value)
+
+    @property
+    @pulumi.getter(name="vlanRanges")
+    def vlan_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]]]:
+        """
+        Used to denote VLAN trunking. Use the `min_vlan`
+        and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
+        `vlan_range` definitions are allowed, but they must not overlap. Example
+        below:
+        """
+        return pulumi.get(self, "vlan_ranges")
+
+    @vlan_ranges.setter
+    def vlan_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]]]):
+        pulumi.set(self, "vlan_ranges", value)
+
+    @property
+    @pulumi.getter(name="vmotionMaximumMbit")
+    def vmotion_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vmotion_maximum_mbit")
+
+    @vmotion_maximum_mbit.setter
+    def vmotion_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vmotion_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="vmotionReservationMbit")
+    def vmotion_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vmotion_reservation_mbit")
+
+    @vmotion_reservation_mbit.setter
+    def vmotion_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vmotion_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="vmotionShareCount")
+    def vmotion_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the vmotion traffic class for a custom share level.
+        """
+        return pulumi.get(self, "vmotion_share_count")
+
+    @vmotion_share_count.setter
+    def vmotion_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vmotion_share_count", value)
+
+    @property
+    @pulumi.getter(name="vmotionShareLevel")
+    def vmotion_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "vmotion_share_level")
+
+    @vmotion_share_level.setter
+    def vmotion_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vmotion_share_level", value)
+
+    @property
+    @pulumi.getter(name="vsanMaximumMbit")
+    def vsan_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the vsan traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vsan_maximum_mbit")
+
+    @vsan_maximum_mbit.setter
+    def vsan_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vsan_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="vsanReservationMbit")
+    def vsan_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "vsan_reservation_mbit")
+
+    @vsan_reservation_mbit.setter
+    def vsan_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vsan_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="vsanShareCount")
+    def vsan_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the vsan traffic class for a custom share level.
+        """
+        return pulumi.get(self, "vsan_share_count")
+
+    @vsan_share_count.setter
+    def vsan_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vsan_share_count", value)
+
+    @property
+    @pulumi.getter(name="vsanShareLevel")
+    def vsan_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "vsan_share_level")
+
+    @vsan_share_level.setter
+    def vsan_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vsan_share_level", value)
 
 
 class DistributedVirtualSwitch(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -276,6 +1865,122 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] vsan_share_count: The amount of shares to allocate to the vsan traffic class for a custom share level.
         :param pulumi.Input[str] vsan_share_level: The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DistributedVirtualSwitchArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a DistributedVirtualSwitch resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param DistributedVirtualSwitchArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DistributedVirtualSwitchArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+                 allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+                 allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 block_all_ports: Optional[pulumi.Input[bool]] = None,
+                 check_beacon: Optional[pulumi.Input[bool]] = None,
+                 contact_detail: Optional[pulumi.Input[str]] = None,
+                 contact_name: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datacenter_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
+                 egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+                 egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+                 egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 failback: Optional[pulumi.Input[bool]] = None,
+                 faulttolerance_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_share_count: Optional[pulumi.Input[int]] = None,
+                 faulttolerance_share_level: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 hbr_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 hbr_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 hbr_share_count: Optional[pulumi.Input[int]] = None,
+                 hbr_share_level: Optional[pulumi.Input[str]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchHostArgs']]]]] = None,
+                 ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
+                 ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+                 ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+                 ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 ipv4_address: Optional[pulumi.Input[str]] = None,
+                 iscsi_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 iscsi_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 iscsi_share_count: Optional[pulumi.Input[int]] = None,
+                 iscsi_share_level: Optional[pulumi.Input[str]] = None,
+                 lacp_api_version: Optional[pulumi.Input[str]] = None,
+                 lacp_enabled: Optional[pulumi.Input[bool]] = None,
+                 lacp_mode: Optional[pulumi.Input[str]] = None,
+                 link_discovery_operation: Optional[pulumi.Input[str]] = None,
+                 link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+                 management_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 management_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 management_share_count: Optional[pulumi.Input[int]] = None,
+                 management_share_level: Optional[pulumi.Input[str]] = None,
+                 max_mtu: Optional[pulumi.Input[int]] = None,
+                 multicast_filtering_mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 netflow_active_flow_timeout: Optional[pulumi.Input[int]] = None,
+                 netflow_collector_ip_address: Optional[pulumi.Input[str]] = None,
+                 netflow_collector_port: Optional[pulumi.Input[int]] = None,
+                 netflow_enabled: Optional[pulumi.Input[bool]] = None,
+                 netflow_idle_flow_timeout: Optional[pulumi.Input[int]] = None,
+                 netflow_internal_flows_only: Optional[pulumi.Input[bool]] = None,
+                 netflow_observation_domain_id: Optional[pulumi.Input[int]] = None,
+                 netflow_sampling_rate: Optional[pulumi.Input[int]] = None,
+                 network_resource_control_enabled: Optional[pulumi.Input[bool]] = None,
+                 network_resource_control_version: Optional[pulumi.Input[str]] = None,
+                 nfs_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 nfs_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 nfs_share_count: Optional[pulumi.Input[int]] = None,
+                 nfs_share_level: Optional[pulumi.Input[str]] = None,
+                 notify_switches: Optional[pulumi.Input[bool]] = None,
+                 port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
+                 pvlan_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchPvlanMappingArgs']]]]] = None,
+                 standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teaming_policy: Optional[pulumi.Input[str]] = None,
+                 tx_uplink: Optional[pulumi.Input[bool]] = None,
+                 uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vdp_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vdp_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vdp_share_count: Optional[pulumi.Input[int]] = None,
+                 vdp_share_level: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 virtualmachine_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_share_count: Optional[pulumi.Input[int]] = None,
+                 virtualmachine_share_level: Optional[pulumi.Input[str]] = None,
+                 vlan_id: Optional[pulumi.Input[int]] = None,
+                 vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DistributedVirtualSwitchVlanRangeArgs']]]]] = None,
+                 vmotion_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vmotion_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vmotion_share_count: Optional[pulumi.Input[int]] = None,
+                 vmotion_share_level: Optional[pulumi.Input[str]] = None,
+                 vsan_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 vsan_share_count: Optional[pulumi.Input[int]] = None,
+                 vsan_share_level: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

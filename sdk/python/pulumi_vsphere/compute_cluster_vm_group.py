@@ -5,13 +5,76 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ComputeClusterVmGroup']
+__all__ = ['ComputeClusterVmGroupArgs', 'ComputeClusterVmGroup']
+
+@pulumi.input_type
+class ComputeClusterVmGroupArgs:
+    def __init__(__self__, *,
+                 compute_cluster_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a ComputeClusterVmGroup resource.
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[str] name: The name of the VM group. This must be unique in the
+               cluster. Forces a new resource if changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
+               group.
+        """
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if virtual_machine_ids is not None:
+            pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> pulumi.Input[str]:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @compute_cluster_id.setter
+    def compute_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VM group. This must be unique in the
+        cluster. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="virtualMachineIds")
+    def virtual_machine_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The UUIDs of the virtual machines in this
+        group.
+        """
+        return pulumi.get(self, "virtual_machine_ids")
+
+    @virtual_machine_ids.setter
+    def virtual_machine_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "virtual_machine_ids", value)
 
 
 class ComputeClusterVmGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +96,35 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ComputeClusterVmGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ComputeClusterVmGroup resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ComputeClusterVmGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ComputeClusterVmGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ComputeClusterVmDependencyRule']
+__all__ = ['ComputeClusterVmDependencyRuleArgs', 'ComputeClusterVmDependencyRule']
+
+@pulumi.input_type
+class ComputeClusterVmDependencyRuleArgs:
+    def __init__(__self__, *,
+                 compute_cluster_id: pulumi.Input[str],
+                 dependency_vm_group_name: pulumi.Input[str],
+                 vm_group_name: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ComputeClusterVmDependencyRule resource.
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[str] dependency_vm_group_name: The name of the VM group that this
+               rule depends on. The VMs defined in the group specified by
+               `vm_group_name` will not be started until the VMs in this
+               group are started.
+        :param pulumi.Input[str] vm_group_name: The name of the VM group that is the subject of
+               this rule. The VMs defined in this group will not be started until the VMs in
+               the group specified by
+               `dependency_vm_group_name` are started.
+        :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
+        :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
+               machine operations that may violate this rule. Default: `false`.
+        :param pulumi.Input[str] name: The name of the rule. This must be unique in the
+               cluster.
+        """
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        pulumi.set(__self__, "dependency_vm_group_name", dependency_vm_group_name)
+        pulumi.set(__self__, "vm_group_name", vm_group_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mandatory is not None:
+            pulumi.set(__self__, "mandatory", mandatory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> pulumi.Input[str]:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @compute_cluster_id.setter
+    def compute_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dependencyVmGroupName")
+    def dependency_vm_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the VM group that this
+        rule depends on. The VMs defined in the group specified by
+        `vm_group_name` will not be started until the VMs in this
+        group are started.
+        """
+        return pulumi.get(self, "dependency_vm_group_name")
+
+    @dependency_vm_group_name.setter
+    def dependency_vm_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dependency_vm_group_name", value)
+
+    @property
+    @pulumi.getter(name="vmGroupName")
+    def vm_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the VM group that is the subject of
+        this rule. The VMs defined in this group will not be started until the VMs in
+        the group specified by
+        `dependency_vm_group_name` are started.
+        """
+        return pulumi.get(self, "vm_group_name")
+
+    @vm_group_name.setter
+    def vm_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_group_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this rule in the cluster. Default: `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When this value is `true`, prevents any virtual
+        machine operations that may violate this rule. Default: `false`.
+        """
+        return pulumi.get(self, "mandatory")
+
+    @mandatory.setter
+    def mandatory(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mandatory", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule. This must be unique in the
+        cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class ComputeClusterVmDependencyRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +166,38 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
                the group specified by
                `dependency_vm_group_name` are started.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ComputeClusterVmDependencyRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ComputeClusterVmDependencyRule resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ComputeClusterVmDependencyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ComputeClusterVmDependencyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 dependency_vm_group_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 vm_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

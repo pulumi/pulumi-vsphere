@@ -5,13 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['TagCategory']
+__all__ = ['TagCategoryArgs', 'TagCategory']
+
+@pulumi.input_type
+class TagCategoryArgs:
+    def __init__(__self__, *,
+                 associable_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 cardinality: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TagCategory resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associable_types: A list object types that this category is
+               valid to be assigned to. For a full list, click
+               here.
+        :param pulumi.Input[str] cardinality: The number of tags that can be assigned from this
+               category to a single object at once. Can be one of `SINGLE` (object can only
+               be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+               multiple tags in this category). Forces a new resource if changed.
+        :param pulumi.Input[str] description: A description for the category.
+        :param pulumi.Input[str] name: The name of the category.
+        """
+        pulumi.set(__self__, "associable_types", associable_types)
+        pulumi.set(__self__, "cardinality", cardinality)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="associableTypes")
+    def associable_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list object types that this category is
+        valid to be assigned to. For a full list, click
+        here.
+        """
+        return pulumi.get(self, "associable_types")
+
+    @associable_types.setter
+    def associable_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "associable_types", value)
+
+    @property
+    @pulumi.getter
+    def cardinality(self) -> pulumi.Input[str]:
+        """
+        The number of tags that can be assigned from this
+        category to a single object at once. Can be one of `SINGLE` (object can only
+        be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+        multiple tags in this category). Forces a new resource if changed.
+        """
+        return pulumi.get(self, "cardinality")
+
+    @cardinality.setter
+    def cardinality(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cardinality", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the category.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the category.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class TagCategory(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +116,36 @@ class TagCategory(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description for the category.
         :param pulumi.Input[str] name: The name of the category.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TagCategoryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a TagCategory resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param TagCategoryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TagCategoryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 associable_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cardinality: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

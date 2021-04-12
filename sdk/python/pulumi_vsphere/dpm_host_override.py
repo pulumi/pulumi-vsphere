@@ -5,13 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['DpmHostOverride']
+__all__ = ['DpmHostOverrideArgs', 'DpmHostOverride']
+
+@pulumi.input_type
+class DpmHostOverrideArgs:
+    def __init__(__self__, *,
+                 compute_cluster_id: pulumi.Input[str],
+                 host_system_id: pulumi.Input[str],
+                 dpm_automation_level: Optional[pulumi.Input[str]] = None,
+                 dpm_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a DpmHostOverride resource.
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the override in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[str] host_system_id: The managed object ID of the host.
+        :param pulumi.Input[str] dpm_automation_level: The automation level for host power
+               operations on this host. Can be one of `manual` or `automated`. Default:
+               `manual`.
+        :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
+               `false`.
+        """
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        pulumi.set(__self__, "host_system_id", host_system_id)
+        if dpm_automation_level is not None:
+            pulumi.set(__self__, "dpm_automation_level", dpm_automation_level)
+        if dpm_enabled is not None:
+            pulumi.set(__self__, "dpm_enabled", dpm_enabled)
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> pulumi.Input[str]:
+        """
+        The managed object reference
+        ID of the cluster to put the override in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @compute_cluster_id.setter
+    def compute_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="hostSystemId")
+    def host_system_id(self) -> pulumi.Input[str]:
+        """
+        The managed object ID of the host.
+        """
+        return pulumi.get(self, "host_system_id")
+
+    @host_system_id.setter
+    def host_system_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_system_id", value)
+
+    @property
+    @pulumi.getter(name="dpmAutomationLevel")
+    def dpm_automation_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The automation level for host power
+        operations on this host. Can be one of `manual` or `automated`. Default:
+        `manual`.
+        """
+        return pulumi.get(self, "dpm_automation_level")
+
+    @dpm_automation_level.setter
+    def dpm_automation_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dpm_automation_level", value)
+
+    @property
+    @pulumi.getter(name="dpmEnabled")
+    def dpm_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable DPM support for this host. Default:
+        `false`.
+        """
+        return pulumi.get(self, "dpm_enabled")
+
+    @dpm_enabled.setter
+    def dpm_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dpm_enabled", value)
 
 
 class DpmHostOverride(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +116,36 @@ class DpmHostOverride(pulumi.CustomResource):
                `false`.
         :param pulumi.Input[str] host_system_id: The managed object ID of the host.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DpmHostOverrideArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a DpmHostOverride resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param DpmHostOverrideArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DpmHostOverrideArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 dpm_automation_level: Optional[pulumi.Input[str]] = None,
+                 dpm_enabled: Optional[pulumi.Input[bool]] = None,
+                 host_system_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
