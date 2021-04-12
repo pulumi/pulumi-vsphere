@@ -5,13 +5,149 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ComputeClusterVmHostRule']
+__all__ = ['ComputeClusterVmHostRuleArgs', 'ComputeClusterVmHostRule']
+
+@pulumi.input_type
+class ComputeClusterVmHostRuleArgs:
+    def __init__(__self__, *,
+                 compute_cluster_id: pulumi.Input[str],
+                 vm_group_name: pulumi.Input[str],
+                 affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ComputeClusterVmHostRule resource.
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
+               with this rule.
+        :param pulumi.Input[str] affinity_host_group_name: When this field is used, the virtual
+               machines defined in `vm_group_name` will be run on the
+               hosts defined in this host group.
+        :param pulumi.Input[str] anti_affinity_host_group_name: When this field is used, the
+               virtual machines defined in `vm_group_name` will _not_ be
+               run on the hosts defined in this host group.
+        :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
+        :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
+               machine operations that may violate this rule. Default: `false`.
+        :param pulumi.Input[str] name: The name of the rule. This must be unique in the
+               cluster.
+        """
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        pulumi.set(__self__, "vm_group_name", vm_group_name)
+        if affinity_host_group_name is not None:
+            pulumi.set(__self__, "affinity_host_group_name", affinity_host_group_name)
+        if anti_affinity_host_group_name is not None:
+            pulumi.set(__self__, "anti_affinity_host_group_name", anti_affinity_host_group_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mandatory is not None:
+            pulumi.set(__self__, "mandatory", mandatory)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> pulumi.Input[str]:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @compute_cluster_id.setter
+    def compute_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="vmGroupName")
+    def vm_group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the virtual machine group to use
+        with this rule.
+        """
+        return pulumi.get(self, "vm_group_name")
+
+    @vm_group_name.setter
+    def vm_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_group_name", value)
+
+    @property
+    @pulumi.getter(name="affinityHostGroupName")
+    def affinity_host_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this field is used, the virtual
+        machines defined in `vm_group_name` will be run on the
+        hosts defined in this host group.
+        """
+        return pulumi.get(self, "affinity_host_group_name")
+
+    @affinity_host_group_name.setter
+    def affinity_host_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "affinity_host_group_name", value)
+
+    @property
+    @pulumi.getter(name="antiAffinityHostGroupName")
+    def anti_affinity_host_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this field is used, the
+        virtual machines defined in `vm_group_name` will _not_ be
+        run on the hosts defined in this host group.
+        """
+        return pulumi.get(self, "anti_affinity_host_group_name")
+
+    @anti_affinity_host_group_name.setter
+    def anti_affinity_host_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anti_affinity_host_group_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this rule in the cluster. Default: `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def mandatory(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When this value is `true`, prevents any virtual
+        machine operations that may violate this rule. Default: `false`.
+        """
+        return pulumi.get(self, "mandatory")
+
+    @mandatory.setter
+    def mandatory(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mandatory", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the rule. This must be unique in the
+        cluster.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class ComputeClusterVmHostRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -46,6 +182,39 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
                with this rule.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ComputeClusterVmHostRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ComputeClusterVmHostRule resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ComputeClusterVmHostRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ComputeClusterVmHostRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mandatory: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 vm_group_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

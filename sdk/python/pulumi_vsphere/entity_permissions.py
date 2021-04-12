@@ -5,15 +5,72 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EntityPermissions']
+__all__ = ['EntityPermissionsArgs', 'EntityPermissions']
+
+@pulumi.input_type
+class EntityPermissionsArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[str],
+                 entity_type: pulumi.Input[str],
+                 permissions: pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]):
+        """
+        The set of arguments for constructing a EntityPermissions resource.
+        :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
+        :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
+               [here](https://code.vmware.com/apis/968/vsphere).
+        :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
+               alphabetically on `user_or_group` for a better user experience.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[str]:
+        """
+        The managed object id (uuid for some entities) on which permissions are to be created.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> pulumi.Input[str]:
+        """
+        The managed object type, types can be found in the managed object type section 
+        [here](https://code.vmware.com/apis/968/vsphere).
+        """
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_type", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]:
+        """
+        The permissions to be given on this entity. Keep the permissions sorted
+        alphabetically on `user_or_group` for a better user experience.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]):
+        pulumi.set(self, "permissions", value)
 
 
 class EntityPermissions(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +90,35 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EntityPermissionsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a EntityPermissions resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param EntityPermissionsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EntityPermissionsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None,
+                 entity_type: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

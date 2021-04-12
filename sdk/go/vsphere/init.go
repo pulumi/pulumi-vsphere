@@ -21,87 +21,88 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "vsphere:index/computeCluster:ComputeCluster":
-		r, err = NewComputeCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeCluster{}
 	case "vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup":
-		r, err = NewComputeClusterHostGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterHostGroup{}
 	case "vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule":
-		r, err = NewComputeClusterVmAffinityRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterVmAffinityRule{}
 	case "vsphere:index/computeClusterVmAntiAffinityRule:ComputeClusterVmAntiAffinityRule":
-		r, err = NewComputeClusterVmAntiAffinityRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterVmAntiAffinityRule{}
 	case "vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule":
-		r, err = NewComputeClusterVmDependencyRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterVmDependencyRule{}
 	case "vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup":
-		r, err = NewComputeClusterVmGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterVmGroup{}
 	case "vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule":
-		r, err = NewComputeClusterVmHostRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ComputeClusterVmHostRule{}
 	case "vsphere:index/contentLibrary:ContentLibrary":
-		r, err = NewContentLibrary(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContentLibrary{}
 	case "vsphere:index/contentLibraryItem:ContentLibraryItem":
-		r, err = NewContentLibraryItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &ContentLibraryItem{}
 	case "vsphere:index/customAttribute:CustomAttribute":
-		r, err = NewCustomAttribute(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomAttribute{}
 	case "vsphere:index/datacenter:Datacenter":
-		r, err = NewDatacenter(ctx, name, nil, pulumi.URN_(urn))
+		r = &Datacenter{}
 	case "vsphere:index/datastoreCluster:DatastoreCluster":
-		r, err = NewDatastoreCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatastoreCluster{}
 	case "vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule":
-		r, err = NewDatastoreClusterVmAntiAffinityRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatastoreClusterVmAntiAffinityRule{}
 	case "vsphere:index/distributedPortGroup:DistributedPortGroup":
-		r, err = NewDistributedPortGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DistributedPortGroup{}
 	case "vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch":
-		r, err = NewDistributedVirtualSwitch(ctx, name, nil, pulumi.URN_(urn))
+		r = &DistributedVirtualSwitch{}
 	case "vsphere:index/dpmHostOverride:DpmHostOverride":
-		r, err = NewDpmHostOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &DpmHostOverride{}
 	case "vsphere:index/drsVmOverride:DrsVmOverride":
-		r, err = NewDrsVmOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &DrsVmOverride{}
 	case "vsphere:index/entityPermissions:EntityPermissions":
-		r, err = NewEntityPermissions(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntityPermissions{}
 	case "vsphere:index/file:File":
-		r, err = NewFile(ctx, name, nil, pulumi.URN_(urn))
+		r = &File{}
 	case "vsphere:index/folder:Folder":
-		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
+		r = &Folder{}
 	case "vsphere:index/haVmOverride:HaVmOverride":
-		r, err = NewHaVmOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &HaVmOverride{}
 	case "vsphere:index/host:Host":
-		r, err = NewHost(ctx, name, nil, pulumi.URN_(urn))
+		r = &Host{}
 	case "vsphere:index/hostPortGroup:HostPortGroup":
-		r, err = NewHostPortGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &HostPortGroup{}
 	case "vsphere:index/hostVirtualSwitch:HostVirtualSwitch":
-		r, err = NewHostVirtualSwitch(ctx, name, nil, pulumi.URN_(urn))
+		r = &HostVirtualSwitch{}
 	case "vsphere:index/license:License":
-		r, err = NewLicense(ctx, name, nil, pulumi.URN_(urn))
+		r = &License{}
 	case "vsphere:index/nasDatastore:NasDatastore":
-		r, err = NewNasDatastore(ctx, name, nil, pulumi.URN_(urn))
+		r = &NasDatastore{}
 	case "vsphere:index/resourcePool:ResourcePool":
-		r, err = NewResourcePool(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourcePool{}
 	case "vsphere:index/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "vsphere:index/storageDrsVmOverride:StorageDrsVmOverride":
-		r, err = NewStorageDrsVmOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &StorageDrsVmOverride{}
 	case "vsphere:index/tag:Tag":
-		r, err = NewTag(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tag{}
 	case "vsphere:index/tagCategory:TagCategory":
-		r, err = NewTagCategory(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagCategory{}
 	case "vsphere:index/vappContainer:VappContainer":
-		r, err = NewVappContainer(ctx, name, nil, pulumi.URN_(urn))
+		r = &VappContainer{}
 	case "vsphere:index/vappEntity:VappEntity":
-		r, err = NewVappEntity(ctx, name, nil, pulumi.URN_(urn))
+		r = &VappEntity{}
 	case "vsphere:index/virtualDisk:VirtualDisk":
-		r, err = NewVirtualDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualDisk{}
 	case "vsphere:index/virtualMachine:VirtualMachine":
-		r, err = NewVirtualMachine(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachine{}
 	case "vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot":
-		r, err = NewVirtualMachineSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &VirtualMachineSnapshot{}
 	case "vsphere:index/vmStoragePolicy:VmStoragePolicy":
-		r, err = NewVmStoragePolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &VmStoragePolicy{}
 	case "vsphere:index/vmfsDatastore:VmfsDatastore":
-		r, err = NewVmfsDatastore(ctx, name, nil, pulumi.URN_(urn))
+		r = &VmfsDatastore{}
 	case "vsphere:index/vnic:Vnic":
-		r, err = NewVnic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Vnic{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -118,7 +119,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

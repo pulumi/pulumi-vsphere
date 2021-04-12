@@ -5,15 +5,104 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ContentLibrary']
+__all__ = ['ContentLibraryArgs', 'ContentLibrary']
+
+@pulumi.input_type
+class ContentLibraryArgs:
+    def __init__(__self__, *,
+                 storage_backings: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
+                 subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
+        """
+        The set of arguments for constructing a ContentLibrary resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
+               items.
+        :param pulumi.Input[str] description: A description of the Content Library.
+        :param pulumi.Input[str] name: The name of the Content Library.
+        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local Content Library.
+        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options to publish a local Content Library.
+        """
+        pulumi.set(__self__, "storage_backings", storage_backings)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if publication is not None:
+            pulumi.set(__self__, "publication", publication)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter(name="storageBackings")
+    def storage_backings(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The managed object reference ID on which to store Content Library
+        items.
+        """
+        return pulumi.get(self, "storage_backings")
+
+    @storage_backings.setter
+    def storage_backings(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "storage_backings", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the Content Library.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "publication")
+
+    @publication.setter
+    def publication(self, value: Optional[pulumi.Input['ContentLibraryPublicationArgs']]):
+        pulumi.set(self, "publication", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]):
+        pulumi.set(self, "subscription", value)
 
 
 class ContentLibrary(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +125,37 @@ class ContentLibrary(pulumi.CustomResource):
                items.
         :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ContentLibraryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a ContentLibrary resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param ContentLibraryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ContentLibraryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 publication: Optional[pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']]] = None,
+                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subscription: Optional[pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
