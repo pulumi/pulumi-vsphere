@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatacenterArgs', 'Datacenter']
 
@@ -65,6 +65,104 @@ class DatacenterArgs:
     @folder.setter
     def folder(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datacenter. This name needs to be unique
+        within the folder. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _DatacenterState:
+    def __init__(__self__, *,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 moid: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Datacenter resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to value 
+               strings to set for datacenter resource. See
+               [here][docs-setting-custom-attributes] for a reference on how to set values
+               for custom attributes.
+        :param pulumi.Input[str] folder: The folder where the datacenter should be created.
+               Forces a new resource if changed.
+        :param pulumi.Input[str] moid: Managed object ID of this datacenter.
+        :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
+               within the folder. Forces a new resource if changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        """
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if moid is not None:
+            pulumi.set(__self__, "moid", moid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom attribute ids to value 
+        strings to set for datacenter resource. See
+        [here][docs-setting-custom-attributes] for a reference on how to set values
+        for custom attributes.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The folder where the datacenter should be created.
+        Forces a new resource if changed.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def moid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed object ID of this datacenter.
+        """
+        return pulumi.get(self, "moid")
+
+    @moid.setter
+    def moid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "moid", value)
 
     @property
     @pulumi.getter
@@ -203,13 +301,13 @@ class Datacenter(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatacenterArgs.__new__(DatacenterArgs)
 
-            __props__['custom_attributes'] = custom_attributes
-            __props__['folder'] = folder
-            __props__['name'] = name
-            __props__['tags'] = tags
-            __props__['moid'] = None
+            __props__.__dict__["custom_attributes"] = custom_attributes
+            __props__.__dict__["folder"] = folder
+            __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["moid"] = None
         super(Datacenter, __self__).__init__(
             'vsphere:index/datacenter:Datacenter',
             resource_name,
@@ -245,13 +343,13 @@ class Datacenter(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatacenterState.__new__(_DatacenterState)
 
-        __props__["custom_attributes"] = custom_attributes
-        __props__["folder"] = folder
-        __props__["moid"] = moid
-        __props__["name"] = name
-        __props__["tags"] = tags
+        __props__.__dict__["custom_attributes"] = custom_attributes
+        __props__.__dict__["folder"] = folder
+        __props__.__dict__["moid"] = moid
+        __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         return Datacenter(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -298,10 +396,4 @@ class Datacenter(pulumi.CustomResource):
         The IDs of any tags to attach to this resource.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

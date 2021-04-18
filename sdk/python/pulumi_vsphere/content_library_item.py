@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ContentLibraryItemArgs', 'ContentLibraryItem']
 
@@ -77,6 +77,112 @@ class ContentLibraryItemArgs:
     @file_url.setter
     def file_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the item to be created in the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sourceUuid")
+    def source_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Virtual machine UUID to clone to Content Library.
+        """
+        return pulumi.get(self, "source_uuid")
+
+    @source_uuid.setter
+    def source_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_uuid", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of content library item.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class _ContentLibraryItemState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 file_url: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 source_uuid: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ContentLibraryItem resources.
+        :param pulumi.Input[str] description: A description for the item.
+        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
+               OVAs will be parsed and associated files will also be imported.
+        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
+        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] type: Type of content library item.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if file_url is not None:
+            pulumi.set(__self__, "file_url", file_url)
+        if library_id is not None:
+            pulumi.set(__self__, "library_id", library_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if source_uuid is not None:
+            pulumi.set(__self__, "source_uuid", source_uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the item.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="fileUrl")
+    def file_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        File to import into the Content Library item. OVFs and
+        OVAs will be parsed and associated files will also be imported.
+        """
+        return pulumi.get(self, "file_url")
+
+    @file_url.setter
+    def file_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_url", value)
+
+    @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Content Library the item should be created in.
+        """
+        return pulumi.get(self, "library_id")
+
+    @library_id.setter
+    def library_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "library_id", value)
 
     @property
     @pulumi.getter
@@ -188,16 +294,16 @@ class ContentLibraryItem(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ContentLibraryItemArgs.__new__(ContentLibraryItemArgs)
 
-            __props__['description'] = description
-            __props__['file_url'] = file_url
+            __props__.__dict__["description"] = description
+            __props__.__dict__["file_url"] = file_url
             if library_id is None and not opts.urn:
                 raise TypeError("Missing required property 'library_id'")
-            __props__['library_id'] = library_id
-            __props__['name'] = name
-            __props__['source_uuid'] = source_uuid
-            __props__['type'] = type
+            __props__.__dict__["library_id"] = library_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["source_uuid"] = source_uuid
+            __props__.__dict__["type"] = type
         super(ContentLibraryItem, __self__).__init__(
             'vsphere:index/contentLibraryItem:ContentLibraryItem',
             resource_name,
@@ -231,14 +337,14 @@ class ContentLibraryItem(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ContentLibraryItemState.__new__(_ContentLibraryItemState)
 
-        __props__["description"] = description
-        __props__["file_url"] = file_url
-        __props__["library_id"] = library_id
-        __props__["name"] = name
-        __props__["source_uuid"] = source_uuid
-        __props__["type"] = type
+        __props__.__dict__["description"] = description
+        __props__.__dict__["file_url"] = file_url
+        __props__.__dict__["library_id"] = library_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["source_uuid"] = source_uuid
+        __props__.__dict__["type"] = type
         return ContentLibraryItem(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -289,10 +395,4 @@ class ContentLibraryItem(pulumi.CustomResource):
         Type of content library item.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

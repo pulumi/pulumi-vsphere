@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -1349,6 +1349,1548 @@ class VirtualMachineArgs:
         pulumi.set(self, "wait_for_guest_net_timeout", value)
 
 
+@pulumi.input_type
+class _VirtualMachineState:
+    def __init__(__self__, *,
+                 alternate_guest_name: Optional[pulumi.Input[str]] = None,
+                 annotation: Optional[pulumi.Input[str]] = None,
+                 boot_delay: Optional[pulumi.Input[int]] = None,
+                 boot_retry_delay: Optional[pulumi.Input[int]] = None,
+                 boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
+                 cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
+                 change_version: Optional[pulumi.Input[str]] = None,
+                 clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
+                 cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+                 cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
+                 cpu_limit: Optional[pulumi.Input[int]] = None,
+                 cpu_performance_counters_enabled: Optional[pulumi.Input[bool]] = None,
+                 cpu_reservation: Optional[pulumi.Input[int]] = None,
+                 cpu_share_count: Optional[pulumi.Input[int]] = None,
+                 cpu_share_level: Optional[pulumi.Input[str]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datacenter_id: Optional[pulumi.Input[str]] = None,
+                 datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+                 datastore_id: Optional[pulumi.Input[str]] = None,
+                 default_ip_address: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+                 efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+                 enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 ept_rvi_mode: Optional[pulumi.Input[str]] = None,
+                 extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 firmware: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 force_power_off: Optional[pulumi.Input[bool]] = None,
+                 guest_id: Optional[pulumi.Input[str]] = None,
+                 guest_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hardware_version: Optional[pulumi.Input[int]] = None,
+                 host_system_id: Optional[pulumi.Input[str]] = None,
+                 hv_mode: Optional[pulumi.Input[str]] = None,
+                 ide_controller_count: Optional[pulumi.Input[int]] = None,
+                 ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 imported: Optional[pulumi.Input[bool]] = None,
+                 latency_sensitivity: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
+                 memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+                 memory_limit: Optional[pulumi.Input[int]] = None,
+                 memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_share_count: Optional[pulumi.Input[int]] = None,
+                 memory_share_level: Optional[pulumi.Input[str]] = None,
+                 migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
+                 moid: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+                 num_cores_per_socket: Optional[pulumi.Input[int]] = None,
+                 num_cpus: Optional[pulumi.Input[int]] = None,
+                 ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
+                 pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 poweron_timeout: Optional[pulumi.Input[int]] = None,
+                 reboot_required: Optional[pulumi.Input[bool]] = None,
+                 resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
+                 run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
+                 run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
+                 run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[bool]] = None,
+                 run_tools_scripts_before_guest_standby: Optional[pulumi.Input[bool]] = None,
+                 sata_controller_count: Optional[pulumi.Input[int]] = None,
+                 scsi_bus_sharing: Optional[pulumi.Input[str]] = None,
+                 scsi_controller_count: Optional[pulumi.Input[int]] = None,
+                 scsi_type: Optional[pulumi.Input[str]] = None,
+                 shutdown_wait_timeout: Optional[pulumi.Input[int]] = None,
+                 storage_policy_id: Optional[pulumi.Input[str]] = None,
+                 swap_placement_policy: Optional[pulumi.Input[str]] = None,
+                 sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
+                 vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
+                 vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vmware_tools_status: Optional[pulumi.Input[str]] = None,
+                 vmx_path: Optional[pulumi.Input[str]] = None,
+                 wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
+                 wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
+                 wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering VirtualMachine resources.
+        :param pulumi.Input[str] alternate_guest_name: The guest name for the operating system
+               when `guest_id` is `other` or `other-64`.
+        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
+               The default is no annotation.
+        :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting
+               the boot sequence. The default is no delay.
+        :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before
+               retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+               Default: `10000` (10 seconds).
+        :param pulumi.Input[bool] boot_retry_enabled: If set to true, a virtual machine that
+               fails to boot will try again after the delay defined in `boot_retry_delay`.
+               Default: `false`.
+        :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: A specification for a CDROM device on this virtual
+               machine. See CDROM options below.
+        :param pulumi.Input[str] change_version: A unique identifier for a given version of the last
+               configuration applied, such the timestamp of the last update to the
+               configuration.
+        :param pulumi.Input['VirtualMachineCloneArgs'] clone: When specified, the VM will be created as a clone of a
+               specified template. Optional customization options can be submitted as well.
+               See creating a virtual machine from a
+               template for more details.
+        :param pulumi.Input[bool] cpu_hot_add_enabled: Allow CPUs to be added to this virtual
+               machine while it is running.
+        :param pulumi.Input[bool] cpu_hot_remove_enabled: Allow CPUs to be removed to this
+               virtual machine while it is running.
+        :param pulumi.Input[int] cpu_limit: The maximum amount of CPU (in MHz) that this virtual
+               machine can consume, regardless of available resources. The default is no
+               limit.
+        :param pulumi.Input[bool] cpu_performance_counters_enabled: Enable CPU performance
+               counters on this virtual machine. Default: `false`.
+        :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that this virtual
+               machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the
+               virtual machine when the `cpu_share_level` is `custom`.
+        :param pulumi.Input[str] cpu_share_level: The allocation level for CPU resources. Can be
+               one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
+               value strings to set for virtual machine.
+        :param pulumi.Input[str] datacenter_id: The datacenter id. Required only when deploying
+               an ovf template.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference
+               ID of the datastore cluster ID to use. This setting
+               applies to entire virtual machine and implies that you wish to use Storage
+               DRS with this virtual machine. See the section on virtual machine
+               migration for details on changing this value.
+        :param pulumi.Input[str] datastore_id: The datastore ID that the ISO is located in.
+               Requried for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with
+               any provisioners configured on this resource.
+               Whenever possible, this is the first IPv4 address that is reachable through
+               the default gateway configured on the machine, then the first reachable IPv6
+               address, and then the first general discovered address if neither exist. If
+               VMware tools is not running on the virtual machine, or if the VM is powered
+               off, this value will be blank.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on this virtual
+               machine. See disk options below.
+        :param pulumi.Input[bool] efi_secure_boot_enabled: When the `firmware` type is set to is
+               `efi`, this enables EFI secure boot. Default: `false`.
+        :param pulumi.Input[bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to
+               the virtual machine, allowing access to them in the guest. Default: `false`.
+        :param pulumi.Input[bool] enable_logging: Enable logging of virtual machine events to a
+               log file stored in the virtual machine directory. Default: `false`.
+        :param pulumi.Input[str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization)
+               setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
+               Default: `automatic`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_config: Extra configuration data for this virtual
+               machine. Can be used to supply advanced parameters not normally in
+               configuration, such as instance metadata.
+        :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine.
+               Can be one of `bios` or `EFI`. Default: `bios`.
+        :param pulumi.Input[str] folder: The path to the folder to put this virtual machine in,
+               relative to the datacenter that the resource pool is in.
+        :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or timed out while
+               updating or destroying (see
+               `shutdown_wait_timeout`), force the power-off of
+               the virtual machine. Default: `true`.
+        :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a
+               full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine,
+               including the value of `default_ip_address`. If VMware tools is not running
+               on the virtual machine, or if the VM is powered off, this list will be empty.
+               * `moid`: The managed object reference ID of the created
+               virtual machine.
+        :param pulumi.Input[int] hardware_version: The hardware version number. Valid range
+               is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+               machine hardware compatibility][virtual-machine-hardware-compatibility] for
+               more details.
+        :param pulumi.Input[str] host_system_id: An optional managed object reference
+               ID of a host to put this virtual machine on. See the
+               section on virtual machine migration for
+               details on changing this value. If a `host_system_id` is not supplied,
+               vSphere will select a host in the resource pool to place the virtual machine,
+               according to any defaults or DRS policies in place.
+        :param pulumi.Input[str] hv_mode: The (non-nested) hardware virtualization setting for
+               this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
+               `hvAuto`.
+        :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to
+               ignore while waiting for an available IP address using either of the waiters.
+               Any IP addresses in this list will be ignored if they show up so that the
+               waiter will continue to wait for a real IP address. Default: [].
+        :param pulumi.Input[bool] imported: This is flagged if the virtual machine has been imported, or the
+               state has been migrated from a previous version of the resource. It
+               influences the behavior of the first post-import apply operation. See the
+               section on importing below.
+        :param pulumi.Input[str] latency_sensitivity: Controls the scheduling delay of the
+               virtual machine. Use a higher sensitivity for applications that require lower
+               latency, such as VOIP, media player applications, or applications that
+               require frequent access to mouse or keyboard devices. Can be one of `low`,
+               `normal`, `medium`, or `high`.
+        :param pulumi.Input[int] memory: The size of the virtual machine's memory, in MB.
+               Default: `1024` (1 GB).
+        :param pulumi.Input[bool] memory_hot_add_enabled: Allow memory to be added to this
+               virtual machine while it is running.
+        :param pulumi.Input[int] memory_limit: The maximum amount of memory (in MB) that this
+               virtual machine can consume, regardless of available resources. The default
+               is no limit.
+        :param pulumi.Input[int] memory_reservation: The amount of memory (in MB) that this
+               virtual machine is guaranteed. The default is no reservation.
+        :param pulumi.Input[int] memory_share_count: The number of memory shares allocated to
+               the virtual machine when the `memory_share_level` is `custom`.
+        :param pulumi.Input[str] memory_share_level: The allocation level for memory resources.
+               Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+        :param pulumi.Input[int] migrate_wait_timeout: The amount of time, in minutes, to wait
+               for a virtual machine migration to complete before failing. Default: 10
+               minutes. Also see the section on virtual machine
+               migration.
+        :param pulumi.Input[str] moid: The machine object ID from VMWare
+        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
+               using `attach`. Required if not using `label`.
+        :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
+               this virtual machine, facilitating nested virtualization in the guest.
+               Default: `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this
+               virtual machine. See network interface options
+               below.
+        :param pulumi.Input[int] num_cores_per_socket: The number of cores per socket in this
+               virtual machine. The number of vCPUs on the virtual machine will be
+               `num_cpus` divided by `num_cores_per_socket`. If specified, the value
+               supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+        :param pulumi.Input[int] num_cpus: The total number of virtual processor cores to assign
+               to this virtual machine. Default: `1`.
+        :param pulumi.Input['VirtualMachineOvfDeployArgs'] ovf_deploy: When specified, the VM will be deployed from the
+               provided ovf/ova template. See creating a virtual machine from a
+               ovf/ova template for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
+               passthroughs for.
+        :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
+        :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
+               configuration set change requires a reboot. This value is only useful during
+               an update process and gets reset on refresh.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference
+               ID of the resource pool to put this virtual machine in.
+               See the section on virtual machine migration
+               for details on changing this value.
+        :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the execution of
+               post-power-on scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable the execution of
+               post-resume scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable the execution of
+               pre-reboot scripts when VMware tools is installed. Default: `false`.
+        :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable the execution
+               of pre-shutdown scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable the execution of
+               pre-standby scripts when VMware tools is installed. Default: `true`.
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
+        :param pulumi.Input[str] scsi_bus_sharing: Mode for sharing the SCSI bus. The modes are
+               physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that
+               this provider manages on this virtual machine. This directly affects the amount
+               of disks you can add to the virtual machine and the maximum disk unit number.
+               Note that lowering this value does not remove controllers. Default: `1`.
+        :param pulumi.Input[str] scsi_type: The type of SCSI bus this virtual machine will have.
+               Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
+               pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
+        :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait
+               for a graceful guest shutdown when making necessary updates to the virtual
+               machine. If `force_power_off` is set to true, the VM will be force powered-off
+               after this timeout, otherwise an error is returned. Default: 3 minutes.
+        :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to this disk.
+        :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
+               virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
+               Default: `inherit`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
+               the host. Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
+               virtual disk on the virtual machine.
+        :param pulumi.Input['VirtualMachineVappArgs'] vapp: Optional vApp configuration. The only sub-key available
+               is `properties`, which is a key/value map of properties for virtual machines
+               imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
+               configuration for
+               more details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual
+               machines. A list of vApp transport methods supported by the source virtual
+               machine or template.
+        :param pulumi.Input[str] vmware_tools_status: The state of VMware tools in the guest. This will
+               determine the proper course of action for some device operations.
+        :param pulumi.Input[str] vmx_path: The path of the virtual machine's configuration file in the VM's
+               datastore.
+        :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
+               wait for an available guest IP address on this virtual machine. This should
+               only be used if your version of VMware Tools does not allow the
+               `wait_for_guest_net_timeout` waiter to be
+               used. A value less than 1 disables the waiter. Default: 0.
+        :param pulumi.Input[bool] wait_for_guest_net_routable: Controls whether or not the guest
+               network waiter waits for a routable address. When `false`, the waiter does
+               not wait for a default gateway, nor are IP addresses checked against any
+               discovered default gateways as part of its success criteria. This property is
+               ignored if the `wait_for_guest_ip_timeout`
+               waiter is used. Default: `true`.
+        :param pulumi.Input[int] wait_for_guest_net_timeout: The amount of time, in minutes, to
+               wait for an available IP address on this virtual machine's NICs. Older
+               versions of VMware Tools do not populate this property. In those cases, this
+               waiter can be disabled and the
+               `wait_for_guest_ip_timeout` waiter can be used
+               instead. A value less than 1 disables the waiter. Default: 5 minutes.
+        """
+        if alternate_guest_name is not None:
+            pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
+        if annotation is not None:
+            pulumi.set(__self__, "annotation", annotation)
+        if boot_delay is not None:
+            pulumi.set(__self__, "boot_delay", boot_delay)
+        if boot_retry_delay is not None:
+            pulumi.set(__self__, "boot_retry_delay", boot_retry_delay)
+        if boot_retry_enabled is not None:
+            pulumi.set(__self__, "boot_retry_enabled", boot_retry_enabled)
+        if cdrom is not None:
+            pulumi.set(__self__, "cdrom", cdrom)
+        if change_version is not None:
+            pulumi.set(__self__, "change_version", change_version)
+        if clone is not None:
+            pulumi.set(__self__, "clone", clone)
+        if cpu_hot_add_enabled is not None:
+            pulumi.set(__self__, "cpu_hot_add_enabled", cpu_hot_add_enabled)
+        if cpu_hot_remove_enabled is not None:
+            pulumi.set(__self__, "cpu_hot_remove_enabled", cpu_hot_remove_enabled)
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_performance_counters_enabled is not None:
+            pulumi.set(__self__, "cpu_performance_counters_enabled", cpu_performance_counters_enabled)
+        if cpu_reservation is not None:
+            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+        if cpu_share_count is not None:
+            pulumi.set(__self__, "cpu_share_count", cpu_share_count)
+        if cpu_share_level is not None:
+            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if datacenter_id is not None:
+            pulumi.set(__self__, "datacenter_id", datacenter_id)
+        if datastore_cluster_id is not None:
+            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if default_ip_address is not None:
+            pulumi.set(__self__, "default_ip_address", default_ip_address)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if efi_secure_boot_enabled is not None:
+            pulumi.set(__self__, "efi_secure_boot_enabled", efi_secure_boot_enabled)
+        if enable_disk_uuid is not None:
+            pulumi.set(__self__, "enable_disk_uuid", enable_disk_uuid)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if ept_rvi_mode is not None:
+            pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+        if extra_config is not None:
+            pulumi.set(__self__, "extra_config", extra_config)
+        if firmware is not None:
+            pulumi.set(__self__, "firmware", firmware)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if force_power_off is not None:
+            pulumi.set(__self__, "force_power_off", force_power_off)
+        if guest_id is not None:
+            pulumi.set(__self__, "guest_id", guest_id)
+        if guest_ip_addresses is not None:
+            pulumi.set(__self__, "guest_ip_addresses", guest_ip_addresses)
+        if hardware_version is not None:
+            pulumi.set(__self__, "hardware_version", hardware_version)
+        if host_system_id is not None:
+            pulumi.set(__self__, "host_system_id", host_system_id)
+        if hv_mode is not None:
+            pulumi.set(__self__, "hv_mode", hv_mode)
+        if ide_controller_count is not None:
+            pulumi.set(__self__, "ide_controller_count", ide_controller_count)
+        if ignored_guest_ips is not None:
+            pulumi.set(__self__, "ignored_guest_ips", ignored_guest_ips)
+        if imported is not None:
+            pulumi.set(__self__, "imported", imported)
+        if latency_sensitivity is not None:
+            pulumi.set(__self__, "latency_sensitivity", latency_sensitivity)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if memory_hot_add_enabled is not None:
+            pulumi.set(__self__, "memory_hot_add_enabled", memory_hot_add_enabled)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_reservation is not None:
+            pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if memory_share_count is not None:
+            pulumi.set(__self__, "memory_share_count", memory_share_count)
+        if memory_share_level is not None:
+            pulumi.set(__self__, "memory_share_level", memory_share_level)
+        if migrate_wait_timeout is not None:
+            pulumi.set(__self__, "migrate_wait_timeout", migrate_wait_timeout)
+        if moid is not None:
+            pulumi.set(__self__, "moid", moid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nested_hv_enabled is not None:
+            pulumi.set(__self__, "nested_hv_enabled", nested_hv_enabled)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if num_cores_per_socket is not None:
+            pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
+        if num_cpus is not None:
+            pulumi.set(__self__, "num_cpus", num_cpus)
+        if ovf_deploy is not None:
+            pulumi.set(__self__, "ovf_deploy", ovf_deploy)
+        if pci_device_ids is not None:
+            pulumi.set(__self__, "pci_device_ids", pci_device_ids)
+        if poweron_timeout is not None:
+            pulumi.set(__self__, "poweron_timeout", poweron_timeout)
+        if reboot_required is not None:
+            pulumi.set(__self__, "reboot_required", reboot_required)
+        if resource_pool_id is not None:
+            pulumi.set(__self__, "resource_pool_id", resource_pool_id)
+        if run_tools_scripts_after_power_on is not None:
+            pulumi.set(__self__, "run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
+        if run_tools_scripts_after_resume is not None:
+            pulumi.set(__self__, "run_tools_scripts_after_resume", run_tools_scripts_after_resume)
+        if run_tools_scripts_before_guest_reboot is not None:
+            pulumi.set(__self__, "run_tools_scripts_before_guest_reboot", run_tools_scripts_before_guest_reboot)
+        if run_tools_scripts_before_guest_shutdown is not None:
+            pulumi.set(__self__, "run_tools_scripts_before_guest_shutdown", run_tools_scripts_before_guest_shutdown)
+        if run_tools_scripts_before_guest_standby is not None:
+            pulumi.set(__self__, "run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
+        if sata_controller_count is not None:
+            pulumi.set(__self__, "sata_controller_count", sata_controller_count)
+        if scsi_bus_sharing is not None:
+            pulumi.set(__self__, "scsi_bus_sharing", scsi_bus_sharing)
+        if scsi_controller_count is not None:
+            pulumi.set(__self__, "scsi_controller_count", scsi_controller_count)
+        if scsi_type is not None:
+            pulumi.set(__self__, "scsi_type", scsi_type)
+        if shutdown_wait_timeout is not None:
+            pulumi.set(__self__, "shutdown_wait_timeout", shutdown_wait_timeout)
+        if storage_policy_id is not None:
+            pulumi.set(__self__, "storage_policy_id", storage_policy_id)
+        if swap_placement_policy is not None:
+            pulumi.set(__self__, "swap_placement_policy", swap_placement_policy)
+        if sync_time_with_host is not None:
+            pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if vapp is not None:
+            pulumi.set(__self__, "vapp", vapp)
+        if vapp_transports is not None:
+            pulumi.set(__self__, "vapp_transports", vapp_transports)
+        if vmware_tools_status is not None:
+            pulumi.set(__self__, "vmware_tools_status", vmware_tools_status)
+        if vmx_path is not None:
+            pulumi.set(__self__, "vmx_path", vmx_path)
+        if wait_for_guest_ip_timeout is not None:
+            pulumi.set(__self__, "wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
+        if wait_for_guest_net_routable is not None:
+            pulumi.set(__self__, "wait_for_guest_net_routable", wait_for_guest_net_routable)
+        if wait_for_guest_net_timeout is not None:
+            pulumi.set(__self__, "wait_for_guest_net_timeout", wait_for_guest_net_timeout)
+
+    @property
+    @pulumi.getter(name="alternateGuestName")
+    def alternate_guest_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guest name for the operating system
+        when `guest_id` is `other` or `other-64`.
+        """
+        return pulumi.get(self, "alternate_guest_name")
+
+    @alternate_guest_name.setter
+    def alternate_guest_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alternate_guest_name", value)
+
+    @property
+    @pulumi.getter
+    def annotation(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-provided description of the virtual machine.
+        The default is no annotation.
+        """
+        return pulumi.get(self, "annotation")
+
+    @annotation.setter
+    def annotation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "annotation", value)
+
+    @property
+    @pulumi.getter(name="bootDelay")
+    def boot_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of milliseconds to wait before starting
+        the boot sequence. The default is no delay.
+        """
+        return pulumi.get(self, "boot_delay")
+
+    @boot_delay.setter
+    def boot_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "boot_delay", value)
+
+    @property
+    @pulumi.getter(name="bootRetryDelay")
+    def boot_retry_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of milliseconds to wait before
+        retrying the boot sequence. This only valid if `boot_retry_enabled` is true.
+        Default: `10000` (10 seconds).
+        """
+        return pulumi.get(self, "boot_retry_delay")
+
+    @boot_retry_delay.setter
+    def boot_retry_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "boot_retry_delay", value)
+
+    @property
+    @pulumi.getter(name="bootRetryEnabled")
+    def boot_retry_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, a virtual machine that
+        fails to boot will try again after the delay defined in `boot_retry_delay`.
+        Default: `false`.
+        """
+        return pulumi.get(self, "boot_retry_enabled")
+
+    @boot_retry_enabled.setter
+    def boot_retry_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "boot_retry_enabled", value)
+
+    @property
+    @pulumi.getter
+    def cdrom(self) -> Optional[pulumi.Input['VirtualMachineCdromArgs']]:
+        """
+        A specification for a CDROM device on this virtual
+        machine. See CDROM options below.
+        """
+        return pulumi.get(self, "cdrom")
+
+    @cdrom.setter
+    def cdrom(self, value: Optional[pulumi.Input['VirtualMachineCdromArgs']]):
+        pulumi.set(self, "cdrom", value)
+
+    @property
+    @pulumi.getter(name="changeVersion")
+    def change_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for a given version of the last
+        configuration applied, such the timestamp of the last update to the
+        configuration.
+        """
+        return pulumi.get(self, "change_version")
+
+    @change_version.setter
+    def change_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_version", value)
+
+    @property
+    @pulumi.getter
+    def clone(self) -> Optional[pulumi.Input['VirtualMachineCloneArgs']]:
+        """
+        When specified, the VM will be created as a clone of a
+        specified template. Optional customization options can be submitted as well.
+        See creating a virtual machine from a
+        template for more details.
+        """
+        return pulumi.get(self, "clone")
+
+    @clone.setter
+    def clone(self, value: Optional[pulumi.Input['VirtualMachineCloneArgs']]):
+        pulumi.set(self, "clone", value)
+
+    @property
+    @pulumi.getter(name="cpuHotAddEnabled")
+    def cpu_hot_add_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow CPUs to be added to this virtual
+        machine while it is running.
+        """
+        return pulumi.get(self, "cpu_hot_add_enabled")
+
+    @cpu_hot_add_enabled.setter
+    def cpu_hot_add_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_hot_add_enabled", value)
+
+    @property
+    @pulumi.getter(name="cpuHotRemoveEnabled")
+    def cpu_hot_remove_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow CPUs to be removed to this
+        virtual machine while it is running.
+        """
+        return pulumi.get(self, "cpu_hot_remove_enabled")
+
+    @cpu_hot_remove_enabled.setter
+    def cpu_hot_remove_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_hot_remove_enabled", value)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum amount of CPU (in MHz) that this virtual
+        machine can consume, regardless of available resources. The default is no
+        limit.
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @cpu_limit.setter
+    def cpu_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_limit", value)
+
+    @property
+    @pulumi.getter(name="cpuPerformanceCountersEnabled")
+    def cpu_performance_counters_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable CPU performance
+        counters on this virtual machine. Default: `false`.
+        """
+        return pulumi.get(self, "cpu_performance_counters_enabled")
+
+    @cpu_performance_counters_enabled.setter
+    def cpu_performance_counters_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_performance_counters_enabled", value)
+
+    @property
+    @pulumi.getter(name="cpuReservation")
+    def cpu_reservation(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of CPU (in MHz) that this virtual
+        machine is guaranteed. The default is no reservation.
+        """
+        return pulumi.get(self, "cpu_reservation")
+
+    @cpu_reservation.setter
+    def cpu_reservation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_reservation", value)
+
+    @property
+    @pulumi.getter(name="cpuShareCount")
+    def cpu_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of CPU shares allocated to the
+        virtual machine when the `cpu_share_level` is `custom`.
+        """
+        return pulumi.get(self, "cpu_share_count")
+
+    @cpu_share_count.setter
+    def cpu_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_share_count", value)
+
+    @property
+    @pulumi.getter(name="cpuShareLevel")
+    def cpu_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for CPU resources. Can be
+        one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+        """
+        return pulumi.get(self, "cpu_share_level")
+
+    @cpu_share_level.setter
+    def cpu_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_share_level", value)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom attribute ids to attribute
+        value strings to set for virtual machine.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter id. Required only when deploying
+        an ovf template.
+        """
+        return pulumi.get(self, "datacenter_id")
+
+    @datacenter_id.setter
+    def datacenter_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter_id", value)
+
+    @property
+    @pulumi.getter(name="datastoreClusterId")
+    def datastore_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object reference
+        ID of the datastore cluster ID to use. This setting
+        applies to entire virtual machine and implies that you wish to use Storage
+        DRS with this virtual machine. See the section on virtual machine
+        migration for details on changing this value.
+        """
+        return pulumi.get(self, "datastore_cluster_id")
+
+    @datastore_cluster_id.setter
+    def datastore_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datastore ID that the ISO is located in.
+        Requried for using a datastore ISO. Conflicts with `client_device`.
+        """
+        return pulumi.get(self, "datastore_id")
+
+    @datastore_id.setter
+    def datastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_id", value)
+
+    @property
+    @pulumi.getter(name="defaultIpAddress")
+    def default_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address selected by the provider to be used with
+        any provisioners configured on this resource.
+        Whenever possible, this is the first IPv4 address that is reachable through
+        the default gateway configured on the machine, then the first reachable IPv6
+        address, and then the first general discovered address if neither exist. If
+        VMware tools is not running on the virtual machine, or if the VM is powered
+        off, this value will be blank.
+        """
+        return pulumi.get(self, "default_ip_address")
+
+    @default_ip_address.setter
+    def default_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_ip_address", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]:
+        """
+        A specification for a virtual disk device on this virtual
+        machine. See disk options below.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
+
+    @property
+    @pulumi.getter(name="efiSecureBootEnabled")
+    def efi_secure_boot_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When the `firmware` type is set to is
+        `efi`, this enables EFI secure boot. Default: `false`.
+        """
+        return pulumi.get(self, "efi_secure_boot_enabled")
+
+    @efi_secure_boot_enabled.setter
+    def efi_secure_boot_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "efi_secure_boot_enabled", value)
+
+    @property
+    @pulumi.getter(name="enableDiskUuid")
+    def enable_disk_uuid(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Expose the UUIDs of attached virtual disks to
+        the virtual machine, allowing access to them in the guest. Default: `false`.
+        """
+        return pulumi.get(self, "enable_disk_uuid")
+
+    @enable_disk_uuid.setter
+    def enable_disk_uuid(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_disk_uuid", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable logging of virtual machine events to a
+        log file stored in the virtual machine directory. Default: `false`.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter(name="eptRviMode")
+    def ept_rvi_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EPT/RVI (hardware memory virtualization)
+        setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
+        Default: `automatic`.
+        """
+        return pulumi.get(self, "ept_rvi_mode")
+
+    @ept_rvi_mode.setter
+    def ept_rvi_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ept_rvi_mode", value)
+
+    @property
+    @pulumi.getter(name="extraConfig")
+    def extra_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Extra configuration data for this virtual
+        machine. Can be used to supply advanced parameters not normally in
+        configuration, such as instance metadata.
+        """
+        return pulumi.get(self, "extra_config")
+
+    @extra_config.setter
+    def extra_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "extra_config", value)
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> Optional[pulumi.Input[str]]:
+        """
+        The firmware interface to use on the virtual machine.
+        Can be one of `bios` or `EFI`. Default: `bios`.
+        """
+        return pulumi.get(self, "firmware")
+
+    @firmware.setter
+    def firmware(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firmware", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the folder to put this virtual machine in,
+        relative to the datacenter that the resource pool is in.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter(name="forcePowerOff")
+    def force_power_off(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If a guest shutdown failed or timed out while
+        updating or destroying (see
+        `shutdown_wait_timeout`), force the power-off of
+        the virtual machine. Default: `true`.
+        """
+        return pulumi.get(self, "force_power_off")
+
+    @force_power_off.setter
+    def force_power_off(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_power_off", value)
+
+    @property
+    @pulumi.getter(name="guestId")
+    def guest_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guest ID for the operating system type. For a
+        full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
+        """
+        return pulumi.get(self, "guest_id")
+
+    @guest_id.setter
+    def guest_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "guest_id", value)
+
+    @property
+    @pulumi.getter(name="guestIpAddresses")
+    def guest_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The current list of IP addresses on this machine,
+        including the value of `default_ip_address`. If VMware tools is not running
+        on the virtual machine, or if the VM is powered off, this list will be empty.
+        * `moid`: The managed object reference ID of the created
+        virtual machine.
+        """
+        return pulumi.get(self, "guest_ip_addresses")
+
+    @guest_ip_addresses.setter
+    def guest_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "guest_ip_addresses", value)
+
+    @property
+    @pulumi.getter(name="hardwareVersion")
+    def hardware_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The hardware version number. Valid range
+        is from 4 to 15. The hardware version cannot be downgraded. See [virtual
+        machine hardware compatibility][virtual-machine-hardware-compatibility] for
+        more details.
+        """
+        return pulumi.get(self, "hardware_version")
+
+    @hardware_version.setter
+    def hardware_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hardware_version", value)
+
+    @property
+    @pulumi.getter(name="hostSystemId")
+    def host_system_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional managed object reference
+        ID of a host to put this virtual machine on. See the
+        section on virtual machine migration for
+        details on changing this value. If a `host_system_id` is not supplied,
+        vSphere will select a host in the resource pool to place the virtual machine,
+        according to any defaults or DRS policies in place.
+        """
+        return pulumi.get(self, "host_system_id")
+
+    @host_system_id.setter
+    def host_system_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_system_id", value)
+
+    @property
+    @pulumi.getter(name="hvMode")
+    def hv_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The (non-nested) hardware virtualization setting for
+        this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
+        `hvAuto`.
+        """
+        return pulumi.get(self, "hv_mode")
+
+    @hv_mode.setter
+    def hv_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hv_mode", value)
+
+    @property
+    @pulumi.getter(name="ideControllerCount")
+    def ide_controller_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
+        """
+        return pulumi.get(self, "ide_controller_count")
+
+    @ide_controller_count.setter
+    def ide_controller_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ide_controller_count", value)
+
+    @property
+    @pulumi.getter(name="ignoredGuestIps")
+    def ignored_guest_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses and CIDR networks to
+        ignore while waiting for an available IP address using either of the waiters.
+        Any IP addresses in this list will be ignored if they show up so that the
+        waiter will continue to wait for a real IP address. Default: [].
+        """
+        return pulumi.get(self, "ignored_guest_ips")
+
+    @ignored_guest_ips.setter
+    def ignored_guest_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignored_guest_ips", value)
+
+    @property
+    @pulumi.getter
+    def imported(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is flagged if the virtual machine has been imported, or the
+        state has been migrated from a previous version of the resource. It
+        influences the behavior of the first post-import apply operation. See the
+        section on importing below.
+        """
+        return pulumi.get(self, "imported")
+
+    @imported.setter
+    def imported(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "imported", value)
+
+    @property
+    @pulumi.getter(name="latencySensitivity")
+    def latency_sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls the scheduling delay of the
+        virtual machine. Use a higher sensitivity for applications that require lower
+        latency, such as VOIP, media player applications, or applications that
+        require frequent access to mouse or keyboard devices. Can be one of `low`,
+        `normal`, `medium`, or `high`.
+        """
+        return pulumi.get(self, "latency_sensitivity")
+
+    @latency_sensitivity.setter
+    def latency_sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "latency_sensitivity", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the virtual machine's memory, in MB.
+        Default: `1024` (1 GB).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="memoryHotAddEnabled")
+    def memory_hot_add_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow memory to be added to this
+        virtual machine while it is running.
+        """
+        return pulumi.get(self, "memory_hot_add_enabled")
+
+    @memory_hot_add_enabled.setter
+    def memory_hot_add_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_hot_add_enabled", value)
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum amount of memory (in MB) that this
+        virtual machine can consume, regardless of available resources. The default
+        is no limit.
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @memory_limit.setter
+    def memory_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_limit", value)
+
+    @property
+    @pulumi.getter(name="memoryReservation")
+    def memory_reservation(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of memory (in MB) that this
+        virtual machine is guaranteed. The default is no reservation.
+        """
+        return pulumi.get(self, "memory_reservation")
+
+    @memory_reservation.setter
+    def memory_reservation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_reservation", value)
+
+    @property
+    @pulumi.getter(name="memoryShareCount")
+    def memory_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of memory shares allocated to
+        the virtual machine when the `memory_share_level` is `custom`.
+        """
+        return pulumi.get(self, "memory_share_count")
+
+    @memory_share_count.setter
+    def memory_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_share_count", value)
+
+    @property
+    @pulumi.getter(name="memoryShareLevel")
+    def memory_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for memory resources.
+        Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+        """
+        return pulumi.get(self, "memory_share_level")
+
+    @memory_share_level.setter
+    def memory_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory_share_level", value)
+
+    @property
+    @pulumi.getter(name="migrateWaitTimeout")
+    def migrate_wait_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in minutes, to wait
+        for a virtual machine migration to complete before failing. Default: 10
+        minutes. Also see the section on virtual machine
+        migration.
+        """
+        return pulumi.get(self, "migrate_wait_timeout")
+
+    @migrate_wait_timeout.setter
+    def migrate_wait_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "migrate_wait_timeout", value)
+
+    @property
+    @pulumi.getter
+    def moid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine object ID from VMWare
+        """
+        return pulumi.get(self, "moid")
+
+    @moid.setter
+    def moid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "moid", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An alias for both `label` and `path`, the latter when
+        using `attach`. Required if not using `label`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nestedHvEnabled")
+    def nested_hv_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable nested hardware virtualization on
+        this virtual machine, facilitating nested virtualization in the guest.
+        Default: `false`.
+        """
+        return pulumi.get(self, "nested_hv_enabled")
+
+    @nested_hv_enabled.setter
+    def nested_hv_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nested_hv_enabled", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]:
+        """
+        A specification for a virtual NIC on this
+        virtual machine. See network interface options
+        below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="numCoresPerSocket")
+    def num_cores_per_socket(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of cores per socket in this
+        virtual machine. The number of vCPUs on the virtual machine will be
+        `num_cpus` divided by `num_cores_per_socket`. If specified, the value
+        supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
+        """
+        return pulumi.get(self, "num_cores_per_socket")
+
+    @num_cores_per_socket.setter
+    def num_cores_per_socket(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_cores_per_socket", value)
+
+    @property
+    @pulumi.getter(name="numCpus")
+    def num_cpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        The total number of virtual processor cores to assign
+        to this virtual machine. Default: `1`.
+        """
+        return pulumi.get(self, "num_cpus")
+
+    @num_cpus.setter
+    def num_cpus(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_cpus", value)
+
+    @property
+    @pulumi.getter(name="ovfDeploy")
+    def ovf_deploy(self) -> Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]:
+        """
+        When specified, the VM will be deployed from the
+        provided ovf/ova template. See creating a virtual machine from a
+        ovf/ova template for more details.
+        """
+        return pulumi.get(self, "ovf_deploy")
+
+    @ovf_deploy.setter
+    def ovf_deploy(self, value: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']]):
+        pulumi.set(self, "ovf_deploy", value)
+
+    @property
+    @pulumi.getter(name="pciDeviceIds")
+    def pci_device_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of host PCI device IDs to create PCI
+        passthroughs for.
+        """
+        return pulumi.get(self, "pci_device_ids")
+
+    @pci_device_ids.setter
+    def pci_device_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pci_device_ids", value)
+
+    @property
+    @pulumi.getter(name="poweronTimeout")
+    def poweron_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, that we will be trying to power on a VM
+        """
+        return pulumi.get(self, "poweron_timeout")
+
+    @poweron_timeout.setter
+    def poweron_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "poweron_timeout", value)
+
+    @property
+    @pulumi.getter(name="rebootRequired")
+    def reboot_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Value internal to the provider used to determine if a
+        configuration set change requires a reboot. This value is only useful during
+        an update process and gets reset on refresh.
+        """
+        return pulumi.get(self, "reboot_required")
+
+    @reboot_required.setter
+    def reboot_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reboot_required", value)
+
+    @property
+    @pulumi.getter(name="resourcePoolId")
+    def resource_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object reference
+        ID of the resource pool to put this virtual machine in.
+        See the section on virtual machine migration
+        for details on changing this value.
+        """
+        return pulumi.get(self, "resource_pool_id")
+
+    @resource_pool_id.setter
+    def resource_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_pool_id", value)
+
+    @property
+    @pulumi.getter(name="runToolsScriptsAfterPowerOn")
+    def run_tools_scripts_after_power_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the execution of
+        post-power-on scripts when VMware tools is installed. Default: `true`.
+        """
+        return pulumi.get(self, "run_tools_scripts_after_power_on")
+
+    @run_tools_scripts_after_power_on.setter
+    def run_tools_scripts_after_power_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_tools_scripts_after_power_on", value)
+
+    @property
+    @pulumi.getter(name="runToolsScriptsAfterResume")
+    def run_tools_scripts_after_resume(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the execution of
+        post-resume scripts when VMware tools is installed. Default: `true`.
+        """
+        return pulumi.get(self, "run_tools_scripts_after_resume")
+
+    @run_tools_scripts_after_resume.setter
+    def run_tools_scripts_after_resume(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_tools_scripts_after_resume", value)
+
+    @property
+    @pulumi.getter(name="runToolsScriptsBeforeGuestReboot")
+    def run_tools_scripts_before_guest_reboot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the execution of
+        pre-reboot scripts when VMware tools is installed. Default: `false`.
+        """
+        return pulumi.get(self, "run_tools_scripts_before_guest_reboot")
+
+    @run_tools_scripts_before_guest_reboot.setter
+    def run_tools_scripts_before_guest_reboot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_tools_scripts_before_guest_reboot", value)
+
+    @property
+    @pulumi.getter(name="runToolsScriptsBeforeGuestShutdown")
+    def run_tools_scripts_before_guest_shutdown(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the execution
+        of pre-shutdown scripts when VMware tools is installed. Default: `true`.
+        """
+        return pulumi.get(self, "run_tools_scripts_before_guest_shutdown")
+
+    @run_tools_scripts_before_guest_shutdown.setter
+    def run_tools_scripts_before_guest_shutdown(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_tools_scripts_before_guest_shutdown", value)
+
+    @property
+    @pulumi.getter(name="runToolsScriptsBeforeGuestStandby")
+    def run_tools_scripts_before_guest_standby(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the execution of
+        pre-standby scripts when VMware tools is installed. Default: `true`.
+        """
+        return pulumi.get(self, "run_tools_scripts_before_guest_standby")
+
+    @run_tools_scripts_before_guest_standby.setter
+    def run_tools_scripts_before_guest_standby(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_tools_scripts_before_guest_standby", value)
+
+    @property
+    @pulumi.getter(name="sataControllerCount")
+    def sata_controller_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
+        """
+        return pulumi.get(self, "sata_controller_count")
+
+    @sata_controller_count.setter
+    def sata_controller_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sata_controller_count", value)
+
+    @property
+    @pulumi.getter(name="scsiBusSharing")
+    def scsi_bus_sharing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode for sharing the SCSI bus. The modes are
+        physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
+        """
+        return pulumi.get(self, "scsi_bus_sharing")
+
+    @scsi_bus_sharing.setter
+    def scsi_bus_sharing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scsi_bus_sharing", value)
+
+    @property
+    @pulumi.getter(name="scsiControllerCount")
+    def scsi_controller_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of SCSI controllers that
+        this provider manages on this virtual machine. This directly affects the amount
+        of disks you can add to the virtual machine and the maximum disk unit number.
+        Note that lowering this value does not remove controllers. Default: `1`.
+        """
+        return pulumi.get(self, "scsi_controller_count")
+
+    @scsi_controller_count.setter
+    def scsi_controller_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scsi_controller_count", value)
+
+    @property
+    @pulumi.getter(name="scsiType")
+    def scsi_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of SCSI bus this virtual machine will have.
+        Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
+        pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
+        """
+        return pulumi.get(self, "scsi_type")
+
+    @scsi_type.setter
+    def scsi_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scsi_type", value)
+
+    @property
+    @pulumi.getter(name="shutdownWaitTimeout")
+    def shutdown_wait_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in minutes, to wait
+        for a graceful guest shutdown when making necessary updates to the virtual
+        machine. If `force_power_off` is set to true, the VM will be force powered-off
+        after this timeout, otherwise an error is returned. Default: 3 minutes.
+        """
+        return pulumi.get(self, "shutdown_wait_timeout")
+
+    @shutdown_wait_timeout.setter
+    def shutdown_wait_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shutdown_wait_timeout", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyId")
+    def storage_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of the storage policy to assign to this disk.
+        """
+        return pulumi.get(self, "storage_policy_id")
+
+    @storage_policy_id.setter
+    def storage_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_id", value)
+
+    @property
+    @pulumi.getter(name="swapPlacementPolicy")
+    def swap_placement_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The swap file placement policy for this
+        virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
+        Default: `inherit`.
+        """
+        return pulumi.get(self, "swap_placement_policy")
+
+    @swap_placement_policy.setter
+    def swap_placement_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "swap_placement_policy", value)
+
+    @property
+    @pulumi.getter(name="syncTimeWithHost")
+    def sync_time_with_host(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable guest clock synchronization with
+        the host. Requires VMware tools to be installed. Default: `false`.
+        """
+        return pulumi.get(self, "sync_time_with_host")
+
+    @sync_time_with_host.setter
+    def sync_time_with_host(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_time_with_host", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of the virtual disk's VMDK file. This is used to track the
+        virtual disk on the virtual machine.
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter
+    def vapp(self) -> Optional[pulumi.Input['VirtualMachineVappArgs']]:
+        """
+        Optional vApp configuration. The only sub-key available
+        is `properties`, which is a key/value map of properties for virtual machines
+        imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
+        configuration for
+        more details.
+        """
+        return pulumi.get(self, "vapp")
+
+    @vapp.setter
+    def vapp(self, value: Optional[pulumi.Input['VirtualMachineVappArgs']]):
+        pulumi.set(self, "vapp", value)
+
+    @property
+    @pulumi.getter(name="vappTransports")
+    def vapp_transports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Computed value which is only valid for cloned virtual
+        machines. A list of vApp transport methods supported by the source virtual
+        machine or template.
+        """
+        return pulumi.get(self, "vapp_transports")
+
+    @vapp_transports.setter
+    def vapp_transports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vapp_transports", value)
+
+    @property
+    @pulumi.getter(name="vmwareToolsStatus")
+    def vmware_tools_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of VMware tools in the guest. This will
+        determine the proper course of action for some device operations.
+        """
+        return pulumi.get(self, "vmware_tools_status")
+
+    @vmware_tools_status.setter
+    def vmware_tools_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vmware_tools_status", value)
+
+    @property
+    @pulumi.getter(name="vmxPath")
+    def vmx_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the virtual machine's configuration file in the VM's
+        datastore.
+        """
+        return pulumi.get(self, "vmx_path")
+
+    @vmx_path.setter
+    def vmx_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vmx_path", value)
+
+    @property
+    @pulumi.getter(name="waitForGuestIpTimeout")
+    def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in minutes, to
+        wait for an available guest IP address on this virtual machine. This should
+        only be used if your version of VMware Tools does not allow the
+        `wait_for_guest_net_timeout` waiter to be
+        used. A value less than 1 disables the waiter. Default: 0.
+        """
+        return pulumi.get(self, "wait_for_guest_ip_timeout")
+
+    @wait_for_guest_ip_timeout.setter
+    def wait_for_guest_ip_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "wait_for_guest_ip_timeout", value)
+
+    @property
+    @pulumi.getter(name="waitForGuestNetRoutable")
+    def wait_for_guest_net_routable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether or not the guest
+        network waiter waits for a routable address. When `false`, the waiter does
+        not wait for a default gateway, nor are IP addresses checked against any
+        discovered default gateways as part of its success criteria. This property is
+        ignored if the `wait_for_guest_ip_timeout`
+        waiter is used. Default: `true`.
+        """
+        return pulumi.get(self, "wait_for_guest_net_routable")
+
+    @wait_for_guest_net_routable.setter
+    def wait_for_guest_net_routable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait_for_guest_net_routable", value)
+
+    @property
+    @pulumi.getter(name="waitForGuestNetTimeout")
+    def wait_for_guest_net_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in minutes, to
+        wait for an available IP address on this virtual machine's NICs. Older
+        versions of VMware Tools do not populate this property. In those cases, this
+        waiter can be disabled and the
+        `wait_for_guest_ip_timeout` waiter can be used
+        instead. A value less than 1 disables the waiter. Default: 5 minutes.
+        """
+        return pulumi.get(self, "wait_for_guest_net_timeout")
+
+    @wait_for_guest_net_timeout.setter
+    def wait_for_guest_net_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "wait_for_guest_net_timeout", value)
+
+
 class VirtualMachine(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -1728,88 +3270,88 @@ class VirtualMachine(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VirtualMachineArgs.__new__(VirtualMachineArgs)
 
-            __props__['alternate_guest_name'] = alternate_guest_name
-            __props__['annotation'] = annotation
-            __props__['boot_delay'] = boot_delay
-            __props__['boot_retry_delay'] = boot_retry_delay
-            __props__['boot_retry_enabled'] = boot_retry_enabled
-            __props__['cdrom'] = cdrom
-            __props__['clone'] = clone
-            __props__['cpu_hot_add_enabled'] = cpu_hot_add_enabled
-            __props__['cpu_hot_remove_enabled'] = cpu_hot_remove_enabled
-            __props__['cpu_limit'] = cpu_limit
-            __props__['cpu_performance_counters_enabled'] = cpu_performance_counters_enabled
-            __props__['cpu_reservation'] = cpu_reservation
-            __props__['cpu_share_count'] = cpu_share_count
-            __props__['cpu_share_level'] = cpu_share_level
-            __props__['custom_attributes'] = custom_attributes
-            __props__['datacenter_id'] = datacenter_id
-            __props__['datastore_cluster_id'] = datastore_cluster_id
-            __props__['datastore_id'] = datastore_id
-            __props__['disks'] = disks
-            __props__['efi_secure_boot_enabled'] = efi_secure_boot_enabled
-            __props__['enable_disk_uuid'] = enable_disk_uuid
-            __props__['enable_logging'] = enable_logging
-            __props__['ept_rvi_mode'] = ept_rvi_mode
-            __props__['extra_config'] = extra_config
-            __props__['firmware'] = firmware
-            __props__['folder'] = folder
-            __props__['force_power_off'] = force_power_off
-            __props__['guest_id'] = guest_id
-            __props__['hardware_version'] = hardware_version
-            __props__['host_system_id'] = host_system_id
-            __props__['hv_mode'] = hv_mode
-            __props__['ide_controller_count'] = ide_controller_count
-            __props__['ignored_guest_ips'] = ignored_guest_ips
-            __props__['latency_sensitivity'] = latency_sensitivity
-            __props__['memory'] = memory
-            __props__['memory_hot_add_enabled'] = memory_hot_add_enabled
-            __props__['memory_limit'] = memory_limit
-            __props__['memory_reservation'] = memory_reservation
-            __props__['memory_share_count'] = memory_share_count
-            __props__['memory_share_level'] = memory_share_level
-            __props__['migrate_wait_timeout'] = migrate_wait_timeout
-            __props__['name'] = name
-            __props__['nested_hv_enabled'] = nested_hv_enabled
-            __props__['network_interfaces'] = network_interfaces
-            __props__['num_cores_per_socket'] = num_cores_per_socket
-            __props__['num_cpus'] = num_cpus
-            __props__['ovf_deploy'] = ovf_deploy
-            __props__['pci_device_ids'] = pci_device_ids
-            __props__['poweron_timeout'] = poweron_timeout
+            __props__.__dict__["alternate_guest_name"] = alternate_guest_name
+            __props__.__dict__["annotation"] = annotation
+            __props__.__dict__["boot_delay"] = boot_delay
+            __props__.__dict__["boot_retry_delay"] = boot_retry_delay
+            __props__.__dict__["boot_retry_enabled"] = boot_retry_enabled
+            __props__.__dict__["cdrom"] = cdrom
+            __props__.__dict__["clone"] = clone
+            __props__.__dict__["cpu_hot_add_enabled"] = cpu_hot_add_enabled
+            __props__.__dict__["cpu_hot_remove_enabled"] = cpu_hot_remove_enabled
+            __props__.__dict__["cpu_limit"] = cpu_limit
+            __props__.__dict__["cpu_performance_counters_enabled"] = cpu_performance_counters_enabled
+            __props__.__dict__["cpu_reservation"] = cpu_reservation
+            __props__.__dict__["cpu_share_count"] = cpu_share_count
+            __props__.__dict__["cpu_share_level"] = cpu_share_level
+            __props__.__dict__["custom_attributes"] = custom_attributes
+            __props__.__dict__["datacenter_id"] = datacenter_id
+            __props__.__dict__["datastore_cluster_id"] = datastore_cluster_id
+            __props__.__dict__["datastore_id"] = datastore_id
+            __props__.__dict__["disks"] = disks
+            __props__.__dict__["efi_secure_boot_enabled"] = efi_secure_boot_enabled
+            __props__.__dict__["enable_disk_uuid"] = enable_disk_uuid
+            __props__.__dict__["enable_logging"] = enable_logging
+            __props__.__dict__["ept_rvi_mode"] = ept_rvi_mode
+            __props__.__dict__["extra_config"] = extra_config
+            __props__.__dict__["firmware"] = firmware
+            __props__.__dict__["folder"] = folder
+            __props__.__dict__["force_power_off"] = force_power_off
+            __props__.__dict__["guest_id"] = guest_id
+            __props__.__dict__["hardware_version"] = hardware_version
+            __props__.__dict__["host_system_id"] = host_system_id
+            __props__.__dict__["hv_mode"] = hv_mode
+            __props__.__dict__["ide_controller_count"] = ide_controller_count
+            __props__.__dict__["ignored_guest_ips"] = ignored_guest_ips
+            __props__.__dict__["latency_sensitivity"] = latency_sensitivity
+            __props__.__dict__["memory"] = memory
+            __props__.__dict__["memory_hot_add_enabled"] = memory_hot_add_enabled
+            __props__.__dict__["memory_limit"] = memory_limit
+            __props__.__dict__["memory_reservation"] = memory_reservation
+            __props__.__dict__["memory_share_count"] = memory_share_count
+            __props__.__dict__["memory_share_level"] = memory_share_level
+            __props__.__dict__["migrate_wait_timeout"] = migrate_wait_timeout
+            __props__.__dict__["name"] = name
+            __props__.__dict__["nested_hv_enabled"] = nested_hv_enabled
+            __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
+            __props__.__dict__["num_cpus"] = num_cpus
+            __props__.__dict__["ovf_deploy"] = ovf_deploy
+            __props__.__dict__["pci_device_ids"] = pci_device_ids
+            __props__.__dict__["poweron_timeout"] = poweron_timeout
             if resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_pool_id'")
-            __props__['resource_pool_id'] = resource_pool_id
-            __props__['run_tools_scripts_after_power_on'] = run_tools_scripts_after_power_on
-            __props__['run_tools_scripts_after_resume'] = run_tools_scripts_after_resume
-            __props__['run_tools_scripts_before_guest_reboot'] = run_tools_scripts_before_guest_reboot
-            __props__['run_tools_scripts_before_guest_shutdown'] = run_tools_scripts_before_guest_shutdown
-            __props__['run_tools_scripts_before_guest_standby'] = run_tools_scripts_before_guest_standby
-            __props__['sata_controller_count'] = sata_controller_count
-            __props__['scsi_bus_sharing'] = scsi_bus_sharing
-            __props__['scsi_controller_count'] = scsi_controller_count
-            __props__['scsi_type'] = scsi_type
-            __props__['shutdown_wait_timeout'] = shutdown_wait_timeout
-            __props__['storage_policy_id'] = storage_policy_id
-            __props__['swap_placement_policy'] = swap_placement_policy
-            __props__['sync_time_with_host'] = sync_time_with_host
-            __props__['tags'] = tags
-            __props__['vapp'] = vapp
-            __props__['wait_for_guest_ip_timeout'] = wait_for_guest_ip_timeout
-            __props__['wait_for_guest_net_routable'] = wait_for_guest_net_routable
-            __props__['wait_for_guest_net_timeout'] = wait_for_guest_net_timeout
-            __props__['change_version'] = None
-            __props__['default_ip_address'] = None
-            __props__['guest_ip_addresses'] = None
-            __props__['imported'] = None
-            __props__['moid'] = None
-            __props__['reboot_required'] = None
-            __props__['uuid'] = None
-            __props__['vapp_transports'] = None
-            __props__['vmware_tools_status'] = None
-            __props__['vmx_path'] = None
+            __props__.__dict__["resource_pool_id"] = resource_pool_id
+            __props__.__dict__["run_tools_scripts_after_power_on"] = run_tools_scripts_after_power_on
+            __props__.__dict__["run_tools_scripts_after_resume"] = run_tools_scripts_after_resume
+            __props__.__dict__["run_tools_scripts_before_guest_reboot"] = run_tools_scripts_before_guest_reboot
+            __props__.__dict__["run_tools_scripts_before_guest_shutdown"] = run_tools_scripts_before_guest_shutdown
+            __props__.__dict__["run_tools_scripts_before_guest_standby"] = run_tools_scripts_before_guest_standby
+            __props__.__dict__["sata_controller_count"] = sata_controller_count
+            __props__.__dict__["scsi_bus_sharing"] = scsi_bus_sharing
+            __props__.__dict__["scsi_controller_count"] = scsi_controller_count
+            __props__.__dict__["scsi_type"] = scsi_type
+            __props__.__dict__["shutdown_wait_timeout"] = shutdown_wait_timeout
+            __props__.__dict__["storage_policy_id"] = storage_policy_id
+            __props__.__dict__["swap_placement_policy"] = swap_placement_policy
+            __props__.__dict__["sync_time_with_host"] = sync_time_with_host
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["vapp"] = vapp
+            __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
+            __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
+            __props__.__dict__["wait_for_guest_net_timeout"] = wait_for_guest_net_timeout
+            __props__.__dict__["change_version"] = None
+            __props__.__dict__["default_ip_address"] = None
+            __props__.__dict__["guest_ip_addresses"] = None
+            __props__.__dict__["imported"] = None
+            __props__.__dict__["moid"] = None
+            __props__.__dict__["reboot_required"] = None
+            __props__.__dict__["uuid"] = None
+            __props__.__dict__["vapp_transports"] = None
+            __props__.__dict__["vmware_tools_status"] = None
+            __props__.__dict__["vmx_path"] = None
         super(VirtualMachine, __self__).__init__(
             'vsphere:index/virtualMachine:VirtualMachine',
             resource_name,
@@ -2129,86 +3671,86 @@ class VirtualMachine(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VirtualMachineState.__new__(_VirtualMachineState)
 
-        __props__["alternate_guest_name"] = alternate_guest_name
-        __props__["annotation"] = annotation
-        __props__["boot_delay"] = boot_delay
-        __props__["boot_retry_delay"] = boot_retry_delay
-        __props__["boot_retry_enabled"] = boot_retry_enabled
-        __props__["cdrom"] = cdrom
-        __props__["change_version"] = change_version
-        __props__["clone"] = clone
-        __props__["cpu_hot_add_enabled"] = cpu_hot_add_enabled
-        __props__["cpu_hot_remove_enabled"] = cpu_hot_remove_enabled
-        __props__["cpu_limit"] = cpu_limit
-        __props__["cpu_performance_counters_enabled"] = cpu_performance_counters_enabled
-        __props__["cpu_reservation"] = cpu_reservation
-        __props__["cpu_share_count"] = cpu_share_count
-        __props__["cpu_share_level"] = cpu_share_level
-        __props__["custom_attributes"] = custom_attributes
-        __props__["datacenter_id"] = datacenter_id
-        __props__["datastore_cluster_id"] = datastore_cluster_id
-        __props__["datastore_id"] = datastore_id
-        __props__["default_ip_address"] = default_ip_address
-        __props__["disks"] = disks
-        __props__["efi_secure_boot_enabled"] = efi_secure_boot_enabled
-        __props__["enable_disk_uuid"] = enable_disk_uuid
-        __props__["enable_logging"] = enable_logging
-        __props__["ept_rvi_mode"] = ept_rvi_mode
-        __props__["extra_config"] = extra_config
-        __props__["firmware"] = firmware
-        __props__["folder"] = folder
-        __props__["force_power_off"] = force_power_off
-        __props__["guest_id"] = guest_id
-        __props__["guest_ip_addresses"] = guest_ip_addresses
-        __props__["hardware_version"] = hardware_version
-        __props__["host_system_id"] = host_system_id
-        __props__["hv_mode"] = hv_mode
-        __props__["ide_controller_count"] = ide_controller_count
-        __props__["ignored_guest_ips"] = ignored_guest_ips
-        __props__["imported"] = imported
-        __props__["latency_sensitivity"] = latency_sensitivity
-        __props__["memory"] = memory
-        __props__["memory_hot_add_enabled"] = memory_hot_add_enabled
-        __props__["memory_limit"] = memory_limit
-        __props__["memory_reservation"] = memory_reservation
-        __props__["memory_share_count"] = memory_share_count
-        __props__["memory_share_level"] = memory_share_level
-        __props__["migrate_wait_timeout"] = migrate_wait_timeout
-        __props__["moid"] = moid
-        __props__["name"] = name
-        __props__["nested_hv_enabled"] = nested_hv_enabled
-        __props__["network_interfaces"] = network_interfaces
-        __props__["num_cores_per_socket"] = num_cores_per_socket
-        __props__["num_cpus"] = num_cpus
-        __props__["ovf_deploy"] = ovf_deploy
-        __props__["pci_device_ids"] = pci_device_ids
-        __props__["poweron_timeout"] = poweron_timeout
-        __props__["reboot_required"] = reboot_required
-        __props__["resource_pool_id"] = resource_pool_id
-        __props__["run_tools_scripts_after_power_on"] = run_tools_scripts_after_power_on
-        __props__["run_tools_scripts_after_resume"] = run_tools_scripts_after_resume
-        __props__["run_tools_scripts_before_guest_reboot"] = run_tools_scripts_before_guest_reboot
-        __props__["run_tools_scripts_before_guest_shutdown"] = run_tools_scripts_before_guest_shutdown
-        __props__["run_tools_scripts_before_guest_standby"] = run_tools_scripts_before_guest_standby
-        __props__["sata_controller_count"] = sata_controller_count
-        __props__["scsi_bus_sharing"] = scsi_bus_sharing
-        __props__["scsi_controller_count"] = scsi_controller_count
-        __props__["scsi_type"] = scsi_type
-        __props__["shutdown_wait_timeout"] = shutdown_wait_timeout
-        __props__["storage_policy_id"] = storage_policy_id
-        __props__["swap_placement_policy"] = swap_placement_policy
-        __props__["sync_time_with_host"] = sync_time_with_host
-        __props__["tags"] = tags
-        __props__["uuid"] = uuid
-        __props__["vapp"] = vapp
-        __props__["vapp_transports"] = vapp_transports
-        __props__["vmware_tools_status"] = vmware_tools_status
-        __props__["vmx_path"] = vmx_path
-        __props__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
-        __props__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
-        __props__["wait_for_guest_net_timeout"] = wait_for_guest_net_timeout
+        __props__.__dict__["alternate_guest_name"] = alternate_guest_name
+        __props__.__dict__["annotation"] = annotation
+        __props__.__dict__["boot_delay"] = boot_delay
+        __props__.__dict__["boot_retry_delay"] = boot_retry_delay
+        __props__.__dict__["boot_retry_enabled"] = boot_retry_enabled
+        __props__.__dict__["cdrom"] = cdrom
+        __props__.__dict__["change_version"] = change_version
+        __props__.__dict__["clone"] = clone
+        __props__.__dict__["cpu_hot_add_enabled"] = cpu_hot_add_enabled
+        __props__.__dict__["cpu_hot_remove_enabled"] = cpu_hot_remove_enabled
+        __props__.__dict__["cpu_limit"] = cpu_limit
+        __props__.__dict__["cpu_performance_counters_enabled"] = cpu_performance_counters_enabled
+        __props__.__dict__["cpu_reservation"] = cpu_reservation
+        __props__.__dict__["cpu_share_count"] = cpu_share_count
+        __props__.__dict__["cpu_share_level"] = cpu_share_level
+        __props__.__dict__["custom_attributes"] = custom_attributes
+        __props__.__dict__["datacenter_id"] = datacenter_id
+        __props__.__dict__["datastore_cluster_id"] = datastore_cluster_id
+        __props__.__dict__["datastore_id"] = datastore_id
+        __props__.__dict__["default_ip_address"] = default_ip_address
+        __props__.__dict__["disks"] = disks
+        __props__.__dict__["efi_secure_boot_enabled"] = efi_secure_boot_enabled
+        __props__.__dict__["enable_disk_uuid"] = enable_disk_uuid
+        __props__.__dict__["enable_logging"] = enable_logging
+        __props__.__dict__["ept_rvi_mode"] = ept_rvi_mode
+        __props__.__dict__["extra_config"] = extra_config
+        __props__.__dict__["firmware"] = firmware
+        __props__.__dict__["folder"] = folder
+        __props__.__dict__["force_power_off"] = force_power_off
+        __props__.__dict__["guest_id"] = guest_id
+        __props__.__dict__["guest_ip_addresses"] = guest_ip_addresses
+        __props__.__dict__["hardware_version"] = hardware_version
+        __props__.__dict__["host_system_id"] = host_system_id
+        __props__.__dict__["hv_mode"] = hv_mode
+        __props__.__dict__["ide_controller_count"] = ide_controller_count
+        __props__.__dict__["ignored_guest_ips"] = ignored_guest_ips
+        __props__.__dict__["imported"] = imported
+        __props__.__dict__["latency_sensitivity"] = latency_sensitivity
+        __props__.__dict__["memory"] = memory
+        __props__.__dict__["memory_hot_add_enabled"] = memory_hot_add_enabled
+        __props__.__dict__["memory_limit"] = memory_limit
+        __props__.__dict__["memory_reservation"] = memory_reservation
+        __props__.__dict__["memory_share_count"] = memory_share_count
+        __props__.__dict__["memory_share_level"] = memory_share_level
+        __props__.__dict__["migrate_wait_timeout"] = migrate_wait_timeout
+        __props__.__dict__["moid"] = moid
+        __props__.__dict__["name"] = name
+        __props__.__dict__["nested_hv_enabled"] = nested_hv_enabled
+        __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
+        __props__.__dict__["num_cpus"] = num_cpus
+        __props__.__dict__["ovf_deploy"] = ovf_deploy
+        __props__.__dict__["pci_device_ids"] = pci_device_ids
+        __props__.__dict__["poweron_timeout"] = poweron_timeout
+        __props__.__dict__["reboot_required"] = reboot_required
+        __props__.__dict__["resource_pool_id"] = resource_pool_id
+        __props__.__dict__["run_tools_scripts_after_power_on"] = run_tools_scripts_after_power_on
+        __props__.__dict__["run_tools_scripts_after_resume"] = run_tools_scripts_after_resume
+        __props__.__dict__["run_tools_scripts_before_guest_reboot"] = run_tools_scripts_before_guest_reboot
+        __props__.__dict__["run_tools_scripts_before_guest_shutdown"] = run_tools_scripts_before_guest_shutdown
+        __props__.__dict__["run_tools_scripts_before_guest_standby"] = run_tools_scripts_before_guest_standby
+        __props__.__dict__["sata_controller_count"] = sata_controller_count
+        __props__.__dict__["scsi_bus_sharing"] = scsi_bus_sharing
+        __props__.__dict__["scsi_controller_count"] = scsi_controller_count
+        __props__.__dict__["scsi_type"] = scsi_type
+        __props__.__dict__["shutdown_wait_timeout"] = shutdown_wait_timeout
+        __props__.__dict__["storage_policy_id"] = storage_policy_id
+        __props__.__dict__["swap_placement_policy"] = swap_placement_policy
+        __props__.__dict__["sync_time_with_host"] = sync_time_with_host
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["uuid"] = uuid
+        __props__.__dict__["vapp"] = vapp
+        __props__.__dict__["vapp_transports"] = vapp_transports
+        __props__.__dict__["vmware_tools_status"] = vmware_tools_status
+        __props__.__dict__["vmx_path"] = vmx_path
+        __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
+        __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
+        __props__.__dict__["wait_for_guest_net_timeout"] = wait_for_guest_net_timeout
         return VirtualMachine(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2977,10 +4519,4 @@ class VirtualMachine(pulumi.CustomResource):
         instead. A value less than 1 disables the waiter. Default: 5 minutes.
         """
         return pulumi.get(self, "wait_for_guest_net_timeout")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

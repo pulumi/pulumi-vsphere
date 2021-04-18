@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -339,53 +339,47 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
             if allow_unverified_ssl is None:
                 allow_unverified_ssl = _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
-            __props__['allow_unverified_ssl'] = pulumi.Output.from_input(allow_unverified_ssl).apply(pulumi.runtime.to_json) if allow_unverified_ssl is not None else None
-            __props__['api_timeout'] = pulumi.Output.from_input(api_timeout).apply(pulumi.runtime.to_json) if api_timeout is not None else None
+            __props__.__dict__["allow_unverified_ssl"] = pulumi.Output.from_input(allow_unverified_ssl).apply(pulumi.runtime.to_json) if allow_unverified_ssl is not None else None
+            __props__.__dict__["api_timeout"] = pulumi.Output.from_input(api_timeout).apply(pulumi.runtime.to_json) if api_timeout is not None else None
             if client_debug is None:
                 client_debug = _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
-            __props__['client_debug'] = pulumi.Output.from_input(client_debug).apply(pulumi.runtime.to_json) if client_debug is not None else None
+            __props__.__dict__["client_debug"] = pulumi.Output.from_input(client_debug).apply(pulumi.runtime.to_json) if client_debug is not None else None
             if client_debug_path is None:
                 client_debug_path = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
-            __props__['client_debug_path'] = client_debug_path
+            __props__.__dict__["client_debug_path"] = client_debug_path
             if client_debug_path_run is None:
                 client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
-            __props__['client_debug_path_run'] = client_debug_path_run
+            __props__.__dict__["client_debug_path_run"] = client_debug_path_run
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__['password'] = password
+            __props__.__dict__["password"] = password
             if persist_session is None:
                 persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
-            __props__['persist_session'] = pulumi.Output.from_input(persist_session).apply(pulumi.runtime.to_json) if persist_session is not None else None
+            __props__.__dict__["persist_session"] = pulumi.Output.from_input(persist_session).apply(pulumi.runtime.to_json) if persist_session is not None else None
             if rest_session_path is None:
                 rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
-            __props__['rest_session_path'] = rest_session_path
+            __props__.__dict__["rest_session_path"] = rest_session_path
             if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
-            __props__['user'] = user
+            __props__.__dict__["user"] = user
             if vcenter_server is not None and not opts.urn:
                 warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
                 pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
-            __props__['vcenter_server'] = vcenter_server
+            __props__.__dict__["vcenter_server"] = vcenter_server
             if vim_keep_alive is None:
                 vim_keep_alive = _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
-            __props__['vim_keep_alive'] = pulumi.Output.from_input(vim_keep_alive).apply(pulumi.runtime.to_json) if vim_keep_alive is not None else None
+            __props__.__dict__["vim_keep_alive"] = pulumi.Output.from_input(vim_keep_alive).apply(pulumi.runtime.to_json) if vim_keep_alive is not None else None
             if vim_session_path is None:
                 vim_session_path = _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
-            __props__['vim_session_path'] = vim_session_path
-            __props__['vsphere_server'] = vsphere_server
+            __props__.__dict__["vim_session_path"] = vim_session_path
+            __props__.__dict__["vsphere_server"] = vsphere_server
         super(Provider, __self__).__init__(
             'vsphere',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

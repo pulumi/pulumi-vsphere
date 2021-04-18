@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -66,6 +66,66 @@ class EntityPermissionsArgs:
 
     @permissions.setter
     def permissions(self, value: pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class _EntityPermissionsState:
+    def __init__(__self__, *,
+                 entity_id: Optional[pulumi.Input[str]] = None,
+                 entity_type: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering EntityPermissions resources.
+        :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
+        :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
+               [here](https://code.vmware.com/apis/968/vsphere).
+        :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
+               alphabetically on `user_or_group` for a better user experience.
+        """
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+        if entity_type is not None:
+            pulumi.set(__self__, "entity_type", entity_type)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object id (uuid for some entities) on which permissions are to be created.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object type, types can be found in the managed object type section 
+        [here](https://code.vmware.com/apis/968/vsphere).
+        """
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_type", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]:
+        """
+        The permissions to be given on this entity. Keep the permissions sorted
+        alphabetically on `user_or_group` for a better user experience.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
 
@@ -134,17 +194,17 @@ class EntityPermissions(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EntityPermissionsArgs.__new__(EntityPermissionsArgs)
 
             if entity_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_id'")
-            __props__['entity_id'] = entity_id
+            __props__.__dict__["entity_id"] = entity_id
             if entity_type is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_type'")
-            __props__['entity_type'] = entity_type
+            __props__.__dict__["entity_type"] = entity_type
             if permissions is None and not opts.urn:
                 raise TypeError("Missing required property 'permissions'")
-            __props__['permissions'] = permissions
+            __props__.__dict__["permissions"] = permissions
         super(EntityPermissions, __self__).__init__(
             'vsphere:index/entityPermissions:EntityPermissions',
             resource_name,
@@ -173,11 +233,11 @@ class EntityPermissions(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EntityPermissionsState.__new__(_EntityPermissionsState)
 
-        __props__["entity_id"] = entity_id
-        __props__["entity_type"] = entity_type
-        __props__["permissions"] = permissions
+        __props__.__dict__["entity_id"] = entity_id
+        __props__.__dict__["entity_type"] = entity_type
+        __props__.__dict__["permissions"] = permissions
         return EntityPermissions(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -205,10 +265,4 @@ class EntityPermissions(pulumi.CustomResource):
         alphabetically on `user_or_group` for a better user experience.
         """
         return pulumi.get(self, "permissions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

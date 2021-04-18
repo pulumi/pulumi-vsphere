@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ComputeClusterHostGroupArgs', 'ComputeClusterHostGroup']
 
@@ -44,6 +44,70 @@ class ComputeClusterHostGroupArgs:
 
     @compute_cluster_id.setter
     def compute_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "compute_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="hostSystemIds")
+    def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The managed object IDs of
+        the hosts to put in the cluster.
+        """
+        return pulumi.get(self, "host_system_ids")
+
+    @host_system_ids.setter
+    def host_system_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "host_system_ids", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the host group. This must be unique in the
+        cluster. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _ComputeClusterHostGroupState:
+    def __init__(__self__, *,
+                 compute_cluster_id: Optional[pulumi.Input[str]] = None,
+                 host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ComputeClusterHostGroup resources.
+        :param pulumi.Input[str] compute_cluster_id: The managed object reference
+               ID of the cluster to put the group in.  Forces a new
+               resource if changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
+               the hosts to put in the cluster.
+        :param pulumi.Input[str] name: The name of the host group. This must be unique in the
+               cluster. Forces a new resource if changed.
+        """
+        if compute_cluster_id is not None:
+            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        if host_system_ids is not None:
+            pulumi.set(__self__, "host_system_ids", host_system_ids)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="computeClusterId")
+    def compute_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object reference
+        ID of the cluster to put the group in.  Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "compute_cluster_id")
+
+    @compute_cluster_id.setter
+    def compute_cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "compute_cluster_id", value)
 
     @property
@@ -140,13 +204,13 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ComputeClusterHostGroupArgs.__new__(ComputeClusterHostGroupArgs)
 
             if compute_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_cluster_id'")
-            __props__['compute_cluster_id'] = compute_cluster_id
-            __props__['host_system_ids'] = host_system_ids
-            __props__['name'] = name
+            __props__.__dict__["compute_cluster_id"] = compute_cluster_id
+            __props__.__dict__["host_system_ids"] = host_system_ids
+            __props__.__dict__["name"] = name
         super(ComputeClusterHostGroup, __self__).__init__(
             'vsphere:index/computeClusterHostGroup:ComputeClusterHostGroup',
             resource_name,
@@ -177,11 +241,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ComputeClusterHostGroupState.__new__(_ComputeClusterHostGroupState)
 
-        __props__["compute_cluster_id"] = compute_cluster_id
-        __props__["host_system_ids"] = host_system_ids
-        __props__["name"] = name
+        __props__.__dict__["compute_cluster_id"] = compute_cluster_id
+        __props__.__dict__["host_system_ids"] = host_system_ids
+        __props__.__dict__["name"] = name
         return ComputeClusterHostGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -211,10 +275,4 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         cluster. Forces a new resource if changed.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -8,8 +8,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^2.0.0",
-        "@pulumi/vsphere": "latest"
+        "@pulumi/pulumi": "^2.0.0"
     },
     "devDependencies": {
         "@types/node": "latest",

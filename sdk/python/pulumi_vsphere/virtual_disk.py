@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VirtualDiskArgs', 'VirtualDisk']
 
@@ -150,6 +150,149 @@ class VirtualDiskArgs:
         pulumi.set(self, "type", value)
 
 
+@pulumi.input_type
+class _VirtualDiskState:
+    def __init__(__self__, *,
+                 adapter_type: Optional[pulumi.Input[str]] = None,
+                 create_directories: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 vmdk_path: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VirtualDisk resources.
+        :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
+               one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+        :param pulumi.Input[bool] create_directories: Tells the resource to create any
+               directories that are a part of the `vmdk_path` parameter if they are missing.
+               Default: `false`.
+        :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
+               disk. Can be omitted when when ESXi or if there is only one datacenter in
+               your infrastructure.
+        :param pulumi.Input[str] datastore: The name of the datastore in which to create the
+               disk.
+        :param pulumi.Input[int] size: Size of the disk (in GB).
+        :param pulumi.Input[str] type: The type of disk to create. Can be one of
+               `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+               information on what each kind of disk provisioning policy means, click
+               [here][docs-vmware-vm-disk-provisioning].
+        :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
+               be created.  This needs to end in `.vmdk`.
+        """
+        if adapter_type is not None:
+            warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+            pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
+        if adapter_type is not None:
+            pulumi.set(__self__, "adapter_type", adapter_type)
+        if create_directories is not None:
+            pulumi.set(__self__, "create_directories", create_directories)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vmdk_path is not None:
+            pulumi.set(__self__, "vmdk_path", vmdk_path)
+
+    @property
+    @pulumi.getter(name="adapterType")
+    def adapter_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The adapter type for this virtual disk. Can be
+        one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+        """
+        return pulumi.get(self, "adapter_type")
+
+    @adapter_type.setter
+    def adapter_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adapter_type", value)
+
+    @property
+    @pulumi.getter(name="createDirectories")
+    def create_directories(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Tells the resource to create any
+        directories that are a part of the `vmdk_path` parameter if they are missing.
+        Default: `false`.
+        """
+        return pulumi.get(self, "create_directories")
+
+    @create_directories.setter
+    def create_directories(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_directories", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datacenter in which to create the
+        disk. Can be omitted when when ESXi or if there is only one datacenter in
+        your infrastructure.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the datastore in which to create the
+        disk.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Size of the disk (in GB).
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of disk to create. Can be one of
+        `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+        information on what each kind of disk provisioning policy means, click
+        [here][docs-vmware-vm-disk-provisioning].
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vmdkPath")
+    def vmdk_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path, including filename, of the virtual disk to
+        be created.  This needs to end in `.vmdk`.
+        """
+        return pulumi.get(self, "vmdk_path")
+
+    @vmdk_path.setter
+    def vmdk_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vmdk_path", value)
+
+
 class VirtualDisk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -271,24 +414,24 @@ class VirtualDisk(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VirtualDiskArgs.__new__(VirtualDiskArgs)
 
             if adapter_type is not None and not opts.urn:
                 warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
                 pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
-            __props__['adapter_type'] = adapter_type
-            __props__['create_directories'] = create_directories
-            __props__['datacenter'] = datacenter
+            __props__.__dict__["adapter_type"] = adapter_type
+            __props__.__dict__["create_directories"] = create_directories
+            __props__.__dict__["datacenter"] = datacenter
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
-            __props__['datastore'] = datastore
+            __props__.__dict__["datastore"] = datastore
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
-            __props__['size'] = size
-            __props__['type'] = type
+            __props__.__dict__["size"] = size
+            __props__.__dict__["type"] = type
             if vmdk_path is None and not opts.urn:
                 raise TypeError("Missing required property 'vmdk_path'")
-            __props__['vmdk_path'] = vmdk_path
+            __props__.__dict__["vmdk_path"] = vmdk_path
         super(VirtualDisk, __self__).__init__(
             'vsphere:index/virtualDisk:VirtualDisk',
             resource_name,
@@ -333,15 +476,15 @@ class VirtualDisk(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VirtualDiskState.__new__(_VirtualDiskState)
 
-        __props__["adapter_type"] = adapter_type
-        __props__["create_directories"] = create_directories
-        __props__["datacenter"] = datacenter
-        __props__["datastore"] = datastore
-        __props__["size"] = size
-        __props__["type"] = type
-        __props__["vmdk_path"] = vmdk_path
+        __props__.__dict__["adapter_type"] = adapter_type
+        __props__.__dict__["create_directories"] = create_directories
+        __props__.__dict__["datacenter"] = datacenter
+        __props__.__dict__["datastore"] = datastore
+        __props__.__dict__["size"] = size
+        __props__.__dict__["type"] = type
+        __props__.__dict__["vmdk_path"] = vmdk_path
         return VirtualDisk(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -409,10 +552,4 @@ class VirtualDisk(pulumi.CustomResource):
         be created.  This needs to end in `.vmdk`.
         """
         return pulumi.get(self, "vmdk_path")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

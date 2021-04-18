@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['HostVirtualSwitchArgs', 'HostVirtualSwitch']
 
@@ -406,6 +406,406 @@ class HostVirtualSwitchArgs:
         pulumi.set(self, "teaming_policy", value)
 
 
+@pulumi.input_type
+class _HostVirtualSwitchState:
+    def __init__(__self__, *,
+                 active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+                 allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+                 allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 beacon_interval: Optional[pulumi.Input[int]] = None,
+                 check_beacon: Optional[pulumi.Input[bool]] = None,
+                 failback: Optional[pulumi.Input[bool]] = None,
+                 host_system_id: Optional[pulumi.Input[str]] = None,
+                 link_discovery_operation: Optional[pulumi.Input[str]] = None,
+                 link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_adapters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notify_switches: Optional[pulumi.Input[bool]] = None,
+                 number_of_ports: Optional[pulumi.Input[int]] = None,
+                 shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+                 shaping_burst_size: Optional[pulumi.Input[int]] = None,
+                 shaping_enabled: Optional[pulumi.Input[bool]] = None,
+                 shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+                 standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teaming_policy: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering HostVirtualSwitch resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_nics: The list of active network adapters used for load
+               balancing.
+        :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not the virtual
+               network adapter is allowed to send network traffic with a different MAC
+               address than that of its own. Default: `true`.
+        :param pulumi.Input[bool] allow_mac_changes: Controls whether or not the Media Access
+               Control (MAC) address can be changed. Default: `true`.
+        :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
+               flag indicates whether or not all traffic is seen on a given port. Default:
+               `false`.
+        :param pulumi.Input[int] beacon_interval: The interval, in seconds, that a NIC beacon
+               packet is sent out. This can be used with `check_beacon` to
+               offer link failure capability beyond link status only. Default: `1`.
+        :param pulumi.Input[bool] check_beacon: Enable beacon probing - this requires that the
+               `beacon_interval` option has been set in the bridge
+               options. If this is set to `false`, only link status is used to check for
+               failed NICs.  Default: `false`.
+        :param pulumi.Input[bool] failback: If set to `true`, the teaming policy will re-activate
+               failed interfaces higher in precedence when they come back up.  Default:
+               `true`.
+        :param pulumi.Input[str] host_system_id: The managed object ID of
+               the host to set the virtual switch up on. Forces a new resource if changed.
+        :param pulumi.Input[str] link_discovery_operation: Whether to `advertise` or `listen`
+               for link discovery traffic. Default: `listen`.
+        :param pulumi.Input[str] link_discovery_protocol: The discovery protocol type.  Valid
+               types are `cpd` and `lldp`. Default: `cdp`.
+        :param pulumi.Input[int] mtu: The maximum transmission unit (MTU) for the virtual
+               switch. Default: `1500`.
+        :param pulumi.Input[str] name: The name of the virtual switch. Forces a new resource if
+               changed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_adapters: The network interfaces to bind to the bridge.
+        :param pulumi.Input[bool] notify_switches: If set to `true`, the teaming policy will
+               notify the broadcast network of a NIC failover, triggering cache updates.
+               Default: `true`.
+        :param pulumi.Input[int] number_of_ports: The number of ports to create with this
+               virtual switch. Default: `128`.
+        :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
+               second if traffic shaping is enabled. Default: `0`
+        :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
+               shaping is enabled. Default: `0`
+        :param pulumi.Input[bool] shaping_enabled: Set to `true` to enable the traffic shaper for
+               ports managed by this virtual switch. Default: `false`.
+        :param pulumi.Input[int] shaping_peak_bandwidth: The peak bandwidth during bursts in
+               bits per second if traffic shaping is enabled. Default: `0`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_nics: The list of standby network adapters used for
+               failover.
+        :param pulumi.Input[str] teaming_policy: The network adapter teaming policy. Can be one
+               of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+               `failover_explicit`. Default: `loadbalance_srcid`.
+        """
+        if active_nics is not None:
+            pulumi.set(__self__, "active_nics", active_nics)
+        if allow_forged_transmits is not None:
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+        if allow_mac_changes is not None:
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+        if allow_promiscuous is not None:
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+        if beacon_interval is not None:
+            pulumi.set(__self__, "beacon_interval", beacon_interval)
+        if check_beacon is not None:
+            pulumi.set(__self__, "check_beacon", check_beacon)
+        if failback is not None:
+            pulumi.set(__self__, "failback", failback)
+        if host_system_id is not None:
+            pulumi.set(__self__, "host_system_id", host_system_id)
+        if link_discovery_operation is not None:
+            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+        if link_discovery_protocol is not None:
+            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_adapters is not None:
+            pulumi.set(__self__, "network_adapters", network_adapters)
+        if notify_switches is not None:
+            pulumi.set(__self__, "notify_switches", notify_switches)
+        if number_of_ports is not None:
+            pulumi.set(__self__, "number_of_ports", number_of_ports)
+        if shaping_average_bandwidth is not None:
+            pulumi.set(__self__, "shaping_average_bandwidth", shaping_average_bandwidth)
+        if shaping_burst_size is not None:
+            pulumi.set(__self__, "shaping_burst_size", shaping_burst_size)
+        if shaping_enabled is not None:
+            pulumi.set(__self__, "shaping_enabled", shaping_enabled)
+        if shaping_peak_bandwidth is not None:
+            pulumi.set(__self__, "shaping_peak_bandwidth", shaping_peak_bandwidth)
+        if standby_nics is not None:
+            pulumi.set(__self__, "standby_nics", standby_nics)
+        if teaming_policy is not None:
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
+
+    @property
+    @pulumi.getter(name="activeNics")
+    def active_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of active network adapters used for load
+        balancing.
+        """
+        return pulumi.get(self, "active_nics")
+
+    @active_nics.setter
+    def active_nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "active_nics", value)
+
+    @property
+    @pulumi.getter(name="allowForgedTransmits")
+    def allow_forged_transmits(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether or not the virtual
+        network adapter is allowed to send network traffic with a different MAC
+        address than that of its own. Default: `true`.
+        """
+        return pulumi.get(self, "allow_forged_transmits")
+
+    @allow_forged_transmits.setter
+    def allow_forged_transmits(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_forged_transmits", value)
+
+    @property
+    @pulumi.getter(name="allowMacChanges")
+    def allow_mac_changes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether or not the Media Access
+        Control (MAC) address can be changed. Default: `true`.
+        """
+        return pulumi.get(self, "allow_mac_changes")
+
+    @allow_mac_changes.setter
+    def allow_mac_changes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_mac_changes", value)
+
+    @property
+    @pulumi.getter(name="allowPromiscuous")
+    def allow_promiscuous(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable promiscuous mode on the network. This
+        flag indicates whether or not all traffic is seen on a given port. Default:
+        `false`.
+        """
+        return pulumi.get(self, "allow_promiscuous")
+
+    @allow_promiscuous.setter
+    def allow_promiscuous(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_promiscuous", value)
+
+    @property
+    @pulumi.getter(name="beaconInterval")
+    def beacon_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval, in seconds, that a NIC beacon
+        packet is sent out. This can be used with `check_beacon` to
+        offer link failure capability beyond link status only. Default: `1`.
+        """
+        return pulumi.get(self, "beacon_interval")
+
+    @beacon_interval.setter
+    def beacon_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "beacon_interval", value)
+
+    @property
+    @pulumi.getter(name="checkBeacon")
+    def check_beacon(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable beacon probing - this requires that the
+        `beacon_interval` option has been set in the bridge
+        options. If this is set to `false`, only link status is used to check for
+        failed NICs.  Default: `false`.
+        """
+        return pulumi.get(self, "check_beacon")
+
+    @check_beacon.setter
+    def check_beacon(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "check_beacon", value)
+
+    @property
+    @pulumi.getter
+    def failback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the teaming policy will re-activate
+        failed interfaces higher in precedence when they come back up.  Default:
+        `true`.
+        """
+        return pulumi.get(self, "failback")
+
+    @failback.setter
+    def failback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "failback", value)
+
+    @property
+    @pulumi.getter(name="hostSystemId")
+    def host_system_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object ID of
+        the host to set the virtual switch up on. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "host_system_id")
+
+    @host_system_id.setter
+    def host_system_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_system_id", value)
+
+    @property
+    @pulumi.getter(name="linkDiscoveryOperation")
+    def link_discovery_operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to `advertise` or `listen`
+        for link discovery traffic. Default: `listen`.
+        """
+        return pulumi.get(self, "link_discovery_operation")
+
+    @link_discovery_operation.setter
+    def link_discovery_operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_discovery_operation", value)
+
+    @property
+    @pulumi.getter(name="linkDiscoveryProtocol")
+    def link_discovery_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The discovery protocol type.  Valid
+        types are `cpd` and `lldp`. Default: `cdp`.
+        """
+        return pulumi.get(self, "link_discovery_protocol")
+
+    @link_discovery_protocol.setter
+    def link_discovery_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_discovery_protocol", value)
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum transmission unit (MTU) for the virtual
+        switch. Default: `1500`.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mtu", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the virtual switch. Forces a new resource if
+        changed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkAdapters")
+    def network_adapters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The network interfaces to bind to the bridge.
+        """
+        return pulumi.get(self, "network_adapters")
+
+    @network_adapters.setter
+    def network_adapters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_adapters", value)
+
+    @property
+    @pulumi.getter(name="notifySwitches")
+    def notify_switches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the teaming policy will
+        notify the broadcast network of a NIC failover, triggering cache updates.
+        Default: `true`.
+        """
+        return pulumi.get(self, "notify_switches")
+
+    @notify_switches.setter
+    def notify_switches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "notify_switches", value)
+
+    @property
+    @pulumi.getter(name="numberOfPorts")
+    def number_of_ports(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of ports to create with this
+        virtual switch. Default: `128`.
+        """
+        return pulumi.get(self, "number_of_ports")
+
+    @number_of_ports.setter
+    def number_of_ports(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "number_of_ports", value)
+
+    @property
+    @pulumi.getter(name="shapingAverageBandwidth")
+    def shaping_average_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The average bandwidth in bits per
+        second if traffic shaping is enabled. Default: `0`
+        """
+        return pulumi.get(self, "shaping_average_bandwidth")
+
+    @shaping_average_bandwidth.setter
+    def shaping_average_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shaping_average_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="shapingBurstSize")
+    def shaping_burst_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum burst size allowed in bytes if
+        shaping is enabled. Default: `0`
+        """
+        return pulumi.get(self, "shaping_burst_size")
+
+    @shaping_burst_size.setter
+    def shaping_burst_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shaping_burst_size", value)
+
+    @property
+    @pulumi.getter(name="shapingEnabled")
+    def shaping_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to `true` to enable the traffic shaper for
+        ports managed by this virtual switch. Default: `false`.
+        """
+        return pulumi.get(self, "shaping_enabled")
+
+    @shaping_enabled.setter
+    def shaping_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "shaping_enabled", value)
+
+    @property
+    @pulumi.getter(name="shapingPeakBandwidth")
+    def shaping_peak_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The peak bandwidth during bursts in
+        bits per second if traffic shaping is enabled. Default: `0`
+        """
+        return pulumi.get(self, "shaping_peak_bandwidth")
+
+    @shaping_peak_bandwidth.setter
+    def shaping_peak_bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shaping_peak_bandwidth", value)
+
+    @property
+    @pulumi.getter(name="standbyNics")
+    def standby_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of standby network adapters used for
+        failover.
+        """
+        return pulumi.get(self, "standby_nics")
+
+    @standby_nics.setter
+    def standby_nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "standby_nics", value)
+
+    @property
+    @pulumi.getter(name="teamingPolicy")
+    def teaming_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network adapter teaming policy. Can be one
+        of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
+        `failover_explicit`. Default: `loadbalance_srcid`.
+        """
+        return pulumi.get(self, "teaming_policy")
+
+    @teaming_policy.setter
+    def teaming_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "teaming_policy", value)
+
+
 class HostVirtualSwitch(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -551,37 +951,37 @@ class HostVirtualSwitch(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HostVirtualSwitchArgs.__new__(HostVirtualSwitchArgs)
 
             if active_nics is None and not opts.urn:
                 raise TypeError("Missing required property 'active_nics'")
-            __props__['active_nics'] = active_nics
-            __props__['allow_forged_transmits'] = allow_forged_transmits
-            __props__['allow_mac_changes'] = allow_mac_changes
-            __props__['allow_promiscuous'] = allow_promiscuous
-            __props__['beacon_interval'] = beacon_interval
-            __props__['check_beacon'] = check_beacon
-            __props__['failback'] = failback
+            __props__.__dict__["active_nics"] = active_nics
+            __props__.__dict__["allow_forged_transmits"] = allow_forged_transmits
+            __props__.__dict__["allow_mac_changes"] = allow_mac_changes
+            __props__.__dict__["allow_promiscuous"] = allow_promiscuous
+            __props__.__dict__["beacon_interval"] = beacon_interval
+            __props__.__dict__["check_beacon"] = check_beacon
+            __props__.__dict__["failback"] = failback
             if host_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'host_system_id'")
-            __props__['host_system_id'] = host_system_id
-            __props__['link_discovery_operation'] = link_discovery_operation
-            __props__['link_discovery_protocol'] = link_discovery_protocol
-            __props__['mtu'] = mtu
-            __props__['name'] = name
+            __props__.__dict__["host_system_id"] = host_system_id
+            __props__.__dict__["link_discovery_operation"] = link_discovery_operation
+            __props__.__dict__["link_discovery_protocol"] = link_discovery_protocol
+            __props__.__dict__["mtu"] = mtu
+            __props__.__dict__["name"] = name
             if network_adapters is None and not opts.urn:
                 raise TypeError("Missing required property 'network_adapters'")
-            __props__['network_adapters'] = network_adapters
-            __props__['notify_switches'] = notify_switches
-            __props__['number_of_ports'] = number_of_ports
-            __props__['shaping_average_bandwidth'] = shaping_average_bandwidth
-            __props__['shaping_burst_size'] = shaping_burst_size
-            __props__['shaping_enabled'] = shaping_enabled
-            __props__['shaping_peak_bandwidth'] = shaping_peak_bandwidth
+            __props__.__dict__["network_adapters"] = network_adapters
+            __props__.__dict__["notify_switches"] = notify_switches
+            __props__.__dict__["number_of_ports"] = number_of_ports
+            __props__.__dict__["shaping_average_bandwidth"] = shaping_average_bandwidth
+            __props__.__dict__["shaping_burst_size"] = shaping_burst_size
+            __props__.__dict__["shaping_enabled"] = shaping_enabled
+            __props__.__dict__["shaping_peak_bandwidth"] = shaping_peak_bandwidth
             if standby_nics is None and not opts.urn:
                 raise TypeError("Missing required property 'standby_nics'")
-            __props__['standby_nics'] = standby_nics
-            __props__['teaming_policy'] = teaming_policy
+            __props__.__dict__["standby_nics"] = standby_nics
+            __props__.__dict__["teaming_policy"] = teaming_policy
         super(HostVirtualSwitch, __self__).__init__(
             'vsphere:index/hostVirtualSwitch:HostVirtualSwitch',
             resource_name,
@@ -672,29 +1072,29 @@ class HostVirtualSwitch(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _HostVirtualSwitchState.__new__(_HostVirtualSwitchState)
 
-        __props__["active_nics"] = active_nics
-        __props__["allow_forged_transmits"] = allow_forged_transmits
-        __props__["allow_mac_changes"] = allow_mac_changes
-        __props__["allow_promiscuous"] = allow_promiscuous
-        __props__["beacon_interval"] = beacon_interval
-        __props__["check_beacon"] = check_beacon
-        __props__["failback"] = failback
-        __props__["host_system_id"] = host_system_id
-        __props__["link_discovery_operation"] = link_discovery_operation
-        __props__["link_discovery_protocol"] = link_discovery_protocol
-        __props__["mtu"] = mtu
-        __props__["name"] = name
-        __props__["network_adapters"] = network_adapters
-        __props__["notify_switches"] = notify_switches
-        __props__["number_of_ports"] = number_of_ports
-        __props__["shaping_average_bandwidth"] = shaping_average_bandwidth
-        __props__["shaping_burst_size"] = shaping_burst_size
-        __props__["shaping_enabled"] = shaping_enabled
-        __props__["shaping_peak_bandwidth"] = shaping_peak_bandwidth
-        __props__["standby_nics"] = standby_nics
-        __props__["teaming_policy"] = teaming_policy
+        __props__.__dict__["active_nics"] = active_nics
+        __props__.__dict__["allow_forged_transmits"] = allow_forged_transmits
+        __props__.__dict__["allow_mac_changes"] = allow_mac_changes
+        __props__.__dict__["allow_promiscuous"] = allow_promiscuous
+        __props__.__dict__["beacon_interval"] = beacon_interval
+        __props__.__dict__["check_beacon"] = check_beacon
+        __props__.__dict__["failback"] = failback
+        __props__.__dict__["host_system_id"] = host_system_id
+        __props__.__dict__["link_discovery_operation"] = link_discovery_operation
+        __props__.__dict__["link_discovery_protocol"] = link_discovery_protocol
+        __props__.__dict__["mtu"] = mtu
+        __props__.__dict__["name"] = name
+        __props__.__dict__["network_adapters"] = network_adapters
+        __props__.__dict__["notify_switches"] = notify_switches
+        __props__.__dict__["number_of_ports"] = number_of_ports
+        __props__.__dict__["shaping_average_bandwidth"] = shaping_average_bandwidth
+        __props__.__dict__["shaping_burst_size"] = shaping_burst_size
+        __props__.__dict__["shaping_enabled"] = shaping_enabled
+        __props__.__dict__["shaping_peak_bandwidth"] = shaping_peak_bandwidth
+        __props__.__dict__["standby_nics"] = standby_nics
+        __props__.__dict__["teaming_policy"] = teaming_policy
         return HostVirtualSwitch(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -892,10 +1292,4 @@ class HostVirtualSwitch(pulumi.CustomResource):
         `failover_explicit`. Default: `loadbalance_srcid`.
         """
         return pulumi.get(self, "teaming_policy")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

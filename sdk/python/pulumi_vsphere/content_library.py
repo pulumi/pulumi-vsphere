@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -101,6 +101,96 @@ class ContentLibraryArgs:
         pulumi.set(self, "subscription", value)
 
 
+@pulumi.input_type
+class _ContentLibraryState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
+                 storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
+        """
+        Input properties used for looking up and filtering ContentLibrary resources.
+        :param pulumi.Input[str] description: A description of the Content Library.
+        :param pulumi.Input[str] name: The name of the Content Library.
+        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local Content Library.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
+               items.
+        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options to publish a local Content Library.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if publication is not None:
+            pulumi.set(__self__, "publication", publication)
+        if storage_backings is not None:
+            pulumi.set(__self__, "storage_backings", storage_backings)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the Content Library.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Content Library.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "publication")
+
+    @publication.setter
+    def publication(self, value: Optional[pulumi.Input['ContentLibraryPublicationArgs']]):
+        pulumi.set(self, "publication", value)
+
+    @property
+    @pulumi.getter(name="storageBackings")
+    def storage_backings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The managed object reference ID on which to store Content Library
+        items.
+        """
+        return pulumi.get(self, "storage_backings")
+
+    @storage_backings.setter
+    def storage_backings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_backings", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
+        """
+        Options to publish a local Content Library.
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]):
+        pulumi.set(self, "subscription", value)
+
+
 class ContentLibrary(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -171,15 +261,15 @@ class ContentLibrary(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ContentLibraryArgs.__new__(ContentLibraryArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['publication'] = publication
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["publication"] = publication
             if storage_backings is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_backings'")
-            __props__['storage_backings'] = storage_backings
-            __props__['subscription'] = subscription
+            __props__.__dict__["storage_backings"] = storage_backings
+            __props__.__dict__["subscription"] = subscription
         super(ContentLibrary, __self__).__init__(
             'vsphere:index/contentLibrary:ContentLibrary',
             resource_name,
@@ -211,13 +301,13 @@ class ContentLibrary(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ContentLibraryState.__new__(_ContentLibraryState)
 
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["publication"] = publication
-        __props__["storage_backings"] = storage_backings
-        __props__["subscription"] = subscription
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["publication"] = publication
+        __props__.__dict__["storage_backings"] = storage_backings
+        __props__.__dict__["subscription"] = subscription
         return ContentLibrary(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -260,10 +350,4 @@ class ContentLibrary(pulumi.CustomResource):
         Options to publish a local Content Library.
         """
         return pulumi.get(self, "subscription")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
