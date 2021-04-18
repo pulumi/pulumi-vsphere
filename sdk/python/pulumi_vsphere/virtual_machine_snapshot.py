@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['VirtualMachineSnapshotArgs', 'VirtualMachineSnapshot']
 
@@ -135,6 +135,138 @@ class VirtualMachineSnapshotArgs:
     @remove_children.setter
     def remove_children(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "remove_children", value)
+
+
+@pulumi.input_type
+class _VirtualMachineSnapshotState:
+    def __init__(__self__, *,
+                 consolidate: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[bool]] = None,
+                 quiesce: Optional[pulumi.Input[bool]] = None,
+                 remove_children: Optional[pulumi.Input[bool]] = None,
+                 snapshot_name: Optional[pulumi.Input[str]] = None,
+                 virtual_machine_uuid: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering VirtualMachineSnapshot resources.
+        :param pulumi.Input[bool] consolidate: If set to `true`, the delta disks involved in this
+               snapshot will be consolidated into the parent when this resource is
+               destroyed.
+        :param pulumi.Input[str] description: A description for the snapshot.
+        :param pulumi.Input[bool] memory: If set to `true`, a dump of the internal state of the
+               virtual machine is included in the snapshot.
+        :param pulumi.Input[bool] quiesce: If set to `true`, and the virtual machine is powered
+               on when the snapshot is taken, VMware Tools is used to quiesce the file
+               system in the virtual machine.
+        :param pulumi.Input[bool] remove_children: If set to `true`, the entire snapshot subtree
+               is removed when this resource is destroyed.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot.
+        :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
+        """
+        if consolidate is not None:
+            pulumi.set(__self__, "consolidate", consolidate)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if quiesce is not None:
+            pulumi.set(__self__, "quiesce", quiesce)
+        if remove_children is not None:
+            pulumi.set(__self__, "remove_children", remove_children)
+        if snapshot_name is not None:
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if virtual_machine_uuid is not None:
+            pulumi.set(__self__, "virtual_machine_uuid", virtual_machine_uuid)
+
+    @property
+    @pulumi.getter
+    def consolidate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the delta disks involved in this
+        snapshot will be consolidated into the parent when this resource is
+        destroyed.
+        """
+        return pulumi.get(self, "consolidate")
+
+    @consolidate.setter
+    def consolidate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "consolidate", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, a dump of the internal state of the
+        virtual machine is included in the snapshot.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def quiesce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, and the virtual machine is powered
+        on when the snapshot is taken, VMware Tools is used to quiesce the file
+        system in the virtual machine.
+        """
+        return pulumi.get(self, "quiesce")
+
+    @quiesce.setter
+    def quiesce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "quiesce", value)
+
+    @property
+    @pulumi.getter(name="removeChildren")
+    def remove_children(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, the entire snapshot subtree
+        is removed when this resource is destroyed.
+        """
+        return pulumi.get(self, "remove_children")
+
+    @remove_children.setter
+    def remove_children(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_children", value)
+
+    @property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @snapshot_name.setter
+    def snapshot_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_name", value)
+
+    @property
+    @pulumi.getter(name="virtualMachineUuid")
+    def virtual_machine_uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The virtual machine UUID.
+        """
+        return pulumi.get(self, "virtual_machine_uuid")
+
+    @virtual_machine_uuid.setter
+    def virtual_machine_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "virtual_machine_uuid", value)
 
 
 class VirtualMachineSnapshot(pulumi.CustomResource):
@@ -292,25 +424,25 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = VirtualMachineSnapshotArgs.__new__(VirtualMachineSnapshotArgs)
 
-            __props__['consolidate'] = consolidate
+            __props__.__dict__["consolidate"] = consolidate
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if memory is None and not opts.urn:
                 raise TypeError("Missing required property 'memory'")
-            __props__['memory'] = memory
+            __props__.__dict__["memory"] = memory
             if quiesce is None and not opts.urn:
                 raise TypeError("Missing required property 'quiesce'")
-            __props__['quiesce'] = quiesce
-            __props__['remove_children'] = remove_children
+            __props__.__dict__["quiesce"] = quiesce
+            __props__.__dict__["remove_children"] = remove_children
             if snapshot_name is None and not opts.urn:
                 raise TypeError("Missing required property 'snapshot_name'")
-            __props__['snapshot_name'] = snapshot_name
+            __props__.__dict__["snapshot_name"] = snapshot_name
             if virtual_machine_uuid is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_machine_uuid'")
-            __props__['virtual_machine_uuid'] = virtual_machine_uuid
+            __props__.__dict__["virtual_machine_uuid"] = virtual_machine_uuid
         super(VirtualMachineSnapshot, __self__).__init__(
             'vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot',
             resource_name,
@@ -351,15 +483,15 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _VirtualMachineSnapshotState.__new__(_VirtualMachineSnapshotState)
 
-        __props__["consolidate"] = consolidate
-        __props__["description"] = description
-        __props__["memory"] = memory
-        __props__["quiesce"] = quiesce
-        __props__["remove_children"] = remove_children
-        __props__["snapshot_name"] = snapshot_name
-        __props__["virtual_machine_uuid"] = virtual_machine_uuid
+        __props__.__dict__["consolidate"] = consolidate
+        __props__.__dict__["description"] = description
+        __props__.__dict__["memory"] = memory
+        __props__.__dict__["quiesce"] = quiesce
+        __props__.__dict__["remove_children"] = remove_children
+        __props__.__dict__["snapshot_name"] = snapshot_name
+        __props__.__dict__["virtual_machine_uuid"] = virtual_machine_uuid
         return VirtualMachineSnapshot(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -423,10 +555,4 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         The virtual machine UUID.
         """
         return pulumi.get(self, "virtual_machine_uuid")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TagCategoryArgs', 'TagCategory']
 
@@ -63,6 +63,88 @@ class TagCategoryArgs:
 
     @cardinality.setter
     def cardinality(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cardinality", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the category.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the category.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _TagCategoryState:
+    def __init__(__self__, *,
+                 associable_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cardinality: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagCategory resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associable_types: A list object types that this category is
+               valid to be assigned to. For a full list, click
+               here.
+        :param pulumi.Input[str] cardinality: The number of tags that can be assigned from this
+               category to a single object at once. Can be one of `SINGLE` (object can only
+               be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+               multiple tags in this category). Forces a new resource if changed.
+        :param pulumi.Input[str] description: A description for the category.
+        :param pulumi.Input[str] name: The name of the category.
+        """
+        if associable_types is not None:
+            pulumi.set(__self__, "associable_types", associable_types)
+        if cardinality is not None:
+            pulumi.set(__self__, "cardinality", cardinality)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="associableTypes")
+    def associable_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list object types that this category is
+        valid to be assigned to. For a full list, click
+        here.
+        """
+        return pulumi.get(self, "associable_types")
+
+    @associable_types.setter
+    def associable_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "associable_types", value)
+
+    @property
+    @pulumi.getter
+    def cardinality(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of tags that can be assigned from this
+        category to a single object at once. Can be one of `SINGLE` (object can only
+        be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+        multiple tags in this category). Forces a new resource if changed.
+        """
+        return pulumi.get(self, "cardinality")
+
+    @cardinality.setter
+    def cardinality(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cardinality", value)
 
     @property
@@ -161,16 +243,16 @@ class TagCategory(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagCategoryArgs.__new__(TagCategoryArgs)
 
             if associable_types is None and not opts.urn:
                 raise TypeError("Missing required property 'associable_types'")
-            __props__['associable_types'] = associable_types
+            __props__.__dict__["associable_types"] = associable_types
             if cardinality is None and not opts.urn:
                 raise TypeError("Missing required property 'cardinality'")
-            __props__['cardinality'] = cardinality
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["cardinality"] = cardinality
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
         super(TagCategory, __self__).__init__(
             'vsphere:index/tagCategory:TagCategory',
             resource_name,
@@ -204,12 +286,12 @@ class TagCategory(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagCategoryState.__new__(_TagCategoryState)
 
-        __props__["associable_types"] = associable_types
-        __props__["cardinality"] = cardinality
-        __props__["description"] = description
-        __props__["name"] = name
+        __props__.__dict__["associable_types"] = associable_types
+        __props__.__dict__["cardinality"] = cardinality
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
         return TagCategory(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -248,10 +330,4 @@ class TagCategory(pulumi.CustomResource):
         The name of the category.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
 
@@ -120,6 +120,118 @@ class FolderArgs:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.input_type
+class _FolderState:
+    def __init__(__self__, *,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datacenter_id: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Folder resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute 
+               value strings to set for folder. See [here][docs-setting-custom-attributes]
+               for a reference on how to set values for custom attributes.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter the folder will be created in.
+               Required for all folder types except for datacenter folders. Forces a new
+               resource if changed.
+        :param pulumi.Input[str] path: The path of the folder to be created. This is relative to
+               the root of the type of folder you are creating, and the supplied datacenter.
+               For example, given a default datacenter of `default-dc`, a folder of type
+               `vm` (denoting a virtual machine folder), and a supplied folder of
+               `test-folder`, the resulting path would be
+               `/default-dc/vm/test-folder`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        :param pulumi.Input[str] type: The type of folder to create. Allowed options are
+               `datacenter` for datacenter folders, `host` for host and cluster folders,
+               `vm` for virtual machine folders, `datastore` for datastore folders, and
+               `network` for network folders. Forces a new resource if changed.
+        """
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if datacenter_id is not None:
+            pulumi.set(__self__, "datacenter_id", datacenter_id)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of custom attribute ids to attribute 
+        value strings to set for folder. See [here][docs-setting-custom-attributes]
+        for a reference on how to set values for custom attributes.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="datacenterId")
+    def datacenter_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the datacenter the folder will be created in.
+        Required for all folder types except for datacenter folders. Forces a new
+        resource if changed.
+        """
+        return pulumi.get(self, "datacenter_id")
+
+    @datacenter_id.setter
+    def datacenter_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter_id", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the folder to be created. This is relative to
+        the root of the type of folder you are creating, and the supplied datacenter.
+        For example, given a default datacenter of `default-dc`, a folder of type
+        `vm` (denoting a virtual machine folder), and a supplied folder of
+        `test-folder`, the resulting path would be
+        `/default-dc/vm/test-folder`.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of folder to create. Allowed options are
+        `datacenter` for datacenter folders, `host` for host and cluster folders,
+        `vm` for virtual machine folders, `datastore` for datastore folders, and
+        `network` for network folders. Forces a new resource if changed.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
 class Folder(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -201,17 +313,17 @@ class Folder(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FolderArgs.__new__(FolderArgs)
 
-            __props__['custom_attributes'] = custom_attributes
-            __props__['datacenter_id'] = datacenter_id
+            __props__.__dict__["custom_attributes"] = custom_attributes
+            __props__.__dict__["datacenter_id"] = datacenter_id
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
-            __props__['path'] = path
-            __props__['tags'] = tags
+            __props__.__dict__["path"] = path
+            __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
         super(Folder, __self__).__init__(
             'vsphere:index/folder:Folder',
             resource_name,
@@ -254,13 +366,13 @@ class Folder(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FolderState.__new__(_FolderState)
 
-        __props__["custom_attributes"] = custom_attributes
-        __props__["datacenter_id"] = datacenter_id
-        __props__["path"] = path
-        __props__["tags"] = tags
-        __props__["type"] = type
+        __props__.__dict__["custom_attributes"] = custom_attributes
+        __props__.__dict__["datacenter_id"] = datacenter_id
+        __props__.__dict__["path"] = path
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
         return Folder(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -314,10 +426,4 @@ class Folder(pulumi.CustomResource):
         `network` for network folders. Forces a new resource if changed.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

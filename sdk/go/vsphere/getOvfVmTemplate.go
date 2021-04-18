@@ -4,7 +4,7 @@
 package vsphere
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware

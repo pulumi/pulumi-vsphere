@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ResourcePoolArgs', 'ResourcePool']
 
@@ -293,6 +293,290 @@ class ResourcePoolArgs:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.input_type
+class _ResourcePoolState:
+    def __init__(__self__, *,
+                 cpu_expandable: Optional[pulumi.Input[bool]] = None,
+                 cpu_limit: Optional[pulumi.Input[int]] = None,
+                 cpu_reservation: Optional[pulumi.Input[int]] = None,
+                 cpu_share_level: Optional[pulumi.Input[str]] = None,
+                 cpu_shares: Optional[pulumi.Input[int]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 memory_expandable: Optional[pulumi.Input[bool]] = None,
+                 memory_limit: Optional[pulumi.Input[int]] = None,
+                 memory_reservation: Optional[pulumi.Input[int]] = None,
+                 memory_share_level: Optional[pulumi.Input[str]] = None,
+                 memory_shares: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ResourcePool resources.
+        :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
+               pool can grow beyond the specified value if the parent resource pool has
+               unreserved resources. Default: `true`
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
+               this limit, even if there are available resources. Set to `-1` for unlimited.
+               Default: `-1`
+        :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
+               available to the resource pool. Default: `0`
+        :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
+               simplified view of shares. Levels map to a pre-determined set of numeric
+               values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+               `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+               ignored.  Default: `normal`
+        :param pulumi.Input[int] cpu_shares: The number of shares allocated for CPU. Used to
+               determine resource allocation in case of resource contention. If this is set,
+               `cpu_share_level` must be `custom`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A list of custom attributes to set on this resource.
+        :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
+               pool can grow beyond the specified value if the parent resource pool has
+               unreserved resources. Default: `true`
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
+               this limit, even if there are available resources. Set to `-1` for unlimited.
+               Default: `-1`
+        :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
+               available to the resource pool. Default: `0`
+        :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
+               simplified view of shares. Levels map to a pre-determined set of numeric
+               values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+               `low`, `normal`, or `high` are specified values in `memory_shares` will be
+               ignored.  Default: `normal`
+        :param pulumi.Input[int] memory_shares: The number of shares allocated for CPU. Used to
+               determine resource allocation in case of resource contention. If this is set,
+               `memory_share_level` must be `custom`.
+        :param pulumi.Input[str] name: The name of the resource pool.
+        :param pulumi.Input[str] parent_resource_pool_id: The managed object ID
+               of the parent resource pool. This can be the root resource pool for a cluster
+               or standalone host, or a resource pool itself. When moving a resource pool
+               from one parent resource pool to another, both must share a common root
+               resource pool or the move will fail.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+        """
+        if cpu_expandable is not None:
+            pulumi.set(__self__, "cpu_expandable", cpu_expandable)
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_reservation is not None:
+            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+        if cpu_share_level is not None:
+            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+        if cpu_shares is not None:
+            pulumi.set(__self__, "cpu_shares", cpu_shares)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if memory_expandable is not None:
+            pulumi.set(__self__, "memory_expandable", memory_expandable)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_reservation is not None:
+            pulumi.set(__self__, "memory_reservation", memory_reservation)
+        if memory_share_level is not None:
+            pulumi.set(__self__, "memory_share_level", memory_share_level)
+        if memory_shares is not None:
+            pulumi.set(__self__, "memory_shares", memory_shares)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_resource_pool_id is not None:
+            pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="cpuExpandable")
+    def cpu_expandable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the reservation on a resource
+        pool can grow beyond the specified value if the parent resource pool has
+        unreserved resources. Default: `true`
+        """
+        return pulumi.get(self, "cpu_expandable")
+
+    @cpu_expandable.setter
+    def cpu_expandable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_expandable", value)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The CPU utilization of a resource pool will not exceed
+        this limit, even if there are available resources. Set to `-1` for unlimited.
+        Default: `-1`
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @cpu_limit.setter
+    def cpu_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_limit", value)
+
+    @property
+    @pulumi.getter(name="cpuReservation")
+    def cpu_reservation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of CPU (MHz) that is guaranteed
+        available to the resource pool. Default: `0`
+        """
+        return pulumi.get(self, "cpu_reservation")
+
+    @cpu_reservation.setter
+    def cpu_reservation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_reservation", value)
+
+    @property
+    @pulumi.getter(name="cpuShareLevel")
+    def cpu_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU allocation level. The level is a
+        simplified view of shares. Levels map to a pre-determined set of numeric
+        values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+        `low`, `normal`, or `high` are specified values in `cpu_shares` will be
+        ignored.  Default: `normal`
+        """
+        return pulumi.get(self, "cpu_share_level")
+
+    @cpu_share_level.setter
+    def cpu_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_share_level", value)
+
+    @property
+    @pulumi.getter(name="cpuShares")
+    def cpu_shares(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of shares allocated for CPU. Used to
+        determine resource allocation in case of resource contention. If this is set,
+        `cpu_share_level` must be `custom`.
+        """
+        return pulumi.get(self, "cpu_shares")
+
+    @cpu_shares.setter
+    def cpu_shares(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_shares", value)
+
+    @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A list of custom attributes to set on this resource.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="memoryExpandable")
+    def memory_expandable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the reservation on a resource
+        pool can grow beyond the specified value if the parent resource pool has
+        unreserved resources. Default: `true`
+        """
+        return pulumi.get(self, "memory_expandable")
+
+    @memory_expandable.setter
+    def memory_expandable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "memory_expandable", value)
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The CPU utilization of a resource pool will not exceed
+        this limit, even if there are available resources. Set to `-1` for unlimited.
+        Default: `-1`
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @memory_limit.setter
+    def memory_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_limit", value)
+
+    @property
+    @pulumi.getter(name="memoryReservation")
+    def memory_reservation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of CPU (MHz) that is guaranteed
+        available to the resource pool. Default: `0`
+        """
+        return pulumi.get(self, "memory_reservation")
+
+    @memory_reservation.setter
+    def memory_reservation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_reservation", value)
+
+    @property
+    @pulumi.getter(name="memoryShareLevel")
+    def memory_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU allocation level. The level is a
+        simplified view of shares. Levels map to a pre-determined set of numeric
+        values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+        `low`, `normal`, or `high` are specified values in `memory_shares` will be
+        ignored.  Default: `normal`
+        """
+        return pulumi.get(self, "memory_share_level")
+
+    @memory_share_level.setter
+    def memory_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory_share_level", value)
+
+    @property
+    @pulumi.getter(name="memoryShares")
+    def memory_shares(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of shares allocated for CPU. Used to
+        determine resource allocation in case of resource contention. If this is set,
+        `memory_share_level` must be `custom`.
+        """
+        return pulumi.get(self, "memory_shares")
+
+    @memory_shares.setter
+    def memory_shares(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_shares", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource pool.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentResourcePoolId")
+    def parent_resource_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The managed object ID
+        of the parent resource pool. This can be the root resource pool for a cluster
+        or standalone host, or a resource pool itself. When moving a resource pool
+        from one parent resource pool to another, both must share a common root
+        resource pool or the move will fail.
+        """
+        return pulumi.get(self, "parent_resource_pool_id")
+
+    @parent_resource_pool_id.setter
+    def parent_resource_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_resource_pool_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
 class ResourcePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -415,24 +699,24 @@ class ResourcePool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ResourcePoolArgs.__new__(ResourcePoolArgs)
 
-            __props__['cpu_expandable'] = cpu_expandable
-            __props__['cpu_limit'] = cpu_limit
-            __props__['cpu_reservation'] = cpu_reservation
-            __props__['cpu_share_level'] = cpu_share_level
-            __props__['cpu_shares'] = cpu_shares
-            __props__['custom_attributes'] = custom_attributes
-            __props__['memory_expandable'] = memory_expandable
-            __props__['memory_limit'] = memory_limit
-            __props__['memory_reservation'] = memory_reservation
-            __props__['memory_share_level'] = memory_share_level
-            __props__['memory_shares'] = memory_shares
-            __props__['name'] = name
+            __props__.__dict__["cpu_expandable"] = cpu_expandable
+            __props__.__dict__["cpu_limit"] = cpu_limit
+            __props__.__dict__["cpu_reservation"] = cpu_reservation
+            __props__.__dict__["cpu_share_level"] = cpu_share_level
+            __props__.__dict__["cpu_shares"] = cpu_shares
+            __props__.__dict__["custom_attributes"] = custom_attributes
+            __props__.__dict__["memory_expandable"] = memory_expandable
+            __props__.__dict__["memory_limit"] = memory_limit
+            __props__.__dict__["memory_reservation"] = memory_reservation
+            __props__.__dict__["memory_share_level"] = memory_share_level
+            __props__.__dict__["memory_shares"] = memory_shares
+            __props__.__dict__["name"] = name
             if parent_resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_resource_pool_id'")
-            __props__['parent_resource_pool_id'] = parent_resource_pool_id
-            __props__['tags'] = tags
+            __props__.__dict__["parent_resource_pool_id"] = parent_resource_pool_id
+            __props__.__dict__["tags"] = tags
         super(ResourcePool, __self__).__init__(
             'vsphere:index/resourcePool:ResourcePool',
             resource_name,
@@ -507,22 +791,22 @@ class ResourcePool(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ResourcePoolState.__new__(_ResourcePoolState)
 
-        __props__["cpu_expandable"] = cpu_expandable
-        __props__["cpu_limit"] = cpu_limit
-        __props__["cpu_reservation"] = cpu_reservation
-        __props__["cpu_share_level"] = cpu_share_level
-        __props__["cpu_shares"] = cpu_shares
-        __props__["custom_attributes"] = custom_attributes
-        __props__["memory_expandable"] = memory_expandable
-        __props__["memory_limit"] = memory_limit
-        __props__["memory_reservation"] = memory_reservation
-        __props__["memory_share_level"] = memory_share_level
-        __props__["memory_shares"] = memory_shares
-        __props__["name"] = name
-        __props__["parent_resource_pool_id"] = parent_resource_pool_id
-        __props__["tags"] = tags
+        __props__.__dict__["cpu_expandable"] = cpu_expandable
+        __props__.__dict__["cpu_limit"] = cpu_limit
+        __props__.__dict__["cpu_reservation"] = cpu_reservation
+        __props__.__dict__["cpu_share_level"] = cpu_share_level
+        __props__.__dict__["cpu_shares"] = cpu_shares
+        __props__.__dict__["custom_attributes"] = custom_attributes
+        __props__.__dict__["memory_expandable"] = memory_expandable
+        __props__.__dict__["memory_limit"] = memory_limit
+        __props__.__dict__["memory_reservation"] = memory_reservation
+        __props__.__dict__["memory_share_level"] = memory_share_level
+        __props__.__dict__["memory_shares"] = memory_shares
+        __props__.__dict__["name"] = name
+        __props__.__dict__["parent_resource_pool_id"] = parent_resource_pool_id
+        __props__.__dict__["tags"] = tags
         return ResourcePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -662,10 +946,4 @@ class ResourcePool(pulumi.CustomResource):
         The IDs of any tags to attach to this resource.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

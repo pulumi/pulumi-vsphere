@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['LicenseArgs', 'License']
 
@@ -47,6 +47,110 @@ class LicenseArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class _LicenseState:
+    def __init__(__self__, *,
+                 edition_key: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 license_key: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 total: Optional[pulumi.Input[int]] = None,
+                 used: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering License resources.
+        :param pulumi.Input[str] edition_key: The product edition of the license key.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
+        :param pulumi.Input[str] license_key: The license key to add.
+        :param pulumi.Input[str] name: The display name for the license.
+        :param pulumi.Input[int] total: Total number of units (example: CPUs) contained in the license.
+        :param pulumi.Input[int] used: The number of units (example: CPUs) assigned to this license.
+        """
+        if edition_key is not None:
+            pulumi.set(__self__, "edition_key", edition_key)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if license_key is not None:
+            pulumi.set(__self__, "license_key", license_key)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if total is not None:
+            pulumi.set(__self__, "total", total)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @property
+    @pulumi.getter(name="editionKey")
+    def edition_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The product edition of the license key.
+        """
+        return pulumi.get(self, "edition_key")
+
+    @edition_key.setter
+    def edition_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition_key", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of key/value pairs to be attached as labels (tags) to the license key.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The license key to add.
+        """
+        return pulumi.get(self, "license_key")
+
+    @license_key.setter
+    def license_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for the license.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def total(self) -> Optional[pulumi.Input[int]]:
+        """
+        Total number of units (example: CPUs) contained in the license.
+        """
+        return pulumi.get(self, "total")
+
+    @total.setter
+    def total(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total", value)
+
+    @property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of units (example: CPUs) assigned to this license.
+        """
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "used", value)
 
 
 class License(pulumi.CustomResource):
@@ -139,16 +243,16 @@ class License(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LicenseArgs.__new__(LicenseArgs)
 
-            __props__['labels'] = labels
+            __props__.__dict__["labels"] = labels
             if license_key is None and not opts.urn:
                 raise TypeError("Missing required property 'license_key'")
-            __props__['license_key'] = license_key
-            __props__['edition_key'] = None
-            __props__['name'] = None
-            __props__['total'] = None
-            __props__['used'] = None
+            __props__.__dict__["license_key"] = license_key
+            __props__.__dict__["edition_key"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["total"] = None
+            __props__.__dict__["used"] = None
         super(License, __self__).__init__(
             'vsphere:index/license:License',
             resource_name,
@@ -181,14 +285,14 @@ class License(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LicenseState.__new__(_LicenseState)
 
-        __props__["edition_key"] = edition_key
-        __props__["labels"] = labels
-        __props__["license_key"] = license_key
-        __props__["name"] = name
-        __props__["total"] = total
-        __props__["used"] = used
+        __props__.__dict__["edition_key"] = edition_key
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["license_key"] = license_key
+        __props__.__dict__["name"] = name
+        __props__.__dict__["total"] = total
+        __props__.__dict__["used"] = used
         return License(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -238,10 +342,4 @@ class License(pulumi.CustomResource):
         The number of units (example: CPUs) assigned to this license.
         """
         return pulumi.get(self, "used")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

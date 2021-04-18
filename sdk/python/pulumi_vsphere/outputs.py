@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -56,12 +56,28 @@ class ComputeClusterVsanDiskGroup(dict):
     def storages(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "storages")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContentLibraryPublication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationMethod":
+            suggest = "authentication_method"
+        elif key == "publishUrl":
+            suggest = "publish_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentLibraryPublication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentLibraryPublication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentLibraryPublication.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_method: Optional[str] = None,
                  password: Optional[str] = None,
@@ -126,12 +142,32 @@ class ContentLibraryPublication(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContentLibrarySubscription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationMethod":
+            suggest = "authentication_method"
+        elif key == "automaticSync":
+            suggest = "automatic_sync"
+        elif key == "onDemand":
+            suggest = "on_demand"
+        elif key == "subscriptionUrl":
+            suggest = "subscription_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContentLibrarySubscription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContentLibrarySubscription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContentLibrarySubscription.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authentication_method: Optional[str] = None,
                  automatic_sync: Optional[bool] = None,
@@ -208,12 +244,28 @@ class ContentLibrarySubscription(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributedPortGroupVlanRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxVlan":
+            suggest = "max_vlan"
+        elif key == "minVlan":
+            suggest = "min_vlan"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributedPortGroupVlanRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributedPortGroupVlanRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributedPortGroupVlanRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
@@ -230,12 +282,26 @@ class DistributedPortGroupVlanRange(dict):
     def min_vlan(self) -> int:
         return pulumi.get(self, "min_vlan")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributedVirtualSwitchHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostSystemId":
+            suggest = "host_system_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributedVirtualSwitchHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributedVirtualSwitchHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributedVirtualSwitchHost.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  devices: Sequence[str],
                  host_system_id: str):
@@ -266,12 +332,30 @@ class DistributedVirtualSwitchHost(dict):
         """
         return pulumi.get(self, "host_system_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributedVirtualSwitchPvlanMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryVlanId":
+            suggest = "primary_vlan_id"
+        elif key == "pvlanType":
+            suggest = "pvlan_type"
+        elif key == "secondaryVlanId":
+            suggest = "secondary_vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributedVirtualSwitchPvlanMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributedVirtualSwitchPvlanMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributedVirtualSwitchPvlanMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  primary_vlan_id: int,
                  pvlan_type: str,
@@ -315,12 +399,28 @@ class DistributedVirtualSwitchPvlanMapping(dict):
         """
         return pulumi.get(self, "secondary_vlan_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributedVirtualSwitchVlanRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxVlan":
+            suggest = "max_vlan"
+        elif key == "minVlan":
+            suggest = "min_vlan"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributedVirtualSwitchVlanRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributedVirtualSwitchVlanRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributedVirtualSwitchVlanRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
@@ -337,12 +437,30 @@ class DistributedVirtualSwitchVlanRange(dict):
     def min_vlan(self) -> int:
         return pulumi.get(self, "min_vlan")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntityPermissionsPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isGroup":
+            suggest = "is_group"
+        elif key == "roleId":
+            suggest = "role_id"
+        elif key == "userOrGroup":
+            suggest = "user_or_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntityPermissionsPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntityPermissionsPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntityPermissionsPermission.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_group: bool,
                  propagate: bool,
@@ -391,12 +509,26 @@ class EntityPermissionsPermission(dict):
         """
         return pulumi.get(self, "user_or_group")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HostPortGroupPorts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "macAddresses":
+            suggest = "mac_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostPortGroupPorts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostPortGroupPorts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostPortGroupPorts.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  mac_addresses: Optional[Sequence[str]] = None,
@@ -429,12 +561,30 @@ class HostPortGroupPorts(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineCdrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientDevice":
+            suggest = "client_device"
+        elif key == "datastoreId":
+            suggest = "datastore_id"
+        elif key == "deviceAddress":
+            suggest = "device_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineCdrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineCdrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineCdrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_device: Optional[bool] = None,
                  datastore_id: Optional[str] = None,
@@ -511,12 +661,32 @@ class VirtualMachineCdrom(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineClone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateUuid":
+            suggest = "template_uuid"
+        elif key == "linkedClone":
+            suggest = "linked_clone"
+        elif key == "ovfNetworkMap":
+            suggest = "ovf_network_map"
+        elif key == "ovfStorageMap":
+            suggest = "ovf_storage_map"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineClone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineClone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineClone.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  template_uuid: str,
                  customize: Optional['outputs.VirtualMachineCloneCustomize'] = None,
@@ -566,12 +736,40 @@ class VirtualMachineClone(dict):
     def timeout(self) -> Optional[int]:
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineCloneCustomize(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsServerLists":
+            suggest = "dns_server_lists"
+        elif key == "dnsSuffixLists":
+            suggest = "dns_suffix_lists"
+        elif key == "ipv4Gateway":
+            suggest = "ipv4_gateway"
+        elif key == "ipv6Gateway":
+            suggest = "ipv6_gateway"
+        elif key == "linuxOptions":
+            suggest = "linux_options"
+        elif key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "windowsOptions":
+            suggest = "windows_options"
+        elif key == "windowsSysprepText":
+            suggest = "windows_sysprep_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineCloneCustomize. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineCloneCustomize.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineCloneCustomize.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dns_server_lists: Optional[Sequence[str]] = None,
                  dns_suffix_lists: Optional[Sequence[str]] = None,
@@ -656,12 +854,30 @@ class VirtualMachineCloneCustomize(dict):
     def windows_sysprep_text(self) -> Optional[str]:
         return pulumi.get(self, "windows_sysprep_text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineCloneCustomizeLinuxOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostName":
+            suggest = "host_name"
+        elif key == "hwClockUtc":
+            suggest = "hw_clock_utc"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineCloneCustomizeLinuxOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineCloneCustomizeLinuxOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineCloneCustomizeLinuxOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain: str,
                  host_name: str,
@@ -694,12 +910,36 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
     def time_zone(self) -> Optional[str]:
         return pulumi.get(self, "time_zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineCloneCustomizeNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsDomain":
+            suggest = "dns_domain"
+        elif key == "dnsServerLists":
+            suggest = "dns_server_lists"
+        elif key == "ipv4Address":
+            suggest = "ipv4_address"
+        elif key == "ipv4Netmask":
+            suggest = "ipv4_netmask"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
+        elif key == "ipv6Netmask":
+            suggest = "ipv6_netmask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineCloneCustomizeNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineCloneCustomizeNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineCloneCustomizeNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dns_domain: Optional[str] = None,
                  dns_server_lists: Optional[Sequence[str]] = None,
@@ -750,12 +990,48 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
     def ipv6_netmask(self) -> Optional[int]:
         return pulumi.get(self, "ipv6_netmask")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineCloneCustomizeWindowsOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computerName":
+            suggest = "computer_name"
+        elif key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "autoLogon":
+            suggest = "auto_logon"
+        elif key == "autoLogonCount":
+            suggest = "auto_logon_count"
+        elif key == "domainAdminPassword":
+            suggest = "domain_admin_password"
+        elif key == "domainAdminUser":
+            suggest = "domain_admin_user"
+        elif key == "fullName":
+            suggest = "full_name"
+        elif key == "joinDomain":
+            suggest = "join_domain"
+        elif key == "organizationName":
+            suggest = "organization_name"
+        elif key == "productKey":
+            suggest = "product_key"
+        elif key == "runOnceCommandLists":
+            suggest = "run_once_command_lists"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineCloneCustomizeWindowsOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineCloneCustomizeWindowsOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineCloneCustomizeWindowsOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  computer_name: str,
                  admin_password: Optional[str] = None,
@@ -861,12 +1137,54 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
     def workgroup(self) -> Optional[str]:
         return pulumi.get(self, "workgroup")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controllerType":
+            suggest = "controller_type"
+        elif key == "datastoreId":
+            suggest = "datastore_id"
+        elif key == "deviceAddress":
+            suggest = "device_address"
+        elif key == "diskMode":
+            suggest = "disk_mode"
+        elif key == "diskSharing":
+            suggest = "disk_sharing"
+        elif key == "eagerlyScrub":
+            suggest = "eagerly_scrub"
+        elif key == "ioLimit":
+            suggest = "io_limit"
+        elif key == "ioReservation":
+            suggest = "io_reservation"
+        elif key == "ioShareCount":
+            suggest = "io_share_count"
+        elif key == "ioShareLevel":
+            suggest = "io_share_level"
+        elif key == "keepOnRemove":
+            suggest = "keep_on_remove"
+        elif key == "storagePolicyId":
+            suggest = "storage_policy_id"
+        elif key == "thinProvisioned":
+            suggest = "thin_provisioned"
+        elif key == "unitNumber":
+            suggest = "unit_number"
+        elif key == "writeThrough":
+            suggest = "write_through"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineDisk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attach: Optional[bool] = None,
                  controller_type: Optional[str] = None,
@@ -1201,12 +1519,44 @@ class VirtualMachineDisk(dict):
         """
         return pulumi.get(self, "write_through")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkId":
+            suggest = "network_id"
+        elif key == "adapterType":
+            suggest = "adapter_type"
+        elif key == "bandwidthLimit":
+            suggest = "bandwidth_limit"
+        elif key == "bandwidthReservation":
+            suggest = "bandwidth_reservation"
+        elif key == "bandwidthShareCount":
+            suggest = "bandwidth_share_count"
+        elif key == "bandwidthShareLevel":
+            suggest = "bandwidth_share_level"
+        elif key == "deviceAddress":
+            suggest = "device_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
+        elif key == "ovfMapping":
+            suggest = "ovf_mapping"
+        elif key == "useStaticMac":
+            suggest = "use_static_mac"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_id: str,
                  adapter_type: Optional[str] = None,
@@ -1374,12 +1724,40 @@ class VirtualMachineNetworkInterface(dict):
         """
         return pulumi.get(self, "use_static_mac")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineOvfDeploy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowUnverifiedSslCert":
+            suggest = "allow_unverified_ssl_cert"
+        elif key == "deploymentOption":
+            suggest = "deployment_option"
+        elif key == "diskProvisioning":
+            suggest = "disk_provisioning"
+        elif key == "ipAllocationPolicy":
+            suggest = "ip_allocation_policy"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "localOvfPath":
+            suggest = "local_ovf_path"
+        elif key == "ovfNetworkMap":
+            suggest = "ovf_network_map"
+        elif key == "remoteOvfUrl":
+            suggest = "remote_ovf_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineOvfDeploy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineOvfDeploy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineOvfDeploy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_unverified_ssl_cert: Optional[bool] = None,
                  deployment_option: Optional[str] = None,
@@ -1446,9 +1824,6 @@ class VirtualMachineOvfDeploy(dict):
     def remote_ovf_url(self) -> Optional[str]:
         return pulumi.get(self, "remote_ovf_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineVapp(dict):
@@ -1462,12 +1837,28 @@ class VirtualMachineVapp(dict):
     def properties(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VmStoragePolicyTagRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagCategory":
+            suggest = "tag_category"
+        elif key == "includeDatastoresWithTags":
+            suggest = "include_datastores_with_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmStoragePolicyTagRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmStoragePolicyTagRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmStoragePolicyTagRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  tag_category: str,
                  tags: Sequence[str],
@@ -1507,9 +1898,6 @@ class VmStoragePolicyTagRule(dict):
         value is true i.e. include datastores with the given tags.
         """
         return pulumi.get(self, "include_datastores_with_tags")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1566,9 +1954,6 @@ class VnicIpv4(dict):
         """
         return pulumi.get(self, "netmask")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VnicIpv6(dict):
@@ -1623,9 +2008,6 @@ class VnicIpv6(dict):
         IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         return pulumi.get(self, "gw")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
