@@ -9,28 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere.Inputs
 {
-
-    public sealed class HostPortGroupPortsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The key for this port group as returned from the vSphere API.
-        /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
-
-        [Input("macAddresses")]
-        private InputList<string>? _macAddresses;
-        public InputList<string> MacAddresses
-        {
-            get => _macAddresses ?? (_macAddresses = new InputList<string>());
-            set => _macAddresses = value;
-        }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public HostPortGroupPortsArgs()
-        {
-        }
-    }
 }
