@@ -12,6 +12,6 @@ require (
 
 replace (
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
-	github.com/hashicorp/terraform-provider-vsphere => github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210319141625-af6d6b961182
+	github.com/hashicorp/terraform-provider-vsphere => github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210426190719-31482d2bf3d2
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
