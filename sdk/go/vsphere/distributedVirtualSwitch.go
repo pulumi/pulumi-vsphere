@@ -29,6 +29,14 @@ type DistributedVirtualSwitch struct {
 	// Enable promiscuous mode on the network. This
 	// flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous pulumi.BoolOutput `pulumi:"allowPromiscuous"`
+	// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcMaximumMbit pulumi.IntOutput `pulumi:"backupnfcMaximumMbit"`
+	// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcReservationMbit pulumi.IntOutput `pulumi:"backupnfcReservationMbit"`
+	// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+	BackupnfcShareCount pulumi.IntOutput `pulumi:"backupnfcShareCount"`
+	// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+	BackupnfcShareLevel pulumi.StringOutput `pulumi:"backupnfcShareLevel"`
 	// Shuts down all ports in the port groups that
 	// this policy applies to, effectively blocking all network access to connected
 	// virtual devices.
@@ -316,6 +324,14 @@ type distributedVirtualSwitchState struct {
 	// Enable promiscuous mode on the network. This
 	// flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
+	// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcMaximumMbit *int `pulumi:"backupnfcMaximumMbit"`
+	// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcReservationMbit *int `pulumi:"backupnfcReservationMbit"`
+	// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+	BackupnfcShareCount *int `pulumi:"backupnfcShareCount"`
+	// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+	BackupnfcShareLevel *string `pulumi:"backupnfcShareLevel"`
 	// Shuts down all ports in the port groups that
 	// this policy applies to, effectively blocking all network access to connected
 	// virtual devices.
@@ -572,6 +588,14 @@ type DistributedVirtualSwitchState struct {
 	// Enable promiscuous mode on the network. This
 	// flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous pulumi.BoolPtrInput
+	// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcMaximumMbit pulumi.IntPtrInput
+	// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcReservationMbit pulumi.IntPtrInput
+	// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+	BackupnfcShareCount pulumi.IntPtrInput
+	// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+	BackupnfcShareLevel pulumi.StringPtrInput
 	// Shuts down all ports in the port groups that
 	// this policy applies to, effectively blocking all network access to connected
 	// virtual devices.
@@ -832,6 +856,14 @@ type distributedVirtualSwitchArgs struct {
 	// Enable promiscuous mode on the network. This
 	// flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
+	// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcMaximumMbit *int `pulumi:"backupnfcMaximumMbit"`
+	// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcReservationMbit *int `pulumi:"backupnfcReservationMbit"`
+	// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+	BackupnfcShareCount *int `pulumi:"backupnfcShareCount"`
+	// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+	BackupnfcShareLevel *string `pulumi:"backupnfcShareLevel"`
 	// Shuts down all ports in the port groups that
 	// this policy applies to, effectively blocking all network access to connected
 	// virtual devices.
@@ -1087,6 +1119,14 @@ type DistributedVirtualSwitchArgs struct {
 	// Enable promiscuous mode on the network. This
 	// flag indicates whether or not all traffic is seen on a given port.
 	AllowPromiscuous pulumi.BoolPtrInput
+	// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcMaximumMbit pulumi.IntPtrInput
+	// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+	BackupnfcReservationMbit pulumi.IntPtrInput
+	// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+	BackupnfcShareCount pulumi.IntPtrInput
+	// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+	BackupnfcShareLevel pulumi.StringPtrInput
 	// Shuts down all ports in the port groups that
 	// this policy applies to, effectively blocking all network access to connected
 	// virtual devices.

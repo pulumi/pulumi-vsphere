@@ -218,7 +218,7 @@ namespace Pulumi.VSphere
         /// A list of ports that currently exist and are used on this port group.
         /// </summary>
         [Output("ports")]
-        public Output<Outputs.HostPortGroupPorts> Ports { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.HostPortGroupPort>> Ports { get; private set; } = null!;
 
         /// <summary>
         /// The average bandwidth in bits per second if traffic shaping is enabled.
@@ -533,11 +533,17 @@ namespace Pulumi.VSphere
         [Input("notifySwitches")]
         public Input<bool>? NotifySwitches { get; set; }
 
+        [Input("ports")]
+        private InputList<Inputs.HostPortGroupPortGetArgs>? _ports;
+
         /// <summary>
         /// A list of ports that currently exist and are used on this port group.
         /// </summary>
-        [Input("ports")]
-        public Input<Inputs.HostPortGroupPortsGetArgs>? Ports { get; set; }
+        public InputList<Inputs.HostPortGroupPortGetArgs> Ports
+        {
+            get => _ports ?? (_ports = new InputList<Inputs.HostPortGroupPortGetArgs>());
+            set => _ports = value;
+        }
 
         /// <summary>
         /// The average bandwidth in bits per second if traffic shaping is enabled.

@@ -21,7 +21,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, num_cores_per_socket=None, num_cpus=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, uuid=None, vapp=None, vapp_transports=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -133,12 +133,18 @@ class GetVirtualMachineResult:
         if network_interface_types and not isinstance(network_interface_types, list):
             raise TypeError("Expected argument 'network_interface_types' to be a list")
         pulumi.set(__self__, "network_interface_types", network_interface_types)
+        if network_interfaces and not isinstance(network_interfaces, list):
+            raise TypeError("Expected argument 'network_interfaces' to be a list")
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
         if num_cores_per_socket and not isinstance(num_cores_per_socket, int):
             raise TypeError("Expected argument 'num_cores_per_socket' to be a int")
         pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
         if num_cpus and not isinstance(num_cpus, int):
             raise TypeError("Expected argument 'num_cpus' to be a int")
         pulumi.set(__self__, "num_cpus", num_cpus)
+        if replace_trigger and not isinstance(replace_trigger, str):
+            raise TypeError("Expected argument 'replace_trigger' to be a str")
+        pulumi.set(__self__, "replace_trigger", replace_trigger)
         if run_tools_scripts_after_power_on and not isinstance(run_tools_scripts_after_power_on, bool):
             raise TypeError("Expected argument 'run_tools_scripts_after_power_on' to be a bool")
         pulumi.set(__self__, "run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
@@ -184,6 +190,12 @@ class GetVirtualMachineResult:
         if vapp_transports and not isinstance(vapp_transports, list):
             raise TypeError("Expected argument 'vapp_transports' to be a list")
         pulumi.set(__self__, "vapp_transports", vapp_transports)
+        if vbs_enabled and not isinstance(vbs_enabled, bool):
+            raise TypeError("Expected argument 'vbs_enabled' to be a bool")
+        pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if vvtd_enabled and not isinstance(vvtd_enabled, bool):
+            raise TypeError("Expected argument 'vvtd_enabled' to be a bool")
+        pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
 
     @property
     @pulumi.getter(name="alternateGuestName")
@@ -411,6 +423,20 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "network_interface_types")
 
     @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.GetVirtualMachineNetworkInterfaceResult']:
+        """
+        Information about each of the network interfaces on this 
+        virtual machine or template. These are sorted by device bus order so that they
+        can be applied to a `VirtualMachine` resource in the order the resource
+        expects while cloning. This is useful for discovering certain network interface
+        settings while performing a linked clone, as all settings that are output by this
+        data source must be the same on the destination virtual machine as the source.
+        The sub-attributes are:
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> Optional[int]:
         """
@@ -426,6 +452,11 @@ class GetVirtualMachineResult:
         virtual machine.
         """
         return pulumi.get(self, "num_cpus")
+
+    @property
+    @pulumi.getter(name="replaceTrigger")
+    def replace_trigger(self) -> Optional[str]:
+        return pulumi.get(self, "replace_trigger")
 
     @property
     @pulumi.getter(name="runToolsScriptsAfterPowerOn")
@@ -514,6 +545,16 @@ class GetVirtualMachineResult:
     def vapp_transports(self) -> Sequence[str]:
         return pulumi.get(self, "vapp_transports")
 
+    @property
+    @pulumi.getter(name="vbsEnabled")
+    def vbs_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "vbs_enabled")
+
+    @property
+    @pulumi.getter(name="vvtdEnabled")
+    def vvtd_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "vvtd_enabled")
+
 
 class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
     # pylint: disable=using-constant-test
@@ -558,8 +599,10 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             name=self.name,
             nested_hv_enabled=self.nested_hv_enabled,
             network_interface_types=self.network_interface_types,
+            network_interfaces=self.network_interfaces,
             num_cores_per_socket=self.num_cores_per_socket,
             num_cpus=self.num_cpus,
+            replace_trigger=self.replace_trigger,
             run_tools_scripts_after_power_on=self.run_tools_scripts_after_power_on,
             run_tools_scripts_after_resume=self.run_tools_scripts_after_resume,
             run_tools_scripts_before_guest_reboot=self.run_tools_scripts_before_guest_reboot,
@@ -574,7 +617,9 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             sync_time_with_host=self.sync_time_with_host,
             uuid=self.uuid,
             vapp=self.vapp,
-            vapp_transports=self.vapp_transports)
+            vapp_transports=self.vapp_transports,
+            vbs_enabled=self.vbs_enabled,
+            vvtd_enabled=self.vvtd_enabled)
 
 
 def get_virtual_machine(alternate_guest_name: Optional[str] = None,
@@ -611,6 +656,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         nested_hv_enabled: Optional[bool] = None,
                         num_cores_per_socket: Optional[int] = None,
                         num_cpus: Optional[int] = None,
+                        replace_trigger: Optional[str] = None,
                         run_tools_scripts_after_power_on: Optional[bool] = None,
                         run_tools_scripts_after_resume: Optional[bool] = None,
                         run_tools_scripts_before_guest_reboot: Optional[bool] = None,
@@ -622,6 +668,8 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         swap_placement_policy: Optional[str] = None,
                         sync_time_with_host: Optional[bool] = None,
                         vapp: Optional[pulumi.InputType['GetVirtualMachineVappArgs']] = None,
+                        vbs_enabled: Optional[bool] = None,
+                        vvtd_enabled: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachineResult:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
@@ -697,6 +745,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['nestedHvEnabled'] = nested_hv_enabled
     __args__['numCoresPerSocket'] = num_cores_per_socket
     __args__['numCpus'] = num_cpus
+    __args__['replaceTrigger'] = replace_trigger
     __args__['runToolsScriptsAfterPowerOn'] = run_tools_scripts_after_power_on
     __args__['runToolsScriptsAfterResume'] = run_tools_scripts_after_resume
     __args__['runToolsScriptsBeforeGuestReboot'] = run_tools_scripts_before_guest_reboot
@@ -708,6 +757,8 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['swapPlacementPolicy'] = swap_placement_policy
     __args__['syncTimeWithHost'] = sync_time_with_host
     __args__['vapp'] = vapp
+    __args__['vbsEnabled'] = vbs_enabled
+    __args__['vvtdEnabled'] = vvtd_enabled
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -752,8 +803,10 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         name=__ret__.name,
         nested_hv_enabled=__ret__.nested_hv_enabled,
         network_interface_types=__ret__.network_interface_types,
+        network_interfaces=__ret__.network_interfaces,
         num_cores_per_socket=__ret__.num_cores_per_socket,
         num_cpus=__ret__.num_cpus,
+        replace_trigger=__ret__.replace_trigger,
         run_tools_scripts_after_power_on=__ret__.run_tools_scripts_after_power_on,
         run_tools_scripts_after_resume=__ret__.run_tools_scripts_after_resume,
         run_tools_scripts_before_guest_reboot=__ret__.run_tools_scripts_before_guest_reboot,
@@ -768,4 +821,6 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         sync_time_with_host=__ret__.sync_time_with_host,
         uuid=__ret__.uuid,
         vapp=__ret__.vapp,
-        vapp_transports=__ret__.vapp_transports)
+        vapp_transports=__ret__.vapp_transports,
+        vbs_enabled=__ret__.vbs_enabled,
+        vvtd_enabled=__ret__.vvtd_enabled)

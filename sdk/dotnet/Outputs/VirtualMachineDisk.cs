@@ -89,12 +89,7 @@ namespace Pulumi.VSphere.Outputs
         /// <summary>
         /// A label for the disk. Forces a new disk if changed.
         /// </summary>
-        public readonly string? Label;
-        /// <summary>
-        /// An alias for both `label` and `path`, the latter when
-        /// using `attach`. Required if not using `label`.
-        /// </summary>
-        public readonly string? Name;
+        public readonly string Label;
         /// <summary>
         /// The path to the ISO file. Required for using a datastore
         /// ISO. Conflicts with `client_device`.
@@ -163,9 +158,7 @@ namespace Pulumi.VSphere.Outputs
 
             int? key,
 
-            string? label,
-
-            string? name,
+            string label,
 
             string? path,
 
@@ -195,7 +188,6 @@ namespace Pulumi.VSphere.Outputs
             KeepOnRemove = keepOnRemove;
             Key = key;
             Label = label;
-            Name = name;
             Path = path;
             Size = size;
             StoragePolicyId = storagePolicyId;

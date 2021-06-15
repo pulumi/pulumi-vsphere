@@ -197,6 +197,9 @@ namespace Pulumi.VSphere
         [Input("numCpus")]
         public int? NumCpus { get; set; }
 
+        [Input("replaceTrigger")]
+        public string? ReplaceTrigger { get; set; }
+
         [Input("runToolsScriptsAfterPowerOn")]
         public bool? RunToolsScriptsAfterPowerOn { get; set; }
 
@@ -233,6 +236,12 @@ namespace Pulumi.VSphere
 
         [Input("vapp")]
         public Inputs.GetVirtualMachineVappArgs? Vapp { get; set; }
+
+        [Input("vbsEnabled")]
+        public bool? VbsEnabled { get; set; }
+
+        [Input("vvtdEnabled")]
+        public bool? VvtdEnabled { get; set; }
 
         public GetVirtualMachineArgs()
         {
@@ -321,6 +330,16 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
         /// <summary>
+        /// Information about each of the network interfaces on this 
+        /// virtual machine or template. These are sorted by device bus order so that they
+        /// can be applied to a `vsphere.VirtualMachine` resource in the order the resource
+        /// expects while cloning. This is useful for discovering certain network interface
+        /// settings while performing a linked clone, as all settings that are output by this
+        /// data source must be the same on the destination virtual machine as the source.
+        /// The sub-attributes are:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVirtualMachineNetworkInterfaceResult> NetworkInterfaces;
+        /// <summary>
         /// The number of cores per socket for this virtual machine.
         /// </summary>
         public readonly int? NumCoresPerSocket;
@@ -329,6 +348,7 @@ namespace Pulumi.VSphere
         /// virtual machine.
         /// </summary>
         public readonly int? NumCpus;
+        public readonly string? ReplaceTrigger;
         public readonly bool? RunToolsScriptsAfterPowerOn;
         public readonly bool? RunToolsScriptsAfterResume;
         public readonly bool? RunToolsScriptsBeforeGuestReboot;
@@ -356,6 +376,8 @@ namespace Pulumi.VSphere
         public readonly string Uuid;
         public readonly Outputs.GetVirtualMachineVappResult? Vapp;
         public readonly ImmutableArray<string> VappTransports;
+        public readonly bool? VbsEnabled;
+        public readonly bool? VvtdEnabled;
 
         [OutputConstructor]
         private GetVirtualMachineResult(
@@ -433,9 +455,13 @@ namespace Pulumi.VSphere
 
             ImmutableArray<string> networkInterfaceTypes,
 
+            ImmutableArray<Outputs.GetVirtualMachineNetworkInterfaceResult> networkInterfaces,
+
             int? numCoresPerSocket,
 
             int? numCpus,
+
+            string? replaceTrigger,
 
             bool? runToolsScriptsAfterPowerOn,
 
@@ -465,7 +491,11 @@ namespace Pulumi.VSphere
 
             Outputs.GetVirtualMachineVappResult? vapp,
 
-            ImmutableArray<string> vappTransports)
+            ImmutableArray<string> vappTransports,
+
+            bool? vbsEnabled,
+
+            bool? vvtdEnabled)
         {
             AlternateGuestName = alternateGuestName;
             Annotation = annotation;
@@ -504,8 +534,10 @@ namespace Pulumi.VSphere
             Name = name;
             NestedHvEnabled = nestedHvEnabled;
             NetworkInterfaceTypes = networkInterfaceTypes;
+            NetworkInterfaces = networkInterfaces;
             NumCoresPerSocket = numCoresPerSocket;
             NumCpus = numCpus;
+            ReplaceTrigger = replaceTrigger;
             RunToolsScriptsAfterPowerOn = runToolsScriptsAfterPowerOn;
             RunToolsScriptsAfterResume = runToolsScriptsAfterResume;
             RunToolsScriptsBeforeGuestReboot = runToolsScriptsBeforeGuestReboot;
@@ -521,6 +553,8 @@ namespace Pulumi.VSphere
             Uuid = uuid;
             Vapp = vapp;
             VappTransports = vappTransports;
+            VbsEnabled = vbsEnabled;
+            VvtdEnabled = vvtdEnabled;
         }
     }
 }

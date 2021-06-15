@@ -172,7 +172,7 @@ export class HostPortGroup extends pulumi.CustomResource {
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    public /*out*/ readonly ports!: pulumi.Output<outputs.HostPortGroupPorts>;
+    public /*out*/ readonly ports!: pulumi.Output<outputs.HostPortGroupPort[]>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
@@ -337,7 +337,7 @@ export interface HostPortGroupState {
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    readonly ports?: pulumi.Input<inputs.HostPortGroupPorts>;
+    readonly ports?: pulumi.Input<pulumi.Input<inputs.HostPortGroupPort>[]>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */

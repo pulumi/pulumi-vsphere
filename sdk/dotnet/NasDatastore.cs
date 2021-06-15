@@ -99,7 +99,7 @@ namespace Pulumi.VSphere
         /// This field is only populated if the host supports virtual datastores.
         /// </summary>
         [Output("protocolEndpoint")]
-        public Output<string> ProtocolEndpoint { get; private set; } = null!;
+        public Output<bool> ProtocolEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// The hostnames or IP addresses of the remote
@@ -414,7 +414,7 @@ namespace Pulumi.VSphere
         /// This field is only populated if the host supports virtual datastores.
         /// </summary>
         [Input("protocolEndpoint")]
-        public Input<string>? ProtocolEndpoint { get; set; }
+        public Input<bool>? ProtocolEndpoint { get; set; }
 
         [Input("remoteHosts")]
         private InputList<string>? _remoteHosts;

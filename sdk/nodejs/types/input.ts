@@ -123,7 +123,7 @@ export interface GetVirtualMachineVapp {
     properties?: {[key: string]: string};
 }
 
-export interface HostPortGroupPorts {
+export interface HostPortGroupPort {
     /**
      * The key for this port group as returned from the vSphere API.
      */
@@ -296,24 +296,7 @@ export interface VirtualMachineDisk {
     /**
      * A label for the disk. Forces a new disk if changed.
      */
-    label?: pulumi.Input<string>;
-    /**
-     * An alias for both `label` and `path`, the latter when
-     * using `attach`. Required if not using `label`.
-     *
-     * @deprecated 
-The name attribute for virtual disks will be removed in favor of "label" in
-future releases. To transition existing disks, rename the "name" attribute to
-"label". When doing so, ensure the value of the attribute stays the same.
-
-Note that "label" does not control the name of a VMDK and does not need to bear
-the name of one on new disks or virtual machines. For more information, see the
-documentation for the label attribute at: 
-
-https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-
-     */
-    name?: pulumi.Input<string>;
+    label: pulumi.Input<string>;
     /**
      * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
@@ -422,6 +405,7 @@ export interface VirtualMachineOvfDeploy {
     allowUnverifiedSslCert?: pulumi.Input<boolean>;
     deploymentOption?: pulumi.Input<string>;
     diskProvisioning?: pulumi.Input<string>;
+    enableHiddenProperties?: pulumi.Input<boolean>;
     ipAllocationPolicy?: pulumi.Input<string>;
     ipProtocol?: pulumi.Input<string>;
     localOvfPath?: pulumi.Input<string>;

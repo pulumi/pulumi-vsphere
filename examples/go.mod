@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-vsphere/examples/v3
+module github.com/pulumi/pulumi-vsphere/examples/v4
 
 go 1.16
 

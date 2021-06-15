@@ -142,11 +142,49 @@ export interface GetVirtualMachineDisk {
     unitNumber: number;
 }
 
+export interface GetVirtualMachineNetworkInterface {
+    /**
+     * The network interface types for each network interface found 
+     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+     * `vmxnet3`.
+     */
+    adapterType: string;
+    /**
+     * The upper bandwidth limit of this network interface, 
+     * in Mbits/sec.
+     */
+    bandwidthLimit?: number;
+    /**
+     * The bandwidth reservation of this network interface, 
+     * in Mbits/sec.
+     */
+    bandwidthReservation?: number;
+    /**
+     * The share count for this network interface when the 
+     * share level is custom.
+     */
+    bandwidthShareCount: number;
+    /**
+     * The bandwidth share allocation level for this interface. 
+     * Can be one of `low`, `normal`, `high`, or `custom`.
+     */
+    bandwidthShareLevel?: string;
+    /**
+     * The MAC address of this network interface.
+     */
+    macAddress: string;
+    /**
+     * The managed object reference ID of the network this interface is 
+     * connected to.
+     */
+    networkId: string;
+}
+
 export interface GetVirtualMachineVapp {
     properties?: {[key: string]: string};
 }
 
-export interface HostPortGroupPorts {
+export interface HostPortGroupPort {
     /**
      * The key for this port group as returned from the vSphere API.
      */
@@ -319,24 +357,7 @@ export interface VirtualMachineDisk {
     /**
      * A label for the disk. Forces a new disk if changed.
      */
-    label?: string;
-    /**
-     * An alias for both `label` and `path`, the latter when
-     * using `attach`. Required if not using `label`.
-     *
-     * @deprecated 
-The name attribute for virtual disks will be removed in favor of "label" in
-future releases. To transition existing disks, rename the "name" attribute to
-"label". When doing so, ensure the value of the attribute stays the same.
-
-Note that "label" does not control the name of a VMDK and does not need to bear
-the name of one on new disks or virtual machines. For more information, see the
-documentation for the label attribute at: 
-
-https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-
-     */
-    name?: string;
+    label: string;
     /**
      * The path to the ISO file. Required for using a datastore
      * ISO. Conflicts with `clientDevice`.
@@ -445,6 +466,7 @@ export interface VirtualMachineOvfDeploy {
     allowUnverifiedSslCert?: boolean;
     deploymentOption?: string;
     diskProvisioning?: string;
+    enableHiddenProperties?: boolean;
     ipAllocationPolicy?: string;
     ipProtocol?: string;
     localOvfPath?: string;

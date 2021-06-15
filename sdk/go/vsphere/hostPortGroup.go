@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v3/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -87,7 +87,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v3/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -191,7 +191,7 @@ type HostPortGroup struct {
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrOutput `pulumi:"notifySwitches"`
 	// A list of ports that currently exist and are used on this port group.
-	Ports HostPortGroupPortsOutput `pulumi:"ports"`
+	Ports HostPortGroupPortArrayOutput `pulumi:"ports"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrOutput `pulumi:"shapingAverageBandwidth"`
 	// The maximum burst size allowed in bytes if traffic shaping is enabled.
@@ -279,7 +279,7 @@ type hostPortGroupState struct {
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches *bool `pulumi:"notifySwitches"`
 	// A list of ports that currently exist and are used on this port group.
-	Ports *HostPortGroupPorts `pulumi:"ports"`
+	Ports []HostPortGroupPort `pulumi:"ports"`
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth *int `pulumi:"shapingAverageBandwidth"`
 	// The maximum burst size allowed in bytes if traffic shaping is enabled.
@@ -333,7 +333,7 @@ type HostPortGroupState struct {
 	// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
 	NotifySwitches pulumi.BoolPtrInput
 	// A list of ports that currently exist and are used on this port group.
-	Ports HostPortGroupPortsPtrInput
+	Ports HostPortGroupPortArrayInput
 	// The average bandwidth in bits per second if traffic shaping is enabled.
 	ShapingAverageBandwidth pulumi.IntPtrInput
 	// The maximum burst size allowed in bytes if traffic shaping is enabled.

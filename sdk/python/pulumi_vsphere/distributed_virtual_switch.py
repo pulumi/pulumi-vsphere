@@ -20,6 +20,10 @@ class DistributedVirtualSwitchArgs:
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_level: Optional[pulumi.Input[str]] = None,
                  block_all_ports: Optional[pulumi.Input[bool]] = None,
                  check_beacon: Optional[pulumi.Input[bool]] = None,
                  contact_detail: Optional[pulumi.Input[str]] = None,
@@ -120,6 +124,10 @@ class DistributedVirtualSwitchArgs:
                Control (MAC) address can be changed.
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
                flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_reservation_mbit: The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_share_count: The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        :param pulumi.Input[str] backupnfc_share_level: The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
                this policy applies to, effectively blocking all network access to connected
                virtual devices.
@@ -278,6 +286,14 @@ class DistributedVirtualSwitchArgs:
             pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
             pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+        if backupnfc_maximum_mbit is not None:
+            pulumi.set(__self__, "backupnfc_maximum_mbit", backupnfc_maximum_mbit)
+        if backupnfc_reservation_mbit is not None:
+            pulumi.set(__self__, "backupnfc_reservation_mbit", backupnfc_reservation_mbit)
+        if backupnfc_share_count is not None:
+            pulumi.set(__self__, "backupnfc_share_count", backupnfc_share_count)
+        if backupnfc_share_level is not None:
+            pulumi.set(__self__, "backupnfc_share_level", backupnfc_share_level)
         if block_all_ports is not None:
             pulumi.set(__self__, "block_all_ports", block_all_ports)
         if check_beacon is not None:
@@ -516,6 +532,54 @@ class DistributedVirtualSwitchArgs:
     @allow_promiscuous.setter
     def allow_promiscuous(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_promiscuous", value)
+
+    @property
+    @pulumi.getter(name="backupnfcMaximumMbit")
+    def backupnfc_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_maximum_mbit")
+
+    @backupnfc_maximum_mbit.setter
+    def backupnfc_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="backupnfcReservationMbit")
+    def backupnfc_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_reservation_mbit")
+
+    @backupnfc_reservation_mbit.setter
+    def backupnfc_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="backupnfcShareCount")
+    def backupnfc_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        """
+        return pulumi.get(self, "backupnfc_share_count")
+
+    @backupnfc_share_count.setter
+    def backupnfc_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_share_count", value)
+
+    @property
+    @pulumi.getter(name="backupnfcShareLevel")
+    def backupnfc_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "backupnfc_share_level")
+
+    @backupnfc_share_level.setter
+    def backupnfc_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backupnfc_share_level", value)
 
     @property
     @pulumi.getter(name="blockAllPorts")
@@ -1608,6 +1672,10 @@ class _DistributedVirtualSwitchState:
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_level: Optional[pulumi.Input[str]] = None,
                  block_all_ports: Optional[pulumi.Input[bool]] = None,
                  check_beacon: Optional[pulumi.Input[bool]] = None,
                  config_version: Optional[pulumi.Input[str]] = None,
@@ -1708,6 +1776,10 @@ class _DistributedVirtualSwitchState:
                Control (MAC) address can be changed.
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
                flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_reservation_mbit: The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_share_count: The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        :param pulumi.Input[str] backupnfc_share_level: The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
                this policy applies to, effectively blocking all network access to connected
                virtual devices.
@@ -1868,6 +1940,14 @@ class _DistributedVirtualSwitchState:
             pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
             pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+        if backupnfc_maximum_mbit is not None:
+            pulumi.set(__self__, "backupnfc_maximum_mbit", backupnfc_maximum_mbit)
+        if backupnfc_reservation_mbit is not None:
+            pulumi.set(__self__, "backupnfc_reservation_mbit", backupnfc_reservation_mbit)
+        if backupnfc_share_count is not None:
+            pulumi.set(__self__, "backupnfc_share_count", backupnfc_share_count)
+        if backupnfc_share_level is not None:
+            pulumi.set(__self__, "backupnfc_share_level", backupnfc_share_level)
         if block_all_ports is not None:
             pulumi.set(__self__, "block_all_ports", block_all_ports)
         if check_beacon is not None:
@@ -2097,6 +2177,54 @@ class _DistributedVirtualSwitchState:
     @allow_promiscuous.setter
     def allow_promiscuous(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_promiscuous", value)
+
+    @property
+    @pulumi.getter(name="backupnfcMaximumMbit")
+    def backupnfc_maximum_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_maximum_mbit")
+
+    @backupnfc_maximum_mbit.setter
+    def backupnfc_maximum_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_maximum_mbit", value)
+
+    @property
+    @pulumi.getter(name="backupnfcReservationMbit")
+    def backupnfc_reservation_mbit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_reservation_mbit")
+
+    @backupnfc_reservation_mbit.setter
+    def backupnfc_reservation_mbit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_reservation_mbit", value)
+
+    @property
+    @pulumi.getter(name="backupnfcShareCount")
+    def backupnfc_share_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        """
+        return pulumi.get(self, "backupnfc_share_count")
+
+    @backupnfc_share_count.setter
+    def backupnfc_share_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backupnfc_share_count", value)
+
+    @property
+    @pulumi.getter(name="backupnfcShareLevel")
+    def backupnfc_share_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "backupnfc_share_level")
+
+    @backupnfc_share_level.setter
+    def backupnfc_share_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backupnfc_share_level", value)
 
     @property
     @pulumi.getter(name="blockAllPorts")
@@ -3216,6 +3344,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_level: Optional[pulumi.Input[str]] = None,
                  block_all_ports: Optional[pulumi.Input[bool]] = None,
                  check_beacon: Optional[pulumi.Input[bool]] = None,
                  contact_detail: Optional[pulumi.Input[str]] = None,
@@ -3318,6 +3450,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                Control (MAC) address can be changed.
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
                flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_reservation_mbit: The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_share_count: The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        :param pulumi.Input[str] backupnfc_share_level: The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
                this policy applies to, effectively blocking all network access to connected
                virtual devices.
@@ -3496,6 +3632,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                  allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
                  allow_mac_changes: Optional[pulumi.Input[bool]] = None,
                  allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+                 backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+                 backupnfc_share_level: Optional[pulumi.Input[str]] = None,
                  block_all_ports: Optional[pulumi.Input[bool]] = None,
                  check_beacon: Optional[pulumi.Input[bool]] = None,
                  contact_detail: Optional[pulumi.Input[str]] = None,
@@ -3598,6 +3738,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             __props__.__dict__["allow_forged_transmits"] = allow_forged_transmits
             __props__.__dict__["allow_mac_changes"] = allow_mac_changes
             __props__.__dict__["allow_promiscuous"] = allow_promiscuous
+            __props__.__dict__["backupnfc_maximum_mbit"] = backupnfc_maximum_mbit
+            __props__.__dict__["backupnfc_reservation_mbit"] = backupnfc_reservation_mbit
+            __props__.__dict__["backupnfc_share_count"] = backupnfc_share_count
+            __props__.__dict__["backupnfc_share_level"] = backupnfc_share_level
             __props__.__dict__["block_all_ports"] = block_all_ports
             __props__.__dict__["check_beacon"] = check_beacon
             __props__.__dict__["contact_detail"] = contact_detail
@@ -3701,6 +3845,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+            backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+            backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+            backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+            backupnfc_share_level: Optional[pulumi.Input[str]] = None,
             block_all_ports: Optional[pulumi.Input[bool]] = None,
             check_beacon: Optional[pulumi.Input[bool]] = None,
             config_version: Optional[pulumi.Input[str]] = None,
@@ -3806,6 +3954,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                Control (MAC) address can be changed.
         :param pulumi.Input[bool] allow_promiscuous: Enable promiscuous mode on the network. This
                flag indicates whether or not all traffic is seen on a given port.
+        :param pulumi.Input[int] backupnfc_maximum_mbit: The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_reservation_mbit: The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        :param pulumi.Input[int] backupnfc_share_count: The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        :param pulumi.Input[str] backupnfc_share_level: The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[bool] block_all_ports: Shuts down all ports in the port groups that
                this policy applies to, effectively blocking all network access to connected
                virtual devices.
@@ -3966,6 +4118,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         __props__.__dict__["allow_forged_transmits"] = allow_forged_transmits
         __props__.__dict__["allow_mac_changes"] = allow_mac_changes
         __props__.__dict__["allow_promiscuous"] = allow_promiscuous
+        __props__.__dict__["backupnfc_maximum_mbit"] = backupnfc_maximum_mbit
+        __props__.__dict__["backupnfc_reservation_mbit"] = backupnfc_reservation_mbit
+        __props__.__dict__["backupnfc_share_count"] = backupnfc_share_count
+        __props__.__dict__["backupnfc_share_level"] = backupnfc_share_level
         __props__.__dict__["block_all_ports"] = block_all_ports
         __props__.__dict__["check_beacon"] = check_beacon
         __props__.__dict__["config_version"] = config_version
@@ -4093,6 +4249,38 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         flag indicates whether or not all traffic is seen on a given port.
         """
         return pulumi.get(self, "allow_promiscuous")
+
+    @property
+    @pulumi.getter(name="backupnfcMaximumMbit")
+    def backupnfc_maximum_mbit(self) -> pulumi.Output[int]:
+        """
+        The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_maximum_mbit")
+
+    @property
+    @pulumi.getter(name="backupnfcReservationMbit")
+    def backupnfc_reservation_mbit(self) -> pulumi.Output[int]:
+        """
+        The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        """
+        return pulumi.get(self, "backupnfc_reservation_mbit")
+
+    @property
+    @pulumi.getter(name="backupnfcShareCount")
+    def backupnfc_share_count(self) -> pulumi.Output[int]:
+        """
+        The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        """
+        return pulumi.get(self, "backupnfc_share_count")
+
+    @property
+    @pulumi.getter(name="backupnfcShareLevel")
+    def backupnfc_share_level(self) -> pulumi.Output[str]:
+        """
+        The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        """
+        return pulumi.get(self, "backupnfc_share_level")
 
     @property
     @pulumi.getter(name="blockAllPorts")

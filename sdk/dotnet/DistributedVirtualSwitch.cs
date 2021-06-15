@@ -44,6 +44,30 @@ namespace Pulumi.VSphere
         public Output<bool> AllowPromiscuous { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Output("backupnfcMaximumMbit")]
+        public Output<int> BackupnfcMaximumMbit { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Output("backupnfcReservationMbit")]
+        public Output<int> BackupnfcReservationMbit { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        /// </summary>
+        [Output("backupnfcShareCount")]
+        public Output<int> BackupnfcShareCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        /// </summary>
+        [Output("backupnfcShareLevel")]
+        public Output<string> BackupnfcShareLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Shuts down all ports in the port groups that
         /// this policy applies to, effectively blocking all network access to connected
         /// virtual devices.
@@ -713,6 +737,30 @@ namespace Pulumi.VSphere
         public Input<bool>? AllowPromiscuous { get; set; }
 
         /// <summary>
+        /// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Input("backupnfcMaximumMbit")]
+        public Input<int>? BackupnfcMaximumMbit { get; set; }
+
+        /// <summary>
+        /// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Input("backupnfcReservationMbit")]
+        public Input<int>? BackupnfcReservationMbit { get; set; }
+
+        /// <summary>
+        /// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        /// </summary>
+        [Input("backupnfcShareCount")]
+        public Input<int>? BackupnfcShareCount { get; set; }
+
+        /// <summary>
+        /// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        /// </summary>
+        [Input("backupnfcShareLevel")]
+        public Input<string>? BackupnfcShareLevel { get; set; }
+
+        /// <summary>
         /// Shuts down all ports in the port groups that
         /// this policy applies to, effectively blocking all network access to connected
         /// virtual devices.
@@ -1377,6 +1425,30 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("allowPromiscuous")]
         public Input<bool>? AllowPromiscuous { get; set; }
+
+        /// <summary>
+        /// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Input("backupnfcMaximumMbit")]
+        public Input<int>? BackupnfcMaximumMbit { get; set; }
+
+        /// <summary>
+        /// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+        /// </summary>
+        [Input("backupnfcReservationMbit")]
+        public Input<int>? BackupnfcReservationMbit { get; set; }
+
+        /// <summary>
+        /// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+        /// </summary>
+        [Input("backupnfcShareCount")]
+        public Input<int>? BackupnfcShareCount { get; set; }
+
+        /// <summary>
+        /// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+        /// </summary>
+        [Input("backupnfcShareLevel")]
+        public Input<string>? BackupnfcShareLevel { get; set; }
 
         /// <summary>
         /// Shuts down all ports in the port groups that

@@ -302,8 +302,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly moid!: pulumi.Output<string>;
     /**
-     * An alias for both `label` and `path`, the latter when
-     * using `attach`. Required if not using `label`.
+     * The name of the virtual machine.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -351,6 +350,13 @@ export class VirtualMachine extends pulumi.CustomResource {
      * an update process and gets reset on refresh.
      */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
+    /**
+     * Triggers replacement of resource whenever it changes.
+     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+     */
+    public readonly replaceTrigger!: pulumi.Output<string | undefined>;
     /**
      * The managed object reference
      * ID of the resource pool to put this virtual machine in.
@@ -453,6 +459,13 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public /*out*/ readonly vappTransports!: pulumi.Output<string[]>;
     /**
+     * Enable Virtualization Based Security. Requires
+     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
+     * vSphere 6.7 and higher. Default: `false`.
+     */
+    public readonly vbsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The state of VMware tools in the guest. This will
      * determine the proper course of action for some device operations.
      */
@@ -462,6 +475,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      * datastore.
      */
     public /*out*/ readonly vmxPath!: pulumi.Output<string>;
+    /**
+     * Flag to specify if Intel Virtualization Technology 
+     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     */
+    public readonly vvtdEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should
@@ -557,6 +576,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["pciDeviceIds"] = state ? state.pciDeviceIds : undefined;
             inputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
             inputs["rebootRequired"] = state ? state.rebootRequired : undefined;
+            inputs["replaceTrigger"] = state ? state.replaceTrigger : undefined;
             inputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = state ? state.runToolsScriptsAfterPowerOn : undefined;
             inputs["runToolsScriptsAfterResume"] = state ? state.runToolsScriptsAfterResume : undefined;
@@ -575,8 +595,10 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["uuid"] = state ? state.uuid : undefined;
             inputs["vapp"] = state ? state.vapp : undefined;
             inputs["vappTransports"] = state ? state.vappTransports : undefined;
+            inputs["vbsEnabled"] = state ? state.vbsEnabled : undefined;
             inputs["vmwareToolsStatus"] = state ? state.vmwareToolsStatus : undefined;
             inputs["vmxPath"] = state ? state.vmxPath : undefined;
+            inputs["vvtdEnabled"] = state ? state.vvtdEnabled : undefined;
             inputs["waitForGuestIpTimeout"] = state ? state.waitForGuestIpTimeout : undefined;
             inputs["waitForGuestNetRoutable"] = state ? state.waitForGuestNetRoutable : undefined;
             inputs["waitForGuestNetTimeout"] = state ? state.waitForGuestNetTimeout : undefined;
@@ -634,6 +656,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["ovfDeploy"] = args ? args.ovfDeploy : undefined;
             inputs["pciDeviceIds"] = args ? args.pciDeviceIds : undefined;
             inputs["poweronTimeout"] = args ? args.poweronTimeout : undefined;
+            inputs["replaceTrigger"] = args ? args.replaceTrigger : undefined;
             inputs["resourcePoolId"] = args ? args.resourcePoolId : undefined;
             inputs["runToolsScriptsAfterPowerOn"] = args ? args.runToolsScriptsAfterPowerOn : undefined;
             inputs["runToolsScriptsAfterResume"] = args ? args.runToolsScriptsAfterResume : undefined;
@@ -650,6 +673,8 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vapp"] = args ? args.vapp : undefined;
+            inputs["vbsEnabled"] = args ? args.vbsEnabled : undefined;
+            inputs["vvtdEnabled"] = args ? args.vvtdEnabled : undefined;
             inputs["waitForGuestIpTimeout"] = args ? args.waitForGuestIpTimeout : undefined;
             inputs["waitForGuestNetRoutable"] = args ? args.waitForGuestNetRoutable : undefined;
             inputs["waitForGuestNetTimeout"] = args ? args.waitForGuestNetTimeout : undefined;
@@ -944,8 +969,7 @@ export interface VirtualMachineState {
      */
     readonly moid?: pulumi.Input<string>;
     /**
-     * An alias for both `label` and `path`, the latter when
-     * using `attach`. Required if not using `label`.
+     * The name of the virtual machine.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -993,6 +1017,13 @@ export interface VirtualMachineState {
      * an update process and gets reset on refresh.
      */
     readonly rebootRequired?: pulumi.Input<boolean>;
+    /**
+     * Triggers replacement of resource whenever it changes.
+     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+     */
+    readonly replaceTrigger?: pulumi.Input<string>;
     /**
      * The managed object reference
      * ID of the resource pool to put this virtual machine in.
@@ -1095,6 +1126,13 @@ export interface VirtualMachineState {
      */
     readonly vappTransports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Enable Virtualization Based Security. Requires
+     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
+     * vSphere 6.7 and higher. Default: `false`.
+     */
+    readonly vbsEnabled?: pulumi.Input<boolean>;
+    /**
      * The state of VMware tools in the guest. This will
      * determine the proper course of action for some device operations.
      */
@@ -1104,6 +1142,12 @@ export interface VirtualMachineState {
      * datastore.
      */
     readonly vmxPath?: pulumi.Input<string>;
+    /**
+     * Flag to specify if Intel Virtualization Technology 
+     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     */
+    readonly vvtdEnabled?: pulumi.Input<boolean>;
     /**
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should
@@ -1370,8 +1414,7 @@ export interface VirtualMachineArgs {
      */
     readonly migrateWaitTimeout?: pulumi.Input<number>;
     /**
-     * An alias for both `label` and `path`, the latter when
-     * using `attach`. Required if not using `label`.
+     * The name of the virtual machine.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -1413,6 +1456,13 @@ export interface VirtualMachineArgs {
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     readonly poweronTimeout?: pulumi.Input<number>;
+    /**
+     * Triggers replacement of resource whenever it changes.
+     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+     */
+    readonly replaceTrigger?: pulumi.Input<string>;
     /**
      * The managed object reference
      * ID of the resource pool to put this virtual machine in.
@@ -1503,6 +1553,19 @@ export interface VirtualMachineArgs {
      * more details.
      */
     readonly vapp?: pulumi.Input<inputs.VirtualMachineVapp>;
+    /**
+     * Enable Virtualization Based Security. Requires
+     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
+     * vSphere 6.7 and higher. Default: `false`.
+     */
+    readonly vbsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Flag to specify if Intel Virtualization Technology 
+     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     */
+    readonly vvtdEnabled?: pulumi.Input<boolean>;
     /**
      * The amount of time, in minutes, to
      * wait for an available guest IP address on this virtual machine. This should

@@ -21,6 +21,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
 
+        [Input("enableHiddenProperties")]
+        public Input<bool>? EnableHiddenProperties { get; set; }
+
         [Input("ipAllocationPolicy")]
         public Input<string>? IpAllocationPolicy { get; set; }
 

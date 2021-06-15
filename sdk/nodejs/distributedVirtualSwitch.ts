@@ -57,6 +57,22 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly allowPromiscuous!: pulumi.Output<boolean>;
     /**
+     * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+     */
+    public readonly backupnfcMaximumMbit!: pulumi.Output<number>;
+    /**
+     * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+     */
+    public readonly backupnfcReservationMbit!: pulumi.Output<number>;
+    /**
+     * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+     */
+    public readonly backupnfcShareCount!: pulumi.Output<number>;
+    /**
+     * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+     */
+    public readonly backupnfcShareLevel!: pulumi.Output<string>;
+    /**
      * Shuts down all ports in the port groups that
      * this policy applies to, effectively blocking all network access to connected
      * virtual devices.
@@ -486,6 +502,10 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
             inputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
             inputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
+            inputs["backupnfcMaximumMbit"] = state ? state.backupnfcMaximumMbit : undefined;
+            inputs["backupnfcReservationMbit"] = state ? state.backupnfcReservationMbit : undefined;
+            inputs["backupnfcShareCount"] = state ? state.backupnfcShareCount : undefined;
+            inputs["backupnfcShareLevel"] = state ? state.backupnfcShareLevel : undefined;
             inputs["blockAllPorts"] = state ? state.blockAllPorts : undefined;
             inputs["checkBeacon"] = state ? state.checkBeacon : undefined;
             inputs["configVersion"] = state ? state.configVersion : undefined;
@@ -582,6 +602,10 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
             inputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
             inputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
             inputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
+            inputs["backupnfcMaximumMbit"] = args ? args.backupnfcMaximumMbit : undefined;
+            inputs["backupnfcReservationMbit"] = args ? args.backupnfcReservationMbit : undefined;
+            inputs["backupnfcShareCount"] = args ? args.backupnfcShareCount : undefined;
+            inputs["backupnfcShareLevel"] = args ? args.backupnfcShareLevel : undefined;
             inputs["blockAllPorts"] = args ? args.blockAllPorts : undefined;
             inputs["checkBeacon"] = args ? args.checkBeacon : undefined;
             inputs["contactDetail"] = args ? args.contactDetail : undefined;
@@ -704,6 +728,22 @@ export interface DistributedVirtualSwitchState {
      * flag indicates whether or not all traffic is seen on a given port.
      */
     readonly allowPromiscuous?: pulumi.Input<boolean>;
+    /**
+     * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+     */
+    readonly backupnfcMaximumMbit?: pulumi.Input<number>;
+    /**
+     * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+     */
+    readonly backupnfcReservationMbit?: pulumi.Input<number>;
+    /**
+     * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+     */
+    readonly backupnfcShareCount?: pulumi.Input<number>;
+    /**
+     * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+     */
+    readonly backupnfcShareLevel?: pulumi.Input<string>;
     /**
      * Shuts down all ports in the port groups that
      * this policy applies to, effectively blocking all network access to connected
@@ -1145,6 +1185,22 @@ export interface DistributedVirtualSwitchArgs {
      * flag indicates whether or not all traffic is seen on a given port.
      */
     readonly allowPromiscuous?: pulumi.Input<boolean>;
+    /**
+     * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+     */
+    readonly backupnfcMaximumMbit?: pulumi.Input<number>;
+    /**
+     * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+     */
+    readonly backupnfcReservationMbit?: pulumi.Input<number>;
+    /**
+     * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+     */
+    readonly backupnfcShareCount?: pulumi.Input<number>;
+    /**
+     * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+     */
+    readonly backupnfcShareLevel?: pulumi.Input<string>;
     /**
      * Shuts down all ports in the port groups that
      * this policy applies to, effectively blocking all network access to connected

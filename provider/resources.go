@@ -5,11 +5,10 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
-	"github.com/pulumi/pulumi-vsphere/provider/v3/pkg/version"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi-vsphere/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -44,7 +43,7 @@ func vsphereResource(mod string, res string) tokens.Type {
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(vsphere.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(vsphere.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "vsphere",
@@ -164,7 +163,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "^3.0.0-alpha.0",
+				"@pulumi/pulumi":    "^3.0.0",
 				"builtin-modules":   "3.0.0",
 				"read-package-tree": "^5.2.1",
 				"resolve":           "^1.8.1",
@@ -178,7 +177,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -192,7 +191,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

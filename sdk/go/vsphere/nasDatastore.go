@@ -54,7 +54,7 @@ type NasDatastore struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates that this NAS volume is a protocol endpoint.
 	// This field is only populated if the host supports virtual datastores.
-	ProtocolEndpoint pulumi.StringOutput `pulumi:"protocolEndpoint"`
+	ProtocolEndpoint pulumi.BoolOutput `pulumi:"protocolEndpoint"`
 	// The hostnames or IP addresses of the remote
 	// server or servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
@@ -157,7 +157,7 @@ type nasDatastoreState struct {
 	Name *string `pulumi:"name"`
 	// Indicates that this NAS volume is a protocol endpoint.
 	// This field is only populated if the host supports virtual datastores.
-	ProtocolEndpoint *string `pulumi:"protocolEndpoint"`
+	ProtocolEndpoint *bool `pulumi:"protocolEndpoint"`
 	// The hostnames or IP addresses of the remote
 	// server or servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.
@@ -223,7 +223,7 @@ type NasDatastoreState struct {
 	Name pulumi.StringPtrInput
 	// Indicates that this NAS volume is a protocol endpoint.
 	// This field is only populated if the host supports virtual datastores.
-	ProtocolEndpoint pulumi.StringPtrInput
+	ProtocolEndpoint pulumi.BoolPtrInput
 	// The hostnames or IP addresses of the remote
 	// server or servers. Only one element should be present for NFS v3 but multiple
 	// can be present for NFS v4.1. Forces a new resource if changed.

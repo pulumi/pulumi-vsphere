@@ -114,15 +114,8 @@ namespace Pulumi.VSphere.Inputs
         /// <summary>
         /// A label for the disk. Forces a new disk if changed.
         /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// An alias for both `label` and `path`, the latter when
-        /// using `attach`. Required if not using `label`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
 
         /// <summary>
         /// The path to the ISO file. Required for using a datastore

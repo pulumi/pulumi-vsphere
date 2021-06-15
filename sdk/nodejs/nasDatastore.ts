@@ -96,7 +96,7 @@ export class NasDatastore extends pulumi.CustomResource {
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    public /*out*/ readonly protocolEndpoint!: pulumi.Output<string>;
+    public /*out*/ readonly protocolEndpoint!: pulumi.Output<boolean>;
     /**
      * The hostnames or IP addresses of the remote
      * server or servers. Only one element should be present for NFS v3 but multiple
@@ -272,7 +272,7 @@ export interface NasDatastoreState {
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    readonly protocolEndpoint?: pulumi.Input<string>;
+    readonly protocolEndpoint?: pulumi.Input<boolean>;
     /**
      * The hostnames or IP addresses of the remote
      * server or servers. Only one element should be present for NFS v3 but multiple

@@ -40,6 +40,7 @@ export function getOvfVmTemplate(args: GetOvfVmTemplateArgs, opts?: pulumi.Invok
         "datastoreId": args.datastoreId,
         "deploymentOption": args.deploymentOption,
         "diskProvisioning": args.diskProvisioning,
+        "enableHiddenProperties": args.enableHiddenProperties,
         "folder": args.folder,
         "hostSystemId": args.hostSystemId,
         "ipAllocationPolicy": args.ipAllocationPolicy,
@@ -73,6 +74,7 @@ export interface GetOvfVmTemplateArgs {
      * the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
      */
     readonly diskProvisioning?: string;
+    readonly enableHiddenProperties?: boolean;
     /**
      * The name of the folder to locate the virtual machine in.
      */
@@ -138,6 +140,7 @@ export interface GetOvfVmTemplateResult {
     readonly datastoreId?: string;
     readonly deploymentOption?: string;
     readonly diskProvisioning?: string;
+    readonly enableHiddenProperties?: boolean;
     /**
      * The firmware interface to use on the virtual machine.
      */

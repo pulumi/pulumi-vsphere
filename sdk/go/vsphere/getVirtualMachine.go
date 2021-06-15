@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v3/go/vsphere"
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -105,13 +105,14 @@ type LookupVirtualMachineArgs struct {
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
-	NumCpus                            *int  `pulumi:"numCpus"`
-	RunToolsScriptsAfterPowerOn        *bool `pulumi:"runToolsScriptsAfterPowerOn"`
-	RunToolsScriptsAfterResume         *bool `pulumi:"runToolsScriptsAfterResume"`
-	RunToolsScriptsBeforeGuestReboot   *bool `pulumi:"runToolsScriptsBeforeGuestReboot"`
-	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
-	RunToolsScriptsBeforeGuestStandby  *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	SataControllerScanCount            *int  `pulumi:"sataControllerScanCount"`
+	NumCpus                            *int    `pulumi:"numCpus"`
+	ReplaceTrigger                     *string `pulumi:"replaceTrigger"`
+	RunToolsScriptsAfterPowerOn        *bool   `pulumi:"runToolsScriptsAfterPowerOn"`
+	RunToolsScriptsAfterResume         *bool   `pulumi:"runToolsScriptsAfterResume"`
+	RunToolsScriptsBeforeGuestReboot   *bool   `pulumi:"runToolsScriptsBeforeGuestReboot"`
+	RunToolsScriptsBeforeGuestShutdown *bool   `pulumi:"runToolsScriptsBeforeGuestShutdown"`
+	RunToolsScriptsBeforeGuestStandby  *bool   `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
 	ScsiControllerScanCount *int                   `pulumi:"scsiControllerScanCount"`
@@ -119,6 +120,8 @@ type LookupVirtualMachineArgs struct {
 	SwapPlacementPolicy     *string                `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost        *bool                  `pulumi:"syncTimeWithHost"`
 	Vapp                    *GetVirtualMachineVapp `pulumi:"vapp"`
+	VbsEnabled              *bool                  `pulumi:"vbsEnabled"`
+	VvtdEnabled             *bool                  `pulumi:"vvtdEnabled"`
 }
 
 // A collection of values returned by getVirtualMachine.
@@ -180,17 +183,26 @@ type LookupVirtualMachineResult struct {
 	// interface found on the virtual machine, in device bus order. Will be one of
 	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
 	NetworkInterfaceTypes []string `pulumi:"networkInterfaceTypes"`
+	// Information about each of the network interfaces on this
+	// virtual machine or template. These are sorted by device bus order so that they
+	// can be applied to a `VirtualMachine` resource in the order the resource
+	// expects while cloning. This is useful for discovering certain network interface
+	// settings while performing a linked clone, as all settings that are output by this
+	// data source must be the same on the destination virtual machine as the source.
+	// The sub-attributes are:
+	NetworkInterfaces []GetVirtualMachineNetworkInterface `pulumi:"networkInterfaces"`
 	// The number of cores per socket for this virtual machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
 	// virtual machine.
-	NumCpus                            *int  `pulumi:"numCpus"`
-	RunToolsScriptsAfterPowerOn        *bool `pulumi:"runToolsScriptsAfterPowerOn"`
-	RunToolsScriptsAfterResume         *bool `pulumi:"runToolsScriptsAfterResume"`
-	RunToolsScriptsBeforeGuestReboot   *bool `pulumi:"runToolsScriptsBeforeGuestReboot"`
-	RunToolsScriptsBeforeGuestShutdown *bool `pulumi:"runToolsScriptsBeforeGuestShutdown"`
-	RunToolsScriptsBeforeGuestStandby  *bool `pulumi:"runToolsScriptsBeforeGuestStandby"`
-	SataControllerScanCount            *int  `pulumi:"sataControllerScanCount"`
+	NumCpus                            *int    `pulumi:"numCpus"`
+	ReplaceTrigger                     *string `pulumi:"replaceTrigger"`
+	RunToolsScriptsAfterPowerOn        *bool   `pulumi:"runToolsScriptsAfterPowerOn"`
+	RunToolsScriptsAfterResume         *bool   `pulumi:"runToolsScriptsAfterResume"`
+	RunToolsScriptsBeforeGuestReboot   *bool   `pulumi:"runToolsScriptsBeforeGuestReboot"`
+	RunToolsScriptsBeforeGuestShutdown *bool   `pulumi:"runToolsScriptsBeforeGuestShutdown"`
+	RunToolsScriptsBeforeGuestStandby  *bool   `pulumi:"runToolsScriptsBeforeGuestStandby"`
+	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// Mode for sharing the SCSI bus. The modes are
 	// physicalSharing, virtualSharing, and noSharing. Only the first number of
 	// controllers defined by `scsiControllerScanCount` are scanned.
@@ -208,4 +220,6 @@ type LookupVirtualMachineResult struct {
 	Uuid                string                 `pulumi:"uuid"`
 	Vapp                *GetVirtualMachineVapp `pulumi:"vapp"`
 	VappTransports      []string               `pulumi:"vappTransports"`
+	VbsEnabled          *bool                  `pulumi:"vbsEnabled"`
+	VvtdEnabled         *bool                  `pulumi:"vvtdEnabled"`
 }

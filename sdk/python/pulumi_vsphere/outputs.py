@@ -18,7 +18,7 @@ __all__ = [
     'DistributedVirtualSwitchPvlanMapping',
     'DistributedVirtualSwitchVlanRange',
     'EntityPermissionsPermission',
-    'HostPortGroupPorts',
+    'HostPortGroupPort',
     'VirtualMachineCdrom',
     'VirtualMachineClone',
     'VirtualMachineCloneCustomize',
@@ -33,6 +33,7 @@ __all__ = [
     'VnicIpv4',
     'VnicIpv6',
     'GetVirtualMachineDiskResult',
+    'GetVirtualMachineNetworkInterfaceResult',
     'GetVirtualMachineVappResult',
 ]
 
@@ -511,7 +512,7 @@ class EntityPermissionsPermission(dict):
 
 
 @pulumi.output_type
-class HostPortGroupPorts(dict):
+class HostPortGroupPort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -519,14 +520,14 @@ class HostPortGroupPorts(dict):
             suggest = "mac_addresses"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HostPortGroupPorts. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in HostPortGroupPort. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        HostPortGroupPorts.__key_warning(key)
+        HostPortGroupPort.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        HostPortGroupPorts.__key_warning(key)
+        HostPortGroupPort.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1186,6 +1187,7 @@ class VirtualMachineDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 label: str,
                  attach: Optional[bool] = None,
                  controller_type: Optional[str] = None,
                  datastore_id: Optional[str] = None,
@@ -1199,8 +1201,6 @@ class VirtualMachineDisk(dict):
                  io_share_level: Optional[str] = None,
                  keep_on_remove: Optional[bool] = None,
                  key: Optional[int] = None,
-                 label: Optional[str] = None,
-                 name: Optional[str] = None,
                  path: Optional[str] = None,
                  size: Optional[int] = None,
                  storage_policy_id: Optional[str] = None,
@@ -1209,6 +1209,7 @@ class VirtualMachineDisk(dict):
                  uuid: Optional[str] = None,
                  write_through: Optional[bool] = None):
         """
+        :param str label: A label for the disk. Forces a new disk if changed.
         :param bool attach: Attach an external disk instead of creating a new one.
                Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
                `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
@@ -1243,9 +1244,6 @@ class VirtualMachineDisk(dict):
         :param bool keep_on_remove: Keep this disk when removing the device or
                destroying the virtual machine. Default: `false`.
         :param int key: The ID of the device within the virtual machine.
-        :param str label: A label for the disk. Forces a new disk if changed.
-        :param str name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
         :param str path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
         :param int size: The size of the disk, in GB.
@@ -1265,6 +1263,7 @@ class VirtualMachineDisk(dict):
                directly to the filesystem immediately instead of being buffered. Default:
                `false`.
         """
+        pulumi.set(__self__, "label", label)
         if attach is not None:
             pulumi.set(__self__, "attach", attach)
         if controller_type is not None:
@@ -1291,10 +1290,6 @@ class VirtualMachineDisk(dict):
             pulumi.set(__self__, "keep_on_remove", keep_on_remove)
         if key is not None:
             pulumi.set(__self__, "key", key)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if size is not None:
@@ -1309,6 +1304,14 @@ class VirtualMachineDisk(dict):
             pulumi.set(__self__, "uuid", uuid)
         if write_through is not None:
             pulumi.set(__self__, "write_through", write_through)
+
+    @property
+    @pulumi.getter
+    def label(self) -> str:
+        """
+        A label for the disk. Forces a new disk if changed.
+        """
+        return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
@@ -1434,23 +1437,6 @@ class VirtualMachineDisk(dict):
         The ID of the device within the virtual machine.
         """
         return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def label(self) -> Optional[str]:
-        """
-        A label for the disk. Forces a new disk if changed.
-        """
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        An alias for both `label` and `path`, the latter when
-        using `attach`. Required if not using `label`.
-        """
-        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -1736,6 +1722,8 @@ class VirtualMachineOvfDeploy(dict):
             suggest = "deployment_option"
         elif key == "diskProvisioning":
             suggest = "disk_provisioning"
+        elif key == "enableHiddenProperties":
+            suggest = "enable_hidden_properties"
         elif key == "ipAllocationPolicy":
             suggest = "ip_allocation_policy"
         elif key == "ipProtocol":
@@ -1762,6 +1750,7 @@ class VirtualMachineOvfDeploy(dict):
                  allow_unverified_ssl_cert: Optional[bool] = None,
                  deployment_option: Optional[str] = None,
                  disk_provisioning: Optional[str] = None,
+                 enable_hidden_properties: Optional[bool] = None,
                  ip_allocation_policy: Optional[str] = None,
                  ip_protocol: Optional[str] = None,
                  local_ovf_path: Optional[str] = None,
@@ -1773,6 +1762,8 @@ class VirtualMachineOvfDeploy(dict):
             pulumi.set(__self__, "deployment_option", deployment_option)
         if disk_provisioning is not None:
             pulumi.set(__self__, "disk_provisioning", disk_provisioning)
+        if enable_hidden_properties is not None:
+            pulumi.set(__self__, "enable_hidden_properties", enable_hidden_properties)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if ip_protocol is not None:
@@ -1798,6 +1789,11 @@ class VirtualMachineOvfDeploy(dict):
     @pulumi.getter(name="diskProvisioning")
     def disk_provisioning(self) -> Optional[str]:
         return pulumi.get(self, "disk_provisioning")
+
+    @property
+    @pulumi.getter(name="enableHiddenProperties")
+    def enable_hidden_properties(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_hidden_properties")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
@@ -2070,6 +2066,107 @@ class GetVirtualMachineDiskResult(dict):
         The disk number on the storage bus.
         """
         return pulumi.get(self, "unit_number")
+
+
+@pulumi.output_type
+class GetVirtualMachineNetworkInterfaceResult(dict):
+    def __init__(__self__, *,
+                 adapter_type: str,
+                 bandwidth_share_count: int,
+                 mac_address: str,
+                 network_id: str,
+                 bandwidth_limit: Optional[int] = None,
+                 bandwidth_reservation: Optional[int] = None,
+                 bandwidth_share_level: Optional[str] = None):
+        """
+        :param str adapter_type: The network interface types for each network interface found 
+               on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+               `vmxnet3`.
+        :param int bandwidth_share_count: The share count for this network interface when the 
+               share level is custom.
+        :param str mac_address: The MAC address of this network interface.
+        :param str network_id: The managed object reference ID of the network this interface is 
+               connected to.
+        :param int bandwidth_limit: The upper bandwidth limit of this network interface, 
+               in Mbits/sec.
+        :param int bandwidth_reservation: The bandwidth reservation of this network interface, 
+               in Mbits/sec.
+        :param str bandwidth_share_level: The bandwidth share allocation level for this interface. 
+               Can be one of `low`, `normal`, `high`, or `custom`.
+        """
+        pulumi.set(__self__, "adapter_type", adapter_type)
+        pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
+        pulumi.set(__self__, "mac_address", mac_address)
+        pulumi.set(__self__, "network_id", network_id)
+        if bandwidth_limit is not None:
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if bandwidth_reservation is not None:
+            pulumi.set(__self__, "bandwidth_reservation", bandwidth_reservation)
+        if bandwidth_share_level is not None:
+            pulumi.set(__self__, "bandwidth_share_level", bandwidth_share_level)
+
+    @property
+    @pulumi.getter(name="adapterType")
+    def adapter_type(self) -> str:
+        """
+        The network interface types for each network interface found 
+        on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+        `vmxnet3`.
+        """
+        return pulumi.get(self, "adapter_type")
+
+    @property
+    @pulumi.getter(name="bandwidthShareCount")
+    def bandwidth_share_count(self) -> int:
+        """
+        The share count for this network interface when the 
+        share level is custom.
+        """
+        return pulumi.get(self, "bandwidth_share_count")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> str:
+        """
+        The MAC address of this network interface.
+        """
+        return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> str:
+        """
+        The managed object reference ID of the network this interface is 
+        connected to.
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
+    @pulumi.getter(name="bandwidthLimit")
+    def bandwidth_limit(self) -> Optional[int]:
+        """
+        The upper bandwidth limit of this network interface, 
+        in Mbits/sec.
+        """
+        return pulumi.get(self, "bandwidth_limit")
+
+    @property
+    @pulumi.getter(name="bandwidthReservation")
+    def bandwidth_reservation(self) -> Optional[int]:
+        """
+        The bandwidth reservation of this network interface, 
+        in Mbits/sec.
+        """
+        return pulumi.get(self, "bandwidth_reservation")
+
+    @property
+    @pulumi.getter(name="bandwidthShareLevel")
+    def bandwidth_share_level(self) -> Optional[str]:
+        """
+        The bandwidth share allocation level for this interface. 
+        Can be one of `low`, `normal`, `high`, or `custom`.
+        """
+        return pulumi.get(self, "bandwidth_share_level")
 
 
 @pulumi.output_type
