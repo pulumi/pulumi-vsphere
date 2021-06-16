@@ -70,6 +70,7 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         "nestedHvEnabled": args.nestedHvEnabled,
         "numCoresPerSocket": args.numCoresPerSocket,
         "numCpus": args.numCpus,
+        "replaceTrigger": args.replaceTrigger,
         "runToolsScriptsAfterPowerOn": args.runToolsScriptsAfterPowerOn,
         "runToolsScriptsAfterResume": args.runToolsScriptsAfterResume,
         "runToolsScriptsBeforeGuestReboot": args.runToolsScriptsBeforeGuestReboot,
@@ -81,6 +82,8 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         "swapPlacementPolicy": args.swapPlacementPolicy,
         "syncTimeWithHost": args.syncTimeWithHost,
         "vapp": args.vapp,
+        "vbsEnabled": args.vbsEnabled,
+        "vvtdEnabled": args.vvtdEnabled,
     }, opts);
 }
 
@@ -159,6 +162,7 @@ export interface GetVirtualMachineArgs {
      * virtual machine.
      */
     readonly numCpus?: number;
+    readonly replaceTrigger?: string;
     readonly runToolsScriptsAfterPowerOn?: boolean;
     readonly runToolsScriptsAfterResume?: boolean;
     readonly runToolsScriptsBeforeGuestReboot?: boolean;
@@ -174,6 +178,8 @@ export interface GetVirtualMachineArgs {
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
     readonly vapp?: inputs.GetVirtualMachineVapp;
+    readonly vbsEnabled?: boolean;
+    readonly vvtdEnabled?: boolean;
 }
 
 /**
@@ -258,6 +264,16 @@ export interface GetVirtualMachineResult {
      */
     readonly networkInterfaceTypes: string[];
     /**
+     * Information about each of the network interfaces on this 
+     * virtual machine or template. These are sorted by device bus order so that they
+     * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
+     * expects while cloning. This is useful for discovering certain network interface
+     * settings while performing a linked clone, as all settings that are output by this
+     * data source must be the same on the destination virtual machine as the source.
+     * The sub-attributes are:
+     */
+    readonly networkInterfaces: outputs.GetVirtualMachineNetworkInterface[];
+    /**
      * The number of cores per socket for this virtual machine.
      */
     readonly numCoresPerSocket?: number;
@@ -266,6 +282,7 @@ export interface GetVirtualMachineResult {
      * virtual machine.
      */
     readonly numCpus?: number;
+    readonly replaceTrigger?: string;
     readonly runToolsScriptsAfterPowerOn?: boolean;
     readonly runToolsScriptsAfterResume?: boolean;
     readonly runToolsScriptsBeforeGuestReboot?: boolean;
@@ -293,4 +310,6 @@ export interface GetVirtualMachineResult {
     readonly uuid: string;
     readonly vapp?: outputs.GetVirtualMachineVapp;
     readonly vappTransports: string[];
+    readonly vbsEnabled?: boolean;
+    readonly vvtdEnabled?: boolean;
 }

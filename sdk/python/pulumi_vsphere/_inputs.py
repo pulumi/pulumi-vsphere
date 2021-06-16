@@ -17,7 +17,7 @@ __all__ = [
     'DistributedVirtualSwitchPvlanMappingArgs',
     'DistributedVirtualSwitchVlanRangeArgs',
     'EntityPermissionsPermissionArgs',
-    'HostPortGroupPortsArgs',
+    'HostPortGroupPortArgs',
     'VirtualMachineCdromArgs',
     'VirtualMachineCloneArgs',
     'VirtualMachineCloneCustomizeArgs',
@@ -474,7 +474,7 @@ class EntityPermissionsPermissionArgs:
 
 
 @pulumi.input_type
-class HostPortGroupPortsArgs:
+class HostPortGroupPortArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1109,6 +1109,7 @@ class VirtualMachineCloneCustomizeWindowsOptionsArgs:
 @pulumi.input_type
 class VirtualMachineDiskArgs:
     def __init__(__self__, *,
+                 label: pulumi.Input[str],
                  attach: Optional[pulumi.Input[bool]] = None,
                  controller_type: Optional[pulumi.Input[str]] = None,
                  datastore_id: Optional[pulumi.Input[str]] = None,
@@ -1122,8 +1123,6 @@ class VirtualMachineDiskArgs:
                  io_share_level: Optional[pulumi.Input[str]] = None,
                  keep_on_remove: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[int]] = None,
-                 label: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
@@ -1132,6 +1131,7 @@ class VirtualMachineDiskArgs:
                  uuid: Optional[pulumi.Input[str]] = None,
                  write_through: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[str] label: A label for the disk. Forces a new disk if changed.
         :param pulumi.Input[bool] attach: Attach an external disk instead of creating a new one.
                Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
                `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
@@ -1166,9 +1166,6 @@ class VirtualMachineDiskArgs:
         :param pulumi.Input[bool] keep_on_remove: Keep this disk when removing the device or
                destroying the virtual machine. Default: `false`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] label: A label for the disk. Forces a new disk if changed.
-        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
         :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore
                ISO. Conflicts with `client_device`.
         :param pulumi.Input[int] size: The size of the disk, in GB.
@@ -1188,6 +1185,7 @@ class VirtualMachineDiskArgs:
                directly to the filesystem immediately instead of being buffered. Default:
                `false`.
         """
+        pulumi.set(__self__, "label", label)
         if attach is not None:
             pulumi.set(__self__, "attach", attach)
         if controller_type is not None:
@@ -1214,33 +1212,6 @@ class VirtualMachineDiskArgs:
             pulumi.set(__self__, "keep_on_remove", keep_on_remove)
         if key is not None:
             pulumi.set(__self__, "key", key)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if name is not None:
-            warnings.warn("""
-The name attribute for virtual disks will be removed in favor of \"label\" in
-future releases. To transition existing disks, rename the \"name\" attribute to
-\"label\". When doing so, ensure the value of the attribute stays the same.
-
-Note that \"label\" does not control the name of a VMDK and does not need to bear
-the name of one on new disks or virtual machines. For more information, see the
-documentation for the label attribute at: 
-
-https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: 
-The name attribute for virtual disks will be removed in favor of \"label\" in
-future releases. To transition existing disks, rename the \"name\" attribute to
-\"label\". When doing so, ensure the value of the attribute stays the same.
-
-Note that \"label\" does not control the name of a VMDK and does not need to bear
-the name of one on new disks or virtual machines. For more information, see the
-documentation for the label attribute at: 
-
-https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if size is not None:
@@ -1255,6 +1226,18 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
             pulumi.set(__self__, "uuid", uuid)
         if write_through is not None:
             pulumi.set(__self__, "write_through", write_through)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        A label for the disk. Forces a new disk if changed.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
 
     @property
     @pulumi.getter
@@ -1432,31 +1415,6 @@ https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
     @key.setter
     def key(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[str]]:
-        """
-        A label for the disk. Forces a new disk if changed.
-        """
-        return pulumi.get(self, "label")
-
-    @label.setter
-    def label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "label", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        An alias for both `label` and `path`, the latter when
-        using `attach`. Required if not using `label`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -1774,6 +1732,7 @@ class VirtualMachineOvfDeployArgs:
                  allow_unverified_ssl_cert: Optional[pulumi.Input[bool]] = None,
                  deployment_option: Optional[pulumi.Input[str]] = None,
                  disk_provisioning: Optional[pulumi.Input[str]] = None,
+                 enable_hidden_properties: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  local_ovf_path: Optional[pulumi.Input[str]] = None,
@@ -1785,6 +1744,8 @@ class VirtualMachineOvfDeployArgs:
             pulumi.set(__self__, "deployment_option", deployment_option)
         if disk_provisioning is not None:
             pulumi.set(__self__, "disk_provisioning", disk_provisioning)
+        if enable_hidden_properties is not None:
+            pulumi.set(__self__, "enable_hidden_properties", enable_hidden_properties)
         if ip_allocation_policy is not None:
             pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if ip_protocol is not None:
@@ -1822,6 +1783,15 @@ class VirtualMachineOvfDeployArgs:
     @disk_provisioning.setter
     def disk_provisioning(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_provisioning", value)
+
+    @property
+    @pulumi.getter(name="enableHiddenProperties")
+    def enable_hidden_properties(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_hidden_properties")
+
+    @enable_hidden_properties.setter
+    def enable_hidden_properties(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_hidden_properties", value)
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")

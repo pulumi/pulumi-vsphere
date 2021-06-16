@@ -322,7 +322,7 @@ class _HostPortGroupState:
                  key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notify_switches: Optional[pulumi.Input[bool]] = None,
-                 ports: Optional[pulumi.Input['HostPortGroupPortsArgs']] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['HostPortGroupPortArgs']]]] = None,
                  shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
                  shaping_burst_size: Optional[pulumi.Input[int]] = None,
                  shaping_enabled: Optional[pulumi.Input[bool]] = None,
@@ -350,7 +350,7 @@ class _HostPortGroupState:
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
                changed.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input['HostPortGroupPortsArgs'] ports: A list of ports that currently exist and are used on this port group.
+        :param pulumi.Input[Sequence[pulumi.Input['HostPortGroupPortArgs']]] ports: A list of ports that currently exist and are used on this port group.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -546,14 +546,14 @@ class _HostPortGroupState:
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input['HostPortGroupPortsArgs']]:
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostPortGroupPortArgs']]]]:
         """
         A list of ports that currently exist and are used on this port group.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input['HostPortGroupPortsArgs']]):
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostPortGroupPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @property
@@ -953,7 +953,7 @@ class HostPortGroup(pulumi.CustomResource):
             key: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notify_switches: Optional[pulumi.Input[bool]] = None,
-            ports: Optional[pulumi.Input[pulumi.InputType['HostPortGroupPortsArgs']]] = None,
+            ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostPortGroupPortArgs']]]]] = None,
             shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
             shaping_burst_size: Optional[pulumi.Input[int]] = None,
             shaping_enabled: Optional[pulumi.Input[bool]] = None,
@@ -986,7 +986,7 @@ class HostPortGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the port group.  Forces a new resource if
                changed.
         :param pulumi.Input[bool] notify_switches: If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
-        :param pulumi.Input[pulumi.InputType['HostPortGroupPortsArgs']] ports: A list of ports that currently exist and are used on this port group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostPortGroupPortArgs']]]] ports: A list of ports that currently exist and are used on this port group.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per second if traffic shaping is enabled.
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if traffic shaping is enabled.
         :param pulumi.Input[bool] shaping_enabled: Enable traffic shaping on this virtual switch or port group.
@@ -1123,7 +1123,7 @@ class HostPortGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ports(self) -> pulumi.Output['outputs.HostPortGroupPorts']:
+    def ports(self) -> pulumi.Output[Sequence['outputs.HostPortGroupPort']]:
         """
         A list of ports that currently exist and are used on this port group.
         """

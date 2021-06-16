@@ -190,8 +190,7 @@ type VirtualMachine struct {
 	MigrateWaitTimeout pulumi.IntPtrOutput `pulumi:"migrateWaitTimeout"`
 	// The machine object ID from VMWare
 	Moid pulumi.StringOutput `pulumi:"moid"`
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
+	// The name of the virtual machine.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Enable nested hardware virtualization on
 	// this virtual machine, facilitating nested virtualization in the guest.
@@ -222,6 +221,11 @@ type VirtualMachine struct {
 	// configuration set change requires a reboot. This value is only useful during
 	// an update process and gets reset on refresh.
 	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
+	// Triggers replacement of resource whenever it changes.
+	// `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+	// will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+	// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+	ReplaceTrigger pulumi.StringPtrOutput `pulumi:"replaceTrigger"`
 	// The managed object reference
 	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -287,12 +291,21 @@ type VirtualMachine struct {
 	// machines. A list of vApp transport methods supported by the source virtual
 	// machine or template.
 	VappTransports pulumi.StringArrayOutput `pulumi:"vappTransports"`
+	// Enable Virtualization Based Security. Requires
+	// `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+	// `efiSecureBootEnabled` must all have a value of `true`. Supported on
+	// vSphere 6.7 and higher. Default: `false`.
+	VbsEnabled pulumi.BoolPtrOutput `pulumi:"vbsEnabled"`
 	// The state of VMware tools in the guest. This will
 	// determine the proper course of action for some device operations.
 	VmwareToolsStatus pulumi.StringOutput `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine's configuration file in the VM's
 	// datastore.
 	VmxPath pulumi.StringOutput `pulumi:"vmxPath"`
+	// Flag to specify if Intel Virtualization Technology
+	// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+	// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+	VvtdEnabled pulumi.BoolPtrOutput `pulumi:"vvtdEnabled"`
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
@@ -523,8 +536,7 @@ type virtualMachineState struct {
 	MigrateWaitTimeout *int `pulumi:"migrateWaitTimeout"`
 	// The machine object ID from VMWare
 	Moid *string `pulumi:"moid"`
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
+	// The name of the virtual machine.
 	Name *string `pulumi:"name"`
 	// Enable nested hardware virtualization on
 	// this virtual machine, facilitating nested virtualization in the guest.
@@ -555,6 +567,11 @@ type virtualMachineState struct {
 	// configuration set change requires a reboot. This value is only useful during
 	// an update process and gets reset on refresh.
 	RebootRequired *bool `pulumi:"rebootRequired"`
+	// Triggers replacement of resource whenever it changes.
+	// `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+	// will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+	// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+	ReplaceTrigger *string `pulumi:"replaceTrigger"`
 	// The managed object reference
 	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -620,12 +637,21 @@ type virtualMachineState struct {
 	// machines. A list of vApp transport methods supported by the source virtual
 	// machine or template.
 	VappTransports []string `pulumi:"vappTransports"`
+	// Enable Virtualization Based Security. Requires
+	// `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+	// `efiSecureBootEnabled` must all have a value of `true`. Supported on
+	// vSphere 6.7 and higher. Default: `false`.
+	VbsEnabled *bool `pulumi:"vbsEnabled"`
 	// The state of VMware tools in the guest. This will
 	// determine the proper course of action for some device operations.
 	VmwareToolsStatus *string `pulumi:"vmwareToolsStatus"`
 	// The path of the virtual machine's configuration file in the VM's
 	// datastore.
 	VmxPath *string `pulumi:"vmxPath"`
+	// Flag to specify if Intel Virtualization Technology
+	// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+	// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
@@ -825,8 +851,7 @@ type VirtualMachineState struct {
 	MigrateWaitTimeout pulumi.IntPtrInput
 	// The machine object ID from VMWare
 	Moid pulumi.StringPtrInput
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
+	// The name of the virtual machine.
 	Name pulumi.StringPtrInput
 	// Enable nested hardware virtualization on
 	// this virtual machine, facilitating nested virtualization in the guest.
@@ -857,6 +882,11 @@ type VirtualMachineState struct {
 	// configuration set change requires a reboot. This value is only useful during
 	// an update process and gets reset on refresh.
 	RebootRequired pulumi.BoolPtrInput
+	// Triggers replacement of resource whenever it changes.
+	// `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+	// will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+	// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+	ReplaceTrigger pulumi.StringPtrInput
 	// The managed object reference
 	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -922,12 +952,21 @@ type VirtualMachineState struct {
 	// machines. A list of vApp transport methods supported by the source virtual
 	// machine or template.
 	VappTransports pulumi.StringArrayInput
+	// Enable Virtualization Based Security. Requires
+	// `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+	// `efiSecureBootEnabled` must all have a value of `true`. Supported on
+	// vSphere 6.7 and higher. Default: `false`.
+	VbsEnabled pulumi.BoolPtrInput
 	// The state of VMware tools in the guest. This will
 	// determine the proper course of action for some device operations.
 	VmwareToolsStatus pulumi.StringPtrInput
 	// The path of the virtual machine's configuration file in the VM's
 	// datastore.
 	VmxPath pulumi.StringPtrInput
+	// Flag to specify if Intel Virtualization Technology
+	// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+	// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+	VvtdEnabled pulumi.BoolPtrInput
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
@@ -1106,8 +1145,7 @@ type virtualMachineArgs struct {
 	// minutes. Also see the section on virtual machine
 	// migration.
 	MigrateWaitTimeout *int `pulumi:"migrateWaitTimeout"`
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
+	// The name of the virtual machine.
 	Name *string `pulumi:"name"`
 	// Enable nested hardware virtualization on
 	// this virtual machine, facilitating nested virtualization in the guest.
@@ -1134,6 +1172,11 @@ type virtualMachineArgs struct {
 	PciDeviceIds []string `pulumi:"pciDeviceIds"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
+	// Triggers replacement of resource whenever it changes.
+	// `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+	// will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+	// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+	ReplaceTrigger *string `pulumi:"replaceTrigger"`
 	// The managed object reference
 	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -1192,6 +1235,15 @@ type virtualMachineArgs struct {
 	// configuration for
 	// more details.
 	Vapp *VirtualMachineVapp `pulumi:"vapp"`
+	// Enable Virtualization Based Security. Requires
+	// `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+	// `efiSecureBootEnabled` must all have a value of `true`. Supported on
+	// vSphere 6.7 and higher. Default: `false`.
+	VbsEnabled *bool `pulumi:"vbsEnabled"`
+	// Flag to specify if Intel Virtualization Technology
+	// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+	// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+	VvtdEnabled *bool `pulumi:"vvtdEnabled"`
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the
@@ -1367,8 +1419,7 @@ type VirtualMachineArgs struct {
 	// minutes. Also see the section on virtual machine
 	// migration.
 	MigrateWaitTimeout pulumi.IntPtrInput
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
+	// The name of the virtual machine.
 	Name pulumi.StringPtrInput
 	// Enable nested hardware virtualization on
 	// this virtual machine, facilitating nested virtualization in the guest.
@@ -1395,6 +1446,11 @@ type VirtualMachineArgs struct {
 	PciDeviceIds pulumi.StringArrayInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
+	// Triggers replacement of resource whenever it changes.
+	// `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+	// will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
+	// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+	ReplaceTrigger pulumi.StringPtrInput
 	// The managed object reference
 	// ID of the resource pool to put this virtual machine in.
 	// See the section on virtual machine migration
@@ -1453,6 +1509,15 @@ type VirtualMachineArgs struct {
 	// configuration for
 	// more details.
 	Vapp VirtualMachineVappPtrInput
+	// Enable Virtualization Based Security. Requires
+	// `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
+	// `efiSecureBootEnabled` must all have a value of `true`. Supported on
+	// vSphere 6.7 and higher. Default: `false`.
+	VbsEnabled pulumi.BoolPtrInput
+	// Flag to specify if Intel Virtualization Technology
+	// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+	// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+	VvtdEnabled pulumi.BoolPtrInput
 	// The amount of time, in minutes, to
 	// wait for an available guest IP address on this virtual machine. This should
 	// only be used if your version of VMware Tools does not allow the

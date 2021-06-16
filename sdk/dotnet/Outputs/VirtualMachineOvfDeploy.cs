@@ -16,6 +16,7 @@ namespace Pulumi.VSphere.Outputs
         public readonly bool? AllowUnverifiedSslCert;
         public readonly string? DeploymentOption;
         public readonly string? DiskProvisioning;
+        public readonly bool? EnableHiddenProperties;
         public readonly string? IpAllocationPolicy;
         public readonly string? IpProtocol;
         public readonly string? LocalOvfPath;
@@ -30,6 +31,8 @@ namespace Pulumi.VSphere.Outputs
 
             string? diskProvisioning,
 
+            bool? enableHiddenProperties,
+
             string? ipAllocationPolicy,
 
             string? ipProtocol,
@@ -43,6 +46,7 @@ namespace Pulumi.VSphere.Outputs
             AllowUnverifiedSslCert = allowUnverifiedSslCert;
             DeploymentOption = deploymentOption;
             DiskProvisioning = diskProvisioning;
+            EnableHiddenProperties = enableHiddenProperties;
             IpAllocationPolicy = ipAllocationPolicy;
             IpProtocol = ipProtocol;
             LocalOvfPath = localOvfPath;

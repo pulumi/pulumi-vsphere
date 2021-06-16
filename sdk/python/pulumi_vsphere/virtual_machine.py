@@ -65,6 +65,7 @@ class VirtualMachineArgs:
                  ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
+                 replace_trigger: Optional[pulumi.Input[str]] = None,
                  run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
@@ -80,6 +81,8 @@ class VirtualMachineArgs:
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
+                 vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None):
@@ -199,8 +202,7 @@ class VirtualMachineArgs:
                for a virtual machine migration to complete before failing. Default: 10
                minutes. Also see the section on virtual machine
                migration.
-        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
+        :param pulumi.Input[str] name: The name of the virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
@@ -219,6 +221,10 @@ class VirtualMachineArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
+        :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
+               `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+               will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+               of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable the execution of
                post-power-on scripts when VMware tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable the execution of
@@ -257,6 +263,13 @@ class VirtualMachineArgs:
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
                configuration for
                more details.
+        :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires
+               `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+               `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+               vSphere 6.7 and higher. Default: `false`.
+        :param pulumi.Input[bool] vvtd_enabled: Flag to specify if Intel Virtualization Technology 
+               for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+               vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
@@ -374,6 +387,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "pci_device_ids", pci_device_ids)
         if poweron_timeout is not None:
             pulumi.set(__self__, "poweron_timeout", poweron_timeout)
+        if replace_trigger is not None:
+            pulumi.set(__self__, "replace_trigger", replace_trigger)
         if run_tools_scripts_after_power_on is not None:
             pulumi.set(__self__, "run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
         if run_tools_scripts_after_resume is not None:
@@ -404,6 +419,10 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "tags", tags)
         if vapp is not None:
             pulumi.set(__self__, "vapp", vapp)
+        if vbs_enabled is not None:
+            pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+        if vvtd_enabled is not None:
+            pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
             pulumi.set(__self__, "wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
         if wait_for_guest_net_routable is not None:
@@ -991,8 +1010,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        An alias for both `label` and `path`, the latter when
-        using `attach`. Required if not using `label`.
+        The name of the virtual machine.
         """
         return pulumi.get(self, "name")
 
@@ -1094,6 +1112,21 @@ class VirtualMachineArgs:
     @poweron_timeout.setter
     def poweron_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "poweron_timeout", value)
+
+    @property
+    @pulumi.getter(name="replaceTrigger")
+    def replace_trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        Triggers replacement of resource whenever it changes.
+        `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        """
+        return pulumi.get(self, "replace_trigger")
+
+    @replace_trigger.setter
+    def replace_trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_trigger", value)
 
     @property
     @pulumi.getter(name="runToolsScriptsAfterPowerOn")
@@ -1299,6 +1332,35 @@ class VirtualMachineArgs:
         pulumi.set(self, "vapp", value)
 
     @property
+    @pulumi.getter(name="vbsEnabled")
+    def vbs_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Virtualization Based Security. Requires
+        `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vbs_enabled")
+
+    @vbs_enabled.setter
+    def vbs_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vbs_enabled", value)
+
+    @property
+    @pulumi.getter(name="vvtdEnabled")
+    def vvtd_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to specify if Intel Virtualization Technology 
+        for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vvtd_enabled")
+
+    @vvtd_enabled.setter
+    def vvtd_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vvtd_enabled", value)
+
+    @property
     @pulumi.getter(name="waitForGuestIpTimeout")
     def wait_for_guest_ip_timeout(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1407,6 +1469,7 @@ class _VirtualMachineState:
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
                  reboot_required: Optional[pulumi.Input[bool]] = None,
+                 replace_trigger: Optional[pulumi.Input[str]] = None,
                  resource_pool_id: Optional[pulumi.Input[str]] = None,
                  run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
@@ -1425,8 +1488,10 @@ class _VirtualMachineState:
                  uuid: Optional[pulumi.Input[str]] = None,
                  vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
                  vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vbs_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_tools_status: Optional[pulumi.Input[str]] = None,
                  vmx_path: Optional[pulumi.Input[str]] = None,
+                 vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None):
@@ -1562,8 +1627,7 @@ class _VirtualMachineState:
                minutes. Also see the section on virtual machine
                migration.
         :param pulumi.Input[str] moid: The machine object ID from VMWare
-        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
+        :param pulumi.Input[str] name: The name of the virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
@@ -1585,6 +1649,10 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
                configuration set change requires a reboot. This value is only useful during
                an update process and gets reset on refresh.
+        :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
+               `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+               will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+               of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
         :param pulumi.Input[str] resource_pool_id: The managed object reference
                ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -1632,10 +1700,17 @@ class _VirtualMachineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual
                machines. A list of vApp transport methods supported by the source virtual
                machine or template.
+        :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires
+               `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+               `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+               vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[str] vmware_tools_status: The state of VMware tools in the guest. This will
                determine the proper course of action for some device operations.
         :param pulumi.Input[str] vmx_path: The path of the virtual machine's configuration file in the VM's
                datastore.
+        :param pulumi.Input[bool] vvtd_enabled: Flag to specify if Intel Virtualization Technology 
+               for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+               vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
@@ -1764,6 +1839,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "poweron_timeout", poweron_timeout)
         if reboot_required is not None:
             pulumi.set(__self__, "reboot_required", reboot_required)
+        if replace_trigger is not None:
+            pulumi.set(__self__, "replace_trigger", replace_trigger)
         if resource_pool_id is not None:
             pulumi.set(__self__, "resource_pool_id", resource_pool_id)
         if run_tools_scripts_after_power_on is not None:
@@ -1800,10 +1877,14 @@ class _VirtualMachineState:
             pulumi.set(__self__, "vapp", vapp)
         if vapp_transports is not None:
             pulumi.set(__self__, "vapp_transports", vapp_transports)
+        if vbs_enabled is not None:
+            pulumi.set(__self__, "vbs_enabled", vbs_enabled)
         if vmware_tools_status is not None:
             pulumi.set(__self__, "vmware_tools_status", vmware_tools_status)
         if vmx_path is not None:
             pulumi.set(__self__, "vmx_path", vmx_path)
+        if vvtd_enabled is not None:
+            pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
             pulumi.set(__self__, "wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
         if wait_for_guest_net_routable is not None:
@@ -2451,8 +2532,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        An alias for both `label` and `path`, the latter when
-        using `attach`. Required if not using `label`.
+        The name of the virtual machine.
         """
         return pulumi.get(self, "name")
 
@@ -2568,6 +2648,21 @@ class _VirtualMachineState:
     @reboot_required.setter
     def reboot_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reboot_required", value)
+
+    @property
+    @pulumi.getter(name="replaceTrigger")
+    def replace_trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        Triggers replacement of resource whenever it changes.
+        `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        """
+        return pulumi.get(self, "replace_trigger")
+
+    @replace_trigger.setter
+    def replace_trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replace_trigger", value)
 
     @property
     @pulumi.getter(name="resourcePoolId")
@@ -2815,6 +2910,21 @@ class _VirtualMachineState:
         pulumi.set(self, "vapp_transports", value)
 
     @property
+    @pulumi.getter(name="vbsEnabled")
+    def vbs_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Virtualization Based Security. Requires
+        `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vbs_enabled")
+
+    @vbs_enabled.setter
+    def vbs_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vbs_enabled", value)
+
+    @property
     @pulumi.getter(name="vmwareToolsStatus")
     def vmware_tools_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2839,6 +2949,20 @@ class _VirtualMachineState:
     @vmx_path.setter
     def vmx_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vmx_path", value)
+
+    @property
+    @pulumi.getter(name="vvtdEnabled")
+    def vvtd_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to specify if Intel Virtualization Technology 
+        for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vvtd_enabled")
+
+    @vvtd_enabled.setter
+    def vvtd_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vvtd_enabled", value)
 
     @property
     @pulumi.getter(name="waitForGuestIpTimeout")
@@ -2945,6 +3069,7 @@ class VirtualMachine(pulumi.CustomResource):
                  ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
+                 replace_trigger: Optional[pulumi.Input[str]] = None,
                  resource_pool_id: Optional[pulumi.Input[str]] = None,
                  run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
@@ -2961,6 +3086,8 @@ class VirtualMachine(pulumi.CustomResource):
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
+                 vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
@@ -3079,8 +3206,7 @@ class VirtualMachine(pulumi.CustomResource):
                for a virtual machine migration to complete before failing. Default: 10
                minutes. Also see the section on virtual machine
                migration.
-        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
+        :param pulumi.Input[str] name: The name of the virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
@@ -3099,6 +3225,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs to create PCI
                passthroughs for.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
+        :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
+               `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+               will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+               of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
         :param pulumi.Input[str] resource_pool_id: The managed object reference
                ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -3141,6 +3271,13 @@ class VirtualMachine(pulumi.CustomResource):
                imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
                configuration for
                more details.
+        :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires
+               `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+               `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+               vSphere 6.7 and higher. Default: `false`.
+        :param pulumi.Input[bool] vvtd_enabled: Flag to specify if Intel Virtualization Technology 
+               for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+               vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
@@ -3231,6 +3368,7 @@ class VirtualMachine(pulumi.CustomResource):
                  ovf_deploy: Optional[pulumi.Input[pulumi.InputType['VirtualMachineOvfDeployArgs']]] = None,
                  pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  poweron_timeout: Optional[pulumi.Input[int]] = None,
+                 replace_trigger: Optional[pulumi.Input[str]] = None,
                  resource_pool_id: Optional[pulumi.Input[str]] = None,
                  run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
                  run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
@@ -3247,6 +3385,8 @@ class VirtualMachine(pulumi.CustomResource):
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
+                 vbs_enabled: Optional[pulumi.Input[bool]] = None,
+                 vvtd_enabled: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
                  wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
                  wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
@@ -3311,6 +3451,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["ovf_deploy"] = ovf_deploy
             __props__.__dict__["pci_device_ids"] = pci_device_ids
             __props__.__dict__["poweron_timeout"] = poweron_timeout
+            __props__.__dict__["replace_trigger"] = replace_trigger
             if resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_pool_id'")
             __props__.__dict__["resource_pool_id"] = resource_pool_id
@@ -3329,6 +3470,8 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["sync_time_with_host"] = sync_time_with_host
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vapp"] = vapp
+            __props__.__dict__["vbs_enabled"] = vbs_enabled
+            __props__.__dict__["vvtd_enabled"] = vvtd_enabled
             __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
             __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
             __props__.__dict__["wait_for_guest_net_timeout"] = wait_for_guest_net_timeout
@@ -3407,6 +3550,7 @@ class VirtualMachine(pulumi.CustomResource):
             pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             poweron_timeout: Optional[pulumi.Input[int]] = None,
             reboot_required: Optional[pulumi.Input[bool]] = None,
+            replace_trigger: Optional[pulumi.Input[str]] = None,
             resource_pool_id: Optional[pulumi.Input[str]] = None,
             run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
             run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
@@ -3425,8 +3569,10 @@ class VirtualMachine(pulumi.CustomResource):
             uuid: Optional[pulumi.Input[str]] = None,
             vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
             vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            vbs_enabled: Optional[pulumi.Input[bool]] = None,
             vmware_tools_status: Optional[pulumi.Input[str]] = None,
             vmx_path: Optional[pulumi.Input[str]] = None,
+            vvtd_enabled: Optional[pulumi.Input[bool]] = None,
             wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
             wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
             wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None) -> 'VirtualMachine':
@@ -3567,8 +3713,7 @@ class VirtualMachine(pulumi.CustomResource):
                minutes. Also see the section on virtual machine
                migration.
         :param pulumi.Input[str] moid: The machine object ID from VMWare
-        :param pulumi.Input[str] name: An alias for both `label` and `path`, the latter when
-               using `attach`. Required if not using `label`.
+        :param pulumi.Input[str] name: The name of the virtual machine.
         :param pulumi.Input[bool] nested_hv_enabled: Enable nested hardware virtualization on
                this virtual machine, facilitating nested virtualization in the guest.
                Default: `false`.
@@ -3590,6 +3735,10 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] reboot_required: Value internal to the provider used to determine if a
                configuration set change requires a reboot. This value is only useful during
                an update process and gets reset on refresh.
+        :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
+               `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+               will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+               of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
         :param pulumi.Input[str] resource_pool_id: The managed object reference
                ID of the resource pool to put this virtual machine in.
                See the section on virtual machine migration
@@ -3637,10 +3786,17 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual
                machines. A list of vApp transport methods supported by the source virtual
                machine or template.
+        :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires
+               `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+               `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+               vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[str] vmware_tools_status: The state of VMware tools in the guest. This will
                determine the proper course of action for some device operations.
         :param pulumi.Input[str] vmx_path: The path of the virtual machine's configuration file in the VM's
                datastore.
+        :param pulumi.Input[bool] vvtd_enabled: Flag to specify if Intel Virtualization Technology 
+               for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+               vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
         :param pulumi.Input[int] wait_for_guest_ip_timeout: The amount of time, in minutes, to
                wait for an available guest IP address on this virtual machine. This should
                only be used if your version of VMware Tools does not allow the
@@ -3718,6 +3874,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["pci_device_ids"] = pci_device_ids
         __props__.__dict__["poweron_timeout"] = poweron_timeout
         __props__.__dict__["reboot_required"] = reboot_required
+        __props__.__dict__["replace_trigger"] = replace_trigger
         __props__.__dict__["resource_pool_id"] = resource_pool_id
         __props__.__dict__["run_tools_scripts_after_power_on"] = run_tools_scripts_after_power_on
         __props__.__dict__["run_tools_scripts_after_resume"] = run_tools_scripts_after_resume
@@ -3736,8 +3893,10 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         __props__.__dict__["vapp"] = vapp
         __props__.__dict__["vapp_transports"] = vapp_transports
+        __props__.__dict__["vbs_enabled"] = vbs_enabled
         __props__.__dict__["vmware_tools_status"] = vmware_tools_status
         __props__.__dict__["vmx_path"] = vmx_path
+        __props__.__dict__["vvtd_enabled"] = vvtd_enabled
         __props__.__dict__["wait_for_guest_ip_timeout"] = wait_for_guest_ip_timeout
         __props__.__dict__["wait_for_guest_net_routable"] = wait_for_guest_net_routable
         __props__.__dict__["wait_for_guest_net_timeout"] = wait_for_guest_net_timeout
@@ -4199,8 +4358,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        An alias for both `label` and `path`, the latter when
-        using `attach`. Required if not using `label`.
+        The name of the virtual machine.
         """
         return pulumi.get(self, "name")
 
@@ -4280,6 +4438,17 @@ class VirtualMachine(pulumi.CustomResource):
         an update process and gets reset on refresh.
         """
         return pulumi.get(self, "reboot_required")
+
+    @property
+    @pulumi.getter(name="replaceTrigger")
+    def replace_trigger(self) -> pulumi.Output[Optional[str]]:
+        """
+        Triggers replacement of resource whenever it changes.
+        `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        """
+        return pulumi.get(self, "replace_trigger")
 
     @property
     @pulumi.getter(name="resourcePoolId")
@@ -4455,6 +4624,17 @@ class VirtualMachine(pulumi.CustomResource):
         return pulumi.get(self, "vapp_transports")
 
     @property
+    @pulumi.getter(name="vbsEnabled")
+    def vbs_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable Virtualization Based Security. Requires
+        `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vbs_enabled")
+
+    @property
     @pulumi.getter(name="vmwareToolsStatus")
     def vmware_tools_status(self) -> pulumi.Output[str]:
         """
@@ -4471,6 +4651,16 @@ class VirtualMachine(pulumi.CustomResource):
         datastore.
         """
         return pulumi.get(self, "vmx_path")
+
+    @property
+    @pulumi.getter(name="vvtdEnabled")
+    def vvtd_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag to specify if Intel Virtualization Technology 
+        for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        """
+        return pulumi.get(self, "vvtd_enabled")
 
     @property
     @pulumi.getter(name="waitForGuestIpTimeout")

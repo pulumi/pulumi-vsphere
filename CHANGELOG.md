@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.0.1 of the vSphere Terraform Provider
+  **PLEASE NOTE:** `vsphere.index.VirtualMachineDisk` has had the `name` property removed
 
 ---
 

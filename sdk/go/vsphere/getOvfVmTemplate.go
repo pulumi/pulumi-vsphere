@@ -28,7 +28,8 @@ type GetOvfVmTemplateArgs struct {
 	DeploymentOption *string `pulumi:"deploymentOption"`
 	// The disk provisioning. If set, all the disks in the deployed OVF will have
 	// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
-	DiskProvisioning *string `pulumi:"diskProvisioning"`
+	DiskProvisioning       *string `pulumi:"diskProvisioning"`
+	EnableHiddenProperties *bool   `pulumi:"enableHiddenProperties"`
 	// The name of the folder to locate the virtual machine in.
 	Folder *string `pulumi:"folder"`
 	// The ID of an optional host system to pin the virtual machine to.
@@ -66,6 +67,7 @@ type GetOvfVmTemplateResult struct {
 	DatastoreId                   *string `pulumi:"datastoreId"`
 	DeploymentOption              *string `pulumi:"deploymentOption"`
 	DiskProvisioning              *string `pulumi:"diskProvisioning"`
+	EnableHiddenProperties        *bool   `pulumi:"enableHiddenProperties"`
 	// The firmware interface to use on the virtual machine.
 	Firmware string  `pulumi:"firmware"`
 	Folder   *string `pulumi:"folder"`

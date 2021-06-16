@@ -11,7 +11,7 @@ namespace Pulumi.VSphere.Outputs
 {
 
     [OutputType]
-    public sealed class HostPortGroupPorts
+    public sealed class HostPortGroupPort
     {
         /// <summary>
         /// The key for this port group as returned from the vSphere API.
@@ -21,7 +21,7 @@ namespace Pulumi.VSphere.Outputs
         public readonly string? Type;
 
         [OutputConstructor]
-        private HostPortGroupPorts(
+        private HostPortGroupPort(
             string? key,
 
             ImmutableArray<string> macAddresses,

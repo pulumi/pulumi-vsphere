@@ -19,7 +19,7 @@ class GetOvfVmTemplateResult:
     """
     A collection of values returned by getOvfVmTemplate.
     """
-    def __init__(__self__, allow_unverified_ssl_cert=None, alternate_guest_name=None, annotation=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_performance_counters_enabled=None, datastore_id=None, deployment_option=None, disk_provisioning=None, firmware=None, folder=None, guest_id=None, host_system_id=None, id=None, ide_controller_count=None, ip_allocation_policy=None, ip_protocol=None, local_ovf_path=None, memory=None, memory_hot_add_enabled=None, name=None, nested_hv_enabled=None, num_cores_per_socket=None, num_cpus=None, ovf_network_map=None, remote_ovf_url=None, resource_pool_id=None, sata_controller_count=None, scsi_controller_count=None, scsi_type=None, swap_placement_policy=None):
+    def __init__(__self__, allow_unverified_ssl_cert=None, alternate_guest_name=None, annotation=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_performance_counters_enabled=None, datastore_id=None, deployment_option=None, disk_provisioning=None, enable_hidden_properties=None, firmware=None, folder=None, guest_id=None, host_system_id=None, id=None, ide_controller_count=None, ip_allocation_policy=None, ip_protocol=None, local_ovf_path=None, memory=None, memory_hot_add_enabled=None, name=None, nested_hv_enabled=None, num_cores_per_socket=None, num_cpus=None, ovf_network_map=None, remote_ovf_url=None, resource_pool_id=None, sata_controller_count=None, scsi_controller_count=None, scsi_type=None, swap_placement_policy=None):
         if allow_unverified_ssl_cert and not isinstance(allow_unverified_ssl_cert, bool):
             raise TypeError("Expected argument 'allow_unverified_ssl_cert' to be a bool")
         pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
@@ -47,6 +47,9 @@ class GetOvfVmTemplateResult:
         if disk_provisioning and not isinstance(disk_provisioning, str):
             raise TypeError("Expected argument 'disk_provisioning' to be a str")
         pulumi.set(__self__, "disk_provisioning", disk_provisioning)
+        if enable_hidden_properties and not isinstance(enable_hidden_properties, bool):
+            raise TypeError("Expected argument 'enable_hidden_properties' to be a bool")
+        pulumi.set(__self__, "enable_hidden_properties", enable_hidden_properties)
         if firmware and not isinstance(firmware, str):
             raise TypeError("Expected argument 'firmware' to be a str")
         pulumi.set(__self__, "firmware", firmware)
@@ -170,6 +173,11 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="diskProvisioning")
     def disk_provisioning(self) -> Optional[str]:
         return pulumi.get(self, "disk_provisioning")
+
+    @property
+    @pulumi.getter(name="enableHiddenProperties")
+    def enable_hidden_properties(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_hidden_properties")
 
     @property
     @pulumi.getter
@@ -324,6 +332,7 @@ class AwaitableGetOvfVmTemplateResult(GetOvfVmTemplateResult):
             datastore_id=self.datastore_id,
             deployment_option=self.deployment_option,
             disk_provisioning=self.disk_provisioning,
+            enable_hidden_properties=self.enable_hidden_properties,
             firmware=self.firmware,
             folder=self.folder,
             guest_id=self.guest_id,
@@ -352,6 +361,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
                         datastore_id: Optional[str] = None,
                         deployment_option: Optional[str] = None,
                         disk_provisioning: Optional[str] = None,
+                        enable_hidden_properties: Optional[bool] = None,
                         folder: Optional[str] = None,
                         host_system_id: Optional[str] = None,
                         ip_allocation_policy: Optional[str] = None,
@@ -405,6 +415,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
     __args__['datastoreId'] = datastore_id
     __args__['deploymentOption'] = deployment_option
     __args__['diskProvisioning'] = disk_provisioning
+    __args__['enableHiddenProperties'] = enable_hidden_properties
     __args__['folder'] = folder
     __args__['hostSystemId'] = host_system_id
     __args__['ipAllocationPolicy'] = ip_allocation_policy
@@ -430,6 +441,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
         datastore_id=__ret__.datastore_id,
         deployment_option=__ret__.deployment_option,
         disk_provisioning=__ret__.disk_provisioning,
+        enable_hidden_properties=__ret__.enable_hidden_properties,
         firmware=__ret__.firmware,
         folder=__ret__.folder,
         guest_id=__ret__.guest_id,

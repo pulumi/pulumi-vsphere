@@ -78,6 +78,9 @@ namespace Pulumi.VSphere
         [Input("diskProvisioning")]
         public string? DiskProvisioning { get; set; }
 
+        [Input("enableHiddenProperties")]
+        public bool? EnableHiddenProperties { get; set; }
+
         /// <summary>
         /// The name of the folder to locate the virtual machine in.
         /// </summary>
@@ -170,6 +173,7 @@ namespace Pulumi.VSphere
         public readonly string? DatastoreId;
         public readonly string? DeploymentOption;
         public readonly string? DiskProvisioning;
+        public readonly bool? EnableHiddenProperties;
         /// <summary>
         /// The firmware interface to use on the virtual machine.
         /// </summary>
@@ -240,6 +244,8 @@ namespace Pulumi.VSphere
 
             string? diskProvisioning,
 
+            bool? enableHiddenProperties,
+
             string firmware,
 
             string? folder,
@@ -293,6 +299,7 @@ namespace Pulumi.VSphere
             DatastoreId = datastoreId;
             DeploymentOption = deploymentOption;
             DiskProvisioning = diskProvisioning;
+            EnableHiddenProperties = enableHiddenProperties;
             Firmware = firmware;
             Folder = folder;
             GuestId = guestId;

@@ -16,8 +16,8 @@ package main
 
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	vsphere "github.com/pulumi/pulumi-vsphere/provider/v3"
-	"github.com/pulumi/pulumi-vsphere/provider/v3/pkg/version"
+	vsphere "github.com/pulumi/pulumi-vsphere/provider/v4"
+	"github.com/pulumi/pulumi-vsphere/provider/v4/pkg/version"
 )
 
 func main() {

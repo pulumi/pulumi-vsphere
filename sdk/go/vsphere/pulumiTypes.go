@@ -1103,165 +1103,113 @@ func (o EntityPermissionsPermissionArrayOutput) Index(i pulumi.IntInput) EntityP
 	}).(EntityPermissionsPermissionOutput)
 }
 
-type HostPortGroupPorts struct {
+type HostPortGroupPort struct {
 	// The key for this port group as returned from the vSphere API.
 	Key          *string  `pulumi:"key"`
 	MacAddresses []string `pulumi:"macAddresses"`
 	Type         *string  `pulumi:"type"`
 }
 
-// HostPortGroupPortsInput is an input type that accepts HostPortGroupPortsArgs and HostPortGroupPortsOutput values.
-// You can construct a concrete instance of `HostPortGroupPortsInput` via:
+// HostPortGroupPortInput is an input type that accepts HostPortGroupPortArgs and HostPortGroupPortOutput values.
+// You can construct a concrete instance of `HostPortGroupPortInput` via:
 //
-//          HostPortGroupPortsArgs{...}
-type HostPortGroupPortsInput interface {
+//          HostPortGroupPortArgs{...}
+type HostPortGroupPortInput interface {
 	pulumi.Input
 
-	ToHostPortGroupPortsOutput() HostPortGroupPortsOutput
-	ToHostPortGroupPortsOutputWithContext(context.Context) HostPortGroupPortsOutput
+	ToHostPortGroupPortOutput() HostPortGroupPortOutput
+	ToHostPortGroupPortOutputWithContext(context.Context) HostPortGroupPortOutput
 }
 
-type HostPortGroupPortsArgs struct {
+type HostPortGroupPortArgs struct {
 	// The key for this port group as returned from the vSphere API.
 	Key          pulumi.StringPtrInput   `pulumi:"key"`
 	MacAddresses pulumi.StringArrayInput `pulumi:"macAddresses"`
 	Type         pulumi.StringPtrInput   `pulumi:"type"`
 }
 
-func (HostPortGroupPortsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroupPorts)(nil)).Elem()
+func (HostPortGroupPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortGroupPort)(nil)).Elem()
 }
 
-func (i HostPortGroupPortsArgs) ToHostPortGroupPortsOutput() HostPortGroupPortsOutput {
-	return i.ToHostPortGroupPortsOutputWithContext(context.Background())
+func (i HostPortGroupPortArgs) ToHostPortGroupPortOutput() HostPortGroupPortOutput {
+	return i.ToHostPortGroupPortOutputWithContext(context.Background())
 }
 
-func (i HostPortGroupPortsArgs) ToHostPortGroupPortsOutputWithContext(ctx context.Context) HostPortGroupPortsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPortsOutput)
+func (i HostPortGroupPortArgs) ToHostPortGroupPortOutputWithContext(ctx context.Context) HostPortGroupPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPortOutput)
 }
 
-func (i HostPortGroupPortsArgs) ToHostPortGroupPortsPtrOutput() HostPortGroupPortsPtrOutput {
-	return i.ToHostPortGroupPortsPtrOutputWithContext(context.Background())
-}
-
-func (i HostPortGroupPortsArgs) ToHostPortGroupPortsPtrOutputWithContext(ctx context.Context) HostPortGroupPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPortsOutput).ToHostPortGroupPortsPtrOutputWithContext(ctx)
-}
-
-// HostPortGroupPortsPtrInput is an input type that accepts HostPortGroupPortsArgs, HostPortGroupPortsPtr and HostPortGroupPortsPtrOutput values.
-// You can construct a concrete instance of `HostPortGroupPortsPtrInput` via:
+// HostPortGroupPortArrayInput is an input type that accepts HostPortGroupPortArray and HostPortGroupPortArrayOutput values.
+// You can construct a concrete instance of `HostPortGroupPortArrayInput` via:
 //
-//          HostPortGroupPortsArgs{...}
-//
-//  or:
-//
-//          nil
-type HostPortGroupPortsPtrInput interface {
+//          HostPortGroupPortArray{ HostPortGroupPortArgs{...} }
+type HostPortGroupPortArrayInput interface {
 	pulumi.Input
 
-	ToHostPortGroupPortsPtrOutput() HostPortGroupPortsPtrOutput
-	ToHostPortGroupPortsPtrOutputWithContext(context.Context) HostPortGroupPortsPtrOutput
+	ToHostPortGroupPortArrayOutput() HostPortGroupPortArrayOutput
+	ToHostPortGroupPortArrayOutputWithContext(context.Context) HostPortGroupPortArrayOutput
 }
 
-type hostPortGroupPortsPtrType HostPortGroupPortsArgs
+type HostPortGroupPortArray []HostPortGroupPortInput
 
-func HostPortGroupPortsPtr(v *HostPortGroupPortsArgs) HostPortGroupPortsPtrInput {
-	return (*hostPortGroupPortsPtrType)(v)
+func (HostPortGroupPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostPortGroupPort)(nil)).Elem()
 }
 
-func (*hostPortGroupPortsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostPortGroupPorts)(nil)).Elem()
+func (i HostPortGroupPortArray) ToHostPortGroupPortArrayOutput() HostPortGroupPortArrayOutput {
+	return i.ToHostPortGroupPortArrayOutputWithContext(context.Background())
 }
 
-func (i *hostPortGroupPortsPtrType) ToHostPortGroupPortsPtrOutput() HostPortGroupPortsPtrOutput {
-	return i.ToHostPortGroupPortsPtrOutputWithContext(context.Background())
+func (i HostPortGroupPortArray) ToHostPortGroupPortArrayOutputWithContext(ctx context.Context) HostPortGroupPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPortArrayOutput)
 }
 
-func (i *hostPortGroupPortsPtrType) ToHostPortGroupPortsPtrOutputWithContext(ctx context.Context) HostPortGroupPortsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPortsPtrOutput)
+type HostPortGroupPortOutput struct{ *pulumi.OutputState }
+
+func (HostPortGroupPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPortGroupPort)(nil)).Elem()
 }
 
-type HostPortGroupPortsOutput struct{ *pulumi.OutputState }
-
-func (HostPortGroupPortsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroupPorts)(nil)).Elem()
-}
-
-func (o HostPortGroupPortsOutput) ToHostPortGroupPortsOutput() HostPortGroupPortsOutput {
+func (o HostPortGroupPortOutput) ToHostPortGroupPortOutput() HostPortGroupPortOutput {
 	return o
 }
 
-func (o HostPortGroupPortsOutput) ToHostPortGroupPortsOutputWithContext(ctx context.Context) HostPortGroupPortsOutput {
+func (o HostPortGroupPortOutput) ToHostPortGroupPortOutputWithContext(ctx context.Context) HostPortGroupPortOutput {
 	return o
-}
-
-func (o HostPortGroupPortsOutput) ToHostPortGroupPortsPtrOutput() HostPortGroupPortsPtrOutput {
-	return o.ToHostPortGroupPortsPtrOutputWithContext(context.Background())
-}
-
-func (o HostPortGroupPortsOutput) ToHostPortGroupPortsPtrOutputWithContext(ctx context.Context) HostPortGroupPortsPtrOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) *HostPortGroupPorts {
-		return &v
-	}).(HostPortGroupPortsPtrOutput)
 }
 
 // The key for this port group as returned from the vSphere API.
-func (o HostPortGroupPortsOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o HostPortGroupPortOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostPortGroupPort) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o HostPortGroupPortsOutput) MacAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) []string { return v.MacAddresses }).(pulumi.StringArrayOutput)
+func (o HostPortGroupPortOutput) MacAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HostPortGroupPort) []string { return v.MacAddresses }).(pulumi.StringArrayOutput)
 }
 
-func (o HostPortGroupPortsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostPortGroupPorts) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o HostPortGroupPortOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostPortGroupPort) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type HostPortGroupPortsPtrOutput struct{ *pulumi.OutputState }
+type HostPortGroupPortArrayOutput struct{ *pulumi.OutputState }
 
-func (HostPortGroupPortsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostPortGroupPorts)(nil)).Elem()
+func (HostPortGroupPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostPortGroupPort)(nil)).Elem()
 }
 
-func (o HostPortGroupPortsPtrOutput) ToHostPortGroupPortsPtrOutput() HostPortGroupPortsPtrOutput {
+func (o HostPortGroupPortArrayOutput) ToHostPortGroupPortArrayOutput() HostPortGroupPortArrayOutput {
 	return o
 }
 
-func (o HostPortGroupPortsPtrOutput) ToHostPortGroupPortsPtrOutputWithContext(ctx context.Context) HostPortGroupPortsPtrOutput {
+func (o HostPortGroupPortArrayOutput) ToHostPortGroupPortArrayOutputWithContext(ctx context.Context) HostPortGroupPortArrayOutput {
 	return o
 }
 
-func (o HostPortGroupPortsPtrOutput) Elem() HostPortGroupPortsOutput {
-	return o.ApplyT(func(v *HostPortGroupPorts) HostPortGroupPorts { return *v }).(HostPortGroupPortsOutput)
-}
-
-// The key for this port group as returned from the vSphere API.
-func (o HostPortGroupPortsPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HostPortGroupPorts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o HostPortGroupPortsPtrOutput) MacAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *HostPortGroupPorts) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MacAddresses
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o HostPortGroupPortsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HostPortGroupPorts) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
+func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostPortGroupPort {
+		return vs[0].([]HostPortGroupPort)[vs[1].(int)]
+	}).(HostPortGroupPortOutput)
 }
 
 type VirtualMachineCdrom struct {
@@ -2610,21 +2558,7 @@ type VirtualMachineDisk struct {
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// A label for the disk. Forces a new disk if changed.
-	Label *string `pulumi:"label"`
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
-	//
-	// Deprecated:
-	// The name attribute for virtual disks will be removed in favor of "label" in
-	// future releases. To transition existing disks, rename the "name" attribute to
-	// "label". When doing so, ensure the value of the attribute stays the same.
-	//
-	// Note that "label" does not control the name of a VMDK and does not need to bear
-	// the name of one on new disks or virtual machines. For more information, see the
-	// documentation for the label attribute at:
-	//
-	// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-	Name *string `pulumi:"name"`
+	Label string `pulumi:"label"`
 	// The path to the ISO file. Required for using a datastore
 	// ISO. Conflicts with `clientDevice`.
 	Path *string `pulumi:"path"`
@@ -2712,21 +2646,7 @@ type VirtualMachineDiskArgs struct {
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// A label for the disk. Forces a new disk if changed.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// An alias for both `label` and `path`, the latter when
-	// using `attach`. Required if not using `label`.
-	//
-	// Deprecated:
-	// The name attribute for virtual disks will be removed in favor of "label" in
-	// future releases. To transition existing disks, rename the "name" attribute to
-	// "label". When doing so, ensure the value of the attribute stays the same.
-	//
-	// Note that "label" does not control the name of a VMDK and does not need to bear
-	// the name of one on new disks or virtual machines. For more information, see the
-	// documentation for the label attribute at:
-	//
-	// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Label pulumi.StringInput `pulumi:"label"`
 	// The path to the ISO file. Required for using a datastore
 	// ISO. Conflicts with `clientDevice`.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -2892,25 +2812,8 @@ func (o VirtualMachineDiskOutput) Key() pulumi.IntPtrOutput {
 }
 
 // A label for the disk. Forces a new disk if changed.
-func (o VirtualMachineDiskOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// An alias for both `label` and `path`, the latter when
-// using `attach`. Required if not using `label`.
-//
-// Deprecated:
-// The name attribute for virtual disks will be removed in favor of "label" in
-// future releases. To transition existing disks, rename the "name" attribute to
-// "label". When doing so, ensure the value of the attribute stays the same.
-//
-// Note that "label" does not control the name of a VMDK and does not need to bear
-// the name of one on new disks or virtual machines. For more information, see the
-// documentation for the label attribute at:
-//
-// https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html#label
-func (o VirtualMachineDiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // The path to the ISO file. Required for using a datastore
@@ -3218,6 +3121,7 @@ type VirtualMachineOvfDeploy struct {
 	AllowUnverifiedSslCert *bool             `pulumi:"allowUnverifiedSslCert"`
 	DeploymentOption       *string           `pulumi:"deploymentOption"`
 	DiskProvisioning       *string           `pulumi:"diskProvisioning"`
+	EnableHiddenProperties *bool             `pulumi:"enableHiddenProperties"`
 	IpAllocationPolicy     *string           `pulumi:"ipAllocationPolicy"`
 	IpProtocol             *string           `pulumi:"ipProtocol"`
 	LocalOvfPath           *string           `pulumi:"localOvfPath"`
@@ -3240,6 +3144,7 @@ type VirtualMachineOvfDeployArgs struct {
 	AllowUnverifiedSslCert pulumi.BoolPtrInput   `pulumi:"allowUnverifiedSslCert"`
 	DeploymentOption       pulumi.StringPtrInput `pulumi:"deploymentOption"`
 	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
+	EnableHiddenProperties pulumi.BoolPtrInput   `pulumi:"enableHiddenProperties"`
 	IpAllocationPolicy     pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
 	IpProtocol             pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	LocalOvfPath           pulumi.StringPtrInput `pulumi:"localOvfPath"`
@@ -3335,6 +3240,10 @@ func (o VirtualMachineOvfDeployOutput) DiskProvisioning() pulumi.StringPtrOutput
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.DiskProvisioning }).(pulumi.StringPtrOutput)
 }
 
+func (o VirtualMachineOvfDeployOutput) EnableHiddenProperties() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.EnableHiddenProperties }).(pulumi.BoolPtrOutput)
+}
+
 func (o VirtualMachineOvfDeployOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *string { return v.IpAllocationPolicy }).(pulumi.StringPtrOutput)
 }
@@ -3398,6 +3307,15 @@ func (o VirtualMachineOvfDeployPtrOutput) DiskProvisioning() pulumi.StringPtrOut
 		}
 		return v.DiskProvisioning
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o VirtualMachineOvfDeployPtrOutput) EnableHiddenProperties() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHiddenProperties
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o VirtualMachineOvfDeployPtrOutput) IpAllocationPolicy() pulumi.StringPtrOutput {
@@ -4198,6 +4116,178 @@ func (o GetVirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) GetVirtualMac
 	}).(GetVirtualMachineDiskOutput)
 }
 
+type GetVirtualMachineNetworkInterface struct {
+	// The network interface types for each network interface found
+	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+	// `vmxnet3`.
+	AdapterType string `pulumi:"adapterType"`
+	// The upper bandwidth limit of this network interface,
+	// in Mbits/sec.
+	BandwidthLimit *int `pulumi:"bandwidthLimit"`
+	// The bandwidth reservation of this network interface,
+	// in Mbits/sec.
+	BandwidthReservation *int `pulumi:"bandwidthReservation"`
+	// The share count for this network interface when the
+	// share level is custom.
+	BandwidthShareCount int `pulumi:"bandwidthShareCount"`
+	// The bandwidth share allocation level for this interface.
+	// Can be one of `low`, `normal`, `high`, or `custom`.
+	BandwidthShareLevel *string `pulumi:"bandwidthShareLevel"`
+	// The MAC address of this network interface.
+	MacAddress string `pulumi:"macAddress"`
+	// The managed object reference ID of the network this interface is
+	// connected to.
+	NetworkId string `pulumi:"networkId"`
+}
+
+// GetVirtualMachineNetworkInterfaceInput is an input type that accepts GetVirtualMachineNetworkInterfaceArgs and GetVirtualMachineNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetVirtualMachineNetworkInterfaceInput` via:
+//
+//          GetVirtualMachineNetworkInterfaceArgs{...}
+type GetVirtualMachineNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineNetworkInterfaceOutput() GetVirtualMachineNetworkInterfaceOutput
+	ToGetVirtualMachineNetworkInterfaceOutputWithContext(context.Context) GetVirtualMachineNetworkInterfaceOutput
+}
+
+type GetVirtualMachineNetworkInterfaceArgs struct {
+	// The network interface types for each network interface found
+	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+	// `vmxnet3`.
+	AdapterType pulumi.StringInput `pulumi:"adapterType"`
+	// The upper bandwidth limit of this network interface,
+	// in Mbits/sec.
+	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
+	// The bandwidth reservation of this network interface,
+	// in Mbits/sec.
+	BandwidthReservation pulumi.IntPtrInput `pulumi:"bandwidthReservation"`
+	// The share count for this network interface when the
+	// share level is custom.
+	BandwidthShareCount pulumi.IntInput `pulumi:"bandwidthShareCount"`
+	// The bandwidth share allocation level for this interface.
+	// Can be one of `low`, `normal`, `high`, or `custom`.
+	BandwidthShareLevel pulumi.StringPtrInput `pulumi:"bandwidthShareLevel"`
+	// The MAC address of this network interface.
+	MacAddress pulumi.StringInput `pulumi:"macAddress"`
+	// The managed object reference ID of the network this interface is
+	// connected to.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+}
+
+func (GetVirtualMachineNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineNetworkInterface)(nil)).Elem()
+}
+
+func (i GetVirtualMachineNetworkInterfaceArgs) ToGetVirtualMachineNetworkInterfaceOutput() GetVirtualMachineNetworkInterfaceOutput {
+	return i.ToGetVirtualMachineNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineNetworkInterfaceArgs) ToGetVirtualMachineNetworkInterfaceOutputWithContext(ctx context.Context) GetVirtualMachineNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineNetworkInterfaceOutput)
+}
+
+// GetVirtualMachineNetworkInterfaceArrayInput is an input type that accepts GetVirtualMachineNetworkInterfaceArray and GetVirtualMachineNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetVirtualMachineNetworkInterfaceArrayInput` via:
+//
+//          GetVirtualMachineNetworkInterfaceArray{ GetVirtualMachineNetworkInterfaceArgs{...} }
+type GetVirtualMachineNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineNetworkInterfaceArrayOutput() GetVirtualMachineNetworkInterfaceArrayOutput
+	ToGetVirtualMachineNetworkInterfaceArrayOutputWithContext(context.Context) GetVirtualMachineNetworkInterfaceArrayOutput
+}
+
+type GetVirtualMachineNetworkInterfaceArray []GetVirtualMachineNetworkInterfaceInput
+
+func (GetVirtualMachineNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineNetworkInterface)(nil)).Elem()
+}
+
+func (i GetVirtualMachineNetworkInterfaceArray) ToGetVirtualMachineNetworkInterfaceArrayOutput() GetVirtualMachineNetworkInterfaceArrayOutput {
+	return i.ToGetVirtualMachineNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineNetworkInterfaceArray) ToGetVirtualMachineNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetVirtualMachineNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineNetworkInterfaceArrayOutput)
+}
+
+type GetVirtualMachineNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualMachineNetworkInterface)(nil)).Elem()
+}
+
+func (o GetVirtualMachineNetworkInterfaceOutput) ToGetVirtualMachineNetworkInterfaceOutput() GetVirtualMachineNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetVirtualMachineNetworkInterfaceOutput) ToGetVirtualMachineNetworkInterfaceOutputWithContext(ctx context.Context) GetVirtualMachineNetworkInterfaceOutput {
+	return o
+}
+
+// The network interface types for each network interface found
+// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
+// `vmxnet3`.
+func (o GetVirtualMachineNetworkInterfaceOutput) AdapterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.AdapterType }).(pulumi.StringOutput)
+}
+
+// The upper bandwidth limit of this network interface,
+// in Mbits/sec.
+func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
+}
+
+// The bandwidth reservation of this network interface,
+// in Mbits/sec.
+func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthReservation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *int { return v.BandwidthReservation }).(pulumi.IntPtrOutput)
+}
+
+// The share count for this network interface when the
+// share level is custom.
+func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) int { return v.BandwidthShareCount }).(pulumi.IntOutput)
+}
+
+// The bandwidth share allocation level for this interface.
+// Can be one of `low`, `normal`, `high`, or `custom`.
+func (o GetVirtualMachineNetworkInterfaceOutput) BandwidthShareLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) *string { return v.BandwidthShareLevel }).(pulumi.StringPtrOutput)
+}
+
+// The MAC address of this network interface.
+func (o GetVirtualMachineNetworkInterfaceOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.MacAddress }).(pulumi.StringOutput)
+}
+
+// The managed object reference ID of the network this interface is
+// connected to.
+func (o GetVirtualMachineNetworkInterfaceOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+type GetVirtualMachineNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualMachineNetworkInterface)(nil)).Elem()
+}
+
+func (o GetVirtualMachineNetworkInterfaceArrayOutput) ToGetVirtualMachineNetworkInterfaceArrayOutput() GetVirtualMachineNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineNetworkInterfaceArrayOutput) ToGetVirtualMachineNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetVirtualMachineNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVirtualMachineNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetVirtualMachineNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualMachineNetworkInterface {
+		return vs[0].([]GetVirtualMachineNetworkInterface)[vs[1].(int)]
+	}).(GetVirtualMachineNetworkInterfaceOutput)
+}
+
 type GetVirtualMachineVapp struct {
 	Properties map[string]string `pulumi:"properties"`
 }
@@ -4264,8 +4354,8 @@ func init() {
 	pulumi.RegisterOutputType(DistributedVirtualSwitchVlanRangeArrayOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPermissionArrayOutput{})
-	pulumi.RegisterOutputType(HostPortGroupPortsOutput{})
-	pulumi.RegisterOutputType(HostPortGroupPortsPtrOutput{})
+	pulumi.RegisterOutputType(HostPortGroupPortOutput{})
+	pulumi.RegisterOutputType(HostPortGroupPortArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneOutput{})
@@ -4294,5 +4384,7 @@ func init() {
 	pulumi.RegisterOutputType(VnicIpv6PtrOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineVappOutput{})
 }

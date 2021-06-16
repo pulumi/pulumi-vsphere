@@ -373,8 +373,7 @@ namespace Pulumi.VSphere
         public Output<string> Moid { get; private set; } = null!;
 
         /// <summary>
-        /// An alias for both `label` and `path`, the latter when
-        /// using `attach`. Required if not using `label`.
+        /// The name of the virtual machine.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -439,6 +438,15 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("rebootRequired")]
         public Output<bool> RebootRequired { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers replacement of resource whenever it changes.
+        /// `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        /// will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        /// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        /// </summary>
+        [Output("replaceTrigger")]
+        public Output<string?> ReplaceTrigger { get; private set; } = null!;
 
         /// <summary>
         /// The managed object reference
@@ -578,6 +586,15 @@ namespace Pulumi.VSphere
         public Output<ImmutableArray<string>> VappTransports { get; private set; } = null!;
 
         /// <summary>
+        /// Enable Virtualization Based Security. Requires
+        /// `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        /// `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        /// vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Output("vbsEnabled")]
+        public Output<bool?> VbsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The state of VMware tools in the guest. This will
         /// determine the proper course of action for some device operations.
         /// </summary>
@@ -590,6 +607,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("vmxPath")]
         public Output<string> VmxPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to specify if Intel Virtualization Technology 
+        /// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        /// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Output("vvtdEnabled")]
+        public Output<bool?> VvtdEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time, in minutes, to
@@ -1009,8 +1034,7 @@ namespace Pulumi.VSphere
         public Input<int>? MigrateWaitTimeout { get; set; }
 
         /// <summary>
-        /// An alias for both `label` and `path`, the latter when
-        /// using `attach`. Required if not using `label`.
+        /// The name of the virtual machine.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1079,6 +1103,15 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("poweronTimeout")]
         public Input<int>? PoweronTimeout { get; set; }
+
+        /// <summary>
+        /// Triggers replacement of resource whenever it changes.
+        /// `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        /// will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        /// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        /// </summary>
+        [Input("replaceTrigger")]
+        public Input<string>? ReplaceTrigger { get; set; }
 
         /// <summary>
         /// The managed object reference
@@ -1207,6 +1240,23 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vapp")]
         public Input<Inputs.VirtualMachineVappArgs>? Vapp { get; set; }
+
+        /// <summary>
+        /// Enable Virtualization Based Security. Requires
+        /// `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        /// `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        /// vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Input("vbsEnabled")]
+        public Input<bool>? VbsEnabled { get; set; }
+
+        /// <summary>
+        /// Flag to specify if Intel Virtualization Technology 
+        /// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        /// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Input("vvtdEnabled")]
+        public Input<bool>? VvtdEnabled { get; set; }
 
         /// <summary>
         /// The amount of time, in minutes, to
@@ -1638,8 +1688,7 @@ namespace Pulumi.VSphere
         public Input<string>? Moid { get; set; }
 
         /// <summary>
-        /// An alias for both `label` and `path`, the latter when
-        /// using `attach`. Required if not using `label`.
+        /// The name of the virtual machine.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1716,6 +1765,15 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("rebootRequired")]
         public Input<bool>? RebootRequired { get; set; }
+
+        /// <summary>
+        /// Triggers replacement of resource whenever it changes.
+        /// `replace_trigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
+        /// will fingerprint the changes in cloud_init metadata and userdata templates. This will enable a replacement
+        /// of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
+        /// </summary>
+        [Input("replaceTrigger")]
+        public Input<string>? ReplaceTrigger { get; set; }
 
         /// <summary>
         /// The managed object reference
@@ -1867,6 +1925,15 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
+        /// Enable Virtualization Based Security. Requires
+        /// `firmware` to be `efi`, and `vvtd_enabled`, `nested_hv_enabled` and
+        /// `efi_secure_boot_enabled` must all have a value of `true`. Supported on
+        /// vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Input("vbsEnabled")]
+        public Input<bool>? VbsEnabled { get; set; }
+
+        /// <summary>
         /// The state of VMware tools in the guest. This will
         /// determine the proper course of action for some device operations.
         /// </summary>
@@ -1879,6 +1946,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("vmxPath")]
         public Input<string>? VmxPath { get; set; }
+
+        /// <summary>
+        /// Flag to specify if Intel Virtualization Technology 
+        /// for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
+        /// vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+        /// </summary>
+        [Input("vvtdEnabled")]
+        public Input<bool>? VvtdEnabled { get; set; }
 
         /// <summary>
         /// The amount of time, in minutes, to

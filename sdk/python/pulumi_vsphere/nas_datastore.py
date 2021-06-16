@@ -247,7 +247,7 @@ class _NasDatastoreState:
                  maintenance_mode: Optional[pulumi.Input[str]] = None,
                  multiple_host_access: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 protocol_endpoint: Optional[pulumi.Input[str]] = None,
+                 protocol_endpoint: Optional[pulumi.Input[bool]] = None,
                  remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  remote_path: Optional[pulumi.Input[str]] = None,
                  security_type: Optional[pulumi.Input[str]] = None,
@@ -284,7 +284,7 @@ class _NasDatastoreState:
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[str] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
+        :param pulumi.Input[bool] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
                This field is only populated if the host supports virtual datastores.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
                server or servers. Only one element should be present for NFS v3 but multiple
@@ -491,7 +491,7 @@ class _NasDatastoreState:
 
     @property
     @pulumi.getter(name="protocolEndpoint")
-    def protocol_endpoint(self) -> Optional[pulumi.Input[str]]:
+    def protocol_endpoint(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates that this NAS volume is a protocol endpoint.
         This field is only populated if the host supports virtual datastores.
@@ -499,7 +499,7 @@ class _NasDatastoreState:
         return pulumi.get(self, "protocol_endpoint")
 
     @protocol_endpoint.setter
-    def protocol_endpoint(self, value: Optional[pulumi.Input[str]]):
+    def protocol_endpoint(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "protocol_endpoint", value)
 
     @property
@@ -741,7 +741,7 @@ class NasDatastore(pulumi.CustomResource):
             maintenance_mode: Optional[pulumi.Input[str]] = None,
             multiple_host_access: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            protocol_endpoint: Optional[pulumi.Input[str]] = None,
+            protocol_endpoint: Optional[pulumi.Input[bool]] = None,
             remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             remote_path: Optional[pulumi.Input[str]] = None,
             security_type: Optional[pulumi.Input[str]] = None,
@@ -783,7 +783,7 @@ class NasDatastore(pulumi.CustomResource):
                been configured with access to the datastore.
         :param pulumi.Input[str] name: The name of the datastore. Forces a new resource if
                changed.
-        :param pulumi.Input[str] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
+        :param pulumi.Input[bool] protocol_endpoint: Indicates that this NAS volume is a protocol endpoint.
                This field is only populated if the host supports virtual datastores.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_hosts: The hostnames or IP addresses of the remote
                server or servers. Only one element should be present for NFS v3 but multiple
@@ -932,7 +932,7 @@ class NasDatastore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="protocolEndpoint")
-    def protocol_endpoint(self) -> pulumi.Output[str]:
+    def protocol_endpoint(self) -> pulumi.Output[bool]:
         """
         Indicates that this NAS volume is a protocol endpoint.
         This field is only populated if the host supports virtual datastores.
