@@ -8660,7 +8660,11 @@
                 },
                 "syncTimeWithHost": {
                     "type": "boolean",
-                    "description": "Enable guest clock synchronization with\nthe host. Requires VMware tools to be installed. Default: `false`.\n"
+                    "description": "Enable guest clock synchronization with the host.\nOn vSphere 7 U1 and above, with only this setting the clock is synchronized on\nstartup and resume so consider also setting `sync_time_with_host_periodically`.\nRequires VMware tools to be installed. Default: `false`.\n"
+                },
+                "syncTimeWithHostPeriodically": {
+                    "type": "boolean",
+                    "description": "Enable periodic clock\nsynchronization with the host. Supported only on vSphere 7 U1 and above.\nOn older versions setting `sync_time_with_host` is enough for periodic\nsynchronization. Requires VMware tools to be installed. Default: `false`.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9008,7 +9012,11 @@
                 },
                 "syncTimeWithHost": {
                     "type": "boolean",
-                    "description": "Enable guest clock synchronization with\nthe host. Requires VMware tools to be installed. Default: `false`.\n"
+                    "description": "Enable guest clock synchronization with the host.\nOn vSphere 7 U1 and above, with only this setting the clock is synchronized on\nstartup and resume so consider also setting `sync_time_with_host_periodically`.\nRequires VMware tools to be installed. Default: `false`.\n"
+                },
+                "syncTimeWithHostPeriodically": {
+                    "type": "boolean",
+                    "description": "Enable periodic clock\nsynchronization with the host. Supported only on vSphere 7 U1 and above.\nOn older versions setting `sync_time_with_host` is enough for periodic\nsynchronization. Requires VMware tools to be installed. Default: `false`.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -9347,7 +9355,11 @@
                     },
                     "syncTimeWithHost": {
                         "type": "boolean",
-                        "description": "Enable guest clock synchronization with\nthe host. Requires VMware tools to be installed. Default: `false`.\n"
+                        "description": "Enable guest clock synchronization with the host.\nOn vSphere 7 U1 and above, with only this setting the clock is synchronized on\nstartup and resume so consider also setting `sync_time_with_host_periodically`.\nRequires VMware tools to be installed. Default: `false`.\n"
+                    },
+                    "syncTimeWithHostPeriodically": {
+                        "type": "boolean",
+                        "description": "Enable periodic clock\nsynchronization with the host. Supported only on vSphere 7 U1 and above.\nOn older versions setting `sync_time_with_host` is enough for periodic\nsynchronization. Requires VMware tools to be installed. Default: `false`.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -11149,6 +11161,9 @@
                     "syncTimeWithHost": {
                         "type": "boolean"
                     },
+                    "syncTimeWithHostPeriodically": {
+                        "type": "boolean"
+                    },
                     "vapp": {
                         "$ref": "#/types/vsphere:index/getVirtualMachineVapp:getVirtualMachineVapp"
                     },
@@ -11356,6 +11371,9 @@
                     "syncTimeWithHost": {
                         "type": "boolean"
                     },
+                    "syncTimeWithHostPeriodically": {
+                        "type": "boolean"
+                    },
                     "uuid": {
                         "type": "string"
                     },
@@ -11459,8 +11477,7 @@
                 "vsphere": "VSphere"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

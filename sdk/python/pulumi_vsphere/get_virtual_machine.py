@@ -21,7 +21,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -181,6 +181,9 @@ class GetVirtualMachineResult:
         if sync_time_with_host and not isinstance(sync_time_with_host, bool):
             raise TypeError("Expected argument 'sync_time_with_host' to be a bool")
         pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+        if sync_time_with_host_periodically and not isinstance(sync_time_with_host_periodically, bool):
+            raise TypeError("Expected argument 'sync_time_with_host_periodically' to be a bool")
+        pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
@@ -531,6 +534,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "sync_time_with_host")
 
     @property
+    @pulumi.getter(name="syncTimeWithHostPeriodically")
+    def sync_time_with_host_periodically(self) -> Optional[bool]:
+        return pulumi.get(self, "sync_time_with_host_periodically")
+
+    @property
     @pulumi.getter
     def uuid(self) -> str:
         return pulumi.get(self, "uuid")
@@ -615,6 +623,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             storage_policy_id=self.storage_policy_id,
             swap_placement_policy=self.swap_placement_policy,
             sync_time_with_host=self.sync_time_with_host,
+            sync_time_with_host_periodically=self.sync_time_with_host_periodically,
             uuid=self.uuid,
             vapp=self.vapp,
             vapp_transports=self.vapp_transports,
@@ -667,6 +676,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         storage_policy_id: Optional[str] = None,
                         swap_placement_policy: Optional[str] = None,
                         sync_time_with_host: Optional[bool] = None,
+                        sync_time_with_host_periodically: Optional[bool] = None,
                         vapp: Optional[pulumi.InputType['GetVirtualMachineVappArgs']] = None,
                         vbs_enabled: Optional[bool] = None,
                         vvtd_enabled: Optional[bool] = None,
@@ -756,6 +766,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['storagePolicyId'] = storage_policy_id
     __args__['swapPlacementPolicy'] = swap_placement_policy
     __args__['syncTimeWithHost'] = sync_time_with_host
+    __args__['syncTimeWithHostPeriodically'] = sync_time_with_host_periodically
     __args__['vapp'] = vapp
     __args__['vbsEnabled'] = vbs_enabled
     __args__['vvtdEnabled'] = vvtd_enabled
@@ -819,6 +830,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         storage_policy_id=__ret__.storage_policy_id,
         swap_placement_policy=__ret__.swap_placement_policy,
         sync_time_with_host=__ret__.sync_time_with_host,
+        sync_time_with_host_periodically=__ret__.sync_time_with_host_periodically,
         uuid=__ret__.uuid,
         vapp=__ret__.vapp,
         vapp_transports=__ret__.vapp_transports,

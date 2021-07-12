@@ -115,13 +115,14 @@ type LookupVirtualMachineArgs struct {
 	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	ScsiControllerScanCount *int                   `pulumi:"scsiControllerScanCount"`
-	StoragePolicyId         *string                `pulumi:"storagePolicyId"`
-	SwapPlacementPolicy     *string                `pulumi:"swapPlacementPolicy"`
-	SyncTimeWithHost        *bool                  `pulumi:"syncTimeWithHost"`
-	Vapp                    *GetVirtualMachineVapp `pulumi:"vapp"`
-	VbsEnabled              *bool                  `pulumi:"vbsEnabled"`
-	VvtdEnabled             *bool                  `pulumi:"vvtdEnabled"`
+	ScsiControllerScanCount      *int                   `pulumi:"scsiControllerScanCount"`
+	StoragePolicyId              *string                `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
+	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
+	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
+	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
+	VvtdEnabled                  *bool                  `pulumi:"vvtdEnabled"`
 }
 
 // A collection of values returned by getVirtualMachine.
@@ -213,13 +214,14 @@ type LookupVirtualMachineResult struct {
 	// SAS), `pvscsi` (VMware Paravirtual), `buslogic` (BusLogic), or `mixed` when
 	// there are multiple controller types. Only the first number of controllers
 	// defined by `scsiControllerScanCount` are scanned.
-	ScsiType            string                 `pulumi:"scsiType"`
-	StoragePolicyId     string                 `pulumi:"storagePolicyId"`
-	SwapPlacementPolicy *string                `pulumi:"swapPlacementPolicy"`
-	SyncTimeWithHost    *bool                  `pulumi:"syncTimeWithHost"`
-	Uuid                string                 `pulumi:"uuid"`
-	Vapp                *GetVirtualMachineVapp `pulumi:"vapp"`
-	VappTransports      []string               `pulumi:"vappTransports"`
-	VbsEnabled          *bool                  `pulumi:"vbsEnabled"`
-	VvtdEnabled         *bool                  `pulumi:"vvtdEnabled"`
+	ScsiType                     string                 `pulumi:"scsiType"`
+	StoragePolicyId              string                 `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
+	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
+	Uuid                         string                 `pulumi:"uuid"`
+	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
+	VappTransports               []string               `pulumi:"vappTransports"`
+	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
+	VvtdEnabled                  *bool                  `pulumi:"vvtdEnabled"`
 }

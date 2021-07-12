@@ -786,6 +786,8 @@ github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210426190719-31482d2bf3
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210426190719-31482d2bf3d2/go.mod h1:LWEUlPUjfL2NNn+JTLyIfb5kOPNWO09bTk4Qllz+KZ4=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210615175935-da68ab1911df h1:20RnOAR9UshdBfQ2eoplrUoMn5P8snUo8M3JS8y6Dxk=
 github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210615175935-da68ab1911df/go.mod h1:3exPirV0eZrILiAfymzcTr8SXVVm6ZNzZktUfLkRmlE=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210708174205-aebb4d1482e3 h1:5JYxiuIvJ6jrWwBDyf7/wKDcUbiu5x0mMBHLDnSIdis=
+github.com/pulumi/terraform-provider-vsphere v1.18.2-0.20210708174205-aebb4d1482e3/go.mod h1:3exPirV0eZrILiAfymzcTr8SXVVm6ZNzZktUfLkRmlE=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
