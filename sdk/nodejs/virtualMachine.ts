@@ -431,10 +431,19 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly swapPlacementPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Enable guest clock synchronization with
-     * the host. Requires VMware tools to be installed. Default: `false`.
+     * Enable guest clock synchronization with the host.
+     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+     * Requires VMware tools to be installed. Default: `false`.
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable periodic clock
+     * synchronization with the host. Supported only on vSphere 7 U1 and above.
+     * On older versions setting `syncTimeWithHost` is enough for periodic
+     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     */
+    public readonly syncTimeWithHostPeriodically!: pulumi.Output<boolean | undefined>;
     /**
      * The IDs of any tags to attach to this resource.
      */
@@ -591,6 +600,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["storagePolicyId"] = state ? state.storagePolicyId : undefined;
             inputs["swapPlacementPolicy"] = state ? state.swapPlacementPolicy : undefined;
             inputs["syncTimeWithHost"] = state ? state.syncTimeWithHost : undefined;
+            inputs["syncTimeWithHostPeriodically"] = state ? state.syncTimeWithHostPeriodically : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["uuid"] = state ? state.uuid : undefined;
             inputs["vapp"] = state ? state.vapp : undefined;
@@ -671,6 +681,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             inputs["storagePolicyId"] = args ? args.storagePolicyId : undefined;
             inputs["swapPlacementPolicy"] = args ? args.swapPlacementPolicy : undefined;
             inputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
+            inputs["syncTimeWithHostPeriodically"] = args ? args.syncTimeWithHostPeriodically : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vapp"] = args ? args.vapp : undefined;
             inputs["vbsEnabled"] = args ? args.vbsEnabled : undefined;
@@ -1098,10 +1109,19 @@ export interface VirtualMachineState {
      */
     readonly swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with
-     * the host. Requires VMware tools to be installed. Default: `false`.
+     * Enable guest clock synchronization with the host.
+     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+     * Requires VMware tools to be installed. Default: `false`.
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
+    /**
+     * Enable periodic clock
+     * synchronization with the host. Supported only on vSphere 7 U1 and above.
+     * On older versions setting `syncTimeWithHost` is enough for periodic
+     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     */
+    readonly syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
      * The IDs of any tags to attach to this resource.
      */
@@ -1537,10 +1557,19 @@ export interface VirtualMachineArgs {
      */
     readonly swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with
-     * the host. Requires VMware tools to be installed. Default: `false`.
+     * Enable guest clock synchronization with the host.
+     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+     * Requires VMware tools to be installed. Default: `false`.
      */
     readonly syncTimeWithHost?: pulumi.Input<boolean>;
+    /**
+     * Enable periodic clock
+     * synchronization with the host. Supported only on vSphere 7 U1 and above.
+     * On older versions setting `syncTimeWithHost` is enough for periodic
+     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     */
+    readonly syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
      * The IDs of any tags to attach to this resource.
      */

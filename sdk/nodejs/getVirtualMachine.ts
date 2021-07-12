@@ -81,6 +81,7 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         "storagePolicyId": args.storagePolicyId,
         "swapPlacementPolicy": args.swapPlacementPolicy,
         "syncTimeWithHost": args.syncTimeWithHost,
+        "syncTimeWithHostPeriodically": args.syncTimeWithHostPeriodically,
         "vapp": args.vapp,
         "vbsEnabled": args.vbsEnabled,
         "vvtdEnabled": args.vvtdEnabled,
@@ -177,6 +178,7 @@ export interface GetVirtualMachineArgs {
     readonly storagePolicyId?: string;
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
+    readonly syncTimeWithHostPeriodically?: boolean;
     readonly vapp?: inputs.GetVirtualMachineVapp;
     readonly vbsEnabled?: boolean;
     readonly vvtdEnabled?: boolean;
@@ -307,6 +309,7 @@ export interface GetVirtualMachineResult {
     readonly storagePolicyId: string;
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
+    readonly syncTimeWithHostPeriodically?: boolean;
     readonly uuid: string;
     readonly vapp?: outputs.GetVirtualMachineVapp;
     readonly vappTransports: string[];

@@ -548,11 +548,22 @@ namespace Pulumi.VSphere
         public Output<string?> SwapPlacementPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable guest clock synchronization with
-        /// the host. Requires VMware tools to be installed. Default: `false`.
+        /// Enable guest clock synchronization with the host.
+        /// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        /// startup and resume so consider also setting `sync_time_with_host_periodically`.
+        /// Requires VMware tools to be installed. Default: `false`.
         /// </summary>
         [Output("syncTimeWithHost")]
         public Output<bool?> SyncTimeWithHost { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable periodic clock
+        /// synchronization with the host. Supported only on vSphere 7 U1 and above.
+        /// On older versions setting `sync_time_with_host` is enough for periodic
+        /// synchronization. Requires VMware tools to be installed. Default: `false`.
+        /// </summary>
+        [Output("syncTimeWithHostPeriodically")]
+        public Output<bool?> SyncTimeWithHostPeriodically { get; private set; } = null!;
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
@@ -1213,11 +1224,22 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable guest clock synchronization with
-        /// the host. Requires VMware tools to be installed. Default: `false`.
+        /// Enable guest clock synchronization with the host.
+        /// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        /// startup and resume so consider also setting `sync_time_with_host_periodically`.
+        /// Requires VMware tools to be installed. Default: `false`.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }
+
+        /// <summary>
+        /// Enable periodic clock
+        /// synchronization with the host. Supported only on vSphere 7 U1 and above.
+        /// On older versions setting `sync_time_with_host` is enough for periodic
+        /// synchronization. Requires VMware tools to be installed. Default: `false`.
+        /// </summary>
+        [Input("syncTimeWithHostPeriodically")]
+        public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -1875,11 +1897,22 @@ namespace Pulumi.VSphere
         public Input<string>? SwapPlacementPolicy { get; set; }
 
         /// <summary>
-        /// Enable guest clock synchronization with
-        /// the host. Requires VMware tools to be installed. Default: `false`.
+        /// Enable guest clock synchronization with the host.
+        /// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        /// startup and resume so consider also setting `sync_time_with_host_periodically`.
+        /// Requires VMware tools to be installed. Default: `false`.
         /// </summary>
         [Input("syncTimeWithHost")]
         public Input<bool>? SyncTimeWithHost { get; set; }
+
+        /// <summary>
+        /// Enable periodic clock
+        /// synchronization with the host. Supported only on vSphere 7 U1 and above.
+        /// On older versions setting `sync_time_with_host` is enough for periodic
+        /// synchronization. Requires VMware tools to be installed. Default: `false`.
+        /// </summary>
+        [Input("syncTimeWithHostPeriodically")]
+        public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

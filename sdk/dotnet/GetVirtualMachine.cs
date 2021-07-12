@@ -234,6 +234,9 @@ namespace Pulumi.VSphere
         [Input("syncTimeWithHost")]
         public bool? SyncTimeWithHost { get; set; }
 
+        [Input("syncTimeWithHostPeriodically")]
+        public bool? SyncTimeWithHostPeriodically { get; set; }
+
         [Input("vapp")]
         public Inputs.GetVirtualMachineVappArgs? Vapp { get; set; }
 
@@ -373,6 +376,7 @@ namespace Pulumi.VSphere
         public readonly string StoragePolicyId;
         public readonly string? SwapPlacementPolicy;
         public readonly bool? SyncTimeWithHost;
+        public readonly bool? SyncTimeWithHostPeriodically;
         public readonly string Uuid;
         public readonly Outputs.GetVirtualMachineVappResult? Vapp;
         public readonly ImmutableArray<string> VappTransports;
@@ -487,6 +491,8 @@ namespace Pulumi.VSphere
 
             bool? syncTimeWithHost,
 
+            bool? syncTimeWithHostPeriodically,
+
             string uuid,
 
             Outputs.GetVirtualMachineVappResult? vapp,
@@ -550,6 +556,7 @@ namespace Pulumi.VSphere
             StoragePolicyId = storagePolicyId;
             SwapPlacementPolicy = swapPlacementPolicy;
             SyncTimeWithHost = syncTimeWithHost;
+            SyncTimeWithHostPeriodically = syncTimeWithHostPeriodically;
             Uuid = uuid;
             Vapp = vapp;
             VappTransports = vappTransports;

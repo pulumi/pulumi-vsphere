@@ -79,6 +79,7 @@ class VirtualMachineArgs:
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  swap_placement_policy: Optional[pulumi.Input[str]] = None,
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+                 sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -255,8 +256,14 @@ class VirtualMachineArgs:
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
-               the host. Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with the host.
+               On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+               startup and resume so consider also setting `sync_time_with_host_periodically`.
+               Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host_periodically: Enable periodic clock
+               synchronization with the host. Supported only on vSphere 7 U1 and above.
+               On older versions setting `sync_time_with_host` is enough for periodic
+               synchronization. Requires VMware tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
@@ -415,6 +422,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "swap_placement_policy", swap_placement_policy)
         if sync_time_with_host is not None:
             pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+        if sync_time_with_host_periodically is not None:
+            pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vapp is not None:
@@ -1294,14 +1303,31 @@ class VirtualMachineArgs:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable guest clock synchronization with
-        the host. Requires VMware tools to be installed. Default: `false`.
+        Enable guest clock synchronization with the host.
+        On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        startup and resume so consider also setting `sync_time_with_host_periodically`.
+        Requires VMware tools to be installed. Default: `false`.
         """
         return pulumi.get(self, "sync_time_with_host")
 
     @sync_time_with_host.setter
     def sync_time_with_host(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sync_time_with_host", value)
+
+    @property
+    @pulumi.getter(name="syncTimeWithHostPeriodically")
+    def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable periodic clock
+        synchronization with the host. Supported only on vSphere 7 U1 and above.
+        On older versions setting `sync_time_with_host` is enough for periodic
+        synchronization. Requires VMware tools to be installed. Default: `false`.
+        """
+        return pulumi.get(self, "sync_time_with_host_periodically")
+
+    @sync_time_with_host_periodically.setter
+    def sync_time_with_host_periodically(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_time_with_host_periodically", value)
 
     @property
     @pulumi.getter
@@ -1484,6 +1510,7 @@ class _VirtualMachineState:
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  swap_placement_policy: Optional[pulumi.Input[str]] = None,
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+                 sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
@@ -1687,8 +1714,14 @@ class _VirtualMachineState:
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
-               the host. Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with the host.
+               On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+               startup and resume so consider also setting `sync_time_with_host_periodically`.
+               Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host_periodically: Enable periodic clock
+               synchronization with the host. Supported only on vSphere 7 U1 and above.
+               On older versions setting `sync_time_with_host` is enough for periodic
+               synchronization. Requires VMware tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
@@ -1869,6 +1902,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "swap_placement_policy", swap_placement_policy)
         if sync_time_with_host is not None:
             pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+        if sync_time_with_host_periodically is not None:
+            pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if uuid is not None:
@@ -2845,14 +2880,31 @@ class _VirtualMachineState:
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable guest clock synchronization with
-        the host. Requires VMware tools to be installed. Default: `false`.
+        Enable guest clock synchronization with the host.
+        On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        startup and resume so consider also setting `sync_time_with_host_periodically`.
+        Requires VMware tools to be installed. Default: `false`.
         """
         return pulumi.get(self, "sync_time_with_host")
 
     @sync_time_with_host.setter
     def sync_time_with_host(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sync_time_with_host", value)
+
+    @property
+    @pulumi.getter(name="syncTimeWithHostPeriodically")
+    def sync_time_with_host_periodically(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable periodic clock
+        synchronization with the host. Supported only on vSphere 7 U1 and above.
+        On older versions setting `sync_time_with_host` is enough for periodic
+        synchronization. Requires VMware tools to be installed. Default: `false`.
+        """
+        return pulumi.get(self, "sync_time_with_host_periodically")
+
+    @sync_time_with_host_periodically.setter
+    def sync_time_with_host_periodically(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_time_with_host_periodically", value)
 
     @property
     @pulumi.getter
@@ -3084,6 +3136,7 @@ class VirtualMachine(pulumi.CustomResource):
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  swap_placement_policy: Optional[pulumi.Input[str]] = None,
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+                 sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -3263,8 +3316,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
-               the host. Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with the host.
+               On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+               startup and resume so consider also setting `sync_time_with_host_periodically`.
+               Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host_periodically: Enable periodic clock
+               synchronization with the host. Supported only on vSphere 7 U1 and above.
+               On older versions setting `sync_time_with_host` is enough for periodic
+               synchronization. Requires VMware tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: Optional vApp configuration. The only sub-key available
                is `properties`, which is a key/value map of properties for virtual machines
@@ -3383,6 +3442,7 @@ class VirtualMachine(pulumi.CustomResource):
                  storage_policy_id: Optional[pulumi.Input[str]] = None,
                  swap_placement_policy: Optional[pulumi.Input[str]] = None,
                  sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+                 sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
                  vbs_enabled: Optional[pulumi.Input[bool]] = None,
@@ -3468,6 +3528,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["storage_policy_id"] = storage_policy_id
             __props__.__dict__["swap_placement_policy"] = swap_placement_policy
             __props__.__dict__["sync_time_with_host"] = sync_time_with_host
+            __props__.__dict__["sync_time_with_host_periodically"] = sync_time_with_host_periodically
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vapp"] = vapp
             __props__.__dict__["vbs_enabled"] = vbs_enabled
@@ -3565,6 +3626,7 @@ class VirtualMachine(pulumi.CustomResource):
             storage_policy_id: Optional[pulumi.Input[str]] = None,
             swap_placement_policy: Optional[pulumi.Input[str]] = None,
             sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+            sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             vapp: Optional[pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']]] = None,
@@ -3773,8 +3835,14 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for this
                virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
                Default: `inherit`.
-        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with
-               the host. Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host: Enable guest clock synchronization with the host.
+               On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+               startup and resume so consider also setting `sync_time_with_host_periodically`.
+               Requires VMware tools to be installed. Default: `false`.
+        :param pulumi.Input[bool] sync_time_with_host_periodically: Enable periodic clock
+               synchronization with the host. Supported only on vSphere 7 U1 and above.
+               On older versions setting `sync_time_with_host` is enough for periodic
+               synchronization. Requires VMware tools to be installed. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
                virtual disk on the virtual machine.
@@ -3889,6 +3957,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["storage_policy_id"] = storage_policy_id
         __props__.__dict__["swap_placement_policy"] = swap_placement_policy
         __props__.__dict__["sync_time_with_host"] = sync_time_with_host
+        __props__.__dict__["sync_time_with_host_periodically"] = sync_time_with_host_periodically
         __props__.__dict__["tags"] = tags
         __props__.__dict__["uuid"] = uuid
         __props__.__dict__["vapp"] = vapp
@@ -4579,10 +4648,23 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="syncTimeWithHost")
     def sync_time_with_host(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable guest clock synchronization with
-        the host. Requires VMware tools to be installed. Default: `false`.
+        Enable guest clock synchronization with the host.
+        On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+        startup and resume so consider also setting `sync_time_with_host_periodically`.
+        Requires VMware tools to be installed. Default: `false`.
         """
         return pulumi.get(self, "sync_time_with_host")
+
+    @property
+    @pulumi.getter(name="syncTimeWithHostPeriodically")
+    def sync_time_with_host_periodically(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable periodic clock
+        synchronization with the host. Supported only on vSphere 7 U1 and above.
+        On older versions setting `sync_time_with_host` is enough for periodic
+        synchronization. Requires VMware tools to be installed. Default: `false`.
+        """
+        return pulumi.get(self, "sync_time_with_host_periodically")
 
     @property
     @pulumi.getter

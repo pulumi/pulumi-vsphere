@@ -273,9 +273,16 @@ type VirtualMachine struct {
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrOutput `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with
-	// the host. Requires VMware tools to be installed. Default: `false`.
+	// Enable guest clock synchronization with the host.
+	// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+	// startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+	// Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrOutput `pulumi:"syncTimeWithHost"`
+	// Enable periodic clock
+	// synchronization with the host. Supported only on vSphere 7 U1 and above.
+	// On older versions setting `syncTimeWithHost` is enough for periodic
+	// synchronization. Requires VMware tools to be installed. Default: `false`.
+	SyncTimeWithHostPeriodically pulumi.BoolPtrOutput `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
@@ -619,9 +626,16 @@ type virtualMachineState struct {
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with
-	// the host. Requires VMware tools to be installed. Default: `false`.
+	// Enable guest clock synchronization with the host.
+	// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+	// startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+	// Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
+	// Enable periodic clock
+	// synchronization with the host. Supported only on vSphere 7 U1 and above.
+	// On older versions setting `syncTimeWithHost` is enough for periodic
+	// synchronization. Requires VMware tools to be installed. Default: `false`.
+	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The UUID of the virtual disk's VMDK file. This is used to track the
@@ -934,9 +948,16 @@ type VirtualMachineState struct {
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable guest clock synchronization with
-	// the host. Requires VMware tools to be installed. Default: `false`.
+	// Enable guest clock synchronization with the host.
+	// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+	// startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+	// Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrInput
+	// Enable periodic clock
+	// synchronization with the host. Supported only on vSphere 7 U1 and above.
+	// On older versions setting `syncTimeWithHost` is enough for periodic
+	// synchronization. Requires VMware tools to be installed. Default: `false`.
+	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The UUID of the virtual disk's VMDK file. This is used to track the
@@ -1224,9 +1245,16 @@ type virtualMachineArgs struct {
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
-	// Enable guest clock synchronization with
-	// the host. Requires VMware tools to be installed. Default: `false`.
+	// Enable guest clock synchronization with the host.
+	// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+	// startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+	// Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost *bool `pulumi:"syncTimeWithHost"`
+	// Enable periodic clock
+	// synchronization with the host. Supported only on vSphere 7 U1 and above.
+	// On older versions setting `syncTimeWithHost` is enough for periodic
+	// synchronization. Requires VMware tools to be installed. Default: `false`.
+	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// Optional vApp configuration. The only sub-key available
@@ -1498,9 +1526,16 @@ type VirtualMachineArgs struct {
 	// virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
 	// Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
-	// Enable guest clock synchronization with
-	// the host. Requires VMware tools to be installed. Default: `false`.
+	// Enable guest clock synchronization with the host.
+	// On vSphere 7 U1 and above, with only this setting the clock is synchronized on
+	// startup and resume so consider also setting `syncTimeWithHostPeriodically`.
+	// Requires VMware tools to be installed. Default: `false`.
 	SyncTimeWithHost pulumi.BoolPtrInput
+	// Enable periodic clock
+	// synchronization with the host. Supported only on vSphere 7 U1 and above.
+	// On older versions setting `syncTimeWithHost` is enough for periodic
+	// synchronization. Requires VMware tools to be installed. Default: `false`.
+	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// Optional vApp configuration. The only sub-key available
