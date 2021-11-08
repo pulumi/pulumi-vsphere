@@ -122,38 +122,38 @@ export interface ComputeClusterVmHostRuleState {
      * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
-    readonly affinityHostGroupName?: pulumi.Input<string>;
+    affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
      * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
-    readonly antiAffinityHostGroupName?: pulumi.Input<string>;
+    antiAffinityHostGroupName?: pulumi.Input<string>;
     /**
      * The managed object reference
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the virtual machine group to use
      * with this rule.
      */
-    readonly vmGroupName?: pulumi.Input<string>;
+    vmGroupName?: pulumi.Input<string>;
 }
 
 /**
@@ -165,36 +165,36 @@ export interface ComputeClusterVmHostRuleArgs {
      * machines defined in `vmGroupName` will be run on the
      * hosts defined in this host group.
      */
-    readonly affinityHostGroupName?: pulumi.Input<string>;
+    affinityHostGroupName?: pulumi.Input<string>;
     /**
      * When this field is used, the
      * virtual machines defined in `vmGroupName` will _not_ be
      * run on the hosts defined in this host group.
      */
-    readonly antiAffinityHostGroupName?: pulumi.Input<string>;
+    antiAffinityHostGroupName?: pulumi.Input<string>;
     /**
      * The managed object reference
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the virtual machine group to use
      * with this rule.
      */
-    readonly vmGroupName: pulumi.Input<string>;
+    vmGroupName: pulumi.Input<string>;
 }

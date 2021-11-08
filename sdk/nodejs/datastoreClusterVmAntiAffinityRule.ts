@@ -105,25 +105,25 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
      * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      */
-    readonly virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -135,23 +135,23 @@ export interface DatastoreClusterVmAntiAffinityRuleArgs {
      * ID of the datastore cluster to put the group in.  Forces
      * a new resource if changed.
      */
-    readonly datastoreClusterId: pulumi.Input<string>;
+    datastoreClusterId: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      */
-    readonly virtualMachineIds: pulumi.Input<pulumi.Input<string>[]>;
+    virtualMachineIds: pulumi.Input<pulumi.Input<string>[]>;
 }

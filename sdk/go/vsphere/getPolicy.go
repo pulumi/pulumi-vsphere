@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
+// 		_, err := vsphere.GetPolicy(ctx, &GetPolicyArgs{
 // 			Name: "policy1",
 // 		}, nil)
 // 		if err != nil {
@@ -56,4 +59,51 @@ type GetPolicyResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func GetPolicyOutput(ctx *pulumi.Context, args GetPolicyOutputArgs, opts ...pulumi.InvokeOption) GetPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPolicyResult, error) {
+			args := v.(GetPolicyArgs)
+			r, err := GetPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(GetPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getPolicy.
+type GetPolicyOutputArgs struct {
+	// The name of the storage policy.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPolicy.
+type GetPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyResult)(nil)).Elem()
+}
+
+func (o GetPolicyResultOutput) ToGetPolicyResultOutput() GetPolicyResultOutput {
+	return o
+}
+
+func (o GetPolicyResultOutput) ToGetPolicyResultOutputWithContext(ctx context.Context) GetPolicyResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPolicyResultOutput{})
 }

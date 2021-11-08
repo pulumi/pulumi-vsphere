@@ -141,53 +141,53 @@ export interface VappEntityState {
      * Managed object ID of the vApp
      * container the entity is a member of.
      */
-    readonly containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    readonly startAction?: pulumi.Input<string>;
+    startAction?: pulumi.Input<string>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    readonly startDelay?: pulumi.Input<number>;
+    startDelay?: pulumi.Input<number>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    readonly startOrder?: pulumi.Input<number>;
+    startOrder?: pulumi.Input<number>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    readonly stopAction?: pulumi.Input<string>;
+    stopAction?: pulumi.Input<string>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    readonly stopDelay?: pulumi.Input<number>;
+    stopDelay?: pulumi.Input<number>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
-    readonly targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string>;
     /**
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
-    readonly waitForGuest?: pulumi.Input<boolean>;
+    waitForGuest?: pulumi.Input<boolean>;
 }
 
 /**
@@ -198,51 +198,51 @@ export interface VappEntityArgs {
      * Managed object ID of the vApp
      * container the entity is a member of.
      */
-    readonly containerId: pulumi.Input<string>;
+    containerId: pulumi.Input<string>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How to start the entity. Valid settings are none
      * or powerOn. If set to none, then the entity does not participate in auto-start.
      * Default: powerOn
      */
-    readonly startAction?: pulumi.Input<string>;
+    startAction?: pulumi.Input<string>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order of entities to be started. Default: 120
      */
-    readonly startDelay?: pulumi.Input<number>;
+    startDelay?: pulumi.Input<number>;
     /**
      * Order to start and stop target in vApp. Default: 1
      */
-    readonly startOrder?: pulumi.Input<number>;
+    startOrder?: pulumi.Input<number>;
     /**
      * Defines the stop action for the entity. Can be set
      * to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
      * does not participate in auto-stop. Default: powerOff
      */
-    readonly stopAction?: pulumi.Input<string>;
+    stopAction?: pulumi.Input<string>;
     /**
      * Delay in seconds before continuing with the next
      * entity in the order sequence. This is only used if the stopAction is
      * guestShutdown. Default: 120
      */
-    readonly stopDelay?: pulumi.Input<number>;
+    stopDelay?: pulumi.Input<number>;
     /**
      * A list of tag IDs to apply to this object.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Managed object ID of the entity
      * to power on or power off. This can be a virtual machine or a vApp.
      */
-    readonly targetId: pulumi.Input<string>;
+    targetId: pulumi.Input<string>;
     /**
      * Determines if the VM should be marked as being
      * started when VMware Tools are ready instead of waiting for `startDelay`. This
      * property has no effect for vApps. Default: false
      */
-    readonly waitForGuest?: pulumi.Input<boolean>;
+    waitForGuest?: pulumi.Input<boolean>;
 }

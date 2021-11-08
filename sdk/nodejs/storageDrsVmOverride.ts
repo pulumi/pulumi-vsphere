@@ -113,20 +113,20 @@ export interface StorageDrsVmOverrideState {
      * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
      * specific SDRS subsystem.
      */
-    readonly sdrsAutomationLevel?: pulumi.Input<string>;
+    sdrsAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default Storage DRS setting for
      * this virtual machine. When not specified, the datastore cluster setting is
      * used.
      */
-    readonly sdrsEnabled?: pulumi.Input<string>;
+    sdrsEnabled?: pulumi.Input<string>;
     /**
      * Overrides the intra-VM affinity setting
      * for this virtual machine. When `true`, all disks for this virtual machine
@@ -134,12 +134,12 @@ export interface StorageDrsVmOverrideState {
      * individual disks on different datastores if it helps satisfy cluster
      * requirements. When not specified, the datastore cluster's settings are used.
      */
-    readonly sdrsIntraVmAffinity?: pulumi.Input<string>;
+    sdrsIntraVmAffinity?: pulumi.Input<string>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId?: pulumi.Input<string>;
+    virtualMachineId?: pulumi.Input<string>;
 }
 
 /**
@@ -151,20 +151,20 @@ export interface StorageDrsVmOverrideArgs {
      * ID of the datastore cluster to put the override in.
      * Forces a new resource if changed.
      */
-    readonly datastoreClusterId: pulumi.Input<string>;
+    datastoreClusterId: pulumi.Input<string>;
     /**
      * Overrides any Storage DRS automation
      * levels for this virtual machine. Can be one of `automated` or `manual`. When
      * not specified, the datastore cluster's settings are used according to the
      * specific SDRS subsystem.
      */
-    readonly sdrsAutomationLevel?: pulumi.Input<string>;
+    sdrsAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default Storage DRS setting for
      * this virtual machine. When not specified, the datastore cluster setting is
      * used.
      */
-    readonly sdrsEnabled?: pulumi.Input<string>;
+    sdrsEnabled?: pulumi.Input<string>;
     /**
      * Overrides the intra-VM affinity setting
      * for this virtual machine. When `true`, all disks for this virtual machine
@@ -172,10 +172,10 @@ export interface StorageDrsVmOverrideArgs {
      * individual disks on different datastores if it helps satisfy cluster
      * requirements. When not specified, the datastore cluster's settings are used.
      */
-    readonly sdrsIntraVmAffinity?: pulumi.Input<string>;
+    sdrsIntraVmAffinity?: pulumi.Input<string>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId: pulumi.Input<string>;
+    virtualMachineId: pulumi.Input<string>;
 }

@@ -400,7 +400,7 @@ type ResourcePoolArrayInput interface {
 type ResourcePoolArray []ResourcePoolInput
 
 func (ResourcePoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ResourcePool)(nil))
+	return reflect.TypeOf((*[]*ResourcePool)(nil)).Elem()
 }
 
 func (i ResourcePoolArray) ToResourcePoolArrayOutput() ResourcePoolArrayOutput {
@@ -425,7 +425,7 @@ type ResourcePoolMapInput interface {
 type ResourcePoolMap map[string]ResourcePoolInput
 
 func (ResourcePoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ResourcePool)(nil))
+	return reflect.TypeOf((*map[string]*ResourcePool)(nil)).Elem()
 }
 
 func (i ResourcePoolMap) ToResourcePoolMapOutput() ResourcePoolMapOutput {
@@ -436,9 +436,7 @@ func (i ResourcePoolMap) ToResourcePoolMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolMapOutput)
 }
 
-type ResourcePoolOutput struct {
-	*pulumi.OutputState
-}
+type ResourcePoolOutput struct{ *pulumi.OutputState }
 
 func (ResourcePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcePool)(nil))
@@ -457,14 +455,12 @@ func (o ResourcePoolOutput) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
 }
 
 func (o ResourcePoolOutput) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
-	return o.ApplyT(func(v ResourcePool) *ResourcePool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePool) *ResourcePool {
 		return &v
 	}).(ResourcePoolPtrOutput)
 }
 
-type ResourcePoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type ResourcePoolPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourcePoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ResourcePool)(nil))
@@ -476,6 +472,16 @@ func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
 
 func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
 	return o
+}
+
+func (o ResourcePoolPtrOutput) Elem() ResourcePoolOutput {
+	return o.ApplyT(func(v *ResourcePool) ResourcePool {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePool
+		return ret
+	}).(ResourcePoolOutput)
 }
 
 type ResourcePoolArrayOutput struct{ *pulumi.OutputState }
@@ -519,6 +525,10 @@ func (o ResourcePoolMapOutput) MapIndex(k pulumi.StringInput) ResourcePoolOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePoolInput)(nil)).Elem(), &ResourcePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePoolPtrInput)(nil)).Elem(), &ResourcePool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePoolArrayInput)(nil)).Elem(), ResourcePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePoolMapInput)(nil)).Elem(), ResourcePoolMap{})
 	pulumi.RegisterOutputType(ResourcePoolOutput{})
 	pulumi.RegisterOutputType(ResourcePoolPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePoolArrayOutput{})

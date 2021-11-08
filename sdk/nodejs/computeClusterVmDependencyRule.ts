@@ -120,35 +120,35 @@ export interface ComputeClusterVmDependencyRuleState {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
      * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
-    readonly dependencyVmGroupName?: pulumi.Input<string>;
+    dependencyVmGroupName?: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
      * `dependencyVmGroupName` are started.
      */
-    readonly vmGroupName?: pulumi.Input<string>;
+    vmGroupName?: pulumi.Input<string>;
 }
 
 /**
@@ -160,33 +160,33 @@ export interface ComputeClusterVmDependencyRuleArgs {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * The name of the VM group that this
      * rule depends on. The VMs defined in the group specified by
      * `vmGroupName` will not be started until the VMs in this
      * group are started.
      */
-    readonly dependencyVmGroupName: pulumi.Input<string>;
+    dependencyVmGroupName: pulumi.Input<string>;
     /**
      * Enable this rule in the cluster. Default: `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      */
-    readonly mandatory?: pulumi.Input<boolean>;
+    mandatory?: pulumi.Input<boolean>;
     /**
      * The name of the rule. This must be unique in the
      * cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The name of the VM group that is the subject of
      * this rule. The VMs defined in this group will not be started until the VMs in
      * the group specified by
      * `dependencyVmGroupName` are started.
      */
-    readonly vmGroupName: pulumi.Input<string>;
+    vmGroupName: pulumi.Input<string>;
 }

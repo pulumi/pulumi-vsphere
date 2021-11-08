@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -33,7 +36,7 @@ import (
 // 		}
 // 		opt1 := datacenter.Id
 // 		opt2 := "resource-pool-1"
-// 		_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+// 		_, err = vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
 // 			DatacenterId: &opt1,
 // 			Name:         &opt2,
 // 		}, nil)
@@ -67,7 +70,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := data.Vsphere_datacenter.Dc.Id
 // 		opt1 := "esxi1/Resources"
-// 		_, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+// 		_, err := vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
 // 			DatacenterId: &opt0,
 // 			Name:         &opt1,
 // 		}, nil)
@@ -111,4 +114,62 @@ type LookupResourcePoolResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
+}
+
+func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupResourcePoolResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupResourcePoolResult, error) {
+			args := v.(LookupResourcePoolArgs)
+			r, err := LookupResourcePool(ctx, &args, opts...)
+			return *r, err
+		}).(LookupResourcePoolResultOutput)
+}
+
+// A collection of arguments for invoking getResourcePool.
+type LookupResourcePoolOutputArgs struct {
+	// The managed object reference
+	// ID of the datacenter the resource pool is located in.
+	// This can be omitted if the search path used in `name` is an absolute path.
+	// For default datacenters, use the id attribute from an empty
+	// `Datacenter` data source.
+	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
+	// The name of the resource pool. This can be a name or
+	// path. This is required when using vCenter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupResourcePoolOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcePoolArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourcePool.
+type LookupResourcePoolResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourcePoolResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourcePoolResult)(nil)).Elem()
+}
+
+func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutput() LookupResourcePoolResultOutput {
+	return o
+}
+
+func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutputWithContext(ctx context.Context) LookupResourcePoolResultOutput {
+	return o
+}
+
+func (o LookupResourcePoolResultOutput) DatacenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourcePoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePoolResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourcePoolResultOutput{})
 }

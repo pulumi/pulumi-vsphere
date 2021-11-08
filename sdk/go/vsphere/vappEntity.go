@@ -288,7 +288,7 @@ type VappEntityArrayInput interface {
 type VappEntityArray []VappEntityInput
 
 func (VappEntityArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VappEntity)(nil))
+	return reflect.TypeOf((*[]*VappEntity)(nil)).Elem()
 }
 
 func (i VappEntityArray) ToVappEntityArrayOutput() VappEntityArrayOutput {
@@ -313,7 +313,7 @@ type VappEntityMapInput interface {
 type VappEntityMap map[string]VappEntityInput
 
 func (VappEntityMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VappEntity)(nil))
+	return reflect.TypeOf((*map[string]*VappEntity)(nil)).Elem()
 }
 
 func (i VappEntityMap) ToVappEntityMapOutput() VappEntityMapOutput {
@@ -324,9 +324,7 @@ func (i VappEntityMap) ToVappEntityMapOutputWithContext(ctx context.Context) Vap
 	return pulumi.ToOutputWithContext(ctx, i).(VappEntityMapOutput)
 }
 
-type VappEntityOutput struct {
-	*pulumi.OutputState
-}
+type VappEntityOutput struct{ *pulumi.OutputState }
 
 func (VappEntityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VappEntity)(nil))
@@ -345,14 +343,12 @@ func (o VappEntityOutput) ToVappEntityPtrOutput() VappEntityPtrOutput {
 }
 
 func (o VappEntityOutput) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
-	return o.ApplyT(func(v VappEntity) *VappEntity {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VappEntity) *VappEntity {
 		return &v
 	}).(VappEntityPtrOutput)
 }
 
-type VappEntityPtrOutput struct {
-	*pulumi.OutputState
-}
+type VappEntityPtrOutput struct{ *pulumi.OutputState }
 
 func (VappEntityPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VappEntity)(nil))
@@ -364,6 +360,16 @@ func (o VappEntityPtrOutput) ToVappEntityPtrOutput() VappEntityPtrOutput {
 
 func (o VappEntityPtrOutput) ToVappEntityPtrOutputWithContext(ctx context.Context) VappEntityPtrOutput {
 	return o
+}
+
+func (o VappEntityPtrOutput) Elem() VappEntityOutput {
+	return o.ApplyT(func(v *VappEntity) VappEntity {
+		if v != nil {
+			return *v
+		}
+		var ret VappEntity
+		return ret
+	}).(VappEntityOutput)
 }
 
 type VappEntityArrayOutput struct{ *pulumi.OutputState }
@@ -407,6 +413,10 @@ func (o VappEntityMapOutput) MapIndex(k pulumi.StringInput) VappEntityOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VappEntityInput)(nil)).Elem(), &VappEntity{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappEntityPtrInput)(nil)).Elem(), &VappEntity{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappEntityArrayInput)(nil)).Elem(), VappEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappEntityMapInput)(nil)).Elem(), VappEntityMap{})
 	pulumi.RegisterOutputType(VappEntityOutput{})
 	pulumi.RegisterOutputType(VappEntityPtrOutput{})
 	pulumi.RegisterOutputType(VappEntityArrayOutput{})

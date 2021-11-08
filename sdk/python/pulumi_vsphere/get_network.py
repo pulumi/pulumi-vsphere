@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkResult',
     'AwaitableGetNetworkResult',
     'get_network',
+    'get_network_output',
 ]
 
 @pulumi.output_type
@@ -83,7 +84,7 @@ def get_network(datacenter_id: Optional[str] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
-    The `getNetwork` data source can be used to discover the ID of a network
+    The `get_network` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
     network interface for `VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups, DVS
@@ -128,3 +129,41 @@ def get_network(datacenter_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_network)
+def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       distributed_virtual_switch_uuid: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+    """
+    The `get_network` data source can be used to discover the ID of a network
+    in vSphere. This can be any network that can be used as the backing for a
+    network interface for `VirtualMachine` or any other vSphere resource
+    that requires a network. This includes standard (host-based) port groups, DVS
+    port groups, or opaque networks such as those managed by NSX.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    net = vsphere.get_network(datacenter_id=datacenter.id,
+        name="test-net")
+    ```
+
+
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the network is located in. This can
+           be omitted if the search path used in `name` is an absolute path. For default
+           datacenters, use the id attribute from an empty `Datacenter` data
+           source.
+    :param str distributed_virtual_switch_uuid: For distributed port group type 
+           network objects, the ID of the distributed virtual switch the given port group
+           belongs to. It is useful to differentiate port groups with same name using the
+           Distributed virtual switch ID.
+    :param str name: The name of the network. This can be a name or path.
+    """
+    ...

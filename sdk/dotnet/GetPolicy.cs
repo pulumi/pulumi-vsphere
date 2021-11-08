@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -44,6 +45,40 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
+        /// vSphere storage policy. This can then be used with resources or data sources that
+        /// require a storage policy.
+        /// 
+        /// &gt; **NOTE:** Storage policy support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(VSphere.GetPolicy.InvokeAsync(new VSphere.GetPolicyArgs
+        ///         {
+        ///             Name = "policy1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -56,6 +91,19 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         public GetPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the storage policy.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetPolicyInvokeArgs()
         {
         }
     }

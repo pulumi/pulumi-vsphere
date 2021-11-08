@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -46,6 +47,42 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetTagCategoryResult> InvokeAsync(GetTagCategoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.TagCategory` data source can be used to reference tag categories
+        /// that are not managed by this provider. Its attributes are exactly the same as the
+        /// `vsphere.TagCategory` resource, and, like importing,
+        /// the data source takes a name to search on. The `id` and other attributes are
+        /// then populated with the data found by the search.
+        /// 
+        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         {
+        ///             Name = "test-category",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -58,6 +95,19 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         public GetTagCategoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetTagCategoryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the tag category.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetTagCategoryInvokeArgs()
         {
         }
     }

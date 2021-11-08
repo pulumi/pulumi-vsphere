@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -21,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const policy = pulumi.output(vsphere.getPolicy({
  *     name: "policy1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
@@ -44,7 +43,7 @@ export interface GetPolicyArgs {
     /**
      * The name of the storage policy.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -56,4 +55,18 @@ export interface GetPolicyResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+    return pulumi.output(args).apply(a => getPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicy.
+ */
+export interface GetPolicyOutputArgs {
+    /**
+     * The name of the storage policy.
+     */
+    name: pulumi.Input<string>;
 }

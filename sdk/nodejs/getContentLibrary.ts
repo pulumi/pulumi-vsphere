@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const library = pulumi.output(vsphere.getContentLibrary({
  *     name: "Content Library Test",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
@@ -42,7 +41,7 @@ export interface GetContentLibraryArgs {
     /**
      * The name of the Content Library.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -54,4 +53,18 @@ export interface GetContentLibraryResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
+    return pulumi.output(args).apply(a => getContentLibrary(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContentLibrary.
+ */
+export interface GetContentLibraryOutputArgs {
+    /**
+     * The name of the Content Library.
+     */
+    name: pulumi.Input<string>;
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -23,11 +22,11 @@ import * as utilities from "./utilities";
  *
  * const category = pulumi.output(vsphere.getTagCategory({
  *     name: "test-category",
- * }, { async: true }));
+ * }));
  * const tag = category.apply(category => vsphere.getTag({
  *     categoryId: category.id,
  *     name: "test-tag",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
@@ -51,11 +50,11 @@ export interface GetTagArgs {
     /**
      * The ID of the tag category the tag is located in.
      */
-    readonly categoryId: string;
+    categoryId: string;
     /**
      * The name of the tag.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -69,4 +68,22 @@ export interface GetTagResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagResult> {
+    return pulumi.output(args).apply(a => getTag(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTag.
+ */
+export interface GetTagOutputArgs {
+    /**
+     * The ID of the tag category the tag is located in.
+     */
+    categoryId: pulumi.Input<string>;
+    /**
+     * The name of the tag.
+     */
+    name: pulumi.Input<string>;
 }

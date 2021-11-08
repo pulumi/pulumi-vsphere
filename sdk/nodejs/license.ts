@@ -120,27 +120,27 @@ export interface LicenseState {
     /**
      * The product edition of the license key.
      */
-    readonly editionKey?: pulumi.Input<string>;
+    editionKey?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The license key to add.
      */
-    readonly licenseKey?: pulumi.Input<string>;
+    licenseKey?: pulumi.Input<string>;
     /**
      * The display name for the license.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Total number of units (example: CPUs) contained in the license.
      */
-    readonly total?: pulumi.Input<number>;
+    total?: pulumi.Input<number>;
     /**
      * The number of units (example: CPUs) assigned to this license.
      */
-    readonly used?: pulumi.Input<number>;
+    used?: pulumi.Input<number>;
 }
 
 /**
@@ -150,9 +150,9 @@ export interface LicenseArgs {
     /**
      * A map of key/value pairs to be attached as labels (tags) to the license key.
      */
-    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The license key to add.
      */
-    readonly licenseKey: pulumi.Input<string>;
+    licenseKey: pulumi.Input<string>;
 }

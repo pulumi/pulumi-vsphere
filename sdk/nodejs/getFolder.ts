@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const folder = pulumi.output(vsphere.getFolder({
  *     path: "/dc1/datastore/folder1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
@@ -45,7 +44,7 @@ export interface GetFolderArgs {
      * `/default-dc/vm/test-folder`. The valid folder types to be used in
      * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
      */
-    readonly path: string;
+    path: string;
 }
 
 /**
@@ -57,4 +56,22 @@ export interface GetFolderResult {
      */
     readonly id: string;
     readonly path: string;
+}
+
+export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
+    return pulumi.output(args).apply(a => getFolder(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFolder.
+ */
+export interface GetFolderOutputArgs {
+    /**
+     * The absolute path of the folder. For example, given a
+     * default datacenter of `default-dc`, a folder of type `vm`, and a folder name
+     * of `test-folder`, the resulting path would be
+     * `/default-dc/vm/test-folder`. The valid folder types to be used in
+     * the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+     */
+    path: pulumi.Input<string>;
 }

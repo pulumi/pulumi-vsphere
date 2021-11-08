@@ -113,13 +113,13 @@ export interface FolderState {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    readonly datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -128,18 +128,18 @@ export interface FolderState {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,
      * `vm` for virtual machine folders, `datastore` for datastore folders, and
      * `network` for network folders. Forces a new resource if changed.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -151,13 +151,13 @@ export interface FolderArgs {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter the folder will be created in.
      * Required for all folder types except for datacenter folders. Forces a new
      * resource if changed.
      */
-    readonly datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string>;
     /**
      * The path of the folder to be created. This is relative to
      * the root of the type of folder you are creating, and the supplied datacenter.
@@ -166,16 +166,16 @@ export interface FolderArgs {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      */
-    readonly path: pulumi.Input<string>;
+    path: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of folder to create. Allowed options are
      * `datacenter` for datacenter folders, `host` for host and cluster folders,
      * `vm` for virtual machine folders, `datastore` for datastore folders, and
      * `network` for network folders. Forces a new resource if changed.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

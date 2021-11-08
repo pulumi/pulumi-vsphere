@@ -17,6 +17,23 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// govmomi debug path for debug
+	ClientDebugPath pulumi.StringPtrOutput `pulumi:"clientDebugPath"`
+	// govmomi debug path for a single run
+	ClientDebugPathRun pulumi.StringPtrOutput `pulumi:"clientDebugPathRun"`
+	// The user password for vSphere API operations.
+	Password pulumi.StringOutput `pulumi:"password"`
+	// The directory to save vSphere REST API sessions to
+	RestSessionPath pulumi.StringPtrOutput `pulumi:"restSessionPath"`
+	// The user name for vSphere API operations.
+	User pulumi.StringOutput `pulumi:"user"`
+	// Deprecated: This field has been renamed to vsphere_server.
+	VcenterServer pulumi.StringPtrOutput `pulumi:"vcenterServer"`
+	// The directory to save vSphere SOAP API sessions to
+	VimSessionPath pulumi.StringPtrOutput `pulumi:"vimSessionPath"`
+	// The vSphere Server name for vSphere API operations.
+	VsphereServer pulumi.StringPtrOutput `pulumi:"vsphereServer"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -175,9 +192,7 @@ func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
-type ProviderOutput struct {
-	*pulumi.OutputState
-}
+type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil))
@@ -196,14 +211,12 @@ func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
 }
 
 func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyT(func(v Provider) *Provider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
 		return &v
 	}).(ProviderPtrOutput)
 }
 
-type ProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Provider)(nil))
@@ -217,7 +230,19 @@ func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProviderPtrOutput) Elem() ProviderOutput {
+	return o.ApplyT(func(v *Provider) Provider {
+		if v != nil {
+			return *v
+		}
+		var ret Provider
+		return ret
+	}).(ProviderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

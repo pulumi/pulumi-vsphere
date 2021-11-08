@@ -262,13 +262,13 @@ export interface DatastoreClusterState {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object ID of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
-    readonly datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this datastore
      * cluster in.  This is a path relative to the datacenter you are deploying the
@@ -278,71 +278,71 @@ export interface DatastoreClusterState {
      * `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The name of the datastore cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A key/value map of advanced Storage DRS
      * settings that are not exposed via the provider or the vSphere client.
      */
-    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.
      */
-    readonly sdrsAutomationLevel?: pulumi.Input<string>;
+    sdrsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, all disks in a
      * single virtual machine will be kept on the same datastore. Default: `true`.
      */
-    readonly sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
+    sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
     /**
      * Enable Storage DRS for this datastore cluster.
      * Default: `false`.
      */
-    readonly sdrsEnabled?: pulumi.Input<boolean>;
+    sdrsEnabled?: pulumi.Input<boolean>;
     /**
      * The free space threshold to use.
      * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
      * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
      */
-    readonly sdrsFreeSpaceThreshold?: pulumi.Input<number>;
+    sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
      * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
      * freeSpace, drs_free_space_threshold is used.
      */
-    readonly sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
+    sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
      * The threshold, in
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */
-    readonly sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
+    sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when correcting I/O load imbalances.
      */
-    readonly sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
+    sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * The I/O latency threshold, in
      * milliseconds, that storage DRS uses to make recommendations to move disks
      * from this datastore. Default: `15` seconds.
      */
-    readonly sdrsIoLatencyThreshold?: pulumi.Input<number>;
+    sdrsIoLatencyThreshold?: pulumi.Input<number>;
     /**
      * Enable I/O load balancing for
      * this datastore cluster. Default: `true`.
      */
-    readonly sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
+    sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
     /**
      * The difference between load
      * in datastores in the cluster before storage DRS makes recommendations to
      * balance the load. Default: `5` percent.
      */
-    readonly sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
+    sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
     /**
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
@@ -351,54 +351,54 @@ export interface DatastoreClusterState {
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
-    readonly sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
+    sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
     /**
      * The threshold, in
      * percent, of actual estimated performance of the datastore (in IOPS) that
      * storage DRS uses to make recommendations to move VMs off of a datastore when
      * the total reservable IOPS exceeds the threshold. Default: `60` percent.
      */
-    readonly sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
+    sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
      * The reservable IOPS
      * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
      * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
      * `manual`. Default: `automatic`.
      */
-    readonly sdrsIoReservableThresholdMode?: pulumi.Input<string>;
+    sdrsIoReservableThresholdMode?: pulumi.Input<string>;
     /**
      * The storage DRS poll interval, in
      * minutes. Default: `480` minutes.
      */
-    readonly sdrsLoadBalanceInterval?: pulumi.Input<number>;
+    sdrsLoadBalanceInterval?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when correcting storage and VM policy violations.
      */
-    readonly sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
+    sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default
      * automation settings when correcting affinity rule violations.
      */
-    readonly sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
+    sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default
      * automation settings when correcting disk space imbalances.
      */
-    readonly sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
+    sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
-    readonly sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
+    sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when generating recommendations for datastore evacuation.
      */
-    readonly sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
+    sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -411,13 +411,13 @@ export interface DatastoreClusterArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object ID of
      * the datacenter to create the datastore cluster in. Forces a new resource if
      * changed.
      */
-    readonly datacenterId: pulumi.Input<string>;
+    datacenterId: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this datastore
      * cluster in.  This is a path relative to the datacenter you are deploying the
@@ -427,71 +427,71 @@ export interface DatastoreClusterArgs {
      * `/dc1/datastore/foo/bar`, with the final inventory path being
      * `/dc1/datastore/foo/bar/datastore-cluster-test`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The name of the datastore cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A key/value map of advanced Storage DRS
      * settings that are not exposed via the provider or the vSphere client.
      */
-    readonly sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sdrsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The global automation level for all
      * virtual machines in this datastore cluster. Default: `manual`.
      */
-    readonly sdrsAutomationLevel?: pulumi.Input<string>;
+    sdrsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, all disks in a
      * single virtual machine will be kept on the same datastore. Default: `true`.
      */
-    readonly sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
+    sdrsDefaultIntraVmAffinity?: pulumi.Input<boolean>;
     /**
      * Enable Storage DRS for this datastore cluster.
      * Default: `false`.
      */
-    readonly sdrsEnabled?: pulumi.Input<boolean>;
+    sdrsEnabled?: pulumi.Input<boolean>;
     /**
      * The free space threshold to use.
      * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
      * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
      */
-    readonly sdrsFreeSpaceThreshold?: pulumi.Input<number>;
+    sdrsFreeSpaceThreshold?: pulumi.Input<number>;
     /**
      * The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
      * freeSpace, drs_free_space_threshold is used.
      */
-    readonly sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
+    sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
      * The threshold, in
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */
-    readonly sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
+    sdrsFreeSpaceUtilizationDifference?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when correcting I/O load imbalances.
      */
-    readonly sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
+    sdrsIoBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * The I/O latency threshold, in
      * milliseconds, that storage DRS uses to make recommendations to move disks
      * from this datastore. Default: `15` seconds.
      */
-    readonly sdrsIoLatencyThreshold?: pulumi.Input<number>;
+    sdrsIoLatencyThreshold?: pulumi.Input<number>;
     /**
      * Enable I/O load balancing for
      * this datastore cluster. Default: `true`.
      */
-    readonly sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
+    sdrsIoLoadBalanceEnabled?: pulumi.Input<boolean>;
     /**
      * The difference between load
      * in datastores in the cluster before storage DRS makes recommendations to
      * balance the load. Default: `5` percent.
      */
-    readonly sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
+    sdrsIoLoadImbalanceThreshold?: pulumi.Input<number>;
     /**
      * The threshold of reservable
      * IOPS of all virtual machines on the datastore before storage DRS makes
@@ -500,52 +500,52 @@ export interface DatastoreClusterArgs {
      * estimate of the capacity of the datastores in your cluster, and should be set
      * to roughly 50-60% of the worst case peak performance of the backing LUNs.
      */
-    readonly sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
+    sdrsIoReservableIopsThreshold?: pulumi.Input<number>;
     /**
      * The threshold, in
      * percent, of actual estimated performance of the datastore (in IOPS) that
      * storage DRS uses to make recommendations to move VMs off of a datastore when
      * the total reservable IOPS exceeds the threshold. Default: `60` percent.
      */
-    readonly sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
+    sdrsIoReservablePercentThreshold?: pulumi.Input<number>;
     /**
      * The reservable IOPS
      * threshold setting to use, `sdrsIoReservablePercentThreshold` in the event
      * of `automatic`, or `sdrsIoReservableIopsThreshold` in the event of
      * `manual`. Default: `automatic`.
      */
-    readonly sdrsIoReservableThresholdMode?: pulumi.Input<string>;
+    sdrsIoReservableThresholdMode?: pulumi.Input<string>;
     /**
      * The storage DRS poll interval, in
      * minutes. Default: `480` minutes.
      */
-    readonly sdrsLoadBalanceInterval?: pulumi.Input<number>;
+    sdrsLoadBalanceInterval?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when correcting storage and VM policy violations.
      */
-    readonly sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
+    sdrsPolicyEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default
      * automation settings when correcting affinity rule violations.
      */
-    readonly sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
+    sdrsRuleEnforcementAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default
      * automation settings when correcting disk space imbalances.
      */
-    readonly sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
+    sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
      * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
      */
-    readonly sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
+    sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**
      * Overrides the default
      * automation settings when generating recommendations for datastore evacuation.
      */
-    readonly sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
+    sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

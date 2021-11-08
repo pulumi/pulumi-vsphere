@@ -127,15 +127,15 @@ export interface VmStoragePolicyState {
     /**
      * Description of the storage policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the storage policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      */
-    readonly tagRules?: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[]>;
+    tagRules?: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[]>;
 }
 
 /**
@@ -145,13 +145,13 @@ export interface VmStoragePolicyArgs {
     /**
      * Description of the storage policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the storage policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of tag rules. The tag category and tags to be associated to this storage policy.
      */
-    readonly tagRules: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[]>;
+    tagRules: pulumi.Input<pulumi.Input<inputs.VmStoragePolicyTagRule>[]>;
 }

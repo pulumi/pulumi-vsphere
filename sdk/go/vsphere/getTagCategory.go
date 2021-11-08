@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+// 		_, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
 // 			Name: "test-category",
 // 		}, nil)
 // 		if err != nil {
@@ -61,4 +64,63 @@ type LookupTagCategoryResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupTagCategoryOutput(ctx *pulumi.Context, args LookupTagCategoryOutputArgs, opts ...pulumi.InvokeOption) LookupTagCategoryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTagCategoryResult, error) {
+			args := v.(LookupTagCategoryArgs)
+			r, err := LookupTagCategory(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTagCategoryResultOutput)
+}
+
+// A collection of arguments for invoking getTagCategory.
+type LookupTagCategoryOutputArgs struct {
+	// The name of the tag category.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupTagCategoryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagCategoryArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTagCategory.
+type LookupTagCategoryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTagCategoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagCategoryResult)(nil)).Elem()
+}
+
+func (o LookupTagCategoryResultOutput) ToLookupTagCategoryResultOutput() LookupTagCategoryResultOutput {
+	return o
+}
+
+func (o LookupTagCategoryResultOutput) ToLookupTagCategoryResultOutputWithContext(ctx context.Context) LookupTagCategoryResultOutput {
+	return o
+}
+
+func (o LookupTagCategoryResultOutput) AssociableTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) []string { return v.AssociableTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupTagCategoryResultOutput) Cardinality() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Cardinality }).(pulumi.StringOutput)
+}
+
+func (o LookupTagCategoryResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTagCategoryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTagCategoryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagCategoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTagCategoryResultOutput{})
 }

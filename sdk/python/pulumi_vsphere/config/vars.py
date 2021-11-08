@@ -8,83 +8,97 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'allow_unverified_ssl',
-    'api_timeout',
-    'client_debug',
-    'client_debug_path',
-    'client_debug_path_run',
-    'password',
-    'persist_session',
-    'rest_session_path',
-    'user',
-    'vcenter_server',
-    'vim_keep_alive',
-    'vim_session_path',
-    'vsphere_server',
-]
+import types
 
 __config__ = pulumi.Config('vsphere')
 
-allow_unverified_ssl = __config__.get('allowUnverifiedSsl') or _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
-"""
-If set, VMware vSphere client will permit unverifiable SSL certificates.
-"""
 
-api_timeout = __config__.get('apiTimeout')
-"""
-API timeout in minutes (Default: 5)
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def allow_unverified_ssl(self) -> Optional[bool]:
+        """
+        If set, VMware vSphere client will permit unverifiable SSL certificates.
+        """
+        return __config__.get_bool('allowUnverifiedSsl') or _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
 
-client_debug = __config__.get('clientDebug') or _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
-"""
-govmomi debug
-"""
+    @property
+    def api_timeout(self) -> Optional[int]:
+        """
+        API timeout in minutes (Default: 5)
+        """
+        return __config__.get_int('apiTimeout')
 
-client_debug_path = __config__.get('clientDebugPath') or _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
-"""
-govmomi debug path for debug
-"""
+    @property
+    def client_debug(self) -> Optional[bool]:
+        """
+        govmomi debug
+        """
+        return __config__.get_bool('clientDebug') or _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
 
-client_debug_path_run = __config__.get('clientDebugPathRun') or _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
-"""
-govmomi debug path for a single run
-"""
+    @property
+    def client_debug_path(self) -> Optional[str]:
+        """
+        govmomi debug path for debug
+        """
+        return __config__.get('clientDebugPath') or _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
 
-password = __config__.get('password')
-"""
-The user password for vSphere API operations.
-"""
+    @property
+    def client_debug_path_run(self) -> Optional[str]:
+        """
+        govmomi debug path for a single run
+        """
+        return __config__.get('clientDebugPathRun') or _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
 
-persist_session = __config__.get('persistSession') or _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
-"""
-Persist vSphere client sessions to disk
-"""
+    @property
+    def password(self) -> Optional[str]:
+        """
+        The user password for vSphere API operations.
+        """
+        return __config__.get('password')
 
-rest_session_path = __config__.get('restSessionPath') or _utilities.get_env('VSPHERE_REST_SESSION_PATH')
-"""
-The directory to save vSphere REST API sessions to
-"""
+    @property
+    def persist_session(self) -> Optional[bool]:
+        """
+        Persist vSphere client sessions to disk
+        """
+        return __config__.get_bool('persistSession') or _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
 
-user = __config__.get('user')
-"""
-The user name for vSphere API operations.
-"""
+    @property
+    def rest_session_path(self) -> Optional[str]:
+        """
+        The directory to save vSphere REST API sessions to
+        """
+        return __config__.get('restSessionPath') or _utilities.get_env('VSPHERE_REST_SESSION_PATH')
 
-vcenter_server = __config__.get('vcenterServer')
+    @property
+    def user(self) -> Optional[str]:
+        """
+        The user name for vSphere API operations.
+        """
+        return __config__.get('user')
 
-vim_keep_alive = __config__.get('vimKeepAlive') or _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
-"""
-Keep alive interval for the VIM session in minutes
-"""
+    @property
+    def vcenter_server(self) -> Optional[str]:
+        return __config__.get('vcenterServer')
 
-vim_session_path = __config__.get('vimSessionPath') or _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
-"""
-The directory to save vSphere SOAP API sessions to
-"""
+    @property
+    def vim_keep_alive(self) -> Optional[int]:
+        """
+        Keep alive interval for the VIM session in minutes
+        """
+        return __config__.get_int('vimKeepAlive') or _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
 
-vsphere_server = __config__.get('vsphereServer')
-"""
-The vSphere Server name for vSphere API operations.
-"""
+    @property
+    def vim_session_path(self) -> Optional[str]:
+        """
+        The directory to save vSphere SOAP API sessions to
+        """
+        return __config__.get('vimSessionPath') or _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
+
+    @property
+    def vsphere_server(self) -> Optional[str]:
+        """
+        The vSphere Server name for vSphere API operations.
+        """
+        return __config__.get('vsphereServer')
 

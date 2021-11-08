@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupRole(ctx, &vsphere.LookupRoleArgs{
+// 		_, err := vsphere.LookupRole(ctx, &GetRoleArgs{
 // 			Label: "Virtual machine user (sample)",
 // 		}, nil)
 // 		if err != nil {
@@ -63,4 +66,71 @@ type LookupRoleResult struct {
 	Name  *string `pulumi:"name"`
 	// The privileges associated with the role.
 	RolePrivileges []string `pulumi:"rolePrivileges"`
+}
+
+func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupRoleResult, error) {
+			args := v.(LookupRoleArgs)
+			r, err := LookupRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupRoleResultOutput)
+}
+
+// A collection of arguments for invoking getRole.
+type LookupRoleOutputArgs struct {
+	// The description of the role.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The label of the role.
+	Label pulumi.StringInput    `pulumi:"label"`
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// The privileges associated with the role.
+	RolePrivileges pulumi.StringArrayInput `pulumi:"rolePrivileges"`
+}
+
+func (LookupRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRole.
+type LookupRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleResult)(nil)).Elem()
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
+	return o
+}
+
+// The description of the role.
+func (o LookupRoleResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The display label of the role.
+func (o LookupRoleResultOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupRoleResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The privileges associated with the role.
+func (o LookupRoleResultOutput) RolePrivileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRoleResult) []string { return v.RolePrivileges }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleResultOutput{})
 }

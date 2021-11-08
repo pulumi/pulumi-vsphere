@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -48,6 +49,44 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetOvfVmTemplateResult> InvokeAsync(GetOvfVmTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware
+        /// settings in a form that can be then used as inputs for a `vsphere.VirtualMachine` resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ovf = Output.Create(VSphere.GetOvfVmTemplate.InvokeAsync(new VSphere.GetOvfVmTemplateArgs
+        ///         {
+        ///             Name = "testOVF",
+        ///             ResourcePoolId = vsphere_resource_pool.Rp.Id,
+        ///             DatastoreId = data.Vsphere_datastore.Ds.Id,
+        ///             HostSystemId = data.Vsphere_host.Hs.Id,
+        ///             RemoteOvfUrl = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
+        ///             OvfNetworkMap = 
+        ///             {
+        ///                 { "Network 1", data.Vsphere_network.Net.Id },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -144,6 +183,103 @@ namespace Pulumi.VSphere
         public string ResourcePoolId { get; set; } = null!;
 
         public GetOvfVmTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetOvfVmTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Allow unverified ssl certificates while deploying ovf/ova from url.
+        /// </summary>
+        [Input("allowUnverifiedSslCert")]
+        public Input<bool>? AllowUnverifiedSslCert { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        /// </summary>
+        [Input("datastoreId")]
+        public Input<string>? DatastoreId { get; set; }
+
+        /// <summary>
+        /// The key of the chosen deployment option. If empty, the default option is chosen.
+        /// </summary>
+        [Input("deploymentOption")]
+        public Input<string>? DeploymentOption { get; set; }
+
+        /// <summary>
+        /// The disk provisioning. If set, all the disks in the deployed OVF will have
+        /// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+        /// </summary>
+        [Input("diskProvisioning")]
+        public Input<string>? DiskProvisioning { get; set; }
+
+        [Input("enableHiddenProperties")]
+        public Input<bool>? EnableHiddenProperties { get; set; }
+
+        /// <summary>
+        /// The name of the folder to locate the virtual machine in.
+        /// </summary>
+        [Input("folder")]
+        public Input<string>? Folder { get; set; }
+
+        /// <summary>
+        /// The ID of an optional host system to pin the virtual machine to.
+        /// </summary>
+        [Input("hostSystemId", required: true)]
+        public Input<string> HostSystemId { get; set; } = null!;
+
+        /// <summary>
+        /// The IP allocation policy.
+        /// </summary>
+        [Input("ipAllocationPolicy")]
+        public Input<string>? IpAllocationPolicy { get; set; }
+
+        /// <summary>
+        /// The IP protocol.
+        /// </summary>
+        [Input("ipProtocol")]
+        public Input<string>? IpProtocol { get; set; }
+
+        /// <summary>
+        /// The absolute path to the ovf/ova file in the local system. While deploying from ovf,
+        /// make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+        /// </summary>
+        [Input("localOvfPath")]
+        public Input<string>? LocalOvfPath { get; set; }
+
+        /// <summary>
+        /// Name of the virtual machine to create.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("ovfNetworkMap")]
+        private InputMap<string>? _ovfNetworkMap;
+
+        /// <summary>
+        /// The mapping of name of network identifiers from the ovf descriptor to network UUID in the
+        /// VI infrastructure.
+        /// </summary>
+        public InputMap<string> OvfNetworkMap
+        {
+            get => _ovfNetworkMap ?? (_ovfNetworkMap = new InputMap<string>());
+            set => _ovfNetworkMap = value;
+        }
+
+        /// <summary>
+        /// URL to the remote ovf/ova file to be deployed.
+        /// </summary>
+        [Input("remoteOvfUrl")]
+        public Input<string>? RemoteOvfUrl { get; set; }
+
+        /// <summary>
+        /// The ID of a resource pool to put the virtual machine in.
+        /// </summary>
+        [Input("resourcePoolId", required: true)]
+        public Input<string> ResourcePoolId { get; set; } = null!;
+
+        public GetOvfVmTemplateInvokeArgs()
         {
         }
     }

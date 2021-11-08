@@ -81,11 +81,11 @@ export interface CustomAttributeState {
      * type. For a full list, click here. Forces a new
      * resource if changed.
      */
-    readonly managedObjectType?: pulumi.Input<string>;
+    managedObjectType?: pulumi.Input<string>;
     /**
      * The name of the custom attribute.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -98,9 +98,9 @@ export interface CustomAttributeArgs {
      * type. For a full list, click here. Forces a new
      * resource if changed.
      */
-    readonly managedObjectType?: pulumi.Input<string>;
+    managedObjectType?: pulumi.Input<string>;
     /**
      * The name of the custom attribute.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupFolder(ctx, &vsphere.LookupFolderArgs{
+// 		_, err := vsphere.LookupFolder(ctx, &GetFolderArgs{
 // 			Path: "/dc1/datastore/folder1",
 // 		}, nil)
 // 		if err != nil {
@@ -57,4 +60,55 @@ type LookupFolderResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
+}
+
+func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupFolderResult, error) {
+			args := v.(LookupFolderArgs)
+			r, err := LookupFolder(ctx, &args, opts...)
+			return *r, err
+		}).(LookupFolderResultOutput)
+}
+
+// A collection of arguments for invoking getFolder.
+type LookupFolderOutputArgs struct {
+	// The absolute path of the folder. For example, given a
+	// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
+	// of `test-folder`, the resulting path would be
+	// `/default-dc/vm/test-folder`. The valid folder types to be used in
+	// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (LookupFolderOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFolder.
+type LookupFolderResultOutput struct{ *pulumi.OutputState }
+
+func (LookupFolderResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderResult)(nil)).Elem()
+}
+
+func (o LookupFolderResultOutput) ToLookupFolderResultOutput() LookupFolderResultOutput {
+	return o
+}
+
+func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx context.Context) LookupFolderResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupFolderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupFolderResultOutput{})
 }

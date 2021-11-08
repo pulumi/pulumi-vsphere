@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const thumbprint = pulumi.output(vsphere.getHostThumbprint({
  *     address: "esxi.example.internal",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.InvokeOptions): Promise<GetHostThumbprintResult> {
@@ -45,16 +44,16 @@ export interface GetHostThumbprintArgs {
      * The address of the ESXi host to retrieve the
      * thumbprint from.
      */
-    readonly address: string;
+    address: string;
     /**
      * Boolean that can be set to true to disable SSL 
      * certificate verification. Default: false
      */
-    readonly insecure?: boolean;
+    insecure?: boolean;
     /**
      * The port to use connecting to the ESXi host. Default: 443
      */
-    readonly port?: string;
+    port?: string;
 }
 
 /**
@@ -68,4 +67,28 @@ export interface GetHostThumbprintResult {
     readonly id: string;
     readonly insecure?: boolean;
     readonly port?: string;
+}
+
+export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostThumbprintResult> {
+    return pulumi.output(args).apply(a => getHostThumbprint(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHostThumbprint.
+ */
+export interface GetHostThumbprintOutputArgs {
+    /**
+     * The address of the ESXi host to retrieve the
+     * thumbprint from.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * Boolean that can be set to true to disable SSL 
+     * certificate verification. Default: false
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
+     * The port to use connecting to the ESXi host. Default: 443
+     */
+    port?: pulumi.Input<string>;
 }

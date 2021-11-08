@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -41,6 +42,37 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.Role` data source can be used to discover the id and privileges associated
+        /// with a role given its name or display label in vsphere UI.
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var role1 = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
+        ///         {
+        ///             Label = "Virtual machine user (sample)",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +106,40 @@ namespace Pulumi.VSphere
         }
 
         public GetRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The description of the role.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The label of the role.
+        /// </summary>
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("rolePrivileges")]
+        private InputList<string>? _rolePrivileges;
+
+        /// <summary>
+        /// The privileges associated with the role.
+        /// </summary>
+        public InputList<string> RolePrivileges
+        {
+            get => _rolePrivileges ?? (_rolePrivileges = new InputList<string>());
+            set => _rolePrivileges = value;
+        }
+
+        public GetRoleInvokeArgs()
         {
         }
     }

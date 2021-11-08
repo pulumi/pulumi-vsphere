@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,14 +37,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := datacenter.Id
-// 		dvs, err := vsphere.LookupDistributedVirtualSwitch(ctx, &vsphere.LookupDistributedVirtualSwitchArgs{
+// 		dvs, err := vsphere.LookupDistributedVirtualSwitch(ctx, &GetDistributedVirtualSwitchArgs{
 // 			DatacenterId: &opt1,
 // 			Name:         "test-dvs",
 // 		}, nil)
@@ -93,4 +96,66 @@ type LookupDistributedVirtualSwitchResult struct {
 	Id      string   `pulumi:"id"`
 	Name    string   `pulumi:"name"`
 	Uplinks []string `pulumi:"uplinks"`
+}
+
+func LookupDistributedVirtualSwitchOutput(ctx *pulumi.Context, args LookupDistributedVirtualSwitchOutputArgs, opts ...pulumi.InvokeOption) LookupDistributedVirtualSwitchResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDistributedVirtualSwitchResult, error) {
+			args := v.(LookupDistributedVirtualSwitchArgs)
+			r, err := LookupDistributedVirtualSwitch(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDistributedVirtualSwitchResultOutput)
+}
+
+// A collection of arguments for invoking getDistributedVirtualSwitch.
+type LookupDistributedVirtualSwitchOutputArgs struct {
+	// The managed object reference
+	// ID of the datacenter the DVS is located in. This can be
+	// omitted if the search path used in `name` is an absolute path. For default
+	// datacenters, use the id attribute from an empty `Datacenter` data
+	// source.
+	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
+	// The name of the distributed virtual switch. This can be a
+	// name or path.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupDistributedVirtualSwitchOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDistributedVirtualSwitchArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDistributedVirtualSwitch.
+type LookupDistributedVirtualSwitchResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDistributedVirtualSwitchResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDistributedVirtualSwitchResult)(nil)).Elem()
+}
+
+func (o LookupDistributedVirtualSwitchResultOutput) ToLookupDistributedVirtualSwitchResultOutput() LookupDistributedVirtualSwitchResultOutput {
+	return o
+}
+
+func (o LookupDistributedVirtualSwitchResultOutput) ToLookupDistributedVirtualSwitchResultOutputWithContext(ctx context.Context) LookupDistributedVirtualSwitchResultOutput {
+	return o
+}
+
+func (o LookupDistributedVirtualSwitchResultOutput) DatacenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDistributedVirtualSwitchResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDistributedVirtualSwitchResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupDistributedVirtualSwitchResultOutput) Uplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) []string { return v.Uplinks }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDistributedVirtualSwitchResultOutput{})
 }

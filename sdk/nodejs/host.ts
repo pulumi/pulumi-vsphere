@@ -215,62 +215,62 @@ export interface HostState {
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
      * `cluster`.
      */
-    readonly cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      */
-    readonly clusterManaged?: pulumi.Input<boolean>;
+    clusterManaged?: pulumi.Input<boolean>;
     /**
      * If set to false then the host will be disconected.
      * Default is `false`.
      */
-    readonly connected?: pulumi.Input<boolean>;
+    connected?: pulumi.Input<boolean>;
     /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * If set to true then it will force the host to be added, even
      * if the host is already connected to a different vSphere instance. Default is `false`
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * FQDN or IP address of the host to be added.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The license key that will be applied to the host.
      * The license key is expected to be present in vSphere.
      */
-    readonly license?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
     /**
      * Set the lockdown state of the host. Valid options are
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      */
-    readonly lockdown?: pulumi.Input<string>;
+    lockdown?: pulumi.Input<string>;
     /**
      * Set the management state of the host. Default is `false`.
      */
-    readonly maintenance?: pulumi.Input<boolean>;
+    maintenance?: pulumi.Input<boolean>;
     /**
      * Password that will be used by vSphere to authenticate
      * to the host.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Host's certificate SHA-1 thumbprint. If not set the the
      * CA that signed the host's certificate should be trusted. If the CA is not trusted
      * and no thumbprint is set then the operation will fail.
      */
-    readonly thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string>;
     /**
      * Username that will be used by vSphere to authenticate
      * to the host.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -282,60 +282,60 @@ export interface HostArgs {
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
      * `cluster`.
      */
-    readonly cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `computeCluster` resource rather
      * than the`host` resource. Conflicts with: `cluster`.
      */
-    readonly clusterManaged?: pulumi.Input<boolean>;
+    clusterManaged?: pulumi.Input<boolean>;
     /**
      * If set to false then the host will be disconected.
      * Default is `false`.
      */
-    readonly connected?: pulumi.Input<boolean>;
+    connected?: pulumi.Input<boolean>;
     /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * If set to true then it will force the host to be added, even
      * if the host is already connected to a different vSphere instance. Default is `false`
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * FQDN or IP address of the host to be added.
      */
-    readonly hostname: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
     /**
      * The license key that will be applied to the host.
      * The license key is expected to be present in vSphere.
      */
-    readonly license?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
     /**
      * Set the lockdown state of the host. Valid options are
      * `disabled`, `normal`, and `strict`. Default is `disabled`.
      */
-    readonly lockdown?: pulumi.Input<string>;
+    lockdown?: pulumi.Input<string>;
     /**
      * Set the management state of the host. Default is `false`.
      */
-    readonly maintenance?: pulumi.Input<boolean>;
+    maintenance?: pulumi.Input<boolean>;
     /**
      * Password that will be used by vSphere to authenticate
      * to the host.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * Host's certificate SHA-1 thumbprint. If not set the the
      * CA that signed the host's certificate should be trusted. If the CA is not trusted
      * and no thumbprint is set then the operation will fail.
      */
-    readonly thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string>;
     /**
      * Username that will be used by vSphere to authenticate
      * to the host.
      */
-    readonly username: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

@@ -489,7 +489,7 @@ type HostVirtualSwitchArrayInput interface {
 type HostVirtualSwitchArray []HostVirtualSwitchInput
 
 func (HostVirtualSwitchArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HostVirtualSwitch)(nil))
+	return reflect.TypeOf((*[]*HostVirtualSwitch)(nil)).Elem()
 }
 
 func (i HostVirtualSwitchArray) ToHostVirtualSwitchArrayOutput() HostVirtualSwitchArrayOutput {
@@ -514,7 +514,7 @@ type HostVirtualSwitchMapInput interface {
 type HostVirtualSwitchMap map[string]HostVirtualSwitchInput
 
 func (HostVirtualSwitchMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HostVirtualSwitch)(nil))
+	return reflect.TypeOf((*map[string]*HostVirtualSwitch)(nil)).Elem()
 }
 
 func (i HostVirtualSwitchMap) ToHostVirtualSwitchMapOutput() HostVirtualSwitchMapOutput {
@@ -525,9 +525,7 @@ func (i HostVirtualSwitchMap) ToHostVirtualSwitchMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostVirtualSwitchMapOutput)
 }
 
-type HostVirtualSwitchOutput struct {
-	*pulumi.OutputState
-}
+type HostVirtualSwitchOutput struct{ *pulumi.OutputState }
 
 func (HostVirtualSwitchOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostVirtualSwitch)(nil))
@@ -546,14 +544,12 @@ func (o HostVirtualSwitchOutput) ToHostVirtualSwitchPtrOutput() HostVirtualSwitc
 }
 
 func (o HostVirtualSwitchOutput) ToHostVirtualSwitchPtrOutputWithContext(ctx context.Context) HostVirtualSwitchPtrOutput {
-	return o.ApplyT(func(v HostVirtualSwitch) *HostVirtualSwitch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostVirtualSwitch) *HostVirtualSwitch {
 		return &v
 	}).(HostVirtualSwitchPtrOutput)
 }
 
-type HostVirtualSwitchPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostVirtualSwitchPtrOutput struct{ *pulumi.OutputState }
 
 func (HostVirtualSwitchPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HostVirtualSwitch)(nil))
@@ -565,6 +561,16 @@ func (o HostVirtualSwitchPtrOutput) ToHostVirtualSwitchPtrOutput() HostVirtualSw
 
 func (o HostVirtualSwitchPtrOutput) ToHostVirtualSwitchPtrOutputWithContext(ctx context.Context) HostVirtualSwitchPtrOutput {
 	return o
+}
+
+func (o HostVirtualSwitchPtrOutput) Elem() HostVirtualSwitchOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) HostVirtualSwitch {
+		if v != nil {
+			return *v
+		}
+		var ret HostVirtualSwitch
+		return ret
+	}).(HostVirtualSwitchOutput)
 }
 
 type HostVirtualSwitchArrayOutput struct{ *pulumi.OutputState }
@@ -608,6 +614,10 @@ func (o HostVirtualSwitchMapOutput) MapIndex(k pulumi.StringInput) HostVirtualSw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostVirtualSwitchInput)(nil)).Elem(), &HostVirtualSwitch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostVirtualSwitchPtrInput)(nil)).Elem(), &HostVirtualSwitch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostVirtualSwitchArrayInput)(nil)).Elem(), HostVirtualSwitchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostVirtualSwitchMapInput)(nil)).Elem(), HostVirtualSwitchMap{})
 	pulumi.RegisterOutputType(HostVirtualSwitchOutput{})
 	pulumi.RegisterOutputType(HostVirtualSwitchPtrOutput{})
 	pulumi.RegisterOutputType(HostVirtualSwitchArrayOutput{})

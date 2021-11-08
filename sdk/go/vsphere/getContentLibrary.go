@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
+// 		_, err := vsphere.LookupContentLibrary(ctx, &GetContentLibraryArgs{
 // 			Name: "Content Library Test",
 // 		}, nil)
 // 		if err != nil {
@@ -54,4 +57,51 @@ type LookupContentLibraryResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupContentLibraryOutput(ctx *pulumi.Context, args LookupContentLibraryOutputArgs, opts ...pulumi.InvokeOption) LookupContentLibraryResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupContentLibraryResult, error) {
+			args := v.(LookupContentLibraryArgs)
+			r, err := LookupContentLibrary(ctx, &args, opts...)
+			return *r, err
+		}).(LookupContentLibraryResultOutput)
+}
+
+// A collection of arguments for invoking getContentLibrary.
+type LookupContentLibraryOutputArgs struct {
+	// The name of the Content Library.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupContentLibraryOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupContentLibraryArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getContentLibrary.
+type LookupContentLibraryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupContentLibraryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupContentLibraryResult)(nil)).Elem()
+}
+
+func (o LookupContentLibraryResultOutput) ToLookupContentLibraryResultOutput() LookupContentLibraryResultOutput {
+	return o
+}
+
+func (o LookupContentLibraryResultOutput) ToLookupContentLibraryResultOutputWithContext(ctx context.Context) LookupContentLibraryResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupContentLibraryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupContentLibraryResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupContentLibraryResultOutput{})
 }

@@ -100,22 +100,22 @@ export interface DpmHostOverrideState {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      */
-    readonly dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    readonly dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean>;
     /**
      * The managed object ID of the host.
      */
-    readonly hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string>;
 }
 
 /**
@@ -127,20 +127,20 @@ export interface DpmHostOverrideArgs {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      */
-    readonly dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for this host. Default:
      * `false`.
      */
-    readonly dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean>;
     /**
      * The managed object ID of the host.
      */
-    readonly hostSystemId: pulumi.Input<string>;
+    hostSystemId: pulumi.Input<string>;
 }

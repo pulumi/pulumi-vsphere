@@ -297,7 +297,7 @@ type VirtualDiskArrayInput interface {
 type VirtualDiskArray []VirtualDiskInput
 
 func (VirtualDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VirtualDisk)(nil))
+	return reflect.TypeOf((*[]*VirtualDisk)(nil)).Elem()
 }
 
 func (i VirtualDiskArray) ToVirtualDiskArrayOutput() VirtualDiskArrayOutput {
@@ -322,7 +322,7 @@ type VirtualDiskMapInput interface {
 type VirtualDiskMap map[string]VirtualDiskInput
 
 func (VirtualDiskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VirtualDisk)(nil))
+	return reflect.TypeOf((*map[string]*VirtualDisk)(nil)).Elem()
 }
 
 func (i VirtualDiskMap) ToVirtualDiskMapOutput() VirtualDiskMapOutput {
@@ -333,9 +333,7 @@ func (i VirtualDiskMap) ToVirtualDiskMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskMapOutput)
 }
 
-type VirtualDiskOutput struct {
-	*pulumi.OutputState
-}
+type VirtualDiskOutput struct{ *pulumi.OutputState }
 
 func (VirtualDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualDisk)(nil))
@@ -354,14 +352,12 @@ func (o VirtualDiskOutput) ToVirtualDiskPtrOutput() VirtualDiskPtrOutput {
 }
 
 func (o VirtualDiskOutput) ToVirtualDiskPtrOutputWithContext(ctx context.Context) VirtualDiskPtrOutput {
-	return o.ApplyT(func(v VirtualDisk) *VirtualDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualDisk) *VirtualDisk {
 		return &v
 	}).(VirtualDiskPtrOutput)
 }
 
-type VirtualDiskPtrOutput struct {
-	*pulumi.OutputState
-}
+type VirtualDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (VirtualDiskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VirtualDisk)(nil))
@@ -373,6 +369,16 @@ func (o VirtualDiskPtrOutput) ToVirtualDiskPtrOutput() VirtualDiskPtrOutput {
 
 func (o VirtualDiskPtrOutput) ToVirtualDiskPtrOutputWithContext(ctx context.Context) VirtualDiskPtrOutput {
 	return o
+}
+
+func (o VirtualDiskPtrOutput) Elem() VirtualDiskOutput {
+	return o.ApplyT(func(v *VirtualDisk) VirtualDisk {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualDisk
+		return ret
+	}).(VirtualDiskOutput)
 }
 
 type VirtualDiskArrayOutput struct{ *pulumi.OutputState }
@@ -416,6 +422,10 @@ func (o VirtualDiskMapOutput) MapIndex(k pulumi.StringInput) VirtualDiskOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualDiskInput)(nil)).Elem(), &VirtualDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualDiskPtrInput)(nil)).Elem(), &VirtualDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualDiskArrayInput)(nil)).Elem(), VirtualDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualDiskMapInput)(nil)).Elem(), VirtualDiskMap{})
 	pulumi.RegisterOutputType(VirtualDiskOutput{})
 	pulumi.RegisterOutputType(VirtualDiskPtrOutput{})
 	pulumi.RegisterOutputType(VirtualDiskArrayOutput{})

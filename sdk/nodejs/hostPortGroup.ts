@@ -24,11 +24,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
  *     datacenterId: datacenter.id,
  *     name: "esxi1",
- * }, { async: true }));
+ * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
  *     hostSystemId: esxiHost.id,
@@ -57,11 +57,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
  *     datacenterId: datacenter.id,
  *     name: "esxi1",
- * }, { async: true }));
+ * }));
  * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
  *     activeNics: ["vmnic0"],
  *     hostSystemId: esxiHost.id,
@@ -287,94 +287,94 @@ export interface HostPortGroupState {
     /**
      * List of active network adapters used for load balancing.
      */
-    readonly activeNics?: pulumi.Input<pulumi.Input<string>[]>;
+    activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
      * that of its own.
      */
-    readonly allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    readonly allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    readonly allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
      * only.
      */
-    readonly checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean>;
     /**
      * A map with a full set of the policy
      * options computed from defaults and overrides,
      * explaining the effective policy for this port group.
      */
-    readonly computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    computedPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    readonly failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean>;
     /**
      * The managed object ID of
      * the host to set the port group up on. Forces a new resource if changed.
      */
-    readonly hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string>;
     /**
      * The key for this port group as returned from the vSphere API.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The name of the port group.  Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    readonly notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean>;
     /**
      * A list of ports that currently exist and are used on this port group.
      */
-    readonly ports?: pulumi.Input<pulumi.Input<inputs.HostPortGroupPort>[]>;
+    ports?: pulumi.Input<pulumi.Input<inputs.HostPortGroupPort>[]>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
-    readonly shapingAverageBandwidth?: pulumi.Input<number>;
+    shapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
-    readonly shapingBurstSize?: pulumi.Input<number>;
+    shapingBurstSize?: pulumi.Input<number>;
     /**
      * Enable traffic shaping on this virtual switch or port group.
      */
-    readonly shapingEnabled?: pulumi.Input<boolean>;
+    shapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
-    readonly shapingPeakBandwidth?: pulumi.Input<number>;
+    shapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * List of standby network adapters used for failover.
      */
-    readonly standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
      * failover_explicit.
      */
-    readonly teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string>;
     /**
      * The name of the virtual switch to bind
      * this port group to. Forces a new resource if changed.
      */
-    readonly virtualSwitchName?: pulumi.Input<string>;
+    virtualSwitchName?: pulumi.Input<string>;
     /**
      * The VLAN ID/trunk mode for this port group.  An ID of
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
      */
-    readonly vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number>;
 }
 
 /**
@@ -384,78 +384,78 @@ export interface HostPortGroupArgs {
     /**
      * List of active network adapters used for load balancing.
      */
-    readonly activeNics?: pulumi.Input<pulumi.Input<string>[]>;
+    activeNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
      * that of its own.
      */
-    readonly allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean>;
     /**
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      */
-    readonly allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean>;
     /**
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      */
-    readonly allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
      * only.
      */
-    readonly checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean>;
     /**
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      */
-    readonly failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean>;
     /**
      * The managed object ID of
      * the host to set the port group up on. Forces a new resource if changed.
      */
-    readonly hostSystemId: pulumi.Input<string>;
+    hostSystemId: pulumi.Input<string>;
     /**
      * The name of the port group.  Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      */
-    readonly notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in bits per second if traffic shaping is enabled.
      */
-    readonly shapingAverageBandwidth?: pulumi.Input<number>;
+    shapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      */
-    readonly shapingBurstSize?: pulumi.Input<number>;
+    shapingBurstSize?: pulumi.Input<number>;
     /**
      * Enable traffic shaping on this virtual switch or port group.
      */
-    readonly shapingEnabled?: pulumi.Input<boolean>;
+    shapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      */
-    readonly shapingPeakBandwidth?: pulumi.Input<number>;
+    shapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * List of standby network adapters used for failover.
      */
-    readonly standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
      * failover_explicit.
      */
-    readonly teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string>;
     /**
      * The name of the virtual switch to bind
      * this port group to. Forces a new resource if changed.
      */
-    readonly virtualSwitchName: pulumi.Input<string>;
+    virtualSwitchName: pulumi.Input<string>;
     /**
      * The VLAN ID/trunk mode for this port group.  An ID of
      * `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
      * ID of `4095` enables trunk mode, allowing the guest to manage its own
      * tagging. Default: `0`.
      */
-    readonly vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number>;
 }

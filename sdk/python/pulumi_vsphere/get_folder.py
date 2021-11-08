@@ -12,6 +12,7 @@ __all__ = [
     'GetFolderResult',
     'AwaitableGetFolderResult',
     'get_folder',
+    'get_folder_output',
 ]
 
 @pulumi.output_type
@@ -85,3 +86,30 @@ def get_folder(path: Optional[str] = None,
     return AwaitableGetFolderResult(
         id=__ret__.id,
         path=__ret__.path)
+
+
+@_utilities.lift_output_func(get_folder)
+def get_folder_output(path: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
+    """
+    The `Folder` data source can be used to get the general attributes of a
+    vSphere inventory folder. Paths are absolute and include must include the
+    datacenter.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    folder = vsphere.get_folder(path="/dc1/datastore/folder1")
+    ```
+
+
+    :param str path: The absolute path of the folder. For example, given a
+           default datacenter of `default-dc`, a folder of type `vm`, and a folder name
+           of `test-folder`, the resulting path would be
+           `/default-dc/vm/test-folder`. The valid folder types to be used in
+           the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+    """
+    ...

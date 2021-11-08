@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,11 +18,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const pool = datacenter.apply(datacenter => vsphere.getVappContainer({
  *     datacenterId: datacenter.id,
  *     name: "vapp-container-1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
@@ -48,12 +47,12 @@ export interface GetVappContainerArgs {
      * The managed object reference
      * ID of the datacenter the vApp container is located in.
      */
-    readonly datacenterId: string;
+    datacenterId: string;
     /**
      * The name of the vApp container. This can be a name or
      * path.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -66,4 +65,24 @@ export interface GetVappContainerResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVappContainerResult> {
+    return pulumi.output(args).apply(a => getVappContainer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVappContainer.
+ */
+export interface GetVappContainerOutputArgs {
+    /**
+     * The managed object reference
+     * ID of the datacenter the vApp container is located in.
+     */
+    datacenterId: pulumi.Input<string>;
+    /**
+     * The name of the vApp container. This can be a name or
+     * path.
+     */
+    name: pulumi.Input<string>;
 }

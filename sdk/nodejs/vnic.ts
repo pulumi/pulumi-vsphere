@@ -208,39 +208,39 @@ export interface VnicState {
     /**
      * Key of the distributed portgroup the nic will connect to.
      */
-    readonly distributedPortGroup?: pulumi.Input<string>;
+    distributedPortGroup?: pulumi.Input<string>;
     /**
      * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
      */
-    readonly distributedSwitchPort?: pulumi.Input<string>;
+    distributedSwitchPort?: pulumi.Input<string>;
     /**
      * ESX host the interface belongs to
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
      */
-    readonly ipv4?: pulumi.Input<inputs.VnicIpv4>;
+    ipv4?: pulumi.Input<inputs.VnicIpv4>;
     /**
      * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
      */
-    readonly ipv6?: pulumi.Input<inputs.VnicIpv6>;
+    ipv6?: pulumi.Input<inputs.VnicIpv6>;
     /**
      * MAC address of the interface.
      */
-    readonly mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string>;
     /**
      * MTU of the interface.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
      */
-    readonly netstack?: pulumi.Input<string>;
+    netstack?: pulumi.Input<string>;
     /**
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
-    readonly portgroup?: pulumi.Input<string>;
+    portgroup?: pulumi.Input<string>;
 }
 
 /**
@@ -250,37 +250,37 @@ export interface VnicArgs {
     /**
      * Key of the distributed portgroup the nic will connect to.
      */
-    readonly distributedPortGroup?: pulumi.Input<string>;
+    distributedPortGroup?: pulumi.Input<string>;
     /**
      * UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
      */
-    readonly distributedSwitchPort?: pulumi.Input<string>;
+    distributedSwitchPort?: pulumi.Input<string>;
     /**
      * ESX host the interface belongs to
      */
-    readonly host: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
      */
-    readonly ipv4?: pulumi.Input<inputs.VnicIpv4>;
+    ipv4?: pulumi.Input<inputs.VnicIpv4>;
     /**
      * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
      */
-    readonly ipv6?: pulumi.Input<inputs.VnicIpv6>;
+    ipv6?: pulumi.Input<inputs.VnicIpv6>;
     /**
      * MAC address of the interface.
      */
-    readonly mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string>;
     /**
      * MTU of the interface.
      */
-    readonly mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number>;
     /**
      * TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
      */
-    readonly netstack?: pulumi.Input<string>;
+    netstack?: pulumi.Input<string>;
     /**
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
-    readonly portgroup?: pulumi.Input<string>;
+    portgroup?: pulumi.Input<string>;
 }

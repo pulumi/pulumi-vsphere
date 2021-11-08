@@ -531,3 +531,4 @@ export interface VnicIpv6 {
      */
     gw?: string;
 }
+

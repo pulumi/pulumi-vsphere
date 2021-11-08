@@ -20,11 +20,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const template = datacenter.apply(datacenter => vsphere.getVirtualMachine({
  *     datacenterId: datacenter.id,
  *     name: "test-vm-template",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
@@ -96,21 +96,21 @@ export interface GetVirtualMachineArgs {
      * The alternate guest name of the virtual machine when
      * guestId is a non-specific operating system, like `otherGuest`.
      */
-    readonly alternateGuestName?: string;
+    alternateGuestName?: string;
     /**
      * The user-provided description of this virtual machine.
      */
-    readonly annotation?: string;
-    readonly bootDelay?: number;
-    readonly bootRetryDelay?: number;
-    readonly bootRetryEnabled?: boolean;
-    readonly cpuHotAddEnabled?: boolean;
-    readonly cpuHotRemoveEnabled?: boolean;
-    readonly cpuLimit?: number;
-    readonly cpuPerformanceCountersEnabled?: boolean;
-    readonly cpuReservation?: number;
-    readonly cpuShareCount?: number;
-    readonly cpuShareLevel?: string;
+    annotation?: string;
+    bootDelay?: number;
+    bootRetryDelay?: number;
+    bootRetryEnabled?: boolean;
+    cpuHotAddEnabled?: boolean;
+    cpuHotRemoveEnabled?: boolean;
+    cpuLimit?: number;
+    cpuPerformanceCountersEnabled?: boolean;
+    cpuReservation?: number;
+    cpuShareCount?: number;
+    cpuShareLevel?: string;
     /**
      * The managed object reference
      * ID of the datacenter the virtual machine is located in.
@@ -118,70 +118,70 @@ export interface GetVirtualMachineArgs {
      * For default datacenters, use the `id` attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    readonly datacenterId?: string;
-    readonly efiSecureBootEnabled?: boolean;
-    readonly enableDiskUuid?: boolean;
-    readonly enableLogging?: boolean;
-    readonly eptRviMode?: string;
-    readonly extraConfig?: {[key: string]: string};
+    datacenterId?: string;
+    efiSecureBootEnabled?: boolean;
+    enableDiskUuid?: boolean;
+    enableLogging?: boolean;
+    eptRviMode?: string;
+    extraConfig?: {[key: string]: string};
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */
-    readonly firmware?: string;
+    firmware?: string;
     /**
      * The guest ID of the virtual machine or template.
      */
-    readonly guestId?: string;
+    guestId?: string;
     /**
      * The hardware version number on this virtual machine.
      */
-    readonly hardwareVersion?: number;
-    readonly hvMode?: string;
-    readonly ideControllerScanCount?: number;
-    readonly latencySensitivity?: string;
+    hardwareVersion?: number;
+    hvMode?: string;
+    ideControllerScanCount?: number;
+    latencySensitivity?: string;
     /**
      * The size of the virtual machine's memory, in MB.
      */
-    readonly memory?: number;
-    readonly memoryHotAddEnabled?: boolean;
-    readonly memoryLimit?: number;
-    readonly memoryReservation?: number;
-    readonly memoryShareCount?: number;
-    readonly memoryShareLevel?: string;
+    memory?: number;
+    memoryHotAddEnabled?: boolean;
+    memoryLimit?: number;
+    memoryReservation?: number;
+    memoryShareCount?: number;
+    memoryShareLevel?: string;
     /**
      * The name of the virtual machine. This can be a name or
      * path.
      */
-    readonly name: string;
-    readonly nestedHvEnabled?: boolean;
+    name: string;
+    nestedHvEnabled?: boolean;
     /**
      * The number of cores per socket for this virtual machine.
      */
-    readonly numCoresPerSocket?: number;
+    numCoresPerSocket?: number;
     /**
      * The total number of virtual processor cores assigned to this
      * virtual machine.
      */
-    readonly numCpus?: number;
-    readonly replaceTrigger?: string;
-    readonly runToolsScriptsAfterPowerOn?: boolean;
-    readonly runToolsScriptsAfterResume?: boolean;
-    readonly runToolsScriptsBeforeGuestReboot?: boolean;
-    readonly runToolsScriptsBeforeGuestShutdown?: boolean;
-    readonly runToolsScriptsBeforeGuestStandby?: boolean;
-    readonly sataControllerScanCount?: number;
+    numCpus?: number;
+    replaceTrigger?: string;
+    runToolsScriptsAfterPowerOn?: boolean;
+    runToolsScriptsAfterResume?: boolean;
+    runToolsScriptsBeforeGuestReboot?: boolean;
+    runToolsScriptsBeforeGuestShutdown?: boolean;
+    runToolsScriptsBeforeGuestStandby?: boolean;
+    sataControllerScanCount?: number;
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      */
-    readonly scsiControllerScanCount?: number;
-    readonly storagePolicyId?: string;
-    readonly swapPlacementPolicy?: string;
-    readonly syncTimeWithHost?: boolean;
-    readonly syncTimeWithHostPeriodically?: boolean;
-    readonly vapp?: inputs.GetVirtualMachineVapp;
-    readonly vbsEnabled?: boolean;
-    readonly vvtdEnabled?: boolean;
+    scsiControllerScanCount?: number;
+    storagePolicyId?: string;
+    swapPlacementPolicy?: string;
+    syncTimeWithHost?: boolean;
+    syncTimeWithHostPeriodically?: boolean;
+    vapp?: inputs.GetVirtualMachineVapp;
+    vbsEnabled?: boolean;
+    vvtdEnabled?: boolean;
 }
 
 /**
@@ -315,4 +315,104 @@ export interface GetVirtualMachineResult {
     readonly vappTransports: string[];
     readonly vbsEnabled?: boolean;
     readonly vvtdEnabled?: boolean;
+}
+
+export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
+    return pulumi.output(args).apply(a => getVirtualMachine(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVirtualMachine.
+ */
+export interface GetVirtualMachineOutputArgs {
+    /**
+     * The alternate guest name of the virtual machine when
+     * guestId is a non-specific operating system, like `otherGuest`.
+     */
+    alternateGuestName?: pulumi.Input<string>;
+    /**
+     * The user-provided description of this virtual machine.
+     */
+    annotation?: pulumi.Input<string>;
+    bootDelay?: pulumi.Input<number>;
+    bootRetryDelay?: pulumi.Input<number>;
+    bootRetryEnabled?: pulumi.Input<boolean>;
+    cpuHotAddEnabled?: pulumi.Input<boolean>;
+    cpuHotRemoveEnabled?: pulumi.Input<boolean>;
+    cpuLimit?: pulumi.Input<number>;
+    cpuPerformanceCountersEnabled?: pulumi.Input<boolean>;
+    cpuReservation?: pulumi.Input<number>;
+    cpuShareCount?: pulumi.Input<number>;
+    cpuShareLevel?: pulumi.Input<string>;
+    /**
+     * The managed object reference
+     * ID of the datacenter the virtual machine is located in.
+     * This can be omitted if the search path used in `name` is an absolute path.
+     * For default datacenters, use the `id` attribute from an empty
+     * `vsphere.Datacenter` data source.
+     */
+    datacenterId?: pulumi.Input<string>;
+    efiSecureBootEnabled?: pulumi.Input<boolean>;
+    enableDiskUuid?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean>;
+    eptRviMode?: pulumi.Input<string>;
+    extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The firmware type for this virtual machine. Can be `bios` or `efi`.
+     */
+    firmware?: pulumi.Input<string>;
+    /**
+     * The guest ID of the virtual machine or template.
+     */
+    guestId?: pulumi.Input<string>;
+    /**
+     * The hardware version number on this virtual machine.
+     */
+    hardwareVersion?: pulumi.Input<number>;
+    hvMode?: pulumi.Input<string>;
+    ideControllerScanCount?: pulumi.Input<number>;
+    latencySensitivity?: pulumi.Input<string>;
+    /**
+     * The size of the virtual machine's memory, in MB.
+     */
+    memory?: pulumi.Input<number>;
+    memoryHotAddEnabled?: pulumi.Input<boolean>;
+    memoryLimit?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number>;
+    memoryShareCount?: pulumi.Input<number>;
+    memoryShareLevel?: pulumi.Input<string>;
+    /**
+     * The name of the virtual machine. This can be a name or
+     * path.
+     */
+    name: pulumi.Input<string>;
+    nestedHvEnabled?: pulumi.Input<boolean>;
+    /**
+     * The number of cores per socket for this virtual machine.
+     */
+    numCoresPerSocket?: pulumi.Input<number>;
+    /**
+     * The total number of virtual processor cores assigned to this
+     * virtual machine.
+     */
+    numCpus?: pulumi.Input<number>;
+    replaceTrigger?: pulumi.Input<string>;
+    runToolsScriptsAfterPowerOn?: pulumi.Input<boolean>;
+    runToolsScriptsAfterResume?: pulumi.Input<boolean>;
+    runToolsScriptsBeforeGuestReboot?: pulumi.Input<boolean>;
+    runToolsScriptsBeforeGuestShutdown?: pulumi.Input<boolean>;
+    runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
+    sataControllerScanCount?: pulumi.Input<number>;
+    /**
+     * The number of SCSI controllers to
+     * scan for disk attributes and controller types on. Default: `1`.
+     */
+    scsiControllerScanCount?: pulumi.Input<number>;
+    storagePolicyId?: pulumi.Input<string>;
+    swapPlacementPolicy?: pulumi.Input<string>;
+    syncTimeWithHost?: pulumi.Input<boolean>;
+    syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
+    vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs>;
+    vbsEnabled?: pulumi.Input<boolean>;
+    vvtdEnabled?: pulumi.Input<boolean>;
 }

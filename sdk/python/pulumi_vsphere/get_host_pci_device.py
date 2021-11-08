@@ -12,6 +12,7 @@ __all__ = [
     'GetHostPciDeviceResult',
     'AwaitableGetHostPciDeviceResult',
     'get_host_pci_device',
+    'get_host_pci_device_output',
 ]
 
 @pulumi.output_type
@@ -96,7 +97,7 @@ def get_host_pci_device(class_id: Optional[str] = None,
                         vendor_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostPciDeviceResult:
     """
-    The `getHostPciDevice` data source can be used to discover the DeviceID
+    The `get_host_pci_device` data source can be used to discover the DeviceID
     of a vSphere host's PCI device. This can then be used with
     `VirtualMachine`'s `pci_device_id`.
 
@@ -142,3 +143,41 @@ def get_host_pci_device(class_id: Optional[str] = None,
         name=__ret__.name,
         name_regex=__ret__.name_regex,
         vendor_id=__ret__.vendor_id)
+
+
+@_utilities.lift_output_func(get_host_pci_device)
+def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               host_id: Optional[pulumi.Input[str]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               vendor_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostPciDeviceResult]:
+    """
+    The `get_host_pci_device` data source can be used to discover the DeviceID
+    of a vSphere host's PCI device. This can then be used with
+    `VirtualMachine`'s `pci_device_id`.
+
+    ## Example Usage
+    ### With Vendor ID And Class ID
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(name="esxi1",
+        datacenter_id=datacenter.id)
+    dev = vsphere.get_host_pci_device(host_id=host.id,
+        class_id="123",
+        vendor_id="456")
+    ```
+    ### With Name Regular Expression
+
+
+    :param str class_id: The hexadecimal PCI device class ID
+    :param str host_id: The [managed object reference
+           ID][docs-about-morefs] of a host.
+    :param str name_regex: A regular expression that will be used to match
+           the host PCI device name.
+    :param str vendor_id: The hexadecimal PCI device vendor ID.
+    """
+    ...

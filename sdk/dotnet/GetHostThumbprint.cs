@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -42,6 +43,38 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetHostThumbprintResult> InvokeAsync(GetHostThumbprintArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere_thumbprint` data source can be used to discover the host
+        /// thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
+        /// resource. If the host is using a certificate chain, the first one returned
+        /// will be used to generate the thumbprint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var thumbprint = Output.Create(VSphere.GetHostThumbprint.InvokeAsync(new VSphere.GetHostThumbprintArgs
+        ///         {
+        ///             Address = "esxi.example.internal",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHostThumbprintResult> Invoke(GetHostThumbprintInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithVersion());
     }
 
 
@@ -68,6 +101,33 @@ namespace Pulumi.VSphere
         public string? Port { get; set; }
 
         public GetHostThumbprintArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostThumbprintInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The address of the ESXi host to retrieve the
+        /// thumbprint from.
+        /// </summary>
+        [Input("address", required: true)]
+        public Input<string> Address { get; set; } = null!;
+
+        /// <summary>
+        /// Boolean that can be set to true to disable SSL 
+        /// certificate verification. Default: false
+        /// </summary>
+        [Input("insecure")]
+        public Input<bool>? Insecure { get; set; }
+
+        /// <summary>
+        /// The port to use connecting to the ESXi host. Default: 443
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        public GetHostThumbprintInvokeArgs()
         {
         }
     }

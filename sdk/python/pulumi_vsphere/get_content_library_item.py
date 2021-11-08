@@ -12,6 +12,7 @@ __all__ = [
     'GetContentLibraryItemResult',
     'AwaitableGetContentLibraryItemResult',
     'get_content_library_item',
+    'get_content_library_item_output',
 ]
 
 @pulumi.output_type
@@ -82,6 +83,17 @@ def get_content_library_item(library_id: Optional[str] = None,
     > **NOTE:** This resource requires vCenter and is not available on direct ESXi
     connections.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library Test")
+    item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
+        library_id=library.id)
+    ```
+
 
     :param str library_id: The ID of the Content Library the item exists in.
     :param str name: The name of the Content Library.
@@ -102,3 +114,33 @@ def get_content_library_item(library_id: Optional[str] = None,
         library_id=__ret__.library_id,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_content_library_item)
+def get_content_library_item_output(library_id: Optional[pulumi.Input[str]] = None,
+                                    name: Optional[pulumi.Input[str]] = None,
+                                    type: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContentLibraryItemResult]:
+    """
+    The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+
+    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    connections.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library Test")
+    item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
+        library_id=library.id)
+    ```
+
+
+    :param str library_id: The ID of the Content Library the item exists in.
+    :param str name: The name of the Content Library.
+    :param str type: The Content Library type. Can be ovf, iso, or vm-template.
+    """
+    ...

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -63,17 +62,17 @@ export interface GetDynamicArgs {
      * A list of tag IDs that must be present on an object to
      * be a match.
      */
-    readonly filters: string[];
+    filters: string[];
     /**
      * A regular expression that will be used to match
      * the object's name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The managed object type the returned object must match.
      * For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -87,4 +86,29 @@ export interface GetDynamicResult {
     readonly id: string;
     readonly nameRegex?: string;
     readonly type?: string;
+}
+
+export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicResult> {
+    return pulumi.output(args).apply(a => getDynamic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDynamic.
+ */
+export interface GetDynamicOutputArgs {
+    /**
+     * A list of tag IDs that must be present on an object to
+     * be a match.
+     */
+    filters: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regular expression that will be used to match
+     * the object's name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The managed object type the returned object must match.
+     * For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+     */
+    type?: pulumi.Input<string>;
 }

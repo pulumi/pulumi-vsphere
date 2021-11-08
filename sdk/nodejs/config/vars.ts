@@ -4,54 +4,146 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("vsphere");
+declare var exports: any;
+const __config = new pulumi.Config("vsphere");
 
 /**
  * If set, VMware vSphere client will permit unverifiable SSL certificates.
  */
-export let allowUnverifiedSsl: boolean | undefined = __config.getObject<boolean>("allowUnverifiedSsl") || <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
+export declare const allowUnverifiedSsl: boolean | undefined;
+Object.defineProperty(exports, "allowUnverifiedSsl", {
+    get() {
+        return __config.getObject<boolean>("allowUnverifiedSsl") ?? <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
+    },
+    enumerable: true,
+});
+
 /**
  * API timeout in minutes (Default: 5)
  */
-export let apiTimeout: number | undefined = __config.getObject<number>("apiTimeout");
+export declare const apiTimeout: number | undefined;
+Object.defineProperty(exports, "apiTimeout", {
+    get() {
+        return __config.getObject<number>("apiTimeout");
+    },
+    enumerable: true,
+});
+
 /**
  * govmomi debug
  */
-export let clientDebug: boolean | undefined = __config.getObject<boolean>("clientDebug") || <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
+export declare const clientDebug: boolean | undefined;
+Object.defineProperty(exports, "clientDebug", {
+    get() {
+        return __config.getObject<boolean>("clientDebug") ?? <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
+    },
+    enumerable: true,
+});
+
 /**
  * govmomi debug path for debug
  */
-export let clientDebugPath: string | undefined = __config.get("clientDebugPath") || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+export declare const clientDebugPath: string | undefined;
+Object.defineProperty(exports, "clientDebugPath", {
+    get() {
+        return __config.get("clientDebugPath") ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+    },
+    enumerable: true,
+});
+
 /**
  * govmomi debug path for a single run
  */
-export let clientDebugPathRun: string | undefined = __config.get("clientDebugPathRun") || utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+export declare const clientDebugPathRun: string | undefined;
+Object.defineProperty(exports, "clientDebugPathRun", {
+    get() {
+        return __config.get("clientDebugPathRun") ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+    },
+    enumerable: true,
+});
+
 /**
  * The user password for vSphere API operations.
  */
-export let password: string | undefined = __config.get("password");
+export declare const password: string | undefined;
+Object.defineProperty(exports, "password", {
+    get() {
+        return __config.get("password");
+    },
+    enumerable: true,
+});
+
 /**
  * Persist vSphere client sessions to disk
  */
-export let persistSession: boolean | undefined = __config.getObject<boolean>("persistSession") || <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
+export declare const persistSession: boolean | undefined;
+Object.defineProperty(exports, "persistSession", {
+    get() {
+        return __config.getObject<boolean>("persistSession") ?? <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
+    },
+    enumerable: true,
+});
+
 /**
  * The directory to save vSphere REST API sessions to
  */
-export let restSessionPath: string | undefined = __config.get("restSessionPath") || utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+export declare const restSessionPath: string | undefined;
+Object.defineProperty(exports, "restSessionPath", {
+    get() {
+        return __config.get("restSessionPath") ?? utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+    },
+    enumerable: true,
+});
+
 /**
  * The user name for vSphere API operations.
  */
-export let user: string | undefined = __config.get("user");
-export let vcenterServer: string | undefined = __config.get("vcenterServer");
+export declare const user: string | undefined;
+Object.defineProperty(exports, "user", {
+    get() {
+        return __config.get("user");
+    },
+    enumerable: true,
+});
+
+export declare const vcenterServer: string | undefined;
+Object.defineProperty(exports, "vcenterServer", {
+    get() {
+        return __config.get("vcenterServer");
+    },
+    enumerable: true,
+});
+
 /**
  * Keep alive interval for the VIM session in minutes
  */
-export let vimKeepAlive: number | undefined = __config.getObject<number>("vimKeepAlive") || <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
+export declare const vimKeepAlive: number | undefined;
+Object.defineProperty(exports, "vimKeepAlive", {
+    get() {
+        return __config.getObject<number>("vimKeepAlive") ?? <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
+    },
+    enumerable: true,
+});
+
 /**
  * The directory to save vSphere SOAP API sessions to
  */
-export let vimSessionPath: string | undefined = __config.get("vimSessionPath") || utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+export declare const vimSessionPath: string | undefined;
+Object.defineProperty(exports, "vimSessionPath", {
+    get() {
+        return __config.get("vimSessionPath") ?? utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+    },
+    enumerable: true,
+});
+
 /**
  * The vSphere Server name for vSphere API operations.
  */
-export let vsphereServer: string | undefined = __config.get("vsphereServer");
+export declare const vsphereServer: string | undefined;
+Object.defineProperty(exports, "vsphereServer", {
+    get() {
+        return __config.get("vsphereServer");
+    },
+    enumerable: true,
+});
+

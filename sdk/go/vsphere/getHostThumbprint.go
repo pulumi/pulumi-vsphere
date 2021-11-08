@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+// 		_, err := vsphere.GetHostThumbprint(ctx, &GetHostThumbprintArgs{
 // 			Address: "esxi.example.internal",
 // 		}, nil)
 // 		if err != nil {
@@ -62,4 +65,65 @@ type GetHostThumbprintResult struct {
 	Id       string  `pulumi:"id"`
 	Insecure *bool   `pulumi:"insecure"`
 	Port     *string `pulumi:"port"`
+}
+
+func GetHostThumbprintOutput(ctx *pulumi.Context, args GetHostThumbprintOutputArgs, opts ...pulumi.InvokeOption) GetHostThumbprintResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHostThumbprintResult, error) {
+			args := v.(GetHostThumbprintArgs)
+			r, err := GetHostThumbprint(ctx, &args, opts...)
+			return *r, err
+		}).(GetHostThumbprintResultOutput)
+}
+
+// A collection of arguments for invoking getHostThumbprint.
+type GetHostThumbprintOutputArgs struct {
+	// The address of the ESXi host to retrieve the
+	// thumbprint from.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Boolean that can be set to true to disable SSL
+	// certificate verification. Default: false
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// The port to use connecting to the ESXi host. Default: 443
+	Port pulumi.StringPtrInput `pulumi:"port"`
+}
+
+func (GetHostThumbprintOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostThumbprintArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHostThumbprint.
+type GetHostThumbprintResultOutput struct{ *pulumi.OutputState }
+
+func (GetHostThumbprintResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostThumbprintResult)(nil)).Elem()
+}
+
+func (o GetHostThumbprintResultOutput) ToGetHostThumbprintResultOutput() GetHostThumbprintResultOutput {
+	return o
+}
+
+func (o GetHostThumbprintResultOutput) ToGetHostThumbprintResultOutputWithContext(ctx context.Context) GetHostThumbprintResultOutput {
+	return o
+}
+
+func (o GetHostThumbprintResultOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostThumbprintResult) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHostThumbprintResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostThumbprintResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHostThumbprintResultOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetHostThumbprintResult) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetHostThumbprintResultOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostThumbprintResult) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHostThumbprintResultOutput{})
 }

@@ -200,48 +200,48 @@ export interface HaVmOverrideState {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * Controls the action to take
      * on this virtual machine if an APD status on an affected datastore clears in
      * the middle of an APD event. Can be one of `useClusterDefault`, `none` or
      * `reset`.  Default: `useClusterDefault`.
      */
-    readonly haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected loss to all paths to a relevant
      * datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
      * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
      */
-    readonly haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string>;
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
      */
-    readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected a permanent device loss to a
      * relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
      * `restartAggressive`. Default: `clusterDefault`.
      */
-    readonly haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string>;
     /**
      * The action to take on this virtual
      * machine when a host has detected that it has been isolated from the rest of
      * the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
      * `shutdown`. Default: `clusterIsolationResponse`.
      */
-    readonly haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string>;
     /**
      * If a heartbeat from this virtual
      * machine is not received within this configured interval, the virtual machine
      * is marked as failed. The value is in seconds. Default: `30`.
      */
-    readonly haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
      * which `haVmMaximumResets` can operate. When this
@@ -250,50 +250,50 @@ export interface HaVmOverrideState {
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
-    readonly haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number>;
     /**
      * The maximum number of resets that HA will
      * perform to this virtual machine when responding to a failure event. Default:
      * `3`
      */
-    readonly haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number>;
     /**
      * The time, in seconds, that HA waits after
      * powering on this virtual machine before monitoring for heartbeats. Default:
      * `120` (2 minutes).
      */
-    readonly haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number>;
     /**
      * The type of virtual machine monitoring to use
      * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      */
-    readonly haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string>;
     /**
      * Determines whether or
      * not the cluster's default settings or the VM override settings specified in
      * this resource are used for virtual machine monitoring. The default is `true`
      * (use cluster defaults) - set to `false` to have overrides take effect.
      */
-    readonly haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
+    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
      * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
      * Default: `clusterRestartPriority`.
      */
-    readonly haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string>;
     /**
      * The maximum time, in seconds, that
      * vSphere HA will wait for this virtual machine to be ready. Use `-1` to
      * specify the cluster default.  Default: `-1`.
      */
-    readonly haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId?: pulumi.Input<string>;
+    virtualMachineId?: pulumi.Input<string>;
 }
 
 /**
@@ -305,48 +305,48 @@ export interface HaVmOverrideArgs {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * Controls the action to take
      * on this virtual machine if an APD status on an affected datastore clears in
      * the middle of an APD event. Can be one of `useClusterDefault`, `none` or
      * `reset`.  Default: `useClusterDefault`.
      */
-    readonly haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected loss to all paths to a relevant
      * datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
      * `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
      */
-    readonly haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string>;
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
      */
-    readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number>;
     /**
      * Controls the action to take on this
      * virtual machine when the cluster has detected a permanent device loss to a
      * relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
      * `restartAggressive`. Default: `clusterDefault`.
      */
-    readonly haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string>;
     /**
      * The action to take on this virtual
      * machine when a host has detected that it has been isolated from the rest of
      * the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
      * `shutdown`. Default: `clusterIsolationResponse`.
      */
-    readonly haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string>;
     /**
      * If a heartbeat from this virtual
      * machine is not received within this configured interval, the virtual machine
      * is marked as failed. The value is in seconds. Default: `30`.
      */
-    readonly haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
      * which `haVmMaximumResets` can operate. When this
@@ -355,48 +355,48 @@ export interface HaVmOverrideArgs {
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
-    readonly haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number>;
     /**
      * The maximum number of resets that HA will
      * perform to this virtual machine when responding to a failure event. Default:
      * `3`
      */
-    readonly haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number>;
     /**
      * The time, in seconds, that HA waits after
      * powering on this virtual machine before monitoring for heartbeats. Default:
      * `120` (2 minutes).
      */
-    readonly haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number>;
     /**
      * The type of virtual machine monitoring to use
      * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      */
-    readonly haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string>;
     /**
      * Determines whether or
      * not the cluster's default settings or the VM override settings specified in
      * this resource are used for virtual machine monitoring. The default is `true`
      * (use cluster defaults) - set to `false` to have overrides take effect.
      */
-    readonly haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
+    haVmMonitoringUseClusterDefaults?: pulumi.Input<boolean>;
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
      * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
      * Default: `clusterRestartPriority`.
      */
-    readonly haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string>;
     /**
      * The maximum time, in seconds, that
      * vSphere HA will wait for this virtual machine to be ready. Use `-1` to
      * specify the cluster default.  Default: `-1`.
      */
-    readonly haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId: pulumi.Input<string>;
+    virtualMachineId: pulumi.Input<string>;
 }

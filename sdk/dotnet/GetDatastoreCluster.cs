@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -50,6 +51,46 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetDatastoreClusterResult> InvokeAsync(GetDatastoreClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
+        /// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
+        /// cluster that you want to use to assign datastores to using the
+        /// `vsphere.NasDatastore` or
+        /// `vsphere.VmfsDatastore` resources, or create
+        /// virtual machines in using the
+        /// `vsphere.VirtualMachine` resource. 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var datastoreCluster = Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+        ///         {
+        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
+        ///             Name = "datastore-cluster1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatastoreClusterResult> Invoke(GetDatastoreClusterInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +113,29 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         public GetDatastoreClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatastoreClusterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The managed object reference
+        /// ID of the datacenter the datastore cluster is located in.
+        /// This can be omitted if the search path used in `name` is an absolute path.
+        /// For default datacenters, use the id attribute from an empty
+        /// `vsphere.Datacenter` data source.
+        /// </summary>
+        [Input("datacenterId")]
+        public Input<string>? DatacenterId { get; set; }
+
+        /// <summary>
+        /// The name or absolute path to the datastore cluster.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetDatastoreClusterInvokeArgs()
         {
         }
     }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const role1 = pulumi.output(vsphere.getRole({
  *     label: "Virtual machine user (sample)",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
@@ -43,16 +42,16 @@ export interface GetRoleArgs {
     /**
      * The description of the role.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The label of the role.
      */
-    readonly label: string;
-    readonly name?: string;
+    label: string;
+    name?: string;
     /**
      * The privileges associated with the role.
      */
-    readonly rolePrivileges?: string[];
+    rolePrivileges?: string[];
 }
 
 /**
@@ -76,4 +75,27 @@ export interface GetRoleResult {
      * The privileges associated with the role.
      */
     readonly rolePrivileges?: string[];
+}
+
+export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+    return pulumi.output(args).apply(a => getRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRole.
+ */
+export interface GetRoleOutputArgs {
+    /**
+     * The description of the role.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The label of the role.
+     */
+    label: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * The privileges associated with the role.
+     */
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
 }

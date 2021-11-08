@@ -178,18 +178,18 @@ export interface ResourcePoolState {
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    readonly cpuExpandable?: pulumi.Input<boolean>;
+    cpuExpandable?: pulumi.Input<boolean>;
     /**
      * The CPU utilization of a resource pool will not exceed
      * this limit, even if there are available resources. Set to `-1` for unlimited.
      * Default: `-1`
      */
-    readonly cpuLimit?: pulumi.Input<number>;
+    cpuLimit?: pulumi.Input<number>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    readonly cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -197,34 +197,34 @@ export interface ResourcePoolState {
      * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
-    readonly cpuShareLevel?: pulumi.Input<string>;
+    cpuShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpuShareLevel` must be `custom`.
      */
-    readonly cpuShares?: pulumi.Input<number>;
+    cpuShares?: pulumi.Input<number>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Determines if the reservation on a resource
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    readonly memoryExpandable?: pulumi.Input<boolean>;
+    memoryExpandable?: pulumi.Input<boolean>;
     /**
      * The CPU utilization of a resource pool will not exceed
      * this limit, even if there are available resources. Set to `-1` for unlimited.
      * Default: `-1`
      */
-    readonly memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    readonly memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -232,17 +232,17 @@ export interface ResourcePoolState {
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
-    readonly memoryShareLevel?: pulumi.Input<string>;
+    memoryShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memoryShareLevel` must be `custom`.
      */
-    readonly memoryShares?: pulumi.Input<number>;
+    memoryShares?: pulumi.Input<number>;
     /**
      * The name of the resource pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -250,11 +250,11 @@ export interface ResourcePoolState {
      * from one parent resource pool to another, both must share a common root
      * resource pool or the move will fail.
      */
-    readonly parentResourcePoolId?: pulumi.Input<string>;
+    parentResourcePoolId?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -266,18 +266,18 @@ export interface ResourcePoolArgs {
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    readonly cpuExpandable?: pulumi.Input<boolean>;
+    cpuExpandable?: pulumi.Input<boolean>;
     /**
      * The CPU utilization of a resource pool will not exceed
      * this limit, even if there are available resources. Set to `-1` for unlimited.
      * Default: `-1`
      */
-    readonly cpuLimit?: pulumi.Input<number>;
+    cpuLimit?: pulumi.Input<number>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    readonly cpuReservation?: pulumi.Input<number>;
+    cpuReservation?: pulumi.Input<number>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -285,34 +285,34 @@ export interface ResourcePoolArgs {
      * `low`, `normal`, or `high` are specified values in `cpuShares` will be
      * ignored.  Default: `normal`
      */
-    readonly cpuShareLevel?: pulumi.Input<string>;
+    cpuShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `cpuShareLevel` must be `custom`.
      */
-    readonly cpuShares?: pulumi.Input<number>;
+    cpuShares?: pulumi.Input<number>;
     /**
      * A list of custom attributes to set on this resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Determines if the reservation on a resource
      * pool can grow beyond the specified value if the parent resource pool has
      * unreserved resources. Default: `true`
      */
-    readonly memoryExpandable?: pulumi.Input<boolean>;
+    memoryExpandable?: pulumi.Input<boolean>;
     /**
      * The CPU utilization of a resource pool will not exceed
      * this limit, even if there are available resources. Set to `-1` for unlimited.
      * Default: `-1`
      */
-    readonly memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number>;
     /**
      * Amount of CPU (MHz) that is guaranteed
      * available to the resource pool. Default: `0`
      */
-    readonly memoryReservation?: pulumi.Input<number>;
+    memoryReservation?: pulumi.Input<number>;
     /**
      * The CPU allocation level. The level is a
      * simplified view of shares. Levels map to a pre-determined set of numeric
@@ -320,17 +320,17 @@ export interface ResourcePoolArgs {
      * `low`, `normal`, or `high` are specified values in `memoryShares` will be
      * ignored.  Default: `normal`
      */
-    readonly memoryShareLevel?: pulumi.Input<string>;
+    memoryShareLevel?: pulumi.Input<string>;
     /**
      * The number of shares allocated for CPU. Used to
      * determine resource allocation in case of resource contention. If this is set,
      * `memoryShareLevel` must be `custom`.
      */
-    readonly memoryShares?: pulumi.Input<number>;
+    memoryShares?: pulumi.Input<number>;
     /**
      * The name of the resource pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The managed object ID
      * of the parent resource pool. This can be the root resource pool for a cluster
@@ -338,9 +338,9 @@ export interface ResourcePoolArgs {
      * from one parent resource pool to another, both must share a common root
      * resource pool or the move will fail.
      */
-    readonly parentResourcePoolId: pulumi.Input<string>;
+    parentResourcePoolId: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

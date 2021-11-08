@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -42,6 +43,38 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetDatacenterResult> InvokeAsync(GetDatacenterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.Datacenter` data source can be used to discover the ID of a
+        /// vSphere datacenter. This can then be used with resources or data sources that
+        /// require a datacenter, such as the `vsphere.Host`
+        /// data source.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDatacenterResult> Invoke(GetDatacenterInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithVersion());
     }
 
 
@@ -55,6 +88,20 @@ namespace Pulumi.VSphere
         public string? Name { get; set; }
 
         public GetDatacenterArgs()
+        {
+        }
+    }
+
+    public sealed class GetDatacenterInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the datacenter. This can be a name or path.
+        /// Can be omitted if there is only one datacenter in your inventory.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetDatacenterInvokeArgs()
         {
         }
     }

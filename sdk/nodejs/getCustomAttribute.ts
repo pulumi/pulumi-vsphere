@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -23,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * const attribute = pulumi.output(vsphere.getCustomAttribute({
  *     name: "test-attribute",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
@@ -46,7 +45,7 @@ export interface GetCustomAttributeArgs {
     /**
      * The name of the custom attribute.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -59,4 +58,18 @@ export interface GetCustomAttributeResult {
     readonly id: string;
     readonly managedObjectType: string;
     readonly name: string;
+}
+
+export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
+    return pulumi.output(args).apply(a => getCustomAttribute(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCustomAttribute.
+ */
+export interface GetCustomAttributeOutputArgs {
+    /**
+     * The name of the custom attribute.
+     */
+    name: pulumi.Input<string>;
 }

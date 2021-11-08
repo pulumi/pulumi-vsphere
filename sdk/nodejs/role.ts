@@ -81,15 +81,15 @@ export interface RoleState {
     /**
      * The display label of the role.
      */
-    readonly label?: pulumi.Input<string>;
+    label?: pulumi.Input<string>;
     /**
      * The name of the role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The privileges to be associated with this role.
      */
-    readonly rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -99,9 +99,9 @@ export interface RoleArgs {
     /**
      * The name of the role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The privileges to be associated with this role.
      */
-    readonly rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    rolePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
 }

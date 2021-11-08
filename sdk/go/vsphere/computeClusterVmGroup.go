@@ -180,7 +180,7 @@ type ComputeClusterVmGroupArrayInput interface {
 type ComputeClusterVmGroupArray []ComputeClusterVmGroupInput
 
 func (ComputeClusterVmGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ComputeClusterVmGroup)(nil))
+	return reflect.TypeOf((*[]*ComputeClusterVmGroup)(nil)).Elem()
 }
 
 func (i ComputeClusterVmGroupArray) ToComputeClusterVmGroupArrayOutput() ComputeClusterVmGroupArrayOutput {
@@ -205,7 +205,7 @@ type ComputeClusterVmGroupMapInput interface {
 type ComputeClusterVmGroupMap map[string]ComputeClusterVmGroupInput
 
 func (ComputeClusterVmGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ComputeClusterVmGroup)(nil))
+	return reflect.TypeOf((*map[string]*ComputeClusterVmGroup)(nil)).Elem()
 }
 
 func (i ComputeClusterVmGroupMap) ToComputeClusterVmGroupMapOutput() ComputeClusterVmGroupMapOutput {
@@ -216,9 +216,7 @@ func (i ComputeClusterVmGroupMap) ToComputeClusterVmGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupMapOutput)
 }
 
-type ComputeClusterVmGroupOutput struct {
-	*pulumi.OutputState
-}
+type ComputeClusterVmGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ComputeClusterVmGroup)(nil))
@@ -237,14 +235,12 @@ func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupPtrOutput() ComputeC
 }
 
 func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupPtrOutputWithContext(ctx context.Context) ComputeClusterVmGroupPtrOutput {
-	return o.ApplyT(func(v ComputeClusterVmGroup) *ComputeClusterVmGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeClusterVmGroup) *ComputeClusterVmGroup {
 		return &v
 	}).(ComputeClusterVmGroupPtrOutput)
 }
 
-type ComputeClusterVmGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type ComputeClusterVmGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ComputeClusterVmGroup)(nil))
@@ -256,6 +252,16 @@ func (o ComputeClusterVmGroupPtrOutput) ToComputeClusterVmGroupPtrOutput() Compu
 
 func (o ComputeClusterVmGroupPtrOutput) ToComputeClusterVmGroupPtrOutputWithContext(ctx context.Context) ComputeClusterVmGroupPtrOutput {
 	return o
+}
+
+func (o ComputeClusterVmGroupPtrOutput) Elem() ComputeClusterVmGroupOutput {
+	return o.ApplyT(func(v *ComputeClusterVmGroup) ComputeClusterVmGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeClusterVmGroup
+		return ret
+	}).(ComputeClusterVmGroupOutput)
 }
 
 type ComputeClusterVmGroupArrayOutput struct{ *pulumi.OutputState }
@@ -299,6 +305,10 @@ func (o ComputeClusterVmGroupMapOutput) MapIndex(k pulumi.StringInput) ComputeCl
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVmGroupInput)(nil)).Elem(), &ComputeClusterVmGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVmGroupPtrInput)(nil)).Elem(), &ComputeClusterVmGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVmGroupArrayInput)(nil)).Elem(), ComputeClusterVmGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVmGroupMapInput)(nil)).Elem(), ComputeClusterVmGroupMap{})
 	pulumi.RegisterOutputType(ComputeClusterVmGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVmGroupPtrOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVmGroupArrayOutput{})
