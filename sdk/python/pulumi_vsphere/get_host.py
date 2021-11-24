@@ -12,6 +12,7 @@ __all__ = [
     'GetHostResult',
     'AwaitableGetHostResult',
     'get_host',
+    'get_host_output',
 ]
 
 @pulumi.output_type
@@ -112,3 +113,32 @@ def get_host(datacenter_id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         resource_pool_id=__ret__.resource_pool_id)
+
+
+@_utilities.lift_output_func(get_host)
+def get_host_output(datacenter_id: Optional[pulumi.Input[str]] = None,
+                    name: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostResult]:
+    """
+    The `Host` data source can be used to discover the ID of a vSphere
+    host. This can then be used with resources or data sources that require a host
+    managed object reference ID.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(datacenter_id=datacenter.id,
+        name="esxi1")
+    ```
+
+
+    :param str datacenter_id: The managed object reference
+           ID of a datacenter.
+    :param str name: The name of the host. This can be a name or path. Can be
+           omitted if there is only one host in your inventory.
+    """
+    ...

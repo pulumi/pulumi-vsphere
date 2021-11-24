@@ -12,6 +12,7 @@ __all__ = [
     'GetHostThumbprintResult',
     'AwaitableGetHostThumbprintResult',
     'get_host_thumbprint',
+    'get_host_thumbprint_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,33 @@ def get_host_thumbprint(address: Optional[str] = None,
         id=__ret__.id,
         insecure=__ret__.insecure,
         port=__ret__.port)
+
+
+@_utilities.lift_output_func(get_host_thumbprint)
+def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
+                               insecure: Optional[pulumi.Input[Optional[bool]]] = None,
+                               port: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostThumbprintResult]:
+    """
+    The `vsphere_thumbprint` data source can be used to discover the host
+    thumbprint of an ESXi host. This can be used when adding the `Host`
+    resource. If the host is using a certificate chain, the first one returned
+    will be used to generate the thumbprint.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    thumbprint = vsphere.get_host_thumbprint(address="esxi.example.internal")
+    ```
+
+
+    :param str address: The address of the ESXi host to retrieve the
+           thumbprint from.
+    :param bool insecure: Boolean that can be set to true to disable SSL 
+           certificate verification. Default: false
+    :param str port: The port to use connecting to the ESXi host. Default: 443
+    """
+    ...

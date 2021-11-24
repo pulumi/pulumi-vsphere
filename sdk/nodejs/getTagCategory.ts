@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -23,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * const category = pulumi.output(vsphere.getTagCategory({
  *     name: "test-category",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
@@ -46,7 +45,7 @@ export interface GetTagCategoryArgs {
     /**
      * The name of the tag category.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -61,4 +60,18 @@ export interface GetTagCategoryResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagCategoryResult> {
+    return pulumi.output(args).apply(a => getTagCategory(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTagCategory.
+ */
+export interface GetTagCategoryOutputArgs {
+    /**
+     * The name of the tag category.
+     */
+    name: pulumi.Input<string>;
 }

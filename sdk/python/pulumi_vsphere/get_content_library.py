@@ -12,6 +12,7 @@ __all__ = [
     'GetContentLibraryResult',
     'AwaitableGetContentLibraryResult',
     'get_content_library',
+    'get_content_library_output',
 ]
 
 @pulumi.output_type
@@ -82,3 +83,27 @@ def get_content_library(name: Optional[str] = None,
     return AwaitableGetContentLibraryResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_content_library)
+def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContentLibraryResult]:
+    """
+    The `ContentLibrary` data source can be used to discover the ID of a Content Library.
+
+    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
+    connections.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library Test")
+    ```
+
+
+    :param str name: The name of the Content Library.
+    """
+    ...

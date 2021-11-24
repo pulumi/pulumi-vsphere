@@ -711,361 +711,361 @@ export interface DistributedVirtualSwitchState {
      * `uplinks` DVS argument. See
      * here for more details.
      */
-    readonly activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Controls whether or not a virtual
      * network adapter is allowed to send network traffic with a different MAC
      * address than that of its own.
      */
-    readonly allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean>;
     /**
      * Controls whether or not the Media Access
      * Control (MAC) address can be changed.
      */
-    readonly allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean>;
     /**
      * Enable promiscuous mode on the network. This
      * flag indicates whether or not all traffic is seen on a given port.
      */
-    readonly allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
      */
-    readonly backupnfcMaximumMbit?: pulumi.Input<number>;
+    backupnfcMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
      */
-    readonly backupnfcReservationMbit?: pulumi.Input<number>;
+    backupnfcReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
      */
-    readonly backupnfcShareCount?: pulumi.Input<number>;
+    backupnfcShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly backupnfcShareLevel?: pulumi.Input<string>;
+    backupnfcShareLevel?: pulumi.Input<string>;
     /**
      * Shuts down all ports in the port groups that
      * this policy applies to, effectively blocking all network access to connected
      * virtual devices.
      */
-    readonly blockAllPorts?: pulumi.Input<boolean>;
+    blockAllPorts?: pulumi.Input<boolean>;
     /**
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
      */
-    readonly checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean>;
     /**
      * The version string of the configuration that this spec is trying to change.
      */
-    readonly configVersion?: pulumi.Input<string>;
+    configVersion?: pulumi.Input<string>;
     /**
      * The detailed contact information for the person
      * who is responsible for the DVS.
      */
-    readonly contactDetail?: pulumi.Input<string>;
+    contactDetail?: pulumi.Input<string>;
     /**
      * The name of the person who is responsible for the
      * DVS.
      */
-    readonly contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for virtual switch.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter where the distributed
      * virtual switch will be created. Forces a new resource if changed.
      */
-    readonly datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string>;
     /**
      * A detailed description for the DVS.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Allow VMDirectPath Gen2 for the ports
      * for which this policy applies to.
      */
-    readonly directpathGen2Allowed?: pulumi.Input<boolean>;
+    directpathGen2Allowed?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in bits
      * per second if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingAverageBandwidth?: pulumi.Input<number>;
+    egressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in
      * bytes if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingBurstSize?: pulumi.Input<number>;
+    egressShapingBurstSize?: pulumi.Input<number>;
     /**
      * `true` if the traffic shaper is enabled
      * on the port for egress traffic.
      */
-    readonly egressShapingEnabled?: pulumi.Input<boolean>;
+    egressShapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during bursts
      * in bits per second if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingPeakBandwidth?: pulumi.Input<number>;
+    egressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * If `true`, the teaming policy will re-activate failed
      * uplinks higher in precedence when they come back up.
      */
-    readonly failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean>;
     /**
      * The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
      */
-    readonly faulttoleranceMaximumMbit?: pulumi.Input<number>;
+    faulttoleranceMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
      */
-    readonly faulttoleranceReservationMbit?: pulumi.Input<number>;
+    faulttoleranceReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
      */
-    readonly faulttoleranceShareCount?: pulumi.Input<number>;
+    faulttoleranceShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly faulttoleranceShareLevel?: pulumi.Input<string>;
+    faulttoleranceShareLevel?: pulumi.Input<string>;
     /**
      * The folder to create the DVS in. Forces a new resource
      * if changed.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the hbr traffic class, in Mbits/sec.
      */
-    readonly hbrMaximumMbit?: pulumi.Input<number>;
+    hbrMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
      */
-    readonly hbrReservationMbit?: pulumi.Input<number>;
+    hbrReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the hbr traffic class for a custom share level.
      */
-    readonly hbrShareCount?: pulumi.Input<number>;
+    hbrShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly hbrShareLevel?: pulumi.Input<string>;
+    hbrShareLevel?: pulumi.Input<string>;
     /**
      * Use the `host` block to declare a host specification. The
      * options are:
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
      * Whether to ignore existing PVLAN
      * mappings not managed by this resource. Defaults to false.
      */
-    readonly ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
+    ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingAverageBandwidth?: pulumi.Input<number>;
+    ingressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in
      * bytes if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingBurstSize?: pulumi.Input<number>;
+    ingressShapingBurstSize?: pulumi.Input<number>;
     /**
      * `true` if the traffic shaper is
      * enabled on the port for ingress traffic.
      */
-    readonly ingressShapingEnabled?: pulumi.Input<boolean>;
+    ingressShapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during
      * bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingPeakBandwidth?: pulumi.Input<number>;
+    ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * An IPv4 address to identify the switch. This is
      * mostly useful when used with the Netflow arguments found
      * below.
      */
-    readonly ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
      */
-    readonly iscsiMaximumMbit?: pulumi.Input<number>;
+    iscsiMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
      */
-    readonly iscsiReservationMbit?: pulumi.Input<number>;
+    iscsiReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the iSCSI traffic class for a custom share level.
      */
-    readonly iscsiShareCount?: pulumi.Input<number>;
+    iscsiShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly iscsiShareLevel?: pulumi.Input<string>;
+    iscsiShareLevel?: pulumi.Input<string>;
     /**
      * The Link Aggregation Control Protocol group
      * version to use with the switch. Possible values are `singleLag` and
      * `multipleLag`.
      */
-    readonly lacpApiVersion?: pulumi.Input<string>;
+    lacpApiVersion?: pulumi.Input<string>;
     /**
      * Enables LACP for the ports that this policy
      * applies to.
      */
-    readonly lacpEnabled?: pulumi.Input<boolean>;
+    lacpEnabled?: pulumi.Input<boolean>;
     /**
      * The LACP mode. Can be one of `active` or `passive`.
      */
-    readonly lacpMode?: pulumi.Input<string>;
+    lacpMode?: pulumi.Input<string>;
     /**
      * Whether to `advertise` or `listen`
      * for link discovery traffic.
      */
-    readonly linkDiscoveryOperation?: pulumi.Input<string>;
+    linkDiscoveryOperation?: pulumi.Input<string>;
     /**
      * The discovery protocol type. Valid
      * types are `cdp` and `lldp`.
      */
-    readonly linkDiscoveryProtocol?: pulumi.Input<string>;
+    linkDiscoveryProtocol?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the management traffic class, in Mbits/sec.
      */
-    readonly managementMaximumMbit?: pulumi.Input<number>;
+    managementMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
      */
-    readonly managementReservationMbit?: pulumi.Input<number>;
+    managementReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the management traffic class for a custom share level.
      */
-    readonly managementShareCount?: pulumi.Input<number>;
+    managementShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly managementShareLevel?: pulumi.Input<string>;
+    managementShareLevel?: pulumi.Input<string>;
     /**
      * The maximum transmission unit (MTU) for the virtual
      * switch.
      */
-    readonly maxMtu?: pulumi.Input<number>;
+    maxMtu?: pulumi.Input<number>;
     /**
      * The multicast filtering mode to use
      * with the switch. Can be one of `legacyFiltering` or `snooping`.
      */
-    readonly multicastFilteringMode?: pulumi.Input<string>;
+    multicastFilteringMode?: pulumi.Input<string>;
     /**
      * The name of the distributed virtual switch.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of seconds after which
      * active flows are forced to be exported to the collector. Allowed range is
      * `60` to `3600`. Default: `60`.
      */
-    readonly netflowActiveFlowTimeout?: pulumi.Input<number>;
+    netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
      * IP address for the Netflow
      * collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
      * Switch Version 6.0 or later. Must be set before Netflow can be enabled.
      */
-    readonly netflowCollectorIpAddress?: pulumi.Input<string>;
+    netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
      * Port for the Netflow collector. This
      * must be set before Netflow can be enabled.
      */
-    readonly netflowCollectorPort?: pulumi.Input<number>;
+    netflowCollectorPort?: pulumi.Input<number>;
     /**
      * Enables Netflow on all ports that this policy
      * applies to.
      */
-    readonly netflowEnabled?: pulumi.Input<boolean>;
+    netflowEnabled?: pulumi.Input<boolean>;
     /**
      * The number of seconds after which
      * idle flows are forced to be exported to the collector. Allowed range is `10`
      * to `600`. Default: `15`.
      */
-    readonly netflowIdleFlowTimeout?: pulumi.Input<number>;
+    netflowIdleFlowTimeout?: pulumi.Input<number>;
     /**
      * Whether to limit analysis to
      * traffic that has both source and destination served by the same host.
      * Default: `false`.
      */
-    readonly netflowInternalFlowsOnly?: pulumi.Input<boolean>;
+    netflowInternalFlowsOnly?: pulumi.Input<boolean>;
     /**
      * The observation domain ID for
      * the Netflow collector.
      */
-    readonly netflowObservationDomainId?: pulumi.Input<number>;
+    netflowObservationDomainId?: pulumi.Input<number>;
     /**
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * switch should analyze all packets. The maximum value is `1000`, which
      * indicates an analysis rate of 0.001%.
      */
-    readonly netflowSamplingRate?: pulumi.Input<number>;
+    netflowSamplingRate?: pulumi.Input<number>;
     /**
      * Set to `true` to enable
      * network I/O control. Default: `false`.
      */
-    readonly networkResourceControlEnabled?: pulumi.Input<boolean>;
+    networkResourceControlEnabled?: pulumi.Input<boolean>;
     /**
      * The version of network I/O
      * control to use. Can be one of `version2` or `version3`. Default: `version2`.
      */
-    readonly networkResourceControlVersion?: pulumi.Input<string>;
+    networkResourceControlVersion?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the nfs traffic class, in Mbits/sec.
      */
-    readonly nfsMaximumMbit?: pulumi.Input<number>;
+    nfsMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
      */
-    readonly nfsReservationMbit?: pulumi.Input<number>;
+    nfsReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the nfs traffic class for a custom share level.
      */
-    readonly nfsShareCount?: pulumi.Input<number>;
+    nfsShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly nfsShareLevel?: pulumi.Input<string>;
+    nfsShareLevel?: pulumi.Input<string>;
     /**
      * If `true`, the teaming policy will notify the
      * broadcast network of an uplink failover, triggering cache updates.
      */
-    readonly notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean>;
     /**
      * Used to define a secondary VLAN
      * ID when using private VLANs.
      */
-    readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
      * Use the `pvlanMapping` block to declare a
      * private VLAN mapping. The options are:
      */
-    readonly pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
+    pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
      * `uplinks` DVS argument. See
      * here for more details.
      */
-    readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
      * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
      * `failoverExplicit`.
      */
-    readonly teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string>;
     /**
      * Forward all traffic transmitted by ports for which
      * this policy applies to its DVS uplinks.
      */
-    readonly txUplink?: pulumi.Input<boolean>;
+    txUplink?: pulumi.Input<boolean>;
     /**
      * A list of strings that uniquely identifies the names
      * of the uplinks on the DVS across hosts. The number of items in this list
@@ -1073,89 +1073,89 @@ export interface DistributedVirtualSwitchState {
      * names.  See here for an example on how to
      * use this option.
      */
-    readonly uplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum allowed usage for the vdp traffic class, in Mbits/sec.
      */
-    readonly vdpMaximumMbit?: pulumi.Input<number>;
+    vdpMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
      */
-    readonly vdpReservationMbit?: pulumi.Input<number>;
+    vdpReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vdp traffic class for a custom share level.
      */
-    readonly vdpShareCount?: pulumi.Input<number>;
+    vdpShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vdpShareLevel?: pulumi.Input<string>;
+    vdpShareLevel?: pulumi.Input<string>;
     /**
      * - The version of the DVS to create. The default is to
      * create the DVS at the latest version supported by the version of vSphere
      * being used. A DVS can be upgraded to another version, but cannot be
      * downgraded.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
      */
-    readonly virtualmachineMaximumMbit?: pulumi.Input<number>;
+    virtualmachineMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
      */
-    readonly virtualmachineReservationMbit?: pulumi.Input<number>;
+    virtualmachineReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
      */
-    readonly virtualmachineShareCount?: pulumi.Input<number>;
+    virtualmachineShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly virtualmachineShareLevel?: pulumi.Input<string>;
+    virtualmachineShareLevel?: pulumi.Input<string>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    readonly vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number>;
     /**
      * Used to denote VLAN trunking. Use the `minVlan`
      * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
+    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */
-    readonly vmotionMaximumMbit?: pulumi.Input<number>;
+    vmotionMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
      */
-    readonly vmotionReservationMbit?: pulumi.Input<number>;
+    vmotionReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vmotion traffic class for a custom share level.
      */
-    readonly vmotionShareCount?: pulumi.Input<number>;
+    vmotionShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vmotionShareLevel?: pulumi.Input<string>;
+    vmotionShareLevel?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the vsan traffic class, in Mbits/sec.
      */
-    readonly vsanMaximumMbit?: pulumi.Input<number>;
+    vsanMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
      */
-    readonly vsanReservationMbit?: pulumi.Input<number>;
+    vsanReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vsan traffic class for a custom share level.
      */
-    readonly vsanShareCount?: pulumi.Input<number>;
+    vsanShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vsanShareLevel?: pulumi.Input<string>;
+    vsanShareLevel?: pulumi.Input<string>;
 }
 
 /**
@@ -1168,357 +1168,357 @@ export interface DistributedVirtualSwitchArgs {
      * `uplinks` DVS argument. See
      * here for more details.
      */
-    readonly activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Controls whether or not a virtual
      * network adapter is allowed to send network traffic with a different MAC
      * address than that of its own.
      */
-    readonly allowForgedTransmits?: pulumi.Input<boolean>;
+    allowForgedTransmits?: pulumi.Input<boolean>;
     /**
      * Controls whether or not the Media Access
      * Control (MAC) address can be changed.
      */
-    readonly allowMacChanges?: pulumi.Input<boolean>;
+    allowMacChanges?: pulumi.Input<boolean>;
     /**
      * Enable promiscuous mode on the network. This
      * flag indicates whether or not all traffic is seen on a given port.
      */
-    readonly allowPromiscuous?: pulumi.Input<boolean>;
+    allowPromiscuous?: pulumi.Input<boolean>;
     /**
      * The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
      */
-    readonly backupnfcMaximumMbit?: pulumi.Input<number>;
+    backupnfcMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
      */
-    readonly backupnfcReservationMbit?: pulumi.Input<number>;
+    backupnfcReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the backupNfc traffic class for a custom share level.
      */
-    readonly backupnfcShareCount?: pulumi.Input<number>;
+    backupnfcShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly backupnfcShareLevel?: pulumi.Input<string>;
+    backupnfcShareLevel?: pulumi.Input<string>;
     /**
      * Shuts down all ports in the port groups that
      * this policy applies to, effectively blocking all network access to connected
      * virtual devices.
      */
-    readonly blockAllPorts?: pulumi.Input<boolean>;
+    blockAllPorts?: pulumi.Input<boolean>;
     /**
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
      */
-    readonly checkBeacon?: pulumi.Input<boolean>;
+    checkBeacon?: pulumi.Input<boolean>;
     /**
      * The detailed contact information for the person
      * who is responsible for the DVS.
      */
-    readonly contactDetail?: pulumi.Input<string>;
+    contactDetail?: pulumi.Input<string>;
     /**
      * The name of the person who is responsible for the
      * DVS.
      */
-    readonly contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for virtual switch.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the datacenter where the distributed
      * virtual switch will be created. Forces a new resource if changed.
      */
-    readonly datacenterId: pulumi.Input<string>;
+    datacenterId: pulumi.Input<string>;
     /**
      * A detailed description for the DVS.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Allow VMDirectPath Gen2 for the ports
      * for which this policy applies to.
      */
-    readonly directpathGen2Allowed?: pulumi.Input<boolean>;
+    directpathGen2Allowed?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in bits
      * per second if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingAverageBandwidth?: pulumi.Input<number>;
+    egressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in
      * bytes if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingBurstSize?: pulumi.Input<number>;
+    egressShapingBurstSize?: pulumi.Input<number>;
     /**
      * `true` if the traffic shaper is enabled
      * on the port for egress traffic.
      */
-    readonly egressShapingEnabled?: pulumi.Input<boolean>;
+    egressShapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during bursts
      * in bits per second if egress traffic shaping is enabled on the port.
      */
-    readonly egressShapingPeakBandwidth?: pulumi.Input<number>;
+    egressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * If `true`, the teaming policy will re-activate failed
      * uplinks higher in precedence when they come back up.
      */
-    readonly failback?: pulumi.Input<boolean>;
+    failback?: pulumi.Input<boolean>;
     /**
      * The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
      */
-    readonly faulttoleranceMaximumMbit?: pulumi.Input<number>;
+    faulttoleranceMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
      */
-    readonly faulttoleranceReservationMbit?: pulumi.Input<number>;
+    faulttoleranceReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
      */
-    readonly faulttoleranceShareCount?: pulumi.Input<number>;
+    faulttoleranceShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly faulttoleranceShareLevel?: pulumi.Input<string>;
+    faulttoleranceShareLevel?: pulumi.Input<string>;
     /**
      * The folder to create the DVS in. Forces a new resource
      * if changed.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the hbr traffic class, in Mbits/sec.
      */
-    readonly hbrMaximumMbit?: pulumi.Input<number>;
+    hbrMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
      */
-    readonly hbrReservationMbit?: pulumi.Input<number>;
+    hbrReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the hbr traffic class for a custom share level.
      */
-    readonly hbrShareCount?: pulumi.Input<number>;
+    hbrShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly hbrShareLevel?: pulumi.Input<string>;
+    hbrShareLevel?: pulumi.Input<string>;
     /**
      * Use the `host` block to declare a host specification. The
      * options are:
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
+    hosts?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchHost>[]>;
     /**
      * Whether to ignore existing PVLAN
      * mappings not managed by this resource. Defaults to false.
      */
-    readonly ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
+    ignoreOtherPvlanMappings?: pulumi.Input<boolean>;
     /**
      * The average bandwidth in
      * bits per second if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingAverageBandwidth?: pulumi.Input<number>;
+    ingressShapingAverageBandwidth?: pulumi.Input<number>;
     /**
      * The maximum burst size allowed in
      * bytes if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingBurstSize?: pulumi.Input<number>;
+    ingressShapingBurstSize?: pulumi.Input<number>;
     /**
      * `true` if the traffic shaper is
      * enabled on the port for ingress traffic.
      */
-    readonly ingressShapingEnabled?: pulumi.Input<boolean>;
+    ingressShapingEnabled?: pulumi.Input<boolean>;
     /**
      * The peak bandwidth during
      * bursts in bits per second if ingress traffic shaping is enabled on the port.
      */
-    readonly ingressShapingPeakBandwidth?: pulumi.Input<number>;
+    ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * An IPv4 address to identify the switch. This is
      * mostly useful when used with the Netflow arguments found
      * below.
      */
-    readonly ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
      */
-    readonly iscsiMaximumMbit?: pulumi.Input<number>;
+    iscsiMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
      */
-    readonly iscsiReservationMbit?: pulumi.Input<number>;
+    iscsiReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the iSCSI traffic class for a custom share level.
      */
-    readonly iscsiShareCount?: pulumi.Input<number>;
+    iscsiShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly iscsiShareLevel?: pulumi.Input<string>;
+    iscsiShareLevel?: pulumi.Input<string>;
     /**
      * The Link Aggregation Control Protocol group
      * version to use with the switch. Possible values are `singleLag` and
      * `multipleLag`.
      */
-    readonly lacpApiVersion?: pulumi.Input<string>;
+    lacpApiVersion?: pulumi.Input<string>;
     /**
      * Enables LACP for the ports that this policy
      * applies to.
      */
-    readonly lacpEnabled?: pulumi.Input<boolean>;
+    lacpEnabled?: pulumi.Input<boolean>;
     /**
      * The LACP mode. Can be one of `active` or `passive`.
      */
-    readonly lacpMode?: pulumi.Input<string>;
+    lacpMode?: pulumi.Input<string>;
     /**
      * Whether to `advertise` or `listen`
      * for link discovery traffic.
      */
-    readonly linkDiscoveryOperation?: pulumi.Input<string>;
+    linkDiscoveryOperation?: pulumi.Input<string>;
     /**
      * The discovery protocol type. Valid
      * types are `cdp` and `lldp`.
      */
-    readonly linkDiscoveryProtocol?: pulumi.Input<string>;
+    linkDiscoveryProtocol?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the management traffic class, in Mbits/sec.
      */
-    readonly managementMaximumMbit?: pulumi.Input<number>;
+    managementMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
      */
-    readonly managementReservationMbit?: pulumi.Input<number>;
+    managementReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the management traffic class for a custom share level.
      */
-    readonly managementShareCount?: pulumi.Input<number>;
+    managementShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly managementShareLevel?: pulumi.Input<string>;
+    managementShareLevel?: pulumi.Input<string>;
     /**
      * The maximum transmission unit (MTU) for the virtual
      * switch.
      */
-    readonly maxMtu?: pulumi.Input<number>;
+    maxMtu?: pulumi.Input<number>;
     /**
      * The multicast filtering mode to use
      * with the switch. Can be one of `legacyFiltering` or `snooping`.
      */
-    readonly multicastFilteringMode?: pulumi.Input<string>;
+    multicastFilteringMode?: pulumi.Input<string>;
     /**
      * The name of the distributed virtual switch.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of seconds after which
      * active flows are forced to be exported to the collector. Allowed range is
      * `60` to `3600`. Default: `60`.
      */
-    readonly netflowActiveFlowTimeout?: pulumi.Input<number>;
+    netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
      * IP address for the Netflow
      * collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
      * Switch Version 6.0 or later. Must be set before Netflow can be enabled.
      */
-    readonly netflowCollectorIpAddress?: pulumi.Input<string>;
+    netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
      * Port for the Netflow collector. This
      * must be set before Netflow can be enabled.
      */
-    readonly netflowCollectorPort?: pulumi.Input<number>;
+    netflowCollectorPort?: pulumi.Input<number>;
     /**
      * Enables Netflow on all ports that this policy
      * applies to.
      */
-    readonly netflowEnabled?: pulumi.Input<boolean>;
+    netflowEnabled?: pulumi.Input<boolean>;
     /**
      * The number of seconds after which
      * idle flows are forced to be exported to the collector. Allowed range is `10`
      * to `600`. Default: `15`.
      */
-    readonly netflowIdleFlowTimeout?: pulumi.Input<number>;
+    netflowIdleFlowTimeout?: pulumi.Input<number>;
     /**
      * Whether to limit analysis to
      * traffic that has both source and destination served by the same host.
      * Default: `false`.
      */
-    readonly netflowInternalFlowsOnly?: pulumi.Input<boolean>;
+    netflowInternalFlowsOnly?: pulumi.Input<boolean>;
     /**
      * The observation domain ID for
      * the Netflow collector.
      */
-    readonly netflowObservationDomainId?: pulumi.Input<number>;
+    netflowObservationDomainId?: pulumi.Input<number>;
     /**
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
      * switch should analyze all packets. The maximum value is `1000`, which
      * indicates an analysis rate of 0.001%.
      */
-    readonly netflowSamplingRate?: pulumi.Input<number>;
+    netflowSamplingRate?: pulumi.Input<number>;
     /**
      * Set to `true` to enable
      * network I/O control. Default: `false`.
      */
-    readonly networkResourceControlEnabled?: pulumi.Input<boolean>;
+    networkResourceControlEnabled?: pulumi.Input<boolean>;
     /**
      * The version of network I/O
      * control to use. Can be one of `version2` or `version3`. Default: `version2`.
      */
-    readonly networkResourceControlVersion?: pulumi.Input<string>;
+    networkResourceControlVersion?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the nfs traffic class, in Mbits/sec.
      */
-    readonly nfsMaximumMbit?: pulumi.Input<number>;
+    nfsMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
      */
-    readonly nfsReservationMbit?: pulumi.Input<number>;
+    nfsReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the nfs traffic class for a custom share level.
      */
-    readonly nfsShareCount?: pulumi.Input<number>;
+    nfsShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly nfsShareLevel?: pulumi.Input<string>;
+    nfsShareLevel?: pulumi.Input<string>;
     /**
      * If `true`, the teaming policy will notify the
      * broadcast network of an uplink failover, triggering cache updates.
      */
-    readonly notifySwitches?: pulumi.Input<boolean>;
+    notifySwitches?: pulumi.Input<boolean>;
     /**
      * Used to define a secondary VLAN
      * ID when using private VLANs.
      */
-    readonly portPrivateSecondaryVlanId?: pulumi.Input<number>;
+    portPrivateSecondaryVlanId?: pulumi.Input<number>;
     /**
      * Use the `pvlanMapping` block to declare a
      * private VLAN mapping. The options are:
      */
-    readonly pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
+    pvlanMappings?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchPvlanMapping>[]>;
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
      * `uplinks` DVS argument. See
      * here for more details.
      */
-    readonly standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
      * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
      * `failoverExplicit`.
      */
-    readonly teamingPolicy?: pulumi.Input<string>;
+    teamingPolicy?: pulumi.Input<string>;
     /**
      * Forward all traffic transmitted by ports for which
      * this policy applies to its DVS uplinks.
      */
-    readonly txUplink?: pulumi.Input<boolean>;
+    txUplink?: pulumi.Input<boolean>;
     /**
      * A list of strings that uniquely identifies the names
      * of the uplinks on the DVS across hosts. The number of items in this list
@@ -1526,87 +1526,87 @@ export interface DistributedVirtualSwitchArgs {
      * names.  See here for an example on how to
      * use this option.
      */
-    readonly uplinks?: pulumi.Input<pulumi.Input<string>[]>;
+    uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum allowed usage for the vdp traffic class, in Mbits/sec.
      */
-    readonly vdpMaximumMbit?: pulumi.Input<number>;
+    vdpMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
      */
-    readonly vdpReservationMbit?: pulumi.Input<number>;
+    vdpReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vdp traffic class for a custom share level.
      */
-    readonly vdpShareCount?: pulumi.Input<number>;
+    vdpShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vdpShareLevel?: pulumi.Input<string>;
+    vdpShareLevel?: pulumi.Input<string>;
     /**
      * - The version of the DVS to create. The default is to
      * create the DVS at the latest version supported by the version of vSphere
      * being used. A DVS can be upgraded to another version, but cannot be
      * downgraded.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
      */
-    readonly virtualmachineMaximumMbit?: pulumi.Input<number>;
+    virtualmachineMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
      */
-    readonly virtualmachineReservationMbit?: pulumi.Input<number>;
+    virtualmachineReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
      */
-    readonly virtualmachineShareCount?: pulumi.Input<number>;
+    virtualmachineShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly virtualmachineShareLevel?: pulumi.Input<string>;
+    virtualmachineShareLevel?: pulumi.Input<string>;
     /**
      * The VLAN ID for single VLAN mode. 0 denotes no VLAN.
      */
-    readonly vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number>;
     /**
      * Used to denote VLAN trunking. Use the `minVlan`
      * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
      */
-    readonly vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
+    vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
      * The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
      */
-    readonly vmotionMaximumMbit?: pulumi.Input<number>;
+    vmotionMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
      */
-    readonly vmotionReservationMbit?: pulumi.Input<number>;
+    vmotionReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vmotion traffic class for a custom share level.
      */
-    readonly vmotionShareCount?: pulumi.Input<number>;
+    vmotionShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vmotionShareLevel?: pulumi.Input<string>;
+    vmotionShareLevel?: pulumi.Input<string>;
     /**
      * The maximum allowed usage for the vsan traffic class, in Mbits/sec.
      */
-    readonly vsanMaximumMbit?: pulumi.Input<number>;
+    vsanMaximumMbit?: pulumi.Input<number>;
     /**
      * The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
      */
-    readonly vsanReservationMbit?: pulumi.Input<number>;
+    vsanReservationMbit?: pulumi.Input<number>;
     /**
      * The amount of shares to allocate to the vsan traffic class for a custom share level.
      */
-    readonly vsanShareCount?: pulumi.Input<number>;
+    vsanShareCount?: pulumi.Input<number>;
     /**
      * The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
      */
-    readonly vsanShareLevel?: pulumi.Input<string>;
+    vsanShareLevel?: pulumi.Input<string>;
 }

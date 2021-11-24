@@ -243,7 +243,7 @@ type StorageDrsVmOverrideArrayInput interface {
 type StorageDrsVmOverrideArray []StorageDrsVmOverrideInput
 
 func (StorageDrsVmOverrideArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StorageDrsVmOverride)(nil))
+	return reflect.TypeOf((*[]*StorageDrsVmOverride)(nil)).Elem()
 }
 
 func (i StorageDrsVmOverrideArray) ToStorageDrsVmOverrideArrayOutput() StorageDrsVmOverrideArrayOutput {
@@ -268,7 +268,7 @@ type StorageDrsVmOverrideMapInput interface {
 type StorageDrsVmOverrideMap map[string]StorageDrsVmOverrideInput
 
 func (StorageDrsVmOverrideMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StorageDrsVmOverride)(nil))
+	return reflect.TypeOf((*map[string]*StorageDrsVmOverride)(nil)).Elem()
 }
 
 func (i StorageDrsVmOverrideMap) ToStorageDrsVmOverrideMapOutput() StorageDrsVmOverrideMapOutput {
@@ -279,9 +279,7 @@ func (i StorageDrsVmOverrideMap) ToStorageDrsVmOverrideMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageDrsVmOverrideMapOutput)
 }
 
-type StorageDrsVmOverrideOutput struct {
-	*pulumi.OutputState
-}
+type StorageDrsVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (StorageDrsVmOverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StorageDrsVmOverride)(nil))
@@ -300,14 +298,12 @@ func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverridePtrOutput() StorageDrs
 }
 
 func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverridePtrOutputWithContext(ctx context.Context) StorageDrsVmOverridePtrOutput {
-	return o.ApplyT(func(v StorageDrsVmOverride) *StorageDrsVmOverride {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageDrsVmOverride) *StorageDrsVmOverride {
 		return &v
 	}).(StorageDrsVmOverridePtrOutput)
 }
 
-type StorageDrsVmOverridePtrOutput struct {
-	*pulumi.OutputState
-}
+type StorageDrsVmOverridePtrOutput struct{ *pulumi.OutputState }
 
 func (StorageDrsVmOverridePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StorageDrsVmOverride)(nil))
@@ -319,6 +315,16 @@ func (o StorageDrsVmOverridePtrOutput) ToStorageDrsVmOverridePtrOutput() Storage
 
 func (o StorageDrsVmOverridePtrOutput) ToStorageDrsVmOverridePtrOutputWithContext(ctx context.Context) StorageDrsVmOverridePtrOutput {
 	return o
+}
+
+func (o StorageDrsVmOverridePtrOutput) Elem() StorageDrsVmOverrideOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) StorageDrsVmOverride {
+		if v != nil {
+			return *v
+		}
+		var ret StorageDrsVmOverride
+		return ret
+	}).(StorageDrsVmOverrideOutput)
 }
 
 type StorageDrsVmOverrideArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o StorageDrsVmOverrideMapOutput) MapIndex(k pulumi.StringInput) StorageDrs
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDrsVmOverrideInput)(nil)).Elem(), &StorageDrsVmOverride{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDrsVmOverridePtrInput)(nil)).Elem(), &StorageDrsVmOverride{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDrsVmOverrideArrayInput)(nil)).Elem(), StorageDrsVmOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDrsVmOverrideMapInput)(nil)).Elem(), StorageDrsVmOverrideMap{})
 	pulumi.RegisterOutputType(StorageDrsVmOverrideOutput{})
 	pulumi.RegisterOutputType(StorageDrsVmOverridePtrOutput{})
 	pulumi.RegisterOutputType(StorageDrsVmOverrideArrayOutput{})

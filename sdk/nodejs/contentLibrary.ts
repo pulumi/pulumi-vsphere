@@ -98,24 +98,24 @@ export interface ContentLibraryState {
     /**
      * A description of the Content Library.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the Content Library.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Options to publish a local Content Library.
      */
-    readonly publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
      * The managed object reference ID on which to store Content Library
      * items.
      */
-    readonly storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
+    storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Options to publish a local Content Library.
      */
-    readonly subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
+    subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }
 
 /**
@@ -125,22 +125,22 @@ export interface ContentLibraryArgs {
     /**
      * A description of the Content Library.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the Content Library.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Options to publish a local Content Library.
      */
-    readonly publication?: pulumi.Input<inputs.ContentLibraryPublication>;
+    publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
      * The managed object reference ID on which to store Content Library
      * items.
      */
-    readonly storageBackings: pulumi.Input<pulumi.Input<string>[]>;
+    storageBackings: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Options to publish a local Content Library.
      */
-    readonly subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
+    subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }

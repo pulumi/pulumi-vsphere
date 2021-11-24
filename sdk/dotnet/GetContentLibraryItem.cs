@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -16,9 +17,74 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
         /// connections.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
+        ///         {
+        ///             Name = "Content Library Test",
+        ///         }));
+        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
+        ///         {
+        ///             Name = "Ubuntu Bionic 18.04",
+        ///             LibraryId = library.Id,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+        /// 
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// connections.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
+        ///         {
+        ///             Name = "Content Library Test",
+        ///         }));
+        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
+        ///         {
+        ///             Name = "Ubuntu Bionic 18.04",
+        ///             LibraryId = library.Id,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContentLibraryItemResult> Invoke(GetContentLibraryItemInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemInvokeArgs(), options.WithVersion());
     }
 
 
@@ -43,6 +109,31 @@ namespace Pulumi.VSphere
         public string Type { get; set; } = null!;
 
         public GetContentLibraryItemArgs()
+        {
+        }
+    }
+
+    public sealed class GetContentLibraryItemInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Content Library the item exists in.
+        /// </summary>
+        [Input("libraryId", required: true)]
+        public Input<string> LibraryId { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the Content Library.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The Content Library type. Can be ovf, iso, or vm-template.
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetContentLibraryItemInvokeArgs()
         {
         }
     }

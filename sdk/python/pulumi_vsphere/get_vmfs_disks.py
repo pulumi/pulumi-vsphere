@@ -12,6 +12,7 @@ __all__ = [
     'GetVmfsDisksResult',
     'AwaitableGetVmfsDisksResult',
     'get_vmfs_disks',
+    'get_vmfs_disks_output',
 ]
 
 @pulumi.output_type
@@ -87,7 +88,7 @@ def get_vmfs_disks(filter: Optional[str] = None,
                    rescan: Optional[bool] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmfsDisksResult:
     """
-    The `getVmfsDisks` data source can be used to discover the storage
+    The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
     `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
@@ -131,3 +132,40 @@ def get_vmfs_disks(filter: Optional[str] = None,
         host_system_id=__ret__.host_system_id,
         id=__ret__.id,
         rescan=__ret__.rescan)
+
+
+@_utilities.lift_output_func(get_vmfs_disks)
+def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
+                          host_system_id: Optional[pulumi.Input[str]] = None,
+                          rescan: Optional[pulumi.Input[Optional[bool]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmfsDisksResult]:
+    """
+    The `get_vmfs_disks` data source can be used to discover the storage
+    devices available on an ESXi host. This data source can be combined with the
+    `VmfsDatastore` resource to create VMFS
+    datastores based off a set of discovered disks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    host = vsphere.get_host(datacenter_id=datacenter.id,
+        name="esxi1")
+    available = vsphere.get_vmfs_disks(filter="mpx.vmhba1:C0:T[12]:L0",
+        host_system_id=host.id,
+        rescan=True)
+    ```
+
+
+    :param str filter: A regular expression to filter the disks against. Only
+           disks with canonical names that match will be included.
+    :param str host_system_id: The managed object ID of
+           the host to look for disks on.
+    :param bool rescan: Whether or not to rescan storage adapters before
+           searching for disks. This may lengthen the time it takes to perform the
+           search. Default: `false`.
+    """
+    ...

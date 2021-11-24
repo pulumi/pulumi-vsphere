@@ -176,7 +176,7 @@ type EntityPermissionsArrayInput interface {
 type EntityPermissionsArray []EntityPermissionsInput
 
 func (EntityPermissionsArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EntityPermissions)(nil))
+	return reflect.TypeOf((*[]*EntityPermissions)(nil)).Elem()
 }
 
 func (i EntityPermissionsArray) ToEntityPermissionsArrayOutput() EntityPermissionsArrayOutput {
@@ -201,7 +201,7 @@ type EntityPermissionsMapInput interface {
 type EntityPermissionsMap map[string]EntityPermissionsInput
 
 func (EntityPermissionsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EntityPermissions)(nil))
+	return reflect.TypeOf((*map[string]*EntityPermissions)(nil)).Elem()
 }
 
 func (i EntityPermissionsMap) ToEntityPermissionsMapOutput() EntityPermissionsMapOutput {
@@ -212,9 +212,7 @@ func (i EntityPermissionsMap) ToEntityPermissionsMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsMapOutput)
 }
 
-type EntityPermissionsOutput struct {
-	*pulumi.OutputState
-}
+type EntityPermissionsOutput struct{ *pulumi.OutputState }
 
 func (EntityPermissionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EntityPermissions)(nil))
@@ -233,14 +231,12 @@ func (o EntityPermissionsOutput) ToEntityPermissionsPtrOutput() EntityPermission
 }
 
 func (o EntityPermissionsOutput) ToEntityPermissionsPtrOutputWithContext(ctx context.Context) EntityPermissionsPtrOutput {
-	return o.ApplyT(func(v EntityPermissions) *EntityPermissions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityPermissions) *EntityPermissions {
 		return &v
 	}).(EntityPermissionsPtrOutput)
 }
 
-type EntityPermissionsPtrOutput struct {
-	*pulumi.OutputState
-}
+type EntityPermissionsPtrOutput struct{ *pulumi.OutputState }
 
 func (EntityPermissionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EntityPermissions)(nil))
@@ -252,6 +248,16 @@ func (o EntityPermissionsPtrOutput) ToEntityPermissionsPtrOutput() EntityPermiss
 
 func (o EntityPermissionsPtrOutput) ToEntityPermissionsPtrOutputWithContext(ctx context.Context) EntityPermissionsPtrOutput {
 	return o
+}
+
+func (o EntityPermissionsPtrOutput) Elem() EntityPermissionsOutput {
+	return o.ApplyT(func(v *EntityPermissions) EntityPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret EntityPermissions
+		return ret
+	}).(EntityPermissionsOutput)
 }
 
 type EntityPermissionsArrayOutput struct{ *pulumi.OutputState }
@@ -295,6 +301,10 @@ func (o EntityPermissionsMapOutput) MapIndex(k pulumi.StringInput) EntityPermiss
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsInput)(nil)).Elem(), &EntityPermissions{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsPtrInput)(nil)).Elem(), &EntityPermissions{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsArrayInput)(nil)).Elem(), EntityPermissionsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsMapInput)(nil)).Elem(), EntityPermissionsMap{})
 	pulumi.RegisterOutputType(EntityPermissionsOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(EntityPermissionsArrayOutput{})

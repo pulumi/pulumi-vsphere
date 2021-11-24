@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -56,4 +59,52 @@ type LookupDatacenterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
+}
+
+func LookupDatacenterOutput(ctx *pulumi.Context, args LookupDatacenterOutputArgs, opts ...pulumi.InvokeOption) LookupDatacenterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatacenterResult, error) {
+			args := v.(LookupDatacenterArgs)
+			r, err := LookupDatacenter(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatacenterResultOutput)
+}
+
+// A collection of arguments for invoking getDatacenter.
+type LookupDatacenterOutputArgs struct {
+	// The name of the datacenter. This can be a name or path.
+	// Can be omitted if there is only one datacenter in your inventory.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupDatacenterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatacenterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatacenter.
+type LookupDatacenterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatacenterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatacenterResult)(nil)).Elem()
+}
+
+func (o LookupDatacenterResultOutput) ToLookupDatacenterResultOutput() LookupDatacenterResultOutput {
+	return o
+}
+
+func (o LookupDatacenterResultOutput) ToLookupDatacenterResultOutputWithContext(ctx context.Context) LookupDatacenterResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatacenterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatacenterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatacenterResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatacenterResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatacenterResultOutput{})
 }

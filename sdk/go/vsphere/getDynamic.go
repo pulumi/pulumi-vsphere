@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -13,56 +16,6 @@ import (
 //   reference ID][docs-about-morefs] of any tagged managed object in vCenter
 //   by providing a list of tag IDs and an optional regular expression to filter
 //   objects by name.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cat, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
-// 			Name: "SomeCategory",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tag1, err := vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
-// 			Name:       "FirstTag",
-// 			CategoryId: cat.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
-// 			Name:       "SecondTag",
-// 			CategoryId: cat.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt0 := "ubuntu"
-// 		opt1 := "Datacenter"
-// 		_, err = vsphere.GetDynamic(ctx, &vsphere.GetDynamicArgs{
-// 			Filters: []string{
-// 				tag1.Id,
-// 				tag1.Id,
-// 			},
-// 			NameRegex: &opt0,
-// 			Type:      &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func GetDynamic(ctx *pulumi.Context, args *GetDynamicArgs, opts ...pulumi.InvokeOption) (*GetDynamicResult, error) {
 	var rv GetDynamicResult
 	err := ctx.Invoke("vsphere:index/getDynamic:getDynamic", args, &rv, opts...)
@@ -92,4 +45,66 @@ type GetDynamicResult struct {
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	Type      *string `pulumi:"type"`
+}
+
+func GetDynamicOutput(ctx *pulumi.Context, args GetDynamicOutputArgs, opts ...pulumi.InvokeOption) GetDynamicResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDynamicResult, error) {
+			args := v.(GetDynamicArgs)
+			r, err := GetDynamic(ctx, &args, opts...)
+			return *r, err
+		}).(GetDynamicResultOutput)
+}
+
+// A collection of arguments for invoking getDynamic.
+type GetDynamicOutputArgs struct {
+	// A list of tag IDs that must be present on an object to
+	// be a match.
+	Filters pulumi.StringArrayInput `pulumi:"filters"`
+	// A regular expression that will be used to match
+	// the object's name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The managed object type the returned object must match.
+	// For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetDynamicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDynamic.
+type GetDynamicResultOutput struct{ *pulumi.OutputState }
+
+func (GetDynamicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicResult)(nil)).Elem()
+}
+
+func (o GetDynamicResultOutput) ToGetDynamicResultOutput() GetDynamicResultOutput {
+	return o
+}
+
+func (o GetDynamicResultOutput) ToGetDynamicResultOutputWithContext(ctx context.Context) GetDynamicResultOutput {
+	return o
+}
+
+func (o GetDynamicResultOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDynamicResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDynamicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDynamicResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDynamicResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDynamicResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDynamicResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDynamicResultOutput{})
 }

@@ -90,17 +90,17 @@ export interface ComputeClusterHostGroupState {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
      */
-    readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -112,15 +112,15 @@ export interface ComputeClusterHostGroupArgs {
      * ID of the cluster to put the group in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
      */
-    readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the host group. This must be unique in the
      * cluster. Forces a new resource if changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -101,23 +101,23 @@ export interface DrsVmOverrideState {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId?: pulumi.Input<string>;
+    computeClusterId?: pulumi.Input<string>;
     /**
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      */
-    readonly drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    readonly drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId?: pulumi.Input<string>;
+    virtualMachineId?: pulumi.Input<string>;
 }
 
 /**
@@ -129,21 +129,21 @@ export interface DrsVmOverrideArgs {
      * ID of the cluster to put the override in.  Forces a new
      * resource if changed.
      */
-    readonly computeClusterId: pulumi.Input<string>;
+    computeClusterId: pulumi.Input<string>;
     /**
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      */
-    readonly drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string>;
     /**
      * Overrides the default DRS setting for this virtual
      * machine. Can be either `true` or `false`. Default: `false`.
      */
-    readonly drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean>;
     /**
      * The UUID of the virtual machine to create
      * the override for.  Forces a new resource if changed.
      */
-    readonly virtualMachineId: pulumi.Input<string>;
+    virtualMachineId: pulumi.Input<string>;
 }

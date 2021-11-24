@@ -25,6 +25,38 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * govmomi debug path for debug
+     */
+    public readonly clientDebugPath!: pulumi.Output<string | undefined>;
+    /**
+     * govmomi debug path for a single run
+     */
+    public readonly clientDebugPathRun!: pulumi.Output<string | undefined>;
+    /**
+     * The user password for vSphere API operations.
+     */
+    public readonly password!: pulumi.Output<string>;
+    /**
+     * The directory to save vSphere REST API sessions to
+     */
+    public readonly restSessionPath!: pulumi.Output<string | undefined>;
+    /**
+     * The user name for vSphere API operations.
+     */
+    public readonly user!: pulumi.Output<string>;
+    /**
+     * @deprecated This field has been renamed to vsphere_server.
+     */
+    public readonly vcenterServer!: pulumi.Output<string | undefined>;
+    /**
+     * The directory to save vSphere SOAP API sessions to
+     */
+    public readonly vimSessionPath!: pulumi.Output<string | undefined>;
+    /**
+     * The vSphere Server name for vSphere API operations.
+     */
+    public readonly vsphereServer!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -71,53 +103,53 @@ export interface ProviderArgs {
     /**
      * If set, VMware vSphere client will permit unverifiable SSL certificates.
      */
-    readonly allowUnverifiedSsl?: pulumi.Input<boolean>;
+    allowUnverifiedSsl?: pulumi.Input<boolean>;
     /**
      * API timeout in minutes (Default: 5)
      */
-    readonly apiTimeout?: pulumi.Input<number>;
+    apiTimeout?: pulumi.Input<number>;
     /**
      * govmomi debug
      */
-    readonly clientDebug?: pulumi.Input<boolean>;
+    clientDebug?: pulumi.Input<boolean>;
     /**
      * govmomi debug path for debug
      */
-    readonly clientDebugPath?: pulumi.Input<string>;
+    clientDebugPath?: pulumi.Input<string>;
     /**
      * govmomi debug path for a single run
      */
-    readonly clientDebugPathRun?: pulumi.Input<string>;
+    clientDebugPathRun?: pulumi.Input<string>;
     /**
      * The user password for vSphere API operations.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * Persist vSphere client sessions to disk
      */
-    readonly persistSession?: pulumi.Input<boolean>;
+    persistSession?: pulumi.Input<boolean>;
     /**
      * The directory to save vSphere REST API sessions to
      */
-    readonly restSessionPath?: pulumi.Input<string>;
+    restSessionPath?: pulumi.Input<string>;
     /**
      * The user name for vSphere API operations.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
     /**
      * @deprecated This field has been renamed to vsphere_server.
      */
-    readonly vcenterServer?: pulumi.Input<string>;
+    vcenterServer?: pulumi.Input<string>;
     /**
      * Keep alive interval for the VIM session in minutes
      */
-    readonly vimKeepAlive?: pulumi.Input<number>;
+    vimKeepAlive?: pulumi.Input<number>;
     /**
      * The directory to save vSphere SOAP API sessions to
      */
-    readonly vimSessionPath?: pulumi.Input<string>;
+    vimSessionPath?: pulumi.Input<string>;
     /**
      * The vSphere Server name for vSphere API operations.
      */
-    readonly vsphereServer?: pulumi.Input<string>;
+    vsphereServer?: pulumi.Input<string>;
 }

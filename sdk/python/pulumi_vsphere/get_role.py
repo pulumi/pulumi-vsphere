@@ -12,6 +12,7 @@ __all__ = [
     'GetRoleResult',
     'AwaitableGetRoleResult',
     'get_role',
+    'get_role_output',
 ]
 
 @pulumi.output_type
@@ -127,3 +128,30 @@ def get_role(description: Optional[str] = None,
         label=__ret__.label,
         name=__ret__.name,
         role_privileges=__ret__.role_privileges)
+
+
+@_utilities.lift_output_func(get_role)
+def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                    label: Optional[pulumi.Input[str]] = None,
+                    name: Optional[pulumi.Input[Optional[str]]] = None,
+                    role_privileges: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+    """
+    The `Role` data source can be used to discover the id and privileges associated
+    with a role given its name or display label in vsphere UI.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    role1 = vsphere.get_role(label="Virtual machine user (sample)")
+    ```
+
+
+    :param str description: The description of the role.
+    :param str label: The label of the role.
+    :param Sequence[str] role_privileges: The privileges associated with the role.
+    """
+    ...

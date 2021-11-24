@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -48,6 +49,44 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
+        /// existing virtual machine or template. Its most relevant purpose is for finding
+        /// the UUID of a template to be used as the source for cloning into a new
+        /// `vsphere.VirtualMachine` resource. It also
+        /// reads the guest ID so that can be supplied as well.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "test-vm-template",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithVersion());
     }
 
 
@@ -247,6 +286,206 @@ namespace Pulumi.VSphere
         public bool? VvtdEnabled { get; set; }
 
         public GetVirtualMachineArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualMachineInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The alternate guest name of the virtual machine when
+        /// guest_id is a non-specific operating system, like `otherGuest`.
+        /// </summary>
+        [Input("alternateGuestName")]
+        public Input<string>? AlternateGuestName { get; set; }
+
+        /// <summary>
+        /// The user-provided description of this virtual machine.
+        /// </summary>
+        [Input("annotation")]
+        public Input<string>? Annotation { get; set; }
+
+        [Input("bootDelay")]
+        public Input<int>? BootDelay { get; set; }
+
+        [Input("bootRetryDelay")]
+        public Input<int>? BootRetryDelay { get; set; }
+
+        [Input("bootRetryEnabled")]
+        public Input<bool>? BootRetryEnabled { get; set; }
+
+        [Input("cpuHotAddEnabled")]
+        public Input<bool>? CpuHotAddEnabled { get; set; }
+
+        [Input("cpuHotRemoveEnabled")]
+        public Input<bool>? CpuHotRemoveEnabled { get; set; }
+
+        [Input("cpuLimit")]
+        public Input<int>? CpuLimit { get; set; }
+
+        [Input("cpuPerformanceCountersEnabled")]
+        public Input<bool>? CpuPerformanceCountersEnabled { get; set; }
+
+        [Input("cpuReservation")]
+        public Input<int>? CpuReservation { get; set; }
+
+        [Input("cpuShareCount")]
+        public Input<int>? CpuShareCount { get; set; }
+
+        [Input("cpuShareLevel")]
+        public Input<string>? CpuShareLevel { get; set; }
+
+        /// <summary>
+        /// The managed object reference
+        /// ID of the datacenter the virtual machine is located in.
+        /// This can be omitted if the search path used in `name` is an absolute path.
+        /// For default datacenters, use the `id` attribute from an empty
+        /// `vsphere.Datacenter` data source.
+        /// </summary>
+        [Input("datacenterId")]
+        public Input<string>? DatacenterId { get; set; }
+
+        [Input("efiSecureBootEnabled")]
+        public Input<bool>? EfiSecureBootEnabled { get; set; }
+
+        [Input("enableDiskUuid")]
+        public Input<bool>? EnableDiskUuid { get; set; }
+
+        [Input("enableLogging")]
+        public Input<bool>? EnableLogging { get; set; }
+
+        [Input("eptRviMode")]
+        public Input<string>? EptRviMode { get; set; }
+
+        [Input("extraConfig")]
+        private InputMap<string>? _extraConfig;
+        public InputMap<string> ExtraConfig
+        {
+            get => _extraConfig ?? (_extraConfig = new InputMap<string>());
+            set => _extraConfig = value;
+        }
+
+        /// <summary>
+        /// The firmware type for this virtual machine. Can be `bios` or `efi`.
+        /// </summary>
+        [Input("firmware")]
+        public Input<string>? Firmware { get; set; }
+
+        /// <summary>
+        /// The guest ID of the virtual machine or template.
+        /// </summary>
+        [Input("guestId")]
+        public Input<string>? GuestId { get; set; }
+
+        /// <summary>
+        /// The hardware version number on this virtual machine.
+        /// </summary>
+        [Input("hardwareVersion")]
+        public Input<int>? HardwareVersion { get; set; }
+
+        [Input("hvMode")]
+        public Input<string>? HvMode { get; set; }
+
+        [Input("ideControllerScanCount")]
+        public Input<int>? IdeControllerScanCount { get; set; }
+
+        [Input("latencySensitivity")]
+        public Input<string>? LatencySensitivity { get; set; }
+
+        /// <summary>
+        /// The size of the virtual machine's memory, in MB.
+        /// </summary>
+        [Input("memory")]
+        public Input<int>? Memory { get; set; }
+
+        [Input("memoryHotAddEnabled")]
+        public Input<bool>? MemoryHotAddEnabled { get; set; }
+
+        [Input("memoryLimit")]
+        public Input<int>? MemoryLimit { get; set; }
+
+        [Input("memoryReservation")]
+        public Input<int>? MemoryReservation { get; set; }
+
+        [Input("memoryShareCount")]
+        public Input<int>? MemoryShareCount { get; set; }
+
+        [Input("memoryShareLevel")]
+        public Input<string>? MemoryShareLevel { get; set; }
+
+        /// <summary>
+        /// The name of the virtual machine. This can be a name or
+        /// path.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("nestedHvEnabled")]
+        public Input<bool>? NestedHvEnabled { get; set; }
+
+        /// <summary>
+        /// The number of cores per socket for this virtual machine.
+        /// </summary>
+        [Input("numCoresPerSocket")]
+        public Input<int>? NumCoresPerSocket { get; set; }
+
+        /// <summary>
+        /// The total number of virtual processor cores assigned to this
+        /// virtual machine.
+        /// </summary>
+        [Input("numCpus")]
+        public Input<int>? NumCpus { get; set; }
+
+        [Input("replaceTrigger")]
+        public Input<string>? ReplaceTrigger { get; set; }
+
+        [Input("runToolsScriptsAfterPowerOn")]
+        public Input<bool>? RunToolsScriptsAfterPowerOn { get; set; }
+
+        [Input("runToolsScriptsAfterResume")]
+        public Input<bool>? RunToolsScriptsAfterResume { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestReboot")]
+        public Input<bool>? RunToolsScriptsBeforeGuestReboot { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestShutdown")]
+        public Input<bool>? RunToolsScriptsBeforeGuestShutdown { get; set; }
+
+        [Input("runToolsScriptsBeforeGuestStandby")]
+        public Input<bool>? RunToolsScriptsBeforeGuestStandby { get; set; }
+
+        [Input("sataControllerScanCount")]
+        public Input<int>? SataControllerScanCount { get; set; }
+
+        /// <summary>
+        /// The number of SCSI controllers to
+        /// scan for disk attributes and controller types on. Default: `1`.
+        /// </summary>
+        [Input("scsiControllerScanCount")]
+        public Input<int>? ScsiControllerScanCount { get; set; }
+
+        [Input("storagePolicyId")]
+        public Input<string>? StoragePolicyId { get; set; }
+
+        [Input("swapPlacementPolicy")]
+        public Input<string>? SwapPlacementPolicy { get; set; }
+
+        [Input("syncTimeWithHost")]
+        public Input<bool>? SyncTimeWithHost { get; set; }
+
+        [Input("syncTimeWithHostPeriodically")]
+        public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
+
+        [Input("vapp")]
+        public Input<Inputs.GetVirtualMachineVappInputArgs>? Vapp { get; set; }
+
+        [Input("vbsEnabled")]
+        public Input<bool>? VbsEnabled { get; set; }
+
+        [Input("vvtdEnabled")]
+        public Input<bool>? VvtdEnabled { get; set; }
+
+        public GetVirtualMachineInvokeArgs()
         {
         }
     }

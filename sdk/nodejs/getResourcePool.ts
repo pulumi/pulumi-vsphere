@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,11 +18,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const pool = datacenter.apply(datacenter => vsphere.getResourcePool({
  *     datacenterId: datacenter.id,
  *     name: "resource-pool-1",
- * }, { async: true }));
+ * }));
  * ```
  * ### Specifying the root resource pool for a standalone host
  *
@@ -43,7 +42,7 @@ import * as utilities from "./utilities";
  * const pool = vsphere_datacenter_dc.id.apply(id => vsphere.getResourcePool({
  *     datacenterId: id,
  *     name: "esxi1/Resources",
- * }, { async: true }));
+ * }));
  * ```
  *
  * For more information on the root resource pool, see [Managing Resource
@@ -77,12 +76,12 @@ export interface GetResourcePoolArgs {
      * For default datacenters, use the id attribute from an empty
      * `vsphere.Datacenter` data source.
      */
-    readonly datacenterId?: string;
+    datacenterId?: string;
     /**
      * The name of the resource pool. This can be a name or
      * path. This is required when using vCenter.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -95,4 +94,27 @@ export interface GetResourcePoolResult {
      */
     readonly id: string;
     readonly name?: string;
+}
+
+export function getResourcePoolOutput(args?: GetResourcePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePoolResult> {
+    return pulumi.output(args).apply(a => getResourcePool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourcePool.
+ */
+export interface GetResourcePoolOutputArgs {
+    /**
+     * The managed object reference
+     * ID of the datacenter the resource pool is located in.
+     * This can be omitted if the search path used in `name` is an absolute path.
+     * For default datacenters, use the id attribute from an empty
+     * `vsphere.Datacenter` data source.
+     */
+    datacenterId?: pulumi.Input<string>;
+    /**
+     * The name of the resource pool. This can be a name or
+     * path. This is required when using vCenter.
+     */
+    name?: pulumi.Input<string>;
 }

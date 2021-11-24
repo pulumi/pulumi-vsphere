@@ -12,6 +12,7 @@ __all__ = [
     'GetDatastoreResult',
     'AwaitableGetDatastoreResult',
     'get_datastore',
+    'get_datastore_output',
 ]
 
 @pulumi.output_type
@@ -64,7 +65,7 @@ def get_datastore(datacenter_id: Optional[str] = None,
                   name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
-    The `getDatastore` data source can be used to discover the ID of a
+    The `get_datastore` data source can be used to discover the ID of a
     datastore in vSphere. This is useful to fetch the ID of a datastore that you
     want to use to create virtual machines in using the
     `VirtualMachine` resource.
@@ -101,3 +102,35 @@ def get_datastore(datacenter_id: Optional[str] = None,
         datacenter_id=__ret__.datacenter_id,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_datastore)
+def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreResult]:
+    """
+    The `get_datastore` data source can be used to discover the ID of a
+    datastore in vSphere. This is useful to fetch the ID of a datastore that you
+    want to use to create virtual machines in using the
+    `VirtualMachine` resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    datastore = vsphere.get_datastore(datacenter_id=datacenter.id,
+        name="datastore1")
+    ```
+
+
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the datastore is located in. This
+           can be omitted if the search path used in `name` is an absolute path. For
+           default datacenters, use the id attribute from an empty `Datacenter`
+           data source.
+    :param str name: The name of the datastore. This can be a name or path.
+    """
+    ...

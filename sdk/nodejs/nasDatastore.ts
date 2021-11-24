@@ -214,27 +214,27 @@ export interface NasDatastoreState {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    readonly accessible?: pulumi.Input<boolean>;
+    accessible?: pulumi.Input<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    readonly capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -244,71 +244,71 @@ export interface NasDatastoreState {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    readonly freeSpace?: pulumi.Input<number>;
+    freeSpace?: pulumi.Input<number>;
     /**
      * The managed object IDs of
      * the hosts to mount the datastore on.
      */
-    readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    readonly maintenanceMode?: pulumi.Input<string>;
+    maintenanceMode?: pulumi.Input<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    readonly multipleHostAccess?: pulumi.Input<boolean>;
+    multipleHostAccess?: pulumi.Input<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Indicates that this NAS volume is a protocol endpoint.
      * This field is only populated if the host supports virtual datastores.
      */
-    readonly protocolEndpoint?: pulumi.Input<boolean>;
+    protocolEndpoint?: pulumi.Input<boolean>;
     /**
      * The hostnames or IP addresses of the remote
      * server or servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
-    readonly remoteHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteHosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The remote path of the mount point. Forces a new
      * resource if changed.
      */
-    readonly remotePath?: pulumi.Input<string>;
+    remotePath?: pulumi.Input<string>;
     /**
      * The security type to use when using NFS v4.1.
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    readonly securityType?: pulumi.Input<string>;
+    securityType?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    readonly uncommittedSpace?: pulumi.Input<number>;
+    uncommittedSpace?: pulumi.Input<number>;
     /**
      * The unique locator for the datastore.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -321,18 +321,18 @@ export interface NasDatastoreArgs {
      * that the datastore will be read-write depending on the permissions of the
      * actual share. Default: `readWrite`. Forces a new resource if changed.
      */
-    readonly accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute 
      * value strings to set on datasource resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -342,42 +342,42 @@ export interface NasDatastoreArgs {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The managed object IDs of
      * the hosts to mount the datastore on.
      */
-    readonly hostSystemIds: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The hostnames or IP addresses of the remote
      * server or servers. Only one element should be present for NFS v3 but multiple
      * can be present for NFS v4.1. Forces a new resource if changed.
      */
-    readonly remoteHosts: pulumi.Input<pulumi.Input<string>[]>;
+    remoteHosts: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The remote path of the mount point. Forces a new
      * resource if changed.
      */
-    readonly remotePath: pulumi.Input<string>;
+    remotePath: pulumi.Input<string>;
     /**
      * The security type to use when using NFS v4.1.
      * Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
      * if changed.
      */
-    readonly securityType?: pulumi.Input<string>;
+    securityType?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of NAS volume. Can be one of `NFS` (to denote
      * v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
      * changed.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

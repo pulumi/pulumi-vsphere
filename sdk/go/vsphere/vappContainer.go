@@ -425,7 +425,7 @@ type VappContainerArrayInput interface {
 type VappContainerArray []VappContainerInput
 
 func (VappContainerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VappContainer)(nil))
+	return reflect.TypeOf((*[]*VappContainer)(nil)).Elem()
 }
 
 func (i VappContainerArray) ToVappContainerArrayOutput() VappContainerArrayOutput {
@@ -450,7 +450,7 @@ type VappContainerMapInput interface {
 type VappContainerMap map[string]VappContainerInput
 
 func (VappContainerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VappContainer)(nil))
+	return reflect.TypeOf((*map[string]*VappContainer)(nil)).Elem()
 }
 
 func (i VappContainerMap) ToVappContainerMapOutput() VappContainerMapOutput {
@@ -461,9 +461,7 @@ func (i VappContainerMap) ToVappContainerMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VappContainerMapOutput)
 }
 
-type VappContainerOutput struct {
-	*pulumi.OutputState
-}
+type VappContainerOutput struct{ *pulumi.OutputState }
 
 func (VappContainerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VappContainer)(nil))
@@ -482,14 +480,12 @@ func (o VappContainerOutput) ToVappContainerPtrOutput() VappContainerPtrOutput {
 }
 
 func (o VappContainerOutput) ToVappContainerPtrOutputWithContext(ctx context.Context) VappContainerPtrOutput {
-	return o.ApplyT(func(v VappContainer) *VappContainer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VappContainer) *VappContainer {
 		return &v
 	}).(VappContainerPtrOutput)
 }
 
-type VappContainerPtrOutput struct {
-	*pulumi.OutputState
-}
+type VappContainerPtrOutput struct{ *pulumi.OutputState }
 
 func (VappContainerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VappContainer)(nil))
@@ -501,6 +497,16 @@ func (o VappContainerPtrOutput) ToVappContainerPtrOutput() VappContainerPtrOutpu
 
 func (o VappContainerPtrOutput) ToVappContainerPtrOutputWithContext(ctx context.Context) VappContainerPtrOutput {
 	return o
+}
+
+func (o VappContainerPtrOutput) Elem() VappContainerOutput {
+	return o.ApplyT(func(v *VappContainer) VappContainer {
+		if v != nil {
+			return *v
+		}
+		var ret VappContainer
+		return ret
+	}).(VappContainerOutput)
 }
 
 type VappContainerArrayOutput struct{ *pulumi.OutputState }
@@ -544,6 +550,10 @@ func (o VappContainerMapOutput) MapIndex(k pulumi.StringInput) VappContainerOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VappContainerInput)(nil)).Elem(), &VappContainer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappContainerPtrInput)(nil)).Elem(), &VappContainer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappContainerArrayInput)(nil)).Elem(), VappContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VappContainerMapInput)(nil)).Elem(), VappContainerMap{})
 	pulumi.RegisterOutputType(VappContainerOutput{})
 	pulumi.RegisterOutputType(VappContainerPtrOutput{})
 	pulumi.RegisterOutputType(VappContainerArrayOutput{})

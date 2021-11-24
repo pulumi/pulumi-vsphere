@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -26,11 +25,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const computeCluster = vsphere_datacenter_dc.id.apply(id => vsphere.getComputeCluster({
  *     datacenterId: id,
  *     name: "compute-cluster1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
@@ -58,11 +57,11 @@ export interface GetComputeClusterArgs {
      * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
      * data source.
      */
-    readonly datacenterId?: string;
+    datacenterId?: string;
     /**
      * The name or absolute path to the cluster.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -76,4 +75,26 @@ export interface GetComputeClusterResult {
     readonly id: string;
     readonly name: string;
     readonly resourcePoolId: string;
+}
+
+export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterResult> {
+    return pulumi.output(args).apply(a => getComputeCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeCluster.
+ */
+export interface GetComputeClusterOutputArgs {
+    /**
+     * The managed object reference
+     * ID of the datacenter the cluster is located in.  This can
+     * be omitted if the search path used in `name` is an absolute path.  For
+     * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
+     * data source.
+     */
+    datacenterId?: pulumi.Input<string>;
+    /**
+     * The name or absolute path to the cluster.
+     */
+    name: pulumi.Input<string>;
 }

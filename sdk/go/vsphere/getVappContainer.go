@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,13 +28,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.LookupVappContainer(ctx, &vsphere.LookupVappContainerArgs{
+// 		_, err = vsphere.LookupVappContainer(ctx, &GetVappContainerArgs{
 // 			DatacenterId: datacenter.Id,
 // 			Name:         "vapp-container-1",
 // 		}, nil)
@@ -67,4 +70,59 @@ type LookupVappContainerResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupVappContainerOutput(ctx *pulumi.Context, args LookupVappContainerOutputArgs, opts ...pulumi.InvokeOption) LookupVappContainerResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupVappContainerResult, error) {
+			args := v.(LookupVappContainerArgs)
+			r, err := LookupVappContainer(ctx, &args, opts...)
+			return *r, err
+		}).(LookupVappContainerResultOutput)
+}
+
+// A collection of arguments for invoking getVappContainer.
+type LookupVappContainerOutputArgs struct {
+	// The managed object reference
+	// ID of the datacenter the vApp container is located in.
+	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
+	// The name of the vApp container. This can be a name or
+	// path.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupVappContainerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVappContainerArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVappContainer.
+type LookupVappContainerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVappContainerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVappContainerResult)(nil)).Elem()
+}
+
+func (o LookupVappContainerResultOutput) ToLookupVappContainerResultOutput() LookupVappContainerResultOutput {
+	return o
+}
+
+func (o LookupVappContainerResultOutput) ToLookupVappContainerResultOutputWithContext(ctx context.Context) LookupVappContainerResultOutput {
+	return o
+}
+
+func (o LookupVappContainerResultOutput) DatacenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVappContainerResult) string { return v.DatacenterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupVappContainerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVappContainerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupVappContainerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVappContainerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVappContainerResultOutput{})
 }

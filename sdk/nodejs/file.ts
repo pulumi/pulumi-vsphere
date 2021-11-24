@@ -167,38 +167,38 @@ export interface FileState {
      * Create directories in `destinationFile`
      * path parameter if any missing for copy operation.
      */
-    readonly createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of a datacenter in which the file will be
      * uploaded to.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which to upload the
      * file to.
      */
-    readonly datastore?: pulumi.Input<string>;
+    datastore?: pulumi.Input<string>;
     /**
      * The path to where the file should be uploaded
      * or copied to on vSphere.
      */
-    readonly destinationFile?: pulumi.Input<string>;
+    destinationFile?: pulumi.Input<string>;
     /**
      * The name of a datacenter in which the file
      * will be copied from. Forces a new resource if changed.
      */
-    readonly sourceDatacenter?: pulumi.Input<string>;
+    sourceDatacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which file will
      * be copied from. Forces a new resource if changed.
      */
-    readonly sourceDatastore?: pulumi.Input<string>;
+    sourceDatastore?: pulumi.Input<string>;
     /**
      * The path to the file being uploaded from the
      * host to vSphere or copied within vSphere. Forces a new resource if
      * changed.
      */
-    readonly sourceFile?: pulumi.Input<string>;
+    sourceFile?: pulumi.Input<string>;
 }
 
 /**
@@ -209,36 +209,36 @@ export interface FileArgs {
      * Create directories in `destinationFile`
      * path parameter if any missing for copy operation.
      */
-    readonly createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of a datacenter in which the file will be
      * uploaded to.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which to upload the
      * file to.
      */
-    readonly datastore: pulumi.Input<string>;
+    datastore: pulumi.Input<string>;
     /**
      * The path to where the file should be uploaded
      * or copied to on vSphere.
      */
-    readonly destinationFile: pulumi.Input<string>;
+    destinationFile: pulumi.Input<string>;
     /**
      * The name of a datacenter in which the file
      * will be copied from. Forces a new resource if changed.
      */
-    readonly sourceDatacenter?: pulumi.Input<string>;
+    sourceDatacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which file will
      * be copied from. Forces a new resource if changed.
      */
-    readonly sourceDatastore?: pulumi.Input<string>;
+    sourceDatastore?: pulumi.Input<string>;
     /**
      * The path to the file being uploaded from the
      * host to vSphere or copied within vSphere. Forces a new resource if
      * changed.
      */
-    readonly sourceFile: pulumi.Input<string>;
+    sourceFile: pulumi.Input<string>;
 }

@@ -373,3 +373,64 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="clientDebugPath")
+    def client_debug_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        govmomi debug path for debug
+        """
+        return pulumi.get(self, "client_debug_path")
+
+    @property
+    @pulumi.getter(name="clientDebugPathRun")
+    def client_debug_path_run(self) -> pulumi.Output[Optional[str]]:
+        """
+        govmomi debug path for a single run
+        """
+        return pulumi.get(self, "client_debug_path_run")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[str]:
+        """
+        The user password for vSphere API operations.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="restSessionPath")
+    def rest_session_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The directory to save vSphere REST API sessions to
+        """
+        return pulumi.get(self, "rest_session_path")
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Output[str]:
+        """
+        The user name for vSphere API operations.
+        """
+        return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter(name="vcenterServer")
+    def vcenter_server(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vcenter_server")
+
+    @property
+    @pulumi.getter(name="vimSessionPath")
+    def vim_session_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The directory to save vSphere SOAP API sessions to
+        """
+        return pulumi.get(self, "vim_session_path")
+
+    @property
+    @pulumi.getter(name="vsphereServer")
+    def vsphere_server(self) -> pulumi.Output[Optional[str]]:
+        """
+        The vSphere Server name for vSphere API operations.
+        """
+        return pulumi.get(self, "vsphere_server")
+

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -41,6 +42,37 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.Folder` data source can be used to get the general attributes of a
+        /// vSphere inventory folder. Paths are absolute and include must include the
+        /// datacenter.  
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs
+        ///         {
+        ///             Path = "/dc1/datastore/folder1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +89,23 @@ namespace Pulumi.VSphere
         public string Path { get; set; } = null!;
 
         public GetFolderArgs()
+        {
+        }
+    }
+
+    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The absolute path of the folder. For example, given a
+        /// default datacenter of `default-dc`, a folder of type `vm`, and a folder name
+        /// of `test-folder`, the resulting path would be
+        /// `/default-dc/vm/test-folder`. The valid folder types to be used in
+        /// the path are: `vm`, `host`, `datacenter`, `datastore`, or `network`.
+        /// </summary>
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
+
+        public GetFolderInvokeArgs()
         {
         }
     }

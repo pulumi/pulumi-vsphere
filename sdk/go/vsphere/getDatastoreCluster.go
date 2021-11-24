@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,14 +31,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		_, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := data.Vsphere_datacenter.Dc.Id
-// 		_, err = vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
+// 		_, err = vsphere.LookupDatastoreCluster(ctx, &GetDatastoreClusterArgs{
 // 			DatacenterId: &opt1,
 // 			Name:         "datastore-cluster1",
 // 		}, nil)
@@ -73,4 +76,61 @@ type LookupDatastoreClusterResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupDatastoreClusterOutput(ctx *pulumi.Context, args LookupDatastoreClusterOutputArgs, opts ...pulumi.InvokeOption) LookupDatastoreClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDatastoreClusterResult, error) {
+			args := v.(LookupDatastoreClusterArgs)
+			r, err := LookupDatastoreCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDatastoreClusterResultOutput)
+}
+
+// A collection of arguments for invoking getDatastoreCluster.
+type LookupDatastoreClusterOutputArgs struct {
+	// The managed object reference
+	// ID of the datacenter the datastore cluster is located in.
+	// This can be omitted if the search path used in `name` is an absolute path.
+	// For default datacenters, use the id attribute from an empty
+	// `Datacenter` data source.
+	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
+	// The name or absolute path to the datastore cluster.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupDatastoreClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatastoreClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatastoreCluster.
+type LookupDatastoreClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDatastoreClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatastoreClusterResult)(nil)).Elem()
+}
+
+func (o LookupDatastoreClusterResultOutput) ToLookupDatastoreClusterResultOutput() LookupDatastoreClusterResultOutput {
+	return o
+}
+
+func (o LookupDatastoreClusterResultOutput) ToLookupDatastoreClusterResultOutputWithContext(ctx context.Context) LookupDatastoreClusterResultOutput {
+	return o
+}
+
+func (o LookupDatastoreClusterResultOutput) DatacenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatastoreClusterResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDatastoreClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatastoreClusterResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDatastoreClusterResultOutput{})
 }

@@ -28,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-datacenter"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -61,14 +61,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "TfDatacenter"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := dc.Id
-// 		c1, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+// 		c1, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
 // 			Name:         "DC0_C0",
 // 			DatacenterId: &opt1,
 // 		}, nil)
@@ -421,7 +421,7 @@ type HostArrayInput interface {
 type HostArray []HostInput
 
 func (HostArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Host)(nil))
+	return reflect.TypeOf((*[]*Host)(nil)).Elem()
 }
 
 func (i HostArray) ToHostArrayOutput() HostArrayOutput {
@@ -446,7 +446,7 @@ type HostMapInput interface {
 type HostMap map[string]HostInput
 
 func (HostMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Host)(nil))
+	return reflect.TypeOf((*map[string]*Host)(nil)).Elem()
 }
 
 func (i HostMap) ToHostMapOutput() HostMapOutput {
@@ -457,9 +457,7 @@ func (i HostMap) ToHostMapOutputWithContext(ctx context.Context) HostMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostMapOutput)
 }
 
-type HostOutput struct {
-	*pulumi.OutputState
-}
+type HostOutput struct{ *pulumi.OutputState }
 
 func (HostOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Host)(nil))
@@ -478,14 +476,12 @@ func (o HostOutput) ToHostPtrOutput() HostPtrOutput {
 }
 
 func (o HostOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
-	return o.ApplyT(func(v Host) *Host {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Host) *Host {
 		return &v
 	}).(HostPtrOutput)
 }
 
-type HostPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostPtrOutput struct{ *pulumi.OutputState }
 
 func (HostPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Host)(nil))
@@ -497,6 +493,16 @@ func (o HostPtrOutput) ToHostPtrOutput() HostPtrOutput {
 
 func (o HostPtrOutput) ToHostPtrOutputWithContext(ctx context.Context) HostPtrOutput {
 	return o
+}
+
+func (o HostPtrOutput) Elem() HostOutput {
+	return o.ApplyT(func(v *Host) Host {
+		if v != nil {
+			return *v
+		}
+		var ret Host
+		return ret
+	}).(HostOutput)
 }
 
 type HostArrayOutput struct{ *pulumi.OutputState }
@@ -540,6 +546,10 @@ func (o HostMapOutput) MapIndex(k pulumi.StringInput) HostOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostInput)(nil)).Elem(), &Host{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPtrInput)(nil)).Elem(), &Host{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostArrayInput)(nil)).Elem(), HostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostMapInput)(nil)).Elem(), HostMap{})
 	pulumi.RegisterOutputType(HostOutput{})
 	pulumi.RegisterOutputType(HostPtrOutput{})
 	pulumi.RegisterOutputType(HostArrayOutput{})

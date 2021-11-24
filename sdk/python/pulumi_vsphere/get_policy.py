@@ -12,6 +12,7 @@ __all__ = [
     'GetPolicyResult',
     'AwaitableGetPolicyResult',
     'get_policy',
+    'get_policy_output',
 ]
 
 @pulumi.output_type
@@ -54,7 +55,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    The `getPolicy` data source can be used to discover the UUID of a
+    The `get_policy` data source can be used to discover the UUID of a
     vSphere storage policy. This can then be used with resources or data sources that
     require a storage policy.
 
@@ -84,3 +85,29 @@ def get_policy(name: Optional[str] = None,
     return AwaitableGetPolicyResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_policy)
+def get_policy_output(name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+    """
+    The `get_policy` data source can be used to discover the UUID of a
+    vSphere storage policy. This can then be used with resources or data sources that
+    require a storage policy.
+
+    > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
+    requires vCenter 6.0 or higher.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    policy = vsphere.get_policy(name="policy1")
+    ```
+
+
+    :param str name: The name of the storage policy.
+    """
+    ...

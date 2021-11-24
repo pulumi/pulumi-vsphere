@@ -171,26 +171,26 @@ export interface VmfsDatastoreState {
      * The connectivity status of the datastore. If this is `false`,
      * some other computed attributes may be out of date.
      */
-    readonly accessible?: pulumi.Input<boolean>;
+    accessible?: pulumi.Input<boolean>;
     /**
      * Maximum capacity of the datastore, in megabytes.
      */
-    readonly capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number>;
     /**
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * The disks to use with the datastore.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<string>[]>;
+    disks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -200,11 +200,11 @@ export interface VmfsDatastoreState {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * Available space of this datastore, in megabytes.
      */
-    readonly freeSpace?: pulumi.Input<number>;
+    freeSpace?: pulumi.Input<number>;
     /**
      * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -212,34 +212,34 @@ export interface VmfsDatastoreState {
      * here for more info. Forces a
      * new resource if changed.
      */
-    readonly hostSystemId?: pulumi.Input<string>;
+    hostSystemId?: pulumi.Input<string>;
     /**
      * The current maintenance mode state of the datastore.
      */
-    readonly maintenanceMode?: pulumi.Input<string>;
+    maintenanceMode?: pulumi.Input<string>;
     /**
      * If `true`, more than one host in the datacenter has
      * been configured with access to the datastore.
      */
-    readonly multipleHostAccess?: pulumi.Input<boolean>;
+    multipleHostAccess?: pulumi.Input<boolean>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Total additional storage space, in megabytes,
      * potentially used by all virtual machines on this datastore.
      */
-    readonly uncommittedSpace?: pulumi.Input<number>;
+    uncommittedSpace?: pulumi.Input<number>;
     /**
      * The unique locator for the datastore.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -250,17 +250,17 @@ export interface VmfsDatastoreArgs {
      * Map of custom attribute ids to attribute 
      * value string to set on datastore resource.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object
      * ID of a datastore cluster to put this datastore in.
      * Conflicts with `folder`.
      */
-    readonly datastoreClusterId?: pulumi.Input<string>;
+    datastoreClusterId?: pulumi.Input<string>;
     /**
      * The disks to use with the datastore.
      */
-    readonly disks: pulumi.Input<pulumi.Input<string>[]>;
+    disks: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The relative path to a folder to put this datastore in.
      * This is a path relative to the datacenter you are deploying the datastore to.
@@ -270,7 +270,7 @@ export interface VmfsDatastoreArgs {
      * `/dc1/datastore/foo/bar/test`. Conflicts with
      * `datastoreClusterId`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * The managed object ID of
      * the host to set the datastore up on. Note that this is not necessarily the
@@ -278,14 +278,14 @@ export interface VmfsDatastoreArgs {
      * here for more info. Forces a
      * new resource if changed.
      */
-    readonly hostSystemId: pulumi.Input<string>;
+    hostSystemId: pulumi.Input<string>;
     /**
      * The name of the datastore. Forces a new resource if
      * changed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

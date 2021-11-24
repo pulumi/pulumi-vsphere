@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -18,11 +17,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const host = datacenter.apply(datacenter => vsphere.getHost({
  *     datacenterId: datacenter.id,
  *     name: "esxi1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
@@ -47,12 +46,12 @@ export interface GetHostArgs {
      * The managed object reference
      * ID of a datacenter.
      */
-    readonly datacenterId: string;
+    datacenterId: string;
     /**
      * The name of the host. This can be a name or path. Can be
      * omitted if there is only one host in your inventory.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -70,4 +69,24 @@ export interface GetHostResult {
      * root resource pool.
      */
     readonly resourcePoolId: string;
+}
+
+export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostResult> {
+    return pulumi.output(args).apply(a => getHost(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHost.
+ */
+export interface GetHostOutputArgs {
+    /**
+     * The managed object reference
+     * ID of a datacenter.
+     */
+    datacenterId: pulumi.Input<string>;
+    /**
+     * The name of the host. This can be a name or path. Can be
+     * omitted if there is only one host in your inventory.
+     */
+    name?: pulumi.Input<string>;
 }

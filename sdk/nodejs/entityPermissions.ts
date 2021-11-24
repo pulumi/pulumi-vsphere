@@ -93,17 +93,17 @@ export interface EntityPermissionsState {
     /**
      * The managed object id (uuid for some entities) on which permissions are to be created.
      */
-    readonly entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string>;
     /**
      * The managed object type, types can be found in the managed object type section 
      * [here](https://code.vmware.com/apis/968/vsphere).
      */
-    readonly entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string>;
     /**
      * The permissions to be given on this entity. Keep the permissions sorted
      * alphabetically on `userOrGroup` for a better user experience.
      */
-    readonly permissions?: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
 }
 
 /**
@@ -113,15 +113,15 @@ export interface EntityPermissionsArgs {
     /**
      * The managed object id (uuid for some entities) on which permissions are to be created.
      */
-    readonly entityId: pulumi.Input<string>;
+    entityId: pulumi.Input<string>;
     /**
      * The managed object type, types can be found in the managed object type section 
      * [here](https://code.vmware.com/apis/968/vsphere).
      */
-    readonly entityType: pulumi.Input<string>;
+    entityType: pulumi.Input<string>;
     /**
      * The permissions to be given on this entity. Keep the permissions sorted
      * alphabetically on `userOrGroup` for a better user experience.
      */
-    readonly permissions: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
+    permissions: pulumi.Input<pulumi.Input<inputs.EntityPermissionsPermission>[]>;
 }

@@ -219,7 +219,7 @@ func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutput() 
 }
 
 func (o ContentLibraryPublicationOutput) ToContentLibraryPublicationPtrOutputWithContext(ctx context.Context) ContentLibraryPublicationPtrOutput {
-	return o.ApplyT(func(v ContentLibraryPublication) *ContentLibraryPublication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLibraryPublication) *ContentLibraryPublication {
 		return &v
 	}).(ContentLibraryPublicationPtrOutput)
 }
@@ -264,7 +264,13 @@ func (o ContentLibraryPublicationPtrOutput) ToContentLibraryPublicationPtrOutput
 }
 
 func (o ContentLibraryPublicationPtrOutput) Elem() ContentLibraryPublicationOutput {
-	return o.ApplyT(func(v *ContentLibraryPublication) ContentLibraryPublication { return *v }).(ContentLibraryPublicationOutput)
+	return o.ApplyT(func(v *ContentLibraryPublication) ContentLibraryPublication {
+		if v != nil {
+			return *v
+		}
+		var ret ContentLibraryPublication
+		return ret
+	}).(ContentLibraryPublicationOutput)
 }
 
 // Method to log into remote Content Library. Must be `NONE` or `BASIC`.
@@ -430,7 +436,7 @@ func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionPtrOutput(
 }
 
 func (o ContentLibrarySubscriptionOutput) ToContentLibrarySubscriptionPtrOutputWithContext(ctx context.Context) ContentLibrarySubscriptionPtrOutput {
-	return o.ApplyT(func(v ContentLibrarySubscription) *ContentLibrarySubscription {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLibrarySubscription) *ContentLibrarySubscription {
 		return &v
 	}).(ContentLibrarySubscriptionPtrOutput)
 }
@@ -480,7 +486,13 @@ func (o ContentLibrarySubscriptionPtrOutput) ToContentLibrarySubscriptionPtrOutp
 }
 
 func (o ContentLibrarySubscriptionPtrOutput) Elem() ContentLibrarySubscriptionOutput {
-	return o.ApplyT(func(v *ContentLibrarySubscription) ContentLibrarySubscription { return *v }).(ContentLibrarySubscriptionOutput)
+	return o.ApplyT(func(v *ContentLibrarySubscription) ContentLibrarySubscription {
+		if v != nil {
+			return *v
+		}
+		var ret ContentLibrarySubscription
+		return ret
+	}).(ContentLibrarySubscriptionOutput)
 }
 
 // Method to log into remote Content Library. Must be `NONE` or `BASIC`.
@@ -1333,7 +1345,7 @@ func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutput() VirtualMachi
 }
 
 func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCdrom) *VirtualMachineCdrom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCdrom) *VirtualMachineCdrom {
 		return &v
 	}).(VirtualMachineCdromPtrOutput)
 }
@@ -1384,7 +1396,13 @@ func (o VirtualMachineCdromPtrOutput) ToVirtualMachineCdromPtrOutputWithContext(
 }
 
 func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) VirtualMachineCdrom { return *v }).(VirtualMachineCdromOutput)
+	return o.ApplyT(func(v *VirtualMachineCdrom) VirtualMachineCdrom {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineCdrom
+		return ret
+	}).(VirtualMachineCdromOutput)
 }
 
 // Indicates whether the device should be backed by
@@ -1544,10 +1562,11 @@ func (o VirtualMachineCloneOutput) ToVirtualMachineClonePtrOutput() VirtualMachi
 }
 
 func (o VirtualMachineCloneOutput) ToVirtualMachineClonePtrOutputWithContext(ctx context.Context) VirtualMachineClonePtrOutput {
-	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineClone {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineClone) *VirtualMachineClone {
 		return &v
 	}).(VirtualMachineClonePtrOutput)
 }
+
 func (o VirtualMachineCloneOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
 	return o.ApplyT(func(v VirtualMachineClone) *VirtualMachineCloneCustomize { return v.Customize }).(VirtualMachineCloneCustomizePtrOutput)
 }
@@ -1587,7 +1606,13 @@ func (o VirtualMachineClonePtrOutput) ToVirtualMachineClonePtrOutputWithContext(
 }
 
 func (o VirtualMachineClonePtrOutput) Elem() VirtualMachineCloneOutput {
-	return o.ApplyT(func(v *VirtualMachineClone) VirtualMachineClone { return *v }).(VirtualMachineCloneOutput)
+	return o.ApplyT(func(v *VirtualMachineClone) VirtualMachineClone {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineClone
+		return ret
+	}).(VirtualMachineCloneOutput)
 }
 
 func (o VirtualMachineClonePtrOutput) Customize() VirtualMachineCloneCustomizePtrOutput {
@@ -1757,10 +1782,11 @@ func (o VirtualMachineCloneCustomizeOutput) ToVirtualMachineCloneCustomizePtrOut
 }
 
 func (o VirtualMachineCloneCustomizeOutput) ToVirtualMachineCloneCustomizePtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizePtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomize {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCloneCustomize) *VirtualMachineCloneCustomize {
 		return &v
 	}).(VirtualMachineCloneCustomizePtrOutput)
 }
+
 func (o VirtualMachineCloneCustomizeOutput) DnsServerLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomize) []string { return v.DnsServerLists }).(pulumi.StringArrayOutput)
 }
@@ -1819,7 +1845,13 @@ func (o VirtualMachineCloneCustomizePtrOutput) ToVirtualMachineCloneCustomizePtr
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) Elem() VirtualMachineCloneCustomizeOutput {
-	return o.ApplyT(func(v *VirtualMachineCloneCustomize) VirtualMachineCloneCustomize { return *v }).(VirtualMachineCloneCustomizeOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomize) VirtualMachineCloneCustomize {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineCloneCustomize
+		return ret
+	}).(VirtualMachineCloneCustomizeOutput)
 }
 
 func (o VirtualMachineCloneCustomizePtrOutput) DnsServerLists() pulumi.StringArrayOutput {
@@ -2003,10 +2035,11 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) ToVirtualMachineCloneCus
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) ToVirtualMachineCloneCustomizeLinuxOptionsPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizeLinuxOptionsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *VirtualMachineCloneCustomizeLinuxOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCloneCustomizeLinuxOptions) *VirtualMachineCloneCustomizeLinuxOptions {
 		return &v
 	}).(VirtualMachineCloneCustomizeLinuxOptionsPtrOutput)
 }
+
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -2038,7 +2071,13 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) ToVirtualMachineClone
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Elem() VirtualMachineCloneCustomizeLinuxOptionsOutput {
-	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) VirtualMachineCloneCustomizeLinuxOptions { return *v }).(VirtualMachineCloneCustomizeLinuxOptionsOutput)
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) VirtualMachineCloneCustomizeLinuxOptions {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineCloneCustomizeLinuxOptions
+		return ret
+	}).(VirtualMachineCloneCustomizeLinuxOptionsOutput)
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) Domain() pulumi.StringPtrOutput {
@@ -2316,10 +2355,11 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) ToVirtualMachineCloneC
 }
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) ToVirtualMachineCloneCustomizeWindowsOptionsPtrOutputWithContext(ctx context.Context) VirtualMachineCloneCustomizeWindowsOptionsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *VirtualMachineCloneCustomizeWindowsOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCloneCustomizeWindowsOptions) *VirtualMachineCloneCustomizeWindowsOptions {
 		return &v
 	}).(VirtualMachineCloneCustomizeWindowsOptionsPtrOutput)
 }
+
 func (o VirtualMachineCloneCustomizeWindowsOptionsOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeWindowsOptions) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
@@ -2388,7 +2428,11 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) ToVirtualMachineClo
 
 func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Elem() VirtualMachineCloneCustomizeWindowsOptionsOutput {
 	return o.ApplyT(func(v *VirtualMachineCloneCustomizeWindowsOptions) VirtualMachineCloneCustomizeWindowsOptions {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineCloneCustomizeWindowsOptions
+		return ret
 	}).(VirtualMachineCloneCustomizeWindowsOptionsOutput)
 }
 
@@ -3224,10 +3268,11 @@ func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutput() Virt
 }
 
 func (o VirtualMachineOvfDeployOutput) ToVirtualMachineOvfDeployPtrOutputWithContext(ctx context.Context) VirtualMachineOvfDeployPtrOutput {
-	return o.ApplyT(func(v VirtualMachineOvfDeploy) *VirtualMachineOvfDeploy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineOvfDeploy) *VirtualMachineOvfDeploy {
 		return &v
 	}).(VirtualMachineOvfDeployPtrOutput)
 }
+
 func (o VirtualMachineOvfDeployOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineOvfDeploy) *bool { return v.AllowUnverifiedSslCert }).(pulumi.BoolPtrOutput)
 }
@@ -3279,7 +3324,13 @@ func (o VirtualMachineOvfDeployPtrOutput) ToVirtualMachineOvfDeployPtrOutputWith
 }
 
 func (o VirtualMachineOvfDeployPtrOutput) Elem() VirtualMachineOvfDeployOutput {
-	return o.ApplyT(func(v *VirtualMachineOvfDeploy) VirtualMachineOvfDeploy { return *v }).(VirtualMachineOvfDeployOutput)
+	return o.ApplyT(func(v *VirtualMachineOvfDeploy) VirtualMachineOvfDeploy {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineOvfDeploy
+		return ret
+	}).(VirtualMachineOvfDeployOutput)
 }
 
 func (o VirtualMachineOvfDeployPtrOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {
@@ -3454,10 +3505,11 @@ func (o VirtualMachineVappOutput) ToVirtualMachineVappPtrOutput() VirtualMachine
 }
 
 func (o VirtualMachineVappOutput) ToVirtualMachineVappPtrOutputWithContext(ctx context.Context) VirtualMachineVappPtrOutput {
-	return o.ApplyT(func(v VirtualMachineVapp) *VirtualMachineVapp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineVapp) *VirtualMachineVapp {
 		return &v
 	}).(VirtualMachineVappPtrOutput)
 }
+
 func (o VirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -3477,7 +3529,13 @@ func (o VirtualMachineVappPtrOutput) ToVirtualMachineVappPtrOutputWithContext(ct
 }
 
 func (o VirtualMachineVappPtrOutput) Elem() VirtualMachineVappOutput {
-	return o.ApplyT(func(v *VirtualMachineVapp) VirtualMachineVapp { return *v }).(VirtualMachineVappOutput)
+	return o.ApplyT(func(v *VirtualMachineVapp) VirtualMachineVapp {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineVapp
+		return ret
+	}).(VirtualMachineVappOutput)
 }
 
 func (o VirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
@@ -3712,7 +3770,7 @@ func (o VnicIpv4Output) ToVnicIpv4PtrOutput() VnicIpv4PtrOutput {
 }
 
 func (o VnicIpv4Output) ToVnicIpv4PtrOutputWithContext(ctx context.Context) VnicIpv4PtrOutput {
-	return o.ApplyT(func(v VnicIpv4) *VnicIpv4 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VnicIpv4) *VnicIpv4 {
 		return &v
 	}).(VnicIpv4PtrOutput)
 }
@@ -3752,7 +3810,13 @@ func (o VnicIpv4PtrOutput) ToVnicIpv4PtrOutputWithContext(ctx context.Context) V
 }
 
 func (o VnicIpv4PtrOutput) Elem() VnicIpv4Output {
-	return o.ApplyT(func(v *VnicIpv4) VnicIpv4 { return *v }).(VnicIpv4Output)
+	return o.ApplyT(func(v *VnicIpv4) VnicIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret VnicIpv4
+		return ret
+	}).(VnicIpv4Output)
 }
 
 // Use DHCP to configure the interface's IPv4 stack.
@@ -3900,7 +3964,7 @@ func (o VnicIpv6Output) ToVnicIpv6PtrOutput() VnicIpv6PtrOutput {
 }
 
 func (o VnicIpv6Output) ToVnicIpv6PtrOutputWithContext(ctx context.Context) VnicIpv6PtrOutput {
-	return o.ApplyT(func(v VnicIpv6) *VnicIpv6 {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VnicIpv6) *VnicIpv6 {
 		return &v
 	}).(VnicIpv6PtrOutput)
 }
@@ -3940,7 +4004,13 @@ func (o VnicIpv6PtrOutput) ToVnicIpv6PtrOutputWithContext(ctx context.Context) V
 }
 
 func (o VnicIpv6PtrOutput) Elem() VnicIpv6Output {
-	return o.ApplyT(func(v *VnicIpv6) VnicIpv6 { return *v }).(VnicIpv6Output)
+	return o.ApplyT(func(v *VnicIpv6) VnicIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret VnicIpv6
+		return ret
+	}).(VnicIpv6Output)
 }
 
 // List of IPv6 addresses
@@ -4319,6 +4389,47 @@ func (i GetVirtualMachineVappArgs) ToGetVirtualMachineVappOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVappOutput)
 }
 
+func (i GetVirtualMachineVappArgs) ToGetVirtualMachineVappPtrOutput() GetVirtualMachineVappPtrOutput {
+	return i.ToGetVirtualMachineVappPtrOutputWithContext(context.Background())
+}
+
+func (i GetVirtualMachineVappArgs) ToGetVirtualMachineVappPtrOutputWithContext(ctx context.Context) GetVirtualMachineVappPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVappOutput).ToGetVirtualMachineVappPtrOutputWithContext(ctx)
+}
+
+// GetVirtualMachineVappPtrInput is an input type that accepts GetVirtualMachineVappArgs, GetVirtualMachineVappPtr and GetVirtualMachineVappPtrOutput values.
+// You can construct a concrete instance of `GetVirtualMachineVappPtrInput` via:
+//
+//          GetVirtualMachineVappArgs{...}
+//
+//  or:
+//
+//          nil
+type GetVirtualMachineVappPtrInput interface {
+	pulumi.Input
+
+	ToGetVirtualMachineVappPtrOutput() GetVirtualMachineVappPtrOutput
+	ToGetVirtualMachineVappPtrOutputWithContext(context.Context) GetVirtualMachineVappPtrOutput
+}
+
+type getVirtualMachineVappPtrType GetVirtualMachineVappArgs
+
+func GetVirtualMachineVappPtr(v *GetVirtualMachineVappArgs) GetVirtualMachineVappPtrInput {
+	return (*getVirtualMachineVappPtrType)(v)
+}
+
+func (*getVirtualMachineVappPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVirtualMachineVapp)(nil)).Elem()
+}
+
+func (i *getVirtualMachineVappPtrType) ToGetVirtualMachineVappPtrOutput() GetVirtualMachineVappPtrOutput {
+	return i.ToGetVirtualMachineVappPtrOutputWithContext(context.Background())
+}
+
+func (i *getVirtualMachineVappPtrType) ToGetVirtualMachineVappPtrOutputWithContext(ctx context.Context) GetVirtualMachineVappPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualMachineVappPtrOutput)
+}
+
 type GetVirtualMachineVappOutput struct{ *pulumi.OutputState }
 
 func (GetVirtualMachineVappOutput) ElementType() reflect.Type {
@@ -4333,11 +4444,104 @@ func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappOutputWithContext(ct
 	return o
 }
 
+func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappPtrOutput() GetVirtualMachineVappPtrOutput {
+	return o.ToGetVirtualMachineVappPtrOutputWithContext(context.Background())
+}
+
+func (o GetVirtualMachineVappOutput) ToGetVirtualMachineVappPtrOutputWithContext(ctx context.Context) GetVirtualMachineVappPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVirtualMachineVapp) *GetVirtualMachineVapp {
+		return &v
+	}).(GetVirtualMachineVappPtrOutput)
+}
+
 func (o GetVirtualMachineVappOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVirtualMachineVapp) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+type GetVirtualMachineVappPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualMachineVappPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVirtualMachineVapp)(nil)).Elem()
+}
+
+func (o GetVirtualMachineVappPtrOutput) ToGetVirtualMachineVappPtrOutput() GetVirtualMachineVappPtrOutput {
+	return o
+}
+
+func (o GetVirtualMachineVappPtrOutput) ToGetVirtualMachineVappPtrOutputWithContext(ctx context.Context) GetVirtualMachineVappPtrOutput {
+	return o
+}
+
+func (o GetVirtualMachineVappPtrOutput) Elem() GetVirtualMachineVappOutput {
+	return o.ApplyT(func(v *GetVirtualMachineVapp) GetVirtualMachineVapp {
+		if v != nil {
+			return *v
+		}
+		var ret GetVirtualMachineVapp
+		return ret
+	}).(GetVirtualMachineVappOutput)
+}
+
+func (o GetVirtualMachineVappPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetVirtualMachineVapp) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterVsanDiskGroupArrayInput)(nil)).Elem(), ComputeClusterVsanDiskGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryPublicationInput)(nil)).Elem(), ContentLibraryPublicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryPublicationPtrInput)(nil)).Elem(), ContentLibraryPublicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibrarySubscriptionInput)(nil)).Elem(), ContentLibrarySubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibrarySubscriptionPtrInput)(nil)).Elem(), ContentLibrarySubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupVlanRangeInput)(nil)).Elem(), DistributedPortGroupVlanRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupVlanRangeArrayInput)(nil)).Elem(), DistributedPortGroupVlanRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchHostInput)(nil)).Elem(), DistributedVirtualSwitchHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchHostArrayInput)(nil)).Elem(), DistributedVirtualSwitchHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchPvlanMappingInput)(nil)).Elem(), DistributedVirtualSwitchPvlanMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchPvlanMappingArrayInput)(nil)).Elem(), DistributedVirtualSwitchPvlanMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchVlanRangeInput)(nil)).Elem(), DistributedVirtualSwitchVlanRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchVlanRangeArrayInput)(nil)).Elem(), DistributedVirtualSwitchVlanRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsPermissionInput)(nil)).Elem(), EntityPermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPermissionsPermissionArrayInput)(nil)).Elem(), EntityPermissionsPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortInput)(nil)).Elem(), HostPortGroupPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortArrayInput)(nil)).Elem(), HostPortGroupPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromPtrInput)(nil)).Elem(), VirtualMachineCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneInput)(nil)).Elem(), VirtualMachineCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineClonePtrInput)(nil)).Elem(), VirtualMachineCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeInput)(nil)).Elem(), VirtualMachineCloneCustomizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizePtrInput)(nil)).Elem(), VirtualMachineCloneCustomizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeLinuxOptionsInput)(nil)).Elem(), VirtualMachineCloneCustomizeLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeLinuxOptionsPtrInput)(nil)).Elem(), VirtualMachineCloneCustomizeLinuxOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeNetworkInterfaceInput)(nil)).Elem(), VirtualMachineCloneCustomizeNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeNetworkInterfaceArrayInput)(nil)).Elem(), VirtualMachineCloneCustomizeNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeWindowsOptionsInput)(nil)).Elem(), VirtualMachineCloneCustomizeWindowsOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeWindowsOptionsPtrInput)(nil)).Elem(), VirtualMachineCloneCustomizeWindowsOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskInput)(nil)).Elem(), VirtualMachineDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineDiskArrayInput)(nil)).Elem(), VirtualMachineDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNetworkInterfaceInput)(nil)).Elem(), VirtualMachineNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineNetworkInterfaceArrayInput)(nil)).Elem(), VirtualMachineNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOvfDeployInput)(nil)).Elem(), VirtualMachineOvfDeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineOvfDeployPtrInput)(nil)).Elem(), VirtualMachineOvfDeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappInput)(nil)).Elem(), VirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineVappPtrInput)(nil)).Elem(), VirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyTagRuleInput)(nil)).Elem(), VmStoragePolicyTagRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyTagRuleArrayInput)(nil)).Elem(), VmStoragePolicyTagRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv4Input)(nil)).Elem(), VnicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv4PtrInput)(nil)).Elem(), VnicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6Input)(nil)).Elem(), VnicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicIpv6PtrInput)(nil)).Elem(), VnicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskInput)(nil)).Elem(), GetVirtualMachineDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineDiskArrayInput)(nil)).Elem(), GetVirtualMachineDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineNetworkInterfaceArrayInput)(nil)).Elem(), GetVirtualMachineNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachineVappPtrInput)(nil)).Elem(), GetVirtualMachineVappArgs{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupOutput{})
 	pulumi.RegisterOutputType(ComputeClusterVsanDiskGroupArrayOutput{})
 	pulumi.RegisterOutputType(ContentLibraryPublicationOutput{})
@@ -4387,4 +4591,5 @@ func init() {
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualMachineVappOutput{})
+	pulumi.RegisterOutputType(GetVirtualMachineVappPtrOutput{})
 }

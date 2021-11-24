@@ -535,64 +535,64 @@ export interface ComputeClusterState {
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object ID of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      */
-    readonly datacenterId?: pulumi.Input<string>;
+    datacenterId?: pulumi.Input<string>;
     /**
      * The automation level for host power
      * operations in this cluster. Can be one of `manual` or `automated`. Default:
      * `manual`.
      */
-    readonly dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for DRS in this cluster.
      * Requires `drsEnabled` to be `true` in order to be effective.
      * Default: `false`.
      */
-    readonly dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean>;
     /**
      * A value between `1` and `5` indicating the
      * threshold of load within the cluster that influences host power operations.
      * This affects both power on and power off operations - a lower setting will
      * tolerate more of a surplus/deficit than a higher setting. Default: `3`.
      */
-    readonly dpmThreshold?: pulumi.Input<number>;
+    dpmThreshold?: pulumi.Input<number>;
     /**
      * A key/value map that specifies advanced
      * options for DRS and DPM.
      */
-    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The default automation level for all
      * virtual machines in this cluster. Can be one of `manual`,
      * `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
      */
-    readonly drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
      * recommendations. <sup>\*</sup>
      */
-    readonly drsEnablePredictiveDrs?: pulumi.Input<boolean>;
+    drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**
      * Allow individual DRS overrides to be
      * set for virtual machines in the cluster. Default: `true`.
      */
-    readonly drsEnableVmOverrides?: pulumi.Input<boolean>;
+    drsEnableVmOverrides?: pulumi.Input<boolean>;
     /**
      * Enable DRS for this cluster. Default: `false`.
      */
-    readonly drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean>;
     /**
      * A value between `1` and `5` indicating
      * the threshold of imbalance tolerated between hosts. A lower setting will
      * tolerate more imbalance while a higher setting will tolerate less. Default:
      * `3`.
      */
-    readonly drsMigrationThreshold?: pulumi.Input<number>;
+    drsMigrationThreshold?: pulumi.Input<number>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
@@ -601,7 +601,7 @@ export interface ComputeClusterState {
      * host folder located at `/dc1/host/foo/bar`, with the final inventory path
      * being `/dc1/host/foo/bar/datastore-cluster-test`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * When destroying the resource, setting this to
      * `true` will auto-remove any hosts that are currently a member of the cluster,
@@ -609,7 +609,7 @@ export interface ComputeClusterState {
      * below). This is an advanced
      * option and should only be used for testing. Default: `false`.
      */
-    readonly forceEvacuateOnDestroy?: pulumi.Input<boolean>;
+    forceEvacuateOnDestroy?: pulumi.Input<boolean>;
     /**
      * Defines the
      * managed object IDs of hosts to use as dedicated failover
@@ -617,7 +617,7 @@ export interface ComputeClusterState {
      * block access to the host, and DRS will ignore the host when making
      * recommendations.
      */
-    readonly haAdmissionControlFailoverHostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    haAdmissionControlFailoverHostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number
      * of failed hosts that admission control tolerates when making decisions on
@@ -625,20 +625,20 @@ export interface ComputeClusterState {
      * the number of hosts in the cluster. Default: `1`.
      * <sup>\*</sup>
      */
-    readonly haAdmissionControlHostFailureTolerance?: pulumi.Input<number>;
+    haAdmissionControlHostFailureTolerance?: pulumi.Input<number>;
     /**
      * The percentage of
      * resource reduction that a cluster of virtual machines can tolerate in case of
      * a failover. A value of 0 produces warnings only, whereas a value of 100
      * disables the setting. Default: `100` (disabled).
      */
-    readonly haAdmissionControlPerformanceTolerance?: pulumi.Input<number>;
+    haAdmissionControlPerformanceTolerance?: pulumi.Input<number>;
     /**
      * The type of admission control
      * policy to use with vSphere HA. Can be one of `resourcePercentage`,
      * `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
      */
-    readonly haAdmissionControlPolicy?: pulumi.Input<string>;
+    haAdmissionControlPolicy?: pulumi.Input<string>;
     /**
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
@@ -647,48 +647,48 @@ export interface ComputeClusterState {
      * user-defined values. Default: `true`.
      * <sup>\*</sup>
      */
-    readonly haAdmissionControlResourcePercentageAutoCompute?: pulumi.Input<boolean>;
+    haAdmissionControlResourcePercentageAutoCompute?: pulumi.Input<boolean>;
     /**
      * Controls the
      * user-defined percentage of CPU resources in the cluster to reserve for
      * failover. Default: `100`.
      */
-    readonly haAdmissionControlResourcePercentageCpu?: pulumi.Input<number>;
+    haAdmissionControlResourcePercentageCpu?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined percentage of memory resources in the cluster to reserve for
      * failover. Default: `100`.
      */
-    readonly haAdmissionControlResourcePercentageMemory?: pulumi.Input<number>;
+    haAdmissionControlResourcePercentageMemory?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined CPU slot size, in MHz. Default: `32`.
      */
-    readonly haAdmissionControlSlotPolicyExplicitCpu?: pulumi.Input<number>;
+    haAdmissionControlSlotPolicyExplicitCpu?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined memory slot size, in MB. Default: `100`.
      */
-    readonly haAdmissionControlSlotPolicyExplicitMemory?: pulumi.Input<number>;
+    haAdmissionControlSlotPolicyExplicitMemory?: pulumi.Input<number>;
     /**
      * Controls
      * whether or not you wish to supply explicit values to CPU and memory slot
      * sizes. The default is `false`, which tells vSphere to gather a automatic
      * average based on all powered-on virtual machines currently in the cluster.
      */
-    readonly haAdmissionControlSlotPolicyUseExplicitSize?: pulumi.Input<boolean>;
+    haAdmissionControlSlotPolicyUseExplicitSize?: pulumi.Input<boolean>;
     /**
      * A key/value map that specifies advanced
      * options for vSphere HA.
      */
-    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Controls the action to take
      * on virtual machines if an APD status on an affected datastore clears in the
      * middle of an APD event. Can be one of `none` or `reset`. Default: `none`.
      * <sup>\*</sup>
      */
-    readonly haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
     /**
      * Controls the action to take on
      * virtual machines when the cluster has detected loss to all paths to a
@@ -696,14 +696,14 @@ export interface ComputeClusterState {
      * `restartConservative`, or `restartAggressive`.  Default: `disabled`.
      * <sup>\*</sup>
      */
-    readonly haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string>;
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Default: `3`
      * minutes. <sup>\*</sup>
      */
-    readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number>;
     /**
      * Controls the action to take on
      * virtual machines when the cluster has detected a permanent device loss to a
@@ -711,46 +711,46 @@ export interface ComputeClusterState {
      * `restartAggressive`. Default: `disabled`.
      * <sup>\*</sup>
      */
-    readonly haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string>;
     /**
      * Enable vSphere HA for this cluster. Default:
      * `false`.
      */
-    readonly haEnabled?: pulumi.Input<boolean>;
+    haEnabled?: pulumi.Input<boolean>;
     /**
      * The list of managed object IDs for
      * preferred datastores to use for HA heartbeating. This setting is only useful
      * when `haHeartbeatDatastorePolicy` is set
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      */
-    readonly haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The selection policy for HA
      * heartbeat datastores. Can be one of `allFeasibleDs`, `userSelectedDs`, or
      * `allFeasibleDsWithUserPreference`. Default:
      * `allFeasibleDsWithUserPreference`.
      */
-    readonly haHeartbeatDatastorePolicy?: pulumi.Input<string>;
+    haHeartbeatDatastorePolicy?: pulumi.Input<string>;
     /**
      * The action to take on virtual
      * machines when a host has detected that it has been isolated from the rest of
      * the cluster. Can be one of `none`, `powerOff`, or `shutdown`. Default:
      * `none`.
      */
-    readonly haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string>;
     /**
      * Global setting that controls whether
      * vSphere HA remediates virtual machines on host failure. Can be one of `enabled`
      * or `disabled`. Default: `enabled`.
      */
-    readonly haHostMonitoring?: pulumi.Input<string>;
+    haHostMonitoring?: pulumi.Input<string>;
     /**
      * Controls vSphere VM component
      * protection for virtual machines in this cluster. Can be one of `enabled` or
      * `disabled`. Default: `enabled`.
      * <sup>\*</sup>
      */
-    readonly haVmComponentProtection?: pulumi.Input<string>;
+    haVmComponentProtection?: pulumi.Input<string>;
     /**
      * The condition used to
      * determine whether or not virtual machines in a certain restart priority class
@@ -760,13 +760,13 @@ export interface ComputeClusterState {
      * is considered ready immediately after a host is found to start it on.
      * <sup>\*</sup>
      */
-    readonly haVmDependencyRestartCondition?: pulumi.Input<string>;
+    haVmDependencyRestartCondition?: pulumi.Input<string>;
     /**
      * If a heartbeat from a virtual machine
      * is not received within this configured interval, the virtual machine is
      * marked as failed. The value is in seconds. Default: `30`.
      */
-    readonly haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
      * which `haVmMaximumResets` can operate. When this
@@ -775,77 +775,77 @@ export interface ComputeClusterState {
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
-    readonly haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number>;
     /**
      * The maximum number of resets that HA will
      * perform to a virtual machine when responding to a failure event. Default: `3`
      */
-    readonly haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number>;
     /**
      * The time, in seconds, that HA waits after
      * powering on a virtual machine before monitoring for heartbeats. Default:
      * `120` (2 minutes).
      */
-    readonly haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number>;
     /**
      * The type of virtual machine monitoring to use
      * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      */
-    readonly haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string>;
     /**
      * Additional delay in seconds
      * after ready condition is met. A VM is considered ready at this point.
      * Default: `0` (no delay). <sup>\*</sup>
      */
-    readonly haVmRestartAdditionalDelay?: pulumi.Input<number>;
+    haVmRestartAdditionalDelay?: pulumi.Input<number>;
     /**
      * The default restart priority
      * for affected virtual machines when vSphere detects a host failure. Can be one
      * of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
      */
-    readonly haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string>;
     /**
      * The maximum time, in seconds,
      * that vSphere HA will wait for virtual machines in one priority to be ready
      * before proceeding with the next priority. Default: `600` (10 minutes).
      * <sup>\*</sup>
      */
-    readonly haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number>;
     /**
      * The timeout for each host maintenance mode
      * operation when removing hosts from a cluster. The value is specified in
      * seconds. Default: `3600` (1 hour).
      */
-    readonly hostClusterExitTimeout?: pulumi.Input<number>;
+    hostClusterExitTimeout?: pulumi.Input<number>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `host` resource rather than the
      * `computeCluster` resource. Conflicts with: `hostSystemIds`.
      * >>>>>>> v1.18.3
      */
-    readonly hostManaged?: pulumi.Input<boolean>;
+    hostManaged?: pulumi.Input<boolean>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster. Conflicts with: `hostManaged`.
      */
-    readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Determines how the host
      * quarantine, maintenance mode, or virtual machine migration recommendations
      * made by proactive HA are to be handled. Can be one of `Automated` or
      * `Manual`. Default: `Manual`. <sup>\*</sup>
      */
-    readonly proactiveHaAutomationLevel?: pulumi.Input<string>;
+    proactiveHaAutomationLevel?: pulumi.Input<string>;
     /**
      * Enables Proactive HA. Default: `false`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaEnabled?: pulumi.Input<boolean>;
+    proactiveHaEnabled?: pulumi.Input<boolean>;
     /**
      * The configured remediation
      * for moderately degraded hosts. Can be one of `MaintenanceMode` or
@@ -854,13 +854,13 @@ export interface ComputeClusterState {
      * to `QuarantineMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaModerateRemediation?: pulumi.Input<string>;
+    proactiveHaModerateRemediation?: pulumi.Input<string>;
     /**
      * The list of IDs for health update
      * providers configured for this cluster.
      * <sup>\*</sup>
      */
-    readonly proactiveHaProviderIds?: pulumi.Input<pulumi.Input<string>[]>;
+    proactiveHaProviderIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configured remediation for
      * severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
@@ -869,23 +869,23 @@ export interface ComputeClusterState {
      * set to `MaintenanceMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaSevereRemediation?: pulumi.Input<string>;
+    proactiveHaSevereRemediation?: pulumi.Input<string>;
     /**
      * The managed object ID of the cluster's root resource pool.
      */
-    readonly resourcePoolId?: pulumi.Input<string>;
+    resourcePoolId?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of disk UUIDs to add to the vSAN cluster.
      */
-    readonly vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
+    vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
     /**
      * Whether the VSAN service is enabled for the cluster.
      */
-    readonly vsanEnabled?: pulumi.Input<boolean>;
+    vsanEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -896,64 +896,64 @@ export interface ComputeClusterArgs {
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
      */
-    readonly customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The managed object ID of
      * the datacenter to create the cluster in. Forces a new resource if changed.
      */
-    readonly datacenterId: pulumi.Input<string>;
+    datacenterId: pulumi.Input<string>;
     /**
      * The automation level for host power
      * operations in this cluster. Can be one of `manual` or `automated`. Default:
      * `manual`.
      */
-    readonly dpmAutomationLevel?: pulumi.Input<string>;
+    dpmAutomationLevel?: pulumi.Input<string>;
     /**
      * Enable DPM support for DRS in this cluster.
      * Requires `drsEnabled` to be `true` in order to be effective.
      * Default: `false`.
      */
-    readonly dpmEnabled?: pulumi.Input<boolean>;
+    dpmEnabled?: pulumi.Input<boolean>;
     /**
      * A value between `1` and `5` indicating the
      * threshold of load within the cluster that influences host power operations.
      * This affects both power on and power off operations - a lower setting will
      * tolerate more of a surplus/deficit than a higher setting. Default: `3`.
      */
-    readonly dpmThreshold?: pulumi.Input<number>;
+    dpmThreshold?: pulumi.Input<number>;
     /**
      * A key/value map that specifies advanced
      * options for DRS and DPM.
      */
-    readonly drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    drsAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The default automation level for all
      * virtual machines in this cluster. Can be one of `manual`,
      * `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
      */
-    readonly drsAutomationLevel?: pulumi.Input<string>;
+    drsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
      * recommendations. <sup>\*</sup>
      */
-    readonly drsEnablePredictiveDrs?: pulumi.Input<boolean>;
+    drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**
      * Allow individual DRS overrides to be
      * set for virtual machines in the cluster. Default: `true`.
      */
-    readonly drsEnableVmOverrides?: pulumi.Input<boolean>;
+    drsEnableVmOverrides?: pulumi.Input<boolean>;
     /**
      * Enable DRS for this cluster. Default: `false`.
      */
-    readonly drsEnabled?: pulumi.Input<boolean>;
+    drsEnabled?: pulumi.Input<boolean>;
     /**
      * A value between `1` and `5` indicating
      * the threshold of imbalance tolerated between hosts. A lower setting will
      * tolerate more imbalance while a higher setting will tolerate less. Default:
      * `3`.
      */
-    readonly drsMigrationThreshold?: pulumi.Input<number>;
+    drsMigrationThreshold?: pulumi.Input<number>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
@@ -962,7 +962,7 @@ export interface ComputeClusterArgs {
      * host folder located at `/dc1/host/foo/bar`, with the final inventory path
      * being `/dc1/host/foo/bar/datastore-cluster-test`.
      */
-    readonly folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string>;
     /**
      * When destroying the resource, setting this to
      * `true` will auto-remove any hosts that are currently a member of the cluster,
@@ -970,7 +970,7 @@ export interface ComputeClusterArgs {
      * below). This is an advanced
      * option and should only be used for testing. Default: `false`.
      */
-    readonly forceEvacuateOnDestroy?: pulumi.Input<boolean>;
+    forceEvacuateOnDestroy?: pulumi.Input<boolean>;
     /**
      * Defines the
      * managed object IDs of hosts to use as dedicated failover
@@ -978,7 +978,7 @@ export interface ComputeClusterArgs {
      * block access to the host, and DRS will ignore the host when making
      * recommendations.
      */
-    readonly haAdmissionControlFailoverHostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    haAdmissionControlFailoverHostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum number
      * of failed hosts that admission control tolerates when making decisions on
@@ -986,20 +986,20 @@ export interface ComputeClusterArgs {
      * the number of hosts in the cluster. Default: `1`.
      * <sup>\*</sup>
      */
-    readonly haAdmissionControlHostFailureTolerance?: pulumi.Input<number>;
+    haAdmissionControlHostFailureTolerance?: pulumi.Input<number>;
     /**
      * The percentage of
      * resource reduction that a cluster of virtual machines can tolerate in case of
      * a failover. A value of 0 produces warnings only, whereas a value of 100
      * disables the setting. Default: `100` (disabled).
      */
-    readonly haAdmissionControlPerformanceTolerance?: pulumi.Input<number>;
+    haAdmissionControlPerformanceTolerance?: pulumi.Input<number>;
     /**
      * The type of admission control
      * policy to use with vSphere HA. Can be one of `resourcePercentage`,
      * `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
      */
-    readonly haAdmissionControlPolicy?: pulumi.Input<string>;
+    haAdmissionControlPolicy?: pulumi.Input<string>;
     /**
      * Automatically determine available resource percentages by subtracting the
      * average number of host resources represented by the
@@ -1008,48 +1008,48 @@ export interface ComputeClusterArgs {
      * user-defined values. Default: `true`.
      * <sup>\*</sup>
      */
-    readonly haAdmissionControlResourcePercentageAutoCompute?: pulumi.Input<boolean>;
+    haAdmissionControlResourcePercentageAutoCompute?: pulumi.Input<boolean>;
     /**
      * Controls the
      * user-defined percentage of CPU resources in the cluster to reserve for
      * failover. Default: `100`.
      */
-    readonly haAdmissionControlResourcePercentageCpu?: pulumi.Input<number>;
+    haAdmissionControlResourcePercentageCpu?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined percentage of memory resources in the cluster to reserve for
      * failover. Default: `100`.
      */
-    readonly haAdmissionControlResourcePercentageMemory?: pulumi.Input<number>;
+    haAdmissionControlResourcePercentageMemory?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined CPU slot size, in MHz. Default: `32`.
      */
-    readonly haAdmissionControlSlotPolicyExplicitCpu?: pulumi.Input<number>;
+    haAdmissionControlSlotPolicyExplicitCpu?: pulumi.Input<number>;
     /**
      * Controls the
      * user-defined memory slot size, in MB. Default: `100`.
      */
-    readonly haAdmissionControlSlotPolicyExplicitMemory?: pulumi.Input<number>;
+    haAdmissionControlSlotPolicyExplicitMemory?: pulumi.Input<number>;
     /**
      * Controls
      * whether or not you wish to supply explicit values to CPU and memory slot
      * sizes. The default is `false`, which tells vSphere to gather a automatic
      * average based on all powered-on virtual machines currently in the cluster.
      */
-    readonly haAdmissionControlSlotPolicyUseExplicitSize?: pulumi.Input<boolean>;
+    haAdmissionControlSlotPolicyUseExplicitSize?: pulumi.Input<boolean>;
     /**
      * A key/value map that specifies advanced
      * options for vSphere HA.
      */
-    readonly haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    haAdvancedOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Controls the action to take
      * on virtual machines if an APD status on an affected datastore clears in the
      * middle of an APD event. Can be one of `none` or `reset`. Default: `none`.
      * <sup>\*</sup>
      */
-    readonly haDatastoreApdRecoveryAction?: pulumi.Input<string>;
+    haDatastoreApdRecoveryAction?: pulumi.Input<string>;
     /**
      * Controls the action to take on
      * virtual machines when the cluster has detected loss to all paths to a
@@ -1057,14 +1057,14 @@ export interface ComputeClusterArgs {
      * `restartConservative`, or `restartAggressive`.  Default: `disabled`.
      * <sup>\*</sup>
      */
-    readonly haDatastoreApdResponse?: pulumi.Input<string>;
+    haDatastoreApdResponse?: pulumi.Input<string>;
     /**
      * Controls the delay in minutes
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Default: `3`
      * minutes. <sup>\*</sup>
      */
-    readonly haDatastoreApdResponseDelay?: pulumi.Input<number>;
+    haDatastoreApdResponseDelay?: pulumi.Input<number>;
     /**
      * Controls the action to take on
      * virtual machines when the cluster has detected a permanent device loss to a
@@ -1072,46 +1072,46 @@ export interface ComputeClusterArgs {
      * `restartAggressive`. Default: `disabled`.
      * <sup>\*</sup>
      */
-    readonly haDatastorePdlResponse?: pulumi.Input<string>;
+    haDatastorePdlResponse?: pulumi.Input<string>;
     /**
      * Enable vSphere HA for this cluster. Default:
      * `false`.
      */
-    readonly haEnabled?: pulumi.Input<boolean>;
+    haEnabled?: pulumi.Input<boolean>;
     /**
      * The list of managed object IDs for
      * preferred datastores to use for HA heartbeating. This setting is only useful
      * when `haHeartbeatDatastorePolicy` is set
      * to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
      */
-    readonly haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    haHeartbeatDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The selection policy for HA
      * heartbeat datastores. Can be one of `allFeasibleDs`, `userSelectedDs`, or
      * `allFeasibleDsWithUserPreference`. Default:
      * `allFeasibleDsWithUserPreference`.
      */
-    readonly haHeartbeatDatastorePolicy?: pulumi.Input<string>;
+    haHeartbeatDatastorePolicy?: pulumi.Input<string>;
     /**
      * The action to take on virtual
      * machines when a host has detected that it has been isolated from the rest of
      * the cluster. Can be one of `none`, `powerOff`, or `shutdown`. Default:
      * `none`.
      */
-    readonly haHostIsolationResponse?: pulumi.Input<string>;
+    haHostIsolationResponse?: pulumi.Input<string>;
     /**
      * Global setting that controls whether
      * vSphere HA remediates virtual machines on host failure. Can be one of `enabled`
      * or `disabled`. Default: `enabled`.
      */
-    readonly haHostMonitoring?: pulumi.Input<string>;
+    haHostMonitoring?: pulumi.Input<string>;
     /**
      * Controls vSphere VM component
      * protection for virtual machines in this cluster. Can be one of `enabled` or
      * `disabled`. Default: `enabled`.
      * <sup>\*</sup>
      */
-    readonly haVmComponentProtection?: pulumi.Input<string>;
+    haVmComponentProtection?: pulumi.Input<string>;
     /**
      * The condition used to
      * determine whether or not virtual machines in a certain restart priority class
@@ -1121,13 +1121,13 @@ export interface ComputeClusterArgs {
      * is considered ready immediately after a host is found to start it on.
      * <sup>\*</sup>
      */
-    readonly haVmDependencyRestartCondition?: pulumi.Input<string>;
+    haVmDependencyRestartCondition?: pulumi.Input<string>;
     /**
      * If a heartbeat from a virtual machine
      * is not received within this configured interval, the virtual machine is
      * marked as failed. The value is in seconds. Default: `30`.
      */
-    readonly haVmFailureInterval?: pulumi.Input<number>;
+    haVmFailureInterval?: pulumi.Input<number>;
     /**
      * The length of the reset window in
      * which `haVmMaximumResets` can operate. When this
@@ -1136,77 +1136,77 @@ export interface ComputeClusterArgs {
      * unlimited reset time is allotted. The value is specified in seconds. Default:
      * `-1` (no window).
      */
-    readonly haVmMaximumFailureWindow?: pulumi.Input<number>;
+    haVmMaximumFailureWindow?: pulumi.Input<number>;
     /**
      * The maximum number of resets that HA will
      * perform to a virtual machine when responding to a failure event. Default: `3`
      */
-    readonly haVmMaximumResets?: pulumi.Input<number>;
+    haVmMaximumResets?: pulumi.Input<number>;
     /**
      * The time, in seconds, that HA waits after
      * powering on a virtual machine before monitoring for heartbeats. Default:
      * `120` (2 minutes).
      */
-    readonly haVmMinimumUptime?: pulumi.Input<number>;
+    haVmMinimumUptime?: pulumi.Input<number>;
     /**
      * The type of virtual machine monitoring to use
      * when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
      * `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
      */
-    readonly haVmMonitoring?: pulumi.Input<string>;
+    haVmMonitoring?: pulumi.Input<string>;
     /**
      * Additional delay in seconds
      * after ready condition is met. A VM is considered ready at this point.
      * Default: `0` (no delay). <sup>\*</sup>
      */
-    readonly haVmRestartAdditionalDelay?: pulumi.Input<number>;
+    haVmRestartAdditionalDelay?: pulumi.Input<number>;
     /**
      * The default restart priority
      * for affected virtual machines when vSphere detects a host failure. Can be one
      * of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
      */
-    readonly haVmRestartPriority?: pulumi.Input<string>;
+    haVmRestartPriority?: pulumi.Input<string>;
     /**
      * The maximum time, in seconds,
      * that vSphere HA will wait for virtual machines in one priority to be ready
      * before proceeding with the next priority. Default: `600` (10 minutes).
      * <sup>\*</sup>
      */
-    readonly haVmRestartTimeout?: pulumi.Input<number>;
+    haVmRestartTimeout?: pulumi.Input<number>;
     /**
      * The timeout for each host maintenance mode
      * operation when removing hosts from a cluster. The value is specified in
      * seconds. Default: `3600` (1 hour).
      */
-    readonly hostClusterExitTimeout?: pulumi.Input<number>;
+    hostClusterExitTimeout?: pulumi.Input<number>;
     /**
      * Can be set to `true` if compute cluster
      * membership will be managed through the `host` resource rather than the
      * `computeCluster` resource. Conflicts with: `hostSystemIds`.
      * >>>>>>> v1.18.3
      */
-    readonly hostManaged?: pulumi.Input<boolean>;
+    hostManaged?: pulumi.Input<boolean>;
     /**
      * The [managed object IDs][docs-about-morefs] of
      * the hosts to put in the cluster. Conflicts with: `hostManaged`.
      */
-    readonly hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the cluster.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Determines how the host
      * quarantine, maintenance mode, or virtual machine migration recommendations
      * made by proactive HA are to be handled. Can be one of `Automated` or
      * `Manual`. Default: `Manual`. <sup>\*</sup>
      */
-    readonly proactiveHaAutomationLevel?: pulumi.Input<string>;
+    proactiveHaAutomationLevel?: pulumi.Input<string>;
     /**
      * Enables Proactive HA. Default: `false`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaEnabled?: pulumi.Input<boolean>;
+    proactiveHaEnabled?: pulumi.Input<boolean>;
     /**
      * The configured remediation
      * for moderately degraded hosts. Can be one of `MaintenanceMode` or
@@ -1215,13 +1215,13 @@ export interface ComputeClusterArgs {
      * to `QuarantineMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaModerateRemediation?: pulumi.Input<string>;
+    proactiveHaModerateRemediation?: pulumi.Input<string>;
     /**
      * The list of IDs for health update
      * providers configured for this cluster.
      * <sup>\*</sup>
      */
-    readonly proactiveHaProviderIds?: pulumi.Input<pulumi.Input<string>[]>;
+    proactiveHaProviderIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configured remediation for
      * severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
@@ -1230,17 +1230,17 @@ export interface ComputeClusterArgs {
      * set to `MaintenanceMode`. Default: `QuarantineMode`.
      * <sup>\*</sup>
      */
-    readonly proactiveHaSevereRemediation?: pulumi.Input<string>;
+    proactiveHaSevereRemediation?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of disk UUIDs to add to the vSAN cluster.
      */
-    readonly vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
+    vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
     /**
      * Whether the VSAN service is enabled for the cluster.
      */
-    readonly vsanEnabled?: pulumi.Input<boolean>;
+    vsanEnabled?: pulumi.Input<boolean>;
 }

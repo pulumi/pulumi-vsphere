@@ -12,6 +12,7 @@ __all__ = [
     'GetDatacenterResult',
     'AwaitableGetDatacenterResult',
     'get_datacenter',
+    'get_datacenter_output',
 ]
 
 @pulumi.output_type
@@ -83,3 +84,28 @@ def get_datacenter(name: Optional[str] = None,
     return AwaitableGetDatacenterResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_datacenter)
+def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatacenterResult]:
+    """
+    The `Datacenter` data source can be used to discover the ID of a
+    vSphere datacenter. This can then be used with resources or data sources that
+    require a datacenter, such as the `Host`
+    data source.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    ```
+
+
+    :param str name: The name of the datacenter. This can be a name or path.
+           Can be omitted if there is only one datacenter in your inventory.
+    """
+    ...

@@ -185,7 +185,7 @@ type ContentLibraryArrayInput interface {
 type ContentLibraryArray []ContentLibraryInput
 
 func (ContentLibraryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ContentLibrary)(nil))
+	return reflect.TypeOf((*[]*ContentLibrary)(nil)).Elem()
 }
 
 func (i ContentLibraryArray) ToContentLibraryArrayOutput() ContentLibraryArrayOutput {
@@ -210,7 +210,7 @@ type ContentLibraryMapInput interface {
 type ContentLibraryMap map[string]ContentLibraryInput
 
 func (ContentLibraryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ContentLibrary)(nil))
+	return reflect.TypeOf((*map[string]*ContentLibrary)(nil)).Elem()
 }
 
 func (i ContentLibraryMap) ToContentLibraryMapOutput() ContentLibraryMapOutput {
@@ -221,9 +221,7 @@ func (i ContentLibraryMap) ToContentLibraryMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryMapOutput)
 }
 
-type ContentLibraryOutput struct {
-	*pulumi.OutputState
-}
+type ContentLibraryOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ContentLibrary)(nil))
@@ -242,14 +240,12 @@ func (o ContentLibraryOutput) ToContentLibraryPtrOutput() ContentLibraryPtrOutpu
 }
 
 func (o ContentLibraryOutput) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
-	return o.ApplyT(func(v ContentLibrary) *ContentLibrary {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLibrary) *ContentLibrary {
 		return &v
 	}).(ContentLibraryPtrOutput)
 }
 
-type ContentLibraryPtrOutput struct {
-	*pulumi.OutputState
-}
+type ContentLibraryPtrOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ContentLibrary)(nil))
@@ -261,6 +257,16 @@ func (o ContentLibraryPtrOutput) ToContentLibraryPtrOutput() ContentLibraryPtrOu
 
 func (o ContentLibraryPtrOutput) ToContentLibraryPtrOutputWithContext(ctx context.Context) ContentLibraryPtrOutput {
 	return o
+}
+
+func (o ContentLibraryPtrOutput) Elem() ContentLibraryOutput {
+	return o.ApplyT(func(v *ContentLibrary) ContentLibrary {
+		if v != nil {
+			return *v
+		}
+		var ret ContentLibrary
+		return ret
+	}).(ContentLibraryOutput)
 }
 
 type ContentLibraryArrayOutput struct{ *pulumi.OutputState }
@@ -304,6 +310,10 @@ func (o ContentLibraryMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryInput)(nil)).Elem(), &ContentLibrary{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryPtrInput)(nil)).Elem(), &ContentLibrary{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryArrayInput)(nil)).Elem(), ContentLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryMapInput)(nil)).Elem(), ContentLibraryMap{})
 	pulumi.RegisterOutputType(ContentLibraryOutput{})
 	pulumi.RegisterOutputType(ContentLibraryPtrOutput{})
 	pulumi.RegisterOutputType(ContentLibraryArrayOutput{})

@@ -12,6 +12,7 @@ __all__ = [
     'GetCustomAttributeResult',
     'AwaitableGetCustomAttributeResult',
     'get_custom_attribute',
+    'get_custom_attribute_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,31 @@ def get_custom_attribute(name: Optional[str] = None,
         id=__ret__.id,
         managed_object_type=__ret__.managed_object_type,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_custom_attribute)
+def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomAttributeResult]:
+    """
+    The `CustomAttribute` data source can be used to reference custom
+    attributes that are not managed by this provider. Its attributes are exactly the
+    same as the `CustomAttribute` resource,
+    and, like importing, the data source takes a name to search on. The `id` and
+    other attributes are then populated with the data found by the search.
+
+    > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+    and require vCenter.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    attribute = vsphere.get_custom_attribute(name="test-attribute")
+    ```
+
+
+    :param str name: The name of the custom attribute.
+    """
+    ...

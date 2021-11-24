@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -42,6 +43,38 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetContentLibraryResult> InvokeAsync(GetContentLibraryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a Content Library.
+        /// 
+        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
+        /// connections.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
+        ///         {
+        ///             Name = "Content Library Test",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetContentLibraryResult> Invoke(GetContentLibraryInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +87,19 @@ namespace Pulumi.VSphere
         public string Name { get; set; } = null!;
 
         public GetContentLibraryArgs()
+        {
+        }
+    }
+
+    public sealed class GetContentLibraryInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the Content Library.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetContentLibraryInvokeArgs()
         {
         }
     }

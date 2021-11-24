@@ -14,6 +14,7 @@ __all__ = [
     'GetVirtualMachineResult',
     'AwaitableGetVirtualMachineResult',
     'get_virtual_machine',
+    'get_virtual_machine_output',
 ]
 
 @pulumi.output_type
@@ -836,3 +837,96 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         vapp_transports=__ret__.vapp_transports,
         vbs_enabled=__ret__.vbs_enabled,
         vvtd_enabled=__ret__.vvtd_enabled)
+
+
+@_utilities.lift_output_func(get_virtual_machine)
+def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               annotation: Optional[pulumi.Input[Optional[str]]] = None,
+                               boot_delay: Optional[pulumi.Input[Optional[int]]] = None,
+                               boot_retry_delay: Optional[pulumi.Input[Optional[int]]] = None,
+                               boot_retry_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               cpu_hot_add_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               cpu_hot_remove_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               cpu_limit: Optional[pulumi.Input[Optional[int]]] = None,
+                               cpu_performance_counters_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               cpu_reservation: Optional[pulumi.Input[Optional[int]]] = None,
+                               cpu_share_count: Optional[pulumi.Input[Optional[int]]] = None,
+                               cpu_share_level: Optional[pulumi.Input[Optional[str]]] = None,
+                               datacenter_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               efi_secure_boot_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               enable_disk_uuid: Optional[pulumi.Input[Optional[bool]]] = None,
+                               enable_logging: Optional[pulumi.Input[Optional[bool]]] = None,
+                               ept_rvi_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                               extra_config: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                               firmware: Optional[pulumi.Input[Optional[str]]] = None,
+                               guest_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               hardware_version: Optional[pulumi.Input[Optional[int]]] = None,
+                               hv_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                               ide_controller_scan_count: Optional[pulumi.Input[Optional[int]]] = None,
+                               latency_sensitivity: Optional[pulumi.Input[Optional[str]]] = None,
+                               memory: Optional[pulumi.Input[Optional[int]]] = None,
+                               memory_hot_add_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               memory_limit: Optional[pulumi.Input[Optional[int]]] = None,
+                               memory_reservation: Optional[pulumi.Input[Optional[int]]] = None,
+                               memory_share_count: Optional[pulumi.Input[Optional[int]]] = None,
+                               memory_share_level: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[str]] = None,
+                               nested_hv_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               num_cores_per_socket: Optional[pulumi.Input[Optional[int]]] = None,
+                               num_cpus: Optional[pulumi.Input[Optional[int]]] = None,
+                               replace_trigger: Optional[pulumi.Input[Optional[str]]] = None,
+                               run_tools_scripts_after_power_on: Optional[pulumi.Input[Optional[bool]]] = None,
+                               run_tools_scripts_after_resume: Optional[pulumi.Input[Optional[bool]]] = None,
+                               run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[Optional[bool]]] = None,
+                               run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[Optional[bool]]] = None,
+                               run_tools_scripts_before_guest_standby: Optional[pulumi.Input[Optional[bool]]] = None,
+                               sata_controller_scan_count: Optional[pulumi.Input[Optional[int]]] = None,
+                               scsi_controller_scan_count: Optional[pulumi.Input[Optional[int]]] = None,
+                               storage_policy_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               swap_placement_policy: Optional[pulumi.Input[Optional[str]]] = None,
+                               sync_time_with_host: Optional[pulumi.Input[Optional[bool]]] = None,
+                               sync_time_with_host_periodically: Optional[pulumi.Input[Optional[bool]]] = None,
+                               vapp: Optional[pulumi.Input[Optional[pulumi.InputType['GetVirtualMachineVappArgs']]]] = None,
+                               vbs_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               vvtd_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineResult]:
+    """
+    The `VirtualMachine` data source can be used to find the UUID of an
+    existing virtual machine or template. Its most relevant purpose is for finding
+    the UUID of a template to be used as the source for cloning into a new
+    `VirtualMachine` resource. It also
+    reads the guest ID so that can be supplied as well.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    template = vsphere.get_virtual_machine(datacenter_id=datacenter.id,
+        name="test-vm-template")
+    ```
+
+
+    :param str alternate_guest_name: The alternate guest name of the virtual machine when
+           guest_id is a non-specific operating system, like `otherGuest`.
+    :param str annotation: The user-provided description of this virtual machine.
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the virtual machine is located in.
+           This can be omitted if the search path used in `name` is an absolute path.
+           For default datacenters, use the `id` attribute from an empty
+           `Datacenter` data source.
+    :param str firmware: The firmware type for this virtual machine. Can be `bios` or `efi`.
+    :param str guest_id: The guest ID of the virtual machine or template.
+    :param int hardware_version: The hardware version number on this virtual machine.
+    :param int memory: The size of the virtual machine's memory, in MB.
+    :param str name: The name of the virtual machine. This can be a name or
+           path.
+    :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
+    :param int num_cpus: The total number of virtual processor cores assigned to this
+           virtual machine.
+    :param int scsi_controller_scan_count: The number of SCSI controllers to
+           scan for disk attributes and controller types on. Default: `1`.
+    """
+    ...

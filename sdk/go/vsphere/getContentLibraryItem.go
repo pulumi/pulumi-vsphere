@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -11,6 +14,36 @@ import (
 //
 // > **NOTE:** This resource requires vCenter and is not available on direct ESXi
 // connections.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		library, err := vsphere.LookupContentLibrary(ctx, &GetContentLibraryArgs{
+// 			Name: "Content Library Test",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupContentLibraryItem(ctx, &GetContentLibraryItemArgs{
+// 			Name:      "Ubuntu Bionic 18.04",
+// 			LibraryId: library.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
 	var rv LookupContentLibraryItemResult
 	err := ctx.Invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, opts...)
@@ -38,4 +71,64 @@ type LookupContentLibraryItemResult struct {
 	Name      string `pulumi:"name"`
 	// The Content Library type. Can be ovf, iso, or vm-template.
 	Type string `pulumi:"type"`
+}
+
+func LookupContentLibraryItemOutput(ctx *pulumi.Context, args LookupContentLibraryItemOutputArgs, opts ...pulumi.InvokeOption) LookupContentLibraryItemResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupContentLibraryItemResult, error) {
+			args := v.(LookupContentLibraryItemArgs)
+			r, err := LookupContentLibraryItem(ctx, &args, opts...)
+			return *r, err
+		}).(LookupContentLibraryItemResultOutput)
+}
+
+// A collection of arguments for invoking getContentLibraryItem.
+type LookupContentLibraryItemOutputArgs struct {
+	// The ID of the Content Library the item exists in.
+	LibraryId pulumi.StringInput `pulumi:"libraryId"`
+	// The name of the Content Library.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Content Library type. Can be ovf, iso, or vm-template.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (LookupContentLibraryItemOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupContentLibraryItemArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getContentLibraryItem.
+type LookupContentLibraryItemResultOutput struct{ *pulumi.OutputState }
+
+func (LookupContentLibraryItemResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupContentLibraryItemResult)(nil)).Elem()
+}
+
+func (o LookupContentLibraryItemResultOutput) ToLookupContentLibraryItemResultOutput() LookupContentLibraryItemResultOutput {
+	return o
+}
+
+func (o LookupContentLibraryItemResultOutput) ToLookupContentLibraryItemResultOutputWithContext(ctx context.Context) LookupContentLibraryItemResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupContentLibraryItemResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryItemResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupContentLibraryItemResultOutput) LibraryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryItemResult) string { return v.LibraryId }).(pulumi.StringOutput)
+}
+
+func (o LookupContentLibraryItemResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryItemResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Content Library type. Can be ovf, iso, or vm-template.
+func (o LookupContentLibraryItemResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContentLibraryItemResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupContentLibraryItemResultOutput{})
 }

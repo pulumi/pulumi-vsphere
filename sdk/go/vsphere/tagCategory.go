@@ -198,7 +198,7 @@ type TagCategoryArrayInput interface {
 type TagCategoryArray []TagCategoryInput
 
 func (TagCategoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TagCategory)(nil))
+	return reflect.TypeOf((*[]*TagCategory)(nil)).Elem()
 }
 
 func (i TagCategoryArray) ToTagCategoryArrayOutput() TagCategoryArrayOutput {
@@ -223,7 +223,7 @@ type TagCategoryMapInput interface {
 type TagCategoryMap map[string]TagCategoryInput
 
 func (TagCategoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TagCategory)(nil))
+	return reflect.TypeOf((*map[string]*TagCategory)(nil)).Elem()
 }
 
 func (i TagCategoryMap) ToTagCategoryMapOutput() TagCategoryMapOutput {
@@ -234,9 +234,7 @@ func (i TagCategoryMap) ToTagCategoryMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TagCategoryMapOutput)
 }
 
-type TagCategoryOutput struct {
-	*pulumi.OutputState
-}
+type TagCategoryOutput struct{ *pulumi.OutputState }
 
 func (TagCategoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TagCategory)(nil))
@@ -255,14 +253,12 @@ func (o TagCategoryOutput) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
 }
 
 func (o TagCategoryOutput) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
-	return o.ApplyT(func(v TagCategory) *TagCategory {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagCategory) *TagCategory {
 		return &v
 	}).(TagCategoryPtrOutput)
 }
 
-type TagCategoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type TagCategoryPtrOutput struct{ *pulumi.OutputState }
 
 func (TagCategoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TagCategory)(nil))
@@ -274,6 +270,16 @@ func (o TagCategoryPtrOutput) ToTagCategoryPtrOutput() TagCategoryPtrOutput {
 
 func (o TagCategoryPtrOutput) ToTagCategoryPtrOutputWithContext(ctx context.Context) TagCategoryPtrOutput {
 	return o
+}
+
+func (o TagCategoryPtrOutput) Elem() TagCategoryOutput {
+	return o.ApplyT(func(v *TagCategory) TagCategory {
+		if v != nil {
+			return *v
+		}
+		var ret TagCategory
+		return ret
+	}).(TagCategoryOutput)
 }
 
 type TagCategoryArrayOutput struct{ *pulumi.OutputState }
@@ -317,6 +323,10 @@ func (o TagCategoryMapOutput) MapIndex(k pulumi.StringInput) TagCategoryOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TagCategoryInput)(nil)).Elem(), &TagCategory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagCategoryPtrInput)(nil)).Elem(), &TagCategory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagCategoryArrayInput)(nil)).Elem(), TagCategoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagCategoryMapInput)(nil)).Elem(), TagCategoryMap{})
 	pulumi.RegisterOutputType(TagCategoryOutput{})
 	pulumi.RegisterOutputType(TagCategoryPtrOutput{})
 	pulumi.RegisterOutputType(TagCategoryArrayOutput{})

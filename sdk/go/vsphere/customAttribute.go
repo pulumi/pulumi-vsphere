@@ -161,7 +161,7 @@ type CustomAttributeArrayInput interface {
 type CustomAttributeArray []CustomAttributeInput
 
 func (CustomAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomAttribute)(nil))
+	return reflect.TypeOf((*[]*CustomAttribute)(nil)).Elem()
 }
 
 func (i CustomAttributeArray) ToCustomAttributeArrayOutput() CustomAttributeArrayOutput {
@@ -186,7 +186,7 @@ type CustomAttributeMapInput interface {
 type CustomAttributeMap map[string]CustomAttributeInput
 
 func (CustomAttributeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomAttribute)(nil))
+	return reflect.TypeOf((*map[string]*CustomAttribute)(nil)).Elem()
 }
 
 func (i CustomAttributeMap) ToCustomAttributeMapOutput() CustomAttributeMapOutput {
@@ -197,9 +197,7 @@ func (i CustomAttributeMap) ToCustomAttributeMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeMapOutput)
 }
 
-type CustomAttributeOutput struct {
-	*pulumi.OutputState
-}
+type CustomAttributeOutput struct{ *pulumi.OutputState }
 
 func (CustomAttributeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomAttribute)(nil))
@@ -218,14 +216,12 @@ func (o CustomAttributeOutput) ToCustomAttributePtrOutput() CustomAttributePtrOu
 }
 
 func (o CustomAttributeOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
-	return o.ApplyT(func(v CustomAttribute) *CustomAttribute {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAttribute) *CustomAttribute {
 		return &v
 	}).(CustomAttributePtrOutput)
 }
 
-type CustomAttributePtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomAttributePtrOutput struct{ *pulumi.OutputState }
 
 func (CustomAttributePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomAttribute)(nil))
@@ -237,6 +233,16 @@ func (o CustomAttributePtrOutput) ToCustomAttributePtrOutput() CustomAttributePt
 
 func (o CustomAttributePtrOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
 	return o
+}
+
+func (o CustomAttributePtrOutput) Elem() CustomAttributeOutput {
+	return o.ApplyT(func(v *CustomAttribute) CustomAttribute {
+		if v != nil {
+			return *v
+		}
+		var ret CustomAttribute
+		return ret
+	}).(CustomAttributeOutput)
 }
 
 type CustomAttributeArrayOutput struct{ *pulumi.OutputState }
@@ -280,6 +286,10 @@ func (o CustomAttributeMapOutput) MapIndex(k pulumi.StringInput) CustomAttribute
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeInput)(nil)).Elem(), &CustomAttribute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributePtrInput)(nil)).Elem(), &CustomAttribute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeArrayInput)(nil)).Elem(), CustomAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeMapInput)(nil)).Elem(), CustomAttributeMap{})
 	pulumi.RegisterOutputType(CustomAttributeOutput{})
 	pulumi.RegisterOutputType(CustomAttributePtrOutput{})
 	pulumi.RegisterOutputType(CustomAttributeArrayOutput{})

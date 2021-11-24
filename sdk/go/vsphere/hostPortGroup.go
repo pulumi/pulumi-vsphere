@@ -34,14 +34,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1"
-// 		esxiHost, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
 // 			Name:         &opt1,
 // 		}, nil)
@@ -94,14 +94,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1"
-// 		esxiHost, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
 // 			Name:         &opt1,
 // 		}, nil)
@@ -520,7 +520,7 @@ type HostPortGroupArrayInput interface {
 type HostPortGroupArray []HostPortGroupInput
 
 func (HostPortGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HostPortGroup)(nil))
+	return reflect.TypeOf((*[]*HostPortGroup)(nil)).Elem()
 }
 
 func (i HostPortGroupArray) ToHostPortGroupArrayOutput() HostPortGroupArrayOutput {
@@ -545,7 +545,7 @@ type HostPortGroupMapInput interface {
 type HostPortGroupMap map[string]HostPortGroupInput
 
 func (HostPortGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HostPortGroup)(nil))
+	return reflect.TypeOf((*map[string]*HostPortGroup)(nil)).Elem()
 }
 
 func (i HostPortGroupMap) ToHostPortGroupMapOutput() HostPortGroupMapOutput {
@@ -556,9 +556,7 @@ func (i HostPortGroupMap) ToHostPortGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupMapOutput)
 }
 
-type HostPortGroupOutput struct {
-	*pulumi.OutputState
-}
+type HostPortGroupOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostPortGroup)(nil))
@@ -577,14 +575,12 @@ func (o HostPortGroupOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
 }
 
 func (o HostPortGroupOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
-	return o.ApplyT(func(v HostPortGroup) *HostPortGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostPortGroup) *HostPortGroup {
 		return &v
 	}).(HostPortGroupPtrOutput)
 }
 
-type HostPortGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostPortGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HostPortGroup)(nil))
@@ -596,6 +592,16 @@ func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutpu
 
 func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
 	return o
+}
+
+func (o HostPortGroupPtrOutput) Elem() HostPortGroupOutput {
+	return o.ApplyT(func(v *HostPortGroup) HostPortGroup {
+		if v != nil {
+			return *v
+		}
+		var ret HostPortGroup
+		return ret
+	}).(HostPortGroupOutput)
 }
 
 type HostPortGroupArrayOutput struct{ *pulumi.OutputState }
@@ -639,6 +645,10 @@ func (o HostPortGroupMapOutput) MapIndex(k pulumi.StringInput) HostPortGroupOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupInput)(nil)).Elem(), &HostPortGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPtrInput)(nil)).Elem(), &HostPortGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupArrayInput)(nil)).Elem(), HostPortGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupMapInput)(nil)).Elem(), HostPortGroupMap{})
 	pulumi.RegisterOutputType(HostPortGroupOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPtrOutput{})
 	pulumi.RegisterOutputType(HostPortGroupArrayOutput{})

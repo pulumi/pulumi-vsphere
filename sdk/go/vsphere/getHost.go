@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,14 +27,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1"
-// 		_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		_, err = vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
 // 			Name:         &opt1,
 // 		}, nil)
@@ -70,4 +73,65 @@ type LookupHostResult struct {
 	// The managed object ID of the host's
 	// root resource pool.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
+}
+
+func LookupHostOutput(ctx *pulumi.Context, args LookupHostOutputArgs, opts ...pulumi.InvokeOption) LookupHostResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupHostResult, error) {
+			args := v.(LookupHostArgs)
+			r, err := LookupHost(ctx, &args, opts...)
+			return *r, err
+		}).(LookupHostResultOutput)
+}
+
+// A collection of arguments for invoking getHost.
+type LookupHostOutputArgs struct {
+	// The managed object reference
+	// ID of a datacenter.
+	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
+	// The name of the host. This can be a name or path. Can be
+	// omitted if there is only one host in your inventory.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupHostOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHostArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHost.
+type LookupHostResultOutput struct{ *pulumi.OutputState }
+
+func (LookupHostResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupHostResult)(nil)).Elem()
+}
+
+func (o LookupHostResultOutput) ToLookupHostResultOutput() LookupHostResultOutput {
+	return o
+}
+
+func (o LookupHostResultOutput) ToLookupHostResultOutputWithContext(ctx context.Context) LookupHostResultOutput {
+	return o
+}
+
+func (o LookupHostResultOutput) DatacenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostResult) string { return v.DatacenterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupHostResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupHostResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHostResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The managed object ID of the host's
+// root resource pool.
+func (o LookupHostResultOutput) ResourcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostResult) string { return v.ResourcePoolId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupHostResultOutput{})
 }

@@ -20,3 +20,5 @@ ci-scripts
 **/version.txt
 **/nuget
 **/dist
+
+.DS_Store

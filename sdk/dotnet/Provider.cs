@@ -19,6 +19,52 @@ namespace Pulumi.VSphere
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// govmomi debug path for debug
+        /// </summary>
+        [Output("clientDebugPath")]
+        public Output<string?> ClientDebugPath { get; private set; } = null!;
+
+        /// <summary>
+        /// govmomi debug path for a single run
+        /// </summary>
+        [Output("clientDebugPathRun")]
+        public Output<string?> ClientDebugPathRun { get; private set; } = null!;
+
+        /// <summary>
+        /// The user password for vSphere API operations.
+        /// </summary>
+        [Output("password")]
+        public Output<string> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The directory to save vSphere REST API sessions to
+        /// </summary>
+        [Output("restSessionPath")]
+        public Output<string?> RestSessionPath { get; private set; } = null!;
+
+        /// <summary>
+        /// The user name for vSphere API operations.
+        /// </summary>
+        [Output("user")]
+        public Output<string> User { get; private set; } = null!;
+
+        [Output("vcenterServer")]
+        public Output<string?> VcenterServer { get; private set; } = null!;
+
+        /// <summary>
+        /// The directory to save vSphere SOAP API sessions to
+        /// </summary>
+        [Output("vimSessionPath")]
+        public Output<string?> VimSessionPath { get; private set; } = null!;
+
+        /// <summary>
+        /// The vSphere Server name for vSphere API operations.
+        /// </summary>
+        [Output("vsphereServer")]
+        public Output<string?> VsphereServer { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

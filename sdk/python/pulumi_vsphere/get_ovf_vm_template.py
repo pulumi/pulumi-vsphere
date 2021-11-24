@@ -12,6 +12,7 @@ __all__ = [
     'GetOvfVmTemplateResult',
     'AwaitableGetOvfVmTemplateResult',
     'get_ovf_vm_template',
+    'get_ovf_vm_template_output',
 ]
 
 @pulumi.output_type
@@ -373,7 +374,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
                         resource_pool_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOvfVmTemplateResult:
     """
-    The `getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware
+    The `get_ovf_vm_template` data source can be used to submit an OVF to vSphere and extract its hardware
     settings in a form that can be then used as inputs for a `VirtualMachine` resource.
 
     ## Example Usage
@@ -464,3 +465,60 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
         scsi_controller_count=__ret__.scsi_controller_count,
         scsi_type=__ret__.scsi_type,
         swap_placement_policy=__ret__.swap_placement_policy)
+
+
+@_utilities.lift_output_func(get_ovf_vm_template)
+def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[Optional[bool]]] = None,
+                               datastore_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               deployment_option: Optional[pulumi.Input[Optional[str]]] = None,
+                               disk_provisioning: Optional[pulumi.Input[Optional[str]]] = None,
+                               enable_hidden_properties: Optional[pulumi.Input[Optional[bool]]] = None,
+                               folder: Optional[pulumi.Input[Optional[str]]] = None,
+                               host_system_id: Optional[pulumi.Input[str]] = None,
+                               ip_allocation_policy: Optional[pulumi.Input[Optional[str]]] = None,
+                               ip_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                               local_ovf_path: Optional[pulumi.Input[Optional[str]]] = None,
+                               name: Optional[pulumi.Input[str]] = None,
+                               ovf_network_map: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                               remote_ovf_url: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_pool_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
+    """
+    The `get_ovf_vm_template` data source can be used to submit an OVF to vSphere and extract its hardware
+    settings in a form that can be then used as inputs for a `VirtualMachine` resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    ovf = vsphere.get_ovf_vm_template(name="testOVF",
+        resource_pool_id=vsphere_resource_pool["rp"]["id"],
+        datastore_id=data["vsphere_datastore"]["ds"]["id"],
+        host_system_id=data["vsphere_host"]["hs"]["id"],
+        remote_ovf_url="https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
+        ovf_network_map={
+            "Network 1": data["vsphere_network"]["net"]["id"],
+        })
+    ```
+
+
+    :param bool allow_unverified_ssl_cert: Allow unverified ssl certificates while deploying ovf/ova from url.
+    :param str datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+    :param str deployment_option: The key of the chosen deployment option. If empty, the default option is chosen.
+    :param str disk_provisioning: The disk provisioning. If set, all the disks in the deployed OVF will have
+           the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+    :param str folder: The name of the folder to locate the virtual machine in.
+    :param str host_system_id: The ID of an optional host system to pin the virtual machine to.
+    :param str ip_allocation_policy: The IP allocation policy.
+    :param str ip_protocol: The IP protocol.
+    :param str local_ovf_path: The absolute path to the ovf/ova file in the local system. While deploying from ovf,
+           make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+    :param str name: Name of the virtual machine to create.
+    :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers from the ovf descriptor to network UUID in the
+           VI infrastructure.
+    :param str remote_ovf_url: URL to the remote ovf/ova file to be deployed.
+    :param str resource_pool_id: The ID of a resource pool to put the virtual machine in.
+    """
+    ...

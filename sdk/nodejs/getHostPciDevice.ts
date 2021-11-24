@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -55,21 +54,21 @@ export interface GetHostPciDeviceArgs {
     /**
      * The hexadecimal PCI device class ID
      */
-    readonly classId?: string;
+    classId?: string;
     /**
      * The [managed object reference
      * ID][docs-about-morefs] of a host.
      */
-    readonly hostId: string;
+    hostId: string;
     /**
      * A regular expression that will be used to match
      * the host PCI device name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The hexadecimal PCI device vendor ID.
      */
-    readonly vendorId?: string;
+    vendorId?: string;
 }
 
 /**
@@ -88,4 +87,32 @@ export interface GetHostPciDeviceResult {
     readonly name: string;
     readonly nameRegex?: string;
     readonly vendorId?: string;
+}
+
+export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {
+    return pulumi.output(args).apply(a => getHostPciDevice(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHostPciDevice.
+ */
+export interface GetHostPciDeviceOutputArgs {
+    /**
+     * The hexadecimal PCI device class ID
+     */
+    classId?: pulumi.Input<string>;
+    /**
+     * The [managed object reference
+     * ID][docs-about-morefs] of a host.
+     */
+    hostId: pulumi.Input<string>;
+    /**
+     * A regular expression that will be used to match
+     * the host PCI device name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The hexadecimal PCI device vendor ID.
+     */
+    vendorId?: pulumi.Input<string>;
 }

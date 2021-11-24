@@ -168,35 +168,35 @@ export interface VirtualMachineSnapshotState {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    readonly consolidate?: pulumi.Input<boolean>;
+    consolidate?: pulumi.Input<boolean>;
     /**
      * A description for the snapshot.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If set to `true`, a dump of the internal state of the
      * virtual machine is included in the snapshot.
      */
-    readonly memory?: pulumi.Input<boolean>;
+    memory?: pulumi.Input<boolean>;
     /**
      * If set to `true`, and the virtual machine is powered
      * on when the snapshot is taken, VMware Tools is used to quiesce the file
      * system in the virtual machine.
      */
-    readonly quiesce?: pulumi.Input<boolean>;
+    quiesce?: pulumi.Input<boolean>;
     /**
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    readonly removeChildren?: pulumi.Input<boolean>;
+    removeChildren?: pulumi.Input<boolean>;
     /**
      * The name of the snapshot.
      */
-    readonly snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string>;
     /**
      * The virtual machine UUID.
      */
-    readonly virtualMachineUuid?: pulumi.Input<string>;
+    virtualMachineUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -208,33 +208,33 @@ export interface VirtualMachineSnapshotArgs {
      * snapshot will be consolidated into the parent when this resource is
      * destroyed.
      */
-    readonly consolidate?: pulumi.Input<boolean>;
+    consolidate?: pulumi.Input<boolean>;
     /**
      * A description for the snapshot.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * If set to `true`, a dump of the internal state of the
      * virtual machine is included in the snapshot.
      */
-    readonly memory: pulumi.Input<boolean>;
+    memory: pulumi.Input<boolean>;
     /**
      * If set to `true`, and the virtual machine is powered
      * on when the snapshot is taken, VMware Tools is used to quiesce the file
      * system in the virtual machine.
      */
-    readonly quiesce: pulumi.Input<boolean>;
+    quiesce: pulumi.Input<boolean>;
     /**
      * If set to `true`, the entire snapshot subtree
      * is removed when this resource is destroyed.
      */
-    readonly removeChildren?: pulumi.Input<boolean>;
+    removeChildren?: pulumi.Input<boolean>;
     /**
      * The name of the snapshot.
      */
-    readonly snapshotName: pulumi.Input<string>;
+    snapshotName: pulumi.Input<string>;
     /**
      * The virtual machine UUID.
      */
-    readonly virtualMachineUuid: pulumi.Input<string>;
+    virtualMachineUuid: pulumi.Input<string>;
 }

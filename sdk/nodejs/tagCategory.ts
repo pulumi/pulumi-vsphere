@@ -100,22 +100,22 @@ export interface TagCategoryState {
      * valid to be assigned to. For a full list, click
      * here.
      */
-    readonly associableTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    associableTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of tags that can be assigned from this
      * category to a single object at once. Can be one of `SINGLE` (object can only
      * be assigned one tag in this category), to `MULTIPLE` (object can be assigned
      * multiple tags in this category). Forces a new resource if changed.
      */
-    readonly cardinality?: pulumi.Input<string>;
+    cardinality?: pulumi.Input<string>;
     /**
      * A description for the category.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the category.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -127,20 +127,20 @@ export interface TagCategoryArgs {
      * valid to be assigned to. For a full list, click
      * here.
      */
-    readonly associableTypes: pulumi.Input<pulumi.Input<string>[]>;
+    associableTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of tags that can be assigned from this
      * category to a single object at once. Can be one of `SINGLE` (object can only
      * be assigned one tag in this category), to `MULTIPLE` (object can be assigned
      * multiple tags in this category). Forces a new resource if changed.
      */
-    readonly cardinality: pulumi.Input<string>;
+    cardinality: pulumi.Input<string>;
     /**
      * A description for the category.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the category.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

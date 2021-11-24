@@ -29,14 +29,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "mydc"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1.host.test"
-// 		h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		h1, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			Name:         &opt1,
 // 			DatacenterId: dc.Id,
 // 		}, nil)
@@ -45,8 +45,8 @@ import (
 // 		}
 // 		d1, err := vsphere.NewDistributedVirtualSwitch(ctx, "d1", &vsphere.DistributedVirtualSwitchArgs{
 // 			DatacenterId: pulumi.String(dc.Id),
-// 			Hosts: vsphere.DistributedVirtualSwitchHostArray{
-// 				&vsphere.DistributedVirtualSwitchHostArgs{
+// 			Hosts: DistributedVirtualSwitchHostArray{
+// 				&DistributedVirtualSwitchHostArgs{
 // 					HostSystemId: pulumi.String(h1.Id),
 // 					Devices: pulumi.StringArray{
 // 						pulumi.String("vnic3"),
@@ -68,7 +68,7 @@ import (
 // 			Host:                  pulumi.String(h1.Id),
 // 			DistributedSwitchPort: d1.ID(),
 // 			DistributedPortGroup:  p1.ID(),
-// 			Ipv4: &vsphere.VnicIpv4Args{
+// 			Ipv4: &VnicIpv4Args{
 // 				Dhcp: pulumi.Bool(true),
 // 			},
 // 			Netstack: pulumi.String("vmotion"),
@@ -93,14 +93,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "mydc"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1.host.test"
-// 		h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		h1, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			Name:         &opt1,
 // 			DatacenterId: dc.Id,
 // 		}, nil)
@@ -133,7 +133,7 @@ import (
 // 		_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
 // 			Host:      pulumi.String(h1.Id),
 // 			Portgroup: p1.Name,
-// 			Ipv4: &vsphere.VnicIpv4Args{
+// 			Ipv4: &VnicIpv4Args{
 // 				Dhcp: pulumi.Bool(true),
 // 			},
 // 		})
@@ -375,7 +375,7 @@ type VnicArrayInput interface {
 type VnicArray []VnicInput
 
 func (VnicArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Vnic)(nil))
+	return reflect.TypeOf((*[]*Vnic)(nil)).Elem()
 }
 
 func (i VnicArray) ToVnicArrayOutput() VnicArrayOutput {
@@ -400,7 +400,7 @@ type VnicMapInput interface {
 type VnicMap map[string]VnicInput
 
 func (VnicMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Vnic)(nil))
+	return reflect.TypeOf((*map[string]*Vnic)(nil)).Elem()
 }
 
 func (i VnicMap) ToVnicMapOutput() VnicMapOutput {
@@ -411,9 +411,7 @@ func (i VnicMap) ToVnicMapOutputWithContext(ctx context.Context) VnicMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicMapOutput)
 }
 
-type VnicOutput struct {
-	*pulumi.OutputState
-}
+type VnicOutput struct{ *pulumi.OutputState }
 
 func (VnicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Vnic)(nil))
@@ -432,14 +430,12 @@ func (o VnicOutput) ToVnicPtrOutput() VnicPtrOutput {
 }
 
 func (o VnicOutput) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
-	return o.ApplyT(func(v Vnic) *Vnic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vnic) *Vnic {
 		return &v
 	}).(VnicPtrOutput)
 }
 
-type VnicPtrOutput struct {
-	*pulumi.OutputState
-}
+type VnicPtrOutput struct{ *pulumi.OutputState }
 
 func (VnicPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Vnic)(nil))
@@ -451,6 +447,16 @@ func (o VnicPtrOutput) ToVnicPtrOutput() VnicPtrOutput {
 
 func (o VnicPtrOutput) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
 	return o
+}
+
+func (o VnicPtrOutput) Elem() VnicOutput {
+	return o.ApplyT(func(v *Vnic) Vnic {
+		if v != nil {
+			return *v
+		}
+		var ret Vnic
+		return ret
+	}).(VnicOutput)
 }
 
 type VnicArrayOutput struct{ *pulumi.OutputState }
@@ -494,6 +500,10 @@ func (o VnicMapOutput) MapIndex(k pulumi.StringInput) VnicOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicInput)(nil)).Elem(), &Vnic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicPtrInput)(nil)).Elem(), &Vnic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicArrayInput)(nil)).Elem(), VnicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VnicMapInput)(nil)).Elem(), VnicMap{})
 	pulumi.RegisterOutputType(VnicOutput{})
 	pulumi.RegisterOutputType(VnicPtrOutput{})
 	pulumi.RegisterOutputType(VnicArrayOutput{})

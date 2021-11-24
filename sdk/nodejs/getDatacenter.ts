@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
@@ -44,7 +43,7 @@ export interface GetDatacenterArgs {
      * The name of the datacenter. This can be a name or path.
      * Can be omitted if there is only one datacenter in your inventory.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -56,4 +55,19 @@ export interface GetDatacenterResult {
      */
     readonly id: string;
     readonly name?: string;
+}
+
+export function getDatacenterOutput(args?: GetDatacenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacenterResult> {
+    return pulumi.output(args).apply(a => getDatacenter(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatacenter.
+ */
+export interface GetDatacenterOutputArgs {
+    /**
+     * The name of the datacenter. This can be a name or path.
+     * Can be omitted if there is only one datacenter in your inventory.
+     */
+    name?: pulumi.Input<string>;
 }

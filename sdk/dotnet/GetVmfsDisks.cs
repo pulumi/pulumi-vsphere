@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -54,6 +55,50 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
+        /// devices available on an ESXi host. This data source can be combined with the
+        /// `vsphere.VmfsDatastore` resource to create VMFS
+        /// datastores based off a set of discovered disks.
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc1",
+        ///         }));
+        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+        ///         {
+        ///             DatacenterId = datacenter.Id,
+        ///             Name = "esxi1",
+        ///         })));
+        ///         var available = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
+        ///         {
+        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
+        ///             HostSystemId = host.Id,
+        ///             Rescan = true,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVmfsDisksResult> Invoke(GetVmfsDisksInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +127,35 @@ namespace Pulumi.VSphere
         public bool? Rescan { get; set; }
 
         public GetVmfsDisksArgs()
+        {
+        }
+    }
+
+    public sealed class GetVmfsDisksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regular expression to filter the disks against. Only
+        /// disks with canonical names that match will be included.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The managed object ID of
+        /// the host to look for disks on.
+        /// </summary>
+        [Input("hostSystemId", required: true)]
+        public Input<string> HostSystemId { get; set; } = null!;
+
+        /// <summary>
+        /// Whether or not to rescan storage adapters before
+        /// searching for disks. This may lengthen the time it takes to perform the
+        /// search. Default: `false`.
+        /// </summary>
+        [Input("rescan")]
+        public Input<bool>? Rescan { get; set; }
+
+        public GetVmfsDisksInvokeArgs()
         {
         }
     }

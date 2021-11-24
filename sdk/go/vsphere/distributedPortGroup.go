@@ -732,7 +732,7 @@ type DistributedPortGroupArrayInput interface {
 type DistributedPortGroupArray []DistributedPortGroupInput
 
 func (DistributedPortGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DistributedPortGroup)(nil))
+	return reflect.TypeOf((*[]*DistributedPortGroup)(nil)).Elem()
 }
 
 func (i DistributedPortGroupArray) ToDistributedPortGroupArrayOutput() DistributedPortGroupArrayOutput {
@@ -757,7 +757,7 @@ type DistributedPortGroupMapInput interface {
 type DistributedPortGroupMap map[string]DistributedPortGroupInput
 
 func (DistributedPortGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DistributedPortGroup)(nil))
+	return reflect.TypeOf((*map[string]*DistributedPortGroup)(nil)).Elem()
 }
 
 func (i DistributedPortGroupMap) ToDistributedPortGroupMapOutput() DistributedPortGroupMapOutput {
@@ -768,9 +768,7 @@ func (i DistributedPortGroupMap) ToDistributedPortGroupMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedPortGroupMapOutput)
 }
 
-type DistributedPortGroupOutput struct {
-	*pulumi.OutputState
-}
+type DistributedPortGroupOutput struct{ *pulumi.OutputState }
 
 func (DistributedPortGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DistributedPortGroup)(nil))
@@ -789,14 +787,12 @@ func (o DistributedPortGroupOutput) ToDistributedPortGroupPtrOutput() Distribute
 }
 
 func (o DistributedPortGroupOutput) ToDistributedPortGroupPtrOutputWithContext(ctx context.Context) DistributedPortGroupPtrOutput {
-	return o.ApplyT(func(v DistributedPortGroup) *DistributedPortGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DistributedPortGroup) *DistributedPortGroup {
 		return &v
 	}).(DistributedPortGroupPtrOutput)
 }
 
-type DistributedPortGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type DistributedPortGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (DistributedPortGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DistributedPortGroup)(nil))
@@ -808,6 +804,16 @@ func (o DistributedPortGroupPtrOutput) ToDistributedPortGroupPtrOutput() Distrib
 
 func (o DistributedPortGroupPtrOutput) ToDistributedPortGroupPtrOutputWithContext(ctx context.Context) DistributedPortGroupPtrOutput {
 	return o
+}
+
+func (o DistributedPortGroupPtrOutput) Elem() DistributedPortGroupOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) DistributedPortGroup {
+		if v != nil {
+			return *v
+		}
+		var ret DistributedPortGroup
+		return ret
+	}).(DistributedPortGroupOutput)
 }
 
 type DistributedPortGroupArrayOutput struct{ *pulumi.OutputState }
@@ -851,6 +857,10 @@ func (o DistributedPortGroupMapOutput) MapIndex(k pulumi.StringInput) Distribute
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupInput)(nil)).Elem(), &DistributedPortGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupPtrInput)(nil)).Elem(), &DistributedPortGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupArrayInput)(nil)).Elem(), DistributedPortGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedPortGroupMapInput)(nil)).Elem(), DistributedPortGroupMap{})
 	pulumi.RegisterOutputType(DistributedPortGroupOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupPtrOutput{})
 	pulumi.RegisterOutputType(DistributedPortGroupArrayOutput{})

@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,13 +31,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		category, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+// 		category, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
 // 			Name: "test-category",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
 // 			CategoryId: category.Id,
 // 			Name:       "test-tag",
 // 		}, nil)
@@ -69,4 +72,61 @@ type LookupTagResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupTagOutput(ctx *pulumi.Context, args LookupTagOutputArgs, opts ...pulumi.InvokeOption) LookupTagResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupTagResult, error) {
+			args := v.(LookupTagArgs)
+			r, err := LookupTag(ctx, &args, opts...)
+			return *r, err
+		}).(LookupTagResultOutput)
+}
+
+// A collection of arguments for invoking getTag.
+type LookupTagOutputArgs struct {
+	// The ID of the tag category the tag is located in.
+	CategoryId pulumi.StringInput `pulumi:"categoryId"`
+	// The name of the tag.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupTagOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTag.
+type LookupTagResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTagResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTagResult)(nil)).Elem()
+}
+
+func (o LookupTagResultOutput) ToLookupTagResultOutput() LookupTagResultOutput {
+	return o
+}
+
+func (o LookupTagResultOutput) ToLookupTagResultOutputWithContext(ctx context.Context) LookupTagResultOutput {
+	return o
+}
+
+func (o LookupTagResultOutput) CategoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.CategoryId }).(pulumi.StringOutput)
+}
+
+func (o LookupTagResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTagResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTagResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTagResultOutput{})
 }

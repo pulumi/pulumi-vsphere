@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -19,16 +18,16 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const host = datacenter.apply(datacenter => vsphere.getHost({
  *     datacenterId: datacenter.id,
  *     name: "esxi1",
- * }, { async: true }));
+ * }));
  * const available = host.apply(host => vsphere.getVmfsDisks({
  *     filter: "mpx.vmhba1:C0:T[12]:L0",
  *     hostSystemId: host.id,
  *     rescan: true,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
@@ -54,18 +53,18 @@ export interface GetVmfsDisksArgs {
      * A regular expression to filter the disks against. Only
      * disks with canonical names that match will be included.
      */
-    readonly filter?: string;
+    filter?: string;
     /**
      * The managed object ID of
      * the host to look for disks on.
      */
-    readonly hostSystemId: string;
+    hostSystemId: string;
     /**
      * Whether or not to rescan storage adapters before
      * searching for disks. This may lengthen the time it takes to perform the
      * search. Default: `false`.
      */
-    readonly rescan?: boolean;
+    rescan?: boolean;
 }
 
 /**
@@ -84,4 +83,30 @@ export interface GetVmfsDisksResult {
      */
     readonly id: string;
     readonly rescan?: boolean;
+}
+
+export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmfsDisksResult> {
+    return pulumi.output(args).apply(a => getVmfsDisks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVmfsDisks.
+ */
+export interface GetVmfsDisksOutputArgs {
+    /**
+     * A regular expression to filter the disks against. Only
+     * disks with canonical names that match will be included.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * The managed object ID of
+     * the host to look for disks on.
+     */
+    hostSystemId: pulumi.Input<string>;
+    /**
+     * Whether or not to rescan storage adapters before
+     * searching for disks. This may lengthen the time it takes to perform the
+     * search. Default: `false`.
+     */
+    rescan?: pulumi.Input<boolean>;
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -10,6 +9,21 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
  * connections.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const library = vsphere.getContentLibrary({
+ *     name: "Content Library Test",
+ * });
+ * const item = library.then(library => vsphere.getContentLibraryItem({
+ *     name: "Ubuntu Bionic 18.04",
+ *     libraryId: library.id,
+ * }));
+ * ```
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
     if (!opts) {
@@ -33,15 +47,15 @@ export interface GetContentLibraryItemArgs {
     /**
      * The ID of the Content Library the item exists in.
      */
-    readonly libraryId: string;
+    libraryId: string;
     /**
      * The name of the Content Library.
      */
-    readonly name: string;
+    name: string;
     /**
      * The Content Library type. Can be ovf, iso, or vm-template.
      */
-    readonly type: string;
+    type: string;
 }
 
 /**
@@ -58,4 +72,26 @@ export interface GetContentLibraryItemResult {
      * The Content Library type. Can be ovf, iso, or vm-template.
      */
     readonly type: string;
+}
+
+export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryItemResult> {
+    return pulumi.output(args).apply(a => getContentLibraryItem(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContentLibraryItem.
+ */
+export interface GetContentLibraryItemOutputArgs {
+    /**
+     * The ID of the Content Library the item exists in.
+     */
+    libraryId: pulumi.Input<string>;
+    /**
+     * The name of the Content Library.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Content Library type. Can be ovf, iso, or vm-template.
+     */
+    type: pulumi.Input<string>;
 }

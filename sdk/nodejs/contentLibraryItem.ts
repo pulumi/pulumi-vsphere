@@ -103,28 +103,28 @@ export interface ContentLibraryItemState {
     /**
      * A description for the item.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * File to import into the Content Library item. OVFs and
      * OVAs will be parsed and associated files will also be imported.
      */
-    readonly fileUrl?: pulumi.Input<string>;
+    fileUrl?: pulumi.Input<string>;
     /**
      * The ID of the Content Library the item should be created in.
      */
-    readonly libraryId?: pulumi.Input<string>;
+    libraryId?: pulumi.Input<string>;
     /**
      * The name of the item to be created in the Content Library.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Virtual machine UUID to clone to Content Library.
      */
-    readonly sourceUuid?: pulumi.Input<string>;
+    sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -134,26 +134,26 @@ export interface ContentLibraryItemArgs {
     /**
      * A description for the item.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * File to import into the Content Library item. OVFs and
      * OVAs will be parsed and associated files will also be imported.
      */
-    readonly fileUrl?: pulumi.Input<string>;
+    fileUrl?: pulumi.Input<string>;
     /**
      * The ID of the Content Library the item should be created in.
      */
-    readonly libraryId: pulumi.Input<string>;
+    libraryId: pulumi.Input<string>;
     /**
      * The name of the item to be created in the Content Library.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Virtual machine UUID to clone to Content Library.
      */
-    readonly sourceUuid?: pulumi.Input<string>;
+    sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

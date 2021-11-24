@@ -12,6 +12,7 @@ __all__ = [
     'GetTagResult',
     'AwaitableGetTagResult',
     'get_tag',
+    'get_tag_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,35 @@ def get_tag(category_id: Optional[str] = None,
         description=__ret__.description,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_tag)
+def get_tag_output(category_id: Optional[pulumi.Input[str]] = None,
+                   name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagResult]:
+    """
+    The `Tag` data source can be used to reference tags that are not
+    managed by this provider. Its attributes are exactly the same as the `Tag`
+    resource, and, like importing, the data source takes a name and
+    category to search on. The `id` and other attributes are then populated with
+    the data found by the search.
+
+    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+    requires vCenter 6.0 or higher.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    category = vsphere.get_tag_category(name="test-category")
+    tag = vsphere.get_tag(category_id=category.id,
+        name="test-tag")
+    ```
+
+
+    :param str category_id: The ID of the tag category the tag is located in.
+    :param str name: The name of the tag.
+    """
+    ...

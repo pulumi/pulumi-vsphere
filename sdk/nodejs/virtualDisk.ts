@@ -150,40 +150,40 @@ export interface VirtualDiskState {
      *
      * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
-    readonly adapterType?: pulumi.Input<string>;
+    adapterType?: pulumi.Input<string>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      */
-    readonly createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which to create the
      * disk.
      */
-    readonly datastore?: pulumi.Input<string>;
+    datastore?: pulumi.Input<string>;
     /**
      * Size of the disk (in GB).
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.
      */
-    readonly vmdkPath?: pulumi.Input<string>;
+    vmdkPath?: pulumi.Input<string>;
 }
 
 /**
@@ -196,38 +196,38 @@ export interface VirtualDiskArgs {
      *
      * @deprecated this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      */
-    readonly adapterType?: pulumi.Input<string>;
+    adapterType?: pulumi.Input<string>;
     /**
      * Tells the resource to create any
      * directories that are a part of the `vmdkPath` parameter if they are missing.
      * Default: `false`.
      */
-    readonly createDirectories?: pulumi.Input<boolean>;
+    createDirectories?: pulumi.Input<boolean>;
     /**
      * The name of the datacenter in which to create the
      * disk. Can be omitted when when ESXi or if there is only one datacenter in
      * your infrastructure.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the datastore in which to create the
      * disk.
      */
-    readonly datastore: pulumi.Input<string>;
+    datastore: pulumi.Input<string>;
     /**
      * Size of the disk (in GB).
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The type of disk to create. Can be one of
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The path, including filename, of the virtual disk to
      * be created.  This needs to end in `.vmdk`.
      */
-    readonly vmdkPath: pulumi.Input<string>;
+    vmdkPath: pulumi.Input<string>;
 }

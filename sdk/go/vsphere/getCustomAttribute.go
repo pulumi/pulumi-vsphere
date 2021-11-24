@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupCustomAttribute(ctx, &vsphere.LookupCustomAttributeArgs{
+// 		_, err := vsphere.LookupCustomAttribute(ctx, &GetCustomAttributeArgs{
 // 			Name: "test-attribute",
 // 		}, nil)
 // 		if err != nil {
@@ -59,4 +62,55 @@ type LookupCustomAttributeResult struct {
 	Id                string `pulumi:"id"`
 	ManagedObjectType string `pulumi:"managedObjectType"`
 	Name              string `pulumi:"name"`
+}
+
+func LookupCustomAttributeOutput(ctx *pulumi.Context, args LookupCustomAttributeOutputArgs, opts ...pulumi.InvokeOption) LookupCustomAttributeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCustomAttributeResult, error) {
+			args := v.(LookupCustomAttributeArgs)
+			r, err := LookupCustomAttribute(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCustomAttributeResultOutput)
+}
+
+// A collection of arguments for invoking getCustomAttribute.
+type LookupCustomAttributeOutputArgs struct {
+	// The name of the custom attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupCustomAttributeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCustomAttributeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCustomAttribute.
+type LookupCustomAttributeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCustomAttributeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCustomAttributeResult)(nil)).Elem()
+}
+
+func (o LookupCustomAttributeResultOutput) ToLookupCustomAttributeResultOutput() LookupCustomAttributeResultOutput {
+	return o
+}
+
+func (o LookupCustomAttributeResultOutput) ToLookupCustomAttributeResultOutputWithContext(ctx context.Context) LookupCustomAttributeResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCustomAttributeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomAttributeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomAttributeResultOutput) ManagedObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomAttributeResult) string { return v.ManagedObjectType }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomAttributeResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomAttributeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCustomAttributeResultOutput{})
 }

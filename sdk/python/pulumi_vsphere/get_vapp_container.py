@@ -12,6 +12,7 @@ __all__ = [
     'GetVappContainerResult',
     'AwaitableGetVappContainerResult',
     'get_vapp_container',
+    'get_vapp_container_output',
 ]
 
 @pulumi.output_type
@@ -99,3 +100,33 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
         datacenter_id=__ret__.datacenter_id,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_vapp_container)
+def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVappContainerResult]:
+    """
+    The `VappContainer` data source can be used to discover the ID of a
+    vApp container in vSphere. This is useful to fetch the ID of a vApp container
+    that you want to use to create virtual machines in using the
+    `VirtualMachine` resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc1")
+    pool = vsphere.get_vapp_container(datacenter_id=datacenter.id,
+        name="vapp-container-1")
+    ```
+
+
+    :param str datacenter_id: The managed object reference
+           ID of the datacenter the vApp container is located in.
+    :param str name: The name of the vApp container. This can be a name or
+           path.
+    """
+    ...

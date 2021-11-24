@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,14 +28,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "esxi1"
-// 		host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+// 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			Name:         &opt1,
 // 			DatacenterId: datacenter.Id,
 // 		}, nil)
@@ -41,7 +44,7 @@ import (
 // 		}
 // 		opt2 := "123"
 // 		opt3 := "456"
-// 		_, err = vsphere.GetHostPciDevice(ctx, &vsphere.GetHostPciDeviceArgs{
+// 		_, err = vsphere.GetHostPciDevice(ctx, &GetHostPciDeviceArgs{
 // 			HostId:   host.Id,
 // 			ClassId:  &opt2,
 // 			VendorId: &opt3,
@@ -87,4 +90,76 @@ type GetHostPciDeviceResult struct {
 	Name      string  `pulumi:"name"`
 	NameRegex *string `pulumi:"nameRegex"`
 	VendorId  *string `pulumi:"vendorId"`
+}
+
+func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs, opts ...pulumi.InvokeOption) GetHostPciDeviceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHostPciDeviceResult, error) {
+			args := v.(GetHostPciDeviceArgs)
+			r, err := GetHostPciDevice(ctx, &args, opts...)
+			return *r, err
+		}).(GetHostPciDeviceResultOutput)
+}
+
+// A collection of arguments for invoking getHostPciDevice.
+type GetHostPciDeviceOutputArgs struct {
+	// The hexadecimal PCI device class ID
+	ClassId pulumi.StringPtrInput `pulumi:"classId"`
+	// The [managed object reference
+	// ID][docs-about-morefs] of a host.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// A regular expression that will be used to match
+	// the host PCI device name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The hexadecimal PCI device vendor ID.
+	VendorId pulumi.StringPtrInput `pulumi:"vendorId"`
+}
+
+func (GetHostPciDeviceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostPciDeviceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHostPciDevice.
+type GetHostPciDeviceResultOutput struct{ *pulumi.OutputState }
+
+func (GetHostPciDeviceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostPciDeviceResult)(nil)).Elem()
+}
+
+func (o GetHostPciDeviceResultOutput) ToGetHostPciDeviceResultOutput() GetHostPciDeviceResultOutput {
+	return o
+}
+
+func (o GetHostPciDeviceResultOutput) ToGetHostPciDeviceResultOutputWithContext(ctx context.Context) GetHostPciDeviceResultOutput {
+	return o
+}
+
+func (o GetHostPciDeviceResultOutput) ClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) *string { return v.ClassId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHostPciDeviceResultOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHostPciDeviceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the PCI device.
+func (o GetHostPciDeviceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetHostPciDeviceResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHostPciDeviceResultOutput) VendorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostPciDeviceResult) *string { return v.VendorId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHostPciDeviceResultOutput{})
 }

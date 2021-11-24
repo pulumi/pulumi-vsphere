@@ -4,6 +4,9 @@
 package vsphere
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,14 +29,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dc1"
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := datacenter.Id
-// 		_, err = vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+// 		_, err = vsphere.GetNetwork(ctx, &GetNetworkArgs{
 // 			DatacenterId: &opt1,
 // 			Name:         "test-net",
 // 		}, nil)
@@ -78,4 +81,74 @@ type GetNetworkResult struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	Type string `pulumi:"type"`
+}
+
+func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pulumi.InvokeOption) GetNetworkResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkResult, error) {
+			args := v.(GetNetworkArgs)
+			r, err := GetNetwork(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkResultOutput)
+}
+
+// A collection of arguments for invoking getNetwork.
+type GetNetworkOutputArgs struct {
+	// The managed object reference
+	// ID of the datacenter the network is located in. This can
+	// be omitted if the search path used in `name` is an absolute path. For default
+	// datacenters, use the id attribute from an empty `Datacenter` data
+	// source.
+	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
+	// For distributed port group type
+	// network objects, the ID of the distributed virtual switch the given port group
+	// belongs to. It is useful to differentiate port groups with same name using the
+	// Distributed virtual switch ID.
+	DistributedVirtualSwitchUuid pulumi.StringPtrInput `pulumi:"distributedVirtualSwitchUuid"`
+	// The name of the network. This can be a name or path.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetNetworkOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetwork.
+type GetNetworkResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkResult)(nil)).Elem()
+}
+
+func (o GetNetworkResultOutput) ToGetNetworkResultOutput() GetNetworkResultOutput {
+	return o
+}
+
+func (o GetNetworkResultOutput) ToGetNetworkResultOutputWithContext(ctx context.Context) GetNetworkResultOutput {
+	return o
+}
+
+func (o GetNetworkResultOutput) DatacenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkResultOutput) DistributedVirtualSwitchUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkResult) *string { return v.DistributedVirtualSwitchUuid }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkResultOutput{})
 }

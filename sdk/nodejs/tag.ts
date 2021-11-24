@@ -87,16 +87,16 @@ export interface TagState {
      * The unique identifier of the parent category in
      * which this tag will be created. Forces a new resource if changed.
      */
-    readonly categoryId?: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string>;
     /**
      * A description for the tag.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -107,14 +107,14 @@ export interface TagArgs {
      * The unique identifier of the parent category in
      * which this tag will be created. Forces a new resource if changed.
      */
-    readonly categoryId: pulumi.Input<string>;
+    categoryId: pulumi.Input<string>;
     /**
      * A description for the tag.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name of the tag. The name must be unique
      * within its category.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

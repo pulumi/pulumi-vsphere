@@ -1431,7 +1431,7 @@ type DistributedVirtualSwitchArrayInput interface {
 type DistributedVirtualSwitchArray []DistributedVirtualSwitchInput
 
 func (DistributedVirtualSwitchArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DistributedVirtualSwitch)(nil))
+	return reflect.TypeOf((*[]*DistributedVirtualSwitch)(nil)).Elem()
 }
 
 func (i DistributedVirtualSwitchArray) ToDistributedVirtualSwitchArrayOutput() DistributedVirtualSwitchArrayOutput {
@@ -1456,7 +1456,7 @@ type DistributedVirtualSwitchMapInput interface {
 type DistributedVirtualSwitchMap map[string]DistributedVirtualSwitchInput
 
 func (DistributedVirtualSwitchMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DistributedVirtualSwitch)(nil))
+	return reflect.TypeOf((*map[string]*DistributedVirtualSwitch)(nil)).Elem()
 }
 
 func (i DistributedVirtualSwitchMap) ToDistributedVirtualSwitchMapOutput() DistributedVirtualSwitchMapOutput {
@@ -1467,9 +1467,7 @@ func (i DistributedVirtualSwitchMap) ToDistributedVirtualSwitchMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchMapOutput)
 }
 
-type DistributedVirtualSwitchOutput struct {
-	*pulumi.OutputState
-}
+type DistributedVirtualSwitchOutput struct{ *pulumi.OutputState }
 
 func (DistributedVirtualSwitchOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DistributedVirtualSwitch)(nil))
@@ -1488,14 +1486,12 @@ func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchPtrOutput() Di
 }
 
 func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchPtrOutputWithContext(ctx context.Context) DistributedVirtualSwitchPtrOutput {
-	return o.ApplyT(func(v DistributedVirtualSwitch) *DistributedVirtualSwitch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DistributedVirtualSwitch) *DistributedVirtualSwitch {
 		return &v
 	}).(DistributedVirtualSwitchPtrOutput)
 }
 
-type DistributedVirtualSwitchPtrOutput struct {
-	*pulumi.OutputState
-}
+type DistributedVirtualSwitchPtrOutput struct{ *pulumi.OutputState }
 
 func (DistributedVirtualSwitchPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DistributedVirtualSwitch)(nil))
@@ -1507,6 +1503,16 @@ func (o DistributedVirtualSwitchPtrOutput) ToDistributedVirtualSwitchPtrOutput()
 
 func (o DistributedVirtualSwitchPtrOutput) ToDistributedVirtualSwitchPtrOutputWithContext(ctx context.Context) DistributedVirtualSwitchPtrOutput {
 	return o
+}
+
+func (o DistributedVirtualSwitchPtrOutput) Elem() DistributedVirtualSwitchOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitch {
+		if v != nil {
+			return *v
+		}
+		var ret DistributedVirtualSwitch
+		return ret
+	}).(DistributedVirtualSwitchOutput)
 }
 
 type DistributedVirtualSwitchArrayOutput struct{ *pulumi.OutputState }
@@ -1550,6 +1556,10 @@ func (o DistributedVirtualSwitchMapOutput) MapIndex(k pulumi.StringInput) Distri
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchInput)(nil)).Elem(), &DistributedVirtualSwitch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchPtrInput)(nil)).Elem(), &DistributedVirtualSwitch{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchArrayInput)(nil)).Elem(), DistributedVirtualSwitchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DistributedVirtualSwitchMapInput)(nil)).Elem(), DistributedVirtualSwitchMap{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchPtrOutput{})
 	pulumi.RegisterOutputType(DistributedVirtualSwitchArrayOutput{})

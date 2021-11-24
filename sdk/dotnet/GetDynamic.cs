@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -69,6 +70,65 @@ namespace Pulumi.VSphere
         /// </summary>
         public static Task<GetDynamicResult> InvokeAsync(GetDynamicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithVersion());
+
+        /// <summary>
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// The `vsphere.getDynamic` data source can be used to get the [managed object 
+        ///   reference ID][docs-about-morefs] of any tagged managed object in vCenter
+        ///   by providing a list of tag IDs and an optional regular expression to filter
+        ///   objects by name.
+        ///    
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cat = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         {
+        ///             Name = "SomeCategory",
+        ///         }));
+        ///         var tag1 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         {
+        ///             Name = "FirstTag",
+        ///             CategoryId = cat.Id,
+        ///         })));
+        ///         var tag2 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         {
+        ///             Name = "SecondTag",
+        ///             CategoryId = cat.Id,
+        ///         })));
+        ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
+        ///         {
+        ///             var tag1 = values.Item1;
+        ///             var tag11 = values.Item2;
+        ///             return Output.Create(VSphere.GetDynamic.InvokeAsync(new VSphere.GetDynamicArgs
+        ///             {
+        ///                 Filters = 
+        ///                 {
+        ///                     tag1.Id,
+        ///                     tag11.Id,
+        ///                 },
+        ///                 NameRegex = "ubuntu",
+        ///                 Type = "Datacenter",
+        ///             }));
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDynamicResult> Invoke(GetDynamicInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +162,40 @@ namespace Pulumi.VSphere
         public string? Type { get; set; }
 
         public GetDynamicArgs()
+        {
+        }
+    }
+
+    public sealed class GetDynamicInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters", required: true)]
+        private InputList<string>? _filters;
+
+        /// <summary>
+        /// A list of tag IDs that must be present on an object to
+        /// be a match.
+        /// </summary>
+        public InputList<string> Filters
+        {
+            get => _filters ?? (_filters = new InputList<string>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// A regular expression that will be used to match
+        /// the object's name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The managed object type the returned object must match.
+        /// For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public GetDynamicInvokeArgs()
         {
         }
     }

@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class GetVirtualMachineVappInputArgs : Pulumi.ResourceArgs
+    public sealed class GetVirtualMachineVappArgs : Pulumi.InvokeArgs
     {
         [Input("properties")]
-        private InputMap<string>? _properties;
-        public InputMap<string> Properties
+        private Dictionary<string, string>? _properties;
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<string>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 
-        public GetVirtualMachineVappInputArgs()
+        public GetVirtualMachineVappArgs()
         {
         }
     }

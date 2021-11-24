@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -20,11 +19,11 @@ import * as utilities from "./utilities";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
  *     name: "dc1",
- * }, { async: true }));
+ * }));
  * const net = datacenter.apply(datacenter => vsphere.getNetwork({
  *     datacenterId: datacenter.id,
  *     name: "test-net",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
@@ -53,18 +52,18 @@ export interface GetNetworkArgs {
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
      */
-    readonly datacenterId?: string;
+    datacenterId?: string;
     /**
      * For distributed port group type 
      * network objects, the ID of the distributed virtual switch the given port group
      * belongs to. It is useful to differentiate port groups with same name using the
      * Distributed virtual switch ID.
      */
-    readonly distributedVirtualSwitchUuid?: string;
+    distributedVirtualSwitchUuid?: string;
     /**
      * The name of the network. This can be a name or path.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -79,4 +78,33 @@ export interface GetNetworkResult {
     readonly id: string;
     readonly name: string;
     readonly type: string;
+}
+
+export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
+    return pulumi.output(args).apply(a => getNetwork(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetwork.
+ */
+export interface GetNetworkOutputArgs {
+    /**
+     * The managed object reference
+     * ID of the datacenter the network is located in. This can
+     * be omitted if the search path used in `name` is an absolute path. For default
+     * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
+     * source.
+     */
+    datacenterId?: pulumi.Input<string>;
+    /**
+     * For distributed port group type 
+     * network objects, the ID of the distributed virtual switch the given port group
+     * belongs to. It is useful to differentiate port groups with same name using the
+     * Distributed virtual switch ID.
+     */
+    distributedVirtualSwitchUuid?: pulumi.Input<string>;
+    /**
+     * The name of the network. This can be a name or path.
+     */
+    name: pulumi.Input<string>;
 }
