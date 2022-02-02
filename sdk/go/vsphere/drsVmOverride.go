@@ -149,7 +149,7 @@ type DrsVmOverrideInput interface {
 }
 
 func (*DrsVmOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*DrsVmOverride)(nil))
+	return reflect.TypeOf((**DrsVmOverride)(nil)).Elem()
 }
 
 func (i *DrsVmOverride) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
@@ -158,35 +158,6 @@ func (i *DrsVmOverride) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
 
 func (i *DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideOutput)
-}
-
-func (i *DrsVmOverride) ToDrsVmOverridePtrOutput() DrsVmOverridePtrOutput {
-	return i.ToDrsVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *DrsVmOverride) ToDrsVmOverridePtrOutputWithContext(ctx context.Context) DrsVmOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverridePtrOutput)
-}
-
-type DrsVmOverridePtrInput interface {
-	pulumi.Input
-
-	ToDrsVmOverridePtrOutput() DrsVmOverridePtrOutput
-	ToDrsVmOverridePtrOutputWithContext(ctx context.Context) DrsVmOverridePtrOutput
-}
-
-type drsVmOverridePtrType DrsVmOverrideArgs
-
-func (*drsVmOverridePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DrsVmOverride)(nil))
-}
-
-func (i *drsVmOverridePtrType) ToDrsVmOverridePtrOutput() DrsVmOverridePtrOutput {
-	return i.ToDrsVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *drsVmOverridePtrType) ToDrsVmOverridePtrOutputWithContext(ctx context.Context) DrsVmOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverridePtrOutput)
 }
 
 // DrsVmOverrideArrayInput is an input type that accepts DrsVmOverrideArray and DrsVmOverrideArrayOutput values.
@@ -242,7 +213,7 @@ func (i DrsVmOverrideMap) ToDrsVmOverrideMapOutputWithContext(ctx context.Contex
 type DrsVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (DrsVmOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DrsVmOverride)(nil))
+	return reflect.TypeOf((**DrsVmOverride)(nil)).Elem()
 }
 
 func (o DrsVmOverrideOutput) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
@@ -253,44 +224,10 @@ func (o DrsVmOverrideOutput) ToDrsVmOverrideOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DrsVmOverrideOutput) ToDrsVmOverridePtrOutput() DrsVmOverridePtrOutput {
-	return o.ToDrsVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (o DrsVmOverrideOutput) ToDrsVmOverridePtrOutputWithContext(ctx context.Context) DrsVmOverridePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DrsVmOverride) *DrsVmOverride {
-		return &v
-	}).(DrsVmOverridePtrOutput)
-}
-
-type DrsVmOverridePtrOutput struct{ *pulumi.OutputState }
-
-func (DrsVmOverridePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DrsVmOverride)(nil))
-}
-
-func (o DrsVmOverridePtrOutput) ToDrsVmOverridePtrOutput() DrsVmOverridePtrOutput {
-	return o
-}
-
-func (o DrsVmOverridePtrOutput) ToDrsVmOverridePtrOutputWithContext(ctx context.Context) DrsVmOverridePtrOutput {
-	return o
-}
-
-func (o DrsVmOverridePtrOutput) Elem() DrsVmOverrideOutput {
-	return o.ApplyT(func(v *DrsVmOverride) DrsVmOverride {
-		if v != nil {
-			return *v
-		}
-		var ret DrsVmOverride
-		return ret
-	}).(DrsVmOverrideOutput)
-}
-
 type DrsVmOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DrsVmOverrideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DrsVmOverride)(nil))
+	return reflect.TypeOf((*[]*DrsVmOverride)(nil)).Elem()
 }
 
 func (o DrsVmOverrideArrayOutput) ToDrsVmOverrideArrayOutput() DrsVmOverrideArrayOutput {
@@ -302,15 +239,15 @@ func (o DrsVmOverrideArrayOutput) ToDrsVmOverrideArrayOutputWithContext(ctx cont
 }
 
 func (o DrsVmOverrideArrayOutput) Index(i pulumi.IntInput) DrsVmOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DrsVmOverride {
-		return vs[0].([]DrsVmOverride)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DrsVmOverride {
+		return vs[0].([]*DrsVmOverride)[vs[1].(int)]
 	}).(DrsVmOverrideOutput)
 }
 
 type DrsVmOverrideMapOutput struct{ *pulumi.OutputState }
 
 func (DrsVmOverrideMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DrsVmOverride)(nil))
+	return reflect.TypeOf((*map[string]*DrsVmOverride)(nil)).Elem()
 }
 
 func (o DrsVmOverrideMapOutput) ToDrsVmOverrideMapOutput() DrsVmOverrideMapOutput {
@@ -322,18 +259,16 @@ func (o DrsVmOverrideMapOutput) ToDrsVmOverrideMapOutputWithContext(ctx context.
 }
 
 func (o DrsVmOverrideMapOutput) MapIndex(k pulumi.StringInput) DrsVmOverrideOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DrsVmOverride {
-		return vs[0].(map[string]DrsVmOverride)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DrsVmOverride {
+		return vs[0].(map[string]*DrsVmOverride)[vs[1].(string)]
 	}).(DrsVmOverrideOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DrsVmOverrideInput)(nil)).Elem(), &DrsVmOverride{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DrsVmOverridePtrInput)(nil)).Elem(), &DrsVmOverride{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DrsVmOverrideArrayInput)(nil)).Elem(), DrsVmOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DrsVmOverrideMapInput)(nil)).Elem(), DrsVmOverrideMap{})
 	pulumi.RegisterOutputType(DrsVmOverrideOutput{})
-	pulumi.RegisterOutputType(DrsVmOverridePtrOutput{})
 	pulumi.RegisterOutputType(DrsVmOverrideArrayOutput{})
 	pulumi.RegisterOutputType(DrsVmOverrideMapOutput{})
 }

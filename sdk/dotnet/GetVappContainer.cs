@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.VSphere
 {
@@ -47,7 +46,7 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVappContainerResult> InvokeAsync(GetVappContainerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
@@ -84,7 +83,7 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVappContainerResult> Invoke(GetVappContainerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithDefaults());
     }
 
 

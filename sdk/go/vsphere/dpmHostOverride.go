@@ -144,7 +144,7 @@ type DpmHostOverrideInput interface {
 }
 
 func (*DpmHostOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpmHostOverride)(nil))
+	return reflect.TypeOf((**DpmHostOverride)(nil)).Elem()
 }
 
 func (i *DpmHostOverride) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
@@ -153,35 +153,6 @@ func (i *DpmHostOverride) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
 
 func (i *DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideOutput)
-}
-
-func (i *DpmHostOverride) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
-	return i.ToDpmHostOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *DpmHostOverride) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverridePtrOutput)
-}
-
-type DpmHostOverridePtrInput interface {
-	pulumi.Input
-
-	ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput
-	ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput
-}
-
-type dpmHostOverridePtrType DpmHostOverrideArgs
-
-func (*dpmHostOverridePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DpmHostOverride)(nil))
-}
-
-func (i *dpmHostOverridePtrType) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
-	return i.ToDpmHostOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *dpmHostOverridePtrType) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverridePtrOutput)
 }
 
 // DpmHostOverrideArrayInput is an input type that accepts DpmHostOverrideArray and DpmHostOverrideArrayOutput values.
@@ -237,7 +208,7 @@ func (i DpmHostOverrideMap) ToDpmHostOverrideMapOutputWithContext(ctx context.Co
 type DpmHostOverrideOutput struct{ *pulumi.OutputState }
 
 func (DpmHostOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DpmHostOverride)(nil))
+	return reflect.TypeOf((**DpmHostOverride)(nil)).Elem()
 }
 
 func (o DpmHostOverrideOutput) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
@@ -248,44 +219,10 @@ func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DpmHostOverrideOutput) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
-	return o.ToDpmHostOverridePtrOutputWithContext(context.Background())
-}
-
-func (o DpmHostOverrideOutput) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DpmHostOverride) *DpmHostOverride {
-		return &v
-	}).(DpmHostOverridePtrOutput)
-}
-
-type DpmHostOverridePtrOutput struct{ *pulumi.OutputState }
-
-func (DpmHostOverridePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DpmHostOverride)(nil))
-}
-
-func (o DpmHostOverridePtrOutput) ToDpmHostOverridePtrOutput() DpmHostOverridePtrOutput {
-	return o
-}
-
-func (o DpmHostOverridePtrOutput) ToDpmHostOverridePtrOutputWithContext(ctx context.Context) DpmHostOverridePtrOutput {
-	return o
-}
-
-func (o DpmHostOverridePtrOutput) Elem() DpmHostOverrideOutput {
-	return o.ApplyT(func(v *DpmHostOverride) DpmHostOverride {
-		if v != nil {
-			return *v
-		}
-		var ret DpmHostOverride
-		return ret
-	}).(DpmHostOverrideOutput)
-}
-
 type DpmHostOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DpmHostOverrideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DpmHostOverride)(nil))
+	return reflect.TypeOf((*[]*DpmHostOverride)(nil)).Elem()
 }
 
 func (o DpmHostOverrideArrayOutput) ToDpmHostOverrideArrayOutput() DpmHostOverrideArrayOutput {
@@ -297,15 +234,15 @@ func (o DpmHostOverrideArrayOutput) ToDpmHostOverrideArrayOutputWithContext(ctx 
 }
 
 func (o DpmHostOverrideArrayOutput) Index(i pulumi.IntInput) DpmHostOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DpmHostOverride {
-		return vs[0].([]DpmHostOverride)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DpmHostOverride {
+		return vs[0].([]*DpmHostOverride)[vs[1].(int)]
 	}).(DpmHostOverrideOutput)
 }
 
 type DpmHostOverrideMapOutput struct{ *pulumi.OutputState }
 
 func (DpmHostOverrideMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DpmHostOverride)(nil))
+	return reflect.TypeOf((*map[string]*DpmHostOverride)(nil)).Elem()
 }
 
 func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutput() DpmHostOverrideMapOutput {
@@ -317,18 +254,16 @@ func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutputWithContext(ctx cont
 }
 
 func (o DpmHostOverrideMapOutput) MapIndex(k pulumi.StringInput) DpmHostOverrideOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DpmHostOverride {
-		return vs[0].(map[string]DpmHostOverride)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DpmHostOverride {
+		return vs[0].(map[string]*DpmHostOverride)[vs[1].(string)]
 	}).(DpmHostOverrideOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DpmHostOverrideInput)(nil)).Elem(), &DpmHostOverride{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DpmHostOverridePtrInput)(nil)).Elem(), &DpmHostOverride{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DpmHostOverrideArrayInput)(nil)).Elem(), DpmHostOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DpmHostOverrideMapInput)(nil)).Elem(), DpmHostOverrideMap{})
 	pulumi.RegisterOutputType(DpmHostOverrideOutput{})
-	pulumi.RegisterOutputType(DpmHostOverridePtrOutput{})
 	pulumi.RegisterOutputType(DpmHostOverrideArrayOutput{})
 	pulumi.RegisterOutputType(DpmHostOverrideMapOutput{})
 }

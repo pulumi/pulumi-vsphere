@@ -220,30 +220,30 @@ export class HostPortGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostPortGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostPortGroupArgs | HostPortGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostPortGroupState | undefined;
-            inputs["activeNics"] = state ? state.activeNics : undefined;
-            inputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
-            inputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
-            inputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
-            inputs["checkBeacon"] = state ? state.checkBeacon : undefined;
-            inputs["computedPolicy"] = state ? state.computedPolicy : undefined;
-            inputs["failback"] = state ? state.failback : undefined;
-            inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notifySwitches"] = state ? state.notifySwitches : undefined;
-            inputs["ports"] = state ? state.ports : undefined;
-            inputs["shapingAverageBandwidth"] = state ? state.shapingAverageBandwidth : undefined;
-            inputs["shapingBurstSize"] = state ? state.shapingBurstSize : undefined;
-            inputs["shapingEnabled"] = state ? state.shapingEnabled : undefined;
-            inputs["shapingPeakBandwidth"] = state ? state.shapingPeakBandwidth : undefined;
-            inputs["standbyNics"] = state ? state.standbyNics : undefined;
-            inputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
-            inputs["virtualSwitchName"] = state ? state.virtualSwitchName : undefined;
-            inputs["vlanId"] = state ? state.vlanId : undefined;
+            resourceInputs["activeNics"] = state ? state.activeNics : undefined;
+            resourceInputs["allowForgedTransmits"] = state ? state.allowForgedTransmits : undefined;
+            resourceInputs["allowMacChanges"] = state ? state.allowMacChanges : undefined;
+            resourceInputs["allowPromiscuous"] = state ? state.allowPromiscuous : undefined;
+            resourceInputs["checkBeacon"] = state ? state.checkBeacon : undefined;
+            resourceInputs["computedPolicy"] = state ? state.computedPolicy : undefined;
+            resourceInputs["failback"] = state ? state.failback : undefined;
+            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifySwitches"] = state ? state.notifySwitches : undefined;
+            resourceInputs["ports"] = state ? state.ports : undefined;
+            resourceInputs["shapingAverageBandwidth"] = state ? state.shapingAverageBandwidth : undefined;
+            resourceInputs["shapingBurstSize"] = state ? state.shapingBurstSize : undefined;
+            resourceInputs["shapingEnabled"] = state ? state.shapingEnabled : undefined;
+            resourceInputs["shapingPeakBandwidth"] = state ? state.shapingPeakBandwidth : undefined;
+            resourceInputs["standbyNics"] = state ? state.standbyNics : undefined;
+            resourceInputs["teamingPolicy"] = state ? state.teamingPolicy : undefined;
+            resourceInputs["virtualSwitchName"] = state ? state.virtualSwitchName : undefined;
+            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
         } else {
             const args = argsOrState as HostPortGroupArgs | undefined;
             if ((!args || args.hostSystemId === undefined) && !opts.urn) {
@@ -252,31 +252,29 @@ export class HostPortGroup extends pulumi.CustomResource {
             if ((!args || args.virtualSwitchName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualSwitchName'");
             }
-            inputs["activeNics"] = args ? args.activeNics : undefined;
-            inputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
-            inputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
-            inputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
-            inputs["checkBeacon"] = args ? args.checkBeacon : undefined;
-            inputs["failback"] = args ? args.failback : undefined;
-            inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notifySwitches"] = args ? args.notifySwitches : undefined;
-            inputs["shapingAverageBandwidth"] = args ? args.shapingAverageBandwidth : undefined;
-            inputs["shapingBurstSize"] = args ? args.shapingBurstSize : undefined;
-            inputs["shapingEnabled"] = args ? args.shapingEnabled : undefined;
-            inputs["shapingPeakBandwidth"] = args ? args.shapingPeakBandwidth : undefined;
-            inputs["standbyNics"] = args ? args.standbyNics : undefined;
-            inputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
-            inputs["virtualSwitchName"] = args ? args.virtualSwitchName : undefined;
-            inputs["vlanId"] = args ? args.vlanId : undefined;
-            inputs["computedPolicy"] = undefined /*out*/;
-            inputs["key"] = undefined /*out*/;
-            inputs["ports"] = undefined /*out*/;
+            resourceInputs["activeNics"] = args ? args.activeNics : undefined;
+            resourceInputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
+            resourceInputs["allowMacChanges"] = args ? args.allowMacChanges : undefined;
+            resourceInputs["allowPromiscuous"] = args ? args.allowPromiscuous : undefined;
+            resourceInputs["checkBeacon"] = args ? args.checkBeacon : undefined;
+            resourceInputs["failback"] = args ? args.failback : undefined;
+            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifySwitches"] = args ? args.notifySwitches : undefined;
+            resourceInputs["shapingAverageBandwidth"] = args ? args.shapingAverageBandwidth : undefined;
+            resourceInputs["shapingBurstSize"] = args ? args.shapingBurstSize : undefined;
+            resourceInputs["shapingEnabled"] = args ? args.shapingEnabled : undefined;
+            resourceInputs["shapingPeakBandwidth"] = args ? args.shapingPeakBandwidth : undefined;
+            resourceInputs["standbyNics"] = args ? args.standbyNics : undefined;
+            resourceInputs["teamingPolicy"] = args ? args.teamingPolicy : undefined;
+            resourceInputs["virtualSwitchName"] = args ? args.virtualSwitchName : undefined;
+            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["computedPolicy"] = undefined /*out*/;
+            resourceInputs["key"] = undefined /*out*/;
+            resourceInputs["ports"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HostPortGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HostPortGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

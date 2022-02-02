@@ -53,21 +53,19 @@ export class CustomAttribute extends pulumi.CustomResource {
      */
     constructor(name: string, args?: CustomAttributeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomAttributeArgs | CustomAttributeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomAttributeState | undefined;
-            inputs["managedObjectType"] = state ? state.managedObjectType : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["managedObjectType"] = state ? state.managedObjectType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CustomAttributeArgs | undefined;
-            inputs["managedObjectType"] = args ? args.managedObjectType : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["managedObjectType"] = args ? args.managedObjectType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomAttribute.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomAttribute.__pulumiType, name, resourceInputs, opts);
     }
 }
 

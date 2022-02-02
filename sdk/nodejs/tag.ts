@@ -56,26 +56,24 @@ export class Tag extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            inputs["categoryId"] = state ? state.categoryId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["categoryId"] = state ? state.categoryId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
             if ((!args || args.categoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'categoryId'");
             }
-            inputs["categoryId"] = args ? args.categoryId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["categoryId"] = args ? args.categoryId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tag.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

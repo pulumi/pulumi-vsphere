@@ -55,6 +55,7 @@ setup(name='pulumi_vsphere',
       package_data={
           'pulumi_vsphere': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

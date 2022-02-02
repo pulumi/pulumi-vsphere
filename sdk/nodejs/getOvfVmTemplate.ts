@@ -31,9 +31,7 @@ export function getOvfVmTemplate(args: GetOvfVmTemplateArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", {
         "allowUnverifiedSslCert": args.allowUnverifiedSslCert,
         "datastoreId": args.datastoreId,

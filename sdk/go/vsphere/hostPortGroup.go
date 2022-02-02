@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "_switch", &vsphere.HostVirtualSwitchArgs{
+// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
 // 			ActiveNics: pulumi.StringArray{
 // 				pulumi.String("vmnic0"),
 // 			},
@@ -108,7 +108,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "_switch", &vsphere.HostVirtualSwitchArgs{
+// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
 // 			ActiveNics: pulumi.StringArray{
 // 				pulumi.String("vmnic0"),
 // 			},
@@ -466,7 +466,7 @@ type HostPortGroupInput interface {
 }
 
 func (*HostPortGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroup)(nil))
+	return reflect.TypeOf((**HostPortGroup)(nil)).Elem()
 }
 
 func (i *HostPortGroup) ToHostPortGroupOutput() HostPortGroupOutput {
@@ -475,35 +475,6 @@ func (i *HostPortGroup) ToHostPortGroupOutput() HostPortGroupOutput {
 
 func (i *HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupOutput)
-}
-
-func (i *HostPortGroup) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
-	return i.ToHostPortGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *HostPortGroup) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPtrOutput)
-}
-
-type HostPortGroupPtrInput interface {
-	pulumi.Input
-
-	ToHostPortGroupPtrOutput() HostPortGroupPtrOutput
-	ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput
-}
-
-type hostPortGroupPtrType HostPortGroupArgs
-
-func (*hostPortGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostPortGroup)(nil))
-}
-
-func (i *hostPortGroupPtrType) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
-	return i.ToHostPortGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *hostPortGroupPtrType) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupPtrOutput)
 }
 
 // HostPortGroupArrayInput is an input type that accepts HostPortGroupArray and HostPortGroupArrayOutput values.
@@ -559,7 +530,7 @@ func (i HostPortGroupMap) ToHostPortGroupMapOutputWithContext(ctx context.Contex
 type HostPortGroupOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostPortGroup)(nil))
+	return reflect.TypeOf((**HostPortGroup)(nil)).Elem()
 }
 
 func (o HostPortGroupOutput) ToHostPortGroupOutput() HostPortGroupOutput {
@@ -570,44 +541,10 @@ func (o HostPortGroupOutput) ToHostPortGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o HostPortGroupOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
-	return o.ToHostPortGroupPtrOutputWithContext(context.Background())
-}
-
-func (o HostPortGroupOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostPortGroup) *HostPortGroup {
-		return &v
-	}).(HostPortGroupPtrOutput)
-}
-
-type HostPortGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (HostPortGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostPortGroup)(nil))
-}
-
-func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutput() HostPortGroupPtrOutput {
-	return o
-}
-
-func (o HostPortGroupPtrOutput) ToHostPortGroupPtrOutputWithContext(ctx context.Context) HostPortGroupPtrOutput {
-	return o
-}
-
-func (o HostPortGroupPtrOutput) Elem() HostPortGroupOutput {
-	return o.ApplyT(func(v *HostPortGroup) HostPortGroup {
-		if v != nil {
-			return *v
-		}
-		var ret HostPortGroup
-		return ret
-	}).(HostPortGroupOutput)
-}
-
 type HostPortGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostPortGroup)(nil))
+	return reflect.TypeOf((*[]*HostPortGroup)(nil)).Elem()
 }
 
 func (o HostPortGroupArrayOutput) ToHostPortGroupArrayOutput() HostPortGroupArrayOutput {
@@ -619,15 +556,15 @@ func (o HostPortGroupArrayOutput) ToHostPortGroupArrayOutputWithContext(ctx cont
 }
 
 func (o HostPortGroupArrayOutput) Index(i pulumi.IntInput) HostPortGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostPortGroup {
-		return vs[0].([]HostPortGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostPortGroup {
+		return vs[0].([]*HostPortGroup)[vs[1].(int)]
 	}).(HostPortGroupOutput)
 }
 
 type HostPortGroupMapOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HostPortGroup)(nil))
+	return reflect.TypeOf((*map[string]*HostPortGroup)(nil)).Elem()
 }
 
 func (o HostPortGroupMapOutput) ToHostPortGroupMapOutput() HostPortGroupMapOutput {
@@ -639,18 +576,16 @@ func (o HostPortGroupMapOutput) ToHostPortGroupMapOutputWithContext(ctx context.
 }
 
 func (o HostPortGroupMapOutput) MapIndex(k pulumi.StringInput) HostPortGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HostPortGroup {
-		return vs[0].(map[string]HostPortGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HostPortGroup {
+		return vs[0].(map[string]*HostPortGroup)[vs[1].(string)]
 	}).(HostPortGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupInput)(nil)).Elem(), &HostPortGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPtrInput)(nil)).Elem(), &HostPortGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupArrayInput)(nil)).Elem(), HostPortGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupMapInput)(nil)).Elem(), HostPortGroupMap{})
 	pulumi.RegisterOutputType(HostPortGroupOutput{})
-	pulumi.RegisterOutputType(HostPortGroupPtrOutput{})
 	pulumi.RegisterOutputType(HostPortGroupArrayOutput{})
 	pulumi.RegisterOutputType(HostPortGroupMapOutput{})
 }

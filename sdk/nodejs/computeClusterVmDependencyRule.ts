@@ -76,16 +76,16 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeClusterVmDependencyRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmDependencyRuleArgs | ComputeClusterVmDependencyRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmDependencyRuleState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["dependencyVmGroupName"] = state ? state.dependencyVmGroupName : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["mandatory"] = state ? state.mandatory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["vmGroupName"] = state ? state.vmGroupName : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["dependencyVmGroupName"] = state ? state.dependencyVmGroupName : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["vmGroupName"] = state ? state.vmGroupName : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmDependencyRuleArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
@@ -97,17 +97,15 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
             if ((!args || args.vmGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["dependencyVmGroupName"] = args ? args.dependencyVmGroupName : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["mandatory"] = args ? args.mandatory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["vmGroupName"] = args ? args.vmGroupName : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["dependencyVmGroupName"] = args ? args.dependencyVmGroupName : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["vmGroupName"] = args ? args.vmGroupName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeClusterVmDependencyRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeClusterVmDependencyRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

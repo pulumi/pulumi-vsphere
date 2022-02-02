@@ -103,17 +103,17 @@ export class VirtualDisk extends pulumi.CustomResource {
      */
     constructor(name: string, args: VirtualDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualDiskArgs | VirtualDiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualDiskState | undefined;
-            inputs["adapterType"] = state ? state.adapterType : undefined;
-            inputs["createDirectories"] = state ? state.createDirectories : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["datastore"] = state ? state.datastore : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["vmdkPath"] = state ? state.vmdkPath : undefined;
+            resourceInputs["adapterType"] = state ? state.adapterType : undefined;
+            resourceInputs["createDirectories"] = state ? state.createDirectories : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["datastore"] = state ? state.datastore : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vmdkPath"] = state ? state.vmdkPath : undefined;
         } else {
             const args = argsOrState as VirtualDiskArgs | undefined;
             if ((!args || args.datastore === undefined) && !opts.urn) {
@@ -125,18 +125,16 @@ export class VirtualDisk extends pulumi.CustomResource {
             if ((!args || args.vmdkPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vmdkPath'");
             }
-            inputs["adapterType"] = args ? args.adapterType : undefined;
-            inputs["createDirectories"] = args ? args.createDirectories : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["datastore"] = args ? args.datastore : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["vmdkPath"] = args ? args.vmdkPath : undefined;
+            resourceInputs["adapterType"] = args ? args.adapterType : undefined;
+            resourceInputs["createDirectories"] = args ? args.createDirectories : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["datastore"] = args ? args.datastore : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vmdkPath"] = args ? args.vmdkPath : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VirtualDisk.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VirtualDisk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

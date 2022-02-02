@@ -141,7 +141,7 @@ type ContentLibraryItemInput interface {
 }
 
 func (*ContentLibraryItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentLibraryItem)(nil))
+	return reflect.TypeOf((**ContentLibraryItem)(nil)).Elem()
 }
 
 func (i *ContentLibraryItem) ToContentLibraryItemOutput() ContentLibraryItemOutput {
@@ -150,35 +150,6 @@ func (i *ContentLibraryItem) ToContentLibraryItemOutput() ContentLibraryItemOutp
 
 func (i *ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemOutput)
-}
-
-func (i *ContentLibraryItem) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
-	return i.ToContentLibraryItemPtrOutputWithContext(context.Background())
-}
-
-func (i *ContentLibraryItem) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemPtrOutput)
-}
-
-type ContentLibraryItemPtrInput interface {
-	pulumi.Input
-
-	ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput
-	ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput
-}
-
-type contentLibraryItemPtrType ContentLibraryItemArgs
-
-func (*contentLibraryItemPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContentLibraryItem)(nil))
-}
-
-func (i *contentLibraryItemPtrType) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
-	return i.ToContentLibraryItemPtrOutputWithContext(context.Background())
-}
-
-func (i *contentLibraryItemPtrType) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemPtrOutput)
 }
 
 // ContentLibraryItemArrayInput is an input type that accepts ContentLibraryItemArray and ContentLibraryItemArrayOutput values.
@@ -234,7 +205,7 @@ func (i ContentLibraryItemMap) ToContentLibraryItemMapOutputWithContext(ctx cont
 type ContentLibraryItemOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentLibraryItem)(nil))
+	return reflect.TypeOf((**ContentLibraryItem)(nil)).Elem()
 }
 
 func (o ContentLibraryItemOutput) ToContentLibraryItemOutput() ContentLibraryItemOutput {
@@ -245,44 +216,10 @@ func (o ContentLibraryItemOutput) ToContentLibraryItemOutputWithContext(ctx cont
 	return o
 }
 
-func (o ContentLibraryItemOutput) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
-	return o.ToContentLibraryItemPtrOutputWithContext(context.Background())
-}
-
-func (o ContentLibraryItemOutput) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLibraryItem) *ContentLibraryItem {
-		return &v
-	}).(ContentLibraryItemPtrOutput)
-}
-
-type ContentLibraryItemPtrOutput struct{ *pulumi.OutputState }
-
-func (ContentLibraryItemPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContentLibraryItem)(nil))
-}
-
-func (o ContentLibraryItemPtrOutput) ToContentLibraryItemPtrOutput() ContentLibraryItemPtrOutput {
-	return o
-}
-
-func (o ContentLibraryItemPtrOutput) ToContentLibraryItemPtrOutputWithContext(ctx context.Context) ContentLibraryItemPtrOutput {
-	return o
-}
-
-func (o ContentLibraryItemPtrOutput) Elem() ContentLibraryItemOutput {
-	return o.ApplyT(func(v *ContentLibraryItem) ContentLibraryItem {
-		if v != nil {
-			return *v
-		}
-		var ret ContentLibraryItem
-		return ret
-	}).(ContentLibraryItemOutput)
-}
-
 type ContentLibraryItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContentLibraryItem)(nil))
+	return reflect.TypeOf((*[]*ContentLibraryItem)(nil)).Elem()
 }
 
 func (o ContentLibraryItemArrayOutput) ToContentLibraryItemArrayOutput() ContentLibraryItemArrayOutput {
@@ -294,15 +231,15 @@ func (o ContentLibraryItemArrayOutput) ToContentLibraryItemArrayOutputWithContex
 }
 
 func (o ContentLibraryItemArrayOutput) Index(i pulumi.IntInput) ContentLibraryItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentLibraryItem {
-		return vs[0].([]ContentLibraryItem)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContentLibraryItem {
+		return vs[0].([]*ContentLibraryItem)[vs[1].(int)]
 	}).(ContentLibraryItemOutput)
 }
 
 type ContentLibraryItemMapOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryItemMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ContentLibraryItem)(nil))
+	return reflect.TypeOf((*map[string]*ContentLibraryItem)(nil)).Elem()
 }
 
 func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutput() ContentLibraryItemMapOutput {
@@ -314,18 +251,16 @@ func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutputWithContext(ct
 }
 
 func (o ContentLibraryItemMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryItemOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContentLibraryItem {
-		return vs[0].(map[string]ContentLibraryItem)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ContentLibraryItem {
+		return vs[0].(map[string]*ContentLibraryItem)[vs[1].(string)]
 	}).(ContentLibraryItemOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryItemInput)(nil)).Elem(), &ContentLibraryItem{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryItemPtrInput)(nil)).Elem(), &ContentLibraryItem{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryItemArrayInput)(nil)).Elem(), ContentLibraryItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentLibraryItemMapInput)(nil)).Elem(), ContentLibraryItemMap{})
 	pulumi.RegisterOutputType(ContentLibraryItemOutput{})
-	pulumi.RegisterOutputType(ContentLibraryItemPtrOutput{})
 	pulumi.RegisterOutputType(ContentLibraryItemArrayOutput{})
 	pulumi.RegisterOutputType(ContentLibraryItemMapOutput{})
 }

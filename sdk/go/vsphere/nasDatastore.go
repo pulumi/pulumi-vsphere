@@ -357,7 +357,7 @@ type NasDatastoreInput interface {
 }
 
 func (*NasDatastore) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasDatastore)(nil))
+	return reflect.TypeOf((**NasDatastore)(nil)).Elem()
 }
 
 func (i *NasDatastore) ToNasDatastoreOutput() NasDatastoreOutput {
@@ -366,35 +366,6 @@ func (i *NasDatastore) ToNasDatastoreOutput() NasDatastoreOutput {
 
 func (i *NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreOutput)
-}
-
-func (i *NasDatastore) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
-	return i.ToNasDatastorePtrOutputWithContext(context.Background())
-}
-
-func (i *NasDatastore) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NasDatastorePtrOutput)
-}
-
-type NasDatastorePtrInput interface {
-	pulumi.Input
-
-	ToNasDatastorePtrOutput() NasDatastorePtrOutput
-	ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput
-}
-
-type nasDatastorePtrType NasDatastoreArgs
-
-func (*nasDatastorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NasDatastore)(nil))
-}
-
-func (i *nasDatastorePtrType) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
-	return i.ToNasDatastorePtrOutputWithContext(context.Background())
-}
-
-func (i *nasDatastorePtrType) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NasDatastorePtrOutput)
 }
 
 // NasDatastoreArrayInput is an input type that accepts NasDatastoreArray and NasDatastoreArrayOutput values.
@@ -450,7 +421,7 @@ func (i NasDatastoreMap) ToNasDatastoreMapOutputWithContext(ctx context.Context)
 type NasDatastoreOutput struct{ *pulumi.OutputState }
 
 func (NasDatastoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasDatastore)(nil))
+	return reflect.TypeOf((**NasDatastore)(nil)).Elem()
 }
 
 func (o NasDatastoreOutput) ToNasDatastoreOutput() NasDatastoreOutput {
@@ -461,44 +432,10 @@ func (o NasDatastoreOutput) ToNasDatastoreOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o NasDatastoreOutput) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
-	return o.ToNasDatastorePtrOutputWithContext(context.Background())
-}
-
-func (o NasDatastoreOutput) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NasDatastore) *NasDatastore {
-		return &v
-	}).(NasDatastorePtrOutput)
-}
-
-type NasDatastorePtrOutput struct{ *pulumi.OutputState }
-
-func (NasDatastorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NasDatastore)(nil))
-}
-
-func (o NasDatastorePtrOutput) ToNasDatastorePtrOutput() NasDatastorePtrOutput {
-	return o
-}
-
-func (o NasDatastorePtrOutput) ToNasDatastorePtrOutputWithContext(ctx context.Context) NasDatastorePtrOutput {
-	return o
-}
-
-func (o NasDatastorePtrOutput) Elem() NasDatastoreOutput {
-	return o.ApplyT(func(v *NasDatastore) NasDatastore {
-		if v != nil {
-			return *v
-		}
-		var ret NasDatastore
-		return ret
-	}).(NasDatastoreOutput)
-}
-
 type NasDatastoreArrayOutput struct{ *pulumi.OutputState }
 
 func (NasDatastoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NasDatastore)(nil))
+	return reflect.TypeOf((*[]*NasDatastore)(nil)).Elem()
 }
 
 func (o NasDatastoreArrayOutput) ToNasDatastoreArrayOutput() NasDatastoreArrayOutput {
@@ -510,15 +447,15 @@ func (o NasDatastoreArrayOutput) ToNasDatastoreArrayOutputWithContext(ctx contex
 }
 
 func (o NasDatastoreArrayOutput) Index(i pulumi.IntInput) NasDatastoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NasDatastore {
-		return vs[0].([]NasDatastore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasDatastore {
+		return vs[0].([]*NasDatastore)[vs[1].(int)]
 	}).(NasDatastoreOutput)
 }
 
 type NasDatastoreMapOutput struct{ *pulumi.OutputState }
 
 func (NasDatastoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NasDatastore)(nil))
+	return reflect.TypeOf((*map[string]*NasDatastore)(nil)).Elem()
 }
 
 func (o NasDatastoreMapOutput) ToNasDatastoreMapOutput() NasDatastoreMapOutput {
@@ -530,18 +467,16 @@ func (o NasDatastoreMapOutput) ToNasDatastoreMapOutputWithContext(ctx context.Co
 }
 
 func (o NasDatastoreMapOutput) MapIndex(k pulumi.StringInput) NasDatastoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NasDatastore {
-		return vs[0].(map[string]NasDatastore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NasDatastore {
+		return vs[0].(map[string]*NasDatastore)[vs[1].(string)]
 	}).(NasDatastoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NasDatastoreInput)(nil)).Elem(), &NasDatastore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NasDatastorePtrInput)(nil)).Elem(), &NasDatastore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NasDatastoreArrayInput)(nil)).Elem(), NasDatastoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NasDatastoreMapInput)(nil)).Elem(), NasDatastoreMap{})
 	pulumi.RegisterOutputType(NasDatastoreOutput{})
-	pulumi.RegisterOutputType(NasDatastorePtrOutput{})
 	pulumi.RegisterOutputType(NasDatastoreArrayOutput{})
 	pulumi.RegisterOutputType(NasDatastoreMapOutput{})
 }

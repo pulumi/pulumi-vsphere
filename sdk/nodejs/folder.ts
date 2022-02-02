@@ -74,15 +74,15 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["datacenterId"] = state ? state.datacenterId : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["datacenterId"] = state ? state.datacenterId : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.path === undefined) && !opts.urn) {
@@ -91,16 +91,14 @@ export class Folder extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["datacenterId"] = args ? args.datacenterId : undefined;
-            inputs["path"] = args ? args.path : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["datacenterId"] = args ? args.datacenterId : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Folder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

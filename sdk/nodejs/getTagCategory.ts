@@ -30,9 +30,7 @@ export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,
     }, opts);

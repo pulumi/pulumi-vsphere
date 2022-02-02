@@ -57,13 +57,13 @@ export class EntityPermissions extends pulumi.CustomResource {
      */
     constructor(name: string, args: EntityPermissionsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntityPermissionsArgs | EntityPermissionsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntityPermissionsState | undefined;
-            inputs["entityId"] = state ? state.entityId : undefined;
-            inputs["entityType"] = state ? state.entityType : undefined;
-            inputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["entityId"] = state ? state.entityId : undefined;
+            resourceInputs["entityType"] = state ? state.entityType : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
         } else {
             const args = argsOrState as EntityPermissionsArgs | undefined;
             if ((!args || args.entityId === undefined) && !opts.urn) {
@@ -75,14 +75,12 @@ export class EntityPermissions extends pulumi.CustomResource {
             if ((!args || args.permissions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            inputs["entityId"] = args ? args.entityId : undefined;
-            inputs["entityType"] = args ? args.entityType : undefined;
-            inputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["entityId"] = args ? args.entityId : undefined;
+            resourceInputs["entityType"] = args ? args.entityType : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EntityPermissions.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EntityPermissions.__pulumiType, name, resourceInputs, opts);
     }
 }
 

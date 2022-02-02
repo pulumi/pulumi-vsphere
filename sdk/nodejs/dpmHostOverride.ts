@@ -63,14 +63,14 @@ export class DpmHostOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: DpmHostOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DpmHostOverrideArgs | DpmHostOverrideState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DpmHostOverrideState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["dpmAutomationLevel"] = state ? state.dpmAutomationLevel : undefined;
-            inputs["dpmEnabled"] = state ? state.dpmEnabled : undefined;
-            inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["dpmAutomationLevel"] = state ? state.dpmAutomationLevel : undefined;
+            resourceInputs["dpmEnabled"] = state ? state.dpmEnabled : undefined;
+            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
         } else {
             const args = argsOrState as DpmHostOverrideArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
@@ -79,15 +79,13 @@ export class DpmHostOverride extends pulumi.CustomResource {
             if ((!args || args.hostSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["dpmAutomationLevel"] = args ? args.dpmAutomationLevel : undefined;
-            inputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
-            inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["dpmAutomationLevel"] = args ? args.dpmAutomationLevel : undefined;
+            resourceInputs["dpmEnabled"] = args ? args.dpmEnabled : undefined;
+            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DpmHostOverride.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DpmHostOverride.__pulumiType, name, resourceInputs, opts);
     }
 }
 

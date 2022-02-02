@@ -141,25 +141,25 @@ export class HaVmOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: HaVmOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HaVmOverrideArgs | HaVmOverrideState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HaVmOverrideState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["haDatastoreApdRecoveryAction"] = state ? state.haDatastoreApdRecoveryAction : undefined;
-            inputs["haDatastoreApdResponse"] = state ? state.haDatastoreApdResponse : undefined;
-            inputs["haDatastoreApdResponseDelay"] = state ? state.haDatastoreApdResponseDelay : undefined;
-            inputs["haDatastorePdlResponse"] = state ? state.haDatastorePdlResponse : undefined;
-            inputs["haHostIsolationResponse"] = state ? state.haHostIsolationResponse : undefined;
-            inputs["haVmFailureInterval"] = state ? state.haVmFailureInterval : undefined;
-            inputs["haVmMaximumFailureWindow"] = state ? state.haVmMaximumFailureWindow : undefined;
-            inputs["haVmMaximumResets"] = state ? state.haVmMaximumResets : undefined;
-            inputs["haVmMinimumUptime"] = state ? state.haVmMinimumUptime : undefined;
-            inputs["haVmMonitoring"] = state ? state.haVmMonitoring : undefined;
-            inputs["haVmMonitoringUseClusterDefaults"] = state ? state.haVmMonitoringUseClusterDefaults : undefined;
-            inputs["haVmRestartPriority"] = state ? state.haVmRestartPriority : undefined;
-            inputs["haVmRestartTimeout"] = state ? state.haVmRestartTimeout : undefined;
-            inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["haDatastoreApdRecoveryAction"] = state ? state.haDatastoreApdRecoveryAction : undefined;
+            resourceInputs["haDatastoreApdResponse"] = state ? state.haDatastoreApdResponse : undefined;
+            resourceInputs["haDatastoreApdResponseDelay"] = state ? state.haDatastoreApdResponseDelay : undefined;
+            resourceInputs["haDatastorePdlResponse"] = state ? state.haDatastorePdlResponse : undefined;
+            resourceInputs["haHostIsolationResponse"] = state ? state.haHostIsolationResponse : undefined;
+            resourceInputs["haVmFailureInterval"] = state ? state.haVmFailureInterval : undefined;
+            resourceInputs["haVmMaximumFailureWindow"] = state ? state.haVmMaximumFailureWindow : undefined;
+            resourceInputs["haVmMaximumResets"] = state ? state.haVmMaximumResets : undefined;
+            resourceInputs["haVmMinimumUptime"] = state ? state.haVmMinimumUptime : undefined;
+            resourceInputs["haVmMonitoring"] = state ? state.haVmMonitoring : undefined;
+            resourceInputs["haVmMonitoringUseClusterDefaults"] = state ? state.haVmMonitoringUseClusterDefaults : undefined;
+            resourceInputs["haVmRestartPriority"] = state ? state.haVmRestartPriority : undefined;
+            resourceInputs["haVmRestartTimeout"] = state ? state.haVmRestartTimeout : undefined;
+            resourceInputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as HaVmOverrideArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
@@ -168,26 +168,24 @@ export class HaVmOverride extends pulumi.CustomResource {
             if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["haDatastoreApdRecoveryAction"] = args ? args.haDatastoreApdRecoveryAction : undefined;
-            inputs["haDatastoreApdResponse"] = args ? args.haDatastoreApdResponse : undefined;
-            inputs["haDatastoreApdResponseDelay"] = args ? args.haDatastoreApdResponseDelay : undefined;
-            inputs["haDatastorePdlResponse"] = args ? args.haDatastorePdlResponse : undefined;
-            inputs["haHostIsolationResponse"] = args ? args.haHostIsolationResponse : undefined;
-            inputs["haVmFailureInterval"] = args ? args.haVmFailureInterval : undefined;
-            inputs["haVmMaximumFailureWindow"] = args ? args.haVmMaximumFailureWindow : undefined;
-            inputs["haVmMaximumResets"] = args ? args.haVmMaximumResets : undefined;
-            inputs["haVmMinimumUptime"] = args ? args.haVmMinimumUptime : undefined;
-            inputs["haVmMonitoring"] = args ? args.haVmMonitoring : undefined;
-            inputs["haVmMonitoringUseClusterDefaults"] = args ? args.haVmMonitoringUseClusterDefaults : undefined;
-            inputs["haVmRestartPriority"] = args ? args.haVmRestartPriority : undefined;
-            inputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
-            inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["haDatastoreApdRecoveryAction"] = args ? args.haDatastoreApdRecoveryAction : undefined;
+            resourceInputs["haDatastoreApdResponse"] = args ? args.haDatastoreApdResponse : undefined;
+            resourceInputs["haDatastoreApdResponseDelay"] = args ? args.haDatastoreApdResponseDelay : undefined;
+            resourceInputs["haDatastorePdlResponse"] = args ? args.haDatastorePdlResponse : undefined;
+            resourceInputs["haHostIsolationResponse"] = args ? args.haHostIsolationResponse : undefined;
+            resourceInputs["haVmFailureInterval"] = args ? args.haVmFailureInterval : undefined;
+            resourceInputs["haVmMaximumFailureWindow"] = args ? args.haVmMaximumFailureWindow : undefined;
+            resourceInputs["haVmMaximumResets"] = args ? args.haVmMaximumResets : undefined;
+            resourceInputs["haVmMinimumUptime"] = args ? args.haVmMinimumUptime : undefined;
+            resourceInputs["haVmMonitoring"] = args ? args.haVmMonitoring : undefined;
+            resourceInputs["haVmMonitoringUseClusterDefaults"] = args ? args.haVmMonitoringUseClusterDefaults : undefined;
+            resourceInputs["haVmRestartPriority"] = args ? args.haVmRestartPriority : undefined;
+            resourceInputs["haVmRestartTimeout"] = args ? args.haVmRestartTimeout : undefined;
+            resourceInputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HaVmOverride.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HaVmOverride.__pulumiType, name, resourceInputs, opts);
     }
 }
 

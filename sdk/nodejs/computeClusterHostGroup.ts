@@ -58,26 +58,24 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeClusterHostGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterHostGroupArgs | ComputeClusterHostGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterHostGroupState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ComputeClusterHostGroupArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeClusterHostGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeClusterHostGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

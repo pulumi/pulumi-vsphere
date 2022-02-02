@@ -126,7 +126,7 @@ type ComputeClusterHostGroupInput interface {
 }
 
 func (*ComputeClusterHostGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterHostGroup)(nil))
+	return reflect.TypeOf((**ComputeClusterHostGroup)(nil)).Elem()
 }
 
 func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutput() ComputeClusterHostGroupOutput {
@@ -135,35 +135,6 @@ func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutput() ComputeClust
 
 func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutputWithContext(ctx context.Context) ComputeClusterHostGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupOutput)
-}
-
-func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupPtrOutput() ComputeClusterHostGroupPtrOutput {
-	return i.ToComputeClusterHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupPtrOutputWithContext(ctx context.Context) ComputeClusterHostGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupPtrOutput)
-}
-
-type ComputeClusterHostGroupPtrInput interface {
-	pulumi.Input
-
-	ToComputeClusterHostGroupPtrOutput() ComputeClusterHostGroupPtrOutput
-	ToComputeClusterHostGroupPtrOutputWithContext(ctx context.Context) ComputeClusterHostGroupPtrOutput
-}
-
-type computeClusterHostGroupPtrType ComputeClusterHostGroupArgs
-
-func (*computeClusterHostGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeClusterHostGroup)(nil))
-}
-
-func (i *computeClusterHostGroupPtrType) ToComputeClusterHostGroupPtrOutput() ComputeClusterHostGroupPtrOutput {
-	return i.ToComputeClusterHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *computeClusterHostGroupPtrType) ToComputeClusterHostGroupPtrOutputWithContext(ctx context.Context) ComputeClusterHostGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterHostGroupPtrOutput)
 }
 
 // ComputeClusterHostGroupArrayInput is an input type that accepts ComputeClusterHostGroupArray and ComputeClusterHostGroupArrayOutput values.
@@ -219,7 +190,7 @@ func (i ComputeClusterHostGroupMap) ToComputeClusterHostGroupMapOutputWithContex
 type ComputeClusterHostGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterHostGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComputeClusterHostGroup)(nil))
+	return reflect.TypeOf((**ComputeClusterHostGroup)(nil)).Elem()
 }
 
 func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutput() ComputeClusterHostGroupOutput {
@@ -230,44 +201,10 @@ func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutputWithContex
 	return o
 }
 
-func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupPtrOutput() ComputeClusterHostGroupPtrOutput {
-	return o.ToComputeClusterHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupPtrOutputWithContext(ctx context.Context) ComputeClusterHostGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeClusterHostGroup) *ComputeClusterHostGroup {
-		return &v
-	}).(ComputeClusterHostGroupPtrOutput)
-}
-
-type ComputeClusterHostGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ComputeClusterHostGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ComputeClusterHostGroup)(nil))
-}
-
-func (o ComputeClusterHostGroupPtrOutput) ToComputeClusterHostGroupPtrOutput() ComputeClusterHostGroupPtrOutput {
-	return o
-}
-
-func (o ComputeClusterHostGroupPtrOutput) ToComputeClusterHostGroupPtrOutputWithContext(ctx context.Context) ComputeClusterHostGroupPtrOutput {
-	return o
-}
-
-func (o ComputeClusterHostGroupPtrOutput) Elem() ComputeClusterHostGroupOutput {
-	return o.ApplyT(func(v *ComputeClusterHostGroup) ComputeClusterHostGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ComputeClusterHostGroup
-		return ret
-	}).(ComputeClusterHostGroupOutput)
-}
-
 type ComputeClusterHostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterHostGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ComputeClusterHostGroup)(nil))
+	return reflect.TypeOf((*[]*ComputeClusterHostGroup)(nil)).Elem()
 }
 
 func (o ComputeClusterHostGroupArrayOutput) ToComputeClusterHostGroupArrayOutput() ComputeClusterHostGroupArrayOutput {
@@ -279,15 +216,15 @@ func (o ComputeClusterHostGroupArrayOutput) ToComputeClusterHostGroupArrayOutput
 }
 
 func (o ComputeClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ComputeClusterHostGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComputeClusterHostGroup {
-		return vs[0].([]ComputeClusterHostGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterHostGroup {
+		return vs[0].([]*ComputeClusterHostGroup)[vs[1].(int)]
 	}).(ComputeClusterHostGroupOutput)
 }
 
 type ComputeClusterHostGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterHostGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ComputeClusterHostGroup)(nil))
+	return reflect.TypeOf((*map[string]*ComputeClusterHostGroup)(nil)).Elem()
 }
 
 func (o ComputeClusterHostGroupMapOutput) ToComputeClusterHostGroupMapOutput() ComputeClusterHostGroupMapOutput {
@@ -299,18 +236,16 @@ func (o ComputeClusterHostGroupMapOutput) ToComputeClusterHostGroupMapOutputWith
 }
 
 func (o ComputeClusterHostGroupMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterHostGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ComputeClusterHostGroup {
-		return vs[0].(map[string]ComputeClusterHostGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ComputeClusterHostGroup {
+		return vs[0].(map[string]*ComputeClusterHostGroup)[vs[1].(string)]
 	}).(ComputeClusterHostGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostGroupInput)(nil)).Elem(), &ComputeClusterHostGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostGroupPtrInput)(nil)).Elem(), &ComputeClusterHostGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostGroupArrayInput)(nil)).Elem(), ComputeClusterHostGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeClusterHostGroupMapInput)(nil)).Elem(), ComputeClusterHostGroupMap{})
 	pulumi.RegisterOutputType(ComputeClusterHostGroupOutput{})
-	pulumi.RegisterOutputType(ComputeClusterHostGroupPtrOutput{})
 	pulumi.RegisterOutputType(ComputeClusterHostGroupArrayOutput{})
 	pulumi.RegisterOutputType(ComputeClusterHostGroupMapOutput{})
 }

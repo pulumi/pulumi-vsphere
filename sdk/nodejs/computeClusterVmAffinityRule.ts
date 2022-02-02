@@ -66,15 +66,15 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeClusterVmAffinityRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmAffinityRuleArgs | ComputeClusterVmAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmAffinityRuleState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["mandatory"] = state ? state.mandatory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmAffinityRuleArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
@@ -83,16 +83,14 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
             if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["mandatory"] = args ? args.mandatory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeClusterVmAffinityRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeClusterVmAffinityRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

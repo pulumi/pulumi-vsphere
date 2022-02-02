@@ -159,22 +159,22 @@ export class Host extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostArgs | HostState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostState | undefined;
-            inputs["cluster"] = state ? state.cluster : undefined;
-            inputs["clusterManaged"] = state ? state.clusterManaged : undefined;
-            inputs["connected"] = state ? state.connected : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["license"] = state ? state.license : undefined;
-            inputs["lockdown"] = state ? state.lockdown : undefined;
-            inputs["maintenance"] = state ? state.maintenance : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["thumbprint"] = state ? state.thumbprint : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["cluster"] = state ? state.cluster : undefined;
+            resourceInputs["clusterManaged"] = state ? state.clusterManaged : undefined;
+            resourceInputs["connected"] = state ? state.connected : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["license"] = state ? state.license : undefined;
+            resourceInputs["lockdown"] = state ? state.lockdown : undefined;
+            resourceInputs["maintenance"] = state ? state.maintenance : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as HostArgs | undefined;
             if ((!args || args.hostname === undefined) && !opts.urn) {
@@ -186,23 +186,21 @@ export class Host extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["cluster"] = args ? args.cluster : undefined;
-            inputs["clusterManaged"] = args ? args.clusterManaged : undefined;
-            inputs["connected"] = args ? args.connected : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["license"] = args ? args.license : undefined;
-            inputs["lockdown"] = args ? args.lockdown : undefined;
-            inputs["maintenance"] = args ? args.maintenance : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["thumbprint"] = args ? args.thumbprint : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["cluster"] = args ? args.cluster : undefined;
+            resourceInputs["clusterManaged"] = args ? args.clusterManaged : undefined;
+            resourceInputs["connected"] = args ? args.connected : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["license"] = args ? args.license : undefined;
+            resourceInputs["lockdown"] = args ? args.lockdown : undefined;
+            resourceInputs["maintenance"] = args ? args.maintenance : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["thumbprint"] = args ? args.thumbprint : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Host.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Host.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -58,26 +58,24 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeClusterVmGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmGroupArgs | ComputeClusterVmGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmGroupState | undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmGroupArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'computeClusterId'");
             }
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeClusterVmGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeClusterVmGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

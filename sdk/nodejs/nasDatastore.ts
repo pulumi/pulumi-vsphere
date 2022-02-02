@@ -143,29 +143,29 @@ export class NasDatastore extends pulumi.CustomResource {
      */
     constructor(name: string, args: NasDatastoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NasDatastoreArgs | NasDatastoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NasDatastoreState | undefined;
-            inputs["accessMode"] = state ? state.accessMode : undefined;
-            inputs["accessible"] = state ? state.accessible : undefined;
-            inputs["capacity"] = state ? state.capacity : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["freeSpace"] = state ? state.freeSpace : undefined;
-            inputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
-            inputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
-            inputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["protocolEndpoint"] = state ? state.protocolEndpoint : undefined;
-            inputs["remoteHosts"] = state ? state.remoteHosts : undefined;
-            inputs["remotePath"] = state ? state.remotePath : undefined;
-            inputs["securityType"] = state ? state.securityType : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
+            resourceInputs["accessible"] = state ? state.accessible : undefined;
+            resourceInputs["capacity"] = state ? state.capacity : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["freeSpace"] = state ? state.freeSpace : undefined;
+            resourceInputs["hostSystemIds"] = state ? state.hostSystemIds : undefined;
+            resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
+            resourceInputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocolEndpoint"] = state ? state.protocolEndpoint : undefined;
+            resourceInputs["remoteHosts"] = state ? state.remoteHosts : undefined;
+            resourceInputs["remotePath"] = state ? state.remotePath : undefined;
+            resourceInputs["securityType"] = state ? state.securityType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as NasDatastoreArgs | undefined;
             if ((!args || args.hostSystemIds === undefined) && !opts.urn) {
@@ -177,30 +177,28 @@ export class NasDatastore extends pulumi.CustomResource {
             if ((!args || args.remotePath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remotePath'");
             }
-            inputs["accessMode"] = args ? args.accessMode : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["remoteHosts"] = args ? args.remoteHosts : undefined;
-            inputs["remotePath"] = args ? args.remotePath : undefined;
-            inputs["securityType"] = args ? args.securityType : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["accessible"] = undefined /*out*/;
-            inputs["capacity"] = undefined /*out*/;
-            inputs["freeSpace"] = undefined /*out*/;
-            inputs["maintenanceMode"] = undefined /*out*/;
-            inputs["multipleHostAccess"] = undefined /*out*/;
-            inputs["protocolEndpoint"] = undefined /*out*/;
-            inputs["uncommittedSpace"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["hostSystemIds"] = args ? args.hostSystemIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["remoteHosts"] = args ? args.remoteHosts : undefined;
+            resourceInputs["remotePath"] = args ? args.remotePath : undefined;
+            resourceInputs["securityType"] = args ? args.securityType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessible"] = undefined /*out*/;
+            resourceInputs["capacity"] = undefined /*out*/;
+            resourceInputs["freeSpace"] = undefined /*out*/;
+            resourceInputs["maintenanceMode"] = undefined /*out*/;
+            resourceInputs["multipleHostAccess"] = undefined /*out*/;
+            resourceInputs["protocolEndpoint"] = undefined /*out*/;
+            resourceInputs["uncommittedSpace"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NasDatastore.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NasDatastore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

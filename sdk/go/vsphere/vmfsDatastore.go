@@ -270,7 +270,7 @@ type VmfsDatastoreInput interface {
 }
 
 func (*VmfsDatastore) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmfsDatastore)(nil))
+	return reflect.TypeOf((**VmfsDatastore)(nil)).Elem()
 }
 
 func (i *VmfsDatastore) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
@@ -279,35 +279,6 @@ func (i *VmfsDatastore) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
 
 func (i *VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreOutput)
-}
-
-func (i *VmfsDatastore) ToVmfsDatastorePtrOutput() VmfsDatastorePtrOutput {
-	return i.ToVmfsDatastorePtrOutputWithContext(context.Background())
-}
-
-func (i *VmfsDatastore) ToVmfsDatastorePtrOutputWithContext(ctx context.Context) VmfsDatastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastorePtrOutput)
-}
-
-type VmfsDatastorePtrInput interface {
-	pulumi.Input
-
-	ToVmfsDatastorePtrOutput() VmfsDatastorePtrOutput
-	ToVmfsDatastorePtrOutputWithContext(ctx context.Context) VmfsDatastorePtrOutput
-}
-
-type vmfsDatastorePtrType VmfsDatastoreArgs
-
-func (*vmfsDatastorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmfsDatastore)(nil))
-}
-
-func (i *vmfsDatastorePtrType) ToVmfsDatastorePtrOutput() VmfsDatastorePtrOutput {
-	return i.ToVmfsDatastorePtrOutputWithContext(context.Background())
-}
-
-func (i *vmfsDatastorePtrType) ToVmfsDatastorePtrOutputWithContext(ctx context.Context) VmfsDatastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastorePtrOutput)
 }
 
 // VmfsDatastoreArrayInput is an input type that accepts VmfsDatastoreArray and VmfsDatastoreArrayOutput values.
@@ -363,7 +334,7 @@ func (i VmfsDatastoreMap) ToVmfsDatastoreMapOutputWithContext(ctx context.Contex
 type VmfsDatastoreOutput struct{ *pulumi.OutputState }
 
 func (VmfsDatastoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmfsDatastore)(nil))
+	return reflect.TypeOf((**VmfsDatastore)(nil)).Elem()
 }
 
 func (o VmfsDatastoreOutput) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
@@ -374,44 +345,10 @@ func (o VmfsDatastoreOutput) ToVmfsDatastoreOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o VmfsDatastoreOutput) ToVmfsDatastorePtrOutput() VmfsDatastorePtrOutput {
-	return o.ToVmfsDatastorePtrOutputWithContext(context.Background())
-}
-
-func (o VmfsDatastoreOutput) ToVmfsDatastorePtrOutputWithContext(ctx context.Context) VmfsDatastorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmfsDatastore) *VmfsDatastore {
-		return &v
-	}).(VmfsDatastorePtrOutput)
-}
-
-type VmfsDatastorePtrOutput struct{ *pulumi.OutputState }
-
-func (VmfsDatastorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmfsDatastore)(nil))
-}
-
-func (o VmfsDatastorePtrOutput) ToVmfsDatastorePtrOutput() VmfsDatastorePtrOutput {
-	return o
-}
-
-func (o VmfsDatastorePtrOutput) ToVmfsDatastorePtrOutputWithContext(ctx context.Context) VmfsDatastorePtrOutput {
-	return o
-}
-
-func (o VmfsDatastorePtrOutput) Elem() VmfsDatastoreOutput {
-	return o.ApplyT(func(v *VmfsDatastore) VmfsDatastore {
-		if v != nil {
-			return *v
-		}
-		var ret VmfsDatastore
-		return ret
-	}).(VmfsDatastoreOutput)
-}
-
 type VmfsDatastoreArrayOutput struct{ *pulumi.OutputState }
 
 func (VmfsDatastoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VmfsDatastore)(nil))
+	return reflect.TypeOf((*[]*VmfsDatastore)(nil)).Elem()
 }
 
 func (o VmfsDatastoreArrayOutput) ToVmfsDatastoreArrayOutput() VmfsDatastoreArrayOutput {
@@ -423,15 +360,15 @@ func (o VmfsDatastoreArrayOutput) ToVmfsDatastoreArrayOutputWithContext(ctx cont
 }
 
 func (o VmfsDatastoreArrayOutput) Index(i pulumi.IntInput) VmfsDatastoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmfsDatastore {
-		return vs[0].([]VmfsDatastore)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VmfsDatastore {
+		return vs[0].([]*VmfsDatastore)[vs[1].(int)]
 	}).(VmfsDatastoreOutput)
 }
 
 type VmfsDatastoreMapOutput struct{ *pulumi.OutputState }
 
 func (VmfsDatastoreMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VmfsDatastore)(nil))
+	return reflect.TypeOf((*map[string]*VmfsDatastore)(nil)).Elem()
 }
 
 func (o VmfsDatastoreMapOutput) ToVmfsDatastoreMapOutput() VmfsDatastoreMapOutput {
@@ -443,18 +380,16 @@ func (o VmfsDatastoreMapOutput) ToVmfsDatastoreMapOutputWithContext(ctx context.
 }
 
 func (o VmfsDatastoreMapOutput) MapIndex(k pulumi.StringInput) VmfsDatastoreOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VmfsDatastore {
-		return vs[0].(map[string]VmfsDatastore)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VmfsDatastore {
+		return vs[0].(map[string]*VmfsDatastore)[vs[1].(string)]
 	}).(VmfsDatastoreOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmfsDatastoreInput)(nil)).Elem(), &VmfsDatastore{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmfsDatastorePtrInput)(nil)).Elem(), &VmfsDatastore{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmfsDatastoreArrayInput)(nil)).Elem(), VmfsDatastoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmfsDatastoreMapInput)(nil)).Elem(), VmfsDatastoreMap{})
 	pulumi.RegisterOutputType(VmfsDatastoreOutput{})
-	pulumi.RegisterOutputType(VmfsDatastorePtrOutput{})
 	pulumi.RegisterOutputType(VmfsDatastoreArrayOutput{})
 	pulumi.RegisterOutputType(VmfsDatastoreMapOutput{})
 }

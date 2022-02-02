@@ -63,14 +63,14 @@ export class TagCategory extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagCategoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagCategoryArgs | TagCategoryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagCategoryState | undefined;
-            inputs["associableTypes"] = state ? state.associableTypes : undefined;
-            inputs["cardinality"] = state ? state.cardinality : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["associableTypes"] = state ? state.associableTypes : undefined;
+            resourceInputs["cardinality"] = state ? state.cardinality : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TagCategoryArgs | undefined;
             if ((!args || args.associableTypes === undefined) && !opts.urn) {
@@ -79,15 +79,13 @@ export class TagCategory extends pulumi.CustomResource {
             if ((!args || args.cardinality === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cardinality'");
             }
-            inputs["associableTypes"] = args ? args.associableTypes : undefined;
-            inputs["cardinality"] = args ? args.cardinality : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["associableTypes"] = args ? args.associableTypes : undefined;
+            resourceInputs["cardinality"] = args ? args.cardinality : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TagCategory.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TagCategory.__pulumiType, name, resourceInputs, opts);
     }
 }
 

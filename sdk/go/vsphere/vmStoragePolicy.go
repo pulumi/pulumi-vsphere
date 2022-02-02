@@ -173,7 +173,7 @@ type VmStoragePolicyInput interface {
 }
 
 func (*VmStoragePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmStoragePolicy)(nil))
+	return reflect.TypeOf((**VmStoragePolicy)(nil)).Elem()
 }
 
 func (i *VmStoragePolicy) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
@@ -182,35 +182,6 @@ func (i *VmStoragePolicy) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
 
 func (i *VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyOutput)
-}
-
-func (i *VmStoragePolicy) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
-	return i.ToVmStoragePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *VmStoragePolicy) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyPtrOutput)
-}
-
-type VmStoragePolicyPtrInput interface {
-	pulumi.Input
-
-	ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput
-	ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput
-}
-
-type vmStoragePolicyPtrType VmStoragePolicyArgs
-
-func (*vmStoragePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmStoragePolicy)(nil))
-}
-
-func (i *vmStoragePolicyPtrType) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
-	return i.ToVmStoragePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *vmStoragePolicyPtrType) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyPtrOutput)
 }
 
 // VmStoragePolicyArrayInput is an input type that accepts VmStoragePolicyArray and VmStoragePolicyArrayOutput values.
@@ -266,7 +237,7 @@ func (i VmStoragePolicyMap) ToVmStoragePolicyMapOutputWithContext(ctx context.Co
 type VmStoragePolicyOutput struct{ *pulumi.OutputState }
 
 func (VmStoragePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmStoragePolicy)(nil))
+	return reflect.TypeOf((**VmStoragePolicy)(nil)).Elem()
 }
 
 func (o VmStoragePolicyOutput) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
@@ -277,44 +248,10 @@ func (o VmStoragePolicyOutput) ToVmStoragePolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o VmStoragePolicyOutput) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
-	return o.ToVmStoragePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o VmStoragePolicyOutput) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmStoragePolicy) *VmStoragePolicy {
-		return &v
-	}).(VmStoragePolicyPtrOutput)
-}
-
-type VmStoragePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (VmStoragePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmStoragePolicy)(nil))
-}
-
-func (o VmStoragePolicyPtrOutput) ToVmStoragePolicyPtrOutput() VmStoragePolicyPtrOutput {
-	return o
-}
-
-func (o VmStoragePolicyPtrOutput) ToVmStoragePolicyPtrOutputWithContext(ctx context.Context) VmStoragePolicyPtrOutput {
-	return o
-}
-
-func (o VmStoragePolicyPtrOutput) Elem() VmStoragePolicyOutput {
-	return o.ApplyT(func(v *VmStoragePolicy) VmStoragePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret VmStoragePolicy
-		return ret
-	}).(VmStoragePolicyOutput)
-}
-
 type VmStoragePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (VmStoragePolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VmStoragePolicy)(nil))
+	return reflect.TypeOf((*[]*VmStoragePolicy)(nil)).Elem()
 }
 
 func (o VmStoragePolicyArrayOutput) ToVmStoragePolicyArrayOutput() VmStoragePolicyArrayOutput {
@@ -326,15 +263,15 @@ func (o VmStoragePolicyArrayOutput) ToVmStoragePolicyArrayOutputWithContext(ctx 
 }
 
 func (o VmStoragePolicyArrayOutput) Index(i pulumi.IntInput) VmStoragePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmStoragePolicy {
-		return vs[0].([]VmStoragePolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VmStoragePolicy {
+		return vs[0].([]*VmStoragePolicy)[vs[1].(int)]
 	}).(VmStoragePolicyOutput)
 }
 
 type VmStoragePolicyMapOutput struct{ *pulumi.OutputState }
 
 func (VmStoragePolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VmStoragePolicy)(nil))
+	return reflect.TypeOf((*map[string]*VmStoragePolicy)(nil)).Elem()
 }
 
 func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutput() VmStoragePolicyMapOutput {
@@ -346,18 +283,16 @@ func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutputWithContext(ctx cont
 }
 
 func (o VmStoragePolicyMapOutput) MapIndex(k pulumi.StringInput) VmStoragePolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VmStoragePolicy {
-		return vs[0].(map[string]VmStoragePolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VmStoragePolicy {
+		return vs[0].(map[string]*VmStoragePolicy)[vs[1].(string)]
 	}).(VmStoragePolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyInput)(nil)).Elem(), &VmStoragePolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyPtrInput)(nil)).Elem(), &VmStoragePolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyArrayInput)(nil)).Elem(), VmStoragePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmStoragePolicyMapInput)(nil)).Elem(), VmStoragePolicyMap{})
 	pulumi.RegisterOutputType(VmStoragePolicyOutput{})
-	pulumi.RegisterOutputType(VmStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(VmStoragePolicyArrayOutput{})
 	pulumi.RegisterOutputType(VmStoragePolicyMapOutput{})
 }

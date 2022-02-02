@@ -64,30 +64,28 @@ export class ContentLibrary extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContentLibraryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContentLibraryArgs | ContentLibraryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentLibraryState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["publication"] = state ? state.publication : undefined;
-            inputs["storageBackings"] = state ? state.storageBackings : undefined;
-            inputs["subscription"] = state ? state.subscription : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["publication"] = state ? state.publication : undefined;
+            resourceInputs["storageBackings"] = state ? state.storageBackings : undefined;
+            resourceInputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as ContentLibraryArgs | undefined;
             if ((!args || args.storageBackings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageBackings'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["publication"] = args ? args.publication : undefined;
-            inputs["storageBackings"] = args ? args.storageBackings : undefined;
-            inputs["subscription"] = args ? args.subscription : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["publication"] = args ? args.publication : undefined;
+            resourceInputs["storageBackings"] = args ? args.storageBackings : undefined;
+            resourceInputs["subscription"] = args ? args.subscription : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContentLibrary.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContentLibrary.__pulumiType, name, resourceInputs, opts);
     }
 }
 

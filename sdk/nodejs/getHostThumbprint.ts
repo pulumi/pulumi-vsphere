@@ -26,9 +26,7 @@ export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("vsphere:index/getHostThumbprint:getHostThumbprint", {
         "address": args.address,
         "insecure": args.insecure,
