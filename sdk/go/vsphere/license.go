@@ -148,7 +148,7 @@ type LicenseInput interface {
 }
 
 func (*License) ElementType() reflect.Type {
-	return reflect.TypeOf((*License)(nil))
+	return reflect.TypeOf((**License)(nil)).Elem()
 }
 
 func (i *License) ToLicenseOutput() LicenseOutput {
@@ -157,35 +157,6 @@ func (i *License) ToLicenseOutput() LicenseOutput {
 
 func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
-}
-
-func (i *License) ToLicensePtrOutput() LicensePtrOutput {
-	return i.ToLicensePtrOutputWithContext(context.Background())
-}
-
-func (i *License) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
-}
-
-type LicensePtrInput interface {
-	pulumi.Input
-
-	ToLicensePtrOutput() LicensePtrOutput
-	ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput
-}
-
-type licensePtrType LicenseArgs
-
-func (*licensePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**License)(nil))
-}
-
-func (i *licensePtrType) ToLicensePtrOutput() LicensePtrOutput {
-	return i.ToLicensePtrOutputWithContext(context.Background())
-}
-
-func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
 }
 
 // LicenseArrayInput is an input type that accepts LicenseArray and LicenseArrayOutput values.
@@ -241,7 +212,7 @@ func (i LicenseMap) ToLicenseMapOutputWithContext(ctx context.Context) LicenseMa
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*License)(nil))
+	return reflect.TypeOf((**License)(nil)).Elem()
 }
 
 func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
@@ -252,44 +223,10 @@ func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOu
 	return o
 }
 
-func (o LicenseOutput) ToLicensePtrOutput() LicensePtrOutput {
-	return o.ToLicensePtrOutputWithContext(context.Background())
-}
-
-func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v License) *License {
-		return &v
-	}).(LicensePtrOutput)
-}
-
-type LicensePtrOutput struct{ *pulumi.OutputState }
-
-func (LicensePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**License)(nil))
-}
-
-func (o LicensePtrOutput) ToLicensePtrOutput() LicensePtrOutput {
-	return o
-}
-
-func (o LicensePtrOutput) ToLicensePtrOutputWithContext(ctx context.Context) LicensePtrOutput {
-	return o
-}
-
-func (o LicensePtrOutput) Elem() LicenseOutput {
-	return o.ApplyT(func(v *License) License {
-		if v != nil {
-			return *v
-		}
-		var ret License
-		return ret
-	}).(LicenseOutput)
-}
-
 type LicenseArrayOutput struct{ *pulumi.OutputState }
 
 func (LicenseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]License)(nil))
+	return reflect.TypeOf((*[]*License)(nil)).Elem()
 }
 
 func (o LicenseArrayOutput) ToLicenseArrayOutput() LicenseArrayOutput {
@@ -301,15 +238,15 @@ func (o LicenseArrayOutput) ToLicenseArrayOutputWithContext(ctx context.Context)
 }
 
 func (o LicenseArrayOutput) Index(i pulumi.IntInput) LicenseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) License {
-		return vs[0].([]License)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *License {
+		return vs[0].([]*License)[vs[1].(int)]
 	}).(LicenseOutput)
 }
 
 type LicenseMapOutput struct{ *pulumi.OutputState }
 
 func (LicenseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]License)(nil))
+	return reflect.TypeOf((*map[string]*License)(nil)).Elem()
 }
 
 func (o LicenseMapOutput) ToLicenseMapOutput() LicenseMapOutput {
@@ -321,18 +258,16 @@ func (o LicenseMapOutput) ToLicenseMapOutputWithContext(ctx context.Context) Lic
 }
 
 func (o LicenseMapOutput) MapIndex(k pulumi.StringInput) LicenseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) License {
-		return vs[0].(map[string]License)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *License {
+		return vs[0].(map[string]*License)[vs[1].(string)]
 	}).(LicenseOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseInput)(nil)).Elem(), &License{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LicensePtrInput)(nil)).Elem(), &License{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseArrayInput)(nil)).Elem(), LicenseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseMapInput)(nil)).Elem(), LicenseMap{})
 	pulumi.RegisterOutputType(LicenseOutput{})
-	pulumi.RegisterOutputType(LicensePtrOutput{})
 	pulumi.RegisterOutputType(LicenseArrayOutput{})
 	pulumi.RegisterOutputType(LicenseMapOutput{})
 }

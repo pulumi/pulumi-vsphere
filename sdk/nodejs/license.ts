@@ -84,32 +84,30 @@ export class License extends pulumi.CustomResource {
      */
     constructor(name: string, args: LicenseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LicenseArgs | LicenseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
-            inputs["editionKey"] = state ? state.editionKey : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["licenseKey"] = state ? state.licenseKey : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["total"] = state ? state.total : undefined;
-            inputs["used"] = state ? state.used : undefined;
+            resourceInputs["editionKey"] = state ? state.editionKey : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["licenseKey"] = state ? state.licenseKey : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["total"] = state ? state.total : undefined;
+            resourceInputs["used"] = state ? state.used : undefined;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
             if ((!args || args.licenseKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'licenseKey'");
             }
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["licenseKey"] = args ? args.licenseKey : undefined;
-            inputs["editionKey"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["total"] = undefined /*out*/;
-            inputs["used"] = undefined /*out*/;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["licenseKey"] = args ? args.licenseKey : undefined;
+            resourceInputs["editionKey"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["total"] = undefined /*out*/;
+            resourceInputs["used"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(License.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(License.__pulumiType, name, resourceInputs, opts);
     }
 }
 

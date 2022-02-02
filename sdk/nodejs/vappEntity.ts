@@ -93,20 +93,20 @@ export class VappEntity extends pulumi.CustomResource {
      */
     constructor(name: string, args: VappEntityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VappEntityArgs | VappEntityState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VappEntityState | undefined;
-            inputs["containerId"] = state ? state.containerId : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["startAction"] = state ? state.startAction : undefined;
-            inputs["startDelay"] = state ? state.startDelay : undefined;
-            inputs["startOrder"] = state ? state.startOrder : undefined;
-            inputs["stopAction"] = state ? state.stopAction : undefined;
-            inputs["stopDelay"] = state ? state.stopDelay : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targetId"] = state ? state.targetId : undefined;
-            inputs["waitForGuest"] = state ? state.waitForGuest : undefined;
+            resourceInputs["containerId"] = state ? state.containerId : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["startAction"] = state ? state.startAction : undefined;
+            resourceInputs["startDelay"] = state ? state.startDelay : undefined;
+            resourceInputs["startOrder"] = state ? state.startOrder : undefined;
+            resourceInputs["stopAction"] = state ? state.stopAction : undefined;
+            resourceInputs["stopDelay"] = state ? state.stopDelay : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["waitForGuest"] = state ? state.waitForGuest : undefined;
         } else {
             const args = argsOrState as VappEntityArgs | undefined;
             if ((!args || args.containerId === undefined) && !opts.urn) {
@@ -115,21 +115,19 @@ export class VappEntity extends pulumi.CustomResource {
             if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            inputs["containerId"] = args ? args.containerId : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["startAction"] = args ? args.startAction : undefined;
-            inputs["startDelay"] = args ? args.startDelay : undefined;
-            inputs["startOrder"] = args ? args.startOrder : undefined;
-            inputs["stopAction"] = args ? args.stopAction : undefined;
-            inputs["stopDelay"] = args ? args.stopDelay : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targetId"] = args ? args.targetId : undefined;
-            inputs["waitForGuest"] = args ? args.waitForGuest : undefined;
+            resourceInputs["containerId"] = args ? args.containerId : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["startAction"] = args ? args.startAction : undefined;
+            resourceInputs["startDelay"] = args ? args.startDelay : undefined;
+            resourceInputs["startOrder"] = args ? args.startOrder : undefined;
+            resourceInputs["stopAction"] = args ? args.stopAction : undefined;
+            resourceInputs["stopDelay"] = args ? args.stopDelay : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["waitForGuest"] = args ? args.waitForGuest : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VappEntity.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VappEntity.__pulumiType, name, resourceInputs, opts);
     }
 }
 

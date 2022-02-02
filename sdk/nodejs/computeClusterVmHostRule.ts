@@ -79,17 +79,17 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ComputeClusterVmHostRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ComputeClusterVmHostRuleArgs | ComputeClusterVmHostRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComputeClusterVmHostRuleState | undefined;
-            inputs["affinityHostGroupName"] = state ? state.affinityHostGroupName : undefined;
-            inputs["antiAffinityHostGroupName"] = state ? state.antiAffinityHostGroupName : undefined;
-            inputs["computeClusterId"] = state ? state.computeClusterId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["mandatory"] = state ? state.mandatory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["vmGroupName"] = state ? state.vmGroupName : undefined;
+            resourceInputs["affinityHostGroupName"] = state ? state.affinityHostGroupName : undefined;
+            resourceInputs["antiAffinityHostGroupName"] = state ? state.antiAffinityHostGroupName : undefined;
+            resourceInputs["computeClusterId"] = state ? state.computeClusterId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["vmGroupName"] = state ? state.vmGroupName : undefined;
         } else {
             const args = argsOrState as ComputeClusterVmHostRuleArgs | undefined;
             if ((!args || args.computeClusterId === undefined) && !opts.urn) {
@@ -98,18 +98,16 @@ export class ComputeClusterVmHostRule extends pulumi.CustomResource {
             if ((!args || args.vmGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vmGroupName'");
             }
-            inputs["affinityHostGroupName"] = args ? args.affinityHostGroupName : undefined;
-            inputs["antiAffinityHostGroupName"] = args ? args.antiAffinityHostGroupName : undefined;
-            inputs["computeClusterId"] = args ? args.computeClusterId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["mandatory"] = args ? args.mandatory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["vmGroupName"] = args ? args.vmGroupName : undefined;
+            resourceInputs["affinityHostGroupName"] = args ? args.affinityHostGroupName : undefined;
+            resourceInputs["antiAffinityHostGroupName"] = args ? args.antiAffinityHostGroupName : undefined;
+            resourceInputs["computeClusterId"] = args ? args.computeClusterId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["vmGroupName"] = args ? args.vmGroupName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ComputeClusterVmHostRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ComputeClusterVmHostRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

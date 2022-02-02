@@ -115,24 +115,24 @@ export class VmfsDatastore extends pulumi.CustomResource {
      */
     constructor(name: string, args: VmfsDatastoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VmfsDatastoreArgs | VmfsDatastoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VmfsDatastoreState | undefined;
-            inputs["accessible"] = state ? state.accessible : undefined;
-            inputs["capacity"] = state ? state.capacity : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            inputs["disks"] = state ? state.disks : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["freeSpace"] = state ? state.freeSpace : undefined;
-            inputs["hostSystemId"] = state ? state.hostSystemId : undefined;
-            inputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
-            inputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["accessible"] = state ? state.accessible : undefined;
+            resourceInputs["capacity"] = state ? state.capacity : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
+            resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["freeSpace"] = state ? state.freeSpace : undefined;
+            resourceInputs["hostSystemId"] = state ? state.hostSystemId : undefined;
+            resourceInputs["maintenanceMode"] = state ? state.maintenanceMode : undefined;
+            resourceInputs["multipleHostAccess"] = state ? state.multipleHostAccess : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uncommittedSpace"] = state ? state.uncommittedSpace : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as VmfsDatastoreArgs | undefined;
             if ((!args || args.disks === undefined) && !opts.urn) {
@@ -141,25 +141,23 @@ export class VmfsDatastore extends pulumi.CustomResource {
             if ((!args || args.hostSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostSystemId'");
             }
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            inputs["disks"] = args ? args.disks : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["hostSystemId"] = args ? args.hostSystemId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["accessible"] = undefined /*out*/;
-            inputs["capacity"] = undefined /*out*/;
-            inputs["freeSpace"] = undefined /*out*/;
-            inputs["maintenanceMode"] = undefined /*out*/;
-            inputs["multipleHostAccess"] = undefined /*out*/;
-            inputs["uncommittedSpace"] = undefined /*out*/;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
+            resourceInputs["disks"] = args ? args.disks : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["hostSystemId"] = args ? args.hostSystemId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accessible"] = undefined /*out*/;
+            resourceInputs["capacity"] = undefined /*out*/;
+            resourceInputs["freeSpace"] = undefined /*out*/;
+            resourceInputs["maintenanceMode"] = undefined /*out*/;
+            resourceInputs["multipleHostAccess"] = undefined /*out*/;
+            resourceInputs["uncommittedSpace"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VmfsDatastore.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VmfsDatastore.__pulumiType, name, resourceInputs, opts);
     }
 }
 

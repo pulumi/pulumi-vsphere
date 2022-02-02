@@ -30,9 +30,7 @@ export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,
         "name": args.name,

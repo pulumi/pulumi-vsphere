@@ -66,7 +66,7 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.password === undefined) && !opts.urn) {
@@ -75,24 +75,22 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) ?? <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
-            inputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
-            inputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) ?? <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
-            inputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
-            inputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
-            inputs["password"] = args ? args.password : undefined;
-            inputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) ?? <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
-            inputs["restSessionPath"] = (args ? args.restSessionPath : undefined) ?? utilities.getEnv("VSPHERE_REST_SESSION_PATH");
-            inputs["user"] = args ? args.user : undefined;
-            inputs["vcenterServer"] = args ? args.vcenterServer : undefined;
-            inputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) ?? <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
-            inputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) ?? utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
-            inputs["vsphereServer"] = args ? args.vsphereServer : undefined;
+            resourceInputs["allowUnverifiedSsl"] = pulumi.output((args ? args.allowUnverifiedSsl : undefined) ?? utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL")).apply(JSON.stringify);
+            resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["clientDebug"] = pulumi.output((args ? args.clientDebug : undefined) ?? utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG")).apply(JSON.stringify);
+            resourceInputs["clientDebugPath"] = (args ? args.clientDebugPath : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH");
+            resourceInputs["clientDebugPathRun"] = (args ? args.clientDebugPathRun : undefined) ?? utilities.getEnv("VSPHERE_CLIENT_DEBUG_PATH_RUN");
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["persistSession"] = pulumi.output((args ? args.persistSession : undefined) ?? utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION")).apply(JSON.stringify);
+            resourceInputs["restSessionPath"] = (args ? args.restSessionPath : undefined) ?? utilities.getEnv("VSPHERE_REST_SESSION_PATH");
+            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["vcenterServer"] = args ? args.vcenterServer : undefined;
+            resourceInputs["vimKeepAlive"] = pulumi.output((args ? args.vimKeepAlive : undefined) ?? utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE")).apply(JSON.stringify);
+            resourceInputs["vimSessionPath"] = (args ? args.vimSessionPath : undefined) ?? utilities.getEnv("VSPHERE_VIM_SESSION_PATH");
+            resourceInputs["vsphereServer"] = args ? args.vsphereServer : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

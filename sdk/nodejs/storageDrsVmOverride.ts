@@ -74,15 +74,15 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: StorageDrsVmOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StorageDrsVmOverrideArgs | StorageDrsVmOverrideState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageDrsVmOverrideState | undefined;
-            inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            inputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
-            inputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;
-            inputs["sdrsIntraVmAffinity"] = state ? state.sdrsIntraVmAffinity : undefined;
-            inputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
+            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
+            resourceInputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
+            resourceInputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;
+            resourceInputs["sdrsIntraVmAffinity"] = state ? state.sdrsIntraVmAffinity : undefined;
+            resourceInputs["virtualMachineId"] = state ? state.virtualMachineId : undefined;
         } else {
             const args = argsOrState as StorageDrsVmOverrideArgs | undefined;
             if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
@@ -91,16 +91,14 @@ export class StorageDrsVmOverride extends pulumi.CustomResource {
             if ((!args || args.virtualMachineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineId'");
             }
-            inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            inputs["sdrsAutomationLevel"] = args ? args.sdrsAutomationLevel : undefined;
-            inputs["sdrsEnabled"] = args ? args.sdrsEnabled : undefined;
-            inputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
-            inputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
+            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
+            resourceInputs["sdrsAutomationLevel"] = args ? args.sdrsAutomationLevel : undefined;
+            resourceInputs["sdrsEnabled"] = args ? args.sdrsEnabled : undefined;
+            resourceInputs["sdrsIntraVmAffinity"] = args ? args.sdrsIntraVmAffinity : undefined;
+            resourceInputs["virtualMachineId"] = args ? args.virtualMachineId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StorageDrsVmOverride.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StorageDrsVmOverride.__pulumiType, name, resourceInputs, opts);
     }
 }
 

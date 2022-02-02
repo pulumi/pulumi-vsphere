@@ -67,32 +67,30 @@ export class ContentLibraryItem extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContentLibraryItemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContentLibraryItemArgs | ContentLibraryItemState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentLibraryItemState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fileUrl"] = state ? state.fileUrl : undefined;
-            inputs["libraryId"] = state ? state.libraryId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sourceUuid"] = state ? state.sourceUuid : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fileUrl"] = state ? state.fileUrl : undefined;
+            resourceInputs["libraryId"] = state ? state.libraryId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sourceUuid"] = state ? state.sourceUuid : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ContentLibraryItemArgs | undefined;
             if ((!args || args.libraryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'libraryId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileUrl"] = args ? args.fileUrl : undefined;
-            inputs["libraryId"] = args ? args.libraryId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sourceUuid"] = args ? args.sourceUuid : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileUrl"] = args ? args.fileUrl : undefined;
+            resourceInputs["libraryId"] = args ? args.libraryId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sourceUuid"] = args ? args.sourceUuid : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContentLibraryItem.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContentLibraryItem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

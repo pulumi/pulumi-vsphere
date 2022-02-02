@@ -56,9 +56,7 @@ export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("vsphere:index/getResourcePool:getResourcePool", {
         "datacenterId": args.datacenterId,
         "name": args.name,

@@ -66,15 +66,15 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatastoreClusterVmAntiAffinityRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatastoreClusterVmAntiAffinityRuleArgs | DatastoreClusterVmAntiAffinityRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatastoreClusterVmAntiAffinityRuleState | undefined;
-            inputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["mandatory"] = state ? state.mandatory : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
+            resourceInputs["datastoreClusterId"] = state ? state.datastoreClusterId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["mandatory"] = state ? state.mandatory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["virtualMachineIds"] = state ? state.virtualMachineIds : undefined;
         } else {
             const args = argsOrState as DatastoreClusterVmAntiAffinityRuleArgs | undefined;
             if ((!args || args.datastoreClusterId === undefined) && !opts.urn) {
@@ -83,16 +83,14 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
             if ((!args || args.virtualMachineIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineIds'");
             }
-            inputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["mandatory"] = args ? args.mandatory : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
+            resourceInputs["datastoreClusterId"] = args ? args.datastoreClusterId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["mandatory"] = args ? args.mandatory : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["virtualMachineIds"] = args ? args.virtualMachineIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatastoreClusterVmAntiAffinityRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatastoreClusterVmAntiAffinityRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

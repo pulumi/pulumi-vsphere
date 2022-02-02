@@ -424,7 +424,7 @@ type HaVmOverrideInput interface {
 }
 
 func (*HaVmOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVmOverride)(nil))
+	return reflect.TypeOf((**HaVmOverride)(nil)).Elem()
 }
 
 func (i *HaVmOverride) ToHaVmOverrideOutput() HaVmOverrideOutput {
@@ -433,35 +433,6 @@ func (i *HaVmOverride) ToHaVmOverrideOutput() HaVmOverrideOutput {
 
 func (i *HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideOutput)
-}
-
-func (i *HaVmOverride) ToHaVmOverridePtrOutput() HaVmOverridePtrOutput {
-	return i.ToHaVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *HaVmOverride) ToHaVmOverridePtrOutputWithContext(ctx context.Context) HaVmOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverridePtrOutput)
-}
-
-type HaVmOverridePtrInput interface {
-	pulumi.Input
-
-	ToHaVmOverridePtrOutput() HaVmOverridePtrOutput
-	ToHaVmOverridePtrOutputWithContext(ctx context.Context) HaVmOverridePtrOutput
-}
-
-type haVmOverridePtrType HaVmOverrideArgs
-
-func (*haVmOverridePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HaVmOverride)(nil))
-}
-
-func (i *haVmOverridePtrType) ToHaVmOverridePtrOutput() HaVmOverridePtrOutput {
-	return i.ToHaVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *haVmOverridePtrType) ToHaVmOverridePtrOutputWithContext(ctx context.Context) HaVmOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverridePtrOutput)
 }
 
 // HaVmOverrideArrayInput is an input type that accepts HaVmOverrideArray and HaVmOverrideArrayOutput values.
@@ -517,7 +488,7 @@ func (i HaVmOverrideMap) ToHaVmOverrideMapOutputWithContext(ctx context.Context)
 type HaVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (HaVmOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVmOverride)(nil))
+	return reflect.TypeOf((**HaVmOverride)(nil)).Elem()
 }
 
 func (o HaVmOverrideOutput) ToHaVmOverrideOutput() HaVmOverrideOutput {
@@ -528,44 +499,10 @@ func (o HaVmOverrideOutput) ToHaVmOverrideOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o HaVmOverrideOutput) ToHaVmOverridePtrOutput() HaVmOverridePtrOutput {
-	return o.ToHaVmOverridePtrOutputWithContext(context.Background())
-}
-
-func (o HaVmOverrideOutput) ToHaVmOverridePtrOutputWithContext(ctx context.Context) HaVmOverridePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HaVmOverride) *HaVmOverride {
-		return &v
-	}).(HaVmOverridePtrOutput)
-}
-
-type HaVmOverridePtrOutput struct{ *pulumi.OutputState }
-
-func (HaVmOverridePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HaVmOverride)(nil))
-}
-
-func (o HaVmOverridePtrOutput) ToHaVmOverridePtrOutput() HaVmOverridePtrOutput {
-	return o
-}
-
-func (o HaVmOverridePtrOutput) ToHaVmOverridePtrOutputWithContext(ctx context.Context) HaVmOverridePtrOutput {
-	return o
-}
-
-func (o HaVmOverridePtrOutput) Elem() HaVmOverrideOutput {
-	return o.ApplyT(func(v *HaVmOverride) HaVmOverride {
-		if v != nil {
-			return *v
-		}
-		var ret HaVmOverride
-		return ret
-	}).(HaVmOverrideOutput)
-}
-
 type HaVmOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (HaVmOverrideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HaVmOverride)(nil))
+	return reflect.TypeOf((*[]*HaVmOverride)(nil)).Elem()
 }
 
 func (o HaVmOverrideArrayOutput) ToHaVmOverrideArrayOutput() HaVmOverrideArrayOutput {
@@ -577,15 +514,15 @@ func (o HaVmOverrideArrayOutput) ToHaVmOverrideArrayOutputWithContext(ctx contex
 }
 
 func (o HaVmOverrideArrayOutput) Index(i pulumi.IntInput) HaVmOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HaVmOverride {
-		return vs[0].([]HaVmOverride)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HaVmOverride {
+		return vs[0].([]*HaVmOverride)[vs[1].(int)]
 	}).(HaVmOverrideOutput)
 }
 
 type HaVmOverrideMapOutput struct{ *pulumi.OutputState }
 
 func (HaVmOverrideMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HaVmOverride)(nil))
+	return reflect.TypeOf((*map[string]*HaVmOverride)(nil)).Elem()
 }
 
 func (o HaVmOverrideMapOutput) ToHaVmOverrideMapOutput() HaVmOverrideMapOutput {
@@ -597,18 +534,16 @@ func (o HaVmOverrideMapOutput) ToHaVmOverrideMapOutputWithContext(ctx context.Co
 }
 
 func (o HaVmOverrideMapOutput) MapIndex(k pulumi.StringInput) HaVmOverrideOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HaVmOverride {
-		return vs[0].(map[string]HaVmOverride)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HaVmOverride {
+		return vs[0].(map[string]*HaVmOverride)[vs[1].(string)]
 	}).(HaVmOverrideOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVmOverrideInput)(nil)).Elem(), &HaVmOverride{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HaVmOverridePtrInput)(nil)).Elem(), &HaVmOverride{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVmOverrideArrayInput)(nil)).Elem(), HaVmOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HaVmOverrideMapInput)(nil)).Elem(), HaVmOverrideMap{})
 	pulumi.RegisterOutputType(HaVmOverrideOutput{})
-	pulumi.RegisterOutputType(HaVmOverridePtrOutput{})
 	pulumi.RegisterOutputType(HaVmOverrideArrayOutput{})
 	pulumi.RegisterOutputType(HaVmOverrideMapOutput{})
 }

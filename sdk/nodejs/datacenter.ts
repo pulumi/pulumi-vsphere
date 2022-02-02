@@ -91,27 +91,25 @@ export class Datacenter extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DatacenterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatacenterArgs | DatacenterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatacenterState | undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["moid"] = state ? state.moid : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["moid"] = state ? state.moid : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DatacenterArgs | undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["moid"] = undefined /*out*/;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["moid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Datacenter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Datacenter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

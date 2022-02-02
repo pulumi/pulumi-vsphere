@@ -321,7 +321,7 @@ type VnicInput interface {
 }
 
 func (*Vnic) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vnic)(nil))
+	return reflect.TypeOf((**Vnic)(nil)).Elem()
 }
 
 func (i *Vnic) ToVnicOutput() VnicOutput {
@@ -330,35 +330,6 @@ func (i *Vnic) ToVnicOutput() VnicOutput {
 
 func (i *Vnic) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicOutput)
-}
-
-func (i *Vnic) ToVnicPtrOutput() VnicPtrOutput {
-	return i.ToVnicPtrOutputWithContext(context.Background())
-}
-
-func (i *Vnic) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VnicPtrOutput)
-}
-
-type VnicPtrInput interface {
-	pulumi.Input
-
-	ToVnicPtrOutput() VnicPtrOutput
-	ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput
-}
-
-type vnicPtrType VnicArgs
-
-func (*vnicPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vnic)(nil))
-}
-
-func (i *vnicPtrType) ToVnicPtrOutput() VnicPtrOutput {
-	return i.ToVnicPtrOutputWithContext(context.Background())
-}
-
-func (i *vnicPtrType) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VnicPtrOutput)
 }
 
 // VnicArrayInput is an input type that accepts VnicArray and VnicArrayOutput values.
@@ -414,7 +385,7 @@ func (i VnicMap) ToVnicMapOutputWithContext(ctx context.Context) VnicMapOutput {
 type VnicOutput struct{ *pulumi.OutputState }
 
 func (VnicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vnic)(nil))
+	return reflect.TypeOf((**Vnic)(nil)).Elem()
 }
 
 func (o VnicOutput) ToVnicOutput() VnicOutput {
@@ -425,44 +396,10 @@ func (o VnicOutput) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return o
 }
 
-func (o VnicOutput) ToVnicPtrOutput() VnicPtrOutput {
-	return o.ToVnicPtrOutputWithContext(context.Background())
-}
-
-func (o VnicOutput) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vnic) *Vnic {
-		return &v
-	}).(VnicPtrOutput)
-}
-
-type VnicPtrOutput struct{ *pulumi.OutputState }
-
-func (VnicPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Vnic)(nil))
-}
-
-func (o VnicPtrOutput) ToVnicPtrOutput() VnicPtrOutput {
-	return o
-}
-
-func (o VnicPtrOutput) ToVnicPtrOutputWithContext(ctx context.Context) VnicPtrOutput {
-	return o
-}
-
-func (o VnicPtrOutput) Elem() VnicOutput {
-	return o.ApplyT(func(v *Vnic) Vnic {
-		if v != nil {
-			return *v
-		}
-		var ret Vnic
-		return ret
-	}).(VnicOutput)
-}
-
 type VnicArrayOutput struct{ *pulumi.OutputState }
 
 func (VnicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Vnic)(nil))
+	return reflect.TypeOf((*[]*Vnic)(nil)).Elem()
 }
 
 func (o VnicArrayOutput) ToVnicArrayOutput() VnicArrayOutput {
@@ -474,15 +411,15 @@ func (o VnicArrayOutput) ToVnicArrayOutputWithContext(ctx context.Context) VnicA
 }
 
 func (o VnicArrayOutput) Index(i pulumi.IntInput) VnicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Vnic {
-		return vs[0].([]Vnic)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vnic {
+		return vs[0].([]*Vnic)[vs[1].(int)]
 	}).(VnicOutput)
 }
 
 type VnicMapOutput struct{ *pulumi.OutputState }
 
 func (VnicMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Vnic)(nil))
+	return reflect.TypeOf((*map[string]*Vnic)(nil)).Elem()
 }
 
 func (o VnicMapOutput) ToVnicMapOutput() VnicMapOutput {
@@ -494,18 +431,16 @@ func (o VnicMapOutput) ToVnicMapOutputWithContext(ctx context.Context) VnicMapOu
 }
 
 func (o VnicMapOutput) MapIndex(k pulumi.StringInput) VnicOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vnic {
-		return vs[0].(map[string]Vnic)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Vnic {
+		return vs[0].(map[string]*Vnic)[vs[1].(string)]
 	}).(VnicOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicInput)(nil)).Elem(), &Vnic{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VnicPtrInput)(nil)).Elem(), &Vnic{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicArrayInput)(nil)).Elem(), VnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VnicMapInput)(nil)).Elem(), VnicMap{})
 	pulumi.RegisterOutputType(VnicOutput{})
-	pulumi.RegisterOutputType(VnicPtrOutput{})
 	pulumi.RegisterOutputType(VnicArrayOutput{})
 	pulumi.RegisterOutputType(VnicMapOutput{})
 }

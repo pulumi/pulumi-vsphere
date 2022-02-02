@@ -13,7 +13,7 @@ const __config = new pulumi.Config("vsphere");
 export declare const allowUnverifiedSsl: boolean | undefined;
 Object.defineProperty(exports, "allowUnverifiedSsl", {
     get() {
-        return __config.getObject<boolean>("allowUnverifiedSsl") ?? <any>utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
+        return __config.getObject<boolean>("allowUnverifiedSsl") ?? utilities.getEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL");
     },
     enumerable: true,
 });
@@ -35,7 +35,7 @@ Object.defineProperty(exports, "apiTimeout", {
 export declare const clientDebug: boolean | undefined;
 Object.defineProperty(exports, "clientDebug", {
     get() {
-        return __config.getObject<boolean>("clientDebug") ?? <any>utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
+        return __config.getObject<boolean>("clientDebug") ?? utilities.getEnvBoolean("VSPHERE_CLIENT_DEBUG");
     },
     enumerable: true,
 });
@@ -79,7 +79,7 @@ Object.defineProperty(exports, "password", {
 export declare const persistSession: boolean | undefined;
 Object.defineProperty(exports, "persistSession", {
     get() {
-        return __config.getObject<boolean>("persistSession") ?? <any>utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
+        return __config.getObject<boolean>("persistSession") ?? utilities.getEnvBoolean("VSPHERE_PERSIST_SESSION");
     },
     enumerable: true,
 });
@@ -120,7 +120,7 @@ Object.defineProperty(exports, "vcenterServer", {
 export declare const vimKeepAlive: number | undefined;
 Object.defineProperty(exports, "vimKeepAlive", {
     get() {
-        return __config.getObject<number>("vimKeepAlive") ?? <any>utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
+        return __config.getObject<number>("vimKeepAlive") ?? utilities.getEnvNumber("VSPHERE_VIM_KEEP_ALIVE");
     },
     enumerable: true,
 });

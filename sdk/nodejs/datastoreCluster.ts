@@ -185,70 +185,68 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatastoreClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatastoreClusterArgs | DatastoreClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatastoreClusterState | undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["datacenterId"] = state ? state.datacenterId : undefined;
-            inputs["folder"] = state ? state.folder : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sdrsAdvancedOptions"] = state ? state.sdrsAdvancedOptions : undefined;
-            inputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
-            inputs["sdrsDefaultIntraVmAffinity"] = state ? state.sdrsDefaultIntraVmAffinity : undefined;
-            inputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;
-            inputs["sdrsFreeSpaceThreshold"] = state ? state.sdrsFreeSpaceThreshold : undefined;
-            inputs["sdrsFreeSpaceThresholdMode"] = state ? state.sdrsFreeSpaceThresholdMode : undefined;
-            inputs["sdrsFreeSpaceUtilizationDifference"] = state ? state.sdrsFreeSpaceUtilizationDifference : undefined;
-            inputs["sdrsIoBalanceAutomationLevel"] = state ? state.sdrsIoBalanceAutomationLevel : undefined;
-            inputs["sdrsIoLatencyThreshold"] = state ? state.sdrsIoLatencyThreshold : undefined;
-            inputs["sdrsIoLoadBalanceEnabled"] = state ? state.sdrsIoLoadBalanceEnabled : undefined;
-            inputs["sdrsIoLoadImbalanceThreshold"] = state ? state.sdrsIoLoadImbalanceThreshold : undefined;
-            inputs["sdrsIoReservableIopsThreshold"] = state ? state.sdrsIoReservableIopsThreshold : undefined;
-            inputs["sdrsIoReservablePercentThreshold"] = state ? state.sdrsIoReservablePercentThreshold : undefined;
-            inputs["sdrsIoReservableThresholdMode"] = state ? state.sdrsIoReservableThresholdMode : undefined;
-            inputs["sdrsLoadBalanceInterval"] = state ? state.sdrsLoadBalanceInterval : undefined;
-            inputs["sdrsPolicyEnforcementAutomationLevel"] = state ? state.sdrsPolicyEnforcementAutomationLevel : undefined;
-            inputs["sdrsRuleEnforcementAutomationLevel"] = state ? state.sdrsRuleEnforcementAutomationLevel : undefined;
-            inputs["sdrsSpaceBalanceAutomationLevel"] = state ? state.sdrsSpaceBalanceAutomationLevel : undefined;
-            inputs["sdrsSpaceUtilizationThreshold"] = state ? state.sdrsSpaceUtilizationThreshold : undefined;
-            inputs["sdrsVmEvacuationAutomationLevel"] = state ? state.sdrsVmEvacuationAutomationLevel : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["datacenterId"] = state ? state.datacenterId : undefined;
+            resourceInputs["folder"] = state ? state.folder : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sdrsAdvancedOptions"] = state ? state.sdrsAdvancedOptions : undefined;
+            resourceInputs["sdrsAutomationLevel"] = state ? state.sdrsAutomationLevel : undefined;
+            resourceInputs["sdrsDefaultIntraVmAffinity"] = state ? state.sdrsDefaultIntraVmAffinity : undefined;
+            resourceInputs["sdrsEnabled"] = state ? state.sdrsEnabled : undefined;
+            resourceInputs["sdrsFreeSpaceThreshold"] = state ? state.sdrsFreeSpaceThreshold : undefined;
+            resourceInputs["sdrsFreeSpaceThresholdMode"] = state ? state.sdrsFreeSpaceThresholdMode : undefined;
+            resourceInputs["sdrsFreeSpaceUtilizationDifference"] = state ? state.sdrsFreeSpaceUtilizationDifference : undefined;
+            resourceInputs["sdrsIoBalanceAutomationLevel"] = state ? state.sdrsIoBalanceAutomationLevel : undefined;
+            resourceInputs["sdrsIoLatencyThreshold"] = state ? state.sdrsIoLatencyThreshold : undefined;
+            resourceInputs["sdrsIoLoadBalanceEnabled"] = state ? state.sdrsIoLoadBalanceEnabled : undefined;
+            resourceInputs["sdrsIoLoadImbalanceThreshold"] = state ? state.sdrsIoLoadImbalanceThreshold : undefined;
+            resourceInputs["sdrsIoReservableIopsThreshold"] = state ? state.sdrsIoReservableIopsThreshold : undefined;
+            resourceInputs["sdrsIoReservablePercentThreshold"] = state ? state.sdrsIoReservablePercentThreshold : undefined;
+            resourceInputs["sdrsIoReservableThresholdMode"] = state ? state.sdrsIoReservableThresholdMode : undefined;
+            resourceInputs["sdrsLoadBalanceInterval"] = state ? state.sdrsLoadBalanceInterval : undefined;
+            resourceInputs["sdrsPolicyEnforcementAutomationLevel"] = state ? state.sdrsPolicyEnforcementAutomationLevel : undefined;
+            resourceInputs["sdrsRuleEnforcementAutomationLevel"] = state ? state.sdrsRuleEnforcementAutomationLevel : undefined;
+            resourceInputs["sdrsSpaceBalanceAutomationLevel"] = state ? state.sdrsSpaceBalanceAutomationLevel : undefined;
+            resourceInputs["sdrsSpaceUtilizationThreshold"] = state ? state.sdrsSpaceUtilizationThreshold : undefined;
+            resourceInputs["sdrsVmEvacuationAutomationLevel"] = state ? state.sdrsVmEvacuationAutomationLevel : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DatastoreClusterArgs | undefined;
             if ((!args || args.datacenterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datacenterId'");
             }
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["datacenterId"] = args ? args.datacenterId : undefined;
-            inputs["folder"] = args ? args.folder : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sdrsAdvancedOptions"] = args ? args.sdrsAdvancedOptions : undefined;
-            inputs["sdrsAutomationLevel"] = args ? args.sdrsAutomationLevel : undefined;
-            inputs["sdrsDefaultIntraVmAffinity"] = args ? args.sdrsDefaultIntraVmAffinity : undefined;
-            inputs["sdrsEnabled"] = args ? args.sdrsEnabled : undefined;
-            inputs["sdrsFreeSpaceThreshold"] = args ? args.sdrsFreeSpaceThreshold : undefined;
-            inputs["sdrsFreeSpaceThresholdMode"] = args ? args.sdrsFreeSpaceThresholdMode : undefined;
-            inputs["sdrsFreeSpaceUtilizationDifference"] = args ? args.sdrsFreeSpaceUtilizationDifference : undefined;
-            inputs["sdrsIoBalanceAutomationLevel"] = args ? args.sdrsIoBalanceAutomationLevel : undefined;
-            inputs["sdrsIoLatencyThreshold"] = args ? args.sdrsIoLatencyThreshold : undefined;
-            inputs["sdrsIoLoadBalanceEnabled"] = args ? args.sdrsIoLoadBalanceEnabled : undefined;
-            inputs["sdrsIoLoadImbalanceThreshold"] = args ? args.sdrsIoLoadImbalanceThreshold : undefined;
-            inputs["sdrsIoReservableIopsThreshold"] = args ? args.sdrsIoReservableIopsThreshold : undefined;
-            inputs["sdrsIoReservablePercentThreshold"] = args ? args.sdrsIoReservablePercentThreshold : undefined;
-            inputs["sdrsIoReservableThresholdMode"] = args ? args.sdrsIoReservableThresholdMode : undefined;
-            inputs["sdrsLoadBalanceInterval"] = args ? args.sdrsLoadBalanceInterval : undefined;
-            inputs["sdrsPolicyEnforcementAutomationLevel"] = args ? args.sdrsPolicyEnforcementAutomationLevel : undefined;
-            inputs["sdrsRuleEnforcementAutomationLevel"] = args ? args.sdrsRuleEnforcementAutomationLevel : undefined;
-            inputs["sdrsSpaceBalanceAutomationLevel"] = args ? args.sdrsSpaceBalanceAutomationLevel : undefined;
-            inputs["sdrsSpaceUtilizationThreshold"] = args ? args.sdrsSpaceUtilizationThreshold : undefined;
-            inputs["sdrsVmEvacuationAutomationLevel"] = args ? args.sdrsVmEvacuationAutomationLevel : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["datacenterId"] = args ? args.datacenterId : undefined;
+            resourceInputs["folder"] = args ? args.folder : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sdrsAdvancedOptions"] = args ? args.sdrsAdvancedOptions : undefined;
+            resourceInputs["sdrsAutomationLevel"] = args ? args.sdrsAutomationLevel : undefined;
+            resourceInputs["sdrsDefaultIntraVmAffinity"] = args ? args.sdrsDefaultIntraVmAffinity : undefined;
+            resourceInputs["sdrsEnabled"] = args ? args.sdrsEnabled : undefined;
+            resourceInputs["sdrsFreeSpaceThreshold"] = args ? args.sdrsFreeSpaceThreshold : undefined;
+            resourceInputs["sdrsFreeSpaceThresholdMode"] = args ? args.sdrsFreeSpaceThresholdMode : undefined;
+            resourceInputs["sdrsFreeSpaceUtilizationDifference"] = args ? args.sdrsFreeSpaceUtilizationDifference : undefined;
+            resourceInputs["sdrsIoBalanceAutomationLevel"] = args ? args.sdrsIoBalanceAutomationLevel : undefined;
+            resourceInputs["sdrsIoLatencyThreshold"] = args ? args.sdrsIoLatencyThreshold : undefined;
+            resourceInputs["sdrsIoLoadBalanceEnabled"] = args ? args.sdrsIoLoadBalanceEnabled : undefined;
+            resourceInputs["sdrsIoLoadImbalanceThreshold"] = args ? args.sdrsIoLoadImbalanceThreshold : undefined;
+            resourceInputs["sdrsIoReservableIopsThreshold"] = args ? args.sdrsIoReservableIopsThreshold : undefined;
+            resourceInputs["sdrsIoReservablePercentThreshold"] = args ? args.sdrsIoReservablePercentThreshold : undefined;
+            resourceInputs["sdrsIoReservableThresholdMode"] = args ? args.sdrsIoReservableThresholdMode : undefined;
+            resourceInputs["sdrsLoadBalanceInterval"] = args ? args.sdrsLoadBalanceInterval : undefined;
+            resourceInputs["sdrsPolicyEnforcementAutomationLevel"] = args ? args.sdrsPolicyEnforcementAutomationLevel : undefined;
+            resourceInputs["sdrsRuleEnforcementAutomationLevel"] = args ? args.sdrsRuleEnforcementAutomationLevel : undefined;
+            resourceInputs["sdrsSpaceBalanceAutomationLevel"] = args ? args.sdrsSpaceBalanceAutomationLevel : undefined;
+            resourceInputs["sdrsSpaceUtilizationThreshold"] = args ? args.sdrsSpaceUtilizationThreshold : undefined;
+            resourceInputs["sdrsVmEvacuationAutomationLevel"] = args ? args.sdrsVmEvacuationAutomationLevel : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DatastoreCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DatastoreCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

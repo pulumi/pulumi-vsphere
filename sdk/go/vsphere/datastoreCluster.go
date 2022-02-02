@@ -541,7 +541,7 @@ type DatastoreClusterInput interface {
 }
 
 func (*DatastoreCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreCluster)(nil))
+	return reflect.TypeOf((**DatastoreCluster)(nil)).Elem()
 }
 
 func (i *DatastoreCluster) ToDatastoreClusterOutput() DatastoreClusterOutput {
@@ -550,35 +550,6 @@ func (i *DatastoreCluster) ToDatastoreClusterOutput() DatastoreClusterOutput {
 
 func (i *DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterOutput)
-}
-
-func (i *DatastoreCluster) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
-	return i.ToDatastoreClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *DatastoreCluster) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterPtrOutput)
-}
-
-type DatastoreClusterPtrInput interface {
-	pulumi.Input
-
-	ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput
-	ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput
-}
-
-type datastoreClusterPtrType DatastoreClusterArgs
-
-func (*datastoreClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatastoreCluster)(nil))
-}
-
-func (i *datastoreClusterPtrType) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
-	return i.ToDatastoreClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *datastoreClusterPtrType) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterPtrOutput)
 }
 
 // DatastoreClusterArrayInput is an input type that accepts DatastoreClusterArray and DatastoreClusterArrayOutput values.
@@ -634,7 +605,7 @@ func (i DatastoreClusterMap) ToDatastoreClusterMapOutputWithContext(ctx context.
 type DatastoreClusterOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatastoreCluster)(nil))
+	return reflect.TypeOf((**DatastoreCluster)(nil)).Elem()
 }
 
 func (o DatastoreClusterOutput) ToDatastoreClusterOutput() DatastoreClusterOutput {
@@ -645,44 +616,10 @@ func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.
 	return o
 }
 
-func (o DatastoreClusterOutput) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
-	return o.ToDatastoreClusterPtrOutputWithContext(context.Background())
-}
-
-func (o DatastoreClusterOutput) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatastoreCluster) *DatastoreCluster {
-		return &v
-	}).(DatastoreClusterPtrOutput)
-}
-
-type DatastoreClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (DatastoreClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatastoreCluster)(nil))
-}
-
-func (o DatastoreClusterPtrOutput) ToDatastoreClusterPtrOutput() DatastoreClusterPtrOutput {
-	return o
-}
-
-func (o DatastoreClusterPtrOutput) ToDatastoreClusterPtrOutputWithContext(ctx context.Context) DatastoreClusterPtrOutput {
-	return o
-}
-
-func (o DatastoreClusterPtrOutput) Elem() DatastoreClusterOutput {
-	return o.ApplyT(func(v *DatastoreCluster) DatastoreCluster {
-		if v != nil {
-			return *v
-		}
-		var ret DatastoreCluster
-		return ret
-	}).(DatastoreClusterOutput)
-}
-
 type DatastoreClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatastoreCluster)(nil))
+	return reflect.TypeOf((*[]*DatastoreCluster)(nil)).Elem()
 }
 
 func (o DatastoreClusterArrayOutput) ToDatastoreClusterArrayOutput() DatastoreClusterArrayOutput {
@@ -694,15 +631,15 @@ func (o DatastoreClusterArrayOutput) ToDatastoreClusterArrayOutputWithContext(ct
 }
 
 func (o DatastoreClusterArrayOutput) Index(i pulumi.IntInput) DatastoreClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatastoreCluster {
-		return vs[0].([]DatastoreCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatastoreCluster {
+		return vs[0].([]*DatastoreCluster)[vs[1].(int)]
 	}).(DatastoreClusterOutput)
 }
 
 type DatastoreClusterMapOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DatastoreCluster)(nil))
+	return reflect.TypeOf((*map[string]*DatastoreCluster)(nil)).Elem()
 }
 
 func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutput() DatastoreClusterMapOutput {
@@ -714,18 +651,16 @@ func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutputWithContext(ctx co
 }
 
 func (o DatastoreClusterMapOutput) MapIndex(k pulumi.StringInput) DatastoreClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatastoreCluster {
-		return vs[0].(map[string]DatastoreCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatastoreCluster {
+		return vs[0].(map[string]*DatastoreCluster)[vs[1].(string)]
 	}).(DatastoreClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreClusterInput)(nil)).Elem(), &DatastoreCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreClusterPtrInput)(nil)).Elem(), &DatastoreCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreClusterArrayInput)(nil)).Elem(), DatastoreClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreClusterMapInput)(nil)).Elem(), DatastoreClusterMap{})
 	pulumi.RegisterOutputType(DatastoreClusterOutput{})
-	pulumi.RegisterOutputType(DatastoreClusterPtrOutput{})
 	pulumi.RegisterOutputType(DatastoreClusterArrayOutput{})
 	pulumi.RegisterOutputType(DatastoreClusterMapOutput{})
 }

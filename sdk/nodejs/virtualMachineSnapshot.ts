@@ -116,17 +116,17 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: VirtualMachineSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualMachineSnapshotArgs | VirtualMachineSnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualMachineSnapshotState | undefined;
-            inputs["consolidate"] = state ? state.consolidate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["quiesce"] = state ? state.quiesce : undefined;
-            inputs["removeChildren"] = state ? state.removeChildren : undefined;
-            inputs["snapshotName"] = state ? state.snapshotName : undefined;
-            inputs["virtualMachineUuid"] = state ? state.virtualMachineUuid : undefined;
+            resourceInputs["consolidate"] = state ? state.consolidate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["quiesce"] = state ? state.quiesce : undefined;
+            resourceInputs["removeChildren"] = state ? state.removeChildren : undefined;
+            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
+            resourceInputs["virtualMachineUuid"] = state ? state.virtualMachineUuid : undefined;
         } else {
             const args = argsOrState as VirtualMachineSnapshotArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -144,18 +144,16 @@ export class VirtualMachineSnapshot extends pulumi.CustomResource {
             if ((!args || args.virtualMachineUuid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineUuid'");
             }
-            inputs["consolidate"] = args ? args.consolidate : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["memory"] = args ? args.memory : undefined;
-            inputs["quiesce"] = args ? args.quiesce : undefined;
-            inputs["removeChildren"] = args ? args.removeChildren : undefined;
-            inputs["snapshotName"] = args ? args.snapshotName : undefined;
-            inputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
+            resourceInputs["consolidate"] = args ? args.consolidate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["quiesce"] = args ? args.quiesce : undefined;
+            resourceInputs["removeChildren"] = args ? args.removeChildren : undefined;
+            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["virtualMachineUuid"] = args ? args.virtualMachineUuid : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VirtualMachineSnapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VirtualMachineSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

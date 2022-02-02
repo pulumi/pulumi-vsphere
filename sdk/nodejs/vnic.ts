@@ -166,38 +166,36 @@ export class Vnic extends pulumi.CustomResource {
      */
     constructor(name: string, args: VnicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VnicArgs | VnicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VnicState | undefined;
-            inputs["distributedPortGroup"] = state ? state.distributedPortGroup : undefined;
-            inputs["distributedSwitchPort"] = state ? state.distributedSwitchPort : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["ipv4"] = state ? state.ipv4 : undefined;
-            inputs["ipv6"] = state ? state.ipv6 : undefined;
-            inputs["mac"] = state ? state.mac : undefined;
-            inputs["mtu"] = state ? state.mtu : undefined;
-            inputs["netstack"] = state ? state.netstack : undefined;
-            inputs["portgroup"] = state ? state.portgroup : undefined;
+            resourceInputs["distributedPortGroup"] = state ? state.distributedPortGroup : undefined;
+            resourceInputs["distributedSwitchPort"] = state ? state.distributedSwitchPort : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
+            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
+            resourceInputs["mac"] = state ? state.mac : undefined;
+            resourceInputs["mtu"] = state ? state.mtu : undefined;
+            resourceInputs["netstack"] = state ? state.netstack : undefined;
+            resourceInputs["portgroup"] = state ? state.portgroup : undefined;
         } else {
             const args = argsOrState as VnicArgs | undefined;
             if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            inputs["distributedPortGroup"] = args ? args.distributedPortGroup : undefined;
-            inputs["distributedSwitchPort"] = args ? args.distributedSwitchPort : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["ipv4"] = args ? args.ipv4 : undefined;
-            inputs["ipv6"] = args ? args.ipv6 : undefined;
-            inputs["mac"] = args ? args.mac : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["netstack"] = args ? args.netstack : undefined;
-            inputs["portgroup"] = args ? args.portgroup : undefined;
+            resourceInputs["distributedPortGroup"] = args ? args.distributedPortGroup : undefined;
+            resourceInputs["distributedSwitchPort"] = args ? args.distributedSwitchPort : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["ipv4"] = args ? args.ipv4 : undefined;
+            resourceInputs["ipv6"] = args ? args.ipv6 : undefined;
+            resourceInputs["mac"] = args ? args.mac : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["netstack"] = args ? args.netstack : undefined;
+            resourceInputs["portgroup"] = args ? args.portgroup : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Vnic.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Vnic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

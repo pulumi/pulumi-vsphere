@@ -131,50 +131,48 @@ export class VappContainer extends pulumi.CustomResource {
      */
     constructor(name: string, args: VappContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VappContainerArgs | VappContainerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VappContainerState | undefined;
-            inputs["cpuExpandable"] = state ? state.cpuExpandable : undefined;
-            inputs["cpuLimit"] = state ? state.cpuLimit : undefined;
-            inputs["cpuReservation"] = state ? state.cpuReservation : undefined;
-            inputs["cpuShareLevel"] = state ? state.cpuShareLevel : undefined;
-            inputs["cpuShares"] = state ? state.cpuShares : undefined;
-            inputs["customAttributes"] = state ? state.customAttributes : undefined;
-            inputs["memoryExpandable"] = state ? state.memoryExpandable : undefined;
-            inputs["memoryLimit"] = state ? state.memoryLimit : undefined;
-            inputs["memoryReservation"] = state ? state.memoryReservation : undefined;
-            inputs["memoryShareLevel"] = state ? state.memoryShareLevel : undefined;
-            inputs["memoryShares"] = state ? state.memoryShares : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentFolderId"] = state ? state.parentFolderId : undefined;
-            inputs["parentResourcePoolId"] = state ? state.parentResourcePoolId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["cpuExpandable"] = state ? state.cpuExpandable : undefined;
+            resourceInputs["cpuLimit"] = state ? state.cpuLimit : undefined;
+            resourceInputs["cpuReservation"] = state ? state.cpuReservation : undefined;
+            resourceInputs["cpuShareLevel"] = state ? state.cpuShareLevel : undefined;
+            resourceInputs["cpuShares"] = state ? state.cpuShares : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
+            resourceInputs["memoryExpandable"] = state ? state.memoryExpandable : undefined;
+            resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
+            resourceInputs["memoryReservation"] = state ? state.memoryReservation : undefined;
+            resourceInputs["memoryShareLevel"] = state ? state.memoryShareLevel : undefined;
+            resourceInputs["memoryShares"] = state ? state.memoryShares : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentFolderId"] = state ? state.parentFolderId : undefined;
+            resourceInputs["parentResourcePoolId"] = state ? state.parentResourcePoolId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as VappContainerArgs | undefined;
             if ((!args || args.parentResourcePoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parentResourcePoolId'");
             }
-            inputs["cpuExpandable"] = args ? args.cpuExpandable : undefined;
-            inputs["cpuLimit"] = args ? args.cpuLimit : undefined;
-            inputs["cpuReservation"] = args ? args.cpuReservation : undefined;
-            inputs["cpuShareLevel"] = args ? args.cpuShareLevel : undefined;
-            inputs["cpuShares"] = args ? args.cpuShares : undefined;
-            inputs["customAttributes"] = args ? args.customAttributes : undefined;
-            inputs["memoryExpandable"] = args ? args.memoryExpandable : undefined;
-            inputs["memoryLimit"] = args ? args.memoryLimit : undefined;
-            inputs["memoryReservation"] = args ? args.memoryReservation : undefined;
-            inputs["memoryShareLevel"] = args ? args.memoryShareLevel : undefined;
-            inputs["memoryShares"] = args ? args.memoryShares : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentFolderId"] = args ? args.parentFolderId : undefined;
-            inputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["cpuExpandable"] = args ? args.cpuExpandable : undefined;
+            resourceInputs["cpuLimit"] = args ? args.cpuLimit : undefined;
+            resourceInputs["cpuReservation"] = args ? args.cpuReservation : undefined;
+            resourceInputs["cpuShareLevel"] = args ? args.cpuShareLevel : undefined;
+            resourceInputs["cpuShares"] = args ? args.cpuShares : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
+            resourceInputs["memoryExpandable"] = args ? args.memoryExpandable : undefined;
+            resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
+            resourceInputs["memoryReservation"] = args ? args.memoryReservation : undefined;
+            resourceInputs["memoryShareLevel"] = args ? args.memoryShareLevel : undefined;
+            resourceInputs["memoryShares"] = args ? args.memoryShares : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentFolderId"] = args ? args.parentFolderId : undefined;
+            resourceInputs["parentResourcePoolId"] = args ? args.parentResourcePoolId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VappContainer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VappContainer.__pulumiType, name, resourceInputs, opts);
     }
 }
 
