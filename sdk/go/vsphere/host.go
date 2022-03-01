@@ -27,9 +27,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-datacenter"
 // 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("my-datacenter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -60,17 +59,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "TfDatacenter"
 // 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("TfDatacenter"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := dc.Id
 // 		c1, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
 // 			Name:         "DC0_C0",
-// 			DatacenterId: &opt1,
+// 			DatacenterId: pulumi.StringRef(dc.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

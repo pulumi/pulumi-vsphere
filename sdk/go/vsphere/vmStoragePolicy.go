@@ -31,9 +31,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "DC"
 // 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("DC"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
