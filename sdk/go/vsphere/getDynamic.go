@@ -34,7 +34,8 @@ type GetDynamicArgs struct {
 	// the object's name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The managed object type the returned object must match.
-	// For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+	// The managed object types can be found in the managed object type section
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	Type *string `pulumi:"type"`
 }
 
@@ -65,7 +66,8 @@ type GetDynamicOutputArgs struct {
 	// the object's name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The managed object type the returned object must match.
-	// For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+	// The managed object types can be found in the managed object type section
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

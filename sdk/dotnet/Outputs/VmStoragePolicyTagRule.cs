@@ -14,8 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VmStoragePolicyTagRule
     {
         /// <summary>
-        /// Whether to include datastores with the given tags or exclude. Default 
-        /// value is true i.e. include datastores with the given tags.
+        /// Include datastores with the given tags or exclude. Default `true`.
         /// </summary>
         public readonly bool? IncludeDatastoresWithTags;
         /// <summary>

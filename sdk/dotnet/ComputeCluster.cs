@@ -111,7 +111,7 @@ namespace Pulumi.VSphere
         /// When destroying the resource, setting this to
         /// `true` will auto-remove any hosts that are currently a member of the cluster,
         /// as if they were removed by taking their entry out of `host_system_ids` (see
-        /// below). This is an advanced
+        /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
         /// </summary>
         [Output("forceEvacuateOnDestroy")]
@@ -231,10 +231,10 @@ namespace Pulumi.VSphere
         public Output<string?> HaDatastoreApdResponse { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the delay in minutes
-        /// to wait after an APD timeout event to execute the response action defined in
-        /// `ha_datastore_apd_response`. Default: `3`
-        /// minutes. &lt;sup&gt;\*&lt;/sup&gt;
+        /// The time, in seconds,
+        /// to wait after an APD timeout event to run the response action defined in
+        /// `ha_datastore_apd_response`. Default: `180`
+        /// seconds (3 minutes). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Output("haDatastoreApdResponseDelay")]
         public Output<int?> HaDatastoreApdResponseDelay { get; private set; } = null!;
@@ -313,20 +313,19 @@ namespace Pulumi.VSphere
         public Output<string?> HaVmDependencyRestartCondition { get; private set; } = null!;
 
         /// <summary>
-        /// If a heartbeat from a virtual machine
-        /// is not received within this configured interval, the virtual machine is
-        /// marked as failed. The value is in seconds. Default: `30`.
+        /// The time interval, in seconds, a heartbeat
+        /// from a virtual machine is not received within this configured interval,
+        /// the virtual machine is marked as failed. Default: `30` seconds.
         /// </summary>
         [Output("haVmFailureInterval")]
         public Output<int?> HaVmFailureInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The length of the reset window in
+        /// The time, in seconds, for the reset window in
         /// which `ha_vm_maximum_resets` can operate. When this
         /// window expires, no more resets are attempted regardless of the setting
         /// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        /// unlimited reset time is allotted. The value is specified in seconds. Default:
-        /// `-1` (no window).
+        /// unlimited reset time is allotted. Default: `-1` (no window).
         /// </summary>
         [Output("haVmMaximumFailureWindow")]
         public Output<int?> HaVmMaximumFailureWindow { get; private set; } = null!;
@@ -341,7 +340,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The time, in seconds, that HA waits after
         /// powering on a virtual machine before monitoring for heartbeats. Default:
-        /// `120` (2 minutes).
+        /// `120` seconds (2 minutes).
         /// </summary>
         [Output("haVmMinimumUptime")]
         public Output<int?> HaVmMinimumUptime { get; private set; } = null!;
@@ -355,9 +354,9 @@ namespace Pulumi.VSphere
         public Output<string?> HaVmMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Additional delay in seconds
+        /// Additional delay, in seconds,
         /// after ready condition is met. A VM is considered ready at this point.
-        /// Default: `0` (no delay). &lt;sup&gt;\*&lt;/sup&gt;
+        /// Default: `0` seconds (no delay). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Output("haVmRestartAdditionalDelay")]
         public Output<int?> HaVmRestartAdditionalDelay { get; private set; } = null!;
@@ -373,16 +372,15 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The maximum time, in seconds,
         /// that vSphere HA will wait for virtual machines in one priority to be ready
-        /// before proceeding with the next priority. Default: `600` (10 minutes).
+        /// before proceeding with the next priority. Default: `600` seconds (10 minutes).
         /// &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Output("haVmRestartTimeout")]
         public Output<int?> HaVmRestartTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout for each host maintenance mode
-        /// operation when removing hosts from a cluster. The value is specified in
-        /// seconds. Default: `3600` (1 hour).
+        /// The timeout, in seconds, for each host maintenance
+        /// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         /// </summary>
         [Output("hostClusterExitTimeout")]
         public Output<int?> HostClusterExitTimeout { get; private set; } = null!;
@@ -391,13 +389,12 @@ namespace Pulumi.VSphere
         /// Can be set to `true` if compute cluster
         /// membership will be managed through the `host` resource rather than the
         /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
         /// </summary>
         [Output("hostManaged")]
         public Output<bool?> HostManaged { get; private set; } = null!;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         [Output("hostSystemIds")]
@@ -636,7 +633,7 @@ namespace Pulumi.VSphere
         /// When destroying the resource, setting this to
         /// `true` will auto-remove any hosts that are currently a member of the cluster,
         /// as if they were removed by taking their entry out of `host_system_ids` (see
-        /// below). This is an advanced
+        /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
@@ -768,10 +765,10 @@ namespace Pulumi.VSphere
         public Input<string>? HaDatastoreApdResponse { get; set; }
 
         /// <summary>
-        /// Controls the delay in minutes
-        /// to wait after an APD timeout event to execute the response action defined in
-        /// `ha_datastore_apd_response`. Default: `3`
-        /// minutes. &lt;sup&gt;\*&lt;/sup&gt;
+        /// The time, in seconds,
+        /// to wait after an APD timeout event to run the response action defined in
+        /// `ha_datastore_apd_response`. Default: `180`
+        /// seconds (3 minutes). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponseDelay")]
         public Input<int>? HaDatastoreApdResponseDelay { get; set; }
@@ -856,20 +853,19 @@ namespace Pulumi.VSphere
         public Input<string>? HaVmDependencyRestartCondition { get; set; }
 
         /// <summary>
-        /// If a heartbeat from a virtual machine
-        /// is not received within this configured interval, the virtual machine is
-        /// marked as failed. The value is in seconds. Default: `30`.
+        /// The time interval, in seconds, a heartbeat
+        /// from a virtual machine is not received within this configured interval,
+        /// the virtual machine is marked as failed. Default: `30` seconds.
         /// </summary>
         [Input("haVmFailureInterval")]
         public Input<int>? HaVmFailureInterval { get; set; }
 
         /// <summary>
-        /// The length of the reset window in
+        /// The time, in seconds, for the reset window in
         /// which `ha_vm_maximum_resets` can operate. When this
         /// window expires, no more resets are attempted regardless of the setting
         /// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        /// unlimited reset time is allotted. The value is specified in seconds. Default:
-        /// `-1` (no window).
+        /// unlimited reset time is allotted. Default: `-1` (no window).
         /// </summary>
         [Input("haVmMaximumFailureWindow")]
         public Input<int>? HaVmMaximumFailureWindow { get; set; }
@@ -884,7 +880,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The time, in seconds, that HA waits after
         /// powering on a virtual machine before monitoring for heartbeats. Default:
-        /// `120` (2 minutes).
+        /// `120` seconds (2 minutes).
         /// </summary>
         [Input("haVmMinimumUptime")]
         public Input<int>? HaVmMinimumUptime { get; set; }
@@ -898,9 +894,9 @@ namespace Pulumi.VSphere
         public Input<string>? HaVmMonitoring { get; set; }
 
         /// <summary>
-        /// Additional delay in seconds
+        /// Additional delay, in seconds,
         /// after ready condition is met. A VM is considered ready at this point.
-        /// Default: `0` (no delay). &lt;sup&gt;\*&lt;/sup&gt;
+        /// Default: `0` seconds (no delay). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartAdditionalDelay")]
         public Input<int>? HaVmRestartAdditionalDelay { get; set; }
@@ -916,16 +912,15 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The maximum time, in seconds,
         /// that vSphere HA will wait for virtual machines in one priority to be ready
-        /// before proceeding with the next priority. Default: `600` (10 minutes).
+        /// before proceeding with the next priority. Default: `600` seconds (10 minutes).
         /// &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartTimeout")]
         public Input<int>? HaVmRestartTimeout { get; set; }
 
         /// <summary>
-        /// The timeout for each host maintenance mode
-        /// operation when removing hosts from a cluster. The value is specified in
-        /// seconds. Default: `3600` (1 hour).
+        /// The timeout, in seconds, for each host maintenance
+        /// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         /// </summary>
         [Input("hostClusterExitTimeout")]
         public Input<int>? HostClusterExitTimeout { get; set; }
@@ -934,7 +929,6 @@ namespace Pulumi.VSphere
         /// Can be set to `true` if compute cluster
         /// membership will be managed through the `host` resource rather than the
         /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
         /// </summary>
         [Input("hostManaged")]
         public Input<bool>? HostManaged { get; set; }
@@ -943,7 +937,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         public InputList<string> HostSystemIds
@@ -1158,7 +1152,7 @@ namespace Pulumi.VSphere
         /// When destroying the resource, setting this to
         /// `true` will auto-remove any hosts that are currently a member of the cluster,
         /// as if they were removed by taking their entry out of `host_system_ids` (see
-        /// below). This is an advanced
+        /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
@@ -1290,10 +1284,10 @@ namespace Pulumi.VSphere
         public Input<string>? HaDatastoreApdResponse { get; set; }
 
         /// <summary>
-        /// Controls the delay in minutes
-        /// to wait after an APD timeout event to execute the response action defined in
-        /// `ha_datastore_apd_response`. Default: `3`
-        /// minutes. &lt;sup&gt;\*&lt;/sup&gt;
+        /// The time, in seconds,
+        /// to wait after an APD timeout event to run the response action defined in
+        /// `ha_datastore_apd_response`. Default: `180`
+        /// seconds (3 minutes). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haDatastoreApdResponseDelay")]
         public Input<int>? HaDatastoreApdResponseDelay { get; set; }
@@ -1378,20 +1372,19 @@ namespace Pulumi.VSphere
         public Input<string>? HaVmDependencyRestartCondition { get; set; }
 
         /// <summary>
-        /// If a heartbeat from a virtual machine
-        /// is not received within this configured interval, the virtual machine is
-        /// marked as failed. The value is in seconds. Default: `30`.
+        /// The time interval, in seconds, a heartbeat
+        /// from a virtual machine is not received within this configured interval,
+        /// the virtual machine is marked as failed. Default: `30` seconds.
         /// </summary>
         [Input("haVmFailureInterval")]
         public Input<int>? HaVmFailureInterval { get; set; }
 
         /// <summary>
-        /// The length of the reset window in
+        /// The time, in seconds, for the reset window in
         /// which `ha_vm_maximum_resets` can operate. When this
         /// window expires, no more resets are attempted regardless of the setting
         /// configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        /// unlimited reset time is allotted. The value is specified in seconds. Default:
-        /// `-1` (no window).
+        /// unlimited reset time is allotted. Default: `-1` (no window).
         /// </summary>
         [Input("haVmMaximumFailureWindow")]
         public Input<int>? HaVmMaximumFailureWindow { get; set; }
@@ -1406,7 +1399,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The time, in seconds, that HA waits after
         /// powering on a virtual machine before monitoring for heartbeats. Default:
-        /// `120` (2 minutes).
+        /// `120` seconds (2 minutes).
         /// </summary>
         [Input("haVmMinimumUptime")]
         public Input<int>? HaVmMinimumUptime { get; set; }
@@ -1420,9 +1413,9 @@ namespace Pulumi.VSphere
         public Input<string>? HaVmMonitoring { get; set; }
 
         /// <summary>
-        /// Additional delay in seconds
+        /// Additional delay, in seconds,
         /// after ready condition is met. A VM is considered ready at this point.
-        /// Default: `0` (no delay). &lt;sup&gt;\*&lt;/sup&gt;
+        /// Default: `0` seconds (no delay). &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartAdditionalDelay")]
         public Input<int>? HaVmRestartAdditionalDelay { get; set; }
@@ -1438,16 +1431,15 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The maximum time, in seconds,
         /// that vSphere HA will wait for virtual machines in one priority to be ready
-        /// before proceeding with the next priority. Default: `600` (10 minutes).
+        /// before proceeding with the next priority. Default: `600` seconds (10 minutes).
         /// &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("haVmRestartTimeout")]
         public Input<int>? HaVmRestartTimeout { get; set; }
 
         /// <summary>
-        /// The timeout for each host maintenance mode
-        /// operation when removing hosts from a cluster. The value is specified in
-        /// seconds. Default: `3600` (1 hour).
+        /// The timeout, in seconds, for each host maintenance
+        /// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         /// </summary>
         [Input("hostClusterExitTimeout")]
         public Input<int>? HostClusterExitTimeout { get; set; }
@@ -1456,7 +1448,6 @@ namespace Pulumi.VSphere
         /// Can be set to `true` if compute cluster
         /// membership will be managed through the `host` resource rather than the
         /// `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        /// &gt;&gt;&gt;&gt;&gt;&gt;&gt; v1.18.3
         /// </summary>
         [Input("hostManaged")]
         public Input<bool>? HostManaged { get; set; }
@@ -1465,7 +1456,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _hostSystemIds;
 
         /// <summary>
-        /// The [managed object IDs][docs-about-morefs] of
+        /// The managed object IDs of
         /// the hosts to put in the cluster. Conflicts with: `host_managed`.
         /// </summary>
         public InputList<string> HostSystemIds

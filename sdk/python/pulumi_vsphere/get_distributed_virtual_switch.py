@@ -74,42 +74,14 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
                                    name: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributedVirtualSwitchResult:
     """
-    The `DistributedVirtualSwitch` data source can be used to discover
-    the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
-    can then be used with resources or data sources that require a DVS, such as the
-    `DistributedPortGroup` resource, for which
-    an example is shown below.
-
-    > **NOTE:** This data source requires vCenter and is not available on direct
-    ESXi connections.
-
-    ## Example Usage
-
-    The following example locates a DVS that is named `test-dvs`, in the
-    datacenter `dc1`. It then uses this DVS to set up a
-    `DistributedPortGroup` resource that uses the first uplink as a
-    primary uplink and the second uplink as a secondary.
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc1")
-    dvs = vsphere.get_distributed_virtual_switch(datacenter_id=datacenter.id,
-        name="test-dvs")
-    pg = vsphere.DistributedPortGroup("pg",
-        active_uplinks=[dvs.uplinks[0]],
-        distributed_virtual_switch_uuid=dvs.id,
-        standby_uplinks=[dvs.uplinks[1]])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str datacenter_id: The managed object reference
-           ID of the datacenter the DVS is located in. This can be
+           ID of the datacenter the VDS is located in. This can be
            omitted if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
            source.
-    :param str name: The name of the distributed virtual switch. This can be a
+    :param str name: The name of the VDS. This can be a
            name or path.
     """
     __args__ = dict()
@@ -133,42 +105,14 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
                                           name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDistributedVirtualSwitchResult]:
     """
-    The `DistributedVirtualSwitch` data source can be used to discover
-    the ID and uplink data of a of a vSphere distributed virtual switch (DVS). This
-    can then be used with resources or data sources that require a DVS, such as the
-    `DistributedPortGroup` resource, for which
-    an example is shown below.
-
-    > **NOTE:** This data source requires vCenter and is not available on direct
-    ESXi connections.
-
-    ## Example Usage
-
-    The following example locates a DVS that is named `test-dvs`, in the
-    datacenter `dc1`. It then uses this DVS to set up a
-    `DistributedPortGroup` resource that uses the first uplink as a
-    primary uplink and the second uplink as a secondary.
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc1")
-    dvs = vsphere.get_distributed_virtual_switch(datacenter_id=datacenter.id,
-        name="test-dvs")
-    pg = vsphere.DistributedPortGroup("pg",
-        active_uplinks=[dvs.uplinks[0]],
-        distributed_virtual_switch_uuid=dvs.id,
-        standby_uplinks=[dvs.uplinks[1]])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str datacenter_id: The managed object reference
-           ID of the datacenter the DVS is located in. This can be
+           ID of the datacenter the VDS is located in. This can be
            omitted if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
            source.
-    :param str name: The name of the distributed virtual switch. This can be a
+    :param str name: The name of the VDS. This can be a
            name or path.
     """
     ...

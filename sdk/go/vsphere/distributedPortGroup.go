@@ -42,7 +42,7 @@ type DistributedPortGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Allow VMDirectPath Gen2 on the ports this policy applies to.
 	DirectpathGen2Allowed pulumi.BoolOutput `pulumi:"directpathGen2Allowed"`
-	// The ID of the DVS to add the
+	// The ID of the VDS to add the
 	// port group to. Forces a new resource if changed.
 	DistributedVirtualSwitchUuid pulumi.StringOutput `pulumi:"distributedVirtualSwitchUuid"`
 	// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
@@ -76,9 +76,9 @@ type DistributedPortGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolOutput `pulumi:"netflowEnabled"`
-	// Allow the Netflow
-	// policy on this port group to be overridden on an individual
-	// port.
+	// Allow the
+	// [Netflow policy][netflow-policy] on this port group to be overridden on an
+	// individual port.
 	NetflowOverrideAllowed pulumi.BoolPtrOutput `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
@@ -101,13 +101,13 @@ type DistributedPortGroup struct {
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the security policy
-	// settings defined in this port group policy to be
-	// overridden on an individual port.
+	// Allow the
+	// [security policy settings][sec-policy-settings] defined in this port group
+	// policy to be overridden on an individual port.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrOutput `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the traffic shaping
-	// options on this port group policy to be overridden
-	// on an individual port.
+	// Allow the
+	// [traffic shaping options][traffic-shaping-settings] on this port group policy
+	// to be overridden on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrOutput `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
@@ -125,14 +125,15 @@ type DistributedPortGroup struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// Allow the uplink teaming
-	// options on this port group to be overridden on an
-	// individual port.
+	// Allow the
+	// [uplink teaming options][uplink-teaming-settings] on this port group to be
+	// overridden on an individual port.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrOutput `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntOutput `pulumi:"vlanId"`
-	// Allow the VLAN settings
-	// on this port group to be overridden on an individual port.
+	// Allow the
+	// [VLAN settings][vlan-settings] on this port group to be overridden on an
+	// individual port.
 	VlanOverrideAllowed pulumi.BoolPtrOutput `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayOutput `pulumi:"vlanRanges"`
@@ -198,7 +199,7 @@ type distributedPortGroupState struct {
 	Description *string `pulumi:"description"`
 	// Allow VMDirectPath Gen2 on the ports this policy applies to.
 	DirectpathGen2Allowed *bool `pulumi:"directpathGen2Allowed"`
-	// The ID of the DVS to add the
+	// The ID of the VDS to add the
 	// port group to. Forces a new resource if changed.
 	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
 	// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
@@ -232,9 +233,9 @@ type distributedPortGroupState struct {
 	Name *string `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled *bool `pulumi:"netflowEnabled"`
-	// Allow the Netflow
-	// policy on this port group to be overridden on an individual
-	// port.
+	// Allow the
+	// [Netflow policy][netflow-policy] on this port group to be overridden on an
+	// individual port.
 	NetflowOverrideAllowed *bool `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
@@ -257,13 +258,13 @@ type distributedPortGroupState struct {
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the security policy
-	// settings defined in this port group policy to be
-	// overridden on an individual port.
+	// Allow the
+	// [security policy settings][sec-policy-settings] defined in this port group
+	// policy to be overridden on an individual port.
 	SecurityPolicyOverrideAllowed *bool `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the traffic shaping
-	// options on this port group policy to be overridden
-	// on an individual port.
+	// Allow the
+	// [traffic shaping options][traffic-shaping-settings] on this port group policy
+	// to be overridden on an individual port.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
@@ -281,14 +282,15 @@ type distributedPortGroupState struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type *string `pulumi:"type"`
-	// Allow the uplink teaming
-	// options on this port group to be overridden on an
-	// individual port.
+	// Allow the
+	// [uplink teaming options][uplink-teaming-settings] on this port group to be
+	// overridden on an individual port.
 	UplinkTeamingOverrideAllowed *bool `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId *int `pulumi:"vlanId"`
-	// Allow the VLAN settings
-	// on this port group to be overridden on an individual port.
+	// Allow the
+	// [VLAN settings][vlan-settings] on this port group to be overridden on an
+	// individual port.
 	VlanOverrideAllowed *bool `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges []DistributedPortGroupVlanRange `pulumi:"vlanRanges"`
@@ -323,7 +325,7 @@ type DistributedPortGroupState struct {
 	Description pulumi.StringPtrInput
 	// Allow VMDirectPath Gen2 on the ports this policy applies to.
 	DirectpathGen2Allowed pulumi.BoolPtrInput
-	// The ID of the DVS to add the
+	// The ID of the VDS to add the
 	// port group to. Forces a new resource if changed.
 	DistributedVirtualSwitchUuid pulumi.StringPtrInput
 	// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
@@ -357,9 +359,9 @@ type DistributedPortGroupState struct {
 	Name pulumi.StringPtrInput
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolPtrInput
-	// Allow the Netflow
-	// policy on this port group to be overridden on an individual
-	// port.
+	// Allow the
+	// [Netflow policy][netflow-policy] on this port group to be overridden on an
+	// individual port.
 	NetflowOverrideAllowed pulumi.BoolPtrInput
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
@@ -382,13 +384,13 @@ type DistributedPortGroupState struct {
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
-	// Allow the security policy
-	// settings defined in this port group policy to be
-	// overridden on an individual port.
+	// Allow the
+	// [security policy settings][sec-policy-settings] defined in this port group
+	// policy to be overridden on an individual port.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrInput
-	// Allow the traffic shaping
-	// options on this port group policy to be overridden
-	// on an individual port.
+	// Allow the
+	// [traffic shaping options][traffic-shaping-settings] on this port group policy
+	// to be overridden on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
@@ -406,14 +408,15 @@ type DistributedPortGroupState struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrInput
-	// Allow the uplink teaming
-	// options on this port group to be overridden on an
-	// individual port.
+	// Allow the
+	// [uplink teaming options][uplink-teaming-settings] on this port group to be
+	// overridden on an individual port.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntPtrInput
-	// Allow the VLAN settings
-	// on this port group to be overridden on an individual port.
+	// Allow the
+	// [VLAN settings][vlan-settings] on this port group to be overridden on an
+	// individual port.
 	VlanOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayInput
@@ -450,7 +453,7 @@ type distributedPortGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Allow VMDirectPath Gen2 on the ports this policy applies to.
 	DirectpathGen2Allowed *bool `pulumi:"directpathGen2Allowed"`
-	// The ID of the DVS to add the
+	// The ID of the VDS to add the
 	// port group to. Forces a new resource if changed.
 	DistributedVirtualSwitchUuid string `pulumi:"distributedVirtualSwitchUuid"`
 	// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
@@ -482,9 +485,9 @@ type distributedPortGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled *bool `pulumi:"netflowEnabled"`
-	// Allow the Netflow
-	// policy on this port group to be overridden on an individual
-	// port.
+	// Allow the
+	// [Netflow policy][netflow-policy] on this port group to be overridden on an
+	// individual port.
 	NetflowOverrideAllowed *bool `pulumi:"netflowOverrideAllowed"`
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
@@ -507,13 +510,13 @@ type distributedPortGroupArgs struct {
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
-	// Allow the security policy
-	// settings defined in this port group policy to be
-	// overridden on an individual port.
+	// Allow the
+	// [security policy settings][sec-policy-settings] defined in this port group
+	// policy to be overridden on an individual port.
 	SecurityPolicyOverrideAllowed *bool `pulumi:"securityPolicyOverrideAllowed"`
-	// Allow the traffic shaping
-	// options on this port group policy to be overridden
-	// on an individual port.
+	// Allow the
+	// [traffic shaping options][traffic-shaping-settings] on this port group policy
+	// to be overridden on an individual port.
 	ShapingOverrideAllowed *bool `pulumi:"shapingOverrideAllowed"`
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
@@ -531,14 +534,15 @@ type distributedPortGroupArgs struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type *string `pulumi:"type"`
-	// Allow the uplink teaming
-	// options on this port group to be overridden on an
-	// individual port.
+	// Allow the
+	// [uplink teaming options][uplink-teaming-settings] on this port group to be
+	// overridden on an individual port.
 	UplinkTeamingOverrideAllowed *bool `pulumi:"uplinkTeamingOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId *int `pulumi:"vlanId"`
-	// Allow the VLAN settings
-	// on this port group to be overridden on an individual port.
+	// Allow the
+	// [VLAN settings][vlan-settings] on this port group to be overridden on an
+	// individual port.
 	VlanOverrideAllowed *bool `pulumi:"vlanOverrideAllowed"`
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges []DistributedPortGroupVlanRange `pulumi:"vlanRanges"`
@@ -572,7 +576,7 @@ type DistributedPortGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Allow VMDirectPath Gen2 on the ports this policy applies to.
 	DirectpathGen2Allowed pulumi.BoolPtrInput
-	// The ID of the DVS to add the
+	// The ID of the VDS to add the
 	// port group to. Forces a new resource if changed.
 	DistributedVirtualSwitchUuid pulumi.StringInput
 	// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
@@ -604,9 +608,9 @@ type DistributedPortGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Indicates whether to enable netflow on all ports.
 	NetflowEnabled pulumi.BoolPtrInput
-	// Allow the Netflow
-	// policy on this port group to be overridden on an individual
-	// port.
+	// Allow the
+	// [Netflow policy][netflow-policy] on this port group to be overridden on an
+	// individual port.
 	NetflowOverrideAllowed pulumi.BoolPtrInput
 	// The key of a network resource pool
 	// to associate with this port group. The default is `-1`, which implies no
@@ -629,13 +633,13 @@ type DistributedPortGroupArgs struct {
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
-	// Allow the security policy
-	// settings defined in this port group policy to be
-	// overridden on an individual port.
+	// Allow the
+	// [security policy settings][sec-policy-settings] defined in this port group
+	// policy to be overridden on an individual port.
 	SecurityPolicyOverrideAllowed pulumi.BoolPtrInput
-	// Allow the traffic shaping
-	// options on this port group policy to be overridden
-	// on an individual port.
+	// Allow the
+	// [traffic shaping options][traffic-shaping-settings] on this port group policy
+	// to be overridden on an individual port.
 	ShapingOverrideAllowed pulumi.BoolPtrInput
 	// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
 	StandbyUplinks pulumi.StringArrayInput
@@ -653,14 +657,15 @@ type DistributedPortGroupArgs struct {
 	// The port group type. Can be one of `earlyBinding` (static
 	// binding) or `ephemeral`. Default: `earlyBinding`.
 	Type pulumi.StringPtrInput
-	// Allow the uplink teaming
-	// options on this port group to be overridden on an
-	// individual port.
+	// Allow the
+	// [uplink teaming options][uplink-teaming-settings] on this port group to be
+	// overridden on an individual port.
 	UplinkTeamingOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanId pulumi.IntPtrInput
-	// Allow the VLAN settings
-	// on this port group to be overridden on an individual port.
+	// Allow the
+	// [VLAN settings][vlan-settings] on this port group to be overridden on an
+	// individual port.
 	VlanOverrideAllowed pulumi.BoolPtrInput
 	// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
 	VlanRanges DistributedPortGroupVlanRangeArrayInput

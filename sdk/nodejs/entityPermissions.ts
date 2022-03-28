@@ -39,7 +39,7 @@ export class EntityPermissions extends pulumi.CustomResource {
     public readonly entityId!: pulumi.Output<string>;
     /**
      * The managed object type, types can be found in the managed object type section 
-     * [here](https://code.vmware.com/apis/968/vsphere).
+     * [here](https://developer.vmware.com/apis/968/vsphere).
      */
     public readonly entityType!: pulumi.Output<string>;
     /**
@@ -94,7 +94,7 @@ export interface EntityPermissionsState {
     entityId?: pulumi.Input<string>;
     /**
      * The managed object type, types can be found in the managed object type section 
-     * [here](https://code.vmware.com/apis/968/vsphere).
+     * [here](https://developer.vmware.com/apis/968/vsphere).
      */
     entityType?: pulumi.Input<string>;
     /**
@@ -114,7 +114,7 @@ export interface EntityPermissionsArgs {
     entityId: pulumi.Input<string>;
     /**
      * The managed object type, types can be found in the managed object type section 
-     * [here](https://code.vmware.com/apis/968/vsphere).
+     * [here](https://developer.vmware.com/apis/968/vsphere).
      */
     entityType: pulumi.Input<string>;
     /**

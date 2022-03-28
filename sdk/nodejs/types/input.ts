@@ -11,50 +11,50 @@ export interface ComputeClusterVsanDiskGroup {
 
 export interface ContentLibraryPublication {
     /**
-     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     * Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
      */
     authenticationMethod?: pulumi.Input<string>;
     /**
-     * Password to log in with.
+     * Password used for authentication.
      */
     password?: pulumi.Input<string>;
     /**
-     * URL to remotely access the published Content Library.
+     * The URL of the published content library.
      */
     publishUrl?: pulumi.Input<string>;
     /**
-     * Bool determining if Content Library is published.
+     * Publish the content library. Default `false`.
      */
     published?: pulumi.Input<boolean>;
     /**
-     * User name to log in with.
+     * Username used for authentication.
      */
     username?: pulumi.Input<string>;
 }
 
 export interface ContentLibrarySubscription {
     /**
-     * Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+     * Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
      */
     authenticationMethod?: pulumi.Input<string>;
     /**
-     * Enable automatic synchronization with the external content library.
+     * Enable automatic synchronization with the published library. Default `false`.
      */
     automaticSync?: pulumi.Input<boolean>;
     /**
-     * Download all library content immediately.
+     * Download the library from a content only when needed. Default `true`.
      */
     onDemand?: pulumi.Input<boolean>;
     /**
-     * Password to log in with.
+     * Password used for authentication.
      */
     password?: pulumi.Input<string>;
     /**
-     * URL of remote Content Library.
+     * URL of the published content library.
      */
     subscriptionUrl?: pulumi.Input<string>;
     /**
-     * User name to log in with.
+     * Username used for authentication.
      */
     username?: pulumi.Input<string>;
 }
@@ -66,13 +66,13 @@ export interface DistributedPortGroupVlanRange {
 
 export interface DistributedVirtualSwitchHost {
     /**
-     * The list of NIC devices to map to uplinks on the DVS,
+     * The list of NIC devices to map to uplinks on the VDS,
      * added in order they are specified.
      */
-    devices: pulumi.Input<pulumi.Input<string>[]>;
+    devices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The host system ID of the host to add to the
-     * DVS.
+     * VDS.
      */
     hostSystemId: pulumi.Input<string>;
 }
@@ -138,29 +138,20 @@ export interface HostPortGroupPort {
 
 export interface VirtualMachineCdrom {
     /**
-     * Indicates whether the device should be backed by
-     * remote client device. Conflicts with `datastoreId` and `path`.
+     * Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
      */
     clientDevice?: pulumi.Input<boolean>;
     /**
-     * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
-    /**
-     * An address internal to this provider that helps locate the
-     * device when `key` is unavailable. This follows a convention of
-     * `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-     * unit 1 on SCSI bus 0.
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
      * The ID of the device within the virtual machine.
      */
     key?: pulumi.Input<number>;
     /**
-     * The path to the ISO file. Required for using a datastore
-     * ISO. Conflicts with `clientDevice`.
+     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     path?: pulumi.Input<string>;
 }
@@ -181,9 +172,7 @@ export interface VirtualMachineCloneCustomize {
     ipv6Gateway?: pulumi.Input<string>;
     linuxOptions?: pulumi.Input<inputs.VirtualMachineCloneCustomizeLinuxOptions>;
     /**
-     * A specification for a virtual NIC on this
-     * virtual machine. See network interface options
-     * below.
+     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineCloneCustomizeNetworkInterface>[]>;
     timeout?: pulumi.Input<number>;
@@ -225,72 +214,48 @@ export interface VirtualMachineCloneCustomizeWindowsOptions {
 
 export interface VirtualMachineDisk {
     /**
-     * Attach an external disk instead of creating a new one.
-     * Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`,
-     * `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
+     * Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
      */
     attach?: pulumi.Input<boolean>;
     /**
-     * The type of storage controller to attach the
-     * disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
-     * number of controllers enabled for the selected type. Default `scsi`.
+     * The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
      */
     controllerType?: pulumi.Input<string>;
     /**
-     * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
-    /**
-     * An address internal to this provider that helps locate the
-     * device when `key` is unavailable. This follows a convention of
-     * `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-     * unit 1 on SCSI bus 0.
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
-     * The mode of this this virtual disk for purposes of
-     * writes and snapshotting. Can be one of `append`, `independentNonpersistent`,
-     * `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`.
-     * Default: `persistent`. For an explanation of options, click
-     * [here][vmware-docs-disk-mode].
+     * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
      */
     diskMode?: pulumi.Input<string>;
     /**
-     * The sharing mode of this virtual disk. Can be one
-     * of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+     * The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
      */
     diskSharing?: pulumi.Input<string>;
     /**
-     * If set to `true`, the disk space is zeroed out
-     * on VM creation. This will delay the creation of the disk or virtual machine.
-     * Cannot be set to `true` when `thinProvisioned` is `true`.  See the section
-     * on picking a disk type.  Default: `false`.
+     * If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
      */
     eagerlyScrub?: pulumi.Input<boolean>;
     /**
-     * The upper limit of IOPS that this disk can use. The
-     * default is no limit.
+     * The upper limit of IOPS that this disk can use. The default is no limit.
      */
     ioLimit?: pulumi.Input<number>;
     /**
-     * The I/O reservation (guarantee) that this disk
-     * has, in IOPS.  The default is no reservation.
+     * The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
      */
     ioReservation?: pulumi.Input<number>;
     /**
-     * The share count for this disk when the share
-     * level is `custom`.
+     * The share count for the virtual disk when the share level is `custom`.
      */
     ioShareCount?: pulumi.Input<number>;
     /**
-     * The share allocation level for this disk. Can
-     * be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+     * The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
      */
     ioShareLevel?: pulumi.Input<string>;
     /**
-     * Keep this disk when removing the device or
-     * destroying the virtual machine. Default: `false`.
+     * Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
      */
     keepOnRemove?: pulumi.Input<boolean>;
     /**
@@ -298,109 +263,79 @@ export interface VirtualMachineDisk {
      */
     key?: pulumi.Input<number>;
     /**
-     * A label for the disk. Forces a new disk if changed.
+     * A label for the virtual disk. Forces a new disk, if changed.
      */
     label: pulumi.Input<string>;
     /**
-     * The path to the ISO file. Required for using a datastore
-     * ISO. Conflicts with `clientDevice`.
+     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     path?: pulumi.Input<string>;
     /**
-     * The size of the disk, in GB.
+     * The size of the disk, in GB. Must be a whole number.
      */
     size?: pulumi.Input<number>;
     /**
-     * The UUID of the storage policy to assign to this disk.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
-     * If `true`, this disk is thin provisioned,
-     * with space for the file being allocated on an as-needed basis. Cannot be set
-     * to `true` when `eagerlyScrub` is `true`. See the section on picking a disk
-     * type. Default: `true`.
+     * If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
      */
     thinProvisioned?: pulumi.Input<boolean>;
     /**
-     * The disk number on the storage bus. The maximum
-     * value for this setting is the value of the controller count times the
-     * controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
-     * The default is `0`, for which one disk must be set to. Duplicate unit numbers
-     * are not allowed.
+     * The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
      */
     unitNumber?: pulumi.Input<number>;
     /**
-     * The UUID of the virtual disk's VMDK file. This is used to track the
-     * virtual disk on the virtual machine.
+     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
      */
     uuid?: pulumi.Input<string>;
     /**
-     * If `true`, writes for this disk are sent
-     * directly to the filesystem immediately instead of being buffered. Default:
-     * `false`.
+     * If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
      */
     writeThrough?: pulumi.Input<boolean>;
 }
 
 export interface VirtualMachineNetworkInterface {
     /**
-     * The network interface type. Can be one of
-     * `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+     * The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
      */
     adapterType?: pulumi.Input<string>;
     /**
-     * The upper bandwidth limit of this network
-     * interface, in Mbits/sec. The default is no limit.
+     * The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
      */
     bandwidthLimit?: pulumi.Input<number>;
     /**
-     * The bandwidth reservation of this
-     * network interface, in Mbits/sec. The default is no reservation.
+     * The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
      */
     bandwidthReservation?: pulumi.Input<number>;
     /**
-     * The share count for this network
-     * interface when the share level is `custom`.
+     * The share count for the network interface when the share level is `custom`.
      */
     bandwidthShareCount?: pulumi.Input<number>;
     /**
-     * The bandwidth share allocation level for
-     * this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
-     * `normal`.
+     * The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
      */
     bandwidthShareLevel?: pulumi.Input<string>;
-    /**
-     * An address internal to this provider that helps locate the
-     * device when `key` is unavailable. This follows a convention of
-     * `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-     * unit 1 on SCSI bus 0.
-     */
     deviceAddress?: pulumi.Input<string>;
     /**
      * The ID of the device within the virtual machine.
      */
     key?: pulumi.Input<number>;
     /**
-     * The MAC address of this network interface. Can
-     * only be manually set if `useStaticMac` is true, otherwise this is a
-     * computed value that gives the current MAC address of this interface.
+     * The MAC address of the network interface. Can only be manually set if `useStaticMac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
      */
     macAddress?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the network to connect this interface to.
+     * The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
      */
     networkId: pulumi.Input<string>;
     /**
-     * Specifies which OVF NIC the `networkInterface`
-     * should be associated with. Only applies at creation and only when deploying
-     * from an OVF source.
+     * Specifies which NIC in an OVF/OVA the `networkInterface` should be associated. Only applies at creation when deploying from an OVF/OVA.
      */
     ovfMapping?: pulumi.Input<string>;
     /**
-     * If true, the `macAddress` field is treated as
-     * a static MAC address and set accordingly. Setting this to `true` requires
-     * `macAddress` to be set. Default: `false`.
+     * If true, the `macAddress` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `macAddress` to be set. Default: `false`.
      */
     useStaticMac?: pulumi.Input<boolean>;
 }
@@ -423,8 +358,7 @@ export interface VirtualMachineVapp {
 
 export interface VmStoragePolicyTagRule {
     /**
-     * Whether to include datastores with the given tags or exclude. Default 
-     * value is true i.e. include datastores with the given tags.
+     * Include datastores with the given tags or exclude. Default `true`.
      */
     includeDatastoresWithTags?: pulumi.Input<boolean>;
     /**

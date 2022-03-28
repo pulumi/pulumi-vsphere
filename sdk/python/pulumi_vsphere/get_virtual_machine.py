@@ -22,7 +22,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -65,6 +65,9 @@ class GetVirtualMachineResult:
         if datacenter_id and not isinstance(datacenter_id, str):
             raise TypeError("Expected argument 'datacenter_id' to be a str")
         pulumi.set(__self__, "datacenter_id", datacenter_id)
+        if default_ip_address and not isinstance(default_ip_address, str):
+            raise TypeError("Expected argument 'default_ip_address' to be a str")
+        pulumi.set(__self__, "default_ip_address", default_ip_address)
         if disks and not isinstance(disks, list):
             raise TypeError("Expected argument 'disks' to be a list")
         pulumi.set(__self__, "disks", disks)
@@ -185,6 +188,9 @@ class GetVirtualMachineResult:
         if sync_time_with_host_periodically and not isinstance(sync_time_with_host_periodically, bool):
             raise TypeError("Expected argument 'sync_time_with_host_periodically' to be a bool")
         pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
+        if tools_upgrade_policy and not isinstance(tools_upgrade_policy, str):
+            raise TypeError("Expected argument 'tools_upgrade_policy' to be a str")
+        pulumi.set(__self__, "tools_upgrade_policy", tools_upgrade_policy)
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
@@ -206,13 +212,13 @@ class GetVirtualMachineResult:
     def alternate_guest_name(self) -> Optional[str]:
         """
         The alternate guest name of the virtual machine when
-        guest_id is a non-specific operating system, like `otherGuest`.
+        `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
         """
         return pulumi.get(self, "alternate_guest_name")
 
     @property
     @pulumi.getter
-    def annotation(self) -> Optional[str]:
+    def annotation(self) -> str:
         """
         The user-provided description of this virtual machine.
         """
@@ -279,6 +285,18 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "datacenter_id")
 
     @property
+    @pulumi.getter(name="defaultIpAddress")
+    def default_ip_address(self) -> str:
+        """
+        Whenever possible, this is the first IPv4 address that is reachable through
+        the default gateway configured on the machine, then the first reachable IPv6
+        address, and then the first general discovered address if neither exist. If
+        VMware Tools is not running on the virtual machine, or if the VM is powered
+        off, this value will be blank.
+        """
+        return pulumi.get(self, "default_ip_address")
+
+    @property
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetVirtualMachineDiskResult']:
         """
@@ -338,7 +356,7 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="guestIpAddresses")
     def guest_ip_addresses(self) -> Sequence[str]:
         """
-        A list of IP addresses as reported by VMWare tools.
+        A list of IP addresses as reported by VMware Tools.
         """
         return pulumi.get(self, "guest_ip_addresses")
 
@@ -540,6 +558,11 @@ class GetVirtualMachineResult:
         return pulumi.get(self, "sync_time_with_host_periodically")
 
     @property
+    @pulumi.getter(name="toolsUpgradePolicy")
+    def tools_upgrade_policy(self) -> Optional[str]:
+        return pulumi.get(self, "tools_upgrade_policy")
+
+    @property
     @pulumi.getter
     def uuid(self) -> str:
         return pulumi.get(self, "uuid")
@@ -585,6 +608,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             cpu_share_count=self.cpu_share_count,
             cpu_share_level=self.cpu_share_level,
             datacenter_id=self.datacenter_id,
+            default_ip_address=self.default_ip_address,
             disks=self.disks,
             efi_secure_boot_enabled=self.efi_secure_boot_enabled,
             enable_disk_uuid=self.enable_disk_uuid,
@@ -625,6 +649,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             swap_placement_policy=self.swap_placement_policy,
             sync_time_with_host=self.sync_time_with_host,
             sync_time_with_host_periodically=self.sync_time_with_host_periodically,
+            tools_upgrade_policy=self.tools_upgrade_policy,
             uuid=self.uuid,
             vapp=self.vapp,
             vapp_transports=self.vapp_transports,
@@ -678,31 +703,48 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         swap_placement_policy: Optional[str] = None,
                         sync_time_with_host: Optional[bool] = None,
                         sync_time_with_host_periodically: Optional[bool] = None,
+                        tools_upgrade_policy: Optional[str] = None,
                         vapp: Optional[pulumi.InputType['GetVirtualMachineVappArgs']] = None,
                         vbs_enabled: Optional[bool] = None,
                         vvtd_enabled: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualMachineResult:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
-    existing virtual machine or template. Its most relevant purpose is for finding
-    the UUID of a template to be used as the source for cloning into a new
+    existing virtual machine or template. The most common purpose is for finding
+    the UUID of a template to be used as the source for cloning to a new
     `VirtualMachine` resource. It also
     reads the guest ID so that can be supplied as well.
 
     ## Example Usage
 
+    In the following example, a virtual machine template is returned by its
+    unique name within the `Datacenter`.
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    template = vsphere.get_virtual_machine(datacenter_id=datacenter.id,
-        name="test-vm-template")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
+    In the following example, each virtual machine template is returned by its
+    unique full path within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    production_template = vsphere.get_virtual_machine(name="production/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
     ```
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
-           guest_id is a non-specific operating system, like `otherGuest`.
+           `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
     :param str annotation: The user-provided description of this virtual machine.
     :param str datacenter_id: The managed object reference
            ID of the datacenter the virtual machine is located in.
@@ -714,7 +756,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
-           path.
+           the full path relative to the datacenter.
     :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
@@ -768,6 +810,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['swapPlacementPolicy'] = swap_placement_policy
     __args__['syncTimeWithHost'] = sync_time_with_host
     __args__['syncTimeWithHostPeriodically'] = sync_time_with_host_periodically
+    __args__['toolsUpgradePolicy'] = tools_upgrade_policy
     __args__['vapp'] = vapp
     __args__['vbsEnabled'] = vbs_enabled
     __args__['vvtdEnabled'] = vvtd_enabled
@@ -792,6 +835,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         cpu_share_count=__ret__.cpu_share_count,
         cpu_share_level=__ret__.cpu_share_level,
         datacenter_id=__ret__.datacenter_id,
+        default_ip_address=__ret__.default_ip_address,
         disks=__ret__.disks,
         efi_secure_boot_enabled=__ret__.efi_secure_boot_enabled,
         enable_disk_uuid=__ret__.enable_disk_uuid,
@@ -832,6 +876,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         swap_placement_policy=__ret__.swap_placement_policy,
         sync_time_with_host=__ret__.sync_time_with_host,
         sync_time_with_host_periodically=__ret__.sync_time_with_host_periodically,
+        tools_upgrade_policy=__ret__.tools_upgrade_policy,
         uuid=__ret__.uuid,
         vapp=__ret__.vapp,
         vapp_transports=__ret__.vapp_transports,
@@ -886,31 +931,48 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                swap_placement_policy: Optional[pulumi.Input[Optional[str]]] = None,
                                sync_time_with_host: Optional[pulumi.Input[Optional[bool]]] = None,
                                sync_time_with_host_periodically: Optional[pulumi.Input[Optional[bool]]] = None,
+                               tools_upgrade_policy: Optional[pulumi.Input[Optional[str]]] = None,
                                vapp: Optional[pulumi.Input[Optional[pulumi.InputType['GetVirtualMachineVappArgs']]]] = None,
                                vbs_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                vvtd_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualMachineResult]:
     """
     The `VirtualMachine` data source can be used to find the UUID of an
-    existing virtual machine or template. Its most relevant purpose is for finding
-    the UUID of a template to be used as the source for cloning into a new
+    existing virtual machine or template. The most common purpose is for finding
+    the UUID of a template to be used as the source for cloning to a new
     `VirtualMachine` resource. It also
     reads the guest ID so that can be supplied as well.
 
     ## Example Usage
 
+    In the following example, a virtual machine template is returned by its
+    unique name within the `Datacenter`.
+
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    template = vsphere.get_virtual_machine(datacenter_id=datacenter.id,
-        name="test-vm-template")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
+    In the following example, each virtual machine template is returned by its
+    unique full path within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    production_template = vsphere.get_virtual_machine(name="production/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
     ```
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
-           guest_id is a non-specific operating system, like `otherGuest`.
+           `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
     :param str annotation: The user-provided description of this virtual machine.
     :param str datacenter_id: The managed object reference
            ID of the datacenter the virtual machine is located in.
@@ -922,7 +984,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
-           path.
+           the full path relative to the datacenter.
     :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.

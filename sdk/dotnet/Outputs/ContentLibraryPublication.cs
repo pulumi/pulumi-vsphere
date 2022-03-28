@@ -14,23 +14,23 @@ namespace Pulumi.VSphere.Outputs
     public sealed class ContentLibraryPublication
     {
         /// <summary>
-        /// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        /// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
         /// </summary>
         public readonly string? AuthenticationMethod;
         /// <summary>
-        /// Password to log in with.
+        /// Password used for authentication.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// URL to remotely access the published Content Library.
+        /// The URL of the published content library.
         /// </summary>
         public readonly string? PublishUrl;
         /// <summary>
-        /// Bool determining if Content Library is published.
+        /// Publish the content library. Default `false`.
         /// </summary>
         public readonly bool? Published;
         /// <summary>
-        /// User name to log in with.
+        /// Username used for authentication.
         /// </summary>
         public readonly string? Username;
 

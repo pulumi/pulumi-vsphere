@@ -7,23 +7,45 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
- * existing virtual machine or template. Its most relevant purpose is for finding
- * the UUID of a template to be used as the source for cloning into a new
+ * existing virtual machine or template. The most common purpose is for finding
+ * the UUID of a template to be used as the source for cloning to a new
  * `vsphere.VirtualMachine` resource. It also
  * reads the guest ID so that can be supplied as well.
  *
  * ## Example Usage
  *
+ * In the following example, a virtual machine template is returned by its
+ * unique name within the `vsphere.Datacenter`.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const template = datacenter.apply(datacenter => vsphere.getVirtualMachine({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "ubuntu-server-template",
  *     datacenterId: datacenter.id,
- *     name: "test-vm-template",
+ * }));
+ * ```
+ * In the following example, each virtual machine template is returned by its
+ * unique full path within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const productionTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "production/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const developmentTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "development/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
  * }));
  * ```
  */
@@ -80,6 +102,7 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         "swapPlacementPolicy": args.swapPlacementPolicy,
         "syncTimeWithHost": args.syncTimeWithHost,
         "syncTimeWithHostPeriodically": args.syncTimeWithHostPeriodically,
+        "toolsUpgradePolicy": args.toolsUpgradePolicy,
         "vapp": args.vapp,
         "vbsEnabled": args.vbsEnabled,
         "vvtdEnabled": args.vvtdEnabled,
@@ -92,7 +115,7 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
 export interface GetVirtualMachineArgs {
     /**
      * The alternate guest name of the virtual machine when
-     * guestId is a non-specific operating system, like `otherGuest`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
      */
     alternateGuestName?: string;
     /**
@@ -148,7 +171,7 @@ export interface GetVirtualMachineArgs {
     memoryShareLevel?: string;
     /**
      * The name of the virtual machine. This can be a name or
-     * path.
+     * the full path relative to the datacenter.
      */
     name: string;
     nestedHvEnabled?: boolean;
@@ -177,6 +200,7 @@ export interface GetVirtualMachineArgs {
     swapPlacementPolicy?: string;
     syncTimeWithHost?: boolean;
     syncTimeWithHostPeriodically?: boolean;
+    toolsUpgradePolicy?: string;
     vapp?: inputs.GetVirtualMachineVapp;
     vbsEnabled?: boolean;
     vvtdEnabled?: boolean;
@@ -188,13 +212,13 @@ export interface GetVirtualMachineArgs {
 export interface GetVirtualMachineResult {
     /**
      * The alternate guest name of the virtual machine when
-     * guestId is a non-specific operating system, like `otherGuest`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
      */
     readonly alternateGuestName?: string;
     /**
      * The user-provided description of this virtual machine.
      */
-    readonly annotation?: string;
+    readonly annotation: string;
     readonly bootDelay?: number;
     readonly bootRetryDelay?: number;
     readonly bootRetryEnabled?: boolean;
@@ -207,6 +231,14 @@ export interface GetVirtualMachineResult {
     readonly cpuShareCount: number;
     readonly cpuShareLevel?: string;
     readonly datacenterId?: string;
+    /**
+     * Whenever possible, this is the first IPv4 address that is reachable through
+     * the default gateway configured on the machine, then the first reachable IPv6
+     * address, and then the first general discovered address if neither exist. If
+     * VMware Tools is not running on the virtual machine, or if the VM is powered
+     * off, this value will be blank.
+     */
+    readonly defaultIpAddress: string;
     /**
      * Information about each of the disks on this virtual machine or
      * template. These are sorted by bus and unit number so that they can be applied
@@ -232,7 +264,7 @@ export interface GetVirtualMachineResult {
      */
     readonly guestId: string;
     /**
-     * A list of IP addresses as reported by VMWare tools.
+     * A list of IP addresses as reported by VMware Tools.
      */
     readonly guestIpAddresses: string[];
     /**
@@ -308,6 +340,7 @@ export interface GetVirtualMachineResult {
     readonly swapPlacementPolicy?: string;
     readonly syncTimeWithHost?: boolean;
     readonly syncTimeWithHostPeriodically?: boolean;
+    readonly toolsUpgradePolicy?: string;
     readonly uuid: string;
     readonly vapp?: outputs.GetVirtualMachineVapp;
     readonly vappTransports: string[];
@@ -325,7 +358,7 @@ export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?
 export interface GetVirtualMachineOutputArgs {
     /**
      * The alternate guest name of the virtual machine when
-     * guestId is a non-specific operating system, like `otherGuest`.
+     * `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
@@ -381,7 +414,7 @@ export interface GetVirtualMachineOutputArgs {
     memoryShareLevel?: pulumi.Input<string>;
     /**
      * The name of the virtual machine. This can be a name or
-     * path.
+     * the full path relative to the datacenter.
      */
     name: pulumi.Input<string>;
     nestedHvEnabled?: pulumi.Input<boolean>;
@@ -410,6 +443,7 @@ export interface GetVirtualMachineOutputArgs {
     swapPlacementPolicy?: pulumi.Input<string>;
     syncTimeWithHost?: pulumi.Input<boolean>;
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
+    toolsUpgradePolicy?: pulumi.Input<string>;
     vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs>;
     vbsEnabled?: pulumi.Input<boolean>;
     vvtdEnabled?: pulumi.Input<boolean>;

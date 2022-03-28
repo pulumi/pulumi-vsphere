@@ -71,8 +71,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU utilization of a vApp container will not
         /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited.
-        /// Default: `-1`
+        /// unlimited. Default: `-1`
         /// </summary>
         [Output("memoryLimit")]
         public Output<int?> MemoryLimit { get; private set; } = null!;
@@ -242,8 +241,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU utilization of a vApp container will not
         /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited.
-        /// Default: `-1`
+        /// unlimited. Default: `-1`
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }
@@ -380,8 +378,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The CPU utilization of a vApp container will not
         /// exceed this limit, even if there are available resources. Set to `-1` for
-        /// unlimited.
-        /// Default: `-1`
+        /// unlimited. Default: `-1`
         /// </summary>
         [Input("memoryLimit")]
         public Input<int>? MemoryLimit { get; set; }

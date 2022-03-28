@@ -28,7 +28,7 @@ type HaVmOverride struct {
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 	HaDatastoreApdResponse pulumi.StringPtrOutput `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
+	// Controls the delay in seconds
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
@@ -73,7 +73,7 @@ type HaVmOverride struct {
 	HaVmMonitoringUseClusterDefaults pulumi.BoolPtrOutput `pulumi:"haVmMonitoringUseClusterDefaults"`
 	// The restart priority for the virtual
 	// machine when vSphere detects a host failure. Can be one of
-	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
 	// Default: `clusterRestartPriority`.
 	HaVmRestartPriority pulumi.StringPtrOutput `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds, that
@@ -134,7 +134,7 @@ type haVmOverrideState struct {
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
+	// Controls the delay in seconds
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
@@ -179,7 +179,7 @@ type haVmOverrideState struct {
 	HaVmMonitoringUseClusterDefaults *bool `pulumi:"haVmMonitoringUseClusterDefaults"`
 	// The restart priority for the virtual
 	// machine when vSphere detects a host failure. Can be one of
-	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
 	// Default: `clusterRestartPriority`.
 	HaVmRestartPriority *string `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds, that
@@ -206,7 +206,7 @@ type HaVmOverrideState struct {
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// Controls the delay in minutes
+	// Controls the delay in seconds
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
@@ -251,7 +251,7 @@ type HaVmOverrideState struct {
 	HaVmMonitoringUseClusterDefaults pulumi.BoolPtrInput
 	// The restart priority for the virtual
 	// machine when vSphere detects a host failure. Can be one of
-	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
 	// Default: `clusterRestartPriority`.
 	HaVmRestartPriority pulumi.StringPtrInput
 	// The maximum time, in seconds, that
@@ -282,7 +282,7 @@ type haVmOverrideArgs struct {
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
+	// Controls the delay in seconds
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
@@ -327,7 +327,7 @@ type haVmOverrideArgs struct {
 	HaVmMonitoringUseClusterDefaults *bool `pulumi:"haVmMonitoringUseClusterDefaults"`
 	// The restart priority for the virtual
 	// machine when vSphere detects a host failure. Can be one of
-	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
 	// Default: `clusterRestartPriority`.
 	HaVmRestartPriority *string `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds, that
@@ -355,7 +355,7 @@ type HaVmOverrideArgs struct {
 	// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
 	// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// Controls the delay in minutes
+	// Controls the delay in seconds
 	// to wait after an APD timeout event to execute the response action defined in
 	// `haDatastoreApdResponse`. Use `-1` to use
 	// the cluster default. Default: `-1`.
@@ -400,7 +400,7 @@ type HaVmOverrideArgs struct {
 	HaVmMonitoringUseClusterDefaults pulumi.BoolPtrInput
 	// The restart priority for the virtual
 	// machine when vSphere detects a host failure. Can be one of
-	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+	// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
 	// Default: `clusterRestartPriority`.
 	HaVmRestartPriority pulumi.StringPtrInput
 	// The maximum time, in seconds, that

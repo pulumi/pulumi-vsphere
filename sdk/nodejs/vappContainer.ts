@@ -77,8 +77,7 @@ export class VappContainer extends pulumi.CustomResource {
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited.
-     * Default: `-1`
+     * unlimited. Default: `-1`
      */
     public readonly memoryLimit!: pulumi.Output<number | undefined>;
     /**
@@ -225,8 +224,7 @@ export interface VappContainerState {
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited.
-     * Default: `-1`
+     * unlimited. Default: `-1`
      */
     memoryLimit?: pulumi.Input<number>;
     /**
@@ -320,8 +318,7 @@ export interface VappContainerArgs {
     /**
      * The CPU utilization of a vApp container will not
      * exceed this limit, even if there are available resources. Set to `-1` for
-     * unlimited.
-     * Default: `-1`
+     * unlimited. Default: `-1`
      */
     memoryLimit?: pulumi.Input<number>;
     /**

@@ -35,8 +35,7 @@ export class CustomAttribute extends pulumi.CustomResource {
     /**
      * The object type that this attribute may be
      * applied to. If not set, the custom attribute may be applied to any object
-     * type. For a full list, click here. Forces a new
-     * resource if changed.
+     * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
     public readonly managedObjectType!: pulumi.Output<string | undefined>;
     /**
@@ -76,8 +75,7 @@ export interface CustomAttributeState {
     /**
      * The object type that this attribute may be
      * applied to. If not set, the custom attribute may be applied to any object
-     * type. For a full list, click here. Forces a new
-     * resource if changed.
+     * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
     managedObjectType?: pulumi.Input<string>;
     /**
@@ -93,8 +91,7 @@ export interface CustomAttributeArgs {
     /**
      * The object type that this attribute may be
      * applied to. If not set, the custom attribute may be applied to any object
-     * type. For a full list, click here. Forces a new
-     * resource if changed.
+     * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      */
     managedObjectType?: pulumi.Input<string>;
     /**

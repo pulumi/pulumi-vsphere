@@ -55,9 +55,6 @@ class GetContentLibraryItemResult:
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The Content Library type. Can be ovf, iso, or vm-template.
-        """
         return pulumi.get(self, "type")
 
 
@@ -78,26 +75,14 @@ def get_content_library_item(library_id: Optional[str] = None,
                              type: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContentLibraryItemResult:
     """
-    The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+    The `ContentLibraryItem` data source can be used to discover the ID of a content library item.
 
-    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    connections.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    library = vsphere.get_content_library(name="Content Library Test")
-    item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
-        library_id=library.id)
-    ```
+    > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
 
 
-    :param str library_id: The ID of the Content Library the item exists in.
-    :param str name: The name of the Content Library.
-    :param str type: The Content Library type. Can be ovf, iso, or vm-template.
+    :param str library_id: The ID of the content library in which the item exists.
+    :param str name: The name of the content library item.
+    :param str type: The type for the content library item. One of `ovf`, `vm-template`, or `iso`
     """
     __args__ = dict()
     __args__['libraryId'] = library_id
@@ -122,25 +107,13 @@ def get_content_library_item_output(library_id: Optional[pulumi.Input[str]] = No
                                     type: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContentLibraryItemResult]:
     """
-    The `ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+    The `ContentLibraryItem` data source can be used to discover the ID of a content library item.
 
-    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    connections.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    library = vsphere.get_content_library(name="Content Library Test")
-    item = vsphere.get_content_library_item(name="Ubuntu Bionic 18.04",
-        library_id=library.id)
-    ```
+    > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
 
 
-    :param str library_id: The ID of the Content Library the item exists in.
-    :param str name: The name of the Content Library.
-    :param str type: The Content Library type. Can be ovf, iso, or vm-template.
+    :param str library_id: The ID of the content library in which the item exists.
+    :param str name: The name of the content library item.
+    :param str type: The type for the content library item. One of `ovf`, `vm-template`, or `iso`
     """
     ...

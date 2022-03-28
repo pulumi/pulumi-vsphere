@@ -14,72 +14,48 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VirtualMachineDisk
     {
         /// <summary>
-        /// Attach an external disk instead of creating a new one.
-        /// Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
-        /// `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+        /// Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
         /// </summary>
         public readonly bool? Attach;
         /// <summary>
-        /// The type of storage controller to attach the
-        /// disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
-        /// number of controllers enabled for the selected type. Default `scsi`.
+        /// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
         /// </summary>
         public readonly string? ControllerType;
         /// <summary>
-        /// The datastore ID that the ISO is located in.
-        /// Requried for using a datastore ISO. Conflicts with `client_device`.
+        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         public readonly string? DatastoreId;
-        /// <summary>
-        /// An address internal to this provider that helps locate the
-        /// device when `key` is unavailable. This follows a convention of
-        /// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        /// unit 1 on SCSI bus 0.
-        /// </summary>
         public readonly string? DeviceAddress;
         /// <summary>
-        /// The mode of this this virtual disk for purposes of
-        /// writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
-        /// `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
-        /// Default: `persistent`. For an explanation of options, click
-        /// [here][vmware-docs-disk-mode].
+        /// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
         /// </summary>
         public readonly string? DiskMode;
         /// <summary>
-        /// The sharing mode of this virtual disk. Can be one
-        /// of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+        /// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
         /// </summary>
         public readonly string? DiskSharing;
         /// <summary>
-        /// If set to `true`, the disk space is zeroed out
-        /// on VM creation. This will delay the creation of the disk or virtual machine.
-        /// Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
-        /// on picking a disk type.  Default: `false`.
+        /// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
         /// </summary>
         public readonly bool? EagerlyScrub;
         /// <summary>
-        /// The upper limit of IOPS that this disk can use. The
-        /// default is no limit.
+        /// The upper limit of IOPS that this disk can use. The default is no limit.
         /// </summary>
         public readonly int? IoLimit;
         /// <summary>
-        /// The I/O reservation (guarantee) that this disk
-        /// has, in IOPS.  The default is no reservation.
+        /// The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
         /// </summary>
         public readonly int? IoReservation;
         /// <summary>
-        /// The share count for this disk when the share
-        /// level is `custom`.
+        /// The share count for the virtual disk when the share level is `custom`.
         /// </summary>
         public readonly int? IoShareCount;
         /// <summary>
-        /// The share allocation level for this disk. Can
-        /// be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        /// The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         /// </summary>
         public readonly string? IoShareLevel;
         /// <summary>
-        /// Keep this disk when removing the device or
-        /// destroying the virtual machine. Default: `false`.
+        /// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
         /// </summary>
         public readonly bool? KeepOnRemove;
         /// <summary>
@@ -87,46 +63,35 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly int? Key;
         /// <summary>
-        /// A label for the disk. Forces a new disk if changed.
+        /// A label for the virtual disk. Forces a new disk, if changed.
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// The path to the ISO file. Required for using a datastore
-        /// ISO. Conflicts with `client_device`.
+        /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The size of the disk, in GB.
+        /// The size of the disk, in GB. Must be a whole number.
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// The UUID of the storage policy to assign to this disk.
+        /// The UUID of the storage policy to assign to the virtual disk.
         /// </summary>
         public readonly string? StoragePolicyId;
         /// <summary>
-        /// If `true`, this disk is thin provisioned,
-        /// with space for the file being allocated on an as-needed basis. Cannot be set
-        /// to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
-        /// type. Default: `true`.
+        /// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
         /// </summary>
         public readonly bool? ThinProvisioned;
         /// <summary>
-        /// The disk number on the storage bus. The maximum
-        /// value for this setting is the value of the controller count times the
-        /// controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
-        /// The default is `0`, for which one disk must be set to. Duplicate unit numbers
-        /// are not allowed.
+        /// The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
         /// </summary>
         public readonly int? UnitNumber;
         /// <summary>
-        /// The UUID of the virtual disk's VMDK file. This is used to track the
-        /// virtual disk on the virtual machine.
+        /// The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
         /// </summary>
         public readonly string? Uuid;
         /// <summary>
-        /// If `true`, writes for this disk are sent
-        /// directly to the filesystem immediately instead of being buffered. Default:
-        /// `false`.
+        /// If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
         /// </summary>
         public readonly bool? WriteThrough;
 

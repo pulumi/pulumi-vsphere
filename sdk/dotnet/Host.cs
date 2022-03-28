@@ -11,7 +11,7 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// Provides a VMware vSphere host resource. This represents an ESXi host that
-    /// can be used either as part of a Compute Cluster or Standalone.
+    /// can be used either as a member of a cluster or as a standalone host.
     /// 
     /// ## Example Usage
     /// ### Create a standalone host
@@ -24,17 +24,17 @@ namespace Pulumi.VSphere
     /// {
     ///     public MyStack()
     ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
     ///         {
-    ///             Name = "my-datacenter",
+    ///             Name = "dc-01",
     ///         }));
-    ///         var h1 = new VSphere.Host("h1", new VSphere.HostArgs
+    ///         var esx_01 = new VSphere.Host("esx-01", new VSphere.HostArgs
     ///         {
-    ///             Hostname = "10.10.10.1",
+    ///             Hostname = "esx-01.example.com",
     ///             Username = "root",
     ///             Password = "password",
     ///             License = "00000-00000-00000-00000i-00000",
-    ///             Datacenter = dc.Apply(dc =&gt; dc.Id),
+    ///             Datacenter = datacenter.Apply(datacenter =&gt; datacenter.Id),
     ///         });
     ///     }
     /// 
@@ -50,22 +50,22 @@ namespace Pulumi.VSphere
     /// {
     ///     public MyStack()
     ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
     ///         {
-    ///             Name = "TfDatacenter",
+    ///             Name = "dc-01",
     ///         }));
-    ///         var c1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+    ///         var cluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
     ///         {
-    ///             Name = "DC0_C0",
-    ///             DatacenterId = dc.Id,
+    ///             Name = "cluster-01",
+    ///             DatacenterId = datacenter.Id,
     ///         })));
-    ///         var h1 = new VSphere.Host("h1", new VSphere.HostArgs
+    ///         var esx_01 = new VSphere.Host("esx-01", new VSphere.HostArgs
     ///         {
-    ///             Hostname = "10.10.10.1",
+    ///             Hostname = "esx-01.example.com",
     ///             Username = "root",
     ///             Password = "password",
     ///             License = "00000-00000-00000-00000i-00000",
-    ///             Cluster = c1.Apply(c1 =&gt; c1.Id),
+    ///             Cluster = cluster.Apply(cluster =&gt; cluster.Id),
     ///         });
     ///     }
     /// 
@@ -73,8 +73,8 @@ namespace Pulumi.VSphere
     /// ```
     /// ## Importing
     /// 
-    /// An existing host can be [imported][docs-import] into this resource
-    /// via supplying the host's ID. An example is below:
+    /// An existing host can be [imported][docs-import] into this resource by supplying
+    /// the host's ID. An example is below:
     /// 
     /// [docs-import]: /docs/import/index.html
     /// 
@@ -126,8 +126,9 @@ namespace Pulumi.VSphere
         public Output<string?> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true then it will force the host to be added, even
-        /// if the host is already connected to a different vSphere instance. Default is `false`
+        /// If set to true then it will force the host to be added,
+        /// even if the host is already connected to a different vSphere instance.
+        /// Default is `false`.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -153,7 +154,8 @@ namespace Pulumi.VSphere
         public Output<string?> Lockdown { get; private set; } = null!;
 
         /// <summary>
-        /// Set the management state of the host. Default is `false`.
+        /// Set the management state of the host.
+        /// Default is `false`.
         /// </summary>
         [Output("maintenance")]
         public Output<bool?> Maintenance { get; private set; } = null!;
@@ -166,9 +168,17 @@ namespace Pulumi.VSphere
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Host's certificate SHA-1 thumbprint. If not set the the
-        /// CA that signed the host's certificate should be trusted. If the CA is not trusted
-        /// and no thumbprint is set then the operation will fail.
+        /// The IDs of any tags to attach to this resource. Please
+        /// refer to the `vsphere.Tag` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Host's certificate SHA-1 thumbprint. If not set the
+        /// CA that signed the host's certificate should be trusted. If the CA is not
+        /// trusted and no thumbprint is set then the operation will fail.
         /// </summary>
         [Output("thumbprint")]
         public Output<string?> Thumbprint { get; private set; } = null!;
@@ -257,8 +267,9 @@ namespace Pulumi.VSphere
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to true then it will force the host to be added, even
-        /// if the host is already connected to a different vSphere instance. Default is `false`
+        /// If set to true then it will force the host to be added,
+        /// even if the host is already connected to a different vSphere instance.
+        /// Default is `false`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -284,7 +295,8 @@ namespace Pulumi.VSphere
         public Input<string>? Lockdown { get; set; }
 
         /// <summary>
-        /// Set the management state of the host. Default is `false`.
+        /// Set the management state of the host.
+        /// Default is `false`.
         /// </summary>
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }
@@ -296,10 +308,24 @@ namespace Pulumi.VSphere
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
         /// <summary>
-        /// Host's certificate SHA-1 thumbprint. If not set the the
-        /// CA that signed the host's certificate should be trusted. If the CA is not trusted
-        /// and no thumbprint is set then the operation will fail.
+        /// The IDs of any tags to attach to this resource. Please
+        /// refer to the `vsphere.Tag` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Host's certificate SHA-1 thumbprint. If not set the
+        /// CA that signed the host's certificate should be trusted. If the CA is not
+        /// trusted and no thumbprint is set then the operation will fail.
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
@@ -349,8 +375,9 @@ namespace Pulumi.VSphere
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to true then it will force the host to be added, even
-        /// if the host is already connected to a different vSphere instance. Default is `false`
+        /// If set to true then it will force the host to be added,
+        /// even if the host is already connected to a different vSphere instance.
+        /// Default is `false`.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -376,7 +403,8 @@ namespace Pulumi.VSphere
         public Input<string>? Lockdown { get; set; }
 
         /// <summary>
-        /// Set the management state of the host. Default is `false`.
+        /// Set the management state of the host.
+        /// Default is `false`.
         /// </summary>
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }
@@ -388,10 +416,24 @@ namespace Pulumi.VSphere
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
         /// <summary>
-        /// Host's certificate SHA-1 thumbprint. If not set the the
-        /// CA that signed the host's certificate should be trusted. If the CA is not trusted
-        /// and no thumbprint is set then the operation will fail.
+        /// The IDs of any tags to attach to this resource. Please
+        /// refer to the `vsphere.Tag` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Host's certificate SHA-1 thumbprint. If not set the
+        /// CA that signed the host's certificate should be trusted. If the CA is not
+        /// trusted and no thumbprint is set then the operation will fail.
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }

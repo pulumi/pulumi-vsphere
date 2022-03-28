@@ -9,116 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
-    /// <summary>
-    /// The `vsphere.File` resource can be used to upload files (such as virtual disk
-    /// files) from the host machine that this provider is running on to a target
-    /// datastore.  The resource can also be used to copy files between datastores, or
-    /// from one location to another on the same datastore.
-    /// 
-    /// Updates to destination parameters such as `datacenter`, `datastore`, or
-    /// `destination_file` will move the managed file a new destination based on the
-    /// values of the new settings.  If any source parameter is changed, such as
-    /// `source_datastore`, `source_datacenter` or `source_file`), the resource will be
-    /// re-created. Depending on if destination parameters are being changed as well,
-    /// this may result in the destination file either being overwritten or deleted at
-    /// the old location.
-    /// 
-    /// ## Example Usage
-    /// ### Uploading a file
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ubuntuDiskUpload = new VSphere.File("ubuntuDiskUpload", new VSphere.FileArgs
-    ///         {
-    ///             Datacenter = "my_datacenter",
-    ///             Datastore = "local",
-    ///             DestinationFile = "/my_path/disks/custom_ubuntu.vmdk",
-    ///             SourceFile = "/home/ubuntu/my_disks/custom_ubuntu.vmdk",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Copying a file
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ubuntuDiskCopy = new VSphere.File("ubuntuDiskCopy", new VSphere.FileArgs
-    ///         {
-    ///             Datacenter = "my_datacenter",
-    ///             Datastore = "local",
-    ///             DestinationFile = "/my_path/custom_ubuntu_id.vmdk",
-    ///             SourceDatacenter = "my_datacenter",
-    ///             SourceDatastore = "local",
-    ///             SourceFile = "/my_path/disks/custom_ubuntu.vmdk",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     [VSphereResourceType("vsphere:index/file:File")]
     public partial class File : Pulumi.CustomResource
     {
         /// <summary>
         /// Create directories in `destination_file`
-        /// path parameter if any missing for copy operation.
+        /// path parameter on first apply if any are missing for copy operation.
         /// </summary>
         [Output("createDirectories")]
         public Output<bool?> CreateDirectories { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a datacenter in which the file will be
-        /// uploaded to.
+        /// The name of a datacenter to which the file will be
+        /// uploaded.
         /// </summary>
         [Output("datacenter")]
         public Output<string?> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the datastore in which to upload the
-        /// file to.
+        /// The name of the datastore to which to upload the
+        /// file.
         /// </summary>
         [Output("datastore")]
         public Output<string> Datastore { get; private set; } = null!;
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on vSphere.
+        /// or copied to on the destination `datastore` in vSphere.
         /// </summary>
         [Output("destinationFile")]
         public Output<string> DestinationFile { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a datacenter in which the file
-        /// will be copied from. Forces a new resource if changed.
+        /// The name of a datacenter from which the file
+        /// will be copied. Forces a new resource if changed.
         /// </summary>
         [Output("sourceDatacenter")]
         public Output<string?> SourceDatacenter { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the datastore in which file will
-        /// be copied from. Forces a new resource if changed.
+        /// The name of the datastore from which file will
+        /// be copied. Forces a new resource if changed.
         /// </summary>
         [Output("sourceDatastore")]
         public Output<string?> SourceDatastore { get; private set; } = null!;
 
-        /// <summary>
-        /// The path to the file being uploaded from the
-        /// host to vSphere or copied within vSphere. Forces a new resource if
-        /// changed.
-        /// </summary>
         [Output("sourceFile")]
         public Output<string> SourceFile { get; private set; } = null!;
 
@@ -170,51 +105,46 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// Create directories in `destination_file`
-        /// path parameter if any missing for copy operation.
+        /// path parameter on first apply if any are missing for copy operation.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }
 
         /// <summary>
-        /// The name of a datacenter in which the file will be
-        /// uploaded to.
+        /// The name of a datacenter to which the file will be
+        /// uploaded.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// The name of the datastore in which to upload the
-        /// file to.
+        /// The name of the datastore to which to upload the
+        /// file.
         /// </summary>
         [Input("datastore", required: true)]
         public Input<string> Datastore { get; set; } = null!;
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on vSphere.
+        /// or copied to on the destination `datastore` in vSphere.
         /// </summary>
         [Input("destinationFile", required: true)]
         public Input<string> DestinationFile { get; set; } = null!;
 
         /// <summary>
-        /// The name of a datacenter in which the file
-        /// will be copied from. Forces a new resource if changed.
+        /// The name of a datacenter from which the file
+        /// will be copied. Forces a new resource if changed.
         /// </summary>
         [Input("sourceDatacenter")]
         public Input<string>? SourceDatacenter { get; set; }
 
         /// <summary>
-        /// The name of the datastore in which file will
-        /// be copied from. Forces a new resource if changed.
+        /// The name of the datastore from which file will
+        /// be copied. Forces a new resource if changed.
         /// </summary>
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
-        /// <summary>
-        /// The path to the file being uploaded from the
-        /// host to vSphere or copied within vSphere. Forces a new resource if
-        /// changed.
-        /// </summary>
         [Input("sourceFile", required: true)]
         public Input<string> SourceFile { get; set; } = null!;
 
@@ -227,51 +157,46 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// Create directories in `destination_file`
-        /// path parameter if any missing for copy operation.
+        /// path parameter on first apply if any are missing for copy operation.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }
 
         /// <summary>
-        /// The name of a datacenter in which the file will be
-        /// uploaded to.
+        /// The name of a datacenter to which the file will be
+        /// uploaded.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// The name of the datastore in which to upload the
-        /// file to.
+        /// The name of the datastore to which to upload the
+        /// file.
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }
 
         /// <summary>
         /// The path to where the file should be uploaded
-        /// or copied to on vSphere.
+        /// or copied to on the destination `datastore` in vSphere.
         /// </summary>
         [Input("destinationFile")]
         public Input<string>? DestinationFile { get; set; }
 
         /// <summary>
-        /// The name of a datacenter in which the file
-        /// will be copied from. Forces a new resource if changed.
+        /// The name of a datacenter from which the file
+        /// will be copied. Forces a new resource if changed.
         /// </summary>
         [Input("sourceDatacenter")]
         public Input<string>? SourceDatacenter { get; set; }
 
         /// <summary>
-        /// The name of the datastore in which file will
-        /// be copied from. Forces a new resource if changed.
+        /// The name of the datastore from which file will
+        /// be copied. Forces a new resource if changed.
         /// </summary>
         [Input("sourceDatastore")]
         public Input<string>? SourceDatastore { get; set; }
 
-        /// <summary>
-        /// The path to the file being uploaded from the
-        /// host to vSphere or copied within vSphere. Forces a new resource if
-        /// changed.
-        /// </summary>
         [Input("sourceFile")]
         public Input<string>? SourceFile { get; set; }
 

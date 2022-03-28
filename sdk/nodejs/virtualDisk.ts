@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The `vsphere.VirtualDisk` resource can be used to create virtual disks outside
- * of any given `vsphere.VirtualMachine`
- * resource. These disks can be attached to a virtual machine by creating a disk
- * block with the `attach` parameter.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const myDisk = new vsphere.VirtualDisk("myDisk", {
- *     datacenter: "Datacenter",
- *     datastore: "local",
- *     size: 2,
- *     type: "thin",
- *     vmdkPath: "myDisk.vmdk",
- * });
- * ```
- */
 export class VirtualDisk extends pulumi.CustomResource {
     /**
      * Get an existing VirtualDisk resource's state with the given name, ID, and optional extra

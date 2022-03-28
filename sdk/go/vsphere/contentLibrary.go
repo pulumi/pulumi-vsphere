@@ -14,16 +14,15 @@ import (
 type ContentLibrary struct {
 	pulumi.CustomResourceState
 
-	// A description of the Content Library.
+	// A description for the content library.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the Content Library.
+	// The name of the content library.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Options to publish a local Content Library.
+	// Options to publish a local content library.
 	Publication ContentLibraryPublicationOutput `pulumi:"publication"`
-	// The managed object reference ID on which to store Content Library
-	// items.
+	// The managed object reference ID of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayOutput `pulumi:"storageBackings"`
-	// Options to publish a local Content Library.
+	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrOutput `pulumi:"subscription"`
 }
 
@@ -59,30 +58,28 @@ func GetContentLibrary(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContentLibrary resources.
 type contentLibraryState struct {
-	// A description of the Content Library.
+	// A description for the content library.
 	Description *string `pulumi:"description"`
-	// The name of the Content Library.
+	// The name of the content library.
 	Name *string `pulumi:"name"`
-	// Options to publish a local Content Library.
+	// Options to publish a local content library.
 	Publication *ContentLibraryPublication `pulumi:"publication"`
-	// The managed object reference ID on which to store Content Library
-	// items.
+	// The managed object reference ID of the datastore on which to store the content library items.
 	StorageBackings []string `pulumi:"storageBackings"`
-	// Options to publish a local Content Library.
+	// Options subscribe to a published content library.
 	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
 }
 
 type ContentLibraryState struct {
-	// A description of the Content Library.
+	// A description for the content library.
 	Description pulumi.StringPtrInput
-	// The name of the Content Library.
+	// The name of the content library.
 	Name pulumi.StringPtrInput
-	// Options to publish a local Content Library.
+	// Options to publish a local content library.
 	Publication ContentLibraryPublicationPtrInput
-	// The managed object reference ID on which to store Content Library
-	// items.
+	// The managed object reference ID of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayInput
-	// Options to publish a local Content Library.
+	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrInput
 }
 
@@ -91,31 +88,29 @@ func (ContentLibraryState) ElementType() reflect.Type {
 }
 
 type contentLibraryArgs struct {
-	// A description of the Content Library.
+	// A description for the content library.
 	Description *string `pulumi:"description"`
-	// The name of the Content Library.
+	// The name of the content library.
 	Name *string `pulumi:"name"`
-	// Options to publish a local Content Library.
+	// Options to publish a local content library.
 	Publication *ContentLibraryPublication `pulumi:"publication"`
-	// The managed object reference ID on which to store Content Library
-	// items.
+	// The managed object reference ID of the datastore on which to store the content library items.
 	StorageBackings []string `pulumi:"storageBackings"`
-	// Options to publish a local Content Library.
+	// Options subscribe to a published content library.
 	Subscription *ContentLibrarySubscription `pulumi:"subscription"`
 }
 
 // The set of arguments for constructing a ContentLibrary resource.
 type ContentLibraryArgs struct {
-	// A description of the Content Library.
+	// A description for the content library.
 	Description pulumi.StringPtrInput
-	// The name of the Content Library.
+	// The name of the content library.
 	Name pulumi.StringPtrInput
-	// Options to publish a local Content Library.
+	// Options to publish a local content library.
 	Publication ContentLibraryPublicationPtrInput
-	// The managed object reference ID on which to store Content Library
-	// items.
+	// The managed object reference ID of the datastore on which to store the content library items.
 	StorageBackings pulumi.StringArrayInput
-	// Options to publish a local Content Library.
+	// Options subscribe to a published content library.
 	Subscription ContentLibrarySubscriptionPtrInput
 }
 

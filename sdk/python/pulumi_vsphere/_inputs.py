@@ -72,11 +72,11 @@ class ContentLibraryPublicationArgs:
                  published: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication_method: Method to log into remote Content Library. Must be `NONE` or `BASIC`.
-        :param pulumi.Input[str] password: Password to log in with.
-        :param pulumi.Input[str] publish_url: URL to remotely access the published Content Library.
-        :param pulumi.Input[bool] published: Bool determining if Content Library is published.
-        :param pulumi.Input[str] username: User name to log in with.
+        :param pulumi.Input[str] authentication_method: Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        :param pulumi.Input[str] password: Password used for authentication.
+        :param pulumi.Input[str] publish_url: The URL of the published content library.
+        :param pulumi.Input[bool] published: Publish the content library. Default `false`.
+        :param pulumi.Input[str] username: Username used for authentication.
         """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
@@ -93,7 +93,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -105,7 +105,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password to log in with.
+        Password used for authentication.
         """
         return pulumi.get(self, "password")
 
@@ -117,7 +117,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter(name="publishUrl")
     def publish_url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL to remotely access the published Content Library.
+        The URL of the published content library.
         """
         return pulumi.get(self, "publish_url")
 
@@ -129,7 +129,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter
     def published(self) -> Optional[pulumi.Input[bool]]:
         """
-        Bool determining if Content Library is published.
+        Publish the content library. Default `false`.
         """
         return pulumi.get(self, "published")
 
@@ -141,7 +141,7 @@ class ContentLibraryPublicationArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        User name to log in with.
+        Username used for authentication.
         """
         return pulumi.get(self, "username")
 
@@ -160,12 +160,12 @@ class ContentLibrarySubscriptionArgs:
                  subscription_url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication_method: Method to log into remote Content Library. Must be `NONE` or `BASIC`.
-        :param pulumi.Input[bool] automatic_sync: Enable automatic synchronization with the external content library.
-        :param pulumi.Input[bool] on_demand: Download all library content immediately.
-        :param pulumi.Input[str] password: Password to log in with.
-        :param pulumi.Input[str] subscription_url: URL of remote Content Library.
-        :param pulumi.Input[str] username: User name to log in with.
+        :param pulumi.Input[str] authentication_method: Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
+        :param pulumi.Input[bool] automatic_sync: Enable automatic synchronization with the published library. Default `false`.
+        :param pulumi.Input[bool] on_demand: Download the library from a content only when needed. Default `true`.
+        :param pulumi.Input[str] password: Password used for authentication.
+        :param pulumi.Input[str] subscription_url: URL of the published content library.
+        :param pulumi.Input[str] username: Username used for authentication.
         """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
@@ -184,7 +184,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -196,7 +196,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter(name="automaticSync")
     def automatic_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable automatic synchronization with the external content library.
+        Enable automatic synchronization with the published library. Default `false`.
         """
         return pulumi.get(self, "automatic_sync")
 
@@ -208,7 +208,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter(name="onDemand")
     def on_demand(self) -> Optional[pulumi.Input[bool]]:
         """
-        Download all library content immediately.
+        Download the library from a content only when needed. Default `true`.
         """
         return pulumi.get(self, "on_demand")
 
@@ -220,7 +220,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Password to log in with.
+        Password used for authentication.
         """
         return pulumi.get(self, "password")
 
@@ -232,7 +232,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter(name="subscriptionUrl")
     def subscription_url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of remote Content Library.
+        URL of the published content library.
         """
         return pulumi.get(self, "subscription_url")
 
@@ -244,7 +244,7 @@ class ContentLibrarySubscriptionArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        User name to log in with.
+        Username used for authentication.
         """
         return pulumi.get(self, "username")
 
@@ -283,42 +283,43 @@ class DistributedPortGroupVlanRangeArgs:
 @pulumi.input_type
 class DistributedVirtualSwitchHostArgs:
     def __init__(__self__, *,
-                 devices: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 host_system_id: pulumi.Input[str]):
+                 host_system_id: pulumi.Input[str],
+                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] devices: The list of NIC devices to map to uplinks on the DVS,
-               added in order they are specified.
         :param pulumi.Input[str] host_system_id: The host system ID of the host to add to the
-               DVS.
+               VDS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] devices: The list of NIC devices to map to uplinks on the VDS,
+               added in order they are specified.
         """
-        pulumi.set(__self__, "devices", devices)
         pulumi.set(__self__, "host_system_id", host_system_id)
-
-    @property
-    @pulumi.getter
-    def devices(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The list of NIC devices to map to uplinks on the DVS,
-        added in order they are specified.
-        """
-        return pulumi.get(self, "devices")
-
-    @devices.setter
-    def devices(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "devices", value)
+        if devices is not None:
+            pulumi.set(__self__, "devices", devices)
 
     @property
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Input[str]:
         """
         The host system ID of the host to add to the
-        DVS.
+        VDS.
         """
         return pulumi.get(self, "host_system_id")
 
     @host_system_id.setter
     def host_system_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "host_system_id", value)
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of NIC devices to map to uplinks on the VDS,
+        added in order they are specified.
+        """
+        return pulumi.get(self, "devices")
+
+    @devices.setter
+    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "devices", value)
 
 
 @pulumi.input_type
@@ -529,17 +530,10 @@ class VirtualMachineCdromArgs:
                  key: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] client_device: Indicates whether the device should be backed by
-               remote client device. Conflicts with `datastore_id` and `path`.
-        :param pulumi.Input[str] datastore_id: The datastore ID that the ISO is located in.
-               Requried for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] device_address: An address internal to this provider that helps locate the
-               device when `key` is unavailable. This follows a convention of
-               `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-               unit 1 on SCSI bus 0.
+        :param pulumi.Input[bool] client_device: Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
+        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore
-               ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
         """
         if client_device is not None:
             pulumi.set(__self__, "client_device", client_device)
@@ -556,8 +550,7 @@ class VirtualMachineCdromArgs:
     @pulumi.getter(name="clientDevice")
     def client_device(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the device should be backed by
-        remote client device. Conflicts with `datastore_id` and `path`.
+        Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
         """
         return pulumi.get(self, "client_device")
 
@@ -569,8 +562,7 @@ class VirtualMachineCdromArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that the ISO is located in.
-        Requried for using a datastore ISO. Conflicts with `client_device`.
+        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -581,12 +573,6 @@ class VirtualMachineCdromArgs:
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        An address internal to this provider that helps locate the
-        device when `key` is unavailable. This follows a convention of
-        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        unit 1 on SCSI bus 0.
-        """
         return pulumi.get(self, "device_address")
 
     @device_address.setter
@@ -609,8 +595,7 @@ class VirtualMachineCdromArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the ISO file. Required for using a datastore
-        ISO. Conflicts with `client_device`.
+        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
         """
         return pulumi.get(self, "path")
 
@@ -708,9 +693,7 @@ class VirtualMachineCloneCustomizeArgs:
                  windows_options: Optional[pulumi.Input['VirtualMachineCloneCustomizeWindowsOptionsArgs']] = None,
                  windows_sysprep_text: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on this
-               virtual machine. See network interface options
-               below.
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]] network_interfaces: A specification for a virtual NIC on the virtual machine. See network interface options for more information.
         """
         if dns_server_lists is not None:
             pulumi.set(__self__, "dns_server_lists", dns_server_lists)
@@ -780,9 +763,7 @@ class VirtualMachineCloneCustomizeArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCloneCustomizeNetworkInterfaceArgs']]]]:
         """
-        A specification for a virtual NIC on this
-        virtual machine. See network interface options
-        below.
+        A specification for a virtual NIC on the virtual machine. See network interface options for more information.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1131,59 +1112,26 @@ class VirtualMachineDiskArgs:
                  uuid: Optional[pulumi.Input[str]] = None,
                  write_through: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] label: A label for the disk. Forces a new disk if changed.
-        :param pulumi.Input[bool] attach: Attach an external disk instead of creating a new one.
-               Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
-               `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
-        :param pulumi.Input[str] controller_type: The type of storage controller to attach the
-               disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
-               number of controllers enabled for the selected type. Default `scsi`.
-        :param pulumi.Input[str] datastore_id: The datastore ID that the ISO is located in.
-               Requried for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] device_address: An address internal to this provider that helps locate the
-               device when `key` is unavailable. This follows a convention of
-               `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-               unit 1 on SCSI bus 0.
-        :param pulumi.Input[str] disk_mode: The mode of this this virtual disk for purposes of
-               writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
-               `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
-               Default: `persistent`. For an explanation of options, click
-               [here][vmware-docs-disk-mode].
-        :param pulumi.Input[str] disk_sharing: The sharing mode of this virtual disk. Can be one
-               of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
-        :param pulumi.Input[bool] eagerly_scrub: If set to `true`, the disk space is zeroed out
-               on VM creation. This will delay the creation of the disk or virtual machine.
-               Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
-               on picking a disk type.  Default: `false`.
-        :param pulumi.Input[int] io_limit: The upper limit of IOPS that this disk can use. The
-               default is no limit.
-        :param pulumi.Input[int] io_reservation: The I/O reservation (guarantee) that this disk
-               has, in IOPS.  The default is no reservation.
-        :param pulumi.Input[int] io_share_count: The share count for this disk when the share
-               level is `custom`.
-        :param pulumi.Input[str] io_share_level: The share allocation level for this disk. Can
-               be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
-        :param pulumi.Input[bool] keep_on_remove: Keep this disk when removing the device or
-               destroying the virtual machine. Default: `false`.
+        :param pulumi.Input[str] label: A label for the virtual disk. Forces a new disk, if changed.
+        :param pulumi.Input[bool] attach: Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+        :param pulumi.Input[str] controller_type: The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
+        :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[str] disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+        :param pulumi.Input[str] disk_sharing: The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+        :param pulumi.Input[bool] eagerly_scrub: If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
+        :param pulumi.Input[int] io_limit: The upper limit of IOPS that this disk can use. The default is no limit.
+        :param pulumi.Input[int] io_reservation: The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
+        :param pulumi.Input[int] io_share_count: The share count for the virtual disk when the share level is `custom`.
+        :param pulumi.Input[str] io_share_level: The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        :param pulumi.Input[bool] keep_on_remove: Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore
-               ISO. Conflicts with `client_device`.
-        :param pulumi.Input[int] size: The size of the disk, in GB.
-        :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to this disk.
-        :param pulumi.Input[bool] thin_provisioned: If `true`, this disk is thin provisioned,
-               with space for the file being allocated on an as-needed basis. Cannot be set
-               to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
-               type. Default: `true`.
-        :param pulumi.Input[int] unit_number: The disk number on the storage bus. The maximum
-               value for this setting is the value of the controller count times the
-               controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
-               The default is `0`, for which one disk must be set to. Duplicate unit numbers
-               are not allowed.
-        :param pulumi.Input[str] uuid: The UUID of the virtual disk's VMDK file. This is used to track the
-               virtual disk on the virtual machine.
-        :param pulumi.Input[bool] write_through: If `true`, writes for this disk are sent
-               directly to the filesystem immediately instead of being buffered. Default:
-               `false`.
+        :param pulumi.Input[str] path: The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+        :param pulumi.Input[int] size: The size of the disk, in GB. Must be a whole number.
+        :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
+        :param pulumi.Input[bool] thin_provisioned: If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
+        :param pulumi.Input[int] unit_number: The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
+        :param pulumi.Input[str] uuid: The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
+        :param pulumi.Input[bool] write_through: If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
         """
         pulumi.set(__self__, "label", label)
         if attach is not None:
@@ -1231,7 +1179,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        A label for the disk. Forces a new disk if changed.
+        A label for the virtual disk. Forces a new disk, if changed.
         """
         return pulumi.get(self, "label")
 
@@ -1243,9 +1191,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def attach(self) -> Optional[pulumi.Input[bool]]:
         """
-        Attach an external disk instead of creating a new one.
-        Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`,
-        `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+        Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
         """
         return pulumi.get(self, "attach")
 
@@ -1257,9 +1203,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="controllerType")
     def controller_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of storage controller to attach the
-        disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate
-        number of controllers enabled for the selected type. Default `scsi`.
+        The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
         """
         return pulumi.get(self, "controller_type")
 
@@ -1271,8 +1215,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The datastore ID that the ISO is located in.
-        Requried for using a datastore ISO. Conflicts with `client_device`.
+        The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -1283,12 +1226,6 @@ class VirtualMachineDiskArgs:
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        An address internal to this provider that helps locate the
-        device when `key` is unavailable. This follows a convention of
-        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        unit 1 on SCSI bus 0.
-        """
         return pulumi.get(self, "device_address")
 
     @device_address.setter
@@ -1299,11 +1236,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="diskMode")
     def disk_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode of this this virtual disk for purposes of
-        writes and snapshotting. Can be one of `append`, `independent_nonpersistent`,
-        `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`.
-        Default: `persistent`. For an explanation of options, click
-        [here][vmware-docs-disk-mode].
+        The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
         """
         return pulumi.get(self, "disk_mode")
 
@@ -1315,8 +1248,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="diskSharing")
     def disk_sharing(self) -> Optional[pulumi.Input[str]]:
         """
-        The sharing mode of this virtual disk. Can be one
-        of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+        The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
         """
         return pulumi.get(self, "disk_sharing")
 
@@ -1328,10 +1260,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="eagerlyScrub")
     def eagerly_scrub(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to `true`, the disk space is zeroed out
-        on VM creation. This will delay the creation of the disk or virtual machine.
-        Cannot be set to `true` when `thin_provisioned` is `true`.  See the section
-        on picking a disk type.  Default: `false`.
+        If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
         """
         return pulumi.get(self, "eagerly_scrub")
 
@@ -1343,8 +1272,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="ioLimit")
     def io_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The upper limit of IOPS that this disk can use. The
-        default is no limit.
+        The upper limit of IOPS that this disk can use. The default is no limit.
         """
         return pulumi.get(self, "io_limit")
 
@@ -1356,8 +1284,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="ioReservation")
     def io_reservation(self) -> Optional[pulumi.Input[int]]:
         """
-        The I/O reservation (guarantee) that this disk
-        has, in IOPS.  The default is no reservation.
+        The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
         """
         return pulumi.get(self, "io_reservation")
 
@@ -1369,8 +1296,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="ioShareCount")
     def io_share_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The share count for this disk when the share
-        level is `custom`.
+        The share count for the virtual disk when the share level is `custom`.
         """
         return pulumi.get(self, "io_share_count")
 
@@ -1382,8 +1308,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="ioShareLevel")
     def io_share_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The share allocation level for this disk. Can
-        be one of `low`, `normal`, `high`, or `custom`. Default: `normal`.
+        The share allocation level for the virtual disk. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         """
         return pulumi.get(self, "io_share_level")
 
@@ -1395,8 +1320,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="keepOnRemove")
     def keep_on_remove(self) -> Optional[pulumi.Input[bool]]:
         """
-        Keep this disk when removing the device or
-        destroying the virtual machine. Default: `false`.
+        Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
         """
         return pulumi.get(self, "keep_on_remove")
 
@@ -1420,8 +1344,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the ISO file. Required for using a datastore
-        ISO. Conflicts with `client_device`.
+        The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
         """
         return pulumi.get(self, "path")
 
@@ -1433,7 +1356,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the disk, in GB.
+        The size of the disk, in GB. Must be a whole number.
         """
         return pulumi.get(self, "size")
 
@@ -1445,7 +1368,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="storagePolicyId")
     def storage_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the storage policy to assign to this disk.
+        The UUID of the storage policy to assign to the virtual disk.
         """
         return pulumi.get(self, "storage_policy_id")
 
@@ -1457,10 +1380,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="thinProvisioned")
     def thin_provisioned(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `true`, this disk is thin provisioned,
-        with space for the file being allocated on an as-needed basis. Cannot be set
-        to `true` when `eagerly_scrub` is `true`. See the section on picking a disk
-        type. Default: `true`.
+        If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
         """
         return pulumi.get(self, "thin_provisioned")
 
@@ -1472,11 +1392,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="unitNumber")
     def unit_number(self) -> Optional[pulumi.Input[int]]:
         """
-        The disk number on the storage bus. The maximum
-        value for this setting is the value of the controller count times the
-        controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE).
-        The default is `0`, for which one disk must be set to. Duplicate unit numbers
-        are not allowed.
+        The disk number on the storage bus. The maximum value for this setting is the value of the controller count times the controller capacity (15 for SCSI, 30 for SATA, and 2 for IDE). Duplicate unit numbers are not allowed. Default `0`, for which one disk must be set to.
         """
         return pulumi.get(self, "unit_number")
 
@@ -1488,8 +1404,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the virtual disk's VMDK file. This is used to track the
-        virtual disk on the virtual machine.
+        The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
         """
         return pulumi.get(self, "uuid")
 
@@ -1501,9 +1416,7 @@ class VirtualMachineDiskArgs:
     @pulumi.getter(name="writeThrough")
     def write_through(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `true`, writes for this disk are sent
-        directly to the filesystem immediately instead of being buffered. Default:
-        `false`.
+        If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
         """
         return pulumi.get(self, "write_through")
 
@@ -1527,33 +1440,16 @@ class VirtualMachineNetworkInterfaceArgs:
                  ovf_mapping: Optional[pulumi.Input[str]] = None,
                  use_static_mac: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] network_id: The managed object reference
-               ID of the network to connect this interface to.
-        :param pulumi.Input[str] adapter_type: The network interface type. Can be one of
-               `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
-        :param pulumi.Input[int] bandwidth_limit: The upper bandwidth limit of this network
-               interface, in Mbits/sec. The default is no limit.
-        :param pulumi.Input[int] bandwidth_reservation: The bandwidth reservation of this
-               network interface, in Mbits/sec. The default is no reservation.
-        :param pulumi.Input[int] bandwidth_share_count: The share count for this network
-               interface when the share level is `custom`.
-        :param pulumi.Input[str] bandwidth_share_level: The bandwidth share allocation level for
-               this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
-               `normal`.
-        :param pulumi.Input[str] device_address: An address internal to this provider that helps locate the
-               device when `key` is unavailable. This follows a convention of
-               `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-               unit 1 on SCSI bus 0.
+        :param pulumi.Input[str] network_id: The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
+        :param pulumi.Input[str] adapter_type: The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        :param pulumi.Input[int] bandwidth_limit: The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
+        :param pulumi.Input[int] bandwidth_reservation: The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
+        :param pulumi.Input[int] bandwidth_share_count: The share count for the network interface when the share level is `custom`.
+        :param pulumi.Input[str] bandwidth_share_level: The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         :param pulumi.Input[int] key: The ID of the device within the virtual machine.
-        :param pulumi.Input[str] mac_address: The MAC address of this network interface. Can
-               only be manually set if `use_static_mac` is true, otherwise this is a
-               computed value that gives the current MAC address of this interface.
-        :param pulumi.Input[str] ovf_mapping: Specifies which OVF NIC the `network_interface`
-               should be associated with. Only applies at creation and only when deploying
-               from an OVF source.
-        :param pulumi.Input[bool] use_static_mac: If true, the `mac_address` field is treated as
-               a static MAC address and set accordingly. Setting this to `true` requires
-               `mac_address` to be set. Default: `false`.
+        :param pulumi.Input[str] mac_address: The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
+        :param pulumi.Input[str] ovf_mapping: Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
+        :param pulumi.Input[bool] use_static_mac: If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         """
         pulumi.set(__self__, "network_id", network_id)
         if adapter_type is not None:
@@ -1581,8 +1477,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[str]:
         """
-        The managed object reference
-        ID of the network to connect this interface to.
+        The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
         """
         return pulumi.get(self, "network_id")
 
@@ -1594,8 +1489,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="adapterType")
     def adapter_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The network interface type. Can be one of
-        `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -1607,8 +1501,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The upper bandwidth limit of this network
-        interface, in Mbits/sec. The default is no limit.
+        The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -1620,8 +1513,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthReservation")
     def bandwidth_reservation(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth reservation of this
-        network interface, in Mbits/sec. The default is no reservation.
+        The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
         """
         return pulumi.get(self, "bandwidth_reservation")
 
@@ -1633,8 +1525,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthShareCount")
     def bandwidth_share_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The share count for this network
-        interface when the share level is `custom`.
+        The share count for the network interface when the share level is `custom`.
         """
         return pulumi.get(self, "bandwidth_share_count")
 
@@ -1646,9 +1537,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="bandwidthShareLevel")
     def bandwidth_share_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The bandwidth share allocation level for
-        this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
-        `normal`.
+        The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         """
         return pulumi.get(self, "bandwidth_share_level")
 
@@ -1659,12 +1548,6 @@ class VirtualMachineNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="deviceAddress")
     def device_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        An address internal to this provider that helps locate the
-        device when `key` is unavailable. This follows a convention of
-        `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        unit 1 on SCSI bus 0.
-        """
         return pulumi.get(self, "device_address")
 
     @device_address.setter
@@ -1687,9 +1570,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The MAC address of this network interface. Can
-        only be manually set if `use_static_mac` is true, otherwise this is a
-        computed value that gives the current MAC address of this interface.
+        The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
         """
         return pulumi.get(self, "mac_address")
 
@@ -1701,9 +1582,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="ovfMapping")
     def ovf_mapping(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies which OVF NIC the `network_interface`
-        should be associated with. Only applies at creation and only when deploying
-        from an OVF source.
+        Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
         """
         return pulumi.get(self, "ovf_mapping")
 
@@ -1715,9 +1594,7 @@ class VirtualMachineNetworkInterfaceArgs:
     @pulumi.getter(name="useStaticMac")
     def use_static_mac(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the `mac_address` field is treated as
-        a static MAC address and set accordingly. Setting this to `true` requires
-        `mac_address` to be set. Default: `false`.
+        If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         """
         return pulumi.get(self, "use_static_mac")
 
@@ -1865,8 +1742,7 @@ class VmStoragePolicyTagRuleArgs:
         """
         :param pulumi.Input[str] tag_category: Name of the tag category.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of Name of tags to select from the given category.
-        :param pulumi.Input[bool] include_datastores_with_tags: Whether to include datastores with the given tags or exclude. Default 
-               value is true i.e. include datastores with the given tags.
+        :param pulumi.Input[bool] include_datastores_with_tags: Include datastores with the given tags or exclude. Default `true`.
         """
         pulumi.set(__self__, "tag_category", tag_category)
         pulumi.set(__self__, "tags", tags)
@@ -1901,8 +1777,7 @@ class VmStoragePolicyTagRuleArgs:
     @pulumi.getter(name="includeDatastoresWithTags")
     def include_datastores_with_tags(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to include datastores with the given tags or exclude. Default 
-        value is true i.e. include datastores with the given tags.
+        Include datastores with the given tags or exclude. Default `true`.
         """
         return pulumi.get(self, "include_datastores_with_tags")
 

@@ -111,11 +111,11 @@ class DistributedVirtualSwitchArgs:
                  vsan_share_level: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DistributedVirtualSwitch resource.
-        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
-               virtual switch will be created. Forces a new resource if changed.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
+               created. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: A list of active uplinks to be used in load
                balancing. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
                network adapter is allowed to send network traffic with a different MAC
@@ -134,12 +134,12 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
-               who is responsible for the DVS.
+               who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
-               DVS.
+               VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch.
-        :param pulumi.Input[str] description: A detailed description for the DVS.
+               value strings to set for VDS.
+        :param pulumi.Input[str] description: A detailed description for the VDS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
         :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
@@ -156,8 +156,8 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] faulttolerance_reservation_mbit: The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
         :param pulumi.Input[int] faulttolerance_share_count: The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
         :param pulumi.Input[str] faulttolerance_share_level: The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
-               if changed.
+        :param pulumi.Input[str] folder: The folder in which to create the VDS.
+               Forces a new resource if changed.
         :param pulumi.Input[int] hbr_maximum_mbit: The maximum allowed usage for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
@@ -175,14 +175,13 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
                bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
-               mostly useful when used with the Netflow arguments found
-               below.
+               mostly useful when used with the Netflow arguments.
         :param pulumi.Input[int] iscsi_maximum_mbit: The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_reservation_mbit: The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_share_count: The amount of shares to allocate to the iSCSI traffic class for a custom share level.
         :param pulumi.Input[str] iscsi_share_level: The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
-               version to use with the switch. Possible values are `singleLag` and
+               version to use with the VDS. Possible values are `singleLag` and
                `multipleLag`.
         :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
                applies to.
@@ -195,17 +194,16 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] management_reservation_mbit: The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
         :param pulumi.Input[int] management_share_count: The amount of shares to allocate to the management traffic class for a custom share level.
         :param pulumi.Input[str] management_share_level: The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
-               switch.
+        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the VDS.
         :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
-               with the switch. Can be one of `legacyFiltering` or `snooping`.
-        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+               with the VDS. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
                active flows are forced to be exported to the collector. Allowed range is
                `60` to `3600`. Default: `60`.
         :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
-               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+               collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+               Must be set before Netflow can be enabled.
         :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
                must be set before Netflow can be enabled.
         :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
@@ -220,7 +218,7 @@ class DistributedVirtualSwitchArgs:
                the Netflow collector.
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
-               switch should analyze all packets. The maximum value is `1000`, which
+               VDS should analyze all packets. The maximum value is `1000`, which
                indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
@@ -238,27 +236,26 @@ class DistributedVirtualSwitchArgs:
                private VLAN mapping. The options are:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
-               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-               `failover_explicit`.
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+               `failover_explicit`, or `loadbalance_loadbased`.
         :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
-               this policy applies to its DVS uplinks.
+               this policy applies to its VDS uplinks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uplinks: A list of strings that uniquely identifies the names
-               of the uplinks on the DVS across hosts. The number of items in this list
-               controls the number of uplinks that exist on the DVS, in addition to the
-               names.  See here for an example on how to
+               of the uplinks on the VDS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the VDS, in addition to the
+               names. See here for an example on how to
                use this option.
         :param pulumi.Input[int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
-               create the DVS at the latest version supported by the version of vSphere
-               being used. A DVS can be upgraded to another version, but cannot be
-               downgraded.
+        :param pulumi.Input[str] version: - The version of the VDS. BY default, a VDS is created
+               at the latest version supported by the vSphere version if not specified.
+               A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_reservation_mbit: The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
@@ -469,8 +466,8 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Input[str]:
         """
-        The ID of the datacenter where the distributed
-        virtual switch will be created. Forces a new resource if changed.
+        The ID of the datacenter where the VDS will be
+        created. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
 
@@ -484,7 +481,7 @@ class DistributedVirtualSwitchArgs:
         """
         A list of active uplinks to be used in load
         balancing. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "active_uplinks")
@@ -613,7 +610,7 @@ class DistributedVirtualSwitchArgs:
     def contact_detail(self) -> Optional[pulumi.Input[str]]:
         """
         The detailed contact information for the person
-        who is responsible for the DVS.
+        who is responsible for the VDS.
         """
         return pulumi.get(self, "contact_detail")
 
@@ -626,7 +623,7 @@ class DistributedVirtualSwitchArgs:
     def contact_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the person who is responsible for the
-        DVS.
+        VDS.
         """
         return pulumi.get(self, "contact_name")
 
@@ -639,7 +636,7 @@ class DistributedVirtualSwitchArgs:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for virtual switch.
+        value strings to set for VDS.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -651,7 +648,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A detailed description for the DVS.
+        A detailed description for the VDS.
         """
         return pulumi.get(self, "description")
 
@@ -789,8 +786,8 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[str]]:
         """
-        The folder to create the DVS in. Forces a new resource
-        if changed.
+        The folder in which to create the VDS.
+        Forces a new resource if changed.
         """
         return pulumi.get(self, "folder")
 
@@ -929,8 +926,7 @@ class DistributedVirtualSwitchArgs:
     def ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
         An IPv4 address to identify the switch. This is
-        mostly useful when used with the Netflow arguments found
-        below.
+        mostly useful when used with the Netflow arguments.
         """
         return pulumi.get(self, "ipv4_address")
 
@@ -991,7 +987,7 @@ class DistributedVirtualSwitchArgs:
     def lacp_api_version(self) -> Optional[pulumi.Input[str]]:
         """
         The Link Aggregation Control Protocol group
-        version to use with the switch. Possible values are `singleLag` and
+        version to use with the VDS. Possible values are `singleLag` and
         `multipleLag`.
         """
         return pulumi.get(self, "lacp_api_version")
@@ -1103,8 +1099,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter(name="maxMtu")
     def max_mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum transmission unit (MTU) for the virtual
-        switch.
+        The maximum transmission unit (MTU) for the VDS.
         """
         return pulumi.get(self, "max_mtu")
 
@@ -1117,7 +1112,7 @@ class DistributedVirtualSwitchArgs:
     def multicast_filtering_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The multicast filtering mode to use
-        with the switch. Can be one of `legacyFiltering` or `snooping`.
+        with the VDS. Can be one of `legacyFiltering` or `snooping`.
         """
         return pulumi.get(self, "multicast_filtering_mode")
 
@@ -1129,7 +1124,7 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the distributed virtual switch.
+        The name of the VDS.
         """
         return pulumi.get(self, "name")
 
@@ -1156,8 +1151,8 @@ class DistributedVirtualSwitchArgs:
     def netflow_collector_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         IP address for the Netflow
-        collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        Must be set before Netflow can be enabled.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -1238,7 +1233,7 @@ class DistributedVirtualSwitchArgs:
         """
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
-        switch should analyze all packets. The maximum value is `1000`, which
+        VDS should analyze all packets. The maximum value is `1000`, which
         indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
@@ -1366,7 +1361,7 @@ class DistributedVirtualSwitchArgs:
         """
         A list of standby uplinks to be used in
         failover. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "standby_uplinks")
@@ -1392,8 +1387,8 @@ class DistributedVirtualSwitchArgs:
     def teaming_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The uplink teaming policy. Can be one of
-        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        `failover_explicit`.
+        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        `failover_explicit`, or `loadbalance_loadbased`.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -1406,7 +1401,7 @@ class DistributedVirtualSwitchArgs:
     def tx_uplink(self) -> Optional[pulumi.Input[bool]]:
         """
         Forward all traffic transmitted by ports for which
-        this policy applies to its DVS uplinks.
+        this policy applies to its VDS uplinks.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -1419,9 +1414,9 @@ class DistributedVirtualSwitchArgs:
     def uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of strings that uniquely identifies the names
-        of the uplinks on the DVS across hosts. The number of items in this list
-        controls the number of uplinks that exist on the DVS, in addition to the
-        names.  See here for an example on how to
+        of the uplinks on the VDS across hosts. The number of items in this list
+        controls the number of uplinks that exist on the VDS, in addition to the
+        names. See here for an example on how to
         use this option.
         """
         return pulumi.get(self, "uplinks")
@@ -1482,10 +1477,9 @@ class DistributedVirtualSwitchArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        - The version of the DVS to create. The default is to
-        create the DVS at the latest version supported by the version of vSphere
-        being used. A DVS can be upgraded to another version, but cannot be
-        downgraded.
+        - The version of the VDS. BY default, a VDS is created
+        at the latest version supported by the vSphere version if not specified.
+        A VDS can be upgraded to a newer version, but can not be downgraded.
         """
         return pulumi.get(self, "version")
 
@@ -1767,7 +1761,7 @@ class _DistributedVirtualSwitchState:
         Input properties used for looking up and filtering DistributedVirtualSwitch resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: A list of active uplinks to be used in load
                balancing. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
                network adapter is allowed to send network traffic with a different MAC
@@ -1787,14 +1781,14 @@ class _DistributedVirtualSwitchState:
                to detect NIC failure.
         :param pulumi.Input[str] config_version: The version string of the configuration that this spec is trying to change.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
-               who is responsible for the DVS.
+               who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
-               DVS.
+               VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch.
-        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
-               virtual switch will be created. Forces a new resource if changed.
-        :param pulumi.Input[str] description: A detailed description for the DVS.
+               value strings to set for VDS.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
+               created. Forces a new resource if changed.
+        :param pulumi.Input[str] description: A detailed description for the VDS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
         :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
@@ -1811,8 +1805,8 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] faulttolerance_reservation_mbit: The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
         :param pulumi.Input[int] faulttolerance_share_count: The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
         :param pulumi.Input[str] faulttolerance_share_level: The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
-               if changed.
+        :param pulumi.Input[str] folder: The folder in which to create the VDS.
+               Forces a new resource if changed.
         :param pulumi.Input[int] hbr_maximum_mbit: The maximum allowed usage for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
@@ -1830,14 +1824,13 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
                bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
-               mostly useful when used with the Netflow arguments found
-               below.
+               mostly useful when used with the Netflow arguments.
         :param pulumi.Input[int] iscsi_maximum_mbit: The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_reservation_mbit: The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_share_count: The amount of shares to allocate to the iSCSI traffic class for a custom share level.
         :param pulumi.Input[str] iscsi_share_level: The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
-               version to use with the switch. Possible values are `singleLag` and
+               version to use with the VDS. Possible values are `singleLag` and
                `multipleLag`.
         :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
                applies to.
@@ -1850,17 +1843,16 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] management_reservation_mbit: The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
         :param pulumi.Input[int] management_share_count: The amount of shares to allocate to the management traffic class for a custom share level.
         :param pulumi.Input[str] management_share_level: The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
-               switch.
+        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the VDS.
         :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
-               with the switch. Can be one of `legacyFiltering` or `snooping`.
-        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+               with the VDS. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
                active flows are forced to be exported to the collector. Allowed range is
                `60` to `3600`. Default: `60`.
         :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
-               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+               collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+               Must be set before Netflow can be enabled.
         :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
                must be set before Netflow can be enabled.
         :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
@@ -1875,7 +1867,7 @@ class _DistributedVirtualSwitchState:
                the Netflow collector.
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
-               switch should analyze all packets. The maximum value is `1000`, which
+               VDS should analyze all packets. The maximum value is `1000`, which
                indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
@@ -1893,27 +1885,26 @@ class _DistributedVirtualSwitchState:
                private VLAN mapping. The options are:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
-               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-               `failover_explicit`.
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+               `failover_explicit`, or `loadbalance_loadbased`.
         :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
-               this policy applies to its DVS uplinks.
+               this policy applies to its VDS uplinks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uplinks: A list of strings that uniquely identifies the names
-               of the uplinks on the DVS across hosts. The number of items in this list
-               controls the number of uplinks that exist on the DVS, in addition to the
-               names.  See here for an example on how to
+               of the uplinks on the VDS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the VDS, in addition to the
+               names. See here for an example on how to
                use this option.
         :param pulumi.Input[int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
-               create the DVS at the latest version supported by the version of vSphere
-               being used. A DVS can be upgraded to another version, but cannot be
-               downgraded.
+        :param pulumi.Input[str] version: - The version of the VDS. BY default, a VDS is created
+               at the latest version supported by the vSphere version if not specified.
+               A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_reservation_mbit: The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
@@ -2129,7 +2120,7 @@ class _DistributedVirtualSwitchState:
         """
         A list of active uplinks to be used in load
         balancing. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "active_uplinks")
@@ -2270,7 +2261,7 @@ class _DistributedVirtualSwitchState:
     def contact_detail(self) -> Optional[pulumi.Input[str]]:
         """
         The detailed contact information for the person
-        who is responsible for the DVS.
+        who is responsible for the VDS.
         """
         return pulumi.get(self, "contact_detail")
 
@@ -2283,7 +2274,7 @@ class _DistributedVirtualSwitchState:
     def contact_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the person who is responsible for the
-        DVS.
+        VDS.
         """
         return pulumi.get(self, "contact_name")
 
@@ -2296,7 +2287,7 @@ class _DistributedVirtualSwitchState:
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for virtual switch.
+        value strings to set for VDS.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -2308,8 +2299,8 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the datacenter where the distributed
-        virtual switch will be created. Forces a new resource if changed.
+        The ID of the datacenter where the VDS will be
+        created. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
 
@@ -2321,7 +2312,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A detailed description for the DVS.
+        A detailed description for the VDS.
         """
         return pulumi.get(self, "description")
 
@@ -2459,8 +2450,8 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def folder(self) -> Optional[pulumi.Input[str]]:
         """
-        The folder to create the DVS in. Forces a new resource
-        if changed.
+        The folder in which to create the VDS.
+        Forces a new resource if changed.
         """
         return pulumi.get(self, "folder")
 
@@ -2599,8 +2590,7 @@ class _DistributedVirtualSwitchState:
     def ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
         An IPv4 address to identify the switch. This is
-        mostly useful when used with the Netflow arguments found
-        below.
+        mostly useful when used with the Netflow arguments.
         """
         return pulumi.get(self, "ipv4_address")
 
@@ -2661,7 +2651,7 @@ class _DistributedVirtualSwitchState:
     def lacp_api_version(self) -> Optional[pulumi.Input[str]]:
         """
         The Link Aggregation Control Protocol group
-        version to use with the switch. Possible values are `singleLag` and
+        version to use with the VDS. Possible values are `singleLag` and
         `multipleLag`.
         """
         return pulumi.get(self, "lacp_api_version")
@@ -2773,8 +2763,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter(name="maxMtu")
     def max_mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum transmission unit (MTU) for the virtual
-        switch.
+        The maximum transmission unit (MTU) for the VDS.
         """
         return pulumi.get(self, "max_mtu")
 
@@ -2787,7 +2776,7 @@ class _DistributedVirtualSwitchState:
     def multicast_filtering_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The multicast filtering mode to use
-        with the switch. Can be one of `legacyFiltering` or `snooping`.
+        with the VDS. Can be one of `legacyFiltering` or `snooping`.
         """
         return pulumi.get(self, "multicast_filtering_mode")
 
@@ -2799,7 +2788,7 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the distributed virtual switch.
+        The name of the VDS.
         """
         return pulumi.get(self, "name")
 
@@ -2826,8 +2815,8 @@ class _DistributedVirtualSwitchState:
     def netflow_collector_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         IP address for the Netflow
-        collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        Must be set before Netflow can be enabled.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -2908,7 +2897,7 @@ class _DistributedVirtualSwitchState:
         """
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
-        switch should analyze all packets. The maximum value is `1000`, which
+        VDS should analyze all packets. The maximum value is `1000`, which
         indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
@@ -3036,7 +3025,7 @@ class _DistributedVirtualSwitchState:
         """
         A list of standby uplinks to be used in
         failover. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "standby_uplinks")
@@ -3062,8 +3051,8 @@ class _DistributedVirtualSwitchState:
     def teaming_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The uplink teaming policy. Can be one of
-        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        `failover_explicit`.
+        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        `failover_explicit`, or `loadbalance_loadbased`.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -3076,7 +3065,7 @@ class _DistributedVirtualSwitchState:
     def tx_uplink(self) -> Optional[pulumi.Input[bool]]:
         """
         Forward all traffic transmitted by ports for which
-        this policy applies to its DVS uplinks.
+        this policy applies to its VDS uplinks.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -3089,9 +3078,9 @@ class _DistributedVirtualSwitchState:
     def uplinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of strings that uniquely identifies the names
-        of the uplinks on the DVS across hosts. The number of items in this list
-        controls the number of uplinks that exist on the DVS, in addition to the
-        names.  See here for an example on how to
+        of the uplinks on the VDS across hosts. The number of items in this list
+        controls the number of uplinks that exist on the VDS, in addition to the
+        names. See here for an example on how to
         use this option.
         """
         return pulumi.get(self, "uplinks")
@@ -3152,10 +3141,9 @@ class _DistributedVirtualSwitchState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        - The version of the DVS to create. The default is to
-        create the DVS at the latest version supported by the version of vSphere
-        being used. A DVS can be upgraded to another version, but cannot be
-        downgraded.
+        - The version of the VDS. BY default, a VDS is created
+        at the latest version supported by the vSphere version if not specified.
+        A VDS can be upgraded to a newer version, but can not be downgraded.
         """
         return pulumi.get(self, "version")
 
@@ -3441,7 +3429,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: A list of active uplinks to be used in load
                balancing. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
                network adapter is allowed to send network traffic with a different MAC
@@ -3460,14 +3448,14 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
-               who is responsible for the DVS.
+               who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
-               DVS.
+               VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch.
-        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
-               virtual switch will be created. Forces a new resource if changed.
-        :param pulumi.Input[str] description: A detailed description for the DVS.
+               value strings to set for VDS.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
+               created. Forces a new resource if changed.
+        :param pulumi.Input[str] description: A detailed description for the VDS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
         :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
@@ -3484,8 +3472,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] faulttolerance_reservation_mbit: The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
         :param pulumi.Input[int] faulttolerance_share_count: The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
         :param pulumi.Input[str] faulttolerance_share_level: The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
-               if changed.
+        :param pulumi.Input[str] folder: The folder in which to create the VDS.
+               Forces a new resource if changed.
         :param pulumi.Input[int] hbr_maximum_mbit: The maximum allowed usage for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
@@ -3503,14 +3491,13 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
                bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
-               mostly useful when used with the Netflow arguments found
-               below.
+               mostly useful when used with the Netflow arguments.
         :param pulumi.Input[int] iscsi_maximum_mbit: The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_reservation_mbit: The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_share_count: The amount of shares to allocate to the iSCSI traffic class for a custom share level.
         :param pulumi.Input[str] iscsi_share_level: The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
-               version to use with the switch. Possible values are `singleLag` and
+               version to use with the VDS. Possible values are `singleLag` and
                `multipleLag`.
         :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
                applies to.
@@ -3523,17 +3510,16 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] management_reservation_mbit: The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
         :param pulumi.Input[int] management_share_count: The amount of shares to allocate to the management traffic class for a custom share level.
         :param pulumi.Input[str] management_share_level: The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
-               switch.
+        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the VDS.
         :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
-               with the switch. Can be one of `legacyFiltering` or `snooping`.
-        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+               with the VDS. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
                active flows are forced to be exported to the collector. Allowed range is
                `60` to `3600`. Default: `60`.
         :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
-               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+               collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+               Must be set before Netflow can be enabled.
         :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
                must be set before Netflow can be enabled.
         :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
@@ -3548,7 +3534,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                the Netflow collector.
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
-               switch should analyze all packets. The maximum value is `1000`, which
+               VDS should analyze all packets. The maximum value is `1000`, which
                indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
@@ -3566,27 +3552,26 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                private VLAN mapping. The options are:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
-               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-               `failover_explicit`.
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+               `failover_explicit`, or `loadbalance_loadbased`.
         :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
-               this policy applies to its DVS uplinks.
+               this policy applies to its VDS uplinks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uplinks: A list of strings that uniquely identifies the names
-               of the uplinks on the DVS across hosts. The number of items in this list
-               controls the number of uplinks that exist on the DVS, in addition to the
-               names.  See here for an example on how to
+               of the uplinks on the VDS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the VDS, in addition to the
+               names. See here for an example on how to
                use this option.
         :param pulumi.Input[int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
-               create the DVS at the latest version supported by the version of vSphere
-               being used. A DVS can be upgraded to another version, but cannot be
-               downgraded.
+        :param pulumi.Input[str] version: - The version of the VDS. BY default, a VDS is created
+               at the latest version supported by the vSphere version if not specified.
+               A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_reservation_mbit: The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
@@ -3945,7 +3930,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_uplinks: A list of active uplinks to be used in load
                balancing. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[bool] allow_forged_transmits: Controls whether or not a virtual
                network adapter is allowed to send network traffic with a different MAC
@@ -3965,14 +3950,14 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                to detect NIC failure.
         :param pulumi.Input[str] config_version: The version string of the configuration that this spec is trying to change.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
-               who is responsible for the DVS.
+               who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
-               DVS.
+               VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
-               value strings to set for virtual switch.
-        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the distributed
-               virtual switch will be created. Forces a new resource if changed.
-        :param pulumi.Input[str] description: A detailed description for the DVS.
+               value strings to set for VDS.
+        :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
+               created. Forces a new resource if changed.
+        :param pulumi.Input[str] description: A detailed description for the VDS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
         :param pulumi.Input[int] egress_shaping_average_bandwidth: The average bandwidth in bits
@@ -3989,8 +3974,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] faulttolerance_reservation_mbit: The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
         :param pulumi.Input[int] faulttolerance_share_count: The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
         :param pulumi.Input[str] faulttolerance_share_level: The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] folder: The folder to create the DVS in. Forces a new resource
-               if changed.
+        :param pulumi.Input[str] folder: The folder in which to create the VDS.
+               Forces a new resource if changed.
         :param pulumi.Input[int] hbr_maximum_mbit: The maximum allowed usage for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_reservation_mbit: The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
         :param pulumi.Input[int] hbr_share_count: The amount of shares to allocate to the hbr traffic class for a custom share level.
@@ -4008,14 +3993,13 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] ingress_shaping_peak_bandwidth: The peak bandwidth during
                bursts in bits per second if ingress traffic shaping is enabled on the port.
         :param pulumi.Input[str] ipv4_address: An IPv4 address to identify the switch. This is
-               mostly useful when used with the Netflow arguments found
-               below.
+               mostly useful when used with the Netflow arguments.
         :param pulumi.Input[int] iscsi_maximum_mbit: The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_reservation_mbit: The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
         :param pulumi.Input[int] iscsi_share_count: The amount of shares to allocate to the iSCSI traffic class for a custom share level.
         :param pulumi.Input[str] iscsi_share_level: The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
         :param pulumi.Input[str] lacp_api_version: The Link Aggregation Control Protocol group
-               version to use with the switch. Possible values are `singleLag` and
+               version to use with the VDS. Possible values are `singleLag` and
                `multipleLag`.
         :param pulumi.Input[bool] lacp_enabled: Enables LACP for the ports that this policy
                applies to.
@@ -4028,17 +4012,16 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         :param pulumi.Input[int] management_reservation_mbit: The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
         :param pulumi.Input[int] management_share_count: The amount of shares to allocate to the management traffic class for a custom share level.
         :param pulumi.Input[str] management_share_level: The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the virtual
-               switch.
+        :param pulumi.Input[int] max_mtu: The maximum transmission unit (MTU) for the VDS.
         :param pulumi.Input[str] multicast_filtering_mode: The multicast filtering mode to use
-               with the switch. Can be one of `legacyFiltering` or `snooping`.
-        :param pulumi.Input[str] name: The name of the distributed virtual switch.
+               with the VDS. Can be one of `legacyFiltering` or `snooping`.
+        :param pulumi.Input[str] name: The name of the VDS.
         :param pulumi.Input[int] netflow_active_flow_timeout: The number of seconds after which
                active flows are forced to be exported to the collector. Allowed range is
                `60` to `3600`. Default: `60`.
         :param pulumi.Input[str] netflow_collector_ip_address: IP address for the Netflow
-               collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-               Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+               collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+               Must be set before Netflow can be enabled.
         :param pulumi.Input[int] netflow_collector_port: Port for the Netflow collector. This
                must be set before Netflow can be enabled.
         :param pulumi.Input[bool] netflow_enabled: Enables Netflow on all ports that this policy
@@ -4053,7 +4036,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                the Netflow collector.
         :param pulumi.Input[int] netflow_sampling_rate: The ratio of total number of packets to
                the number of packets analyzed. The default is `0`, which indicates that the
-               switch should analyze all packets. The maximum value is `1000`, which
+               VDS should analyze all packets. The maximum value is `1000`, which
                indicates an analysis rate of 0.001%.
         :param pulumi.Input[bool] network_resource_control_enabled: Set to `true` to enable
                network I/O control. Default: `false`.
@@ -4071,27 +4054,26 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                private VLAN mapping. The options are:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] standby_uplinks: A list of standby uplinks to be used in
                failover. These uplinks need to match the definitions in the
-               `uplinks` DVS argument. See
+               `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
-               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-               `failover_explicit`.
+               `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+               `failover_explicit`, or `loadbalance_loadbased`.
         :param pulumi.Input[bool] tx_uplink: Forward all traffic transmitted by ports for which
-               this policy applies to its DVS uplinks.
+               this policy applies to its VDS uplinks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uplinks: A list of strings that uniquely identifies the names
-               of the uplinks on the DVS across hosts. The number of items in this list
-               controls the number of uplinks that exist on the DVS, in addition to the
-               names.  See here for an example on how to
+               of the uplinks on the VDS across hosts. The number of items in this list
+               controls the number of uplinks that exist on the VDS, in addition to the
+               names. See here for an example on how to
                use this option.
         :param pulumi.Input[int] vdp_maximum_mbit: The maximum allowed usage for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_reservation_mbit: The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
         :param pulumi.Input[int] vdp_share_count: The amount of shares to allocate to the vdp traffic class for a custom share level.
         :param pulumi.Input[str] vdp_share_level: The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
-        :param pulumi.Input[str] version: - The version of the DVS to create. The default is to
-               create the DVS at the latest version supported by the version of vSphere
-               being used. A DVS can be upgraded to another version, but cannot be
-               downgraded.
+        :param pulumi.Input[str] version: - The version of the VDS. BY default, a VDS is created
+               at the latest version supported by the vSphere version if not specified.
+               A VDS can be upgraded to a newer version, but can not be downgraded.
         :param pulumi.Input[int] virtualmachine_maximum_mbit: The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_reservation_mbit: The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
         :param pulumi.Input[int] virtualmachine_share_count: The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
@@ -4217,7 +4199,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         A list of active uplinks to be used in load
         balancing. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "active_uplinks")
@@ -4314,7 +4296,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def contact_detail(self) -> pulumi.Output[Optional[str]]:
         """
         The detailed contact information for the person
-        who is responsible for the DVS.
+        who is responsible for the VDS.
         """
         return pulumi.get(self, "contact_detail")
 
@@ -4323,7 +4305,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def contact_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the person who is responsible for the
-        DVS.
+        VDS.
         """
         return pulumi.get(self, "contact_name")
 
@@ -4332,7 +4314,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of custom attribute ids to attribute
-        value strings to set for virtual switch.
+        value strings to set for VDS.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -4340,8 +4322,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="datacenterId")
     def datacenter_id(self) -> pulumi.Output[str]:
         """
-        The ID of the datacenter where the distributed
-        virtual switch will be created. Forces a new resource if changed.
+        The ID of the datacenter where the VDS will be
+        created. Forces a new resource if changed.
         """
         return pulumi.get(self, "datacenter_id")
 
@@ -4349,7 +4331,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A detailed description for the DVS.
+        A detailed description for the VDS.
         """
         return pulumi.get(self, "description")
 
@@ -4443,8 +4425,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def folder(self) -> pulumi.Output[Optional[str]]:
         """
-        The folder to create the DVS in. Forces a new resource
-        if changed.
+        The folder in which to create the VDS.
+        Forces a new resource if changed.
         """
         return pulumi.get(self, "folder")
 
@@ -4539,8 +4521,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def ipv4_address(self) -> pulumi.Output[Optional[str]]:
         """
         An IPv4 address to identify the switch. This is
-        mostly useful when used with the Netflow arguments found
-        below.
+        mostly useful when used with the Netflow arguments.
         """
         return pulumi.get(self, "ipv4_address")
 
@@ -4581,7 +4562,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def lacp_api_version(self) -> pulumi.Output[str]:
         """
         The Link Aggregation Control Protocol group
-        version to use with the switch. Possible values are `singleLag` and
+        version to use with the VDS. Possible values are `singleLag` and
         `multipleLag`.
         """
         return pulumi.get(self, "lacp_api_version")
@@ -4657,8 +4638,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter(name="maxMtu")
     def max_mtu(self) -> pulumi.Output[int]:
         """
-        The maximum transmission unit (MTU) for the virtual
-        switch.
+        The maximum transmission unit (MTU) for the VDS.
         """
         return pulumi.get(self, "max_mtu")
 
@@ -4667,7 +4647,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def multicast_filtering_mode(self) -> pulumi.Output[str]:
         """
         The multicast filtering mode to use
-        with the switch. Can be one of `legacyFiltering` or `snooping`.
+        with the VDS. Can be one of `legacyFiltering` or `snooping`.
         """
         return pulumi.get(self, "multicast_filtering_mode")
 
@@ -4675,7 +4655,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the distributed virtual switch.
+        The name of the VDS.
         """
         return pulumi.get(self, "name")
 
@@ -4694,8 +4674,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def netflow_collector_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         IP address for the Netflow
-        collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        Must be set before Netflow can be enabled.
         """
         return pulumi.get(self, "netflow_collector_ip_address")
 
@@ -4752,7 +4732,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         The ratio of total number of packets to
         the number of packets analyzed. The default is `0`, which indicates that the
-        switch should analyze all packets. The maximum value is `1000`, which
+        VDS should analyze all packets. The maximum value is `1000`, which
         indicates an analysis rate of 0.001%.
         """
         return pulumi.get(self, "netflow_sampling_rate")
@@ -4840,7 +4820,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         A list of standby uplinks to be used in
         failover. These uplinks need to match the definitions in the
-        `uplinks` DVS argument. See
+        `uplinks` VDS argument. See
         here for more details.
         """
         return pulumi.get(self, "standby_uplinks")
@@ -4858,8 +4838,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def teaming_policy(self) -> pulumi.Output[str]:
         """
         The uplink teaming policy. Can be one of
-        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        `failover_explicit`.
+        `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        `failover_explicit`, or `loadbalance_loadbased`.
         """
         return pulumi.get(self, "teaming_policy")
 
@@ -4868,7 +4848,7 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def tx_uplink(self) -> pulumi.Output[bool]:
         """
         Forward all traffic transmitted by ports for which
-        this policy applies to its DVS uplinks.
+        this policy applies to its VDS uplinks.
         """
         return pulumi.get(self, "tx_uplink")
 
@@ -4877,9 +4857,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def uplinks(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of strings that uniquely identifies the names
-        of the uplinks on the DVS across hosts. The number of items in this list
-        controls the number of uplinks that exist on the DVS, in addition to the
-        names.  See here for an example on how to
+        of the uplinks on the VDS across hosts. The number of items in this list
+        controls the number of uplinks that exist on the VDS, in addition to the
+        names. See here for an example on how to
         use this option.
         """
         return pulumi.get(self, "uplinks")
@@ -4920,10 +4900,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        - The version of the DVS to create. The default is to
-        create the DVS at the latest version supported by the version of vSphere
-        being used. A DVS can be upgraded to another version, but cannot be
-        downgraded.
+        - The version of the VDS. BY default, a VDS is created
+        at the latest version supported by the vSphere version if not specified.
+        A VDS can be upgraded to a newer version, but can not be downgraded.
         """
         return pulumi.get(self, "version")
 

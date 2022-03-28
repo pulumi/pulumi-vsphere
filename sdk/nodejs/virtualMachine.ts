@@ -34,271 +34,187 @@ export class VirtualMachine extends pulumi.CustomResource {
     }
 
     /**
-     * The guest name for the operating system
-     * when `guestId` is `other` or `other-64`.
+     * The guest name for the operating system when `guestId` is `otherGuest` or `otherGuest64`.
      */
     public readonly alternateGuestName!: pulumi.Output<string | undefined>;
     /**
-     * A user-provided description of the virtual machine.
-     * The default is no annotation.
+     * A user-provided description of the virtual machine. The default is no annotation.
      */
-    public readonly annotation!: pulumi.Output<string | undefined>;
+    public readonly annotation!: pulumi.Output<string>;
     /**
-     * The number of milliseconds to wait before starting
-     * the boot sequence. The default is no delay.
+     * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
      */
     public readonly bootDelay!: pulumi.Output<number | undefined>;
     /**
-     * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
-     * Default: `10000` (10 seconds).
+     * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `bootRetryEnabled` is `true`. Default: `10000` (10 seconds).
      */
     public readonly bootRetryDelay!: pulumi.Output<number | undefined>;
     /**
-     * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `bootRetryDelay`.
-     * Default: `false`.
+     * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `bootRetryDelay`. Default: `false`.
      */
     public readonly bootRetryEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * A specification for a CDROM device on this virtual
-     * machine. See CDROM options below.
+     * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
     public readonly cdrom!: pulumi.Output<outputs.VirtualMachineCdrom | undefined>;
     /**
-     * A unique identifier for a given version of the last
-     * configuration applied, such the timestamp of the last update to the
-     * configuration.
+     * A unique identifier for a given version of the last configuration was applied.
      */
     public /*out*/ readonly changeVersion!: pulumi.Output<string>;
     /**
-     * When specified, the VM will be created as a clone of a
-     * specified template. Optional customization options can be submitted as well.
-     * See creating a virtual machine from a
-     * template for more details.
+     * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
      */
     public readonly clone!: pulumi.Output<outputs.VirtualMachineClone | undefined>;
     /**
-     * Allow CPUs to be added to this virtual
-     * machine while it is running.
+     * Allow CPUs to be added to the virtual machine while it is powered on.
      */
     public readonly cpuHotAddEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Allow CPUs to be removed to this
-     * virtual machine while it is running.
+     * Allow CPUs to be removed to the virtual machine while it is powered on.
      */
     public readonly cpuHotRemoveEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum amount of CPU (in MHz) that this virtual
-     * machine can consume, regardless of available resources. The default is no
-     * limit.
+     * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
      */
     public readonly cpuLimit!: pulumi.Output<number | undefined>;
     /**
-     * Enable CPU performance
-     * counters on this virtual machine. Default: `false`.
+     * Enable CPU performance counters on the virtual machine. Default: `false`.
      */
     public readonly cpuPerformanceCountersEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of CPU (in MHz) that this virtual
-     * machine is guaranteed. The default is no reservation.
+     * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
      */
     public readonly cpuReservation!: pulumi.Output<number | undefined>;
     /**
-     * The number of CPU shares allocated to the
-     * virtual machine when the `cpuShareLevel` is `custom`.
+     * The number of CPU shares allocated to the virtual machine when the `cpuShareLevel` is `custom`.
      */
     public readonly cpuShareCount!: pulumi.Output<number>;
     /**
-     * The allocation level for CPU resources. Can be
-     * one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
-     * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The datacenter id. Required only when deploying
-     * an ovf template.
+     * The datacenter ID. Required only when deploying an OVF/OVA template.
      */
     public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
-     * The managed object reference
-     * ID of the datastore cluster ID to use. This setting
-     * applies to entire virtual machine and implies that you wish to use Storage
-     * DRS with this virtual machine. See the section on virtual machine
-     * migration for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * The IP address selected by the provider to be used with
-     * any provisioners configured on this resource.
-     * Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * The IP address selected by Terraform to be used for the provisioner.
      */
     public /*out*/ readonly defaultIpAddress!: pulumi.Output<string>;
     /**
-     * A specification for a virtual disk device on this virtual
-     * machine. See disk options below.
+     * A specification for a virtual disk device on the virtual machine. See disk options for more information.
      */
     public readonly disks!: pulumi.Output<outputs.VirtualMachineDisk[]>;
     /**
-     * When the `firmware` type is set to is
-     * `efi`, this enables EFI secure boot. Default: `false`.
+     * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
      */
     public readonly efiSecureBootEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Expose the UUIDs of attached virtual disks to
-     * the virtual machine, allowing access to them in the guest. Default: `false`.
+     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
      */
     public readonly enableDiskUuid!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable logging of virtual machine events to a
-     * log file stored in the virtual machine directory. Default: `false`.
+     * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
-     * The EPT/RVI (hardware memory virtualization)
-     * setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
-     * Default: `automatic`.
+     * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
      */
     public readonly eptRviMode!: pulumi.Output<string | undefined>;
     /**
-     * Extra configuration data for this virtual
-     * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata.
+     * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The firmware interface to use on the virtual machine.
-     * Can be one of `bios` or `EFI`. Default: `bios`.
+     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
      */
     public readonly firmware!: pulumi.Output<string | undefined>;
     /**
-     * The path to the folder to put this virtual machine in,
-     * relative to the datacenter that the resource pool is in.
+     * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
-     * If a guest shutdown failed or timed out while
-     * updating or destroying (see
-     * `shutdownWaitTimeout`), force the power-off of
-     * the virtual machine. Default: `true`.
+     * If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
      */
     public readonly forcePowerOff!: pulumi.Output<boolean | undefined>;
     /**
-     * The guest ID for the operating system type. For a
-     * full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
+     * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
      */
     public readonly guestId!: pulumi.Output<string>;
     /**
-     * The current list of IP addresses on this machine,
-     * including the value of `defaultIpAddress`. If VMware tools is not running
-     * on the virtual machine, or if the VM is powered off, this list will be empty.
-     * * `moid`: The managed object reference ID of the created
-     * virtual machine.
+     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
      */
     public /*out*/ readonly guestIpAddresses!: pulumi.Output<string[]>;
     /**
-     * The hardware version number. Valid range
-     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
-     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
-     * more details.
+     * The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
      */
     public readonly hardwareVersion!: pulumi.Output<number>;
     /**
-     * An optional managed object reference
-     * ID of a host to put this virtual machine on. See the
-     * section on virtual machine migration for
-     * details on changing this value. If a `hostSystemId` is not supplied,
-     * vSphere will select a host in the resource pool to place the virtual machine,
-     * according to any defaults or DRS policies in place.
+     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     public readonly hostSystemId!: pulumi.Output<string>;
     /**
-     * The (non-nested) hardware virtualization setting for
-     * this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
-     * `hvAuto`.
+     * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
      */
     public readonly hvMode!: pulumi.Output<string | undefined>;
     /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
      */
     public readonly ideControllerCount!: pulumi.Output<number | undefined>;
     /**
-     * List of IP addresses and CIDR networks to
-     * ignore while waiting for an available IP address using either of the waiters.
-     * Any IP addresses in this list will be ignored if they show up so that the
-     * waiter will continue to wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
      */
     public readonly ignoredGuestIps!: pulumi.Output<string[] | undefined>;
     /**
-     * This is flagged if the virtual machine has been imported, or the
-     * state has been migrated from a previous version of the resource. It
-     * influences the behavior of the first post-import apply operation. See the
-     * section on importing below.
+     * Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
      */
     public /*out*/ readonly imported!: pulumi.Output<boolean>;
     /**
-     * Controls the scheduling delay of the
-     * virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that
-     * require frequent access to mouse or keyboard devices. Can be one of `low`,
-     * `normal`, `medium`, or `high`.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
      */
     public readonly latencySensitivity!: pulumi.Output<string | undefined>;
     /**
-     * The size of the virtual machine's memory, in MB.
-     * Default: `1024` (1 GB).
+     * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
      */
     public readonly memory!: pulumi.Output<number | undefined>;
     /**
-     * Allow memory to be added to this
-     * virtual machine while it is running.
+     * Allow memory to be added to the virtual machine while it is powered on.
      */
     public readonly memoryHotAddEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum amount of memory (in MB) that this
-     * virtual machine can consume, regardless of available resources. The default
-     * is no limit.
+     * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
      */
     public readonly memoryLimit!: pulumi.Output<number | undefined>;
     /**
-     * The amount of memory (in MB) that this
-     * virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
      */
     public readonly memoryReservation!: pulumi.Output<number | undefined>;
     /**
-     * The number of memory shares allocated to
-     * the virtual machine when the `memoryShareLevel` is `custom`.
+     * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     public readonly memoryShareCount!: pulumi.Output<number>;
     /**
-     * The allocation level for memory resources.
-     * Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     public readonly memoryShareLevel!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a virtual machine migration to complete before failing. Default: 10
-     * minutes. Also see the section on virtual machine
-     * migration.
+     * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
      */
     public readonly migrateWaitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The machine object ID from VMWare
+     * The machine object ID from VMware vSphere.
      */
     public /*out*/ readonly moid!: pulumi.Output<string>;
     /**
@@ -306,214 +222,154 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Enable nested hardware virtualization on
-     * this virtual machine, facilitating nested virtualization in the guest.
-     * Default: `false`.
+     * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
      */
     public readonly nestedHvEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * A specification for a virtual NIC on this
-     * virtual machine. See network interface options
-     * below.
+     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.VirtualMachineNetworkInterface[] | undefined>;
     /**
-     * The number of cores per socket in this
-     * virtual machine. The number of vCPUs on the virtual machine will be
-     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
-     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `numCpus` divided by `numCoresPerSocket`. If specified, the value supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     public readonly numCoresPerSocket!: pulumi.Output<number | undefined>;
     /**
-     * The total number of virtual processor cores to assign
-     * to this virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
      */
     public readonly numCpus!: pulumi.Output<number | undefined>;
     /**
-     * When specified, the VM will be deployed from the
-     * provided ovf/ova template. See creating a virtual machine from a
-     * ovf/ova template for more details.
+     * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
      */
     public readonly ovfDeploy!: pulumi.Output<outputs.VirtualMachineOvfDeploy | undefined>;
     /**
-     * List of host PCI device IDs to create PCI
-     * passthroughs for.
+     * List of host PCI device IDs in which to create PCI passthroughs.
      */
     public readonly pciDeviceIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
+     */
+    public /*out*/ readonly powerState!: pulumi.Output<string>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     public readonly poweronTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Value internal to the provider used to determine if a
-     * configuration set change requires a reboot. This value is only useful during
-     * an update process and gets reset on refresh.
+     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
     public /*out*/ readonly rebootRequired!: pulumi.Output<boolean>;
     /**
      * Triggers replacement of resource whenever it changes.
-     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
-     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
-     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
      */
     public readonly replaceTrigger!: pulumi.Output<string | undefined>;
     /**
-     * The managed object reference
-     * ID of the resource pool to put this virtual machine in.
-     * See the section on virtual machine migration
-     * for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     public readonly resourcePoolId!: pulumi.Output<string>;
     /**
-     * Enable the execution of
-     * post-power-on scripts when VMware tools is installed. Default: `true`.
+     * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
      */
     public readonly runToolsScriptsAfterPowerOn!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the execution of
-     * post-resume scripts when VMware tools is installed. Default: `true`.
+     * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
      */
     public readonly runToolsScriptsAfterResume!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the execution of
-     * pre-reboot scripts when VMware tools is installed. Default: `false`.
+     * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
      */
     public readonly runToolsScriptsBeforeGuestReboot!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the execution
-     * of pre-shutdown scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
      */
     public readonly runToolsScriptsBeforeGuestShutdown!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the execution of
-     * pre-standby scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
      */
     public readonly runToolsScriptsBeforeGuestStandby!: pulumi.Output<boolean | undefined>;
     /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
      */
     public readonly sataControllerCount!: pulumi.Output<number | undefined>;
     /**
-     * Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
+     * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
      */
     public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
     /**
-     * The number of SCSI controllers that
-     * this provider manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
      */
     public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
     /**
-     * The type of SCSI bus this virtual machine will have.
-     * Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
-     * pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
+     * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
      */
     public readonly scsiType!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
-     * after this timeout, otherwise an error is returned. Default: 3 minutes.
+     * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
      */
     public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The UUID of the storage policy to assign to this disk.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     public readonly storagePolicyId!: pulumi.Output<string>;
     /**
-     * The swap file placement policy for this
-     * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
-     * Default: `inherit`.
+     * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
      */
     public readonly swapPlacementPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Enable guest clock synchronization with the host.
-     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
-     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
-     * Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
      */
     public readonly syncTimeWithHost!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable periodic clock
-     * synchronization with the host. Supported only on vSphere 7 U1 and above.
-     * On older versions setting `syncTimeWithHost` is enough for periodic
-     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
      */
     public readonly syncTimeWithHostPeriodically!: pulumi.Output<boolean | undefined>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The UUID of the virtual disk's VMDK file. This is used to track the
-     * virtual disk on the virtual machine.
+     * Enable automatic upgrade of the VMware Tools
+     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
+     * to the latest version supported by the host on which the virtual machine is running.
+     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     */
+    public readonly toolsUpgradePolicy!: pulumi.Output<string | undefined>;
+    /**
+     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * Optional vApp configuration. The only sub-key available
-     * is `properties`, which is a key/value map of properties for virtual machines
-     * imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
-     * configuration for
-     * more details.
+     * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
      */
     public readonly vapp!: pulumi.Output<outputs.VirtualMachineVapp | undefined>;
     /**
-     * Computed value which is only valid for cloned virtual
-     * machines. A list of vApp transport methods supported by the source virtual
-     * machine or template.
+     * Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
      */
     public /*out*/ readonly vappTransports!: pulumi.Output<string[]>;
     /**
-     * Enable Virtualization Based Security. Requires
-     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
-     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
-     * vSphere 6.7 and higher. Default: `false`.
+     * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtdEnabled`, `nestedHvEnabled`, and `efiSecureBootEnabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
      */
     public readonly vbsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The state of VMware tools in the guest. This will
-     * determine the proper course of action for some device operations.
+     * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      */
     public /*out*/ readonly vmwareToolsStatus!: pulumi.Output<string>;
     /**
-     * The path of the virtual machine's configuration file in the VM's
-     * datastore.
+     * The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
      */
     public /*out*/ readonly vmxPath!: pulumi.Output<string>;
     /**
-     * Flag to specify if Intel Virtualization Technology 
-     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
-     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
      */
     public readonly vvtdEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available guest IP address on this virtual machine. This should
-     * only be used if your version of VMware Tools does not allow the
-     * `waitForGuestNetTimeout` waiter to be
-     * used. A value less than 1 disables the waiter. Default: 0.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `waitForGuestNetTimeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
      */
     public readonly waitForGuestIpTimeout!: pulumi.Output<number | undefined>;
     /**
-     * Controls whether or not the guest
-     * network waiter waits for a routable address. When `false`, the waiter does
-     * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `waitForGuestIpTimeout`
-     * waiter is used. Default: `true`.
+     * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `waitForGuestIpTimeout` waiter is used. Default: `true`.
      */
     public readonly waitForGuestNetRoutable!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine's NICs. Older
-     * versions of VMware Tools do not populate this property. In those cases, this
-     * waiter can be disabled and the
-     * `waitForGuestIpTimeout` waiter can be used
-     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `waitForGuestIpTimeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
      */
     public readonly waitForGuestNetTimeout!: pulumi.Output<number | undefined>;
 
@@ -583,6 +439,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["numCpus"] = state ? state.numCpus : undefined;
             resourceInputs["ovfDeploy"] = state ? state.ovfDeploy : undefined;
             resourceInputs["pciDeviceIds"] = state ? state.pciDeviceIds : undefined;
+            resourceInputs["powerState"] = state ? state.powerState : undefined;
             resourceInputs["poweronTimeout"] = state ? state.poweronTimeout : undefined;
             resourceInputs["rebootRequired"] = state ? state.rebootRequired : undefined;
             resourceInputs["replaceTrigger"] = state ? state.replaceTrigger : undefined;
@@ -602,6 +459,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["syncTimeWithHost"] = state ? state.syncTimeWithHost : undefined;
             resourceInputs["syncTimeWithHostPeriodically"] = state ? state.syncTimeWithHostPeriodically : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["toolsUpgradePolicy"] = state ? state.toolsUpgradePolicy : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["vapp"] = state ? state.vapp : undefined;
             resourceInputs["vappTransports"] = state ? state.vappTransports : undefined;
@@ -683,6 +541,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["syncTimeWithHost"] = args ? args.syncTimeWithHost : undefined;
             resourceInputs["syncTimeWithHostPeriodically"] = args ? args.syncTimeWithHostPeriodically : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["toolsUpgradePolicy"] = args ? args.toolsUpgradePolicy : undefined;
             resourceInputs["vapp"] = args ? args.vapp : undefined;
             resourceInputs["vbsEnabled"] = args ? args.vbsEnabled : undefined;
             resourceInputs["vvtdEnabled"] = args ? args.vvtdEnabled : undefined;
@@ -694,6 +553,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["guestIpAddresses"] = undefined /*out*/;
             resourceInputs["imported"] = undefined /*out*/;
             resourceInputs["moid"] = undefined /*out*/;
+            resourceInputs["powerState"] = undefined /*out*/;
             resourceInputs["rebootRequired"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
             resourceInputs["vappTransports"] = undefined /*out*/;
@@ -710,271 +570,187 @@ export class VirtualMachine extends pulumi.CustomResource {
  */
 export interface VirtualMachineState {
     /**
-     * The guest name for the operating system
-     * when `guestId` is `other` or `other-64`.
+     * The guest name for the operating system when `guestId` is `otherGuest` or `otherGuest64`.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
-     * A user-provided description of the virtual machine.
-     * The default is no annotation.
+     * A user-provided description of the virtual machine. The default is no annotation.
      */
     annotation?: pulumi.Input<string>;
     /**
-     * The number of milliseconds to wait before starting
-     * the boot sequence. The default is no delay.
+     * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
      */
     bootDelay?: pulumi.Input<number>;
     /**
-     * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
-     * Default: `10000` (10 seconds).
+     * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `bootRetryEnabled` is `true`. Default: `10000` (10 seconds).
      */
     bootRetryDelay?: pulumi.Input<number>;
     /**
-     * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `bootRetryDelay`.
-     * Default: `false`.
+     * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `bootRetryDelay`. Default: `false`.
      */
     bootRetryEnabled?: pulumi.Input<boolean>;
     /**
-     * A specification for a CDROM device on this virtual
-     * machine. See CDROM options below.
+     * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
     cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
     /**
-     * A unique identifier for a given version of the last
-     * configuration applied, such the timestamp of the last update to the
-     * configuration.
+     * A unique identifier for a given version of the last configuration was applied.
      */
     changeVersion?: pulumi.Input<string>;
     /**
-     * When specified, the VM will be created as a clone of a
-     * specified template. Optional customization options can be submitted as well.
-     * See creating a virtual machine from a
-     * template for more details.
+     * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
      */
     clone?: pulumi.Input<inputs.VirtualMachineClone>;
     /**
-     * Allow CPUs to be added to this virtual
-     * machine while it is running.
+     * Allow CPUs to be added to the virtual machine while it is powered on.
      */
     cpuHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * Allow CPUs to be removed to this
-     * virtual machine while it is running.
+     * Allow CPUs to be removed to the virtual machine while it is powered on.
      */
     cpuHotRemoveEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of CPU (in MHz) that this virtual
-     * machine can consume, regardless of available resources. The default is no
-     * limit.
+     * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
      */
     cpuLimit?: pulumi.Input<number>;
     /**
-     * Enable CPU performance
-     * counters on this virtual machine. Default: `false`.
+     * Enable CPU performance counters on the virtual machine. Default: `false`.
      */
     cpuPerformanceCountersEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of CPU (in MHz) that this virtual
-     * machine is guaranteed. The default is no reservation.
+     * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
      */
     cpuReservation?: pulumi.Input<number>;
     /**
-     * The number of CPU shares allocated to the
-     * virtual machine when the `cpuShareLevel` is `custom`.
+     * The number of CPU shares allocated to the virtual machine when the `cpuShareLevel` is `custom`.
      */
     cpuShareCount?: pulumi.Input<number>;
     /**
-     * The allocation level for CPU resources. Can be
-     * one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The datacenter id. Required only when deploying
-     * an ovf template.
+     * The datacenter ID. Required only when deploying an OVF/OVA template.
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the datastore cluster ID to use. This setting
-     * applies to entire virtual machine and implies that you wish to use Storage
-     * DRS with this virtual machine. See the section on virtual machine
-     * migration for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * The IP address selected by the provider to be used with
-     * any provisioners configured on this resource.
-     * Whenever possible, this is the first IPv4 address that is reachable through
-     * the default gateway configured on the machine, then the first reachable IPv6
-     * address, and then the first general discovered address if neither exist. If
-     * VMware tools is not running on the virtual machine, or if the VM is powered
-     * off, this value will be blank.
+     * The IP address selected by Terraform to be used for the provisioner.
      */
     defaultIpAddress?: pulumi.Input<string>;
     /**
-     * A specification for a virtual disk device on this virtual
-     * machine. See disk options below.
+     * A specification for a virtual disk device on the virtual machine. See disk options for more information.
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VirtualMachineDisk>[]>;
     /**
-     * When the `firmware` type is set to is
-     * `efi`, this enables EFI secure boot. Default: `false`.
+     * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
      */
     efiSecureBootEnabled?: pulumi.Input<boolean>;
     /**
-     * Expose the UUIDs of attached virtual disks to
-     * the virtual machine, allowing access to them in the guest. Default: `false`.
+     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
      */
     enableDiskUuid?: pulumi.Input<boolean>;
     /**
-     * Enable logging of virtual machine events to a
-     * log file stored in the virtual machine directory. Default: `false`.
+     * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
-     * The EPT/RVI (hardware memory virtualization)
-     * setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
-     * Default: `automatic`.
+     * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
      */
     eptRviMode?: pulumi.Input<string>;
     /**
-     * Extra configuration data for this virtual
-     * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata.
+     * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The firmware interface to use on the virtual machine.
-     * Can be one of `bios` or `EFI`. Default: `bios`.
+     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
      */
     firmware?: pulumi.Input<string>;
     /**
-     * The path to the folder to put this virtual machine in,
-     * relative to the datacenter that the resource pool is in.
+     * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
      */
     folder?: pulumi.Input<string>;
     /**
-     * If a guest shutdown failed or timed out while
-     * updating or destroying (see
-     * `shutdownWaitTimeout`), force the power-off of
-     * the virtual machine. Default: `true`.
+     * If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
      */
     forcePowerOff?: pulumi.Input<boolean>;
     /**
-     * The guest ID for the operating system type. For a
-     * full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
+     * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
      */
     guestId?: pulumi.Input<string>;
     /**
-     * The current list of IP addresses on this machine,
-     * including the value of `defaultIpAddress`. If VMware tools is not running
-     * on the virtual machine, or if the VM is powered off, this list will be empty.
-     * * `moid`: The managed object reference ID of the created
-     * virtual machine.
+     * The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
      */
     guestIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The hardware version number. Valid range
-     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
-     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
-     * more details.
+     * The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
-     * An optional managed object reference
-     * ID of a host to put this virtual machine on. See the
-     * section on virtual machine migration for
-     * details on changing this value. If a `hostSystemId` is not supplied,
-     * vSphere will select a host in the resource pool to place the virtual machine,
-     * according to any defaults or DRS policies in place.
+     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     hostSystemId?: pulumi.Input<string>;
     /**
-     * The (non-nested) hardware virtualization setting for
-     * this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
-     * `hvAuto`.
+     * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
      */
     hvMode?: pulumi.Input<string>;
     /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
      */
     ideControllerCount?: pulumi.Input<number>;
     /**
-     * List of IP addresses and CIDR networks to
-     * ignore while waiting for an available IP address using either of the waiters.
-     * Any IP addresses in this list will be ignored if they show up so that the
-     * waiter will continue to wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
      */
     ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This is flagged if the virtual machine has been imported, or the
-     * state has been migrated from a previous version of the resource. It
-     * influences the behavior of the first post-import apply operation. See the
-     * section on importing below.
+     * Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
      */
     imported?: pulumi.Input<boolean>;
     /**
-     * Controls the scheduling delay of the
-     * virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that
-     * require frequent access to mouse or keyboard devices. Can be one of `low`,
-     * `normal`, `medium`, or `high`.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
      */
     latencySensitivity?: pulumi.Input<string>;
     /**
-     * The size of the virtual machine's memory, in MB.
-     * Default: `1024` (1 GB).
+     * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
      */
     memory?: pulumi.Input<number>;
     /**
-     * Allow memory to be added to this
-     * virtual machine while it is running.
+     * Allow memory to be added to the virtual machine while it is powered on.
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) that this
-     * virtual machine can consume, regardless of available resources. The default
-     * is no limit.
+     * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * The amount of memory (in MB) that this
-     * virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
      */
     memoryReservation?: pulumi.Input<number>;
     /**
-     * The number of memory shares allocated to
-     * the virtual machine when the `memoryShareLevel` is `custom`.
+     * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     memoryShareCount?: pulumi.Input<number>;
     /**
-     * The allocation level for memory resources.
-     * Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     memoryShareLevel?: pulumi.Input<string>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a virtual machine migration to complete before failing. Default: 10
-     * minutes. Also see the section on virtual machine
-     * migration.
+     * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
      */
     migrateWaitTimeout?: pulumi.Input<number>;
     /**
-     * The machine object ID from VMWare
+     * The machine object ID from VMware vSphere.
      */
     moid?: pulumi.Input<string>;
     /**
@@ -982,214 +758,154 @@ export interface VirtualMachineState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Enable nested hardware virtualization on
-     * this virtual machine, facilitating nested virtualization in the guest.
-     * Default: `false`.
+     * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
      */
     nestedHvEnabled?: pulumi.Input<boolean>;
     /**
-     * A specification for a virtual NIC on this
-     * virtual machine. See network interface options
-     * below.
+     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores per socket in this
-     * virtual machine. The number of vCPUs on the virtual machine will be
-     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
-     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `numCpus` divided by `numCoresPerSocket`. If specified, the value supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     numCoresPerSocket?: pulumi.Input<number>;
     /**
-     * The total number of virtual processor cores to assign
-     * to this virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
      */
     numCpus?: pulumi.Input<number>;
     /**
-     * When specified, the VM will be deployed from the
-     * provided ovf/ova template. See creating a virtual machine from a
-     * ovf/ova template for more details.
+     * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
      */
     ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
-     * List of host PCI device IDs to create PCI
-     * passthroughs for.
+     * List of host PCI device IDs in which to create PCI passthroughs.
      */
     pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
+     */
+    powerState?: pulumi.Input<string>;
     /**
      * The amount of time, in seconds, that we will be trying to power on a VM
      */
     poweronTimeout?: pulumi.Input<number>;
     /**
-     * Value internal to the provider used to determine if a
-     * configuration set change requires a reboot. This value is only useful during
-     * an update process and gets reset on refresh.
+     * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      */
     rebootRequired?: pulumi.Input<boolean>;
     /**
      * Triggers replacement of resource whenever it changes.
-     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
-     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
-     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
      */
     replaceTrigger?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the resource pool to put this virtual machine in.
-     * See the section on virtual machine migration
-     * for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     resourcePoolId?: pulumi.Input<string>;
     /**
-     * Enable the execution of
-     * post-power-on scripts when VMware tools is installed. Default: `true`.
+     * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsAfterPowerOn?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * post-resume scripts when VMware tools is installed. Default: `true`.
+     * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsAfterResume?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * pre-reboot scripts when VMware tools is installed. Default: `false`.
+     * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
      */
     runToolsScriptsBeforeGuestReboot?: pulumi.Input<boolean>;
     /**
-     * Enable the execution
-     * of pre-shutdown scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsBeforeGuestShutdown?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * pre-standby scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
     /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
      */
     sataControllerCount?: pulumi.Input<number>;
     /**
-     * Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
+     * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
      */
     scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that
-     * this provider manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
      */
     scsiControllerCount?: pulumi.Input<number>;
     /**
-     * The type of SCSI bus this virtual machine will have.
-     * Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
-     * pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
+     * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
      */
     scsiType?: pulumi.Input<string>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
-     * after this timeout, otherwise an error is returned. Default: 3 minutes.
+     * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The UUID of the storage policy to assign to this disk.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
-     * The swap file placement policy for this
-     * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
-     * Default: `inherit`.
+     * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with the host.
-     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
-     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
-     * Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * Enable periodic clock
-     * synchronization with the host. Supported only on vSphere 7 U1 and above.
-     * On older versions setting `syncTimeWithHost` is enough for periodic
-     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The UUID of the virtual disk's VMDK file. This is used to track the
-     * virtual disk on the virtual machine.
+     * Enable automatic upgrade of the VMware Tools
+     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
+     * to the latest version supported by the host on which the virtual machine is running.
+     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     */
+    toolsUpgradePolicy?: pulumi.Input<string>;
+    /**
+     * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
      */
     uuid?: pulumi.Input<string>;
     /**
-     * Optional vApp configuration. The only sub-key available
-     * is `properties`, which is a key/value map of properties for virtual machines
-     * imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
-     * configuration for
-     * more details.
+     * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
      */
     vapp?: pulumi.Input<inputs.VirtualMachineVapp>;
     /**
-     * Computed value which is only valid for cloned virtual
-     * machines. A list of vApp transport methods supported by the source virtual
-     * machine or template.
+     * Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
      */
     vappTransports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable Virtualization Based Security. Requires
-     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
-     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
-     * vSphere 6.7 and higher. Default: `false`.
+     * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtdEnabled`, `nestedHvEnabled`, and `efiSecureBootEnabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
      */
     vbsEnabled?: pulumi.Input<boolean>;
     /**
-     * The state of VMware tools in the guest. This will
-     * determine the proper course of action for some device operations.
+     * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      */
     vmwareToolsStatus?: pulumi.Input<string>;
     /**
-     * The path of the virtual machine's configuration file in the VM's
-     * datastore.
+     * The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
      */
     vmxPath?: pulumi.Input<string>;
     /**
-     * Flag to specify if Intel Virtualization Technology 
-     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
-     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
      */
     vvtdEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available guest IP address on this virtual machine. This should
-     * only be used if your version of VMware Tools does not allow the
-     * `waitForGuestNetTimeout` waiter to be
-     * used. A value less than 1 disables the waiter. Default: 0.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `waitForGuestNetTimeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
      */
     waitForGuestIpTimeout?: pulumi.Input<number>;
     /**
-     * Controls whether or not the guest
-     * network waiter waits for a routable address. When `false`, the waiter does
-     * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `waitForGuestIpTimeout`
-     * waiter is used. Default: `true`.
+     * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `waitForGuestIpTimeout` waiter is used. Default: `true`.
      */
     waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine's NICs. Older
-     * versions of VMware Tools do not populate this property. In those cases, this
-     * waiter can be disabled and the
-     * `waitForGuestIpTimeout` waiter can be used
-     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `waitForGuestIpTimeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
      */
     waitForGuestNetTimeout?: pulumi.Input<number>;
 }
@@ -1199,236 +915,167 @@ export interface VirtualMachineState {
  */
 export interface VirtualMachineArgs {
     /**
-     * The guest name for the operating system
-     * when `guestId` is `other` or `other-64`.
+     * The guest name for the operating system when `guestId` is `otherGuest` or `otherGuest64`.
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
-     * A user-provided description of the virtual machine.
-     * The default is no annotation.
+     * A user-provided description of the virtual machine. The default is no annotation.
      */
     annotation?: pulumi.Input<string>;
     /**
-     * The number of milliseconds to wait before starting
-     * the boot sequence. The default is no delay.
+     * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
      */
     bootDelay?: pulumi.Input<number>;
     /**
-     * The number of milliseconds to wait before
-     * retrying the boot sequence. This only valid if `bootRetryEnabled` is true.
-     * Default: `10000` (10 seconds).
+     * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `bootRetryEnabled` is `true`. Default: `10000` (10 seconds).
      */
     bootRetryDelay?: pulumi.Input<number>;
     /**
-     * If set to true, a virtual machine that
-     * fails to boot will try again after the delay defined in `bootRetryDelay`.
-     * Default: `false`.
+     * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `bootRetryDelay`. Default: `false`.
      */
     bootRetryEnabled?: pulumi.Input<boolean>;
     /**
-     * A specification for a CDROM device on this virtual
-     * machine. See CDROM options below.
+     * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
     cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
     /**
-     * When specified, the VM will be created as a clone of a
-     * specified template. Optional customization options can be submitted as well.
-     * See creating a virtual machine from a
-     * template for more details.
+     * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
      */
     clone?: pulumi.Input<inputs.VirtualMachineClone>;
     /**
-     * Allow CPUs to be added to this virtual
-     * machine while it is running.
+     * Allow CPUs to be added to the virtual machine while it is powered on.
      */
     cpuHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * Allow CPUs to be removed to this
-     * virtual machine while it is running.
+     * Allow CPUs to be removed to the virtual machine while it is powered on.
      */
     cpuHotRemoveEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of CPU (in MHz) that this virtual
-     * machine can consume, regardless of available resources. The default is no
-     * limit.
+     * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
      */
     cpuLimit?: pulumi.Input<number>;
     /**
-     * Enable CPU performance
-     * counters on this virtual machine. Default: `false`.
+     * Enable CPU performance counters on the virtual machine. Default: `false`.
      */
     cpuPerformanceCountersEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of CPU (in MHz) that this virtual
-     * machine is guaranteed. The default is no reservation.
+     * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
      */
     cpuReservation?: pulumi.Input<number>;
     /**
-     * The number of CPU shares allocated to the
-     * virtual machine when the `cpuShareLevel` is `custom`.
+     * The number of CPU shares allocated to the virtual machine when the `cpuShareLevel` is `custom`.
      */
     cpuShareCount?: pulumi.Input<number>;
     /**
-     * The allocation level for CPU resources. Can be
-     * one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute
-     * value strings to set for virtual machine.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The datacenter id. Required only when deploying
-     * an ovf template.
+     * The datacenter ID. Required only when deploying an OVF/OVA template.
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the datastore cluster ID to use. This setting
-     * applies to entire virtual machine and implies that you wish to use Storage
-     * DRS with this virtual machine. See the section on virtual machine
-     * migration for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that the ISO is located in.
-     * Requried for using a datastore ISO. Conflicts with `clientDevice`.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * A specification for a virtual disk device on this virtual
-     * machine. See disk options below.
+     * A specification for a virtual disk device on the virtual machine. See disk options for more information.
      */
     disks?: pulumi.Input<pulumi.Input<inputs.VirtualMachineDisk>[]>;
     /**
-     * When the `firmware` type is set to is
-     * `efi`, this enables EFI secure boot. Default: `false`.
+     * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
      */
     efiSecureBootEnabled?: pulumi.Input<boolean>;
     /**
-     * Expose the UUIDs of attached virtual disks to
-     * the virtual machine, allowing access to them in the guest. Default: `false`.
+     * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
      */
     enableDiskUuid?: pulumi.Input<boolean>;
     /**
-     * Enable logging of virtual machine events to a
-     * log file stored in the virtual machine directory. Default: `false`.
+     * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
-     * The EPT/RVI (hardware memory virtualization)
-     * setting for this virtual machine. Can be one of `automatic`, `on`, or `off`.
-     * Default: `automatic`.
+     * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
      */
     eptRviMode?: pulumi.Input<string>;
     /**
-     * Extra configuration data for this virtual
-     * machine. Can be used to supply advanced parameters not normally in
-     * configuration, such as instance metadata.
+     * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The firmware interface to use on the virtual machine.
-     * Can be one of `bios` or `EFI`. Default: `bios`.
+     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
      */
     firmware?: pulumi.Input<string>;
     /**
-     * The path to the folder to put this virtual machine in,
-     * relative to the datacenter that the resource pool is in.
+     * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
      */
     folder?: pulumi.Input<string>;
     /**
-     * If a guest shutdown failed or timed out while
-     * updating or destroying (see
-     * `shutdownWaitTimeout`), force the power-off of
-     * the virtual machine. Default: `true`.
+     * If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
      */
     forcePowerOff?: pulumi.Input<boolean>;
     /**
-     * The guest ID for the operating system type. For a
-     * full list of possible values, see [here][vmware-docs-guest-ids]. Default: `other-64`.
+     * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
      */
     guestId?: pulumi.Input<string>;
     /**
-     * The hardware version number. Valid range
-     * is from 4 to 15. The hardware version cannot be downgraded. See [virtual
-     * machine hardware compatibility][virtual-machine-hardware-compatibility] for
-     * more details.
+     * The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
-     * An optional managed object reference
-     * ID of a host to put this virtual machine on. See the
-     * section on virtual machine migration for
-     * details on changing this value. If a `hostSystemId` is not supplied,
-     * vSphere will select a host in the resource pool to place the virtual machine,
-     * according to any defaults or DRS policies in place.
+     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     hostSystemId?: pulumi.Input<string>;
     /**
-     * The (non-nested) hardware virtualization setting for
-     * this virtual machine. Can be one of `hvAuto`, `hvOn`, or `hvOff`. Default:
-     * `hvAuto`.
+     * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
      */
     hvMode?: pulumi.Input<string>;
     /**
-     * The number of IDE controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
      */
     ideControllerCount?: pulumi.Input<number>;
     /**
-     * List of IP addresses and CIDR networks to
-     * ignore while waiting for an available IP address using either of the waiters.
-     * Any IP addresses in this list will be ignored if they show up so that the
-     * waiter will continue to wait for a real IP address. Default: [].
+     * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
      */
     ignoredGuestIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Controls the scheduling delay of the
-     * virtual machine. Use a higher sensitivity for applications that require lower
-     * latency, such as VOIP, media player applications, or applications that
-     * require frequent access to mouse or keyboard devices. Can be one of `low`,
-     * `normal`, `medium`, or `high`.
+     * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
      */
     latencySensitivity?: pulumi.Input<string>;
     /**
-     * The size of the virtual machine's memory, in MB.
-     * Default: `1024` (1 GB).
+     * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
      */
     memory?: pulumi.Input<number>;
     /**
-     * Allow memory to be added to this
-     * virtual machine while it is running.
+     * Allow memory to be added to the virtual machine while it is powered on.
      */
     memoryHotAddEnabled?: pulumi.Input<boolean>;
     /**
-     * The maximum amount of memory (in MB) that this
-     * virtual machine can consume, regardless of available resources. The default
-     * is no limit.
+     * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
      */
     memoryLimit?: pulumi.Input<number>;
     /**
-     * The amount of memory (in MB) that this
-     * virtual machine is guaranteed. The default is no reservation.
+     * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
      */
     memoryReservation?: pulumi.Input<number>;
     /**
-     * The number of memory shares allocated to
-     * the virtual machine when the `memoryShareLevel` is `custom`.
+     * The number of memory shares allocated to the virtual machine when the `memoryShareLevel` is `custom`.
      */
     memoryShareCount?: pulumi.Input<number>;
     /**
-     * The allocation level for memory resources.
-     * Can be one of `high`, `low`, `normal`, or `custom`. Default: `custom`.
+     * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      */
     memoryShareLevel?: pulumi.Input<string>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a virtual machine migration to complete before failing. Default: 10
-     * minutes. Also see the section on virtual machine
-     * migration.
+     * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
      */
     migrateWaitTimeout?: pulumi.Input<number>;
     /**
@@ -1436,38 +1083,27 @@ export interface VirtualMachineArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Enable nested hardware virtualization on
-     * this virtual machine, facilitating nested virtualization in the guest.
-     * Default: `false`.
+     * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
      */
     nestedHvEnabled?: pulumi.Input<boolean>;
     /**
-     * A specification for a virtual NIC on this
-     * virtual machine. See network interface options
-     * below.
+     * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.VirtualMachineNetworkInterface>[]>;
     /**
-     * The number of cores per socket in this
-     * virtual machine. The number of vCPUs on the virtual machine will be
-     * `numCpus` divided by `numCoresPerSocket`. If specified, the value
-     * supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
+     * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `numCpus` divided by `numCoresPerSocket`. If specified, the value supplied to `numCpus` must be evenly divisible by this value. Default: `1`.
      */
     numCoresPerSocket?: pulumi.Input<number>;
     /**
-     * The total number of virtual processor cores to assign
-     * to this virtual machine. Default: `1`.
+     * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
      */
     numCpus?: pulumi.Input<number>;
     /**
-     * When specified, the VM will be deployed from the
-     * provided ovf/ova template. See creating a virtual machine from a
-     * ovf/ova template for more details.
+     * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
      */
     ovfDeploy?: pulumi.Input<inputs.VirtualMachineOvfDeploy>;
     /**
-     * List of host PCI device IDs to create PCI
-     * passthroughs for.
+     * List of host PCI device IDs in which to create PCI passthroughs.
      */
     pciDeviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1476,147 +1112,101 @@ export interface VirtualMachineArgs {
     poweronTimeout?: pulumi.Input<number>;
     /**
      * Triggers replacement of resource whenever it changes.
-     * `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))`
-     * will fingerprint the changes in cloudInit metadata and userdata templates. This will enable a replacement
-     * of the resource whenever the dependant template renders a new configuration. (Forces a replacement)
      */
     replaceTrigger?: pulumi.Input<string>;
     /**
-     * The managed object reference
-     * ID of the resource pool to put this virtual machine in.
-     * See the section on virtual machine migration
-     * for details on changing this value.
+     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     resourcePoolId: pulumi.Input<string>;
     /**
-     * Enable the execution of
-     * post-power-on scripts when VMware tools is installed. Default: `true`.
+     * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsAfterPowerOn?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * post-resume scripts when VMware tools is installed. Default: `true`.
+     * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsAfterResume?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * pre-reboot scripts when VMware tools is installed. Default: `false`.
+     * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
      */
     runToolsScriptsBeforeGuestReboot?: pulumi.Input<boolean>;
     /**
-     * Enable the execution
-     * of pre-shutdown scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsBeforeGuestShutdown?: pulumi.Input<boolean>;
     /**
-     * Enable the execution of
-     * pre-standby scripts when VMware tools is installed. Default: `true`.
+     * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
     /**
-     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
-     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
-     * controllers.
+     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
      */
     sataControllerCount?: pulumi.Input<number>;
     /**
-     * Mode for sharing the SCSI bus. The modes are
-     * physicalSharing, virtualSharing, and noSharing. Default: `noSharing`.
+     * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
      */
     scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers that
-     * this provider manages on this virtual machine. This directly affects the amount
-     * of disks you can add to the virtual machine and the maximum disk unit number.
-     * Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
      */
     scsiControllerCount?: pulumi.Input<number>;
     /**
-     * The type of SCSI bus this virtual machine will have.
-     * Can be one of lsilogic (LSI Logic Parallel), lsilogic-sas (LSI Logic SAS) or
-     * pvscsi (VMware Paravirtual). Defualt: `pvscsi`.
+     * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
      */
     scsiType?: pulumi.Input<string>;
     /**
-     * The amount of time, in minutes, to wait
-     * for a graceful guest shutdown when making necessary updates to the virtual
-     * machine. If `forcePowerOff` is set to true, the VM will be force powered-off
-     * after this timeout, otherwise an error is returned. Default: 3 minutes.
+     * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The UUID of the storage policy to assign to this disk.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
-     * The swap file placement policy for this
-     * virtual machine. Can be one of `inherit`, `hostLocal`, or `vmDirectory`.
-     * Default: `inherit`.
+     * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
      */
     swapPlacementPolicy?: pulumi.Input<string>;
     /**
-     * Enable guest clock synchronization with the host.
-     * On vSphere 7 U1 and above, with only this setting the clock is synchronized on
-     * startup and resume so consider also setting `syncTimeWithHostPeriodically`.
-     * Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
      */
     syncTimeWithHost?: pulumi.Input<boolean>;
     /**
-     * Enable periodic clock
-     * synchronization with the host. Supported only on vSphere 7 U1 and above.
-     * On older versions setting `syncTimeWithHost` is enough for periodic
-     * synchronization. Requires VMware tools to be installed. Default: `false`.
+     * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource.
+     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional vApp configuration. The only sub-key available
-     * is `properties`, which is a key/value map of properties for virtual machines
-     * imported from OVF or OVA files. See Using vApp properties to supply OVF/OVA
-     * configuration for
-     * more details.
+     * Enable automatic upgrade of the VMware Tools
+     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
+     * to the latest version supported by the host on which the virtual machine is running.
+     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     */
+    toolsUpgradePolicy?: pulumi.Input<string>;
+    /**
+     * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
      */
     vapp?: pulumi.Input<inputs.VirtualMachineVapp>;
     /**
-     * Enable Virtualization Based Security. Requires
-     * `firmware` to be `efi`, and `vvtdEnabled`, `nestedHvEnabled` and
-     * `efiSecureBootEnabled` must all have a value of `true`. Supported on
-     * vSphere 6.7 and higher. Default: `false`.
+     * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtdEnabled`, `nestedHvEnabled`, and `efiSecureBootEnabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
      */
     vbsEnabled?: pulumi.Input<boolean>;
     /**
-     * Flag to specify if Intel Virtualization Technology 
-     * for Directed I/O is enabled for this virtual machine (_I/O MMU_ in the
-     * vSphere Client). Supported on vSphere 6.7 and higher. Default: `false`.
+     * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
      */
     vvtdEnabled?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available guest IP address on this virtual machine. This should
-     * only be used if your version of VMware Tools does not allow the
-     * `waitForGuestNetTimeout` waiter to be
-     * used. A value less than 1 disables the waiter. Default: 0.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `waitForGuestNetTimeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
      */
     waitForGuestIpTimeout?: pulumi.Input<number>;
     /**
-     * Controls whether or not the guest
-     * network waiter waits for a routable address. When `false`, the waiter does
-     * not wait for a default gateway, nor are IP addresses checked against any
-     * discovered default gateways as part of its success criteria. This property is
-     * ignored if the `waitForGuestIpTimeout`
-     * waiter is used. Default: `true`.
+     * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `waitForGuestIpTimeout` waiter is used. Default: `true`.
      */
     waitForGuestNetRoutable?: pulumi.Input<boolean>;
     /**
-     * The amount of time, in minutes, to
-     * wait for an available IP address on this virtual machine's NICs. Older
-     * versions of VMware Tools do not populate this property. In those cases, this
-     * waiter can be disabled and the
-     * `waitForGuestIpTimeout` waiter can be used
-     * instead. A value less than 1 disables the waiter. Default: 5 minutes.
+     * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `waitForGuestIpTimeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
      */
     waitForGuestNetTimeout?: pulumi.Input<number>;
 }

@@ -12,14 +12,14 @@ import (
 )
 
 // The `VmStoragePolicy` resource can be used to create and manage storage
-// policies. Using this storage policy, tag based placement rules can be created to
-// place a VM on a particular tagged datastore.
+// policies. Using this resource, tag based placement rules can be created to
+// place virtual machines on a datastore with matching tags. If storage requirements for the applications on the virtual machine change, you can modify the storage policy that was originally applied to the virtual machine.
 //
 // ## Example Usage
 //
-// This example creates a storage policy with tagRule having cat1 as tagCategory and
-// tag1, tag2 as the tags. While creating a VM, this policy can be referenced to place
-// the VM in any of the compatible datastore tagged with these tags.
+// The following example creates storage policies with `tagRules` base on sets of environment, service level, and replication attributes.
+//
+// In this example, tags are first applied to datastores.
 //
 // ```go
 // package main
@@ -31,45 +31,212 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "DC"
-// 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 		_, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+// 			Name: "environment",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tagCategory, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
-// 			Name: "cat1",
+// 		_, err = vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+// 			Name: "service_level",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tag1, err := vsphere.LookupTag(ctx, &GetTagArgs{
-// 			Name:       "tag1",
-// 			CategoryId: tagCategory.Id,
+// 		_, err = vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+// 			Name: "replication",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tag2, err := vsphere.LookupTag(ctx, &GetTagArgs{
-// 			Name:       "tag2",
-// 			CategoryId: tagCategory.Id,
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.environment.id",
+// 			Name:       "production",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewVmStoragePolicy(ctx, "policyTagBasedPlacement", &vsphere.VmStoragePolicyArgs{
-// 			Description: pulumi.String("description"),
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.environment.id",
+// 			Name:       "development",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.service_level.id",
+// 			Name:       "platinum",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.service_level.id",
+// 			Name:       "platinum",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.service_level.id",
+// 			Name:       "silver",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.service_level.id",
+// 			Name:       "bronze",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.replication.id",
+// 			Name:       "replicated",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			CategoryId: "data.vsphere_tag_category.replication.id",
+// 			Name:       "non_replicated",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewVmfsDatastore(ctx, "prodDatastore", &vsphere.VmfsDatastoreArgs{
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("data.vsphere_tag.production.id"),
+// 				pulumi.String("data.vsphere_tag.platinum.id"),
+// 				pulumi.String("data.vsphere_tag.replicated.id"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewNasDatastore(ctx, "devDatastore", &vsphere.NasDatastoreArgs{
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("data.vsphere_tag.development.id"),
+// 				pulumi.String("data.vsphere_tag.silver.id"),
+// 				pulumi.String("data.vsphere_tag.non_replicated.id"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Next, storage policies are created and `tagRules` are applied.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewVmStoragePolicy(ctx, "prodPlatinumReplicated", &vsphere.VmStoragePolicyArgs{
+// 			Description: pulumi.String("prod_platinum_replicated"),
 // 			TagRules: VmStoragePolicyTagRuleArray{
 // 				&VmStoragePolicyTagRuleArgs{
-// 					TagCategory: pulumi.String(tagCategory.Name),
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Environment.Name),
 // 					Tags: pulumi.StringArray{
-// 						pulumi.String(tag1.Name),
-// 						pulumi.String(tag2.Name),
+// 						pulumi.Any(data.Vsphere_tag.Production.Name),
+// 					},
+// 					IncludeDatastoresWithTags: pulumi.Bool(true),
+// 				},
+// 				&VmStoragePolicyTagRuleArgs{
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Service_level.Name),
+// 					Tags: pulumi.StringArray{
+// 						pulumi.Any(data.Vsphere_tag.Platinum.Name),
+// 					},
+// 					IncludeDatastoresWithTags: pulumi.Bool(true),
+// 				},
+// 				&VmStoragePolicyTagRuleArgs{
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Replication.Name),
+// 					Tags: pulumi.StringArray{
+// 						pulumi.Any(data.Vsphere_tag.Replicated.Name),
 // 					},
 // 					IncludeDatastoresWithTags: pulumi.Bool(true),
 // 				},
 // 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewVmStoragePolicy(ctx, "devSilverNonreplicated", &vsphere.VmStoragePolicyArgs{
+// 			Description: pulumi.String("dev_silver_nonreplicated"),
+// 			TagRules: VmStoragePolicyTagRuleArray{
+// 				&VmStoragePolicyTagRuleArgs{
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Environment.Name),
+// 					Tags: pulumi.StringArray{
+// 						pulumi.Any(data.Vsphere_tag.Development.Name),
+// 					},
+// 					IncludeDatastoresWithTags: pulumi.Bool(true),
+// 				},
+// 				&VmStoragePolicyTagRuleArgs{
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Service_level.Name),
+// 					Tags: pulumi.StringArray{
+// 						pulumi.Any(data.Vsphere_tag.Silver.Name),
+// 					},
+// 					IncludeDatastoresWithTags: pulumi.Bool(true),
+// 				},
+// 				&VmStoragePolicyTagRuleArgs{
+// 					TagCategory: pulumi.Any(data.Vsphere_tag_category.Replication.Name),
+// 					Tags: pulumi.StringArray{
+// 						pulumi.Any(data.Vsphere_tag.Non_replicated.Name),
+// 					},
+// 					IncludeDatastoresWithTags: pulumi.Bool(true),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.GetPolicy(ctx, &GetPolicyArgs{
+// 			Name: "prod_platinum_replicated",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.GetPolicy(ctx, &GetPolicyArgs{
+// 			Name: "dev_silver_nonreplicated",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewVirtualMachine(ctx, "prodVm", &vsphere.VirtualMachineArgs{
+// 			StoragePolicyId: pulumi.Any(data.Vsphere_storage_policy.Storage_policy.Prod_platinum_replicated.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewVirtualMachine(ctx, "devVm", &vsphere.VirtualMachineArgs{
+// 			StoragePolicyId: pulumi.Any(data.Vsphere_storage_policy.Storage_policy.Dev_silver_nonreplicated.Id),
 // 		})
 // 		if err != nil {
 // 			return err

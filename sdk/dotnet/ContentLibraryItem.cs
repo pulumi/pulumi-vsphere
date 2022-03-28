@@ -13,38 +13,38 @@ namespace Pulumi.VSphere
     public partial class ContentLibraryItem : Pulumi.CustomResource
     {
         /// <summary>
-        /// A description for the item.
+        /// A description for the content library item.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// File to import into the Content Library item. OVFs and
-        /// OVAs will be parsed and associated files will also be imported.
+        /// File to import as the content library item.
         /// </summary>
         [Output("fileUrl")]
         public Output<string?> FileUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Content Library the item should be created in.
+        /// The ID of the content library in which to create the item.
         /// </summary>
         [Output("libraryId")]
         public Output<string> LibraryId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the item to be created in the Content Library.
+        /// The name of the item to be created in the content library.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Virtual machine UUID to clone to Content Library.
+        /// Virtual machine UUID to clone to content library.
         /// </summary>
         [Output("sourceUuid")]
         public Output<string?> SourceUuid { get; private set; } = null!;
 
         /// <summary>
         /// Type of content library item.
+        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -96,38 +96,38 @@ namespace Pulumi.VSphere
     public sealed class ContentLibraryItemArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description for the item.
+        /// A description for the content library item.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// File to import into the Content Library item. OVFs and
-        /// OVAs will be parsed and associated files will also be imported.
+        /// File to import as the content library item.
         /// </summary>
         [Input("fileUrl")]
         public Input<string>? FileUrl { get; set; }
 
         /// <summary>
-        /// The ID of the Content Library the item should be created in.
+        /// The ID of the content library in which to create the item.
         /// </summary>
         [Input("libraryId", required: true)]
         public Input<string> LibraryId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the item to be created in the Content Library.
+        /// The name of the item to be created in the content library.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Virtual machine UUID to clone to Content Library.
+        /// Virtual machine UUID to clone to content library.
         /// </summary>
         [Input("sourceUuid")]
         public Input<string>? SourceUuid { get; set; }
 
         /// <summary>
         /// Type of content library item.
+        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -140,38 +140,38 @@ namespace Pulumi.VSphere
     public sealed class ContentLibraryItemState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description for the item.
+        /// A description for the content library item.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// File to import into the Content Library item. OVFs and
-        /// OVAs will be parsed and associated files will also be imported.
+        /// File to import as the content library item.
         /// </summary>
         [Input("fileUrl")]
         public Input<string>? FileUrl { get; set; }
 
         /// <summary>
-        /// The ID of the Content Library the item should be created in.
+        /// The ID of the content library in which to create the item.
         /// </summary>
         [Input("libraryId")]
         public Input<string>? LibraryId { get; set; }
 
         /// <summary>
-        /// The name of the item to be created in the Content Library.
+        /// The name of the item to be created in the content library.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Virtual machine UUID to clone to Content Library.
+        /// Virtual machine UUID to clone to content library.
         /// </summary>
         [Input("sourceUuid")]
         public Input<string>? SourceUuid { get; set; }
 
         /// <summary>
         /// Type of content library item.
+        /// One of "ovf", "iso", or "vm-template". Default: `ovf`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

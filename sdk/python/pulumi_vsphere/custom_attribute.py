@@ -19,8 +19,7 @@ class CustomAttributeArgs:
         The set of arguments for constructing a CustomAttribute resource.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
-               type. For a full list, click here. Forces a new
-               resource if changed.
+               type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
         if managed_object_type is not None:
@@ -34,8 +33,7 @@ class CustomAttributeArgs:
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
-        type. For a full list, click here. Forces a new
-        resource if changed.
+        type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         """
         return pulumi.get(self, "managed_object_type")
 
@@ -65,8 +63,7 @@ class _CustomAttributeState:
         Input properties used for looking up and filtering CustomAttribute resources.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
-               type. For a full list, click here. Forces a new
-               resource if changed.
+               type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
         if managed_object_type is not None:
@@ -80,8 +77,7 @@ class _CustomAttributeState:
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
-        type. For a full list, click here. Forces a new
-        resource if changed.
+        type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         """
         return pulumi.get(self, "managed_object_type")
 
@@ -116,8 +112,7 @@ class CustomAttribute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
-               type. For a full list, click here. Forces a new
-               resource if changed.
+               type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
         ...
@@ -180,8 +175,7 @@ class CustomAttribute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] managed_object_type: The object type that this attribute may be
                applied to. If not set, the custom attribute may be applied to any object
-               type. For a full list, click here. Forces a new
-               resource if changed.
+               type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -198,8 +192,7 @@ class CustomAttribute(pulumi.CustomResource):
         """
         The object type that this attribute may be
         applied to. If not set, the custom attribute may be applied to any object
-        type. For a full list, click here. Forces a new
-        resource if changed.
+        type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         """
         return pulumi.get(self, "managed_object_type")
 

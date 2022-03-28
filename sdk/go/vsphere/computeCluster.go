@@ -64,7 +64,7 @@ type ComputeCluster struct {
 	// When destroying the resource, setting this to
 	// `true` will auto-remove any hosts that are currently a member of the cluster,
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
-	// below). This is an advanced
+	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrOutput `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
@@ -128,10 +128,10 @@ type ComputeCluster struct {
 	// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 	// <sup>\*</sup>
 	HaDatastoreApdResponse pulumi.StringPtrOutput `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
-	// to wait after an APD timeout event to execute the response action defined in
-	// `haDatastoreApdResponse`. Default: `3`
-	// minutes. <sup>\*</sup>
+	// The time, in seconds,
+	// to wait after an APD timeout event to run the response action defined in
+	// `haDatastoreApdResponse`. Default: `180`
+	// seconds (3 minutes). <sup>\*</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrOutput `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on
 	// virtual machines when the cluster has detected a permanent device loss to a
@@ -174,31 +174,30 @@ type ComputeCluster struct {
 	// is considered ready immediately after a host is found to start it on.
 	// <sup>\*</sup>
 	HaVmDependencyRestartCondition pulumi.StringPtrOutput `pulumi:"haVmDependencyRestartCondition"`
-	// If a heartbeat from a virtual machine
-	// is not received within this configured interval, the virtual machine is
-	// marked as failed. The value is in seconds. Default: `30`.
+	// The time interval, in seconds, a heartbeat
+	// from a virtual machine is not received within this configured interval,
+	// the virtual machine is marked as failed. Default: `30` seconds.
 	HaVmFailureInterval pulumi.IntPtrOutput `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in
+	// The time, in seconds, for the reset window in
 	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
 	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
-	// unlimited reset time is allotted. The value is specified in seconds. Default:
-	// `-1` (no window).
+	// unlimited reset time is allotted. Default: `-1` (no window).
 	HaVmMaximumFailureWindow pulumi.IntPtrOutput `pulumi:"haVmMaximumFailureWindow"`
 	// The maximum number of resets that HA will
 	// perform to a virtual machine when responding to a failure event. Default: `3`
 	HaVmMaximumResets pulumi.IntPtrOutput `pulumi:"haVmMaximumResets"`
 	// The time, in seconds, that HA waits after
 	// powering on a virtual machine before monitoring for heartbeats. Default:
-	// `120` (2 minutes).
+	// `120` seconds (2 minutes).
 	HaVmMinimumUptime pulumi.IntPtrOutput `pulumi:"haVmMinimumUptime"`
 	// The type of virtual machine monitoring to use
 	// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 	// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
 	HaVmMonitoring pulumi.StringPtrOutput `pulumi:"haVmMonitoring"`
-	// Additional delay in seconds
+	// Additional delay, in seconds,
 	// after ready condition is met. A VM is considered ready at this point.
-	// Default: `0` (no delay). <sup>\*</sup>
+	// Default: `0` seconds (no delay). <sup>\*</sup>
 	HaVmRestartAdditionalDelay pulumi.IntPtrOutput `pulumi:"haVmRestartAdditionalDelay"`
 	// The default restart priority
 	// for affected virtual machines when vSphere detects a host failure. Can be one
@@ -206,19 +205,17 @@ type ComputeCluster struct {
 	HaVmRestartPriority pulumi.StringPtrOutput `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds,
 	// that vSphere HA will wait for virtual machines in one priority to be ready
-	// before proceeding with the next priority. Default: `600` (10 minutes).
+	// before proceeding with the next priority. Default: `600` seconds (10 minutes).
 	// <sup>\*</sup>
 	HaVmRestartTimeout pulumi.IntPtrOutput `pulumi:"haVmRestartTimeout"`
-	// The timeout for each host maintenance mode
-	// operation when removing hosts from a cluster. The value is specified in
-	// seconds. Default: `3600` (1 hour).
+	// The timeout, in seconds, for each host maintenance
+	// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrOutput `pulumi:"hostClusterExitTimeout"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrOutput `pulumi:"hostManaged"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -341,7 +338,7 @@ type computeClusterState struct {
 	// When destroying the resource, setting this to
 	// `true` will auto-remove any hosts that are currently a member of the cluster,
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
-	// below). This is an advanced
+	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
@@ -405,10 +402,10 @@ type computeClusterState struct {
 	// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 	// <sup>\*</sup>
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
-	// to wait after an APD timeout event to execute the response action defined in
-	// `haDatastoreApdResponse`. Default: `3`
-	// minutes. <sup>\*</sup>
+	// The time, in seconds,
+	// to wait after an APD timeout event to run the response action defined in
+	// `haDatastoreApdResponse`. Default: `180`
+	// seconds (3 minutes). <sup>\*</sup>
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on
 	// virtual machines when the cluster has detected a permanent device loss to a
@@ -451,31 +448,30 @@ type computeClusterState struct {
 	// is considered ready immediately after a host is found to start it on.
 	// <sup>\*</sup>
 	HaVmDependencyRestartCondition *string `pulumi:"haVmDependencyRestartCondition"`
-	// If a heartbeat from a virtual machine
-	// is not received within this configured interval, the virtual machine is
-	// marked as failed. The value is in seconds. Default: `30`.
+	// The time interval, in seconds, a heartbeat
+	// from a virtual machine is not received within this configured interval,
+	// the virtual machine is marked as failed. Default: `30` seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in
+	// The time, in seconds, for the reset window in
 	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
 	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
-	// unlimited reset time is allotted. The value is specified in seconds. Default:
-	// `-1` (no window).
+	// unlimited reset time is allotted. Default: `-1` (no window).
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
 	// The maximum number of resets that HA will
 	// perform to a virtual machine when responding to a failure event. Default: `3`
 	HaVmMaximumResets *int `pulumi:"haVmMaximumResets"`
 	// The time, in seconds, that HA waits after
 	// powering on a virtual machine before monitoring for heartbeats. Default:
-	// `120` (2 minutes).
+	// `120` seconds (2 minutes).
 	HaVmMinimumUptime *int `pulumi:"haVmMinimumUptime"`
 	// The type of virtual machine monitoring to use
 	// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 	// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
 	HaVmMonitoring *string `pulumi:"haVmMonitoring"`
-	// Additional delay in seconds
+	// Additional delay, in seconds,
 	// after ready condition is met. A VM is considered ready at this point.
-	// Default: `0` (no delay). <sup>\*</sup>
+	// Default: `0` seconds (no delay). <sup>\*</sup>
 	HaVmRestartAdditionalDelay *int `pulumi:"haVmRestartAdditionalDelay"`
 	// The default restart priority
 	// for affected virtual machines when vSphere detects a host failure. Can be one
@@ -483,19 +479,17 @@ type computeClusterState struct {
 	HaVmRestartPriority *string `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds,
 	// that vSphere HA will wait for virtual machines in one priority to be ready
-	// before proceeding with the next priority. Default: `600` (10 minutes).
+	// before proceeding with the next priority. Default: `600` seconds (10 minutes).
 	// <sup>\*</sup>
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
-	// The timeout for each host maintenance mode
-	// operation when removing hosts from a cluster. The value is specified in
-	// seconds. Default: `3600` (1 hour).
+	// The timeout, in seconds, for each host maintenance
+	// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// > > > > > > > v1.18.3
 	HostManaged *bool `pulumi:"hostManaged"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -587,7 +581,7 @@ type ComputeClusterState struct {
 	// When destroying the resource, setting this to
 	// `true` will auto-remove any hosts that are currently a member of the cluster,
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
-	// below). This is an advanced
+	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
@@ -651,10 +645,10 @@ type ComputeClusterState struct {
 	// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 	// <sup>\*</sup>
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// Controls the delay in minutes
-	// to wait after an APD timeout event to execute the response action defined in
-	// `haDatastoreApdResponse`. Default: `3`
-	// minutes. <sup>\*</sup>
+	// The time, in seconds,
+	// to wait after an APD timeout event to run the response action defined in
+	// `haDatastoreApdResponse`. Default: `180`
+	// seconds (3 minutes). <sup>\*</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
 	// Controls the action to take on
 	// virtual machines when the cluster has detected a permanent device loss to a
@@ -697,31 +691,30 @@ type ComputeClusterState struct {
 	// is considered ready immediately after a host is found to start it on.
 	// <sup>\*</sup>
 	HaVmDependencyRestartCondition pulumi.StringPtrInput
-	// If a heartbeat from a virtual machine
-	// is not received within this configured interval, the virtual machine is
-	// marked as failed. The value is in seconds. Default: `30`.
+	// The time interval, in seconds, a heartbeat
+	// from a virtual machine is not received within this configured interval,
+	// the virtual machine is marked as failed. Default: `30` seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in
+	// The time, in seconds, for the reset window in
 	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
 	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
-	// unlimited reset time is allotted. The value is specified in seconds. Default:
-	// `-1` (no window).
+	// unlimited reset time is allotted. Default: `-1` (no window).
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
 	// The maximum number of resets that HA will
 	// perform to a virtual machine when responding to a failure event. Default: `3`
 	HaVmMaximumResets pulumi.IntPtrInput
 	// The time, in seconds, that HA waits after
 	// powering on a virtual machine before monitoring for heartbeats. Default:
-	// `120` (2 minutes).
+	// `120` seconds (2 minutes).
 	HaVmMinimumUptime pulumi.IntPtrInput
 	// The type of virtual machine monitoring to use
 	// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 	// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
 	HaVmMonitoring pulumi.StringPtrInput
-	// Additional delay in seconds
+	// Additional delay, in seconds,
 	// after ready condition is met. A VM is considered ready at this point.
-	// Default: `0` (no delay). <sup>\*</sup>
+	// Default: `0` seconds (no delay). <sup>\*</sup>
 	HaVmRestartAdditionalDelay pulumi.IntPtrInput
 	// The default restart priority
 	// for affected virtual machines when vSphere detects a host failure. Can be one
@@ -729,19 +722,17 @@ type ComputeClusterState struct {
 	HaVmRestartPriority pulumi.StringPtrInput
 	// The maximum time, in seconds,
 	// that vSphere HA will wait for virtual machines in one priority to be ready
-	// before proceeding with the next priority. Default: `600` (10 minutes).
+	// before proceeding with the next priority. Default: `600` seconds (10 minutes).
 	// <sup>\*</sup>
 	HaVmRestartTimeout pulumi.IntPtrInput
-	// The timeout for each host maintenance mode
-	// operation when removing hosts from a cluster. The value is specified in
-	// seconds. Default: `3600` (1 hour).
+	// The timeout, in seconds, for each host maintenance
+	// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.
@@ -837,7 +828,7 @@ type computeClusterArgs struct {
 	// When destroying the resource, setting this to
 	// `true` will auto-remove any hosts that are currently a member of the cluster,
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
-	// below). This is an advanced
+	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
@@ -901,10 +892,10 @@ type computeClusterArgs struct {
 	// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 	// <sup>\*</sup>
 	HaDatastoreApdResponse *string `pulumi:"haDatastoreApdResponse"`
-	// Controls the delay in minutes
-	// to wait after an APD timeout event to execute the response action defined in
-	// `haDatastoreApdResponse`. Default: `3`
-	// minutes. <sup>\*</sup>
+	// The time, in seconds,
+	// to wait after an APD timeout event to run the response action defined in
+	// `haDatastoreApdResponse`. Default: `180`
+	// seconds (3 minutes). <sup>\*</sup>
 	HaDatastoreApdResponseDelay *int `pulumi:"haDatastoreApdResponseDelay"`
 	// Controls the action to take on
 	// virtual machines when the cluster has detected a permanent device loss to a
@@ -947,31 +938,30 @@ type computeClusterArgs struct {
 	// is considered ready immediately after a host is found to start it on.
 	// <sup>\*</sup>
 	HaVmDependencyRestartCondition *string `pulumi:"haVmDependencyRestartCondition"`
-	// If a heartbeat from a virtual machine
-	// is not received within this configured interval, the virtual machine is
-	// marked as failed. The value is in seconds. Default: `30`.
+	// The time interval, in seconds, a heartbeat
+	// from a virtual machine is not received within this configured interval,
+	// the virtual machine is marked as failed. Default: `30` seconds.
 	HaVmFailureInterval *int `pulumi:"haVmFailureInterval"`
-	// The length of the reset window in
+	// The time, in seconds, for the reset window in
 	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
 	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
-	// unlimited reset time is allotted. The value is specified in seconds. Default:
-	// `-1` (no window).
+	// unlimited reset time is allotted. Default: `-1` (no window).
 	HaVmMaximumFailureWindow *int `pulumi:"haVmMaximumFailureWindow"`
 	// The maximum number of resets that HA will
 	// perform to a virtual machine when responding to a failure event. Default: `3`
 	HaVmMaximumResets *int `pulumi:"haVmMaximumResets"`
 	// The time, in seconds, that HA waits after
 	// powering on a virtual machine before monitoring for heartbeats. Default:
-	// `120` (2 minutes).
+	// `120` seconds (2 minutes).
 	HaVmMinimumUptime *int `pulumi:"haVmMinimumUptime"`
 	// The type of virtual machine monitoring to use
 	// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 	// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
 	HaVmMonitoring *string `pulumi:"haVmMonitoring"`
-	// Additional delay in seconds
+	// Additional delay, in seconds,
 	// after ready condition is met. A VM is considered ready at this point.
-	// Default: `0` (no delay). <sup>\*</sup>
+	// Default: `0` seconds (no delay). <sup>\*</sup>
 	HaVmRestartAdditionalDelay *int `pulumi:"haVmRestartAdditionalDelay"`
 	// The default restart priority
 	// for affected virtual machines when vSphere detects a host failure. Can be one
@@ -979,19 +969,17 @@ type computeClusterArgs struct {
 	HaVmRestartPriority *string `pulumi:"haVmRestartPriority"`
 	// The maximum time, in seconds,
 	// that vSphere HA will wait for virtual machines in one priority to be ready
-	// before proceeding with the next priority. Default: `600` (10 minutes).
+	// before proceeding with the next priority. Default: `600` seconds (10 minutes).
 	// <sup>\*</sup>
 	HaVmRestartTimeout *int `pulumi:"haVmRestartTimeout"`
-	// The timeout for each host maintenance mode
-	// operation when removing hosts from a cluster. The value is specified in
-	// seconds. Default: `3600` (1 hour).
+	// The timeout, in seconds, for each host maintenance
+	// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
 	HostClusterExitTimeout *int `pulumi:"hostClusterExitTimeout"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// > > > > > > > v1.18.3
 	HostManaged *bool `pulumi:"hostManaged"`
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the cluster.
@@ -1082,7 +1070,7 @@ type ComputeClusterArgs struct {
 	// When destroying the resource, setting this to
 	// `true` will auto-remove any hosts that are currently a member of the cluster,
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
-	// below). This is an advanced
+	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
@@ -1146,10 +1134,10 @@ type ComputeClusterArgs struct {
 	// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
 	// <sup>\*</sup>
 	HaDatastoreApdResponse pulumi.StringPtrInput
-	// Controls the delay in minutes
-	// to wait after an APD timeout event to execute the response action defined in
-	// `haDatastoreApdResponse`. Default: `3`
-	// minutes. <sup>\*</sup>
+	// The time, in seconds,
+	// to wait after an APD timeout event to run the response action defined in
+	// `haDatastoreApdResponse`. Default: `180`
+	// seconds (3 minutes). <sup>\*</sup>
 	HaDatastoreApdResponseDelay pulumi.IntPtrInput
 	// Controls the action to take on
 	// virtual machines when the cluster has detected a permanent device loss to a
@@ -1192,31 +1180,30 @@ type ComputeClusterArgs struct {
 	// is considered ready immediately after a host is found to start it on.
 	// <sup>\*</sup>
 	HaVmDependencyRestartCondition pulumi.StringPtrInput
-	// If a heartbeat from a virtual machine
-	// is not received within this configured interval, the virtual machine is
-	// marked as failed. The value is in seconds. Default: `30`.
+	// The time interval, in seconds, a heartbeat
+	// from a virtual machine is not received within this configured interval,
+	// the virtual machine is marked as failed. Default: `30` seconds.
 	HaVmFailureInterval pulumi.IntPtrInput
-	// The length of the reset window in
+	// The time, in seconds, for the reset window in
 	// which `haVmMaximumResets` can operate. When this
 	// window expires, no more resets are attempted regardless of the setting
 	// configured in `haVmMaximumResets`. `-1` means no window, meaning an
-	// unlimited reset time is allotted. The value is specified in seconds. Default:
-	// `-1` (no window).
+	// unlimited reset time is allotted. Default: `-1` (no window).
 	HaVmMaximumFailureWindow pulumi.IntPtrInput
 	// The maximum number of resets that HA will
 	// perform to a virtual machine when responding to a failure event. Default: `3`
 	HaVmMaximumResets pulumi.IntPtrInput
 	// The time, in seconds, that HA waits after
 	// powering on a virtual machine before monitoring for heartbeats. Default:
-	// `120` (2 minutes).
+	// `120` seconds (2 minutes).
 	HaVmMinimumUptime pulumi.IntPtrInput
 	// The type of virtual machine monitoring to use
 	// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
 	// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
 	HaVmMonitoring pulumi.StringPtrInput
-	// Additional delay in seconds
+	// Additional delay, in seconds,
 	// after ready condition is met. A VM is considered ready at this point.
-	// Default: `0` (no delay). <sup>\*</sup>
+	// Default: `0` seconds (no delay). <sup>\*</sup>
 	HaVmRestartAdditionalDelay pulumi.IntPtrInput
 	// The default restart priority
 	// for affected virtual machines when vSphere detects a host failure. Can be one
@@ -1224,19 +1211,17 @@ type ComputeClusterArgs struct {
 	HaVmRestartPriority pulumi.StringPtrInput
 	// The maximum time, in seconds,
 	// that vSphere HA will wait for virtual machines in one priority to be ready
-	// before proceeding with the next priority. Default: `600` (10 minutes).
+	// before proceeding with the next priority. Default: `600` seconds (10 minutes).
 	// <sup>\*</sup>
 	HaVmRestartTimeout pulumi.IntPtrInput
-	// The timeout for each host maintenance mode
-	// operation when removing hosts from a cluster. The value is specified in
-	// seconds. Default: `3600` (1 hour).
+	// The timeout, in seconds, for each host maintenance
+	// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
 	HostClusterExitTimeout pulumi.IntPtrInput
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `host` resource rather than the
 	// `computeCluster` resource. Conflicts with: `hostSystemIds`.
-	// > > > > > > > v1.18.3
 	HostManaged pulumi.BoolPtrInput
-	// The [managed object IDs][docs-about-morefs] of
+	// The managed object IDs of
 	// the hosts to put in the cluster. Conflicts with: `hostManaged`.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the cluster.

@@ -36,7 +36,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * A list of active uplinks to be used in load
      * balancing. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     public readonly activeUplinks!: pulumi.Output<string[]>;
@@ -89,26 +89,26 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public /*out*/ readonly configVersion!: pulumi.Output<string>;
     /**
      * The detailed contact information for the person
-     * who is responsible for the DVS.
+     * who is responsible for the VDS.
      */
     public readonly contactDetail!: pulumi.Output<string | undefined>;
     /**
      * The name of the person who is responsible for the
-     * DVS.
+     * VDS.
      */
     public readonly contactName!: pulumi.Output<string | undefined>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch.
+     * value strings to set for VDS.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The ID of the datacenter where the distributed
-     * virtual switch will be created. Forces a new resource if changed.
+     * The ID of the datacenter where the VDS will be
+     * created. Forces a new resource if changed.
      */
     public readonly datacenterId!: pulumi.Output<string>;
     /**
-     * A detailed description for the DVS.
+     * A detailed description for the VDS.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -158,8 +158,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly faulttoleranceShareLevel!: pulumi.Output<string>;
     /**
-     * The folder to create the DVS in. Forces a new resource
-     * if changed.
+     * The folder in which to create the VDS.
+     * Forces a new resource if changed.
      */
     public readonly folder!: pulumi.Output<string | undefined>;
     /**
@@ -210,8 +210,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
      * An IPv4 address to identify the switch. This is
-     * mostly useful when used with the Netflow arguments found
-     * below.
+     * mostly useful when used with the Netflow arguments.
      */
     public readonly ipv4Address!: pulumi.Output<string | undefined>;
     /**
@@ -232,7 +231,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly iscsiShareLevel!: pulumi.Output<string>;
     /**
      * The Link Aggregation Control Protocol group
-     * version to use with the switch. Possible values are `singleLag` and
+     * version to use with the VDS. Possible values are `singleLag` and
      * `multipleLag`.
      */
     public readonly lacpApiVersion!: pulumi.Output<string>;
@@ -272,17 +271,16 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly managementShareLevel!: pulumi.Output<string>;
     /**
-     * The maximum transmission unit (MTU) for the virtual
-     * switch.
+     * The maximum transmission unit (MTU) for the VDS.
      */
     public readonly maxMtu!: pulumi.Output<number>;
     /**
      * The multicast filtering mode to use
-     * with the switch. Can be one of `legacyFiltering` or `snooping`.
+     * with the VDS. Can be one of `legacyFiltering` or `snooping`.
      */
     public readonly multicastFilteringMode!: pulumi.Output<string>;
     /**
-     * The name of the distributed virtual switch.
+     * The name of the VDS.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -293,8 +291,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly netflowActiveFlowTimeout!: pulumi.Output<number | undefined>;
     /**
      * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-     * Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+     * Must be set before Netflow can be enabled.
      */
     public readonly netflowCollectorIpAddress!: pulumi.Output<string | undefined>;
     /**
@@ -327,7 +325,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
-     * switch should analyze all packets. The maximum value is `1000`, which
+     * VDS should analyze all packets. The maximum value is `1000`, which
      * indicates an analysis rate of 0.001%.
      */
     public readonly netflowSamplingRate!: pulumi.Output<number | undefined>;
@@ -375,7 +373,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     public readonly standbyUplinks!: pulumi.Output<string[]>;
@@ -385,20 +383,20 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+     * `failoverExplicit`, or `loadbalanceLoadbased`.
      */
     public readonly teamingPolicy!: pulumi.Output<string>;
     /**
      * Forward all traffic transmitted by ports for which
-     * this policy applies to its DVS uplinks.
+     * this policy applies to its VDS uplinks.
      */
     public readonly txUplink!: pulumi.Output<boolean>;
     /**
      * A list of strings that uniquely identifies the names
-     * of the uplinks on the DVS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the DVS, in addition to the
-     * names.  See here for an example on how to
+     * of the uplinks on the VDS across hosts. The number of items in this list
+     * controls the number of uplinks that exist on the VDS, in addition to the
+     * names. See here for an example on how to
      * use this option.
      */
     public readonly uplinks!: pulumi.Output<string[]>;
@@ -419,10 +417,9 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly vdpShareLevel!: pulumi.Output<string>;
     /**
-     * - The version of the DVS to create. The default is to
-     * create the DVS at the latest version supported by the version of vSphere
-     * being used. A DVS can be upgraded to another version, but cannot be
-     * downgraded.
+     * - The version of the VDS. BY default, a VDS is created
+     * at the latest version supported by the vSphere version if not specified.
+     * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
     public readonly version!: pulumi.Output<string>;
     /**
@@ -706,7 +703,7 @@ export interface DistributedVirtualSwitchState {
     /**
      * A list of active uplinks to be used in load
      * balancing. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -759,26 +756,26 @@ export interface DistributedVirtualSwitchState {
     configVersion?: pulumi.Input<string>;
     /**
      * The detailed contact information for the person
-     * who is responsible for the DVS.
+     * who is responsible for the VDS.
      */
     contactDetail?: pulumi.Input<string>;
     /**
      * The name of the person who is responsible for the
-     * DVS.
+     * VDS.
      */
     contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch.
+     * value strings to set for VDS.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the datacenter where the distributed
-     * virtual switch will be created. Forces a new resource if changed.
+     * The ID of the datacenter where the VDS will be
+     * created. Forces a new resource if changed.
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * A detailed description for the DVS.
+     * A detailed description for the VDS.
      */
     description?: pulumi.Input<string>;
     /**
@@ -828,8 +825,8 @@ export interface DistributedVirtualSwitchState {
      */
     faulttoleranceShareLevel?: pulumi.Input<string>;
     /**
-     * The folder to create the DVS in. Forces a new resource
-     * if changed.
+     * The folder in which to create the VDS.
+     * Forces a new resource if changed.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -880,8 +877,7 @@ export interface DistributedVirtualSwitchState {
     ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * An IPv4 address to identify the switch. This is
-     * mostly useful when used with the Netflow arguments found
-     * below.
+     * mostly useful when used with the Netflow arguments.
      */
     ipv4Address?: pulumi.Input<string>;
     /**
@@ -902,7 +898,7 @@ export interface DistributedVirtualSwitchState {
     iscsiShareLevel?: pulumi.Input<string>;
     /**
      * The Link Aggregation Control Protocol group
-     * version to use with the switch. Possible values are `singleLag` and
+     * version to use with the VDS. Possible values are `singleLag` and
      * `multipleLag`.
      */
     lacpApiVersion?: pulumi.Input<string>;
@@ -942,17 +938,16 @@ export interface DistributedVirtualSwitchState {
      */
     managementShareLevel?: pulumi.Input<string>;
     /**
-     * The maximum transmission unit (MTU) for the virtual
-     * switch.
+     * The maximum transmission unit (MTU) for the VDS.
      */
     maxMtu?: pulumi.Input<number>;
     /**
      * The multicast filtering mode to use
-     * with the switch. Can be one of `legacyFiltering` or `snooping`.
+     * with the VDS. Can be one of `legacyFiltering` or `snooping`.
      */
     multicastFilteringMode?: pulumi.Input<string>;
     /**
-     * The name of the distributed virtual switch.
+     * The name of the VDS.
      */
     name?: pulumi.Input<string>;
     /**
@@ -963,8 +958,8 @@ export interface DistributedVirtualSwitchState {
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
      * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-     * Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+     * Must be set before Netflow can be enabled.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
@@ -997,7 +992,7 @@ export interface DistributedVirtualSwitchState {
     /**
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
-     * switch should analyze all packets. The maximum value is `1000`, which
+     * VDS should analyze all packets. The maximum value is `1000`, which
      * indicates an analysis rate of 0.001%.
      */
     netflowSamplingRate?: pulumi.Input<number>;
@@ -1045,7 +1040,7 @@ export interface DistributedVirtualSwitchState {
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1055,20 +1050,20 @@ export interface DistributedVirtualSwitchState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+     * `failoverExplicit`, or `loadbalanceLoadbased`.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
      * Forward all traffic transmitted by ports for which
-     * this policy applies to its DVS uplinks.
+     * this policy applies to its VDS uplinks.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
      * A list of strings that uniquely identifies the names
-     * of the uplinks on the DVS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the DVS, in addition to the
-     * names.  See here for an example on how to
+     * of the uplinks on the VDS across hosts. The number of items in this list
+     * controls the number of uplinks that exist on the VDS, in addition to the
+     * names. See here for an example on how to
      * use this option.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1089,10 +1084,9 @@ export interface DistributedVirtualSwitchState {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * - The version of the DVS to create. The default is to
-     * create the DVS at the latest version supported by the version of vSphere
-     * being used. A DVS can be upgraded to another version, but cannot be
-     * downgraded.
+     * - The version of the VDS. BY default, a VDS is created
+     * at the latest version supported by the vSphere version if not specified.
+     * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
     version?: pulumi.Input<string>;
     /**
@@ -1163,7 +1157,7 @@ export interface DistributedVirtualSwitchArgs {
     /**
      * A list of active uplinks to be used in load
      * balancing. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     activeUplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1212,26 +1206,26 @@ export interface DistributedVirtualSwitchArgs {
     checkBeacon?: pulumi.Input<boolean>;
     /**
      * The detailed contact information for the person
-     * who is responsible for the DVS.
+     * who is responsible for the VDS.
      */
     contactDetail?: pulumi.Input<string>;
     /**
      * The name of the person who is responsible for the
-     * DVS.
+     * VDS.
      */
     contactName?: pulumi.Input<string>;
     /**
      * Map of custom attribute ids to attribute
-     * value strings to set for virtual switch.
+     * value strings to set for VDS.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of the datacenter where the distributed
-     * virtual switch will be created. Forces a new resource if changed.
+     * The ID of the datacenter where the VDS will be
+     * created. Forces a new resource if changed.
      */
     datacenterId: pulumi.Input<string>;
     /**
-     * A detailed description for the DVS.
+     * A detailed description for the VDS.
      */
     description?: pulumi.Input<string>;
     /**
@@ -1281,8 +1275,8 @@ export interface DistributedVirtualSwitchArgs {
      */
     faulttoleranceShareLevel?: pulumi.Input<string>;
     /**
-     * The folder to create the DVS in. Forces a new resource
-     * if changed.
+     * The folder in which to create the VDS.
+     * Forces a new resource if changed.
      */
     folder?: pulumi.Input<string>;
     /**
@@ -1333,8 +1327,7 @@ export interface DistributedVirtualSwitchArgs {
     ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
      * An IPv4 address to identify the switch. This is
-     * mostly useful when used with the Netflow arguments found
-     * below.
+     * mostly useful when used with the Netflow arguments.
      */
     ipv4Address?: pulumi.Input<string>;
     /**
@@ -1355,7 +1348,7 @@ export interface DistributedVirtualSwitchArgs {
     iscsiShareLevel?: pulumi.Input<string>;
     /**
      * The Link Aggregation Control Protocol group
-     * version to use with the switch. Possible values are `singleLag` and
+     * version to use with the VDS. Possible values are `singleLag` and
      * `multipleLag`.
      */
     lacpApiVersion?: pulumi.Input<string>;
@@ -1395,17 +1388,16 @@ export interface DistributedVirtualSwitchArgs {
      */
     managementShareLevel?: pulumi.Input<string>;
     /**
-     * The maximum transmission unit (MTU) for the virtual
-     * switch.
+     * The maximum transmission unit (MTU) for the VDS.
      */
     maxMtu?: pulumi.Input<number>;
     /**
      * The multicast filtering mode to use
-     * with the switch. Can be one of `legacyFiltering` or `snooping`.
+     * with the VDS. Can be one of `legacyFiltering` or `snooping`.
      */
     multicastFilteringMode?: pulumi.Input<string>;
     /**
-     * The name of the distributed virtual switch.
+     * The name of the VDS.
      */
     name?: pulumi.Input<string>;
     /**
@@ -1416,8 +1408,8 @@ export interface DistributedVirtualSwitchArgs {
     netflowActiveFlowTimeout?: pulumi.Input<number>;
     /**
      * IP address for the Netflow
-     * collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-     * Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+     * collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+     * Must be set before Netflow can be enabled.
      */
     netflowCollectorIpAddress?: pulumi.Input<string>;
     /**
@@ -1450,7 +1442,7 @@ export interface DistributedVirtualSwitchArgs {
     /**
      * The ratio of total number of packets to
      * the number of packets analyzed. The default is `0`, which indicates that the
-     * switch should analyze all packets. The maximum value is `1000`, which
+     * VDS should analyze all packets. The maximum value is `1000`, which
      * indicates an analysis rate of 0.001%.
      */
     netflowSamplingRate?: pulumi.Input<number>;
@@ -1498,7 +1490,7 @@ export interface DistributedVirtualSwitchArgs {
     /**
      * A list of standby uplinks to be used in
      * failover. These uplinks need to match the definitions in the
-     * `uplinks` DVS argument. See
+     * `uplinks` VDS argument. See
      * here for more details.
      */
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1508,20 +1500,20 @@ export interface DistributedVirtualSwitchArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The uplink teaming policy. Can be one of
-     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-     * `failoverExplicit`.
+     * `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+     * `failoverExplicit`, or `loadbalanceLoadbased`.
      */
     teamingPolicy?: pulumi.Input<string>;
     /**
      * Forward all traffic transmitted by ports for which
-     * this policy applies to its DVS uplinks.
+     * this policy applies to its VDS uplinks.
      */
     txUplink?: pulumi.Input<boolean>;
     /**
      * A list of strings that uniquely identifies the names
-     * of the uplinks on the DVS across hosts. The number of items in this list
-     * controls the number of uplinks that exist on the DVS, in addition to the
-     * names.  See here for an example on how to
+     * of the uplinks on the VDS across hosts. The number of items in this list
+     * controls the number of uplinks that exist on the VDS, in addition to the
+     * names. See here for an example on how to
      * use this option.
      */
     uplinks?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1542,10 +1534,9 @@ export interface DistributedVirtualSwitchArgs {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * - The version of the DVS to create. The default is to
-     * create the DVS at the latest version supported by the version of vSphere
-     * being used. A DVS can be upgraded to another version, but cannot be
-     * downgraded.
+     * - The version of the VDS. BY default, a VDS is created
+     * at the latest version supported by the vSphere version if not specified.
+     * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
     version?: pulumi.Input<string>;
     /**

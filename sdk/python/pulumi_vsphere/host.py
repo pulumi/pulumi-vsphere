@@ -24,6 +24,7 @@ class HostArgs:
                  license: Optional[pulumi.Input[str]] = None,
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Host resource.
@@ -42,16 +43,21 @@ class HostArgs:
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added, even
-               if the host is already connected to a different vSphere instance. Default is `false`
+        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
+               even if the host is already connected to a different vSphere instance.
+               Default is `false`.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
                The license key is expected to be present in vSphere.
         :param pulumi.Input[str] lockdown: Set the lockdown state of the host. Valid options are
                `disabled`, `normal`, and `strict`. Default is `disabled`.
-        :param pulumi.Input[bool] maintenance: Set the management state of the host. Default is `false`.
-        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the the
-               CA that signed the host's certificate should be trusted. If the CA is not trusted
-               and no thumbprint is set then the operation will fail.
+        :param pulumi.Input[bool] maintenance: Set the management state of the host.
+               Default is `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
+               refer to the `Tag` resource for more information on applying
+               tags to resources.
+        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
+               CA that signed the host's certificate should be trusted. If the CA is not
+               trusted and no thumbprint is set then the operation will fail.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "password", password)
@@ -72,6 +78,8 @@ class HostArgs:
             pulumi.set(__self__, "lockdown", lockdown)
         if maintenance is not None:
             pulumi.set(__self__, "maintenance", maintenance)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
 
@@ -171,8 +179,9 @@ class HostArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true then it will force the host to be added, even
-        if the host is already connected to a different vSphere instance. Default is `false`
+        If set to true then it will force the host to be added,
+        even if the host is already connected to a different vSphere instance.
+        Default is `false`.
         """
         return pulumi.get(self, "force")
 
@@ -210,7 +219,8 @@ class HostArgs:
     @pulumi.getter
     def maintenance(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set the management state of the host. Default is `false`.
+        Set the management state of the host.
+        Default is `false`.
         """
         return pulumi.get(self, "maintenance")
 
@@ -220,11 +230,25 @@ class HostArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource. Please
+        refer to the `Tag` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def thumbprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Host's certificate SHA-1 thumbprint. If not set the the
-        CA that signed the host's certificate should be trusted. If the CA is not trusted
-        and no thumbprint is set then the operation will fail.
+        Host's certificate SHA-1 thumbprint. If not set the
+        CA that signed the host's certificate should be trusted. If the CA is not
+        trusted and no thumbprint is set then the operation will fail.
         """
         return pulumi.get(self, "thumbprint")
 
@@ -246,6 +270,7 @@ class _HostState:
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
@@ -260,19 +285,24 @@ class _HostState:
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added, even
-               if the host is already connected to a different vSphere instance. Default is `false`
+        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
+               even if the host is already connected to a different vSphere instance.
+               Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
                The license key is expected to be present in vSphere.
         :param pulumi.Input[str] lockdown: Set the lockdown state of the host. Valid options are
                `disabled`, `normal`, and `strict`. Default is `disabled`.
-        :param pulumi.Input[bool] maintenance: Set the management state of the host. Default is `false`.
+        :param pulumi.Input[bool] maintenance: Set the management state of the host.
+               Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
-        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the the
-               CA that signed the host's certificate should be trusted. If the CA is not trusted
-               and no thumbprint is set then the operation will fail.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
+               refer to the `Tag` resource for more information on applying
+               tags to resources.
+        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
+               CA that signed the host's certificate should be trusted. If the CA is not
+               trusted and no thumbprint is set then the operation will fail.
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -296,6 +326,8 @@ class _HostState:
             pulumi.set(__self__, "maintenance", maintenance)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
         if username is not None:
@@ -359,8 +391,9 @@ class _HostState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true then it will force the host to be added, even
-        if the host is already connected to a different vSphere instance. Default is `false`
+        If set to true then it will force the host to be added,
+        even if the host is already connected to a different vSphere instance.
+        Default is `false`.
         """
         return pulumi.get(self, "force")
 
@@ -410,7 +443,8 @@ class _HostState:
     @pulumi.getter
     def maintenance(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set the management state of the host. Default is `false`.
+        Set the management state of the host.
+        Default is `false`.
         """
         return pulumi.get(self, "maintenance")
 
@@ -433,11 +467,25 @@ class _HostState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of any tags to attach to this resource. Please
+        refer to the `Tag` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def thumbprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Host's certificate SHA-1 thumbprint. If not set the the
-        CA that signed the host's certificate should be trusted. If the CA is not trusted
-        and no thumbprint is set then the operation will fail.
+        Host's certificate SHA-1 thumbprint. If not set the
+        CA that signed the host's certificate should be trusted. If the CA is not
+        trusted and no thumbprint is set then the operation will fail.
         """
         return pulumi.get(self, "thumbprint")
 
@@ -474,12 +522,13 @@ class Host(pulumi.CustomResource):
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a VMware vSphere host resource. This represents an ESXi host that
-        can be used either as part of a Compute Cluster or Standalone.
+        can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
         ### Create a standalone host
@@ -488,13 +537,13 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="my-datacenter")
-        h1 = vsphere.Host("h1",
-            hostname="10.10.10.1",
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000i-00000",
-            datacenter=dc.id)
+            datacenter=datacenter.id)
         ```
         ### Create host in a compute cluster
 
@@ -502,20 +551,20 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="TfDatacenter")
-        c1 = vsphere.get_compute_cluster(name="DC0_C0",
-            datacenter_id=dc.id)
-        h1 = vsphere.Host("h1",
-            hostname="10.10.10.1",
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000i-00000",
-            cluster=c1.id)
+            cluster=cluster.id)
         ```
         ## Importing
 
-        An existing host can be [imported][docs-import] into this resource
-        via supplying the host's ID. An example is below:
+        An existing host can be [imported][docs-import] into this resource by supplying
+        the host's ID. An example is below:
 
         [docs-import]: /docs/import/index.html
 
@@ -537,19 +586,24 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added, even
-               if the host is already connected to a different vSphere instance. Default is `false`
+        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
+               even if the host is already connected to a different vSphere instance.
+               Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
                The license key is expected to be present in vSphere.
         :param pulumi.Input[str] lockdown: Set the lockdown state of the host. Valid options are
                `disabled`, `normal`, and `strict`. Default is `disabled`.
-        :param pulumi.Input[bool] maintenance: Set the management state of the host. Default is `false`.
+        :param pulumi.Input[bool] maintenance: Set the management state of the host.
+               Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
-        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the the
-               CA that signed the host's certificate should be trusted. If the CA is not trusted
-               and no thumbprint is set then the operation will fail.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
+               refer to the `Tag` resource for more information on applying
+               tags to resources.
+        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
+               CA that signed the host's certificate should be trusted. If the CA is not
+               trusted and no thumbprint is set then the operation will fail.
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -561,7 +615,7 @@ class Host(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a VMware vSphere host resource. This represents an ESXi host that
-        can be used either as part of a Compute Cluster or Standalone.
+        can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
         ### Create a standalone host
@@ -570,13 +624,13 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="my-datacenter")
-        h1 = vsphere.Host("h1",
-            hostname="10.10.10.1",
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000i-00000",
-            datacenter=dc.id)
+            datacenter=datacenter.id)
         ```
         ### Create host in a compute cluster
 
@@ -584,20 +638,20 @@ class Host(pulumi.CustomResource):
         import pulumi
         import pulumi_vsphere as vsphere
 
-        dc = vsphere.get_datacenter(name="TfDatacenter")
-        c1 = vsphere.get_compute_cluster(name="DC0_C0",
-            datacenter_id=dc.id)
-        h1 = vsphere.Host("h1",
-            hostname="10.10.10.1",
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
             username="root",
             password="password",
             license="00000-00000-00000-00000i-00000",
-            cluster=c1.id)
+            cluster=cluster.id)
         ```
         ## Importing
 
-        An existing host can be [imported][docs-import] into this resource
-        via supplying the host's ID. An example is below:
+        An existing host can be [imported][docs-import] into this resource by supplying
+        the host's ID. An example is below:
 
         [docs-import]: /docs/import/index.html
 
@@ -632,6 +686,7 @@ class Host(pulumi.CustomResource):
                  lockdown: Optional[pulumi.Input[str]] = None,
                  maintenance: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -660,6 +715,7 @@ class Host(pulumi.CustomResource):
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = password
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["thumbprint"] = thumbprint
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
@@ -684,6 +740,7 @@ class Host(pulumi.CustomResource):
             lockdown: Optional[pulumi.Input[str]] = None,
             maintenance: Optional[pulumi.Input[bool]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             thumbprint: Optional[pulumi.Input[str]] = None,
             username: Optional[pulumi.Input[str]] = None) -> 'Host':
         """
@@ -703,19 +760,24 @@ class Host(pulumi.CustomResource):
                Default is `false`.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added, even
-               if the host is already connected to a different vSphere instance. Default is `false`
+        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
+               even if the host is already connected to a different vSphere instance.
+               Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
                The license key is expected to be present in vSphere.
         :param pulumi.Input[str] lockdown: Set the lockdown state of the host. Valid options are
                `disabled`, `normal`, and `strict`. Default is `disabled`.
-        :param pulumi.Input[bool] maintenance: Set the management state of the host. Default is `false`.
+        :param pulumi.Input[bool] maintenance: Set the management state of the host.
+               Default is `false`.
         :param pulumi.Input[str] password: Password that will be used by vSphere to authenticate
                to the host.
-        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the the
-               CA that signed the host's certificate should be trusted. If the CA is not trusted
-               and no thumbprint is set then the operation will fail.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
+               refer to the `Tag` resource for more information on applying
+               tags to resources.
+        :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
+               CA that signed the host's certificate should be trusted. If the CA is not
+               trusted and no thumbprint is set then the operation will fail.
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -733,6 +795,7 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["lockdown"] = lockdown
         __props__.__dict__["maintenance"] = maintenance
         __props__.__dict__["password"] = password
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["thumbprint"] = thumbprint
         __props__.__dict__["username"] = username
         return Host(resource_name, opts=opts, __props__=__props__)
@@ -779,8 +842,9 @@ class Host(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to true then it will force the host to be added, even
-        if the host is already connected to a different vSphere instance. Default is `false`
+        If set to true then it will force the host to be added,
+        even if the host is already connected to a different vSphere instance.
+        Default is `false`.
         """
         return pulumi.get(self, "force")
 
@@ -814,7 +878,8 @@ class Host(pulumi.CustomResource):
     @pulumi.getter
     def maintenance(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set the management state of the host. Default is `false`.
+        Set the management state of the host.
+        Default is `false`.
         """
         return pulumi.get(self, "maintenance")
 
@@ -829,11 +894,21 @@ class Host(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The IDs of any tags to attach to this resource. Please
+        refer to the `Tag` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def thumbprint(self) -> pulumi.Output[Optional[str]]:
         """
-        Host's certificate SHA-1 thumbprint. If not set the the
-        CA that signed the host's certificate should be trusted. If the CA is not trusted
-        and no thumbprint is set then the operation will fail.
+        Host's certificate SHA-1 thumbprint. If not set the
+        CA that signed the host's certificate should be trusted. If the CA is not
+        trusted and no thumbprint is set then the operation will fail.
         """
         return pulumi.get(self, "thumbprint")
 

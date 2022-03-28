@@ -13,47 +13,35 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VirtualMachineNetworkInterfaceGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The network interface type. Can be one of
-        /// `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
+        /// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
         /// </summary>
         [Input("adapterType")]
         public Input<string>? AdapterType { get; set; }
 
         /// <summary>
-        /// The upper bandwidth limit of this network
-        /// interface, in Mbits/sec. The default is no limit.
+        /// The upper bandwidth limit of the network interface, in Mbits/sec. The default is no limit.
         /// </summary>
         [Input("bandwidthLimit")]
         public Input<int>? BandwidthLimit { get; set; }
 
         /// <summary>
-        /// The bandwidth reservation of this
-        /// network interface, in Mbits/sec. The default is no reservation.
+        /// The bandwidth reservation of the network interface, in Mbits/sec. The default is no reservation.
         /// </summary>
         [Input("bandwidthReservation")]
         public Input<int>? BandwidthReservation { get; set; }
 
         /// <summary>
-        /// The share count for this network
-        /// interface when the share level is `custom`.
+        /// The share count for the network interface when the share level is `custom`.
         /// </summary>
         [Input("bandwidthShareCount")]
         public Input<int>? BandwidthShareCount { get; set; }
 
         /// <summary>
-        /// The bandwidth share allocation level for
-        /// this interface. Can be one of `low`, `normal`, `high`, or `custom`. Default:
-        /// `normal`.
+        /// The bandwidth share allocation level for the network interface. One of `low`, `normal`, `high`, or `custom`. Default: `normal`.
         /// </summary>
         [Input("bandwidthShareLevel")]
         public Input<string>? BandwidthShareLevel { get; set; }
 
-        /// <summary>
-        /// An address internal to this provider that helps locate the
-        /// device when `key` is unavailable. This follows a convention of
-        /// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        /// unit 1 on SCSI bus 0.
-        /// </summary>
         [Input("deviceAddress")]
         public Input<string>? DeviceAddress { get; set; }
 
@@ -64,32 +52,25 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? Key { get; set; }
 
         /// <summary>
-        /// The MAC address of this network interface. Can
-        /// only be manually set if `use_static_mac` is true, otherwise this is a
-        /// computed value that gives the current MAC address of this interface.
+        /// The MAC address of the network interface. Can only be manually set if `use_static_mac` is `true`. Otherwise, the value is computed and presents the assigned MAC address for the interface.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// The managed object reference
-        /// ID of the network to connect this interface to.
+        /// The [managed object reference ID][docs-about-morefs] of the network on which to connect the virtual machine network interface.
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies which OVF NIC the `network_interface`
-        /// should be associated with. Only applies at creation and only when deploying
-        /// from an OVF source.
+        /// Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
         /// </summary>
         [Input("ovfMapping")]
         public Input<string>? OvfMapping { get; set; }
 
         /// <summary>
-        /// If true, the `mac_address` field is treated as
-        /// a static MAC address and set accordingly. Setting this to `true` requires
-        /// `mac_address` to be set. Default: `false`.
+        /// If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         /// </summary>
         [Input("useStaticMac")]
         public Input<bool>? UseStaticMac { get; set; }

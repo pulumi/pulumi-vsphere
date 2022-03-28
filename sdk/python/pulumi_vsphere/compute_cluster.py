@@ -110,7 +110,7 @@ class ComputeClusterArgs:
         :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
                `true` will auto-remove any hosts that are currently a member of the cluster,
                as if they were removed by taking their entry out of `host_system_ids` (see
-               below). This is an advanced
+               below. This is an advanced
                option and should only be used for testing. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
@@ -160,10 +160,10 @@ class ComputeClusterArgs:
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Default: `3`
-               minutes. <sup>\*</sup>
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: The time, in seconds,
+               to wait after an APD timeout event to run the response action defined in
+               `ha_datastore_apd_response`. Default: `180`
+               seconds (3 minutes). <sup>\*</sup>
         :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on
                virtual machines when the cluster has detected a permanent device loss to a
                relevant datastore. Can be one of `disabled`, `warning`, or
@@ -197,41 +197,38 @@ class ComputeClusterArgs:
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
-               is not received within this configured interval, the virtual machine is
-               marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_failure_interval: The time interval, in seconds, a heartbeat
+               from a virtual machine is not received within this configured interval,
+               the virtual machine is marked as failed. Default: `30` seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The time, in seconds, for the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
+               unlimited reset time is allotted. Default: `-1` (no window).
         :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
         :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
+               `120` seconds (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay, in seconds,
                after ready condition is met. A VM is considered ready at this point.
-               Default: `0` (no delay). <sup>\*</sup>
+               Default: `0` seconds (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
-               before proceeding with the next priority. Default: `600` (10 minutes).
+               before proceeding with the next priority. Default: `600` seconds (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
-               operation when removing hosts from a cluster. The value is specified in
-               seconds. Default: `3600` (1 hour).
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout, in seconds, for each host maintenance
+               mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
-               >>>>>>> v1.18.3
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -543,7 +540,7 @@ class ComputeClusterArgs:
         When destroying the resource, setting this to
         `true` will auto-remove any hosts that are currently a member of the cluster,
         as if they were removed by taking their entry out of `host_system_ids` (see
-        below). This is an advanced
+        below. This is an advanced
         option and should only be used for testing. Default: `false`.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
@@ -747,10 +744,10 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in minutes
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Default: `3`
-        minutes. <sup>\*</sup>
+        The time, in seconds,
+        to wait after an APD timeout event to run the response action defined in
+        `ha_datastore_apd_response`. Default: `180`
+        seconds (3 minutes). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -883,9 +880,9 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        If a heartbeat from a virtual machine
-        is not received within this configured interval, the virtual machine is
-        marked as failed. The value is in seconds. Default: `30`.
+        The time interval, in seconds, a heartbeat
+        from a virtual machine is not received within this configured interval,
+        the virtual machine is marked as failed. Default: `30` seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -897,12 +894,11 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the reset window in
+        The time, in seconds, for the reset window in
         which `ha_vm_maximum_resets` can operate. When this
         window expires, no more resets are attempted regardless of the setting
         configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        unlimited reset time is allotted. Default: `-1` (no window).
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -929,7 +925,7 @@ class ComputeClusterArgs:
         """
         The time, in seconds, that HA waits after
         powering on a virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        `120` seconds (2 minutes).
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -955,9 +951,9 @@ class ComputeClusterArgs:
     @pulumi.getter(name="haVmRestartAdditionalDelay")
     def ha_vm_restart_additional_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Additional delay in seconds
+        Additional delay, in seconds,
         after ready condition is met. A VM is considered ready at this point.
-        Default: `0` (no delay). <sup>\*</sup>
+        Default: `0` seconds (no delay). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_additional_delay")
 
@@ -985,7 +981,7 @@ class ComputeClusterArgs:
         """
         The maximum time, in seconds,
         that vSphere HA will wait for virtual machines in one priority to be ready
-        before proceeding with the next priority. Default: `600` (10 minutes).
+        before proceeding with the next priority. Default: `600` seconds (10 minutes).
         <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
@@ -998,9 +994,8 @@ class ComputeClusterArgs:
     @pulumi.getter(name="hostClusterExitTimeout")
     def host_cluster_exit_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout for each host maintenance mode
-        operation when removing hosts from a cluster. The value is specified in
-        seconds. Default: `3600` (1 hour).
+        The timeout, in seconds, for each host maintenance
+        mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
 
@@ -1015,7 +1010,6 @@ class ComputeClusterArgs:
         Can be set to `true` if compute cluster
         membership will be managed through the `host` resource rather than the
         `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        >>>>>>> v1.18.3
         """
         return pulumi.get(self, "host_managed")
 
@@ -1027,7 +1021,7 @@ class ComputeClusterArgs:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The [managed object IDs][docs-about-morefs] of
+        The managed object IDs of
         the hosts to put in the cluster. Conflicts with: `host_managed`.
         """
         return pulumi.get(self, "host_system_ids")
@@ -1260,7 +1254,7 @@ class _ComputeClusterState:
         :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
                `true` will auto-remove any hosts that are currently a member of the cluster,
                as if they were removed by taking their entry out of `host_system_ids` (see
-               below). This is an advanced
+               below. This is an advanced
                option and should only be used for testing. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
@@ -1310,10 +1304,10 @@ class _ComputeClusterState:
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Default: `3`
-               minutes. <sup>\*</sup>
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: The time, in seconds,
+               to wait after an APD timeout event to run the response action defined in
+               `ha_datastore_apd_response`. Default: `180`
+               seconds (3 minutes). <sup>\*</sup>
         :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on
                virtual machines when the cluster has detected a permanent device loss to a
                relevant datastore. Can be one of `disabled`, `warning`, or
@@ -1347,41 +1341,38 @@ class _ComputeClusterState:
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
-               is not received within this configured interval, the virtual machine is
-               marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_failure_interval: The time interval, in seconds, a heartbeat
+               from a virtual machine is not received within this configured interval,
+               the virtual machine is marked as failed. Default: `30` seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The time, in seconds, for the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
+               unlimited reset time is allotted. Default: `-1` (no window).
         :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
         :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
+               `120` seconds (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay, in seconds,
                after ready condition is met. A VM is considered ready at this point.
-               Default: `0` (no delay). <sup>\*</sup>
+               Default: `0` seconds (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
-               before proceeding with the next priority. Default: `600` (10 minutes).
+               before proceeding with the next priority. Default: `600` seconds (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
-               operation when removing hosts from a cluster. The value is specified in
-               seconds. Default: `3600` (1 hour).
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout, in seconds, for each host maintenance
+               mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
-               >>>>>>> v1.18.3
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -1697,7 +1688,7 @@ class _ComputeClusterState:
         When destroying the resource, setting this to
         `true` will auto-remove any hosts that are currently a member of the cluster,
         as if they were removed by taking their entry out of `host_system_ids` (see
-        below). This is an advanced
+        below. This is an advanced
         option and should only be used for testing. Default: `false`.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
@@ -1901,10 +1892,10 @@ class _ComputeClusterState:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in minutes
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Default: `3`
-        minutes. <sup>\*</sup>
+        The time, in seconds,
+        to wait after an APD timeout event to run the response action defined in
+        `ha_datastore_apd_response`. Default: `180`
+        seconds (3 minutes). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -2037,9 +2028,9 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        If a heartbeat from a virtual machine
-        is not received within this configured interval, the virtual machine is
-        marked as failed. The value is in seconds. Default: `30`.
+        The time interval, in seconds, a heartbeat
+        from a virtual machine is not received within this configured interval,
+        the virtual machine is marked as failed. Default: `30` seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -2051,12 +2042,11 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the reset window in
+        The time, in seconds, for the reset window in
         which `ha_vm_maximum_resets` can operate. When this
         window expires, no more resets are attempted regardless of the setting
         configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        unlimited reset time is allotted. Default: `-1` (no window).
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -2083,7 +2073,7 @@ class _ComputeClusterState:
         """
         The time, in seconds, that HA waits after
         powering on a virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        `120` seconds (2 minutes).
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -2109,9 +2099,9 @@ class _ComputeClusterState:
     @pulumi.getter(name="haVmRestartAdditionalDelay")
     def ha_vm_restart_additional_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Additional delay in seconds
+        Additional delay, in seconds,
         after ready condition is met. A VM is considered ready at this point.
-        Default: `0` (no delay). <sup>\*</sup>
+        Default: `0` seconds (no delay). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_additional_delay")
 
@@ -2139,7 +2129,7 @@ class _ComputeClusterState:
         """
         The maximum time, in seconds,
         that vSphere HA will wait for virtual machines in one priority to be ready
-        before proceeding with the next priority. Default: `600` (10 minutes).
+        before proceeding with the next priority. Default: `600` seconds (10 minutes).
         <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
@@ -2152,9 +2142,8 @@ class _ComputeClusterState:
     @pulumi.getter(name="hostClusterExitTimeout")
     def host_cluster_exit_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout for each host maintenance mode
-        operation when removing hosts from a cluster. The value is specified in
-        seconds. Default: `3600` (1 hour).
+        The timeout, in seconds, for each host maintenance
+        mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
 
@@ -2169,7 +2158,6 @@ class _ComputeClusterState:
         Can be set to `true` if compute cluster
         membership will be managed through the `host` resource rather than the
         `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        >>>>>>> v1.18.3
         """
         return pulumi.get(self, "host_managed")
 
@@ -2181,7 +2169,7 @@ class _ComputeClusterState:
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The [managed object IDs][docs-about-morefs] of
+        The managed object IDs of
         the hosts to put in the cluster. Conflicts with: `host_managed`.
         """
         return pulumi.get(self, "host_system_ids")
@@ -2430,7 +2418,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
                `true` will auto-remove any hosts that are currently a member of the cluster,
                as if they were removed by taking their entry out of `host_system_ids` (see
-               below). This is an advanced
+               below. This is an advanced
                option and should only be used for testing. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
@@ -2480,10 +2468,10 @@ class ComputeCluster(pulumi.CustomResource):
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Default: `3`
-               minutes. <sup>\*</sup>
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: The time, in seconds,
+               to wait after an APD timeout event to run the response action defined in
+               `ha_datastore_apd_response`. Default: `180`
+               seconds (3 minutes). <sup>\*</sup>
         :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on
                virtual machines when the cluster has detected a permanent device loss to a
                relevant datastore. Can be one of `disabled`, `warning`, or
@@ -2517,41 +2505,38 @@ class ComputeCluster(pulumi.CustomResource):
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
-               is not received within this configured interval, the virtual machine is
-               marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_failure_interval: The time interval, in seconds, a heartbeat
+               from a virtual machine is not received within this configured interval,
+               the virtual machine is marked as failed. Default: `30` seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The time, in seconds, for the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
+               unlimited reset time is allotted. Default: `-1` (no window).
         :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
         :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
+               `120` seconds (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay, in seconds,
                after ready condition is met. A VM is considered ready at this point.
-               Default: `0` (no delay). <sup>\*</sup>
+               Default: `0` seconds (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
-               before proceeding with the next priority. Default: `600` (10 minutes).
+               before proceeding with the next priority. Default: `600` seconds (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
-               operation when removing hosts from a cluster. The value is specified in
-               seconds. Default: `3600` (1 hour).
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout, in seconds, for each host maintenance
+               mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
-               >>>>>>> v1.18.3
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -2838,7 +2823,7 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] force_evacuate_on_destroy: When destroying the resource, setting this to
                `true` will auto-remove any hosts that are currently a member of the cluster,
                as if they were removed by taking their entry out of `host_system_ids` (see
-               below). This is an advanced
+               below. This is an advanced
                option and should only be used for testing. Default: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
@@ -2888,10 +2873,10 @@ class ComputeCluster(pulumi.CustomResource):
                relevant datastore. Can be one of `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `disabled`.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
-               to wait after an APD timeout event to execute the response action defined in
-               `ha_datastore_apd_response`. Default: `3`
-               minutes. <sup>\*</sup>
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: The time, in seconds,
+               to wait after an APD timeout event to run the response action defined in
+               `ha_datastore_apd_response`. Default: `180`
+               seconds (3 minutes). <sup>\*</sup>
         :param pulumi.Input[str] ha_datastore_pdl_response: Controls the action to take on
                virtual machines when the cluster has detected a permanent device loss to a
                relevant datastore. Can be one of `disabled`, `warning`, or
@@ -2925,41 +2910,38 @@ class ComputeCluster(pulumi.CustomResource):
                `appHbStatusGreen`. The default is `none`, which means that a virtual machine
                is considered ready immediately after a host is found to start it on.
                <sup>\*</sup>
-        :param pulumi.Input[int] ha_vm_failure_interval: If a heartbeat from a virtual machine
-               is not received within this configured interval, the virtual machine is
-               marked as failed. The value is in seconds. Default: `30`.
-        :param pulumi.Input[int] ha_vm_maximum_failure_window: The length of the reset window in
+        :param pulumi.Input[int] ha_vm_failure_interval: The time interval, in seconds, a heartbeat
+               from a virtual machine is not received within this configured interval,
+               the virtual machine is marked as failed. Default: `30` seconds.
+        :param pulumi.Input[int] ha_vm_maximum_failure_window: The time, in seconds, for the reset window in
                which `ha_vm_maximum_resets` can operate. When this
                window expires, no more resets are attempted regardless of the setting
                configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-               unlimited reset time is allotted. The value is specified in seconds. Default:
-               `-1` (no window).
+               unlimited reset time is allotted. Default: `-1` (no window).
         :param pulumi.Input[int] ha_vm_maximum_resets: The maximum number of resets that HA will
                perform to a virtual machine when responding to a failure event. Default: `3`
         :param pulumi.Input[int] ha_vm_minimum_uptime: The time, in seconds, that HA waits after
                powering on a virtual machine before monitoring for heartbeats. Default:
-               `120` (2 minutes).
+               `120` seconds (2 minutes).
         :param pulumi.Input[str] ha_vm_monitoring: The type of virtual machine monitoring to use
                when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
                `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
-        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay in seconds
+        :param pulumi.Input[int] ha_vm_restart_additional_delay: Additional delay, in seconds,
                after ready condition is met. A VM is considered ready at this point.
-               Default: `0` (no delay). <sup>\*</sup>
+               Default: `0` seconds (no delay). <sup>\*</sup>
         :param pulumi.Input[str] ha_vm_restart_priority: The default restart priority
                for affected virtual machines when vSphere detects a host failure. Can be one
                of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds,
                that vSphere HA will wait for virtual machines in one priority to be ready
-               before proceeding with the next priority. Default: `600` (10 minutes).
+               before proceeding with the next priority. Default: `600` seconds (10 minutes).
                <sup>\*</sup>
-        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout for each host maintenance mode
-               operation when removing hosts from a cluster. The value is specified in
-               seconds. Default: `3600` (1 hour).
+        :param pulumi.Input[int] host_cluster_exit_timeout: The timeout, in seconds, for each host maintenance
+               mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         :param pulumi.Input[bool] host_managed: Can be set to `true` if compute cluster
                membership will be managed through the `host` resource rather than the
                `compute_cluster` resource. Conflicts with: `host_system_ids`.
-               >>>>>>> v1.18.3
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The [managed object IDs][docs-about-morefs] of
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster. Conflicts with: `host_managed`.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] proactive_ha_automation_level: Determines how the host
@@ -3176,7 +3158,7 @@ class ComputeCluster(pulumi.CustomResource):
         When destroying the resource, setting this to
         `true` will auto-remove any hosts that are currently a member of the cluster,
         as if they were removed by taking their entry out of `host_system_ids` (see
-        below). This is an advanced
+        below. This is an advanced
         option and should only be used for testing. Default: `false`.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
@@ -3324,10 +3306,10 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Controls the delay in minutes
-        to wait after an APD timeout event to execute the response action defined in
-        `ha_datastore_apd_response`. Default: `3`
-        minutes. <sup>\*</sup>
+        The time, in seconds,
+        to wait after an APD timeout event to run the response action defined in
+        `ha_datastore_apd_response`. Default: `180`
+        seconds (3 minutes). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_datastore_apd_response_delay")
 
@@ -3424,9 +3406,9 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmFailureInterval")
     def ha_vm_failure_interval(self) -> pulumi.Output[Optional[int]]:
         """
-        If a heartbeat from a virtual machine
-        is not received within this configured interval, the virtual machine is
-        marked as failed. The value is in seconds. Default: `30`.
+        The time interval, in seconds, a heartbeat
+        from a virtual machine is not received within this configured interval,
+        the virtual machine is marked as failed. Default: `30` seconds.
         """
         return pulumi.get(self, "ha_vm_failure_interval")
 
@@ -3434,12 +3416,11 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmMaximumFailureWindow")
     def ha_vm_maximum_failure_window(self) -> pulumi.Output[Optional[int]]:
         """
-        The length of the reset window in
+        The time, in seconds, for the reset window in
         which `ha_vm_maximum_resets` can operate. When this
         window expires, no more resets are attempted regardless of the setting
         configured in `ha_vm_maximum_resets`. `-1` means no window, meaning an
-        unlimited reset time is allotted. The value is specified in seconds. Default:
-        `-1` (no window).
+        unlimited reset time is allotted. Default: `-1` (no window).
         """
         return pulumi.get(self, "ha_vm_maximum_failure_window")
 
@@ -3458,7 +3439,7 @@ class ComputeCluster(pulumi.CustomResource):
         """
         The time, in seconds, that HA waits after
         powering on a virtual machine before monitoring for heartbeats. Default:
-        `120` (2 minutes).
+        `120` seconds (2 minutes).
         """
         return pulumi.get(self, "ha_vm_minimum_uptime")
 
@@ -3476,9 +3457,9 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="haVmRestartAdditionalDelay")
     def ha_vm_restart_additional_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Additional delay in seconds
+        Additional delay, in seconds,
         after ready condition is met. A VM is considered ready at this point.
-        Default: `0` (no delay). <sup>\*</sup>
+        Default: `0` seconds (no delay). <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_additional_delay")
 
@@ -3498,7 +3479,7 @@ class ComputeCluster(pulumi.CustomResource):
         """
         The maximum time, in seconds,
         that vSphere HA will wait for virtual machines in one priority to be ready
-        before proceeding with the next priority. Default: `600` (10 minutes).
+        before proceeding with the next priority. Default: `600` seconds (10 minutes).
         <sup>\*</sup>
         """
         return pulumi.get(self, "ha_vm_restart_timeout")
@@ -3507,9 +3488,8 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="hostClusterExitTimeout")
     def host_cluster_exit_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        The timeout for each host maintenance mode
-        operation when removing hosts from a cluster. The value is specified in
-        seconds. Default: `3600` (1 hour).
+        The timeout, in seconds, for each host maintenance
+        mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
         """
         return pulumi.get(self, "host_cluster_exit_timeout")
 
@@ -3520,7 +3500,6 @@ class ComputeCluster(pulumi.CustomResource):
         Can be set to `true` if compute cluster
         membership will be managed through the `host` resource rather than the
         `compute_cluster` resource. Conflicts with: `host_system_ids`.
-        >>>>>>> v1.18.3
         """
         return pulumi.get(self, "host_managed")
 
@@ -3528,7 +3507,7 @@ class ComputeCluster(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemIds")
     def host_system_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The [managed object IDs][docs-about-morefs] of
+        The managed object IDs of
         the hosts to put in the cluster. Conflicts with: `host_managed`.
         """
         return pulumi.get(self, "host_system_ids")

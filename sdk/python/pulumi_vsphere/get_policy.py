@@ -55,12 +55,9 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    The `get_policy` data source can be used to discover the UUID of a
-    vSphere storage policy. This can then be used with resources or data sources that
-    require a storage policy.
+    The `get_policy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
 
-    > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
 
     ## Example Usage
 
@@ -68,7 +65,8 @@ def get_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    policy = vsphere.get_policy(name="policy1")
+    prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+    dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
     ```
 
 
@@ -91,12 +89,9 @@ def get_policy(name: Optional[str] = None,
 def get_policy_output(name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
-    The `get_policy` data source can be used to discover the UUID of a
-    vSphere storage policy. This can then be used with resources or data sources that
-    require a storage policy.
+    The `get_policy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
 
-    > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
 
     ## Example Usage
 
@@ -104,7 +99,8 @@ def get_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    policy = vsphere.get_policy(name="policy1")
+    prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+    dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
     ```
 
 

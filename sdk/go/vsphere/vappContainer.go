@@ -44,8 +44,7 @@ type VappContainer struct {
 	MemoryExpandable pulumi.BoolPtrOutput `pulumi:"memoryExpandable"`
 	// The CPU utilization of a vApp container will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
-	// unlimited.
-	// Default: `-1`
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the vApp container. Default: `0`
@@ -137,8 +136,7 @@ type vappContainerState struct {
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
 	// The CPU utilization of a vApp container will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
-	// unlimited.
-	// Default: `-1`
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the vApp container. Default: `0`
@@ -199,8 +197,7 @@ type VappContainerState struct {
 	MemoryExpandable pulumi.BoolPtrInput
 	// The CPU utilization of a vApp container will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
-	// unlimited.
-	// Default: `-1`
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the vApp container. Default: `0`
@@ -265,8 +262,7 @@ type vappContainerArgs struct {
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
 	// The CPU utilization of a vApp container will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
-	// unlimited.
-	// Default: `-1`
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the vApp container. Default: `0`
@@ -328,8 +324,7 @@ type VappContainerArgs struct {
 	MemoryExpandable pulumi.BoolPtrInput
 	// The CPU utilization of a vApp container will not
 	// exceed this limit, even if there are available resources. Set to `-1` for
-	// unlimited.
-	// Default: `-1`
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the vApp container. Default: `0`

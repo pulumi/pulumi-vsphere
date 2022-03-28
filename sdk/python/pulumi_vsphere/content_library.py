@@ -22,12 +22,11 @@ class ContentLibraryArgs:
                  subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
         """
         The set of arguments for constructing a ContentLibrary resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
-               items.
-        :param pulumi.Input[str] description: A description of the Content Library.
-        :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local Content Library.
-        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options to publish a local Content Library.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[str] description: A description for the content library.
+        :param pulumi.Input[str] name: The name of the content library.
+        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
+        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options subscribe to a published content library.
         """
         pulumi.set(__self__, "storage_backings", storage_backings)
         if description is not None:
@@ -43,8 +42,7 @@ class ContentLibraryArgs:
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The managed object reference ID on which to store Content Library
-        items.
+        The managed object reference ID of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
@@ -56,7 +54,7 @@ class ContentLibraryArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of the Content Library.
+        A description for the content library.
         """
         return pulumi.get(self, "description")
 
@@ -68,7 +66,7 @@ class ContentLibraryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Content Library.
+        The name of the content library.
         """
         return pulumi.get(self, "name")
 
@@ -80,7 +78,7 @@ class ContentLibraryArgs:
     @pulumi.getter
     def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
         """
-        Options to publish a local Content Library.
+        Options to publish a local content library.
         """
         return pulumi.get(self, "publication")
 
@@ -92,7 +90,7 @@ class ContentLibraryArgs:
     @pulumi.getter
     def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
         """
-        Options to publish a local Content Library.
+        Options subscribe to a published content library.
         """
         return pulumi.get(self, "subscription")
 
@@ -111,12 +109,11 @@ class _ContentLibraryState:
                  subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None):
         """
         Input properties used for looking up and filtering ContentLibrary resources.
-        :param pulumi.Input[str] description: A description of the Content Library.
-        :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local Content Library.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
-               items.
-        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options to publish a local Content Library.
+        :param pulumi.Input[str] description: A description for the content library.
+        :param pulumi.Input[str] name: The name of the content library.
+        :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options subscribe to a published content library.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -133,7 +130,7 @@ class _ContentLibraryState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of the Content Library.
+        A description for the content library.
         """
         return pulumi.get(self, "description")
 
@@ -145,7 +142,7 @@ class _ContentLibraryState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Content Library.
+        The name of the content library.
         """
         return pulumi.get(self, "name")
 
@@ -157,7 +154,7 @@ class _ContentLibraryState:
     @pulumi.getter
     def publication(self) -> Optional[pulumi.Input['ContentLibraryPublicationArgs']]:
         """
-        Options to publish a local Content Library.
+        Options to publish a local content library.
         """
         return pulumi.get(self, "publication")
 
@@ -169,8 +166,7 @@ class _ContentLibraryState:
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The managed object reference ID on which to store Content Library
-        items.
+        The managed object reference ID of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
@@ -182,7 +178,7 @@ class _ContentLibraryState:
     @pulumi.getter
     def subscription(self) -> Optional[pulumi.Input['ContentLibrarySubscriptionArgs']]:
         """
-        Options to publish a local Content Library.
+        Options subscribe to a published content library.
         """
         return pulumi.get(self, "subscription")
 
@@ -206,12 +202,11 @@ class ContentLibrary(pulumi.CustomResource):
         Create a ContentLibrary resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of the Content Library.
-        :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
-               items.
-        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
+        :param pulumi.Input[str] description: A description for the content library.
+        :param pulumi.Input[str] name: The name of the content library.
+        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local content library.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options subscribe to a published content library.
         """
         ...
     @overload
@@ -282,12 +277,11 @@ class ContentLibrary(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description of the Content Library.
-        :param pulumi.Input[str] name: The name of the Content Library.
-        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local Content Library.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID on which to store Content Library
-               items.
-        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options to publish a local Content Library.
+        :param pulumi.Input[str] description: A description for the content library.
+        :param pulumi.Input[str] name: The name of the content library.
+        :param pulumi.Input[pulumi.InputType['ContentLibraryPublicationArgs']] publication: Options to publish a local content library.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
+        :param pulumi.Input[pulumi.InputType['ContentLibrarySubscriptionArgs']] subscription: Options subscribe to a published content library.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,7 +298,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description of the Content Library.
+        A description for the content library.
         """
         return pulumi.get(self, "description")
 
@@ -312,7 +306,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the Content Library.
+        The name of the content library.
         """
         return pulumi.get(self, "name")
 
@@ -320,7 +314,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter
     def publication(self) -> pulumi.Output['outputs.ContentLibraryPublication']:
         """
-        Options to publish a local Content Library.
+        Options to publish a local content library.
         """
         return pulumi.get(self, "publication")
 
@@ -328,8 +322,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter(name="storageBackings")
     def storage_backings(self) -> pulumi.Output[Sequence[str]]:
         """
-        The managed object reference ID on which to store Content Library
-        items.
+        The managed object reference ID of the datastore on which to store the content library items.
         """
         return pulumi.get(self, "storage_backings")
 
@@ -337,7 +330,7 @@ class ContentLibrary(pulumi.CustomResource):
     @pulumi.getter
     def subscription(self) -> pulumi.Output[Optional['outputs.ContentLibrarySubscription']]:
         """
-        Options to publish a local Content Library.
+        Options subscribe to a published content library.
         """
         return pulumi.get(self, "subscription")
 
