@@ -15,7 +15,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of active uplinks to be used in load
         /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         [Output("activeUplinks")]
@@ -90,34 +90,34 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The detailed contact information for the person
-        /// who is responsible for the DVS.
+        /// who is responsible for the VDS.
         /// </summary>
         [Output("contactDetail")]
         public Output<string?> ContactDetail { get; private set; } = null!;
 
         /// <summary>
         /// The name of the person who is responsible for the
-        /// DVS.
+        /// VDS.
         /// </summary>
         [Output("contactName")]
         public Output<string?> ContactName { get; private set; } = null!;
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual switch.
+        /// value strings to set for VDS.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the datacenter where the distributed
-        /// virtual switch will be created. Forces a new resource if changed.
+        /// The ID of the datacenter where the VDS will be
+        /// created. Forces a new resource if changed.
         /// </summary>
         [Output("datacenterId")]
         public Output<string> DatacenterId { get; private set; } = null!;
 
         /// <summary>
-        /// A detailed description for the DVS.
+        /// A detailed description for the VDS.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -189,8 +189,8 @@ namespace Pulumi.VSphere
         public Output<string> FaulttoleranceShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The folder to create the DVS in. Forces a new resource
-        /// if changed.
+        /// The folder in which to create the VDS.
+        /// Forces a new resource if changed.
         /// </summary>
         [Output("folder")]
         public Output<string?> Folder { get; private set; } = null!;
@@ -263,8 +263,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// An IPv4 address to identify the switch. This is
-        /// mostly useful when used with the Netflow arguments found
-        /// below.
+        /// mostly useful when used with the Netflow arguments.
         /// </summary>
         [Output("ipv4Address")]
         public Output<string?> Ipv4Address { get; private set; } = null!;
@@ -295,7 +294,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The Link Aggregation Control Protocol group
-        /// version to use with the switch. Possible values are `singleLag` and
+        /// version to use with the VDS. Possible values are `singleLag` and
         /// `multipleLag`.
         /// </summary>
         [Output("lacpApiVersion")]
@@ -353,21 +352,20 @@ namespace Pulumi.VSphere
         public Output<string> ManagementShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum transmission unit (MTU) for the virtual
-        /// switch.
+        /// The maximum transmission unit (MTU) for the VDS.
         /// </summary>
         [Output("maxMtu")]
         public Output<int> MaxMtu { get; private set; } = null!;
 
         /// <summary>
         /// The multicast filtering mode to use
-        /// with the switch. Can be one of `legacyFiltering` or `snooping`.
+        /// with the VDS. Can be one of `legacyFiltering` or `snooping`.
         /// </summary>
         [Output("multicastFilteringMode")]
         public Output<string> MulticastFilteringMode { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the distributed virtual switch.
+        /// The name of the VDS.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -382,8 +380,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        /// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        /// Must be set before Netflow can be enabled.
         /// </summary>
         [Output("netflowCollectorIpAddress")]
         public Output<string?> NetflowCollectorIpAddress { get; private set; } = null!;
@@ -428,7 +426,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// switch should analyze all packets. The maximum value is `1000`, which
+        /// VDS should analyze all packets. The maximum value is `1000`, which
         /// indicates an analysis rate of 0.001%.
         /// </summary>
         [Output("netflowSamplingRate")]
@@ -496,7 +494,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of standby uplinks to be used in
         /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         [Output("standbyUplinks")]
@@ -510,24 +508,24 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        /// `failover_explicit`.
+        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        /// `failover_explicit`, or `loadbalance_loadbased`.
         /// </summary>
         [Output("teamingPolicy")]
         public Output<string> TeamingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its DVS uplinks.
+        /// this policy applies to its VDS uplinks.
         /// </summary>
         [Output("txUplink")]
         public Output<bool> TxUplink { get; private set; } = null!;
 
         /// <summary>
         /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the DVS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the DVS, in addition to the
-        /// names.  See here for an example on how to
+        /// of the uplinks on the VDS across hosts. The number of items in this list
+        /// controls the number of uplinks that exist on the VDS, in addition to the
+        /// names. See here for an example on how to
         /// use this option.
         /// </summary>
         [Output("uplinks")]
@@ -558,10 +556,9 @@ namespace Pulumi.VSphere
         public Output<string> VdpShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// - The version of the DVS to create. The default is to
-        /// create the DVS at the latest version supported by the version of vSphere
-        /// being used. A DVS can be upgraded to another version, but cannot be
-        /// downgraded.
+        /// - The version of the VDS. BY default, a VDS is created
+        /// at the latest version supported by the vSphere version if not specified.
+        /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -705,7 +702,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of active uplinks to be used in load
         /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         public InputList<string> ActiveUplinks
@@ -777,14 +774,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The detailed contact information for the person
-        /// who is responsible for the DVS.
+        /// who is responsible for the VDS.
         /// </summary>
         [Input("contactDetail")]
         public Input<string>? ContactDetail { get; set; }
 
         /// <summary>
         /// The name of the person who is responsible for the
-        /// DVS.
+        /// VDS.
         /// </summary>
         [Input("contactName")]
         public Input<string>? ContactName { get; set; }
@@ -794,7 +791,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual switch.
+        /// value strings to set for VDS.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -803,14 +800,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The ID of the datacenter where the distributed
-        /// virtual switch will be created. Forces a new resource if changed.
+        /// The ID of the datacenter where the VDS will be
+        /// created. Forces a new resource if changed.
         /// </summary>
         [Input("datacenterId", required: true)]
         public Input<string> DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// A detailed description for the DVS.
+        /// A detailed description for the VDS.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -882,8 +879,8 @@ namespace Pulumi.VSphere
         public Input<string>? FaulttoleranceShareLevel { get; set; }
 
         /// <summary>
-        /// The folder to create the DVS in. Forces a new resource
-        /// if changed.
+        /// The folder in which to create the VDS.
+        /// Forces a new resource if changed.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -962,8 +959,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// An IPv4 address to identify the switch. This is
-        /// mostly useful when used with the Netflow arguments found
-        /// below.
+        /// mostly useful when used with the Netflow arguments.
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }
@@ -994,7 +990,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The Link Aggregation Control Protocol group
-        /// version to use with the switch. Possible values are `singleLag` and
+        /// version to use with the VDS. Possible values are `singleLag` and
         /// `multipleLag`.
         /// </summary>
         [Input("lacpApiVersion")]
@@ -1052,21 +1048,20 @@ namespace Pulumi.VSphere
         public Input<string>? ManagementShareLevel { get; set; }
 
         /// <summary>
-        /// The maximum transmission unit (MTU) for the virtual
-        /// switch.
+        /// The maximum transmission unit (MTU) for the VDS.
         /// </summary>
         [Input("maxMtu")]
         public Input<int>? MaxMtu { get; set; }
 
         /// <summary>
         /// The multicast filtering mode to use
-        /// with the switch. Can be one of `legacyFiltering` or `snooping`.
+        /// with the VDS. Can be one of `legacyFiltering` or `snooping`.
         /// </summary>
         [Input("multicastFilteringMode")]
         public Input<string>? MulticastFilteringMode { get; set; }
 
         /// <summary>
-        /// The name of the distributed virtual switch.
+        /// The name of the VDS.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1081,8 +1076,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        /// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        /// Must be set before Netflow can be enabled.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
@@ -1127,7 +1122,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// switch should analyze all packets. The maximum value is `1000`, which
+        /// VDS should analyze all packets. The maximum value is `1000`, which
         /// indicates an analysis rate of 0.001%.
         /// </summary>
         [Input("netflowSamplingRate")]
@@ -1204,7 +1199,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of standby uplinks to be used in
         /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         public InputList<string> StandbyUplinks
@@ -1227,15 +1222,15 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        /// `failover_explicit`.
+        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        /// `failover_explicit`, or `loadbalance_loadbased`.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
         /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its DVS uplinks.
+        /// this policy applies to its VDS uplinks.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1245,9 +1240,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the DVS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the DVS, in addition to the
-        /// names.  See here for an example on how to
+        /// of the uplinks on the VDS across hosts. The number of items in this list
+        /// controls the number of uplinks that exist on the VDS, in addition to the
+        /// names. See here for an example on how to
         /// use this option.
         /// </summary>
         public InputList<string> Uplinks
@@ -1281,10 +1276,9 @@ namespace Pulumi.VSphere
         public Input<string>? VdpShareLevel { get; set; }
 
         /// <summary>
-        /// - The version of the DVS to create. The default is to
-        /// create the DVS at the latest version supported by the version of vSphere
-        /// being used. A DVS can be upgraded to another version, but cannot be
-        /// downgraded.
+        /// - The version of the VDS. BY default, a VDS is created
+        /// at the latest version supported by the vSphere version if not specified.
+        /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -1395,7 +1389,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of active uplinks to be used in load
         /// balancing. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         public InputList<string> ActiveUplinks
@@ -1473,14 +1467,14 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The detailed contact information for the person
-        /// who is responsible for the DVS.
+        /// who is responsible for the VDS.
         /// </summary>
         [Input("contactDetail")]
         public Input<string>? ContactDetail { get; set; }
 
         /// <summary>
         /// The name of the person who is responsible for the
-        /// DVS.
+        /// VDS.
         /// </summary>
         [Input("contactName")]
         public Input<string>? ContactName { get; set; }
@@ -1490,7 +1484,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// Map of custom attribute ids to attribute
-        /// value strings to set for virtual switch.
+        /// value strings to set for VDS.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1499,14 +1493,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// The ID of the datacenter where the distributed
-        /// virtual switch will be created. Forces a new resource if changed.
+        /// The ID of the datacenter where the VDS will be
+        /// created. Forces a new resource if changed.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// A detailed description for the DVS.
+        /// A detailed description for the VDS.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1578,8 +1572,8 @@ namespace Pulumi.VSphere
         public Input<string>? FaulttoleranceShareLevel { get; set; }
 
         /// <summary>
-        /// The folder to create the DVS in. Forces a new resource
-        /// if changed.
+        /// The folder in which to create the VDS.
+        /// Forces a new resource if changed.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
@@ -1658,8 +1652,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// An IPv4 address to identify the switch. This is
-        /// mostly useful when used with the Netflow arguments found
-        /// below.
+        /// mostly useful when used with the Netflow arguments.
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }
@@ -1690,7 +1683,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The Link Aggregation Control Protocol group
-        /// version to use with the switch. Possible values are `singleLag` and
+        /// version to use with the VDS. Possible values are `singleLag` and
         /// `multipleLag`.
         /// </summary>
         [Input("lacpApiVersion")]
@@ -1748,21 +1741,20 @@ namespace Pulumi.VSphere
         public Input<string>? ManagementShareLevel { get; set; }
 
         /// <summary>
-        /// The maximum transmission unit (MTU) for the virtual
-        /// switch.
+        /// The maximum transmission unit (MTU) for the VDS.
         /// </summary>
         [Input("maxMtu")]
         public Input<int>? MaxMtu { get; set; }
 
         /// <summary>
         /// The multicast filtering mode to use
-        /// with the switch. Can be one of `legacyFiltering` or `snooping`.
+        /// with the VDS. Can be one of `legacyFiltering` or `snooping`.
         /// </summary>
         [Input("multicastFilteringMode")]
         public Input<string>? MulticastFilteringMode { get; set; }
 
         /// <summary>
-        /// The name of the distributed virtual switch.
+        /// The name of the VDS.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1777,8 +1769,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// IP address for the Netflow
-        /// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-        /// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+        /// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+        /// Must be set before Netflow can be enabled.
         /// </summary>
         [Input("netflowCollectorIpAddress")]
         public Input<string>? NetflowCollectorIpAddress { get; set; }
@@ -1823,7 +1815,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The ratio of total number of packets to
         /// the number of packets analyzed. The default is `0`, which indicates that the
-        /// switch should analyze all packets. The maximum value is `1000`, which
+        /// VDS should analyze all packets. The maximum value is `1000`, which
         /// indicates an analysis rate of 0.001%.
         /// </summary>
         [Input("netflowSamplingRate")]
@@ -1900,7 +1892,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A list of standby uplinks to be used in
         /// failover. These uplinks need to match the definitions in the
-        /// `uplinks` DVS argument. See
+        /// `uplinks` VDS argument. See
         /// here for more details.
         /// </summary>
         public InputList<string> StandbyUplinks
@@ -1923,15 +1915,15 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The uplink teaming policy. Can be one of
-        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
-        /// `failover_explicit`.
+        /// `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
+        /// `failover_explicit`, or `loadbalance_loadbased`.
         /// </summary>
         [Input("teamingPolicy")]
         public Input<string>? TeamingPolicy { get; set; }
 
         /// <summary>
         /// Forward all traffic transmitted by ports for which
-        /// this policy applies to its DVS uplinks.
+        /// this policy applies to its VDS uplinks.
         /// </summary>
         [Input("txUplink")]
         public Input<bool>? TxUplink { get; set; }
@@ -1941,9 +1933,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A list of strings that uniquely identifies the names
-        /// of the uplinks on the DVS across hosts. The number of items in this list
-        /// controls the number of uplinks that exist on the DVS, in addition to the
-        /// names.  See here for an example on how to
+        /// of the uplinks on the VDS across hosts. The number of items in this list
+        /// controls the number of uplinks that exist on the VDS, in addition to the
+        /// names. See here for an example on how to
         /// use this option.
         /// </summary>
         public InputList<string> Uplinks
@@ -1977,10 +1969,9 @@ namespace Pulumi.VSphere
         public Input<string>? VdpShareLevel { get; set; }
 
         /// <summary>
-        /// - The version of the DVS to create. The default is to
-        /// create the DVS at the latest version supported by the version of vSphere
-        /// being used. A DVS can be upgraded to another version, but cannot be
-        /// downgraded.
+        /// - The version of the VDS. BY default, a VDS is created
+        /// at the latest version supported by the vSphere version if not specified.
+        /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

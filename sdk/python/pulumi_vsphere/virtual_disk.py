@@ -307,25 +307,7 @@ class VirtualDisk(pulumi.CustomResource):
                  vmdk_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `VirtualDisk` resource can be used to create virtual disks outside
-        of any given `VirtualMachine`
-        resource. These disks can be attached to a virtual machine by creating a disk
-        block with the `attach` parameter.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        my_disk = vsphere.VirtualDisk("myDisk",
-            datacenter="Datacenter",
-            datastore="local",
-            size=2,
-            type="thin",
-            vmdk_path="myDisk.vmdk")
-        ```
-
+        Create a VirtualDisk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
@@ -353,25 +335,7 @@ class VirtualDisk(pulumi.CustomResource):
                  args: VirtualDiskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `VirtualDisk` resource can be used to create virtual disks outside
-        of any given `VirtualMachine`
-        resource. These disks can be attached to a virtual machine by creating a disk
-        block with the `attach` parameter.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        my_disk = vsphere.VirtualDisk("myDisk",
-            datacenter="Datacenter",
-            datastore="local",
-            size=2,
-            type="thin",
-            vmdk_path="myDisk.vmdk")
-        ```
-
+        Create a VirtualDisk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VirtualDiskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

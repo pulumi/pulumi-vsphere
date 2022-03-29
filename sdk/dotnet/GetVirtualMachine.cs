@@ -13,14 +13,17 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. Its most relevant purpose is for finding
-        /// the UUID of a template to be used as the source for cloning into a new
+        /// existing virtual machine or template. The most common purpose is for finding
+        /// the UUID of a template to be used as the source for cloning to a new
         /// `vsphere.VirtualMachine` resource. It also
         /// reads the guest ID so that can be supplied as well.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// In the following example, a virtual machine template is returned by its
+        /// unique name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -32,12 +35,41 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
         ///         {
+        ///             Name = "ubuntu-server-template",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "test-vm-template",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// In the following example, each virtual machine template is returned by its
+        /// unique full path within the `vsphere.Datacenter`.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc-01",
+        ///         }));
+        ///         var productionTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             Name = "production/templates/ubuntu-server-template",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
+        ///         var developmentTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             Name = "development/templates/ubuntu-server-template",
+        ///             DatacenterId = datacenter.Id,
         ///         })));
         ///     }
         /// 
@@ -51,14 +83,17 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
-        /// existing virtual machine or template. Its most relevant purpose is for finding
-        /// the UUID of a template to be used as the source for cloning into a new
+        /// existing virtual machine or template. The most common purpose is for finding
+        /// the UUID of a template to be used as the source for cloning to a new
         /// `vsphere.VirtualMachine` resource. It also
         /// reads the guest ID so that can be supplied as well.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// In the following example, a virtual machine template is returned by its
+        /// unique name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -70,12 +105,41 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
         ///         {
+        ///             Name = "ubuntu-server-template",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "test-vm-template",
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// In the following example, each virtual machine template is returned by its
+        /// unique full path within the `vsphere.Datacenter`.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+        ///         {
+        ///             Name = "dc-01",
+        ///         }));
+        ///         var productionTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             Name = "production/templates/ubuntu-server-template",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
+        ///         var developmentTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
+        ///         {
+        ///             Name = "development/templates/ubuntu-server-template",
+        ///             DatacenterId = datacenter.Id,
         ///         })));
         ///     }
         /// 
@@ -93,7 +157,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// guest_id is a non-specific operating system, like `otherGuest`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
         public string? AlternateGuestName { get; set; }
@@ -214,7 +278,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the virtual machine. This can be a name or
-        /// path.
+        /// the full path relative to the datacenter.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -275,6 +339,9 @@ namespace Pulumi.VSphere
         [Input("syncTimeWithHostPeriodically")]
         public bool? SyncTimeWithHostPeriodically { get; set; }
 
+        [Input("toolsUpgradePolicy")]
+        public string? ToolsUpgradePolicy { get; set; }
+
         [Input("vapp")]
         public Inputs.GetVirtualMachineVappArgs? Vapp { get; set; }
 
@@ -293,7 +360,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// guest_id is a non-specific operating system, like `otherGuest`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
         /// </summary>
         [Input("alternateGuestName")]
         public Input<string>? AlternateGuestName { get; set; }
@@ -414,7 +481,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the virtual machine. This can be a name or
-        /// path.
+        /// the full path relative to the datacenter.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -475,6 +542,9 @@ namespace Pulumi.VSphere
         [Input("syncTimeWithHostPeriodically")]
         public Input<bool>? SyncTimeWithHostPeriodically { get; set; }
 
+        [Input("toolsUpgradePolicy")]
+        public Input<string>? ToolsUpgradePolicy { get; set; }
+
         [Input("vapp")]
         public Input<Inputs.GetVirtualMachineVappInputArgs>? Vapp { get; set; }
 
@@ -495,13 +565,13 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
-        /// guest_id is a non-specific operating system, like `otherGuest`.
+        /// `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
         /// </summary>
         public readonly string? AlternateGuestName;
         /// <summary>
         /// The user-provided description of this virtual machine.
         /// </summary>
-        public readonly string? Annotation;
+        public readonly string Annotation;
         public readonly int? BootDelay;
         public readonly int? BootRetryDelay;
         public readonly bool? BootRetryEnabled;
@@ -514,6 +584,14 @@ namespace Pulumi.VSphere
         public readonly int CpuShareCount;
         public readonly string? CpuShareLevel;
         public readonly string? DatacenterId;
+        /// <summary>
+        /// Whenever possible, this is the first IPv4 address that is reachable through
+        /// the default gateway configured on the machine, then the first reachable IPv6
+        /// address, and then the first general discovered address if neither exist. If
+        /// VMware Tools is not running on the virtual machine, or if the VM is powered
+        /// off, this value will be blank.
+        /// </summary>
+        public readonly string DefaultIpAddress;
         /// <summary>
         /// Information about each of the disks on this virtual machine or
         /// template. These are sorted by bus and unit number so that they can be applied
@@ -539,7 +617,7 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string GuestId;
         /// <summary>
-        /// A list of IP addresses as reported by VMWare tools.
+        /// A list of IP addresses as reported by VMware Tools.
         /// </summary>
         public readonly ImmutableArray<string> GuestIpAddresses;
         /// <summary>
@@ -615,6 +693,7 @@ namespace Pulumi.VSphere
         public readonly string? SwapPlacementPolicy;
         public readonly bool? SyncTimeWithHost;
         public readonly bool? SyncTimeWithHostPeriodically;
+        public readonly string? ToolsUpgradePolicy;
         public readonly string Uuid;
         public readonly Outputs.GetVirtualMachineVappResult? Vapp;
         public readonly ImmutableArray<string> VappTransports;
@@ -625,7 +704,7 @@ namespace Pulumi.VSphere
         private GetVirtualMachineResult(
             string? alternateGuestName,
 
-            string? annotation,
+            string annotation,
 
             int? bootDelay,
 
@@ -650,6 +729,8 @@ namespace Pulumi.VSphere
             string? cpuShareLevel,
 
             string? datacenterId,
+
+            string defaultIpAddress,
 
             ImmutableArray<Outputs.GetVirtualMachineDiskResult> disks,
 
@@ -731,6 +812,8 @@ namespace Pulumi.VSphere
 
             bool? syncTimeWithHostPeriodically,
 
+            string? toolsUpgradePolicy,
+
             string uuid,
 
             Outputs.GetVirtualMachineVappResult? vapp,
@@ -755,6 +838,7 @@ namespace Pulumi.VSphere
             CpuShareCount = cpuShareCount;
             CpuShareLevel = cpuShareLevel;
             DatacenterId = datacenterId;
+            DefaultIpAddress = defaultIpAddress;
             Disks = disks;
             EfiSecureBootEnabled = efiSecureBootEnabled;
             EnableDiskUuid = enableDiskUuid;
@@ -795,6 +879,7 @@ namespace Pulumi.VSphere
             SwapPlacementPolicy = swapPlacementPolicy;
             SyncTimeWithHost = syncTimeWithHost;
             SyncTimeWithHostPeriodically = syncTimeWithHostPeriodically;
+            ToolsUpgradePolicy = toolsUpgradePolicy;
             Uuid = uuid;
             Vapp = vapp;
             VappTransports = vappTransports;

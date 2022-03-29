@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a VMware vSphere host resource. This represents an ESXi host that
- * can be used either as part of a Compute Cluster or Standalone.
+ * can be used either as a member of a cluster or as a standalone host.
  *
  * ## Example Usage
  * ### Create a standalone host
@@ -15,15 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const dc = vsphere.getDatacenter({
- *     name: "my-datacenter",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
  * });
- * const h1 = new vsphere.Host("h1", {
- *     hostname: "10.10.10.1",
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
  *     license: "00000-00000-00000-00000i-00000",
- *     datacenter: dc.then(dc => dc.id),
+ *     datacenter: datacenter.then(datacenter => datacenter.id),
  * });
  * ```
  * ### Create host in a compute cluster
@@ -32,25 +32,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const dc = vsphere.getDatacenter({
- *     name: "TfDatacenter",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
  * });
- * const c1 = dc.then(dc => vsphere.getComputeCluster({
- *     name: "DC0_C0",
- *     datacenterId: dc.id,
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
  * }));
- * const h1 = new vsphere.Host("h1", {
- *     hostname: "10.10.10.1",
+ * const esx_01 = new vsphere.Host("esx-01", {
+ *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
  *     license: "00000-00000-00000-00000i-00000",
- *     cluster: c1.then(c1 => c1.id),
+ *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
  * ## Importing
  *
- * An existing host can be [imported][docs-import] into this resource
- * via supplying the host's ID. An example is below:
+ * An existing host can be [imported][docs-import] into this resource by supplying
+ * the host's ID. An example is below:
  *
  * [docs-import]: /docs/import/index.html
  *
@@ -111,8 +111,9 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
-     * If set to true then it will force the host to be added, even
-     * if the host is already connected to a different vSphere instance. Default is `false`
+     * If set to true then it will force the host to be added,
+     * even if the host is already connected to a different vSphere instance.
+     * Default is `false`.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -130,7 +131,8 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly lockdown!: pulumi.Output<string | undefined>;
     /**
-     * Set the management state of the host. Default is `false`.
+     * Set the management state of the host.
+     * Default is `false`.
      */
     public readonly maintenance!: pulumi.Output<boolean | undefined>;
     /**
@@ -139,9 +141,15 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Host's certificate SHA-1 thumbprint. If not set the the
-     * CA that signed the host's certificate should be trusted. If the CA is not trusted
-     * and no thumbprint is set then the operation will fail.
+     * The IDs of any tags to attach to this resource. Please
+     * refer to the `vsphere.Tag` resource for more information on applying
+     * tags to resources.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Host's certificate SHA-1 thumbprint. If not set the
+     * CA that signed the host's certificate should be trusted. If the CA is not
+     * trusted and no thumbprint is set then the operation will fail.
      */
     public readonly thumbprint!: pulumi.Output<string | undefined>;
     /**
@@ -173,6 +181,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["lockdown"] = state ? state.lockdown : undefined;
             resourceInputs["maintenance"] = state ? state.maintenance : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
@@ -196,6 +205,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["lockdown"] = args ? args.lockdown : undefined;
             resourceInputs["maintenance"] = args ? args.maintenance : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thumbprint"] = args ? args.thumbprint : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
@@ -231,8 +241,9 @@ export interface HostState {
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * If set to true then it will force the host to be added, even
-     * if the host is already connected to a different vSphere instance. Default is `false`
+     * If set to true then it will force the host to be added,
+     * even if the host is already connected to a different vSphere instance.
+     * Default is `false`.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -250,7 +261,8 @@ export interface HostState {
      */
     lockdown?: pulumi.Input<string>;
     /**
-     * Set the management state of the host. Default is `false`.
+     * Set the management state of the host.
+     * Default is `false`.
      */
     maintenance?: pulumi.Input<boolean>;
     /**
@@ -259,9 +271,15 @@ export interface HostState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Host's certificate SHA-1 thumbprint. If not set the the
-     * CA that signed the host's certificate should be trusted. If the CA is not trusted
-     * and no thumbprint is set then the operation will fail.
+     * The IDs of any tags to attach to this resource. Please
+     * refer to the `vsphere.Tag` resource for more information on applying
+     * tags to resources.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Host's certificate SHA-1 thumbprint. If not set the
+     * CA that signed the host's certificate should be trusted. If the CA is not
+     * trusted and no thumbprint is set then the operation will fail.
      */
     thumbprint?: pulumi.Input<string>;
     /**
@@ -298,8 +316,9 @@ export interface HostArgs {
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * If set to true then it will force the host to be added, even
-     * if the host is already connected to a different vSphere instance. Default is `false`
+     * If set to true then it will force the host to be added,
+     * even if the host is already connected to a different vSphere instance.
+     * Default is `false`.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -317,7 +336,8 @@ export interface HostArgs {
      */
     lockdown?: pulumi.Input<string>;
     /**
-     * Set the management state of the host. Default is `false`.
+     * Set the management state of the host.
+     * Default is `false`.
      */
     maintenance?: pulumi.Input<boolean>;
     /**
@@ -326,9 +346,15 @@ export interface HostArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * Host's certificate SHA-1 thumbprint. If not set the the
-     * CA that signed the host's certificate should be trusted. If the CA is not trusted
-     * and no thumbprint is set then the operation will fail.
+     * The IDs of any tags to attach to this resource. Please
+     * refer to the `vsphere.Tag` resource for more information on applying
+     * tags to resources.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Host's certificate SHA-1 thumbprint. If not set the
+     * CA that signed the host's certificate should be trusted. If the CA is not
+     * trusted and no thumbprint is set then the operation will fail.
      */
     thumbprint?: pulumi.Input<string>;
     /**

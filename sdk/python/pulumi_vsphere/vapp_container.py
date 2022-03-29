@@ -58,8 +58,7 @@ class VappContainerArgs:
                unreserved resources. Default: `true`
         :param pulumi.Input[int] memory_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
-               unlimited.
-               Default: `-1`
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -225,8 +224,7 @@ class VappContainerArgs:
         """
         The CPU utilization of a vApp container will not
         exceed this limit, even if there are available resources. Set to `-1` for
-        unlimited.
-        Default: `-1`
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 
@@ -358,8 +356,7 @@ class _VappContainerState:
                unreserved resources. Default: `true`
         :param pulumi.Input[int] memory_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
-               unlimited.
-               Default: `-1`
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -515,8 +512,7 @@ class _VappContainerState:
         """
         The CPU utilization of a vApp container will not
         exceed this limit, even if there are available resources. Set to `-1` for
-        unlimited.
-        Default: `-1`
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 
@@ -669,8 +665,7 @@ class VappContainer(pulumi.CustomResource):
                unreserved resources. Default: `true`
         :param pulumi.Input[int] memory_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
-               unlimited.
-               Default: `-1`
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -813,8 +808,7 @@ class VappContainer(pulumi.CustomResource):
                unreserved resources. Default: `true`
         :param pulumi.Input[int] memory_limit: The CPU utilization of a vApp container will not
                exceed this limit, even if there are available resources. Set to `-1` for
-               unlimited.
-               Default: `-1`
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the vApp container. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -932,8 +926,7 @@ class VappContainer(pulumi.CustomResource):
         """
         The CPU utilization of a vApp container will not
         exceed this limit, even if there are available resources. Set to `-1` for
-        unlimited.
-        Default: `-1`
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 

@@ -12,75 +12,17 @@ namespace Pulumi.VSphere
     public static class GetContentLibraryItem
     {
         /// <summary>
-        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a content library item.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        /// connections.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
-        ///         {
-        ///             Name = "Content Library Test",
-        ///         }));
-        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
-        ///         {
-        ///             Name = "Ubuntu Bionic 18.04",
-        ///             LibraryId = library.Id,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a content library item.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        /// connections.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
-        ///         {
-        ///             Name = "Content Library Test",
-        ///         }));
-        ///         var item = library.Apply(library =&gt; Output.Create(VSphere.GetContentLibraryItem.InvokeAsync(new VSphere.GetContentLibraryItemArgs
-        ///         {
-        ///             Name = "Ubuntu Bionic 18.04",
-        ///             LibraryId = library.Id,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
         /// </summary>
         public static Output<GetContentLibraryItemResult> Invoke(GetContentLibraryItemInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemInvokeArgs(), options.WithDefaults());
@@ -90,19 +32,19 @@ namespace Pulumi.VSphere
     public sealed class GetContentLibraryItemArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Content Library the item exists in.
+        /// The ID of the content library in which the item exists.
         /// </summary>
         [Input("libraryId", required: true)]
         public string LibraryId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library item.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The Content Library type. Can be ovf, iso, or vm-template.
+        /// The type for the content library item. One of `ovf`, `vm-template`, or `iso`
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -115,19 +57,19 @@ namespace Pulumi.VSphere
     public sealed class GetContentLibraryItemInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Content Library the item exists in.
+        /// The ID of the content library in which the item exists.
         /// </summary>
         [Input("libraryId", required: true)]
         public Input<string> LibraryId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library item.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The Content Library type. Can be ovf, iso, or vm-template.
+        /// The type for the content library item. One of `ovf`, `vm-template`, or `iso`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -147,9 +89,6 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string LibraryId;
         public readonly string Name;
-        /// <summary>
-        /// The Content Library type. Can be ovf, iso, or vm-template.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -21,13 +21,13 @@ class ContentLibraryItemArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ContentLibraryItem resource.
-        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
-        :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
-               OVAs will be parsed and associated files will also be imported.
-        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
-        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] library_id: The ID of the content library in which to create the item.
+        :param pulumi.Input[str] description: A description for the content library item.
+        :param pulumi.Input[str] file_url: File to import as the content library item.
+        :param pulumi.Input[str] name: The name of the item to be created in the content library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to content library.
         :param pulumi.Input[str] type: Type of content library item.
+               One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         pulumi.set(__self__, "library_id", library_id)
         if description is not None:
@@ -45,7 +45,7 @@ class ContentLibraryItemArgs:
     @pulumi.getter(name="libraryId")
     def library_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Content Library the item should be created in.
+        The ID of the content library in which to create the item.
         """
         return pulumi.get(self, "library_id")
 
@@ -57,7 +57,7 @@ class ContentLibraryItemArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description for the item.
+        A description for the content library item.
         """
         return pulumi.get(self, "description")
 
@@ -69,8 +69,7 @@ class ContentLibraryItemArgs:
     @pulumi.getter(name="fileUrl")
     def file_url(self) -> Optional[pulumi.Input[str]]:
         """
-        File to import into the Content Library item. OVFs and
-        OVAs will be parsed and associated files will also be imported.
+        File to import as the content library item.
         """
         return pulumi.get(self, "file_url")
 
@@ -82,7 +81,7 @@ class ContentLibraryItemArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the item to be created in the Content Library.
+        The name of the item to be created in the content library.
         """
         return pulumi.get(self, "name")
 
@@ -94,7 +93,7 @@ class ContentLibraryItemArgs:
     @pulumi.getter(name="sourceUuid")
     def source_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Virtual machine UUID to clone to Content Library.
+        Virtual machine UUID to clone to content library.
         """
         return pulumi.get(self, "source_uuid")
 
@@ -107,6 +106,7 @@ class ContentLibraryItemArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of content library item.
+        One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         return pulumi.get(self, "type")
 
@@ -126,13 +126,13 @@ class _ContentLibraryItemState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContentLibraryItem resources.
-        :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
-               OVAs will be parsed and associated files will also be imported.
-        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
-        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
-        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] description: A description for the content library item.
+        :param pulumi.Input[str] file_url: File to import as the content library item.
+        :param pulumi.Input[str] library_id: The ID of the content library in which to create the item.
+        :param pulumi.Input[str] name: The name of the item to be created in the content library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to content library.
         :param pulumi.Input[str] type: Type of content library item.
+               One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -151,7 +151,7 @@ class _ContentLibraryItemState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description for the item.
+        A description for the content library item.
         """
         return pulumi.get(self, "description")
 
@@ -163,8 +163,7 @@ class _ContentLibraryItemState:
     @pulumi.getter(name="fileUrl")
     def file_url(self) -> Optional[pulumi.Input[str]]:
         """
-        File to import into the Content Library item. OVFs and
-        OVAs will be parsed and associated files will also be imported.
+        File to import as the content library item.
         """
         return pulumi.get(self, "file_url")
 
@@ -176,7 +175,7 @@ class _ContentLibraryItemState:
     @pulumi.getter(name="libraryId")
     def library_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Content Library the item should be created in.
+        The ID of the content library in which to create the item.
         """
         return pulumi.get(self, "library_id")
 
@@ -188,7 +187,7 @@ class _ContentLibraryItemState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the item to be created in the Content Library.
+        The name of the item to be created in the content library.
         """
         return pulumi.get(self, "name")
 
@@ -200,7 +199,7 @@ class _ContentLibraryItemState:
     @pulumi.getter(name="sourceUuid")
     def source_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Virtual machine UUID to clone to Content Library.
+        Virtual machine UUID to clone to content library.
         """
         return pulumi.get(self, "source_uuid")
 
@@ -213,6 +212,7 @@ class _ContentLibraryItemState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of content library item.
+        One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         return pulumi.get(self, "type")
 
@@ -237,13 +237,13 @@ class ContentLibraryItem(pulumi.CustomResource):
         Create a ContentLibraryItem resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
-               OVAs will be parsed and associated files will also be imported.
-        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
-        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
-        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] description: A description for the content library item.
+        :param pulumi.Input[str] file_url: File to import as the content library item.
+        :param pulumi.Input[str] library_id: The ID of the content library in which to create the item.
+        :param pulumi.Input[str] name: The name of the item to be created in the content library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to content library.
         :param pulumi.Input[str] type: Type of content library item.
+               One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         ...
     @overload
@@ -317,13 +317,13 @@ class ContentLibraryItem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A description for the item.
-        :param pulumi.Input[str] file_url: File to import into the Content Library item. OVFs and
-               OVAs will be parsed and associated files will also be imported.
-        :param pulumi.Input[str] library_id: The ID of the Content Library the item should be created in.
-        :param pulumi.Input[str] name: The name of the item to be created in the Content Library.
-        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to Content Library.
+        :param pulumi.Input[str] description: A description for the content library item.
+        :param pulumi.Input[str] file_url: File to import as the content library item.
+        :param pulumi.Input[str] library_id: The ID of the content library in which to create the item.
+        :param pulumi.Input[str] name: The name of the item to be created in the content library.
+        :param pulumi.Input[str] source_uuid: Virtual machine UUID to clone to content library.
         :param pulumi.Input[str] type: Type of content library item.
+               One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,7 +341,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description for the item.
+        A description for the content library item.
         """
         return pulumi.get(self, "description")
 
@@ -349,8 +349,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     @pulumi.getter(name="fileUrl")
     def file_url(self) -> pulumi.Output[Optional[str]]:
         """
-        File to import into the Content Library item. OVFs and
-        OVAs will be parsed and associated files will also be imported.
+        File to import as the content library item.
         """
         return pulumi.get(self, "file_url")
 
@@ -358,7 +357,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     @pulumi.getter(name="libraryId")
     def library_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Content Library the item should be created in.
+        The ID of the content library in which to create the item.
         """
         return pulumi.get(self, "library_id")
 
@@ -366,7 +365,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the item to be created in the Content Library.
+        The name of the item to be created in the content library.
         """
         return pulumi.get(self, "name")
 
@@ -374,7 +373,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     @pulumi.getter(name="sourceUuid")
     def source_uuid(self) -> pulumi.Output[Optional[str]]:
         """
-        Virtual machine UUID to clone to Content Library.
+        Virtual machine UUID to clone to content library.
         """
         return pulumi.get(self, "source_uuid")
 
@@ -383,6 +382,7 @@ class ContentLibraryItem(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of content library item.
+        One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
         return pulumi.get(self, "type")
 

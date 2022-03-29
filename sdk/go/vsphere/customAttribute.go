@@ -15,8 +15,7 @@ type CustomAttribute struct {
 
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object
-	// type. For a full list, click here. Forces a new
-	// resource if changed.
+	// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
 	ManagedObjectType pulumi.StringPtrOutput `pulumi:"managedObjectType"`
 	// The name of the custom attribute.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -53,8 +52,7 @@ func GetCustomAttribute(ctx *pulumi.Context,
 type customAttributeState struct {
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object
-	// type. For a full list, click here. Forces a new
-	// resource if changed.
+	// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
 	ManagedObjectType *string `pulumi:"managedObjectType"`
 	// The name of the custom attribute.
 	Name *string `pulumi:"name"`
@@ -63,8 +61,7 @@ type customAttributeState struct {
 type CustomAttributeState struct {
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object
-	// type. For a full list, click here. Forces a new
-	// resource if changed.
+	// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
 	ManagedObjectType pulumi.StringPtrInput
 	// The name of the custom attribute.
 	Name pulumi.StringPtrInput
@@ -77,8 +74,7 @@ func (CustomAttributeState) ElementType() reflect.Type {
 type customAttributeArgs struct {
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object
-	// type. For a full list, click here. Forces a new
-	// resource if changed.
+	// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
 	ManagedObjectType *string `pulumi:"managedObjectType"`
 	// The name of the custom attribute.
 	Name *string `pulumi:"name"`
@@ -88,8 +84,7 @@ type customAttributeArgs struct {
 type CustomAttributeArgs struct {
 	// The object type that this attribute may be
 	// applied to. If not set, the custom attribute may be applied to any object
-	// type. For a full list, click here. Forces a new
-	// resource if changed.
+	// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
 	ManagedObjectType pulumi.StringPtrInput
 	// The name of the custom attribute.
 	Name pulumi.StringPtrInput

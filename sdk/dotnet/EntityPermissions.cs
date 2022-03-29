@@ -20,7 +20,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://code.vmware.com/apis/968/vsphere).
+        /// [here](https://developer.vmware.com/apis/968/vsphere).
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://code.vmware.com/apis/968/vsphere).
+        /// [here](https://developer.vmware.com/apis/968/vsphere).
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The managed object type, types can be found in the managed object type section 
-        /// [here](https://code.vmware.com/apis/968/vsphere).
+        /// [here](https://developer.vmware.com/apis/968/vsphere).
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

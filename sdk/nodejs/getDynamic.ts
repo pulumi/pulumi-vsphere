@@ -68,7 +68,8 @@ export interface GetDynamicArgs {
     nameRegex?: string;
     /**
      * The managed object type the returned object must match.
-     * For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+     * The managed object types can be found in the managed object type section
+     * [here](https://developer.vmware.com/apis/968/vsphere).
      */
     type?: string;
 }
@@ -106,7 +107,8 @@ export interface GetDynamicOutputArgs {
     nameRegex?: pulumi.Input<string>;
     /**
      * The managed object type the returned object must match.
-     * For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+     * The managed object types can be found in the managed object type section
+     * [here](https://developer.vmware.com/apis/968/vsphere).
      */
     type?: pulumi.Input<string>;
 }

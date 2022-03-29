@@ -11,12 +11,15 @@ import (
 )
 
 // The `VirtualMachine` data source can be used to find the UUID of an
-// existing virtual machine or template. Its most relevant purpose is for finding
-// the UUID of a template to be used as the source for cloning into a new
+// existing virtual machine or template. The most common purpose is for finding
+// the UUID of a template to be used as the source for cloning to a new
 // `VirtualMachine` resource. It also
 // reads the guest ID so that can be supplied as well.
 //
 // ## Example Usage
+//
+// In the following example, a virtual machine template is returned by its
+// unique name within the `Datacenter`.
 //
 // ```go
 // package main
@@ -28,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
+// 		opt0 := "dc-01"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
@@ -37,8 +40,48 @@ import (
 // 		}
 // 		opt1 := datacenter.Id
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+// 			Name:         "ubuntu-server-template",
 // 			DatacenterId: &opt1,
-// 			Name:         "test-vm-template",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// In the following example, each virtual machine template is returned by its
+// unique full path within the `Datacenter`.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "dc-01"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt1 := datacenter.Id
+// 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+// 			Name:         "production/templates/ubuntu-server-template",
+// 			DatacenterId: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt2 := datacenter.Id
+// 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+// 			Name:         "development/templates/ubuntu-server-template",
+// 			DatacenterId: &opt2,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -59,7 +102,7 @@ func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, o
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineArgs struct {
 	// The alternate guest name of the virtual machine when
-	// guestId is a non-specific operating system, like `otherGuest`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
 	Annotation                    *string `pulumi:"annotation"`
@@ -101,7 +144,7 @@ type LookupVirtualMachineArgs struct {
 	MemoryShareCount    *int    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
 	// The name of the virtual machine. This can be a name or
-	// path.
+	// the full path relative to the datacenter.
 	Name            string `pulumi:"name"`
 	NestedHvEnabled *bool  `pulumi:"nestedHvEnabled"`
 	// The number of cores per socket for this virtual machine.
@@ -123,6 +166,7 @@ type LookupVirtualMachineArgs struct {
 	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
 	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
+	ToolsUpgradePolicy           *string                `pulumi:"toolsUpgradePolicy"`
 	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
 	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
 	VvtdEnabled                  *bool                  `pulumi:"vvtdEnabled"`
@@ -131,10 +175,10 @@ type LookupVirtualMachineArgs struct {
 // A collection of values returned by getVirtualMachine.
 type LookupVirtualMachineResult struct {
 	// The alternate guest name of the virtual machine when
-	// guestId is a non-specific operating system, like `otherGuest`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
 	AlternateGuestName *string `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
-	Annotation                    *string `pulumi:"annotation"`
+	Annotation                    string  `pulumi:"annotation"`
 	BootDelay                     *int    `pulumi:"bootDelay"`
 	BootRetryDelay                *int    `pulumi:"bootRetryDelay"`
 	BootRetryEnabled              *bool   `pulumi:"bootRetryEnabled"`
@@ -147,6 +191,12 @@ type LookupVirtualMachineResult struct {
 	CpuShareCount                 int     `pulumi:"cpuShareCount"`
 	CpuShareLevel                 *string `pulumi:"cpuShareLevel"`
 	DatacenterId                  *string `pulumi:"datacenterId"`
+	// Whenever possible, this is the first IPv4 address that is reachable through
+	// the default gateway configured on the machine, then the first reachable IPv6
+	// address, and then the first general discovered address if neither exist. If
+	// VMware Tools is not running on the virtual machine, or if the VM is powered
+	// off, this value will be blank.
+	DefaultIpAddress string `pulumi:"defaultIpAddress"`
 	// Information about each of the disks on this virtual machine or
 	// template. These are sorted by bus and unit number so that they can be applied
 	// to a `VirtualMachine` resource in the order the resource expects
@@ -165,7 +215,7 @@ type LookupVirtualMachineResult struct {
 	Firmware *string `pulumi:"firmware"`
 	// The guest ID of the virtual machine or template.
 	GuestId string `pulumi:"guestId"`
-	// A list of IP addresses as reported by VMWare tools.
+	// A list of IP addresses as reported by VMware Tools.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number on this virtual machine.
 	HardwareVersion int     `pulumi:"hardwareVersion"`
@@ -222,6 +272,7 @@ type LookupVirtualMachineResult struct {
 	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
 	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
+	ToolsUpgradePolicy           *string                `pulumi:"toolsUpgradePolicy"`
 	Uuid                         string                 `pulumi:"uuid"`
 	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
 	VappTransports               []string               `pulumi:"vappTransports"`
@@ -241,7 +292,7 @@ func LookupVirtualMachineOutput(ctx *pulumi.Context, args LookupVirtualMachineOu
 // A collection of arguments for invoking getVirtualMachine.
 type LookupVirtualMachineOutputArgs struct {
 	// The alternate guest name of the virtual machine when
-	// guestId is a non-specific operating system, like `otherGuest`.
+	// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
 	AlternateGuestName pulumi.StringPtrInput `pulumi:"alternateGuestName"`
 	// The user-provided description of this virtual machine.
 	Annotation                    pulumi.StringPtrInput `pulumi:"annotation"`
@@ -283,7 +334,7 @@ type LookupVirtualMachineOutputArgs struct {
 	MemoryShareCount    pulumi.IntPtrInput    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    pulumi.StringPtrInput `pulumi:"memoryShareLevel"`
 	// The name of the virtual machine. This can be a name or
-	// path.
+	// the full path relative to the datacenter.
 	Name            pulumi.StringInput  `pulumi:"name"`
 	NestedHvEnabled pulumi.BoolPtrInput `pulumi:"nestedHvEnabled"`
 	// The number of cores per socket for this virtual machine.
@@ -305,6 +356,7 @@ type LookupVirtualMachineOutputArgs struct {
 	SwapPlacementPolicy          pulumi.StringPtrInput         `pulumi:"swapPlacementPolicy"`
 	SyncTimeWithHost             pulumi.BoolPtrInput           `pulumi:"syncTimeWithHost"`
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput           `pulumi:"syncTimeWithHostPeriodically"`
+	ToolsUpgradePolicy           pulumi.StringPtrInput         `pulumi:"toolsUpgradePolicy"`
 	Vapp                         GetVirtualMachineVappPtrInput `pulumi:"vapp"`
 	VbsEnabled                   pulumi.BoolPtrInput           `pulumi:"vbsEnabled"`
 	VvtdEnabled                  pulumi.BoolPtrInput           `pulumi:"vvtdEnabled"`
@@ -330,14 +382,14 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWith
 }
 
 // The alternate guest name of the virtual machine when
-// guestId is a non-specific operating system, like `otherGuest`.
+// `guestId` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
 func (o LookupVirtualMachineResultOutput) AlternateGuestName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.AlternateGuestName }).(pulumi.StringPtrOutput)
 }
 
 // The user-provided description of this virtual machine.
-func (o LookupVirtualMachineResultOutput) Annotation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
+func (o LookupVirtualMachineResultOutput) Annotation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Annotation }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) BootDelay() pulumi.IntPtrOutput {
@@ -388,6 +440,15 @@ func (o LookupVirtualMachineResultOutput) DatacenterId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.DatacenterId }).(pulumi.StringPtrOutput)
 }
 
+// Whenever possible, this is the first IPv4 address that is reachable through
+// the default gateway configured on the machine, then the first reachable IPv6
+// address, and then the first general discovered address if neither exist. If
+// VMware Tools is not running on the virtual machine, or if the VM is powered
+// off, this value will be blank.
+func (o LookupVirtualMachineResultOutput) DefaultIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.DefaultIpAddress }).(pulumi.StringOutput)
+}
+
 // Information about each of the disks on this virtual machine or
 // template. These are sorted by bus and unit number so that they can be applied
 // to a `VirtualMachine` resource in the order the resource expects
@@ -430,7 +491,7 @@ func (o LookupVirtualMachineResultOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.GuestId }).(pulumi.StringOutput)
 }
 
-// A list of IP addresses as reported by VMWare tools.
+// A list of IP addresses as reported by VMware Tools.
 func (o LookupVirtualMachineResultOutput) GuestIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.GuestIpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -581,6 +642,10 @@ func (o LookupVirtualMachineResultOutput) SyncTimeWithHost() pulumi.BoolPtrOutpu
 
 func (o LookupVirtualMachineResultOutput) SyncTimeWithHostPeriodically() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.SyncTimeWithHostPeriodically }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) ToolsUpgradePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.ToolsUpgradePolicy }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) Uuid() pulumi.StringOutput {

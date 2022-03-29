@@ -34,24 +34,23 @@ export class ContentLibrary extends pulumi.CustomResource {
     }
 
     /**
-     * A description of the Content Library.
+     * A description for the content library.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the Content Library.
+     * The name of the content library.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Options to publish a local Content Library.
+     * Options to publish a local content library.
      */
     public readonly publication!: pulumi.Output<outputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID on which to store Content Library
-     * items.
+     * The managed object reference ID of the datastore on which to store the content library items.
      */
     public readonly storageBackings!: pulumi.Output<string[]>;
     /**
-     * Options to publish a local Content Library.
+     * Options subscribe to a published content library.
      */
     public readonly subscription!: pulumi.Output<outputs.ContentLibrarySubscription | undefined>;
 
@@ -94,24 +93,23 @@ export class ContentLibrary extends pulumi.CustomResource {
  */
 export interface ContentLibraryState {
     /**
-     * A description of the Content Library.
+     * A description for the content library.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the Content Library.
+     * The name of the content library.
      */
     name?: pulumi.Input<string>;
     /**
-     * Options to publish a local Content Library.
+     * Options to publish a local content library.
      */
     publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID on which to store Content Library
-     * items.
+     * The managed object reference ID of the datastore on which to store the content library items.
      */
     storageBackings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Options to publish a local Content Library.
+     * Options subscribe to a published content library.
      */
     subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }
@@ -121,24 +119,23 @@ export interface ContentLibraryState {
  */
 export interface ContentLibraryArgs {
     /**
-     * A description of the Content Library.
+     * A description for the content library.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the Content Library.
+     * The name of the content library.
      */
     name?: pulumi.Input<string>;
     /**
-     * Options to publish a local Content Library.
+     * Options to publish a local content library.
      */
     publication?: pulumi.Input<inputs.ContentLibraryPublication>;
     /**
-     * The managed object reference ID on which to store Content Library
-     * items.
+     * The managed object reference ID of the datastore on which to store the content library items.
      */
     storageBackings: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Options to publish a local Content Library.
+     * Options subscribe to a published content library.
      */
     subscription?: pulumi.Input<inputs.ContentLibrarySubscription>;
 }

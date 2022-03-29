@@ -13,32 +13,31 @@ namespace Pulumi.VSphere
     public partial class ContentLibrary : Pulumi.CustomResource
     {
         /// <summary>
-        /// A description of the Content Library.
+        /// A description for the content library.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options to publish a local content library.
         /// </summary>
         [Output("publication")]
         public Output<Outputs.ContentLibraryPublication> Publication { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object reference ID on which to store Content Library
-        /// items.
+        /// The managed object reference ID of the datastore on which to store the content library items.
         /// </summary>
         [Output("storageBackings")]
         public Output<ImmutableArray<string>> StorageBackings { get; private set; } = null!;
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options subscribe to a published content library.
         /// </summary>
         [Output("subscription")]
         public Output<Outputs.ContentLibrarySubscription?> Subscription { get; private set; } = null!;
@@ -90,19 +89,19 @@ namespace Pulumi.VSphere
     public sealed class ContentLibraryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description of the Content Library.
+        /// A description for the content library.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options to publish a local content library.
         /// </summary>
         [Input("publication")]
         public Input<Inputs.ContentLibraryPublicationArgs>? Publication { get; set; }
@@ -111,8 +110,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The managed object reference ID on which to store Content Library
-        /// items.
+        /// The managed object reference ID of the datastore on which to store the content library items.
         /// </summary>
         public InputList<string> StorageBackings
         {
@@ -121,7 +119,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options subscribe to a published content library.
         /// </summary>
         [Input("subscription")]
         public Input<Inputs.ContentLibrarySubscriptionArgs>? Subscription { get; set; }
@@ -134,19 +132,19 @@ namespace Pulumi.VSphere
     public sealed class ContentLibraryState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description of the Content Library.
+        /// A description for the content library.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options to publish a local content library.
         /// </summary>
         [Input("publication")]
         public Input<Inputs.ContentLibraryPublicationGetArgs>? Publication { get; set; }
@@ -155,8 +153,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _storageBackings;
 
         /// <summary>
-        /// The managed object reference ID on which to store Content Library
-        /// items.
+        /// The managed object reference ID of the datastore on which to store the content library items.
         /// </summary>
         public InputList<string> StorageBackings
         {
@@ -165,7 +162,7 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// Options to publish a local Content Library.
+        /// Options subscribe to a published content library.
         /// </summary>
         [Input("subscription")]
         public Input<Inputs.ContentLibrarySubscriptionGetArgs>? Subscription { get; set; }

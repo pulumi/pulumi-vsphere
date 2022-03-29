@@ -43,7 +43,7 @@ class HaVmOverrideArgs:
                virtual machine when the cluster has detected loss to all paths to a relevant
                datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Use `-1` to use
                the cluster default. Default: `-1`.
@@ -79,7 +79,7 @@ class HaVmOverrideArgs:
                (use cluster defaults) - set to `false` to have overrides take effect.
         :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
                machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
                Default: `clusterRestartPriority`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
                vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -175,7 +175,7 @@ class HaVmOverrideArgs:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in minutes
+        Controls the delay in seconds
         to wait after an APD timeout event to execute the response action defined in
         `ha_datastore_apd_response`. Use `-1` to use
         the cluster default. Default: `-1`.
@@ -310,7 +310,7 @@ class HaVmOverrideArgs:
         """
         The restart priority for the virtual
         machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         Default: `clusterRestartPriority`.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
@@ -365,7 +365,7 @@ class _HaVmOverrideState:
                virtual machine when the cluster has detected loss to all paths to a relevant
                datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Use `-1` to use
                the cluster default. Default: `-1`.
@@ -401,7 +401,7 @@ class _HaVmOverrideState:
                (use cluster defaults) - set to `false` to have overrides take effect.
         :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
                machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
                Default: `clusterRestartPriority`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
                vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -488,7 +488,7 @@ class _HaVmOverrideState:
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Controls the delay in minutes
+        Controls the delay in seconds
         to wait after an APD timeout event to execute the response action defined in
         `ha_datastore_apd_response`. Use `-1` to use
         the cluster default. Default: `-1`.
@@ -623,7 +623,7 @@ class _HaVmOverrideState:
         """
         The restart priority for the virtual
         machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         Default: `clusterRestartPriority`.
         """
         return pulumi.get(self, "ha_vm_restart_priority")
@@ -696,7 +696,7 @@ class HaVmOverride(pulumi.CustomResource):
                virtual machine when the cluster has detected loss to all paths to a relevant
                datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Use `-1` to use
                the cluster default. Default: `-1`.
@@ -732,7 +732,7 @@ class HaVmOverride(pulumi.CustomResource):
                (use cluster defaults) - set to `false` to have overrides take effect.
         :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
                machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
                Default: `clusterRestartPriority`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
                vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -852,7 +852,7 @@ class HaVmOverride(pulumi.CustomResource):
                virtual machine when the cluster has detected loss to all paths to a relevant
                datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
                `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
-        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in minutes
+        :param pulumi.Input[int] ha_datastore_apd_response_delay: Controls the delay in seconds
                to wait after an APD timeout event to execute the response action defined in
                `ha_datastore_apd_response`. Use `-1` to use
                the cluster default. Default: `-1`.
@@ -888,7 +888,7 @@ class HaVmOverride(pulumi.CustomResource):
                (use cluster defaults) - set to `false` to have overrides take effect.
         :param pulumi.Input[str] ha_vm_restart_priority: The restart priority for the virtual
                machine when vSphere detects a host failure. Can be one of
-               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+               `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
                Default: `clusterRestartPriority`.
         :param pulumi.Input[int] ha_vm_restart_timeout: The maximum time, in seconds, that
                vSphere HA will wait for this virtual machine to be ready. Use `-1` to
@@ -953,7 +953,7 @@ class HaVmOverride(pulumi.CustomResource):
     @pulumi.getter(name="haDatastoreApdResponseDelay")
     def ha_datastore_apd_response_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Controls the delay in minutes
+        Controls the delay in seconds
         to wait after an APD timeout event to execute the response action defined in
         `ha_datastore_apd_response`. Use `-1` to use
         the cluster default. Default: `-1`.
@@ -1052,7 +1052,7 @@ class HaVmOverride(pulumi.CustomResource):
         """
         The restart priority for the virtual
         machine when vSphere detects a host failure. Can be one of
-        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         Default: `clusterRestartPriority`.
         """
         return pulumi.get(self, "ha_vm_restart_priority")

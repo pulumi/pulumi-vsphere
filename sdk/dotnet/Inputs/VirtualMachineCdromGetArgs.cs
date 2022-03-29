@@ -13,25 +13,17 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VirtualMachineCdromGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the device should be backed by
-        /// remote client device. Conflicts with `datastore_id` and `path`.
+        /// Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
         /// </summary>
         [Input("clientDevice")]
         public Input<bool>? ClientDevice { get; set; }
 
         /// <summary>
-        /// The datastore ID that the ISO is located in.
-        /// Requried for using a datastore ISO. Conflicts with `client_device`.
+        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
-        /// <summary>
-        /// An address internal to this provider that helps locate the
-        /// device when `key` is unavailable. This follows a convention of
-        /// `CONTROLLER_TYPE:BUS_NUMBER:UNIT_NUMBER`. Example: `scsi:0:1` means device
-        /// unit 1 on SCSI bus 0.
-        /// </summary>
         [Input("deviceAddress")]
         public Input<string>? DeviceAddress { get; set; }
 
@@ -42,8 +34,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? Key { get; set; }
 
         /// <summary>
-        /// The path to the ISO file. Required for using a datastore
-        /// ISO. Conflicts with `client_device`.
+        /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

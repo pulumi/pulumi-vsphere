@@ -39,7 +39,7 @@ namespace Pulumi.VSphere
         public Output<string?> HaDatastoreApdResponse { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the delay in minutes
+        /// Controls the delay in seconds
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
@@ -120,7 +120,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The restart priority for the virtual
         /// machine when vSphere detects a host failure. Can be one of
-        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         /// Default: `clusterRestartPriority`.
         /// </summary>
         [Output("haVmRestartPriority")]
@@ -214,7 +214,7 @@ namespace Pulumi.VSphere
         public Input<string>? HaDatastoreApdResponse { get; set; }
 
         /// <summary>
-        /// Controls the delay in minutes
+        /// Controls the delay in seconds
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
@@ -295,7 +295,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The restart priority for the virtual
         /// machine when vSphere detects a host failure. Can be one of
-        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         /// Default: `clusterRestartPriority`.
         /// </summary>
         [Input("haVmRestartPriority")]
@@ -350,7 +350,7 @@ namespace Pulumi.VSphere
         public Input<string>? HaDatastoreApdResponse { get; set; }
 
         /// <summary>
-        /// Controls the delay in minutes
+        /// Controls the delay in seconds
         /// to wait after an APD timeout event to execute the response action defined in
         /// `ha_datastore_apd_response`. Use `-1` to use
         /// the cluster default. Default: `-1`.
@@ -431,7 +431,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The restart priority for the virtual
         /// machine when vSphere detects a host failure. Can be one of
-        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+        /// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
         /// Default: `clusterRestartPriority`.
         /// </summary>
         [Input("haVmRestartPriority")]

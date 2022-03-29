@@ -13,37 +13,37 @@ namespace Pulumi.VSphere.Inputs
     public sealed class ContentLibrarySubscriptionGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Method to log into remote Content Library. Must be `NONE` or `BASIC`.
+        /// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
         /// </summary>
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
 
         /// <summary>
-        /// Enable automatic synchronization with the external content library.
+        /// Enable automatic synchronization with the published library. Default `false`.
         /// </summary>
         [Input("automaticSync")]
         public Input<bool>? AutomaticSync { get; set; }
 
         /// <summary>
-        /// Download all library content immediately.
+        /// Download the library from a content only when needed. Default `true`.
         /// </summary>
         [Input("onDemand")]
         public Input<bool>? OnDemand { get; set; }
 
         /// <summary>
-        /// Password to log in with.
+        /// Password used for authentication.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// URL of remote Content Library.
+        /// URL of the published content library.
         /// </summary>
         [Input("subscriptionUrl")]
         public Input<string>? SubscriptionUrl { get; set; }
 
         /// <summary>
-        /// User name to log in with.
+        /// Username used for authentication.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

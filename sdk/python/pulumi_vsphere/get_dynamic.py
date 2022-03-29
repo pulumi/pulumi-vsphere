@@ -107,7 +107,8 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
     :param str name_regex: A regular expression that will be used to match
            the object's name.
     :param str type: The managed object type the returned object must match.
-           For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+           The managed object types can be found in the managed object type section
+           [here](https://developer.vmware.com/apis/968/vsphere).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -164,6 +165,7 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
     :param str name_regex: A regular expression that will be used to match
            the object's name.
     :param str type: The managed object type the returned object must match.
-           For a full list, click [here](https://code.vmware.com/apis/196/vsphere).
+           The managed object types can be found in the managed object type section
+           [here](https://developer.vmware.com/apis/968/vsphere).
     """
     ...

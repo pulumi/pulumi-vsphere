@@ -33,28 +33,28 @@ export class ContentLibraryItem extends pulumi.CustomResource {
     }
 
     /**
-     * A description for the item.
+     * A description for the content library item.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * File to import into the Content Library item. OVFs and
-     * OVAs will be parsed and associated files will also be imported.
+     * File to import as the content library item.
      */
     public readonly fileUrl!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the Content Library the item should be created in.
+     * The ID of the content library in which to create the item.
      */
     public readonly libraryId!: pulumi.Output<string>;
     /**
-     * The name of the item to be created in the Content Library.
+     * The name of the item to be created in the content library.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Virtual machine UUID to clone to Content Library.
+     * Virtual machine UUID to clone to content library.
      */
     public readonly sourceUuid!: pulumi.Output<string | undefined>;
     /**
      * Type of content library item.
+     * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -99,28 +99,28 @@ export class ContentLibraryItem extends pulumi.CustomResource {
  */
 export interface ContentLibraryItemState {
     /**
-     * A description for the item.
+     * A description for the content library item.
      */
     description?: pulumi.Input<string>;
     /**
-     * File to import into the Content Library item. OVFs and
-     * OVAs will be parsed and associated files will also be imported.
+     * File to import as the content library item.
      */
     fileUrl?: pulumi.Input<string>;
     /**
-     * The ID of the Content Library the item should be created in.
+     * The ID of the content library in which to create the item.
      */
     libraryId?: pulumi.Input<string>;
     /**
-     * The name of the item to be created in the Content Library.
+     * The name of the item to be created in the content library.
      */
     name?: pulumi.Input<string>;
     /**
-     * Virtual machine UUID to clone to Content Library.
+     * Virtual machine UUID to clone to content library.
      */
     sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
+     * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
     type?: pulumi.Input<string>;
 }
@@ -130,28 +130,28 @@ export interface ContentLibraryItemState {
  */
 export interface ContentLibraryItemArgs {
     /**
-     * A description for the item.
+     * A description for the content library item.
      */
     description?: pulumi.Input<string>;
     /**
-     * File to import into the Content Library item. OVFs and
-     * OVAs will be parsed and associated files will also be imported.
+     * File to import as the content library item.
      */
     fileUrl?: pulumi.Input<string>;
     /**
-     * The ID of the Content Library the item should be created in.
+     * The ID of the content library in which to create the item.
      */
     libraryId: pulumi.Input<string>;
     /**
-     * The name of the item to be created in the Content Library.
+     * The name of the item to be created in the content library.
      */
     name?: pulumi.Input<string>;
     /**
-     * Virtual machine UUID to clone to Content Library.
+     * Virtual machine UUID to clone to content library.
      */
     sourceUuid?: pulumi.Input<string>;
     /**
      * Type of content library item.
+     * One of "ovf", "iso", or "vm-template". Default: `ovf`.
      */
     type?: pulumi.Input<string>;
 }

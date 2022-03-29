@@ -15,8 +15,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The object type that this attribute may be
         /// applied to. If not set, the custom attribute may be applied to any object
-        /// type. For a full list, click here. Forces a new
-        /// resource if changed.
+        /// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         /// </summary>
         [Output("managedObjectType")]
         public Output<string?> ManagedObjectType { get; private set; } = null!;
@@ -76,8 +75,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The object type that this attribute may be
         /// applied to. If not set, the custom attribute may be applied to any object
-        /// type. For a full list, click here. Forces a new
-        /// resource if changed.
+        /// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         /// </summary>
         [Input("managedObjectType")]
         public Input<string>? ManagedObjectType { get; set; }
@@ -98,8 +96,7 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The object type that this attribute may be
         /// applied to. If not set, the custom attribute may be applied to any object
-        /// type. For a full list, click here. Forces a new
-        /// resource if changed.
+        /// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         /// </summary>
         [Input("managedObjectType")]
         public Input<string>? ManagedObjectType { get; set; }

@@ -17,7 +17,7 @@ type EntityPermissions struct {
 	// The managed object id (uuid for some entities) on which permissions are to be created.
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
 	// The managed object type, types can be found in the managed object type section
-	// [here](https://code.vmware.com/apis/968/vsphere).
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// The permissions to be given on this entity. Keep the permissions sorted
 	// alphabetically on `userOrGroup` for a better user experience.
@@ -65,7 +65,7 @@ type entityPermissionsState struct {
 	// The managed object id (uuid for some entities) on which permissions are to be created.
 	EntityId *string `pulumi:"entityId"`
 	// The managed object type, types can be found in the managed object type section
-	// [here](https://code.vmware.com/apis/968/vsphere).
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	EntityType *string `pulumi:"entityType"`
 	// The permissions to be given on this entity. Keep the permissions sorted
 	// alphabetically on `userOrGroup` for a better user experience.
@@ -76,7 +76,7 @@ type EntityPermissionsState struct {
 	// The managed object id (uuid for some entities) on which permissions are to be created.
 	EntityId pulumi.StringPtrInput
 	// The managed object type, types can be found in the managed object type section
-	// [here](https://code.vmware.com/apis/968/vsphere).
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	EntityType pulumi.StringPtrInput
 	// The permissions to be given on this entity. Keep the permissions sorted
 	// alphabetically on `userOrGroup` for a better user experience.
@@ -91,7 +91,7 @@ type entityPermissionsArgs struct {
 	// The managed object id (uuid for some entities) on which permissions are to be created.
 	EntityId string `pulumi:"entityId"`
 	// The managed object type, types can be found in the managed object type section
-	// [here](https://code.vmware.com/apis/968/vsphere).
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	EntityType string `pulumi:"entityType"`
 	// The permissions to be given on this entity. Keep the permissions sorted
 	// alphabetically on `userOrGroup` for a better user experience.
@@ -103,7 +103,7 @@ type EntityPermissionsArgs struct {
 	// The managed object id (uuid for some entities) on which permissions are to be created.
 	EntityId pulumi.StringInput
 	// The managed object type, types can be found in the managed object type section
-	// [here](https://code.vmware.com/apis/968/vsphere).
+	// [here](https://developer.vmware.com/apis/968/vsphere).
 	EntityType pulumi.StringInput
 	// The permissions to be given on this entity. Keep the permissions sorted
 	// alphabetically on `userOrGroup` for a better user experience.

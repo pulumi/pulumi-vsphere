@@ -19,9 +19,7 @@ namespace Pulumi.VSphere.Outputs
         public readonly string? Ipv6Gateway;
         public readonly Outputs.VirtualMachineCloneCustomizeLinuxOptions? LinuxOptions;
         /// <summary>
-        /// A specification for a virtual NIC on this
-        /// virtual machine. See network interface options
-        /// below.
+        /// A specification for a virtual NIC on the virtual machine. See network interface options for more information.
         /// </summary>
         public readonly ImmutableArray<Outputs.VirtualMachineCloneCustomizeNetworkInterface> NetworkInterfaces;
         public readonly int? Timeout;

@@ -22,21 +22,18 @@ class FileArgs:
                  source_datastore: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a File resource.
-        :param pulumi.Input[str] datastore: The name of the datastore in which to upload the
-               file to.
+        :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
+               file.
         :param pulumi.Input[str] destination_file: The path to where the file should be uploaded
-               or copied to on vSphere.
-        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
-               host to vSphere or copied within vSphere. Forces a new resource if
-               changed.
+               or copied to on the destination `datastore` in vSphere.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
-               path parameter if any missing for copy operation.
-        :param pulumi.Input[str] datacenter: The name of a datacenter in which the file will be
-               uploaded to.
-        :param pulumi.Input[str] source_datacenter: The name of a datacenter in which the file
-               will be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
-               be copied from. Forces a new resource if changed.
+               path parameter on first apply if any are missing for copy operation.
+        :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
+               uploaded.
+        :param pulumi.Input[str] source_datacenter: The name of a datacenter from which the file
+               will be copied. Forces a new resource if changed.
+        :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
+               be copied. Forces a new resource if changed.
         """
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "destination_file", destination_file)
@@ -54,8 +51,8 @@ class FileArgs:
     @pulumi.getter
     def datastore(self) -> pulumi.Input[str]:
         """
-        The name of the datastore in which to upload the
-        file to.
+        The name of the datastore to which to upload the
+        file.
         """
         return pulumi.get(self, "datastore")
 
@@ -68,7 +65,7 @@ class FileArgs:
     def destination_file(self) -> pulumi.Input[str]:
         """
         The path to where the file should be uploaded
-        or copied to on vSphere.
+        or copied to on the destination `datastore` in vSphere.
         """
         return pulumi.get(self, "destination_file")
 
@@ -79,11 +76,6 @@ class FileArgs:
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Input[str]:
-        """
-        The path to the file being uploaded from the
-        host to vSphere or copied within vSphere. Forces a new resource if
-        changed.
-        """
         return pulumi.get(self, "source_file")
 
     @source_file.setter
@@ -95,7 +87,7 @@ class FileArgs:
     def create_directories(self) -> Optional[pulumi.Input[bool]]:
         """
         Create directories in `destination_file`
-        path parameter if any missing for copy operation.
+        path parameter on first apply if any are missing for copy operation.
         """
         return pulumi.get(self, "create_directories")
 
@@ -107,8 +99,8 @@ class FileArgs:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a datacenter in which the file will be
-        uploaded to.
+        The name of a datacenter to which the file will be
+        uploaded.
         """
         return pulumi.get(self, "datacenter")
 
@@ -120,8 +112,8 @@ class FileArgs:
     @pulumi.getter(name="sourceDatacenter")
     def source_datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a datacenter in which the file
-        will be copied from. Forces a new resource if changed.
+        The name of a datacenter from which the file
+        will be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datacenter")
 
@@ -133,8 +125,8 @@ class FileArgs:
     @pulumi.getter(name="sourceDatastore")
     def source_datastore(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the datastore in which file will
-        be copied from. Forces a new resource if changed.
+        The name of the datastore from which file will
+        be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datastore")
 
@@ -156,20 +148,17 @@ class _FileState:
         """
         Input properties used for looking up and filtering File resources.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
-               path parameter if any missing for copy operation.
-        :param pulumi.Input[str] datacenter: The name of a datacenter in which the file will be
-               uploaded to.
-        :param pulumi.Input[str] datastore: The name of the datastore in which to upload the
-               file to.
+               path parameter on first apply if any are missing for copy operation.
+        :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
+               uploaded.
+        :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
+               file.
         :param pulumi.Input[str] destination_file: The path to where the file should be uploaded
-               or copied to on vSphere.
-        :param pulumi.Input[str] source_datacenter: The name of a datacenter in which the file
-               will be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
-               be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
-               host to vSphere or copied within vSphere. Forces a new resource if
-               changed.
+               or copied to on the destination `datastore` in vSphere.
+        :param pulumi.Input[str] source_datacenter: The name of a datacenter from which the file
+               will be copied. Forces a new resource if changed.
+        :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
+               be copied. Forces a new resource if changed.
         """
         if create_directories is not None:
             pulumi.set(__self__, "create_directories", create_directories)
@@ -191,7 +180,7 @@ class _FileState:
     def create_directories(self) -> Optional[pulumi.Input[bool]]:
         """
         Create directories in `destination_file`
-        path parameter if any missing for copy operation.
+        path parameter on first apply if any are missing for copy operation.
         """
         return pulumi.get(self, "create_directories")
 
@@ -203,8 +192,8 @@ class _FileState:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a datacenter in which the file will be
-        uploaded to.
+        The name of a datacenter to which the file will be
+        uploaded.
         """
         return pulumi.get(self, "datacenter")
 
@@ -216,8 +205,8 @@ class _FileState:
     @pulumi.getter
     def datastore(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the datastore in which to upload the
-        file to.
+        The name of the datastore to which to upload the
+        file.
         """
         return pulumi.get(self, "datastore")
 
@@ -230,7 +219,7 @@ class _FileState:
     def destination_file(self) -> Optional[pulumi.Input[str]]:
         """
         The path to where the file should be uploaded
-        or copied to on vSphere.
+        or copied to on the destination `datastore` in vSphere.
         """
         return pulumi.get(self, "destination_file")
 
@@ -242,8 +231,8 @@ class _FileState:
     @pulumi.getter(name="sourceDatacenter")
     def source_datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a datacenter in which the file
-        will be copied from. Forces a new resource if changed.
+        The name of a datacenter from which the file
+        will be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datacenter")
 
@@ -255,8 +244,8 @@ class _FileState:
     @pulumi.getter(name="sourceDatastore")
     def source_datastore(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the datastore in which file will
-        be copied from. Forces a new resource if changed.
+        The name of the datastore from which file will
+        be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datastore")
 
@@ -267,11 +256,6 @@ class _FileState:
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to the file being uploaded from the
-        host to vSphere or copied within vSphere. Forces a new resource if
-        changed.
-        """
         return pulumi.get(self, "source_file")
 
     @source_file.setter
@@ -293,64 +277,21 @@ class File(pulumi.CustomResource):
                  source_file: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The `File` resource can be used to upload files (such as virtual disk
-        files) from the host machine that this provider is running on to a target
-        datastore.  The resource can also be used to copy files between datastores, or
-        from one location to another on the same datastore.
-
-        Updates to destination parameters such as `datacenter`, `datastore`, or
-        `destination_file` will move the managed file a new destination based on the
-        values of the new settings.  If any source parameter is changed, such as
-        `source_datastore`, `source_datacenter` or `source_file`), the resource will be
-        re-created. Depending on if destination parameters are being changed as well,
-        this may result in the destination file either being overwritten or deleted at
-        the old location.
-
-        ## Example Usage
-        ### Uploading a file
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_disk_upload = vsphere.File("ubuntuDiskUpload",
-            datacenter="my_datacenter",
-            datastore="local",
-            destination_file="/my_path/disks/custom_ubuntu.vmdk",
-            source_file="/home/ubuntu/my_disks/custom_ubuntu.vmdk")
-        ```
-        ### Copying a file
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_disk_copy = vsphere.File("ubuntuDiskCopy",
-            datacenter="my_datacenter",
-            datastore="local",
-            destination_file="/my_path/custom_ubuntu_id.vmdk",
-            source_datacenter="my_datacenter",
-            source_datastore="local",
-            source_file="/my_path/disks/custom_ubuntu.vmdk")
-        ```
-
+        Create a File resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
-               path parameter if any missing for copy operation.
-        :param pulumi.Input[str] datacenter: The name of a datacenter in which the file will be
-               uploaded to.
-        :param pulumi.Input[str] datastore: The name of the datastore in which to upload the
-               file to.
+               path parameter on first apply if any are missing for copy operation.
+        :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
+               uploaded.
+        :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
+               file.
         :param pulumi.Input[str] destination_file: The path to where the file should be uploaded
-               or copied to on vSphere.
-        :param pulumi.Input[str] source_datacenter: The name of a datacenter in which the file
-               will be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
-               be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
-               host to vSphere or copied within vSphere. Forces a new resource if
-               changed.
+               or copied to on the destination `datastore` in vSphere.
+        :param pulumi.Input[str] source_datacenter: The name of a datacenter from which the file
+               will be copied. Forces a new resource if changed.
+        :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
+               be copied. Forces a new resource if changed.
         """
         ...
     @overload
@@ -359,47 +300,7 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `File` resource can be used to upload files (such as virtual disk
-        files) from the host machine that this provider is running on to a target
-        datastore.  The resource can also be used to copy files between datastores, or
-        from one location to another on the same datastore.
-
-        Updates to destination parameters such as `datacenter`, `datastore`, or
-        `destination_file` will move the managed file a new destination based on the
-        values of the new settings.  If any source parameter is changed, such as
-        `source_datastore`, `source_datacenter` or `source_file`), the resource will be
-        re-created. Depending on if destination parameters are being changed as well,
-        this may result in the destination file either being overwritten or deleted at
-        the old location.
-
-        ## Example Usage
-        ### Uploading a file
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_disk_upload = vsphere.File("ubuntuDiskUpload",
-            datacenter="my_datacenter",
-            datastore="local",
-            destination_file="/my_path/disks/custom_ubuntu.vmdk",
-            source_file="/home/ubuntu/my_disks/custom_ubuntu.vmdk")
-        ```
-        ### Copying a file
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_disk_copy = vsphere.File("ubuntuDiskCopy",
-            datacenter="my_datacenter",
-            datastore="local",
-            destination_file="/my_path/custom_ubuntu_id.vmdk",
-            source_datacenter="my_datacenter",
-            source_datastore="local",
-            source_file="/my_path/disks/custom_ubuntu.vmdk")
-        ```
-
+        Create a File resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -472,20 +373,17 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
-               path parameter if any missing for copy operation.
-        :param pulumi.Input[str] datacenter: The name of a datacenter in which the file will be
-               uploaded to.
-        :param pulumi.Input[str] datastore: The name of the datastore in which to upload the
-               file to.
+               path parameter on first apply if any are missing for copy operation.
+        :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
+               uploaded.
+        :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
+               file.
         :param pulumi.Input[str] destination_file: The path to where the file should be uploaded
-               or copied to on vSphere.
-        :param pulumi.Input[str] source_datacenter: The name of a datacenter in which the file
-               will be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_datastore: The name of the datastore in which file will
-               be copied from. Forces a new resource if changed.
-        :param pulumi.Input[str] source_file: The path to the file being uploaded from the
-               host to vSphere or copied within vSphere. Forces a new resource if
-               changed.
+               or copied to on the destination `datastore` in vSphere.
+        :param pulumi.Input[str] source_datacenter: The name of a datacenter from which the file
+               will be copied. Forces a new resource if changed.
+        :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
+               be copied. Forces a new resource if changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -505,7 +403,7 @@ class File(pulumi.CustomResource):
     def create_directories(self) -> pulumi.Output[Optional[bool]]:
         """
         Create directories in `destination_file`
-        path parameter if any missing for copy operation.
+        path parameter on first apply if any are missing for copy operation.
         """
         return pulumi.get(self, "create_directories")
 
@@ -513,8 +411,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of a datacenter in which the file will be
-        uploaded to.
+        The name of a datacenter to which the file will be
+        uploaded.
         """
         return pulumi.get(self, "datacenter")
 
@@ -522,8 +420,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter
     def datastore(self) -> pulumi.Output[str]:
         """
-        The name of the datastore in which to upload the
-        file to.
+        The name of the datastore to which to upload the
+        file.
         """
         return pulumi.get(self, "datastore")
 
@@ -532,7 +430,7 @@ class File(pulumi.CustomResource):
     def destination_file(self) -> pulumi.Output[str]:
         """
         The path to where the file should be uploaded
-        or copied to on vSphere.
+        or copied to on the destination `datastore` in vSphere.
         """
         return pulumi.get(self, "destination_file")
 
@@ -540,8 +438,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="sourceDatacenter")
     def source_datacenter(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of a datacenter in which the file
-        will be copied from. Forces a new resource if changed.
+        The name of a datacenter from which the file
+        will be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datacenter")
 
@@ -549,18 +447,13 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="sourceDatastore")
     def source_datastore(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the datastore in which file will
-        be copied from. Forces a new resource if changed.
+        The name of the datastore from which file will
+        be copied. Forces a new resource if changed.
         """
         return pulumi.get(self, "source_datastore")
 
     @property
     @pulumi.getter(name="sourceFile")
     def source_file(self) -> pulumi.Output[str]:
-        """
-        The path to the file being uploaded from the
-        host to vSphere or copied within vSphere. Forces a new resource if
-        changed.
-        """
         return pulumi.get(self, "source_file")
 

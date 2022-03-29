@@ -5,12 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.getPolicy` data source can be used to discover the UUID of a
- * vSphere storage policy. This can then be used with resources or data sources that
- * require a storage policy.
+ * The `vsphere.getPolicy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
  *
- * > **NOTE:** Storage policy support is unsupported on direct ESXi connections and
- * requires vCenter 6.0 or higher.
+ * > **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
  *
  * ## Example Usage
  *
@@ -18,8 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const policy = pulumi.output(vsphere.getPolicy({
- *     name: "policy1",
+ * const prodPlatinumReplicated = pulumi.output(vsphere.getPolicy({
+ *     name: "prod_platinum_replicated",
+ * }));
+ * const devSilverNonreplicated = pulumi.output(vsphere.getPolicy({
+ *     name: "dev_silver_nonreplicated",
  * }));
  * ```
  */

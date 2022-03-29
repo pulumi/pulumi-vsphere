@@ -16,7 +16,7 @@ type DistributedVirtualSwitch struct {
 
 	// A list of active uplinks to be used in load
 	// balancing. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	ActiveUplinks pulumi.StringArrayOutput `pulumi:"activeUplinks"`
 	// Controls whether or not a virtual
@@ -47,18 +47,18 @@ type DistributedVirtualSwitch struct {
 	// The version string of the configuration that this spec is trying to change.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// The detailed contact information for the person
-	// who is responsible for the DVS.
+	// who is responsible for the VDS.
 	ContactDetail pulumi.StringPtrOutput `pulumi:"contactDetail"`
 	// The name of the person who is responsible for the
-	// DVS.
+	// VDS.
 	ContactName pulumi.StringPtrOutput `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch.
+	// value strings to set for VDS.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
-	// The ID of the datacenter where the distributed
-	// virtual switch will be created. Forces a new resource if changed.
+	// The ID of the datacenter where the VDS will be
+	// created. Forces a new resource if changed.
 	DatacenterId pulumi.StringOutput `pulumi:"datacenterId"`
-	// A detailed description for the DVS.
+	// A detailed description for the VDS.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Allow VMDirectPath Gen2 for the ports
 	// for which this policy applies to.
@@ -86,8 +86,8 @@ type DistributedVirtualSwitch struct {
 	FaulttoleranceShareCount pulumi.IntOutput `pulumi:"faulttoleranceShareCount"`
 	// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
 	FaulttoleranceShareLevel pulumi.StringOutput `pulumi:"faulttoleranceShareLevel"`
-	// The folder to create the DVS in. Forces a new resource
-	// if changed.
+	// The folder in which to create the VDS.
+	// Forces a new resource if changed.
 	Folder pulumi.StringPtrOutput `pulumi:"folder"`
 	// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
 	HbrMaximumMbit pulumi.IntOutput `pulumi:"hbrMaximumMbit"`
@@ -116,8 +116,7 @@ type DistributedVirtualSwitch struct {
 	// bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth pulumi.IntOutput `pulumi:"ingressShapingPeakBandwidth"`
 	// An IPv4 address to identify the switch. This is
-	// mostly useful when used with the Netflow arguments found
-	// below.
+	// mostly useful when used with the Netflow arguments.
 	Ipv4Address pulumi.StringPtrOutput `pulumi:"ipv4Address"`
 	// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
 	IscsiMaximumMbit pulumi.IntOutput `pulumi:"iscsiMaximumMbit"`
@@ -128,7 +127,7 @@ type DistributedVirtualSwitch struct {
 	// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
 	IscsiShareLevel pulumi.StringOutput `pulumi:"iscsiShareLevel"`
 	// The Link Aggregation Control Protocol group
-	// version to use with the switch. Possible values are `singleLag` and
+	// version to use with the VDS. Possible values are `singleLag` and
 	// `multipleLag`.
 	LacpApiVersion pulumi.StringOutput `pulumi:"lacpApiVersion"`
 	// Enables LACP for the ports that this policy
@@ -150,21 +149,20 @@ type DistributedVirtualSwitch struct {
 	ManagementShareCount pulumi.IntOutput `pulumi:"managementShareCount"`
 	// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
 	ManagementShareLevel pulumi.StringOutput `pulumi:"managementShareLevel"`
-	// The maximum transmission unit (MTU) for the virtual
-	// switch.
+	// The maximum transmission unit (MTU) for the VDS.
 	MaxMtu pulumi.IntOutput `pulumi:"maxMtu"`
 	// The multicast filtering mode to use
-	// with the switch. Can be one of `legacyFiltering` or `snooping`.
+	// with the VDS. Can be one of `legacyFiltering` or `snooping`.
 	MulticastFilteringMode pulumi.StringOutput `pulumi:"multicastFilteringMode"`
-	// The name of the distributed virtual switch.
+	// The name of the VDS.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of seconds after which
 	// active flows are forced to be exported to the collector. Allowed range is
 	// `60` to `3600`. Default: `60`.
 	NetflowActiveFlowTimeout pulumi.IntPtrOutput `pulumi:"netflowActiveFlowTimeout"`
 	// IP address for the Netflow
-	// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-	// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+	// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+	// Must be set before Netflow can be enabled.
 	NetflowCollectorIpAddress pulumi.StringPtrOutput `pulumi:"netflowCollectorIpAddress"`
 	// Port for the Netflow collector. This
 	// must be set before Netflow can be enabled.
@@ -185,7 +183,7 @@ type DistributedVirtualSwitch struct {
 	NetflowObservationDomainId pulumi.IntPtrOutput `pulumi:"netflowObservationDomainId"`
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
-	// switch should analyze all packets. The maximum value is `1000`, which
+	// VDS should analyze all packets. The maximum value is `1000`, which
 	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrOutput `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
@@ -213,22 +211,22 @@ type DistributedVirtualSwitch struct {
 	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayOutput `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
-	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-	// `failoverExplicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+	// `failoverExplicit`, or `loadbalanceLoadbased`.
 	TeamingPolicy pulumi.StringOutput `pulumi:"teamingPolicy"`
 	// Forward all traffic transmitted by ports for which
-	// this policy applies to its DVS uplinks.
+	// this policy applies to its VDS uplinks.
 	TxUplink pulumi.BoolOutput `pulumi:"txUplink"`
 	// A list of strings that uniquely identifies the names
-	// of the uplinks on the DVS across hosts. The number of items in this list
-	// controls the number of uplinks that exist on the DVS, in addition to the
-	// names.  See here for an example on how to
+	// of the uplinks on the VDS across hosts. The number of items in this list
+	// controls the number of uplinks that exist on the VDS, in addition to the
+	// names. See here for an example on how to
 	// use this option.
 	Uplinks pulumi.StringArrayOutput `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
@@ -239,10 +237,9 @@ type DistributedVirtualSwitch struct {
 	VdpShareCount pulumi.IntOutput `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringOutput `pulumi:"vdpShareLevel"`
-	// - The version of the DVS to create. The default is to
-	//   create the DVS at the latest version supported by the version of vSphere
-	//   being used. A DVS can be upgraded to another version, but cannot be
-	//   downgraded.
+	// - The version of the VDS. BY default, a VDS is created
+	//   at the latest version supported by the vSphere version if not specified.
+	//   A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntOutput `pulumi:"virtualmachineMaximumMbit"`
@@ -311,7 +308,7 @@ func GetDistributedVirtualSwitch(ctx *pulumi.Context,
 type distributedVirtualSwitchState struct {
 	// A list of active uplinks to be used in load
 	// balancing. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
 	// Controls whether or not a virtual
@@ -342,18 +339,18 @@ type distributedVirtualSwitchState struct {
 	// The version string of the configuration that this spec is trying to change.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// The detailed contact information for the person
-	// who is responsible for the DVS.
+	// who is responsible for the VDS.
 	ContactDetail *string `pulumi:"contactDetail"`
 	// The name of the person who is responsible for the
-	// DVS.
+	// VDS.
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch.
+	// value strings to set for VDS.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The ID of the datacenter where the distributed
-	// virtual switch will be created. Forces a new resource if changed.
+	// The ID of the datacenter where the VDS will be
+	// created. Forces a new resource if changed.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// A detailed description for the DVS.
+	// A detailed description for the VDS.
 	Description *string `pulumi:"description"`
 	// Allow VMDirectPath Gen2 for the ports
 	// for which this policy applies to.
@@ -381,8 +378,8 @@ type distributedVirtualSwitchState struct {
 	FaulttoleranceShareCount *int `pulumi:"faulttoleranceShareCount"`
 	// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
 	FaulttoleranceShareLevel *string `pulumi:"faulttoleranceShareLevel"`
-	// The folder to create the DVS in. Forces a new resource
-	// if changed.
+	// The folder in which to create the VDS.
+	// Forces a new resource if changed.
 	Folder *string `pulumi:"folder"`
 	// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
 	HbrMaximumMbit *int `pulumi:"hbrMaximumMbit"`
@@ -411,8 +408,7 @@ type distributedVirtualSwitchState struct {
 	// bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth *int `pulumi:"ingressShapingPeakBandwidth"`
 	// An IPv4 address to identify the switch. This is
-	// mostly useful when used with the Netflow arguments found
-	// below.
+	// mostly useful when used with the Netflow arguments.
 	Ipv4Address *string `pulumi:"ipv4Address"`
 	// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
 	IscsiMaximumMbit *int `pulumi:"iscsiMaximumMbit"`
@@ -423,7 +419,7 @@ type distributedVirtualSwitchState struct {
 	// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
 	IscsiShareLevel *string `pulumi:"iscsiShareLevel"`
 	// The Link Aggregation Control Protocol group
-	// version to use with the switch. Possible values are `singleLag` and
+	// version to use with the VDS. Possible values are `singleLag` and
 	// `multipleLag`.
 	LacpApiVersion *string `pulumi:"lacpApiVersion"`
 	// Enables LACP for the ports that this policy
@@ -445,21 +441,20 @@ type distributedVirtualSwitchState struct {
 	ManagementShareCount *int `pulumi:"managementShareCount"`
 	// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
 	ManagementShareLevel *string `pulumi:"managementShareLevel"`
-	// The maximum transmission unit (MTU) for the virtual
-	// switch.
+	// The maximum transmission unit (MTU) for the VDS.
 	MaxMtu *int `pulumi:"maxMtu"`
 	// The multicast filtering mode to use
-	// with the switch. Can be one of `legacyFiltering` or `snooping`.
+	// with the VDS. Can be one of `legacyFiltering` or `snooping`.
 	MulticastFilteringMode *string `pulumi:"multicastFilteringMode"`
-	// The name of the distributed virtual switch.
+	// The name of the VDS.
 	Name *string `pulumi:"name"`
 	// The number of seconds after which
 	// active flows are forced to be exported to the collector. Allowed range is
 	// `60` to `3600`. Default: `60`.
 	NetflowActiveFlowTimeout *int `pulumi:"netflowActiveFlowTimeout"`
 	// IP address for the Netflow
-	// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-	// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+	// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+	// Must be set before Netflow can be enabled.
 	NetflowCollectorIpAddress *string `pulumi:"netflowCollectorIpAddress"`
 	// Port for the Netflow collector. This
 	// must be set before Netflow can be enabled.
@@ -480,7 +475,7 @@ type distributedVirtualSwitchState struct {
 	NetflowObservationDomainId *int `pulumi:"netflowObservationDomainId"`
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
-	// switch should analyze all packets. The maximum value is `1000`, which
+	// VDS should analyze all packets. The maximum value is `1000`, which
 	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
@@ -508,22 +503,22 @@ type distributedVirtualSwitchState struct {
 	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
-	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-	// `failoverExplicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+	// `failoverExplicit`, or `loadbalanceLoadbased`.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 	// Forward all traffic transmitted by ports for which
-	// this policy applies to its DVS uplinks.
+	// this policy applies to its VDS uplinks.
 	TxUplink *bool `pulumi:"txUplink"`
 	// A list of strings that uniquely identifies the names
-	// of the uplinks on the DVS across hosts. The number of items in this list
-	// controls the number of uplinks that exist on the DVS, in addition to the
-	// names.  See here for an example on how to
+	// of the uplinks on the VDS across hosts. The number of items in this list
+	// controls the number of uplinks that exist on the VDS, in addition to the
+	// names. See here for an example on how to
 	// use this option.
 	Uplinks []string `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
@@ -534,10 +529,9 @@ type distributedVirtualSwitchState struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// - The version of the DVS to create. The default is to
-	//   create the DVS at the latest version supported by the version of vSphere
-	//   being used. A DVS can be upgraded to another version, but cannot be
-	//   downgraded.
+	// - The version of the VDS. BY default, a VDS is created
+	//   at the latest version supported by the vSphere version if not specified.
+	//   A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit *int `pulumi:"virtualmachineMaximumMbit"`
@@ -575,7 +569,7 @@ type distributedVirtualSwitchState struct {
 type DistributedVirtualSwitchState struct {
 	// A list of active uplinks to be used in load
 	// balancing. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	ActiveUplinks pulumi.StringArrayInput
 	// Controls whether or not a virtual
@@ -606,18 +600,18 @@ type DistributedVirtualSwitchState struct {
 	// The version string of the configuration that this spec is trying to change.
 	ConfigVersion pulumi.StringPtrInput
 	// The detailed contact information for the person
-	// who is responsible for the DVS.
+	// who is responsible for the VDS.
 	ContactDetail pulumi.StringPtrInput
 	// The name of the person who is responsible for the
-	// DVS.
+	// VDS.
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch.
+	// value strings to set for VDS.
 	CustomAttributes pulumi.StringMapInput
-	// The ID of the datacenter where the distributed
-	// virtual switch will be created. Forces a new resource if changed.
+	// The ID of the datacenter where the VDS will be
+	// created. Forces a new resource if changed.
 	DatacenterId pulumi.StringPtrInput
-	// A detailed description for the DVS.
+	// A detailed description for the VDS.
 	Description pulumi.StringPtrInput
 	// Allow VMDirectPath Gen2 for the ports
 	// for which this policy applies to.
@@ -645,8 +639,8 @@ type DistributedVirtualSwitchState struct {
 	FaulttoleranceShareCount pulumi.IntPtrInput
 	// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
 	FaulttoleranceShareLevel pulumi.StringPtrInput
-	// The folder to create the DVS in. Forces a new resource
-	// if changed.
+	// The folder in which to create the VDS.
+	// Forces a new resource if changed.
 	Folder pulumi.StringPtrInput
 	// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
 	HbrMaximumMbit pulumi.IntPtrInput
@@ -675,8 +669,7 @@ type DistributedVirtualSwitchState struct {
 	// bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth pulumi.IntPtrInput
 	// An IPv4 address to identify the switch. This is
-	// mostly useful when used with the Netflow arguments found
-	// below.
+	// mostly useful when used with the Netflow arguments.
 	Ipv4Address pulumi.StringPtrInput
 	// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
 	IscsiMaximumMbit pulumi.IntPtrInput
@@ -687,7 +680,7 @@ type DistributedVirtualSwitchState struct {
 	// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
 	IscsiShareLevel pulumi.StringPtrInput
 	// The Link Aggregation Control Protocol group
-	// version to use with the switch. Possible values are `singleLag` and
+	// version to use with the VDS. Possible values are `singleLag` and
 	// `multipleLag`.
 	LacpApiVersion pulumi.StringPtrInput
 	// Enables LACP for the ports that this policy
@@ -709,21 +702,20 @@ type DistributedVirtualSwitchState struct {
 	ManagementShareCount pulumi.IntPtrInput
 	// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
 	ManagementShareLevel pulumi.StringPtrInput
-	// The maximum transmission unit (MTU) for the virtual
-	// switch.
+	// The maximum transmission unit (MTU) for the VDS.
 	MaxMtu pulumi.IntPtrInput
 	// The multicast filtering mode to use
-	// with the switch. Can be one of `legacyFiltering` or `snooping`.
+	// with the VDS. Can be one of `legacyFiltering` or `snooping`.
 	MulticastFilteringMode pulumi.StringPtrInput
-	// The name of the distributed virtual switch.
+	// The name of the VDS.
 	Name pulumi.StringPtrInput
 	// The number of seconds after which
 	// active flows are forced to be exported to the collector. Allowed range is
 	// `60` to `3600`. Default: `60`.
 	NetflowActiveFlowTimeout pulumi.IntPtrInput
 	// IP address for the Netflow
-	// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-	// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+	// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+	// Must be set before Netflow can be enabled.
 	NetflowCollectorIpAddress pulumi.StringPtrInput
 	// Port for the Netflow collector. This
 	// must be set before Netflow can be enabled.
@@ -744,7 +736,7 @@ type DistributedVirtualSwitchState struct {
 	NetflowObservationDomainId pulumi.IntPtrInput
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
-	// switch should analyze all packets. The maximum value is `1000`, which
+	// VDS should analyze all packets. The maximum value is `1000`, which
 	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
@@ -772,22 +764,22 @@ type DistributedVirtualSwitchState struct {
 	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
-	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-	// `failoverExplicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+	// `failoverExplicit`, or `loadbalanceLoadbased`.
 	TeamingPolicy pulumi.StringPtrInput
 	// Forward all traffic transmitted by ports for which
-	// this policy applies to its DVS uplinks.
+	// this policy applies to its VDS uplinks.
 	TxUplink pulumi.BoolPtrInput
 	// A list of strings that uniquely identifies the names
-	// of the uplinks on the DVS across hosts. The number of items in this list
-	// controls the number of uplinks that exist on the DVS, in addition to the
-	// names.  See here for an example on how to
+	// of the uplinks on the VDS across hosts. The number of items in this list
+	// controls the number of uplinks that exist on the VDS, in addition to the
+	// names. See here for an example on how to
 	// use this option.
 	Uplinks pulumi.StringArrayInput
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
@@ -798,10 +790,9 @@ type DistributedVirtualSwitchState struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// - The version of the DVS to create. The default is to
-	//   create the DVS at the latest version supported by the version of vSphere
-	//   being used. A DVS can be upgraded to another version, but cannot be
-	//   downgraded.
+	// - The version of the VDS. BY default, a VDS is created
+	//   at the latest version supported by the vSphere version if not specified.
+	//   A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntPtrInput
@@ -843,7 +834,7 @@ func (DistributedVirtualSwitchState) ElementType() reflect.Type {
 type distributedVirtualSwitchArgs struct {
 	// A list of active uplinks to be used in load
 	// balancing. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	ActiveUplinks []string `pulumi:"activeUplinks"`
 	// Controls whether or not a virtual
@@ -872,18 +863,18 @@ type distributedVirtualSwitchArgs struct {
 	// to detect NIC failure.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// The detailed contact information for the person
-	// who is responsible for the DVS.
+	// who is responsible for the VDS.
 	ContactDetail *string `pulumi:"contactDetail"`
 	// The name of the person who is responsible for the
-	// DVS.
+	// VDS.
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch.
+	// value strings to set for VDS.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// The ID of the datacenter where the distributed
-	// virtual switch will be created. Forces a new resource if changed.
+	// The ID of the datacenter where the VDS will be
+	// created. Forces a new resource if changed.
 	DatacenterId string `pulumi:"datacenterId"`
-	// A detailed description for the DVS.
+	// A detailed description for the VDS.
 	Description *string `pulumi:"description"`
 	// Allow VMDirectPath Gen2 for the ports
 	// for which this policy applies to.
@@ -911,8 +902,8 @@ type distributedVirtualSwitchArgs struct {
 	FaulttoleranceShareCount *int `pulumi:"faulttoleranceShareCount"`
 	// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
 	FaulttoleranceShareLevel *string `pulumi:"faulttoleranceShareLevel"`
-	// The folder to create the DVS in. Forces a new resource
-	// if changed.
+	// The folder in which to create the VDS.
+	// Forces a new resource if changed.
 	Folder *string `pulumi:"folder"`
 	// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
 	HbrMaximumMbit *int `pulumi:"hbrMaximumMbit"`
@@ -941,8 +932,7 @@ type distributedVirtualSwitchArgs struct {
 	// bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth *int `pulumi:"ingressShapingPeakBandwidth"`
 	// An IPv4 address to identify the switch. This is
-	// mostly useful when used with the Netflow arguments found
-	// below.
+	// mostly useful when used with the Netflow arguments.
 	Ipv4Address *string `pulumi:"ipv4Address"`
 	// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
 	IscsiMaximumMbit *int `pulumi:"iscsiMaximumMbit"`
@@ -953,7 +943,7 @@ type distributedVirtualSwitchArgs struct {
 	// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
 	IscsiShareLevel *string `pulumi:"iscsiShareLevel"`
 	// The Link Aggregation Control Protocol group
-	// version to use with the switch. Possible values are `singleLag` and
+	// version to use with the VDS. Possible values are `singleLag` and
 	// `multipleLag`.
 	LacpApiVersion *string `pulumi:"lacpApiVersion"`
 	// Enables LACP for the ports that this policy
@@ -975,21 +965,20 @@ type distributedVirtualSwitchArgs struct {
 	ManagementShareCount *int `pulumi:"managementShareCount"`
 	// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
 	ManagementShareLevel *string `pulumi:"managementShareLevel"`
-	// The maximum transmission unit (MTU) for the virtual
-	// switch.
+	// The maximum transmission unit (MTU) for the VDS.
 	MaxMtu *int `pulumi:"maxMtu"`
 	// The multicast filtering mode to use
-	// with the switch. Can be one of `legacyFiltering` or `snooping`.
+	// with the VDS. Can be one of `legacyFiltering` or `snooping`.
 	MulticastFilteringMode *string `pulumi:"multicastFilteringMode"`
-	// The name of the distributed virtual switch.
+	// The name of the VDS.
 	Name *string `pulumi:"name"`
 	// The number of seconds after which
 	// active flows are forced to be exported to the collector. Allowed range is
 	// `60` to `3600`. Default: `60`.
 	NetflowActiveFlowTimeout *int `pulumi:"netflowActiveFlowTimeout"`
 	// IP address for the Netflow
-	// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-	// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+	// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+	// Must be set before Netflow can be enabled.
 	NetflowCollectorIpAddress *string `pulumi:"netflowCollectorIpAddress"`
 	// Port for the Netflow collector. This
 	// must be set before Netflow can be enabled.
@@ -1010,7 +999,7 @@ type distributedVirtualSwitchArgs struct {
 	NetflowObservationDomainId *int `pulumi:"netflowObservationDomainId"`
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
-	// switch should analyze all packets. The maximum value is `1000`, which
+	// VDS should analyze all packets. The maximum value is `1000`, which
 	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate *int `pulumi:"netflowSamplingRate"`
 	// Set to `true` to enable
@@ -1038,22 +1027,22 @@ type distributedVirtualSwitchArgs struct {
 	PvlanMappings []DistributedVirtualSwitchPvlanMapping `pulumi:"pvlanMappings"`
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
-	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-	// `failoverExplicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+	// `failoverExplicit`, or `loadbalanceLoadbased`.
 	TeamingPolicy *string `pulumi:"teamingPolicy"`
 	// Forward all traffic transmitted by ports for which
-	// this policy applies to its DVS uplinks.
+	// this policy applies to its VDS uplinks.
 	TxUplink *bool `pulumi:"txUplink"`
 	// A list of strings that uniquely identifies the names
-	// of the uplinks on the DVS across hosts. The number of items in this list
-	// controls the number of uplinks that exist on the DVS, in addition to the
-	// names.  See here for an example on how to
+	// of the uplinks on the VDS across hosts. The number of items in this list
+	// controls the number of uplinks that exist on the VDS, in addition to the
+	// names. See here for an example on how to
 	// use this option.
 	Uplinks []string `pulumi:"uplinks"`
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
@@ -1064,10 +1053,9 @@ type distributedVirtualSwitchArgs struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// - The version of the DVS to create. The default is to
-	//   create the DVS at the latest version supported by the version of vSphere
-	//   being used. A DVS can be upgraded to another version, but cannot be
-	//   downgraded.
+	// - The version of the VDS. BY default, a VDS is created
+	//   at the latest version supported by the vSphere version if not specified.
+	//   A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit *int `pulumi:"virtualmachineMaximumMbit"`
@@ -1106,7 +1094,7 @@ type distributedVirtualSwitchArgs struct {
 type DistributedVirtualSwitchArgs struct {
 	// A list of active uplinks to be used in load
 	// balancing. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	ActiveUplinks pulumi.StringArrayInput
 	// Controls whether or not a virtual
@@ -1135,18 +1123,18 @@ type DistributedVirtualSwitchArgs struct {
 	// to detect NIC failure.
 	CheckBeacon pulumi.BoolPtrInput
 	// The detailed contact information for the person
-	// who is responsible for the DVS.
+	// who is responsible for the VDS.
 	ContactDetail pulumi.StringPtrInput
 	// The name of the person who is responsible for the
-	// DVS.
+	// VDS.
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
-	// value strings to set for virtual switch.
+	// value strings to set for VDS.
 	CustomAttributes pulumi.StringMapInput
-	// The ID of the datacenter where the distributed
-	// virtual switch will be created. Forces a new resource if changed.
+	// The ID of the datacenter where the VDS will be
+	// created. Forces a new resource if changed.
 	DatacenterId pulumi.StringInput
-	// A detailed description for the DVS.
+	// A detailed description for the VDS.
 	Description pulumi.StringPtrInput
 	// Allow VMDirectPath Gen2 for the ports
 	// for which this policy applies to.
@@ -1174,8 +1162,8 @@ type DistributedVirtualSwitchArgs struct {
 	FaulttoleranceShareCount pulumi.IntPtrInput
 	// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
 	FaulttoleranceShareLevel pulumi.StringPtrInput
-	// The folder to create the DVS in. Forces a new resource
-	// if changed.
+	// The folder in which to create the VDS.
+	// Forces a new resource if changed.
 	Folder pulumi.StringPtrInput
 	// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
 	HbrMaximumMbit pulumi.IntPtrInput
@@ -1204,8 +1192,7 @@ type DistributedVirtualSwitchArgs struct {
 	// bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth pulumi.IntPtrInput
 	// An IPv4 address to identify the switch. This is
-	// mostly useful when used with the Netflow arguments found
-	// below.
+	// mostly useful when used with the Netflow arguments.
 	Ipv4Address pulumi.StringPtrInput
 	// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
 	IscsiMaximumMbit pulumi.IntPtrInput
@@ -1216,7 +1203,7 @@ type DistributedVirtualSwitchArgs struct {
 	// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
 	IscsiShareLevel pulumi.StringPtrInput
 	// The Link Aggregation Control Protocol group
-	// version to use with the switch. Possible values are `singleLag` and
+	// version to use with the VDS. Possible values are `singleLag` and
 	// `multipleLag`.
 	LacpApiVersion pulumi.StringPtrInput
 	// Enables LACP for the ports that this policy
@@ -1238,21 +1225,20 @@ type DistributedVirtualSwitchArgs struct {
 	ManagementShareCount pulumi.IntPtrInput
 	// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
 	ManagementShareLevel pulumi.StringPtrInput
-	// The maximum transmission unit (MTU) for the virtual
-	// switch.
+	// The maximum transmission unit (MTU) for the VDS.
 	MaxMtu pulumi.IntPtrInput
 	// The multicast filtering mode to use
-	// with the switch. Can be one of `legacyFiltering` or `snooping`.
+	// with the VDS. Can be one of `legacyFiltering` or `snooping`.
 	MulticastFilteringMode pulumi.StringPtrInput
-	// The name of the distributed virtual switch.
+	// The name of the VDS.
 	Name pulumi.StringPtrInput
 	// The number of seconds after which
 	// active flows are forced to be exported to the collector. Allowed range is
 	// `60` to `3600`. Default: `60`.
 	NetflowActiveFlowTimeout pulumi.IntPtrInput
 	// IP address for the Netflow
-	// collector, using IPv4 or IPv6. IPv6 is supported in vSphere Distributed
-	// Switch Version 6.0 or later. Must be set before Netflow can be enabled.
+	// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+	// Must be set before Netflow can be enabled.
 	NetflowCollectorIpAddress pulumi.StringPtrInput
 	// Port for the Netflow collector. This
 	// must be set before Netflow can be enabled.
@@ -1273,7 +1259,7 @@ type DistributedVirtualSwitchArgs struct {
 	NetflowObservationDomainId pulumi.IntPtrInput
 	// The ratio of total number of packets to
 	// the number of packets analyzed. The default is `0`, which indicates that the
-	// switch should analyze all packets. The maximum value is `1000`, which
+	// VDS should analyze all packets. The maximum value is `1000`, which
 	// indicates an analysis rate of 0.001%.
 	NetflowSamplingRate pulumi.IntPtrInput
 	// Set to `true` to enable
@@ -1301,22 +1287,22 @@ type DistributedVirtualSwitchArgs struct {
 	PvlanMappings DistributedVirtualSwitchPvlanMappingArrayInput
 	// A list of standby uplinks to be used in
 	// failover. These uplinks need to match the definitions in the
-	// `uplinks` DVS argument. See
+	// `uplinks` VDS argument. See
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
-	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
-	// `failoverExplicit`.
+	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+	// `failoverExplicit`, or `loadbalanceLoadbased`.
 	TeamingPolicy pulumi.StringPtrInput
 	// Forward all traffic transmitted by ports for which
-	// this policy applies to its DVS uplinks.
+	// this policy applies to its VDS uplinks.
 	TxUplink pulumi.BoolPtrInput
 	// A list of strings that uniquely identifies the names
-	// of the uplinks on the DVS across hosts. The number of items in this list
-	// controls the number of uplinks that exist on the DVS, in addition to the
-	// names.  See here for an example on how to
+	// of the uplinks on the VDS across hosts. The number of items in this list
+	// controls the number of uplinks that exist on the VDS, in addition to the
+	// names. See here for an example on how to
 	// use this option.
 	Uplinks pulumi.StringArrayInput
 	// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
@@ -1327,10 +1313,9 @@ type DistributedVirtualSwitchArgs struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// - The version of the DVS to create. The default is to
-	//   create the DVS at the latest version supported by the version of vSphere
-	//   being used. A DVS can be upgraded to another version, but cannot be
-	//   downgraded.
+	// - The version of the VDS. BY default, a VDS is created
+	//   at the latest version supported by the vSphere version if not specified.
+	//   A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntPtrInput

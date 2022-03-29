@@ -5,25 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a Content Library item.
+ * The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a content library item.
  *
- * > **NOTE:** This resource requires vCenter and is not available on direct ESXi
- * connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const library = vsphere.getContentLibrary({
- *     name: "Content Library Test",
- * });
- * const item = library.then(library => vsphere.getContentLibraryItem({
- *     name: "Ubuntu Bionic 18.04",
- *     libraryId: library.id,
- * }));
- * ```
+ * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
     if (!opts) {
@@ -43,15 +27,15 @@ export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pu
  */
 export interface GetContentLibraryItemArgs {
     /**
-     * The ID of the Content Library the item exists in.
+     * The ID of the content library in which the item exists.
      */
     libraryId: string;
     /**
-     * The name of the Content Library.
+     * The name of the content library item.
      */
     name: string;
     /**
-     * The Content Library type. Can be ovf, iso, or vm-template.
+     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
      */
     type: string;
 }
@@ -66,9 +50,6 @@ export interface GetContentLibraryItemResult {
     readonly id: string;
     readonly libraryId: string;
     readonly name: string;
-    /**
-     * The Content Library type. Can be ovf, iso, or vm-template.
-     */
     readonly type: string;
 }
 
@@ -81,15 +62,15 @@ export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArg
  */
 export interface GetContentLibraryItemOutputArgs {
     /**
-     * The ID of the Content Library the item exists in.
+     * The ID of the content library in which the item exists.
      */
     libraryId: pulumi.Input<string>;
     /**
-     * The name of the Content Library.
+     * The name of the content library item.
      */
     name: pulumi.Input<string>;
     /**
-     * The Content Library type. Can be ovf, iso, or vm-template.
+     * The type for the content library item. One of `ovf`, `vm-template`, or `iso`
      */
     type: pulumi.Input<string>;
 }

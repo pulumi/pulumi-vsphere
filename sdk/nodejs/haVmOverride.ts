@@ -53,7 +53,7 @@ export class HaVmOverride extends pulumi.CustomResource {
      */
     public readonly haDatastoreApdResponse!: pulumi.Output<string | undefined>;
     /**
-     * Controls the delay in minutes
+     * Controls the delay in seconds
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
@@ -116,7 +116,7 @@ export class HaVmOverride extends pulumi.CustomResource {
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
-     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
      * Default: `clusterRestartPriority`.
      */
     public readonly haVmRestartPriority!: pulumi.Output<string | undefined>;
@@ -214,7 +214,7 @@ export interface HaVmOverrideState {
      */
     haDatastoreApdResponse?: pulumi.Input<string>;
     /**
-     * Controls the delay in minutes
+     * Controls the delay in seconds
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
@@ -277,7 +277,7 @@ export interface HaVmOverrideState {
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
-     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
      * Default: `clusterRestartPriority`.
      */
     haVmRestartPriority?: pulumi.Input<string>;
@@ -319,7 +319,7 @@ export interface HaVmOverrideArgs {
      */
     haDatastoreApdResponse?: pulumi.Input<string>;
     /**
-     * Controls the delay in minutes
+     * Controls the delay in seconds
      * to wait after an APD timeout event to execute the response action defined in
      * `haDatastoreApdResponse`. Use `-1` to use
      * the cluster default. Default: `-1`.
@@ -382,7 +382,7 @@ export interface HaVmOverrideArgs {
     /**
      * The restart priority for the virtual
      * machine when vSphere detects a host failure. Can be one of
-     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, or `highest`.
+     * `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
      * Default: `clusterRestartPriority`.
      */
     haVmRestartPriority?: pulumi.Input<string>;

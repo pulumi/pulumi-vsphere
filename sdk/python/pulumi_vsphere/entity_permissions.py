@@ -22,7 +22,7 @@ class EntityPermissionsArgs:
         The set of arguments for constructing a EntityPermissions resource.
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
-               [here](https://code.vmware.com/apis/968/vsphere).
+               [here](https://developer.vmware.com/apis/968/vsphere).
         :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
@@ -47,7 +47,7 @@ class EntityPermissionsArgs:
     def entity_type(self) -> pulumi.Input[str]:
         """
         The managed object type, types can be found in the managed object type section 
-        [here](https://code.vmware.com/apis/968/vsphere).
+        [here](https://developer.vmware.com/apis/968/vsphere).
         """
         return pulumi.get(self, "entity_type")
 
@@ -79,7 +79,7 @@ class _EntityPermissionsState:
         Input properties used for looking up and filtering EntityPermissions resources.
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
-               [here](https://code.vmware.com/apis/968/vsphere).
+               [here](https://developer.vmware.com/apis/968/vsphere).
         :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
@@ -107,7 +107,7 @@ class _EntityPermissionsState:
     def entity_type(self) -> Optional[pulumi.Input[str]]:
         """
         The managed object type, types can be found in the managed object type section 
-        [here](https://code.vmware.com/apis/968/vsphere).
+        [here](https://developer.vmware.com/apis/968/vsphere).
         """
         return pulumi.get(self, "entity_type")
 
@@ -144,7 +144,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
-               [here](https://code.vmware.com/apis/968/vsphere).
+               [here](https://developer.vmware.com/apis/968/vsphere).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
@@ -217,7 +217,7 @@ class EntityPermissions(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] entity_id: The managed object id (uuid for some entities) on which permissions are to be created.
         :param pulumi.Input[str] entity_type: The managed object type, types can be found in the managed object type section 
-               [here](https://code.vmware.com/apis/968/vsphere).
+               [here](https://developer.vmware.com/apis/968/vsphere).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityPermissionsPermissionArgs']]]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
@@ -243,7 +243,7 @@ class EntityPermissions(pulumi.CustomResource):
     def entity_type(self) -> pulumi.Output[str]:
         """
         The managed object type, types can be found in the managed object type section 
-        [here](https://code.vmware.com/apis/968/vsphere).
+        [here](https://developer.vmware.com/apis/968/vsphere).
         """
         return pulumi.get(self, "entity_type")
 

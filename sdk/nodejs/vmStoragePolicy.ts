@@ -7,44 +7,142 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.VmStoragePolicy` resource can be used to create and manage storage
- * policies. Using this storage policy, tag based placement rules can be created to
- * place a VM on a particular tagged datastore.
+ * policies. Using this resource, tag based placement rules can be created to
+ * place virtual machines on a datastore with matching tags. If storage requirements for the applications on the virtual machine change, you can modify the storage policy that was originally applied to the virtual machine.
  *
  * ## Example Usage
  *
- * This example creates a storage policy with tagRule having cat1 as tagCategory and
- * tag1, tag2 as the tags. While creating a VM, this policy can be referenced to place
- * the VM in any of the compatible datastore tagged with these tags.
+ * The following example creates storage policies with `tagRules` base on sets of environment, service level, and replication attributes.
+ *
+ * In this example, tags are first applied to datastores.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const dc = vsphere.getDatacenter({
- *     name: "DC",
- * });
- * const tagCategory = vsphere.getTagCategory({
- *     name: "cat1",
- * });
- * const tag1 = tagCategory.then(tagCategory => vsphere.getTag({
- *     name: "tag1",
- *     categoryId: tagCategory.id,
+ * const environment = pulumi.output(vsphere.getTagCategory({
+ *     name: "environment",
  * }));
- * const tag2 = tagCategory.then(tagCategory => vsphere.getTag({
- *     name: "tag2",
- *     categoryId: tagCategory.id,
+ * const serviceLevel = pulumi.output(vsphere.getTagCategory({
+ *     name: "service_level",
  * }));
- * const policyTagBasedPlacement = new vsphere.VmStoragePolicy("policyTagBasedPlacement", {
- *     description: "description",
- *     tagRules: [{
- *         tagCategory: tagCategory.then(tagCategory => tagCategory.name),
- *         tags: [
- *             tag1.then(tag1 => tag1.name),
- *             tag2.then(tag2 => tag2.name),
- *         ],
- *         includeDatastoresWithTags: true,
- *     }],
+ * const replication = pulumi.output(vsphere.getTagCategory({
+ *     name: "replication",
+ * }));
+ * const production = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.environment.id",
+ *     name: "production",
+ * }));
+ * const development = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.environment.id",
+ *     name: "development",
+ * }));
+ * const platinum = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
+ *     name: "platinum",
+ * }));
+ * const gold = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
+ *     name: "platinum",
+ * }));
+ * const silver = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
+ *     name: "silver",
+ * }));
+ * const bronze = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.service_level.id",
+ *     name: "bronze",
+ * }));
+ * const replicated = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.replication.id",
+ *     name: "replicated",
+ * }));
+ * const nonReplicated = pulumi.output(vsphere.getTag({
+ *     categoryId: "data.vsphere_tag_category.replication.id",
+ *     name: "non_replicated",
+ * }));
+ * const prodDatastore = new vsphere.VmfsDatastore("prod_datastore", {
+ *     // ... other configuration ...
+ *     tags: [
+ *         "data.vsphere_tag.production.id",
+ *         "data.vsphere_tag.platinum.id",
+ *         "data.vsphere_tag.replicated.id",
+ *     ],
  * });
+ * const devDatastore = new vsphere.NasDatastore("dev_datastore", {
+ *     // ... other configuration ...
+ *     tags: [
+ *         "data.vsphere_tag.development.id",
+ *         "data.vsphere_tag.silver.id",
+ *         "data.vsphere_tag.non_replicated.id",
+ *     ],
+ * });
+ * ```
+ *
+ * Next, storage policies are created and `tagRules` are applied.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const prodPlatinumReplicated = new vsphere.VmStoragePolicy("prodPlatinumReplicated", {
+ *     description: "prod_platinum_replicated",
+ *     tagRules: [
+ *         {
+ *             tagCategory: data.vsphere_tag_category.environment.name,
+ *             tags: [data.vsphere_tag.production.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *         {
+ *             tagCategory: data.vsphere_tag_category.service_level.name,
+ *             tags: [data.vsphere_tag.platinum.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *         {
+ *             tagCategory: data.vsphere_tag_category.replication.name,
+ *             tags: [data.vsphere_tag.replicated.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *     ],
+ * });
+ * const devSilverNonreplicated = new vsphere.VmStoragePolicy("devSilverNonreplicated", {
+ *     description: "dev_silver_nonreplicated",
+ *     tagRules: [
+ *         {
+ *             tagCategory: data.vsphere_tag_category.environment.name,
+ *             tags: [data.vsphere_tag.development.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *         {
+ *             tagCategory: data.vsphere_tag_category.service_level.name,
+ *             tags: [data.vsphere_tag.silver.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *         {
+ *             tagCategory: data.vsphere_tag_category.replication.name,
+ *             tags: [data.vsphere_tag.non_replicated.name],
+ *             includeDatastoresWithTags: true,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tagsRules`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const prodPlatinumReplicated = vsphere.getPolicy({
+ *     name: "prod_platinum_replicated",
+ * });
+ * const devSilverNonreplicated = vsphere.getPolicy({
+ *     name: "dev_silver_nonreplicated",
+ * });
+ * const prodVm = new vsphere.VirtualMachine("prodVm", {storagePolicyId: data.vsphere_storage_policy.storage_policy.prod_platinum_replicated.id});
+ * // ... other configuration ...
+ * const devVm = new vsphere.VirtualMachine("devVm", {storagePolicyId: data.vsphere_storage_policy.storage_policy.dev_silver_nonreplicated.id});
+ * // ... other configuration ...
  * ```
  */
 export class VmStoragePolicy extends pulumi.CustomResource {

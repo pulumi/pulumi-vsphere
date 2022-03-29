@@ -11,97 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `File` resource can be used to upload files (such as virtual disk
-// files) from the host machine that this provider is running on to a target
-// datastore.  The resource can also be used to copy files between datastores, or
-// from one location to another on the same datastore.
-//
-// Updates to destination parameters such as `datacenter`, `datastore`, or
-// `destinationFile` will move the managed file a new destination based on the
-// values of the new settings.  If any source parameter is changed, such as
-// `sourceDatastore`, `sourceDatacenter` or `sourceFile`), the resource will be
-// re-created. Depending on if destination parameters are being changed as well,
-// this may result in the destination file either being overwritten or deleted at
-// the old location.
-//
-// ## Example Usage
-// ### Uploading a file
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewFile(ctx, "ubuntuDiskUpload", &vsphere.FileArgs{
-// 			Datacenter:      pulumi.String("my_datacenter"),
-// 			Datastore:       pulumi.String("local"),
-// 			DestinationFile: pulumi.String("/my_path/disks/custom_ubuntu.vmdk"),
-// 			SourceFile:      pulumi.String("/home/ubuntu/my_disks/custom_ubuntu.vmdk"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Copying a file
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewFile(ctx, "ubuntuDiskCopy", &vsphere.FileArgs{
-// 			Datacenter:       pulumi.String("my_datacenter"),
-// 			Datastore:        pulumi.String("local"),
-// 			DestinationFile:  pulumi.String("/my_path/custom_ubuntu_id.vmdk"),
-// 			SourceDatacenter: pulumi.String("my_datacenter"),
-// 			SourceDatastore:  pulumi.String("local"),
-// 			SourceFile:       pulumi.String("/my_path/disks/custom_ubuntu.vmdk"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type File struct {
 	pulumi.CustomResourceState
 
 	// Create directories in `destinationFile`
-	// path parameter if any missing for copy operation.
+	// path parameter on first apply if any are missing for copy operation.
 	CreateDirectories pulumi.BoolPtrOutput `pulumi:"createDirectories"`
-	// The name of a datacenter in which the file will be
-	// uploaded to.
+	// The name of a datacenter to which the file will be
+	// uploaded.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
-	// The name of the datastore in which to upload the
-	// file to.
+	// The name of the datastore to which to upload the
+	// file.
 	Datastore pulumi.StringOutput `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on vSphere.
+	// or copied to on the destination `datastore` in vSphere.
 	DestinationFile pulumi.StringOutput `pulumi:"destinationFile"`
-	// The name of a datacenter in which the file
-	// will be copied from. Forces a new resource if changed.
+	// The name of a datacenter from which the file
+	// will be copied. Forces a new resource if changed.
 	SourceDatacenter pulumi.StringPtrOutput `pulumi:"sourceDatacenter"`
-	// The name of the datastore in which file will
-	// be copied from. Forces a new resource if changed.
+	// The name of the datastore from which file will
+	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrOutput `pulumi:"sourceDatastore"`
-	// The path to the file being uploaded from the
-	// host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
-	SourceFile pulumi.StringOutput `pulumi:"sourceFile"`
+	SourceFile      pulumi.StringOutput    `pulumi:"sourceFile"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -143,52 +74,46 @@ func GetFile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
 	// Create directories in `destinationFile`
-	// path parameter if any missing for copy operation.
+	// path parameter on first apply if any are missing for copy operation.
 	CreateDirectories *bool `pulumi:"createDirectories"`
-	// The name of a datacenter in which the file will be
-	// uploaded to.
+	// The name of a datacenter to which the file will be
+	// uploaded.
 	Datacenter *string `pulumi:"datacenter"`
-	// The name of the datastore in which to upload the
-	// file to.
+	// The name of the datastore to which to upload the
+	// file.
 	Datastore *string `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on vSphere.
+	// or copied to on the destination `datastore` in vSphere.
 	DestinationFile *string `pulumi:"destinationFile"`
-	// The name of a datacenter in which the file
-	// will be copied from. Forces a new resource if changed.
+	// The name of a datacenter from which the file
+	// will be copied. Forces a new resource if changed.
 	SourceDatacenter *string `pulumi:"sourceDatacenter"`
-	// The name of the datastore in which file will
-	// be copied from. Forces a new resource if changed.
+	// The name of the datastore from which file will
+	// be copied. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	// The path to the file being uploaded from the
-	// host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
-	SourceFile *string `pulumi:"sourceFile"`
+	SourceFile      *string `pulumi:"sourceFile"`
 }
 
 type FileState struct {
 	// Create directories in `destinationFile`
-	// path parameter if any missing for copy operation.
+	// path parameter on first apply if any are missing for copy operation.
 	CreateDirectories pulumi.BoolPtrInput
-	// The name of a datacenter in which the file will be
-	// uploaded to.
+	// The name of a datacenter to which the file will be
+	// uploaded.
 	Datacenter pulumi.StringPtrInput
-	// The name of the datastore in which to upload the
-	// file to.
+	// The name of the datastore to which to upload the
+	// file.
 	Datastore pulumi.StringPtrInput
 	// The path to where the file should be uploaded
-	// or copied to on vSphere.
+	// or copied to on the destination `datastore` in vSphere.
 	DestinationFile pulumi.StringPtrInput
-	// The name of a datacenter in which the file
-	// will be copied from. Forces a new resource if changed.
+	// The name of a datacenter from which the file
+	// will be copied. Forces a new resource if changed.
 	SourceDatacenter pulumi.StringPtrInput
-	// The name of the datastore in which file will
-	// be copied from. Forces a new resource if changed.
+	// The name of the datastore from which file will
+	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	// The path to the file being uploaded from the
-	// host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
-	SourceFile pulumi.StringPtrInput
+	SourceFile      pulumi.StringPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -197,53 +122,47 @@ func (FileState) ElementType() reflect.Type {
 
 type fileArgs struct {
 	// Create directories in `destinationFile`
-	// path parameter if any missing for copy operation.
+	// path parameter on first apply if any are missing for copy operation.
 	CreateDirectories *bool `pulumi:"createDirectories"`
-	// The name of a datacenter in which the file will be
-	// uploaded to.
+	// The name of a datacenter to which the file will be
+	// uploaded.
 	Datacenter *string `pulumi:"datacenter"`
-	// The name of the datastore in which to upload the
-	// file to.
+	// The name of the datastore to which to upload the
+	// file.
 	Datastore string `pulumi:"datastore"`
 	// The path to where the file should be uploaded
-	// or copied to on vSphere.
+	// or copied to on the destination `datastore` in vSphere.
 	DestinationFile string `pulumi:"destinationFile"`
-	// The name of a datacenter in which the file
-	// will be copied from. Forces a new resource if changed.
+	// The name of a datacenter from which the file
+	// will be copied. Forces a new resource if changed.
 	SourceDatacenter *string `pulumi:"sourceDatacenter"`
-	// The name of the datastore in which file will
-	// be copied from. Forces a new resource if changed.
+	// The name of the datastore from which file will
+	// be copied. Forces a new resource if changed.
 	SourceDatastore *string `pulumi:"sourceDatastore"`
-	// The path to the file being uploaded from the
-	// host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
-	SourceFile string `pulumi:"sourceFile"`
+	SourceFile      string  `pulumi:"sourceFile"`
 }
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
 	// Create directories in `destinationFile`
-	// path parameter if any missing for copy operation.
+	// path parameter on first apply if any are missing for copy operation.
 	CreateDirectories pulumi.BoolPtrInput
-	// The name of a datacenter in which the file will be
-	// uploaded to.
+	// The name of a datacenter to which the file will be
+	// uploaded.
 	Datacenter pulumi.StringPtrInput
-	// The name of the datastore in which to upload the
-	// file to.
+	// The name of the datastore to which to upload the
+	// file.
 	Datastore pulumi.StringInput
 	// The path to where the file should be uploaded
-	// or copied to on vSphere.
+	// or copied to on the destination `datastore` in vSphere.
 	DestinationFile pulumi.StringInput
-	// The name of a datacenter in which the file
-	// will be copied from. Forces a new resource if changed.
+	// The name of a datacenter from which the file
+	// will be copied. Forces a new resource if changed.
 	SourceDatacenter pulumi.StringPtrInput
-	// The name of the datastore in which file will
-	// be copied from. Forces a new resource if changed.
+	// The name of the datastore from which file will
+	// be copied. Forces a new resource if changed.
 	SourceDatastore pulumi.StringPtrInput
-	// The path to the file being uploaded from the
-	// host to vSphere or copied within vSphere. Forces a new resource if
-	// changed.
-	SourceFile pulumi.StringInput
+	SourceFile      pulumi.StringInput
 }
 
 func (FileArgs) ElementType() reflect.Type {

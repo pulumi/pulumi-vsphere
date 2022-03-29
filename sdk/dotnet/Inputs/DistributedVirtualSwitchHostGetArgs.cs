@@ -12,11 +12,11 @@ namespace Pulumi.VSphere.Inputs
 
     public sealed class DistributedVirtualSwitchHostGetArgs : Pulumi.ResourceArgs
     {
-        [Input("devices", required: true)]
+        [Input("devices")]
         private InputList<string>? _devices;
 
         /// <summary>
-        /// The list of NIC devices to map to uplinks on the DVS,
+        /// The list of NIC devices to map to uplinks on the VDS,
         /// added in order they are specified.
         /// </summary>
         public InputList<string> Devices
@@ -27,7 +27,7 @@ namespace Pulumi.VSphere.Inputs
 
         /// <summary>
         /// The host system ID of the host to add to the
-        /// DVS.
+        /// VDS.
         /// </summary>
         [Input("hostSystemId", required: true)]
         public Input<string> HostSystemId { get; set; } = null!;

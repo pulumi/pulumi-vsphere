@@ -102,7 +102,7 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     For more information on the root resource pool, see [Managing Resource
     Pools][vmware-docs-resource-pools] in the vSphere documentation.
 
-    [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+    [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
 
     :param str datacenter_id: The managed object reference
@@ -170,7 +170,7 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     For more information on the root resource pool, see [Managing Resource
     Pools][vmware-docs-resource-pools] in the vSphere documentation.
 
-    [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+    [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
 
     :param str datacenter_id: The managed object reference

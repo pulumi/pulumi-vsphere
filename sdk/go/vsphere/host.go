@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a VMware vSphere host resource. This represents an ESXi host that
-// can be used either as part of a Compute Cluster or Standalone.
+// can be used either as a member of a cluster or as a standalone host.
 //
 // ## Example Usage
 // ### Create a standalone host
@@ -27,19 +27,19 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-datacenter"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 		opt0 := "dc-01"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHost(ctx, "h1", &vsphere.HostArgs{
-// 			Hostname:   pulumi.String("10.10.10.1"),
+// 		_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+// 			Hostname:   pulumi.String("esx-01.example.com"),
 // 			Username:   pulumi.String("root"),
 // 			Password:   pulumi.String("password"),
 // 			License:    pulumi.String("00000-00000-00000-00000i-00000"),
-// 			Datacenter: pulumi.String(dc.Id),
+// 			Datacenter: pulumi.String(datacenter.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -60,27 +60,27 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "TfDatacenter"
-// 		dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 		opt0 := "dc-01"
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
 // 			Name: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := dc.Id
-// 		c1, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			Name:         "DC0_C0",
+// 		opt1 := datacenter.Id
+// 		cluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+// 			Name:         "cluster-01",
 // 			DatacenterId: &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHost(ctx, "h1", &vsphere.HostArgs{
-// 			Hostname: pulumi.String("10.10.10.1"),
+// 		_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+// 			Hostname: pulumi.String("esx-01.example.com"),
 // 			Username: pulumi.String("root"),
 // 			Password: pulumi.String("password"),
 // 			License:  pulumi.String("00000-00000-00000-00000i-00000"),
-// 			Cluster:  pulumi.String(c1.Id),
+// 			Cluster:  pulumi.String(cluster.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -91,8 +91,8 @@ import (
 // ```
 // ## Importing
 //
-// An existing host can be [imported][docs-import] into this resource
-// via supplying the host's ID. An example is below:
+// An existing host can be [imported][docs-import] into this resource by supplying
+// the host's ID. An example is below:
 //
 // [docs-import]: /docs/import/index.html
 //
@@ -128,8 +128,9 @@ type Host struct {
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added, even
-	// if the host is already connected to a different vSphere instance. Default is `false`
+	// If set to true then it will force the host to be added,
+	// even if the host is already connected to a different vSphere instance.
+	// Default is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -139,14 +140,19 @@ type Host struct {
 	// Set the lockdown state of the host. Valid options are
 	// `disabled`, `normal`, and `strict`. Default is `disabled`.
 	Lockdown pulumi.StringPtrOutput `pulumi:"lockdown"`
-	// Set the management state of the host. Default is `false`.
+	// Set the management state of the host.
+	// Default is `false`.
 	Maintenance pulumi.BoolPtrOutput `pulumi:"maintenance"`
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Host's certificate SHA-1 thumbprint. If not set the the
-	// CA that signed the host's certificate should be trusted. If the CA is not trusted
-	// and no thumbprint is set then the operation will fail.
+	// The IDs of any tags to attach to this resource. Please
+	// refer to the `Tag` resource for more information on applying
+	// tags to resources.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Host's certificate SHA-1 thumbprint. If not set the
+	// CA that signed the host's certificate should be trusted. If the CA is not
+	// trusted and no thumbprint is set then the operation will fail.
 	Thumbprint pulumi.StringPtrOutput `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -205,8 +211,9 @@ type hostState struct {
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter *string `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added, even
-	// if the host is already connected to a different vSphere instance. Default is `false`
+	// If set to true then it will force the host to be added,
+	// even if the host is already connected to a different vSphere instance.
+	// Default is `false`.
 	Force *bool `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
 	Hostname *string `pulumi:"hostname"`
@@ -216,14 +223,19 @@ type hostState struct {
 	// Set the lockdown state of the host. Valid options are
 	// `disabled`, `normal`, and `strict`. Default is `disabled`.
 	Lockdown *string `pulumi:"lockdown"`
-	// Set the management state of the host. Default is `false`.
+	// Set the management state of the host.
+	// Default is `false`.
 	Maintenance *bool `pulumi:"maintenance"`
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password *string `pulumi:"password"`
-	// Host's certificate SHA-1 thumbprint. If not set the the
-	// CA that signed the host's certificate should be trusted. If the CA is not trusted
-	// and no thumbprint is set then the operation will fail.
+	// The IDs of any tags to attach to this resource. Please
+	// refer to the `Tag` resource for more information on applying
+	// tags to resources.
+	Tags []string `pulumi:"tags"`
+	// Host's certificate SHA-1 thumbprint. If not set the
+	// CA that signed the host's certificate should be trusted. If the CA is not
+	// trusted and no thumbprint is set then the operation will fail.
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -245,8 +257,9 @@ type HostState struct {
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrInput
-	// If set to true then it will force the host to be added, even
-	// if the host is already connected to a different vSphere instance. Default is `false`
+	// If set to true then it will force the host to be added,
+	// even if the host is already connected to a different vSphere instance.
+	// Default is `false`.
 	Force pulumi.BoolPtrInput
 	// FQDN or IP address of the host to be added.
 	Hostname pulumi.StringPtrInput
@@ -256,14 +269,19 @@ type HostState struct {
 	// Set the lockdown state of the host. Valid options are
 	// `disabled`, `normal`, and `strict`. Default is `disabled`.
 	Lockdown pulumi.StringPtrInput
-	// Set the management state of the host. Default is `false`.
+	// Set the management state of the host.
+	// Default is `false`.
 	Maintenance pulumi.BoolPtrInput
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringPtrInput
-	// Host's certificate SHA-1 thumbprint. If not set the the
-	// CA that signed the host's certificate should be trusted. If the CA is not trusted
-	// and no thumbprint is set then the operation will fail.
+	// The IDs of any tags to attach to this resource. Please
+	// refer to the `Tag` resource for more information on applying
+	// tags to resources.
+	Tags pulumi.StringArrayInput
+	// Host's certificate SHA-1 thumbprint. If not set the
+	// CA that signed the host's certificate should be trusted. If the CA is not
+	// trusted and no thumbprint is set then the operation will fail.
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -289,8 +307,9 @@ type hostArgs struct {
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter *string `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added, even
-	// if the host is already connected to a different vSphere instance. Default is `false`
+	// If set to true then it will force the host to be added,
+	// even if the host is already connected to a different vSphere instance.
+	// Default is `false`.
 	Force *bool `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
 	Hostname string `pulumi:"hostname"`
@@ -300,14 +319,19 @@ type hostArgs struct {
 	// Set the lockdown state of the host. Valid options are
 	// `disabled`, `normal`, and `strict`. Default is `disabled`.
 	Lockdown *string `pulumi:"lockdown"`
-	// Set the management state of the host. Default is `false`.
+	// Set the management state of the host.
+	// Default is `false`.
 	Maintenance *bool `pulumi:"maintenance"`
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password string `pulumi:"password"`
-	// Host's certificate SHA-1 thumbprint. If not set the the
-	// CA that signed the host's certificate should be trusted. If the CA is not trusted
-	// and no thumbprint is set then the operation will fail.
+	// The IDs of any tags to attach to this resource. Please
+	// refer to the `Tag` resource for more information on applying
+	// tags to resources.
+	Tags []string `pulumi:"tags"`
+	// Host's certificate SHA-1 thumbprint. If not set the
+	// CA that signed the host's certificate should be trusted. If the CA is not
+	// trusted and no thumbprint is set then the operation will fail.
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -330,8 +354,9 @@ type HostArgs struct {
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrInput
-	// If set to true then it will force the host to be added, even
-	// if the host is already connected to a different vSphere instance. Default is `false`
+	// If set to true then it will force the host to be added,
+	// even if the host is already connected to a different vSphere instance.
+	// Default is `false`.
 	Force pulumi.BoolPtrInput
 	// FQDN or IP address of the host to be added.
 	Hostname pulumi.StringInput
@@ -341,14 +366,19 @@ type HostArgs struct {
 	// Set the lockdown state of the host. Valid options are
 	// `disabled`, `normal`, and `strict`. Default is `disabled`.
 	Lockdown pulumi.StringPtrInput
-	// Set the management state of the host. Default is `false`.
+	// Set the management state of the host.
+	// Default is `false`.
 	Maintenance pulumi.BoolPtrInput
 	// Password that will be used by vSphere to authenticate
 	// to the host.
 	Password pulumi.StringInput
-	// Host's certificate SHA-1 thumbprint. If not set the the
-	// CA that signed the host's certificate should be trusted. If the CA is not trusted
-	// and no thumbprint is set then the operation will fail.
+	// The IDs of any tags to attach to this resource. Please
+	// refer to the `Tag` resource for more information on applying
+	// tags to resources.
+	Tags pulumi.StringArrayInput
+	// Host's certificate SHA-1 thumbprint. If not set the
+	// CA that signed the host's certificate should be trusted. If the CA is not
+	// trusted and no thumbprint is set then the operation will fail.
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
