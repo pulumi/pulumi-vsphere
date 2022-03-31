@@ -11,6 +11,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Uploading a File
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewFile(ctx, "ubuntuVmdkUpload", &vsphere.FileArgs{
+// 			CreateDirectories: pulumi.Bool(true),
+// 			Datacenter:        pulumi.String("dc-01"),
+// 			Datastore:         pulumi.String("datastore-01"),
+// 			DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+// 			SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Copying a File
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewFile(ctx, "ubuntuCopy", &vsphere.FileArgs{
+// 			CreateDirectories: pulumi.Bool(true),
+// 			Datacenter:        pulumi.String("dc-01"),
+// 			Datastore:         pulumi.String("datastore-01"),
+// 			DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+// 			SourceDatacenter:  pulumi.String("dc-01"),
+// 			SourceDatastore:   pulumi.String("datastore-01"),
+// 			SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type File struct {
 	pulumi.CustomResourceState
 

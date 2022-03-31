@@ -27,27 +27,23 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "esxi1"
 // 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
-// 			Name:         &opt1,
+// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := "mpx.vmhba1:C0:T[12]:L0"
-// 		opt3 := true
 // 		_, err = vsphere.GetVmfsDisks(ctx, &GetVmfsDisksArgs{
-// 			Filter:       &opt2,
+// 			Filter:       pulumi.StringRef("mpx.vmhba1:C0:T[12]:L0"),
 // 			HostSystemId: host.Id,
-// 			Rescan:       &opt3,
+// 			Rescan:       pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

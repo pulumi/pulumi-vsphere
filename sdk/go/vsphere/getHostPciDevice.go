@@ -27,27 +27,23 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "esxi1"
 // 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
-// 			Name:         &opt1,
+// 			Name:         pulumi.StringRef("esxi1"),
 // 			DatacenterId: datacenter.Id,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := "123"
-// 		opt3 := "456"
 // 		_, err = vsphere.GetHostPciDevice(ctx, &GetHostPciDeviceArgs{
 // 			HostId:   host.Id,
-// 			ClassId:  &opt2,
-// 			VendorId: &opt3,
+// 			ClassId:  pulumi.StringRef("123"),
+// 			VendorId: pulumi.StringRef("456"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

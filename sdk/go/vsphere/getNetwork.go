@@ -28,16 +28,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := datacenter.Id
 // 		_, err = vsphere.GetNetwork(ctx, &GetNetworkArgs{
-// 			DatacenterId: &opt1,
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 			Name:         "test-net",
 // 		}, nil)
 // 		if err != nil {

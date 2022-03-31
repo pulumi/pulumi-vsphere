@@ -33,17 +33,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "esxi1"
 // 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
-// 			Name:         &opt1,
+// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -93,17 +91,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := "esxi1"
 // 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
 // 			DatacenterId: datacenter.Id,
-// 			Name:         &opt1,
+// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

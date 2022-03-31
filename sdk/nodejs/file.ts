@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ * ### Uploading a File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const ubuntuVmdkUpload = new vsphere.File("ubuntu_vmdk_upload", {
+ *     createDirectories: true,
+ *     datacenter: "dc-01",
+ *     datastore: "datastore-01",
+ *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
+ *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
+ * });
+ * ```
+ * ### Copying a File
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const ubuntuCopy = new vsphere.File("ubuntu_copy", {
+ *     createDirectories: true,
+ *     datacenter: "dc-01",
+ *     datastore: "datastore-01",
+ *     destinationFile: "/my/dst/path/custom_ubuntu.vmdk",
+ *     sourceDatacenter: "dc-01",
+ *     sourceDatastore: "datastore-01",
+ *     sourceFile: "/my/src/path/custom_ubuntu.vmdk",
+ * });
+ * ```
+ */
 export class File extends pulumi.CustomResource {
     /**
      * Get an existing File resource's state with the given name, ID, and optional extra
