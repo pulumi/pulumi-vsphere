@@ -9,6 +9,55 @@ using Pulumi.Serialization;
 
 namespace Pulumi.VSphere
 {
+    /// <summary>
+    /// ## Example Usage
+    /// ### Uploading a File
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ubuntuVmdkUpload = new VSphere.File("ubuntuVmdkUpload", new VSphere.FileArgs
+    ///         {
+    ///             CreateDirectories = true,
+    ///             Datacenter = "dc-01",
+    ///             Datastore = "datastore-01",
+    ///             DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///             SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Copying a File
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ubuntuCopy = new VSphere.File("ubuntuCopy", new VSphere.FileArgs
+    ///         {
+    ///             CreateDirectories = true,
+    ///             Datacenter = "dc-01",
+    ///             Datastore = "datastore-01",
+    ///             DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///             SourceDatacenter = "dc-01",
+    ///             SourceDatastore = "datastore-01",
+    ///             SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [VSphereResourceType("vsphere:index/file:File")]
     public partial class File : Pulumi.CustomResource
     {

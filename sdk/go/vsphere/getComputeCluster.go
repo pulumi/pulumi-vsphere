@@ -34,16 +34,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc1"
 // 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := data.Vsphere_datacenter.Dc.Id
 // 		_, err = vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			DatacenterId: &opt1,
+// 			DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Dc.Id),
 // 			Name:         "compute-cluster1",
 // 		}, nil)
 // 		if err != nil {

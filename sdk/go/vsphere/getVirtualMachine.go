@@ -31,17 +31,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc-01"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := datacenter.Id
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
 // 			Name:         "ubuntu-server-template",
-// 			DatacenterId: &opt1,
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -63,25 +61,22 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "dc-01"
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt1 := datacenter.Id
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
 // 			Name:         "production/templates/ubuntu-server-template",
-// 			DatacenterId: &opt1,
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt2 := datacenter.Id
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
 // 			Name:         "development/templates/ubuntu-server-template",
-// 			DatacenterId: &opt2,
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

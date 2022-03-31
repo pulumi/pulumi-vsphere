@@ -277,7 +277,36 @@ class File(pulumi.CustomResource):
                  source_file: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a File resource with the given unique name, props, and options.
+        ## Example Usage
+        ### Uploading a File
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
+            create_directories=True,
+            datacenter="dc-01",
+            datastore="datastore-01",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            source_file="/my/src/path/custom_ubuntu.vmdk")
+        ```
+        ### Copying a File
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_copy = vsphere.File("ubuntuCopy",
+            create_directories=True,
+            datacenter="dc-01",
+            datastore="datastore-01",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            source_datacenter="dc-01",
+            source_datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
@@ -300,7 +329,36 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a File resource with the given unique name, props, and options.
+        ## Example Usage
+        ### Uploading a File
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
+            create_directories=True,
+            datacenter="dc-01",
+            datastore="datastore-01",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            source_file="/my/src/path/custom_ubuntu.vmdk")
+        ```
+        ### Copying a File
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        ubuntu_copy = vsphere.File("ubuntuCopy",
+            create_directories=True,
+            datacenter="dc-01",
+            datastore="datastore-01",
+            destination_file="/my/dst/path/custom_ubuntu.vmdk",
+            source_datacenter="dc-01",
+            source_datastore="datastore-01",
+            source_file="/my/src/path/custom_ubuntu.vmdk")
+        ```
+
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
