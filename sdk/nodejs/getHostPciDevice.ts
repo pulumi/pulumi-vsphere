@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
  *     hostId: host.id,
- *     classId: 123,
- *     vendorId: 456,
+ *     classId: "123",
+ *     vendorId: "456",
  * }));
  * ```
  * ### With Name Regular Expression
