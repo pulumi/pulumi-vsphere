@@ -74,15 +74,41 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
                                    name: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDistributedVirtualSwitchResult:
     """
-    Use this data source to access information about an existing resource.
+    The `DistributedVirtualSwitch` data source can be used to discover
+    the ID and uplink data of a of a vSphere distributed switch (VDS). This
+    can then be used with resources or data sources that require a VDS, such as the
+    `DistributedPortGroup` resource, for which
+    an example is shown below.
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the VDS is located in. This can be
-           omitted if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `Datacenter` data
-           source.
-    :param str name: The name of the VDS. This can be a
-           name or path.
+    > **NOTE:** This data source requires vCenter Server and is not available on
+    direct ESXi host connections.
+
+    ## Example Usage
+
+    The following example locates a distributed switch named `vds-01`, in the
+    datacenter `dc-01`. It then uses this distributed switch to set up a
+    `DistributedPortGroup` resource that uses the first uplink as a
+    primary uplink and the second uplink as a secondary.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    vds = vsphere.get_distributed_virtual_switch(name="vds-01",
+        datacenter_id=datacenter.id)
+    dvpg = vsphere.DistributedPortGroup("dvpg",
+        distributed_virtual_switch_uuid=vds.id,
+        active_uplinks=[vds.uplinks[0]],
+        standby_uplinks=[vds.uplinks[1]])
+    ```
+
+
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter the VDS is located in. This can be omitted if the search
+           path used in `name` is an absolute path. For default datacenters, use the `id`
+           attribute from an empty `Datacenter` data source.
+    :param str name: The name of the VDS. This can be a name or path.
     """
     __args__ = dict()
     __args__['datacenterId'] = datacenter_id
@@ -105,14 +131,40 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
                                           name: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDistributedVirtualSwitchResult]:
     """
-    Use this data source to access information about an existing resource.
+    The `DistributedVirtualSwitch` data source can be used to discover
+    the ID and uplink data of a of a vSphere distributed switch (VDS). This
+    can then be used with resources or data sources that require a VDS, such as the
+    `DistributedPortGroup` resource, for which
+    an example is shown below.
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the VDS is located in. This can be
-           omitted if the search path used in `name` is an absolute path. For default
-           datacenters, use the id attribute from an empty `Datacenter` data
-           source.
-    :param str name: The name of the VDS. This can be a
-           name or path.
+    > **NOTE:** This data source requires vCenter Server and is not available on
+    direct ESXi host connections.
+
+    ## Example Usage
+
+    The following example locates a distributed switch named `vds-01`, in the
+    datacenter `dc-01`. It then uses this distributed switch to set up a
+    `DistributedPortGroup` resource that uses the first uplink as a
+    primary uplink and the second uplink as a secondary.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    vds = vsphere.get_distributed_virtual_switch(name="vds-01",
+        datacenter_id=datacenter.id)
+    dvpg = vsphere.DistributedPortGroup("dvpg",
+        distributed_virtual_switch_uuid=vds.id,
+        active_uplinks=[vds.uplinks[0]],
+        standby_uplinks=[vds.uplinks[1]])
+    ```
+
+
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter the VDS is located in. This can be omitted if the search
+           path used in `name` is an absolute path. For default datacenters, use the `id`
+           attribute from an empty `Datacenter` data source.
+    :param str name: The name of the VDS. This can be a name or path.
     """
     ...

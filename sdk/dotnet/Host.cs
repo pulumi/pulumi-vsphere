@@ -33,7 +33,7 @@ namespace Pulumi.VSphere
     ///             Hostname = "esx-01.example.com",
     ///             Username = "root",
     ///             Password = "password",
-    ///             License = "00000-00000-00000-00000i-00000",
+    ///             License = "00000-00000-00000-00000-00000",
     ///             Datacenter = datacenter.Apply(datacenter =&gt; datacenter.Id),
     ///         });
     ///     }
@@ -64,7 +64,7 @@ namespace Pulumi.VSphere
     ///             Hostname = "esx-01.example.com",
     ///             Username = "root",
     ///             Password = "password",
-    ///             License = "00000-00000-00000-00000i-00000",
+    ///             License = "00000-00000-00000-00000-00000",
     ///             Cluster = cluster.Apply(cluster =&gt; cluster.Id),
     ///         });
     ///     }
@@ -119,6 +119,15 @@ namespace Pulumi.VSphere
         public Output<bool?> Connected { get; private set; } = null!;
 
         /// <summary>
+        /// A map of custom attribute IDs and string
+        /// values to apply to the resource. Please refer to the
+        /// `vsphere_custom_attributes` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        [Output("customAttributes")]
+        public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the datacenter this host should
         /// be added to. This should not be set if `cluster` is set.
         /// </summary>
@@ -126,8 +135,8 @@ namespace Pulumi.VSphere
         public Output<string?> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true then it will force the host to be added,
-        /// even if the host is already connected to a different vSphere instance.
+        /// If set to `true` then it will force the host to be added,
+        /// even if the host is already connected to a different vCenter Server instance.
         /// Default is `false`.
         /// </summary>
         [Output("force")]
@@ -259,6 +268,21 @@ namespace Pulumi.VSphere
         [Input("connected")]
         public Input<bool>? Connected { get; set; }
 
+        [Input("customAttributes")]
+        private InputMap<string>? _customAttributes;
+
+        /// <summary>
+        /// A map of custom attribute IDs and string
+        /// values to apply to the resource. Please refer to the
+        /// `vsphere_custom_attributes` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        public InputMap<string> CustomAttributes
+        {
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
+            set => _customAttributes = value;
+        }
+
         /// <summary>
         /// The ID of the datacenter this host should
         /// be added to. This should not be set if `cluster` is set.
@@ -267,8 +291,8 @@ namespace Pulumi.VSphere
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to true then it will force the host to be added,
-        /// even if the host is already connected to a different vSphere instance.
+        /// If set to `true` then it will force the host to be added,
+        /// even if the host is already connected to a different vCenter Server instance.
         /// Default is `false`.
         /// </summary>
         [Input("force")]
@@ -367,6 +391,21 @@ namespace Pulumi.VSphere
         [Input("connected")]
         public Input<bool>? Connected { get; set; }
 
+        [Input("customAttributes")]
+        private InputMap<string>? _customAttributes;
+
+        /// <summary>
+        /// A map of custom attribute IDs and string
+        /// values to apply to the resource. Please refer to the
+        /// `vsphere_custom_attributes` resource for more information on applying
+        /// tags to resources.
+        /// </summary>
+        public InputMap<string> CustomAttributes
+        {
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
+            set => _customAttributes = value;
+        }
+
         /// <summary>
         /// The ID of the datacenter this host should
         /// be added to. This should not be set if `cluster` is set.
@@ -375,8 +414,8 @@ namespace Pulumi.VSphere
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// If set to true then it will force the host to be added,
-        /// even if the host is already connected to a different vSphere instance.
+        /// If set to `true` then it will force the host to be added,
+        /// even if the host is already connected to a different vCenter Server instance.
         /// Default is `false`.
         /// </summary>
         [Input("force")]

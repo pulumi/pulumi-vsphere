@@ -6,90 +6,90 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.HostPortGroup` resource can be used to manage vSphere standard
- * port groups on an ESXi host. These port groups are connected to standard
- * virtual switches, which can be managed by the
- * `vsphere.HostVirtualSwitch` resource.
+ * The `vsphere.HostPortGroup` resource can be used to manage port groups on
+ * ESXi hosts. These port groups are connected to standard switches, which
+ * can be managed by the `vsphere.HostVirtualSwitch`
+ * resource.
  *
- * For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
+ * For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
  *
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  *
  * ## Example Usage
- * ### Create a virtual switch and bind a port group to it
+ *
+ * **Create a Virtual Switch and Bind a Port Group:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
- *     name: "esxi1",
  * }));
- * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
- *     activeNics: ["vmnic0"],
- *     hostSystemId: esxiHost.id,
+ * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("hostVirtualSwitch", {
+ *     hostSystemId: host.then(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
  *     ],
+ *     activeNics: ["vmnic0"],
  *     standbyNics: ["vmnic1"],
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
- *     hostSystemId: esxiHost.id,
- *     virtualSwitchName: switchHostVirtualSwitch.name,
+ *     hostSystemId: host.then(host => host.id),
+ *     virtualSwitchName: hostVirtualSwitch.name,
  * });
  * ```
- * ### Create a port group with VLAN set and some overrides
+ *
+ * **Create a Port Group with a VLAN and ab Override:**
  *
  * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
  * and sets
  * `allowPromiscuous`
- * to ensure that all traffic is seen on the port. The latter setting overrides
- * the implicit default of `false` set on the virtual switch.
+ * to ensure that all traffic is seen on the port. The setting overrides
+ * the implicit default of `false` set on the standard switch.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const esxiHost = datacenter.apply(datacenter => vsphere.getHost({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
- *     name: "esxi1",
  * }));
- * const switchHostVirtualSwitch = new vsphere.HostVirtualSwitch("switch", {
- *     activeNics: ["vmnic0"],
- *     hostSystemId: esxiHost.id,
+ * const hostVirtualSwitch = new vsphere.HostVirtualSwitch("hostVirtualSwitch", {
+ *     hostSystemId: host.then(host => host.id),
  *     networkAdapters: [
  *         "vmnic0",
  *         "vmnic1",
  *     ],
+ *     activeNics: ["vmnic0"],
  *     standbyNics: ["vmnic1"],
  * });
  * const pg = new vsphere.HostPortGroup("pg", {
- *     allowPromiscuous: true,
- *     hostSystemId: esxiHost.id,
- *     virtualSwitchName: switchHostVirtualSwitch.name,
+ *     hostSystemId: host.then(host => host.id),
+ *     virtualSwitchName: hostVirtualSwitch.name,
  *     vlanId: 4095,
+ *     allowPromiscuous: true,
  * });
  * ```
  * ## Importing
  *
- * An existing host port group can be [imported][docs-import] into this resource
+ * An existing host port group can be imported into this resource
  * using the host port group's ID. An example is below:
- *
- * [docs-import]: /docs/import/index.html
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * The above would import the `Management` host port group from host with ID `host-123`.
+ * The above would import the `management` host port group from host with ID `host-123`.
  */
 export class HostPortGroup extends pulumi.CustomResource {
     /**

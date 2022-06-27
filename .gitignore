@@ -17,6 +17,7 @@ yarn.lock
 
 ci-scripts
 **/schema.go
+**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist

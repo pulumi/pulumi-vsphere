@@ -426,7 +426,7 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
 
     @property
@@ -448,7 +448,7 @@ class GetVirtualMachineResult:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetVirtualMachineNetworkInterfaceResult']:
         """
-        Information about each of the network interfaces on this 
+        Information about each of the network interfaces on this
         virtual machine or template. These are sorted by device bus order so that they
         can be applied to a `VirtualMachine` resource in the order the resource
         expects while cloning. This is useful for discovering certain network interface
@@ -704,6 +704,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         sync_time_with_host: Optional[bool] = None,
                         sync_time_with_host_periodically: Optional[bool] = None,
                         tools_upgrade_policy: Optional[str] = None,
+                        uuid: Optional[str] = None,
                         vapp: Optional[pulumi.InputType['GetVirtualMachineVappArgs']] = None,
                         vbs_enabled: Optional[bool] = None,
                         vvtd_enabled: Optional[bool] = None,
@@ -756,12 +757,15 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
-           the full path relative to the datacenter.
+           the full path relative to the datacenter. This is required if a UUID lookup
+           is not performed.
     :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
+    :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
+           are not required if this is specified.
     """
     __args__ = dict()
     __args__['alternateGuestName'] = alternate_guest_name
@@ -811,6 +815,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['syncTimeWithHost'] = sync_time_with_host
     __args__['syncTimeWithHostPeriodically'] = sync_time_with_host_periodically
     __args__['toolsUpgradePolicy'] = tools_upgrade_policy
+    __args__['uuid'] = uuid
     __args__['vapp'] = vapp
     __args__['vbsEnabled'] = vbs_enabled
     __args__['vvtdEnabled'] = vvtd_enabled
@@ -915,7 +920,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                memory_reservation: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_share_count: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_share_level: Optional[pulumi.Input[Optional[str]]] = None,
-                               name: Optional[pulumi.Input[str]] = None,
+                               name: Optional[pulumi.Input[Optional[str]]] = None,
                                nested_hv_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                num_cores_per_socket: Optional[pulumi.Input[Optional[int]]] = None,
                                num_cpus: Optional[pulumi.Input[Optional[int]]] = None,
@@ -932,6 +937,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                sync_time_with_host: Optional[pulumi.Input[Optional[bool]]] = None,
                                sync_time_with_host_periodically: Optional[pulumi.Input[Optional[bool]]] = None,
                                tools_upgrade_policy: Optional[pulumi.Input[Optional[str]]] = None,
+                               uuid: Optional[pulumi.Input[Optional[str]]] = None,
                                vapp: Optional[pulumi.Input[Optional[pulumi.InputType['GetVirtualMachineVappArgs']]]] = None,
                                vbs_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                vvtd_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -984,11 +990,14 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     :param int hardware_version: The hardware version number on this virtual machine.
     :param int memory: The size of the virtual machine's memory, in MB.
     :param str name: The name of the virtual machine. This can be a name or
-           the full path relative to the datacenter.
+           the full path relative to the datacenter. This is required if a UUID lookup
+           is not performed.
     :param int num_cores_per_socket: The number of cores per socket for this virtual machine.
     :param int num_cpus: The total number of virtual processor cores assigned to this
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
+    :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
+           are not required if this is specified.
     """
     ...

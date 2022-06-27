@@ -38,7 +38,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly alternateGuestName!: pulumi.Output<string | undefined>;
     /**
-     * A user-provided description of the virtual machine. The default is no annotation.
+     * A user-provided description of the virtual machine.
      */
     public readonly annotation!: pulumi.Output<string>;
     /**
@@ -94,7 +94,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -102,7 +102,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datacenterId!: pulumi.Output<string | undefined>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+     * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
@@ -110,7 +110,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
-     * The IP address selected by Terraform to be used for the provisioner.
+     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      */
     public /*out*/ readonly defaultIpAddress!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+     * The firmware for the virtual machine. One of `bios` or `efi`.
      */
     public readonly firmware!: pulumi.Output<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly hardwareVersion!: pulumi.Output<number>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     public readonly hostSystemId!: pulumi.Output<string>;
     /**
@@ -262,7 +262,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly replaceTrigger!: pulumi.Output<string | undefined>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+     * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     public readonly resourcePoolId!: pulumi.Output<string>;
     /**
@@ -286,7 +286,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly runToolsScriptsBeforeGuestStandby!: pulumi.Output<boolean | undefined>;
     /**
-     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     public readonly sataControllerCount!: pulumi.Output<number | undefined>;
     /**
@@ -294,7 +296,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly scsiBusSharing!: pulumi.Output<string | undefined>;
     /**
-     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     public readonly scsiControllerCount!: pulumi.Output<number | undefined>;
     /**
@@ -322,14 +326,11 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly syncTimeWithHostPeriodically!: pulumi.Output<boolean | undefined>;
     /**
-     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+     * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Enable automatic upgrade of the VMware Tools
-     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-     * to the latest version supported by the host on which the virtual machine is running.
-     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
      */
     public readonly toolsUpgradePolicy!: pulumi.Output<string | undefined>;
     /**
@@ -574,7 +575,7 @@ export interface VirtualMachineState {
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
-     * A user-provided description of the virtual machine. The default is no annotation.
+     * A user-provided description of the virtual machine.
      */
     annotation?: pulumi.Input<string>;
     /**
@@ -630,7 +631,7 @@ export interface VirtualMachineState {
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -638,7 +639,7 @@ export interface VirtualMachineState {
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+     * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
@@ -646,7 +647,7 @@ export interface VirtualMachineState {
      */
     datastoreId?: pulumi.Input<string>;
     /**
-     * The IP address selected by Terraform to be used for the provisioner.
+     * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      */
     defaultIpAddress?: pulumi.Input<string>;
     /**
@@ -674,7 +675,7 @@ export interface VirtualMachineState {
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+     * The firmware for the virtual machine. One of `bios` or `efi`.
      */
     firmware?: pulumi.Input<string>;
     /**
@@ -698,7 +699,7 @@ export interface VirtualMachineState {
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     hostSystemId?: pulumi.Input<string>;
     /**
@@ -798,7 +799,7 @@ export interface VirtualMachineState {
      */
     replaceTrigger?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+     * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     resourcePoolId?: pulumi.Input<string>;
     /**
@@ -822,7 +823,9 @@ export interface VirtualMachineState {
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
     /**
-     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     sataControllerCount?: pulumi.Input<number>;
     /**
@@ -830,7 +833,9 @@ export interface VirtualMachineState {
      */
     scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     scsiControllerCount?: pulumi.Input<number>;
     /**
@@ -858,14 +863,11 @@ export interface VirtualMachineState {
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+     * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable automatic upgrade of the VMware Tools
-     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-     * to the latest version supported by the host on which the virtual machine is running.
-     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
      */
     toolsUpgradePolicy?: pulumi.Input<string>;
     /**
@@ -919,7 +921,7 @@ export interface VirtualMachineArgs {
      */
     alternateGuestName?: pulumi.Input<string>;
     /**
-     * A user-provided description of the virtual machine. The default is no annotation.
+     * A user-provided description of the virtual machine.
      */
     annotation?: pulumi.Input<string>;
     /**
@@ -971,7 +973,7 @@ export interface VirtualMachineArgs {
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphereCustomAttributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -979,7 +981,7 @@ export interface VirtualMachineArgs {
      */
     datacenterId?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+     * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
@@ -1011,7 +1013,7 @@ export interface VirtualMachineArgs {
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+     * The firmware for the virtual machine. One of `bios` or `efi`.
      */
     firmware?: pulumi.Input<string>;
     /**
@@ -1031,7 +1033,7 @@ export interface VirtualMachineArgs {
      */
     hardwareVersion?: pulumi.Input<number>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+     * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      */
     hostSystemId?: pulumi.Input<string>;
     /**
@@ -1115,7 +1117,7 @@ export interface VirtualMachineArgs {
      */
     replaceTrigger?: pulumi.Input<string>;
     /**
-     * The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+     * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      */
     resourcePoolId: pulumi.Input<string>;
     /**
@@ -1139,7 +1141,9 @@ export interface VirtualMachineArgs {
      */
     runToolsScriptsBeforeGuestStandby?: pulumi.Input<boolean>;
     /**
-     * The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+     * The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     sataControllerCount?: pulumi.Input<number>;
     /**
@@ -1147,7 +1151,9 @@ export interface VirtualMachineArgs {
      */
     scsiBusSharing?: pulumi.Input<string>;
     /**
-     * The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+     * The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+     * you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+     * controllers.
      */
     scsiControllerCount?: pulumi.Input<number>;
     /**
@@ -1175,14 +1181,11 @@ export interface VirtualMachineArgs {
      */
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     /**
-     * The IDs of any tags to attach to this resource. Please refer to the [`vsphere.Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+     * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enable automatic upgrade of the VMware Tools
-     * version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-     * to the latest version supported by the host on which the virtual machine is running.
-     * Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+     * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
      */
     toolsUpgradePolicy?: pulumi.Input<string>;
     /**

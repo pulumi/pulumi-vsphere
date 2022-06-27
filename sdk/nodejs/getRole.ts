@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.Role` data source can be used to discover the id and privileges associated
- * with a role given its name or display label in vsphere UI.
+ * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
+ * with a role given its name or display label.
  *
  * ## Example Usage
  *
@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const role1 = pulumi.output(vsphere.getRole({
- *     label: "Virtual machine user (sample)",
+ * const terraformRole = pulumi.output(vsphere.getRole({
+ *     label: "Terraform to vSphere Integration Role",
  * }));
  * ```
  */

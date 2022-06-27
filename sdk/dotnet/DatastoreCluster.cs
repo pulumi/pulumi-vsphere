@@ -187,7 +187,9 @@ namespace Pulumi.VSphere
         public Output<string?> SdrsSpaceBalanceAutomationLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        /// Runtime thresholds govern 
+        /// when Storage DRS performs or recommends migrations
+        /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Output("sdrsSpaceUtilizationThreshold")]
         public Output<int?> SdrsSpaceUtilizationThreshold { get; private set; } = null!;
@@ -438,7 +440,9 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        /// Runtime thresholds govern 
+        /// when Storage DRS performs or recommends migrations
+        /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }
@@ -656,7 +660,9 @@ namespace Pulumi.VSphere
         public Input<string>? SdrsSpaceBalanceAutomationLevel { get; set; }
 
         /// <summary>
-        /// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        /// Runtime thresholds govern 
+        /// when Storage DRS performs or recommends migrations
+        /// (based on the selected automation level). Default: `80` percent.
         /// </summary>
         [Input("sdrsSpaceUtilizationThreshold")]
         public Input<int>? SdrsSpaceUtilizationThreshold { get; set; }

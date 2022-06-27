@@ -55,10 +55,9 @@ class AwaitableGetContentLibraryResult(GetContentLibraryResult):
 def get_content_library(name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContentLibraryResult:
     """
-    The `ContentLibrary` data source can be used to discover the ID of a Content Library.
+    The `ContentLibrary` data source can be used to discover the ID of a content library.
 
-    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    connections.
+    > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
 
     ## Example Usage
 
@@ -66,11 +65,11 @@ def get_content_library(name: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    library = vsphere.get_content_library(name="Content Library Test")
+    library = vsphere.get_content_library(name="Content Library")
     ```
 
 
-    :param str name: The name of the Content Library.
+    :param str name: The name of the content library.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -89,10 +88,9 @@ def get_content_library(name: Optional[str] = None,
 def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContentLibraryResult]:
     """
-    The `ContentLibrary` data source can be used to discover the ID of a Content Library.
+    The `ContentLibrary` data source can be used to discover the ID of a content library.
 
-    > **NOTE:** This resource requires vCenter and is not available on direct ESXi
-    connections.
+    > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
 
     ## Example Usage
 
@@ -100,10 +98,10 @@ def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    library = vsphere.get_content_library(name="Content Library Test")
+    library = vsphere.get_content_library(name="Content Library")
     ```
 
 
-    :param str name: The name of the Content Library.
+    :param str name: The name of the content library.
     """
     ...

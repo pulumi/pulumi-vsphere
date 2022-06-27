@@ -26,6 +26,7 @@ class ComputeClusterArgs:
                  drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
                  drs_enabled: Optional[pulumi.Input[bool]] = None,
                  drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+                 drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
                  ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -92,7 +93,7 @@ class ComputeClusterArgs:
                virtual machines in this cluster. Can be one of `manual`,
                `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
-               from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+               from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\*</sup>
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
@@ -101,6 +102,9 @@ class ComputeClusterArgs:
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] drs_scale_descendants_shares: Enable scalable shares for all
+               resource pools in the cluster. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -277,6 +281,8 @@ class ComputeClusterArgs:
             pulumi.set(__self__, "drs_enabled", drs_enabled)
         if drs_migration_threshold is not None:
             pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
+        if drs_scale_descendants_shares is not None:
+            pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
         if force_evacuate_on_destroy is not None:
@@ -467,7 +473,7 @@ class ComputeClusterArgs:
     def drs_enable_predictive_drs(self) -> Optional[pulumi.Input[bool]]:
         """
         When `true`, enables DRS to use data
-        from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\*</sup>
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
@@ -515,6 +521,20 @@ class ComputeClusterArgs:
     @drs_migration_threshold.setter
     def drs_migration_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "drs_migration_threshold", value)
+
+    @property
+    @pulumi.getter(name="drsScaleDescendantsShares")
+    def drs_scale_descendants_shares(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable scalable shares for all
+        resource pools in the cluster. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "drs_scale_descendants_shares")
+
+    @drs_scale_descendants_shares.setter
+    def drs_scale_descendants_shares(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "drs_scale_descendants_shares", value)
 
     @property
     @pulumi.getter
@@ -1169,6 +1189,7 @@ class _ComputeClusterState:
                  drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
                  drs_enabled: Optional[pulumi.Input[bool]] = None,
                  drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+                 drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
                  ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1236,7 +1257,7 @@ class _ComputeClusterState:
                virtual machines in this cluster. Can be one of `manual`,
                `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
-               from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+               from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\*</sup>
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
@@ -1245,6 +1266,9 @@ class _ComputeClusterState:
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] drs_scale_descendants_shares: Enable scalable shares for all
+               resource pools in the cluster. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -1423,6 +1447,8 @@ class _ComputeClusterState:
             pulumi.set(__self__, "drs_enabled", drs_enabled)
         if drs_migration_threshold is not None:
             pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
+        if drs_scale_descendants_shares is not None:
+            pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
         if folder is not None:
             pulumi.set(__self__, "folder", folder)
         if force_evacuate_on_destroy is not None:
@@ -1615,7 +1641,7 @@ class _ComputeClusterState:
     def drs_enable_predictive_drs(self) -> Optional[pulumi.Input[bool]]:
         """
         When `true`, enables DRS to use data
-        from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\*</sup>
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
@@ -1663,6 +1689,20 @@ class _ComputeClusterState:
     @drs_migration_threshold.setter
     def drs_migration_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "drs_migration_threshold", value)
+
+    @property
+    @pulumi.getter(name="drsScaleDescendantsShares")
+    def drs_scale_descendants_shares(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable scalable shares for all
+        resource pools in the cluster. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "drs_scale_descendants_shares")
+
+    @drs_scale_descendants_shares.setter
+    def drs_scale_descendants_shares(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "drs_scale_descendants_shares", value)
 
     @property
     @pulumi.getter
@@ -2331,6 +2371,7 @@ class ComputeCluster(pulumi.CustomResource):
                  drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
                  drs_enabled: Optional[pulumi.Input[bool]] = None,
                  drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+                 drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
                  ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2400,7 +2441,7 @@ class ComputeCluster(pulumi.CustomResource):
                virtual machines in this cluster. Can be one of `manual`,
                `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
-               from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+               from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\*</sup>
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
@@ -2409,6 +2450,9 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] drs_scale_descendants_shares: Enable scalable shares for all
+               resource pools in the cluster. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -2598,6 +2642,7 @@ class ComputeCluster(pulumi.CustomResource):
                  drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
                  drs_enabled: Optional[pulumi.Input[bool]] = None,
                  drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+                 drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
                  ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2667,6 +2712,7 @@ class ComputeCluster(pulumi.CustomResource):
             __props__.__dict__["drs_enable_vm_overrides"] = drs_enable_vm_overrides
             __props__.__dict__["drs_enabled"] = drs_enabled
             __props__.__dict__["drs_migration_threshold"] = drs_migration_threshold
+            __props__.__dict__["drs_scale_descendants_shares"] = drs_scale_descendants_shares
             __props__.__dict__["folder"] = folder
             __props__.__dict__["force_evacuate_on_destroy"] = force_evacuate_on_destroy
             __props__.__dict__["ha_admission_control_failover_host_system_ids"] = ha_admission_control_failover_host_system_ids
@@ -2733,6 +2779,7 @@ class ComputeCluster(pulumi.CustomResource):
             drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
             drs_enabled: Optional[pulumi.Input[bool]] = None,
             drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+            drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
             ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2805,7 +2852,7 @@ class ComputeCluster(pulumi.CustomResource):
                virtual machines in this cluster. Can be one of `manual`,
                `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
-               from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+               from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\*</sup>
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
@@ -2814,6 +2861,9 @@ class ComputeCluster(pulumi.CustomResource):
                the threshold of imbalance tolerated between hosts. A lower setting will
                tolerate more imbalance while a higher setting will tolerate less. Default:
                `3`.
+        :param pulumi.Input[str] drs_scale_descendants_shares: Enable scalable shares for all
+               resource pools in the cluster. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[str] folder: The relative path to a folder to put this cluster in.
                This is a path relative to the datacenter you are deploying the cluster to.
                Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -2985,6 +3035,7 @@ class ComputeCluster(pulumi.CustomResource):
         __props__.__dict__["drs_enable_vm_overrides"] = drs_enable_vm_overrides
         __props__.__dict__["drs_enabled"] = drs_enabled
         __props__.__dict__["drs_migration_threshold"] = drs_migration_threshold
+        __props__.__dict__["drs_scale_descendants_shares"] = drs_scale_descendants_shares
         __props__.__dict__["folder"] = folder
         __props__.__dict__["force_evacuate_on_destroy"] = force_evacuate_on_destroy
         __props__.__dict__["ha_admission_control_failover_host_system_ids"] = ha_admission_control_failover_host_system_ids
@@ -3105,7 +3156,7 @@ class ComputeCluster(pulumi.CustomResource):
     def drs_enable_predictive_drs(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, enables DRS to use data
-        from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\*</sup>
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
@@ -3137,6 +3188,16 @@ class ComputeCluster(pulumi.CustomResource):
         `3`.
         """
         return pulumi.get(self, "drs_migration_threshold")
+
+    @property
+    @pulumi.getter(name="drsScaleDescendantsShares")
+    def drs_scale_descendants_shares(self) -> pulumi.Output[Optional[str]]:
+        """
+        Enable scalable shares for all
+        resource pools in the cluster. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "drs_scale_descendants_shares")
 
     @property
     @pulumi.getter

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.getHostPciDevice` data source can be used to discover the DeviceID
+ * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
  * of a vSphere host's PCI device. This can then be used with
  * `vsphere.VirtualMachine`'s `pciDeviceId`.
  *
@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = vsphere.getDatacenter({
- *     name: "dc1",
+ *     name: "dc-01",
  * });
  * const host = datacenter.then(datacenter => vsphere.getHost({
- *     name: "esxi1",
+ *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
  * }));
  * const dev = host.then(host => vsphere.getHostPciDevice({
@@ -54,13 +54,12 @@ export interface GetHostPciDeviceArgs {
      */
     classId?: string;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of a host.
      */
     hostId: string;
     /**
-     * A regular expression that will be used to match
-     * the host PCI device name.
+     * A regular expression that will be used to match the
+     * host PCI device name.
      */
     nameRegex?: string;
     /**
@@ -100,13 +99,12 @@ export interface GetHostPciDeviceOutputArgs {
      */
     classId?: pulumi.Input<string>;
     /**
-     * The [managed object reference
-     * ID][docs-about-morefs] of a host.
+     * The [managed object reference ID][docs-about-morefs] of a host.
      */
     hostId: pulumi.Input<string>;
     /**
-     * A regular expression that will be used to match
-     * the host PCI device name.
+     * A regular expression that will be used to match the
+     * host PCI device name.
      */
     nameRegex?: pulumi.Input<string>;
     /**

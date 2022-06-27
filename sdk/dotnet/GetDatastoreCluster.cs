@@ -13,12 +13,9 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-        /// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
-        /// cluster that you want to use to assign datastores to using the
-        /// `vsphere.NasDatastore` or
-        /// `vsphere.VmfsDatastore` resources, or create
-        /// virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// vSphere datastore cluster object. This can then be used with resources or data sources
+        /// that require a datastore. For example, to assign datastores using the
+        /// `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -34,13 +31,13 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var datastoreCluster = Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+        ///         var datastoreCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
         ///         {
-        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
-        ///             Name = "datastore-cluster1",
-        ///         }));
+        ///             Name = "datastore-cluster-01",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
         ///     }
         /// 
         /// }
@@ -53,12 +50,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
-        /// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
-        /// cluster that you want to use to assign datastores to using the
-        /// `vsphere.NasDatastore` or
-        /// `vsphere.VmfsDatastore` resources, or create
-        /// virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// vSphere datastore cluster object. This can then be used with resources or data sources
+        /// that require a datastore. For example, to assign datastores using the
+        /// `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -74,13 +68,13 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var datastoreCluster = Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
+        ///         var datastoreCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
         ///         {
-        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
-        ///             Name = "datastore-cluster1",
-        ///         }));
+        ///             Name = "datastore-cluster-01",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
         ///     }
         /// 
         /// }

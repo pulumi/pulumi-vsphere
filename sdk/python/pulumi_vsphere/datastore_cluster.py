@@ -104,7 +104,9 @@ class DatastoreClusterArgs:
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
-        :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
+               when Storage DRS performs or recommends migrations
+               (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
@@ -469,7 +471,9 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
     def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        Runtime thresholds govern 
+        when Storage DRS performs or recommends migrations
+        (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
 
@@ -597,7 +601,9 @@ class _DatastoreClusterState:
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
-        :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
+               when Storage DRS performs or recommends migrations
+               (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
@@ -963,7 +969,9 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
     def sdrs_space_utilization_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        Runtime thresholds govern 
+        when Storage DRS performs or recommends migrations
+        (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
 
@@ -1096,7 +1104,9 @@ class DatastoreCluster(pulumi.CustomResource):
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
-        :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
+               when Storage DRS performs or recommends migrations
+               (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
@@ -1294,7 +1304,9 @@ class DatastoreCluster(pulumi.CustomResource):
                automation settings when correcting affinity rule violations.
         :param pulumi.Input[str] sdrs_space_balance_automation_level: Overrides the default
                automation settings when correcting disk space imbalances.
-        :param pulumi.Input[int] sdrs_space_utilization_threshold: The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        :param pulumi.Input[int] sdrs_space_utilization_threshold: Runtime thresholds govern 
+               when Storage DRS performs or recommends migrations
+               (based on the selected automation level). Default: `80` percent.
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
@@ -1552,7 +1564,9 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsSpaceUtilizationThreshold")
     def sdrs_space_utilization_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+        Runtime thresholds govern 
+        when Storage DRS performs or recommends migrations
+        (based on the selected automation level). Default: `80` percent.
         """
         return pulumi.get(self, "sdrs_space_utilization_threshold")
 

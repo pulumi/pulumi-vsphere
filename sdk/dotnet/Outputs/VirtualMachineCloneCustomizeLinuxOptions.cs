@@ -16,6 +16,7 @@ namespace Pulumi.VSphere.Outputs
         public readonly string Domain;
         public readonly string HostName;
         public readonly bool? HwClockUtc;
+        public readonly string? ScriptText;
         public readonly string? TimeZone;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.VSphere.Outputs
 
             bool? hwClockUtc,
 
+            string? scriptText,
+
             string? timeZone)
         {
             Domain = domain;
             HostName = hostName;
             HwClockUtc = hwClockUtc;
+            ScriptText = scriptText;
             TimeZone = timeZone;
         }
     }

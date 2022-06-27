@@ -76,15 +76,13 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
     """
     The `ComputeCluster` data source can be used to discover the ID of a
     cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-    to use for virtual machine placement via the
-    `VirtualMachine` resource, allowing
-    you to specify the cluster's root resource pool directly versus using the alias
-    available through the `ResourcePool`
+    to use for virtual machine placement via the `VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+    using the alias available through the `ResourcePool`
     data source.
 
-    > You may also wish to see the
-    `ComputeCluster` resource for further
-    details about clusters or how to work with them.
+    > You may also wish to see the `ComputeCluster`
+     resource for more information about clusters and how to managed the resource
+     in this provider.
 
     ## Example Usage
 
@@ -92,17 +90,16 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    compute_cluster = vsphere.get_compute_cluster(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="compute-cluster1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+        datacenter_id=datacenter.id)
     ```
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the cluster is located in.  This can
-           be omitted if the search path used in `name` is an absolute path.  For
-           default datacenters, use the id attribute from an empty `Datacenter`
-           data source.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter the cluster is located in.  This can be omitted if the
+           search path used in `name` is an absolute path. For default datacenters,
+           use the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name or absolute path to the cluster.
     """
     __args__ = dict()
@@ -128,15 +125,13 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str
     """
     The `ComputeCluster` data source can be used to discover the ID of a
     cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-    to use for virtual machine placement via the
-    `VirtualMachine` resource, allowing
-    you to specify the cluster's root resource pool directly versus using the alias
-    available through the `ResourcePool`
+    to use for virtual machine placement via the `VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+    using the alias available through the `ResourcePool`
     data source.
 
-    > You may also wish to see the
-    `ComputeCluster` resource for further
-    details about clusters or how to work with them.
+    > You may also wish to see the `ComputeCluster`
+     resource for more information about clusters and how to managed the resource
+     in this provider.
 
     ## Example Usage
 
@@ -144,17 +139,16 @@ def get_compute_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    compute_cluster = vsphere.get_compute_cluster(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="compute-cluster1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+        datacenter_id=datacenter.id)
     ```
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the cluster is located in.  This can
-           be omitted if the search path used in `name` is an absolute path.  For
-           default datacenters, use the id attribute from an empty `Datacenter`
-           data source.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter the cluster is located in.  This can be omitted if the
+           search path used in `name` is an absolute path. For default datacenters,
+           use the `id` attribute from an empty `Datacenter` data source.
     :param str name: The name or absolute path to the cluster.
     """
     ...

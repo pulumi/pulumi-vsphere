@@ -7,15 +7,13 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
  * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
- * to use for virtual machine placement via the
- * `vsphere.VirtualMachine` resource, allowing
- * you to specify the cluster's root resource pool directly versus using the alias
- * available through the `vsphere.ResourcePool`
+ * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+ * using the alias available through the `vsphere.ResourcePool`
  * data source.
  *
- * > You may also wish to see the
- * `vsphere.ComputeCluster` resource for further
- * details about clusters or how to work with them.
+ * > You may also wish to see the `vsphere.ComputeCluster`
+ *  resource for more information about clusters and how to managed the resource
+ *  in this provider.
  *
  * ## Example Usage
  *
@@ -23,12 +21,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const computeCluster = vsphere_datacenter_dc.id.apply(id => vsphere.getComputeCluster({
- *     datacenterId: id,
- *     name: "compute-cluster1",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
  * }));
  * ```
  */
@@ -49,11 +47,10 @@ export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.Inv
  */
 export interface GetComputeClusterArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the cluster is located in.  This can
-     * be omitted if the search path used in `name` is an absolute path.  For
-     * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-     * data source.
+     * The managed object reference ID
+     * of the datacenter the cluster is located in.  This can be omitted if the
+     * search path used in `name` is an absolute path. For default datacenters,
+     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
      */
     datacenterId?: string;
     /**
@@ -84,11 +81,10 @@ export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?
  */
 export interface GetComputeClusterOutputArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the cluster is located in.  This can
-     * be omitted if the search path used in `name` is an absolute path.  For
-     * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-     * data source.
+     * The managed object reference ID
+     * of the datacenter the cluster is located in.  This can be omitted if the
+     * search path used in `name` is an absolute path. For default datacenters,
+     * use the `id` attribute from an empty `vsphere.Datacenter` data source.
      */
     datacenterId?: pulumi.Input<string>;
     /**

@@ -15,8 +15,8 @@ namespace Pulumi.VSphere
         /// The `vsphere.getNetwork` data source can be used to discover the ID of a network
         /// in vSphere. This can be any network that can be used as the backing for a
         /// network interface for `vsphere.VirtualMachine` or any other vSphere resource
-        /// that requires a network. This includes standard (host-based) port groups, DVS
-        /// port groups, or opaque networks such as those managed by NSX.
+        /// that requires a network. This includes standard (host-based) port groups,
+        /// distributed port groups, or opaque networks such as those managed by NSX.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -32,12 +32,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var net = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+        ///         var network = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
         ///         {
+        ///             Name = "VM Network",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "test-net",
         ///         })));
         ///     }
         /// 
@@ -53,8 +53,8 @@ namespace Pulumi.VSphere
         /// The `vsphere.getNetwork` data source can be used to discover the ID of a network
         /// in vSphere. This can be any network that can be used as the backing for a
         /// network interface for `vsphere.VirtualMachine` or any other vSphere resource
-        /// that requires a network. This includes standard (host-based) port groups, DVS
-        /// port groups, or opaque networks such as those managed by NSX.
+        /// that requires a network. This includes standard (host-based) port groups,
+        /// distributed port groups, or opaque networks such as those managed by NSX.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -70,12 +70,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var net = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
+        ///         var network = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
         ///         {
+        ///             Name = "VM Network",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "test-net",
         ///         })));
         ///     }
         /// 
@@ -92,20 +92,19 @@ namespace Pulumi.VSphere
     public sealed class GetNetworkArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the network is located in. This can
-        /// be omitted if the search path used in `name` is an absolute path. For default
-        /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source.
+        /// The managed object reference ID
+        /// of the datacenter the network is located in. This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters,
+        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
 
         /// <summary>
-        /// For distributed port group type 
-        /// network objects, the ID of the distributed virtual switch the given port group
-        /// belongs to. It is useful to differentiate port groups with same name using the
-        /// Distributed virtual switch ID.
+        /// For distributed port group type
+        /// network objects, the ID of the distributed virtual switch for which the port
+        /// group belongs. It is useful to differentiate port groups with same name
+        /// using the distributed virtual switch ID.
         /// </summary>
         [Input("distributedVirtualSwitchUuid")]
         public string? DistributedVirtualSwitchUuid { get; set; }
@@ -124,20 +123,19 @@ namespace Pulumi.VSphere
     public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the network is located in. This can
-        /// be omitted if the search path used in `name` is an absolute path. For default
-        /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
-        /// source.
+        /// The managed object reference ID
+        /// of the datacenter the network is located in. This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters,
+        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
 
         /// <summary>
-        /// For distributed port group type 
-        /// network objects, the ID of the distributed virtual switch the given port group
-        /// belongs to. It is useful to differentiate port groups with same name using the
-        /// Distributed virtual switch ID.
+        /// For distributed port group type
+        /// network objects, the ID of the distributed virtual switch for which the port
+        /// group belongs. It is useful to differentiate port groups with same name
+        /// using the distributed virtual switch ID.
         /// </summary>
         [Input("distributedVirtualSwitchUuid")]
         public Input<string>? DistributedVirtualSwitchUuid { get; set; }

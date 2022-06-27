@@ -1906,6 +1906,7 @@ type VirtualMachineCloneCustomizeLinuxOptions struct {
 	Domain     string  `pulumi:"domain"`
 	HostName   string  `pulumi:"hostName"`
 	HwClockUtc *bool   `pulumi:"hwClockUtc"`
+	ScriptText *string `pulumi:"scriptText"`
 	TimeZone   *string `pulumi:"timeZone"`
 }
 
@@ -1924,6 +1925,7 @@ type VirtualMachineCloneCustomizeLinuxOptionsArgs struct {
 	Domain     pulumi.StringInput    `pulumi:"domain"`
 	HostName   pulumi.StringInput    `pulumi:"hostName"`
 	HwClockUtc pulumi.BoolPtrInput   `pulumi:"hwClockUtc"`
+	ScriptText pulumi.StringPtrInput `pulumi:"scriptText"`
 	TimeZone   pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
@@ -2016,6 +2018,10 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) HwClockUtc() pulumi.Bool
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *bool { return v.HwClockUtc }).(pulumi.BoolPtrOutput)
 }
 
+func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) ScriptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *string { return v.ScriptText }).(pulumi.StringPtrOutput)
+}
+
 func (o VirtualMachineCloneCustomizeLinuxOptionsOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCloneCustomizeLinuxOptions) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -2069,6 +2075,15 @@ func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) HwClockUtc() pulumi.B
 		}
 		return v.HwClockUtc
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) ScriptText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineCloneCustomizeLinuxOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptText
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o VirtualMachineCloneCustomizeLinuxOptionsPtrOutput) TimeZone() pulumi.StringPtrOutput {

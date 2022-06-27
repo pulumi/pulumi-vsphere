@@ -805,11 +805,14 @@ class VirtualMachineCloneCustomizeLinuxOptionsArgs:
                  domain: pulumi.Input[str],
                  host_name: pulumi.Input[str],
                  hw_clock_utc: Optional[pulumi.Input[bool]] = None,
+                 script_text: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "host_name", host_name)
         if hw_clock_utc is not None:
             pulumi.set(__self__, "hw_clock_utc", hw_clock_utc)
+        if script_text is not None:
+            pulumi.set(__self__, "script_text", script_text)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
 
@@ -839,6 +842,15 @@ class VirtualMachineCloneCustomizeLinuxOptionsArgs:
     @hw_clock_utc.setter
     def hw_clock_utc(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "hw_clock_utc", value)
+
+    @property
+    @pulumi.getter(name="scriptText")
+    def script_text(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "script_text")
+
+    @script_text.setter
+    def script_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_text", value)
 
     @property
     @pulumi.getter(name="timeZone")

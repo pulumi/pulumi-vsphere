@@ -11,12 +11,9 @@ import (
 )
 
 // The `DatastoreCluster` data source can be used to discover the ID of a
-// datastore cluster in vSphere. This is useful to fetch the ID of a datastore
-// cluster that you want to use to assign datastores to using the
-// `NasDatastore` or
-// `VmfsDatastore` resources, or create
-// virtual machines in using the
-// `VirtualMachine` resource.
+// vSphere datastore cluster object. This can then be used with resources or data sources
+// that require a datastore. For example, to assign datastores using the
+// `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
 //
 // ## Example Usage
 //
@@ -30,15 +27,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupDatastoreCluster(ctx, &GetDatastoreClusterArgs{
-// 			DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Dc.Id),
-// 			Name:         "datastore-cluster1",
+// 			Name:         "datastore-cluster-01",
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

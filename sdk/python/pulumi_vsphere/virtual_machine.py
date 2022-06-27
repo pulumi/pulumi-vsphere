@@ -90,9 +90,9 @@ class VirtualMachineArgs:
                  wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a VirtualMachine resource.
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         :param pulumi.Input[str] alternate_guest_name: The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
-        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine. The default is no annotation.
+        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence. The default is no delay.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
@@ -105,9 +105,9 @@ class VirtualMachineArgs:
         :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         :param pulumi.Input[str] datacenter_id: The datacenter ID. Required only when deploying an OVF/OVA template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
@@ -115,12 +115,12 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] enable_logging: Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
         :param pulumi.Input[str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_config: Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-        :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        :param pulumi.Input[str] firmware: The firmware for the virtual machine. One of `bios` or `efi`.
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
-        :param pulumi.Input[str] host_system_id: The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
@@ -146,20 +146,21 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_type: The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
-        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools
-               version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-               to the latest version supported by the host on which the virtual machine is running.
-               Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
         :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
         :param pulumi.Input[bool] vvtd_enabled: Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
@@ -317,7 +318,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> pulumi.Input[str]:
         """
-        The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         """
         return pulumi.get(self, "resource_pool_id")
 
@@ -341,7 +342,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def annotation(self) -> Optional[pulumi.Input[str]]:
         """
-        A user-provided description of the virtual machine. The default is no annotation.
+        A user-provided description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
@@ -497,7 +498,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -521,7 +522,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -617,7 +618,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def firmware(self) -> Optional[pulumi.Input[str]]:
         """
-        The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        The firmware for the virtual machine. One of `bios` or `efi`.
         """
         return pulumi.get(self, "firmware")
 
@@ -677,7 +678,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         """
         return pulumi.get(self, "host_system_id")
 
@@ -989,7 +990,9 @@ class VirtualMachineArgs:
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "sata_controller_count")
 
@@ -1013,7 +1016,9 @@ class VirtualMachineArgs:
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "scsi_controller_count")
 
@@ -1097,7 +1102,7 @@ class VirtualMachineArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+        The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
         """
         return pulumi.get(self, "tags")
 
@@ -1109,10 +1114,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="toolsUpgradePolicy")
     def tools_upgrade_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable automatic upgrade of the VMware Tools
-        version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-        to the latest version supported by the host on which the virtual machine is running.
-        Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         """
         return pulumi.get(self, "tools_upgrade_policy")
 
@@ -1283,7 +1285,7 @@ class _VirtualMachineState:
         """
         Input properties used for looking up and filtering VirtualMachine resources.
         :param pulumi.Input[str] alternate_guest_name: The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
-        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine. The default is no annotation.
+        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence. The default is no delay.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
@@ -1297,24 +1299,24 @@ class _VirtualMachineState:
         :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         :param pulumi.Input[str] datacenter_id: The datacenter ID. Required only when deploying an OVF/OVA template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] default_ip_address: The IP address selected by Terraform to be used for the provisioner.
+        :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
         :param pulumi.Input[bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
         :param pulumi.Input[bool] enable_logging: Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
         :param pulumi.Input[str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_config: Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-        :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        :param pulumi.Input[str] firmware: The firmware for the virtual machine. One of `bios` or `efi`.
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
-        :param pulumi.Input[str] host_system_id: The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
@@ -1339,26 +1341,27 @@ class _VirtualMachineState:
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_type: The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
-        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools
-               version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-               to the latest version supported by the host on which the virtual machine is running.
-               Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
         :param pulumi.Input['VirtualMachineVappArgs'] vapp: Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
@@ -1555,7 +1558,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def annotation(self) -> Optional[pulumi.Input[str]]:
         """
-        A user-provided description of the virtual machine. The default is no annotation.
+        A user-provided description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
@@ -1723,7 +1726,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1747,7 +1750,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -1771,7 +1774,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="defaultIpAddress")
     def default_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address selected by Terraform to be used for the provisioner.
+        The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         """
         return pulumi.get(self, "default_ip_address")
 
@@ -1855,7 +1858,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def firmware(self) -> Optional[pulumi.Input[str]]:
         """
-        The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        The firmware for the virtual machine. One of `bios` or `efi`.
         """
         return pulumi.get(self, "firmware")
 
@@ -1927,7 +1930,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         """
         return pulumi.get(self, "host_system_id")
 
@@ -2227,7 +2230,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         """
         return pulumi.get(self, "resource_pool_id")
 
@@ -2299,7 +2302,9 @@ class _VirtualMachineState:
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "sata_controller_count")
 
@@ -2323,7 +2328,9 @@ class _VirtualMachineState:
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "scsi_controller_count")
 
@@ -2407,7 +2414,7 @@ class _VirtualMachineState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+        The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
         """
         return pulumi.get(self, "tags")
 
@@ -2419,10 +2426,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="toolsUpgradePolicy")
     def tools_upgrade_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable automatic upgrade of the VMware Tools
-        version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-        to the latest version supported by the host on which the virtual machine is running.
-        Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         """
         return pulumi.get(self, "tools_upgrade_policy")
 
@@ -2635,7 +2639,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_guest_name: The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
-        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine. The default is no annotation.
+        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence. The default is no delay.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
@@ -2648,9 +2652,9 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         :param pulumi.Input[str] datacenter_id: The datacenter ID. Required only when deploying an OVF/OVA template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
@@ -2658,12 +2662,12 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
         :param pulumi.Input[str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_config: Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-        :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        :param pulumi.Input[str] firmware: The firmware for the virtual machine. One of `bios` or `efi`.
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
-        :param pulumi.Input[str] host_system_id: The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
@@ -2684,26 +2688,27 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pci_device_ids: List of host PCI device IDs in which to create PCI passthroughs.
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_type: The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
-        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools
-               version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-               to the latest version supported by the host on which the virtual machine is running.
-               Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
         :param pulumi.Input[bool] vbs_enabled: Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
         :param pulumi.Input[bool] vvtd_enabled: Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
@@ -3007,7 +3012,7 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_guest_name: The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
-        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine. The default is no annotation.
+        :param pulumi.Input[str] annotation: A user-provided description of the virtual machine.
         :param pulumi.Input[int] boot_delay: The number of milliseconds to wait before starting the boot sequence. The default is no delay.
         :param pulumi.Input[int] boot_retry_delay: The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
         :param pulumi.Input[bool] boot_retry_enabled: If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
@@ -3021,24 +3026,24 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] cpu_reservation: The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
         :param pulumi.Input[int] cpu_share_count: The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
         :param pulumi.Input[str] cpu_share_level: The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         :param pulumi.Input[str] datacenter_id: The datacenter ID. Required only when deploying an OVF/OVA template.
-        :param pulumi.Input[str] datastore_cluster_id: The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        :param pulumi.Input[str] datastore_cluster_id: The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         :param pulumi.Input[str] datastore_id: The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
-        :param pulumi.Input[str] default_ip_address: The IP address selected by Terraform to be used for the provisioner.
+        :param pulumi.Input[str] default_ip_address: The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualMachineDiskArgs']]]] disks: A specification for a virtual disk device on the virtual machine. See disk options for more information.
         :param pulumi.Input[bool] efi_secure_boot_enabled: Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
         :param pulumi.Input[bool] enable_disk_uuid: Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
         :param pulumi.Input[bool] enable_logging: Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
         :param pulumi.Input[str] ept_rvi_mode: The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_config: Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
-        :param pulumi.Input[str] firmware: The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        :param pulumi.Input[str] firmware: The firmware for the virtual machine. One of `bios` or `efi`.
         :param pulumi.Input[str] folder: The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/<datacenter-name>/vm`).  For example, `/dc-01/vm/foo`
         :param pulumi.Input[bool] force_power_off: If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
         :param pulumi.Input[str] guest_id: The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_ip_addresses: The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
         :param pulumi.Input[int] hardware_version: The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
-        :param pulumi.Input[str] host_system_id: The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        :param pulumi.Input[str] host_system_id: The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         :param pulumi.Input[str] hv_mode: The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
         :param pulumi.Input[int] ide_controller_count: The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_guest_ips: List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
@@ -3063,26 +3068,27 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[int] poweron_timeout: The amount of time, in seconds, that we will be trying to power on a VM
         :param pulumi.Input[bool] reboot_required: Value internal to Terraform used to determine if a configuration set change requires a reboot.
         :param pulumi.Input[str] replace_trigger: Triggers replacement of resource whenever it changes.
-        :param pulumi.Input[str] resource_pool_id: The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        :param pulumi.Input[str] resource_pool_id: The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         :param pulumi.Input[bool] run_tools_scripts_after_power_on: Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_after_resume: Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_reboot: Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_shutdown: Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
         :param pulumi.Input[bool] run_tools_scripts_before_guest_standby: Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
-        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        :param pulumi.Input[int] sata_controller_count: The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_bus_sharing: The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
-        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        :param pulumi.Input[int] scsi_controller_count: The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+               you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+               controllers.
         :param pulumi.Input[str] scsi_type: The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
         :param pulumi.Input[int] shutdown_wait_timeout: The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
         :param pulumi.Input[str] storage_policy_id: The UUID of the storage policy to assign to the virtual disk.
         :param pulumi.Input[str] swap_placement_policy: The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
         :param pulumi.Input[bool] sync_time_with_host: Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
         :param pulumi.Input[bool] sync_time_with_host_periodically: Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
-        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools
-               version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-               to the latest version supported by the host on which the virtual machine is running.
-               Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+        :param pulumi.Input[str] tools_upgrade_policy: Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         :param pulumi.Input[str] uuid: The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
         :param pulumi.Input[pulumi.InputType['VirtualMachineVappArgs']] vapp: Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vapp_transports: Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
@@ -3196,7 +3202,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def annotation(self) -> pulumi.Output[str]:
         """
-        A user-provided description of the virtual machine. The default is no annotation.
+        A user-provided description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
@@ -3308,7 +3314,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the [`vsphere_custom_attributes`][docs-setting-custom-attributes] resource for more information on setting custom attributes.
+        Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -3324,7 +3330,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="datastoreClusterId")
     def datastore_cluster_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The [managed object reference ID][docs-about-morefs] of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+        The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
         """
         return pulumi.get(self, "datastore_cluster_id")
 
@@ -3340,7 +3346,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="defaultIpAddress")
     def default_ip_address(self) -> pulumi.Output[str]:
         """
-        The IP address selected by Terraform to be used for the provisioner.
+        The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
         """
         return pulumi.get(self, "default_ip_address")
 
@@ -3396,7 +3402,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def firmware(self) -> pulumi.Output[Optional[str]]:
         """
-        The firmware interface to use on the virtual machine. Can be one of `bios` or `efi`. Default: `bios`.
+        The firmware for the virtual machine. One of `bios` or `efi`.
         """
         return pulumi.get(self, "firmware")
 
@@ -3444,7 +3450,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="hostSystemId")
     def host_system_id(self) -> pulumi.Output[str]:
         """
-        The [managed object reference ID][docs-about-morefs] of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
+        The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
         """
         return pulumi.get(self, "host_system_id")
 
@@ -3644,7 +3650,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="resourcePoolId")
     def resource_pool_id(self) -> pulumi.Output[str]:
         """
-        The [managed object reference ID][docs-about-morefs] of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+        The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
         """
         return pulumi.get(self, "resource_pool_id")
 
@@ -3692,7 +3698,9 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="sataControllerCount")
     def sata_controller_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of SATA controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `0`.
+        The number of SATA controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "sata_controller_count")
 
@@ -3708,7 +3716,9 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="scsiControllerCount")
     def scsi_controller_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of SCSI controllers on the virtual machine. This setting directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `1`.
+        The number of SCSI controllers that Terraform manages on this virtual machine. This directly affects the amount of disks
+        you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove
+        controllers.
         """
         return pulumi.get(self, "scsi_controller_count")
 
@@ -3764,7 +3774,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The IDs of any tags to attach to this resource. Please refer to the [`Tag`][docs-applying-tags] resource for more information on applying tags to virtual machine resources.
+        The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
         """
         return pulumi.get(self, "tags")
 
@@ -3772,10 +3782,7 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="toolsUpgradePolicy")
     def tools_upgrade_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Enable automatic upgrade of the VMware Tools
-        version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded
-        to the latest version supported by the host on which the virtual machine is running.
-        Requires VMware tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
+        Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
         """
         return pulumi.get(self, "tools_upgrade_policy")
 

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
- *     license: "00000-00000-00000-00000i-00000",
+ *     license: "00000-00000-00000-00000-00000",
  *     datacenter: datacenter.then(datacenter => datacenter.id),
  * });
  * ```
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
- *     license: "00000-00000-00000-00000i-00000",
+ *     license: "00000-00000-00000-00000-00000",
  *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
@@ -106,13 +106,20 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly connected!: pulumi.Output<boolean | undefined>;
     /**
+     * A map of custom attribute IDs and string
+     * values to apply to the resource. Please refer to the
+     * `vsphereCustomAttributes` resource for more information on applying
+     * tags to resources.
+     */
+    public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
     public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
-     * If set to true then it will force the host to be added,
-     * even if the host is already connected to a different vSphere instance.
+     * If set to `true` then it will force the host to be added,
+     * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
@@ -174,6 +181,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["clusterManaged"] = state ? state.clusterManaged : undefined;
             resourceInputs["connected"] = state ? state.connected : undefined;
+            resourceInputs["customAttributes"] = state ? state.customAttributes : undefined;
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -198,6 +206,7 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["clusterManaged"] = args ? args.clusterManaged : undefined;
             resourceInputs["connected"] = args ? args.connected : undefined;
+            resourceInputs["customAttributes"] = args ? args.customAttributes : undefined;
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
@@ -236,13 +245,20 @@ export interface HostState {
      */
     connected?: pulumi.Input<boolean>;
     /**
+     * A map of custom attribute IDs and string
+     * values to apply to the resource. Please refer to the
+     * `vsphereCustomAttributes` resource for more information on applying
+     * tags to resources.
+     */
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * If set to true then it will force the host to be added,
-     * even if the host is already connected to a different vSphere instance.
+     * If set to `true` then it will force the host to be added,
+     * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
     force?: pulumi.Input<boolean>;
@@ -311,13 +327,20 @@ export interface HostArgs {
      */
     connected?: pulumi.Input<boolean>;
     /**
+     * A map of custom attribute IDs and string
+     * values to apply to the resource. Please refer to the
+     * `vsphereCustomAttributes` resource for more information on applying
+     * tags to resources.
+     */
+    customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The ID of the datacenter this host should
      * be added to. This should not be set if `cluster` is set.
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * If set to true then it will force the host to be added,
-     * even if the host is already connected to a different vSphere instance.
+     * If set to `true` then it will force the host to be added,
+     * even if the host is already connected to a different vCenter Server instance.
      * Default is `false`.
      */
     force?: pulumi.Input<boolean>;

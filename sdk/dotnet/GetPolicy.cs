@@ -12,9 +12,12 @@ namespace Pulumi.VSphere
     public static class GetPolicy
     {
         /// <summary>
-        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
+        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
+        /// storage policy. This can then be used with other resources or data sources that
+        /// use a storage policy.
         /// 
-        /// &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
+        /// &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -47,9 +50,12 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
+        /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
+        /// storage policy. This can then be used with other resources or data sources that
+        /// use a storage policy.
         /// 
-        /// &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
+        /// &gt; **NOTE:** Storage policies are not supported on direct ESXi hosts and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

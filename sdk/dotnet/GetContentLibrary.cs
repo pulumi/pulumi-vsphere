@@ -12,10 +12,9 @@ namespace Pulumi.VSphere
     public static class GetContentLibrary
     {
         /// <summary>
-        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a Content Library.
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        /// connections.
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -31,7 +30,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
         ///         {
-        ///             Name = "Content Library Test",
+        ///             Name = "Content Library",
         ///         }));
         ///     }
         /// 
@@ -44,10 +43,9 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a Content Library.
+        /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter and is not available on direct ESXi
-        /// connections.
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -63,7 +61,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
         ///         {
-        ///             Name = "Content Library Test",
+        ///             Name = "Content Library",
         ///         }));
         ///     }
         /// 
@@ -80,7 +78,7 @@ namespace Pulumi.VSphere
     public sealed class GetContentLibraryArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -93,7 +91,7 @@ namespace Pulumi.VSphere
     public sealed class GetContentLibraryInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Content Library.
+        /// The name of the content library.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `vsphereThumbprint` data source can be used to discover the host
  * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
- * resource. If the host is using a certificate chain, the first one returned
+ * resource. If the ESXi host is using a certificate chain, the first one returned
  * will be used to generate the thumbprint.
  *
  * ## Example Usage
@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const thumbprint = pulumi.output(vsphere.getHostThumbprint({
- *     address: "esxi.example.internal",
+ *     address: "esxi-01.example.com",
  * }));
  * ```
  */
@@ -44,8 +44,8 @@ export interface GetHostThumbprintArgs {
      */
     address: string;
     /**
-     * Boolean that can be set to true to disable SSL 
-     * certificate verification. Default: false
+     * Disables SSL certificate verification.
+     * Default: `false`
      */
     insecure?: boolean;
     /**
@@ -81,8 +81,8 @@ export interface GetHostThumbprintOutputArgs {
      */
     address: pulumi.Input<string>;
     /**
-     * Boolean that can be set to true to disable SSL 
-     * certificate verification. Default: false
+     * Disables SSL certificate verification.
+     * Default: `false`
      */
     insecure?: pulumi.Input<boolean>;
     /**

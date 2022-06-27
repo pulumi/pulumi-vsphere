@@ -32,18 +32,18 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "esxi1",
         ///         })));
-        ///         var available = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
+        ///         var vmfsDisks = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
         ///         {
-        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
         ///             HostSystemId = host.Id,
         ///             Rescan = true,
+        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
         ///         })));
         ///     }
         /// 
@@ -76,18 +76,18 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "esxi1",
         ///         })));
-        ///         var available = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
+        ///         var vmfsDisks = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
         ///         {
-        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
         ///             HostSystemId = host.Id,
         ///             Rescan = true,
+        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
         ///         })));
         ///     }
         /// 

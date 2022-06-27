@@ -49,7 +49,8 @@ import * as utilities from "./utilities";
  * }));
  * ```
  */
-export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
+export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
+    args = args || {};
     if (!opts) {
         opts = {}
     }
@@ -103,6 +104,7 @@ export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.Inv
         "syncTimeWithHost": args.syncTimeWithHost,
         "syncTimeWithHostPeriodically": args.syncTimeWithHostPeriodically,
         "toolsUpgradePolicy": args.toolsUpgradePolicy,
+        "uuid": args.uuid,
         "vapp": args.vapp,
         "vbsEnabled": args.vbsEnabled,
         "vvtdEnabled": args.vvtdEnabled,
@@ -171,9 +173,10 @@ export interface GetVirtualMachineArgs {
     memoryShareLevel?: string;
     /**
      * The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter.
+     * the full path relative to the datacenter. This is required if a UUID lookup
+     * is not performed.
      */
-    name: string;
+    name?: string;
     nestedHvEnabled?: boolean;
     /**
      * The number of cores per socket for this virtual machine.
@@ -201,6 +204,11 @@ export interface GetVirtualMachineArgs {
     syncTimeWithHost?: boolean;
     syncTimeWithHostPeriodically?: boolean;
     toolsUpgradePolicy?: string;
+    /**
+     * Specify this field for a UUID lookup, `name` and `datacenterId`
+     * are not required if this is specified.
+     */
+    uuid?: string;
     vapp?: inputs.GetVirtualMachineVapp;
     vbsEnabled?: boolean;
     vvtdEnabled?: boolean;
@@ -287,7 +295,7 @@ export interface GetVirtualMachineResult {
     readonly memoryReservation?: number;
     readonly memoryShareCount: number;
     readonly memoryShareLevel?: string;
-    readonly name: string;
+    readonly name?: string;
     readonly nestedHvEnabled?: boolean;
     /**
      * The network interface types for each network
@@ -296,7 +304,7 @@ export interface GetVirtualMachineResult {
      */
     readonly networkInterfaceTypes: string[];
     /**
-     * Information about each of the network interfaces on this 
+     * Information about each of the network interfaces on this
      * virtual machine or template. These are sorted by device bus order so that they
      * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
      * expects while cloning. This is useful for discovering certain network interface
@@ -348,7 +356,7 @@ export interface GetVirtualMachineResult {
     readonly vvtdEnabled?: boolean;
 }
 
-export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
+export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
     return pulumi.output(args).apply(a => getVirtualMachine(a, opts))
 }
 
@@ -414,9 +422,10 @@ export interface GetVirtualMachineOutputArgs {
     memoryShareLevel?: pulumi.Input<string>;
     /**
      * The name of the virtual machine. This can be a name or
-     * the full path relative to the datacenter.
+     * the full path relative to the datacenter. This is required if a UUID lookup
+     * is not performed.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     nestedHvEnabled?: pulumi.Input<boolean>;
     /**
      * The number of cores per socket for this virtual machine.
@@ -444,6 +453,11 @@ export interface GetVirtualMachineOutputArgs {
     syncTimeWithHost?: pulumi.Input<boolean>;
     syncTimeWithHostPeriodically?: pulumi.Input<boolean>;
     toolsUpgradePolicy?: pulumi.Input<string>;
+    /**
+     * Specify this field for a UUID lookup, `name` and `datacenterId`
+     * are not required if this is specified.
+     */
+    uuid?: pulumi.Input<string>;
     vapp?: pulumi.Input<inputs.GetVirtualMachineVappArgs>;
     vbsEnabled?: pulumi.Input<boolean>;
     vvtdEnabled?: pulumi.Input<boolean>;

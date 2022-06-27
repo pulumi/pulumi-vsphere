@@ -11,7 +11,7 @@ import (
 )
 
 // The `ResourcePool` data source can be used to discover the ID of a
-// resource pool in vSphere. This is useful to fetch the ID of a resource pool
+// resource pool in vSphere. This is useful to return the ID of a resource pool
 // that you want to use to create virtual machines in using the
 // `VirtualMachine` resource.
 //
@@ -28,14 +28,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
+// 			Name:         pulumi.StringRef("resource-pool-01"),
 // 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 			Name:         pulumi.StringRef("resource-pool-1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -44,16 +44,15 @@ import (
 // 	})
 // }
 // ```
-// ### Specifying the root resource pool for a standalone host
+// ### Specifying the Root Resource Pool for a Standalone ESXi Host
 //
-// > **NOTE:** Fetching the root resource pool for a cluster can now be done
+// > **NOTE:** Returning the root resource pool for a cluster can be done
 // directly via the `ComputeCluster`
 // data source.
 //
-// All compute resources in vSphere (clusters, standalone hosts, and standalone
-// ESXi) have a resource pool, even if one has not been explicitly created. This
-// resource pool is referred to as the _root resource pool_ and can be looked up
-// by specifying the path as per the example below:
+// All compute resources in vSphere have a resource pool, even if one has not been
+// explicitly created. This resource pool is referred to as the
+// _root resource pool_ and can be looked up by specifying the path.
 //
 // ```go
 // package main
@@ -66,8 +65,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
-// 			DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Dc.Id),
-// 			Name:         pulumi.StringRef("esxi1/Resources"),
+// 			Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
+// 			DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -77,8 +76,7 @@ import (
 // }
 // ```
 //
-// For more information on the root resource pool, see [Managing Resource
-// Pools][vmware-docs-resource-pools] in the vSphere documentation.
+// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
 //
 // [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
@@ -92,11 +90,11 @@ func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts 
 
 // A collection of arguments for invoking getResourcePool.
 type LookupResourcePoolArgs struct {
-	// The managed object reference
-	// ID of the datacenter the resource pool is located in.
-	// This can be omitted if the search path used in `name` is an absolute path.
-	// For default datacenters, use the id attribute from an empty
-	// `Datacenter` data source.
+	// The managed object reference ID
+	// of the datacenter in which the resource pool is located. This can be omitted
+	// if the search path used in `name` is an absolute path. For default
+	// datacenters, use the id attribute from an empty `Datacenter` data
+	// source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
@@ -126,11 +124,11 @@ func LookupResourcePoolOutput(ctx *pulumi.Context, args LookupResourcePoolOutput
 
 // A collection of arguments for invoking getResourcePool.
 type LookupResourcePoolOutputArgs struct {
-	// The managed object reference
-	// ID of the datacenter the resource pool is located in.
-	// This can be omitted if the search path used in `name` is an absolute path.
-	// For default datacenters, use the id attribute from an empty
-	// `Datacenter` data source.
+	// The managed object reference ID
+	// of the datacenter in which the resource pool is located. This can be omitted
+	// if the search path used in `name` is an absolute path. For default
+	// datacenters, use the id attribute from an empty `Datacenter` data
+	// source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.

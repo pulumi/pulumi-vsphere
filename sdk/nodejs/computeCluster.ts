@@ -75,7 +75,7 @@ export class ComputeCluster extends pulumi.CustomResource {
     public readonly drsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * When `true`, enables DRS to use data
-     * from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+     * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
      */
     public readonly drsEnablePredictiveDrs!: pulumi.Output<boolean | undefined>;
@@ -95,6 +95,12 @@ export class ComputeCluster extends pulumi.CustomResource {
      * `3`.
      */
     public readonly drsMigrationThreshold!: pulumi.Output<number | undefined>;
+    /**
+     * Enable scalable shares for all
+     * resource pools in the cluster. Can be one of `disabled` or
+     * `scaleCpuAndMemoryShares`. Default: `disabled`.
+     */
+    public readonly drsScaleDescendantsShares!: pulumi.Output<string | undefined>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
@@ -410,6 +416,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["drsEnableVmOverrides"] = state ? state.drsEnableVmOverrides : undefined;
             resourceInputs["drsEnabled"] = state ? state.drsEnabled : undefined;
             resourceInputs["drsMigrationThreshold"] = state ? state.drsMigrationThreshold : undefined;
+            resourceInputs["drsScaleDescendantsShares"] = state ? state.drsScaleDescendantsShares : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["forceEvacuateOnDestroy"] = state ? state.forceEvacuateOnDestroy : undefined;
             resourceInputs["haAdmissionControlFailoverHostSystemIds"] = state ? state.haAdmissionControlFailoverHostSystemIds : undefined;
@@ -471,6 +478,7 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["drsEnableVmOverrides"] = args ? args.drsEnableVmOverrides : undefined;
             resourceInputs["drsEnabled"] = args ? args.drsEnabled : undefined;
             resourceInputs["drsMigrationThreshold"] = args ? args.drsMigrationThreshold : undefined;
+            resourceInputs["drsScaleDescendantsShares"] = args ? args.drsScaleDescendantsShares : undefined;
             resourceInputs["folder"] = args ? args.folder : undefined;
             resourceInputs["forceEvacuateOnDestroy"] = args ? args.forceEvacuateOnDestroy : undefined;
             resourceInputs["haAdmissionControlFailoverHostSystemIds"] = args ? args.haAdmissionControlFailoverHostSystemIds : undefined;
@@ -568,7 +576,7 @@ export interface ComputeClusterState {
     drsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, enables DRS to use data
-     * from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+     * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
@@ -588,6 +596,12 @@ export interface ComputeClusterState {
      * `3`.
      */
     drsMigrationThreshold?: pulumi.Input<number>;
+    /**
+     * Enable scalable shares for all
+     * resource pools in the cluster. Can be one of `disabled` or
+     * `scaleCpuAndMemoryShares`. Default: `disabled`.
+     */
+    drsScaleDescendantsShares?: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.
@@ -926,7 +940,7 @@ export interface ComputeClusterArgs {
     drsAutomationLevel?: pulumi.Input<string>;
     /**
      * When `true`, enables DRS to use data
-     * from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+     * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
@@ -946,6 +960,12 @@ export interface ComputeClusterArgs {
      * `3`.
      */
     drsMigrationThreshold?: pulumi.Input<number>;
+    /**
+     * Enable scalable shares for all
+     * resource pools in the cluster. Can be one of `disabled` or
+     * `scaleCpuAndMemoryShares`. Default: `disabled`.
+     */
+    drsScaleDescendantsShares?: pulumi.Input<string>;
     /**
      * The relative path to a folder to put this cluster in.
      * This is a path relative to the datacenter you are deploying the cluster to.

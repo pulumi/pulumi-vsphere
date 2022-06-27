@@ -99,12 +99,12 @@ def get_vmfs_disks(filter: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    host = vsphere.get_host(datacenter_id=datacenter.id,
-        name="esxi1")
-    available = vsphere.get_vmfs_disks(filter="mpx.vmhba1:C0:T[12]:L0",
-        host_system_id=host.id,
-        rescan=True)
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    vmfs_disks = vsphere.get_vmfs_disks(host_system_id=host.id,
+        rescan=True,
+        filter="mpx.vmhba1:C0:T[12]:L0")
     ```
 
 
@@ -151,12 +151,12 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    host = vsphere.get_host(datacenter_id=datacenter.id,
-        name="esxi1")
-    available = vsphere.get_vmfs_disks(filter="mpx.vmhba1:C0:T[12]:L0",
-        host_system_id=host.id,
-        rescan=True)
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    vmfs_disks = vsphere.get_vmfs_disks(host_system_id=host.id,
+        rescan=True,
+        filter="mpx.vmhba1:C0:T[12]:L0")
     ```
 
 

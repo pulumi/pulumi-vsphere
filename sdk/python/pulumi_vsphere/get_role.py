@@ -94,8 +94,8 @@ def get_role(description: Optional[str] = None,
              role_privileges: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    The `Role` data source can be used to discover the id and privileges associated
-    with a role given its name or display label in vsphere UI.
+    The `Role` data source can be used to discover the `id` and privileges associated
+    with a role given its name or display label.
 
     ## Example Usage
 
@@ -103,7 +103,7 @@ def get_role(description: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    role1 = vsphere.get_role(label="Virtual machine user (sample)")
+    terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
     ```
 
 
@@ -137,8 +137,8 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                     role_privileges: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
     """
-    The `Role` data source can be used to discover the id and privileges associated
-    with a role given its name or display label in vsphere UI.
+    The `Role` data source can be used to discover the `id` and privileges associated
+    with a role given its name or display label.
 
     ## Example Usage
 
@@ -146,7 +146,7 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    role1 = vsphere.get_role(label="Virtual machine user (sample)")
+    terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
     ```
 
 

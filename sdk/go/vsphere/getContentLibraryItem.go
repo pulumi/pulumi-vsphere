@@ -10,9 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `ContentLibraryItem` data source can be used to discover the ID of a content library item.
+// The `ContentLibraryItem` data source can be used to discover the ID
+// of a content library item.
 //
-// > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+// > **NOTE:** This resource requires vCenter Server and is not available on
+// direct ESXi host connections.
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
 	var rv LookupContentLibraryItemResult
 	err := ctx.Invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, opts...)

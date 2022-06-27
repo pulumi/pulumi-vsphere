@@ -11,8 +11,8 @@ import (
 )
 
 // The `Datacenter` data source can be used to discover the ID of a
-// vSphere datacenter. This can then be used with resources or data sources that
-// require a datacenter, such as the `Host`
+// vSphere datacenter object. This can then be used with resources or data sources
+// that require a datacenter, such as the `Host`
 // data source.
 //
 // ## Example Usage
@@ -28,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -49,7 +49,7 @@ func LookupDatacenter(ctx *pulumi.Context, args *LookupDatacenterArgs, opts ...p
 // A collection of arguments for invoking getDatacenter.
 type LookupDatacenterArgs struct {
 	// The name of the datacenter. This can be a name or path.
-	// Can be omitted if there is only one datacenter in your inventory.
+	// Can be omitted if there is only one datacenter in the inventory.
 	Name *string `pulumi:"name"`
 }
 
@@ -76,7 +76,7 @@ func LookupDatacenterOutput(ctx *pulumi.Context, args LookupDatacenterOutputArgs
 // A collection of arguments for invoking getDatacenter.
 type LookupDatacenterOutputArgs struct {
 	// The name of the datacenter. This can be a name or path.
-	// Can be omitted if there is only one datacenter in your inventory.
+	// Can be omitted if there is only one datacenter in the inventory.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 

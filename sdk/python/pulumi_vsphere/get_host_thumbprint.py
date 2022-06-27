@@ -77,7 +77,7 @@ def get_host_thumbprint(address: Optional[str] = None,
     """
     The `vsphere_thumbprint` data source can be used to discover the host
     thumbprint of an ESXi host. This can be used when adding the `Host`
-    resource. If the host is using a certificate chain, the first one returned
+    resource. If the ESXi host is using a certificate chain, the first one returned
     will be used to generate the thumbprint.
 
     ## Example Usage
@@ -86,14 +86,14 @@ def get_host_thumbprint(address: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    thumbprint = vsphere.get_host_thumbprint(address="esxi.example.internal")
+    thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
     ```
 
 
     :param str address: The address of the ESXi host to retrieve the
            thumbprint from.
-    :param bool insecure: Boolean that can be set to true to disable SSL 
-           certificate verification. Default: false
+    :param bool insecure: Disables SSL certificate verification.
+           Default: `false`
     :param str port: The port to use connecting to the ESXi host. Default: 443
     """
     __args__ = dict()
@@ -121,7 +121,7 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
     """
     The `vsphere_thumbprint` data source can be used to discover the host
     thumbprint of an ESXi host. This can be used when adding the `Host`
-    resource. If the host is using a certificate chain, the first one returned
+    resource. If the ESXi host is using a certificate chain, the first one returned
     will be used to generate the thumbprint.
 
     ## Example Usage
@@ -130,14 +130,14 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    thumbprint = vsphere.get_host_thumbprint(address="esxi.example.internal")
+    thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
     ```
 
 
     :param str address: The address of the ESXi host to retrieve the
            thumbprint from.
-    :param bool insecure: Boolean that can be set to true to disable SSL 
-           certificate verification. Default: false
+    :param bool insecure: Disables SSL certificate verification.
+           Default: `false`
     :param str port: The port to use connecting to the ESXi host. Default: 443
     """
     ...

@@ -55,9 +55,12 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    The `get_policy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
+    The `get_policy` data source can be used to discover the UUID of a
+    storage policy. This can then be used with other resources or data sources that
+    use a storage policy.
 
-    > **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
+    > **NOTE:** Storage policies are not supported on direct ESXi hosts and
+    requires vCenter Server.
 
     ## Example Usage
 
@@ -89,9 +92,12 @@ def get_policy(name: Optional[str] = None,
 def get_policy_output(name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
-    The `get_policy` data source can be used to discover the UUID of a storage policy. This can then be used with other resources or data sources that use a storage policy.
+    The `get_policy` data source can be used to discover the UUID of a
+    storage policy. This can then be used with other resources or data sources that
+    use a storage policy.
 
-    > **NOTE:** Storage policies are not supported on direct ESXi hosts and requires vCenter Server.
+    > **NOTE:** Storage policies are not supported on direct ESXi hosts and
+    requires vCenter Server.
 
     ## Example Usage
 

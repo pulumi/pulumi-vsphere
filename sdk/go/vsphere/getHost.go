@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Host` data source can be used to discover the ID of a vSphere
-// host. This can then be used with resources or data sources that require a host
-// managed object reference ID.
+// The `Host` data source can be used to discover the ID of an ESXi host.
+// This can then be used with resources or data sources that require an ESX
+// host's managed object reference ID.
 //
 // ## Example Usage
 //
@@ -27,14 +27,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupHost(ctx, &GetHostArgs{
+// 			Name:         pulumi.StringRef("esxi-01.example.com"),
 // 			DatacenterId: datacenter.Id,
-// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -54,11 +54,11 @@ func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getHost.
 type LookupHostArgs struct {
-	// The managed object reference
-	// ID of a datacenter.
+	// The managed object reference ID
+	// of a vSphere datacenter object.
 	DatacenterId string `pulumi:"datacenterId"`
-	// The name of the host. This can be a name or path. Can be
-	// omitted if there is only one host in your inventory.
+	// The name of the ESXI host. This can be a name or path.
+	// Can be omitted if there is only one host in your inventory.
 	Name *string `pulumi:"name"`
 }
 
@@ -68,8 +68,8 @@ type LookupHostResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
-	// The managed object ID of the host's
-	// root resource pool.
+	// The managed object ID of the ESXi
+	// host's root resource pool.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }
 
@@ -88,11 +88,11 @@ func LookupHostOutput(ctx *pulumi.Context, args LookupHostOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getHost.
 type LookupHostOutputArgs struct {
-	// The managed object reference
-	// ID of a datacenter.
+	// The managed object reference ID
+	// of a vSphere datacenter object.
 	DatacenterId pulumi.StringInput `pulumi:"datacenterId"`
-	// The name of the host. This can be a name or path. Can be
-	// omitted if there is only one host in your inventory.
+	// The name of the ESXI host. This can be a name or path.
+	// Can be omitted if there is only one host in your inventory.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -128,8 +128,8 @@ func (o LookupHostResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The managed object ID of the host's
-// root resource pool.
+// The managed object ID of the ESXi
+// host's root resource pool.
 func (o LookupHostResultOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostResult) string { return v.ResourcePoolId }).(pulumi.StringOutput)
 }

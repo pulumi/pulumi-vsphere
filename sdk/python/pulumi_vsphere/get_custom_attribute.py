@@ -67,11 +67,11 @@ def get_custom_attribute(name: Optional[str] = None,
     The `CustomAttribute` data source can be used to reference custom
     attributes that are not managed by this provider. Its attributes are exactly the
     same as the `CustomAttribute` resource,
-    and, like importing, the data source takes a name to search on. The `id` and
-    other attributes are then populated with the data found by the search.
+    and, like importing, the data source takes a name argument for the search. The
+    `id` and other attributes are then populated with the data found by the search.
 
-    > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-    and require vCenter.
+    > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+    and require vCenter Server.
 
     ## Example Usage
 
@@ -106,11 +106,11 @@ def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
     The `CustomAttribute` data source can be used to reference custom
     attributes that are not managed by this provider. Its attributes are exactly the
     same as the `CustomAttribute` resource,
-    and, like importing, the data source takes a name to search on. The `id` and
-    other attributes are then populated with the data found by the search.
+    and, like importing, the data source takes a name argument for the search. The
+    `id` and other attributes are then populated with the data found by the search.
 
-    > **NOTE:** Custom attributes are unsupported on direct ESXi connections
-    and require vCenter.
+    > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+    and require vCenter Server.
 
     ## Example Usage
 

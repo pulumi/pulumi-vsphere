@@ -56,8 +56,8 @@ def get_datacenter(name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatacenterResult:
     """
     The `Datacenter` data source can be used to discover the ID of a
-    vSphere datacenter. This can then be used with resources or data sources that
-    require a datacenter, such as the `Host`
+    vSphere datacenter object. This can then be used with resources or data sources
+    that require a datacenter, such as the `Host`
     data source.
 
     ## Example Usage
@@ -66,12 +66,12 @@ def get_datacenter(name: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
     ```
 
 
     :param str name: The name of the datacenter. This can be a name or path.
-           Can be omitted if there is only one datacenter in your inventory.
+           Can be omitted if there is only one datacenter in the inventory.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -91,8 +91,8 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatacenterResult]:
     """
     The `Datacenter` data source can be used to discover the ID of a
-    vSphere datacenter. This can then be used with resources or data sources that
-    require a datacenter, such as the `Host`
+    vSphere datacenter object. This can then be used with resources or data sources
+    that require a datacenter, such as the `Host`
     data source.
 
     ## Example Usage
@@ -101,11 +101,11 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
     ```
 
 
     :param str name: The name of the datacenter. This can be a name or path.
-           Can be omitted if there is only one datacenter in your inventory.
+           Can be omitted if there is only one datacenter in the inventory.
     """
     ...

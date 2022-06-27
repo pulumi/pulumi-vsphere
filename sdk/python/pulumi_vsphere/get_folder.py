@@ -65,7 +65,7 @@ def get_folder(path: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    folder = vsphere.get_folder(path="/dc1/datastore/folder1")
+    folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
     ```
 
 
@@ -102,7 +102,7 @@ def get_folder_output(path: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    folder = vsphere.get_folder(path="/dc1/datastore/folder1")
+    folder = vsphere.get_folder(path="/dc-01/datastore-01/folder-01")
     ```
 
 

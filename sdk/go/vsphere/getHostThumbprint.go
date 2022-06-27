@@ -12,7 +12,7 @@ import (
 
 // The `vsphereThumbprint` data source can be used to discover the host
 // thumbprint of an ESXi host. This can be used when adding the `Host`
-// resource. If the host is using a certificate chain, the first one returned
+// resource. If the ESXi host is using a certificate chain, the first one returned
 // will be used to generate the thumbprint.
 //
 // ## Example Usage
@@ -28,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vsphere.GetHostThumbprint(ctx, &GetHostThumbprintArgs{
-// 			Address: "esxi.example.internal",
+// 			Address: "esxi-01.example.com",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -51,8 +51,8 @@ type GetHostThumbprintArgs struct {
 	// The address of the ESXi host to retrieve the
 	// thumbprint from.
 	Address string `pulumi:"address"`
-	// Boolean that can be set to true to disable SSL
-	// certificate verification. Default: false
+	// Disables SSL certificate verification.
+	// Default: `false`
 	Insecure *bool `pulumi:"insecure"`
 	// The port to use connecting to the ESXi host. Default: 443
 	Port *string `pulumi:"port"`
@@ -85,8 +85,8 @@ type GetHostThumbprintOutputArgs struct {
 	// The address of the ESXi host to retrieve the
 	// thumbprint from.
 	Address pulumi.StringInput `pulumi:"address"`
-	// Boolean that can be set to true to disable SSL
-	// certificate verification. Default: false
+	// Disables SSL certificate verification.
+	// Default: `false`
 	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
 	// The port to use connecting to the ESXi host. Default: 443
 	Port pulumi.StringPtrInput `pulumi:"port"`

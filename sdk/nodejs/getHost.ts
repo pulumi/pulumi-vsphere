@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `vsphere.Host` data source can be used to discover the ID of a vSphere
- * host. This can then be used with resources or data sources that require a host
- * managed object reference ID.
+ * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
+ * This can then be used with resources or data sources that require an ESX
+ * host's managed object reference ID.
  *
  * ## Example Usage
  *
@@ -15,12 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const host = datacenter.apply(datacenter => vsphere.getHost({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
- *     name: "esxi1",
  * }));
  * ```
  */
@@ -41,13 +41,13 @@ export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetHostArgs {
     /**
-     * The managed object reference
-     * ID of a datacenter.
+     * The managed object reference ID
+     * of a vSphere datacenter object.
      */
     datacenterId: string;
     /**
-     * The name of the host. This can be a name or path. Can be
-     * omitted if there is only one host in your inventory.
+     * The name of the ESXI host. This can be a name or path.
+     * Can be omitted if there is only one host in your inventory.
      */
     name?: string;
 }
@@ -63,8 +63,8 @@ export interface GetHostResult {
     readonly id: string;
     readonly name?: string;
     /**
-     * The managed object ID of the host's
-     * root resource pool.
+     * The managed object ID of the ESXi
+     * host's root resource pool.
      */
     readonly resourcePoolId: string;
 }
@@ -78,13 +78,13 @@ export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetHostOutputArgs {
     /**
-     * The managed object reference
-     * ID of a datacenter.
+     * The managed object reference ID
+     * of a vSphere datacenter object.
      */
     datacenterId: pulumi.Input<string>;
     /**
-     * The name of the host. This can be a name or path. Can be
-     * omitted if there is only one host in your inventory.
+     * The name of the ESXI host. This can be a name or path.
+     * Can be omitted if there is only one host in your inventory.
      */
     name?: pulumi.Input<string>;
 }

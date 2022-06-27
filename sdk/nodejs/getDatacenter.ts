@@ -6,8 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.Datacenter` data source can be used to discover the ID of a
- * vSphere datacenter. This can then be used with resources or data sources that
- * require a datacenter, such as the `vsphere.Host`
+ * vSphere datacenter object. This can then be used with resources or data sources
+ * that require a datacenter, such as the `vsphere.Host`
  * data source.
  *
  * ## Example Usage
@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
+ *     name: "dc-01",
  * }));
  * ```
  */
@@ -39,7 +39,7 @@ export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOpti
 export interface GetDatacenterArgs {
     /**
      * The name of the datacenter. This can be a name or path.
-     * Can be omitted if there is only one datacenter in your inventory.
+     * Can be omitted if there is only one datacenter in the inventory.
      */
     name?: string;
 }
@@ -65,7 +65,7 @@ export function getDatacenterOutput(args?: GetDatacenterOutputArgs, opts?: pulum
 export interface GetDatacenterOutputArgs {
     /**
      * The name of the datacenter. This can be a name or path.
-     * Can be omitted if there is only one datacenter in your inventory.
+     * Can be omitted if there is only one datacenter in the inventory.
      */
     name?: pulumi.Input<string>;
 }

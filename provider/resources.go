@@ -168,6 +168,8 @@ func Provider() tfbridge.ProviderInfo {
 			"vsphere_host_thumbprint":            {Tok: vsphereDataSource(vsphereMod, "getHostThumbprint")},
 			"vsphere_role":                       {Tok: vsphereDataSource(vsphereMod, "getRole")},
 			"vsphere_ovf_vm_template":            {Tok: vsphereDataSource(vsphereMod, "getOvfVmTemplate")},
+			"vsphere_compute_cluster_host_group": {Tok: vsphereDataSource(vsphereMod, "getComputeClusterHostGroup")},
+			"vsphere_license":                    {Tok: vsphereDataSource(vsphereMod, "getLicense")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

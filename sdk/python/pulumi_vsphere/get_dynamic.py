@@ -77,10 +77,9 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
-    The `get_dynamic` data source can be used to get the [managed object
-      reference ID][docs-about-morefs] of any tagged managed object in vCenter
-      by providing a list of tag IDs and an optional regular expression to filter
-      objects by name.
+    The `get_dynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+    of any tagged managed object in vCenter Server by providing a list of tag IDs
+    and an optional regular expression to filter objects by name.
 
     ## Example Usage
 
@@ -88,11 +87,11 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    cat = vsphere.get_tag_category(name="SomeCategory")
+    category = vsphere.get_tag_category(name="SomeCategory")
     tag1 = vsphere.get_tag(name="FirstTag",
-        category_id=cat.id)
+        category_id=data["vsphere_tag_category"]["cat"]["id"])
     tag2 = vsphere.get_tag(name="SecondTag",
-        category_id=cat.id)
+        category_id=data["vsphere_tag_category"]["cat"]["id"])
     dyn = vsphere.get_dynamic(filters=[
             tag1.id,
             tag1.id,
@@ -135,10 +134,9 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
     """
     [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
 
-    The `get_dynamic` data source can be used to get the [managed object
-      reference ID][docs-about-morefs] of any tagged managed object in vCenter
-      by providing a list of tag IDs and an optional regular expression to filter
-      objects by name.
+    The `get_dynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+    of any tagged managed object in vCenter Server by providing a list of tag IDs
+    and an optional regular expression to filter objects by name.
 
     ## Example Usage
 
@@ -146,11 +144,11 @@ def get_dynamic_output(filters: Optional[pulumi.Input[Sequence[str]]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    cat = vsphere.get_tag_category(name="SomeCategory")
+    category = vsphere.get_tag_category(name="SomeCategory")
     tag1 = vsphere.get_tag(name="FirstTag",
-        category_id=cat.id)
+        category_id=data["vsphere_tag_category"]["cat"]["id"])
     tag2 = vsphere.get_tag(name="SecondTag",
-        category_id=cat.id)
+        category_id=data["vsphere_tag_category"]["cat"]["id"])
     dyn = vsphere.get_dynamic(filters=[
             tag1.id,
             tag1.id,

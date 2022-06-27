@@ -28,22 +28,22 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
+// 			Name:         pulumi.StringRef("esxi-01.example.com"),
 // 			DatacenterId: datacenter.Id,
-// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.GetVmfsDisks(ctx, &GetVmfsDisksArgs{
-// 			Filter:       pulumi.StringRef("mpx.vmhba1:C0:T[12]:L0"),
 // 			HostSystemId: host.Id,
 // 			Rescan:       pulumi.BoolRef(true),
+// 			Filter:       pulumi.StringRef("mpx.vmhba1:C0:T[12]:L0"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

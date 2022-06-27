@@ -846,6 +846,8 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
             suggest = "host_name"
         elif key == "hwClockUtc":
             suggest = "hw_clock_utc"
+        elif key == "scriptText":
+            suggest = "script_text"
         elif key == "timeZone":
             suggest = "time_zone"
 
@@ -864,11 +866,14 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
                  domain: str,
                  host_name: str,
                  hw_clock_utc: Optional[bool] = None,
+                 script_text: Optional[str] = None,
                  time_zone: Optional[str] = None):
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "host_name", host_name)
         if hw_clock_utc is not None:
             pulumi.set(__self__, "hw_clock_utc", hw_clock_utc)
+        if script_text is not None:
+            pulumi.set(__self__, "script_text", script_text)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
 
@@ -886,6 +891,11 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
     @pulumi.getter(name="hwClockUtc")
     def hw_clock_utc(self) -> Optional[bool]:
         return pulumi.get(self, "hw_clock_utc")
+
+    @property
+    @pulumi.getter(name="scriptText")
+    def script_text(self) -> Optional[str]:
+        return pulumi.get(self, "script_text")
 
     @property
     @pulumi.getter(name="timeZone")
@@ -1954,19 +1964,19 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
                  bandwidth_reservation: Optional[int] = None,
                  bandwidth_share_level: Optional[str] = None):
         """
-        :param str adapter_type: The network interface types for each network interface found 
+        :param str adapter_type: The network interface types for each network interface found
                on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
                `vmxnet3`.
-        :param int bandwidth_share_count: The share count for this network interface when the 
+        :param int bandwidth_share_count: The share count for this network interface when the
                share level is custom.
         :param str mac_address: The MAC address of this network interface.
-        :param str network_id: The managed object reference ID of the network this interface is 
+        :param str network_id: The managed object reference ID of the network this interface is
                connected to.
-        :param int bandwidth_limit: The upper bandwidth limit of this network interface, 
+        :param int bandwidth_limit: The upper bandwidth limit of this network interface,
                in Mbits/sec.
-        :param int bandwidth_reservation: The bandwidth reservation of this network interface, 
+        :param int bandwidth_reservation: The bandwidth reservation of this network interface,
                in Mbits/sec.
-        :param str bandwidth_share_level: The bandwidth share allocation level for this interface. 
+        :param str bandwidth_share_level: The bandwidth share allocation level for this interface.
                Can be one of `low`, `normal`, `high`, or `custom`.
         """
         pulumi.set(__self__, "adapter_type", adapter_type)
@@ -1984,7 +1994,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="adapterType")
     def adapter_type(self) -> str:
         """
-        The network interface types for each network interface found 
+        The network interface types for each network interface found
         on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
         `vmxnet3`.
         """
@@ -1994,7 +2004,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthShareCount")
     def bandwidth_share_count(self) -> int:
         """
-        The share count for this network interface when the 
+        The share count for this network interface when the
         share level is custom.
         """
         return pulumi.get(self, "bandwidth_share_count")
@@ -2011,7 +2021,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> str:
         """
-        The managed object reference ID of the network this interface is 
+        The managed object reference ID of the network this interface is
         connected to.
         """
         return pulumi.get(self, "network_id")
@@ -2020,7 +2030,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthLimit")
     def bandwidth_limit(self) -> Optional[int]:
         """
-        The upper bandwidth limit of this network interface, 
+        The upper bandwidth limit of this network interface,
         in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_limit")
@@ -2029,7 +2039,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthReservation")
     def bandwidth_reservation(self) -> Optional[int]:
         """
-        The bandwidth reservation of this network interface, 
+        The bandwidth reservation of this network interface,
         in Mbits/sec.
         """
         return pulumi.get(self, "bandwidth_reservation")
@@ -2038,7 +2048,7 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
     @pulumi.getter(name="bandwidthShareLevel")
     def bandwidth_share_level(self) -> Optional[str]:
         """
-        The bandwidth share allocation level for this interface. 
+        The bandwidth share allocation level for this interface.
         Can be one of `low`, `normal`, `high`, or `custom`.
         """
         return pulumi.get(self, "bandwidth_share_level")

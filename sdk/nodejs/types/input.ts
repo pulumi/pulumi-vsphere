@@ -184,6 +184,7 @@ export interface VirtualMachineCloneCustomizeLinuxOptions {
     domain: pulumi.Input<string>;
     hostName: pulumi.Input<string>;
     hwClockUtc?: pulumi.Input<boolean>;
+    scriptText?: pulumi.Input<string>;
     timeZone?: pulumi.Input<string>;
 }
 

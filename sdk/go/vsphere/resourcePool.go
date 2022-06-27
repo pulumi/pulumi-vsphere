@@ -11,6 +11,126 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `ResourcePool` resource can be used to create and manage
+// resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
+//
+// For more information on vSphere resource pools, please refer to the
+// [product documentation][ref-vsphere-resource_pools].
+//
+// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+//
+// ## Example Usage
+//
+// The following example sets up a resource pool in an existing compute cluster
+// with the default settings for CPU and memory reservations, shares, and limits.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 			Name: pulumi.StringRef("dc-01"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+// 			Name:         "cluster-01",
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewResourcePool(ctx, "resourcePool", &vsphere.ResourcePoolArgs{
+// 			ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// A virtual machine resource could be targeted to use the default resource pool
+// of the cluster using the following:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+// 			ResourcePoolId: pulumi.Any(data.Vsphere_compute_cluster.Cluster.Resource_pool_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example sets up a parent resource pool in an existing compute cluster
+// with a child resource pool nested below. Each resource pool is configured with
+// the default settings for CPU and memory reservations, shares, and limits.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 			Name: pulumi.StringRef("dc-01"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+// 			Name:         "cluster-01",
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resourcePoolParent", &vsphere.ResourcePoolArgs{
+// 			ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewResourcePool(ctx, "resourcePoolChild", &vsphere.ResourcePoolArgs{
+// 			ParentResourcePoolId: resourcePoolParent.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Importing
+// ### Settings that Require vSphere 7.0 or higher
+//
+// These settings require vSphere 7.0 or higher:
+//
+// * `scaleDescendantsShares`
 type ResourcePool struct {
 	pulumi.CustomResourceState
 
@@ -18,9 +138,9 @@ type ResourcePool struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrOutput `pulumi:"cpuExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrOutput `pulumi:"cpuLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -41,9 +161,9 @@ type ResourcePool struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrOutput `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -64,8 +184,13 @@ type ResourcePool struct {
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
-	// resource pool or the move will fail.
+	// resource pool.
 	ParentResourcePoolId pulumi.StringOutput `pulumi:"parentResourcePoolId"`
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	ScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"scaleDescendantsShares"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
@@ -106,9 +231,9 @@ type resourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	CpuExpandable *bool `pulumi:"cpuExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit *int `pulumi:"cpuLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -129,9 +254,9 @@ type resourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -152,8 +277,13 @@ type resourcePoolState struct {
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
-	// resource pool or the move will fail.
+	// resource pool.
 	ParentResourcePoolId *string `pulumi:"parentResourcePoolId"`
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -163,9 +293,9 @@ type ResourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -186,9 +316,9 @@ type ResourcePoolState struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -209,8 +339,13 @@ type ResourcePoolState struct {
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
-	// resource pool or the move will fail.
+	// resource pool.
 	ParentResourcePoolId pulumi.StringPtrInput
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	ScaleDescendantsShares pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }
@@ -224,9 +359,9 @@ type resourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	CpuExpandable *bool `pulumi:"cpuExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit *int `pulumi:"cpuLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -247,9 +382,9 @@ type resourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable *bool `pulumi:"memoryExpandable"`
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit *int `pulumi:"memoryLimit"`
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -270,8 +405,13 @@ type resourcePoolArgs struct {
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
-	// resource pool or the move will fail.
+	// resource pool.
 	ParentResourcePoolId string `pulumi:"parentResourcePoolId"`
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	ScaleDescendantsShares *string `pulumi:"scaleDescendantsShares"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -282,9 +422,9 @@ type ResourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	CpuExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	CpuLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -305,9 +445,9 @@ type ResourcePoolArgs struct {
 	// pool can grow beyond the specified value if the parent resource pool has
 	// unreserved resources. Default: `true`
 	MemoryExpandable pulumi.BoolPtrInput
-	// The CPU utilization of a resource pool will not exceed
-	// this limit, even if there are available resources. Set to `-1` for unlimited.
-	// Default: `-1`
+	// The CPU utilization of a resource pool will not
+	// exceed this limit, even if there are available resources. Set to `-1` for
+	// unlimited. Default: `-1`
 	MemoryLimit pulumi.IntPtrInput
 	// Amount of CPU (MHz) that is guaranteed
 	// available to the resource pool. Default: `0`
@@ -328,8 +468,13 @@ type ResourcePoolArgs struct {
 	// of the parent resource pool. This can be the root resource pool for a cluster
 	// or standalone host, or a resource pool itself. When moving a resource pool
 	// from one parent resource pool to another, both must share a common root
-	// resource pool or the move will fail.
+	// resource pool.
 	ParentResourcePoolId pulumi.StringInput
+	// Determines if the shares of all
+	// descendants of the resource pool are scaled up or down when the shares
+	// of the resource pool are scaled up or down. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	ScaleDescendantsShares pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
 }

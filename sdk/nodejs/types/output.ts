@@ -144,28 +144,28 @@ export interface GetVirtualMachineDisk {
 
 export interface GetVirtualMachineNetworkInterface {
     /**
-     * The network interface types for each network interface found 
+     * The network interface types for each network interface found
      * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
      * `vmxnet3`.
      */
     adapterType: string;
     /**
-     * The upper bandwidth limit of this network interface, 
+     * The upper bandwidth limit of this network interface,
      * in Mbits/sec.
      */
     bandwidthLimit?: number;
     /**
-     * The bandwidth reservation of this network interface, 
+     * The bandwidth reservation of this network interface,
      * in Mbits/sec.
      */
     bandwidthReservation?: number;
     /**
-     * The share count for this network interface when the 
+     * The share count for this network interface when the
      * share level is custom.
      */
     bandwidthShareCount: number;
     /**
-     * The bandwidth share allocation level for this interface. 
+     * The bandwidth share allocation level for this interface.
      * Can be one of `low`, `normal`, `high`, or `custom`.
      */
     bandwidthShareLevel?: string;
@@ -174,7 +174,7 @@ export interface GetVirtualMachineNetworkInterface {
      */
     macAddress: string;
     /**
-     * The managed object reference ID of the network this interface is 
+     * The managed object reference ID of the network this interface is
      * connected to.
      */
     networkId: string;
@@ -241,6 +241,7 @@ export interface VirtualMachineCloneCustomizeLinuxOptions {
     domain: string;
     hostName: string;
     hwClockUtc?: boolean;
+    scriptText?: string;
     timeZone?: string;
 }
 

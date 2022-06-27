@@ -19,6 +19,7 @@ class HostArgs:
                  cluster: Optional[pulumi.Input[str]] = None,
                  cluster_managed: Optional[pulumi.Input[bool]] = None,
                  connected: Optional[pulumi.Input[bool]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  license: Optional[pulumi.Input[str]] = None,
@@ -41,10 +42,14 @@ class HostArgs:
                than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute IDs and string
+               values to apply to the resource. Please refer to the
+               `vsphere_custom_attributes` resource for more information on applying
+               tags to resources.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
-               even if the host is already connected to a different vSphere instance.
+        :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
+               even if the host is already connected to a different vCenter Server instance.
                Default is `false`.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
                The license key is expected to be present in vSphere.
@@ -68,6 +73,8 @@ class HostArgs:
             pulumi.set(__self__, "cluster_managed", cluster_managed)
         if connected is not None:
             pulumi.set(__self__, "connected", connected)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
         if force is not None:
@@ -163,6 +170,21 @@ class HostArgs:
         pulumi.set(self, "connected", value)
 
     @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of custom attribute IDs and string
+        values to apply to the resource. Please refer to the
+        `vsphere_custom_attributes` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
@@ -179,8 +201,8 @@ class HostArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true then it will force the host to be added,
-        even if the host is already connected to a different vSphere instance.
+        If set to `true` then it will force the host to be added,
+        even if the host is already connected to a different vCenter Server instance.
         Default is `false`.
         """
         return pulumi.get(self, "force")
@@ -263,6 +285,7 @@ class _HostState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  cluster_managed: Optional[pulumi.Input[bool]] = None,
                  connected: Optional[pulumi.Input[bool]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -283,10 +306,14 @@ class _HostState:
                than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute IDs and string
+               values to apply to the resource. Please refer to the
+               `vsphere_custom_attributes` resource for more information on applying
+               tags to resources.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
-               even if the host is already connected to a different vSphere instance.
+        :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
+               even if the host is already connected to a different vCenter Server instance.
                Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
@@ -312,6 +339,8 @@ class _HostState:
             pulumi.set(__self__, "cluster_managed", cluster_managed)
         if connected is not None:
             pulumi.set(__self__, "connected", connected)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
         if force is not None:
@@ -375,6 +404,21 @@ class _HostState:
         pulumi.set(self, "connected", value)
 
     @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of custom attribute IDs and string
+        values to apply to the resource. Please refer to the
+        `vsphere_custom_attributes` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @custom_attributes.setter
+    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_attributes", value)
+
+    @property
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
@@ -391,8 +435,8 @@ class _HostState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true then it will force the host to be added,
-        even if the host is already connected to a different vSphere instance.
+        If set to `true` then it will force the host to be added,
+        even if the host is already connected to a different vCenter Server instance.
         Default is `false`.
         """
         return pulumi.get(self, "force")
@@ -515,6 +559,7 @@ class Host(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[str]] = None,
                  cluster_managed: Optional[pulumi.Input[bool]] = None,
                  connected: Optional[pulumi.Input[bool]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -542,7 +587,7 @@ class Host(pulumi.CustomResource):
             hostname="esx-01.example.com",
             username="root",
             password="password",
-            license="00000-00000-00000-00000i-00000",
+            license="00000-00000-00000-00000-00000",
             datacenter=datacenter.id)
         ```
         ### Create host in a compute cluster
@@ -558,7 +603,7 @@ class Host(pulumi.CustomResource):
             hostname="esx-01.example.com",
             username="root",
             password="password",
-            license="00000-00000-00000-00000i-00000",
+            license="00000-00000-00000-00000-00000",
             cluster=cluster.id)
         ```
         ## Importing
@@ -584,10 +629,14 @@ class Host(pulumi.CustomResource):
                than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute IDs and string
+               values to apply to the resource. Please refer to the
+               `vsphere_custom_attributes` resource for more information on applying
+               tags to resources.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
-               even if the host is already connected to a different vSphere instance.
+        :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
+               even if the host is already connected to a different vCenter Server instance.
                Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
@@ -629,7 +678,7 @@ class Host(pulumi.CustomResource):
             hostname="esx-01.example.com",
             username="root",
             password="password",
-            license="00000-00000-00000-00000i-00000",
+            license="00000-00000-00000-00000-00000",
             datacenter=datacenter.id)
         ```
         ### Create host in a compute cluster
@@ -645,7 +694,7 @@ class Host(pulumi.CustomResource):
             hostname="esx-01.example.com",
             username="root",
             password="password",
-            license="00000-00000-00000-00000i-00000",
+            license="00000-00000-00000-00000-00000",
             cluster=cluster.id)
         ```
         ## Importing
@@ -679,6 +728,7 @@ class Host(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[str]] = None,
                  cluster_managed: Optional[pulumi.Input[bool]] = None,
                  connected: Optional[pulumi.Input[bool]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -704,6 +754,7 @@ class Host(pulumi.CustomResource):
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["cluster_managed"] = cluster_managed
             __props__.__dict__["connected"] = connected
+            __props__.__dict__["custom_attributes"] = custom_attributes
             __props__.__dict__["datacenter"] = datacenter
             __props__.__dict__["force"] = force
             if hostname is None and not opts.urn:
@@ -733,6 +784,7 @@ class Host(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             cluster_managed: Optional[pulumi.Input[bool]] = None,
             connected: Optional[pulumi.Input[bool]] = None,
+            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -758,10 +810,14 @@ class Host(pulumi.CustomResource):
                than the`host` resource. Conflicts with: `cluster`.
         :param pulumi.Input[bool] connected: If set to false then the host will be disconected.
                Default is `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute IDs and string
+               values to apply to the resource. Please refer to the
+               `vsphere_custom_attributes` resource for more information on applying
+               tags to resources.
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
-        :param pulumi.Input[bool] force: If set to true then it will force the host to be added,
-               even if the host is already connected to a different vSphere instance.
+        :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
+               even if the host is already connected to a different vCenter Server instance.
                Default is `false`.
         :param pulumi.Input[str] hostname: FQDN or IP address of the host to be added.
         :param pulumi.Input[str] license: The license key that will be applied to the host.
@@ -788,6 +844,7 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["cluster_managed"] = cluster_managed
         __props__.__dict__["connected"] = connected
+        __props__.__dict__["custom_attributes"] = custom_attributes
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["force"] = force
         __props__.__dict__["hostname"] = hostname
@@ -830,6 +887,17 @@ class Host(pulumi.CustomResource):
         return pulumi.get(self, "connected")
 
     @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of custom attribute IDs and string
+        values to apply to the resource. Please refer to the
+        `vsphere_custom_attributes` resource for more information on applying
+        tags to resources.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
@@ -842,8 +910,8 @@ class Host(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to true then it will force the host to be added,
-        even if the host is already connected to a different vSphere instance.
+        If set to `true` then it will force the host to be added,
+        even if the host is already connected to a different vCenter Server instance.
         Default is `false`.
         """
         return pulumi.get(self, "force")

@@ -10,8 +10,93 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware
-// settings in a form that can be then used as inputs for a `VirtualMachine` resource.
+// The `getOvfVmTemplate` data source can be used to submit an OVF to
+// vSphere and extract its hardware settings in a form that can be then used as
+// inputs for a `VirtualMachine` resource.
+//
+// ## Remote OVF/OVA Source
+//
+// data "vsphere_ovf_vm_template" "ovfRemote" {
+//   name              = "Nested-ESXi-7.0-Terraform-Deploy-1"
+//   disk_provisioning = "thin"
+//   resource_pool_id  = data.vsphere_resource_pool.default.id
+//   datastore_id      = data.vsphere_datastore.datastore.id
+//   host_system_id    = data.vsphere_host.host.id
+//   remote_ovf_url    = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+//   ovf_network_map = {
+//     "VM Network" : data.vsphere_network.network.id
+//   }
+// }
+//
+// ## Local OVF/OVA Source
+//
+// data "vsphere_ovf_vm_template" "ovfLocal" {
+//   name              = "Nested-ESXi-7.0-Terraform-Deploy-2"
+//   disk_provisioning = "thin"
+//   resource_pool_id  = data.vsphere_resource_pool.default.id
+//   datastore_id      = data.vsphere_datastore.datastore.id
+//   host_system_id    = data.vsphere_host.host.id
+//   local_ovf_path    = "/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+//   ovf_network_map = {
+//     "VM Network" : data.vsphere_network.network.id
+//   }
+// }
+//
+// ## Deployment of VM from Remote OVF
+//
+// resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
+//   name                 = "Nested-ESXi-7.0-Terraform-Deploy-1"
+//   datacenter_id        = data.vsphere_datacenter.datacenter.id
+//   datastore_id         = data.vsphere_datastore.datastore.id
+//   host_system_id       = data.vsphere_host.host.id
+//   resource_pool_id     = data.vsphere_resource_pool.default.id
+//   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
+//   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
+//   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
+//   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
+//   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
+//   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
+//   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
+//   dynamic "network_interface" {
+//     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+//     content {
+//       network_id = network_interface.value
+//     }
+//   }
+//   wait_for_guest_net_timeout = 0
+//   wait_for_guest_ip_timeout  = 0
+//
+//   ovf_deploy {
+//     allow_unverified_ssl_cert = false
+//     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
+//     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
+//     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+//   }
+//
+//   vapp {
+//     properties = {
+//       "guestinfo.hostname"  = "nested-esxi-01.example.com",
+//       "guestinfo.ipaddress" = "172.16.11.101",
+//       "guestinfo.netmask"   = "255.255.255.0",
+//       "guestinfo.gateway"   = "172.16.11.1",
+//       "guestinfo.dns"       = "172.16.11.4",
+//       "guestinfo.domain"    = "example.com",
+//       "guestinfo.ntp"       = "ntp.example.com",
+//       "guestinfo.password"  = "VMware1!",
+//       "guestinfo.ssh"       = "True"
+//     }
+//   }
+//
+//   lifecycle {
+//     ignore_changes = [
+//       annotation,
+//       disk[0].io_share_count,
+//       disk[1].io_share_count,
+//       disk[2].io_share_count,
+//       vapp[0].properties,
+//     ]
+//   }
+// }
 func GetOvfVmTemplate(ctx *pulumi.Context, args *GetOvfVmTemplateArgs, opts ...pulumi.InvokeOption) (*GetOvfVmTemplateResult, error) {
 	var rv GetOvfVmTemplateResult
 	err := ctx.Invoke("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args, &rv, opts...)
@@ -23,58 +108,69 @@ func GetOvfVmTemplate(ctx *pulumi.Context, args *GetOvfVmTemplateArgs, opts ...p
 
 // A collection of arguments for invoking getOvfVmTemplate.
 type GetOvfVmTemplateArgs struct {
-	// Allow unverified ssl certificates while deploying ovf/ova from url.
+	// Allow unverified SSL certificates
+	// when deploying OVF/OVA from a URL.
 	AllowUnverifiedSslCert *bool `pulumi:"allowUnverifiedSslCert"`
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The
+	// virtual machine configuration is placed here, along with any virtual disks
+	// that are created without datastores.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The key of the chosen deployment option. If empty, the default option is chosen.
+	// The key of the chosen deployment option. If
+	// empty, the default option is chosen.
 	DeploymentOption *string `pulumi:"deploymentOption"`
-	// The disk provisioning. If set, all the disks in the deployed OVF will have
-	// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+	// The disk provisioning type. If set, all the
+	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
+	// one of `thin`, `flat`, `thick` or `sameAsSource`.
 	DiskProvisioning       *string `pulumi:"diskProvisioning"`
 	EnableHiddenProperties *bool   `pulumi:"enableHiddenProperties"`
-	// The name of the folder to locate the virtual machine in.
+	// The name of the folder in which to place the virtual
+	// machine.
 	Folder *string `pulumi:"folder"`
-	// The ID of an optional host system to pin the virtual machine to.
+	// The ID of the ESXi host system to deploy the
+	// virtual machine.
 	HostSystemId string `pulumi:"hostSystemId"`
 	// The IP allocation policy.
 	IpAllocationPolicy *string `pulumi:"ipAllocationPolicy"`
 	// The IP protocol.
 	IpProtocol *string `pulumi:"ipProtocol"`
-	// The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-	// make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+	// The absolute path to the OVF/OVA file on the
+	// local system. When deploying from an OVF, ensure all necessary files such as
+	// the `.vmdk` files are present in the same directory as the OVF.
 	LocalOvfPath *string `pulumi:"localOvfPath"`
 	// Name of the virtual machine to create.
 	Name string `pulumi:"name"`
-	// The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-	// VI infrastructure.
+	// The mapping of name of network identifiers
+	// from the OVF descriptor to network UUID in the environment.
 	OvfNetworkMap map[string]string `pulumi:"ovfNetworkMap"`
-	// URL to the remote ovf/ova file to be deployed.
+	// URL of the remote OVF/OVA file to be deployed.
 	RemoteOvfUrl *string `pulumi:"remoteOvfUrl"`
-	// The ID of a resource pool to put the virtual machine in.
+	// The ID of a resource pool in which to place
+	// the virtual machine.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }
 
 // A collection of values returned by getOvfVmTemplate.
 type GetOvfVmTemplateResult struct {
 	AllowUnverifiedSslCert *bool `pulumi:"allowUnverifiedSslCert"`
-	// The guest name for the operating system .
+	// An alternate guest operating system name.
 	AlternateGuestName string `pulumi:"alternateGuestName"`
-	// User-provided description of the virtual machine.
+	// A description of the virtual machine.
 	Annotation string `pulumi:"annotation"`
-	// Allow CPUs to be added to this virtual machine while it is running.
+	// Allow CPUs to be added to the virtual machine while
+	// powered on.
 	CpuHotAddEnabled bool `pulumi:"cpuHotAddEnabled"`
-	// Allow CPUs to be added to this virtual machine while it is running.
+	// Allow CPUs to be removed from the virtual machine
+	// while powered on.
 	CpuHotRemoveEnabled           bool    `pulumi:"cpuHotRemoveEnabled"`
 	CpuPerformanceCountersEnabled bool    `pulumi:"cpuPerformanceCountersEnabled"`
 	DatastoreId                   *string `pulumi:"datastoreId"`
 	DeploymentOption              *string `pulumi:"deploymentOption"`
 	DiskProvisioning              *string `pulumi:"diskProvisioning"`
 	EnableHiddenProperties        *bool   `pulumi:"enableHiddenProperties"`
-	// The firmware interface to use on the virtual machine.
+	// The firmware to use on the virtual machine.
 	Firmware string  `pulumi:"firmware"`
 	Folder   *string `pulumi:"folder"`
-	// The guest ID for the operating system
+	// The ID for the guest operating system
 	GuestId      string `pulumi:"guestId"`
 	HostSystemId string `pulumi:"hostSystemId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -83,16 +179,19 @@ type GetOvfVmTemplateResult struct {
 	IpAllocationPolicy *string `pulumi:"ipAllocationPolicy"`
 	IpProtocol         *string `pulumi:"ipProtocol"`
 	LocalOvfPath       *string `pulumi:"localOvfPath"`
-	// The size of the virtual machine's memory, in MB.
+	// The size of the virtual machine memory, in MB.
 	Memory int `pulumi:"memory"`
-	// Allow memory to be added to this virtual machine while it is running.
+	// Allow memory to be added to the virtual machine
+	// while powered on.
 	MemoryHotAddEnabled bool   `pulumi:"memoryHotAddEnabled"`
 	Name                string `pulumi:"name"`
-	// Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
+	// Enable nested hardware virtualization on the virtual
+	// machine, facilitating nested virtualization in the guest.
 	NestedHvEnabled bool `pulumi:"nestedHvEnabled"`
-	// The number of cores to distribute amongst the CPUs in this virtual machine.
+	// The number of cores per virtual CPU in the virtual
+	// machine.
 	NumCoresPerSocket int `pulumi:"numCoresPerSocket"`
-	// The number of virtual processors to assign to this virtual machine.
+	// The number of virtual CPUs to assign to the virtual machine.
 	NumCpus             int               `pulumi:"numCpus"`
 	OvfNetworkMap       map[string]string `pulumi:"ovfNetworkMap"`
 	RemoteOvfUrl        *string           `pulumi:"remoteOvfUrl"`
@@ -100,7 +199,8 @@ type GetOvfVmTemplateResult struct {
 	SataControllerCount int               `pulumi:"sataControllerCount"`
 	ScsiControllerCount int               `pulumi:"scsiControllerCount"`
 	ScsiType            string            `pulumi:"scsiType"`
-	// The swap file placement policy for this virtual machine.
+	// The swap file placement policy for the virtual
+	// machine.
 	SwapPlacementPolicy string `pulumi:"swapPlacementPolicy"`
 }
 
@@ -119,35 +219,44 @@ func GetOvfVmTemplateOutput(ctx *pulumi.Context, args GetOvfVmTemplateOutputArgs
 
 // A collection of arguments for invoking getOvfVmTemplate.
 type GetOvfVmTemplateOutputArgs struct {
-	// Allow unverified ssl certificates while deploying ovf/ova from url.
+	// Allow unverified SSL certificates
+	// when deploying OVF/OVA from a URL.
 	AllowUnverifiedSslCert pulumi.BoolPtrInput `pulumi:"allowUnverifiedSslCert"`
-	// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+	// The ID of the virtual machine's datastore. The
+	// virtual machine configuration is placed here, along with any virtual disks
+	// that are created without datastores.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
-	// The key of the chosen deployment option. If empty, the default option is chosen.
+	// The key of the chosen deployment option. If
+	// empty, the default option is chosen.
 	DeploymentOption pulumi.StringPtrInput `pulumi:"deploymentOption"`
-	// The disk provisioning. If set, all the disks in the deployed OVF will have
-	// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+	// The disk provisioning type. If set, all the
+	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
+	// one of `thin`, `flat`, `thick` or `sameAsSource`.
 	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
 	EnableHiddenProperties pulumi.BoolPtrInput   `pulumi:"enableHiddenProperties"`
-	// The name of the folder to locate the virtual machine in.
+	// The name of the folder in which to place the virtual
+	// machine.
 	Folder pulumi.StringPtrInput `pulumi:"folder"`
-	// The ID of an optional host system to pin the virtual machine to.
+	// The ID of the ESXi host system to deploy the
+	// virtual machine.
 	HostSystemId pulumi.StringInput `pulumi:"hostSystemId"`
 	// The IP allocation policy.
 	IpAllocationPolicy pulumi.StringPtrInput `pulumi:"ipAllocationPolicy"`
 	// The IP protocol.
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	// The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-	// make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+	// The absolute path to the OVF/OVA file on the
+	// local system. When deploying from an OVF, ensure all necessary files such as
+	// the `.vmdk` files are present in the same directory as the OVF.
 	LocalOvfPath pulumi.StringPtrInput `pulumi:"localOvfPath"`
 	// Name of the virtual machine to create.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-	// VI infrastructure.
+	// The mapping of name of network identifiers
+	// from the OVF descriptor to network UUID in the environment.
 	OvfNetworkMap pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
-	// URL to the remote ovf/ova file to be deployed.
+	// URL of the remote OVF/OVA file to be deployed.
 	RemoteOvfUrl pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
-	// The ID of a resource pool to put the virtual machine in.
+	// The ID of a resource pool in which to place
+	// the virtual machine.
 	ResourcePoolId pulumi.StringInput `pulumi:"resourcePoolId"`
 }
 
@@ -174,22 +283,24 @@ func (o GetOvfVmTemplateResultOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOut
 	return o.ApplyT(func(v GetOvfVmTemplateResult) *bool { return v.AllowUnverifiedSslCert }).(pulumi.BoolPtrOutput)
 }
 
-// The guest name for the operating system .
+// An alternate guest operating system name.
 func (o GetOvfVmTemplateResultOutput) AlternateGuestName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.AlternateGuestName }).(pulumi.StringOutput)
 }
 
-// User-provided description of the virtual machine.
+// A description of the virtual machine.
 func (o GetOvfVmTemplateResultOutput) Annotation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.Annotation }).(pulumi.StringOutput)
 }
 
-// Allow CPUs to be added to this virtual machine while it is running.
+// Allow CPUs to be added to the virtual machine while
+// powered on.
 func (o GetOvfVmTemplateResultOutput) CpuHotAddEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) bool { return v.CpuHotAddEnabled }).(pulumi.BoolOutput)
 }
 
-// Allow CPUs to be added to this virtual machine while it is running.
+// Allow CPUs to be removed from the virtual machine
+// while powered on.
 func (o GetOvfVmTemplateResultOutput) CpuHotRemoveEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) bool { return v.CpuHotRemoveEnabled }).(pulumi.BoolOutput)
 }
@@ -214,7 +325,7 @@ func (o GetOvfVmTemplateResultOutput) EnableHiddenProperties() pulumi.BoolPtrOut
 	return o.ApplyT(func(v GetOvfVmTemplateResult) *bool { return v.EnableHiddenProperties }).(pulumi.BoolPtrOutput)
 }
 
-// The firmware interface to use on the virtual machine.
+// The firmware to use on the virtual machine.
 func (o GetOvfVmTemplateResultOutput) Firmware() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.Firmware }).(pulumi.StringOutput)
 }
@@ -223,7 +334,7 @@ func (o GetOvfVmTemplateResultOutput) Folder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) *string { return v.Folder }).(pulumi.StringPtrOutput)
 }
 
-// The guest ID for the operating system
+// The ID for the guest operating system
 func (o GetOvfVmTemplateResultOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.GuestId }).(pulumi.StringOutput)
 }
@@ -253,12 +364,13 @@ func (o GetOvfVmTemplateResultOutput) LocalOvfPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) *string { return v.LocalOvfPath }).(pulumi.StringPtrOutput)
 }
 
-// The size of the virtual machine's memory, in MB.
+// The size of the virtual machine memory, in MB.
 func (o GetOvfVmTemplateResultOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// Allow memory to be added to this virtual machine while it is running.
+// Allow memory to be added to the virtual machine
+// while powered on.
 func (o GetOvfVmTemplateResultOutput) MemoryHotAddEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) bool { return v.MemoryHotAddEnabled }).(pulumi.BoolOutput)
 }
@@ -267,17 +379,19 @@ func (o GetOvfVmTemplateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
+// Enable nested hardware virtualization on the virtual
+// machine, facilitating nested virtualization in the guest.
 func (o GetOvfVmTemplateResultOutput) NestedHvEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) bool { return v.NestedHvEnabled }).(pulumi.BoolOutput)
 }
 
-// The number of cores to distribute amongst the CPUs in this virtual machine.
+// The number of cores per virtual CPU in the virtual
+// machine.
 func (o GetOvfVmTemplateResultOutput) NumCoresPerSocket() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) int { return v.NumCoresPerSocket }).(pulumi.IntOutput)
 }
 
-// The number of virtual processors to assign to this virtual machine.
+// The number of virtual CPUs to assign to the virtual machine.
 func (o GetOvfVmTemplateResultOutput) NumCpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) int { return v.NumCpus }).(pulumi.IntOutput)
 }
@@ -306,7 +420,8 @@ func (o GetOvfVmTemplateResultOutput) ScsiType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.ScsiType }).(pulumi.StringOutput)
 }
 
-// The swap file placement policy for this virtual machine.
+// The swap file placement policy for the virtual
+// machine.
 func (o GetOvfVmTemplateResultOutput) SwapPlacementPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOvfVmTemplateResult) string { return v.SwapPlacementPolicy }).(pulumi.StringOutput)
 }

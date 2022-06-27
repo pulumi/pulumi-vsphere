@@ -14,15 +14,13 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
         /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-        /// to use for virtual machine placement via the
-        /// `vsphere.VirtualMachine` resource, allowing
-        /// you to specify the cluster's root resource pool directly versus using the alias
-        /// available through the `vsphere.ResourcePool`
+        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+        /// using the alias available through the `vsphere.ResourcePool`
         /// data source.
         /// 
-        /// &gt; You may also wish to see the
-        /// `vsphere.ComputeCluster` resource for further
-        /// details about clusters or how to work with them.
+        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in this provider.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -38,13 +36,13 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var computeCluster = Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+        ///         var computeCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
         ///         {
-        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
-        ///             Name = "compute-cluster1",
-        ///         }));
+        ///             Name = "cluster-01",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
         ///     }
         /// 
         /// }
@@ -58,15 +56,13 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.ComputeCluster` data source can be used to discover the ID of a
         /// cluster in vSphere. This is useful to fetch the ID of a cluster that you want
-        /// to use for virtual machine placement via the
-        /// `vsphere.VirtualMachine` resource, allowing
-        /// you to specify the cluster's root resource pool directly versus using the alias
-        /// available through the `vsphere.ResourcePool`
+        /// to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+        /// using the alias available through the `vsphere.ResourcePool`
         /// data source.
         /// 
-        /// &gt; You may also wish to see the
-        /// `vsphere.ComputeCluster` resource for further
-        /// details about clusters or how to work with them.
+        /// &gt; You may also wish to see the `vsphere.ComputeCluster`
+        ///  resource for more information about clusters and how to managed the resource
+        ///  in this provider.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -82,13 +78,13 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
-        ///         var computeCluster = Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
+        ///         var computeCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
         ///         {
-        ///             DatacenterId = data.Vsphere_datacenter.Dc.Id,
-        ///             Name = "compute-cluster1",
-        ///         }));
+        ///             Name = "cluster-01",
+        ///             DatacenterId = datacenter.Id,
+        ///         })));
         ///     }
         /// 
         /// }
@@ -104,11 +100,10 @@ namespace Pulumi.VSphere
     public sealed class GetComputeClusterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the cluster is located in.  This can
-        /// be omitted if the search path used in `name` is an absolute path.  For
-        /// default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-        /// data source.
+        /// The managed object reference ID
+        /// of the datacenter the cluster is located in.  This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters,
+        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -127,11 +122,10 @@ namespace Pulumi.VSphere
     public sealed class GetComputeClusterInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the cluster is located in.  This can
-        /// be omitted if the search path used in `name` is an absolute path.  For
-        /// default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-        /// data source.
+        /// The managed object reference ID
+        /// of the datacenter the cluster is located in.  This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters,
+        /// use the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }
