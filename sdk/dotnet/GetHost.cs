@@ -12,9 +12,9 @@ namespace Pulumi.VSphere
     public static class GetHost
     {
         /// <summary>
-        /// The `vsphere.Host` data source can be used to discover the ID of a vSphere
-        /// host. This can then be used with resources or data sources that require a host
-        /// managed object reference ID.
+        /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
+        /// This can then be used with resources or data sources that require an ESX
+        /// host's managed object reference ID.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,12 +30,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "esxi1",
         ///         })));
         ///     }
         /// 
@@ -48,9 +48,9 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Host` data source can be used to discover the ID of a vSphere
-        /// host. This can then be used with resources or data sources that require a host
-        /// managed object reference ID.
+        /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
+        /// This can then be used with resources or data sources that require an ESX
+        /// host's managed object reference ID.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -66,12 +66,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "esxi1",
         ///         })));
         ///     }
         /// 
@@ -88,15 +88,15 @@ namespace Pulumi.VSphere
     public sealed class GetHostArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of a datacenter.
+        /// The managed object reference ID
+        /// of a vSphere datacenter object.
         /// </summary>
         [Input("datacenterId", required: true)]
         public string DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the host. This can be a name or path. Can be
-        /// omitted if there is only one host in your inventory.
+        /// The name of the ESXI host. This can be a name or path.
+        /// Can be omitted if there is only one host in your inventory.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -109,15 +109,15 @@ namespace Pulumi.VSphere
     public sealed class GetHostInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of a datacenter.
+        /// The managed object reference ID
+        /// of a vSphere datacenter object.
         /// </summary>
         [Input("datacenterId", required: true)]
         public Input<string> DatacenterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the host. This can be a name or path. Can be
-        /// omitted if there is only one host in your inventory.
+        /// The name of the ESXI host. This can be a name or path.
+        /// Can be omitted if there is only one host in your inventory.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,8 +138,8 @@ namespace Pulumi.VSphere
         public readonly string Id;
         public readonly string? Name;
         /// <summary>
-        /// The managed object ID of the host's
-        /// root resource pool.
+        /// The managed object ID of the ESXi
+        /// host's root resource pool.
         /// </summary>
         public readonly string ResourcePoolId;
 

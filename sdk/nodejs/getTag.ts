@@ -11,8 +11,8 @@ import * as utilities from "./utilities";
  * category to search on. The `id` and other attributes are then populated with
  * the data found by the search.
  *
- * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
- * requires vCenter 6.0 or higher.
+ * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+ * requires vCenter Server.
  *
  * ## Example Usage
  *
@@ -20,12 +20,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const category = pulumi.output(vsphere.getTagCategory({
- *     name: "test-category",
- * }));
- * const tag = category.apply(category => vsphere.getTag({
+ * const category = vsphere.getTagCategory({
+ *     name: "example-category",
+ * });
+ * const tag = category.then(category => vsphere.getTag({
+ *     name: "example-tag",
  *     categoryId: category.id,
- *     name: "test-tag",
  * }));
  * ```
  */
@@ -46,7 +46,8 @@ export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<G
  */
 export interface GetTagArgs {
     /**
-     * The ID of the tag category the tag is located in.
+     * The ID of the tag category in which the tag is
+     * located.
      */
     categoryId: string;
     /**
@@ -77,7 +78,8 @@ export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetTagOutputArgs {
     /**
-     * The ID of the tag category the tag is located in.
+     * The ID of the tag category in which the tag is
+     * located.
      */
     categoryId: pulumi.Input<string>;
     /**

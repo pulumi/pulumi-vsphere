@@ -41,7 +41,7 @@ type ComputeCluster struct {
 	// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
 	DrsAutomationLevel pulumi.StringPtrOutput `pulumi:"drsAutomationLevel"`
 	// When `true`, enables DRS to use data
-	// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
 	DrsEnablePredictiveDrs pulumi.BoolPtrOutput `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
@@ -54,6 +54,10 @@ type ComputeCluster struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrOutput `pulumi:"drsMigrationThreshold"`
+	// Enable scalable shares for all
+	// resource pools in the cluster. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	DrsScaleDescendantsShares pulumi.StringPtrOutput `pulumi:"drsScaleDescendantsShares"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -315,7 +319,7 @@ type computeClusterState struct {
 	// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
 	// When `true`, enables DRS to use data
-	// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
@@ -328,6 +332,10 @@ type computeClusterState struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
+	// Enable scalable shares for all
+	// resource pools in the cluster. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -558,7 +566,7 @@ type ComputeClusterState struct {
 	// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
 	DrsAutomationLevel pulumi.StringPtrInput
 	// When `true`, enables DRS to use data
-	// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
@@ -571,6 +579,10 @@ type ComputeClusterState struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrInput
+	// Enable scalable shares for all
+	// resource pools in the cluster. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	DrsScaleDescendantsShares pulumi.StringPtrInput
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -805,7 +817,7 @@ type computeClusterArgs struct {
 	// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
 	// When `true`, enables DRS to use data
-	// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
@@ -818,6 +830,10 @@ type computeClusterArgs struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold *int `pulumi:"drsMigrationThreshold"`
+	// Enable scalable shares for all
+	// resource pools in the cluster. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	DrsScaleDescendantsShares *string `pulumi:"drsScaleDescendantsShares"`
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
@@ -1047,7 +1063,7 @@ type ComputeClusterArgs struct {
 	// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
 	DrsAutomationLevel pulumi.StringPtrInput
 	// When `true`, enables DRS to use data
-	// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
@@ -1060,6 +1076,10 @@ type ComputeClusterArgs struct {
 	// tolerate more imbalance while a higher setting will tolerate less. Default:
 	// `3`.
 	DrsMigrationThreshold pulumi.IntPtrInput
+	// Enable scalable shares for all
+	// resource pools in the cluster. Can be one of `disabled` or
+	// `scaleCpuAndMemoryShares`. Default: `disabled`.
+	DrsScaleDescendantsShares pulumi.StringPtrInput
 	// The relative path to a folder to put this cluster in.
 	// This is a path relative to the datacenter you are deploying the cluster to.
 	// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,

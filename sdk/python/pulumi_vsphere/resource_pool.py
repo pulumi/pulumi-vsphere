@@ -26,6 +26,7 @@ class ResourcePoolArgs:
                  memory_share_level: Optional[pulumi.Input[str]] = None,
                  memory_shares: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ResourcePool resource.
@@ -33,13 +34,13 @@ class ResourcePoolArgs:
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
-               resource pool or the move will fail.
+               resource pool.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
@@ -54,9 +55,9 @@ class ResourcePoolArgs:
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -68,6 +69,10 @@ class ResourcePoolArgs:
                determine resource allocation in case of resource contention. If this is set,
                `memory_share_level` must be `custom`.
         :param pulumi.Input[str] name: The name of the resource pool.
+        :param pulumi.Input[str] scale_descendants_shares: Determines if the shares of all
+               descendants of the resource pool are scaled up or down when the shares
+               of the resource pool are scaled up or down. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
@@ -95,6 +100,8 @@ class ResourcePoolArgs:
             pulumi.set(__self__, "memory_shares", memory_shares)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if scale_descendants_shares is not None:
+            pulumi.set(__self__, "scale_descendants_shares", scale_descendants_shares)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -106,7 +113,7 @@ class ResourcePoolArgs:
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
-        resource pool or the move will fail.
+        resource pool.
         """
         return pulumi.get(self, "parent_resource_pool_id")
 
@@ -132,9 +139,9 @@ class ResourcePoolArgs:
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -215,9 +222,9 @@ class ResourcePoolArgs:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 
@@ -281,6 +288,21 @@ class ResourcePoolArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="scaleDescendantsShares")
+    def scale_descendants_shares(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines if the shares of all
+        descendants of the resource pool are scaled up or down when the shares
+        of the resource pool are scaled up or down. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "scale_descendants_shares")
+
+    @scale_descendants_shares.setter
+    def scale_descendants_shares(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_descendants_shares", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -309,15 +331,16 @@ class _ResourcePoolState:
                  memory_shares: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ResourcePool resources.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
@@ -332,9 +355,9 @@ class _ResourcePoolState:
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -350,7 +373,11 @@ class _ResourcePoolState:
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
-               resource pool or the move will fail.
+               resource pool.
+        :param pulumi.Input[str] scale_descendants_shares: Determines if the shares of all
+               descendants of the resource pool are scaled up or down when the shares
+               of the resource pool are scaled up or down. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         if cpu_expandable is not None:
@@ -379,6 +406,8 @@ class _ResourcePoolState:
             pulumi.set(__self__, "name", name)
         if parent_resource_pool_id is not None:
             pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
+        if scale_descendants_shares is not None:
+            pulumi.set(__self__, "scale_descendants_shares", scale_descendants_shares)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -400,9 +429,9 @@ class _ResourcePoolState:
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -483,9 +512,9 @@ class _ResourcePoolState:
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 
@@ -556,13 +585,28 @@ class _ResourcePoolState:
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
-        resource pool or the move will fail.
+        resource pool.
         """
         return pulumi.get(self, "parent_resource_pool_id")
 
     @parent_resource_pool_id.setter
     def parent_resource_pool_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_resource_pool_id", value)
+
+    @property
+    @pulumi.getter(name="scaleDescendantsShares")
+    def scale_descendants_shares(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determines if the shares of all
+        descendants of the resource pool are scaled up or down when the shares
+        of the resource pool are scaled up or down. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "scale_descendants_shares")
+
+    @scale_descendants_shares.setter
+    def scale_descendants_shares(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_descendants_shares", value)
 
     @property
     @pulumi.getter
@@ -595,18 +639,73 @@ class ResourcePool(pulumi.CustomResource):
                  memory_shares: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ResourcePool resource with the given unique name, props, and options.
+        The `ResourcePool` resource can be used to create and manage
+        resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
+
+        For more information on vSphere resource pools, please refer to the
+        [product documentation][ref-vsphere-resource_pools].
+
+        [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+
+        ## Example Usage
+
+        The following example sets up a resource pool in an existing compute cluster
+        with the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        A virtual machine resource could be targeted to use the default resource pool
+        of the cluster using the following:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
+        # ... other configuration ...
+        ```
+
+        The following example sets up a parent resource pool in an existing compute cluster
+        with a child resource pool nested below. Each resource pool is configured with
+        the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        ```
+        ## Importing
+        ### Settings that Require vSphere 7.0 or higher
+
+        These settings require vSphere 7.0 or higher:
+
+        * `scale_descendants_shares`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
@@ -621,9 +720,9 @@ class ResourcePool(pulumi.CustomResource):
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -639,7 +738,11 @@ class ResourcePool(pulumi.CustomResource):
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
-               resource pool or the move will fail.
+               resource pool.
+        :param pulumi.Input[str] scale_descendants_shares: Determines if the shares of all
+               descendants of the resource pool are scaled up or down when the shares
+               of the resource pool are scaled up or down. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         ...
@@ -649,7 +752,61 @@ class ResourcePool(pulumi.CustomResource):
                  args: ResourcePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ResourcePool resource with the given unique name, props, and options.
+        The `ResourcePool` resource can be used to create and manage
+        resource pools on DRS-enabled vSphere clusters or standalone ESXi hosts.
+
+        For more information on vSphere resource pools, please refer to the
+        [product documentation][ref-vsphere-resource_pools].
+
+        [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+
+        ## Example Usage
+
+        The following example sets up a resource pool in an existing compute cluster
+        with the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        A virtual machine resource could be targeted to use the default resource pool
+        of the cluster using the following:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
+        # ... other configuration ...
+        ```
+
+        The following example sets up a parent resource pool in an existing compute cluster
+        with a child resource pool nested below. Each resource pool is configured with
+        the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        ```
+        ## Importing
+        ### Settings that Require vSphere 7.0 or higher
+
+        These settings require vSphere 7.0 or higher:
+
+        * `scale_descendants_shares`
+
         :param str resource_name: The name of the resource.
         :param ResourcePoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -678,6 +835,7 @@ class ResourcePool(pulumi.CustomResource):
                  memory_shares: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 scale_descendants_shares: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -706,6 +864,7 @@ class ResourcePool(pulumi.CustomResource):
             if parent_resource_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_resource_pool_id'")
             __props__.__dict__["parent_resource_pool_id"] = parent_resource_pool_id
+            __props__.__dict__["scale_descendants_shares"] = scale_descendants_shares
             __props__.__dict__["tags"] = tags
         super(ResourcePool, __self__).__init__(
             'vsphere:index/resourcePool:ResourcePool',
@@ -730,6 +889,7 @@ class ResourcePool(pulumi.CustomResource):
             memory_shares: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+            scale_descendants_shares: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ResourcePool':
         """
         Get an existing ResourcePool resource's state with the given name, id, and optional extra
@@ -741,9 +901,9 @@ class ResourcePool(pulumi.CustomResource):
         :param pulumi.Input[bool] cpu_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] cpu_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] cpu_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] cpu_share_level: The CPU allocation level. The level is a
@@ -758,9 +918,9 @@ class ResourcePool(pulumi.CustomResource):
         :param pulumi.Input[bool] memory_expandable: Determines if the reservation on a resource
                pool can grow beyond the specified value if the parent resource pool has
                unreserved resources. Default: `true`
-        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not exceed
-               this limit, even if there are available resources. Set to `-1` for unlimited.
-               Default: `-1`
+        :param pulumi.Input[int] memory_limit: The CPU utilization of a resource pool will not
+               exceed this limit, even if there are available resources. Set to `-1` for
+               unlimited. Default: `-1`
         :param pulumi.Input[int] memory_reservation: Amount of CPU (MHz) that is guaranteed
                available to the resource pool. Default: `0`
         :param pulumi.Input[str] memory_share_level: The CPU allocation level. The level is a
@@ -776,7 +936,11 @@ class ResourcePool(pulumi.CustomResource):
                of the parent resource pool. This can be the root resource pool for a cluster
                or standalone host, or a resource pool itself. When moving a resource pool
                from one parent resource pool to another, both must share a common root
-               resource pool or the move will fail.
+               resource pool.
+        :param pulumi.Input[str] scale_descendants_shares: Determines if the shares of all
+               descendants of the resource pool are scaled up or down when the shares
+               of the resource pool are scaled up or down. Can be one of `disabled` or
+               `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -796,6 +960,7 @@ class ResourcePool(pulumi.CustomResource):
         __props__.__dict__["memory_shares"] = memory_shares
         __props__.__dict__["name"] = name
         __props__.__dict__["parent_resource_pool_id"] = parent_resource_pool_id
+        __props__.__dict__["scale_descendants_shares"] = scale_descendants_shares
         __props__.__dict__["tags"] = tags
         return ResourcePool(resource_name, opts=opts, __props__=__props__)
 
@@ -813,9 +978,9 @@ class ResourcePool(pulumi.CustomResource):
     @pulumi.getter(name="cpuLimit")
     def cpu_limit(self) -> pulumi.Output[Optional[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "cpu_limit")
 
@@ -872,9 +1037,9 @@ class ResourcePool(pulumi.CustomResource):
     @pulumi.getter(name="memoryLimit")
     def memory_limit(self) -> pulumi.Output[Optional[int]]:
         """
-        The CPU utilization of a resource pool will not exceed
-        this limit, even if there are available resources. Set to `-1` for unlimited.
-        Default: `-1`
+        The CPU utilization of a resource pool will not
+        exceed this limit, even if there are available resources. Set to `-1` for
+        unlimited. Default: `-1`
         """
         return pulumi.get(self, "memory_limit")
 
@@ -925,9 +1090,20 @@ class ResourcePool(pulumi.CustomResource):
         of the parent resource pool. This can be the root resource pool for a cluster
         or standalone host, or a resource pool itself. When moving a resource pool
         from one parent resource pool to another, both must share a common root
-        resource pool or the move will fail.
+        resource pool.
         """
         return pulumi.get(self, "parent_resource_pool_id")
+
+    @property
+    @pulumi.getter(name="scaleDescendantsShares")
+    def scale_descendants_shares(self) -> pulumi.Output[Optional[str]]:
+        """
+        Determines if the shares of all
+        descendants of the resource pool are scaled up or down when the shares
+        of the resource pool are scaled up or down. Can be one of `disabled` or
+        `scaleCpuAndMemoryShares`. Default: `disabled`.
+        """
+        return pulumi.get(self, "scale_descendants_shares")
 
     @property
     @pulumi.getter

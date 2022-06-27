@@ -12,77 +12,185 @@ namespace Pulumi.VSphere
     public static class GetOvfVmTemplate
     {
         /// <summary>
-        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware
-        /// settings in a form that can be then used as inputs for a `vsphere.VirtualMachine` resource.
+        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
+        /// vSphere and extract its hardware settings in a form that can be then used as
+        /// inputs for a `vsphere.VirtualMachine` resource.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
+        /// ## Remote OVF/OVA Source
         /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ovf = Output.Create(VSphere.GetOvfVmTemplate.InvokeAsync(new VSphere.GetOvfVmTemplateArgs
-        ///         {
-        ///             Name = "testOVF",
-        ///             ResourcePoolId = vsphere_resource_pool.Rp.Id,
-        ///             DatastoreId = data.Vsphere_datastore.Ds.Id,
-        ///             HostSystemId = data.Vsphere_host.Hs.Id,
-        ///             RemoteOvfUrl = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
-        ///             OvfNetworkMap = 
-        ///             {
-        ///                 { "Network 1", data.Vsphere_network.Net.Id },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
+        /// data "vsphere_ovf_vm_template" "ovfRemote" {
+        ///   name              = "Nested-ESXi-7.0-Terraform-Deploy-1"
+        ///   disk_provisioning = "thin"
+        ///   resource_pool_id  = data.vsphere_resource_pool.default.id
+        ///   datastore_id      = data.vsphere_datastore.datastore.id
+        ///   host_system_id    = data.vsphere_host.host.id
+        ///   remote_ovf_url    = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+        ///   ovf_network_map = {
+        ///     "VM Network" : data.vsphere_network.network.id
+        ///   }
         /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
+        /// ## Local OVF/OVA Source
+        /// 
+        /// data "vsphere_ovf_vm_template" "ovfLocal" {
+        ///   name              = "Nested-ESXi-7.0-Terraform-Deploy-2"
+        ///   disk_provisioning = "thin"
+        ///   resource_pool_id  = data.vsphere_resource_pool.default.id
+        ///   datastore_id      = data.vsphere_datastore.datastore.id
+        ///   host_system_id    = data.vsphere_host.host.id
+        ///   local_ovf_path    = "/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+        ///   ovf_network_map = {
+        ///     "VM Network" : data.vsphere_network.network.id
+        ///   }
+        /// }
+        /// 
+        /// ## Deployment of VM from Remote OVF
+        /// 
+        /// resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
+        ///   name                 = "Nested-ESXi-7.0-Terraform-Deploy-1"
+        ///   datacenter_id        = data.vsphere_datacenter.datacenter.id
+        ///   datastore_id         = data.vsphere_datastore.datastore.id
+        ///   host_system_id       = data.vsphere_host.host.id
+        ///   resource_pool_id     = data.vsphere_resource_pool.default.id
+        ///   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
+        ///   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
+        ///   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
+        ///   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
+        ///   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
+        ///   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
+        ///   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
+        ///   dynamic "network_interface" {
+        ///     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        ///     content {
+        ///       network_id = network_interface.value
+        ///     }
+        ///   }
+        ///   wait_for_guest_net_timeout = 0
+        ///   wait_for_guest_ip_timeout  = 0
+        /// 
+        ///   ovf_deploy {
+        ///     allow_unverified_ssl_cert = false
+        ///     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
+        ///     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
+        ///     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        ///   }
+        /// 
+        ///   vapp {
+        ///     properties = {
+        ///       "guestinfo.hostname"  = "nested-esxi-01.example.com",
+        ///       "guestinfo.ipaddress" = "172.16.11.101",
+        ///       "guestinfo.netmask"   = "255.255.255.0",
+        ///       "guestinfo.gateway"   = "172.16.11.1",
+        ///       "guestinfo.dns"       = "172.16.11.4",
+        ///       "guestinfo.domain"    = "example.com",
+        ///       "guestinfo.ntp"       = "ntp.example.com",
+        ///       "guestinfo.password"  = "VMware1!",
+        ///       "guestinfo.ssh"       = "True"
+        ///     }
+        ///   }
+        /// 
+        ///   lifecycle {
+        ///     ignore_changes = [
+        ///       annotation,
+        ///       disk[0].io_share_count,
+        ///       disk[1].io_share_count,
+        ///       disk[2].io_share_count,
+        ///       vapp[0].properties,
+        ///     ]
+        ///   }
+        /// }
         /// </summary>
         public static Task<GetOvfVmTemplateResult> InvokeAsync(GetOvfVmTemplateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to vSphere and extract its hardware
-        /// settings in a form that can be then used as inputs for a `vsphere.VirtualMachine` resource.
+        /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
+        /// vSphere and extract its hardware settings in a form that can be then used as
+        /// inputs for a `vsphere.VirtualMachine` resource.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
+        /// ## Remote OVF/OVA Source
         /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ovf = Output.Create(VSphere.GetOvfVmTemplate.InvokeAsync(new VSphere.GetOvfVmTemplateArgs
-        ///         {
-        ///             Name = "testOVF",
-        ///             ResourcePoolId = vsphere_resource_pool.Rp.Id,
-        ///             DatastoreId = data.Vsphere_datastore.Ds.Id,
-        ///             HostSystemId = data.Vsphere_host.Hs.Id,
-        ///             RemoteOvfUrl = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
-        ///             OvfNetworkMap = 
-        ///             {
-        ///                 { "Network 1", data.Vsphere_network.Net.Id },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
+        /// data "vsphere_ovf_vm_template" "ovfRemote" {
+        ///   name              = "Nested-ESXi-7.0-Terraform-Deploy-1"
+        ///   disk_provisioning = "thin"
+        ///   resource_pool_id  = data.vsphere_resource_pool.default.id
+        ///   datastore_id      = data.vsphere_datastore.datastore.id
+        ///   host_system_id    = data.vsphere_host.host.id
+        ///   remote_ovf_url    = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+        ///   ovf_network_map = {
+        ///     "VM Network" : data.vsphere_network.network.id
+        ///   }
         /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
+        /// ## Local OVF/OVA Source
+        /// 
+        /// data "vsphere_ovf_vm_template" "ovfLocal" {
+        ///   name              = "Nested-ESXi-7.0-Terraform-Deploy-2"
+        ///   disk_provisioning = "thin"
+        ///   resource_pool_id  = data.vsphere_resource_pool.default.id
+        ///   datastore_id      = data.vsphere_datastore.datastore.id
+        ///   host_system_id    = data.vsphere_host.host.id
+        ///   local_ovf_path    = "/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+        ///   ovf_network_map = {
+        ///     "VM Network" : data.vsphere_network.network.id
+        ///   }
+        /// }
+        /// 
+        /// ## Deployment of VM from Remote OVF
+        /// 
+        /// resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
+        ///   name                 = "Nested-ESXi-7.0-Terraform-Deploy-1"
+        ///   datacenter_id        = data.vsphere_datacenter.datacenter.id
+        ///   datastore_id         = data.vsphere_datastore.datastore.id
+        ///   host_system_id       = data.vsphere_host.host.id
+        ///   resource_pool_id     = data.vsphere_resource_pool.default.id
+        ///   num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
+        ///   num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
+        ///   memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
+        ///   guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
+        ///   firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
+        ///   scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
+        ///   nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
+        ///   dynamic "network_interface" {
+        ///     for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        ///     content {
+        ///       network_id = network_interface.value
+        ///     }
+        ///   }
+        ///   wait_for_guest_net_timeout = 0
+        ///   wait_for_guest_ip_timeout  = 0
+        /// 
+        ///   ovf_deploy {
+        ///     allow_unverified_ssl_cert = false
+        ///     remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
+        ///     disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
+        ///     ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        ///   }
+        /// 
+        ///   vapp {
+        ///     properties = {
+        ///       "guestinfo.hostname"  = "nested-esxi-01.example.com",
+        ///       "guestinfo.ipaddress" = "172.16.11.101",
+        ///       "guestinfo.netmask"   = "255.255.255.0",
+        ///       "guestinfo.gateway"   = "172.16.11.1",
+        ///       "guestinfo.dns"       = "172.16.11.4",
+        ///       "guestinfo.domain"    = "example.com",
+        ///       "guestinfo.ntp"       = "ntp.example.com",
+        ///       "guestinfo.password"  = "VMware1!",
+        ///       "guestinfo.ssh"       = "True"
+        ///     }
+        ///   }
+        /// 
+        ///   lifecycle {
+        ///     ignore_changes = [
+        ///       annotation,
+        ///       disk[0].io_share_count,
+        ///       disk[1].io_share_count,
+        ///       disk[2].io_share_count,
+        ///       vapp[0].properties,
+        ///     ]
+        ///   }
+        /// }
         /// </summary>
         public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
@@ -92,26 +200,31 @@ namespace Pulumi.VSphere
     public sealed class GetOvfVmTemplateArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Allow unverified ssl certificates while deploying ovf/ova from url.
+        /// Allow unverified SSL certificates
+        /// when deploying OVF/OVA from a URL.
         /// </summary>
         [Input("allowUnverifiedSslCert")]
         public bool? AllowUnverifiedSslCert { get; set; }
 
         /// <summary>
-        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        /// The ID of the virtual machine's datastore. The
+        /// virtual machine configuration is placed here, along with any virtual disks
+        /// that are created without datastores.
         /// </summary>
         [Input("datastoreId")]
         public string? DatastoreId { get; set; }
 
         /// <summary>
-        /// The key of the chosen deployment option. If empty, the default option is chosen.
+        /// The key of the chosen deployment option. If
+        /// empty, the default option is chosen.
         /// </summary>
         [Input("deploymentOption")]
         public string? DeploymentOption { get; set; }
 
         /// <summary>
-        /// The disk provisioning. If set, all the disks in the deployed OVF will have
-        /// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+        /// The disk provisioning type. If set, all the
+        /// disks in the deployed OVA/OVF will have the same specified disk type. Can be
+        /// one of `thin`, `flat`, `thick` or `sameAsSource`.
         /// </summary>
         [Input("diskProvisioning")]
         public string? DiskProvisioning { get; set; }
@@ -120,13 +233,15 @@ namespace Pulumi.VSphere
         public bool? EnableHiddenProperties { get; set; }
 
         /// <summary>
-        /// The name of the folder to locate the virtual machine in.
+        /// The name of the folder in which to place the virtual
+        /// machine.
         /// </summary>
         [Input("folder")]
         public string? Folder { get; set; }
 
         /// <summary>
-        /// The ID of an optional host system to pin the virtual machine to.
+        /// The ID of the ESXi host system to deploy the
+        /// virtual machine.
         /// </summary>
         [Input("hostSystemId", required: true)]
         public string HostSystemId { get; set; } = null!;
@@ -144,8 +259,9 @@ namespace Pulumi.VSphere
         public string? IpProtocol { get; set; }
 
         /// <summary>
-        /// The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-        /// make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+        /// The absolute path to the OVF/OVA file on the
+        /// local system. When deploying from an OVF, ensure all necessary files such as
+        /// the `.vmdk` files are present in the same directory as the OVF.
         /// </summary>
         [Input("localOvfPath")]
         public string? LocalOvfPath { get; set; }
@@ -160,8 +276,8 @@ namespace Pulumi.VSphere
         private Dictionary<string, string>? _ovfNetworkMap;
 
         /// <summary>
-        /// The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-        /// VI infrastructure.
+        /// The mapping of name of network identifiers
+        /// from the OVF descriptor to network UUID in the environment.
         /// </summary>
         public Dictionary<string, string> OvfNetworkMap
         {
@@ -170,13 +286,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// URL to the remote ovf/ova file to be deployed.
+        /// URL of the remote OVF/OVA file to be deployed.
         /// </summary>
         [Input("remoteOvfUrl")]
         public string? RemoteOvfUrl { get; set; }
 
         /// <summary>
-        /// The ID of a resource pool to put the virtual machine in.
+        /// The ID of a resource pool in which to place
+        /// the virtual machine.
         /// </summary>
         [Input("resourcePoolId", required: true)]
         public string ResourcePoolId { get; set; } = null!;
@@ -189,26 +306,31 @@ namespace Pulumi.VSphere
     public sealed class GetOvfVmTemplateInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Allow unverified ssl certificates while deploying ovf/ova from url.
+        /// Allow unverified SSL certificates
+        /// when deploying OVF/OVA from a URL.
         /// </summary>
         [Input("allowUnverifiedSslCert")]
         public Input<bool>? AllowUnverifiedSslCert { get; set; }
 
         /// <summary>
-        /// The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
+        /// The ID of the virtual machine's datastore. The
+        /// virtual machine configuration is placed here, along with any virtual disks
+        /// that are created without datastores.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// The key of the chosen deployment option. If empty, the default option is chosen.
+        /// The key of the chosen deployment option. If
+        /// empty, the default option is chosen.
         /// </summary>
         [Input("deploymentOption")]
         public Input<string>? DeploymentOption { get; set; }
 
         /// <summary>
-        /// The disk provisioning. If set, all the disks in the deployed OVF will have
-        /// the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
+        /// The disk provisioning type. If set, all the
+        /// disks in the deployed OVA/OVF will have the same specified disk type. Can be
+        /// one of `thin`, `flat`, `thick` or `sameAsSource`.
         /// </summary>
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
@@ -217,13 +339,15 @@ namespace Pulumi.VSphere
         public Input<bool>? EnableHiddenProperties { get; set; }
 
         /// <summary>
-        /// The name of the folder to locate the virtual machine in.
+        /// The name of the folder in which to place the virtual
+        /// machine.
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// The ID of an optional host system to pin the virtual machine to.
+        /// The ID of the ESXi host system to deploy the
+        /// virtual machine.
         /// </summary>
         [Input("hostSystemId", required: true)]
         public Input<string> HostSystemId { get; set; } = null!;
@@ -241,8 +365,9 @@ namespace Pulumi.VSphere
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-        /// make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+        /// The absolute path to the OVF/OVA file on the
+        /// local system. When deploying from an OVF, ensure all necessary files such as
+        /// the `.vmdk` files are present in the same directory as the OVF.
         /// </summary>
         [Input("localOvfPath")]
         public Input<string>? LocalOvfPath { get; set; }
@@ -257,8 +382,8 @@ namespace Pulumi.VSphere
         private InputMap<string>? _ovfNetworkMap;
 
         /// <summary>
-        /// The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-        /// VI infrastructure.
+        /// The mapping of name of network identifiers
+        /// from the OVF descriptor to network UUID in the environment.
         /// </summary>
         public InputMap<string> OvfNetworkMap
         {
@@ -267,13 +392,14 @@ namespace Pulumi.VSphere
         }
 
         /// <summary>
-        /// URL to the remote ovf/ova file to be deployed.
+        /// URL of the remote OVF/OVA file to be deployed.
         /// </summary>
         [Input("remoteOvfUrl")]
         public Input<string>? RemoteOvfUrl { get; set; }
 
         /// <summary>
-        /// The ID of a resource pool to put the virtual machine in.
+        /// The ID of a resource pool in which to place
+        /// the virtual machine.
         /// </summary>
         [Input("resourcePoolId", required: true)]
         public Input<string> ResourcePoolId { get; set; } = null!;
@@ -289,19 +415,21 @@ namespace Pulumi.VSphere
     {
         public readonly bool? AllowUnverifiedSslCert;
         /// <summary>
-        /// The guest name for the operating system .
+        /// An alternate guest operating system name.
         /// </summary>
         public readonly string AlternateGuestName;
         /// <summary>
-        /// User-provided description of the virtual machine.
+        /// A description of the virtual machine.
         /// </summary>
         public readonly string Annotation;
         /// <summary>
-        /// Allow CPUs to be added to this virtual machine while it is running.
+        /// Allow CPUs to be added to the virtual machine while
+        /// powered on.
         /// </summary>
         public readonly bool CpuHotAddEnabled;
         /// <summary>
-        /// Allow CPUs to be added to this virtual machine while it is running.
+        /// Allow CPUs to be removed from the virtual machine
+        /// while powered on.
         /// </summary>
         public readonly bool CpuHotRemoveEnabled;
         public readonly bool CpuPerformanceCountersEnabled;
@@ -310,12 +438,12 @@ namespace Pulumi.VSphere
         public readonly string? DiskProvisioning;
         public readonly bool? EnableHiddenProperties;
         /// <summary>
-        /// The firmware interface to use on the virtual machine.
+        /// The firmware to use on the virtual machine.
         /// </summary>
         public readonly string Firmware;
         public readonly string? Folder;
         /// <summary>
-        /// The guest ID for the operating system
+        /// The ID for the guest operating system
         /// </summary>
         public readonly string GuestId;
         public readonly string HostSystemId;
@@ -328,24 +456,27 @@ namespace Pulumi.VSphere
         public readonly string? IpProtocol;
         public readonly string? LocalOvfPath;
         /// <summary>
-        /// The size of the virtual machine's memory, in MB.
+        /// The size of the virtual machine memory, in MB.
         /// </summary>
         public readonly int Memory;
         /// <summary>
-        /// Allow memory to be added to this virtual machine while it is running.
+        /// Allow memory to be added to the virtual machine
+        /// while powered on.
         /// </summary>
         public readonly bool MemoryHotAddEnabled;
         public readonly string Name;
         /// <summary>
-        /// Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
+        /// Enable nested hardware virtualization on the virtual
+        /// machine, facilitating nested virtualization in the guest.
         /// </summary>
         public readonly bool NestedHvEnabled;
         /// <summary>
-        /// The number of cores to distribute amongst the CPUs in this virtual machine.
+        /// The number of cores per virtual CPU in the virtual
+        /// machine.
         /// </summary>
         public readonly int NumCoresPerSocket;
         /// <summary>
-        /// The number of virtual processors to assign to this virtual machine.
+        /// The number of virtual CPUs to assign to the virtual machine.
         /// </summary>
         public readonly int NumCpus;
         public readonly ImmutableDictionary<string, string>? OvfNetworkMap;
@@ -355,7 +486,8 @@ namespace Pulumi.VSphere
         public readonly int ScsiControllerCount;
         public readonly string ScsiType;
         /// <summary>
-        /// The swap file placement policy for this virtual machine.
+        /// The swap file placement policy for the virtual
+        /// machine.
         /// </summary>
         public readonly string SwapPlacementPolicy;
 

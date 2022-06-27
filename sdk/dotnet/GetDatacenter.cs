@@ -13,8 +13,8 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.Datacenter` data source can be used to discover the ID of a
-        /// vSphere datacenter. This can then be used with resources or data sources that
-        /// require a datacenter, such as the `vsphere.Host`
+        /// vSphere datacenter object. This can then be used with resources or data sources
+        /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
         /// 
         /// {{% examples %}}
@@ -31,7 +31,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///     }
         /// 
@@ -45,8 +45,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.Datacenter` data source can be used to discover the ID of a
-        /// vSphere datacenter. This can then be used with resources or data sources that
-        /// require a datacenter, such as the `vsphere.Host`
+        /// vSphere datacenter object. This can then be used with resources or data sources
+        /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
         /// 
         /// {{% examples %}}
@@ -63,7 +63,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///     }
         /// 
@@ -81,7 +81,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
-        /// Can be omitted if there is only one datacenter in your inventory.
+        /// Can be omitted if there is only one datacenter in the inventory.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -95,7 +95,7 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
-        /// Can be omitted if there is only one datacenter in your inventory.
+        /// Can be omitted if there is only one datacenter in the inventory.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

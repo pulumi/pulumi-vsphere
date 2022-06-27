@@ -66,7 +66,7 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcePoolResult:
     """
     The `ResourcePool` data source can be used to discover the ID of a
-    resource pool in vSphere. This is useful to fetch the ID of a resource pool
+    resource pool in vSphere. This is useful to return the ID of a resource pool
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
 
@@ -76,40 +76,38 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    pool = vsphere.get_resource_pool(datacenter_id=datacenter.id,
-        name="resource-pool-1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_resource_pool(name="resource-pool-01",
+        datacenter_id=datacenter.id)
     ```
-    ### Specifying the root resource pool for a standalone host
+    ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
-    > **NOTE:** Fetching the root resource pool for a cluster can now be done
+    > **NOTE:** Returning the root resource pool for a cluster can be done
     directly via the `ComputeCluster`
     data source.
 
-    All compute resources in vSphere (clusters, standalone hosts, and standalone
-    ESXi) have a resource pool, even if one has not been explicitly created. This
-    resource pool is referred to as the _root resource pool_ and can be looked up
-    by specifying the path as per the example below:
+    All compute resources in vSphere have a resource pool, even if one has not been
+    explicitly created. This resource pool is referred to as the
+    _root resource pool_ and can be looked up by specifying the path.
 
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
-    pool = vsphere.get_resource_pool(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="esxi1/Resources")
+    pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
+        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
     ```
 
-    For more information on the root resource pool, see [Managing Resource
-    Pools][vmware-docs-resource-pools] in the vSphere documentation.
+    For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
 
     [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the resource pool is located in.
-           This can be omitted if the search path used in `name` is an absolute path.
-           For default datacenters, use the id attribute from an empty
-           `Datacenter` data source.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter in which the resource pool is located. This can be omitted
+           if the search path used in `name` is an absolute path. For default
+           datacenters, use the id attribute from an empty `Datacenter` data
+           source.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
     """
@@ -134,7 +132,7 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcePoolResult]:
     """
     The `ResourcePool` data source can be used to discover the ID of a
-    resource pool in vSphere. This is useful to fetch the ID of a resource pool
+    resource pool in vSphere. This is useful to return the ID of a resource pool
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
 
@@ -144,40 +142,38 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    pool = vsphere.get_resource_pool(datacenter_id=datacenter.id,
-        name="resource-pool-1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_resource_pool(name="resource-pool-01",
+        datacenter_id=datacenter.id)
     ```
-    ### Specifying the root resource pool for a standalone host
+    ### Specifying the Root Resource Pool for a Standalone ESXi Host
 
-    > **NOTE:** Fetching the root resource pool for a cluster can now be done
+    > **NOTE:** Returning the root resource pool for a cluster can be done
     directly via the `ComputeCluster`
     data source.
 
-    All compute resources in vSphere (clusters, standalone hosts, and standalone
-    ESXi) have a resource pool, even if one has not been explicitly created. This
-    resource pool is referred to as the _root resource pool_ and can be looked up
-    by specifying the path as per the example below:
+    All compute resources in vSphere have a resource pool, even if one has not been
+    explicitly created. This resource pool is referred to as the
+    _root resource pool_ and can be looked up by specifying the path.
 
     ```python
     import pulumi
     import pulumi_vsphere as vsphere
 
-    pool = vsphere.get_resource_pool(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="esxi1/Resources")
+    pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
+        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
     ```
 
-    For more information on the root resource pool, see [Managing Resource
-    Pools][vmware-docs-resource-pools] in the vSphere documentation.
+    For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
 
     [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the resource pool is located in.
-           This can be omitted if the search path used in `name` is an absolute path.
-           For default datacenters, use the id attribute from an empty
-           `Datacenter` data source.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter in which the resource pool is located. This can be omitted
+           if the search path used in `name` is an absolute path. For default
+           datacenters, use the id attribute from an empty `Datacenter` data
+           source.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
     """

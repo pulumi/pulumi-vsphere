@@ -78,7 +78,7 @@ namespace Pulumi.VSphere
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs args, InvokeOptions? options = null)
+        public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithDefaults());
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Pulumi.VSphere
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithDefaults());
     }
 
@@ -278,10 +278,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the virtual machine. This can be a name or
-        /// the full path relative to the datacenter.
+        /// the full path relative to the datacenter. This is required if a UUID lookup
+        /// is not performed.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         [Input("nestedHvEnabled")]
         public bool? NestedHvEnabled { get; set; }
@@ -341,6 +342,13 @@ namespace Pulumi.VSphere
 
         [Input("toolsUpgradePolicy")]
         public string? ToolsUpgradePolicy { get; set; }
+
+        /// <summary>
+        /// Specify this field for a UUID lookup, `name` and `datacenter_id`
+        /// are not required if this is specified.
+        /// </summary>
+        [Input("uuid")]
+        public string? Uuid { get; set; }
 
         [Input("vapp")]
         public Inputs.GetVirtualMachineVappArgs? Vapp { get; set; }
@@ -481,10 +489,11 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The name of the virtual machine. This can be a name or
-        /// the full path relative to the datacenter.
+        /// the full path relative to the datacenter. This is required if a UUID lookup
+        /// is not performed.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("nestedHvEnabled")]
         public Input<bool>? NestedHvEnabled { get; set; }
@@ -544,6 +553,13 @@ namespace Pulumi.VSphere
 
         [Input("toolsUpgradePolicy")]
         public Input<string>? ToolsUpgradePolicy { get; set; }
+
+        /// <summary>
+        /// Specify this field for a UUID lookup, `name` and `datacenter_id`
+        /// are not required if this is specified.
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         [Input("vapp")]
         public Input<Inputs.GetVirtualMachineVappInputArgs>? Vapp { get; set; }
@@ -640,7 +656,7 @@ namespace Pulumi.VSphere
         public readonly int? MemoryReservation;
         public readonly int MemoryShareCount;
         public readonly string? MemoryShareLevel;
-        public readonly string Name;
+        public readonly string? Name;
         public readonly bool? NestedHvEnabled;
         /// <summary>
         /// The network interface types for each network
@@ -649,7 +665,7 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
         /// <summary>
-        /// Information about each of the network interfaces on this 
+        /// Information about each of the network interfaces on this
         /// virtual machine or template. These are sorted by device bus order so that they
         /// can be applied to a `vsphere.VirtualMachine` resource in the order the resource
         /// expects while cloning. This is useful for discovering certain network interface
@@ -772,7 +788,7 @@ namespace Pulumi.VSphere
 
             string? memoryShareLevel,
 
-            string name,
+            string? name,
 
             bool? nestedHvEnabled,
 

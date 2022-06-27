@@ -16,8 +16,8 @@ import (
 // category to search on. The `id` and other attributes are then populated with
 // the data found by the search.
 //
-// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-// requires vCenter 6.0 or higher.
+// > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+// requires vCenter Server.
 //
 // ## Example Usage
 //
@@ -32,14 +32,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		category, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
-// 			Name: "test-category",
+// 			Name: "example-category",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+// 			Name:       "example-tag",
 // 			CategoryId: category.Id,
-// 			Name:       "test-tag",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -59,7 +59,8 @@ func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTag.
 type LookupTagArgs struct {
-	// The ID of the tag category the tag is located in.
+	// The ID of the tag category in which the tag is
+	// located.
 	CategoryId string `pulumi:"categoryId"`
 	// The name of the tag.
 	Name string `pulumi:"name"`
@@ -89,7 +90,8 @@ func LookupTagOutput(ctx *pulumi.Context, args LookupTagOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getTag.
 type LookupTagOutputArgs struct {
-	// The ID of the tag category the tag is located in.
+	// The ID of the tag category in which the tag is
+	// located.
 	CategoryId pulumi.StringInput `pulumi:"categoryId"`
 	// The name of the tag.
 	Name pulumi.StringInput `pulumi:"name"`

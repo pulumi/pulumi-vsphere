@@ -97,7 +97,7 @@ def get_host_pci_device(class_id: Optional[str] = None,
                         vendor_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostPciDeviceResult:
     """
-    The `get_host_pci_device` data source can be used to discover the DeviceID
+    The `get_host_pci_device` data source can be used to discover the device ID
     of a vSphere host's PCI device. This can then be used with
     `VirtualMachine`'s `pci_device_id`.
 
@@ -108,8 +108,8 @@ def get_host_pci_device(class_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    host = vsphere.get_host(name="esxi1",
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
         datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
         class_id="123",
@@ -119,10 +119,9 @@ def get_host_pci_device(class_id: Optional[str] = None,
 
 
     :param str class_id: The hexadecimal PCI device class ID
-    :param str host_id: The [managed object reference
-           ID][docs-about-morefs] of a host.
-    :param str name_regex: A regular expression that will be used to match
-           the host PCI device name.
+    :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
+    :param str name_regex: A regular expression that will be used to match the
+           host PCI device name.
     :param str vendor_id: The hexadecimal PCI device vendor ID.
     """
     __args__ = dict()
@@ -152,7 +151,7 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
                                vendor_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostPciDeviceResult]:
     """
-    The `get_host_pci_device` data source can be used to discover the DeviceID
+    The `get_host_pci_device` data source can be used to discover the device ID
     of a vSphere host's PCI device. This can then be used with
     `VirtualMachine`'s `pci_device_id`.
 
@@ -163,8 +162,8 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    host = vsphere.get_host(name="esxi1",
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
         datacenter_id=datacenter.id)
     dev = vsphere.get_host_pci_device(host_id=host.id,
         class_id="123",
@@ -174,10 +173,9 @@ def get_host_pci_device_output(class_id: Optional[pulumi.Input[Optional[str]]] =
 
 
     :param str class_id: The hexadecimal PCI device class ID
-    :param str host_id: The [managed object reference
-           ID][docs-about-morefs] of a host.
-    :param str name_regex: A regular expression that will be used to match
-           the host PCI device name.
+    :param str host_id: The [managed object reference ID][docs-about-morefs] of a host.
+    :param str name_regex: A regular expression that will be used to match the
+           host PCI device name.
     :param str vendor_id: The hexadecimal PCI device vendor ID.
     """
     ...

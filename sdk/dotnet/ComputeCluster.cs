@@ -68,7 +68,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When `true`, enables DRS to use data
-        /// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Output("drsEnablePredictiveDrs")]
@@ -95,6 +95,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("drsMigrationThreshold")]
         public Output<int?> DrsMigrationThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable scalable shares for all
+        /// resource pools in the cluster. Can be one of `disabled` or
+        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// </summary>
+        [Output("drsScaleDescendantsShares")]
+        public Output<string?> DrsScaleDescendantsShares { get; private set; } = null!;
 
         /// <summary>
         /// The relative path to a folder to put this cluster in.
@@ -590,7 +598,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When `true`, enables DRS to use data
-        /// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
@@ -617,6 +625,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("drsMigrationThreshold")]
         public Input<int>? DrsMigrationThreshold { get; set; }
+
+        /// <summary>
+        /// Enable scalable shares for all
+        /// resource pools in the cluster. Can be one of `disabled` or
+        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// </summary>
+        [Input("drsScaleDescendantsShares")]
+        public Input<string>? DrsScaleDescendantsShares { get; set; }
 
         /// <summary>
         /// The relative path to a folder to put this cluster in.
@@ -1109,7 +1125,7 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// When `true`, enables DRS to use data
-        /// from [vRealize Operations Manager][ref-vsphere-vro] to make proactive DRS
+        /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
@@ -1136,6 +1152,14 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("drsMigrationThreshold")]
         public Input<int>? DrsMigrationThreshold { get; set; }
+
+        /// <summary>
+        /// Enable scalable shares for all
+        /// resource pools in the cluster. Can be one of `disabled` or
+        /// `scaleCpuAndMemoryShares`. Default: `disabled`.
+        /// </summary>
+        [Input("drsScaleDescendantsShares")]
+        public Input<string>? DrsScaleDescendantsShares { get; set; }
 
         /// <summary>
         /// The relative path to a folder to put this cluster in.

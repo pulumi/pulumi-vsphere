@@ -66,7 +66,7 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVappContainerResult:
     """
     The `VappContainer` data source can be used to discover the ID of a
-    vApp container in vSphere. This is useful to fetch the ID of a vApp container
+    vApp container in vSphere. This is useful to return the ID of a vApp container
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
 
@@ -76,14 +76,14 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    pool = vsphere.get_vapp_container(datacenter_id=datacenter.id,
-        name="vapp-container-1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_vapp_container(name="vapp-container-01",
+        datacenter_id=datacenter.id)
     ```
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the vApp container is located in.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter in which the vApp container is located.
     :param str name: The name of the vApp container. This can be a name or
            path.
     """
@@ -108,7 +108,7 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVappContainerResult]:
     """
     The `VappContainer` data source can be used to discover the ID of a
-    vApp container in vSphere. This is useful to fetch the ID of a vApp container
+    vApp container in vSphere. This is useful to return the ID of a vApp container
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
 
@@ -118,14 +118,14 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    pool = vsphere.get_vapp_container(datacenter_id=datacenter.id,
-        name="vapp-container-1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_vapp_container(name="vapp-container-01",
+        datacenter_id=datacenter.id)
     ```
 
 
-    :param str datacenter_id: The managed object reference
-           ID of the datacenter the vApp container is located in.
+    :param str datacenter_id: The managed object reference ID
+           of the datacenter in which the vApp container is located.
     :param str name: The name of the vApp container. This can be a name or
            path.
     """

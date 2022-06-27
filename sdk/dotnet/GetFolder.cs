@@ -30,7 +30,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs
         ///         {
-        ///             Path = "/dc1/datastore/folder1",
+        ///             Path = "/dc-01/datastore-01/folder-01",
         ///         }));
         ///     }
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs
         ///         {
-        ///             Path = "/dc1/datastore/folder1",
+        ///             Path = "/dc-01/datastore-01/folder-01",
         ///         }));
         ///     }
         /// 

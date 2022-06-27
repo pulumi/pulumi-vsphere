@@ -10,6 +10,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `DistributedVirtualSwitch` data source can be used to discover
+// the ID and uplink data of a of a vSphere distributed switch (VDS). This
+// can then be used with resources or data sources that require a VDS, such as the
+// `DistributedPortGroup` resource, for which
+// an example is shown below.
+//
+// > **NOTE:** This data source requires vCenter Server and is not available on
+// direct ESXi host connections.
+//
+// ## Example Usage
+//
+// The following example locates a distributed switch named `vds-01`, in the
+// datacenter `dc-01`. It then uses this distributed switch to set up a
+// `DistributedPortGroup` resource that uses the first uplink as a
+// primary uplink and the second uplink as a secondary.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+// 			Name: pulumi.StringRef("dc-01"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &GetDistributedVirtualSwitchArgs{
+// 			Name:         "vds-01",
+// 			DatacenterId: pulumi.StringRef(datacenter.Id),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
+// 			DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
+// 			ActiveUplinks: pulumi.StringArray{
+// 				pulumi.String(vds.Uplinks[0]),
+// 			},
+// 			StandbyUplinks: pulumi.StringArray{
+// 				pulumi.String(vds.Uplinks[1]),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributedVirtualSwitchArgs, opts ...pulumi.InvokeOption) (*LookupDistributedVirtualSwitchResult, error) {
 	var rv LookupDistributedVirtualSwitchResult
 	err := ctx.Invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args, &rv, opts...)
@@ -21,14 +76,12 @@ func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributed
 
 // A collection of arguments for invoking getDistributedVirtualSwitch.
 type LookupDistributedVirtualSwitchArgs struct {
-	// The managed object reference
-	// ID of the datacenter the VDS is located in. This can be
-	// omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
+	// The managed object reference ID
+	// of the datacenter the VDS is located in. This can be omitted if the search
+	// path used in `name` is an absolute path. For default datacenters, use the `id`
+	// attribute from an empty `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
-	// The name of the VDS. This can be a
-	// name or path.
+	// The name of the VDS. This can be a name or path.
 	Name string `pulumi:"name"`
 }
 
@@ -56,14 +109,12 @@ func LookupDistributedVirtualSwitchOutput(ctx *pulumi.Context, args LookupDistri
 
 // A collection of arguments for invoking getDistributedVirtualSwitch.
 type LookupDistributedVirtualSwitchOutputArgs struct {
-	// The managed object reference
-	// ID of the datacenter the VDS is located in. This can be
-	// omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
+	// The managed object reference ID
+	// of the datacenter the VDS is located in. This can be omitted if the search
+	// path used in `name` is an absolute path. For default datacenters, use the `id`
+	// attribute from an empty `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
-	// The name of the VDS. This can be a
-	// name or path.
+	// The name of the VDS. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 

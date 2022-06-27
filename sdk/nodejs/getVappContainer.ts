@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.VappContainer` data source can be used to discover the ID of a
- * vApp container in vSphere. This is useful to fetch the ID of a vApp container
+ * vApp container in vSphere. This is useful to return the ID of a vApp container
  * that you want to use to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
  *
@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const pool = datacenter.apply(datacenter => vsphere.getVappContainer({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getVappContainer({
+ *     name: "vapp-container-01",
  *     datacenterId: datacenter.id,
- *     name: "vapp-container-1",
  * }));
  * ```
  */
@@ -42,8 +42,8 @@ export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.Invok
  */
 export interface GetVappContainerArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the vApp container is located in.
+     * The managed object reference ID
+     * of the datacenter in which the vApp container is located.
      */
     datacenterId: string;
     /**
@@ -74,8 +74,8 @@ export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: 
  */
 export interface GetVappContainerOutputArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the vApp container is located in.
+     * The managed object reference ID
+     * of the datacenter in which the vApp container is located.
      */
     datacenterId: pulumi.Input<string>;
     /**

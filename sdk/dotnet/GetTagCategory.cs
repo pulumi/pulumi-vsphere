@@ -13,13 +13,13 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
-        /// that are not managed by this provider. Its attributes are exactly the same as the
+        /// that are not managed by this provider. Its attributes are the same as the
         /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source takes a name to search on. The `id` and other attributes are
-        /// then populated with the data found by the search.
+        /// the data source uses a name and category as search criteria. The `id` and other
+        /// attributes are populated with the data found by the search.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -35,7 +35,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
-        ///             Name = "test-category",
+        ///             Name = "example-category",
         ///         }));
         ///     }
         /// 
@@ -49,13 +49,13 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
-        /// that are not managed by this provider. Its attributes are exactly the same as the
+        /// that are not managed by this provider. Its attributes are the same as the
         /// `vsphere.TagCategory` resource, and, like importing,
-        /// the data source takes a name to search on. The `id` and other attributes are
-        /// then populated with the data found by the search.
+        /// the data source uses a name and category as search criteria. The `id` and other
+        /// attributes are populated with the data found by the search.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -71,7 +71,7 @@ namespace Pulumi.VSphere
         ///     {
         ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
-        ///             Name = "test-category",
+        ///             Name = "example-category",
         ///         }));
         ///     }
         /// 

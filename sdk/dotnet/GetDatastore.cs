@@ -13,9 +13,9 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.getDatastore` data source can be used to discover the ID of a
-        /// datastore in vSphere. This is useful to fetch the ID of a datastore that you
-        /// want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// vSphere datastore object. This can then be used with resources or data sources
+        /// that require a datastore. For example, to create virtual machines in using the
+        /// `vsphere.VirtualMachine` resource.
         /// 
         /// 
         /// {{% examples %}}
@@ -32,12 +32,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var datastore = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
         ///         {
+        ///             Name = "datastore-01",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "datastore1",
         ///         })));
         ///     }
         /// 
@@ -51,9 +51,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.getDatastore` data source can be used to discover the ID of a
-        /// datastore in vSphere. This is useful to fetch the ID of a datastore that you
-        /// want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// vSphere datastore object. This can then be used with resources or data sources
+        /// that require a datastore. For example, to create virtual machines in using the
+        /// `vsphere.VirtualMachine` resource.
         /// 
         /// 
         /// {{% examples %}}
@@ -70,12 +70,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var datastore = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
         ///         {
+        ///             Name = "datastore-01",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "datastore1",
         ///         })));
         ///     }
         /// 
@@ -92,11 +92,10 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the datastore is located in. This
-        /// can be omitted if the search path used in `name` is an absolute path. For
-        /// default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-        /// data source.
+        /// The managed object reference ID
+        /// of the datacenter the datastore is located in. This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters, use
+        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -115,11 +114,10 @@ namespace Pulumi.VSphere
     public sealed class GetDatastoreInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the datastore is located in. This
-        /// can be omitted if the search path used in `name` is an absolute path. For
-        /// default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-        /// data source.
+        /// The managed object reference ID
+        /// of the datacenter the datastore is located in. This can be omitted if the
+        /// search path used in `name` is an absolute path. For default datacenters, use
+        /// the `id` attribute from an empty `vsphere.Datacenter` data source.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }

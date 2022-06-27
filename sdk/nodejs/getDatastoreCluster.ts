@@ -6,12 +6,9 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
- * datastore cluster in vSphere. This is useful to fetch the ID of a datastore
- * cluster that you want to use to assign datastores to using the
- * `vsphere.NasDatastore` or
- * `vsphere.VmfsDatastore` resources, or create
- * virtual machines in using the
- * `vsphere.VirtualMachine` resource.
+ * vSphere datastore cluster object. This can then be used with resources or data sources
+ * that require a datastore. For example, to assign datastores using the
+ * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
  *
  * ## Example Usage
  *
@@ -19,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const datastoreCluster = vsphere_datacenter_dc.id.apply(id => vsphere.getDatastoreCluster({
- *     datacenterId: id,
- *     name: "datastore-cluster1",
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastoreCluster = datacenter.then(datacenter => vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster-01",
+ *     datacenterId: datacenter.id,
  * }));
  * ```
  */

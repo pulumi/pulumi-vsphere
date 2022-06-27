@@ -13,8 +13,8 @@ import (
 // The `getNetwork` data source can be used to discover the ID of a network
 // in vSphere. This can be any network that can be used as the backing for a
 // network interface for `VirtualMachine` or any other vSphere resource
-// that requires a network. This includes standard (host-based) port groups, DVS
-// port groups, or opaque networks such as those managed by NSX.
+// that requires a network. This includes standard (host-based) port groups,
+// distributed port groups, or opaque networks such as those managed by NSX.
 //
 // ## Example Usage
 //
@@ -29,14 +29,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.GetNetwork(ctx, &GetNetworkArgs{
+// 			Name:         "VM Network",
 // 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 			Name:         "test-net",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,16 +56,15 @@ func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNetwork.
 type GetNetworkArgs struct {
-	// The managed object reference
-	// ID of the datacenter the network is located in. This can
-	// be omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
+	// The managed object reference ID
+	// of the datacenter the network is located in. This can be omitted if the
+	// search path used in `name` is an absolute path. For default datacenters,
+	// use the `id` attribute from an empty `Datacenter` data source.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// For distributed port group type
-	// network objects, the ID of the distributed virtual switch the given port group
-	// belongs to. It is useful to differentiate port groups with same name using the
-	// Distributed virtual switch ID.
+	// network objects, the ID of the distributed virtual switch for which the port
+	// group belongs. It is useful to differentiate port groups with same name
+	// using the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid *string `pulumi:"distributedVirtualSwitchUuid"`
 	// The name of the network. This can be a name or path.
 	Name string `pulumi:"name"`
@@ -96,16 +95,15 @@ func GetNetworkOutput(ctx *pulumi.Context, args GetNetworkOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNetwork.
 type GetNetworkOutputArgs struct {
-	// The managed object reference
-	// ID of the datacenter the network is located in. This can
-	// be omitted if the search path used in `name` is an absolute path. For default
-	// datacenters, use the id attribute from an empty `Datacenter` data
-	// source.
+	// The managed object reference ID
+	// of the datacenter the network is located in. This can be omitted if the
+	// search path used in `name` is an absolute path. For default datacenters,
+	// use the `id` attribute from an empty `Datacenter` data source.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// For distributed port group type
-	// network objects, the ID of the distributed virtual switch the given port group
-	// belongs to. It is useful to differentiate port groups with same name using the
-	// Distributed virtual switch ID.
+	// network objects, the ID of the distributed virtual switch for which the port
+	// group belongs. It is useful to differentiate port groups with same name
+	// using the distributed virtual switch ID.
 	DistributedVirtualSwitchUuid pulumi.StringPtrInput `pulumi:"distributedVirtualSwitchUuid"`
 	// The name of the network. This can be a name or path.
 	Name pulumi.StringInput `pulumi:"name"`

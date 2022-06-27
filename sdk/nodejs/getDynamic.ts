@@ -7,10 +7,9 @@ import * as utilities from "./utilities";
 /**
  * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
  *
- * The `vsphere.getDynamic` data source can be used to get the [managed object
- *   reference ID][docs-about-morefs] of any tagged managed object in vCenter
- *   by providing a list of tag IDs and an optional regular expression to filter
- *   objects by name.
+ * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+ * of any tagged managed object in vCenter Server by providing a list of tag IDs
+ * and an optional regular expression to filter objects by name.
  *
  * ## Example Usage
  *
@@ -18,17 +17,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const cat = vsphere.getTagCategory({
+ * const category = vsphere.getTagCategory({
  *     name: "SomeCategory",
  * });
- * const tag1 = cat.then(cat => vsphere.getTag({
+ * const tag1 = vsphere.getTag({
  *     name: "FirstTag",
- *     categoryId: cat.id,
- * }));
- * const tag2 = cat.then(cat => vsphere.getTag({
+ *     categoryId: data.vsphere_tag_category.cat.id,
+ * });
+ * const tag2 = vsphere.getTag({
  *     name: "SecondTag",
- *     categoryId: cat.id,
- * }));
+ *     categoryId: data.vsphere_tag_category.cat.id,
+ * });
  * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
  *     filters: [
  *         tag1.id,

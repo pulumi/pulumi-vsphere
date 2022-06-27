@@ -10,8 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Role` data source can be used to discover the id and privileges associated
-// with a role given its name or display label in vsphere UI.
+// The `Role` data source can be used to discover the `id` and privileges associated
+// with a role given its name or display label.
 //
 // ## Example Usage
 //
@@ -26,7 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vsphere.LookupRole(ctx, &GetRoleArgs{
-// 			Label: "Virtual machine user (sample)",
+// 			Label: "Terraform to vSphere Integration Role",
 // 		}, nil)
 // 		if err != nil {
 // 			return err

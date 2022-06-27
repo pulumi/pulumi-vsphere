@@ -21,6 +21,9 @@ namespace Pulumi.VSphere.Inputs
         [Input("hwClockUtc")]
         public Input<bool>? HwClockUtc { get; set; }
 
+        [Input("scriptText")]
+        public Input<string>? ScriptText { get; set; }
+
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 

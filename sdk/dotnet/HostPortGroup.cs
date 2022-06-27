@@ -10,17 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     /// <summary>
-    /// The `vsphere.HostPortGroup` resource can be used to manage vSphere standard
-    /// port groups on an ESXi host. These port groups are connected to standard
-    /// virtual switches, which can be managed by the
-    /// `vsphere.HostVirtualSwitch` resource.
+    /// The `vsphere.HostPortGroup` resource can be used to manage port groups on
+    /// ESXi hosts. These port groups are connected to standard switches, which
+    /// can be managed by the `vsphere.HostVirtualSwitch`
+    /// resource.
     /// 
-    /// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
+    /// For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
     /// 
     /// [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
     /// 
     /// ## Example Usage
-    /// ### Create a virtual switch and bind a port group to it
+    /// 
+    /// **Create a Virtual Switch and Bind a Port Group:**
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,24 +33,24 @@ namespace Pulumi.VSphere
     ///     {
     ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
     ///         {
-    ///             Name = "dc1",
+    ///             Name = "dc-01",
     ///         }));
-    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
     ///         {
+    ///             Name = "esxi-01.example.com",
     ///             DatacenterId = datacenter.Id,
-    ///             Name = "esxi1",
     ///         })));
-    ///         var @switch = new VSphere.HostVirtualSwitch("switch", new VSphere.HostVirtualSwitchArgs
+    ///         var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new VSphere.HostVirtualSwitchArgs
     ///         {
-    ///             ActiveNics = 
-    ///             {
-    ///                 "vmnic0",
-    ///             },
-    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             HostSystemId = host.Apply(host =&gt; host.Id),
     ///             NetworkAdapters = 
     ///             {
     ///                 "vmnic0",
     ///                 "vmnic1",
+    ///             },
+    ///             ActiveNics = 
+    ///             {
+    ///                 "vmnic0",
     ///             },
     ///             StandbyNics = 
     ///             {
@@ -58,20 +59,21 @@ namespace Pulumi.VSphere
     ///         });
     ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
     ///         {
-    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
-    ///             VirtualSwitchName = @switch.Name,
+    ///             HostSystemId = host.Apply(host =&gt; host.Id),
+    ///             VirtualSwitchName = hostVirtualSwitch.Name,
     ///         });
     ///     }
     /// 
     /// }
     /// ```
-    /// ### Create a port group with VLAN set and some overrides
+    /// 
+    /// **Create a Port Group with a VLAN and ab Override:**
     /// 
     /// This example sets the trunk mode VLAN (`4095`, which passes through all tags)
     /// and sets
     /// `allow_promiscuous`
-    /// to ensure that all traffic is seen on the port. The latter setting overrides
-    /// the implicit default of `false` set on the virtual switch.
+    /// to ensure that all traffic is seen on the port. The setting overrides
+    /// the implicit default of `false` set on the standard switch.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -83,24 +85,24 @@ namespace Pulumi.VSphere
     ///     {
     ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
     ///         {
-    ///             Name = "dc1",
+    ///             Name = "dc-01",
     ///         }));
-    ///         var esxiHost = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
+    ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
     ///         {
+    ///             Name = "esxi-01.example.com",
     ///             DatacenterId = datacenter.Id,
-    ///             Name = "esxi1",
     ///         })));
-    ///         var @switch = new VSphere.HostVirtualSwitch("switch", new VSphere.HostVirtualSwitchArgs
+    ///         var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new VSphere.HostVirtualSwitchArgs
     ///         {
-    ///             ActiveNics = 
-    ///             {
-    ///                 "vmnic0",
-    ///             },
-    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
+    ///             HostSystemId = host.Apply(host =&gt; host.Id),
     ///             NetworkAdapters = 
     ///             {
     ///                 "vmnic0",
     ///                 "vmnic1",
+    ///             },
+    ///             ActiveNics = 
+    ///             {
+    ///                 "vmnic0",
     ///             },
     ///             StandbyNics = 
     ///             {
@@ -109,10 +111,10 @@ namespace Pulumi.VSphere
     ///         });
     ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
     ///         {
-    ///             AllowPromiscuous = true,
-    ///             HostSystemId = esxiHost.Apply(esxiHost =&gt; esxiHost.Id),
-    ///             VirtualSwitchName = @switch.Name,
+    ///             HostSystemId = host.Apply(host =&gt; host.Id),
+    ///             VirtualSwitchName = hostVirtualSwitch.Name,
     ///             VlanId = 4095,
+    ///             AllowPromiscuous = true,
     ///         });
     ///     }
     /// 
@@ -120,10 +122,8 @@ namespace Pulumi.VSphere
     /// ```
     /// ## Importing
     /// 
-    /// An existing host port group can be [imported][docs-import] into this resource
+    /// An existing host port group can be imported into this resource
     /// using the host port group's ID. An example is below:
-    /// 
-    /// [docs-import]: /docs/import/index.html
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -137,7 +137,7 @@ namespace Pulumi.VSphere
     /// }
     /// ```
     /// 
-    /// The above would import the `Management` host port group from host with ID `host-123`.
+    /// The above would import the `management` host port group from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/hostPortGroup:HostPortGroup")]
     public partial class HostPortGroup : Pulumi.CustomResource

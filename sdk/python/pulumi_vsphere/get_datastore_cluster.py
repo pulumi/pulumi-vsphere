@@ -66,12 +66,9 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreClusterResult:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
-    datastore cluster in vSphere. This is useful to fetch the ID of a datastore
-    cluster that you want to use to assign datastores to using the
-    `NasDatastore` or
-    `VmfsDatastore` resources, or create
-    virtual machines in using the
-    `VirtualMachine` resource.
+    vSphere datastore cluster object. This can then be used with resources or data sources
+    that require a datastore. For example, to assign datastores using the
+    `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
 
     ## Example Usage
 
@@ -79,9 +76,9 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="datastore-cluster1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
+        datacenter_id=datacenter.id)
     ```
 
 
@@ -113,12 +110,9 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreClusterResult]:
     """
     The `DatastoreCluster` data source can be used to discover the ID of a
-    datastore cluster in vSphere. This is useful to fetch the ID of a datastore
-    cluster that you want to use to assign datastores to using the
-    `NasDatastore` or
-    `VmfsDatastore` resources, or create
-    virtual machines in using the
-    `VirtualMachine` resource.
+    vSphere datastore cluster object. This can then be used with resources or data sources
+    that require a datastore. For example, to assign datastores using the
+    `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
 
     ## Example Usage
 
@@ -126,9 +120,9 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name="dc1")
-    datastore_cluster = vsphere.get_datastore_cluster(datacenter_id=data["vsphere_datacenter"]["dc"]["id"],
-        name="datastore-cluster1")
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
+        datacenter_id=datacenter.id)
     ```
 
 

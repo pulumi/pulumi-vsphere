@@ -18,8 +18,8 @@ namespace Pulumi.VSphere
         /// category to search on. The `id` and other attributes are then populated with
         /// the data found by the search.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -35,12 +35,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
-        ///             Name = "test-category",
+        ///             Name = "example-category",
         ///         }));
         ///         var tag = category.Apply(category =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
+        ///             Name = "example-tag",
         ///             CategoryId = category.Id,
-        ///             Name = "test-tag",
         ///         })));
         ///     }
         /// 
@@ -59,8 +59,8 @@ namespace Pulumi.VSphere
         /// category to search on. The `id` and other attributes are then populated with
         /// the data found by the search.
         /// 
-        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
-        /// requires vCenter 6.0 or higher.
+        /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+        /// requires vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -76,12 +76,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
-        ///             Name = "test-category",
+        ///             Name = "example-category",
         ///         }));
         ///         var tag = category.Apply(category =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
+        ///             Name = "example-tag",
         ///             CategoryId = category.Id,
-        ///             Name = "test-tag",
         ///         })));
         ///     }
         /// 
@@ -98,7 +98,8 @@ namespace Pulumi.VSphere
     public sealed class GetTagArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the tag category the tag is located in.
+        /// The ID of the tag category in which the tag is
+        /// located.
         /// </summary>
         [Input("categoryId", required: true)]
         public string CategoryId { get; set; } = null!;
@@ -117,7 +118,8 @@ namespace Pulumi.VSphere
     public sealed class GetTagInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the tag category the tag is located in.
+        /// The ID of the tag category in which the tag is
+        /// located.
         /// </summary>
         [Input("categoryId", required: true)]
         public Input<string> CategoryId { get; set; } = null!;

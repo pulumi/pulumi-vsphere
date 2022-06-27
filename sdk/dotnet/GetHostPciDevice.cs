@@ -12,8 +12,8 @@ namespace Pulumi.VSphere
     public static class GetHostPciDevice
     {
         /// <summary>
-        /// The `vsphere.getHostPciDevice` data source can be used to discover the DeviceID
-        /// of a vSphere host's PCI device. This can then be used with 
+        /// The `vsphere.getHostPciDevice` data source can be used to discover the device ID
+        /// of a vSphere host's PCI device. This can then be used with
         /// `vsphere.VirtualMachine`'s `pci_device_id`.
         /// 
         /// {{% examples %}}
@@ -31,11 +31,11 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
-        ///             Name = "esxi1",
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
         ///         })));
         ///         var dev = host.Apply(host =&gt; Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs
@@ -53,11 +53,11 @@ namespace Pulumi.VSphere
         ///  
         ///  ```hcl
         ///  data "vsphere_datacenter" "datacenter" {
-        ///    name = "dc1"
+        ///    name = "dc-01"
         ///  }
         ///  
         ///  data "vsphere_host" "host" {
-        ///    name          = "esxi1"
+        ///    name          = "esxi-01.example.com"
         ///    datacenter_id = data.vsphere_datacenter.datacenter.id
         ///  }
         ///  
@@ -72,8 +72,8 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.getHostPciDevice` data source can be used to discover the DeviceID
-        /// of a vSphere host's PCI device. This can then be used with 
+        /// The `vsphere.getHostPciDevice` data source can be used to discover the device ID
+        /// of a vSphere host's PCI device. This can then be used with
         /// `vsphere.VirtualMachine`'s `pci_device_id`.
         /// 
         /// {{% examples %}}
@@ -91,11 +91,11 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
         ///         {
-        ///             Name = "esxi1",
+        ///             Name = "esxi-01.example.com",
         ///             DatacenterId = datacenter.Id,
         ///         })));
         ///         var dev = host.Apply(host =&gt; Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs
@@ -113,11 +113,11 @@ namespace Pulumi.VSphere
         ///  
         ///  ```hcl
         ///  data "vsphere_datacenter" "datacenter" {
-        ///    name = "dc1"
+        ///    name = "dc-01"
         ///  }
         ///  
         ///  data "vsphere_host" "host" {
-        ///    name          = "esxi1"
+        ///    name          = "esxi-01.example.com"
         ///    datacenter_id = data.vsphere_datacenter.datacenter.id
         ///  }
         ///  
@@ -142,15 +142,14 @@ namespace Pulumi.VSphere
         public string? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of a host.
         /// </summary>
         [Input("hostId", required: true)]
         public string HostId { get; set; } = null!;
 
         /// <summary>
-        /// A regular expression that will be used to match
-        /// the host PCI device name.
+        /// A regular expression that will be used to match the
+        /// host PCI device name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -175,15 +174,14 @@ namespace Pulumi.VSphere
         public Input<string>? ClassId { get; set; }
 
         /// <summary>
-        /// The [managed object reference
-        /// ID][docs-about-morefs] of a host.
+        /// The [managed object reference ID][docs-about-morefs] of a host.
         /// </summary>
         [Input("hostId", required: true)]
         public Input<string> HostId { get; set; } = null!;
 
         /// <summary>
-        /// A regular expression that will be used to match
-        /// the host PCI device name.
+        /// A regular expression that will be used to match the
+        /// host PCI device name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }

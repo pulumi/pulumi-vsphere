@@ -127,7 +127,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="alternateGuestName")
     def alternate_guest_name(self) -> str:
         """
-        The guest name for the operating system .
+        An alternate guest operating system name.
         """
         return pulumi.get(self, "alternate_guest_name")
 
@@ -135,7 +135,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter
     def annotation(self) -> str:
         """
-        User-provided description of the virtual machine.
+        A description of the virtual machine.
         """
         return pulumi.get(self, "annotation")
 
@@ -143,7 +143,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="cpuHotAddEnabled")
     def cpu_hot_add_enabled(self) -> bool:
         """
-        Allow CPUs to be added to this virtual machine while it is running.
+        Allow CPUs to be added to the virtual machine while
+        powered on.
         """
         return pulumi.get(self, "cpu_hot_add_enabled")
 
@@ -151,7 +152,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="cpuHotRemoveEnabled")
     def cpu_hot_remove_enabled(self) -> bool:
         """
-        Allow CPUs to be added to this virtual machine while it is running.
+        Allow CPUs to be removed from the virtual machine
+        while powered on.
         """
         return pulumi.get(self, "cpu_hot_remove_enabled")
 
@@ -184,7 +186,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter
     def firmware(self) -> str:
         """
-        The firmware interface to use on the virtual machine.
+        The firmware to use on the virtual machine.
         """
         return pulumi.get(self, "firmware")
 
@@ -197,7 +199,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="guestId")
     def guest_id(self) -> str:
         """
-        The guest ID for the operating system
+        The ID for the guest operating system
         """
         return pulumi.get(self, "guest_id")
 
@@ -238,7 +240,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter
     def memory(self) -> int:
         """
-        The size of the virtual machine's memory, in MB.
+        The size of the virtual machine memory, in MB.
         """
         return pulumi.get(self, "memory")
 
@@ -246,7 +248,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="memoryHotAddEnabled")
     def memory_hot_add_enabled(self) -> bool:
         """
-        Allow memory to be added to this virtual machine while it is running.
+        Allow memory to be added to the virtual machine
+        while powered on.
         """
         return pulumi.get(self, "memory_hot_add_enabled")
 
@@ -259,7 +262,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="nestedHvEnabled")
     def nested_hv_enabled(self) -> bool:
         """
-        Enable nested hardware virtualization on this virtual machine, facilitating nested virtualization in the guest.
+        Enable nested hardware virtualization on the virtual
+        machine, facilitating nested virtualization in the guest.
         """
         return pulumi.get(self, "nested_hv_enabled")
 
@@ -267,7 +271,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="numCoresPerSocket")
     def num_cores_per_socket(self) -> int:
         """
-        The number of cores to distribute amongst the CPUs in this virtual machine.
+        The number of cores per virtual CPU in the virtual
+        machine.
         """
         return pulumi.get(self, "num_cores_per_socket")
 
@@ -275,7 +280,7 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="numCpus")
     def num_cpus(self) -> int:
         """
-        The number of virtual processors to assign to this virtual machine.
+        The number of virtual CPUs to assign to the virtual machine.
         """
         return pulumi.get(self, "num_cpus")
 
@@ -313,7 +318,8 @@ class GetOvfVmTemplateResult:
     @pulumi.getter(name="swapPlacementPolicy")
     def swap_placement_policy(self) -> str:
         """
-        The swap file placement policy for this virtual machine.
+        The swap file placement policy for the virtual
+        machine.
         """
         return pulumi.get(self, "swap_placement_policy")
 
@@ -374,42 +380,120 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
                         resource_pool_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOvfVmTemplateResult:
     """
-    The `get_ovf_vm_template` data source can be used to submit an OVF to vSphere and extract its hardware
-    settings in a form that can be then used as inputs for a `VirtualMachine` resource.
+    The `get_ovf_vm_template` data source can be used to submit an OVF to
+    vSphere and extract its hardware settings in a form that can be then used as
+    inputs for a `VirtualMachine` resource.
 
-    ## Example Usage
+    ## Remote OVF/OVA Source
 
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
+    data "vsphere_ovf_vm_template" "ovfRemote" {
+      name              = "Nested-ESXi-7.0-Terraform-Deploy-1"
+      disk_provisioning = "thin"
+      resource_pool_id  = data.vsphere_resource_pool.default.id
+      datastore_id      = data.vsphere_datastore.datastore.id
+      host_system_id    = data.vsphere_host.host.id
+      remote_ovf_url    = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+      ovf_network_map = {
+        "VM Network" : data.vsphere_network.network.id
+      }
+    }
 
-    ovf = vsphere.get_ovf_vm_template(name="testOVF",
-        resource_pool_id=vsphere_resource_pool["rp"]["id"],
-        datastore_id=data["vsphere_datastore"]["ds"]["id"],
-        host_system_id=data["vsphere_host"]["hs"]["id"],
-        remote_ovf_url="https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
-        ovf_network_map={
-            "Network 1": data["vsphere_network"]["net"]["id"],
-        })
-    ```
+    ## Local OVF/OVA Source
+
+    data "vsphere_ovf_vm_template" "ovfLocal" {
+      name              = "Nested-ESXi-7.0-Terraform-Deploy-2"
+      disk_provisioning = "thin"
+      resource_pool_id  = data.vsphere_resource_pool.default.id
+      datastore_id      = data.vsphere_datastore.datastore.id
+      host_system_id    = data.vsphere_host.host.id
+      local_ovf_path    = "/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+      ovf_network_map = {
+        "VM Network" : data.vsphere_network.network.id
+      }
+    }
+
+    ## Deployment of VM from Remote OVF
+
+    resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
+      name                 = "Nested-ESXi-7.0-Terraform-Deploy-1"
+      datacenter_id        = data.vsphere_datacenter.datacenter.id
+      datastore_id         = data.vsphere_datastore.datastore.id
+      host_system_id       = data.vsphere_host.host.id
+      resource_pool_id     = data.vsphere_resource_pool.default.id
+      num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
+      num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
+      memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
+      guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
+      firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
+      scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
+      nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
+      dynamic "network_interface" {
+        for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        content {
+          network_id = network_interface.value
+        }
+      }
+      wait_for_guest_net_timeout = 0
+      wait_for_guest_ip_timeout  = 0
+
+      ovf_deploy {
+        allow_unverified_ssl_cert = false
+        remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
+        disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
+        ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+      }
+
+      vapp {
+        properties = {
+          "guestinfo.hostname"  = "nested-esxi-01.example.com",
+          "guestinfo.ipaddress" = "172.16.11.101",
+          "guestinfo.netmask"   = "255.255.255.0",
+          "guestinfo.gateway"   = "172.16.11.1",
+          "guestinfo.dns"       = "172.16.11.4",
+          "guestinfo.domain"    = "example.com",
+          "guestinfo.ntp"       = "ntp.example.com",
+          "guestinfo.password"  = "VMware1!",
+          "guestinfo.ssh"       = "True"
+        }
+      }
+
+      lifecycle {
+        ignore_changes = [
+          annotation,
+          disk[0].io_share_count,
+          disk[1].io_share_count,
+          disk[2].io_share_count,
+          vapp[0].properties,
+        ]
+      }
+    }
 
 
-    :param bool allow_unverified_ssl_cert: Allow unverified ssl certificates while deploying ovf/ova from url.
-    :param str datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-    :param str deployment_option: The key of the chosen deployment option. If empty, the default option is chosen.
-    :param str disk_provisioning: The disk provisioning. If set, all the disks in the deployed OVF will have
-           the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
-    :param str folder: The name of the folder to locate the virtual machine in.
-    :param str host_system_id: The ID of an optional host system to pin the virtual machine to.
+    :param bool allow_unverified_ssl_cert: Allow unverified SSL certificates
+           when deploying OVF/OVA from a URL.
+    :param str datastore_id: The ID of the virtual machine's datastore. The
+           virtual machine configuration is placed here, along with any virtual disks
+           that are created without datastores.
+    :param str deployment_option: The key of the chosen deployment option. If
+           empty, the default option is chosen.
+    :param str disk_provisioning: The disk provisioning type. If set, all the
+           disks in the deployed OVA/OVF will have the same specified disk type. Can be
+           one of `thin`, `flat`, `thick` or `sameAsSource`.
+    :param str folder: The name of the folder in which to place the virtual
+           machine.
+    :param str host_system_id: The ID of the ESXi host system to deploy the
+           virtual machine.
     :param str ip_allocation_policy: The IP allocation policy.
     :param str ip_protocol: The IP protocol.
-    :param str local_ovf_path: The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-           make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+    :param str local_ovf_path: The absolute path to the OVF/OVA file on the
+           local system. When deploying from an OVF, ensure all necessary files such as
+           the `.vmdk` files are present in the same directory as the OVF.
     :param str name: Name of the virtual machine to create.
-    :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-           VI infrastructure.
-    :param str remote_ovf_url: URL to the remote ovf/ova file to be deployed.
-    :param str resource_pool_id: The ID of a resource pool to put the virtual machine in.
+    :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers
+           from the OVF descriptor to network UUID in the environment.
+    :param str remote_ovf_url: URL of the remote OVF/OVA file to be deployed.
+    :param str resource_pool_id: The ID of a resource pool in which to place
+           the virtual machine.
     """
     __args__ = dict()
     __args__['allowUnverifiedSslCert'] = allow_unverified_ssl_cert
@@ -484,41 +568,119 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
                                resource_pool_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
     """
-    The `get_ovf_vm_template` data source can be used to submit an OVF to vSphere and extract its hardware
-    settings in a form that can be then used as inputs for a `VirtualMachine` resource.
+    The `get_ovf_vm_template` data source can be used to submit an OVF to
+    vSphere and extract its hardware settings in a form that can be then used as
+    inputs for a `VirtualMachine` resource.
 
-    ## Example Usage
+    ## Remote OVF/OVA Source
 
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
+    data "vsphere_ovf_vm_template" "ovfRemote" {
+      name              = "Nested-ESXi-7.0-Terraform-Deploy-1"
+      disk_provisioning = "thin"
+      resource_pool_id  = data.vsphere_resource_pool.default.id
+      datastore_id      = data.vsphere_datastore.datastore.id
+      host_system_id    = data.vsphere_host.host.id
+      remote_ovf_url    = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+      ovf_network_map = {
+        "VM Network" : data.vsphere_network.network.id
+      }
+    }
 
-    ovf = vsphere.get_ovf_vm_template(name="testOVF",
-        resource_pool_id=vsphere_resource_pool["rp"]["id"],
-        datastore_id=data["vsphere_datastore"]["ds"]["id"],
-        host_system_id=data["vsphere_host"]["hs"]["id"],
-        remote_ovf_url="https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova",
-        ovf_network_map={
-            "Network 1": data["vsphere_network"]["net"]["id"],
-        })
-    ```
+    ## Local OVF/OVA Source
+
+    data "vsphere_ovf_vm_template" "ovfLocal" {
+      name              = "Nested-ESXi-7.0-Terraform-Deploy-2"
+      disk_provisioning = "thin"
+      resource_pool_id  = data.vsphere_resource_pool.default.id
+      datastore_id      = data.vsphere_datastore.datastore.id
+      host_system_id    = data.vsphere_host.host.id
+      local_ovf_path    = "/Volume/Storage/OVA/Nested_ESXi7.0u3_Appliance_Template_v1.ova"
+      ovf_network_map = {
+        "VM Network" : data.vsphere_network.network.id
+      }
+    }
+
+    ## Deployment of VM from Remote OVF
+
+    resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
+      name                 = "Nested-ESXi-7.0-Terraform-Deploy-1"
+      datacenter_id        = data.vsphere_datacenter.datacenter.id
+      datastore_id         = data.vsphere_datastore.datastore.id
+      host_system_id       = data.vsphere_host.host.id
+      resource_pool_id     = data.vsphere_resource_pool.default.id
+      num_cpus             = data.vsphere_ovf_vm_template.ovfRemote.num_cpus
+      num_cores_per_socket = data.vsphere_ovf_vm_template.ovfRemote.num_cores_per_socket
+      memory               = data.vsphere_ovf_vm_template.ovfRemote.memory
+      guest_id             = data.vsphere_ovf_vm_template.ovfRemote.guest_id
+      firmware             = data.vsphere_ovf_vm_template.ovfRemote.firmware
+      scsi_type            = data.vsphere_ovf_vm_template.ovfRemote.scsi_type
+      nested_hv_enabled    = data.vsphere_ovf_vm_template.ovfRemote.nested_hv_enabled
+      dynamic "network_interface" {
+        for_each = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+        content {
+          network_id = network_interface.value
+        }
+      }
+      wait_for_guest_net_timeout = 0
+      wait_for_guest_ip_timeout  = 0
+
+      ovf_deploy {
+        allow_unverified_ssl_cert = false
+        remote_ovf_url            = data.vsphere_ovf_vm_template.ovfRemote.remote_ovf_url
+        disk_provisioning         = data.vsphere_ovf_vm_template.ovfRemote.disk_provisioning
+        ovf_network_map           = data.vsphere_ovf_vm_template.ovfRemote.ovf_network_map
+      }
+
+      vapp {
+        properties = {
+          "guestinfo.hostname"  = "nested-esxi-01.example.com",
+          "guestinfo.ipaddress" = "172.16.11.101",
+          "guestinfo.netmask"   = "255.255.255.0",
+          "guestinfo.gateway"   = "172.16.11.1",
+          "guestinfo.dns"       = "172.16.11.4",
+          "guestinfo.domain"    = "example.com",
+          "guestinfo.ntp"       = "ntp.example.com",
+          "guestinfo.password"  = "VMware1!",
+          "guestinfo.ssh"       = "True"
+        }
+      }
+
+      lifecycle {
+        ignore_changes = [
+          annotation,
+          disk[0].io_share_count,
+          disk[1].io_share_count,
+          disk[2].io_share_count,
+          vapp[0].properties,
+        ]
+      }
+    }
 
 
-    :param bool allow_unverified_ssl_cert: Allow unverified ssl certificates while deploying ovf/ova from url.
-    :param str datastore_id: The ID of the virtual machine's datastore. The virtual machine configuration is placed here, along with any virtual disks that are created without datastores.
-    :param str deployment_option: The key of the chosen deployment option. If empty, the default option is chosen.
-    :param str disk_provisioning: The disk provisioning. If set, all the disks in the deployed OVF will have
-           the same specified disk type (accepted values {thin, flat, thick, sameAsSource}).
-    :param str folder: The name of the folder to locate the virtual machine in.
-    :param str host_system_id: The ID of an optional host system to pin the virtual machine to.
+    :param bool allow_unverified_ssl_cert: Allow unverified SSL certificates
+           when deploying OVF/OVA from a URL.
+    :param str datastore_id: The ID of the virtual machine's datastore. The
+           virtual machine configuration is placed here, along with any virtual disks
+           that are created without datastores.
+    :param str deployment_option: The key of the chosen deployment option. If
+           empty, the default option is chosen.
+    :param str disk_provisioning: The disk provisioning type. If set, all the
+           disks in the deployed OVA/OVF will have the same specified disk type. Can be
+           one of `thin`, `flat`, `thick` or `sameAsSource`.
+    :param str folder: The name of the folder in which to place the virtual
+           machine.
+    :param str host_system_id: The ID of the ESXi host system to deploy the
+           virtual machine.
     :param str ip_allocation_policy: The IP allocation policy.
     :param str ip_protocol: The IP protocol.
-    :param str local_ovf_path: The absolute path to the ovf/ova file in the local system. While deploying from ovf,
-           make sure the other necessary files like the .vmdk files are also in the same directory as the given ovf file.
+    :param str local_ovf_path: The absolute path to the OVF/OVA file on the
+           local system. When deploying from an OVF, ensure all necessary files such as
+           the `.vmdk` files are present in the same directory as the OVF.
     :param str name: Name of the virtual machine to create.
-    :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers from the ovf descriptor to network UUID in the
-           VI infrastructure.
-    :param str remote_ovf_url: URL to the remote ovf/ova file to be deployed.
-    :param str resource_pool_id: The ID of a resource pool to put the virtual machine in.
+    :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers
+           from the OVF descriptor to network UUID in the environment.
+    :param str remote_ovf_url: URL of the remote OVF/OVA file to be deployed.
+    :param str resource_pool_id: The ID of a resource pool in which to place
+           the virtual machine.
     """
     ...

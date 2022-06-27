@@ -80,8 +80,8 @@ def get_tag(category_id: Optional[str] = None,
     category to search on. The `id` and other attributes are then populated with
     the data found by the search.
 
-    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
 
     ## Example Usage
 
@@ -89,13 +89,14 @@ def get_tag(category_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    category = vsphere.get_tag_category(name="test-category")
-    tag = vsphere.get_tag(category_id=category.id,
-        name="test-tag")
+    category = vsphere.get_tag_category(name="example-category")
+    tag = vsphere.get_tag(name="example-tag",
+        category_id=category.id)
     ```
 
 
-    :param str category_id: The ID of the tag category the tag is located in.
+    :param str category_id: The ID of the tag category in which the tag is
+           located.
     :param str name: The name of the tag.
     """
     __args__ = dict()
@@ -125,8 +126,8 @@ def get_tag_output(category_id: Optional[pulumi.Input[str]] = None,
     category to search on. The `id` and other attributes are then populated with
     the data found by the search.
 
-    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
 
     ## Example Usage
 
@@ -134,13 +135,14 @@ def get_tag_output(category_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    category = vsphere.get_tag_category(name="test-category")
-    tag = vsphere.get_tag(category_id=category.id,
-        name="test-tag")
+    category = vsphere.get_tag_category(name="example-category")
+    tag = vsphere.get_tag(name="example-tag",
+        category_id=category.id)
     ```
 
 
-    :param str category_id: The ID of the tag category the tag is located in.
+    :param str category_id: The ID of the tag category in which the tag is
+           located.
     :param str name: The name of the tag.
     """
     ...

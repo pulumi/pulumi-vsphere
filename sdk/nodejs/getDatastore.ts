@@ -6,8 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.getDatastore` data source can be used to discover the ID of a
- * datastore in vSphere. This is useful to fetch the ID of a datastore that you
- * want to use to create virtual machines in using the
+ * vSphere datastore object. This can then be used with resources or data sources
+ * that require a datastore. For example, to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
  *
  * ## Example Usage
@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const datastore = datacenter.apply(datacenter => vsphere.getDatastore({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
  *     datacenterId: datacenter.id,
- *     name: "datastore1",
  * }));
  * ```
  */
@@ -42,11 +42,10 @@ export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetDatastoreArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the datastore is located in. This
-     * can be omitted if the search path used in `name` is an absolute path. For
-     * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-     * data source.
+     * The managed object reference ID
+     * of the datacenter the datastore is located in. This can be omitted if the
+     * search path used in `name` is an absolute path. For default datacenters, use
+     * the `id` attribute from an empty `vsphere.Datacenter` data source.
      */
     datacenterId?: string;
     /**
@@ -76,11 +75,10 @@ export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.I
  */
 export interface GetDatastoreOutputArgs {
     /**
-     * The managed object reference
-     * ID of the datacenter the datastore is located in. This
-     * can be omitted if the search path used in `name` is an absolute path. For
-     * default datacenters, use the id attribute from an empty `vsphere.Datacenter`
-     * data source.
+     * The managed object reference ID
+     * of the datacenter the datastore is located in. This can be omitted if the
+     * search path used in `name` is an absolute path. For default datacenters, use
+     * the `id` attribute from an empty `vsphere.Datacenter` data source.
      */
     datacenterId?: pulumi.Input<string>;
     /**

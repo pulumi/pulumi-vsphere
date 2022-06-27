@@ -11,17 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `HostPortGroup` resource can be used to manage vSphere standard
-// port groups on an ESXi host. These port groups are connected to standard
-// virtual switches, which can be managed by the
-// `HostVirtualSwitch` resource.
+// The `HostPortGroup` resource can be used to manage port groups on
+// ESXi hosts. These port groups are connected to standard switches, which
+// can be managed by the `HostVirtualSwitch`
+// resource.
 //
-// For an overview on vSphere networking concepts, see [this page][ref-vsphere-net-concepts].
+// For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 //
 // [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 //
 // ## Example Usage
-// ### Create a virtual switch and bind a port group to it
+//
+// **Create a Virtual Switch and Bind a Port Group:**
 //
 // ```go
 // package main
@@ -34,26 +35,26 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
+// 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
+// 			Name:         pulumi.StringRef("esxi-01.example.com"),
 // 			DatacenterId: datacenter.Id,
-// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
-// 			ActiveNics: pulumi.StringArray{
-// 				pulumi.String("vmnic0"),
-// 			},
-// 			HostSystemId: pulumi.String(esxiHost.Id),
+// 		hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
+// 			HostSystemId: pulumi.String(host.Id),
 // 			NetworkAdapters: pulumi.StringArray{
 // 				pulumi.String("vmnic0"),
 // 				pulumi.String("vmnic1"),
+// 			},
+// 			ActiveNics: pulumi.StringArray{
+// 				pulumi.String("vmnic0"),
 // 			},
 // 			StandbyNics: pulumi.StringArray{
 // 				pulumi.String("vmnic1"),
@@ -63,8 +64,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
-// 			HostSystemId:      pulumi.String(esxiHost.Id),
-// 			VirtualSwitchName: _switch.Name,
+// 			HostSystemId:      pulumi.String(host.Id),
+// 			VirtualSwitchName: hostVirtualSwitch.Name,
 // 		})
 // 		if err != nil {
 // 			return err
@@ -73,13 +74,14 @@ import (
 // 	})
 // }
 // ```
-// ### Create a port group with VLAN set and some overrides
+//
+// **Create a Port Group with a VLAN and ab Override:**
 //
 // This example sets the trunk mode VLAN (`4095`, which passes through all tags)
 // and sets
 // `allowPromiscuous`
-// to ensure that all traffic is seen on the port. The latter setting overrides
-// the implicit default of `false` set on the virtual switch.
+// to ensure that all traffic is seen on the port. The setting overrides
+// the implicit default of `false` set on the standard switch.
 //
 // ```go
 // package main
@@ -92,26 +94,26 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		esxiHost, err := vsphere.LookupHost(ctx, &GetHostArgs{
+// 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
+// 			Name:         pulumi.StringRef("esxi-01.example.com"),
 // 			DatacenterId: datacenter.Id,
-// 			Name:         pulumi.StringRef("esxi1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = vsphere.NewHostVirtualSwitch(ctx, "switch", &vsphere.HostVirtualSwitchArgs{
-// 			ActiveNics: pulumi.StringArray{
-// 				pulumi.String("vmnic0"),
-// 			},
-// 			HostSystemId: pulumi.String(esxiHost.Id),
+// 		hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
+// 			HostSystemId: pulumi.String(host.Id),
 // 			NetworkAdapters: pulumi.StringArray{
 // 				pulumi.String("vmnic0"),
 // 				pulumi.String("vmnic1"),
+// 			},
+// 			ActiveNics: pulumi.StringArray{
+// 				pulumi.String("vmnic0"),
 // 			},
 // 			StandbyNics: pulumi.StringArray{
 // 				pulumi.String("vmnic1"),
@@ -121,10 +123,10 @@ import (
 // 			return err
 // 		}
 // 		_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
-// 			AllowPromiscuous:  pulumi.Bool(true),
-// 			HostSystemId:      pulumi.String(esxiHost.Id),
-// 			VirtualSwitchName: _switch.Name,
+// 			HostSystemId:      pulumi.String(host.Id),
+// 			VirtualSwitchName: hostVirtualSwitch.Name,
 // 			VlanId:            pulumi.Int(4095),
+// 			AllowPromiscuous:  pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -135,10 +137,8 @@ import (
 // ```
 // ## Importing
 //
-// An existing host port group can be [imported][docs-import] into this resource
+// An existing host port group can be imported into this resource
 // using the host port group's ID. An example is below:
-//
-// [docs-import]: /docs/import/index.html
 //
 // ```go
 // package main
@@ -154,7 +154,7 @@ import (
 // }
 // ```
 //
-// The above would import the `Management` host port group from host with ID `host-123`.
+// The above would import the `management` host port group from host with ID `host-123`.
 type HostPortGroup struct {
 	pulumi.CustomResourceState
 

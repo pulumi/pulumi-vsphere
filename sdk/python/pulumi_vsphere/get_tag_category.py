@@ -83,13 +83,13 @@ def get_tag_category(name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagCategoryResult:
     """
     The `TagCategory` data source can be used to reference tag categories
-    that are not managed by this provider. Its attributes are exactly the same as the
+    that are not managed by this provider. Its attributes are the same as the
     `TagCategory` resource, and, like importing,
-    the data source takes a name to search on. The `id` and other attributes are
-    then populated with the data found by the search.
+    the data source uses a name and category as search criteria. The `id` and other
+    attributes are populated with the data found by the search.
 
-    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
 
     ## Example Usage
 
@@ -97,7 +97,7 @@ def get_tag_category(name: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    category = vsphere.get_tag_category(name="test-category")
+    category = vsphere.get_tag_category(name="example-category")
     ```
 
 
@@ -124,13 +124,13 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagCategoryResult]:
     """
     The `TagCategory` data source can be used to reference tag categories
-    that are not managed by this provider. Its attributes are exactly the same as the
+    that are not managed by this provider. Its attributes are the same as the
     `TagCategory` resource, and, like importing,
-    the data source takes a name to search on. The `id` and other attributes are
-    then populated with the data found by the search.
+    the data source uses a name and category as search criteria. The `id` and other
+    attributes are populated with the data found by the search.
 
-    > **NOTE:** Tagging support is unsupported on direct ESXi connections and
-    requires vCenter 6.0 or higher.
+    > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+    requires vCenter Server.
 
     ## Example Usage
 
@@ -138,7 +138,7 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    category = vsphere.get_tag_category(name="test-category")
+    category = vsphere.get_tag_category(name="example-category")
     ```
 
 

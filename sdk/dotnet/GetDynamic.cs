@@ -14,10 +14,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// 
-        /// The `vsphere.getDynamic` data source can be used to get the [managed object 
-        ///   reference ID][docs-about-morefs] of any tagged managed object in vCenter
-        ///   by providing a list of tag IDs and an optional regular expression to filter
-        ///   objects by name.
+        /// The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+        /// of any tagged managed object in vCenter Server by providing a list of tag IDs
+        /// and an optional regular expression to filter objects by name.
         ///    
         /// {{% examples %}}
         /// ## Example Usage
@@ -31,20 +30,20 @@ namespace Pulumi.VSphere
         /// {
         ///     public MyStack()
         ///     {
-        ///         var cat = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
         ///             Name = "SomeCategory",
         ///         }));
-        ///         var tag1 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         var tag1 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
         ///             Name = "FirstTag",
-        ///             CategoryId = cat.Id,
-        ///         })));
-        ///         var tag2 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         }));
+        ///         var tag2 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
         ///             Name = "SecondTag",
-        ///             CategoryId = cat.Id,
-        ///         })));
+        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         }));
         ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
         ///         {
         ///             var tag1 = values.Item1;
@@ -73,10 +72,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
         /// 
-        /// The `vsphere.getDynamic` data source can be used to get the [managed object 
-        ///   reference ID][docs-about-morefs] of any tagged managed object in vCenter
-        ///   by providing a list of tag IDs and an optional regular expression to filter
-        ///   objects by name.
+        /// The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+        /// of any tagged managed object in vCenter Server by providing a list of tag IDs
+        /// and an optional regular expression to filter objects by name.
         ///    
         /// {{% examples %}}
         /// ## Example Usage
@@ -90,20 +88,20 @@ namespace Pulumi.VSphere
         /// {
         ///     public MyStack()
         ///     {
-        ///         var cat = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
+        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
         ///         {
         ///             Name = "SomeCategory",
         ///         }));
-        ///         var tag1 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///         var tag1 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
         ///             Name = "FirstTag",
-        ///             CategoryId = cat.Id,
-        ///         })));
-        ///         var tag2 = cat.Apply(cat =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
+        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         }));
+        ///         var tag2 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
         ///         {
         ///             Name = "SecondTag",
-        ///             CategoryId = cat.Id,
-        ///         })));
+        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///         }));
         ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
         ///         {
         ///             var tag1 = values.Item1;

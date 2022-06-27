@@ -163,7 +163,9 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsSpaceBalanceAutomationLevel!: pulumi.Output<string | undefined>;
     /**
-     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+     * Runtime thresholds govern 
+     * when Storage DRS performs or recommends migrations
+     * (based on the selected automation level). Default: `80` percent.
      */
     public readonly sdrsSpaceUtilizationThreshold!: pulumi.Output<number | undefined>;
     /**
@@ -385,7 +387,9 @@ export interface DatastoreClusterState {
      */
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+     * Runtime thresholds govern 
+     * when Storage DRS performs or recommends migrations
+     * (based on the selected automation level). Default: `80` percent.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**
@@ -534,7 +538,9 @@ export interface DatastoreClusterArgs {
      */
     sdrsSpaceBalanceAutomationLevel?: pulumi.Input<string>;
     /**
-     * The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+     * Runtime thresholds govern 
+     * when Storage DRS performs or recommends migrations
+     * (based on the selected automation level). Default: `80` percent.
      */
     sdrsSpaceUtilizationThreshold?: pulumi.Input<number>;
     /**

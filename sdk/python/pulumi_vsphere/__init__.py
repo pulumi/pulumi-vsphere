@@ -26,6 +26,7 @@ from .entity_permissions import *
 from .file import *
 from .folder import *
 from .get_compute_cluster import *
+from .get_compute_cluster_host_group import *
 from .get_content_library import *
 from .get_content_library_item import *
 from .get_custom_attribute import *
@@ -38,6 +39,7 @@ from .get_folder import *
 from .get_host import *
 from .get_host_pci_device import *
 from .get_host_thumbprint import *
+from .get_license import *
 from .get_network import *
 from .get_ovf_vm_template import *
 from .get_policy import *

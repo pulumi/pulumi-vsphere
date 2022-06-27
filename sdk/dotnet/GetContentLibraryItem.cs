@@ -12,17 +12,21 @@ namespace Pulumi.VSphere
     public static class GetContentLibraryItem
     {
         /// <summary>
-        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a content library item.
+        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID
+        /// of a content library item.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on
+        /// direct ESXi host connections.
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID of a content library item.
+        /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID
+        /// of a content library item.
         /// 
-        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+        /// &gt; **NOTE:** This resource requires vCenter Server and is not available on
+        /// direct ESXi host connections.
         /// </summary>
         public static Output<GetContentLibraryItemResult> Invoke(GetContentLibraryItemInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemInvokeArgs(), options.WithDefaults());

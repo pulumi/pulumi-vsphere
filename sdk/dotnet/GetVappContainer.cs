@@ -13,9 +13,9 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
-        /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
+        /// vApp container in vSphere. This is useful to return the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// `vsphere.VirtualMachine` resource.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -31,12 +31,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVappContainer.InvokeAsync(new VSphere.GetVappContainerArgs
         ///         {
+        ///             Name = "vapp-container-01",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "vapp-container-1",
         ///         })));
         ///     }
         /// 
@@ -50,9 +50,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
-        /// vApp container in vSphere. This is useful to fetch the ID of a vApp container
+        /// vApp container in vSphere. This is useful to return the ID of a vApp container
         /// that you want to use to create virtual machines in using the
-        /// `vsphere.VirtualMachine` resource. 
+        /// `vsphere.VirtualMachine` resource.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -68,12 +68,12 @@ namespace Pulumi.VSphere
         ///     {
         ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
         ///         {
-        ///             Name = "dc1",
+        ///             Name = "dc-01",
         ///         }));
         ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVappContainer.InvokeAsync(new VSphere.GetVappContainerArgs
         ///         {
+        ///             Name = "vapp-container-01",
         ///             DatacenterId = datacenter.Id,
-        ///             Name = "vapp-container-1",
         ///         })));
         ///     }
         /// 
@@ -90,8 +90,8 @@ namespace Pulumi.VSphere
     public sealed class GetVappContainerArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the vApp container is located in.
+        /// The managed object reference ID
+        /// of the datacenter in which the vApp container is located.
         /// </summary>
         [Input("datacenterId", required: true)]
         public string DatacenterId { get; set; } = null!;
@@ -111,8 +111,8 @@ namespace Pulumi.VSphere
     public sealed class GetVappContainerInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The managed object reference
-        /// ID of the datacenter the vApp container is located in.
+        /// The managed object reference ID
+        /// of the datacenter in which the vApp container is located.
         /// </summary>
         [Input("datacenterId", required: true)]
         public Input<string> DatacenterId { get; set; } = null!;

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getHostPciDevice` data source can be used to discover the DeviceID
+// The `getHostPciDevice` data source can be used to discover the device ID
 // of a vSphere host's PCI device. This can then be used with
 // `VirtualMachine`'s `pciDeviceId`.
 //
@@ -28,13 +28,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc1"),
+// 			Name: pulumi.StringRef("dc-01"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		host, err := vsphere.LookupHost(ctx, &GetHostArgs{
-// 			Name:         pulumi.StringRef("esxi1"),
+// 			Name:         pulumi.StringRef("esxi-01.example.com"),
 // 			DatacenterId: datacenter.Id,
 // 		}, nil)
 // 		if err != nil {
@@ -66,11 +66,10 @@ func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...p
 type GetHostPciDeviceArgs struct {
 	// The hexadecimal PCI device class ID
 	ClassId *string `pulumi:"classId"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of a host.
 	HostId string `pulumi:"hostId"`
-	// A regular expression that will be used to match
-	// the host PCI device name.
+	// A regular expression that will be used to match the
+	// host PCI device name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The hexadecimal PCI device vendor ID.
 	VendorId *string `pulumi:"vendorId"`
@@ -105,11 +104,10 @@ func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs
 type GetHostPciDeviceOutputArgs struct {
 	// The hexadecimal PCI device class ID
 	ClassId pulumi.StringPtrInput `pulumi:"classId"`
-	// The [managed object reference
-	// ID][docs-about-morefs] of a host.
+	// The [managed object reference ID][docs-about-morefs] of a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`
-	// A regular expression that will be used to match
-	// the host PCI device name.
+	// A regular expression that will be used to match the
+	// host PCI device name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The hexadecimal PCI device vendor ID.
 	VendorId pulumi.StringPtrInput `pulumi:"vendorId"`

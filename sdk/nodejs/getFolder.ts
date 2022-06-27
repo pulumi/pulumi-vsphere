@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as vsphere from "@pulumi/vsphere";
  *
  * const folder = pulumi.output(vsphere.getFolder({
- *     path: "/dc1/datastore/folder1",
+ *     path: "/dc-01/datastore-01/folder-01",
  * }));
  * ```
  */

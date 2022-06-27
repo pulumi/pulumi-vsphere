@@ -38,7 +38,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
-// 			Name:         "ubuntu-server-template",
+// 			Name:         pulumi.StringRef("ubuntu-server-template"),
 // 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
@@ -68,14 +68,14 @@ import (
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
-// 			Name:         "production/templates/ubuntu-server-template",
+// 			Name:         pulumi.StringRef("production/templates/ubuntu-server-template"),
 // 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
-// 			Name:         "development/templates/ubuntu-server-template",
+// 			Name:         pulumi.StringRef("development/templates/ubuntu-server-template"),
 // 			DatacenterId: pulumi.StringRef(datacenter.Id),
 // 		}, nil)
 // 		if err != nil {
@@ -139,9 +139,10 @@ type LookupVirtualMachineArgs struct {
 	MemoryShareCount    *int    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
 	// The name of the virtual machine. This can be a name or
-	// the full path relative to the datacenter.
-	Name            string `pulumi:"name"`
-	NestedHvEnabled *bool  `pulumi:"nestedHvEnabled"`
+	// the full path relative to the datacenter. This is required if a UUID lookup
+	// is not performed.
+	Name            *string `pulumi:"name"`
+	NestedHvEnabled *bool   `pulumi:"nestedHvEnabled"`
 	// The number of cores per socket for this virtual machine.
 	NumCoresPerSocket *int `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
@@ -156,15 +157,18 @@ type LookupVirtualMachineArgs struct {
 	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	ScsiControllerScanCount      *int                   `pulumi:"scsiControllerScanCount"`
-	StoragePolicyId              *string                `pulumi:"storagePolicyId"`
-	SwapPlacementPolicy          *string                `pulumi:"swapPlacementPolicy"`
-	SyncTimeWithHost             *bool                  `pulumi:"syncTimeWithHost"`
-	SyncTimeWithHostPeriodically *bool                  `pulumi:"syncTimeWithHostPeriodically"`
-	ToolsUpgradePolicy           *string                `pulumi:"toolsUpgradePolicy"`
-	Vapp                         *GetVirtualMachineVapp `pulumi:"vapp"`
-	VbsEnabled                   *bool                  `pulumi:"vbsEnabled"`
-	VvtdEnabled                  *bool                  `pulumi:"vvtdEnabled"`
+	ScsiControllerScanCount      *int    `pulumi:"scsiControllerScanCount"`
+	StoragePolicyId              *string `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy          *string `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost             *bool   `pulumi:"syncTimeWithHost"`
+	SyncTimeWithHostPeriodically *bool   `pulumi:"syncTimeWithHostPeriodically"`
+	ToolsUpgradePolicy           *string `pulumi:"toolsUpgradePolicy"`
+	// Specify this field for a UUID lookup, `name` and `datacenterId`
+	// are not required if this is specified.
+	Uuid        *string                `pulumi:"uuid"`
+	Vapp        *GetVirtualMachineVapp `pulumi:"vapp"`
+	VbsEnabled  *bool                  `pulumi:"vbsEnabled"`
+	VvtdEnabled *bool                  `pulumi:"vvtdEnabled"`
 }
 
 // A collection of values returned by getVirtualMachine.
@@ -226,7 +230,7 @@ type LookupVirtualMachineResult struct {
 	MemoryReservation   *int    `pulumi:"memoryReservation"`
 	MemoryShareCount    int     `pulumi:"memoryShareCount"`
 	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
-	Name                string  `pulumi:"name"`
+	Name                *string `pulumi:"name"`
 	NestedHvEnabled     *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
@@ -333,9 +337,10 @@ type LookupVirtualMachineOutputArgs struct {
 	MemoryShareCount    pulumi.IntPtrInput    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    pulumi.StringPtrInput `pulumi:"memoryShareLevel"`
 	// The name of the virtual machine. This can be a name or
-	// the full path relative to the datacenter.
-	Name            pulumi.StringInput  `pulumi:"name"`
-	NestedHvEnabled pulumi.BoolPtrInput `pulumi:"nestedHvEnabled"`
+	// the full path relative to the datacenter. This is required if a UUID lookup
+	// is not performed.
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	NestedHvEnabled pulumi.BoolPtrInput   `pulumi:"nestedHvEnabled"`
 	// The number of cores per socket for this virtual machine.
 	NumCoresPerSocket pulumi.IntPtrInput `pulumi:"numCoresPerSocket"`
 	// The total number of virtual processor cores assigned to this
@@ -350,15 +355,18 @@ type LookupVirtualMachineOutputArgs struct {
 	SataControllerScanCount            pulumi.IntPtrInput    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
-	ScsiControllerScanCount      pulumi.IntPtrInput            `pulumi:"scsiControllerScanCount"`
-	StoragePolicyId              pulumi.StringPtrInput         `pulumi:"storagePolicyId"`
-	SwapPlacementPolicy          pulumi.StringPtrInput         `pulumi:"swapPlacementPolicy"`
-	SyncTimeWithHost             pulumi.BoolPtrInput           `pulumi:"syncTimeWithHost"`
-	SyncTimeWithHostPeriodically pulumi.BoolPtrInput           `pulumi:"syncTimeWithHostPeriodically"`
-	ToolsUpgradePolicy           pulumi.StringPtrInput         `pulumi:"toolsUpgradePolicy"`
-	Vapp                         GetVirtualMachineVappPtrInput `pulumi:"vapp"`
-	VbsEnabled                   pulumi.BoolPtrInput           `pulumi:"vbsEnabled"`
-	VvtdEnabled                  pulumi.BoolPtrInput           `pulumi:"vvtdEnabled"`
+	ScsiControllerScanCount      pulumi.IntPtrInput    `pulumi:"scsiControllerScanCount"`
+	StoragePolicyId              pulumi.StringPtrInput `pulumi:"storagePolicyId"`
+	SwapPlacementPolicy          pulumi.StringPtrInput `pulumi:"swapPlacementPolicy"`
+	SyncTimeWithHost             pulumi.BoolPtrInput   `pulumi:"syncTimeWithHost"`
+	SyncTimeWithHostPeriodically pulumi.BoolPtrInput   `pulumi:"syncTimeWithHostPeriodically"`
+	ToolsUpgradePolicy           pulumi.StringPtrInput `pulumi:"toolsUpgradePolicy"`
+	// Specify this field for a UUID lookup, `name` and `datacenterId`
+	// are not required if this is specified.
+	Uuid        pulumi.StringPtrInput         `pulumi:"uuid"`
+	Vapp        GetVirtualMachineVappPtrInput `pulumi:"vapp"`
+	VbsEnabled  pulumi.BoolPtrInput           `pulumi:"vbsEnabled"`
+	VvtdEnabled pulumi.BoolPtrInput           `pulumi:"vvtdEnabled"`
 }
 
 func (LookupVirtualMachineOutputArgs) ElementType() reflect.Type {
@@ -542,8 +550,8 @@ func (o LookupVirtualMachineResultOutput) MemoryShareLevel() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupVirtualMachineResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupVirtualMachineResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) NestedHvEnabled() pulumi.BoolPtrOutput {

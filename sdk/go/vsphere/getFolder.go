@@ -27,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vsphere.LookupFolder(ctx, &GetFolderArgs{
-// 			Path: "/dc1/datastore/folder1",
+// 			Path: "/dc-01/datastore-01/folder-01",
 // 		}, nil)
 // 		if err != nil {
 // 			return err

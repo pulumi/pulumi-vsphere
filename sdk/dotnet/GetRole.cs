@@ -12,8 +12,8 @@ namespace Pulumi.VSphere
     public static class GetRole
     {
         /// <summary>
-        /// The `vsphere.Role` data source can be used to discover the id and privileges associated
-        /// with a role given its name or display label in vsphere UI.
+        /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
+        /// with a role given its name or display label.
         /// 
         /// 
         /// {{% examples %}}
@@ -28,9 +28,9 @@ namespace Pulumi.VSphere
         /// {
         ///     public MyStack()
         ///     {
-        ///         var role1 = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
+        ///         var terraformRole = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
         ///         {
-        ///             Label = "Virtual machine user (sample)",
+        ///             Label = "Terraform to vSphere Integration Role",
         ///         }));
         ///     }
         /// 
@@ -43,8 +43,8 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.Role` data source can be used to discover the id and privileges associated
-        /// with a role given its name or display label in vsphere UI.
+        /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
+        /// with a role given its name or display label.
         /// 
         /// 
         /// {{% examples %}}
@@ -59,9 +59,9 @@ namespace Pulumi.VSphere
         /// {
         ///     public MyStack()
         ///     {
-        ///         var role1 = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
+        ///         var terraformRole = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
         ///         {
-        ///             Label = "Virtual machine user (sample)",
+        ///             Label = "Terraform to vSphere Integration Role",
         ///         }));
         ///     }
         /// 

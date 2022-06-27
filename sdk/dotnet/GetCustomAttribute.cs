@@ -12,14 +12,14 @@ namespace Pulumi.VSphere
     public static class GetCustomAttribute
     {
         /// <summary>
-        /// The `vsphere.CustomAttribute` data source can be used to reference custom 
-        /// attributes that are not managed by this provider. Its attributes are exactly the 
-        /// same as the `vsphere.CustomAttribute` resource, 
-        /// and, like importing, the data source takes a name to search on. The `id` and 
-        /// other attributes are then populated with the data found by the search.
+        /// The `vsphere.CustomAttribute` data source can be used to reference custom
+        /// attributes that are not managed by this provider. Its attributes are exactly the
+        /// same as the `vsphere.CustomAttribute` resource,
+        /// and, like importing, the data source takes a name argument for the search. The
+        /// `id` and other attributes are then populated with the data found by the search.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
-        /// and require vCenter.
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and require vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -48,14 +48,14 @@ namespace Pulumi.VSphere
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `vsphere.CustomAttribute` data source can be used to reference custom 
-        /// attributes that are not managed by this provider. Its attributes are exactly the 
-        /// same as the `vsphere.CustomAttribute` resource, 
-        /// and, like importing, the data source takes a name to search on. The `id` and 
-        /// other attributes are then populated with the data found by the search.
+        /// The `vsphere.CustomAttribute` data source can be used to reference custom
+        /// attributes that are not managed by this provider. Its attributes are exactly the
+        /// same as the `vsphere.CustomAttribute` resource,
+        /// and, like importing, the data source takes a name argument for the search. The
+        /// `id` and other attributes are then populated with the data found by the search.
         /// 
-        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections 
-        /// and require vCenter.
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and require vCenter Server.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

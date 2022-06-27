@@ -100,7 +100,9 @@ type DatastoreCluster struct {
 	// Overrides the default
 	// automation settings when correcting disk space imbalances.
 	SdrsSpaceBalanceAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsSpaceBalanceAutomationLevel"`
-	// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+	// Runtime thresholds govern
+	// when Storage DRS performs or recommends migrations
+	// (based on the selected automation level). Default: `80` percent.
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrOutput `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
@@ -227,7 +229,9 @@ type datastoreClusterState struct {
 	// Overrides the default
 	// automation settings when correcting disk space imbalances.
 	SdrsSpaceBalanceAutomationLevel *string `pulumi:"sdrsSpaceBalanceAutomationLevel"`
-	// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+	// Runtime thresholds govern
+	// when Storage DRS performs or recommends migrations
+	// (based on the selected automation level). Default: `80` percent.
 	SdrsSpaceUtilizationThreshold *int `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
@@ -323,7 +327,9 @@ type DatastoreClusterState struct {
 	// Overrides the default
 	// automation settings when correcting disk space imbalances.
 	SdrsSpaceBalanceAutomationLevel pulumi.StringPtrInput
-	// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+	// Runtime thresholds govern
+	// when Storage DRS performs or recommends migrations
+	// (based on the selected automation level). Default: `80` percent.
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrInput
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
@@ -423,7 +429,9 @@ type datastoreClusterArgs struct {
 	// Overrides the default
 	// automation settings when correcting disk space imbalances.
 	SdrsSpaceBalanceAutomationLevel *string `pulumi:"sdrsSpaceBalanceAutomationLevel"`
-	// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+	// Runtime thresholds govern
+	// when Storage DRS performs or recommends migrations
+	// (based on the selected automation level). Default: `80` percent.
 	SdrsSpaceUtilizationThreshold *int `pulumi:"sdrsSpaceUtilizationThreshold"`
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.
@@ -520,7 +528,9 @@ type DatastoreClusterArgs struct {
 	// Overrides the default
 	// automation settings when correcting disk space imbalances.
 	SdrsSpaceBalanceAutomationLevel pulumi.StringPtrInput
-	// The threshold, in percent of used space, that storage DRS uses to make decisions to migrate VMs out of a datastore.
+	// Runtime thresholds govern
+	// when Storage DRS performs or recommends migrations
+	// (based on the selected automation level). Default: `80` percent.
 	SdrsSpaceUtilizationThreshold pulumi.IntPtrInput
 	// Overrides the default
 	// automation settings when generating recommendations for datastore evacuation.

@@ -16,17 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
- *     name: "dc1",
- * }));
- * const host = datacenter.apply(datacenter => vsphere.getHost({
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
  *     datacenterId: datacenter.id,
- *     name: "esxi1",
  * }));
- * const available = host.apply(host => vsphere.getVmfsDisks({
- *     filter: "mpx.vmhba1:C0:T[12]:L0",
+ * const vmfsDisks = host.then(host => vsphere.getVmfsDisks({
  *     hostSystemId: host.id,
  *     rescan: true,
+ *     filter: "mpx.vmhba1:C0:T[12]:L0",
  * }));
  * ```
  */

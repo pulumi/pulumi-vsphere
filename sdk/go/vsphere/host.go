@@ -37,7 +37,7 @@ import (
 // 			Hostname:   pulumi.String("esx-01.example.com"),
 // 			Username:   pulumi.String("root"),
 // 			Password:   pulumi.String("password"),
-// 			License:    pulumi.String("00000-00000-00000-00000i-00000"),
+// 			License:    pulumi.String("00000-00000-00000-00000-00000"),
 // 			Datacenter: pulumi.String(datacenter.Id),
 // 		})
 // 		if err != nil {
@@ -76,7 +76,7 @@ import (
 // 			Hostname: pulumi.String("esx-01.example.com"),
 // 			Username: pulumi.String("root"),
 // 			Password: pulumi.String("password"),
-// 			License:  pulumi.String("00000-00000-00000-00000i-00000"),
+// 			License:  pulumi.String("00000-00000-00000-00000-00000"),
 // 			Cluster:  pulumi.String(cluster.Id),
 // 		})
 // 		if err != nil {
@@ -122,11 +122,16 @@ type Host struct {
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrOutput `pulumi:"connected"`
+	// A map of custom attribute IDs and string
+	// values to apply to the resource. Please refer to the
+	// `vsphereCustomAttributes` resource for more information on applying
+	// tags to resources.
+	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added,
-	// even if the host is already connected to a different vSphere instance.
+	// If set to `true` then it will force the host to be added,
+	// even if the host is already connected to a different vCenter Server instance.
 	// Default is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
@@ -205,11 +210,16 @@ type hostState struct {
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
+	// A map of custom attribute IDs and string
+	// values to apply to the resource. Please refer to the
+	// `vsphereCustomAttributes` resource for more information on applying
+	// tags to resources.
+	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter *string `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added,
-	// even if the host is already connected to a different vSphere instance.
+	// If set to `true` then it will force the host to be added,
+	// even if the host is already connected to a different vCenter Server instance.
 	// Default is `false`.
 	Force *bool `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
@@ -251,11 +261,16 @@ type HostState struct {
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
+	// A map of custom attribute IDs and string
+	// values to apply to the resource. Please refer to the
+	// `vsphereCustomAttributes` resource for more information on applying
+	// tags to resources.
+	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrInput
-	// If set to true then it will force the host to be added,
-	// even if the host is already connected to a different vSphere instance.
+	// If set to `true` then it will force the host to be added,
+	// even if the host is already connected to a different vCenter Server instance.
 	// Default is `false`.
 	Force pulumi.BoolPtrInput
 	// FQDN or IP address of the host to be added.
@@ -301,11 +316,16 @@ type hostArgs struct {
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
+	// A map of custom attribute IDs and string
+	// values to apply to the resource. Please refer to the
+	// `vsphereCustomAttributes` resource for more information on applying
+	// tags to resources.
+	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter *string `pulumi:"datacenter"`
-	// If set to true then it will force the host to be added,
-	// even if the host is already connected to a different vSphere instance.
+	// If set to `true` then it will force the host to be added,
+	// even if the host is already connected to a different vCenter Server instance.
 	// Default is `false`.
 	Force *bool `pulumi:"force"`
 	// FQDN or IP address of the host to be added.
@@ -348,11 +368,16 @@ type HostArgs struct {
 	// If set to false then the host will be disconected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
+	// A map of custom attribute IDs and string
+	// values to apply to the resource. Please refer to the
+	// `vsphereCustomAttributes` resource for more information on applying
+	// tags to resources.
+	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
 	Datacenter pulumi.StringPtrInput
-	// If set to true then it will force the host to be added,
-	// even if the host is already connected to a different vSphere instance.
+	// If set to `true` then it will force the host to be added,
+	// even if the host is already connected to a different vCenter Server instance.
 	// Default is `false`.
 	Force pulumi.BoolPtrInput
 	// FQDN or IP address of the host to be added.
