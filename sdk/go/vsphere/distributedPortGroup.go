@@ -697,7 +697,7 @@ func (i *DistributedPortGroup) ToDistributedPortGroupOutputWithContext(ctx conte
 // DistributedPortGroupArrayInput is an input type that accepts DistributedPortGroupArray and DistributedPortGroupArrayOutput values.
 // You can construct a concrete instance of `DistributedPortGroupArrayInput` via:
 //
-//          DistributedPortGroupArray{ DistributedPortGroupArgs{...} }
+//	DistributedPortGroupArray{ DistributedPortGroupArgs{...} }
 type DistributedPortGroupArrayInput interface {
 	pulumi.Input
 
@@ -722,7 +722,7 @@ func (i DistributedPortGroupArray) ToDistributedPortGroupArrayOutputWithContext(
 // DistributedPortGroupMapInput is an input type that accepts DistributedPortGroupMap and DistributedPortGroupMapOutput values.
 // You can construct a concrete instance of `DistributedPortGroupMapInput` via:
 //
-//          DistributedPortGroupMap{ "key": DistributedPortGroupArgs{...} }
+//	DistributedPortGroupMap{ "key": DistributedPortGroupArgs{...} }
 type DistributedPortGroupMapInput interface {
 	pulumi.Input
 

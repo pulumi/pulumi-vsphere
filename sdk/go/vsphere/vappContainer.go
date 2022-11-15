@@ -380,7 +380,7 @@ func (i *VappContainer) ToVappContainerOutputWithContext(ctx context.Context) Va
 // VappContainerArrayInput is an input type that accepts VappContainerArray and VappContainerArrayOutput values.
 // You can construct a concrete instance of `VappContainerArrayInput` via:
 //
-//          VappContainerArray{ VappContainerArgs{...} }
+//	VappContainerArray{ VappContainerArgs{...} }
 type VappContainerArrayInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ func (i VappContainerArray) ToVappContainerArrayOutputWithContext(ctx context.Co
 // VappContainerMapInput is an input type that accepts VappContainerMap and VappContainerMapOutput values.
 // You can construct a concrete instance of `VappContainerMapInput` via:
 //
-//          VappContainerMap{ "key": VappContainerArgs{...} }
+//	VappContainerMap{ "key": VappContainerArgs{...} }
 type VappContainerMapInput interface {
 	pulumi.Input
 

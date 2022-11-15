@@ -20,19 +20,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewDatacenter(ctx, "prodDatacenter", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewDatacenter(ctx, "prodDatacenter", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create datacenter on a subfolder
 //
@@ -40,21 +43,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewDatacenter(ctx, "researchDatacenter", &vsphere.DatacenterArgs{
-// 			Folder: pulumi.String("/research/"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewDatacenter(ctx, "researchDatacenter", &vsphere.DatacenterArgs{
+//				Folder: pulumi.String("/research/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Datacenter struct {
 	pulumi.CustomResourceState
@@ -203,7 +209,7 @@ func (i *Datacenter) ToDatacenterOutputWithContext(ctx context.Context) Datacent
 // DatacenterArrayInput is an input type that accepts DatacenterArray and DatacenterArrayOutput values.
 // You can construct a concrete instance of `DatacenterArrayInput` via:
 //
-//          DatacenterArray{ DatacenterArgs{...} }
+//	DatacenterArray{ DatacenterArgs{...} }
 type DatacenterArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +234,7 @@ func (i DatacenterArray) ToDatacenterArrayOutputWithContext(ctx context.Context)
 // DatacenterMapInput is an input type that accepts DatacenterMap and DatacenterMapOutput values.
 // You can construct a concrete instance of `DatacenterMapInput` via:
 //
-//          DatacenterMap{ "key": DatacenterArgs{...} }
+//	DatacenterMap{ "key": DatacenterArgs{...} }
 type DatacenterMapInput interface {
 	pulumi.Input
 

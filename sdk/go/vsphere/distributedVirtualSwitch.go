@@ -1376,7 +1376,7 @@ func (i *DistributedVirtualSwitch) ToDistributedVirtualSwitchOutputWithContext(c
 // DistributedVirtualSwitchArrayInput is an input type that accepts DistributedVirtualSwitchArray and DistributedVirtualSwitchArrayOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchArrayInput` via:
 //
-//          DistributedVirtualSwitchArray{ DistributedVirtualSwitchArgs{...} }
+//	DistributedVirtualSwitchArray{ DistributedVirtualSwitchArgs{...} }
 type DistributedVirtualSwitchArrayInput interface {
 	pulumi.Input
 
@@ -1401,7 +1401,7 @@ func (i DistributedVirtualSwitchArray) ToDistributedVirtualSwitchArrayOutputWith
 // DistributedVirtualSwitchMapInput is an input type that accepts DistributedVirtualSwitchMap and DistributedVirtualSwitchMapOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchMapInput` via:
 //
-//          DistributedVirtualSwitchMap{ "key": DistributedVirtualSwitchArgs{...} }
+//	DistributedVirtualSwitchMap{ "key": DistributedVirtualSwitchArgs{...} }
 type DistributedVirtualSwitchMapInput interface {
 	pulumi.Input
 

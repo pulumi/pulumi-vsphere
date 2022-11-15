@@ -248,7 +248,7 @@ func (i *VappEntity) ToVappEntityOutputWithContext(ctx context.Context) VappEnti
 // VappEntityArrayInput is an input type that accepts VappEntityArray and VappEntityArrayOutput values.
 // You can construct a concrete instance of `VappEntityArrayInput` via:
 //
-//          VappEntityArray{ VappEntityArgs{...} }
+//	VappEntityArray{ VappEntityArgs{...} }
 type VappEntityArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +273,7 @@ func (i VappEntityArray) ToVappEntityArrayOutputWithContext(ctx context.Context)
 // VappEntityMapInput is an input type that accepts VappEntityMap and VappEntityMapOutput values.
 // You can construct a concrete instance of `VappEntityMapInput` via:
 //
-//          VappEntityMap{ "key": VappEntityArgs{...} }
+//	VappEntityMap{ "key": VappEntityArgs{...} }
 type VappEntityMapInput interface {
 	pulumi.Input
 

@@ -226,7 +226,7 @@ func (i *VirtualDisk) ToVirtualDiskOutputWithContext(ctx context.Context) Virtua
 // VirtualDiskArrayInput is an input type that accepts VirtualDiskArray and VirtualDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualDiskArrayInput` via:
 //
-//          VirtualDiskArray{ VirtualDiskArgs{...} }
+//	VirtualDiskArray{ VirtualDiskArgs{...} }
 type VirtualDiskArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +251,7 @@ func (i VirtualDiskArray) ToVirtualDiskArrayOutputWithContext(ctx context.Contex
 // VirtualDiskMapInput is an input type that accepts VirtualDiskMap and VirtualDiskMapOutput values.
 // You can construct a concrete instance of `VirtualDiskMapInput` via:
 //
-//          VirtualDiskMap{ "key": VirtualDiskArgs{...} }
+//	VirtualDiskMap{ "key": VirtualDiskArgs{...} }
 type VirtualDiskMapInput interface {
 	pulumi.Input
 

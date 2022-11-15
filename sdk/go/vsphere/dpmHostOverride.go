@@ -158,7 +158,7 @@ func (i *DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context
 // DpmHostOverrideArrayInput is an input type that accepts DpmHostOverrideArray and DpmHostOverrideArrayOutput values.
 // You can construct a concrete instance of `DpmHostOverrideArrayInput` via:
 //
-//          DpmHostOverrideArray{ DpmHostOverrideArgs{...} }
+//	DpmHostOverrideArray{ DpmHostOverrideArgs{...} }
 type DpmHostOverrideArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ func (i DpmHostOverrideArray) ToDpmHostOverrideArrayOutputWithContext(ctx contex
 // DpmHostOverrideMapInput is an input type that accepts DpmHostOverrideMap and DpmHostOverrideMapOutput values.
 // You can construct a concrete instance of `DpmHostOverrideMapInput` via:
 //
-//          DpmHostOverrideMap{ "key": DpmHostOverrideArgs{...} }
+//	DpmHostOverrideMap{ "key": DpmHostOverrideArgs{...} }
 type DpmHostOverrideMapInput interface {
 	pulumi.Input
 

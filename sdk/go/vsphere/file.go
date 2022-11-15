@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewFile(ctx, "ubuntuVmdkUpload", &vsphere.FileArgs{
-// 			CreateDirectories: pulumi.Bool(true),
-// 			Datacenter:        pulumi.String("dc-01"),
-// 			Datastore:         pulumi.String("datastore-01"),
-// 			DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
-// 			SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewFile(ctx, "ubuntuVmdkUpload", &vsphere.FileArgs{
+//				CreateDirectories: pulumi.Bool(true),
+//				Datacenter:        pulumi.String("dc-01"),
+//				Datastore:         pulumi.String("datastore-01"),
+//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+//				SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Copying a File
 //
@@ -44,27 +47,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewFile(ctx, "ubuntuCopy", &vsphere.FileArgs{
-// 			CreateDirectories: pulumi.Bool(true),
-// 			Datacenter:        pulumi.String("dc-01"),
-// 			Datastore:         pulumi.String("datastore-01"),
-// 			DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
-// 			SourceDatacenter:  pulumi.String("dc-01"),
-// 			SourceDatastore:   pulumi.String("datastore-01"),
-// 			SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewFile(ctx, "ubuntuCopy", &vsphere.FileArgs{
+//				CreateDirectories: pulumi.Bool(true),
+//				Datacenter:        pulumi.String("dc-01"),
+//				Datastore:         pulumi.String("datastore-01"),
+//				DestinationFile:   pulumi.String("/my/dst/path/custom_ubuntu.vmdk"),
+//				SourceDatacenter:  pulumi.String("dc-01"),
+//				SourceDatastore:   pulumi.String("datastore-01"),
+//				SourceFile:        pulumi.String("/my/src/path/custom_ubuntu.vmdk"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type File struct {
 	pulumi.CustomResourceState
@@ -246,7 +252,7 @@ func (i *File) ToFileOutputWithContext(ctx context.Context) FileOutput {
 // FileArrayInput is an input type that accepts FileArray and FileArrayOutput values.
 // You can construct a concrete instance of `FileArrayInput` via:
 //
-//          FileArray{ FileArgs{...} }
+//	FileArray{ FileArgs{...} }
 type FileArrayInput interface {
 	pulumi.Input
 
@@ -271,7 +277,7 @@ func (i FileArray) ToFileArrayOutputWithContext(ctx context.Context) FileArrayOu
 // FileMapInput is an input type that accepts FileMap and FileMapOutput values.
 // You can construct a concrete instance of `FileMapInput` via:
 //
-//          FileMap{ "key": FileArgs{...} }
+//	FileMap{ "key": FileArgs{...} }
 type FileMapInput interface {
 	pulumi.Input
 
