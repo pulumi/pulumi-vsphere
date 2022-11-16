@@ -184,7 +184,7 @@ func (i *ComputeClusterVmAffinityRule) ToComputeClusterVmAffinityRuleOutputWithC
 // ComputeClusterVmAffinityRuleArrayInput is an input type that accepts ComputeClusterVmAffinityRuleArray and ComputeClusterVmAffinityRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmAffinityRuleArrayInput` via:
 //
-//          ComputeClusterVmAffinityRuleArray{ ComputeClusterVmAffinityRuleArgs{...} }
+//	ComputeClusterVmAffinityRuleArray{ ComputeClusterVmAffinityRuleArgs{...} }
 type ComputeClusterVmAffinityRuleArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +209,7 @@ func (i ComputeClusterVmAffinityRuleArray) ToComputeClusterVmAffinityRuleArrayOu
 // ComputeClusterVmAffinityRuleMapInput is an input type that accepts ComputeClusterVmAffinityRuleMap and ComputeClusterVmAffinityRuleMapOutput values.
 // You can construct a concrete instance of `ComputeClusterVmAffinityRuleMapInput` via:
 //
-//          ComputeClusterVmAffinityRuleMap{ "key": ComputeClusterVmAffinityRuleArgs{...} }
+//	ComputeClusterVmAffinityRuleMap{ "key": ComputeClusterVmAffinityRuleArgs{...} }
 type ComputeClusterVmAffinityRuleMapInput interface {
 	pulumi.Input
 

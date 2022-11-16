@@ -565,7 +565,7 @@ func (i *DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Conte
 // DatastoreClusterArrayInput is an input type that accepts DatastoreClusterArray and DatastoreClusterArrayOutput values.
 // You can construct a concrete instance of `DatastoreClusterArrayInput` via:
 //
-//          DatastoreClusterArray{ DatastoreClusterArgs{...} }
+//	DatastoreClusterArray{ DatastoreClusterArgs{...} }
 type DatastoreClusterArrayInput interface {
 	pulumi.Input
 
@@ -590,7 +590,7 @@ func (i DatastoreClusterArray) ToDatastoreClusterArrayOutputWithContext(ctx cont
 // DatastoreClusterMapInput is an input type that accepts DatastoreClusterMap and DatastoreClusterMapOutput values.
 // You can construct a concrete instance of `DatastoreClusterMapInput` via:
 //
-//          DatastoreClusterMap{ "key": DatastoreClusterArgs{...} }
+//	DatastoreClusterMap{ "key": DatastoreClusterArgs{...} }
 type DatastoreClusterMapInput interface {
 	pulumi.Input
 

@@ -116,7 +116,7 @@ func (i *CustomAttribute) ToCustomAttributeOutputWithContext(ctx context.Context
 // CustomAttributeArrayInput is an input type that accepts CustomAttributeArray and CustomAttributeArrayOutput values.
 // You can construct a concrete instance of `CustomAttributeArrayInput` via:
 //
-//          CustomAttributeArray{ CustomAttributeArgs{...} }
+//	CustomAttributeArray{ CustomAttributeArgs{...} }
 type CustomAttributeArrayInput interface {
 	pulumi.Input
 
@@ -141,7 +141,7 @@ func (i CustomAttributeArray) ToCustomAttributeArrayOutputWithContext(ctx contex
 // CustomAttributeMapInput is an input type that accepts CustomAttributeMap and CustomAttributeMapOutput values.
 // You can construct a concrete instance of `CustomAttributeMapInput` via:
 //
-//          CustomAttributeMap{ "key": CustomAttributeArgs{...} }
+//	CustomAttributeMap{ "key": CustomAttributeArgs{...} }
 type CustomAttributeMapInput interface {
 	pulumi.Input
 

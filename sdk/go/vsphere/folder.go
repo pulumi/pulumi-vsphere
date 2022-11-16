@@ -203,7 +203,7 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 // FolderArrayInput is an input type that accepts FolderArray and FolderArrayOutput values.
 // You can construct a concrete instance of `FolderArrayInput` via:
 //
-//          FolderArray{ FolderArgs{...} }
+//	FolderArray{ FolderArgs{...} }
 type FolderArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +228,7 @@ func (i FolderArray) ToFolderArrayOutputWithContext(ctx context.Context) FolderA
 // FolderMapInput is an input type that accepts FolderMap and FolderMapOutput values.
 // You can construct a concrete instance of `FolderMapInput` via:
 //
-//          FolderMap{ "key": FolderArgs{...} }
+//	FolderMap{ "key": FolderArgs{...} }
 type FolderMapInput interface {
 	pulumi.Input
 

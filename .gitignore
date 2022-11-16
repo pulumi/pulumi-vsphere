@@ -23,3 +23,8 @@ ci-scripts
 **/dist
 
 .DS_Store
+sdk/java/.gradle
+sdk/java/build
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat

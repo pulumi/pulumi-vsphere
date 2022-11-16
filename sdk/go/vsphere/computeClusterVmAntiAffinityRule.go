@@ -163,7 +163,7 @@ func (i *ComputeClusterVmAntiAffinityRule) ToComputeClusterVmAntiAffinityRuleOut
 // ComputeClusterVmAntiAffinityRuleArrayInput is an input type that accepts ComputeClusterVmAntiAffinityRuleArray and ComputeClusterVmAntiAffinityRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmAntiAffinityRuleArrayInput` via:
 //
-//          ComputeClusterVmAntiAffinityRuleArray{ ComputeClusterVmAntiAffinityRuleArgs{...} }
+//	ComputeClusterVmAntiAffinityRuleArray{ ComputeClusterVmAntiAffinityRuleArgs{...} }
 type ComputeClusterVmAntiAffinityRuleArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ func (i ComputeClusterVmAntiAffinityRuleArray) ToComputeClusterVmAntiAffinityRul
 // ComputeClusterVmAntiAffinityRuleMapInput is an input type that accepts ComputeClusterVmAntiAffinityRuleMap and ComputeClusterVmAntiAffinityRuleMapOutput values.
 // You can construct a concrete instance of `ComputeClusterVmAntiAffinityRuleMapInput` via:
 //
-//          ComputeClusterVmAntiAffinityRuleMap{ "key": ComputeClusterVmAntiAffinityRuleArgs{...} }
+//	ComputeClusterVmAntiAffinityRuleMap{ "key": ComputeClusterVmAntiAffinityRuleArgs{...} }
 type ComputeClusterVmAntiAffinityRuleMapInput interface {
 	pulumi.Input
 

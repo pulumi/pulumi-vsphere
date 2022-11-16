@@ -30,40 +30,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &GetDistributedVirtualSwitchArgs{
-// 			Name:         "vds-01",
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
-// 			DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
-// 			ActiveUplinks: pulumi.StringArray{
-// 				pulumi.String(vds.Uplinks[0]),
-// 			},
-// 			StandbyUplinks: pulumi.StringArray{
-// 				pulumi.String(vds.Uplinks[1]),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &GetDistributedVirtualSwitchArgs{
+//				Name:         "vds-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
+//				DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
+//				ActiveUplinks: pulumi.StringArray{
+//					pulumi.String(vds.Uplinks[0]),
+//				},
+//				StandbyUplinks: pulumi.StringArray{
+//					pulumi.String(vds.Uplinks[1]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributedVirtualSwitchArgs, opts ...pulumi.InvokeOption) (*LookupDistributedVirtualSwitchResult, error) {
 	var rv LookupDistributedVirtualSwitchResult

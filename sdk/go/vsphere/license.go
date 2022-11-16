@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewLicense(ctx, "licenseKey", &vsphere.LicenseArgs{
-// 			Labels: pulumi.StringMap{
-// 				"VpxClientLicenseLabel": pulumi.String("Hello World"),
-// 				"Workflow":              pulumi.String("Hello World"),
-// 			},
-// 			LicenseKey: pulumi.String("452CQ-2EK54-K8742-00000-00000"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewLicense(ctx, "licenseKey", &vsphere.LicenseArgs{
+//				Labels: pulumi.StringMap{
+//					"VpxClientLicenseLabel": pulumi.String("Hello World"),
+//					"Workflow":              pulumi.String("Hello World"),
+//				},
+//				LicenseKey: pulumi.String("452CQ-2EK54-K8742-00000-00000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type License struct {
 	pulumi.CustomResourceState
@@ -162,7 +165,7 @@ func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput 
 // LicenseArrayInput is an input type that accepts LicenseArray and LicenseArrayOutput values.
 // You can construct a concrete instance of `LicenseArrayInput` via:
 //
-//          LicenseArray{ LicenseArgs{...} }
+//	LicenseArray{ LicenseArgs{...} }
 type LicenseArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +190,7 @@ func (i LicenseArray) ToLicenseArrayOutputWithContext(ctx context.Context) Licen
 // LicenseMapInput is an input type that accepts LicenseMap and LicenseMapOutput values.
 // You can construct a concrete instance of `LicenseMapInput` via:
 //
-//          LicenseMap{ "key": LicenseArgs{...} }
+//	LicenseMap{ "key": LicenseArgs{...} }
 type LicenseMapInput interface {
 	pulumi.Input
 

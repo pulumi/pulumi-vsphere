@@ -155,7 +155,7 @@ func (i *ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.C
 // ContentLibraryItemArrayInput is an input type that accepts ContentLibraryItemArray and ContentLibraryItemArrayOutput values.
 // You can construct a concrete instance of `ContentLibraryItemArrayInput` via:
 //
-//          ContentLibraryItemArray{ ContentLibraryItemArgs{...} }
+//	ContentLibraryItemArray{ ContentLibraryItemArgs{...} }
 type ContentLibraryItemArrayInput interface {
 	pulumi.Input
 
@@ -180,7 +180,7 @@ func (i ContentLibraryItemArray) ToContentLibraryItemArrayOutputWithContext(ctx 
 // ContentLibraryItemMapInput is an input type that accepts ContentLibraryItemMap and ContentLibraryItemMapOutput values.
 // You can construct a concrete instance of `ContentLibraryItemMapInput` via:
 //
-//          ContentLibraryItemMap{ "key": ContentLibraryItemArgs{...} }
+//	ContentLibraryItemMap{ "key": ContentLibraryItemArgs{...} }
 type ContentLibraryItemMapInput interface {
 	pulumi.Input
 

@@ -17,8 +17,6 @@ import (
 // For more information on vSphere resource pools, please refer to the
 // [product documentation][ref-vsphere-resource_pools].
 //
-// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
-//
 // ## Example Usage
 //
 // The following example sets up a resource pool in an existing compute cluster
@@ -28,34 +26,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			Name:         "cluster-01",
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.NewResourcePool(ctx, "resourcePool", &vsphere.ResourcePoolArgs{
-// 			ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewResourcePool(ctx, "resourcePool", &vsphere.ResourcePoolArgs{
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // A virtual machine resource could be targeted to use the default resource pool
@@ -65,21 +66,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
-// 			ResourcePoolId: pulumi.Any(data.Vsphere_compute_cluster.Cluster.Resource_pool_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachine(ctx, "vm", &vsphere.VirtualMachineArgs{
+//				ResourcePoolId: pulumi.Any(data.Vsphere_compute_cluster.Cluster.Resource_pool_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // The following example sets up a parent resource pool in an existing compute cluster
@@ -90,40 +94,43 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			Name:         "cluster-01",
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resourcePoolParent", &vsphere.ResourcePoolArgs{
-// 			ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.NewResourcePool(ctx, "resourcePoolChild", &vsphere.ResourcePoolArgs{
-// 			ParentResourcePoolId: resourcePoolParent.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			computeCluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			resourcePoolParent, err := vsphere.NewResourcePool(ctx, "resourcePoolParent", &vsphere.ResourcePoolArgs{
+//				ParentResourcePoolId: pulumi.String(computeCluster.ResourcePoolId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewResourcePool(ctx, "resourcePoolChild", &vsphere.ResourcePoolArgs{
+//				ParentResourcePoolId: resourcePoolParent.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Importing
 // ### Settings that Require vSphere 7.0 or higher
@@ -131,6 +138,8 @@ import (
 // These settings require vSphere 7.0 or higher:
 //
 // * `scaleDescendantsShares`
+//
+// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 type ResourcePool struct {
 	pulumi.CustomResourceState
 
@@ -505,7 +514,7 @@ func (i *ResourcePool) ToResourcePoolOutputWithContext(ctx context.Context) Reso
 // ResourcePoolArrayInput is an input type that accepts ResourcePoolArray and ResourcePoolArrayOutput values.
 // You can construct a concrete instance of `ResourcePoolArrayInput` via:
 //
-//          ResourcePoolArray{ ResourcePoolArgs{...} }
+//	ResourcePoolArray{ ResourcePoolArgs{...} }
 type ResourcePoolArrayInput interface {
 	pulumi.Input
 
@@ -530,7 +539,7 @@ func (i ResourcePoolArray) ToResourcePoolArrayOutputWithContext(ctx context.Cont
 // ResourcePoolMapInput is an input type that accepts ResourcePoolMap and ResourcePoolMapOutput values.
 // You can construct a concrete instance of `ResourcePoolMapInput` via:
 //
-//          ResourcePoolMap{ "key": ResourcePoolArgs{...} }
+//	ResourcePoolMap{ "key": ResourcePoolArgs{...} }
 type ResourcePoolMapInput interface {
 	pulumi.Input
 

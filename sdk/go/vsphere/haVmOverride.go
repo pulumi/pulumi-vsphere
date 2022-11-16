@@ -438,7 +438,7 @@ func (i *HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVm
 // HaVmOverrideArrayInput is an input type that accepts HaVmOverrideArray and HaVmOverrideArrayOutput values.
 // You can construct a concrete instance of `HaVmOverrideArrayInput` via:
 //
-//          HaVmOverrideArray{ HaVmOverrideArgs{...} }
+//	HaVmOverrideArray{ HaVmOverrideArgs{...} }
 type HaVmOverrideArrayInput interface {
 	pulumi.Input
 
@@ -463,7 +463,7 @@ func (i HaVmOverrideArray) ToHaVmOverrideArrayOutputWithContext(ctx context.Cont
 // HaVmOverrideMapInput is an input type that accepts HaVmOverrideMap and HaVmOverrideMapOutput values.
 // You can construct a concrete instance of `HaVmOverrideMapInput` via:
 //
-//          HaVmOverrideMap{ "key": HaVmOverrideArgs{...} }
+//	HaVmOverrideMap{ "key": HaVmOverrideArgs{...} }
 type HaVmOverrideMapInput interface {
 	pulumi.Input
 
