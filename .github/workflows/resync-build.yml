@@ -68,11 +68,11 @@ jobs:
     - name: Required entries for gitignore
       run: |-
         cat <<- EOF > $RUNNER_TEMP/gitignore
-                  sdk/java/build
-                  sdk/java/.gradle
-                  sdk/java/gradle
-                  sdk/java/gradlew
-                  sdk/java/gradlew.bat
+        sdk/java/build
+        sdk/java/.gradle
+        sdk/java/gradle
+        sdk/java/gradlew
+        sdk/java/gradlew.bat
         EOF
       shell: bash
     - name: Adding missing lines to .gitignore
