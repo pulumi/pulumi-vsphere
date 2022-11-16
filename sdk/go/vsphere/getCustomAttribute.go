@@ -25,21 +25,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupCustomAttribute(ctx, &GetCustomAttributeArgs{
-// 			Name: "test-attribute",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupCustomAttribute(ctx, &GetCustomAttributeArgs{
+//				Name: "test-attribute",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupCustomAttribute(ctx *pulumi.Context, args *LookupCustomAttributeArgs, opts ...pulumi.InvokeOption) (*LookupCustomAttributeResult, error) {
 	var rv LookupCustomAttributeResult

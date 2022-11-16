@@ -1306,7 +1306,7 @@ func (i *ComputeCluster) ToComputeClusterOutputWithContext(ctx context.Context) 
 // ComputeClusterArrayInput is an input type that accepts ComputeClusterArray and ComputeClusterArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterArrayInput` via:
 //
-//          ComputeClusterArray{ ComputeClusterArgs{...} }
+//	ComputeClusterArray{ ComputeClusterArgs{...} }
 type ComputeClusterArrayInput interface {
 	pulumi.Input
 
@@ -1331,7 +1331,7 @@ func (i ComputeClusterArray) ToComputeClusterArrayOutputWithContext(ctx context.
 // ComputeClusterMapInput is an input type that accepts ComputeClusterMap and ComputeClusterMapOutput values.
 // You can construct a concrete instance of `ComputeClusterMapInput` via:
 //
-//          ComputeClusterMap{ "key": ComputeClusterArgs{...} }
+//	ComputeClusterMap{ "key": ComputeClusterArgs{...} }
 type ComputeClusterMapInput interface {
 	pulumi.Input
 

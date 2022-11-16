@@ -371,7 +371,7 @@ func (i *NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasD
 // NasDatastoreArrayInput is an input type that accepts NasDatastoreArray and NasDatastoreArrayOutput values.
 // You can construct a concrete instance of `NasDatastoreArrayInput` via:
 //
-//          NasDatastoreArray{ NasDatastoreArgs{...} }
+//	NasDatastoreArray{ NasDatastoreArgs{...} }
 type NasDatastoreArrayInput interface {
 	pulumi.Input
 
@@ -396,7 +396,7 @@ func (i NasDatastoreArray) ToNasDatastoreArrayOutputWithContext(ctx context.Cont
 // NasDatastoreMapInput is an input type that accepts NasDatastoreMap and NasDatastoreMapOutput values.
 // You can construct a concrete instance of `NasDatastoreMapInput` via:
 //
-//          NasDatastoreMap{ "key": NasDatastoreArgs{...} }
+//	NasDatastoreMap{ "key": NasDatastoreArgs{...} }
 type NasDatastoreMapInput interface {
 	pulumi.Input
 

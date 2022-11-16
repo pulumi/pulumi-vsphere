@@ -206,7 +206,7 @@ func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutputW
 // ComputeClusterVmDependencyRuleArrayInput is an input type that accepts ComputeClusterVmDependencyRuleArray and ComputeClusterVmDependencyRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmDependencyRuleArrayInput` via:
 //
-//          ComputeClusterVmDependencyRuleArray{ ComputeClusterVmDependencyRuleArgs{...} }
+//	ComputeClusterVmDependencyRuleArray{ ComputeClusterVmDependencyRuleArgs{...} }
 type ComputeClusterVmDependencyRuleArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +231,7 @@ func (i ComputeClusterVmDependencyRuleArray) ToComputeClusterVmDependencyRuleArr
 // ComputeClusterVmDependencyRuleMapInput is an input type that accepts ComputeClusterVmDependencyRuleMap and ComputeClusterVmDependencyRuleMapOutput values.
 // You can construct a concrete instance of `ComputeClusterVmDependencyRuleMapInput` via:
 //
-//          ComputeClusterVmDependencyRuleMap{ "key": ComputeClusterVmDependencyRuleArgs{...} }
+//	ComputeClusterVmDependencyRuleMap{ "key": ComputeClusterVmDependencyRuleArgs{...} }
 type ComputeClusterVmDependencyRuleMapInput interface {
 	pulumi.Input
 

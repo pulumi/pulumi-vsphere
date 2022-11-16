@@ -25,28 +25,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		category, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
-// 			Name: "example-category",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupTag(ctx, &GetTagArgs{
-// 			Name:       "example-tag",
-// 			CategoryId: category.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			category, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+//				Name: "example-category",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//				Name:       "example-tag",
+//				CategoryId: category.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	var rv LookupTagResult

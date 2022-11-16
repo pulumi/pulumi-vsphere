@@ -136,7 +136,7 @@ func (i *EntityPermissions) ToEntityPermissionsOutputWithContext(ctx context.Con
 // EntityPermissionsArrayInput is an input type that accepts EntityPermissionsArray and EntityPermissionsArrayOutput values.
 // You can construct a concrete instance of `EntityPermissionsArrayInput` via:
 //
-//          EntityPermissionsArray{ EntityPermissionsArgs{...} }
+//	EntityPermissionsArray{ EntityPermissionsArgs{...} }
 type EntityPermissionsArrayInput interface {
 	pulumi.Input
 
@@ -161,7 +161,7 @@ func (i EntityPermissionsArray) ToEntityPermissionsArrayOutputWithContext(ctx co
 // EntityPermissionsMapInput is an input type that accepts EntityPermissionsMap and EntityPermissionsMapOutput values.
 // You can construct a concrete instance of `EntityPermissionsMapInput` via:
 //
-//          EntityPermissionsMap{ "key": EntityPermissionsArgs{...} }
+//	EntityPermissionsMap{ "key": EntityPermissionsArgs{...} }
 type EntityPermissionsMapInput interface {
 	pulumi.Input
 

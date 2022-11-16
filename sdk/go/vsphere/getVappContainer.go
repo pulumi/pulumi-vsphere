@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupVappContainer(ctx, &GetVappContainerArgs{
-// 			Name:         "vapp-container-01",
-// 			DatacenterId: datacenter.Id,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupVappContainer(ctx, &GetVappContainerArgs{
+//				Name:         "vapp-container-01",
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupVappContainer(ctx *pulumi.Context, args *LookupVappContainerArgs, opts ...pulumi.InvokeOption) (*LookupVappContainerResult, error) {
 	var rv LookupVappContainerResult

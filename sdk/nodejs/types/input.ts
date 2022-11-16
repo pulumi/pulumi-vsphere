@@ -119,12 +119,12 @@ export interface EntityPermissionsPermission {
     userOrGroup: pulumi.Input<string>;
 }
 
-export interface GetVirtualMachineVappArgs {
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-}
-
 export interface GetVirtualMachineVapp {
     properties?: {[key: string]: string};
+}
+
+export interface GetVirtualMachineVappArgs {
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface HostPortGroupPort {

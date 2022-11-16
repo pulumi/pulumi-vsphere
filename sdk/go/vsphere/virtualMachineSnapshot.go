@@ -17,8 +17,6 @@ import (
 // For more information on managing snapshots and how they work in VMware, see
 // [here][ext-vm-snapshot-management].
 //
-// [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
-//
 // > **NOTE:** A snapshot in VMware differs from traditional disk snapshots, and
 // can contain the actual running state of the virtual machine, data for all disks
 // that have not been set to be independent from the snapshot (including ones that
@@ -31,36 +29,40 @@ import (
 // NOT recommend using them as as backup feature. For more information on the
 // limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
 //
-// [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
-//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.NewVirtualMachineSnapshot(ctx, "demo1", &vsphere.VirtualMachineSnapshotArgs{
-// 			Consolidate:        pulumi.Bool(true),
-// 			Description:        pulumi.String("This is Demo Snapshot"),
-// 			Memory:             pulumi.Bool(true),
-// 			Quiesce:            pulumi.Bool(true),
-// 			RemoveChildren:     pulumi.Bool(false),
-// 			SnapshotName:       pulumi.String("Snapshot Name"),
-// 			VirtualMachineUuid: pulumi.String("9aac5551-a351-4158-8c5c-15a71e8ec5c9"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewVirtualMachineSnapshot(ctx, "demo1", &vsphere.VirtualMachineSnapshotArgs{
+//				Consolidate:        pulumi.Bool(true),
+//				Description:        pulumi.String("This is Demo Snapshot"),
+//				Memory:             pulumi.Bool(true),
+//				Quiesce:            pulumi.Bool(true),
+//				RemoveChildren:     pulumi.Bool(false),
+//				SnapshotName:       pulumi.String("Snapshot Name"),
+//				VirtualMachineUuid: pulumi.String("9aac5551-a351-4158-8c5c-15a71e8ec5c9"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
+//
+// [ext-vm-snapshot-management]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html
+// [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
 type VirtualMachineSnapshot struct {
 	pulumi.CustomResourceState
 
@@ -252,7 +254,7 @@ func (i *VirtualMachineSnapshot) ToVirtualMachineSnapshotOutputWithContext(ctx c
 // VirtualMachineSnapshotArrayInput is an input type that accepts VirtualMachineSnapshotArray and VirtualMachineSnapshotArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineSnapshotArrayInput` via:
 //
-//          VirtualMachineSnapshotArray{ VirtualMachineSnapshotArgs{...} }
+//	VirtualMachineSnapshotArray{ VirtualMachineSnapshotArgs{...} }
 type VirtualMachineSnapshotArrayInput interface {
 	pulumi.Input
 
@@ -277,7 +279,7 @@ func (i VirtualMachineSnapshotArray) ToVirtualMachineSnapshotArrayOutputWithCont
 // VirtualMachineSnapshotMapInput is an input type that accepts VirtualMachineSnapshotMap and VirtualMachineSnapshotMapOutput values.
 // You can construct a concrete instance of `VirtualMachineSnapshotMapInput` via:
 //
-//          VirtualMachineSnapshotMap{ "key": VirtualMachineSnapshotArgs{...} }
+//	VirtualMachineSnapshotMap{ "key": VirtualMachineSnapshotArgs{...} }
 type VirtualMachineSnapshotMapInput interface {
 	pulumi.Input
 

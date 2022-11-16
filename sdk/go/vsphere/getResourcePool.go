@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
-// 			Name:         pulumi.StringRef("resource-pool-01"),
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
+//				Name:         pulumi.StringRef("resource-pool-01"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Specifying the Root Resource Pool for a Standalone ESXi Host
 //
@@ -58,22 +61,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
-// 			Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
-// 			DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupResourcePool(ctx, &GetResourcePoolArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
+//				DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.

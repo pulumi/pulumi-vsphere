@@ -208,7 +208,7 @@ func (i *ComputeClusterVmHostRule) ToComputeClusterVmHostRuleOutputWithContext(c
 // ComputeClusterVmHostRuleArrayInput is an input type that accepts ComputeClusterVmHostRuleArray and ComputeClusterVmHostRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmHostRuleArrayInput` via:
 //
-//          ComputeClusterVmHostRuleArray{ ComputeClusterVmHostRuleArgs{...} }
+//	ComputeClusterVmHostRuleArray{ ComputeClusterVmHostRuleArgs{...} }
 type ComputeClusterVmHostRuleArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +233,7 @@ func (i ComputeClusterVmHostRuleArray) ToComputeClusterVmHostRuleArrayOutputWith
 // ComputeClusterVmHostRuleMapInput is an input type that accepts ComputeClusterVmHostRuleMap and ComputeClusterVmHostRuleMapOutput values.
 // You can construct a concrete instance of `ComputeClusterVmHostRuleMapInput` via:
 //
-//          ComputeClusterVmHostRuleMap{ "key": ComputeClusterVmHostRuleArgs{...} }
+//	ComputeClusterVmHostRuleMap{ "key": ComputeClusterVmHostRuleArgs{...} }
 type ComputeClusterVmHostRuleMapInput interface {
 	pulumi.Input
 

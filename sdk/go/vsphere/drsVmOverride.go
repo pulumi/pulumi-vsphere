@@ -163,7 +163,7 @@ func (i *DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) Dr
 // DrsVmOverrideArrayInput is an input type that accepts DrsVmOverrideArray and DrsVmOverrideArrayOutput values.
 // You can construct a concrete instance of `DrsVmOverrideArrayInput` via:
 //
-//          DrsVmOverrideArray{ DrsVmOverrideArgs{...} }
+//	DrsVmOverrideArray{ DrsVmOverrideArgs{...} }
 type DrsVmOverrideArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ func (i DrsVmOverrideArray) ToDrsVmOverrideArrayOutputWithContext(ctx context.Co
 // DrsVmOverrideMapInput is an input type that accepts DrsVmOverrideMap and DrsVmOverrideMapOutput values.
 // You can construct a concrete instance of `DrsVmOverrideMapInput` via:
 //
-//          DrsVmOverrideMap{ "key": DrsVmOverrideArgs{...} }
+//	DrsVmOverrideMap{ "key": DrsVmOverrideArgs{...} }
 type DrsVmOverrideMapInput interface {
 	pulumi.Input
 
