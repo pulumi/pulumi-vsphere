@@ -163,7 +163,7 @@ func (i *DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRul
 // DatastoreClusterVmAntiAffinityRuleArrayInput is an input type that accepts DatastoreClusterVmAntiAffinityRuleArray and DatastoreClusterVmAntiAffinityRuleArrayOutput values.
 // You can construct a concrete instance of `DatastoreClusterVmAntiAffinityRuleArrayInput` via:
 //
-//          DatastoreClusterVmAntiAffinityRuleArray{ DatastoreClusterVmAntiAffinityRuleArgs{...} }
+//	DatastoreClusterVmAntiAffinityRuleArray{ DatastoreClusterVmAntiAffinityRuleArgs{...} }
 type DatastoreClusterVmAntiAffinityRuleArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ func (i DatastoreClusterVmAntiAffinityRuleArray) ToDatastoreClusterVmAntiAffinit
 // DatastoreClusterVmAntiAffinityRuleMapInput is an input type that accepts DatastoreClusterVmAntiAffinityRuleMap and DatastoreClusterVmAntiAffinityRuleMapOutput values.
 // You can construct a concrete instance of `DatastoreClusterVmAntiAffinityRuleMapInput` via:
 //
-//          DatastoreClusterVmAntiAffinityRuleMap{ "key": DatastoreClusterVmAntiAffinityRuleArgs{...} }
+//	DatastoreClusterVmAntiAffinityRuleMap{ "key": DatastoreClusterVmAntiAffinityRuleArgs{...} }
 type DatastoreClusterVmAntiAffinityRuleMapInput interface {
 	pulumi.Input
 

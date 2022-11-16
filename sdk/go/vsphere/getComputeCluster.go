@@ -17,8 +17,9 @@ import (
 // data source.
 //
 // > You may also wish to see the `ComputeCluster`
-//  resource for more information about clusters and how to managed the resource
-//  in this provider.
+//
+//	resource for more information about clusters and how to managed the resource
+//	in this provider.
 //
 // ## Example Usage
 //
@@ -26,28 +27,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			Name:         "cluster-01",
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupComputeCluster(ctx *pulumi.Context, args *LookupComputeClusterArgs, opts ...pulumi.InvokeOption) (*LookupComputeClusterResult, error) {
 	var rv LookupComputeClusterResult

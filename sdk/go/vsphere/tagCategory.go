@@ -158,7 +158,7 @@ func (i *TagCategory) ToTagCategoryOutputWithContext(ctx context.Context) TagCat
 // TagCategoryArrayInput is an input type that accepts TagCategoryArray and TagCategoryArrayOutput values.
 // You can construct a concrete instance of `TagCategoryArrayInput` via:
 //
-//          TagCategoryArray{ TagCategoryArgs{...} }
+//	TagCategoryArray{ TagCategoryArgs{...} }
 type TagCategoryArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ func (i TagCategoryArray) ToTagCategoryArrayOutputWithContext(ctx context.Contex
 // TagCategoryMapInput is an input type that accepts TagCategoryMap and TagCategoryMapOutput values.
 // You can construct a concrete instance of `TagCategoryMapInput` via:
 //
-//          TagCategoryMap{ "key": TagCategoryArgs{...} }
+//	TagCategoryMap{ "key": TagCategoryArgs{...} }
 type TagCategoryMapInput interface {
 	pulumi.Input
 

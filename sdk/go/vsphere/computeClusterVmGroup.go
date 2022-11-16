@@ -140,7 +140,7 @@ func (i *ComputeClusterVmGroup) ToComputeClusterVmGroupOutputWithContext(ctx con
 // ComputeClusterVmGroupArrayInput is an input type that accepts ComputeClusterVmGroupArray and ComputeClusterVmGroupArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmGroupArrayInput` via:
 //
-//          ComputeClusterVmGroupArray{ ComputeClusterVmGroupArgs{...} }
+//	ComputeClusterVmGroupArray{ ComputeClusterVmGroupArgs{...} }
 type ComputeClusterVmGroupArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ func (i ComputeClusterVmGroupArray) ToComputeClusterVmGroupArrayOutputWithContex
 // ComputeClusterVmGroupMapInput is an input type that accepts ComputeClusterVmGroupMap and ComputeClusterVmGroupMapOutput values.
 // You can construct a concrete instance of `ComputeClusterVmGroupMapInput` via:
 //
-//          ComputeClusterVmGroupMap{ "key": ComputeClusterVmGroupArgs{...} }
+//	ComputeClusterVmGroupMap{ "key": ComputeClusterVmGroupArgs{...} }
 type ComputeClusterVmGroupMapInput interface {
 	pulumi.Input
 

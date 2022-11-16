@@ -21,31 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-// 			Hostname:   pulumi.String("esx-01.example.com"),
-// 			Username:   pulumi.String("root"),
-// 			Password:   pulumi.String("password"),
-// 			License:    pulumi.String("00000-00000-00000-00000-00000"),
-// 			Datacenter: pulumi.String(datacenter.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname:   pulumi.String("esx-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				License:    pulumi.String("00000-00000-00000-00000-00000"),
+//				Datacenter: pulumi.String(datacenter.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create host in a compute cluster
 //
@@ -53,38 +56,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
-// 			Name: pulumi.StringRef("dc-01"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		cluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
-// 			Name:         "cluster-01",
-// 			DatacenterId: pulumi.StringRef(datacenter.Id),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-// 			Hostname: pulumi.String("esx-01.example.com"),
-// 			Username: pulumi.String("root"),
-// 			Password: pulumi.String("password"),
-// 			License:  pulumi.String("00000-00000-00000-00000-00000"),
-// 			Cluster:  pulumi.String(cluster.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
+//				Hostname: pulumi.String("esx-01.example.com"),
+//				Username: pulumi.String("root"),
+//				Password: pulumi.String("password"),
+//				License:  pulumi.String("00000-00000-00000-00000-00000"),
+//				Cluster:  pulumi.String(cluster.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Importing
 //
@@ -97,14 +103,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // The above would import the host with ID `host-123`.
@@ -433,7 +442,7 @@ func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 // HostArrayInput is an input type that accepts HostArray and HostArrayOutput values.
 // You can construct a concrete instance of `HostArrayInput` via:
 //
-//          HostArray{ HostArgs{...} }
+//	HostArray{ HostArgs{...} }
 type HostArrayInput interface {
 	pulumi.Input
 
@@ -458,7 +467,7 @@ func (i HostArray) ToHostArrayOutputWithContext(ctx context.Context) HostArrayOu
 // HostMapInput is an input type that accepts HostMap and HostMapOutput values.
 // You can construct a concrete instance of `HostMapInput` via:
 //
-//          HostMap{ "key": HostArgs{...} }
+//	HostMap{ "key": HostArgs{...} }
 type HostMapInput interface {
 	pulumi.Input
 

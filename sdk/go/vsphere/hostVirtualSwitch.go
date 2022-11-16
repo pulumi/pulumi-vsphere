@@ -449,7 +449,7 @@ func (i *HostVirtualSwitch) ToHostVirtualSwitchOutputWithContext(ctx context.Con
 // HostVirtualSwitchArrayInput is an input type that accepts HostVirtualSwitchArray and HostVirtualSwitchArrayOutput values.
 // You can construct a concrete instance of `HostVirtualSwitchArrayInput` via:
 //
-//          HostVirtualSwitchArray{ HostVirtualSwitchArgs{...} }
+//	HostVirtualSwitchArray{ HostVirtualSwitchArgs{...} }
 type HostVirtualSwitchArrayInput interface {
 	pulumi.Input
 
@@ -474,7 +474,7 @@ func (i HostVirtualSwitchArray) ToHostVirtualSwitchArrayOutputWithContext(ctx co
 // HostVirtualSwitchMapInput is an input type that accepts HostVirtualSwitchMap and HostVirtualSwitchMapOutput values.
 // You can construct a concrete instance of `HostVirtualSwitchMapInput` via:
 //
-//          HostVirtualSwitchMap{ "key": HostVirtualSwitchArgs{...} }
+//	HostVirtualSwitchMap{ "key": HostVirtualSwitchArgs{...} }
 type HostVirtualSwitchMapInput interface {
 	pulumi.Input
 

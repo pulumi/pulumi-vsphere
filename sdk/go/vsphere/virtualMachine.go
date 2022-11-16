@@ -906,7 +906,7 @@ func (i *VirtualMachine) ToVirtualMachineOutputWithContext(ctx context.Context) 
 // VirtualMachineArrayInput is an input type that accepts VirtualMachineArray and VirtualMachineArrayOutput values.
 // You can construct a concrete instance of `VirtualMachineArrayInput` via:
 //
-//          VirtualMachineArray{ VirtualMachineArgs{...} }
+//	VirtualMachineArray{ VirtualMachineArgs{...} }
 type VirtualMachineArrayInput interface {
 	pulumi.Input
 
@@ -931,7 +931,7 @@ func (i VirtualMachineArray) ToVirtualMachineArrayOutputWithContext(ctx context.
 // VirtualMachineMapInput is an input type that accepts VirtualMachineMap and VirtualMachineMapOutput values.
 // You can construct a concrete instance of `VirtualMachineMapInput` via:
 //
-//          VirtualMachineMap{ "key": VirtualMachineArgs{...} }
+//	VirtualMachineMap{ "key": VirtualMachineArgs{...} }
 type VirtualMachineMapInput interface {
 	pulumi.Input
 

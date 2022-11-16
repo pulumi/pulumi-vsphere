@@ -203,7 +203,7 @@ func (i *StorageDrsVmOverride) ToStorageDrsVmOverrideOutputWithContext(ctx conte
 // StorageDrsVmOverrideArrayInput is an input type that accepts StorageDrsVmOverrideArray and StorageDrsVmOverrideArrayOutput values.
 // You can construct a concrete instance of `StorageDrsVmOverrideArrayInput` via:
 //
-//          StorageDrsVmOverrideArray{ StorageDrsVmOverrideArgs{...} }
+//	StorageDrsVmOverrideArray{ StorageDrsVmOverrideArgs{...} }
 type StorageDrsVmOverrideArrayInput interface {
 	pulumi.Input
 
@@ -228,7 +228,7 @@ func (i StorageDrsVmOverrideArray) ToStorageDrsVmOverrideArrayOutputWithContext(
 // StorageDrsVmOverrideMapInput is an input type that accepts StorageDrsVmOverrideMap and StorageDrsVmOverrideMapOutput values.
 // You can construct a concrete instance of `StorageDrsVmOverrideMapInput` via:
 //
-//          StorageDrsVmOverrideMap{ "key": StorageDrsVmOverrideArgs{...} }
+//	StorageDrsVmOverrideMap{ "key": StorageDrsVmOverrideArgs{...} }
 type StorageDrsVmOverrideMapInput interface {
 	pulumi.Input
 

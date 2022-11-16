@@ -284,7 +284,7 @@ func (i *VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) Vm
 // VmfsDatastoreArrayInput is an input type that accepts VmfsDatastoreArray and VmfsDatastoreArrayOutput values.
 // You can construct a concrete instance of `VmfsDatastoreArrayInput` via:
 //
-//          VmfsDatastoreArray{ VmfsDatastoreArgs{...} }
+//	VmfsDatastoreArray{ VmfsDatastoreArgs{...} }
 type VmfsDatastoreArrayInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ func (i VmfsDatastoreArray) ToVmfsDatastoreArrayOutputWithContext(ctx context.Co
 // VmfsDatastoreMapInput is an input type that accepts VmfsDatastoreMap and VmfsDatastoreMapOutput values.
 // You can construct a concrete instance of `VmfsDatastoreMapInput` via:
 //
-//          VmfsDatastoreMap{ "key": VmfsDatastoreArgs{...} }
+//	VmfsDatastoreMap{ "key": VmfsDatastoreArgs{...} }
 type VmfsDatastoreMapInput interface {
 	pulumi.Input
 

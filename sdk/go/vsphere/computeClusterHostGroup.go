@@ -140,7 +140,7 @@ func (i *ComputeClusterHostGroup) ToComputeClusterHostGroupOutputWithContext(ctx
 // ComputeClusterHostGroupArrayInput is an input type that accepts ComputeClusterHostGroupArray and ComputeClusterHostGroupArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterHostGroupArrayInput` via:
 //
-//          ComputeClusterHostGroupArray{ ComputeClusterHostGroupArgs{...} }
+//	ComputeClusterHostGroupArray{ ComputeClusterHostGroupArgs{...} }
 type ComputeClusterHostGroupArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ func (i ComputeClusterHostGroupArray) ToComputeClusterHostGroupArrayOutputWithCo
 // ComputeClusterHostGroupMapInput is an input type that accepts ComputeClusterHostGroupMap and ComputeClusterHostGroupMapOutput values.
 // You can construct a concrete instance of `ComputeClusterHostGroupMapInput` via:
 //
-//          ComputeClusterHostGroupMap{ "key": ComputeClusterHostGroupArgs{...} }
+//	ComputeClusterHostGroupMap{ "key": ComputeClusterHostGroupArgs{...} }
 type ComputeClusterHostGroupMapInput interface {
 	pulumi.Input
 
