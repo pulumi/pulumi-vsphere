@@ -33,74 +33,74 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+//			_, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "environment",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+//			_, err = vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "service_level",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+//			_, err = vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "replication",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.environment.id",
 //				Name:       "production",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.environment.id",
 //				Name:       "development",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //				Name:       "platinum",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //				Name:       "platinum",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //				Name:       "silver",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.service_level.id",
 //				Name:       "bronze",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.replication.id",
 //				Name:       "replicated",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				CategoryId: "data.vsphere_tag_category.replication.id",
 //				Name:       "non_replicated",
 //			}, nil)
@@ -149,25 +149,25 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vsphere.NewVmStoragePolicy(ctx, "prodPlatinumReplicated", &vsphere.VmStoragePolicyArgs{
 //				Description: pulumi.String("prod_platinum_replicated"),
-//				TagRules: VmStoragePolicyTagRuleArray{
-//					&VmStoragePolicyTagRuleArgs{
+//				TagRules: vsphere.VmStoragePolicyTagRuleArray{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Environment.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Production.Name),
+//							data.Vsphere_tag.Production.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
-//					&VmStoragePolicyTagRuleArgs{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Service_level.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Platinum.Name),
+//							data.Vsphere_tag.Platinum.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
-//					&VmStoragePolicyTagRuleArgs{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Replication.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Replicated.Name),
+//							data.Vsphere_tag.Replicated.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
@@ -178,25 +178,25 @@ import (
 //			}
 //			_, err = vsphere.NewVmStoragePolicy(ctx, "devSilverNonreplicated", &vsphere.VmStoragePolicyArgs{
 //				Description: pulumi.String("dev_silver_nonreplicated"),
-//				TagRules: VmStoragePolicyTagRuleArray{
-//					&VmStoragePolicyTagRuleArgs{
+//				TagRules: vsphere.VmStoragePolicyTagRuleArray{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Environment.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Development.Name),
+//							data.Vsphere_tag.Development.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
-//					&VmStoragePolicyTagRuleArgs{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Service_level.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Silver.Name),
+//							data.Vsphere_tag.Silver.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
-//					&VmStoragePolicyTagRuleArgs{
+//					&vsphere.VmStoragePolicyTagRuleArgs{
 //						TagCategory: pulumi.Any(data.Vsphere_tag_category.Replication.Name),
 //						Tags: pulumi.StringArray{
-//							pulumi.Any(data.Vsphere_tag.Non_replicated.Name),
+//							data.Vsphere_tag.Non_replicated.Name,
 //						},
 //						IncludeDatastoresWithTags: pulumi.Bool(true),
 //					},
@@ -225,13 +225,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.GetPolicy(ctx, &GetPolicyArgs{
+//			_, err := vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
 //				Name: "prod_platinum_replicated",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.GetPolicy(ctx, &GetPolicyArgs{
+//			_, err = vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
 //				Name: "dev_silver_nonreplicated",
 //			}, nil)
 //			if err != nil {
@@ -422,6 +422,21 @@ func (o VmStoragePolicyOutput) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
 
 func (o VmStoragePolicyOutput) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
 	return o
+}
+
+// Description of the storage policy.
+func (o VmStoragePolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmStoragePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the storage policy.
+func (o VmStoragePolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmStoragePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of tag rules. The tag category and tags to be associated to this storage policy.
+func (o VmStoragePolicyOutput) TagRules() VmStoragePolicyTagRuleArrayOutput {
+	return o.ApplyT(func(v *VmStoragePolicy) VmStoragePolicyTagRuleArrayOutput { return v.TagRules }).(VmStoragePolicyTagRuleArrayOutput)
 }
 
 type VmStoragePolicyArrayOutput struct{ *pulumi.OutputState }

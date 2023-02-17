@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/computeClusterVmDependencyRule:ComputeClusterVmDependencyRule")]
-    public partial class ComputeClusterVmDependencyRule : Pulumi.CustomResource
+    public partial class ComputeClusterVmDependencyRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -102,7 +102,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ComputeClusterVmDependencyRuleArgs : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmDependencyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -153,9 +153,10 @@ namespace Pulumi.VSphere
         public ComputeClusterVmDependencyRuleArgs()
         {
         }
+        public static new ComputeClusterVmDependencyRuleArgs Empty => new ComputeClusterVmDependencyRuleArgs();
     }
 
-    public sealed class ComputeClusterVmDependencyRuleState : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmDependencyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -206,5 +207,6 @@ namespace Pulumi.VSphere
         public ComputeClusterVmDependencyRuleState()
         {
         }
+        public static new ComputeClusterVmDependencyRuleState Empty => new ComputeClusterVmDependencyRuleState();
     }
 }

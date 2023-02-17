@@ -33,13 +33,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			category, err := vsphere.LookupTagCategory(ctx, &GetTagCategoryArgs{
+//			category, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
 //				Name: "example-category",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupTag(ctx, &GetTagArgs{
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
 //				Name:       "example-tag",
 //				CategoryId: category.Id,
 //			}, nil)

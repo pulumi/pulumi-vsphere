@@ -34,13 +34,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			host, err := vsphere.LookupHost(ctx, &GetHostArgs{
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com"),
 //				DatacenterId: datacenter.Id,
 //			}, nil)
@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: *pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
 //					pulumi.String("vmnic1"),
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
-//				HostSystemId:      pulumi.String(host.Id),
+//				HostSystemId:      *pulumi.String(host.Id),
 //				VirtualSwitchName: hostVirtualSwitch.Name,
 //			})
 //			if err != nil {
@@ -96,13 +96,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			host, err := vsphere.LookupHost(ctx, &GetHostArgs{
+//			host, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi-01.example.com"),
 //				DatacenterId: datacenter.Id,
 //			}, nil)
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			hostVirtualSwitch, err := vsphere.NewHostVirtualSwitch(ctx, "hostVirtualSwitch", &vsphere.HostVirtualSwitchArgs{
-//				HostSystemId: pulumi.String(host.Id),
+//				HostSystemId: *pulumi.String(host.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic0"),
 //					pulumi.String("vmnic1"),
@@ -126,7 +126,7 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewHostPortGroup(ctx, "pg", &vsphere.HostPortGroupArgs{
-//				HostSystemId:      pulumi.String(host.Id),
+//				HostSystemId:      *pulumi.String(host.Id),
 //				VirtualSwitchName: hostVirtualSwitch.Name,
 //				VlanId:            pulumi.Int(4095),
 //				AllowPromiscuous:  pulumi.Bool(true),
@@ -544,6 +544,117 @@ func (o HostPortGroupOutput) ToHostPortGroupOutput() HostPortGroupOutput {
 
 func (o HostPortGroupOutput) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
 	return o
+}
+
+// List of active network adapters used for load balancing.
+func (o HostPortGroupOutput) ActiveNics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringArrayOutput { return v.ActiveNics }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+// that of its own.
+func (o HostPortGroupOutput) AllowForgedTransmits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.AllowForgedTransmits }).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether or not the Media Access Control (MAC) address can be changed.
+func (o HostPortGroupOutput) AllowMacChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.AllowMacChanges }).(pulumi.BoolPtrOutput)
+}
+
+// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
+func (o HostPortGroupOutput) AllowPromiscuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.AllowPromiscuous }).(pulumi.BoolPtrOutput)
+}
+
+// Enable beacon probing. Requires that the vSwitch has been configured to use a beacon. If disabled, link status is used
+// only.
+func (o HostPortGroupOutput) CheckBeacon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.CheckBeacon }).(pulumi.BoolPtrOutput)
+}
+
+// A map with a full set of the policy
+// options computed from defaults and overrides,
+// explaining the effective policy for this port group.
+func (o HostPortGroupOutput) ComputedPolicy() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringMapOutput { return v.ComputedPolicy }).(pulumi.StringMapOutput)
+}
+
+// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
+func (o HostPortGroupOutput) Failback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.Failback }).(pulumi.BoolPtrOutput)
+}
+
+// The managed object ID of
+// the host to set the port group up on. Forces a new resource if changed.
+func (o HostPortGroupOutput) HostSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
+}
+
+// The key for this port group as returned from the vSphere API.
+func (o HostPortGroupOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The name of the port group.  Forces a new resource if
+// changed.
+func (o HostPortGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
+func (o HostPortGroupOutput) NotifySwitches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.NotifySwitches }).(pulumi.BoolPtrOutput)
+}
+
+// A list of ports that currently exist and are used on this port group.
+func (o HostPortGroupOutput) Ports() HostPortGroupPortArrayOutput {
+	return o.ApplyT(func(v *HostPortGroup) HostPortGroupPortArrayOutput { return v.Ports }).(HostPortGroupPortArrayOutput)
+}
+
+// The average bandwidth in bits per second if traffic shaping is enabled.
+func (o HostPortGroupOutput) ShapingAverageBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.IntPtrOutput { return v.ShapingAverageBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The maximum burst size allowed in bytes if traffic shaping is enabled.
+func (o HostPortGroupOutput) ShapingBurstSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.IntPtrOutput { return v.ShapingBurstSize }).(pulumi.IntPtrOutput)
+}
+
+// Enable traffic shaping on this virtual switch or port group.
+func (o HostPortGroupOutput) ShapingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.BoolPtrOutput { return v.ShapingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
+func (o HostPortGroupOutput) ShapingPeakBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.IntPtrOutput { return v.ShapingPeakBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// List of standby network adapters used for failover.
+func (o HostPortGroupOutput) StandbyNics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringArrayOutput { return v.StandbyNics }).(pulumi.StringArrayOutput)
+}
+
+// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid, or
+// failover_explicit.
+func (o HostPortGroupOutput) TeamingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringPtrOutput { return v.TeamingPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the virtual switch to bind
+// this port group to. Forces a new resource if changed.
+func (o HostPortGroupOutput) VirtualSwitchName() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.StringOutput { return v.VirtualSwitchName }).(pulumi.StringOutput)
+}
+
+// The VLAN ID/trunk mode for this port group.  An ID of
+// `0` denotes no tagging, an ID of `1`-`4094` tags with the specific ID, and an
+// ID of `4095` enables trunk mode, allowing the guest to manage its own
+// tagging. Default: `0`.
+func (o HostPortGroupOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostPortGroup) pulumi.IntPtrOutput { return v.VlanId }).(pulumi.IntPtrOutput)
 }
 
 type HostPortGroupArrayOutput struct{ *pulumi.OutputState }

@@ -39,6 +39,40 @@ import javax.annotation.Nullable;
  * [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VirtualMachineSnapshot;
+ * import com.pulumi.vsphere.VirtualMachineSnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var demo1 = new VirtualMachineSnapshot(&#34;demo1&#34;, VirtualMachineSnapshotArgs.builder()        
+ *             .consolidate(&#34;true&#34;)
+ *             .description(&#34;This is Demo Snapshot&#34;)
+ *             .memory(&#34;true&#34;)
+ *             .quiesce(&#34;true&#34;)
+ *             .removeChildren(&#34;false&#34;)
+ *             .snapshotName(&#34;Snapshot Name&#34;)
+ *             .virtualMachineUuid(&#34;9aac5551-a351-4158-8c5c-15a71e8ec5c9&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot")

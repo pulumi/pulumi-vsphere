@@ -20,17 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const attribute = pulumi.output(vsphere.getCustomAttribute({
+ * const attribute = vsphere.getCustomAttribute({
  *     name: "test-attribute",
- * }));
+ * });
  * ```
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getCustomAttribute:getCustomAttribute", {
         "name": args.name,
     }, opts);
@@ -57,9 +54,29 @@ export interface GetCustomAttributeResult {
     readonly managedObjectType: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.CustomAttribute` data source can be used to reference custom
+ * attributes that are not managed by this provider. Its attributes are exactly the
+ * same as the `vsphere.CustomAttribute` resource,
+ * and, like importing, the data source takes a name argument for the search. The
+ * `id` and other attributes are then populated with the data found by the search.
+ *
+ * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+ * and require vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const attribute = vsphere.getCustomAttribute({
+ *     name: "test-attribute",
+ * });
+ * ```
+ */
 export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
-    return pulumi.output(args).apply(a => getCustomAttribute(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomAttribute(a, opts))
 }
 
 /**

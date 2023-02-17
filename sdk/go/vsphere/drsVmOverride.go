@@ -224,6 +224,32 @@ func (o DrsVmOverrideOutput) ToDrsVmOverrideOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the override in.  Forces a new
+// resource if changed.
+func (o DrsVmOverrideOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DrsVmOverride) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// Overrides the automation level for this virtual
+// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
+// `fullyAutomated`. Default: `manual`.
+func (o DrsVmOverrideOutput) DrsAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DrsVmOverride) pulumi.StringPtrOutput { return v.DrsAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Overrides the default DRS setting for this virtual
+// machine. Can be either `true` or `false`. Default: `false`.
+func (o DrsVmOverrideOutput) DrsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DrsVmOverride) pulumi.BoolPtrOutput { return v.DrsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The UUID of the virtual machine to create
+// the override for.  Forces a new resource if changed.
+func (o DrsVmOverrideOutput) VirtualMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DrsVmOverride) pulumi.StringOutput { return v.VirtualMachineId }).(pulumi.StringOutput)
+}
+
 type DrsVmOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DrsVmOverrideArrayOutput) ElementType() reflect.Type {

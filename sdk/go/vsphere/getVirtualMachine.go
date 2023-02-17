@@ -33,13 +33,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+//			_, err = vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("ubuntu-server-template"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -66,20 +66,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+//			_, err = vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("production/templates/ubuntu-server-template"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupVirtualMachine(ctx, &GetVirtualMachineArgs{
+//			_, err = vsphere.LookupVirtualMachine(ctx, &vsphere.LookupVirtualMachineArgs{
 //				Name:         pulumi.StringRef("development/templates/ubuntu-server-template"),
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -122,12 +122,13 @@ type LookupVirtualMachineArgs struct {
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
 	// `Datacenter` data source.
-	DatacenterId         *string           `pulumi:"datacenterId"`
-	EfiSecureBootEnabled *bool             `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid       *bool             `pulumi:"enableDiskUuid"`
-	EnableLogging        *bool             `pulumi:"enableLogging"`
-	EptRviMode           *string           `pulumi:"eptRviMode"`
-	ExtraConfig          map[string]string `pulumi:"extraConfig"`
+	DatacenterId              *string           `pulumi:"datacenterId"`
+	EfiSecureBootEnabled      *bool             `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid            *bool             `pulumi:"enableDiskUuid"`
+	EnableLogging             *bool             `pulumi:"enableLogging"`
+	EptRviMode                *string           `pulumi:"eptRviMode"`
+	ExtraConfig               map[string]string `pulumi:"extraConfig"`
+	ExtraConfigRebootRequired *bool             `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware *string `pulumi:"firmware"`
 	// The guest ID of the virtual machine or template.
@@ -210,12 +211,13 @@ type LookupVirtualMachineResult struct {
 	// source must be the same on the destination virtual machine as the source.
 	// Only the first number of controllers defined by `scsiControllerScanCount`
 	// are scanned for disks. The sub-attributes are:
-	Disks                []GetVirtualMachineDisk `pulumi:"disks"`
-	EfiSecureBootEnabled *bool                   `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid       *bool                   `pulumi:"enableDiskUuid"`
-	EnableLogging        *bool                   `pulumi:"enableLogging"`
-	EptRviMode           *string                 `pulumi:"eptRviMode"`
-	ExtraConfig          map[string]string       `pulumi:"extraConfig"`
+	Disks                     []GetVirtualMachineDisk `pulumi:"disks"`
+	EfiSecureBootEnabled      *bool                   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid            *bool                   `pulumi:"enableDiskUuid"`
+	EnableLogging             *bool                   `pulumi:"enableLogging"`
+	EptRviMode                *string                 `pulumi:"eptRviMode"`
+	ExtraConfig               map[string]string       `pulumi:"extraConfig"`
+	ExtraConfigRebootRequired *bool                   `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware *string `pulumi:"firmware"`
 	// The guest ID of the virtual machine or template.
@@ -240,7 +242,7 @@ type LookupVirtualMachineResult struct {
 	NestedHvEnabled     *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
 	// interface found on the virtual machine, in device bus order. Will be one of
-	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+	// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
 	NetworkInterfaceTypes []string `pulumi:"networkInterfaceTypes"`
 	// Information about each of the network interfaces on this
 	// virtual machine or template. These are sorted by device bus order so that they
@@ -320,12 +322,13 @@ type LookupVirtualMachineOutputArgs struct {
 	// This can be omitted if the search path used in `name` is an absolute path.
 	// For default datacenters, use the `id` attribute from an empty
 	// `Datacenter` data source.
-	DatacenterId         pulumi.StringPtrInput `pulumi:"datacenterId"`
-	EfiSecureBootEnabled pulumi.BoolPtrInput   `pulumi:"efiSecureBootEnabled"`
-	EnableDiskUuid       pulumi.BoolPtrInput   `pulumi:"enableDiskUuid"`
-	EnableLogging        pulumi.BoolPtrInput   `pulumi:"enableLogging"`
-	EptRviMode           pulumi.StringPtrInput `pulumi:"eptRviMode"`
-	ExtraConfig          pulumi.StringMapInput `pulumi:"extraConfig"`
+	DatacenterId              pulumi.StringPtrInput `pulumi:"datacenterId"`
+	EfiSecureBootEnabled      pulumi.BoolPtrInput   `pulumi:"efiSecureBootEnabled"`
+	EnableDiskUuid            pulumi.BoolPtrInput   `pulumi:"enableDiskUuid"`
+	EnableLogging             pulumi.BoolPtrInput   `pulumi:"enableLogging"`
+	EptRviMode                pulumi.StringPtrInput `pulumi:"eptRviMode"`
+	ExtraConfig               pulumi.StringMapInput `pulumi:"extraConfig"`
+	ExtraConfigRebootRequired pulumi.BoolPtrInput   `pulumi:"extraConfigRebootRequired"`
 	// The firmware type for this virtual machine. Can be `bios` or `efi`.
 	Firmware pulumi.StringPtrInput `pulumi:"firmware"`
 	// The guest ID of the virtual machine or template.
@@ -494,6 +497,10 @@ func (o LookupVirtualMachineResultOutput) ExtraConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) map[string]string { return v.ExtraConfig }).(pulumi.StringMapOutput)
 }
 
+func (o LookupVirtualMachineResultOutput) ExtraConfigRebootRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) *bool { return v.ExtraConfigRebootRequired }).(pulumi.BoolPtrOutput)
+}
+
 // The firmware type for this virtual machine. Can be `bios` or `efi`.
 func (o LookupVirtualMachineResultOutput) Firmware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Firmware }).(pulumi.StringPtrOutput)
@@ -566,7 +573,7 @@ func (o LookupVirtualMachineResultOutput) NestedHvEnabled() pulumi.BoolPtrOutput
 
 // The network interface types for each network
 // interface found on the virtual machine, in device bus order. Will be one of
-// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
 func (o LookupVirtualMachineResultOutput) NetworkInterfaceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []string { return v.NetworkInterfaceTypes }).(pulumi.StringArrayOutput)
 }

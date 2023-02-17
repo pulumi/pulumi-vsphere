@@ -264,6 +264,43 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// Map of custom attribute ids to attribute
+// value strings to set for folder. See [here][docs-setting-custom-attributes]
+// for a reference on how to set values for custom attributes.
+func (o FolderOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The ID of the datacenter the folder will be created in.
+// Required for all folder types except for datacenter folders. Forces a new
+// resource if changed.
+func (o FolderOutput) DatacenterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.DatacenterId }).(pulumi.StringPtrOutput)
+}
+
+// The path of the folder to be created. This is relative to
+// the root of the type of folder you are creating, and the supplied datacenter.
+// For example, given a default datacenter of `default-dc`, a folder of type
+// `vm` (denoting a virtual machine folder), and a supplied folder of
+// `test-folder`, the resulting path would be
+// `/default-dc/vm/test-folder`.
+func (o FolderOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o FolderOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of folder to create. Allowed options are
+// `datacenter` for datacenter folders, `host` for host and cluster folders,
+// `vm` for virtual machine folders, `datastore` for datastore folders, and
+// `network` for network folders. Forces a new resource if changed.
+func (o FolderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type FolderArrayOutput struct{ *pulumi.OutputState }
 
 func (FolderArrayOutput) ElementType() reflect.Type {

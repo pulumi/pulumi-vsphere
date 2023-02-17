@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const prodDatacenter = new vsphere.Datacenter("prod_datacenter", {});
+ * const prodDatacenter = new vsphere.Datacenter("prodDatacenter", {});
  * ```
  * ### Create datacenter on a subfolder
  *
@@ -23,9 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const researchDatacenter = new vsphere.Datacenter("research_datacenter", {
- *     folder: "/research/",
- * });
+ * const researchDatacenter = new vsphere.Datacenter("researchDatacenter", {folder: "/research/"});
  * ```
  */
 export class Datacenter extends pulumi.CustomResource {

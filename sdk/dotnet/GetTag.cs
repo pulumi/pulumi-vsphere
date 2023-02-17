@@ -26,31 +26,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "example-category",
-        ///         }));
-        ///         var tag = category.Apply(category =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "example-tag",
-        ///             CategoryId = category.Id,
-        ///         })));
-        ///     }
+        ///         Name = "example-category",
+        ///     });
         /// 
-        /// }
+        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "example-tag",
+        ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.Tag` data source can be used to reference tags that are not
@@ -67,35 +66,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "example-category",
-        ///         }));
-        ///         var tag = category.Apply(category =&gt; Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "example-tag",
-        ///             CategoryId = category.Id,
-        ///         })));
-        ///     }
+        ///         Name = "example-category",
+        ///     });
         /// 
-        /// }
+        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "example-tag",
+        ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTagArgs : Pulumi.InvokeArgs
+    public sealed class GetTagArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the tag category in which the tag is
@@ -113,9 +111,10 @@ namespace Pulumi.VSphere
         public GetTagArgs()
         {
         }
+        public static new GetTagArgs Empty => new GetTagArgs();
     }
 
-    public sealed class GetTagInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the tag category in which the tag is
@@ -133,6 +132,7 @@ namespace Pulumi.VSphere
         public GetTagInvokeArgs()
         {
         }
+        public static new GetTagInvokeArgs Empty => new GetTagInvokeArgs();
     }
 
 

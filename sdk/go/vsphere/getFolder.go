@@ -11,8 +11,7 @@ import (
 )
 
 // The `Folder` data source can be used to get the general attributes of a
-// vSphere inventory folder. Paths are absolute and include must include the
-// datacenter.
+// vSphere inventory folder. Paths are absolute and must include the datacenter.
 //
 // ## Example Usage
 //
@@ -28,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupFolder(ctx, &GetFolderArgs{
+//			_, err := vsphere.LookupFolder(ctx, &vsphere.LookupFolderArgs{
 //				Path: "/dc-01/datastore-01/folder-01",
 //			}, nil)
 //			if err != nil {

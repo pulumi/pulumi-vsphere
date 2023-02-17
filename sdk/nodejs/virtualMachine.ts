@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class VirtualMachine extends pulumi.CustomResource {
@@ -56,7 +57,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
-    public readonly cdrom!: pulumi.Output<outputs.VirtualMachineCdrom | undefined>;
+    public readonly cdroms!: pulumi.Output<outputs.VirtualMachineCdrom[] | undefined>;
     /**
      * A unique identifier for a given version of the last configuration was applied.
      */
@@ -94,7 +95,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly cpuShareLevel!: pulumi.Output<string | undefined>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -106,7 +107,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
@@ -137,6 +138,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     public readonly extraConfig!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
+     */
+    public readonly extraConfigRebootRequired!: pulumi.Output<boolean | undefined>;
     /**
      * The firmware for the virtual machine. One of `bios` or `efi`.
      */
@@ -214,7 +219,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly migrateWaitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The machine object ID from VMware vSphere.
+     * The managed object reference ID of the created virtual machine.
      */
     public /*out*/ readonly moid!: pulumi.Output<string>;
     /**
@@ -310,7 +315,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      */
     public readonly storagePolicyId!: pulumi.Output<string>;
     /**
@@ -392,7 +397,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["bootDelay"] = state ? state.bootDelay : undefined;
             resourceInputs["bootRetryDelay"] = state ? state.bootRetryDelay : undefined;
             resourceInputs["bootRetryEnabled"] = state ? state.bootRetryEnabled : undefined;
-            resourceInputs["cdrom"] = state ? state.cdrom : undefined;
+            resourceInputs["cdroms"] = state ? state.cdroms : undefined;
             resourceInputs["changeVersion"] = state ? state.changeVersion : undefined;
             resourceInputs["clone"] = state ? state.clone : undefined;
             resourceInputs["cpuHotAddEnabled"] = state ? state.cpuHotAddEnabled : undefined;
@@ -413,6 +418,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
             resourceInputs["eptRviMode"] = state ? state.eptRviMode : undefined;
             resourceInputs["extraConfig"] = state ? state.extraConfig : undefined;
+            resourceInputs["extraConfigRebootRequired"] = state ? state.extraConfigRebootRequired : undefined;
             resourceInputs["firmware"] = state ? state.firmware : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["forcePowerOff"] = state ? state.forcePowerOff : undefined;
@@ -481,7 +487,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["bootDelay"] = args ? args.bootDelay : undefined;
             resourceInputs["bootRetryDelay"] = args ? args.bootRetryDelay : undefined;
             resourceInputs["bootRetryEnabled"] = args ? args.bootRetryEnabled : undefined;
-            resourceInputs["cdrom"] = args ? args.cdrom : undefined;
+            resourceInputs["cdroms"] = args ? args.cdroms : undefined;
             resourceInputs["clone"] = args ? args.clone : undefined;
             resourceInputs["cpuHotAddEnabled"] = args ? args.cpuHotAddEnabled : undefined;
             resourceInputs["cpuHotRemoveEnabled"] = args ? args.cpuHotRemoveEnabled : undefined;
@@ -500,6 +506,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
             resourceInputs["eptRviMode"] = args ? args.eptRviMode : undefined;
             resourceInputs["extraConfig"] = args ? args.extraConfig : undefined;
+            resourceInputs["extraConfigRebootRequired"] = args ? args.extraConfigRebootRequired : undefined;
             resourceInputs["firmware"] = args ? args.firmware : undefined;
             resourceInputs["folder"] = args ? args.folder : undefined;
             resourceInputs["forcePowerOff"] = args ? args.forcePowerOff : undefined;
@@ -593,7 +600,7 @@ export interface VirtualMachineState {
     /**
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
-    cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
+    cdroms?: pulumi.Input<pulumi.Input<inputs.VirtualMachineCdrom>[]>;
     /**
      * A unique identifier for a given version of the last configuration was applied.
      */
@@ -631,7 +638,7 @@ export interface VirtualMachineState {
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -643,7 +650,7 @@ export interface VirtualMachineState {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -674,6 +681,10 @@ export interface VirtualMachineState {
      * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
+     */
+    extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
      * The firmware for the virtual machine. One of `bios` or `efi`.
      */
@@ -751,7 +762,7 @@ export interface VirtualMachineState {
      */
     migrateWaitTimeout?: pulumi.Input<number>;
     /**
-     * The machine object ID from VMware vSphere.
+     * The managed object reference ID of the created virtual machine.
      */
     moid?: pulumi.Input<string>;
     /**
@@ -847,7 +858,7 @@ export interface VirtualMachineState {
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
@@ -939,7 +950,7 @@ export interface VirtualMachineArgs {
     /**
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      */
-    cdrom?: pulumi.Input<inputs.VirtualMachineCdrom>;
+    cdroms?: pulumi.Input<pulumi.Input<inputs.VirtualMachineCdrom>[]>;
     /**
      * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
      */
@@ -973,7 +984,7 @@ export interface VirtualMachineArgs {
      */
     cpuShareLevel?: pulumi.Input<string>;
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -985,7 +996,7 @@ export interface VirtualMachineArgs {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -1012,6 +1023,10 @@ export interface VirtualMachineArgs {
      * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      */
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
+     */
+    extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
      * The firmware for the virtual machine. One of `bios` or `efi`.
      */
@@ -1165,7 +1180,7 @@ export interface VirtualMachineArgs {
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**

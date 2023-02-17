@@ -29,13 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.GetDatastore(ctx, &GetDatastoreArgs{
+//			_, err = vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
 //				Name:         "datastore-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)

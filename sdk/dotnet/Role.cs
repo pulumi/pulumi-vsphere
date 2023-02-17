@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display label of the role.
@@ -74,7 +74,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the role.
@@ -97,9 +97,10 @@ namespace Pulumi.VSphere
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display label of the role.
@@ -128,5 +129,6 @@ namespace Pulumi.VSphere
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

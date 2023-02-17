@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -51,11 +52,8 @@ import * as utilities from "./utilities";
  */
 export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getVirtualMachine:getVirtualMachine", {
         "alternateGuestName": args.alternateGuestName,
         "annotation": args.annotation,
@@ -75,6 +73,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "enableLogging": args.enableLogging,
         "eptRviMode": args.eptRviMode,
         "extraConfig": args.extraConfig,
+        "extraConfigRebootRequired": args.extraConfigRebootRequired,
         "firmware": args.firmware,
         "guestId": args.guestId,
         "hardwareVersion": args.hardwareVersion,
@@ -147,6 +146,7 @@ export interface GetVirtualMachineArgs {
     enableLogging?: boolean;
     eptRviMode?: string;
     extraConfig?: {[key: string]: string};
+    extraConfigRebootRequired?: boolean;
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */
@@ -263,6 +263,7 @@ export interface GetVirtualMachineResult {
     readonly enableLogging?: boolean;
     readonly eptRviMode?: string;
     readonly extraConfig?: {[key: string]: string};
+    readonly extraConfigRebootRequired?: boolean;
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */
@@ -300,11 +301,11 @@ export interface GetVirtualMachineResult {
     /**
      * The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
      */
     readonly networkInterfaceTypes: string[];
     /**
-     * Information about each of the network interfaces on this
+     * Information about each of the network interfaces on this 
      * virtual machine or template. These are sorted by device bus order so that they
      * can be applied to a `vsphere.VirtualMachine` resource in the order the resource
      * expects while cloning. This is useful for discovering certain network interface
@@ -355,9 +356,52 @@ export interface GetVirtualMachineResult {
     readonly vbsEnabled?: boolean;
     readonly vvtdEnabled?: boolean;
 }
-
+/**
+ * The `vsphere.VirtualMachine` data source can be used to find the UUID of an
+ * existing virtual machine or template. The most common purpose is for finding
+ * the UUID of a template to be used as the source for cloning to a new
+ * `vsphere.VirtualMachine` resource. It also
+ * reads the guest ID so that can be supplied as well.
+ *
+ * ## Example Usage
+ *
+ * In the following example, a virtual machine template is returned by its
+ * unique name within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ * In the following example, each virtual machine template is returned by its
+ * unique full path within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const productionTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "production/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const developmentTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "development/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ */
 export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
-    return pulumi.output(args).apply(a => getVirtualMachine(a, opts))
+    return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))
 }
 
 /**
@@ -396,6 +440,7 @@ export interface GetVirtualMachineOutputArgs {
     enableLogging?: pulumi.Input<boolean>;
     eptRviMode?: pulumi.Input<string>;
     extraConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraConfigRebootRequired?: pulumi.Input<boolean>;
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      */

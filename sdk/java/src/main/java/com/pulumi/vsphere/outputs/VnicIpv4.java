@@ -18,7 +18,7 @@ public final class VnicIpv4 {
      */
     private @Nullable Boolean dhcp;
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     private @Nullable String gw;
@@ -42,7 +42,7 @@ public final class VnicIpv4 {
         return Optional.ofNullable(this.dhcp);
     }
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     public Optional<String> gw() {

@@ -6,8 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * The `vsphere.Folder` data source can be used to get the general attributes of a
- * vSphere inventory folder. Paths are absolute and include must include the
- * datacenter.
+ * vSphere inventory folder. Paths are absolute and must include the datacenter.
  *
  * ## Example Usage
  *
@@ -15,17 +14,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const folder = pulumi.output(vsphere.getFolder({
+ * const folder = vsphere.getFolder({
  *     path: "/dc-01/datastore-01/folder-01",
- * }));
+ * });
  * ```
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getFolder:getFolder", {
         "path": args.path,
     }, opts);
@@ -55,9 +51,23 @@ export interface GetFolderResult {
     readonly id: string;
     readonly path: string;
 }
-
+/**
+ * The `vsphere.Folder` data source can be used to get the general attributes of a
+ * vSphere inventory folder. Paths are absolute and must include the datacenter.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const folder = vsphere.getFolder({
+ *     path: "/dc-01/datastore-01/folder-01",
+ * });
+ * ```
+ */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
-    return pulumi.output(args).apply(a => getFolder(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolder(a, opts))
 }
 
 /**

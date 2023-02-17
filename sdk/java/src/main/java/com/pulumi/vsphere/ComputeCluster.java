@@ -1024,14 +1024,22 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proactiveHaSevereRemediation);
     }
     /**
-     * The managed object ID of the cluster&#39;s root resource pool.
+     * The managed object ID of the primary
+     * resource pool for this cluster. This can be passed directly to the
+     * `resource_pool_id`
+     * attribute of the
+     * `vsphere.VirtualMachine` resource.
      * 
      */
     @Export(name="resourcePoolId", type=String.class, parameters={})
     private Output<String> resourcePoolId;
 
     /**
-     * @return The managed object ID of the cluster&#39;s root resource pool.
+     * @return The managed object ID of the primary
+     * resource pool for this cluster. This can be passed directly to the
+     * `resource_pool_id`
+     * attribute of the
+     * `vsphere.VirtualMachine` resource.
      * 
      */
     public Output<String> resourcePoolId() {
@@ -1052,32 +1060,188 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * A list of disk UUIDs to add to the vSAN cluster.
+     * Enables vSAN compression on the
+     * cluster.
+     * 
+     */
+    @Export(name="vsanCompressionEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanCompressionEnabled;
+
+    /**
+     * @return Enables vSAN compression on the
+     * cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanCompressionEnabled() {
+        return Codegen.optional(this.vsanCompressionEnabled);
+    }
+    /**
+     * Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     * 
+     */
+    @Export(name="vsanDedupEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanDedupEnabled;
+
+    /**
+     * @return Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanDedupEnabled() {
+        return Codegen.optional(this.vsanDedupEnabled);
+    }
+    /**
+     * Represents the configuration of a host disk
+     * group in the cluster.
      * 
      */
     @Export(name="vsanDiskGroups", type=List.class, parameters={ComputeClusterVsanDiskGroup.class})
     private Output<List<ComputeClusterVsanDiskGroup>> vsanDiskGroups;
 
     /**
-     * @return A list of disk UUIDs to add to the vSAN cluster.
+     * @return Represents the configuration of a host disk
+     * group in the cluster.
      * 
      */
     public Output<List<ComputeClusterVsanDiskGroup>> vsanDiskGroups() {
         return this.vsanDiskGroups;
     }
     /**
-     * Whether the VSAN service is enabled for the cluster.
+     * Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     * 
+     */
+    @Export(name="vsanDitEncryptionEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanDitEncryptionEnabled;
+
+    /**
+     * @return Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanDitEncryptionEnabled() {
+        return Codegen.optional(this.vsanDitEncryptionEnabled);
+    }
+    /**
+     * Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+     * 
+     */
+    @Export(name="vsanDitRekeyInterval", type=Integer.class, parameters={})
+    private Output<Integer> vsanDitRekeyInterval;
+
+    /**
+     * @return Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+     * 
+     */
+    public Output<Integer> vsanDitRekeyInterval() {
+        return this.vsanDitRekeyInterval;
+    }
+    /**
+     * Enables vSAN on the cluster.
      * 
      */
     @Export(name="vsanEnabled", type=Boolean.class, parameters={})
-    private Output<Boolean> vsanEnabled;
+    private Output</* @Nullable */ Boolean> vsanEnabled;
 
     /**
-     * @return Whether the VSAN service is enabled for the cluster.
+     * @return Enables vSAN on the cluster.
      * 
      */
-    public Output<Boolean> vsanEnabled() {
-        return this.vsanEnabled;
+    public Output<Optional<Boolean>> vsanEnabled() {
+        return Codegen.optional(this.vsanEnabled);
+    }
+    /**
+     * Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     * 
+     */
+    @Export(name="vsanNetworkDiagnosticModeEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanNetworkDiagnosticModeEnabled;
+
+    /**
+     * @return Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanNetworkDiagnosticModeEnabled() {
+        return Codegen.optional(this.vsanNetworkDiagnosticModeEnabled);
+    }
+    /**
+     * Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     * 
+     */
+    @Export(name="vsanPerformanceEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanPerformanceEnabled;
+
+    /**
+     * @return Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanPerformanceEnabled() {
+        return Codegen.optional(this.vsanPerformanceEnabled);
+    }
+    /**
+     * The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+     * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     * 
+     */
+    @Export(name="vsanRemoteDatastoreIds", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> vsanRemoteDatastoreIds;
+
+    /**
+     * @return The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+     * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     * 
+     */
+    public Output<Optional<List<String>>> vsanRemoteDatastoreIds() {
+        return Codegen.optional(this.vsanRemoteDatastoreIds);
+    }
+    /**
+     * Enables vSAN unmap on the cluster.
+     * 
+     */
+    @Export(name="vsanUnmapEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanUnmapEnabled;
+
+    /**
+     * @return Enables vSAN unmap on the cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanUnmapEnabled() {
+        return Codegen.optional(this.vsanUnmapEnabled);
+    }
+    /**
+     * Enables verbose mode for vSAN
+     * performance service on the cluster.
+     * 
+     */
+    @Export(name="vsanVerboseModeEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> vsanVerboseModeEnabled;
+
+    /**
+     * @return Enables verbose mode for vSAN
+     * performance service on the cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> vsanVerboseModeEnabled() {
+        return Codegen.optional(this.vsanVerboseModeEnabled);
     }
 
     /**

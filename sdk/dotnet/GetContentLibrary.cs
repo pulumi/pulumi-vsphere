@@ -21,26 +21,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var library = VSphere.GetContentLibrary.Invoke(new()
         ///     {
-        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
-        ///         {
-        ///             Name = "Content Library",
-        ///         }));
-        ///     }
+        ///         Name = "Content Library",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContentLibraryResult> InvokeAsync(GetContentLibraryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
@@ -52,30 +50,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var library = VSphere.GetContentLibrary.Invoke(new()
         ///     {
-        ///         var library = Output.Create(VSphere.GetContentLibrary.InvokeAsync(new VSphere.GetContentLibraryArgs
-        ///         {
-        ///             Name = "Content Library",
-        ///         }));
-        ///     }
+        ///         Name = "Content Library",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContentLibraryResult> Invoke(GetContentLibraryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContentLibraryResult>("vsphere:index/getContentLibrary:getContentLibrary", args ?? new GetContentLibraryInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetContentLibraryArgs : Pulumi.InvokeArgs
+    public sealed class GetContentLibraryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the content library.
@@ -86,9 +82,10 @@ namespace Pulumi.VSphere
         public GetContentLibraryArgs()
         {
         }
+        public static new GetContentLibraryArgs Empty => new GetContentLibraryArgs();
     }
 
-    public sealed class GetContentLibraryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContentLibraryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the content library.
@@ -99,6 +96,7 @@ namespace Pulumi.VSphere
         public GetContentLibraryInvokeArgs()
         {
         }
+        public static new GetContentLibraryInvokeArgs Empty => new GetContentLibraryInvokeArgs();
     }
 
 

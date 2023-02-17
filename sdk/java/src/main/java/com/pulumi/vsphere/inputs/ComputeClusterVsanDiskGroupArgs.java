@@ -16,16 +16,32 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
 
     public static final ComputeClusterVsanDiskGroupArgs Empty = new ComputeClusterVsanDiskGroupArgs();
 
+    /**
+     * The canonical name of the disk to use for vSAN cache.
+     * 
+     */
     @Import(name="cache")
     private @Nullable Output<String> cache;
 
+    /**
+     * @return The canonical name of the disk to use for vSAN cache.
+     * 
+     */
     public Optional<Output<String>> cache() {
         return Optional.ofNullable(this.cache);
     }
 
+    /**
+     * An array of disk canonical names for vSAN storage.
+     * 
+     */
     @Import(name="storages")
     private @Nullable Output<List<String>> storages;
 
+    /**
+     * @return An array of disk canonical names for vSAN storage.
+     * 
+     */
     public Optional<Output<List<String>>> storages() {
         return Optional.ofNullable(this.storages);
     }
@@ -55,24 +71,54 @@ public final class ComputeClusterVsanDiskGroupArgs extends com.pulumi.resources.
             $ = new ComputeClusterVsanDiskGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cache The canonical name of the disk to use for vSAN cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cache(@Nullable Output<String> cache) {
             $.cache = cache;
             return this;
         }
 
+        /**
+         * @param cache The canonical name of the disk to use for vSAN cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cache(String cache) {
             return cache(Output.of(cache));
         }
 
+        /**
+         * @param storages An array of disk canonical names for vSAN storage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storages(@Nullable Output<List<String>> storages) {
             $.storages = storages;
             return this;
         }
 
+        /**
+         * @param storages An array of disk canonical names for vSAN storage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storages(List<String> storages) {
             return storages(Output.of(storages));
         }
 
+        /**
+         * @param storages An array of disk canonical names for vSAN storage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storages(String... storages) {
             return storages(List.of(storages));
         }

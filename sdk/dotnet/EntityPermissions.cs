@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/entityPermissions:EntityPermissions")]
-    public partial class EntityPermissions : Pulumi.CustomResource
+    public partial class EntityPermissions : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object id (uuid for some entities) on which permissions are to be created.
@@ -76,7 +76,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class EntityPermissionsArgs : Pulumi.ResourceArgs
+    public sealed class EntityPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object id (uuid for some entities) on which permissions are to be created.
@@ -107,9 +107,10 @@ namespace Pulumi.VSphere
         public EntityPermissionsArgs()
         {
         }
+        public static new EntityPermissionsArgs Empty => new EntityPermissionsArgs();
     }
 
-    public sealed class EntityPermissionsState : Pulumi.ResourceArgs
+    public sealed class EntityPermissionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object id (uuid for some entities) on which permissions are to be created.
@@ -140,5 +141,6 @@ namespace Pulumi.VSphere
         public EntityPermissionsState()
         {
         }
+        public static new EntityPermissionsState Empty => new EntityPermissionsState();
     }
 }

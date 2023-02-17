@@ -34,17 +34,14 @@ import * as utilities from "./utilities";
  * }));
  * const dvpg = new vsphere.DistributedPortGroup("dvpg", {
  *     distributedVirtualSwitchUuid: vds.then(vds => vds.id),
- *     activeUplinks: [vds.then(vds => vds.uplinks?[0])],
- *     standbyUplinks: [vds.then(vds => vds.uplinks?[1])],
+ *     activeUplinks: [vds.then(vds => vds.uplinks?.[0])],
+ *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],
  * });
  * ```
  */
 export function getDistributedVirtualSwitch(args: GetDistributedVirtualSwitchArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributedVirtualSwitchResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", {
         "datacenterId": args.datacenterId,
         "name": args.name,
@@ -78,11 +75,51 @@ export interface GetDistributedVirtualSwitchResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * The list of the uplinks on this vSphere distributed switch, as per the
+     * `uplinks` argument to the
+     * `vsphere.DistributedVirtualSwitch`
+     * resource.
+     */
     readonly uplinks: string[];
 }
-
+/**
+ * The `vsphere.DistributedVirtualSwitch` data source can be used to discover
+ * the ID and uplink data of a of a vSphere distributed switch (VDS). This
+ * can then be used with resources or data sources that require a VDS, such as the
+ * `vsphere.DistributedPortGroup` resource, for which
+ * an example is shown below.
+ *
+ * > **NOTE:** This data source requires vCenter Server and is not available on
+ * direct ESXi host connections.
+ *
+ * ## Example Usage
+ *
+ * The following example locates a distributed switch named `vds-01`, in the
+ * datacenter `dc-01`. It then uses this distributed switch to set up a
+ * `vsphere.DistributedPortGroup` resource that uses the first uplink as a
+ * primary uplink and the second uplink as a secondary.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const vds = datacenter.then(datacenter => vsphere.getDistributedVirtualSwitch({
+ *     name: "vds-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const dvpg = new vsphere.DistributedPortGroup("dvpg", {
+ *     distributedVirtualSwitchUuid: vds.then(vds => vds.id),
+ *     activeUplinks: [vds.then(vds => vds.uplinks?.[0])],
+ *     standbyUplinks: [vds.then(vds => vds.uplinks?.[1])],
+ * });
+ * ```
+ */
 export function getDistributedVirtualSwitchOutput(args: GetDistributedVirtualSwitchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDistributedVirtualSwitchResult> {
-    return pulumi.output(args).apply(a => getDistributedVirtualSwitch(a, opts))
+    return pulumi.output(args).apply((a: any) => getDistributedVirtualSwitch(a, opts))
 }
 
 /**

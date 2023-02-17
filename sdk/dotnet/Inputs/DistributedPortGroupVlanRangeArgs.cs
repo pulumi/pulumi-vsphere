@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class DistributedPortGroupVlanRangeArgs : Pulumi.ResourceArgs
+    public sealed class DistributedPortGroupVlanRangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxVlan", required: true)]
         public Input<int> MaxVlan { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.VSphere.Inputs
         public DistributedPortGroupVlanRangeArgs()
         {
         }
+        public static new DistributedPortGroupVlanRangeArgs Empty => new DistributedPortGroupVlanRangeArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class DistributedVirtualSwitchHostArgs : Pulumi.ResourceArgs
+    public sealed class DistributedVirtualSwitchHostArgs : global::Pulumi.ResourceArgs
     {
         [Input("devices")]
         private InputList<string>? _devices;
@@ -35,5 +35,6 @@ namespace Pulumi.VSphere.Inputs
         public DistributedVirtualSwitchHostArgs()
         {
         }
+        public static new DistributedVirtualSwitchHostArgs Empty => new DistributedVirtualSwitchHostArgs();
     }
 }

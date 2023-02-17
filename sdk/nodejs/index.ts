@@ -5,71 +5,331 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./computeCluster";
-export * from "./computeClusterHostGroup";
-export * from "./computeClusterVmAffinityRule";
-export * from "./computeClusterVmAntiAffinityRule";
-export * from "./computeClusterVmDependencyRule";
-export * from "./computeClusterVmGroup";
-export * from "./computeClusterVmHostRule";
-export * from "./contentLibrary";
-export * from "./contentLibraryItem";
-export * from "./customAttribute";
-export * from "./datacenter";
-export * from "./datastoreCluster";
-export * from "./datastoreClusterVmAntiAffinityRule";
-export * from "./distributedPortGroup";
-export * from "./distributedVirtualSwitch";
-export * from "./dpmHostOverride";
-export * from "./drsVmOverride";
-export * from "./entityPermissions";
-export * from "./file";
-export * from "./folder";
-export * from "./getComputeCluster";
-export * from "./getComputeClusterHostGroup";
-export * from "./getContentLibrary";
-export * from "./getContentLibraryItem";
-export * from "./getCustomAttribute";
-export * from "./getDatacenter";
-export * from "./getDatastore";
-export * from "./getDatastoreCluster";
-export * from "./getDistributedVirtualSwitch";
-export * from "./getDynamic";
-export * from "./getFolder";
-export * from "./getHost";
-export * from "./getHostPciDevice";
-export * from "./getHostThumbprint";
-export * from "./getLicense";
-export * from "./getNetwork";
-export * from "./getOvfVmTemplate";
-export * from "./getPolicy";
-export * from "./getResourcePool";
-export * from "./getRole";
-export * from "./getTag";
-export * from "./getTagCategory";
-export * from "./getVappContainer";
-export * from "./getVirtualMachine";
-export * from "./getVmfsDisks";
-export * from "./haVmOverride";
-export * from "./host";
-export * from "./hostPortGroup";
-export * from "./hostVirtualSwitch";
-export * from "./license";
-export * from "./nasDatastore";
-export * from "./provider";
-export * from "./resourcePool";
-export * from "./role";
-export * from "./storageDrsVmOverride";
-export * from "./tag";
-export * from "./tagCategory";
-export * from "./vappContainer";
-export * from "./vappEntity";
-export * from "./virtualDisk";
-export * from "./virtualMachine";
-export * from "./virtualMachineSnapshot";
-export * from "./vmStoragePolicy";
-export * from "./vmfsDatastore";
-export * from "./vnic";
+export { ComputeClusterArgs, ComputeClusterState } from "./computeCluster";
+export type ComputeCluster = import("./computeCluster").ComputeCluster;
+export const ComputeCluster: typeof import("./computeCluster").ComputeCluster = null as any;
+utilities.lazyLoad(exports, ["ComputeCluster"], () => require("./computeCluster"));
+
+export { ComputeClusterHostGroupArgs, ComputeClusterHostGroupState } from "./computeClusterHostGroup";
+export type ComputeClusterHostGroup = import("./computeClusterHostGroup").ComputeClusterHostGroup;
+export const ComputeClusterHostGroup: typeof import("./computeClusterHostGroup").ComputeClusterHostGroup = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterHostGroup"], () => require("./computeClusterHostGroup"));
+
+export { ComputeClusterVmAffinityRuleArgs, ComputeClusterVmAffinityRuleState } from "./computeClusterVmAffinityRule";
+export type ComputeClusterVmAffinityRule = import("./computeClusterVmAffinityRule").ComputeClusterVmAffinityRule;
+export const ComputeClusterVmAffinityRule: typeof import("./computeClusterVmAffinityRule").ComputeClusterVmAffinityRule = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterVmAffinityRule"], () => require("./computeClusterVmAffinityRule"));
+
+export { ComputeClusterVmAntiAffinityRuleArgs, ComputeClusterVmAntiAffinityRuleState } from "./computeClusterVmAntiAffinityRule";
+export type ComputeClusterVmAntiAffinityRule = import("./computeClusterVmAntiAffinityRule").ComputeClusterVmAntiAffinityRule;
+export const ComputeClusterVmAntiAffinityRule: typeof import("./computeClusterVmAntiAffinityRule").ComputeClusterVmAntiAffinityRule = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterVmAntiAffinityRule"], () => require("./computeClusterVmAntiAffinityRule"));
+
+export { ComputeClusterVmDependencyRuleArgs, ComputeClusterVmDependencyRuleState } from "./computeClusterVmDependencyRule";
+export type ComputeClusterVmDependencyRule = import("./computeClusterVmDependencyRule").ComputeClusterVmDependencyRule;
+export const ComputeClusterVmDependencyRule: typeof import("./computeClusterVmDependencyRule").ComputeClusterVmDependencyRule = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterVmDependencyRule"], () => require("./computeClusterVmDependencyRule"));
+
+export { ComputeClusterVmGroupArgs, ComputeClusterVmGroupState } from "./computeClusterVmGroup";
+export type ComputeClusterVmGroup = import("./computeClusterVmGroup").ComputeClusterVmGroup;
+export const ComputeClusterVmGroup: typeof import("./computeClusterVmGroup").ComputeClusterVmGroup = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterVmGroup"], () => require("./computeClusterVmGroup"));
+
+export { ComputeClusterVmHostRuleArgs, ComputeClusterVmHostRuleState } from "./computeClusterVmHostRule";
+export type ComputeClusterVmHostRule = import("./computeClusterVmHostRule").ComputeClusterVmHostRule;
+export const ComputeClusterVmHostRule: typeof import("./computeClusterVmHostRule").ComputeClusterVmHostRule = null as any;
+utilities.lazyLoad(exports, ["ComputeClusterVmHostRule"], () => require("./computeClusterVmHostRule"));
+
+export { ContentLibraryArgs, ContentLibraryState } from "./contentLibrary";
+export type ContentLibrary = import("./contentLibrary").ContentLibrary;
+export const ContentLibrary: typeof import("./contentLibrary").ContentLibrary = null as any;
+utilities.lazyLoad(exports, ["ContentLibrary"], () => require("./contentLibrary"));
+
+export { ContentLibraryItemArgs, ContentLibraryItemState } from "./contentLibraryItem";
+export type ContentLibraryItem = import("./contentLibraryItem").ContentLibraryItem;
+export const ContentLibraryItem: typeof import("./contentLibraryItem").ContentLibraryItem = null as any;
+utilities.lazyLoad(exports, ["ContentLibraryItem"], () => require("./contentLibraryItem"));
+
+export { CustomAttributeArgs, CustomAttributeState } from "./customAttribute";
+export type CustomAttribute = import("./customAttribute").CustomAttribute;
+export const CustomAttribute: typeof import("./customAttribute").CustomAttribute = null as any;
+utilities.lazyLoad(exports, ["CustomAttribute"], () => require("./customAttribute"));
+
+export { DatacenterArgs, DatacenterState } from "./datacenter";
+export type Datacenter = import("./datacenter").Datacenter;
+export const Datacenter: typeof import("./datacenter").Datacenter = null as any;
+utilities.lazyLoad(exports, ["Datacenter"], () => require("./datacenter"));
+
+export { DatastoreClusterArgs, DatastoreClusterState } from "./datastoreCluster";
+export type DatastoreCluster = import("./datastoreCluster").DatastoreCluster;
+export const DatastoreCluster: typeof import("./datastoreCluster").DatastoreCluster = null as any;
+utilities.lazyLoad(exports, ["DatastoreCluster"], () => require("./datastoreCluster"));
+
+export { DatastoreClusterVmAntiAffinityRuleArgs, DatastoreClusterVmAntiAffinityRuleState } from "./datastoreClusterVmAntiAffinityRule";
+export type DatastoreClusterVmAntiAffinityRule = import("./datastoreClusterVmAntiAffinityRule").DatastoreClusterVmAntiAffinityRule;
+export const DatastoreClusterVmAntiAffinityRule: typeof import("./datastoreClusterVmAntiAffinityRule").DatastoreClusterVmAntiAffinityRule = null as any;
+utilities.lazyLoad(exports, ["DatastoreClusterVmAntiAffinityRule"], () => require("./datastoreClusterVmAntiAffinityRule"));
+
+export { DistributedPortGroupArgs, DistributedPortGroupState } from "./distributedPortGroup";
+export type DistributedPortGroup = import("./distributedPortGroup").DistributedPortGroup;
+export const DistributedPortGroup: typeof import("./distributedPortGroup").DistributedPortGroup = null as any;
+utilities.lazyLoad(exports, ["DistributedPortGroup"], () => require("./distributedPortGroup"));
+
+export { DistributedVirtualSwitchArgs, DistributedVirtualSwitchState } from "./distributedVirtualSwitch";
+export type DistributedVirtualSwitch = import("./distributedVirtualSwitch").DistributedVirtualSwitch;
+export const DistributedVirtualSwitch: typeof import("./distributedVirtualSwitch").DistributedVirtualSwitch = null as any;
+utilities.lazyLoad(exports, ["DistributedVirtualSwitch"], () => require("./distributedVirtualSwitch"));
+
+export { DpmHostOverrideArgs, DpmHostOverrideState } from "./dpmHostOverride";
+export type DpmHostOverride = import("./dpmHostOverride").DpmHostOverride;
+export const DpmHostOverride: typeof import("./dpmHostOverride").DpmHostOverride = null as any;
+utilities.lazyLoad(exports, ["DpmHostOverride"], () => require("./dpmHostOverride"));
+
+export { DrsVmOverrideArgs, DrsVmOverrideState } from "./drsVmOverride";
+export type DrsVmOverride = import("./drsVmOverride").DrsVmOverride;
+export const DrsVmOverride: typeof import("./drsVmOverride").DrsVmOverride = null as any;
+utilities.lazyLoad(exports, ["DrsVmOverride"], () => require("./drsVmOverride"));
+
+export { EntityPermissionsArgs, EntityPermissionsState } from "./entityPermissions";
+export type EntityPermissions = import("./entityPermissions").EntityPermissions;
+export const EntityPermissions: typeof import("./entityPermissions").EntityPermissions = null as any;
+utilities.lazyLoad(exports, ["EntityPermissions"], () => require("./entityPermissions"));
+
+export { FileArgs, FileState } from "./file";
+export type File = import("./file").File;
+export const File: typeof import("./file").File = null as any;
+utilities.lazyLoad(exports, ["File"], () => require("./file"));
+
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+
+export { GetComputeClusterArgs, GetComputeClusterResult, GetComputeClusterOutputArgs } from "./getComputeCluster";
+export const getComputeCluster: typeof import("./getComputeCluster").getComputeCluster = null as any;
+export const getComputeClusterOutput: typeof import("./getComputeCluster").getComputeClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeCluster","getComputeClusterOutput"], () => require("./getComputeCluster"));
+
+export { GetComputeClusterHostGroupArgs, GetComputeClusterHostGroupResult, GetComputeClusterHostGroupOutputArgs } from "./getComputeClusterHostGroup";
+export const getComputeClusterHostGroup: typeof import("./getComputeClusterHostGroup").getComputeClusterHostGroup = null as any;
+export const getComputeClusterHostGroupOutput: typeof import("./getComputeClusterHostGroup").getComputeClusterHostGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getComputeClusterHostGroup","getComputeClusterHostGroupOutput"], () => require("./getComputeClusterHostGroup"));
+
+export { GetContentLibraryArgs, GetContentLibraryResult, GetContentLibraryOutputArgs } from "./getContentLibrary";
+export const getContentLibrary: typeof import("./getContentLibrary").getContentLibrary = null as any;
+export const getContentLibraryOutput: typeof import("./getContentLibrary").getContentLibraryOutput = null as any;
+utilities.lazyLoad(exports, ["getContentLibrary","getContentLibraryOutput"], () => require("./getContentLibrary"));
+
+export { GetContentLibraryItemArgs, GetContentLibraryItemResult, GetContentLibraryItemOutputArgs } from "./getContentLibraryItem";
+export const getContentLibraryItem: typeof import("./getContentLibraryItem").getContentLibraryItem = null as any;
+export const getContentLibraryItemOutput: typeof import("./getContentLibraryItem").getContentLibraryItemOutput = null as any;
+utilities.lazyLoad(exports, ["getContentLibraryItem","getContentLibraryItemOutput"], () => require("./getContentLibraryItem"));
+
+export { GetCustomAttributeArgs, GetCustomAttributeResult, GetCustomAttributeOutputArgs } from "./getCustomAttribute";
+export const getCustomAttribute: typeof import("./getCustomAttribute").getCustomAttribute = null as any;
+export const getCustomAttributeOutput: typeof import("./getCustomAttribute").getCustomAttributeOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomAttribute","getCustomAttributeOutput"], () => require("./getCustomAttribute"));
+
+export { GetDatacenterArgs, GetDatacenterResult, GetDatacenterOutputArgs } from "./getDatacenter";
+export const getDatacenter: typeof import("./getDatacenter").getDatacenter = null as any;
+export const getDatacenterOutput: typeof import("./getDatacenter").getDatacenterOutput = null as any;
+utilities.lazyLoad(exports, ["getDatacenter","getDatacenterOutput"], () => require("./getDatacenter"));
+
+export { GetDatastoreArgs, GetDatastoreResult, GetDatastoreOutputArgs } from "./getDatastore";
+export const getDatastore: typeof import("./getDatastore").getDatastore = null as any;
+export const getDatastoreOutput: typeof import("./getDatastore").getDatastoreOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastore","getDatastoreOutput"], () => require("./getDatastore"));
+
+export { GetDatastoreClusterArgs, GetDatastoreClusterResult, GetDatastoreClusterOutputArgs } from "./getDatastoreCluster";
+export const getDatastoreCluster: typeof import("./getDatastoreCluster").getDatastoreCluster = null as any;
+export const getDatastoreClusterOutput: typeof import("./getDatastoreCluster").getDatastoreClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastoreCluster","getDatastoreClusterOutput"], () => require("./getDatastoreCluster"));
+
+export { GetDistributedVirtualSwitchArgs, GetDistributedVirtualSwitchResult, GetDistributedVirtualSwitchOutputArgs } from "./getDistributedVirtualSwitch";
+export const getDistributedVirtualSwitch: typeof import("./getDistributedVirtualSwitch").getDistributedVirtualSwitch = null as any;
+export const getDistributedVirtualSwitchOutput: typeof import("./getDistributedVirtualSwitch").getDistributedVirtualSwitchOutput = null as any;
+utilities.lazyLoad(exports, ["getDistributedVirtualSwitch","getDistributedVirtualSwitchOutput"], () => require("./getDistributedVirtualSwitch"));
+
+export { GetDynamicArgs, GetDynamicResult, GetDynamicOutputArgs } from "./getDynamic";
+export const getDynamic: typeof import("./getDynamic").getDynamic = null as any;
+export const getDynamicOutput: typeof import("./getDynamic").getDynamicOutput = null as any;
+utilities.lazyLoad(exports, ["getDynamic","getDynamicOutput"], () => require("./getDynamic"));
+
+export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
+export const getFolder: typeof import("./getFolder").getFolder = null as any;
+export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
+
+export { GetHostArgs, GetHostResult, GetHostOutputArgs } from "./getHost";
+export const getHost: typeof import("./getHost").getHost = null as any;
+export const getHostOutput: typeof import("./getHost").getHostOutput = null as any;
+utilities.lazyLoad(exports, ["getHost","getHostOutput"], () => require("./getHost"));
+
+export { GetHostPciDeviceArgs, GetHostPciDeviceResult, GetHostPciDeviceOutputArgs } from "./getHostPciDevice";
+export const getHostPciDevice: typeof import("./getHostPciDevice").getHostPciDevice = null as any;
+export const getHostPciDeviceOutput: typeof import("./getHostPciDevice").getHostPciDeviceOutput = null as any;
+utilities.lazyLoad(exports, ["getHostPciDevice","getHostPciDeviceOutput"], () => require("./getHostPciDevice"));
+
+export { GetHostThumbprintArgs, GetHostThumbprintResult, GetHostThumbprintOutputArgs } from "./getHostThumbprint";
+export const getHostThumbprint: typeof import("./getHostThumbprint").getHostThumbprint = null as any;
+export const getHostThumbprintOutput: typeof import("./getHostThumbprint").getHostThumbprintOutput = null as any;
+utilities.lazyLoad(exports, ["getHostThumbprint","getHostThumbprintOutput"], () => require("./getHostThumbprint"));
+
+export { GetLicenseArgs, GetLicenseResult, GetLicenseOutputArgs } from "./getLicense";
+export const getLicense: typeof import("./getLicense").getLicense = null as any;
+export const getLicenseOutput: typeof import("./getLicense").getLicenseOutput = null as any;
+utilities.lazyLoad(exports, ["getLicense","getLicenseOutput"], () => require("./getLicense"));
+
+export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
+export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
+export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+
+export { GetOvfVmTemplateArgs, GetOvfVmTemplateResult, GetOvfVmTemplateOutputArgs } from "./getOvfVmTemplate";
+export const getOvfVmTemplate: typeof import("./getOvfVmTemplate").getOvfVmTemplate = null as any;
+export const getOvfVmTemplateOutput: typeof import("./getOvfVmTemplate").getOvfVmTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getOvfVmTemplate","getOvfVmTemplateOutput"], () => require("./getOvfVmTemplate"));
+
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
+export { GetResourcePoolArgs, GetResourcePoolResult, GetResourcePoolOutputArgs } from "./getResourcePool";
+export const getResourcePool: typeof import("./getResourcePool").getResourcePool = null as any;
+export const getResourcePoolOutput: typeof import("./getResourcePool").getResourcePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getResourcePool","getResourcePoolOutput"], () => require("./getResourcePool"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
+export const getTag: typeof import("./getTag").getTag = null as any;
+export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
+utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
+
+export { GetTagCategoryArgs, GetTagCategoryResult, GetTagCategoryOutputArgs } from "./getTagCategory";
+export const getTagCategory: typeof import("./getTagCategory").getTagCategory = null as any;
+export const getTagCategoryOutput: typeof import("./getTagCategory").getTagCategoryOutput = null as any;
+utilities.lazyLoad(exports, ["getTagCategory","getTagCategoryOutput"], () => require("./getTagCategory"));
+
+export { GetVappContainerArgs, GetVappContainerResult, GetVappContainerOutputArgs } from "./getVappContainer";
+export const getVappContainer: typeof import("./getVappContainer").getVappContainer = null as any;
+export const getVappContainerOutput: typeof import("./getVappContainer").getVappContainerOutput = null as any;
+utilities.lazyLoad(exports, ["getVappContainer","getVappContainerOutput"], () => require("./getVappContainer"));
+
+export { GetVirtualMachineArgs, GetVirtualMachineResult, GetVirtualMachineOutputArgs } from "./getVirtualMachine";
+export const getVirtualMachine: typeof import("./getVirtualMachine").getVirtualMachine = null as any;
+export const getVirtualMachineOutput: typeof import("./getVirtualMachine").getVirtualMachineOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualMachine","getVirtualMachineOutput"], () => require("./getVirtualMachine"));
+
+export { GetVmfsDisksArgs, GetVmfsDisksResult, GetVmfsDisksOutputArgs } from "./getVmfsDisks";
+export const getVmfsDisks: typeof import("./getVmfsDisks").getVmfsDisks = null as any;
+export const getVmfsDisksOutput: typeof import("./getVmfsDisks").getVmfsDisksOutput = null as any;
+utilities.lazyLoad(exports, ["getVmfsDisks","getVmfsDisksOutput"], () => require("./getVmfsDisks"));
+
+export { HaVmOverrideArgs, HaVmOverrideState } from "./haVmOverride";
+export type HaVmOverride = import("./haVmOverride").HaVmOverride;
+export const HaVmOverride: typeof import("./haVmOverride").HaVmOverride = null as any;
+utilities.lazyLoad(exports, ["HaVmOverride"], () => require("./haVmOverride"));
+
+export { HostArgs, HostState } from "./host";
+export type Host = import("./host").Host;
+export const Host: typeof import("./host").Host = null as any;
+utilities.lazyLoad(exports, ["Host"], () => require("./host"));
+
+export { HostPortGroupArgs, HostPortGroupState } from "./hostPortGroup";
+export type HostPortGroup = import("./hostPortGroup").HostPortGroup;
+export const HostPortGroup: typeof import("./hostPortGroup").HostPortGroup = null as any;
+utilities.lazyLoad(exports, ["HostPortGroup"], () => require("./hostPortGroup"));
+
+export { HostVirtualSwitchArgs, HostVirtualSwitchState } from "./hostVirtualSwitch";
+export type HostVirtualSwitch = import("./hostVirtualSwitch").HostVirtualSwitch;
+export const HostVirtualSwitch: typeof import("./hostVirtualSwitch").HostVirtualSwitch = null as any;
+utilities.lazyLoad(exports, ["HostVirtualSwitch"], () => require("./hostVirtualSwitch"));
+
+export { LicenseArgs, LicenseState } from "./license";
+export type License = import("./license").License;
+export const License: typeof import("./license").License = null as any;
+utilities.lazyLoad(exports, ["License"], () => require("./license"));
+
+export { NasDatastoreArgs, NasDatastoreState } from "./nasDatastore";
+export type NasDatastore = import("./nasDatastore").NasDatastore;
+export const NasDatastore: typeof import("./nasDatastore").NasDatastore = null as any;
+utilities.lazyLoad(exports, ["NasDatastore"], () => require("./nasDatastore"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ResourcePoolArgs, ResourcePoolState } from "./resourcePool";
+export type ResourcePool = import("./resourcePool").ResourcePool;
+export const ResourcePool: typeof import("./resourcePool").ResourcePool = null as any;
+utilities.lazyLoad(exports, ["ResourcePool"], () => require("./resourcePool"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { StorageDrsVmOverrideArgs, StorageDrsVmOverrideState } from "./storageDrsVmOverride";
+export type StorageDrsVmOverride = import("./storageDrsVmOverride").StorageDrsVmOverride;
+export const StorageDrsVmOverride: typeof import("./storageDrsVmOverride").StorageDrsVmOverride = null as any;
+utilities.lazyLoad(exports, ["StorageDrsVmOverride"], () => require("./storageDrsVmOverride"));
+
+export { TagArgs, TagState } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
+
+export { TagCategoryArgs, TagCategoryState } from "./tagCategory";
+export type TagCategory = import("./tagCategory").TagCategory;
+export const TagCategory: typeof import("./tagCategory").TagCategory = null as any;
+utilities.lazyLoad(exports, ["TagCategory"], () => require("./tagCategory"));
+
+export { VappContainerArgs, VappContainerState } from "./vappContainer";
+export type VappContainer = import("./vappContainer").VappContainer;
+export const VappContainer: typeof import("./vappContainer").VappContainer = null as any;
+utilities.lazyLoad(exports, ["VappContainer"], () => require("./vappContainer"));
+
+export { VappEntityArgs, VappEntityState } from "./vappEntity";
+export type VappEntity = import("./vappEntity").VappEntity;
+export const VappEntity: typeof import("./vappEntity").VappEntity = null as any;
+utilities.lazyLoad(exports, ["VappEntity"], () => require("./vappEntity"));
+
+export { VirtualDiskArgs, VirtualDiskState } from "./virtualDisk";
+export type VirtualDisk = import("./virtualDisk").VirtualDisk;
+export const VirtualDisk: typeof import("./virtualDisk").VirtualDisk = null as any;
+utilities.lazyLoad(exports, ["VirtualDisk"], () => require("./virtualDisk"));
+
+export { VirtualMachineArgs, VirtualMachineState } from "./virtualMachine";
+export type VirtualMachine = import("./virtualMachine").VirtualMachine;
+export const VirtualMachine: typeof import("./virtualMachine").VirtualMachine = null as any;
+utilities.lazyLoad(exports, ["VirtualMachine"], () => require("./virtualMachine"));
+
+export { VirtualMachineSnapshotArgs, VirtualMachineSnapshotState } from "./virtualMachineSnapshot";
+export type VirtualMachineSnapshot = import("./virtualMachineSnapshot").VirtualMachineSnapshot;
+export const VirtualMachineSnapshot: typeof import("./virtualMachineSnapshot").VirtualMachineSnapshot = null as any;
+utilities.lazyLoad(exports, ["VirtualMachineSnapshot"], () => require("./virtualMachineSnapshot"));
+
+export { VmStoragePolicyArgs, VmStoragePolicyState } from "./vmStoragePolicy";
+export type VmStoragePolicy = import("./vmStoragePolicy").VmStoragePolicy;
+export const VmStoragePolicy: typeof import("./vmStoragePolicy").VmStoragePolicy = null as any;
+utilities.lazyLoad(exports, ["VmStoragePolicy"], () => require("./vmStoragePolicy"));
+
+export { VmfsDatastoreArgs, VmfsDatastoreState } from "./vmfsDatastore";
+export type VmfsDatastore = import("./vmfsDatastore").VmfsDatastore;
+export const VmfsDatastore: typeof import("./vmfsDatastore").VmfsDatastore = null as any;
+utilities.lazyLoad(exports, ["VmfsDatastore"], () => require("./vmfsDatastore"));
+
+export { VnicArgs, VnicState } from "./vnic";
+export type Vnic = import("./vnic").Vnic;
+export const Vnic: typeof import("./vnic").Vnic = null as any;
+utilities.lazyLoad(exports, ["Vnic"], () => require("./vnic"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -79,47 +339,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { ComputeCluster } from "./computeCluster";
-import { ComputeClusterHostGroup } from "./computeClusterHostGroup";
-import { ComputeClusterVmAffinityRule } from "./computeClusterVmAffinityRule";
-import { ComputeClusterVmAntiAffinityRule } from "./computeClusterVmAntiAffinityRule";
-import { ComputeClusterVmDependencyRule } from "./computeClusterVmDependencyRule";
-import { ComputeClusterVmGroup } from "./computeClusterVmGroup";
-import { ComputeClusterVmHostRule } from "./computeClusterVmHostRule";
-import { ContentLibrary } from "./contentLibrary";
-import { ContentLibraryItem } from "./contentLibraryItem";
-import { CustomAttribute } from "./customAttribute";
-import { Datacenter } from "./datacenter";
-import { DatastoreCluster } from "./datastoreCluster";
-import { DatastoreClusterVmAntiAffinityRule } from "./datastoreClusterVmAntiAffinityRule";
-import { DistributedPortGroup } from "./distributedPortGroup";
-import { DistributedVirtualSwitch } from "./distributedVirtualSwitch";
-import { DpmHostOverride } from "./dpmHostOverride";
-import { DrsVmOverride } from "./drsVmOverride";
-import { EntityPermissions } from "./entityPermissions";
-import { File } from "./file";
-import { Folder } from "./folder";
-import { HaVmOverride } from "./haVmOverride";
-import { Host } from "./host";
-import { HostPortGroup } from "./hostPortGroup";
-import { HostVirtualSwitch } from "./hostVirtualSwitch";
-import { License } from "./license";
-import { NasDatastore } from "./nasDatastore";
-import { ResourcePool } from "./resourcePool";
-import { Role } from "./role";
-import { StorageDrsVmOverride } from "./storageDrsVmOverride";
-import { Tag } from "./tag";
-import { TagCategory } from "./tagCategory";
-import { VappContainer } from "./vappContainer";
-import { VappEntity } from "./vappEntity";
-import { VirtualDisk } from "./virtualDisk";
-import { VirtualMachine } from "./virtualMachine";
-import { VirtualMachineSnapshot } from "./virtualMachineSnapshot";
-import { VmStoragePolicy } from "./vmStoragePolicy";
-import { VmfsDatastore } from "./vmfsDatastore";
-import { Vnic } from "./vnic";
 
 const _module = {
     version: utilities.getVersion(),
@@ -247,9 +466,6 @@ pulumi.runtime.registerResourceModule("vsphere", "index/virtualMachineSnapshot",
 pulumi.runtime.registerResourceModule("vsphere", "index/vmStoragePolicy", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vmfsDatastore", _module)
 pulumi.runtime.registerResourceModule("vsphere", "index/vnic", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("vsphere", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

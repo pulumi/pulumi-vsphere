@@ -499,6 +499,120 @@ func (o HaVmOverrideOutput) ToHaVmOverrideOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the override in.  Forces a new
+// resource if changed.
+func (o HaVmOverrideOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// Controls the action to take
+// on this virtual machine if an APD status on an affected datastore clears in
+// the middle of an APD event. Can be one of `useClusterDefault`, `none` or
+// `reset`.  Default: `useClusterDefault`.
+func (o HaVmOverrideOutput) HaDatastoreApdRecoveryAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaDatastoreApdRecoveryAction }).(pulumi.StringPtrOutput)
+}
+
+// Controls the action to take on this
+// virtual machine when the cluster has detected loss to all paths to a relevant
+// datastore. Can be one of `clusterDefault`, `disabled`, `warning`,
+// `restartConservative`, or `restartAggressive`.  Default: `clusterDefault`.
+func (o HaVmOverrideOutput) HaDatastoreApdResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaDatastoreApdResponse }).(pulumi.StringPtrOutput)
+}
+
+// Controls the delay in seconds
+// to wait after an APD timeout event to execute the response action defined in
+// `haDatastoreApdResponse`. Use `-1` to use
+// the cluster default. Default: `-1`.
+func (o HaVmOverrideOutput) HaDatastoreApdResponseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaDatastoreApdResponseDelay }).(pulumi.IntPtrOutput)
+}
+
+// Controls the action to take on this
+// virtual machine when the cluster has detected a permanent device loss to a
+// relevant datastore. Can be one of `clusterDefault`, `disabled`, `warning`, or
+// `restartAggressive`. Default: `clusterDefault`.
+func (o HaVmOverrideOutput) HaDatastorePdlResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaDatastorePdlResponse }).(pulumi.StringPtrOutput)
+}
+
+// The action to take on this virtual
+// machine when a host has detected that it has been isolated from the rest of
+// the cluster. Can be one of `clusterIsolationResponse`, `none`, `powerOff`, or
+// `shutdown`. Default: `clusterIsolationResponse`.
+func (o HaVmOverrideOutput) HaHostIsolationResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaHostIsolationResponse }).(pulumi.StringPtrOutput)
+}
+
+// If a heartbeat from this virtual
+// machine is not received within this configured interval, the virtual machine
+// is marked as failed. The value is in seconds. Default: `30`.
+func (o HaVmOverrideOutput) HaVmFailureInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmFailureInterval }).(pulumi.IntPtrOutput)
+}
+
+// The length of the reset window in
+// which `haVmMaximumResets` can operate. When this
+// window expires, no more resets are attempted regardless of the setting
+// configured in `haVmMaximumResets`. `-1` means no window, meaning an
+// unlimited reset time is allotted. The value is specified in seconds. Default:
+// `-1` (no window).
+func (o HaVmOverrideOutput) HaVmMaximumFailureWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmMaximumFailureWindow }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of resets that HA will
+// perform to this virtual machine when responding to a failure event. Default:
+// `3`
+func (o HaVmOverrideOutput) HaVmMaximumResets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmMaximumResets }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, that HA waits after
+// powering on this virtual machine before monitoring for heartbeats. Default:
+// `120` (2 minutes).
+func (o HaVmOverrideOutput) HaVmMinimumUptime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmMinimumUptime }).(pulumi.IntPtrOutput)
+}
+
+// The type of virtual machine monitoring to use
+// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
+// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+func (o HaVmOverrideOutput) HaVmMonitoring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaVmMonitoring }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether or
+// not the cluster's default settings or the VM override settings specified in
+// this resource are used for virtual machine monitoring. The default is `true`
+// (use cluster defaults) - set to `false` to have overrides take effect.
+func (o HaVmOverrideOutput) HaVmMonitoringUseClusterDefaults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.BoolPtrOutput { return v.HaVmMonitoringUseClusterDefaults }).(pulumi.BoolPtrOutput)
+}
+
+// The restart priority for the virtual
+// machine when vSphere detects a host failure. Can be one of
+// `clusterRestartPriority`, `lowest`, `low`, `medium`, `high`, `highest`, or `disabled`.
+// Default: `clusterRestartPriority`.
+func (o HaVmOverrideOutput) HaVmRestartPriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringPtrOutput { return v.HaVmRestartPriority }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time, in seconds, that
+// vSphere HA will wait for this virtual machine to be ready. Use `-1` to
+// specify the cluster default.  Default: `-1`.
+func (o HaVmOverrideOutput) HaVmRestartTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.IntPtrOutput { return v.HaVmRestartTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The UUID of the virtual machine to create
+// the override for.  Forces a new resource if changed.
+func (o HaVmOverrideOutput) VirtualMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HaVmOverride) pulumi.StringOutput { return v.VirtualMachineId }).(pulumi.StringOutput)
+}
+
 type HaVmOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (HaVmOverrideArrayOutput) ElementType() reflect.Type {

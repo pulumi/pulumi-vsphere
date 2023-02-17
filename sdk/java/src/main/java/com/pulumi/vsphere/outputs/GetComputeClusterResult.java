@@ -18,6 +18,11 @@ public final class GetComputeClusterResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The managed object reference ID of
+     * the root resource pool for the cluster.
+     * 
+     */
     private String resourcePoolId;
 
     private GetComputeClusterResult() {}
@@ -34,6 +39,11 @@ public final class GetComputeClusterResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The managed object reference ID of
+     * the root resource pool for the cluster.
+     * 
+     */
     public String resourcePoolId() {
         return this.resourcePoolId;
     }

@@ -10,13 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class ComputeClusterVsanDiskGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVsanDiskGroupGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The canonical name of the disk to use for vSAN cache.
+        /// </summary>
         [Input("cache")]
         public Input<string>? Cache { get; set; }
 
         [Input("storages")]
         private InputList<string>? _storages;
+
+        /// <summary>
+        /// An array of disk canonical names for vSAN storage.
+        /// </summary>
         public InputList<string> Storages
         {
             get => _storages ?? (_storages = new InputList<string>());
@@ -26,5 +33,6 @@ namespace Pulumi.VSphere.Inputs
         public ComputeClusterVsanDiskGroupGetArgs()
         {
         }
+        public static new ComputeClusterVsanDiskGroupGetArgs Empty => new ComputeClusterVsanDiskGroupGetArgs();
     }
 }

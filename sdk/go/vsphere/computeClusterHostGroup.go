@@ -201,6 +201,25 @@ func (o ComputeClusterHostGroupOutput) ToComputeClusterHostGroupOutputWithContex
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the group in.  Forces a new
+// resource if changed.
+func (o ComputeClusterHostGroupOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// The managed object IDs of
+// the hosts to put in the cluster.
+func (o ComputeClusterHostGroupOutput) HostSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringArrayOutput { return v.HostSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the host group. This must be unique in the
+// cluster. Forces a new resource if changed.
+func (o ComputeClusterHostGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type ComputeClusterHostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterHostGroupArrayOutput) ElementType() reflect.Type {

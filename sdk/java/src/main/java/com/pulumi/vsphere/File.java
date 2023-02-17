@@ -17,6 +17,74 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Uploading a File
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.File;
+ * import com.pulumi.vsphere.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuVmdkUpload = new File(&#34;ubuntuVmdkUpload&#34;, FileArgs.builder()        
+ *             .createDirectories(true)
+ *             .datacenter(&#34;dc-01&#34;)
+ *             .datastore(&#34;datastore-01&#34;)
+ *             .destinationFile(&#34;/my/dst/path/custom_ubuntu.vmdk&#34;)
+ *             .sourceFile(&#34;/my/src/path/custom_ubuntu.vmdk&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Copying a File
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.File;
+ * import com.pulumi.vsphere.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuCopy = new File(&#34;ubuntuCopy&#34;, FileArgs.builder()        
+ *             .createDirectories(true)
+ *             .datacenter(&#34;dc-01&#34;)
+ *             .datastore(&#34;datastore-01&#34;)
+ *             .destinationFile(&#34;/my/dst/path/custom_ubuntu.vmdk&#34;)
+ *             .sourceDatacenter(&#34;dc-01&#34;)
+ *             .sourceDatastore(&#34;datastore-01&#34;)
+ *             .sourceFile(&#34;/my/src/path/custom_ubuntu.vmdk&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/file:File")

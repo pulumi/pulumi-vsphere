@@ -32,14 +32,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     * IP address of the default gateway, if DHCP is not set.
      * 
      */
     @Import(name="gw")
     private @Nullable Output<String> gw;
 
     /**
-     * @return IP address of the default gateway, if DHCP or autoconfig is not set.
+     * @return IP address of the default gateway, if DHCP is not set.
      * 
      */
     public Optional<Output<String>> gw() {
@@ -125,7 +125,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gw IP address of the default gateway, if DHCP or autoconfig is not set.
+         * @param gw IP address of the default gateway, if DHCP is not set.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gw IP address of the default gateway, if DHCP or autoconfig is not set.
+         * @param gw IP address of the default gateway, if DHCP is not set.
          * 
          * @return builder
          * 

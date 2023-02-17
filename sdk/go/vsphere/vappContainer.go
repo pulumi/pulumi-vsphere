@@ -441,6 +441,109 @@ func (o VappContainerOutput) ToVappContainerOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Determines if the reservation on a vApp
+// container can grow beyond the specified value if the parent resource pool has
+// unreserved resources. Default: `true`
+func (o VappContainerOutput) CpuExpandable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.BoolPtrOutput { return v.CpuExpandable }).(pulumi.BoolPtrOutput)
+}
+
+// The CPU utilization of a vApp container will not
+// exceed this limit, even if there are available resources. Set to `-1` for
+// unlimited.
+// Default: `-1`
+func (o VappContainerOutput) CpuLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.CpuLimit }).(pulumi.IntPtrOutput)
+}
+
+// Amount of CPU (MHz) that is guaranteed
+// available to the vApp container. Default: `0`
+func (o VappContainerOutput) CpuReservation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.CpuReservation }).(pulumi.IntPtrOutput)
+}
+
+// The CPU allocation level. The level is a
+// simplified view of shares. Levels map to a pre-determined set of numeric
+// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+// `low`, `normal`, or `high` are specified values in `cpuShares` will be
+// ignored.  Default: `normal`
+func (o VappContainerOutput) CpuShareLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringPtrOutput { return v.CpuShareLevel }).(pulumi.StringPtrOutput)
+}
+
+// The number of shares allocated for CPU. Used to
+// determine resource allocation in case of resource contention. If this is set,
+// `cpuShareLevel` must be `custom`.
+func (o VappContainerOutput) CpuShares() pulumi.IntOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntOutput { return v.CpuShares }).(pulumi.IntOutput)
+}
+
+// A list of custom attributes to set on this resource.
+func (o VappContainerOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// Determines if the reservation on a vApp
+// container can grow beyond the specified value if the parent resource pool has
+// unreserved resources. Default: `true`
+func (o VappContainerOutput) MemoryExpandable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.BoolPtrOutput { return v.MemoryExpandable }).(pulumi.BoolPtrOutput)
+}
+
+// The CPU utilization of a vApp container will not
+// exceed this limit, even if there are available resources. Set to `-1` for
+// unlimited. Default: `-1`
+func (o VappContainerOutput) MemoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.MemoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Amount of CPU (MHz) that is guaranteed
+// available to the vApp container. Default: `0`
+func (o VappContainerOutput) MemoryReservation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntPtrOutput { return v.MemoryReservation }).(pulumi.IntPtrOutput)
+}
+
+// The CPU allocation level. The level is a
+// simplified view of shares. Levels map to a pre-determined set of numeric
+// values for shares. Can be one of `low`, `normal`, `high`, or `custom`. When
+// `low`, `normal`, or `high` are specified values in `memoryShares` will be
+// ignored.  Default: `normal`
+func (o VappContainerOutput) MemoryShareLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringPtrOutput { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
+}
+
+// The number of shares allocated for CPU. Used to
+// determine resource allocation in case of resource contention. If this is set,
+// `memoryShareLevel` must be `custom`.
+func (o VappContainerOutput) MemoryShares() pulumi.IntOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.IntOutput { return v.MemoryShares }).(pulumi.IntOutput)
+}
+
+// The name of the vApp container.
+func (o VappContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The managed object ID of
+// the vApp container's parent folder.
+func (o VappContainerOutput) ParentFolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringPtrOutput { return v.ParentFolderId }).(pulumi.StringPtrOutput)
+}
+
+// The managed object ID
+// of the parent resource pool. This can be the root resource pool for a cluster
+// or standalone host, or a resource pool itself. When moving a vApp container
+// from one parent resource pool to another, both must share a common root
+// resource pool or the move will fail.
+func (o VappContainerOutput) ParentResourcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringOutput { return v.ParentResourcePoolId }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o VappContainerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VappContainer) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type VappContainerArrayOutput struct{ *pulumi.OutputState }
 
 func (VappContainerArrayOutput) ElementType() reflect.Type {

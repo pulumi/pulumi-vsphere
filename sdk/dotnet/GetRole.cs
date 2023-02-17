@@ -21,26 +21,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var terraformRole = VSphere.GetRole.Invoke(new()
         ///     {
-        ///         var terraformRole = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
-        ///         {
-        ///             Label = "Terraform to vSphere Integration Role",
-        ///         }));
-        ///     }
+        ///         Label = "Terraform to vSphere Integration Role",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
@@ -52,30 +50,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var terraformRole = VSphere.GetRole.Invoke(new()
         ///     {
-        ///         var terraformRole = Output.Create(VSphere.GetRole.InvokeAsync(new VSphere.GetRoleArgs
-        ///         {
-        ///             Label = "Terraform to vSphere Integration Role",
-        ///         }));
-        ///     }
+        ///         Label = "Terraform to vSphere Integration Role",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the role.
@@ -107,9 +103,10 @@ namespace Pulumi.VSphere
         public GetRoleArgs()
         {
         }
+        public static new GetRoleArgs Empty => new GetRoleArgs();
     }
 
-    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the role.
@@ -141,6 +138,7 @@ namespace Pulumi.VSphere
         public GetRoleInvokeArgs()
         {
         }
+        public static new GetRoleInvokeArgs Empty => new GetRoleInvokeArgs();
     }
 
 

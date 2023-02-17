@@ -30,13 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("mydc"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			h1, err := vsphere.LookupHost(ctx, &GetHostArgs{
+//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi1.host.test"),
 //				DatacenterId: dc.Id,
 //			}, nil)
@@ -44,10 +44,10 @@ import (
 //				return err
 //			}
 //			d1, err := vsphere.NewDistributedVirtualSwitch(ctx, "d1", &vsphere.DistributedVirtualSwitchArgs{
-//				DatacenterId: pulumi.String(dc.Id),
-//				Hosts: DistributedVirtualSwitchHostArray{
-//					&DistributedVirtualSwitchHostArgs{
-//						HostSystemId: pulumi.String(h1.Id),
+//				DatacenterId: *pulumi.String(dc.Id),
+//				Hosts: vsphere.DistributedVirtualSwitchHostArray{
+//					&vsphere.DistributedVirtualSwitchHostArgs{
+//						HostSystemId: *pulumi.String(h1.Id),
 //						Devices: pulumi.StringArray{
 //							pulumi.String("vnic3"),
 //						},
@@ -65,10 +65,10 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
-//				Host:                  pulumi.String(h1.Id),
+//				Host:                  *pulumi.String(h1.Id),
 //				DistributedSwitchPort: d1.ID(),
 //				DistributedPortGroup:  p1.ID(),
-//				Ipv4: &VnicIpv4Args{
+//				Ipv4: &vsphere.VnicIpv4Args{
 //					Dhcp: pulumi.Bool(true),
 //				},
 //				Netstack: pulumi.String("vmotion"),
@@ -95,13 +95,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("mydc"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			h1, err := vsphere.LookupHost(ctx, &GetHostArgs{
+//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
 //				Name:         pulumi.StringRef("esxi1.host.test"),
 //				DatacenterId: dc.Id,
 //			}, nil)
@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			hvs1, err := vsphere.NewHostVirtualSwitch(ctx, "hvs1", &vsphere.HostVirtualSwitchArgs{
-//				HostSystemId: pulumi.String(h1.Id),
+//				HostSystemId: *pulumi.String(h1.Id),
 //				NetworkAdapters: pulumi.StringArray{
 //					pulumi.String("vmnic3"),
 //					pulumi.String("vmnic4"),
@@ -126,15 +126,15 @@ import (
 //			}
 //			p1, err := vsphere.NewHostPortGroup(ctx, "p1", &vsphere.HostPortGroupArgs{
 //				VirtualSwitchName: hvs1.Name,
-//				HostSystemId:      pulumi.String(h1.Id),
+//				HostSystemId:      *pulumi.String(h1.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
-//				Host:      pulumi.String(h1.Id),
+//				Host:      *pulumi.String(h1.Id),
 //				Portgroup: p1.Name,
-//				Ipv4: &VnicIpv4Args{
+//				Ipv4: &vsphere.VnicIpv4Args{
 //					Dhcp: pulumi.Bool(true),
 //				},
 //			})
@@ -399,6 +399,51 @@ func (o VnicOutput) ToVnicOutput() VnicOutput {
 
 func (o VnicOutput) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return o
+}
+
+// Key of the distributed portgroup the nic will connect to.
+func (o VnicOutput) DistributedPortGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.DistributedPortGroup }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the DVSwitch the nic will be attached to. Do not set if you set portgroup.
+func (o VnicOutput) DistributedSwitchPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.DistributedSwitchPort }).(pulumi.StringPtrOutput)
+}
+
+// ESX host the interface belongs to
+func (o VnicOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+func (o VnicOutput) Ipv4() VnicIpv4PtrOutput {
+	return o.ApplyT(func(v *Vnic) VnicIpv4PtrOutput { return v.Ipv4 }).(VnicIpv4PtrOutput)
+}
+
+// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+func (o VnicOutput) Ipv6() VnicIpv6PtrOutput {
+	return o.ApplyT(func(v *Vnic) VnicIpv6PtrOutput { return v.Ipv6 }).(VnicIpv6PtrOutput)
+}
+
+// MAC address of the interface.
+func (o VnicOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
+}
+
+// MTU of the interface.
+func (o VnicOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+func (o VnicOutput) Netstack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.Netstack }).(pulumi.StringPtrOutput)
+}
+
+// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
+func (o VnicOutput) Portgroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.Portgroup }).(pulumi.StringPtrOutput)
 }
 
 type VnicArrayOutput struct{ *pulumi.OutputState }

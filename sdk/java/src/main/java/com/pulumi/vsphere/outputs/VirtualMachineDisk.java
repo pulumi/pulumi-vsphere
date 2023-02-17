@@ -24,7 +24,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String controllerType;
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     private @Nullable String datastoreId;
@@ -80,7 +80,7 @@ public final class VirtualMachineDisk {
      */
     private String label;
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     private @Nullable String path;
@@ -90,7 +90,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Integer size;
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     private @Nullable String storagePolicyId;
@@ -131,7 +131,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.controllerType);
     }
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     public Optional<String> datastoreId() {
@@ -211,7 +211,7 @@ public final class VirtualMachineDisk {
         return this.label;
     }
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     public Optional<String> path() {
@@ -225,7 +225,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     public Optional<String> storagePolicyId() {

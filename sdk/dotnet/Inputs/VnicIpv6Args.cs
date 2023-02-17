@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VnicIpv6Args : Pulumi.ResourceArgs
+    public sealed class VnicIpv6Args : global::Pulumi.ResourceArgs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
@@ -37,7 +37,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// IP address of the default gateway, if DHCP or autoconfig is not set.
+        /// IP address of the default gateway, if DHCP is not set.
         /// </summary>
         [Input("gw")]
         public Input<string>? Gw { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.VSphere.Inputs
         public VnicIpv6Args()
         {
         }
+        public static new VnicIpv6Args Empty => new VnicIpv6Args();
     }
 }

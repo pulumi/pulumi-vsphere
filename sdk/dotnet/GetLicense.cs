@@ -20,26 +20,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var license = VSphere.GetLicense.Invoke(new()
         ///     {
-        ///         var license = Output.Create(VSphere.GetLicense.InvokeAsync(new VSphere.GetLicenseArgs
-        ///         {
-        ///             LicenseKey = "00000-00000-00000-00000-00000",
-        ///         }));
-        ///     }
+        ///         LicenseKey = "00000-00000-00000-00000-00000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLicenseResult> InvokeAsync(GetLicenseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.License` data source can be used to get the general attributes of
@@ -50,30 +48,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var license = VSphere.GetLicense.Invoke(new()
         ///     {
-        ///         var license = Output.Create(VSphere.GetLicense.InvokeAsync(new VSphere.GetLicenseArgs
-        ///         {
-        ///             LicenseKey = "00000-00000-00000-00000-00000",
-        ///         }));
-        ///     }
+        ///         LicenseKey = "00000-00000-00000-00000-00000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLicenseArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The license key.
@@ -84,9 +80,10 @@ namespace Pulumi.VSphere
         public GetLicenseArgs()
         {
         }
+        public static new GetLicenseArgs Empty => new GetLicenseArgs();
     }
 
-    public sealed class GetLicenseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The license key.
@@ -97,6 +94,7 @@ namespace Pulumi.VSphere
         public GetLicenseInvokeArgs()
         {
         }
+        public static new GetLicenseInvokeArgs Empty => new GetLicenseInvokeArgs();
     }
 
 

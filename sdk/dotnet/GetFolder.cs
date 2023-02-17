@@ -13,69 +13,63 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
-        /// vSphere inventory folder. Paths are absolute and include must include the
-        /// datacenter.  
+        /// vSphere inventory folder. Paths are absolute and must include the datacenter.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var folder = VSphere.GetFolder.Invoke(new()
         ///     {
-        ///         var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs
-        ///         {
-        ///             Path = "/dc-01/datastore-01/folder-01",
-        ///         }));
-        ///     }
+        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
-        /// vSphere inventory folder. Paths are absolute and include must include the
-        /// datacenter.  
+        /// vSphere inventory folder. Paths are absolute and must include the datacenter.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var folder = VSphere.GetFolder.Invoke(new()
         ///     {
-        ///         var folder = Output.Create(VSphere.GetFolder.InvokeAsync(new VSphere.GetFolderArgs
-        ///         {
-        ///             Path = "/dc-01/datastore-01/folder-01",
-        ///         }));
-        ///     }
+        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFolderArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The absolute path of the folder. For example, given a
@@ -90,9 +84,10 @@ namespace Pulumi.VSphere
         public GetFolderArgs()
         {
         }
+        public static new GetFolderArgs Empty => new GetFolderArgs();
     }
 
-    public sealed class GetFolderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The absolute path of the folder. For example, given a
@@ -107,6 +102,7 @@ namespace Pulumi.VSphere
         public GetFolderInvokeArgs()
         {
         }
+        public static new GetFolderInvokeArgs Empty => new GetFolderInvokeArgs();
     }
 
 

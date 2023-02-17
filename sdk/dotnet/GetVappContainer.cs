@@ -22,31 +22,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVappContainer.InvokeAsync(new VSphere.GetVappContainerArgs
-        ///         {
-        ///             Name = "vapp-container-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     {
+        ///         Name = "vapp-container-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVappContainerResult> InvokeAsync(GetVappContainerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.VappContainer` data source can be used to discover the ID of a
@@ -59,35 +58,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVappContainer.InvokeAsync(new VSphere.GetVappContainerArgs
-        ///         {
-        ///             Name = "vapp-container-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var pool = VSphere.GetVappContainer.Invoke(new()
+        ///     {
+        ///         Name = "vapp-container-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVappContainerResult> Invoke(GetVappContainerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVappContainerResult>("vsphere:index/getVappContainer:getVappContainer", args ?? new GetVappContainerInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVappContainerArgs : Pulumi.InvokeArgs
+    public sealed class GetVappContainerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -106,9 +104,10 @@ namespace Pulumi.VSphere
         public GetVappContainerArgs()
         {
         }
+        public static new GetVappContainerArgs Empty => new GetVappContainerArgs();
     }
 
-    public sealed class GetVappContainerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVappContainerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -127,6 +126,7 @@ namespace Pulumi.VSphere
         public GetVappContainerInvokeArgs()
         {
         }
+        public static new GetVappContainerInvokeArgs Empty => new GetVappContainerInvokeArgs();
     }
 
 

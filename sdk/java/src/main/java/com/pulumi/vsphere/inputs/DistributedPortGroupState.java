@@ -147,14 +147,16 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Version string of the configuration that this spec is trying to change.
+     * The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      * 
      */
     @Import(name="configVersion")
     private @Nullable Output<String> configVersion;
 
     /**
-     * @return Version string of the configuration that this spec is trying to change.
+     * @return The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      * 
      */
     public Optional<Output<String>> configVersion() {
@@ -361,14 +363,14 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The generated UUID of the portgroup.
+     * The generated UUID of the port group.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The generated UUID of the portgroup.
+     * @return The generated UUID of the port group.
      * 
      */
     public Optional<Output<String>> key() {
@@ -1050,7 +1052,8 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param configVersion Version string of the configuration that this spec is trying to change.
+         * @param configVersion The current version of the port group configuration,
+         * incremented by subsequent updates to the port group.
          * 
          * @return builder
          * 
@@ -1061,7 +1064,8 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param configVersion Version string of the configuration that this spec is trying to change.
+         * @param configVersion The current version of the port group configuration,
+         * incremented by subsequent updates to the port group.
          * 
          * @return builder
          * 
@@ -1348,7 +1352,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key The generated UUID of the portgroup.
+         * @param key The generated UUID of the port group.
          * 
          * @return builder
          * 
@@ -1359,7 +1363,7 @@ public final class DistributedPortGroupState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key The generated UUID of the portgroup.
+         * @param key The generated UUID of the port group.
          * 
          * @return builder
          * 

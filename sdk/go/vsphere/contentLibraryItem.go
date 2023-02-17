@@ -216,6 +216,37 @@ func (o ContentLibraryItemOutput) ToContentLibraryItemOutputWithContext(ctx cont
 	return o
 }
 
+// A description for the content library item.
+func (o ContentLibraryItemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// File to import as the content library item.
+func (o ContentLibraryItemOutput) FileUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringPtrOutput { return v.FileUrl }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the content library in which to create the item.
+func (o ContentLibraryItemOutput) LibraryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringOutput { return v.LibraryId }).(pulumi.StringOutput)
+}
+
+// The name of the item to be created in the content library.
+func (o ContentLibraryItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Virtual machine UUID to clone to content library.
+func (o ContentLibraryItemOutput) SourceUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringPtrOutput { return v.SourceUuid }).(pulumi.StringPtrOutput)
+}
+
+// Type of content library item.
+// One of "ovf", "iso", or "vm-template". Default: `ovf`.
+func (o ContentLibraryItemOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibraryItem) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type ContentLibraryItemArrayOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryItemArrayOutput) ElementType() reflect.Type {

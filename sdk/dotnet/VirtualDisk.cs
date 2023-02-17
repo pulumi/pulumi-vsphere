@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/virtualDisk:VirtualDisk")]
-    public partial class VirtualDisk : Pulumi.CustomResource
+    public partial class VirtualDisk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
@@ -108,7 +108,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VirtualDiskArgs : Pulumi.ResourceArgs
+    public sealed class VirtualDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
@@ -165,9 +165,10 @@ namespace Pulumi.VSphere
         public VirtualDiskArgs()
         {
         }
+        public static new VirtualDiskArgs Empty => new VirtualDiskArgs();
     }
 
-    public sealed class VirtualDiskState : Pulumi.ResourceArgs
+    public sealed class VirtualDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The adapter type for this virtual disk. Can be
@@ -224,5 +225,6 @@ namespace Pulumi.VSphere
         public VirtualDiskState()
         {
         }
+        public static new VirtualDiskState Empty => new VirtualDiskState();
     }
 }

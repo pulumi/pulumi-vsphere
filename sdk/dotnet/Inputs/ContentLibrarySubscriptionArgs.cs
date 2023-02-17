@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class ContentLibrarySubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class ContentLibrarySubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication method to connect ro a published content library. Must be `NONE` or `BASIC`.
@@ -51,5 +51,6 @@ namespace Pulumi.VSphere.Inputs
         public ContentLibrarySubscriptionArgs()
         {
         }
+        public static new ContentLibrarySubscriptionArgs Empty => new ContentLibrarySubscriptionArgs();
     }
 }

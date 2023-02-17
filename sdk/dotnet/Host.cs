@@ -17,59 +17,72 @@ namespace Pulumi.VSphere
     /// ### Create a standalone host
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var esx_01 = new VSphere.Host("esx-01", new VSphere.HostArgs
-    ///         {
-    ///             Hostname = "esx-01.example.com",
-    ///             Username = "root",
-    ///             Password = "password",
-    ///             License = "00000-00000-00000-00000-00000",
-    ///             Datacenter = datacenter.Apply(datacenter =&gt; datacenter.Id),
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esx-01.example.com",
+    ///         Insecure = true,
+    ///     });
+    /// 
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esx-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Datacenter = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Create host in a compute cluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var cluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
-    ///         {
-    ///             Name = "cluster-01",
-    ///             DatacenterId = datacenter.Id,
-    ///         })));
-    ///         var esx_01 = new VSphere.Host("esx-01", new VSphere.HostArgs
-    ///         {
-    ///             Hostname = "esx-01.example.com",
-    ///             Username = "root",
-    ///             Password = "password",
-    ///             License = "00000-00000-00000-00000-00000",
-    ///             Cluster = cluster.Apply(cluster =&gt; cluster.Id),
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esx-01.example.com",
+    ///         Insecure = true,
+    ///     });
+    /// 
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esx-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Cluster = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Importing
     /// 
@@ -79,21 +92,18 @@ namespace Pulumi.VSphere
     /// [docs-import]: /docs/import/index.html
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The above would import the host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/host:Host")]
-    public partial class Host : Pulumi.CustomResource
+    public partial class Host : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
@@ -112,7 +122,7 @@ namespace Pulumi.VSphere
         public Output<bool?> ClusterManaged { get; private set; } = null!;
 
         /// <summary>
-        /// If set to false then the host will be disconected.
+        /// If set to false then the host will be disconnected.
         /// Default is `false`.
         /// </summary>
         [Output("connected")]
@@ -187,7 +197,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Host's certificate SHA-1 thumbprint. If not set the
         /// CA that signed the host's certificate should be trusted. If the CA is not
-        /// trusted and no thumbprint is set then the operation will fail.
+        /// trusted and no thumbprint is set then the operation will fail. See data source
+        /// [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
         /// </summary>
         [Output("thumbprint")]
         public Output<string?> Thumbprint { get; private set; } = null!;
@@ -222,6 +233,10 @@ namespace Pulumi.VSphere
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -243,7 +258,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class HostArgs : Pulumi.ResourceArgs
+    public sealed class HostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
@@ -262,7 +277,7 @@ namespace Pulumi.VSphere
         public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
-        /// If set to false then the host will be disconected.
+        /// If set to false then the host will be disconnected.
         /// Default is `false`.
         /// </summary>
         [Input("connected")]
@@ -325,12 +340,22 @@ namespace Pulumi.VSphere
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password that will be used by vSphere to authenticate
         /// to the host.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -349,7 +374,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Host's certificate SHA-1 thumbprint. If not set the
         /// CA that signed the host's certificate should be trusted. If the CA is not
-        /// trusted and no thumbprint is set then the operation will fail.
+        /// trusted and no thumbprint is set then the operation will fail. See data source
+        /// [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
@@ -364,9 +390,10 @@ namespace Pulumi.VSphere
         public HostArgs()
         {
         }
+        public static new HostArgs Empty => new HostArgs();
     }
 
-    public sealed class HostState : Pulumi.ResourceArgs
+    public sealed class HostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Compute Cluster this host should
@@ -385,7 +412,7 @@ namespace Pulumi.VSphere
         public Input<bool>? ClusterManaged { get; set; }
 
         /// <summary>
-        /// If set to false then the host will be disconected.
+        /// If set to false then the host will be disconnected.
         /// Default is `false`.
         /// </summary>
         [Input("connected")]
@@ -448,12 +475,22 @@ namespace Pulumi.VSphere
         [Input("maintenance")]
         public Input<bool>? Maintenance { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password that will be used by vSphere to authenticate
         /// to the host.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -472,7 +509,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Host's certificate SHA-1 thumbprint. If not set the
         /// CA that signed the host's certificate should be trusted. If the CA is not
-        /// trusted and no thumbprint is set then the operation will fail.
+        /// trusted and no thumbprint is set then the operation will fail. See data source
+        /// [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
@@ -487,5 +525,6 @@ namespace Pulumi.VSphere
         public HostState()
         {
         }
+        public static new HostState Empty => new HostState();
     }
 }

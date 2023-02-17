@@ -67,6 +67,7 @@ public final class GetVirtualMachineResult {
     private @Nullable Boolean enableLogging;
     private @Nullable String eptRviMode;
     private @Nullable Map<String,String> extraConfig;
+    private @Nullable Boolean extraConfigRebootRequired;
     /**
      * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
      * 
@@ -110,7 +111,7 @@ public final class GetVirtualMachineResult {
     /**
      * @return The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     private List<String> networkInterfaceTypes;
@@ -263,6 +264,9 @@ public final class GetVirtualMachineResult {
     public Map<String,String> extraConfig() {
         return this.extraConfig == null ? Map.of() : this.extraConfig;
     }
+    public Optional<Boolean> extraConfigRebootRequired() {
+        return Optional.ofNullable(this.extraConfigRebootRequired);
+    }
     /**
      * @return The firmware type for this virtual machine. Can be `bios` or `efi`.
      * 
@@ -338,7 +342,7 @@ public final class GetVirtualMachineResult {
     /**
      * @return The network interface types for each network
      * interface found on the virtual machine, in device bus order. Will be one of
-     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+     * `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     public List<String> networkInterfaceTypes() {
@@ -477,6 +481,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Boolean enableLogging;
         private @Nullable String eptRviMode;
         private @Nullable Map<String,String> extraConfig;
+        private @Nullable Boolean extraConfigRebootRequired;
         private @Nullable String firmware;
         private String guestId;
         private List<String> guestIpAddresses;
@@ -541,6 +546,7 @@ public final class GetVirtualMachineResult {
     	      this.enableLogging = defaults.enableLogging;
     	      this.eptRviMode = defaults.eptRviMode;
     	      this.extraConfig = defaults.extraConfig;
+    	      this.extraConfigRebootRequired = defaults.extraConfigRebootRequired;
     	      this.firmware = defaults.firmware;
     	      this.guestId = defaults.guestId;
     	      this.guestIpAddresses = defaults.guestIpAddresses;
@@ -689,6 +695,11 @@ public final class GetVirtualMachineResult {
         @CustomType.Setter
         public Builder extraConfig(@Nullable Map<String,String> extraConfig) {
             this.extraConfig = extraConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extraConfigRebootRequired(@Nullable Boolean extraConfigRebootRequired) {
+            this.extraConfigRebootRequired = extraConfigRebootRequired;
             return this;
         }
         @CustomType.Setter
@@ -926,6 +937,7 @@ public final class GetVirtualMachineResult {
             o.enableLogging = enableLogging;
             o.eptRviMode = eptRviMode;
             o.extraConfig = extraConfig;
+            o.extraConfigRebootRequired = extraConfigRebootRequired;
             o.firmware = firmware;
             o.guestId = guestId;
             o.guestIpAddresses = guestIpAddresses;

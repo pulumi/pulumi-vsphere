@@ -315,6 +315,47 @@ func (o VirtualMachineSnapshotOutput) ToVirtualMachineSnapshotOutputWithContext(
 	return o
 }
 
+// If set to `true`, the delta disks involved in this
+// snapshot will be consolidated into the parent when this resource is
+// destroyed.
+func (o VirtualMachineSnapshotOutput) Consolidate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.BoolPtrOutput { return v.Consolidate }).(pulumi.BoolPtrOutput)
+}
+
+// A description for the snapshot.
+func (o VirtualMachineSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// If set to `true`, a dump of the internal state of the
+// virtual machine is included in the snapshot.
+func (o VirtualMachineSnapshotOutput) Memory() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.BoolOutput { return v.Memory }).(pulumi.BoolOutput)
+}
+
+// If set to `true`, and the virtual machine is powered
+// on when the snapshot is taken, VMware Tools is used to quiesce the file
+// system in the virtual machine.
+func (o VirtualMachineSnapshotOutput) Quiesce() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.BoolOutput { return v.Quiesce }).(pulumi.BoolOutput)
+}
+
+// If set to `true`, the entire snapshot subtree
+// is removed when this resource is destroyed.
+func (o VirtualMachineSnapshotOutput) RemoveChildren() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.BoolPtrOutput { return v.RemoveChildren }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the snapshot.
+func (o VirtualMachineSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// The virtual machine UUID.
+func (o VirtualMachineSnapshotOutput) VirtualMachineUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineSnapshot) pulumi.StringOutput { return v.VirtualMachineUuid }).(pulumi.StringOutput)
+}
+
 type VirtualMachineSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineSnapshotArrayOutput) ElementType() reflect.Type {

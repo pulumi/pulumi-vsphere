@@ -14,52 +14,48 @@ namespace Pulumi.VSphere
     /// ### Uploading a File
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ubuntuVmdkUpload = new VSphere.File("ubuntuVmdkUpload", new()
     ///     {
-    ///         var ubuntuVmdkUpload = new VSphere.File("ubuntuVmdkUpload", new VSphere.FileArgs
-    ///         {
-    ///             CreateDirectories = true,
-    ///             Datacenter = "dc-01",
-    ///             Datastore = "datastore-01",
-    ///             DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
-    ///             SourceFile = "/my/src/path/custom_ubuntu.vmdk",
-    ///         });
-    ///     }
+    ///         CreateDirectories = true,
+    ///         Datacenter = "dc-01",
+    ///         Datastore = "datastore-01",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Copying a File
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ubuntuCopy = new VSphere.File("ubuntuCopy", new()
     ///     {
-    ///         var ubuntuCopy = new VSphere.File("ubuntuCopy", new VSphere.FileArgs
-    ///         {
-    ///             CreateDirectories = true,
-    ///             Datacenter = "dc-01",
-    ///             Datastore = "datastore-01",
-    ///             DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
-    ///             SourceDatacenter = "dc-01",
-    ///             SourceDatastore = "datastore-01",
-    ///             SourceFile = "/my/src/path/custom_ubuntu.vmdk",
-    ///         });
-    ///     }
+    ///         CreateDirectories = true,
+    ///         Datacenter = "dc-01",
+    ///         Datastore = "datastore-01",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         SourceDatacenter = "dc-01",
+    ///         SourceDatastore = "datastore-01",
+    ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/file:File")]
-    public partial class File : Pulumi.CustomResource
+    public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Create directories in `destination_file`
@@ -150,7 +146,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class FileArgs : Pulumi.ResourceArgs
+    public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Create directories in `destination_file`
@@ -200,9 +196,10 @@ namespace Pulumi.VSphere
         public FileArgs()
         {
         }
+        public static new FileArgs Empty => new FileArgs();
     }
 
-    public sealed class FileState : Pulumi.ResourceArgs
+    public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Create directories in `destination_file`
@@ -252,5 +249,6 @@ namespace Pulumi.VSphere
         public FileState()
         {
         }
+        public static new FileState Empty => new FileState();
     }
 }

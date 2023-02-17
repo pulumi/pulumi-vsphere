@@ -22,25 +22,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetResourcePool.InvokeAsync(new VSphere.GetResourcePoolArgs
-        ///         {
-        ///             Name = "resource-pool-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "resource-pool-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
@@ -55,21 +54,19 @@ namespace Pulumi.VSphere
         /// _root resource pool_ and can be looked up by specifying the path.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
-        ///         var pool = Output.Create(VSphere.GetResourcePool.InvokeAsync(new VSphere.GetResourcePoolArgs
-        ///         {
-        ///             Name = "esxi-01.example.com/Resources",
-        ///             DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
-        ///         }));
-        ///     }
+        ///         Name = "esxi-01.example.com/Resources",
+        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -79,7 +76,7 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.ResourcePool` data source can be used to discover the ID of a
@@ -92,25 +89,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var pool = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetResourcePool.InvokeAsync(new VSphere.GetResourcePoolArgs
-        ///         {
-        ///             Name = "resource-pool-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "resource-pool-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% example %}}
@@ -125,21 +121,19 @@ namespace Pulumi.VSphere
         /// _root resource pool_ and can be looked up by specifying the path.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
         ///     {
-        ///         var pool = Output.Create(VSphere.GetResourcePool.InvokeAsync(new VSphere.GetResourcePoolArgs
-        ///         {
-        ///             Name = "esxi-01.example.com/Resources",
-        ///             DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
-        ///         }));
-        ///     }
+        ///         Name = "esxi-01.example.com/Resources",
+        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -149,11 +143,11 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourcePoolResult> Invoke(GetResourcePoolInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResourcePoolArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -175,9 +169,10 @@ namespace Pulumi.VSphere
         public GetResourcePoolArgs()
         {
         }
+        public static new GetResourcePoolArgs Empty => new GetResourcePoolArgs();
     }
 
-    public sealed class GetResourcePoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -199,6 +194,7 @@ namespace Pulumi.VSphere
         public GetResourcePoolInvokeArgs()
         {
         }
+        public static new GetResourcePoolInvokeArgs Empty => new GetResourcePoolInvokeArgs();
     }
 
 

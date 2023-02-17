@@ -30,10 +30,148 @@ import javax.annotation.Nullable;
  * [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
  * 
  * ## Example Usage
+ * 
+ * **Create a Virtual Switch and Bind a Port Group:**
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.HostVirtualSwitch;
+ * import com.pulumi.vsphere.HostVirtualSwitchArgs;
+ * import com.pulumi.vsphere.HostPortGroup;
+ * import com.pulumi.vsphere.HostPortGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name(&#34;esxi-01.example.com&#34;)
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
+ *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .networkAdapters(            
+ *                 &#34;vmnic0&#34;,
+ *                 &#34;vmnic1&#34;)
+ *             .activeNics(&#34;vmnic0&#34;)
+ *             .standbyNics(&#34;vmnic1&#34;)
+ *             .build());
+ * 
+ *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
+ *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .virtualSwitchName(hostVirtualSwitch.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * **Create a Port Group with a VLAN and ab Override:**
+ * 
+ * This example sets the trunk mode VLAN (`4095`, which passes through all tags)
+ * and sets
+ * `allow_promiscuous`
+ * to ensure that all traffic is seen on the port. The setting overrides
+ * the implicit default of `false` set on the standard switch.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.HostVirtualSwitch;
+ * import com.pulumi.vsphere.HostVirtualSwitchArgs;
+ * import com.pulumi.vsphere.HostPortGroup;
+ * import com.pulumi.vsphere.HostPortGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var host = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name(&#34;esxi-01.example.com&#34;)
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var hostVirtualSwitch = new HostVirtualSwitch(&#34;hostVirtualSwitch&#34;, HostVirtualSwitchArgs.builder()        
+ *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .networkAdapters(            
+ *                 &#34;vmnic0&#34;,
+ *                 &#34;vmnic1&#34;)
+ *             .activeNics(&#34;vmnic0&#34;)
+ *             .standbyNics(&#34;vmnic1&#34;)
+ *             .build());
+ * 
+ *         var pg = new HostPortGroup(&#34;pg&#34;, HostPortGroupArgs.builder()        
+ *             .hostSystemId(host.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .virtualSwitchName(hostVirtualSwitch.name())
+ *             .vlanId(4095)
+ *             .allowPromiscuous(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Importing
  * 
  * An existing host port group can be imported into this resource
  * using the host port group&#39;s ID. An example is below:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
  * 
  * The above would import the `management` host port group from host with ID `host-123`.
  * 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VnicIpv4Args : Pulumi.ResourceArgs
+    public sealed class VnicIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use DHCP to configure the interface's IPv4 stack.
@@ -19,7 +19,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// IP address of the default gateway, if DHCP or autoconfig is not set.
+        /// IP address of the default gateway, if DHCP is not set.
         /// </summary>
         [Input("gw")]
         public Input<string>? Gw { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.VSphere.Inputs
         public VnicIpv4Args()
         {
         }
+        public static new VnicIpv4Args Empty => new VnicIpv4Args();
     }
 }

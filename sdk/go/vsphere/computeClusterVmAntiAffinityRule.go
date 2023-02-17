@@ -224,6 +224,35 @@ func (o ComputeClusterVmAntiAffinityRuleOutput) ToComputeClusterVmAntiAffinityRu
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the group in.  Forces a new
+// resource if changed.
+func (o ComputeClusterVmAntiAffinityRuleOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// Enable this rule in the cluster. Default: `true`.
+func (o ComputeClusterVmAntiAffinityRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// When this value is `true`, prevents any virtual
+// machine operations that may violate this rule. Default: `false`.
+func (o ComputeClusterVmAntiAffinityRuleOutput) Mandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the rule. This must be unique in the cluster.
+func (o ComputeClusterVmAntiAffinityRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The UUIDs of the virtual machines to run
+// on hosts different from each other.
+func (o ComputeClusterVmAntiAffinityRuleOutput) VirtualMachineIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
+}
+
 type ComputeClusterVmAntiAffinityRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmAntiAffinityRuleArrayOutput) ElementType() reflect.Type {

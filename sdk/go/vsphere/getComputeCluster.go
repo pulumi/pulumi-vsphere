@@ -35,13 +35,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//			_, err = vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -77,8 +77,10 @@ type LookupComputeClusterArgs struct {
 type LookupComputeClusterResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string `pulumi:"id"`
-	Name           string `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The managed object reference ID of
+	// the root resource pool for the cluster.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 }
 
@@ -138,6 +140,8 @@ func (o LookupComputeClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The managed object reference ID of
+// the root resource pool for the cluster.
 func (o LookupComputeClusterResultOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComputeClusterResult) string { return v.ResourcePoolId }).(pulumi.StringOutput)
 }

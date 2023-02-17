@@ -28,20 +28,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef(_var.Vsphere_datacenter),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         _var.Vsphere_cluster,
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			hostGroup1, err := vsphere.LookupComputeClusterHostGroup(ctx, &GetComputeClusterHostGroupArgs{
+//			hostGroup1, err := vsphere.LookupComputeClusterHostGroup(ctx, &vsphere.LookupComputeClusterHostGroupArgs{
 //				Name:             "host_group1",
 //				ComputeClusterId: cluster.Id,
 //			}, nil)
@@ -49,9 +49,9 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "hostRule1", &vsphere.ComputeClusterVmHostRuleArgs{
-//				ComputeClusterId:      pulumi.String(cluster.Id),
+//				ComputeClusterId:      *pulumi.String(cluster.Id),
 //				VmGroupName:           pulumi.String("vm_group1"),
-//				AffinityHostGroupName: pulumi.String(hostGroup1.Name),
+//				AffinityHostGroupName: *pulumi.String(hostGroup1.Name),
 //			})
 //			if err != nil {
 //				return err
@@ -81,8 +81,10 @@ type LookupComputeClusterHostGroupArgs struct {
 
 // A collection of values returned by getComputeClusterHostGroup.
 type LookupComputeClusterHostGroupResult struct {
-	ComputeClusterId string   `pulumi:"computeClusterId"`
-	HostSystemIds    []string `pulumi:"hostSystemIds"`
+	ComputeClusterId string `pulumi:"computeClusterId"`
+	// The [managed object reference ID][docs-about-morefs] of
+	// the ESXi hosts in the host group.
+	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -133,6 +135,8 @@ func (o LookupComputeClusterHostGroupResultOutput) ComputeClusterId() pulumi.Str
 	return o.ApplyT(func(v LookupComputeClusterHostGroupResult) string { return v.ComputeClusterId }).(pulumi.StringOutput)
 }
 
+// The [managed object reference ID][docs-about-morefs] of
+// the ESXi hosts in the host group.
 func (o LookupComputeClusterHostGroupResultOutput) HostSystemIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupComputeClusterHostGroupResult) []string { return v.HostSystemIds }).(pulumi.StringArrayOutput)
 }

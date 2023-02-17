@@ -250,14 +250,51 @@ type ComputeCluster struct {
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation pulumi.StringPtrOutput `pulumi:"proactiveHaSevereRemediation"`
-	// The managed object ID of the cluster's root resource pool.
+	// The managed object ID of the primary
+	// resource pool for this cluster. This can be passed directly to the
+	// `resourcePoolId`
+	// attribute of the
+	// `VirtualMachine` resource.
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// A list of disk UUIDs to add to the vSAN cluster.
+	// Enables vSAN compression on the
+	// cluster.
+	VsanCompressionEnabled pulumi.BoolPtrOutput `pulumi:"vsanCompressionEnabled"`
+	// Enables vSAN deduplication on the cluster.
+	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// compression must also be enabled.
+	VsanDedupEnabled pulumi.BoolPtrOutput `pulumi:"vsanDedupEnabled"`
+	// Represents the configuration of a host disk
+	// group in the cluster.
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayOutput `pulumi:"vsanDiskGroups"`
-	// Whether the VSAN service is enabled for the cluster.
-	VsanEnabled pulumi.BoolOutput `pulumi:"vsanEnabled"`
+	// Enables vSAN data-in-transit
+	// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+	// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+	// at the same time.
+	VsanDitEncryptionEnabled pulumi.BoolPtrOutput `pulumi:"vsanDitEncryptionEnabled"`
+	// Indicates the rekey interval in
+	// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+	// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+	VsanDitRekeyInterval pulumi.IntOutput `pulumi:"vsanDitRekeyInterval"`
+	// Enables vSAN on the cluster.
+	VsanEnabled pulumi.BoolPtrOutput `pulumi:"vsanEnabled"`
+	// Enables network
+	// diagnostic mode for vSAN performance service on the cluster.
+	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrOutput `pulumi:"vsanNetworkDiagnosticModeEnabled"`
+	// Enables vSAN performance service on
+	// the cluster. Default: `true`.
+	VsanPerformanceEnabled pulumi.BoolPtrOutput `pulumi:"vsanPerformanceEnabled"`
+	// The remote vSAN datastore IDs to be
+	// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+	// data-in-transit encryption feature at the same time.
+	VsanRemoteDatastoreIds pulumi.StringArrayOutput `pulumi:"vsanRemoteDatastoreIds"`
+	// Enables vSAN unmap on the cluster.
+	VsanUnmapEnabled pulumi.BoolPtrOutput `pulumi:"vsanUnmapEnabled"`
+	// Enables verbose mode for vSAN
+	// performance service on the cluster.
+	VsanVerboseModeEnabled pulumi.BoolPtrOutput `pulumi:"vsanVerboseModeEnabled"`
 }
 
 // NewComputeCluster registers a new resource with the given unique name, arguments, and options.
@@ -528,14 +565,51 @@ type computeClusterState struct {
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
-	// The managed object ID of the cluster's root resource pool.
+	// The managed object ID of the primary
+	// resource pool for this cluster. This can be passed directly to the
+	// `resourcePoolId`
+	// attribute of the
+	// `VirtualMachine` resource.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
-	// A list of disk UUIDs to add to the vSAN cluster.
+	// Enables vSAN compression on the
+	// cluster.
+	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
+	// Enables vSAN deduplication on the cluster.
+	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// compression must also be enabled.
+	VsanDedupEnabled *bool `pulumi:"vsanDedupEnabled"`
+	// Represents the configuration of a host disk
+	// group in the cluster.
 	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
-	// Whether the VSAN service is enabled for the cluster.
+	// Enables vSAN data-in-transit
+	// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+	// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+	// at the same time.
+	VsanDitEncryptionEnabled *bool `pulumi:"vsanDitEncryptionEnabled"`
+	// Indicates the rekey interval in
+	// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+	// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
+	// Enables vSAN on the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
+	// Enables network
+	// diagnostic mode for vSAN performance service on the cluster.
+	VsanNetworkDiagnosticModeEnabled *bool `pulumi:"vsanNetworkDiagnosticModeEnabled"`
+	// Enables vSAN performance service on
+	// the cluster. Default: `true`.
+	VsanPerformanceEnabled *bool `pulumi:"vsanPerformanceEnabled"`
+	// The remote vSAN datastore IDs to be
+	// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+	// data-in-transit encryption feature at the same time.
+	VsanRemoteDatastoreIds []string `pulumi:"vsanRemoteDatastoreIds"`
+	// Enables vSAN unmap on the cluster.
+	VsanUnmapEnabled *bool `pulumi:"vsanUnmapEnabled"`
+	// Enables verbose mode for vSAN
+	// performance service on the cluster.
+	VsanVerboseModeEnabled *bool `pulumi:"vsanVerboseModeEnabled"`
 }
 
 type ComputeClusterState struct {
@@ -775,14 +849,51 @@ type ComputeClusterState struct {
 	// set to `MaintenanceMode`. Default: `QuarantineMode`.
 	// <sup>\*</sup>
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
-	// The managed object ID of the cluster's root resource pool.
+	// The managed object ID of the primary
+	// resource pool for this cluster. This can be passed directly to the
+	// `resourcePoolId`
+	// attribute of the
+	// `VirtualMachine` resource.
 	ResourcePoolId pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
-	// A list of disk UUIDs to add to the vSAN cluster.
+	// Enables vSAN compression on the
+	// cluster.
+	VsanCompressionEnabled pulumi.BoolPtrInput
+	// Enables vSAN deduplication on the cluster.
+	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// compression must also be enabled.
+	VsanDedupEnabled pulumi.BoolPtrInput
+	// Represents the configuration of a host disk
+	// group in the cluster.
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
-	// Whether the VSAN service is enabled for the cluster.
+	// Enables vSAN data-in-transit
+	// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+	// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+	// at the same time.
+	VsanDitEncryptionEnabled pulumi.BoolPtrInput
+	// Indicates the rekey interval in
+	// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+	// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+	VsanDitRekeyInterval pulumi.IntPtrInput
+	// Enables vSAN on the cluster.
 	VsanEnabled pulumi.BoolPtrInput
+	// Enables network
+	// diagnostic mode for vSAN performance service on the cluster.
+	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrInput
+	// Enables vSAN performance service on
+	// the cluster. Default: `true`.
+	VsanPerformanceEnabled pulumi.BoolPtrInput
+	// The remote vSAN datastore IDs to be
+	// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+	// data-in-transit encryption feature at the same time.
+	VsanRemoteDatastoreIds pulumi.StringArrayInput
+	// Enables vSAN unmap on the cluster.
+	VsanUnmapEnabled pulumi.BoolPtrInput
+	// Enables verbose mode for vSAN
+	// performance service on the cluster.
+	VsanVerboseModeEnabled pulumi.BoolPtrInput
 }
 
 func (ComputeClusterState) ElementType() reflect.Type {
@@ -1028,10 +1139,43 @@ type computeClusterArgs struct {
 	ProactiveHaSevereRemediation *string `pulumi:"proactiveHaSevereRemediation"`
 	// The IDs of any tags to attach to this resource.
 	Tags []string `pulumi:"tags"`
-	// A list of disk UUIDs to add to the vSAN cluster.
+	// Enables vSAN compression on the
+	// cluster.
+	VsanCompressionEnabled *bool `pulumi:"vsanCompressionEnabled"`
+	// Enables vSAN deduplication on the cluster.
+	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// compression must also be enabled.
+	VsanDedupEnabled *bool `pulumi:"vsanDedupEnabled"`
+	// Represents the configuration of a host disk
+	// group in the cluster.
 	VsanDiskGroups []ComputeClusterVsanDiskGroup `pulumi:"vsanDiskGroups"`
-	// Whether the VSAN service is enabled for the cluster.
+	// Enables vSAN data-in-transit
+	// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+	// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+	// at the same time.
+	VsanDitEncryptionEnabled *bool `pulumi:"vsanDitEncryptionEnabled"`
+	// Indicates the rekey interval in
+	// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+	// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+	VsanDitRekeyInterval *int `pulumi:"vsanDitRekeyInterval"`
+	// Enables vSAN on the cluster.
 	VsanEnabled *bool `pulumi:"vsanEnabled"`
+	// Enables network
+	// diagnostic mode for vSAN performance service on the cluster.
+	VsanNetworkDiagnosticModeEnabled *bool `pulumi:"vsanNetworkDiagnosticModeEnabled"`
+	// Enables vSAN performance service on
+	// the cluster. Default: `true`.
+	VsanPerformanceEnabled *bool `pulumi:"vsanPerformanceEnabled"`
+	// The remote vSAN datastore IDs to be
+	// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+	// data-in-transit encryption feature at the same time.
+	VsanRemoteDatastoreIds []string `pulumi:"vsanRemoteDatastoreIds"`
+	// Enables vSAN unmap on the cluster.
+	VsanUnmapEnabled *bool `pulumi:"vsanUnmapEnabled"`
+	// Enables verbose mode for vSAN
+	// performance service on the cluster.
+	VsanVerboseModeEnabled *bool `pulumi:"vsanVerboseModeEnabled"`
 }
 
 // The set of arguments for constructing a ComputeCluster resource.
@@ -1274,10 +1418,43 @@ type ComputeClusterArgs struct {
 	ProactiveHaSevereRemediation pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
 	Tags pulumi.StringArrayInput
-	// A list of disk UUIDs to add to the vSAN cluster.
+	// Enables vSAN compression on the
+	// cluster.
+	VsanCompressionEnabled pulumi.BoolPtrInput
+	// Enables vSAN deduplication on the cluster.
+	// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+	// compression must also be enabled.
+	VsanDedupEnabled pulumi.BoolPtrInput
+	// Represents the configuration of a host disk
+	// group in the cluster.
 	VsanDiskGroups ComputeClusterVsanDiskGroupArrayInput
-	// Whether the VSAN service is enabled for the cluster.
+	// Enables vSAN data-in-transit
+	// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+	// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+	// at the same time.
+	VsanDitEncryptionEnabled pulumi.BoolPtrInput
+	// Indicates the rekey interval in
+	// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+	// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+	VsanDitRekeyInterval pulumi.IntPtrInput
+	// Enables vSAN on the cluster.
 	VsanEnabled pulumi.BoolPtrInput
+	// Enables network
+	// diagnostic mode for vSAN performance service on the cluster.
+	VsanNetworkDiagnosticModeEnabled pulumi.BoolPtrInput
+	// Enables vSAN performance service on
+	// the cluster. Default: `true`.
+	VsanPerformanceEnabled pulumi.BoolPtrInput
+	// The remote vSAN datastore IDs to be
+	// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+	// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+	// data-in-transit encryption feature at the same time.
+	VsanRemoteDatastoreIds pulumi.StringArrayInput
+	// Enables vSAN unmap on the cluster.
+	VsanUnmapEnabled pulumi.BoolPtrInput
+	// Enables verbose mode for vSAN
+	// performance service on the cluster.
+	VsanVerboseModeEnabled pulumi.BoolPtrInput
 }
 
 func (ComputeClusterArgs) ElementType() reflect.Type {
@@ -1365,6 +1542,485 @@ func (o ComputeClusterOutput) ToComputeClusterOutput() ComputeClusterOutput {
 
 func (o ComputeClusterOutput) ToComputeClusterOutputWithContext(ctx context.Context) ComputeClusterOutput {
 	return o
+}
+
+// A map of custom attribute ids to attribute
+// value strings to set for the datastore cluster.
+func (o ComputeClusterOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The managed object ID of
+// the datacenter to create the cluster in. Forces a new resource if changed.
+func (o ComputeClusterOutput) DatacenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringOutput { return v.DatacenterId }).(pulumi.StringOutput)
+}
+
+// The automation level for host power
+// operations in this cluster. Can be one of `manual` or `automated`. Default:
+// `manual`.
+func (o ComputeClusterOutput) DpmAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.DpmAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Enable DPM support for DRS in this cluster.
+// Requires `drsEnabled` to be `true` in order to be effective.
+// Default: `false`.
+func (o ComputeClusterOutput) DpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A value between `1` and `5` indicating the
+// threshold of load within the cluster that influences host power operations.
+// This affects both power on and power off operations - a lower setting will
+// tolerate more of a surplus/deficit than a higher setting. Default: `3`.
+func (o ComputeClusterOutput) DpmThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.DpmThreshold }).(pulumi.IntPtrOutput)
+}
+
+// A key/value map that specifies advanced
+// options for DRS and DPM.
+func (o ComputeClusterOutput) DrsAdvancedOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.DrsAdvancedOptions }).(pulumi.StringMapOutput)
+}
+
+// The default automation level for all
+// virtual machines in this cluster. Can be one of `manual`,
+// `partiallyAutomated`, or `fullyAutomated`. Default: `manual`.
+func (o ComputeClusterOutput) DrsAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.DrsAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// When `true`, enables DRS to use data
+// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
+// recommendations. <sup>\*</sup>
+func (o ComputeClusterOutput) DrsEnablePredictiveDrs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DrsEnablePredictiveDrs }).(pulumi.BoolPtrOutput)
+}
+
+// Allow individual DRS overrides to be
+// set for virtual machines in the cluster. Default: `true`.
+func (o ComputeClusterOutput) DrsEnableVmOverrides() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DrsEnableVmOverrides }).(pulumi.BoolPtrOutput)
+}
+
+// Enable DRS for this cluster. Default: `false`.
+func (o ComputeClusterOutput) DrsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DrsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A value between `1` and `5` indicating
+// the threshold of imbalance tolerated between hosts. A lower setting will
+// tolerate more imbalance while a higher setting will tolerate less. Default:
+// `3`.
+func (o ComputeClusterOutput) DrsMigrationThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.DrsMigrationThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Enable scalable shares for all
+// resource pools in the cluster. Can be one of `disabled` or
+// `scaleCpuAndMemoryShares`. Default: `disabled`.
+func (o ComputeClusterOutput) DrsScaleDescendantsShares() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.DrsScaleDescendantsShares }).(pulumi.StringPtrOutput)
+}
+
+// The relative path to a folder to put this cluster in.
+// This is a path relative to the datacenter you are deploying the cluster to.
+// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+// The provider will place a cluster named `compute-cluster-test` in a
+// host folder located at `/dc1/host/foo/bar`, with the final inventory path
+// being `/dc1/host/foo/bar/datastore-cluster-test`.
+func (o ComputeClusterOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// When destroying the resource, setting this to
+// `true` will auto-remove any hosts that are currently a member of the cluster,
+// as if they were removed by taking their entry out of `hostSystemIds` (see
+// below. This is an advanced
+// option and should only be used for testing. Default: `false`.
+func (o ComputeClusterOutput) ForceEvacuateOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.ForceEvacuateOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the
+// managed object IDs of hosts to use as dedicated failover
+// hosts. These hosts are kept as available as possible - admission control will
+// block access to the host, and DRS will ignore the host when making
+// recommendations.
+func (o ComputeClusterOutput) HaAdmissionControlFailoverHostSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.HaAdmissionControlFailoverHostSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The maximum number
+// of failed hosts that admission control tolerates when making decisions on
+// whether to permit virtual machine operations. The maximum is one less than
+// the number of hosts in the cluster. Default: `1`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaAdmissionControlHostFailureTolerance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlHostFailureTolerance }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of
+// resource reduction that a cluster of virtual machines can tolerate in case of
+// a failover. A value of 0 produces warnings only, whereas a value of 100
+// disables the setting. Default: `100` (disabled).
+func (o ComputeClusterOutput) HaAdmissionControlPerformanceTolerance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlPerformanceTolerance }).(pulumi.IntPtrOutput)
+}
+
+// The type of admission control
+// policy to use with vSphere HA. Can be one of `resourcePercentage`,
+// `slotPolicy`, `failoverHosts`, or `disabled`. Default: `resourcePercentage`.
+func (o ComputeClusterOutput) HaAdmissionControlPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaAdmissionControlPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Automatically determine available resource percentages by subtracting the
+// average number of host resources represented by the
+// `haAdmissionControlHostFailureTolerance`
+// setting from the total amount of resources in the cluster. Disable to supply
+// user-defined values. Default: `true`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageAutoCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HaAdmissionControlResourcePercentageAutoCompute }).(pulumi.BoolPtrOutput)
+}
+
+// Controls the
+// user-defined percentage of CPU resources in the cluster to reserve for
+// failover. Default: `100`.
+func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlResourcePercentageCpu }).(pulumi.IntPtrOutput)
+}
+
+// Controls the
+// user-defined percentage of memory resources in the cluster to reserve for
+// failover. Default: `100`.
+func (o ComputeClusterOutput) HaAdmissionControlResourcePercentageMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlResourcePercentageMemory }).(pulumi.IntPtrOutput)
+}
+
+// Controls the
+// user-defined CPU slot size, in MHz. Default: `32`.
+func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyExplicitCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlSlotPolicyExplicitCpu }).(pulumi.IntPtrOutput)
+}
+
+// Controls the
+// user-defined memory slot size, in MB. Default: `100`.
+func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyExplicitMemory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaAdmissionControlSlotPolicyExplicitMemory }).(pulumi.IntPtrOutput)
+}
+
+// Controls
+// whether or not you wish to supply explicit values to CPU and memory slot
+// sizes. The default is `false`, which tells vSphere to gather a automatic
+// average based on all powered-on virtual machines currently in the cluster.
+func (o ComputeClusterOutput) HaAdmissionControlSlotPolicyUseExplicitSize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HaAdmissionControlSlotPolicyUseExplicitSize }).(pulumi.BoolPtrOutput)
+}
+
+// A key/value map that specifies advanced
+// options for vSphere HA.
+func (o ComputeClusterOutput) HaAdvancedOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.HaAdvancedOptions }).(pulumi.StringMapOutput)
+}
+
+// Controls the action to take
+// on virtual machines if an APD status on an affected datastore clears in the
+// middle of an APD event. Can be one of `none` or `reset`. Default: `none`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaDatastoreApdRecoveryAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastoreApdRecoveryAction }).(pulumi.StringPtrOutput)
+}
+
+// Controls the action to take on
+// virtual machines when the cluster has detected loss to all paths to a
+// relevant datastore. Can be one of `disabled`, `warning`,
+// `restartConservative`, or `restartAggressive`.  Default: `disabled`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaDatastoreApdResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastoreApdResponse }).(pulumi.StringPtrOutput)
+}
+
+// The time, in seconds,
+// to wait after an APD timeout event to run the response action defined in
+// `haDatastoreApdResponse`. Default: `180`
+// seconds (3 minutes). <sup>\*</sup>
+func (o ComputeClusterOutput) HaDatastoreApdResponseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaDatastoreApdResponseDelay }).(pulumi.IntPtrOutput)
+}
+
+// Controls the action to take on
+// virtual machines when the cluster has detected a permanent device loss to a
+// relevant datastore. Can be one of `disabled`, `warning`, or
+// `restartAggressive`. Default: `disabled`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaDatastorePdlResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaDatastorePdlResponse }).(pulumi.StringPtrOutput)
+}
+
+// Enable vSphere HA for this cluster. Default:
+// `false`.
+func (o ComputeClusterOutput) HaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The list of managed object IDs for
+// preferred datastores to use for HA heartbeating. This setting is only useful
+// when `haHeartbeatDatastorePolicy` is set
+// to either `userSelectedDs` or `allFeasibleDsWithUserPreference`.
+func (o ComputeClusterOutput) HaHeartbeatDatastoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.HaHeartbeatDatastoreIds }).(pulumi.StringArrayOutput)
+}
+
+// The selection policy for HA
+// heartbeat datastores. Can be one of `allFeasibleDs`, `userSelectedDs`, or
+// `allFeasibleDsWithUserPreference`. Default:
+// `allFeasibleDsWithUserPreference`.
+func (o ComputeClusterOutput) HaHeartbeatDatastorePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaHeartbeatDatastorePolicy }).(pulumi.StringPtrOutput)
+}
+
+// The action to take on virtual
+// machines when a host has detected that it has been isolated from the rest of
+// the cluster. Can be one of `none`, `powerOff`, or `shutdown`. Default:
+// `none`.
+func (o ComputeClusterOutput) HaHostIsolationResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaHostIsolationResponse }).(pulumi.StringPtrOutput)
+}
+
+// Global setting that controls whether
+// vSphere HA remediates virtual machines on host failure. Can be one of `enabled`
+// or `disabled`. Default: `enabled`.
+func (o ComputeClusterOutput) HaHostMonitoring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaHostMonitoring }).(pulumi.StringPtrOutput)
+}
+
+// Controls vSphere VM component
+// protection for virtual machines in this cluster. Can be one of `enabled` or
+// `disabled`. Default: `enabled`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaVmComponentProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaVmComponentProtection }).(pulumi.StringPtrOutput)
+}
+
+// The condition used to
+// determine whether or not virtual machines in a certain restart priority class
+// are online, allowing HA to move on to restarting virtual machines on the next
+// priority. Can be one of `none`, `poweredOn`, `guestHbStatusGreen`, or
+// `appHbStatusGreen`. The default is `none`, which means that a virtual machine
+// is considered ready immediately after a host is found to start it on.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaVmDependencyRestartCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaVmDependencyRestartCondition }).(pulumi.StringPtrOutput)
+}
+
+// The time interval, in seconds, a heartbeat
+// from a virtual machine is not received within this configured interval,
+// the virtual machine is marked as failed. Default: `30` seconds.
+func (o ComputeClusterOutput) HaVmFailureInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmFailureInterval }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, for the reset window in
+// which `haVmMaximumResets` can operate. When this
+// window expires, no more resets are attempted regardless of the setting
+// configured in `haVmMaximumResets`. `-1` means no window, meaning an
+// unlimited reset time is allotted. Default: `-1` (no window).
+func (o ComputeClusterOutput) HaVmMaximumFailureWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmMaximumFailureWindow }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of resets that HA will
+// perform to a virtual machine when responding to a failure event. Default: `3`
+func (o ComputeClusterOutput) HaVmMaximumResets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmMaximumResets }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, that HA waits after
+// powering on a virtual machine before monitoring for heartbeats. Default:
+// `120` seconds (2 minutes).
+func (o ComputeClusterOutput) HaVmMinimumUptime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmMinimumUptime }).(pulumi.IntPtrOutput)
+}
+
+// The type of virtual machine monitoring to use
+// when HA is enabled in the cluster. Can be one of `vmMonitoringDisabled`,
+// `vmMonitoringOnly`, or `vmAndAppMonitoring`. Default: `vmMonitoringDisabled`.
+func (o ComputeClusterOutput) HaVmMonitoring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaVmMonitoring }).(pulumi.StringPtrOutput)
+}
+
+// Additional delay, in seconds,
+// after ready condition is met. A VM is considered ready at this point.
+// Default: `0` seconds (no delay). <sup>\*</sup>
+func (o ComputeClusterOutput) HaVmRestartAdditionalDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmRestartAdditionalDelay }).(pulumi.IntPtrOutput)
+}
+
+// The default restart priority
+// for affected virtual machines when vSphere detects a host failure. Can be one
+// of `lowest`, `low`, `medium`, `high`, or `highest`. Default: `medium`.
+func (o ComputeClusterOutput) HaVmRestartPriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.HaVmRestartPriority }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time, in seconds,
+// that vSphere HA will wait for virtual machines in one priority to be ready
+// before proceeding with the next priority. Default: `600` seconds (10 minutes).
+// <sup>\*</sup>
+func (o ComputeClusterOutput) HaVmRestartTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HaVmRestartTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The timeout, in seconds, for each host maintenance
+// mode operation when removing hosts from a cluster. Default: `3600` seconds (1 hour).
+func (o ComputeClusterOutput) HostClusterExitTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntPtrOutput { return v.HostClusterExitTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Can be set to `true` if compute cluster
+// membership will be managed through the `host` resource rather than the
+// `computeCluster` resource. Conflicts with: `hostSystemIds`.
+func (o ComputeClusterOutput) HostManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.HostManaged }).(pulumi.BoolPtrOutput)
+}
+
+// The managed object IDs of
+// the hosts to put in the cluster. Conflicts with: `hostManaged`.
+func (o ComputeClusterOutput) HostSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.HostSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the cluster.
+func (o ComputeClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Determines how the host
+// quarantine, maintenance mode, or virtual machine migration recommendations
+// made by proactive HA are to be handled. Can be one of `Automated` or
+// `Manual`. Default: `Manual`. <sup>\*</sup>
+func (o ComputeClusterOutput) ProactiveHaAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Enables Proactive HA. Default: `false`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) ProactiveHaEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.ProactiveHaEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The configured remediation
+// for moderately degraded hosts. Can be one of `MaintenanceMode` or
+// `QuarantineMode`. Note that this cannot be set to `MaintenanceMode` when
+// `proactiveHaSevereRemediation` is set
+// to `QuarantineMode`. Default: `QuarantineMode`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) ProactiveHaModerateRemediation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaModerateRemediation }).(pulumi.StringPtrOutput)
+}
+
+// The list of IDs for health update
+// providers configured for this cluster.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) ProactiveHaProviderIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.ProactiveHaProviderIds }).(pulumi.StringArrayOutput)
+}
+
+// The configured remediation for
+// severely degraded hosts. Can be one of `MaintenanceMode` or `QuarantineMode`.
+// Note that this cannot be set to `QuarantineMode` when
+// `proactiveHaModerateRemediation` is
+// set to `MaintenanceMode`. Default: `QuarantineMode`.
+// <sup>\*</sup>
+func (o ComputeClusterOutput) ProactiveHaSevereRemediation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringPtrOutput { return v.ProactiveHaSevereRemediation }).(pulumi.StringPtrOutput)
+}
+
+// The managed object ID of the primary
+// resource pool for this cluster. This can be passed directly to the
+// `resourcePoolId`
+// attribute of the
+// `VirtualMachine` resource.
+func (o ComputeClusterOutput) ResourcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringOutput { return v.ResourcePoolId }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o ComputeClusterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Enables vSAN compression on the
+// cluster.
+func (o ComputeClusterOutput) VsanCompressionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanCompressionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables vSAN deduplication on the cluster.
+// Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+// compression must also be enabled.
+func (o ComputeClusterOutput) VsanDedupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanDedupEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Represents the configuration of a host disk
+// group in the cluster.
+func (o ComputeClusterOutput) VsanDiskGroups() ComputeClusterVsanDiskGroupArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) ComputeClusterVsanDiskGroupArrayOutput { return v.VsanDiskGroups }).(ComputeClusterVsanDiskGroupArrayOutput)
+}
+
+// Enables vSAN data-in-transit
+// encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+// vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+// at the same time.
+func (o ComputeClusterOutput) VsanDitEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanDitEncryptionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the rekey interval in
+// minutes for data-in-transit encryption. The valid rekey interval is 30 to
+// 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+func (o ComputeClusterOutput) VsanDitRekeyInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.IntOutput { return v.VsanDitRekeyInterval }).(pulumi.IntOutput)
+}
+
+// Enables vSAN on the cluster.
+func (o ComputeClusterOutput) VsanEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables network
+// diagnostic mode for vSAN performance service on the cluster.
+func (o ComputeClusterOutput) VsanNetworkDiagnosticModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanNetworkDiagnosticModeEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables vSAN performance service on
+// the cluster. Default: `true`.
+func (o ComputeClusterOutput) VsanPerformanceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanPerformanceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The remote vSAN datastore IDs to be
+// mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+// `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+// data-in-transit encryption feature at the same time.
+func (o ComputeClusterOutput) VsanRemoteDatastoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.StringArrayOutput { return v.VsanRemoteDatastoreIds }).(pulumi.StringArrayOutput)
+}
+
+// Enables vSAN unmap on the cluster.
+func (o ComputeClusterOutput) VsanUnmapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanUnmapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables verbose mode for vSAN
+// performance service on the cluster.
+func (o ComputeClusterOutput) VsanVerboseModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.VsanVerboseModeEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type ComputeClusterArrayOutput struct{ *pulumi.OutputState }

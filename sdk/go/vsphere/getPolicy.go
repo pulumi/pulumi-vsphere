@@ -31,13 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.GetPolicy(ctx, &GetPolicyArgs{
+//			_, err := vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
 //				Name: "prod_platinum_replicated",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.GetPolicy(ctx, &GetPolicyArgs{
+//			_, err = vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
 //				Name: "dev_silver_nonreplicated",
 //			}, nil)
 //			if err != nil {

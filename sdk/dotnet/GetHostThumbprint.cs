@@ -22,26 +22,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
         ///     {
-        ///         var thumbprint = Output.Create(VSphere.GetHostThumbprint.InvokeAsync(new VSphere.GetHostThumbprintArgs
-        ///         {
-        ///             Address = "esxi-01.example.com",
-        ///         }));
-        ///     }
+        ///         Address = "esxi-01.example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostThumbprintResult> InvokeAsync(GetHostThumbprintArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere_thumbprint` data source can be used to discover the host
@@ -54,30 +52,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
         ///     {
-        ///         var thumbprint = Output.Create(VSphere.GetHostThumbprint.InvokeAsync(new VSphere.GetHostThumbprintArgs
-        ///         {
-        ///             Address = "esxi-01.example.com",
-        ///         }));
-        ///     }
+        ///         Address = "esxi-01.example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostThumbprintResult> Invoke(GetHostThumbprintInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostThumbprintArgs : Pulumi.InvokeArgs
+    public sealed class GetHostThumbprintArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The address of the ESXi host to retrieve the
@@ -102,9 +98,10 @@ namespace Pulumi.VSphere
         public GetHostThumbprintArgs()
         {
         }
+        public static new GetHostThumbprintArgs Empty => new GetHostThumbprintArgs();
     }
 
-    public sealed class GetHostThumbprintInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostThumbprintInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The address of the ESXi host to retrieve the
@@ -129,6 +126,7 @@ namespace Pulumi.VSphere
         public GetHostThumbprintInvokeArgs()
         {
         }
+        public static new GetHostThumbprintInvokeArgs Empty => new GetHostThumbprintInvokeArgs();
     }
 
 

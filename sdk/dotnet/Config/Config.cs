@@ -30,7 +30,7 @@ namespace Pulumi.VSphere
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("vsphere");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("vsphere");
 
         private static readonly __Value<bool?> _allowUnverifiedSsl = new __Value<bool?>(() => __config.GetBoolean("allowUnverifiedSsl") ?? Utilities.GetEnvBoolean("VSPHERE_ALLOW_UNVERIFIED_SSL"));
         /// <summary>

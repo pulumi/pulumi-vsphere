@@ -34,11 +34,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getComputeClusterHostGroup(args: GetComputeClusterHostGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterHostGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", {
         "computeClusterId": args.computeClusterId,
         "name": args.name,
@@ -65,6 +62,10 @@ export interface GetComputeClusterHostGroupArgs {
  */
 export interface GetComputeClusterHostGroupResult {
     readonly computeClusterId: string;
+    /**
+     * The [managed object reference ID][docs-about-morefs] of
+     * the ESXi hosts in the host group.
+     */
     readonly hostSystemIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,9 +73,37 @@ export interface GetComputeClusterHostGroupResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.ComputeClusterHostGroup` data source can be used to discover
+ * the IDs ESXi hosts in a host group and return host group attributes to other
+ * resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: _var.vsphere_datacenter,
+ * });
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: _var.vsphere_cluster,
+ *     datacenterId: datacenter.id,
+ * }));
+ * const hostGroup1 = cluster.then(cluster => vsphere.getComputeClusterHostGroup({
+ *     name: "host_group1",
+ *     computeClusterId: cluster.id,
+ * }));
+ * const hostRule1 = new vsphere.ComputeClusterVmHostRule("hostRule1", {
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     vmGroupName: "vm_group1",
+ *     affinityHostGroupName: hostGroup1.then(hostGroup1 => hostGroup1.name),
+ * });
+ * ```
+ */
 export function getComputeClusterHostGroupOutput(args: GetComputeClusterHostGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterHostGroupResult> {
-    return pulumi.output(args).apply(a => getComputeClusterHostGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeClusterHostGroup(a, opts))
 }
 
 /**

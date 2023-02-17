@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCloneCustomizeLinuxOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneCustomizeLinuxOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -22,7 +22,16 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? HwClockUtc { get; set; }
 
         [Input("scriptText")]
-        public Input<string>? ScriptText { get; set; }
+        private Input<string>? _scriptText;
+        public Input<string>? ScriptText
+        {
+            get => _scriptText;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _scriptText = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
@@ -30,5 +39,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineCloneCustomizeLinuxOptionsGetArgs()
         {
         }
+        public static new VirtualMachineCloneCustomizeLinuxOptionsGetArgs Empty => new VirtualMachineCloneCustomizeLinuxOptionsGetArgs();
     }
 }

@@ -14,17 +14,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const license = pulumi.output(vsphere.getLicense({
+ * const license = vsphere.getLicense({
  *     licenseKey: "00000-00000-00000-00000-00000",
- * }));
+ * });
  * ```
  */
 export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getLicense:getLicense", {
         "licenseKey": args.licenseKey,
     }, opts);
@@ -67,9 +64,23 @@ export interface GetLicenseResult {
      */
     readonly used: number;
 }
-
+/**
+ * The `vsphere.License` data source can be used to get the general attributes of
+ * a license keys from a vCenter Server instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const license = vsphere.getLicense({
+ *     licenseKey: "00000-00000-00000-00000-00000",
+ * });
+ * ```
+ */
 export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
-    return pulumi.output(args).apply(a => getLicense(a, opts))
+    return pulumi.output(args).apply((a: any) => getLicense(a, opts))
 }
 
 /**

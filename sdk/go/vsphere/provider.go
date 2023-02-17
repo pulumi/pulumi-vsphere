@@ -177,6 +177,46 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// govmomi debug path for debug
+func (o ProviderOutput) ClientDebugPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientDebugPath }).(pulumi.StringPtrOutput)
+}
+
+// govmomi debug path for a single run
+func (o ProviderOutput) ClientDebugPathRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientDebugPathRun }).(pulumi.StringPtrOutput)
+}
+
+// The user password for vSphere API operations.
+func (o ProviderOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The directory to save vSphere REST API sessions to
+func (o ProviderOutput) RestSessionPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.RestSessionPath }).(pulumi.StringPtrOutput)
+}
+
+// The user name for vSphere API operations.
+func (o ProviderOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
+// Deprecated: This field has been renamed to vsphere_server.
+func (o ProviderOutput) VcenterServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VcenterServer }).(pulumi.StringPtrOutput)
+}
+
+// The directory to save vSphere SOAP API sessions to
+func (o ProviderOutput) VimSessionPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VimSessionPath }).(pulumi.StringPtrOutput)
+}
+
+// The vSphere Server name for vSphere API operations.
+func (o ProviderOutput) VsphereServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VsphereServer }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *     name: "VM Network",
  *     datacenterId: datacenter.id,
  * }));
- * const vm: vsphere.VirtualMachine[];
+ * const vm: vsphere.VirtualMachine[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
  *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),

@@ -33,7 +33,8 @@ type DistributedPortGroup struct {
 	BlockOverrideAllowed pulumi.BoolPtrOutput `pulumi:"blockOverrideAllowed"`
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolOutput `pulumi:"checkBeacon"`
-	// Version string of the configuration that this spec is trying to change.
+	// The current version of the port group configuration,
+	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
@@ -63,7 +64,7 @@ type DistributedPortGroup struct {
 	IngressShapingEnabled pulumi.BoolOutput `pulumi:"ingressShapingEnabled"`
 	// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth pulumi.IntOutput `pulumi:"ingressShapingPeakBandwidth"`
-	// The generated UUID of the portgroup.
+	// The generated UUID of the port group.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Whether or not to enable LACP on all uplink ports.
 	LacpEnabled pulumi.BoolOutput `pulumi:"lacpEnabled"`
@@ -190,7 +191,8 @@ type distributedPortGroupState struct {
 	BlockOverrideAllowed *bool `pulumi:"blockOverrideAllowed"`
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
-	// Version string of the configuration that this spec is trying to change.
+	// The current version of the port group configuration,
+	// incremented by subsequent updates to the port group.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
@@ -220,7 +222,7 @@ type distributedPortGroupState struct {
 	IngressShapingEnabled *bool `pulumi:"ingressShapingEnabled"`
 	// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth *int `pulumi:"ingressShapingPeakBandwidth"`
-	// The generated UUID of the portgroup.
+	// The generated UUID of the port group.
 	Key *string `pulumi:"key"`
 	// Whether or not to enable LACP on all uplink ports.
 	LacpEnabled *bool `pulumi:"lacpEnabled"`
@@ -316,7 +318,8 @@ type DistributedPortGroupState struct {
 	BlockOverrideAllowed pulumi.BoolPtrInput
 	// Enable beacon probing on the ports this policy applies to.
 	CheckBeacon pulumi.BoolPtrInput
-	// Version string of the configuration that this spec is trying to change.
+	// The current version of the port group configuration,
+	// incremented by subsequent updates to the port group.
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
@@ -346,7 +349,7 @@ type DistributedPortGroupState struct {
 	IngressShapingEnabled pulumi.BoolPtrInput
 	// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
 	IngressShapingPeakBandwidth pulumi.IntPtrInput
-	// The generated UUID of the portgroup.
+	// The generated UUID of the port group.
 	Key pulumi.StringPtrInput
 	// Whether or not to enable LACP on all uplink ports.
 	LacpEnabled pulumi.BoolPtrInput
@@ -756,6 +759,274 @@ func (o DistributedPortGroupOutput) ToDistributedPortGroupOutput() DistributedPo
 
 func (o DistributedPortGroupOutput) ToDistributedPortGroupOutputWithContext(ctx context.Context) DistributedPortGroupOutput {
 	return o
+}
+
+// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+func (o DistributedPortGroupOutput) ActiveUplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringArrayOutput { return v.ActiveUplinks }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether or not the virtual network adapter is allowed to send network traffic with a different MAC address than
+// that of its own.
+func (o DistributedPortGroupOutput) AllowForgedTransmits() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.AllowForgedTransmits }).(pulumi.BoolOutput)
+}
+
+// Controls whether or not the Media Access Control (MAC) address can be changed.
+func (o DistributedPortGroupOutput) AllowMacChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.AllowMacChanges }).(pulumi.BoolOutput)
+}
+
+// Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
+func (o DistributedPortGroupOutput) AllowPromiscuous() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.AllowPromiscuous }).(pulumi.BoolOutput)
+}
+
+// Allows the port group to create additional ports
+// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+func (o DistributedPortGroupOutput) AutoExpand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.AutoExpand }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to block all ports by default.
+func (o DistributedPortGroupOutput) BlockAllPorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.BlockAllPorts }).(pulumi.BoolOutput)
+}
+
+// Allow the port shutdown
+// policy to be overridden on an individual port.
+func (o DistributedPortGroupOutput) BlockOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.BlockOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// Enable beacon probing on the ports this policy applies to.
+func (o DistributedPortGroupOutput) CheckBeacon() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.CheckBeacon }).(pulumi.BoolOutput)
+}
+
+// The current version of the port group configuration,
+// incremented by subsequent updates to the port group.
+func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.ConfigVersion }).(pulumi.StringOutput)
+}
+
+// Map of custom attribute ids to attribute
+// value string to set for port group.
+func (o DistributedPortGroupOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// An optional description for the port group.
+func (o DistributedPortGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Allow VMDirectPath Gen2 on the ports this policy applies to.
+func (o DistributedPortGroupOutput) DirectpathGen2Allowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.DirectpathGen2Allowed }).(pulumi.BoolOutput)
+}
+
+// The ID of the VDS to add the
+// port group to. Forces a new resource if changed.
+func (o DistributedPortGroupOutput) DistributedVirtualSwitchUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.DistributedVirtualSwitchUuid }).(pulumi.StringOutput)
+}
+
+// The average egress bandwidth in bits per second if egress shaping is enabled on the port.
+func (o DistributedPortGroupOutput) EgressShapingAverageBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.EgressShapingAverageBandwidth }).(pulumi.IntOutput)
+}
+
+// The maximum egress burst size allowed in bytes if egress shaping is enabled on the port.
+func (o DistributedPortGroupOutput) EgressShapingBurstSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.EgressShapingBurstSize }).(pulumi.IntOutput)
+}
+
+// True if the traffic shaper is enabled for egress traffic on the port.
+func (o DistributedPortGroupOutput) EgressShapingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.EgressShapingEnabled }).(pulumi.BoolOutput)
+}
+
+// The peak egress bandwidth during bursts in bits per second if egress traffic shaping is enabled on the port.
+func (o DistributedPortGroupOutput) EgressShapingPeakBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.EgressShapingPeakBandwidth }).(pulumi.IntOutput)
+}
+
+// If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
+func (o DistributedPortGroupOutput) Failback() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.Failback }).(pulumi.BoolOutput)
+}
+
+// The average ingress bandwidth in bits per second if ingress shaping is enabled on the port.
+func (o DistributedPortGroupOutput) IngressShapingAverageBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.IngressShapingAverageBandwidth }).(pulumi.IntOutput)
+}
+
+// The maximum ingress burst size allowed in bytes if ingress shaping is enabled on the port.
+func (o DistributedPortGroupOutput) IngressShapingBurstSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.IngressShapingBurstSize }).(pulumi.IntOutput)
+}
+
+// True if the traffic shaper is enabled for ingress traffic on the port.
+func (o DistributedPortGroupOutput) IngressShapingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.IngressShapingEnabled }).(pulumi.BoolOutput)
+}
+
+// The peak ingress bandwidth during bursts in bits per second if ingress traffic shaping is enabled on the port.
+func (o DistributedPortGroupOutput) IngressShapingPeakBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.IngressShapingPeakBandwidth }).(pulumi.IntOutput)
+}
+
+// The generated UUID of the port group.
+func (o DistributedPortGroupOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// Whether or not to enable LACP on all uplink ports.
+func (o DistributedPortGroupOutput) LacpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.LacpEnabled }).(pulumi.BoolOutput)
+}
+
+// The uplink LACP mode to use. Can be one of active or passive.
+func (o DistributedPortGroupOutput) LacpMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.LacpMode }).(pulumi.StringOutput)
+}
+
+// Allow a port in this port group to be
+// moved to another port group while it is connected.
+func (o DistributedPortGroupOutput) LivePortMovingAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.LivePortMovingAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the port group.
+func (o DistributedPortGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates whether to enable netflow on all ports.
+func (o DistributedPortGroupOutput) NetflowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.NetflowEnabled }).(pulumi.BoolOutput)
+}
+
+// Allow the
+// [Netflow policy][netflow-policy] on this port group to be overridden on an
+// individual port.
+func (o DistributedPortGroupOutput) NetflowOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.NetflowOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// The key of a network resource pool
+// to associate with this port group. The default is `-1`, which implies no
+// association.
+func (o DistributedPortGroupOutput) NetworkResourcePoolKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.NetworkResourcePoolKey }).(pulumi.StringPtrOutput)
+}
+
+// Allow the network
+// resource pool set on this port group to be overridden on an individual port.
+func (o DistributedPortGroupOutput) NetworkResourcePoolOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.NetworkResourcePoolOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
+func (o DistributedPortGroupOutput) NotifySwitches() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.NotifySwitches }).(pulumi.BoolOutput)
+}
+
+// The number of ports available on this port
+// group. Cannot be decreased below the amount of used ports on the port group.
+func (o DistributedPortGroupOutput) NumberOfPorts() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.NumberOfPorts }).(pulumi.IntOutput)
+}
+
+// Reset a port's settings to the
+// settings defined on this port group policy when the port disconnects.
+func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.PortConfigResetAtDisconnect }).(pulumi.BoolPtrOutput)
+}
+
+// An optional formatting policy for naming of
+// the ports in this port group. See the `portNameFormat` attribute listed
+// [here][ext-vsphere-portname-format] for details on the format syntax.
+func (o DistributedPortGroupOutput) PortNameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.PortNameFormat }).(pulumi.StringPtrOutput)
+}
+
+// The secondary VLAN ID for this port.
+func (o DistributedPortGroupOutput) PortPrivateSecondaryVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.PortPrivateSecondaryVlanId }).(pulumi.IntOutput)
+}
+
+// Allow the
+// [security policy settings][sec-policy-settings] defined in this port group
+// policy to be overridden on an individual port.
+func (o DistributedPortGroupOutput) SecurityPolicyOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.SecurityPolicyOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// Allow the
+// [traffic shaping options][traffic-shaping-settings] on this port group policy
+// to be overridden on an individual port.
+func (o DistributedPortGroupOutput) ShapingOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.ShapingOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// List of standby uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
+func (o DistributedPortGroupOutput) StandbyUplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringArrayOutput { return v.StandbyUplinks }).(pulumi.StringArrayOutput)
+}
+
+// A list of tag IDs to apply to this object.
+func (o DistributedPortGroupOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The network adapter teaming policy. Can be one of loadbalance_ip, loadbalance_srcmac, loadbalance_srcid,
+// failover_explicit, or loadbalance_loadbased.
+func (o DistributedPortGroupOutput) TeamingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringOutput { return v.TeamingPolicy }).(pulumi.StringOutput)
+}
+
+// Allow any traffic filters on
+// this port group to be overridden on an individual port.
+func (o DistributedPortGroupOutput) TrafficFilterOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.TrafficFilterOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// If true, a copy of packets sent to the switch will always be forwarded to an uplink in addition to the regular packet
+// forwarded done by the switch.
+func (o DistributedPortGroupOutput) TxUplink() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolOutput { return v.TxUplink }).(pulumi.BoolOutput)
+}
+
+// The port group type. Can be one of `earlyBinding` (static
+// binding) or `ephemeral`. Default: `earlyBinding`.
+func (o DistributedPortGroupOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Allow the
+// [uplink teaming options][uplink-teaming-settings] on this port group to be
+// overridden on an individual port.
+func (o DistributedPortGroupOutput) UplinkTeamingOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.UplinkTeamingOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+func (o DistributedPortGroupOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.IntOutput { return v.VlanId }).(pulumi.IntOutput)
+}
+
+// Allow the
+// [VLAN settings][vlan-settings] on this port group to be overridden on an
+// individual port.
+func (o DistributedPortGroupOutput) VlanOverrideAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.VlanOverrideAllowed }).(pulumi.BoolPtrOutput)
+}
+
+// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+func (o DistributedPortGroupOutput) VlanRanges() DistributedPortGroupVlanRangeArrayOutput {
+	return o.ApplyT(func(v *DistributedPortGroup) DistributedPortGroupVlanRangeArrayOutput { return v.VlanRanges }).(DistributedPortGroupVlanRangeArrayOutput)
 }
 
 type DistributedPortGroupArrayOutput struct{ *pulumi.OutputState }

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.GetHostThumbprint(ctx, &GetHostThumbprintArgs{
+//			_, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
 //				Address: "esxi-01.example.com",
 //			}, nil)
 //			if err != nil {

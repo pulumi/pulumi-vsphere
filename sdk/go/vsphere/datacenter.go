@@ -270,6 +270,36 @@ func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+// Map of custom attribute ids to value
+// strings to set for datacenter resource. See
+// [here][docs-setting-custom-attributes] for a reference on how to set values
+// for custom attributes.
+func (o DatacenterOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Datacenter) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The folder where the datacenter should be created.
+// Forces a new resource if changed.
+func (o DatacenterOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datacenter) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// Managed object ID of this datacenter.
+func (o DatacenterOutput) Moid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datacenter) pulumi.StringOutput { return v.Moid }).(pulumi.StringOutput)
+}
+
+// The name of the datacenter. This name needs to be unique
+// within the folder. Forces a new resource if changed.
+func (o DatacenterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datacenter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o DatacenterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Datacenter) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type DatacenterArrayOutput struct{ *pulumi.OutputState }
 
 func (DatacenterArrayOutput) ElementType() reflect.Type {

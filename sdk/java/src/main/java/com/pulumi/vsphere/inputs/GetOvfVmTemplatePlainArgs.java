@@ -88,9 +88,19 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.diskProvisioning);
     }
 
+    /**
+     * Allow properties with
+     * `ovf:userConfigurable=false` to be set.
+     * 
+     */
     @Import(name="enableHiddenProperties")
     private @Nullable Boolean enableHiddenProperties;
 
+    /**
+     * @return Allow properties with
+     * `ovf:userConfigurable=false` to be set.
+     * 
+     */
     public Optional<Boolean> enableHiddenProperties() {
         return Optional.ofNullable(this.enableHiddenProperties);
     }
@@ -329,6 +339,13 @@ public final class GetOvfVmTemplatePlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param enableHiddenProperties Allow properties with
+         * `ovf:userConfigurable=false` to be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableHiddenProperties(@Nullable Boolean enableHiddenProperties) {
             $.enableHiddenProperties = enableHiddenProperties;
             return this;

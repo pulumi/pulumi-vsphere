@@ -26,26 +26,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "example-category",
-        ///         }));
-        ///     }
+        ///         Name = "example-category",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagCategoryResult> InvokeAsync(GetTagCategoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.TagCategory` data source can be used to reference tag categories
@@ -62,30 +60,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "example-category",
-        ///         }));
-        ///     }
+        ///         Name = "example-category",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagCategoryResult> Invoke(GetTagCategoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagCategoryResult>("vsphere:index/getTagCategory:getTagCategory", args ?? new GetTagCategoryInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTagCategoryArgs : Pulumi.InvokeArgs
+    public sealed class GetTagCategoryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the tag category.
@@ -96,9 +92,10 @@ namespace Pulumi.VSphere
         public GetTagCategoryArgs()
         {
         }
+        public static new GetTagCategoryArgs Empty => new GetTagCategoryArgs();
     }
 
-    public sealed class GetTagCategoryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagCategoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the tag category.
@@ -109,6 +106,7 @@ namespace Pulumi.VSphere
         public GetTagCategoryInvokeArgs()
         {
         }
+        public static new GetTagCategoryInvokeArgs Empty => new GetTagCategoryInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/folder:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Map of custom attribute ids to attribute 
@@ -98,7 +98,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -157,9 +157,10 @@ namespace Pulumi.VSphere
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 
-    public sealed class FolderState : Pulumi.ResourceArgs
+    public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -218,5 +219,6 @@ namespace Pulumi.VSphere
         public FolderState()
         {
         }
+        public static new FolderState Empty => new FolderState();
     }
 }

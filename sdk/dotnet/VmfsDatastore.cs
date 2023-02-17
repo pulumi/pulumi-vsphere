@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/vmfsDatastore:VmfsDatastore")]
-    public partial class VmfsDatastore : Pulumi.CustomResource
+    public partial class VmfsDatastore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The connectivity status of the datastore. If this is `false`,
@@ -157,7 +157,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VmfsDatastoreArgs : Pulumi.ResourceArgs
+    public sealed class VmfsDatastoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -236,9 +236,10 @@ namespace Pulumi.VSphere
         public VmfsDatastoreArgs()
         {
         }
+        public static new VmfsDatastoreArgs Empty => new VmfsDatastoreArgs();
     }
 
-    public sealed class VmfsDatastoreState : Pulumi.ResourceArgs
+    public sealed class VmfsDatastoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The connectivity status of the datastore. If this is `false`,
@@ -362,5 +363,6 @@ namespace Pulumi.VSphere
         public VmfsDatastoreState()
         {
         }
+        public static new VmfsDatastoreState Empty => new VmfsDatastoreState();
     }
 }

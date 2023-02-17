@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuVmdkUpload = new vsphere.File("ubuntu_vmdk_upload", {
+ * const ubuntuVmdkUpload = new vsphere.File("ubuntuVmdkUpload", {
  *     createDirectories: true,
  *     datacenter: "dc-01",
  *     datastore: "datastore-01",
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const ubuntuCopy = new vsphere.File("ubuntu_copy", {
+ * const ubuntuCopy = new vsphere.File("ubuntuCopy", {
  *     createDirectories: true,
  *     datacenter: "dc-01",
  *     datastore: "datastore-01",

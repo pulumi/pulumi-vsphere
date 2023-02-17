@@ -19,7 +19,7 @@ namespace Pulumi.VSphere
         /// direct ESXi host connections.
         /// </summary>
         public static Task<GetContentLibraryItemResult> InvokeAsync(GetContentLibraryItemArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.ContentLibraryItem` data source can be used to discover the ID
@@ -29,11 +29,11 @@ namespace Pulumi.VSphere
         /// direct ESXi host connections.
         /// </summary>
         public static Output<GetContentLibraryItemResult> Invoke(GetContentLibraryItemInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContentLibraryItemResult>("vsphere:index/getContentLibraryItem:getContentLibraryItem", args ?? new GetContentLibraryItemInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetContentLibraryItemArgs : Pulumi.InvokeArgs
+    public sealed class GetContentLibraryItemArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the content library in which the item exists.
@@ -56,9 +56,10 @@ namespace Pulumi.VSphere
         public GetContentLibraryItemArgs()
         {
         }
+        public static new GetContentLibraryItemArgs Empty => new GetContentLibraryItemArgs();
     }
 
-    public sealed class GetContentLibraryItemInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContentLibraryItemInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the content library in which the item exists.
@@ -81,6 +82,7 @@ namespace Pulumi.VSphere
         public GetContentLibraryItemInvokeArgs()
         {
         }
+        public static new GetContentLibraryItemInvokeArgs Empty => new GetContentLibraryItemInvokeArgs();
     }
 
 

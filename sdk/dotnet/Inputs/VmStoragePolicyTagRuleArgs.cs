@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VmStoragePolicyTagRuleArgs : Pulumi.ResourceArgs
+    public sealed class VmStoragePolicyTagRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Include datastores with the given tags or exclude. Default `true`.
@@ -39,5 +39,6 @@ namespace Pulumi.VSphere.Inputs
         public VmStoragePolicyTagRuleArgs()
         {
         }
+        public static new VmStoragePolicyTagRuleArgs Empty => new VmStoragePolicyTagRuleArgs();
     }
 }

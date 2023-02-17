@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class DistributedVirtualSwitch extends pulumi.CustomResource {
@@ -84,7 +85,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly checkBeacon!: pulumi.Output<boolean>;
     /**
-     * The version string of the configuration that this spec is trying to change.
+     * The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      */
     public /*out*/ readonly configVersion!: pulumi.Output<string>;
     /**
@@ -417,7 +419,7 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      */
     public readonly vdpShareLevel!: pulumi.Output<string>;
     /**
-     * - The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. BY default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
@@ -751,7 +753,8 @@ export interface DistributedVirtualSwitchState {
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
-     * The version string of the configuration that this spec is trying to change.
+     * The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      */
     configVersion?: pulumi.Input<string>;
     /**
@@ -1084,7 +1087,7 @@ export interface DistributedVirtualSwitchState {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * - The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. BY default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */
@@ -1534,7 +1537,7 @@ export interface DistributedVirtualSwitchArgs {
      */
     vdpShareLevel?: pulumi.Input<string>;
     /**
-     * - The version of the VDS. BY default, a VDS is created
+     * The version of the VDS. BY default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      */

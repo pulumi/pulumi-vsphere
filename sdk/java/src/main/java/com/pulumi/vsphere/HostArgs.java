@@ -57,7 +57,7 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to false then the host will be disconected.
+     * If set to false then the host will be disconnected.
      * Default is `false`.
      * 
      */
@@ -65,7 +65,7 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> connected;
 
     /**
-     * @return If set to false then the host will be disconected.
+     * @return If set to false then the host will be disconnected.
      * Default is `false`.
      * 
      */
@@ -235,7 +235,8 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      * 
      */
     @Import(name="thumbprint")
@@ -244,7 +245,8 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      * 
      */
     public Optional<Output<String>> thumbprint() {
@@ -356,7 +358,7 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connected If set to false then the host will be disconected.
+         * @param connected If set to false then the host will be disconnected.
          * Default is `false`.
          * 
          * @return builder
@@ -368,7 +370,7 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connected If set to false then the host will be disconected.
+         * @param connected If set to false then the host will be disconnected.
          * Default is `false`.
          * 
          * @return builder
@@ -606,7 +608,8 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param thumbprint Host&#39;s certificate SHA-1 thumbprint. If not set the
          * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-         * trusted and no thumbprint is set then the operation will fail.
+         * trusted and no thumbprint is set then the operation will fail. See data source
+         * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
          * 
          * @return builder
          * 
@@ -619,7 +622,8 @@ public final class HostArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param thumbprint Host&#39;s certificate SHA-1 thumbprint. If not set the
          * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-         * trusted and no thumbprint is set then the operation will fail.
+         * trusted and no thumbprint is set then the operation will fail. See data source
+         * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
          * 
          * @return builder
          * 

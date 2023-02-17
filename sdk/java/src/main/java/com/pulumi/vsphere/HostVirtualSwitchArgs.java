@@ -358,16 +358,16 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
      * failover.
      * 
      */
-    @Import(name="standbyNics", required=true)
-    private Output<List<String>> standbyNics;
+    @Import(name="standbyNics")
+    private @Nullable Output<List<String>> standbyNics;
 
     /**
      * @return The list of standby network adapters used for
      * failover.
      * 
      */
-    public Output<List<String>> standbyNics() {
-        return this.standbyNics;
+    public Optional<Output<List<String>>> standbyNics() {
+        return Optional.ofNullable(this.standbyNics);
     }
 
     /**
@@ -910,7 +910,7 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder standbyNics(Output<List<String>> standbyNics) {
+        public Builder standbyNics(@Nullable Output<List<String>> standbyNics) {
             $.standbyNics = standbyNics;
             return this;
         }
@@ -966,7 +966,6 @@ public final class HostVirtualSwitchArgs extends com.pulumi.resources.ResourceAr
             $.activeNics = Objects.requireNonNull($.activeNics, "expected parameter 'activeNics' to be non-null");
             $.hostSystemId = Objects.requireNonNull($.hostSystemId, "expected parameter 'hostSystemId' to be non-null");
             $.networkAdapters = Objects.requireNonNull($.networkAdapters, "expected parameter 'networkAdapters' to be non-null");
-            $.standbyNics = Objects.requireNonNull($.standbyNics, "expected parameter 'standbyNics' to be non-null");
             return $;
         }
     }

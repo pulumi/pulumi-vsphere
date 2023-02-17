@@ -219,6 +219,31 @@ func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Co
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the override in.  Forces a new
+// resource if changed.
+func (o DpmHostOverrideOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DpmHostOverride) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// The automation level for host power
+// operations on this host. Can be one of `manual` or `automated`. Default:
+// `manual`.
+func (o DpmHostOverrideOutput) DpmAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DpmHostOverride) pulumi.StringPtrOutput { return v.DpmAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Enable DPM support for this host. Default:
+// `false`.
+func (o DpmHostOverrideOutput) DpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DpmHostOverride) pulumi.BoolPtrOutput { return v.DpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The managed object ID of the host.
+func (o DpmHostOverrideOutput) HostSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DpmHostOverride) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
+}
+
 type DpmHostOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DpmHostOverrideArrayOutput) ElementType() reflect.Type {

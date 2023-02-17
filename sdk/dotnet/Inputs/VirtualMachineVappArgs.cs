@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineVappArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineVappArgs : global::Pulumi.ResourceArgs
     {
         [Input("properties")]
         private InputMap<string>? _properties;
@@ -23,5 +23,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineVappArgs()
         {
         }
+        public static new VirtualMachineVappArgs Empty => new VirtualMachineVappArgs();
     }
 }

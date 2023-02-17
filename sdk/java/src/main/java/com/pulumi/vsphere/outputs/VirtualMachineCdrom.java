@@ -19,7 +19,7 @@ public final class VirtualMachineCdrom {
      */
     private @Nullable Boolean clientDevice;
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     private @Nullable String datastoreId;
@@ -30,7 +30,7 @@ public final class VirtualMachineCdrom {
      */
     private @Nullable Integer key;
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     private @Nullable String path;
@@ -44,7 +44,7 @@ public final class VirtualMachineCdrom {
         return Optional.ofNullable(this.clientDevice);
     }
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     public Optional<String> datastoreId() {
@@ -61,7 +61,7 @@ public final class VirtualMachineCdrom {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     public Optional<String> path() {

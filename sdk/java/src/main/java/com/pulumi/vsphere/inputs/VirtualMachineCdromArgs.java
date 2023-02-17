@@ -33,14 +33,14 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -70,14 +70,14 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
      */
     public Optional<Output<String>> path() {
@@ -134,7 +134,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class VirtualMachineCdromArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
          * 
          * @return builder
          * 

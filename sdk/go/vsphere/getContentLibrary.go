@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupContentLibrary(ctx, &GetContentLibraryArgs{
+//			_, err := vsphere.LookupContentLibrary(ctx, &vsphere.LookupContentLibraryArgs{
 //				Name: "Content Library",
 //			}, nil)
 //			if err != nil {

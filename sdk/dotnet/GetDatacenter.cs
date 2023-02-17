@@ -22,26 +22,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatacenterResult> InvokeAsync(GetDatacenterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.Datacenter` data source can be used to discover the ID of a
@@ -54,30 +52,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatacenterResult> Invoke(GetDatacenterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDatacenterArgs : Pulumi.InvokeArgs
+    public sealed class GetDatacenterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
@@ -89,9 +85,10 @@ namespace Pulumi.VSphere
         public GetDatacenterArgs()
         {
         }
+        public static new GetDatacenterArgs Empty => new GetDatacenterArgs();
     }
 
-    public sealed class GetDatacenterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatacenterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
@@ -103,6 +100,7 @@ namespace Pulumi.VSphere
         public GetDatacenterInvokeArgs()
         {
         }
+        public static new GetDatacenterInvokeArgs Empty => new GetDatacenterInvokeArgs();
     }
 
 

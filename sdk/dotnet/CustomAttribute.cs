@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/customAttribute:CustomAttribute")]
-    public partial class CustomAttribute : Pulumi.CustomResource
+    public partial class CustomAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object type that this attribute may be
@@ -70,7 +70,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class CustomAttributeArgs : Pulumi.ResourceArgs
+    public sealed class CustomAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object type that this attribute may be
@@ -89,9 +89,10 @@ namespace Pulumi.VSphere
         public CustomAttributeArgs()
         {
         }
+        public static new CustomAttributeArgs Empty => new CustomAttributeArgs();
     }
 
-    public sealed class CustomAttributeState : Pulumi.ResourceArgs
+    public sealed class CustomAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object type that this attribute may be
@@ -110,5 +111,6 @@ namespace Pulumi.VSphere
         public CustomAttributeState()
         {
         }
+        public static new CustomAttributeState Empty => new CustomAttributeState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/virtualMachine:VirtualMachine")]
-    public partial class VirtualMachine : Pulumi.CustomResource
+    public partial class VirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
@@ -45,8 +45,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
         /// </summary>
-        [Output("cdrom")]
-        public Output<Outputs.VirtualMachineCdrom?> Cdrom { get; private set; } = null!;
+        [Output("cdroms")]
+        public Output<ImmutableArray<Outputs.VirtualMachineCdrom>> Cdroms { get; private set; } = null!;
 
         /// <summary>
         /// A unique identifier for a given version of the last configuration was applied.
@@ -103,7 +103,7 @@ namespace Pulumi.VSphere
         public Output<string?> CpuShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.VSphere
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
         /// </summary>
         [Output("datastoreId")]
         public Output<string> DatastoreId { get; private set; } = null!;
@@ -167,6 +167,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("extraConfig")]
         public Output<ImmutableDictionary<string, string>?> ExtraConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+        /// </summary>
+        [Output("extraConfigRebootRequired")]
+        public Output<bool?> ExtraConfigRebootRequired { get; private set; } = null!;
 
         /// <summary>
         /// The firmware for the virtual machine. One of `bios` or `efi`.
@@ -283,7 +289,7 @@ namespace Pulumi.VSphere
         public Output<int?> MigrateWaitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The machine object ID from VMware vSphere.
+        /// The managed object reference ID of the created virtual machine.
         /// </summary>
         [Output("moid")]
         public Output<string> Moid { get; private set; } = null!;
@@ -425,7 +431,7 @@ namespace Pulumi.VSphere
         public Output<int?> ShutdownWaitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The UUID of the storage policy to assign to the virtual disk.
+        /// The ID of the storage policy to assign to the home directory of a virtual machine.
         /// </summary>
         [Output("storagePolicyId")]
         public Output<string> StoragePolicyId { get; private set; } = null!;
@@ -564,7 +570,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VirtualMachineArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
@@ -596,11 +602,17 @@ namespace Pulumi.VSphere
         [Input("bootRetryEnabled")]
         public Input<bool>? BootRetryEnabled { get; set; }
 
+        [Input("cdroms")]
+        private InputList<Inputs.VirtualMachineCdromArgs>? _cdroms;
+
         /// <summary>
         /// A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
         /// </summary>
-        [Input("cdrom")]
-        public Input<Inputs.VirtualMachineCdromArgs>? Cdrom { get; set; }
+        public InputList<Inputs.VirtualMachineCdromArgs> Cdroms
+        {
+            get => _cdroms ?? (_cdroms = new InputList<Inputs.VirtualMachineCdromArgs>());
+            set => _cdroms = value;
+        }
 
         /// <summary>
         /// When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
@@ -654,7 +666,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -675,7 +687,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -727,6 +739,12 @@ namespace Pulumi.VSphere
             get => _extraConfig ?? (_extraConfig = new InputMap<string>());
             set => _extraConfig = value;
         }
+
+        /// <summary>
+        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+        /// </summary>
+        [Input("extraConfigRebootRequired")]
+        public Input<bool>? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
         /// The firmware for the virtual machine. One of `bios` or `efi`.
@@ -973,7 +991,7 @@ namespace Pulumi.VSphere
         public Input<int>? ShutdownWaitTimeout { get; set; }
 
         /// <summary>
-        /// The UUID of the storage policy to assign to the virtual disk.
+        /// The ID of the storage policy to assign to the home directory of a virtual machine.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }
@@ -1053,9 +1071,10 @@ namespace Pulumi.VSphere
         public VirtualMachineArgs()
         {
         }
+        public static new VirtualMachineArgs Empty => new VirtualMachineArgs();
     }
 
-    public sealed class VirtualMachineState : Pulumi.ResourceArgs
+    public sealed class VirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
@@ -1087,11 +1106,17 @@ namespace Pulumi.VSphere
         [Input("bootRetryEnabled")]
         public Input<bool>? BootRetryEnabled { get; set; }
 
+        [Input("cdroms")]
+        private InputList<Inputs.VirtualMachineCdromGetArgs>? _cdroms;
+
         /// <summary>
         /// A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
         /// </summary>
-        [Input("cdrom")]
-        public Input<Inputs.VirtualMachineCdromGetArgs>? Cdrom { get; set; }
+        public InputList<Inputs.VirtualMachineCdromGetArgs> Cdroms
+        {
+            get => _cdroms ?? (_cdroms = new InputList<Inputs.VirtualMachineCdromGetArgs>());
+            set => _cdroms = value;
+        }
 
         /// <summary>
         /// A unique identifier for a given version of the last configuration was applied.
@@ -1151,7 +1176,7 @@ namespace Pulumi.VSphere
         private InputMap<string>? _customAttributes;
 
         /// <summary>
-        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+        /// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1172,7 +1197,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -1230,6 +1255,12 @@ namespace Pulumi.VSphere
             get => _extraConfig ?? (_extraConfig = new InputMap<string>());
             set => _extraConfig = value;
         }
+
+        /// <summary>
+        /// Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+        /// </summary>
+        [Input("extraConfigRebootRequired")]
+        public Input<bool>? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
         /// The firmware for the virtual machine. One of `bios` or `efi`.
@@ -1358,7 +1389,7 @@ namespace Pulumi.VSphere
         public Input<int>? MigrateWaitTimeout { get; set; }
 
         /// <summary>
-        /// The machine object ID from VMware vSphere.
+        /// The managed object reference ID of the created virtual machine.
         /// </summary>
         [Input("moid")]
         public Input<string>? Moid { get; set; }
@@ -1512,7 +1543,7 @@ namespace Pulumi.VSphere
         public Input<int>? ShutdownWaitTimeout { get; set; }
 
         /// <summary>
-        /// The UUID of the storage policy to assign to the virtual disk.
+        /// The ID of the storage policy to assign to the home directory of a virtual machine.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }
@@ -1622,5 +1653,6 @@ namespace Pulumi.VSphere
         public VirtualMachineState()
         {
         }
+        public static new VirtualMachineState Empty => new VirtualMachineState();
     }
 }

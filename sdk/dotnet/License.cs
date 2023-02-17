@@ -15,29 +15,27 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var licenseKey = new VSphere.License("licenseKey", new()
     ///     {
-    ///         var licenseKey = new VSphere.License("licenseKey", new VSphere.LicenseArgs
+    ///         Labels = 
     ///         {
-    ///             Labels = 
-    ///             {
-    ///                 { "VpxClientLicenseLabel", "Hello World" },
-    ///                 { "Workflow", "Hello World" },
-    ///             },
-    ///             LicenseKey = "452CQ-2EK54-K8742-00000-00000",
-    ///         });
-    ///     }
+    ///             { "VpxClientLicenseLabel", "Hello World" },
+    ///             { "Workflow", "Hello World" },
+    ///         },
+    ///         LicenseKey = "452CQ-2EK54-K8742-00000-00000",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/license:License")]
-    public partial class License : Pulumi.CustomResource
+    public partial class License : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The product edition of the license key.
@@ -119,7 +117,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class LicenseArgs : Pulumi.ResourceArgs
+    public sealed class LicenseArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -142,9 +140,10 @@ namespace Pulumi.VSphere
         public LicenseArgs()
         {
         }
+        public static new LicenseArgs Empty => new LicenseArgs();
     }
 
-    public sealed class LicenseState : Pulumi.ResourceArgs
+    public sealed class LicenseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product edition of the license key.
@@ -191,5 +190,6 @@ namespace Pulumi.VSphere
         public LicenseState()
         {
         }
+        public static new LicenseState Empty => new LicenseState();
     }
 }

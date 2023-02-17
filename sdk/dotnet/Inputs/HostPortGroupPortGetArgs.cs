@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class HostPortGroupPortGetArgs : Pulumi.ResourceArgs
+    public sealed class HostPortGroupPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key for this port group as returned from the vSphere API.
@@ -32,5 +32,6 @@ namespace Pulumi.VSphere.Inputs
         public HostPortGroupPortGetArgs()
         {
         }
+        public static new HostPortGroupPortGetArgs Empty => new HostPortGroupPortGetArgs();
     }
 }

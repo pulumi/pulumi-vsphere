@@ -184,14 +184,16 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return this.checkBeacon;
     }
     /**
-     * The version string of the configuration that this spec is trying to change.
+     * The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      * 
      */
     @Export(name="configVersion", type=String.class, parameters={})
     private Output<String> configVersion;
 
     /**
-     * @return The version string of the configuration that this spec is trying to change.
+     * @return The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      * 
      */
     public Output<String> configVersion() {
@@ -1270,16 +1272,16 @@ public class DistributedVirtualSwitch extends com.pulumi.resources.CustomResourc
         return this.vdpShareLevel;
     }
     /**
-     * - The version of the VDS. BY default, a VDS is created
-     *   at the latest version supported by the vSphere version if not specified.
-     *   A VDS can be upgraded to a newer version, but can not be downgraded.
+     * The version of the VDS. BY default, a VDS is created
+     * at the latest version supported by the vSphere version if not specified.
+     * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
-     * @return - The version of the VDS. BY default, a VDS is created
+     * @return The version of the VDS. BY default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
