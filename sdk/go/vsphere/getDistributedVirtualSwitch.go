@@ -38,13 +38,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &GetDistributedVirtualSwitchArgs{
+//			vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &vsphere.LookupDistributedVirtualSwitchArgs{
 //				Name:         "vds-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -52,12 +52,12 @@ import (
 //				return err
 //			}
 //			_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
-//				DistributedVirtualSwitchUuid: pulumi.String(vds.Id),
+//				DistributedVirtualSwitchUuid: *pulumi.String(vds.Id),
 //				ActiveUplinks: pulumi.StringArray{
-//					pulumi.String(vds.Uplinks[0]),
+//					*pulumi.String(vds.Uplinks[0]),
 //				},
 //				StandbyUplinks: pulumi.StringArray{
-//					pulumi.String(vds.Uplinks[1]),
+//					*pulumi.String(vds.Uplinks[1]),
 //				},
 //			})
 //			if err != nil {
@@ -92,8 +92,12 @@ type LookupDistributedVirtualSwitchArgs struct {
 type LookupDistributedVirtualSwitchResult struct {
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string   `pulumi:"id"`
-	Name    string   `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// The list of the uplinks on this vSphere distributed switch, as per the
+	// `uplinks` argument to the
+	// `DistributedVirtualSwitch`
+	// resource.
 	Uplinks []string `pulumi:"uplinks"`
 }
 
@@ -153,6 +157,10 @@ func (o LookupDistributedVirtualSwitchResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of the uplinks on this vSphere distributed switch, as per the
+// `uplinks` argument to the
+// `DistributedVirtualSwitch`
+// resource.
 func (o LookupDistributedVirtualSwitchResultOutput) Uplinks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDistributedVirtualSwitchResult) []string { return v.Uplinks }).(pulumi.StringArrayOutput)
 }

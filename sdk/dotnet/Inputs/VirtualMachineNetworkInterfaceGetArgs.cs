@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineNetworkInterfaceGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network interface type. One of `e1000`, `e1000e`, or `vmxnet3`. Default: `vmxnet3`.
@@ -78,5 +78,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineNetworkInterfaceGetArgs()
         {
         }
+        public static new VirtualMachineNetworkInterfaceGetArgs Empty => new VirtualMachineNetworkInterfaceGetArgs();
     }
 }

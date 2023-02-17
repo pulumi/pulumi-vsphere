@@ -102,9 +102,6 @@ func NewHostVirtualSwitch(ctx *pulumi.Context,
 	if args.NetworkAdapters == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkAdapters'")
 	}
-	if args.StandbyNics == nil {
-		return nil, errors.New("invalid value for required argument 'StandbyNics'")
-	}
 	var resource HostVirtualSwitch
 	err := ctx.RegisterResource("vsphere:index/hostVirtualSwitch:HostVirtualSwitch", name, args, &resource, opts...)
 	if err != nil {
@@ -508,6 +505,139 @@ func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutput() HostVirtualSwitchOu
 
 func (o HostVirtualSwitchOutput) ToHostVirtualSwitchOutputWithContext(ctx context.Context) HostVirtualSwitchOutput {
 	return o
+}
+
+// The list of active network adapters used for load
+// balancing.
+func (o HostVirtualSwitchOutput) ActiveNics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringArrayOutput { return v.ActiveNics }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether or not the virtual
+// network adapter is allowed to send network traffic with a different MAC
+// address than that of its own. Default: `true`.
+func (o HostVirtualSwitchOutput) AllowForgedTransmits() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.AllowForgedTransmits }).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether or not the Media Access
+// Control (MAC) address can be changed. Default: `true`.
+func (o HostVirtualSwitchOutput) AllowMacChanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.AllowMacChanges }).(pulumi.BoolPtrOutput)
+}
+
+// Enable promiscuous mode on the network. This
+// flag indicates whether or not all traffic is seen on a given port. Default:
+// `false`.
+func (o HostVirtualSwitchOutput) AllowPromiscuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.AllowPromiscuous }).(pulumi.BoolPtrOutput)
+}
+
+// The interval, in seconds, that a NIC beacon
+// packet is sent out. This can be used with `checkBeacon` to
+// offer link failure capability beyond link status only. Default: `1`.
+func (o HostVirtualSwitchOutput) BeaconInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.BeaconInterval }).(pulumi.IntPtrOutput)
+}
+
+// Enable beacon probing - this requires that the
+// `beaconInterval` option has been set in the bridge
+// options. If this is set to `false`, only link status is used to check for
+// failed NICs.  Default: `false`.
+func (o HostVirtualSwitchOutput) CheckBeacon() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.CheckBeacon }).(pulumi.BoolPtrOutput)
+}
+
+// If set to `true`, the teaming policy will re-activate
+// failed interfaces higher in precedence when they come back up.  Default:
+// `true`.
+func (o HostVirtualSwitchOutput) Failback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.Failback }).(pulumi.BoolPtrOutput)
+}
+
+// The managed object ID of
+// the host to set the virtual switch up on. Forces a new resource if changed.
+func (o HostVirtualSwitchOutput) HostSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
+}
+
+// Whether to `advertise` or `listen`
+// for link discovery traffic. Default: `listen`.
+func (o HostVirtualSwitchOutput) LinkDiscoveryOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringPtrOutput { return v.LinkDiscoveryOperation }).(pulumi.StringPtrOutput)
+}
+
+// The discovery protocol type.  Valid
+// types are `cpd` and `lldp`. Default: `cdp`.
+func (o HostVirtualSwitchOutput) LinkDiscoveryProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringPtrOutput { return v.LinkDiscoveryProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The maximum transmission unit (MTU) for the virtual
+// switch. Default: `1500`.
+func (o HostVirtualSwitchOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// The name of the virtual switch. Forces a new resource if
+// changed.
+func (o HostVirtualSwitchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network interfaces to bind to the bridge.
+func (o HostVirtualSwitchOutput) NetworkAdapters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringArrayOutput { return v.NetworkAdapters }).(pulumi.StringArrayOutput)
+}
+
+// If set to `true`, the teaming policy will
+// notify the broadcast network of a NIC failover, triggering cache updates.
+// Default: `true`.
+func (o HostVirtualSwitchOutput) NotifySwitches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.NotifySwitches }).(pulumi.BoolPtrOutput)
+}
+
+// The number of ports to create with this
+// virtual switch. Default: `128`.
+func (o HostVirtualSwitchOutput) NumberOfPorts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.NumberOfPorts }).(pulumi.IntPtrOutput)
+}
+
+// The average bandwidth in bits per
+// second if traffic shaping is enabled. Default: `0`
+func (o HostVirtualSwitchOutput) ShapingAverageBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.ShapingAverageBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The maximum burst size allowed in bytes if
+// shaping is enabled. Default: `0`
+func (o HostVirtualSwitchOutput) ShapingBurstSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.ShapingBurstSize }).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` to enable the traffic shaper for
+// ports managed by this virtual switch. Default: `false`.
+func (o HostVirtualSwitchOutput) ShapingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.BoolPtrOutput { return v.ShapingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The peak bandwidth during bursts in
+// bits per second if traffic shaping is enabled. Default: `0`
+func (o HostVirtualSwitchOutput) ShapingPeakBandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.ShapingPeakBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The list of standby network adapters used for
+// failover.
+func (o HostVirtualSwitchOutput) StandbyNics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringArrayOutput { return v.StandbyNics }).(pulumi.StringArrayOutput)
+}
+
+// The network adapter teaming policy. Can be one
+// of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
+// `failoverExplicit`. Default: `loadbalanceSrcid`.
+func (o HostVirtualSwitchOutput) TeamingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.StringPtrOutput { return v.TeamingPolicy }).(pulumi.StringPtrOutput)
 }
 
 type HostVirtualSwitchArrayOutput struct{ *pulumi.OutputState }

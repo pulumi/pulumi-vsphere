@@ -23,6 +23,216 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+ * 
+ * In this example, tags are first applied to datastores.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetTagCategoryArgs;
+ * import com.pulumi.vsphere.inputs.GetTagArgs;
+ * import com.pulumi.vsphere.VmfsDatastore;
+ * import com.pulumi.vsphere.VmfsDatastoreArgs;
+ * import com.pulumi.vsphere.NasDatastore;
+ * import com.pulumi.vsphere.NasDatastoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var environment = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+ *             .name(&#34;environment&#34;)
+ *             .build());
+ * 
+ *         final var serviceLevel = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+ *             .name(&#34;service_level&#34;)
+ *             .build());
+ * 
+ *         final var replication = VsphereFunctions.getTagCategory(GetTagCategoryArgs.builder()
+ *             .name(&#34;replication&#34;)
+ *             .build());
+ * 
+ *         final var production = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
+ *             .name(&#34;production&#34;)
+ *             .build());
+ * 
+ *         final var development = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.environment.id&#34;)
+ *             .name(&#34;development&#34;)
+ *             .build());
+ * 
+ *         final var platinum = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
+ *             .name(&#34;platinum&#34;)
+ *             .build());
+ * 
+ *         final var gold = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
+ *             .name(&#34;platinum&#34;)
+ *             .build());
+ * 
+ *         final var silver = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
+ *             .name(&#34;silver&#34;)
+ *             .build());
+ * 
+ *         final var bronze = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.service_level.id&#34;)
+ *             .name(&#34;bronze&#34;)
+ *             .build());
+ * 
+ *         final var replicated = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
+ *             .name(&#34;replicated&#34;)
+ *             .build());
+ * 
+ *         final var nonReplicated = VsphereFunctions.getTag(GetTagArgs.builder()
+ *             .categoryId(&#34;data.vsphere_tag_category.replication.id&#34;)
+ *             .name(&#34;non_replicated&#34;)
+ *             .build());
+ * 
+ *         var prodDatastore = new VmfsDatastore(&#34;prodDatastore&#34;, VmfsDatastoreArgs.builder()        
+ *             .tags(            
+ *                 &#34;data.vsphere_tag.production.id&#34;,
+ *                 &#34;data.vsphere_tag.platinum.id&#34;,
+ *                 &#34;data.vsphere_tag.replicated.id&#34;)
+ *             .build());
+ * 
+ *         var devDatastore = new NasDatastore(&#34;devDatastore&#34;, NasDatastoreArgs.builder()        
+ *             .tags(            
+ *                 &#34;data.vsphere_tag.development.id&#34;,
+ *                 &#34;data.vsphere_tag.silver.id&#34;,
+ *                 &#34;data.vsphere_tag.non_replicated.id&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Next, storage policies are created and `tag_rules` are applied.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VmStoragePolicy;
+ * import com.pulumi.vsphere.VmStoragePolicyArgs;
+ * import com.pulumi.vsphere.inputs.VmStoragePolicyTagRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prodPlatinumReplicated = new VmStoragePolicy(&#34;prodPlatinumReplicated&#34;, VmStoragePolicyArgs.builder()        
+ *             .description(&#34;prod_platinum_replicated&#34;)
+ *             .tagRules(            
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().environment().name())
+ *                     .tags(data.vsphere_tag().production().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build(),
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().service_level().name())
+ *                     .tags(data.vsphere_tag().platinum().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build(),
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().replication().name())
+ *                     .tags(data.vsphere_tag().replicated().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build())
+ *             .build());
+ * 
+ *         var devSilverNonreplicated = new VmStoragePolicy(&#34;devSilverNonreplicated&#34;, VmStoragePolicyArgs.builder()        
+ *             .description(&#34;dev_silver_nonreplicated&#34;)
+ *             .tagRules(            
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().environment().name())
+ *                     .tags(data.vsphere_tag().development().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build(),
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().service_level().name())
+ *                     .tags(data.vsphere_tag().silver().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build(),
+ *                 VmStoragePolicyTagRuleArgs.builder()
+ *                     .tagCategory(data.vsphere_tag_category().replication().name())
+ *                     .tags(data.vsphere_tag().non_replicated().name())
+ *                     .includeDatastoresWithTags(true)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy&#39;s `tags_rules`.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetPolicyArgs;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var prodPlatinumReplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
+ *             .name(&#34;prod_platinum_replicated&#34;)
+ *             .build());
+ * 
+ *         final var devSilverNonreplicated = VsphereFunctions.getPolicy(GetPolicyArgs.builder()
+ *             .name(&#34;dev_silver_nonreplicated&#34;)
+ *             .build());
+ * 
+ *         var prodVm = new VirtualMachine(&#34;prodVm&#34;, VirtualMachineArgs.builder()        
+ *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().prod_platinum_replicated().id())
+ *             .build());
+ * 
+ *         var devVm = new VirtualMachine(&#34;devVm&#34;, VirtualMachineArgs.builder()        
+ *             .storagePolicyId(data.vsphere_storage_policy().storage_policy().dev_silver_nonreplicated().id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="vsphere:index/vmStoragePolicy:VmStoragePolicy")
 public class VmStoragePolicy extends com.pulumi.resources.CustomResource {

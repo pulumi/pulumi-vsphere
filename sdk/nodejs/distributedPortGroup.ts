@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class DistributedPortGroup extends pulumi.CustomResource {
@@ -69,7 +70,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly checkBeacon!: pulumi.Output<boolean>;
     /**
-     * Version string of the configuration that this spec is trying to change.
+     * The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      */
     public /*out*/ readonly configVersion!: pulumi.Output<string>;
     /**
@@ -127,7 +129,7 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      */
     public readonly ingressShapingPeakBandwidth!: pulumi.Output<number>;
     /**
-     * The generated UUID of the portgroup.
+     * The generated UUID of the port group.
      */
     public /*out*/ readonly key!: pulumi.Output<string>;
     /**
@@ -413,7 +415,8 @@ export interface DistributedPortGroupState {
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
-     * Version string of the configuration that this spec is trying to change.
+     * The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      */
     configVersion?: pulumi.Input<string>;
     /**
@@ -471,7 +474,7 @@ export interface DistributedPortGroupState {
      */
     ingressShapingPeakBandwidth?: pulumi.Input<number>;
     /**
-     * The generated UUID of the portgroup.
+     * The generated UUID of the port group.
      */
     key?: pulumi.Input<string>;
     /**

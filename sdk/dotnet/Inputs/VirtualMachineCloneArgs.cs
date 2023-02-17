@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCloneArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneArgs : global::Pulumi.ResourceArgs
     {
         [Input("customize")]
         public Input<Inputs.VirtualMachineCloneCustomizeArgs>? Customize { get; set; }
@@ -43,5 +43,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineCloneArgs()
         {
         }
+        public static new VirtualMachineCloneArgs Empty => new VirtualMachineCloneArgs();
     }
 }

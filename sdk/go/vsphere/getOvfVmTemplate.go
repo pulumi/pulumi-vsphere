@@ -121,8 +121,10 @@ type GetOvfVmTemplateArgs struct {
 	// The disk provisioning type. If set, all the
 	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
 	// one of `thin`, `flat`, `thick` or `sameAsSource`.
-	DiskProvisioning       *string `pulumi:"diskProvisioning"`
-	EnableHiddenProperties *bool   `pulumi:"enableHiddenProperties"`
+	DiskProvisioning *string `pulumi:"diskProvisioning"`
+	// Allow properties with
+	// `ovf:userConfigurable=false` to be set.
+	EnableHiddenProperties *bool `pulumi:"enableHiddenProperties"`
 	// The name of the folder in which to place the virtual
 	// machine.
 	Folder *string `pulumi:"folder"`
@@ -232,8 +234,10 @@ type GetOvfVmTemplateOutputArgs struct {
 	// The disk provisioning type. If set, all the
 	// disks in the deployed OVA/OVF will have the same specified disk type. Can be
 	// one of `thin`, `flat`, `thick` or `sameAsSource`.
-	DiskProvisioning       pulumi.StringPtrInput `pulumi:"diskProvisioning"`
-	EnableHiddenProperties pulumi.BoolPtrInput   `pulumi:"enableHiddenProperties"`
+	DiskProvisioning pulumi.StringPtrInput `pulumi:"diskProvisioning"`
+	// Allow properties with
+	// `ovf:userConfigurable=false` to be set.
+	EnableHiddenProperties pulumi.BoolPtrInput `pulumi:"enableHiddenProperties"`
 	// The name of the folder in which to place the virtual
 	// machine.
 	Folder pulumi.StringPtrInput `pulumi:"folder"`

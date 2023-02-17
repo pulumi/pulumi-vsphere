@@ -269,6 +269,50 @@ func (o ComputeClusterVmHostRuleOutput) ToComputeClusterVmHostRuleOutputWithCont
 	return o
 }
 
+// When this field is used, the virtual
+// machines defined in `vmGroupName` will be run on the
+// hosts defined in this host group.
+func (o ComputeClusterVmHostRuleOutput) AffinityHostGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringPtrOutput { return v.AffinityHostGroupName }).(pulumi.StringPtrOutput)
+}
+
+// When this field is used, the
+// virtual machines defined in `vmGroupName` will _not_ be
+// run on the hosts defined in this host group.
+func (o ComputeClusterVmHostRuleOutput) AntiAffinityHostGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringPtrOutput { return v.AntiAffinityHostGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The managed object reference
+// ID of the cluster to put the group in.  Forces a new
+// resource if changed.
+func (o ComputeClusterVmHostRuleOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// Enable this rule in the cluster. Default: `true`.
+func (o ComputeClusterVmHostRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// When this value is `true`, prevents any virtual
+// machine operations that may violate this rule. Default: `false`.
+func (o ComputeClusterVmHostRuleOutput) Mandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the rule. This must be unique in the
+// cluster.
+func (o ComputeClusterVmHostRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the virtual machine group to use
+// with this rule.
+func (o ComputeClusterVmHostRuleOutput) VmGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.StringOutput { return v.VmGroupName }).(pulumi.StringOutput)
+}
+
 type ComputeClusterVmHostRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmHostRuleArrayOutput) ElementType() reflect.Type {

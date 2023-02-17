@@ -23,51 +23,47 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "SomeCategory",
-        ///         }));
-        ///         var tag1 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "FirstTag",
-        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
-        ///         }));
-        ///         var tag2 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "SecondTag",
-        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
-        ///         }));
-        ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
-        ///         {
-        ///             var tag1 = values.Item1;
-        ///             var tag11 = values.Item2;
-        ///             return Output.Create(VSphere.GetDynamic.InvokeAsync(new VSphere.GetDynamicArgs
-        ///             {
-        ///                 Filters = 
-        ///                 {
-        ///                     tag1.Id,
-        ///                     tag11.Id,
-        ///                 },
-        ///                 NameRegex = "ubuntu",
-        ///                 Type = "Datacenter",
-        ///             }));
-        ///         });
-        ///     }
+        ///         Name = "SomeCategory",
+        ///     });
         /// 
-        /// }
+        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "FirstTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "SecondTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///         },
+        ///         NameRegex = "ubuntu",
+        ///         Type = "Datacenter",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDynamicResult> InvokeAsync(GetDynamicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithDefaults());
 
         /// <summary>
         /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
@@ -81,55 +77,51 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
         ///     {
-        ///         var category = Output.Create(VSphere.GetTagCategory.InvokeAsync(new VSphere.GetTagCategoryArgs
-        ///         {
-        ///             Name = "SomeCategory",
-        ///         }));
-        ///         var tag1 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "FirstTag",
-        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
-        ///         }));
-        ///         var tag2 = Output.Create(VSphere.GetTag.InvokeAsync(new VSphere.GetTagArgs
-        ///         {
-        ///             Name = "SecondTag",
-        ///             CategoryId = data.Vsphere_tag_category.Cat.Id,
-        ///         }));
-        ///         var dyn = Output.Tuple(tag1, tag1).Apply(values =&gt;
-        ///         {
-        ///             var tag1 = values.Item1;
-        ///             var tag11 = values.Item2;
-        ///             return Output.Create(VSphere.GetDynamic.InvokeAsync(new VSphere.GetDynamicArgs
-        ///             {
-        ///                 Filters = 
-        ///                 {
-        ///                     tag1.Id,
-        ///                     tag11.Id,
-        ///                 },
-        ///                 NameRegex = "ubuntu",
-        ///                 Type = "Datacenter",
-        ///             }));
-        ///         });
-        ///     }
+        ///         Name = "SomeCategory",
+        ///     });
         /// 
-        /// }
+        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "FirstTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "SecondTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///         },
+        ///         NameRegex = "ubuntu",
+        ///         Type = "Datacenter",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDynamicResult> Invoke(GetDynamicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDynamicArgs : Pulumi.InvokeArgs
+    public sealed class GetDynamicArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters", required: true)]
         private List<string>? _filters;
@@ -162,9 +154,10 @@ namespace Pulumi.VSphere
         public GetDynamicArgs()
         {
         }
+        public static new GetDynamicArgs Empty => new GetDynamicArgs();
     }
 
-    public sealed class GetDynamicInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDynamicInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters", required: true)]
         private InputList<string>? _filters;
@@ -197,6 +190,7 @@ namespace Pulumi.VSphere
         public GetDynamicInvokeArgs()
         {
         }
+        public static new GetDynamicInvokeArgs Empty => new GetDynamicInvokeArgs();
     }
 
 

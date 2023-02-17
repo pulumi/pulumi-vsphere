@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/nasDatastore:NasDatastore")]
-    public partial class NasDatastore : Pulumi.CustomResource
+    public partial class NasDatastore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access mode for the mount point. Can be one of
@@ -195,7 +195,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class NasDatastoreArgs : Pulumi.ResourceArgs
+    public sealed class NasDatastoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for the mount point. Can be one of
@@ -311,9 +311,10 @@ namespace Pulumi.VSphere
         public NasDatastoreArgs()
         {
         }
+        public static new NasDatastoreArgs Empty => new NasDatastoreArgs();
     }
 
-    public sealed class NasDatastoreState : Pulumi.ResourceArgs
+    public sealed class NasDatastoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access mode for the mount point. Can be one of
@@ -481,5 +482,6 @@ namespace Pulumi.VSphere
         public NasDatastoreState()
         {
         }
+        public static new NasDatastoreState Empty => new NasDatastoreState();
     }
 }

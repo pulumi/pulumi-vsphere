@@ -30,13 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vsphere.GetNetwork(ctx, &GetNetworkArgs{
+//			_, err = vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
 //				Name:         "VM Network",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
@@ -80,6 +80,10 @@ type GetNetworkResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+	// The managed object type for the discovered network. This will be one
+	// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
+	// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+	// externally, such as those managed by NSX.
 	Type string `pulumi:"type"`
 }
 
@@ -148,6 +152,10 @@ func (o GetNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The managed object type for the discovered network. This will be one
+// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
+// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+// externally, such as those managed by NSX.
 func (o GetNetworkResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkResult) string { return v.Type }).(pulumi.StringOutput)
 }

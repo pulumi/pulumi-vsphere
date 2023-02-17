@@ -23,37 +23,37 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var vmfsDisks = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
-        ///         {
-        ///             HostSystemId = host.Id,
-        ///             Rescan = true,
-        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmfsDisks = VSphere.GetVmfsDisks.Invoke(new()
+        ///     {
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         Rescan = true,
+        ///         Filter = "mpx.vmhba1:C0:T[12]:L0",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVmfsDisksResult> InvokeAsync(GetVmfsDisksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getVmfsDisks` data source can be used to discover the storage
@@ -67,41 +67,41 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var vmfsDisks = host.Apply(host =&gt; Output.Create(VSphere.GetVmfsDisks.InvokeAsync(new VSphere.GetVmfsDisksArgs
-        ///         {
-        ///             HostSystemId = host.Id,
-        ///             Rescan = true,
-        ///             Filter = "mpx.vmhba1:C0:T[12]:L0",
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var vmfsDisks = VSphere.GetVmfsDisks.Invoke(new()
+        ///     {
+        ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         Rescan = true,
+        ///         Filter = "mpx.vmhba1:C0:T[12]:L0",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVmfsDisksResult> Invoke(GetVmfsDisksInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVmfsDisksResult>("vsphere:index/getVmfsDisks:getVmfsDisks", args ?? new GetVmfsDisksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVmfsDisksArgs : Pulumi.InvokeArgs
+    public sealed class GetVmfsDisksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regular expression to filter the disks against. Only
@@ -128,9 +128,10 @@ namespace Pulumi.VSphere
         public GetVmfsDisksArgs()
         {
         }
+        public static new GetVmfsDisksArgs Empty => new GetVmfsDisksArgs();
     }
 
-    public sealed class GetVmfsDisksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVmfsDisksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regular expression to filter the disks against. Only
@@ -157,6 +158,7 @@ namespace Pulumi.VSphere
         public GetVmfsDisksInvokeArgs()
         {
         }
+        public static new GetVmfsDisksInvokeArgs Empty => new GetVmfsDisksInvokeArgs();
     }
 
 

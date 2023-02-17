@@ -44,7 +44,8 @@ type DistributedVirtualSwitch struct {
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
 	CheckBeacon pulumi.BoolOutput `pulumi:"checkBeacon"`
-	// The version string of the configuration that this spec is trying to change.
+	// The current version of the VDS configuration, incremented
+	// by subsequent updates to the VDS.
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// The detailed contact information for the person
 	// who is responsible for the VDS.
@@ -237,9 +238,9 @@ type DistributedVirtualSwitch struct {
 	VdpShareCount pulumi.IntOutput `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringOutput `pulumi:"vdpShareLevel"`
-	// - The version of the VDS. BY default, a VDS is created
-	//   at the latest version supported by the vSphere version if not specified.
-	//   A VDS can be upgraded to a newer version, but can not be downgraded.
+	// The version of the VDS. BY default, a VDS is created
+	// at the latest version supported by the vSphere version if not specified.
+	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntOutput `pulumi:"virtualmachineMaximumMbit"`
@@ -336,7 +337,8 @@ type distributedVirtualSwitchState struct {
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
-	// The version string of the configuration that this spec is trying to change.
+	// The current version of the VDS configuration, incremented
+	// by subsequent updates to the VDS.
 	ConfigVersion *string `pulumi:"configVersion"`
 	// The detailed contact information for the person
 	// who is responsible for the VDS.
@@ -529,9 +531,9 @@ type distributedVirtualSwitchState struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// - The version of the VDS. BY default, a VDS is created
-	//   at the latest version supported by the vSphere version if not specified.
-	//   A VDS can be upgraded to a newer version, but can not be downgraded.
+	// The version of the VDS. BY default, a VDS is created
+	// at the latest version supported by the vSphere version if not specified.
+	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit *int `pulumi:"virtualmachineMaximumMbit"`
@@ -597,7 +599,8 @@ type DistributedVirtualSwitchState struct {
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
 	CheckBeacon pulumi.BoolPtrInput
-	// The version string of the configuration that this spec is trying to change.
+	// The current version of the VDS configuration, incremented
+	// by subsequent updates to the VDS.
 	ConfigVersion pulumi.StringPtrInput
 	// The detailed contact information for the person
 	// who is responsible for the VDS.
@@ -790,9 +793,9 @@ type DistributedVirtualSwitchState struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// - The version of the VDS. BY default, a VDS is created
-	//   at the latest version supported by the vSphere version if not specified.
-	//   A VDS can be upgraded to a newer version, but can not be downgraded.
+	// The version of the VDS. BY default, a VDS is created
+	// at the latest version supported by the vSphere version if not specified.
+	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntPtrInput
@@ -1053,9 +1056,9 @@ type distributedVirtualSwitchArgs struct {
 	VdpShareCount *int `pulumi:"vdpShareCount"`
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel *string `pulumi:"vdpShareLevel"`
-	// - The version of the VDS. BY default, a VDS is created
-	//   at the latest version supported by the vSphere version if not specified.
-	//   A VDS can be upgraded to a newer version, but can not be downgraded.
+	// The version of the VDS. BY default, a VDS is created
+	// at the latest version supported by the vSphere version if not specified.
+	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version *string `pulumi:"version"`
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit *int `pulumi:"virtualmachineMaximumMbit"`
@@ -1313,9 +1316,9 @@ type DistributedVirtualSwitchArgs struct {
 	VdpShareCount pulumi.IntPtrInput
 	// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
 	VdpShareLevel pulumi.StringPtrInput
-	// - The version of the VDS. BY default, a VDS is created
-	//   at the latest version supported by the vSphere version if not specified.
-	//   A VDS can be upgraded to a newer version, but can not be downgraded.
+	// The version of the VDS. BY default, a VDS is created
+	// at the latest version supported by the vSphere version if not specified.
+	// A VDS can be upgraded to a newer version, but can not be downgraded.
 	Version pulumi.StringPtrInput
 	// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
 	VirtualmachineMaximumMbit pulumi.IntPtrInput
@@ -1435,6 +1438,552 @@ func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutput() Distr
 
 func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
 	return o
+}
+
+// A list of active uplinks to be used in load
+// balancing. These uplinks need to match the definitions in the
+// `uplinks` VDS argument. See
+// here for more details.
+func (o DistributedVirtualSwitchOutput) ActiveUplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.ActiveUplinks }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether or not a virtual
+// network adapter is allowed to send network traffic with a different MAC
+// address than that of its own.
+func (o DistributedVirtualSwitchOutput) AllowForgedTransmits() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.AllowForgedTransmits }).(pulumi.BoolOutput)
+}
+
+// Controls whether or not the Media Access
+// Control (MAC) address can be changed.
+func (o DistributedVirtualSwitchOutput) AllowMacChanges() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.AllowMacChanges }).(pulumi.BoolOutput)
+}
+
+// Enable promiscuous mode on the network. This
+// flag indicates whether or not all traffic is seen on a given port.
+func (o DistributedVirtualSwitchOutput) AllowPromiscuous() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.AllowPromiscuous }).(pulumi.BoolOutput)
+}
+
+// The maximum allowed usage for the backupNfc traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) BackupnfcMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.BackupnfcMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the backupNfc traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) BackupnfcReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.BackupnfcReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the backupNfc traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) BackupnfcShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.BackupnfcShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the backupNfc traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) BackupnfcShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.BackupnfcShareLevel }).(pulumi.StringOutput)
+}
+
+// Shuts down all ports in the port groups that
+// this policy applies to, effectively blocking all network access to connected
+// virtual devices.
+func (o DistributedVirtualSwitchOutput) BlockAllPorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.BlockAllPorts }).(pulumi.BoolOutput)
+}
+
+// Enables beacon probing as an additional measure
+// to detect NIC failure.
+func (o DistributedVirtualSwitchOutput) CheckBeacon() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.CheckBeacon }).(pulumi.BoolOutput)
+}
+
+// The current version of the VDS configuration, incremented
+// by subsequent updates to the VDS.
+func (o DistributedVirtualSwitchOutput) ConfigVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.ConfigVersion }).(pulumi.StringOutput)
+}
+
+// The detailed contact information for the person
+// who is responsible for the VDS.
+func (o DistributedVirtualSwitchOutput) ContactDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.ContactDetail }).(pulumi.StringPtrOutput)
+}
+
+// The name of the person who is responsible for the
+// VDS.
+func (o DistributedVirtualSwitchOutput) ContactName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.ContactName }).(pulumi.StringPtrOutput)
+}
+
+// Map of custom attribute ids to attribute
+// value strings to set for VDS.
+func (o DistributedVirtualSwitchOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The ID of the datacenter where the VDS will be
+// created. Forces a new resource if changed.
+func (o DistributedVirtualSwitchOutput) DatacenterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.DatacenterId }).(pulumi.StringOutput)
+}
+
+// A detailed description for the VDS.
+func (o DistributedVirtualSwitchOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Allow VMDirectPath Gen2 for the ports
+// for which this policy applies to.
+func (o DistributedVirtualSwitchOutput) DirectpathGen2Allowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.DirectpathGen2Allowed }).(pulumi.BoolOutput)
+}
+
+// The average bandwidth in bits
+// per second if egress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) EgressShapingAverageBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.EgressShapingAverageBandwidth }).(pulumi.IntOutput)
+}
+
+// The maximum burst size allowed in
+// bytes if egress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) EgressShapingBurstSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.EgressShapingBurstSize }).(pulumi.IntOutput)
+}
+
+// `true` if the traffic shaper is enabled
+// on the port for egress traffic.
+func (o DistributedVirtualSwitchOutput) EgressShapingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.EgressShapingEnabled }).(pulumi.BoolOutput)
+}
+
+// The peak bandwidth during bursts
+// in bits per second if egress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) EgressShapingPeakBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.EgressShapingPeakBandwidth }).(pulumi.IntOutput)
+}
+
+// If `true`, the teaming policy will re-activate failed
+// uplinks higher in precedence when they come back up.
+func (o DistributedVirtualSwitchOutput) Failback() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.Failback }).(pulumi.BoolOutput)
+}
+
+// The maximum allowed usage for the faultTolerance traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) FaulttoleranceMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.FaulttoleranceMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the faultTolerance traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) FaulttoleranceReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.FaulttoleranceReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the faultTolerance traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) FaulttoleranceShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.FaulttoleranceShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the faultTolerance traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) FaulttoleranceShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.FaulttoleranceShareLevel }).(pulumi.StringOutput)
+}
+
+// The folder in which to create the VDS.
+// Forces a new resource if changed.
+func (o DistributedVirtualSwitchOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// The maximum allowed usage for the hbr traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) HbrMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.HbrMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the hbr traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) HbrReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.HbrReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the hbr traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) HbrShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.HbrShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the hbr traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) HbrShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.HbrShareLevel }).(pulumi.StringOutput)
+}
+
+// Use the `host` block to declare a host specification. The
+// options are:
+func (o DistributedVirtualSwitchOutput) Hosts() DistributedVirtualSwitchHostArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchHostArrayOutput { return v.Hosts }).(DistributedVirtualSwitchHostArrayOutput)
+}
+
+// Whether to ignore existing PVLAN
+// mappings not managed by this resource. Defaults to false.
+func (o DistributedVirtualSwitchOutput) IgnoreOtherPvlanMappings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolPtrOutput { return v.IgnoreOtherPvlanMappings }).(pulumi.BoolPtrOutput)
+}
+
+// The average bandwidth in
+// bits per second if ingress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) IngressShapingAverageBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IngressShapingAverageBandwidth }).(pulumi.IntOutput)
+}
+
+// The maximum burst size allowed in
+// bytes if ingress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) IngressShapingBurstSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IngressShapingBurstSize }).(pulumi.IntOutput)
+}
+
+// `true` if the traffic shaper is
+// enabled on the port for ingress traffic.
+func (o DistributedVirtualSwitchOutput) IngressShapingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.IngressShapingEnabled }).(pulumi.BoolOutput)
+}
+
+// The peak bandwidth during
+// bursts in bits per second if ingress traffic shaping is enabled on the port.
+func (o DistributedVirtualSwitchOutput) IngressShapingPeakBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IngressShapingPeakBandwidth }).(pulumi.IntOutput)
+}
+
+// An IPv4 address to identify the switch. This is
+// mostly useful when used with the Netflow arguments.
+func (o DistributedVirtualSwitchOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.Ipv4Address }).(pulumi.StringPtrOutput)
+}
+
+// The maximum allowed usage for the iSCSI traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) IscsiMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IscsiMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the iSCSI traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) IscsiReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IscsiReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the iSCSI traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) IscsiShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.IscsiShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the iSCSI traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) IscsiShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.IscsiShareLevel }).(pulumi.StringOutput)
+}
+
+// The Link Aggregation Control Protocol group
+// version to use with the VDS. Possible values are `singleLag` and
+// `multipleLag`.
+func (o DistributedVirtualSwitchOutput) LacpApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.LacpApiVersion }).(pulumi.StringOutput)
+}
+
+// Enables LACP for the ports that this policy
+// applies to.
+func (o DistributedVirtualSwitchOutput) LacpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.LacpEnabled }).(pulumi.BoolOutput)
+}
+
+// The LACP mode. Can be one of `active` or `passive`.
+func (o DistributedVirtualSwitchOutput) LacpMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.LacpMode }).(pulumi.StringOutput)
+}
+
+// Whether to `advertise` or `listen`
+// for link discovery traffic.
+func (o DistributedVirtualSwitchOutput) LinkDiscoveryOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.LinkDiscoveryOperation }).(pulumi.StringPtrOutput)
+}
+
+// The discovery protocol type. Valid
+// types are `cdp` and `lldp`.
+func (o DistributedVirtualSwitchOutput) LinkDiscoveryProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.LinkDiscoveryProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The maximum allowed usage for the management traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) ManagementMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.ManagementMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the management traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) ManagementReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.ManagementReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the management traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) ManagementShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.ManagementShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the management traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) ManagementShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.ManagementShareLevel }).(pulumi.StringOutput)
+}
+
+// The maximum transmission unit (MTU) for the VDS.
+func (o DistributedVirtualSwitchOutput) MaxMtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.MaxMtu }).(pulumi.IntOutput)
+}
+
+// The multicast filtering mode to use
+// with the VDS. Can be one of `legacyFiltering` or `snooping`.
+func (o DistributedVirtualSwitchOutput) MulticastFilteringMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.MulticastFilteringMode }).(pulumi.StringOutput)
+}
+
+// The name of the VDS.
+func (o DistributedVirtualSwitchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of seconds after which
+// active flows are forced to be exported to the collector. Allowed range is
+// `60` to `3600`. Default: `60`.
+func (o DistributedVirtualSwitchOutput) NetflowActiveFlowTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowActiveFlowTimeout }).(pulumi.IntPtrOutput)
+}
+
+// IP address for the Netflow
+// collector, using IPv4 or IPv6. IPv6 is supported in VDS version 6.0 or later.
+// Must be set before Netflow can be enabled.
+func (o DistributedVirtualSwitchOutput) NetflowCollectorIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringPtrOutput { return v.NetflowCollectorIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Port for the Netflow collector. This
+// must be set before Netflow can be enabled.
+func (o DistributedVirtualSwitchOutput) NetflowCollectorPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowCollectorPort }).(pulumi.IntPtrOutput)
+}
+
+// Enables Netflow on all ports that this policy
+// applies to.
+func (o DistributedVirtualSwitchOutput) NetflowEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.NetflowEnabled }).(pulumi.BoolOutput)
+}
+
+// The number of seconds after which
+// idle flows are forced to be exported to the collector. Allowed range is `10`
+// to `600`. Default: `15`.
+func (o DistributedVirtualSwitchOutput) NetflowIdleFlowTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowIdleFlowTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Whether to limit analysis to
+// traffic that has both source and destination served by the same host.
+// Default: `false`.
+func (o DistributedVirtualSwitchOutput) NetflowInternalFlowsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolPtrOutput { return v.NetflowInternalFlowsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The observation domain ID for
+// the Netflow collector.
+func (o DistributedVirtualSwitchOutput) NetflowObservationDomainId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowObservationDomainId }).(pulumi.IntPtrOutput)
+}
+
+// The ratio of total number of packets to
+// the number of packets analyzed. The default is `0`, which indicates that the
+// VDS should analyze all packets. The maximum value is `1000`, which
+// indicates an analysis rate of 0.001%.
+func (o DistributedVirtualSwitchOutput) NetflowSamplingRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntPtrOutput { return v.NetflowSamplingRate }).(pulumi.IntPtrOutput)
+}
+
+// Set to `true` to enable
+// network I/O control. Default: `false`.
+func (o DistributedVirtualSwitchOutput) NetworkResourceControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolPtrOutput { return v.NetworkResourceControlEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The version of network I/O
+// control to use. Can be one of `version2` or `version3`. Default: `version2`.
+func (o DistributedVirtualSwitchOutput) NetworkResourceControlVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.NetworkResourceControlVersion }).(pulumi.StringOutput)
+}
+
+// The maximum allowed usage for the nfs traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) NfsMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.NfsMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the nfs traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) NfsReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.NfsReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the nfs traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) NfsShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.NfsShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the nfs traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) NfsShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.NfsShareLevel }).(pulumi.StringOutput)
+}
+
+// If `true`, the teaming policy will notify the
+// broadcast network of an uplink failover, triggering cache updates.
+func (o DistributedVirtualSwitchOutput) NotifySwitches() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.NotifySwitches }).(pulumi.BoolOutput)
+}
+
+// Used to define a secondary VLAN
+// ID when using private VLANs.
+func (o DistributedVirtualSwitchOutput) PortPrivateSecondaryVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.PortPrivateSecondaryVlanId }).(pulumi.IntOutput)
+}
+
+// Use the `pvlanMapping` block to declare a
+// private VLAN mapping. The options are:
+func (o DistributedVirtualSwitchOutput) PvlanMappings() DistributedVirtualSwitchPvlanMappingArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchPvlanMappingArrayOutput {
+		return v.PvlanMappings
+	}).(DistributedVirtualSwitchPvlanMappingArrayOutput)
+}
+
+// A list of standby uplinks to be used in
+// failover. These uplinks need to match the definitions in the
+// `uplinks` VDS argument. See
+// here for more details.
+func (o DistributedVirtualSwitchOutput) StandbyUplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.StandbyUplinks }).(pulumi.StringArrayOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o DistributedVirtualSwitchOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The uplink teaming policy. Can be one of
+// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
+// `failoverExplicit`, or `loadbalanceLoadbased`.
+func (o DistributedVirtualSwitchOutput) TeamingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.TeamingPolicy }).(pulumi.StringOutput)
+}
+
+// Forward all traffic transmitted by ports for which
+// this policy applies to its VDS uplinks.
+func (o DistributedVirtualSwitchOutput) TxUplink() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.TxUplink }).(pulumi.BoolOutput)
+}
+
+// A list of strings that uniquely identifies the names
+// of the uplinks on the VDS across hosts. The number of items in this list
+// controls the number of uplinks that exist on the VDS, in addition to the
+// names. See here for an example on how to
+// use this option.
+func (o DistributedVirtualSwitchOutput) Uplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Uplinks }).(pulumi.StringArrayOutput)
+}
+
+// The maximum allowed usage for the vdp traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VdpMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VdpMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the vdp traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VdpReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VdpReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the vdp traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) VdpShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VdpShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the vdp traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) VdpShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.VdpShareLevel }).(pulumi.StringOutput)
+}
+
+// The version of the VDS. BY default, a VDS is created
+// at the latest version supported by the vSphere version if not specified.
+// A VDS can be upgraded to a newer version, but can not be downgraded.
+func (o DistributedVirtualSwitchOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The maximum allowed usage for the virtualMachine traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VirtualmachineMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VirtualmachineMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the virtualMachine traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VirtualmachineReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VirtualmachineReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the virtualMachine traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) VirtualmachineShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VirtualmachineShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the virtualMachine traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) VirtualmachineShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.VirtualmachineShareLevel }).(pulumi.StringOutput)
+}
+
+// The VLAN ID for single VLAN mode. 0 denotes no VLAN.
+func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VlanId }).(pulumi.IntOutput)
+}
+
+// Used to denote VLAN trunking. Use the `minVlan`
+// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
+// `vlanRange` definitions are allowed, but they must not overlap. Example
+// below:
+func (o DistributedVirtualSwitchOutput) VlanRanges() DistributedVirtualSwitchVlanRangeArrayOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchVlanRangeArrayOutput { return v.VlanRanges }).(DistributedVirtualSwitchVlanRangeArrayOutput)
+}
+
+// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VmotionMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VmotionMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VmotionReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VmotionReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the vmotion traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) VmotionShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VmotionShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the vmotion traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) VmotionShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.VmotionShareLevel }).(pulumi.StringOutput)
+}
+
+// The maximum allowed usage for the vsan traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VsanMaximumMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VsanMaximumMbit }).(pulumi.IntOutput)
+}
+
+// The amount of guaranteed bandwidth for the vsan traffic class, in Mbits/sec.
+func (o DistributedVirtualSwitchOutput) VsanReservationMbit() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VsanReservationMbit }).(pulumi.IntOutput)
+}
+
+// The amount of shares to allocate to the vsan traffic class for a custom share level.
+func (o DistributedVirtualSwitchOutput) VsanShareCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.IntOutput { return v.VsanShareCount }).(pulumi.IntOutput)
+}
+
+// The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
+func (o DistributedVirtualSwitchOutput) VsanShareLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringOutput { return v.VsanShareLevel }).(pulumi.StringOutput)
 }
 
 type DistributedVirtualSwitchArrayOutput struct{ *pulumi.OutputState }

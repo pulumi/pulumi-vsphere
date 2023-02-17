@@ -24,30 +24,29 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
         ///     {
-        ///         var prodPlatinumReplicated = Output.Create(VSphere.GetPolicy.InvokeAsync(new VSphere.GetPolicyArgs
-        ///         {
-        ///             Name = "prod_platinum_replicated",
-        ///         }));
-        ///         var devSilverNonreplicated = Output.Create(VSphere.GetPolicy.InvokeAsync(new VSphere.GetPolicyArgs
-        ///         {
-        ///             Name = "dev_silver_nonreplicated",
-        ///         }));
-        ///     }
+        ///         Name = "prod_platinum_replicated",
+        ///     });
         /// 
-        /// }
+        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "dev_silver_nonreplicated",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getPolicy` data source can be used to discover the UUID of a
@@ -62,34 +61,33 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
         ///     {
-        ///         var prodPlatinumReplicated = Output.Create(VSphere.GetPolicy.InvokeAsync(new VSphere.GetPolicyArgs
-        ///         {
-        ///             Name = "prod_platinum_replicated",
-        ///         }));
-        ///         var devSilverNonreplicated = Output.Create(VSphere.GetPolicy.InvokeAsync(new VSphere.GetPolicyArgs
-        ///         {
-        ///             Name = "dev_silver_nonreplicated",
-        ///         }));
-        ///     }
+        ///         Name = "prod_platinum_replicated",
+        ///     });
         /// 
-        /// }
+        ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "dev_silver_nonreplicated",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("vsphere:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the storage policy.
@@ -100,9 +98,10 @@ namespace Pulumi.VSphere
         public GetPolicyArgs()
         {
         }
+        public static new GetPolicyArgs Empty => new GetPolicyArgs();
     }
 
-    public sealed class GetPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the storage policy.
@@ -113,6 +112,7 @@ namespace Pulumi.VSphere
         public GetPolicyInvokeArgs()
         {
         }
+        public static new GetPolicyInvokeArgs Empty => new GetPolicyInvokeArgs();
     }
 
 

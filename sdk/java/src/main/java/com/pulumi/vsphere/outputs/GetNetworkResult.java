@@ -19,6 +19,13 @@ public final class GetNetworkResult {
      */
     private String id;
     private String name;
+    /**
+     * @return The managed object type for the discovered network. This will be one
+     * of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
+     * standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+     * externally, such as those managed by NSX.
+     * 
+     */
     private String type;
 
     private GetNetworkResult() {}
@@ -38,6 +45,13 @@ public final class GetNetworkResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The managed object type for the discovered network. This will be one
+     * of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
+     * standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+     * externally, such as those managed by NSX.
+     * 
+     */
     public String type() {
         return this.type;
     }

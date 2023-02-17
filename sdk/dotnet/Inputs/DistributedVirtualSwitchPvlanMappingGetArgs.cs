@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class DistributedVirtualSwitchPvlanMappingGetArgs : Pulumi.ResourceArgs
+    public sealed class DistributedVirtualSwitchPvlanMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The primary VLAN ID. The VLAN IDs of 0 and
@@ -36,5 +36,6 @@ namespace Pulumi.VSphere.Inputs
         public DistributedVirtualSwitchPvlanMappingGetArgs()
         {
         }
+        public static new DistributedVirtualSwitchPvlanMappingGetArgs Empty => new DistributedVirtualSwitchPvlanMappingGetArgs();
     }
 }

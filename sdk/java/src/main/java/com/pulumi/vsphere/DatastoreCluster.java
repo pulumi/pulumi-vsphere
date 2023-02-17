@@ -163,7 +163,9 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sdrsEnabled);
     }
     /**
-     * The free space threshold to use.
+     * The threshold, in GB, that storage
+     * DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+     * GB.
      * When set to `utilization`, `drs_space_utilization_threshold` is used, and
      * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
      * `utilization`.
@@ -173,7 +175,9 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> sdrsFreeSpaceThreshold;
 
     /**
-     * @return The free space threshold to use.
+     * @return The threshold, in GB, that storage
+     * DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+     * GB.
      * When set to `utilization`, `drs_space_utilization_threshold` is used, and
      * when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
      * `utilization`.
@@ -200,6 +204,8 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The threshold, in
+     * percent of used space, that storage DRS uses to make decisions to migrate VMs
+     * out of a datastore. Default: `80` percent.
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      * 
@@ -209,6 +215,8 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The threshold, in
+     * percent of used space, that storage DRS uses to make decisions to migrate VMs
+     * out of a datastore. Default: `80` percent.
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      * 

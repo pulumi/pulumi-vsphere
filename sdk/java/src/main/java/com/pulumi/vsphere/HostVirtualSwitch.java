@@ -341,15 +341,15 @@ public class HostVirtualSwitch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="standbyNics", type=List.class, parameters={String.class})
-    private Output<List<String>> standbyNics;
+    private Output</* @Nullable */ List<String>> standbyNics;
 
     /**
      * @return The list of standby network adapters used for
      * failover.
      * 
      */
-    public Output<List<String>> standbyNics() {
-        return this.standbyNics;
+    public Output<Optional<List<String>>> standbyNics() {
+        return Codegen.optional(this.standbyNics);
     }
     /**
      * The network adapter teaming policy. Can be one

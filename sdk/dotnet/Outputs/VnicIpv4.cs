@@ -18,7 +18,7 @@ namespace Pulumi.VSphere.Outputs
         /// </summary>
         public readonly bool? Dhcp;
         /// <summary>
-        /// IP address of the default gateway, if DHCP or autoconfig is not set.
+        /// IP address of the default gateway, if DHCP is not set.
         /// </summary>
         public readonly string? Gw;
         /// <summary>

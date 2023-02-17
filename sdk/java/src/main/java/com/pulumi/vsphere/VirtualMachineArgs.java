@@ -104,15 +104,15 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      * 
      */
-    @Import(name="cdrom")
-    private @Nullable Output<VirtualMachineCdromArgs> cdrom;
+    @Import(name="cdroms")
+    private @Nullable Output<List<VirtualMachineCdromArgs>> cdroms;
 
     /**
      * @return A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      * 
      */
-    public Optional<Output<VirtualMachineCdromArgs>> cdrom() {
-        return Optional.ofNullable(this.cdrom);
+    public Optional<Output<List<VirtualMachineCdromArgs>>> cdroms() {
+        return Optional.ofNullable(this.cdroms);
     }
 
     /**
@@ -236,14 +236,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
      * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
 
     /**
-     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -281,14 +281,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -383,6 +383,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Map<String,String>>> extraConfig() {
         return Optional.ofNullable(this.extraConfig);
+    }
+
+    /**
+     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * 
+     */
+    @Import(name="extraConfigRebootRequired")
+    private @Nullable Output<Boolean> extraConfigRebootRequired;
+
+    /**
+     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> extraConfigRebootRequired() {
+        return Optional.ofNullable(this.extraConfigRebootRequired);
     }
 
     /**
@@ -949,14 +964,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     @Import(name="storagePolicyId")
     private @Nullable Output<String> storagePolicyId;
 
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     public Optional<Output<String>> storagePolicyId() {
@@ -1136,7 +1151,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.bootDelay = $.bootDelay;
         this.bootRetryDelay = $.bootRetryDelay;
         this.bootRetryEnabled = $.bootRetryEnabled;
-        this.cdrom = $.cdrom;
+        this.cdroms = $.cdroms;
         this.clone = $.clone;
         this.cpuHotAddEnabled = $.cpuHotAddEnabled;
         this.cpuHotRemoveEnabled = $.cpuHotRemoveEnabled;
@@ -1155,6 +1170,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.enableLogging = $.enableLogging;
         this.eptRviMode = $.eptRviMode;
         this.extraConfig = $.extraConfig;
+        this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
         this.folder = $.folder;
         this.forcePowerOff = $.forcePowerOff;
@@ -1330,24 +1346,34 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cdrom A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
          * 
          * @return builder
          * 
          */
-        public Builder cdrom(@Nullable Output<VirtualMachineCdromArgs> cdrom) {
-            $.cdrom = cdrom;
+        public Builder cdroms(@Nullable Output<List<VirtualMachineCdromArgs>> cdroms) {
+            $.cdroms = cdroms;
             return this;
         }
 
         /**
-         * @param cdrom A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
          * 
          * @return builder
          * 
          */
-        public Builder cdrom(VirtualMachineCdromArgs cdrom) {
-            return cdrom(Output.of(cdrom));
+        public Builder cdroms(List<VirtualMachineCdromArgs> cdroms) {
+            return cdroms(Output.of(cdroms));
+        }
+
+        /**
+         * @param cdroms A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdroms(VirtualMachineCdromArgs... cdroms) {
+            return cdroms(List.of(cdroms));
         }
 
         /**
@@ -1519,7 +1545,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
          * 
          * @return builder
          * 
@@ -1530,7 +1556,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+         * @param customAttributes Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
          * 
          * @return builder
          * 
@@ -1582,7 +1608,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
          * 
          * @return builder
          * 
@@ -1593,7 +1619,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
          * 
          * @return builder
          * 
@@ -1736,6 +1762,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder extraConfig(Map<String,String> extraConfig) {
             return extraConfig(Output.of(extraConfig));
+        }
+
+        /**
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraConfigRebootRequired(@Nullable Output<Boolean> extraConfigRebootRequired) {
+            $.extraConfigRebootRequired = extraConfigRebootRequired;
+            return this;
+        }
+
+        /**
+         * @param extraConfigRebootRequired Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraConfigRebootRequired(Boolean extraConfigRebootRequired) {
+            return extraConfigRebootRequired(Output.of(extraConfigRebootRequired));
         }
 
         /**
@@ -2554,7 +2601,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the home directory of a virtual machine.
          * 
          * @return builder
          * 
@@ -2565,7 +2612,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
+         * @param storagePolicyId The ID of the storage policy to assign to the home directory of a virtual machine.
          * 
          * @return builder
          * 

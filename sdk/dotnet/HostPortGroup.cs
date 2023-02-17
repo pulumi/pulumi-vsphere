@@ -24,47 +24,48 @@ namespace Pulumi.VSphere
     /// **Create a Virtual Switch and Bind a Port Group:**
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-    ///         {
-    ///             Name = "esxi-01.example.com",
-    ///             DatacenterId = datacenter.Id,
-    ///         })));
-    ///         var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new VSphere.HostVirtualSwitchArgs
-    ///         {
-    ///             HostSystemId = host.Apply(host =&gt; host.Id),
-    ///             NetworkAdapters = 
-    ///             {
-    ///                 "vmnic0",
-    ///                 "vmnic1",
-    ///             },
-    ///             ActiveNics = 
-    ///             {
-    ///                 "vmnic0",
-    ///             },
-    ///             StandbyNics = 
-    ///             {
-    ///                 "vmnic1",
-    ///             },
-    ///         });
-    ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
-    ///         {
-    ///             HostSystemId = host.Apply(host =&gt; host.Id),
-    ///             VirtualSwitchName = hostVirtualSwitch.Name,
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new()
+    ///     {
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic0",
+    ///             "vmnic1",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic0",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic1",
+    ///         },
+    ///     });
+    /// 
+    ///     var pg = new VSphere.HostPortGroup("pg", new()
+    ///     {
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         VirtualSwitchName = hostVirtualSwitch.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// **Create a Port Group with a VLAN and ab Override:**
@@ -76,49 +77,50 @@ namespace Pulumi.VSphere
     /// the implicit default of `false` set on the standard switch.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-    ///         {
-    ///             Name = "esxi-01.example.com",
-    ///             DatacenterId = datacenter.Id,
-    ///         })));
-    ///         var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new VSphere.HostVirtualSwitchArgs
-    ///         {
-    ///             HostSystemId = host.Apply(host =&gt; host.Id),
-    ///             NetworkAdapters = 
-    ///             {
-    ///                 "vmnic0",
-    ///                 "vmnic1",
-    ///             },
-    ///             ActiveNics = 
-    ///             {
-    ///                 "vmnic0",
-    ///             },
-    ///             StandbyNics = 
-    ///             {
-    ///                 "vmnic1",
-    ///             },
-    ///         });
-    ///         var pg = new VSphere.HostPortGroup("pg", new VSphere.HostPortGroupArgs
-    ///         {
-    ///             HostSystemId = host.Apply(host =&gt; host.Id),
-    ///             VirtualSwitchName = hostVirtualSwitch.Name,
-    ///             VlanId = 4095,
-    ///             AllowPromiscuous = true,
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var host = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi-01.example.com",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var hostVirtualSwitch = new VSphere.HostVirtualSwitch("hostVirtualSwitch", new()
+    ///     {
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic0",
+    ///             "vmnic1",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic0",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic1",
+    ///         },
+    ///     });
+    /// 
+    ///     var pg = new VSphere.HostPortGroup("pg", new()
+    ///     {
+    ///         HostSystemId = host.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         VirtualSwitchName = hostVirtualSwitch.Name,
+    ///         VlanId = 4095,
+    ///         AllowPromiscuous = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Importing
     /// 
@@ -126,21 +128,18 @@ namespace Pulumi.VSphere
     /// using the host port group's ID. An example is below:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The above would import the `management` host port group from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/hostPortGroup:HostPortGroup")]
-    public partial class HostPortGroup : Pulumi.CustomResource
+    public partial class HostPortGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of active network adapters used for load balancing.
@@ -317,7 +316,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class HostPortGroupArgs : Pulumi.ResourceArgs
+    public sealed class HostPortGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("activeNics")]
         private InputList<string>? _activeNics;
@@ -445,9 +444,10 @@ namespace Pulumi.VSphere
         public HostPortGroupArgs()
         {
         }
+        public static new HostPortGroupArgs Empty => new HostPortGroupArgs();
     }
 
-    public sealed class HostPortGroupState : Pulumi.ResourceArgs
+    public sealed class HostPortGroupState : global::Pulumi.ResourceArgs
     {
         [Input("activeNics")]
         private InputList<string>? _activeNics;
@@ -607,5 +607,6 @@ namespace Pulumi.VSphere
         public HostPortGroupState()
         {
         }
+        public static new HostPortGroupState Empty => new HostPortGroupState();
     }
 }

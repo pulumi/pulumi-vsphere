@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/storageDrsVmOverride:StorageDrsVmOverride")]
-    public partial class StorageDrsVmOverride : Pulumi.CustomResource
+    public partial class StorageDrsVmOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -98,7 +98,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class StorageDrsVmOverrideArgs : Pulumi.ResourceArgs
+    public sealed class StorageDrsVmOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -145,9 +145,10 @@ namespace Pulumi.VSphere
         public StorageDrsVmOverrideArgs()
         {
         }
+        public static new StorageDrsVmOverrideArgs Empty => new StorageDrsVmOverrideArgs();
     }
 
-    public sealed class StorageDrsVmOverrideState : Pulumi.ResourceArgs
+    public sealed class StorageDrsVmOverrideState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -194,5 +195,6 @@ namespace Pulumi.VSphere
         public StorageDrsVmOverrideState()
         {
         }
+        public static new StorageDrsVmOverrideState Empty => new StorageDrsVmOverrideState();
     }
 }

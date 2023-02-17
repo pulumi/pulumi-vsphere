@@ -264,6 +264,43 @@ func (o StorageDrsVmOverrideOutput) ToStorageDrsVmOverrideOutputWithContext(ctx 
 	return o
 }
 
+// The managed object reference
+// ID of the datastore cluster to put the override in.
+// Forces a new resource if changed.
+func (o StorageDrsVmOverrideOutput) DatastoreClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) pulumi.StringOutput { return v.DatastoreClusterId }).(pulumi.StringOutput)
+}
+
+// Overrides any Storage DRS automation
+// levels for this virtual machine. Can be one of `automated` or `manual`. When
+// not specified, the datastore cluster's settings are used according to the
+// specific SDRS subsystem.
+func (o StorageDrsVmOverrideOutput) SdrsAutomationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) pulumi.StringPtrOutput { return v.SdrsAutomationLevel }).(pulumi.StringPtrOutput)
+}
+
+// Overrides the default Storage DRS setting for
+// this virtual machine. When not specified, the datastore cluster setting is
+// used.
+func (o StorageDrsVmOverrideOutput) SdrsEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) pulumi.StringPtrOutput { return v.SdrsEnabled }).(pulumi.StringPtrOutput)
+}
+
+// Overrides the intra-VM affinity setting
+// for this virtual machine. When `true`, all disks for this virtual machine
+// will be kept on the same datastore. When `false`, Storage DRS may locate
+// individual disks on different datastores if it helps satisfy cluster
+// requirements. When not specified, the datastore cluster's settings are used.
+func (o StorageDrsVmOverrideOutput) SdrsIntraVmAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) pulumi.StringPtrOutput { return v.SdrsIntraVmAffinity }).(pulumi.StringPtrOutput)
+}
+
+// The UUID of the virtual machine to create
+// the override for.  Forces a new resource if changed.
+func (o StorageDrsVmOverrideOutput) VirtualMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageDrsVmOverride) pulumi.StringOutput { return v.VirtualMachineId }).(pulumi.StringOutput)
+}
+
 type StorageDrsVmOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (StorageDrsVmOverrideArrayOutput) ElementType() reflect.Type {

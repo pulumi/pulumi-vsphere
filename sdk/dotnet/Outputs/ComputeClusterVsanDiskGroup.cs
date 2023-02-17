@@ -13,7 +13,13 @@ namespace Pulumi.VSphere.Outputs
     [OutputType]
     public sealed class ComputeClusterVsanDiskGroup
     {
+        /// <summary>
+        /// The canonical name of the disk to use for vSAN cache.
+        /// </summary>
         public readonly string? Cache;
+        /// <summary>
+        /// An array of disk canonical names for vSAN storage.
+        /// </summary>
         public readonly ImmutableArray<string> Storages;
 
         [OutputConstructor]

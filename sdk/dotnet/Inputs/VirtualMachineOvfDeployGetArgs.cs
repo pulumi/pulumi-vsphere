@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineOvfDeployGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineOvfDeployGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowUnverifiedSslCert")]
         public Input<bool>? AllowUnverifiedSslCert { get; set; }
@@ -47,5 +47,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineOvfDeployGetArgs()
         {
         }
+        public static new VirtualMachineOvfDeployGetArgs Empty => new VirtualMachineOvfDeployGetArgs();
     }
 }

@@ -14,8 +14,8 @@ import javax.annotation.Nullable;
 public final class GetVirtualMachineNetworkInterface {
     /**
      * @return The network interface types for each network interface found
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-     * `vmxnet3`.
+     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+     * `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     private String adapterType;
@@ -58,8 +58,8 @@ public final class GetVirtualMachineNetworkInterface {
     private GetVirtualMachineNetworkInterface() {}
     /**
      * @return The network interface types for each network interface found
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-     * `vmxnet3`.
+     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+     * `vmxnet3vrdma`, or `vmxnet3`.
      * 
      */
     public String adapterType() {

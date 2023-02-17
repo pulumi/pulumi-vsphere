@@ -224,6 +224,35 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffini
 	return o
 }
 
+// The managed object reference
+// ID of the datastore cluster to put the group in.  Forces
+// a new resource if changed.
+func (o DatastoreClusterVmAntiAffinityRuleOutput) DatastoreClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringOutput { return v.DatastoreClusterId }).(pulumi.StringOutput)
+}
+
+// Enable this rule in the cluster. Default: `true`.
+func (o DatastoreClusterVmAntiAffinityRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// When this value is `true`, prevents any virtual
+// machine operations that may violate this rule. Default: `false`.
+func (o DatastoreClusterVmAntiAffinityRuleOutput) Mandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the rule. This must be unique in the cluster.
+func (o DatastoreClusterVmAntiAffinityRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The UUIDs of the virtual machines to run
+// on different datastores from each other.
+func (o DatastoreClusterVmAntiAffinityRuleOutput) VirtualMachineIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
+}
+
 type DatastoreClusterVmAntiAffinityRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterVmAntiAffinityRuleArrayOutput) ElementType() reflect.Type {

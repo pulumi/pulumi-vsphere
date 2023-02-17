@@ -16,18 +16,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const datacenter = pulumi.output(vsphere.getDatacenter({
+ * const datacenter = vsphere.getDatacenter({
  *     name: "dc-01",
- * }));
+ * });
  * ```
  */
 export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDatacenter:getDatacenter", {
         "name": args.name,
     }, opts);
@@ -54,9 +51,25 @@ export interface GetDatacenterResult {
     readonly id: string;
     readonly name?: string;
 }
-
+/**
+ * The `vsphere.Datacenter` data source can be used to discover the ID of a
+ * vSphere datacenter object. This can then be used with resources or data sources
+ * that require a datacenter, such as the `vsphere.Host`
+ * data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * ```
+ */
 export function getDatacenterOutput(args?: GetDatacenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacenterResult> {
-    return pulumi.output(args).apply(a => getDatacenter(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatacenter(a, opts))
 }
 
 /**

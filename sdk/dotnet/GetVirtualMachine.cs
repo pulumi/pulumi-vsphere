@@ -26,60 +26,59 @@ namespace Pulumi.VSphere
         /// unique name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// In the following example, each virtual machine template is returned by its
         /// unique full path within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var productionTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "production/templates/ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var developmentTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "development/templates/ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "production/templates/ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "development/templates/ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.VirtualMachine` data source can be used to find the UUID of an
@@ -96,64 +95,63 @@ namespace Pulumi.VSphere
         /// unique name within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var template = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// In the following example, each virtual machine template is returned by its
         /// unique full path within the `vsphere.Datacenter`.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var productionTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "production/templates/ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var developmentTemplate = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetVirtualMachine.InvokeAsync(new VSphere.GetVirtualMachineArgs
-        ///         {
-        ///             Name = "development/templates/ubuntu-server-template",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "production/templates/ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
+        ///     {
+        ///         Name = "development/templates/ubuntu-server-template",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVirtualMachineArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualMachineArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
@@ -227,6 +225,9 @@ namespace Pulumi.VSphere
             get => _extraConfig ?? (_extraConfig = new Dictionary<string, string>());
             set => _extraConfig = value;
         }
+
+        [Input("extraConfigRebootRequired")]
+        public bool? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
@@ -362,9 +363,10 @@ namespace Pulumi.VSphere
         public GetVirtualMachineArgs()
         {
         }
+        public static new GetVirtualMachineArgs Empty => new GetVirtualMachineArgs();
     }
 
-    public sealed class GetVirtualMachineInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualMachineInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The alternate guest name of the virtual machine when
@@ -438,6 +440,9 @@ namespace Pulumi.VSphere
             get => _extraConfig ?? (_extraConfig = new InputMap<string>());
             set => _extraConfig = value;
         }
+
+        [Input("extraConfigRebootRequired")]
+        public Input<bool>? ExtraConfigRebootRequired { get; set; }
 
         /// <summary>
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
@@ -573,6 +578,7 @@ namespace Pulumi.VSphere
         public GetVirtualMachineInvokeArgs()
         {
         }
+        public static new GetVirtualMachineInvokeArgs Empty => new GetVirtualMachineInvokeArgs();
     }
 
 
@@ -624,6 +630,7 @@ namespace Pulumi.VSphere
         public readonly bool? EnableLogging;
         public readonly string? EptRviMode;
         public readonly ImmutableDictionary<string, string>? ExtraConfig;
+        public readonly bool? ExtraConfigRebootRequired;
         /// <summary>
         /// The firmware type for this virtual machine. Can be `bios` or `efi`.
         /// </summary>
@@ -661,11 +668,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The network interface types for each network
         /// interface found on the virtual machine, in device bus order. Will be one of
-        /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, or `vmxnet3`.
+        /// `e1000`, `e1000e`, `pcnet32`, `sriov`, `vmxnet2`, `vmxnet3vrdma`, or `vmxnet3`.
         /// </summary>
         public readonly ImmutableArray<string> NetworkInterfaceTypes;
         /// <summary>
-        /// Information about each of the network interfaces on this
+        /// Information about each of the network interfaces on this 
         /// virtual machine or template. These are sorted by device bus order so that they
         /// can be applied to a `vsphere.VirtualMachine` resource in the order the resource
         /// expects while cloning. This is useful for discovering certain network interface
@@ -759,6 +766,8 @@ namespace Pulumi.VSphere
             string? eptRviMode,
 
             ImmutableDictionary<string, string>? extraConfig,
+
+            bool? extraConfigRebootRequired,
 
             string? firmware,
 
@@ -861,6 +870,7 @@ namespace Pulumi.VSphere
             EnableLogging = enableLogging;
             EptRviMode = eptRviMode;
             ExtraConfig = extraConfig;
+            ExtraConfigRebootRequired = extraConfigRebootRequired;
             Firmware = firmware;
             GuestId = guestId;
             GuestIpAddresses = guestIpAddresses;

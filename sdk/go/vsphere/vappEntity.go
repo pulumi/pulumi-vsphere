@@ -309,6 +309,67 @@ func (o VappEntityOutput) ToVappEntityOutputWithContext(ctx context.Context) Vap
 	return o
 }
 
+// Managed object ID of the vApp
+// container the entity is a member of.
+func (o VappEntityOutput) ContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringOutput { return v.ContainerId }).(pulumi.StringOutput)
+}
+
+// A list of custom attributes to set on this resource.
+func (o VappEntityOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// How to start the entity. Valid settings are none
+// or powerOn. If set to none, then the entity does not participate in auto-start.
+// Default: powerOn
+func (o VappEntityOutput) StartAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringPtrOutput { return v.StartAction }).(pulumi.StringPtrOutput)
+}
+
+// Delay in seconds before continuing with the next
+// entity in the order of entities to be started. Default: 120
+func (o VappEntityOutput) StartDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.IntPtrOutput { return v.StartDelay }).(pulumi.IntPtrOutput)
+}
+
+// Order to start and stop target in vApp. Default: 1
+func (o VappEntityOutput) StartOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.IntPtrOutput { return v.StartOrder }).(pulumi.IntPtrOutput)
+}
+
+// Defines the stop action for the entity. Can be set
+// to none, powerOff, guestShutdown, or suspend. If set to none, then the entity
+// does not participate in auto-stop. Default: powerOff
+func (o VappEntityOutput) StopAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringPtrOutput { return v.StopAction }).(pulumi.StringPtrOutput)
+}
+
+// Delay in seconds before continuing with the next
+// entity in the order sequence. This is only used if the stopAction is
+// guestShutdown. Default: 120
+func (o VappEntityOutput) StopDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.IntPtrOutput { return v.StopDelay }).(pulumi.IntPtrOutput)
+}
+
+// A list of tag IDs to apply to this object.
+func (o VappEntityOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Managed object ID of the entity
+// to power on or power off. This can be a virtual machine or a vApp.
+func (o VappEntityOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// Determines if the VM should be marked as being
+// started when VMware Tools are ready instead of waiting for `startDelay`. This
+// property has no effect for vApps. Default: false
+func (o VappEntityOutput) WaitForGuest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VappEntity) pulumi.BoolPtrOutput { return v.WaitForGuest }).(pulumi.BoolPtrOutput)
+}
+
 type VappEntityArrayOutput struct{ *pulumi.OutputState }
 
 func (VappEntityArrayOutput) ElementType() reflect.Type {

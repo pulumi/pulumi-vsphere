@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/distributedVirtualSwitch:DistributedVirtualSwitch")]
-    public partial class DistributedVirtualSwitch : Pulumi.CustomResource
+    public partial class DistributedVirtualSwitch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of active uplinks to be used in load
@@ -83,7 +83,8 @@ namespace Pulumi.VSphere
         public Output<bool> CheckBeacon { get; private set; } = null!;
 
         /// <summary>
-        /// The version string of the configuration that this spec is trying to change.
+        /// The current version of the VDS configuration, incremented
+        /// by subsequent updates to the VDS.
         /// </summary>
         [Output("configVersion")]
         public Output<string> ConfigVersion { get; private set; } = null!;
@@ -556,7 +557,7 @@ namespace Pulumi.VSphere
         public Output<string> VdpShareLevel { get; private set; } = null!;
 
         /// <summary>
-        /// - The version of the VDS. BY default, a VDS is created
+        /// The version of the VDS. BY default, a VDS is created
         /// at the latest version supported by the vSphere version if not specified.
         /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
@@ -694,7 +695,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DistributedVirtualSwitchArgs : Pulumi.ResourceArgs
+    public sealed class DistributedVirtualSwitchArgs : global::Pulumi.ResourceArgs
     {
         [Input("activeUplinks")]
         private InputList<string>? _activeUplinks;
@@ -1276,7 +1277,7 @@ namespace Pulumi.VSphere
         public Input<string>? VdpShareLevel { get; set; }
 
         /// <summary>
-        /// - The version of the VDS. BY default, a VDS is created
+        /// The version of the VDS. BY default, a VDS is created
         /// at the latest version supported by the vSphere version if not specified.
         /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
@@ -1379,9 +1380,10 @@ namespace Pulumi.VSphere
         public DistributedVirtualSwitchArgs()
         {
         }
+        public static new DistributedVirtualSwitchArgs Empty => new DistributedVirtualSwitchArgs();
     }
 
-    public sealed class DistributedVirtualSwitchState : Pulumi.ResourceArgs
+    public sealed class DistributedVirtualSwitchState : global::Pulumi.ResourceArgs
     {
         [Input("activeUplinks")]
         private InputList<string>? _activeUplinks;
@@ -1460,7 +1462,8 @@ namespace Pulumi.VSphere
         public Input<bool>? CheckBeacon { get; set; }
 
         /// <summary>
-        /// The version string of the configuration that this spec is trying to change.
+        /// The current version of the VDS configuration, incremented
+        /// by subsequent updates to the VDS.
         /// </summary>
         [Input("configVersion")]
         public Input<string>? ConfigVersion { get; set; }
@@ -1969,7 +1972,7 @@ namespace Pulumi.VSphere
         public Input<string>? VdpShareLevel { get; set; }
 
         /// <summary>
-        /// - The version of the VDS. BY default, a VDS is created
+        /// The version of the VDS. BY default, a VDS is created
         /// at the latest version supported by the vSphere version if not specified.
         /// A VDS can be upgraded to a newer version, but can not be downgraded.
         /// </summary>
@@ -2072,5 +2075,6 @@ namespace Pulumi.VSphere
         public DistributedVirtualSwitchState()
         {
         }
+        public static new DistributedVirtualSwitchState Empty => new DistributedVirtualSwitchState();
     }
 }

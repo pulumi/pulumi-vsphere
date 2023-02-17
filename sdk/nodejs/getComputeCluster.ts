@@ -31,11 +31,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getComputeCluster(args: GetComputeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getComputeCluster:getComputeCluster", {
         "datacenterId": args.datacenterId,
         "name": args.name,
@@ -69,11 +66,40 @@ export interface GetComputeClusterResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * The managed object reference ID of
+     * the root resource pool for the cluster.
+     */
     readonly resourcePoolId: string;
 }
-
+/**
+ * The `vsphere.ComputeCluster` data source can be used to discover the ID of a
+ * cluster in vSphere. This is useful to fetch the ID of a cluster that you want
+ * to use for virtual machine placement via the `vsphere.VirtualMachine` resource, allowing to specify the cluster's root resource pool directly versus
+ * using the alias available through the `vsphere.ResourcePool`
+ * data source.
+ *
+ * > You may also wish to see the `vsphere.ComputeCluster`
+ *  resource for more information about clusters and how to managed the resource
+ *  in this provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ */
 export function getComputeClusterOutput(args: GetComputeClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeClusterResult> {
-    return pulumi.output(args).apply(a => getComputeCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getComputeCluster(a, opts))
 }
 
 /**

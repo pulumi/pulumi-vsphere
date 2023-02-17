@@ -226,6 +226,36 @@ func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOu
 	return o
 }
 
+// The product edition of the license key.
+func (o LicenseOutput) EditionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.EditionKey }).(pulumi.StringOutput)
+}
+
+// A map of key/value pairs to be attached as labels (tags) to the license key.
+func (o LicenseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *License) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The license key to add.
+func (o LicenseOutput) LicenseKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseKey }).(pulumi.StringOutput)
+}
+
+// The display name for the license.
+func (o LicenseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Total number of units (example: CPUs) contained in the license.
+func (o LicenseOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v *License) pulumi.IntOutput { return v.Total }).(pulumi.IntOutput)
+}
+
+// The number of units (example: CPUs) assigned to this license.
+func (o LicenseOutput) Used() pulumi.IntOutput {
+	return o.ApplyT(func(v *License) pulumi.IntOutput { return v.Used }).(pulumi.IntOutput)
+}
+
 type LicenseArrayOutput struct{ *pulumi.OutputState }
 
 func (LicenseArrayOutput) ElementType() reflect.Type {

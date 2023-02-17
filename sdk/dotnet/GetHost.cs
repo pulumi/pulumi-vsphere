@@ -21,31 +21,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostResult> InvokeAsync(GetHostArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
@@ -57,35 +56,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostResult> Invoke(GetHostInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostArgs : Pulumi.InvokeArgs
+    public sealed class GetHostArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -104,9 +102,10 @@ namespace Pulumi.VSphere
         public GetHostArgs()
         {
         }
+        public static new GetHostArgs Empty => new GetHostArgs();
     }
 
-    public sealed class GetHostInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -125,6 +124,7 @@ namespace Pulumi.VSphere
         public GetHostInvokeArgs()
         {
         }
+        public static new GetHostInvokeArgs Empty => new GetHostInvokeArgs();
     }
 
 

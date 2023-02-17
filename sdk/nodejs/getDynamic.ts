@@ -39,11 +39,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDynamic(args: GetDynamicArgs, opts?: pulumi.InvokeOptions): Promise<GetDynamicResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getDynamic:getDynamic", {
         "filters": args.filters,
         "nameRegex": args.nameRegex,
@@ -85,9 +82,42 @@ export interface GetDynamicResult {
     readonly nameRegex?: string;
     readonly type?: string;
 }
-
+/**
+ * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+ *
+ * The `vsphere.getDynamic` data source can be used to get the [managed object reference ID][docs-about-morefs]
+ * of any tagged managed object in vCenter Server by providing a list of tag IDs
+ * and an optional regular expression to filter objects by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const category = vsphere.getTagCategory({
+ *     name: "SomeCategory",
+ * });
+ * const tag1 = vsphere.getTag({
+ *     name: "FirstTag",
+ *     categoryId: data.vsphere_tag_category.cat.id,
+ * });
+ * const tag2 = vsphere.getTag({
+ *     name: "SecondTag",
+ *     categoryId: data.vsphere_tag_category.cat.id,
+ * });
+ * const dyn = Promise.all([tag1, tag1]).then(([tag1, tag11]) => vsphere.getDynamic({
+ *     filters: [
+ *         tag1.id,
+ *         tag11.id,
+ *     ],
+ *     nameRegex: "ubuntu",
+ *     type: "Datacenter",
+ * }));
+ * ```
+ */
 export function getDynamicOutput(args: GetDynamicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicResult> {
-    return pulumi.output(args).apply(a => getDynamic(a, opts))
+    return pulumi.output(args).apply((a: any) => getDynamic(a, opts))
 }
 
 /**

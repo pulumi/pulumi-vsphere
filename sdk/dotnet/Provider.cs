@@ -16,7 +16,7 @@ namespace Pulumi.VSphere
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [VSphereResourceType("pulumi:providers:vsphere")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// govmomi debug path for debug
@@ -89,7 +89,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set, VMware vSphere client will permit unverifiable SSL certificates.
@@ -177,5 +177,6 @@ namespace Pulumi.VSphere
             VimKeepAlive = Utilities.GetEnvInt32("VSPHERE_VIM_KEEP_ALIVE");
             VimSessionPath = Utilities.GetEnv("VSPHERE_VIM_SESSION_PATH");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

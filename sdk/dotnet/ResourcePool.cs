@@ -24,50 +24,48 @@ namespace Pulumi.VSphere
     /// with the default settings for CPU and memory reservations, shares, and limits.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var computeCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
-    ///         {
-    ///             Name = "cluster-01",
-    ///             DatacenterId = datacenter.Id,
-    ///         })));
-    ///         var resourcePool = new VSphere.ResourcePool("resourcePool", new VSphere.ResourcePoolArgs
-    ///         {
-    ///             ParentResourcePoolId = computeCluster.Apply(computeCluster =&gt; computeCluster.ResourcePoolId),
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var resourcePool = new VSphere.ResourcePool("resourcePool", new()
+    ///     {
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// A virtual machine resource could be targeted to use the default resource pool
     /// of the cluster using the following:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
     ///     {
-    ///         var vm = new VSphere.VirtualMachine("vm", new VSphere.VirtualMachineArgs
-    ///         {
-    ///             ResourcePoolId = data.Vsphere_compute_cluster.Cluster.Resource_pool_id,
-    ///         });
-    ///         // ... other configuration ...
-    ///     }
+    ///         ResourcePoolId = data.Vsphere_compute_cluster.Cluster.Resource_pool_id,
+    ///     });
     /// 
-    /// }
+    ///     // ... other configuration ...
+    /// });
     /// ```
     /// 
     /// The following example sets up a parent resource pool in an existing compute cluster
@@ -75,33 +73,34 @@ namespace Pulumi.VSphere
     /// the default settings for CPU and memory reservations, shares, and limits.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "dc-01",
-    ///         }));
-    ///         var computeCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
-    ///         {
-    ///             Name = "cluster-01",
-    ///             DatacenterId = datacenter.Id,
-    ///         })));
-    ///         var resourcePoolParent = new VSphere.ResourcePool("resourcePoolParent", new VSphere.ResourcePoolArgs
-    ///         {
-    ///             ParentResourcePoolId = computeCluster.Apply(computeCluster =&gt; computeCluster.ResourcePoolId),
-    ///         });
-    ///         var resourcePoolChild = new VSphere.ResourcePool("resourcePoolChild", new VSphere.ResourcePoolArgs
-    ///         {
-    ///             ParentResourcePoolId = resourcePoolParent.Id,
-    ///         });
-    ///     }
+    ///         Name = "dc-01",
+    ///     });
     /// 
-    /// }
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var resourcePoolParent = new VSphere.ResourcePool("resourcePoolParent", new()
+    ///     {
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    ///     var resourcePoolChild = new VSphere.ResourcePool("resourcePoolChild", new()
+    ///     {
+    ///         ParentResourcePoolId = resourcePoolParent.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Importing
     /// ### Settings that Require vSphere 7.0 or higher
@@ -111,7 +110,7 @@ namespace Pulumi.VSphere
     /// * `scale_descendants_shares`
     /// </summary>
     [VSphereResourceType("vsphere:index/resourcePool:ResourcePool")]
-    public partial class ResourcePool : Pulumi.CustomResource
+    public partial class ResourcePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines if the reservation on a resource
@@ -276,7 +275,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ResourcePoolArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the reservation on a resource
@@ -412,9 +411,10 @@ namespace Pulumi.VSphere
         public ResourcePoolArgs()
         {
         }
+        public static new ResourcePoolArgs Empty => new ResourcePoolArgs();
     }
 
-    public sealed class ResourcePoolState : Pulumi.ResourceArgs
+    public sealed class ResourcePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the reservation on a resource
@@ -550,5 +550,6 @@ namespace Pulumi.VSphere
         public ResourcePoolState()
         {
         }
+        public static new ResourcePoolState Empty => new ResourcePoolState();
     }
 }

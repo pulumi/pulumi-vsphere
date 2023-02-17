@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/datastoreClusterVmAntiAffinityRule:DatastoreClusterVmAntiAffinityRule")]
-    public partial class DatastoreClusterVmAntiAffinityRule : Pulumi.CustomResource
+    public partial class DatastoreClusterVmAntiAffinityRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -90,7 +90,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DatastoreClusterVmAntiAffinityRuleArgs : Pulumi.ResourceArgs
+    public sealed class DatastoreClusterVmAntiAffinityRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -135,9 +135,10 @@ namespace Pulumi.VSphere
         public DatastoreClusterVmAntiAffinityRuleArgs()
         {
         }
+        public static new DatastoreClusterVmAntiAffinityRuleArgs Empty => new DatastoreClusterVmAntiAffinityRuleArgs();
     }
 
-    public sealed class DatastoreClusterVmAntiAffinityRuleState : Pulumi.ResourceArgs
+    public sealed class DatastoreClusterVmAntiAffinityRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -182,5 +183,6 @@ namespace Pulumi.VSphere
         public DatastoreClusterVmAntiAffinityRuleState()
         {
         }
+        public static new DatastoreClusterVmAntiAffinityRuleState Empty => new DatastoreClusterVmAntiAffinityRuleState();
     }
 }

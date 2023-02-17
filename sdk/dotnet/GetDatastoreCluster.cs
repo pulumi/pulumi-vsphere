@@ -22,31 +22,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var datastoreCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
-        ///         {
-        ///             Name = "datastore-cluster-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+        ///     {
+        ///         Name = "datastore-cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreClusterResult> InvokeAsync(GetDatastoreClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.DatastoreCluster` data source can be used to discover the ID of a
@@ -59,35 +58,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var datastoreCluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastoreCluster.InvokeAsync(new VSphere.GetDatastoreClusterArgs
-        ///         {
-        ///             Name = "datastore-cluster-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var datastoreCluster = VSphere.GetDatastoreCluster.Invoke(new()
+        ///     {
+        ///         Name = "datastore-cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatastoreClusterResult> Invoke(GetDatastoreClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreClusterResult>("vsphere:index/getDatastoreCluster:getDatastoreCluster", args ?? new GetDatastoreClusterInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDatastoreClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference
@@ -108,9 +106,10 @@ namespace Pulumi.VSphere
         public GetDatastoreClusterArgs()
         {
         }
+        public static new GetDatastoreClusterArgs Empty => new GetDatastoreClusterArgs();
     }
 
-    public sealed class GetDatastoreClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference
@@ -131,6 +130,7 @@ namespace Pulumi.VSphere
         public GetDatastoreClusterInvokeArgs()
         {
         }
+        public static new GetDatastoreClusterInvokeArgs Empty => new GetDatastoreClusterInvokeArgs();
     }
 
 

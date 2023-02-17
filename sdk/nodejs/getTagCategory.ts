@@ -20,17 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const category = pulumi.output(vsphere.getTagCategory({
+ * const category = vsphere.getTagCategory({
  *     name: "example-category",
- * }));
+ * });
  * ```
  */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getTagCategory:getTagCategory", {
         "name": args.name,
     }, opts);
@@ -59,9 +56,29 @@ export interface GetTagCategoryResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.TagCategory` data source can be used to reference tag categories
+ * that are not managed by this provider. Its attributes are the same as the
+ * `vsphere.TagCategory` resource, and, like importing,
+ * the data source uses a name and category as search criteria. The `id` and other
+ * attributes are populated with the data found by the search.
+ *
+ * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
+ * requires vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const category = vsphere.getTagCategory({
+ *     name: "example-category",
+ * });
+ * ```
+ */
 export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagCategoryResult> {
-    return pulumi.output(args).apply(a => getTagCategory(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagCategory(a, opts))
 }
 
 /**

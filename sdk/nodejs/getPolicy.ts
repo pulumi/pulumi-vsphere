@@ -18,20 +18,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const prodPlatinumReplicated = pulumi.output(vsphere.getPolicy({
+ * const prodPlatinumReplicated = vsphere.getPolicy({
  *     name: "prod_platinum_replicated",
- * }));
- * const devSilverNonreplicated = pulumi.output(vsphere.getPolicy({
+ * });
+ * const devSilverNonreplicated = vsphere.getPolicy({
  *     name: "dev_silver_nonreplicated",
- * }));
+ * });
  * ```
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getPolicy:getPolicy", {
         "name": args.name,
     }, opts);
@@ -57,9 +54,30 @@ export interface GetPolicyResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.getPolicy` data source can be used to discover the UUID of a
+ * storage policy. This can then be used with other resources or data sources that
+ * use a storage policy.
+ *
+ * > **NOTE:** Storage policies are not supported on direct ESXi hosts and
+ * requires vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const prodPlatinumReplicated = vsphere.getPolicy({
+ *     name: "prod_platinum_replicated",
+ * });
+ * const devSilverNonreplicated = vsphere.getPolicy({
+ *     name: "dev_silver_nonreplicated",
+ * });
+ * ```
+ */
 export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
-    return pulumi.output(args).apply(a => getPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
 }
 
 /**

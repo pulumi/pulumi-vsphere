@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/dpmHostOverride:DpmHostOverride")]
-    public partial class DpmHostOverride : Pulumi.CustomResource
+    public partial class DpmHostOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -85,7 +85,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DpmHostOverrideArgs : Pulumi.ResourceArgs
+    public sealed class DpmHostOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -119,9 +119,10 @@ namespace Pulumi.VSphere
         public DpmHostOverrideArgs()
         {
         }
+        public static new DpmHostOverrideArgs Empty => new DpmHostOverrideArgs();
     }
 
-    public sealed class DpmHostOverrideState : Pulumi.ResourceArgs
+    public sealed class DpmHostOverrideState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -155,5 +156,6 @@ namespace Pulumi.VSphere
         public DpmHostOverrideState()
         {
         }
+        public static new DpmHostOverrideState Empty => new DpmHostOverrideState();
     }
 }

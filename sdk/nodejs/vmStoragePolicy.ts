@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,63 +21,57 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const environment = pulumi.output(vsphere.getTagCategory({
+ * const environment = vsphere.getTagCategory({
  *     name: "environment",
- * }));
- * const serviceLevel = pulumi.output(vsphere.getTagCategory({
+ * });
+ * const serviceLevel = vsphere.getTagCategory({
  *     name: "service_level",
- * }));
- * const replication = pulumi.output(vsphere.getTagCategory({
+ * });
+ * const replication = vsphere.getTagCategory({
  *     name: "replication",
- * }));
- * const production = pulumi.output(vsphere.getTag({
+ * });
+ * const production = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.environment.id",
  *     name: "production",
- * }));
- * const development = pulumi.output(vsphere.getTag({
+ * });
+ * const development = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.environment.id",
  *     name: "development",
- * }));
- * const platinum = pulumi.output(vsphere.getTag({
+ * });
+ * const platinum = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "platinum",
- * }));
- * const gold = pulumi.output(vsphere.getTag({
+ * });
+ * const gold = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "platinum",
- * }));
- * const silver = pulumi.output(vsphere.getTag({
+ * });
+ * const silver = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "silver",
- * }));
- * const bronze = pulumi.output(vsphere.getTag({
+ * });
+ * const bronze = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.service_level.id",
  *     name: "bronze",
- * }));
- * const replicated = pulumi.output(vsphere.getTag({
+ * });
+ * const replicated = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.replication.id",
  *     name: "replicated",
- * }));
- * const nonReplicated = pulumi.output(vsphere.getTag({
+ * });
+ * const nonReplicated = vsphere.getTag({
  *     categoryId: "data.vsphere_tag_category.replication.id",
  *     name: "non_replicated",
- * }));
- * const prodDatastore = new vsphere.VmfsDatastore("prod_datastore", {
- *     // ... other configuration ...
- *     tags: [
- *         "data.vsphere_tag.production.id",
- *         "data.vsphere_tag.platinum.id",
- *         "data.vsphere_tag.replicated.id",
- *     ],
  * });
- * const devDatastore = new vsphere.NasDatastore("dev_datastore", {
- *     // ... other configuration ...
- *     tags: [
- *         "data.vsphere_tag.development.id",
- *         "data.vsphere_tag.silver.id",
- *         "data.vsphere_tag.non_replicated.id",
- *     ],
- * });
+ * const prodDatastore = new vsphere.VmfsDatastore("prodDatastore", {tags: [
+ *     "data.vsphere_tag.production.id",
+ *     "data.vsphere_tag.platinum.id",
+ *     "data.vsphere_tag.replicated.id",
+ * ]});
+ * const devDatastore = new vsphere.NasDatastore("devDatastore", {tags: [
+ *     "data.vsphere_tag.development.id",
+ *     "data.vsphere_tag.silver.id",
+ *     "data.vsphere_tag.non_replicated.id",
+ * ]});
  * ```
  *
  * Next, storage policies are created and `tagRules` are applied.

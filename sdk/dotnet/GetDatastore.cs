@@ -23,31 +23,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var datastore = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
-        ///         {
-        ///             Name = "datastore-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getDatastore` data source can be used to discover the ID of a
@@ -61,35 +60,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var datastore = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDatastore.InvokeAsync(new VSphere.GetDatastoreArgs
-        ///         {
-        ///             Name = "datastore-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var datastore = VSphere.GetDatastore.Invoke(new()
+        ///     {
+        ///         Name = "datastore-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatastoreResult> Invoke(GetDatastoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDatastoreArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -109,9 +107,10 @@ namespace Pulumi.VSphere
         public GetDatastoreArgs()
         {
         }
+        public static new GetDatastoreArgs Empty => new GetDatastoreArgs();
     }
 
-    public sealed class GetDatastoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -131,6 +130,7 @@ namespace Pulumi.VSphere
         public GetDatastoreInvokeArgs()
         {
         }
+        public static new GetDatastoreInvokeArgs Empty => new GetDatastoreInvokeArgs();
     }
 
 

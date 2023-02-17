@@ -11,7 +11,9 @@ import (
 )
 
 type ComputeClusterVsanDiskGroup struct {
-	Cache    *string  `pulumi:"cache"`
+	// The canonical name of the disk to use for vSAN cache.
+	Cache *string `pulumi:"cache"`
+	// An array of disk canonical names for vSAN storage.
 	Storages []string `pulumi:"storages"`
 }
 
@@ -27,7 +29,9 @@ type ComputeClusterVsanDiskGroupInput interface {
 }
 
 type ComputeClusterVsanDiskGroupArgs struct {
-	Cache    pulumi.StringPtrInput   `pulumi:"cache"`
+	// The canonical name of the disk to use for vSAN cache.
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// An array of disk canonical names for vSAN storage.
 	Storages pulumi.StringArrayInput `pulumi:"storages"`
 }
 
@@ -82,10 +86,12 @@ func (o ComputeClusterVsanDiskGroupOutput) ToComputeClusterVsanDiskGroupOutputWi
 	return o
 }
 
+// The canonical name of the disk to use for vSAN cache.
 func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) *string { return v.Cache }).(pulumi.StringPtrOutput)
 }
 
+// An array of disk canonical names for vSAN storage.
 func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
 }
@@ -1227,12 +1233,12 @@ func (o HostPortGroupPortArrayOutput) Index(i pulumi.IntInput) HostPortGroupPort
 type VirtualMachineCdrom struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice *bool `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path *string `pulumi:"path"`
 }
 
@@ -1250,12 +1256,12 @@ type VirtualMachineCdromInput interface {
 type VirtualMachineCdromArgs struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -1271,45 +1277,29 @@ func (i VirtualMachineCdromArgs) ToVirtualMachineCdromOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromOutput)
 }
 
-func (i VirtualMachineCdromArgs) ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput {
-	return i.ToVirtualMachineCdromPtrOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineCdromArgs) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromOutput).ToVirtualMachineCdromPtrOutputWithContext(ctx)
-}
-
-// VirtualMachineCdromPtrInput is an input type that accepts VirtualMachineCdromArgs, VirtualMachineCdromPtr and VirtualMachineCdromPtrOutput values.
-// You can construct a concrete instance of `VirtualMachineCdromPtrInput` via:
+// VirtualMachineCdromArrayInput is an input type that accepts VirtualMachineCdromArray and VirtualMachineCdromArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineCdromArrayInput` via:
 //
-//	        VirtualMachineCdromArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualMachineCdromPtrInput interface {
+//	VirtualMachineCdromArray{ VirtualMachineCdromArgs{...} }
+type VirtualMachineCdromArrayInput interface {
 	pulumi.Input
 
-	ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput
-	ToVirtualMachineCdromPtrOutputWithContext(context.Context) VirtualMachineCdromPtrOutput
+	ToVirtualMachineCdromArrayOutput() VirtualMachineCdromArrayOutput
+	ToVirtualMachineCdromArrayOutputWithContext(context.Context) VirtualMachineCdromArrayOutput
 }
 
-type virtualMachineCdromPtrType VirtualMachineCdromArgs
+type VirtualMachineCdromArray []VirtualMachineCdromInput
 
-func VirtualMachineCdromPtr(v *VirtualMachineCdromArgs) VirtualMachineCdromPtrInput {
-	return (*virtualMachineCdromPtrType)(v)
+func (VirtualMachineCdromArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineCdrom)(nil)).Elem()
 }
 
-func (*virtualMachineCdromPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineCdrom)(nil)).Elem()
+func (i VirtualMachineCdromArray) ToVirtualMachineCdromArrayOutput() VirtualMachineCdromArrayOutput {
+	return i.ToVirtualMachineCdromArrayOutputWithContext(context.Background())
 }
 
-func (i *virtualMachineCdromPtrType) ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput {
-	return i.ToVirtualMachineCdromPtrOutputWithContext(context.Background())
-}
-
-func (i *virtualMachineCdromPtrType) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromPtrOutput)
+func (i VirtualMachineCdromArray) ToVirtualMachineCdromArrayOutputWithContext(ctx context.Context) VirtualMachineCdromArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineCdromArrayOutput)
 }
 
 type VirtualMachineCdromOutput struct{ *pulumi.OutputState }
@@ -1326,22 +1316,12 @@ func (o VirtualMachineCdromOutput) ToVirtualMachineCdromOutputWithContext(ctx co
 	return o
 }
 
-func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput {
-	return o.ToVirtualMachineCdromPtrOutputWithContext(context.Background())
-}
-
-func (o VirtualMachineCdromOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineCdrom) *VirtualMachineCdrom {
-		return &v
-	}).(VirtualMachineCdromPtrOutput)
-}
-
 // Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 func (o VirtualMachineCdromOutput) ClientDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *bool { return v.ClientDevice }).(pulumi.BoolPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -1355,82 +1335,29 @@ func (o VirtualMachineCdromOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 func (o VirtualMachineCdromOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-type VirtualMachineCdromPtrOutput struct{ *pulumi.OutputState }
+type VirtualMachineCdromArrayOutput struct{ *pulumi.OutputState }
 
-func (VirtualMachineCdromPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineCdrom)(nil)).Elem()
+func (VirtualMachineCdromArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineCdrom)(nil)).Elem()
 }
 
-func (o VirtualMachineCdromPtrOutput) ToVirtualMachineCdromPtrOutput() VirtualMachineCdromPtrOutput {
+func (o VirtualMachineCdromArrayOutput) ToVirtualMachineCdromArrayOutput() VirtualMachineCdromArrayOutput {
 	return o
 }
 
-func (o VirtualMachineCdromPtrOutput) ToVirtualMachineCdromPtrOutputWithContext(ctx context.Context) VirtualMachineCdromPtrOutput {
+func (o VirtualMachineCdromArrayOutput) ToVirtualMachineCdromArrayOutputWithContext(ctx context.Context) VirtualMachineCdromArrayOutput {
 	return o
 }
 
-func (o VirtualMachineCdromPtrOutput) Elem() VirtualMachineCdromOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) VirtualMachineCdrom {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachineCdrom
-		return ret
+func (o VirtualMachineCdromArrayOutput) Index(i pulumi.IntInput) VirtualMachineCdromOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineCdrom {
+		return vs[0].([]VirtualMachineCdrom)[vs[1].(int)]
 	}).(VirtualMachineCdromOutput)
-}
-
-// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
-func (o VirtualMachineCdromPtrOutput) ClientDevice() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ClientDevice
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
-func (o VirtualMachineCdromPtrOutput) DatastoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatastoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o VirtualMachineCdromPtrOutput) DeviceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeviceAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the device within the virtual machine.
-func (o VirtualMachineCdromPtrOutput) Key() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.IntPtrOutput)
-}
-
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
-func (o VirtualMachineCdromPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineCdrom) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineClone struct {
@@ -2537,7 +2464,7 @@ type VirtualMachineDisk struct {
 	Attach *bool `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType *string `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
@@ -2560,11 +2487,11 @@ type VirtualMachineDisk struct {
 	Key *int `pulumi:"key"`
 	// A label for the virtual disk. Forces a new disk, if changed.
 	Label string `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path *string `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size *int `pulumi:"size"`
-	// The UUID of the storage policy to assign to the virtual disk.
+	// The ID of the storage policy to assign to the home directory of a virtual machine.
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
 	ThinProvisioned *bool `pulumi:"thinProvisioned"`
@@ -2592,7 +2519,7 @@ type VirtualMachineDiskArgs struct {
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
-	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
@@ -2615,11 +2542,11 @@ type VirtualMachineDiskArgs struct {
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// A label for the virtual disk. Forces a new disk, if changed.
 	Label pulumi.StringInput `pulumi:"label"`
-	// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size pulumi.IntPtrInput `pulumi:"size"`
-	// The UUID of the storage policy to assign to the virtual disk.
+	// The ID of the storage policy to assign to the home directory of a virtual machine.
 	StoragePolicyId pulumi.StringPtrInput `pulumi:"storagePolicyId"`
 	// If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerlyScrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
 	ThinProvisioned pulumi.BoolPtrInput `pulumi:"thinProvisioned"`
@@ -2692,7 +2619,7 @@ func (o VirtualMachineDiskOutput) ControllerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ControllerType }).(pulumi.StringPtrOutput)
 }
 
-// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -2751,7 +2678,7 @@ func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
 func (o VirtualMachineDiskOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2761,7 +2688,7 @@ func (o VirtualMachineDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// The UUID of the storage policy to assign to the virtual disk.
+// The ID of the storage policy to assign to the home directory of a virtual machine.
 func (o VirtualMachineDiskOutput) StoragePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.StoragePolicyId }).(pulumi.StringPtrOutput)
 }
@@ -3494,7 +3421,7 @@ func (o VmStoragePolicyTagRuleArrayOutput) Index(i pulumi.IntInput) VmStoragePol
 type VnicIpv4 struct {
 	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp *bool `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw *string `pulumi:"gw"`
 	// Address of the interface, if DHCP is not set.
 	Ip *string `pulumi:"ip"`
@@ -3516,7 +3443,7 @@ type VnicIpv4Input interface {
 type VnicIpv4Args struct {
 	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
 	// Address of the interface, if DHCP is not set.
 	Ip pulumi.StringPtrInput `pulumi:"ip"`
@@ -3606,7 +3533,7 @@ func (o VnicIpv4Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv4Output) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *string { return v.Gw }).(pulumi.StringPtrOutput)
 }
@@ -3655,7 +3582,7 @@ func (o VnicIpv4PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv4PtrOutput) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *string {
 		if v == nil {
@@ -3692,7 +3619,7 @@ type VnicIpv6 struct {
 	Autoconfig *bool `pulumi:"autoconfig"`
 	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp *bool `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw *string `pulumi:"gw"`
 }
 
@@ -3714,7 +3641,7 @@ type VnicIpv6Args struct {
 	Autoconfig pulumi.BoolPtrInput `pulumi:"autoconfig"`
 	// Use DHCP to configure the interface's IPv4 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
-	// IP address of the default gateway, if DHCP or autoconfig is not set.
+	// IP address of the default gateway, if DHCP is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
 }
 
@@ -3810,7 +3737,7 @@ func (o VnicIpv6Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv6Output) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *string { return v.Gw }).(pulumi.StringPtrOutput)
 }
@@ -3869,7 +3796,7 @@ func (o VnicIpv6PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// IP address of the default gateway, if DHCP or autoconfig is not set.
+// IP address of the default gateway, if DHCP is not set.
 func (o VnicIpv6PtrOutput) Gw() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VnicIpv6) *string {
 		if v == nil {
@@ -4014,8 +3941,8 @@ func (o GetVirtualMachineDiskArrayOutput) Index(i pulumi.IntInput) GetVirtualMac
 
 type GetVirtualMachineNetworkInterface struct {
 	// The network interface types for each network interface found
-	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-	// `vmxnet3`.
+	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+	// `vmxnet3vrdma`, or `vmxnet3`.
 	AdapterType string `pulumi:"adapterType"`
 	// The upper bandwidth limit of this network interface,
 	// in Mbits/sec.
@@ -4049,8 +3976,8 @@ type GetVirtualMachineNetworkInterfaceInput interface {
 
 type GetVirtualMachineNetworkInterfaceArgs struct {
 	// The network interface types for each network interface found
-	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-	// `vmxnet3`.
+	// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+	// `vmxnet3vrdma`, or `vmxnet3`.
 	AdapterType pulumi.StringInput `pulumi:"adapterType"`
 	// The upper bandwidth limit of this network interface,
 	// in Mbits/sec.
@@ -4123,8 +4050,8 @@ func (o GetVirtualMachineNetworkInterfaceOutput) ToGetVirtualMachineNetworkInter
 }
 
 // The network interface types for each network interface found
-// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-// `vmxnet3`.
+// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+// `vmxnet3vrdma`, or `vmxnet3`.
 func (o GetVirtualMachineNetworkInterfaceOutput) AdapterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualMachineNetworkInterface) string { return v.AdapterType }).(pulumi.StringOutput)
 }
@@ -4337,7 +4264,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortInput)(nil)).Elem(), HostPortGroupPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostPortGroupPortArrayInput)(nil)).Elem(), HostPortGroupPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromInput)(nil)).Elem(), VirtualMachineCdromArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromPtrInput)(nil)).Elem(), VirtualMachineCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCdromArrayInput)(nil)).Elem(), VirtualMachineCdromArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneInput)(nil)).Elem(), VirtualMachineCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineClonePtrInput)(nil)).Elem(), VirtualMachineCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineCloneCustomizeInput)(nil)).Elem(), VirtualMachineCloneCustomizeArgs{})
@@ -4387,7 +4314,7 @@ func init() {
 	pulumi.RegisterOutputType(HostPortGroupPortOutput{})
 	pulumi.RegisterOutputType(HostPortGroupPortArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCdromOutput{})
-	pulumi.RegisterOutputType(VirtualMachineCdromPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineCdromArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneOutput{})
 	pulumi.RegisterOutputType(VirtualMachineClonePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineCloneCustomizeOutput{})

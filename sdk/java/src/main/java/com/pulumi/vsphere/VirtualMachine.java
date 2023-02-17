@@ -100,15 +100,15 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      * 
      */
-    @Export(name="cdrom", type=VirtualMachineCdrom.class, parameters={})
-    private Output</* @Nullable */ VirtualMachineCdrom> cdrom;
+    @Export(name="cdroms", type=List.class, parameters={VirtualMachineCdrom.class})
+    private Output</* @Nullable */ List<VirtualMachineCdrom>> cdroms;
 
     /**
      * @return A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      * 
      */
-    public Output<Optional<VirtualMachineCdrom>> cdrom() {
-        return Codegen.optional(this.cdrom);
+    public Output<Optional<List<VirtualMachineCdrom>>> cdroms() {
+        return Codegen.optional(this.cdroms);
     }
     /**
      * A unique identifier for a given version of the last configuration was applied.
@@ -237,14 +237,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cpuShareLevel);
     }
     /**
-     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+     * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
      * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
-     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on
+     * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -279,14 +279,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datastoreClusterId);
     }
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     @Export(name="datastoreId", type=String.class, parameters={})
     private Output<String> datastoreId;
 
     /**
-     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
      */
     public Output<String> datastoreId() {
@@ -389,6 +389,20 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> extraConfig() {
         return Codegen.optional(this.extraConfig);
+    }
+    /**
+     * Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * 
+     */
+    @Export(name="extraConfigRebootRequired", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> extraConfigRebootRequired;
+
+    /**
+     * @return Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
+     * 
+     */
+    public Output<Optional<Boolean>> extraConfigRebootRequired() {
+        return Codegen.optional(this.extraConfigRebootRequired);
     }
     /**
      * The firmware for the virtual machine. One of `bios` or `efi`.
@@ -657,14 +671,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.migrateWaitTimeout);
     }
     /**
-     * The machine object ID from VMware vSphere.
+     * The managed object reference ID of the created virtual machine.
      * 
      */
     @Export(name="moid", type=String.class, parameters={})
     private Output<String> moid;
 
     /**
-     * @return The machine object ID from VMware vSphere.
+     * @return The managed object reference ID of the created virtual machine.
      * 
      */
     public Output<String> moid() {
@@ -987,14 +1001,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.shutdownWaitTimeout);
     }
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     @Export(name="storagePolicyId", type=String.class, parameters={})
     private Output<String> storagePolicyId;
 
     /**
-     * @return The UUID of the storage policy to assign to the virtual disk.
+     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
     public Output<String> storagePolicyId() {

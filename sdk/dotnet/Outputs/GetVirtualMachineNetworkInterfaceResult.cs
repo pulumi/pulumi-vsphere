@@ -14,13 +14,13 @@ namespace Pulumi.VSphere.Outputs
     public sealed class GetVirtualMachineNetworkInterfaceResult
     {
         /// <summary>
-        /// The network interface types for each network interface found
-        /// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-        /// `vmxnet3`.
+        /// The network interface types for each network interface found 
+        /// on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+        /// `vmxnet3vrdma`, or `vmxnet3`.
         /// </summary>
         public readonly string AdapterType;
         /// <summary>
-        /// The upper bandwidth limit of this network interface,
+        /// The upper bandwidth limit of this network interface, 
         /// in Mbits/sec.
         /// </summary>
         public readonly int? BandwidthLimit;

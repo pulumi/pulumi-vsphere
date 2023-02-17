@@ -1091,14 +1091,52 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of disk UUIDs to add to the vSAN cluster.
+     * Enables vSAN compression on the
+     * cluster.
+     * 
+     */
+    @Import(name="vsanCompressionEnabled")
+    private @Nullable Output<Boolean> vsanCompressionEnabled;
+
+    /**
+     * @return Enables vSAN compression on the
+     * cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanCompressionEnabled() {
+        return Optional.ofNullable(this.vsanCompressionEnabled);
+    }
+
+    /**
+     * Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     * 
+     */
+    @Import(name="vsanDedupEnabled")
+    private @Nullable Output<Boolean> vsanDedupEnabled;
+
+    /**
+     * @return Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanDedupEnabled() {
+        return Optional.ofNullable(this.vsanDedupEnabled);
+    }
+
+    /**
+     * Represents the configuration of a host disk
+     * group in the cluster.
      * 
      */
     @Import(name="vsanDiskGroups")
     private @Nullable Output<List<ComputeClusterVsanDiskGroupArgs>> vsanDiskGroups;
 
     /**
-     * @return A list of disk UUIDs to add to the vSAN cluster.
+     * @return Represents the configuration of a host disk
+     * group in the cluster.
      * 
      */
     public Optional<Output<List<ComputeClusterVsanDiskGroupArgs>>> vsanDiskGroups() {
@@ -1106,18 +1144,145 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether the VSAN service is enabled for the cluster.
+     * Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     * 
+     */
+    @Import(name="vsanDitEncryptionEnabled")
+    private @Nullable Output<Boolean> vsanDitEncryptionEnabled;
+
+    /**
+     * @return Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanDitEncryptionEnabled() {
+        return Optional.ofNullable(this.vsanDitEncryptionEnabled);
+    }
+
+    /**
+     * Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+     * 
+     */
+    @Import(name="vsanDitRekeyInterval")
+    private @Nullable Output<Integer> vsanDitRekeyInterval;
+
+    /**
+     * @return Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+     * 
+     */
+    public Optional<Output<Integer>> vsanDitRekeyInterval() {
+        return Optional.ofNullable(this.vsanDitRekeyInterval);
+    }
+
+    /**
+     * Enables vSAN on the cluster.
      * 
      */
     @Import(name="vsanEnabled")
     private @Nullable Output<Boolean> vsanEnabled;
 
     /**
-     * @return Whether the VSAN service is enabled for the cluster.
+     * @return Enables vSAN on the cluster.
      * 
      */
     public Optional<Output<Boolean>> vsanEnabled() {
         return Optional.ofNullable(this.vsanEnabled);
+    }
+
+    /**
+     * Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     * 
+     */
+    @Import(name="vsanNetworkDiagnosticModeEnabled")
+    private @Nullable Output<Boolean> vsanNetworkDiagnosticModeEnabled;
+
+    /**
+     * @return Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanNetworkDiagnosticModeEnabled() {
+        return Optional.ofNullable(this.vsanNetworkDiagnosticModeEnabled);
+    }
+
+    /**
+     * Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     * 
+     */
+    @Import(name="vsanPerformanceEnabled")
+    private @Nullable Output<Boolean> vsanPerformanceEnabled;
+
+    /**
+     * @return Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanPerformanceEnabled() {
+        return Optional.ofNullable(this.vsanPerformanceEnabled);
+    }
+
+    /**
+     * The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+     * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     * 
+     */
+    @Import(name="vsanRemoteDatastoreIds")
+    private @Nullable Output<List<String>> vsanRemoteDatastoreIds;
+
+    /**
+     * @return The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+     * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     * 
+     */
+    public Optional<Output<List<String>>> vsanRemoteDatastoreIds() {
+        return Optional.ofNullable(this.vsanRemoteDatastoreIds);
+    }
+
+    /**
+     * Enables vSAN unmap on the cluster.
+     * 
+     */
+    @Import(name="vsanUnmapEnabled")
+    private @Nullable Output<Boolean> vsanUnmapEnabled;
+
+    /**
+     * @return Enables vSAN unmap on the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanUnmapEnabled() {
+        return Optional.ofNullable(this.vsanUnmapEnabled);
+    }
+
+    /**
+     * Enables verbose mode for vSAN
+     * performance service on the cluster.
+     * 
+     */
+    @Import(name="vsanVerboseModeEnabled")
+    private @Nullable Output<Boolean> vsanVerboseModeEnabled;
+
+    /**
+     * @return Enables verbose mode for vSAN
+     * performance service on the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> vsanVerboseModeEnabled() {
+        return Optional.ofNullable(this.vsanVerboseModeEnabled);
     }
 
     private ComputeClusterArgs() {}
@@ -1177,8 +1342,17 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.proactiveHaProviderIds = $.proactiveHaProviderIds;
         this.proactiveHaSevereRemediation = $.proactiveHaSevereRemediation;
         this.tags = $.tags;
+        this.vsanCompressionEnabled = $.vsanCompressionEnabled;
+        this.vsanDedupEnabled = $.vsanDedupEnabled;
         this.vsanDiskGroups = $.vsanDiskGroups;
+        this.vsanDitEncryptionEnabled = $.vsanDitEncryptionEnabled;
+        this.vsanDitRekeyInterval = $.vsanDitRekeyInterval;
         this.vsanEnabled = $.vsanEnabled;
+        this.vsanNetworkDiagnosticModeEnabled = $.vsanNetworkDiagnosticModeEnabled;
+        this.vsanPerformanceEnabled = $.vsanPerformanceEnabled;
+        this.vsanRemoteDatastoreIds = $.vsanRemoteDatastoreIds;
+        this.vsanUnmapEnabled = $.vsanUnmapEnabled;
+        this.vsanVerboseModeEnabled = $.vsanVerboseModeEnabled;
     }
 
     public static Builder builder() {
@@ -2654,7 +2828,56 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vsanDiskGroups A list of disk UUIDs to add to the vSAN cluster.
+         * @param vsanCompressionEnabled Enables vSAN compression on the
+         * cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanCompressionEnabled(@Nullable Output<Boolean> vsanCompressionEnabled) {
+            $.vsanCompressionEnabled = vsanCompressionEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanCompressionEnabled Enables vSAN compression on the
+         * cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanCompressionEnabled(Boolean vsanCompressionEnabled) {
+            return vsanCompressionEnabled(Output.of(vsanCompressionEnabled));
+        }
+
+        /**
+         * @param vsanDedupEnabled Enables vSAN deduplication on the cluster.
+         * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+         * compression must also be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDedupEnabled(@Nullable Output<Boolean> vsanDedupEnabled) {
+            $.vsanDedupEnabled = vsanDedupEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanDedupEnabled Enables vSAN deduplication on the cluster.
+         * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+         * compression must also be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDedupEnabled(Boolean vsanDedupEnabled) {
+            return vsanDedupEnabled(Output.of(vsanDedupEnabled));
+        }
+
+        /**
+         * @param vsanDiskGroups Represents the configuration of a host disk
+         * group in the cluster.
          * 
          * @return builder
          * 
@@ -2665,7 +2888,8 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vsanDiskGroups A list of disk UUIDs to add to the vSAN cluster.
+         * @param vsanDiskGroups Represents the configuration of a host disk
+         * group in the cluster.
          * 
          * @return builder
          * 
@@ -2675,7 +2899,8 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vsanDiskGroups A list of disk UUIDs to add to the vSAN cluster.
+         * @param vsanDiskGroups Represents the configuration of a host disk
+         * group in the cluster.
          * 
          * @return builder
          * 
@@ -2685,7 +2910,59 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vsanEnabled Whether the VSAN service is enabled for the cluster.
+         * @param vsanDitEncryptionEnabled Enables vSAN data-in-transit
+         * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+         * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+         * at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDitEncryptionEnabled(@Nullable Output<Boolean> vsanDitEncryptionEnabled) {
+            $.vsanDitEncryptionEnabled = vsanDitEncryptionEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanDitEncryptionEnabled Enables vSAN data-in-transit
+         * encryption on the cluster. Conflicts with `vsan_remote_datastore_ids`, i.e.,
+         * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+         * at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDitEncryptionEnabled(Boolean vsanDitEncryptionEnabled) {
+            return vsanDitEncryptionEnabled(Output.of(vsanDitEncryptionEnabled));
+        }
+
+        /**
+         * @param vsanDitRekeyInterval Indicates the rekey interval in
+         * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+         * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDitRekeyInterval(@Nullable Output<Integer> vsanDitRekeyInterval) {
+            $.vsanDitRekeyInterval = vsanDitRekeyInterval;
+            return this;
+        }
+
+        /**
+         * @param vsanDitRekeyInterval Indicates the rekey interval in
+         * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+         * 10800 (feature defaults to 1440). Conflicts with `vsan_remote_datastore_ids`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanDitRekeyInterval(Integer vsanDitRekeyInterval) {
+            return vsanDitRekeyInterval(Output.of(vsanDitRekeyInterval));
+        }
+
+        /**
+         * @param vsanEnabled Enables vSAN on the cluster.
          * 
          * @return builder
          * 
@@ -2696,13 +2973,143 @@ public final class ComputeClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vsanEnabled Whether the VSAN service is enabled for the cluster.
+         * @param vsanEnabled Enables vSAN on the cluster.
          * 
          * @return builder
          * 
          */
         public Builder vsanEnabled(Boolean vsanEnabled) {
             return vsanEnabled(Output.of(vsanEnabled));
+        }
+
+        /**
+         * @param vsanNetworkDiagnosticModeEnabled Enables network
+         * diagnostic mode for vSAN performance service on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanNetworkDiagnosticModeEnabled(@Nullable Output<Boolean> vsanNetworkDiagnosticModeEnabled) {
+            $.vsanNetworkDiagnosticModeEnabled = vsanNetworkDiagnosticModeEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanNetworkDiagnosticModeEnabled Enables network
+         * diagnostic mode for vSAN performance service on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanNetworkDiagnosticModeEnabled(Boolean vsanNetworkDiagnosticModeEnabled) {
+            return vsanNetworkDiagnosticModeEnabled(Output.of(vsanNetworkDiagnosticModeEnabled));
+        }
+
+        /**
+         * @param vsanPerformanceEnabled Enables vSAN performance service on
+         * the cluster. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanPerformanceEnabled(@Nullable Output<Boolean> vsanPerformanceEnabled) {
+            $.vsanPerformanceEnabled = vsanPerformanceEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanPerformanceEnabled Enables vSAN performance service on
+         * the cluster. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanPerformanceEnabled(Boolean vsanPerformanceEnabled) {
+            return vsanPerformanceEnabled(Output.of(vsanPerformanceEnabled));
+        }
+
+        /**
+         * @param vsanRemoteDatastoreIds The remote vSAN datastore IDs to be
+         * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+         * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+         * data-in-transit encryption feature at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanRemoteDatastoreIds(@Nullable Output<List<String>> vsanRemoteDatastoreIds) {
+            $.vsanRemoteDatastoreIds = vsanRemoteDatastoreIds;
+            return this;
+        }
+
+        /**
+         * @param vsanRemoteDatastoreIds The remote vSAN datastore IDs to be
+         * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+         * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+         * data-in-transit encryption feature at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanRemoteDatastoreIds(List<String> vsanRemoteDatastoreIds) {
+            return vsanRemoteDatastoreIds(Output.of(vsanRemoteDatastoreIds));
+        }
+
+        /**
+         * @param vsanRemoteDatastoreIds The remote vSAN datastore IDs to be
+         * mounted to this cluster. Conflicts with `vsan_dit_encryption_enabled` and
+         * `vsan_dit_rekey_interval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+         * data-in-transit encryption feature at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanRemoteDatastoreIds(String... vsanRemoteDatastoreIds) {
+            return vsanRemoteDatastoreIds(List.of(vsanRemoteDatastoreIds));
+        }
+
+        /**
+         * @param vsanUnmapEnabled Enables vSAN unmap on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanUnmapEnabled(@Nullable Output<Boolean> vsanUnmapEnabled) {
+            $.vsanUnmapEnabled = vsanUnmapEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanUnmapEnabled Enables vSAN unmap on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanUnmapEnabled(Boolean vsanUnmapEnabled) {
+            return vsanUnmapEnabled(Output.of(vsanUnmapEnabled));
+        }
+
+        /**
+         * @param vsanVerboseModeEnabled Enables verbose mode for vSAN
+         * performance service on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanVerboseModeEnabled(@Nullable Output<Boolean> vsanVerboseModeEnabled) {
+            $.vsanVerboseModeEnabled = vsanVerboseModeEnabled;
+            return this;
+        }
+
+        /**
+         * @param vsanVerboseModeEnabled Enables verbose mode for vSAN
+         * performance service on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vsanVerboseModeEnabled(Boolean vsanVerboseModeEnabled) {
+            return vsanVerboseModeEnabled(Output.of(vsanVerboseModeEnabled));
         }
 
         public ComputeClusterArgs build() {

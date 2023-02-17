@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCloneCustomizeNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneCustomizeNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("dnsDomain")]
         public Input<string>? DnsDomain { get; set; }
@@ -38,5 +38,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineCloneCustomizeNetworkInterfaceArgs()
         {
         }
+        public static new VirtualMachineCloneCustomizeNetworkInterfaceArgs Empty => new VirtualMachineCloneCustomizeNetworkInterfaceArgs();
     }
 }

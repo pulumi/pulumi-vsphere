@@ -177,6 +177,18 @@ func (o CustomAttributeOutput) ToCustomAttributeOutputWithContext(ctx context.Co
 	return o
 }
 
+// The object type that this attribute may be
+// applied to. If not set, the custom attribute may be applied to any object
+// type. For a full list, review the Managed Object Types. Forces a new resource if changed.
+func (o CustomAttributeOutput) ManagedObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomAttribute) pulumi.StringPtrOutput { return v.ManagedObjectType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the custom attribute.
+func (o CustomAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomAttribute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type CustomAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomAttributeArrayOutput) ElementType() reflect.Type {

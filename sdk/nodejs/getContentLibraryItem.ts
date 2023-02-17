@@ -12,11 +12,8 @@ import * as utilities from "./utilities";
  * direct ESXi host connections.
  */
 export function getContentLibraryItem(args: GetContentLibraryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryItemResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", {
         "libraryId": args.libraryId,
         "name": args.name,
@@ -54,9 +51,15 @@ export interface GetContentLibraryItemResult {
     readonly name: string;
     readonly type: string;
 }
-
+/**
+ * The `vsphere.ContentLibraryItem` data source can be used to discover the ID
+ * of a content library item.
+ *
+ * > **NOTE:** This resource requires vCenter Server and is not available on
+ * direct ESXi host connections.
+ */
 export function getContentLibraryItemOutput(args: GetContentLibraryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryItemResult> {
-    return pulumi.output(args).apply(a => getContentLibraryItem(a, opts))
+    return pulumi.output(args).apply((a: any) => getContentLibraryItem(a, opts))
 }
 
 /**

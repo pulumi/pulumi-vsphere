@@ -35,30 +35,28 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var demo1 = new VSphere.VirtualMachineSnapshot("demo1", new()
     ///     {
-    ///         var demo1 = new VSphere.VirtualMachineSnapshot("demo1", new VSphere.VirtualMachineSnapshotArgs
-    ///         {
-    ///             Consolidate = true,
-    ///             Description = "This is Demo Snapshot",
-    ///             Memory = true,
-    ///             Quiesce = true,
-    ///             RemoveChildren = false,
-    ///             SnapshotName = "Snapshot Name",
-    ///             VirtualMachineUuid = "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
-    ///         });
-    ///     }
+    ///         Consolidate = true,
+    ///         Description = "This is Demo Snapshot",
+    ///         Memory = true,
+    ///         Quiesce = true,
+    ///         RemoveChildren = false,
+    ///         SnapshotName = "Snapshot Name",
+    ///         VirtualMachineUuid = "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/virtualMachineSnapshot:VirtualMachineSnapshot")]
-    public partial class VirtualMachineSnapshot : Pulumi.CustomResource
+    public partial class VirtualMachineSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If set to `true`, the delta disks involved in this
@@ -152,7 +150,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VirtualMachineSnapshotArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to `true`, the delta disks involved in this
@@ -205,9 +203,10 @@ namespace Pulumi.VSphere
         public VirtualMachineSnapshotArgs()
         {
         }
+        public static new VirtualMachineSnapshotArgs Empty => new VirtualMachineSnapshotArgs();
     }
 
-    public sealed class VirtualMachineSnapshotState : Pulumi.ResourceArgs
+    public sealed class VirtualMachineSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to `true`, the delta disks involved in this
@@ -260,5 +259,6 @@ namespace Pulumi.VSphere
         public VirtualMachineSnapshotState()
         {
         }
+        public static new VirtualMachineSnapshotState Empty => new VirtualMachineSnapshotState();
     }
 }

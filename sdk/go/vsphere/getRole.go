@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupRole(ctx, &GetRoleArgs{
+//			_, err := vsphere.LookupRole(ctx, &vsphere.LookupRoleArgs{
 //				Label: "Terraform to vSphere Integration Role",
 //			}, nil)
 //			if err != nil {

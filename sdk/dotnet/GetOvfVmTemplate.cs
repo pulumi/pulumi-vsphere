@@ -101,7 +101,7 @@ namespace Pulumi.VSphere
         /// }
         /// </summary>
         public static Task<GetOvfVmTemplateResult> InvokeAsync(GetOvfVmTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getOvfVmTemplate` data source can be used to submit an OVF to
@@ -193,11 +193,11 @@ namespace Pulumi.VSphere
         /// }
         /// </summary>
         public static Output<GetOvfVmTemplateResult> Invoke(GetOvfVmTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOvfVmTemplateResult>("vsphere:index/getOvfVmTemplate:getOvfVmTemplate", args ?? new GetOvfVmTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetOvfVmTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetOvfVmTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Allow unverified SSL certificates
@@ -229,6 +229,10 @@ namespace Pulumi.VSphere
         [Input("diskProvisioning")]
         public string? DiskProvisioning { get; set; }
 
+        /// <summary>
+        /// Allow properties with
+        /// `ovf:userConfigurable=false` to be set.
+        /// </summary>
         [Input("enableHiddenProperties")]
         public bool? EnableHiddenProperties { get; set; }
 
@@ -301,9 +305,10 @@ namespace Pulumi.VSphere
         public GetOvfVmTemplateArgs()
         {
         }
+        public static new GetOvfVmTemplateArgs Empty => new GetOvfVmTemplateArgs();
     }
 
-    public sealed class GetOvfVmTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOvfVmTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Allow unverified SSL certificates
@@ -335,6 +340,10 @@ namespace Pulumi.VSphere
         [Input("diskProvisioning")]
         public Input<string>? DiskProvisioning { get; set; }
 
+        /// <summary>
+        /// Allow properties with
+        /// `ovf:userConfigurable=false` to be set.
+        /// </summary>
         [Input("enableHiddenProperties")]
         public Input<bool>? EnableHiddenProperties { get; set; }
 
@@ -407,6 +416,7 @@ namespace Pulumi.VSphere
         public GetOvfVmTemplateInvokeArgs()
         {
         }
+        public static new GetOvfVmTemplateInvokeArgs Empty => new GetOvfVmTemplateInvokeArgs();
     }
 
 

@@ -201,6 +201,25 @@ func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutputWithContext(ct
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the group in.  Forces a new
+// resource if changed.
+func (o ComputeClusterVmGroupOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the VM group. This must be unique in the
+// cluster. Forces a new resource if changed.
+func (o ComputeClusterVmGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The UUIDs of the virtual machines in this
+// group.
+func (o ComputeClusterVmGroupOutput) VirtualMachineIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
+}
+
 type ComputeClusterVmGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmGroupArrayOutput) ElementType() reflect.Type {

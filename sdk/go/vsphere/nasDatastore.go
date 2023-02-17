@@ -432,6 +432,126 @@ func (o NasDatastoreOutput) ToNasDatastoreOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Access mode for the mount point. Can be one of
+// `readOnly` or `readWrite`. Note that `readWrite` does not necessarily mean
+// that the datastore will be read-write depending on the permissions of the
+// actual share. Default: `readWrite`. Forces a new resource if changed.
+func (o NasDatastoreOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The connectivity status of the datastore. If this is `false`,
+// some other computed attributes may be out of date.
+func (o NasDatastoreOutput) Accessible() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.BoolOutput { return v.Accessible }).(pulumi.BoolOutput)
+}
+
+// Maximum capacity of the datastore, in megabytes.
+func (o NasDatastoreOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// Map of custom attribute ids to attribute
+// value strings to set on datasource resource.
+func (o NasDatastoreOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The managed object
+// ID of a datastore cluster to put this datastore in.
+// Conflicts with `folder`.
+func (o NasDatastoreOutput) DatastoreClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The relative path to a folder to put this datastore in.
+// This is a path relative to the datacenter you are deploying the datastore to.
+// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+// The provider will place a datastore named `test` in a datastore folder
+// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+// `/dc1/datastore/foo/bar/test`. Conflicts with
+// `datastoreClusterId`.
+func (o NasDatastoreOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// Available space of this datastore, in megabytes.
+func (o NasDatastoreOutput) FreeSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.IntOutput { return v.FreeSpace }).(pulumi.IntOutput)
+}
+
+// The managed object IDs of
+// the hosts to mount the datastore on.
+func (o NasDatastoreOutput) HostSystemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringArrayOutput { return v.HostSystemIds }).(pulumi.StringArrayOutput)
+}
+
+// The current maintenance mode state of the datastore.
+func (o NasDatastoreOutput) MaintenanceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringOutput { return v.MaintenanceMode }).(pulumi.StringOutput)
+}
+
+// If `true`, more than one host in the datacenter has
+// been configured with access to the datastore.
+func (o NasDatastoreOutput) MultipleHostAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.BoolOutput { return v.MultipleHostAccess }).(pulumi.BoolOutput)
+}
+
+// The name of the datastore. Forces a new resource if
+// changed.
+func (o NasDatastoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates that this NAS volume is a protocol endpoint.
+// This field is only populated if the host supports virtual datastores.
+func (o NasDatastoreOutput) ProtocolEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.BoolOutput { return v.ProtocolEndpoint }).(pulumi.BoolOutput)
+}
+
+// The hostnames or IP addresses of the remote
+// server or servers. Only one element should be present for NFS v3 but multiple
+// can be present for NFS v4.1. Forces a new resource if changed.
+func (o NasDatastoreOutput) RemoteHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringArrayOutput { return v.RemoteHosts }).(pulumi.StringArrayOutput)
+}
+
+// The remote path of the mount point. Forces a new
+// resource if changed.
+func (o NasDatastoreOutput) RemotePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringOutput { return v.RemotePath }).(pulumi.StringOutput)
+}
+
+// The security type to use when using NFS v4.1.
+// Can be one of `AUTH_SYS`, `SEC_KRB5`, or `SEC_KRB5I`. Forces a new resource
+// if changed.
+func (o NasDatastoreOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o NasDatastoreOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of NAS volume. Can be one of `NFS` (to denote
+// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
+// changed.
+func (o NasDatastoreOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Total additional storage space, in megabytes,
+// potentially used by all virtual machines on this datastore.
+func (o NasDatastoreOutput) UncommittedSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.IntOutput { return v.UncommittedSpace }).(pulumi.IntOutput)
+}
+
+// The unique locator for the datastore.
+func (o NasDatastoreOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *NasDatastore) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type NasDatastoreArrayOutput struct{ *pulumi.OutputState }
 
 func (NasDatastoreArrayOutput) ElementType() reflect.Type {

@@ -18,110 +18,114 @@ namespace Pulumi.VSphere
     /// ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dc = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
+    ///         Name = "mydc",
+    ///     });
+    /// 
+    ///     var h1 = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi1.host.test",
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var d1 = new VSphere.DistributedVirtualSwitch("d1", new()
+    ///     {
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///         Hosts = new[]
     ///         {
-    ///             Name = "mydc",
-    ///         }));
-    ///         var h1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-    ///         {
-    ///             Name = "esxi1.host.test",
-    ///             DatacenterId = dc.Id,
-    ///         })));
-    ///         var d1 = new VSphere.DistributedVirtualSwitch("d1", new VSphere.DistributedVirtualSwitchArgs
-    ///         {
-    ///             DatacenterId = dc.Apply(dc =&gt; dc.Id),
-    ///             Hosts = 
+    ///             new VSphere.Inputs.DistributedVirtualSwitchHostArgs
     ///             {
-    ///                 new VSphere.Inputs.DistributedVirtualSwitchHostArgs
+    ///                 HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///                 Devices = new[]
     ///                 {
-    ///                     HostSystemId = h1.Apply(h1 =&gt; h1.Id),
-    ///                     Devices = 
-    ///                     {
-    ///                         "vnic3",
-    ///                     },
+    ///                     "vnic3",
     ///                 },
     ///             },
-    ///         });
-    ///         var p1 = new VSphere.DistributedPortGroup("p1", new VSphere.DistributedPortGroupArgs
-    ///         {
-    ///             VlanId = 1234,
-    ///             DistributedVirtualSwitchUuid = d1.Id,
-    ///         });
-    ///         var v1 = new VSphere.Vnic("v1", new VSphere.VnicArgs
-    ///         {
-    ///             Host = h1.Apply(h1 =&gt; h1.Id),
-    ///             DistributedSwitchPort = d1.Id,
-    ///             DistributedPortGroup = p1.Id,
-    ///             Ipv4 = new VSphere.Inputs.VnicIpv4Args
-    ///             {
-    ///                 Dhcp = true,
-    ///             },
-    ///             Netstack = "vmotion",
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var p1 = new VSphere.DistributedPortGroup("p1", new()
+    ///     {
+    ///         VlanId = 1234,
+    ///         DistributedVirtualSwitchUuid = d1.Id,
+    ///     });
+    /// 
+    ///     var v1 = new VSphere.Vnic("v1", new()
+    ///     {
+    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         DistributedSwitchPort = d1.Id,
+    ///         DistributedPortGroup = p1.Id,
+    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///         {
+    ///             Dhcp = true,
+    ///         },
+    ///         Netstack = "vmotion",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dc = VSphere.GetDatacenter.Invoke(new()
     ///     {
-    ///         var dc = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-    ///         {
-    ///             Name = "mydc",
-    ///         }));
-    ///         var h1 = dc.Apply(dc =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-    ///         {
-    ///             Name = "esxi1.host.test",
-    ///             DatacenterId = dc.Id,
-    ///         })));
-    ///         var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new VSphere.HostVirtualSwitchArgs
-    ///         {
-    ///             HostSystemId = h1.Apply(h1 =&gt; h1.Id),
-    ///             NetworkAdapters = 
-    ///             {
-    ///                 "vmnic3",
-    ///                 "vmnic4",
-    ///             },
-    ///             ActiveNics = 
-    ///             {
-    ///                 "vmnic3",
-    ///             },
-    ///             StandbyNics = 
-    ///             {
-    ///                 "vmnic4",
-    ///             },
-    ///         });
-    ///         var p1 = new VSphere.HostPortGroup("p1", new VSphere.HostPortGroupArgs
-    ///         {
-    ///             VirtualSwitchName = hvs1.Name,
-    ///             HostSystemId = h1.Apply(h1 =&gt; h1.Id),
-    ///         });
-    ///         var v1 = new VSphere.Vnic("v1", new VSphere.VnicArgs
-    ///         {
-    ///             Host = h1.Apply(h1 =&gt; h1.Id),
-    ///             Portgroup = p1.Name,
-    ///             Ipv4 = new VSphere.Inputs.VnicIpv4Args
-    ///             {
-    ///                 Dhcp = true,
-    ///             },
-    ///         });
-    ///     }
+    ///         Name = "mydc",
+    ///     });
     /// 
-    /// }
+    ///     var h1 = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi1.host.test",
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new()
+    ///     {
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic3",
+    ///             "vmnic4",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic3",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic4",
+    ///         },
+    ///     });
+    /// 
+    ///     var p1 = new VSphere.HostPortGroup("p1", new()
+    ///     {
+    ///         VirtualSwitchName = hvs1.Name,
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///     });
+    /// 
+    ///     var v1 = new VSphere.Vnic("v1", new()
+    ///     {
+    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         Portgroup = p1.Name,
+    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///         {
+    ///             Dhcp = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Importing
     /// 
@@ -131,21 +135,18 @@ namespace Pulumi.VSphere
     /// [docs-import]: /docs/import/index.html
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// The above would import the vnic `vmk2` from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/vnic:Vnic")]
-    public partial class Vnic : Pulumi.CustomResource
+    public partial class Vnic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Key of the distributed portgroup the nic will connect to.
@@ -245,7 +246,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VnicArgs : Pulumi.ResourceArgs
+    public sealed class VnicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the distributed portgroup the nic will connect to.
@@ -304,9 +305,10 @@ namespace Pulumi.VSphere
         public VnicArgs()
         {
         }
+        public static new VnicArgs Empty => new VnicArgs();
     }
 
-    public sealed class VnicState : Pulumi.ResourceArgs
+    public sealed class VnicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the distributed portgroup the nic will connect to.
@@ -365,5 +367,6 @@ namespace Pulumi.VSphere
         public VnicState()
         {
         }
+        public static new VnicState Empty => new VnicState();
     }
 }

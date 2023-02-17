@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/contentLibrary:ContentLibrary")]
-    public partial class ContentLibrary : Pulumi.CustomResource
+    public partial class ContentLibrary : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description for the content library.
@@ -86,7 +86,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ContentLibraryArgs : Pulumi.ResourceArgs
+    public sealed class ContentLibraryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description for the content library.
@@ -127,9 +127,10 @@ namespace Pulumi.VSphere
         public ContentLibraryArgs()
         {
         }
+        public static new ContentLibraryArgs Empty => new ContentLibraryArgs();
     }
 
-    public sealed class ContentLibraryState : Pulumi.ResourceArgs
+    public sealed class ContentLibraryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description for the content library.
@@ -170,5 +171,6 @@ namespace Pulumi.VSphere
         public ContentLibraryState()
         {
         }
+        public static new ContentLibraryState Empty => new ContentLibraryState();
     }
 }

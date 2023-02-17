@@ -33,7 +33,7 @@ namespace Pulumi.VSphere
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")]
-    public partial class ComputeClusterVmAffinityRule : Pulumi.CustomResource
+    public partial class ComputeClusterVmAffinityRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -113,7 +113,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ComputeClusterVmAffinityRuleArgs : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmAffinityRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -158,9 +158,10 @@ namespace Pulumi.VSphere
         public ComputeClusterVmAffinityRuleArgs()
         {
         }
+        public static new ComputeClusterVmAffinityRuleArgs Empty => new ComputeClusterVmAffinityRuleArgs();
     }
 
-    public sealed class ComputeClusterVmAffinityRuleState : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmAffinityRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -205,5 +206,6 @@ namespace Pulumi.VSphere
         public ComputeClusterVmAffinityRuleState()
         {
         }
+        public static new ComputeClusterVmAffinityRuleState Empty => new ComputeClusterVmAffinityRuleState();
     }
 }

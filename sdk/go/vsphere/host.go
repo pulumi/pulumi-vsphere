@@ -29,8 +29,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address:  "esx-01.example.com",
+//				Insecure: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -40,7 +47,8 @@ import (
 //				Username:   pulumi.String("root"),
 //				Password:   pulumi.String("password"),
 //				License:    pulumi.String("00000-00000-00000-00000-00000"),
-//				Datacenter: pulumi.String(datacenter.Id),
+//				Thumbprint: *pulumi.String(thumbprint.Id),
+//				Datacenter: *pulumi.String(datacenter.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -64,25 +72,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &GetDatacenterArgs{
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
 //				Name: pulumi.StringRef("dc-01"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			cluster, err := vsphere.LookupComputeCluster(ctx, &GetComputeClusterArgs{
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
 //				Name:         "cluster-01",
 //				DatacenterId: pulumi.StringRef(datacenter.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			thumbprint, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address:  "esx-01.example.com",
+//				Insecure: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = vsphere.NewHost(ctx, "esx-01", &vsphere.HostArgs{
-//				Hostname: pulumi.String("esx-01.example.com"),
-//				Username: pulumi.String("root"),
-//				Password: pulumi.String("password"),
-//				License:  pulumi.String("00000-00000-00000-00000-00000"),
-//				Cluster:  pulumi.String(cluster.Id),
+//				Hostname:   pulumi.String("esx-01.example.com"),
+//				Username:   pulumi.String("root"),
+//				Password:   pulumi.String("password"),
+//				License:    pulumi.String("00000-00000-00000-00000-00000"),
+//				Thumbprint: *pulumi.String(thumbprint.Id),
+//				Cluster:    *pulumi.String(cluster.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -128,7 +144,7 @@ type Host struct {
 	// membership will be managed through the `computeCluster` resource rather
 	// than the`host` resource. Conflicts with: `cluster`.
 	ClusterManaged pulumi.BoolPtrOutput `pulumi:"clusterManaged"`
-	// If set to false then the host will be disconected.
+	// If set to false then the host will be disconnected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrOutput `pulumi:"connected"`
 	// A map of custom attribute IDs and string
@@ -163,7 +179,8 @@ type Host struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
-	// trusted and no thumbprint is set then the operation will fail.
+	// trusted and no thumbprint is set then the operation will fail. See data source
+	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
 	Thumbprint pulumi.StringPtrOutput `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -186,6 +203,13 @@ func NewHost(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Host
 	err := ctx.RegisterResource("vsphere:index/host:Host", name, args, &resource, opts...)
 	if err != nil {
@@ -216,7 +240,7 @@ type hostState struct {
 	// membership will be managed through the `computeCluster` resource rather
 	// than the`host` resource. Conflicts with: `cluster`.
 	ClusterManaged *bool `pulumi:"clusterManaged"`
-	// If set to false then the host will be disconected.
+	// If set to false then the host will be disconnected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
 	// A map of custom attribute IDs and string
@@ -251,7 +275,8 @@ type hostState struct {
 	Tags []string `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
-	// trusted and no thumbprint is set then the operation will fail.
+	// trusted and no thumbprint is set then the operation will fail. See data source
+	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -267,7 +292,7 @@ type HostState struct {
 	// membership will be managed through the `computeCluster` resource rather
 	// than the`host` resource. Conflicts with: `cluster`.
 	ClusterManaged pulumi.BoolPtrInput
-	// If set to false then the host will be disconected.
+	// If set to false then the host will be disconnected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
 	// A map of custom attribute IDs and string
@@ -302,7 +327,8 @@ type HostState struct {
 	Tags pulumi.StringArrayInput
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
-	// trusted and no thumbprint is set then the operation will fail.
+	// trusted and no thumbprint is set then the operation will fail. See data source
+	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -322,7 +348,7 @@ type hostArgs struct {
 	// membership will be managed through the `computeCluster` resource rather
 	// than the`host` resource. Conflicts with: `cluster`.
 	ClusterManaged *bool `pulumi:"clusterManaged"`
-	// If set to false then the host will be disconected.
+	// If set to false then the host will be disconnected.
 	// Default is `false`.
 	Connected *bool `pulumi:"connected"`
 	// A map of custom attribute IDs and string
@@ -357,7 +383,8 @@ type hostArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
-	// trusted and no thumbprint is set then the operation will fail.
+	// trusted and no thumbprint is set then the operation will fail. See data source
+	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
 	Thumbprint *string `pulumi:"thumbprint"`
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -374,7 +401,7 @@ type HostArgs struct {
 	// membership will be managed through the `computeCluster` resource rather
 	// than the`host` resource. Conflicts with: `cluster`.
 	ClusterManaged pulumi.BoolPtrInput
-	// If set to false then the host will be disconected.
+	// If set to false then the host will be disconnected.
 	// Default is `false`.
 	Connected pulumi.BoolPtrInput
 	// A map of custom attribute IDs and string
@@ -409,7 +436,8 @@ type HostArgs struct {
 	Tags pulumi.StringArrayInput
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
-	// trusted and no thumbprint is set then the operation will fail.
+	// trusted and no thumbprint is set then the operation will fail. See data source
+	// [`getHostThumbprint`][docs-host-thumbprint-data-source].
 	Thumbprint pulumi.StringPtrInput
 	// Username that will be used by vSphere to authenticate
 	// to the host.
@@ -501,6 +529,97 @@ func (o HostOutput) ToHostOutput() HostOutput {
 
 func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return o
+}
+
+// The ID of the Compute Cluster this host should
+// be added to. This should not be set if `datacenter` is set. Conflicts with:
+// `cluster`.
+func (o HostOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// Can be set to `true` if compute cluster
+// membership will be managed through the `computeCluster` resource rather
+// than the`host` resource. Conflicts with: `cluster`.
+func (o HostOutput) ClusterManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.BoolPtrOutput { return v.ClusterManaged }).(pulumi.BoolPtrOutput)
+}
+
+// If set to false then the host will be disconnected.
+// Default is `false`.
+func (o HostOutput) Connected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.BoolPtrOutput { return v.Connected }).(pulumi.BoolPtrOutput)
+}
+
+// A map of custom attribute IDs and string
+// values to apply to the resource. Please refer to the
+// `vsphereCustomAttributes` resource for more information on applying
+// tags to resources.
+func (o HostOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The ID of the datacenter this host should
+// be added to. This should not be set if `cluster` is set.
+func (o HostOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// If set to `true` then it will force the host to be added,
+// even if the host is already connected to a different vCenter Server instance.
+// Default is `false`.
+func (o HostOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// FQDN or IP address of the host to be added.
+func (o HostOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The license key that will be applied to the host.
+// The license key is expected to be present in vSphere.
+func (o HostOutput) License() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.License }).(pulumi.StringPtrOutput)
+}
+
+// Set the lockdown state of the host. Valid options are
+// `disabled`, `normal`, and `strict`. Default is `disabled`.
+func (o HostOutput) Lockdown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Lockdown }).(pulumi.StringPtrOutput)
+}
+
+// Set the management state of the host.
+// Default is `false`.
+func (o HostOutput) Maintenance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.BoolPtrOutput { return v.Maintenance }).(pulumi.BoolPtrOutput)
+}
+
+// Password that will be used by vSphere to authenticate
+// to the host.
+func (o HostOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource. Please
+// refer to the `Tag` resource for more information on applying
+// tags to resources.
+func (o HostOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Host's certificate SHA-1 thumbprint. If not set the
+// CA that signed the host's certificate should be trusted. If the CA is not
+// trusted and no thumbprint is set then the operation will fail. See data source
+// [`getHostThumbprint`][docs-host-thumbprint-data-source].
+func (o HostOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+// Username that will be used by vSphere to authenticate
+// to the host.
+func (o HostOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Host) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type HostArrayOutput struct{ *pulumi.OutputState }

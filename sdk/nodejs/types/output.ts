@@ -2,10 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface ComputeClusterVsanDiskGroup {
+    /**
+     * The canonical name of the disk to use for vSAN cache.
+     */
     cache?: string;
+    /**
+     * An array of disk canonical names for vSAN storage.
+     */
     storages?: string[];
 }
 
@@ -144,13 +151,13 @@ export interface GetVirtualMachineDisk {
 
 export interface GetVirtualMachineNetworkInterface {
     /**
-     * The network interface types for each network interface found
-     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e` or
-     * `vmxnet3`.
+     * The network interface types for each network interface found 
+     * on the virtual machine, in device bus order. Will be one of `e1000`, `e1000e`,
+     * `vmxnet3vrdma`, or `vmxnet3`.
      */
     adapterType: string;
     /**
-     * The upper bandwidth limit of this network interface,
+     * The upper bandwidth limit of this network interface, 
      * in Mbits/sec.
      */
     bandwidthLimit?: number;
@@ -199,7 +206,7 @@ export interface VirtualMachineCdrom {
      */
     clientDevice?: boolean;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreId?: string;
     deviceAddress: string;
@@ -208,7 +215,7 @@ export interface VirtualMachineCdrom {
      */
     key: number;
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      */
     path?: string;
 }
@@ -280,7 +287,7 @@ export interface VirtualMachineDisk {
      */
     controllerType?: string;
     /**
-     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      */
     datastoreId: string;
     deviceAddress: string;
@@ -325,7 +332,7 @@ export interface VirtualMachineDisk {
      */
     label: string;
     /**
-     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
+     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      */
     path: string;
     /**
@@ -333,7 +340,7 @@ export interface VirtualMachineDisk {
      */
     size?: number;
     /**
-     * The UUID of the storage policy to assign to the virtual disk.
+     * The ID of the storage policy to assign to the home directory of a virtual machine.
      */
     storagePolicyId: string;
     /**
@@ -435,7 +442,7 @@ export interface VnicIpv4 {
      */
     dhcp?: boolean;
     /**
-     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     * IP address of the default gateway, if DHCP is not set.
      */
     gw?: string;
     /**
@@ -462,7 +469,7 @@ export interface VnicIpv6 {
      */
     dhcp?: boolean;
     /**
-     * IP address of the default gateway, if DHCP or autoconfig is not set.
+     * IP address of the default gateway, if DHCP is not set.
      */
     gw?: string;
 }

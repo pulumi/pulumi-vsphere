@@ -313,6 +313,46 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
 }
 
+// Create directories in `destinationFile`
+// path parameter on first apply if any are missing for copy operation.
+func (o FileOutput) CreateDirectories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.CreateDirectories }).(pulumi.BoolPtrOutput)
+}
+
+// The name of a datacenter to which the file will be
+// uploaded.
+func (o FileOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the datastore to which to upload the
+// file.
+func (o FileOutput) Datastore() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Datastore }).(pulumi.StringOutput)
+}
+
+// The path to where the file should be uploaded
+// or copied to on the destination `datastore` in vSphere.
+func (o FileOutput) DestinationFile() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.DestinationFile }).(pulumi.StringOutput)
+}
+
+// The name of a datacenter from which the file
+// will be copied. Forces a new resource if changed.
+func (o FileOutput) SourceDatacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.SourceDatacenter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the datastore from which file will
+// be copied. Forces a new resource if changed.
+func (o FileOutput) SourceDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.SourceDatastore }).(pulumi.StringPtrOutput)
+}
+
+func (o FileOutput) SourceFile() pulumi.StringOutput {
+	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.SourceFile }).(pulumi.StringOutput)
+}
+
 type FileArrayOutput struct{ *pulumi.OutputState }
 
 func (FileArrayOutput) ElementType() reflect.Type {

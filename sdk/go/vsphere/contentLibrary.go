@@ -201,6 +201,31 @@ func (o ContentLibraryOutput) ToContentLibraryOutputWithContext(ctx context.Cont
 	return o
 }
 
+// A description for the content library.
+func (o ContentLibraryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentLibrary) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the content library.
+func (o ContentLibraryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContentLibrary) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Options to publish a local content library.
+func (o ContentLibraryOutput) Publication() ContentLibraryPublicationOutput {
+	return o.ApplyT(func(v *ContentLibrary) ContentLibraryPublicationOutput { return v.Publication }).(ContentLibraryPublicationOutput)
+}
+
+// The managed object reference ID of the datastore on which to store the content library items.
+func (o ContentLibraryOutput) StorageBackings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContentLibrary) pulumi.StringArrayOutput { return v.StorageBackings }).(pulumi.StringArrayOutput)
+}
+
+// Options subscribe to a published content library.
+func (o ContentLibraryOutput) Subscription() ContentLibrarySubscriptionPtrOutput {
+	return o.ApplyT(func(v *ContentLibrary) ContentLibrarySubscriptionPtrOutput { return v.Subscription }).(ContentLibrarySubscriptionPtrOutput)
+}
+
 type ContentLibraryArrayOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryArrayOutput) ElementType() reflect.Type {

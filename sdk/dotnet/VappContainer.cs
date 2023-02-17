@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/vappContainer:VappContainer")]
-    public partial class VappContainer : Pulumi.CustomResource
+    public partial class VappContainer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines if the reservation on a vApp
@@ -174,7 +174,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VappContainerArgs : Pulumi.ResourceArgs
+    public sealed class VappContainerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the reservation on a vApp
@@ -309,9 +309,10 @@ namespace Pulumi.VSphere
         public VappContainerArgs()
         {
         }
+        public static new VappContainerArgs Empty => new VappContainerArgs();
     }
 
-    public sealed class VappContainerState : Pulumi.ResourceArgs
+    public sealed class VappContainerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if the reservation on a vApp
@@ -446,5 +447,6 @@ namespace Pulumi.VSphere
         public VappContainerState()
         {
         }
+        public static new VappContainerState Empty => new VappContainerState();
     }
 }

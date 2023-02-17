@@ -193,14 +193,16 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
     }
 
     /**
-     * The version string of the configuration that this spec is trying to change.
+     * The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      * 
      */
     @Import(name="configVersion")
     private @Nullable Output<String> configVersion;
 
     /**
-     * @return The version string of the configuration that this spec is trying to change.
+     * @return The current version of the VDS configuration, incremented
+     * by subsequent updates to the VDS.
      * 
      */
     public Optional<Output<String>> configVersion() {
@@ -1349,16 +1351,16 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
     }
 
     /**
-     * - The version of the VDS. BY default, a VDS is created
-     *   at the latest version supported by the vSphere version if not specified.
-     *   A VDS can be upgraded to a newer version, but can not be downgraded.
+     * The version of the VDS. BY default, a VDS is created
+     * at the latest version supported by the vSphere version if not specified.
+     * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return - The version of the VDS. BY default, a VDS is created
+     * @return The version of the VDS. BY default, a VDS is created
      * at the latest version supported by the vSphere version if not specified.
      * A VDS can be upgraded to a newer version, but can not be downgraded.
      * 
@@ -1945,7 +1947,8 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param configVersion The version string of the configuration that this spec is trying to change.
+         * @param configVersion The current version of the VDS configuration, incremented
+         * by subsequent updates to the VDS.
          * 
          * @return builder
          * 
@@ -1956,7 +1959,8 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param configVersion The version string of the configuration that this spec is trying to change.
+         * @param configVersion The current version of the VDS configuration, incremented
+         * by subsequent updates to the VDS.
          * 
          * @return builder
          * 
@@ -3580,7 +3584,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param version - The version of the VDS. BY default, a VDS is created
+         * @param version The version of the VDS. BY default, a VDS is created
          * at the latest version supported by the vSphere version if not specified.
          * A VDS can be upgraded to a newer version, but can not be downgraded.
          * 
@@ -3593,7 +3597,7 @@ public final class DistributedVirtualSwitchState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param version - The version of the VDS. BY default, a VDS is created
+         * @param version The version of the VDS. BY default, a VDS is created
          * at the latest version supported by the vSphere version if not specified.
          * A VDS can be upgraded to a newer version, but can not be downgraded.
          * 

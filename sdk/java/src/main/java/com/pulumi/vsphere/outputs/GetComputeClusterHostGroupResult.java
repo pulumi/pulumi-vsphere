@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetComputeClusterHostGroupResult {
     private String computeClusterId;
+    /**
+     * @return The [managed object reference ID][docs-about-morefs] of
+     * the ESXi hosts in the host group.
+     * 
+     */
     private List<String> hostSystemIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,6 +28,11 @@ public final class GetComputeClusterHostGroupResult {
     public String computeClusterId() {
         return this.computeClusterId;
     }
+    /**
+     * @return The [managed object reference ID][docs-about-morefs] of
+     * the ESXi hosts in the host group.
+     * 
+     */
     public List<String> hostSystemIds() {
         return this.hostSystemIds;
     }

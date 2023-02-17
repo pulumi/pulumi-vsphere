@@ -23,31 +23,30 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var network = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
-        ///         {
-        ///             Name = "VM Network",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "VM Network",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getNetwork` data source can be used to discover the ID of a network
@@ -61,35 +60,34 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var network = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetNetwork.InvokeAsync(new VSphere.GetNetworkArgs
-        ///         {
-        ///             Name = "VM Network",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var network = VSphere.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "VM Network",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("vsphere:index/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -118,9 +116,10 @@ namespace Pulumi.VSphere
         public GetNetworkArgs()
         {
         }
+        public static new GetNetworkArgs Empty => new GetNetworkArgs();
     }
 
-    public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -149,6 +148,7 @@ namespace Pulumi.VSphere
         public GetNetworkInvokeArgs()
         {
         }
+        public static new GetNetworkInvokeArgs Empty => new GetNetworkInvokeArgs();
     }
 
 
@@ -162,6 +162,12 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The managed object type for the discovered network. This will be one
+        /// of `DistributedVirtualPortgroup` for distributed port groups, `Network` for
+        /// standard (host-based) port groups, or `OpaqueNetwork` for networks managed
+        /// externally, such as those managed by NSX.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

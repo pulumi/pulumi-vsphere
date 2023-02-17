@@ -22,12 +22,132 @@ import javax.annotation.Nullable;
  * can be used either as a member of a cluster or as a standalone host.
  * 
  * ## Example Usage
+ * ### Create a standalone host
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+ *             .address(&#34;esx-01.example.com&#34;)
+ *             .insecure(true)
+ *             .build());
+ * 
+ *         var esx_01 = new Host(&#34;esx-01&#34;, HostArgs.builder()        
+ *             .hostname(&#34;esx-01.example.com&#34;)
+ *             .username(&#34;root&#34;)
+ *             .password(&#34;password&#34;)
+ *             .license(&#34;00000-00000-00000-00000-00000&#34;)
+ *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -&gt; getHostThumbprintResult.id()))
+ *             .datacenter(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Create host in a compute cluster
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostThumbprintArgs;
+ * import com.pulumi.vsphere.Host;
+ * import com.pulumi.vsphere.HostArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var cluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name(&#34;cluster-01&#34;)
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         final var thumbprint = VsphereFunctions.getHostThumbprint(GetHostThumbprintArgs.builder()
+ *             .address(&#34;esx-01.example.com&#34;)
+ *             .insecure(true)
+ *             .build());
+ * 
+ *         var esx_01 = new Host(&#34;esx-01&#34;, HostArgs.builder()        
+ *             .hostname(&#34;esx-01.example.com&#34;)
+ *             .username(&#34;root&#34;)
+ *             .password(&#34;password&#34;)
+ *             .license(&#34;00000-00000-00000-00000-00000&#34;)
+ *             .thumbprint(thumbprint.applyValue(getHostThumbprintResult -&gt; getHostThumbprintResult.id()))
+ *             .cluster(cluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Importing
  * 
  * An existing host can be [imported][docs-import] into this resource by supplying
  * the host&#39;s ID. An example is below:
  * 
  * [docs-import]: /docs/import/index.html
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
  * 
  * The above would import the host with ID `host-123`.
  * 
@@ -71,7 +191,7 @@ public class Host extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterManaged);
     }
     /**
-     * If set to false then the host will be disconected.
+     * If set to false then the host will be disconnected.
      * Default is `false`.
      * 
      */
@@ -79,7 +199,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> connected;
 
     /**
-     * @return If set to false then the host will be disconected.
+     * @return If set to false then the host will be disconnected.
      * Default is `false`.
      * 
      */
@@ -239,7 +359,8 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      * 
      */
     @Export(name="thumbprint", type=String.class, parameters={})
@@ -248,7 +369,8 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * @return Host&#39;s certificate SHA-1 thumbprint. If not set the
      * CA that signed the host&#39;s certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      * 
      */
     public Output<Optional<String>> thumbprint() {
@@ -303,6 +425,9 @@ public class Host extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

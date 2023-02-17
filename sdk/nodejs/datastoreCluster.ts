@@ -80,7 +80,9 @@ export class DatastoreCluster extends pulumi.CustomResource {
      */
     public readonly sdrsEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The free space threshold to use.
+     * The threshold, in GB, that storage
+     * DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+     * GB.
      * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
      * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
@@ -93,6 +95,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsFreeSpaceThresholdMode!: pulumi.Output<string | undefined>;
     /**
      * The threshold, in
+     * percent of used space, that storage DRS uses to make decisions to migrate VMs
+     * out of a datastore. Default: `80` percent.
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */
@@ -304,7 +308,9 @@ export interface DatastoreClusterState {
      */
     sdrsEnabled?: pulumi.Input<boolean>;
     /**
-     * The free space threshold to use.
+     * The threshold, in GB, that storage
+     * DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+     * GB.
      * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
      * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
@@ -317,6 +323,8 @@ export interface DatastoreClusterState {
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
      * The threshold, in
+     * percent of used space, that storage DRS uses to make decisions to migrate VMs
+     * out of a datastore. Default: `80` percent.
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */
@@ -455,7 +463,9 @@ export interface DatastoreClusterArgs {
      */
     sdrsEnabled?: pulumi.Input<boolean>;
     /**
-     * The free space threshold to use.
+     * The threshold, in GB, that storage
+     * DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+     * GB.
      * When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
      * when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
      * `utilization`.
@@ -468,6 +478,8 @@ export interface DatastoreClusterArgs {
     sdrsFreeSpaceThresholdMode?: pulumi.Input<string>;
     /**
      * The threshold, in
+     * percent of used space, that storage DRS uses to make decisions to migrate VMs
+     * out of a datastore. Default: `80` percent.
      * percent, of difference between space utilization in datastores before storage
      * DRS makes decisions to balance the space. Default: `5` percent.
      */

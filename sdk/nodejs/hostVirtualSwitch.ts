@@ -137,7 +137,7 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
      * The list of standby network adapters used for
      * failover.
      */
-    public readonly standbyNics!: pulumi.Output<string[]>;
+    public readonly standbyNics!: pulumi.Output<string[] | undefined>;
     /**
      * The network adapter teaming policy. Can be one
      * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or
@@ -189,9 +189,6 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
             }
             if ((!args || args.networkAdapters === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkAdapters'");
-            }
-            if ((!args || args.standbyNics === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'standbyNics'");
             }
             resourceInputs["activeNics"] = args ? args.activeNics : undefined;
             resourceInputs["allowForgedTransmits"] = args ? args.allowForgedTransmits : undefined;
@@ -447,7 +444,7 @@ export interface HostVirtualSwitchArgs {
      * The list of standby network adapters used for
      * failover.
      */
-    standbyNics: pulumi.Input<pulumi.Input<string>[]>;
+    standbyNics?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The network adapter teaming policy. Can be one
      * of `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`, or

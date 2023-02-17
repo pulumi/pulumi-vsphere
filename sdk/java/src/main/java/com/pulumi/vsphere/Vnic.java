@@ -23,12 +23,164 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * ### S
+ * ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.DistributedVirtualSwitch;
+ * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+ * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchHostArgs;
+ * import com.pulumi.vsphere.DistributedPortGroup;
+ * import com.pulumi.vsphere.DistributedPortGroupArgs;
+ * import com.pulumi.vsphere.Vnic;
+ * import com.pulumi.vsphere.VnicArgs;
+ * import com.pulumi.vsphere.inputs.VnicIpv4Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var dc = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;mydc&#34;)
+ *             .build());
+ * 
+ *         final var h1 = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name(&#34;esxi1.host.test&#34;)
+ *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var d1 = new DistributedVirtualSwitch(&#34;d1&#34;, DistributedVirtualSwitchArgs.builder()        
+ *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .hosts(DistributedVirtualSwitchHostArgs.builder()
+ *                 .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *                 .devices(&#34;vnic3&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var p1 = new DistributedPortGroup(&#34;p1&#34;, DistributedPortGroupArgs.builder()        
+ *             .vlanId(1234)
+ *             .distributedVirtualSwitchUuid(d1.id())
+ *             .build());
+ * 
+ *         var v1 = new Vnic(&#34;v1&#34;, VnicArgs.builder()        
+ *             .host(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .distributedSwitchPort(d1.id())
+ *             .distributedPortGroup(p1.id())
+ *             .ipv4(VnicIpv4Args.builder()
+ *                 .dhcp(true)
+ *                 .build())
+ *             .netstack(&#34;vmotion&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Create a vnic attached to a portgroup using the default TCP/IP stack
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetHostArgs;
+ * import com.pulumi.vsphere.HostVirtualSwitch;
+ * import com.pulumi.vsphere.HostVirtualSwitchArgs;
+ * import com.pulumi.vsphere.HostPortGroup;
+ * import com.pulumi.vsphere.HostPortGroupArgs;
+ * import com.pulumi.vsphere.Vnic;
+ * import com.pulumi.vsphere.VnicArgs;
+ * import com.pulumi.vsphere.inputs.VnicIpv4Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var dc = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;mydc&#34;)
+ *             .build());
+ * 
+ *         final var h1 = VsphereFunctions.getHost(GetHostArgs.builder()
+ *             .name(&#34;esxi1.host.test&#34;)
+ *             .datacenterId(dc.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var hvs1 = new HostVirtualSwitch(&#34;hvs1&#34;, HostVirtualSwitchArgs.builder()        
+ *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .networkAdapters(            
+ *                 &#34;vmnic3&#34;,
+ *                 &#34;vmnic4&#34;)
+ *             .activeNics(&#34;vmnic3&#34;)
+ *             .standbyNics(&#34;vmnic4&#34;)
+ *             .build());
+ * 
+ *         var p1 = new HostPortGroup(&#34;p1&#34;, HostPortGroupArgs.builder()        
+ *             .virtualSwitchName(hvs1.name())
+ *             .hostSystemId(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .build());
+ * 
+ *         var v1 = new Vnic(&#34;v1&#34;, VnicArgs.builder()        
+ *             .host(h1.applyValue(getHostResult -&gt; getHostResult.id()))
+ *             .portgroup(p1.name())
+ *             .ipv4(VnicIpv4Args.builder()
+ *                 .dhcp(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Importing
  * 
  * An existing vNic can be [imported][docs-import] into this resource
  * via supplying the vNic&#39;s ID. An example is below:
  * 
  * [docs-import]: /docs/import/index.html
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
  * 
  * The above would import the vnic `vmk2` from host with ID `host-123`.
  * 

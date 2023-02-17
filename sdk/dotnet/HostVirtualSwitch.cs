@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/hostVirtualSwitch:HostVirtualSwitch")]
-    public partial class HostVirtualSwitch : Pulumi.CustomResource
+    public partial class HostVirtualSwitch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of active network adapters used for load
@@ -210,7 +210,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class HostVirtualSwitchArgs : Pulumi.ResourceArgs
+    public sealed class HostVirtualSwitchArgs : global::Pulumi.ResourceArgs
     {
         [Input("activeNics", required: true)]
         private InputList<string>? _activeNics;
@@ -363,7 +363,7 @@ namespace Pulumi.VSphere
         [Input("shapingPeakBandwidth")]
         public Input<int>? ShapingPeakBandwidth { get; set; }
 
-        [Input("standbyNics", required: true)]
+        [Input("standbyNics")]
         private InputList<string>? _standbyNics;
 
         /// <summary>
@@ -387,9 +387,10 @@ namespace Pulumi.VSphere
         public HostVirtualSwitchArgs()
         {
         }
+        public static new HostVirtualSwitchArgs Empty => new HostVirtualSwitchArgs();
     }
 
-    public sealed class HostVirtualSwitchState : Pulumi.ResourceArgs
+    public sealed class HostVirtualSwitchState : global::Pulumi.ResourceArgs
     {
         [Input("activeNics")]
         private InputList<string>? _activeNics;
@@ -566,5 +567,6 @@ namespace Pulumi.VSphere
         public HostVirtualSwitchState()
         {
         }
+        public static new HostVirtualSwitchState Empty => new HostVirtualSwitchState();
     }
 }

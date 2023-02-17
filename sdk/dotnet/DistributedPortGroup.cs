@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/distributedPortGroup:DistributedPortGroup")]
-    public partial class DistributedPortGroup : Pulumi.CustomResource
+    public partial class DistributedPortGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of active uplinks used for load balancing, matching the names of the uplinks assigned in the DVS.
@@ -64,7 +64,8 @@ namespace Pulumi.VSphere
         public Output<bool> CheckBeacon { get; private set; } = null!;
 
         /// <summary>
-        /// Version string of the configuration that this spec is trying to change.
+        /// The current version of the port group configuration,
+        /// incremented by subsequent updates to the port group.
         /// </summary>
         [Output("configVersion")]
         public Output<string> ConfigVersion { get; private set; } = null!;
@@ -150,7 +151,7 @@ namespace Pulumi.VSphere
         public Output<int> IngressShapingPeakBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The generated UUID of the portgroup.
+        /// The generated UUID of the port group.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -371,7 +372,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DistributedPortGroupArgs : Pulumi.ResourceArgs
+    public sealed class DistributedPortGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("activeUplinks")]
         private InputList<string>? _activeUplinks;
@@ -709,9 +710,10 @@ namespace Pulumi.VSphere
         public DistributedPortGroupArgs()
         {
         }
+        public static new DistributedPortGroupArgs Empty => new DistributedPortGroupArgs();
     }
 
-    public sealed class DistributedPortGroupState : Pulumi.ResourceArgs
+    public sealed class DistributedPortGroupState : global::Pulumi.ResourceArgs
     {
         [Input("activeUplinks")]
         private InputList<string>? _activeUplinks;
@@ -771,7 +773,8 @@ namespace Pulumi.VSphere
         public Input<bool>? CheckBeacon { get; set; }
 
         /// <summary>
-        /// Version string of the configuration that this spec is trying to change.
+        /// The current version of the port group configuration,
+        /// incremented by subsequent updates to the port group.
         /// </summary>
         [Input("configVersion")]
         public Input<string>? ConfigVersion { get; set; }
@@ -863,7 +866,7 @@ namespace Pulumi.VSphere
         public Input<int>? IngressShapingPeakBandwidth { get; set; }
 
         /// <summary>
-        /// The generated UUID of the portgroup.
+        /// The generated UUID of the port group.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -1061,5 +1064,6 @@ namespace Pulumi.VSphere
         public DistributedPortGroupState()
         {
         }
+        public static new DistributedPortGroupState Empty => new DistributedPortGroupState();
     }
 }

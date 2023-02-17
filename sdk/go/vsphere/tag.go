@@ -191,6 +191,23 @@ func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
 	return o
 }
 
+// The unique identifier of the parent category in
+// which this tag will be created. Forces a new resource if changed.
+func (o TagOutput) CategoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.CategoryId }).(pulumi.StringOutput)
+}
+
+// A description for the tag.
+func (o TagOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the tag. The name must be unique
+// within its category.
+func (o TagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type TagArrayOutput struct{ *pulumi.OutputState }
 
 func (TagArrayOutput) ElementType() reflect.Type {

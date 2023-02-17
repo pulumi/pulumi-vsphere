@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCdromGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCdromGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
@@ -19,7 +19,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? ClientDevice { get; set; }
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? Key { get; set; }
 
         /// <summary>
-        /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -42,5 +42,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineCdromGetArgs()
         {
         }
+        public static new VirtualMachineCdromGetArgs Empty => new VirtualMachineCdromGetArgs();
     }
 }

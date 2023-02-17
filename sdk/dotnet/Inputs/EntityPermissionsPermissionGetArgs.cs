@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class EntityPermissionsPermissionGetArgs : Pulumi.ResourceArgs
+    public sealed class EntityPermissionsPermissionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether user_or_group field refers to a user or a group. True for a group and false for a user.
@@ -39,5 +39,6 @@ namespace Pulumi.VSphere.Inputs
         public EntityPermissionsPermissionGetArgs()
         {
         }
+        public static new EntityPermissionsPermissionGetArgs Empty => new EntityPermissionsPermissionGetArgs();
     }
 }

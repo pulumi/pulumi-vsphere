@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as vsphere from "@pulumi/vsphere";
  *
- * const library = pulumi.output(vsphere.getContentLibrary({
+ * const library = vsphere.getContentLibrary({
  *     name: "Content Library",
- * }));
+ * });
  * ```
  */
 export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getContentLibrary:getContentLibrary", {
         "name": args.name,
     }, opts);
@@ -51,9 +48,24 @@ export interface GetContentLibraryResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
+ *
+ * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const library = vsphere.getContentLibrary({
+ *     name: "Content Library",
+ * });
+ * ```
+ */
 export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
-    return pulumi.output(args).apply(a => getContentLibrary(a, opts))
+    return pulumi.output(args).apply((a: any) => getContentLibrary(a, opts))
 }
 
 /**

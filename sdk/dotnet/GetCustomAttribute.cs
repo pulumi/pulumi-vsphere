@@ -26,26 +26,24 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
         ///     {
-        ///         var attribute = Output.Create(VSphere.GetCustomAttribute.InvokeAsync(new VSphere.GetCustomAttributeArgs
-        ///         {
-        ///             Name = "test-attribute",
-        ///         }));
-        ///     }
+        ///         Name = "test-attribute",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomAttributeResult> InvokeAsync(GetCustomAttributeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.CustomAttribute` data source can be used to reference custom
@@ -62,30 +60,28 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
         ///     {
-        ///         var attribute = Output.Create(VSphere.GetCustomAttribute.InvokeAsync(new VSphere.GetCustomAttributeArgs
-        ///         {
-        ///             Name = "test-attribute",
-        ///         }));
-        ///     }
+        ///         Name = "test-attribute",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomAttributeResult> Invoke(GetCustomAttributeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCustomAttributeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomAttributeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the custom attribute.
@@ -96,9 +92,10 @@ namespace Pulumi.VSphere
         public GetCustomAttributeArgs()
         {
         }
+        public static new GetCustomAttributeArgs Empty => new GetCustomAttributeArgs();
     }
 
-    public sealed class GetCustomAttributeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomAttributeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the custom attribute.
@@ -109,6 +106,7 @@ namespace Pulumi.VSphere
         public GetCustomAttributeInvokeArgs()
         {
         }
+        public static new GetCustomAttributeInvokeArgs Empty => new GetCustomAttributeInvokeArgs();
     }
 
 

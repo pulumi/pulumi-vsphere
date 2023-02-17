@@ -179,6 +179,13 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.extraConfig);
     }
 
+    @Import(name="extraConfigRebootRequired")
+    private @Nullable Output<Boolean> extraConfigRebootRequired;
+
+    public Optional<Output<Boolean>> extraConfigRebootRequired() {
+        return Optional.ofNullable(this.extraConfigRebootRequired);
+    }
+
     /**
      * The firmware type for this virtual machine. Can be `bios` or `efi`.
      * 
@@ -513,6 +520,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.enableLogging = $.enableLogging;
         this.eptRviMode = $.eptRviMode;
         this.extraConfig = $.extraConfig;
+        this.extraConfigRebootRequired = $.extraConfigRebootRequired;
         this.firmware = $.firmware;
         this.guestId = $.guestId;
         this.hardwareVersion = $.hardwareVersion;
@@ -772,6 +780,15 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder extraConfig(Map<String,String> extraConfig) {
             return extraConfig(Output.of(extraConfig));
+        }
+
+        public Builder extraConfigRebootRequired(@Nullable Output<Boolean> extraConfigRebootRequired) {
+            $.extraConfigRebootRequired = extraConfigRebootRequired;
+            return this;
+        }
+
+        public Builder extraConfigRebootRequired(Boolean extraConfigRebootRequired) {
+            return extraConfigRebootRequired(Output.of(extraConfigRebootRequired));
         }
 
         /**

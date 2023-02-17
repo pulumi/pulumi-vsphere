@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
@@ -25,7 +25,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? ControllerType { get; set; }
 
         /// <summary>
-        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
+        /// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The UUID of the storage policy to assign to the virtual disk.
+        /// The ID of the storage policy to assign to the home directory of a virtual machine.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }
@@ -138,5 +138,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineDiskGetArgs()
         {
         }
+        public static new VirtualMachineDiskGetArgs Empty => new VirtualMachineDiskGetArgs();
     }
 }

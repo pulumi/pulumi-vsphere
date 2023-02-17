@@ -140,14 +140,16 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.checkBeacon;
     }
     /**
-     * Version string of the configuration that this spec is trying to change.
+     * The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      * 
      */
     @Export(name="configVersion", type=String.class, parameters={})
     private Output<String> configVersion;
 
     /**
-     * @return Version string of the configuration that this spec is trying to change.
+     * @return The current version of the port group configuration,
+     * incremented by subsequent updates to the port group.
      * 
      */
     public Output<String> configVersion() {
@@ -340,14 +342,14 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
         return this.ingressShapingPeakBandwidth;
     }
     /**
-     * The generated UUID of the portgroup.
+     * The generated UUID of the port group.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The generated UUID of the portgroup.
+     * @return The generated UUID of the port group.
      * 
      */
     public Output<String> key() {

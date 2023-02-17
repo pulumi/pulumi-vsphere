@@ -267,6 +267,46 @@ func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOu
 	return o
 }
 
+// The managed object reference
+// ID of the cluster to put the group in.  Forces a new
+// resource if changed.
+func (o ComputeClusterVmDependencyRuleOutput) ComputeClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.StringOutput { return v.ComputeClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the VM group that this
+// rule depends on. The VMs defined in the group specified by
+// `vmGroupName` will not be started until the VMs in this
+// group are started.
+func (o ComputeClusterVmDependencyRuleOutput) DependencyVmGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.StringOutput { return v.DependencyVmGroupName }).(pulumi.StringOutput)
+}
+
+// Enable this rule in the cluster. Default: `true`.
+func (o ComputeClusterVmDependencyRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// When this value is `true`, prevents any virtual
+// machine operations that may violate this rule. Default: `false`.
+func (o ComputeClusterVmDependencyRuleOutput) Mandatory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the rule. This must be unique in the
+// cluster.
+func (o ComputeClusterVmDependencyRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the VM group that is the subject of
+// this rule. The VMs defined in this group will not be started until the VMs in
+// the group specified by
+// `dependencyVmGroupName` are started.
+func (o ComputeClusterVmDependencyRuleOutput) VmGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ComputeClusterVmDependencyRule) pulumi.StringOutput { return v.VmGroupName }).(pulumi.StringOutput)
+}
+
 type ComputeClusterVmDependencyRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmDependencyRuleArrayOutput) ElementType() reflect.Type {

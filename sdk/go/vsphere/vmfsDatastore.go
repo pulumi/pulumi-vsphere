@@ -345,6 +345,93 @@ func (o VmfsDatastoreOutput) ToVmfsDatastoreOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The connectivity status of the datastore. If this is `false`,
+// some other computed attributes may be out of date.
+func (o VmfsDatastoreOutput) Accessible() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.BoolOutput { return v.Accessible }).(pulumi.BoolOutput)
+}
+
+// Maximum capacity of the datastore, in megabytes.
+func (o VmfsDatastoreOutput) Capacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.IntOutput { return v.Capacity }).(pulumi.IntOutput)
+}
+
+// Map of custom attribute ids to attribute
+// value string to set on datastore resource.
+func (o VmfsDatastoreOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// The managed object
+// ID of a datastore cluster to put this datastore in.
+// Conflicts with `folder`.
+func (o VmfsDatastoreOutput) DatastoreClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The disks to use with the datastore.
+func (o VmfsDatastoreOutput) Disks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringArrayOutput { return v.Disks }).(pulumi.StringArrayOutput)
+}
+
+// The relative path to a folder to put this datastore in.
+// This is a path relative to the datacenter you are deploying the datastore to.
+// Example: for the `dc1` datacenter, and a provided `folder` of `foo/bar`,
+// The provider will place a datastore named `test` in a datastore folder
+// located at `/dc1/datastore/foo/bar`, with the final inventory path being
+// `/dc1/datastore/foo/bar/test`. Conflicts with
+// `datastoreClusterId`.
+func (o VmfsDatastoreOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringPtrOutput { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// Available space of this datastore, in megabytes.
+func (o VmfsDatastoreOutput) FreeSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.IntOutput { return v.FreeSpace }).(pulumi.IntOutput)
+}
+
+// The managed object ID of
+// the host to set the datastore up on. Note that this is not necessarily the
+// only host that the datastore will be set up on - see
+// here for more info. Forces a
+// new resource if changed.
+func (o VmfsDatastoreOutput) HostSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringOutput { return v.HostSystemId }).(pulumi.StringOutput)
+}
+
+// The current maintenance mode state of the datastore.
+func (o VmfsDatastoreOutput) MaintenanceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringOutput { return v.MaintenanceMode }).(pulumi.StringOutput)
+}
+
+// If `true`, more than one host in the datacenter has
+// been configured with access to the datastore.
+func (o VmfsDatastoreOutput) MultipleHostAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.BoolOutput { return v.MultipleHostAccess }).(pulumi.BoolOutput)
+}
+
+// The name of the datastore. Forces a new resource if
+// changed.
+func (o VmfsDatastoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The IDs of any tags to attach to this resource.
+func (o VmfsDatastoreOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Total additional storage space, in megabytes,
+// potentially used by all virtual machines on this datastore.
+func (o VmfsDatastoreOutput) UncommittedSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.IntOutput { return v.UncommittedSpace }).(pulumi.IntOutput)
+}
+
+// The unique locator for the datastore.
+func (o VmfsDatastoreOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type VmfsDatastoreArrayOutput struct{ *pulumi.OutputState }
 
 func (VmfsDatastoreArrayOutput) ElementType() reflect.Type {

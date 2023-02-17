@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/haVmOverride:HaVmOverride")]
-    public partial class HaVmOverride : Pulumi.CustomResource
+    public partial class HaVmOverride : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -185,7 +185,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class HaVmOverrideArgs : Pulumi.ResourceArgs
+    public sealed class HaVmOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -319,9 +319,10 @@ namespace Pulumi.VSphere
         public HaVmOverrideArgs()
         {
         }
+        public static new HaVmOverrideArgs Empty => new HaVmOverrideArgs();
     }
 
-    public sealed class HaVmOverrideState : Pulumi.ResourceArgs
+    public sealed class HaVmOverrideState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -455,5 +456,6 @@ namespace Pulumi.VSphere
         public HaVmOverrideState()
         {
         }
+        public static new HaVmOverrideState Empty => new HaVmOverrideState();
     }
 }

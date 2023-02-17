@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/datastoreCluster:DatastoreCluster")]
-    public partial class DatastoreCluster : Pulumi.CustomResource
+    public partial class DatastoreCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A map of custom attribute ids to attribute
@@ -76,7 +76,9 @@ namespace Pulumi.VSphere
         public Output<bool?> SdrsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The free space threshold to use.
+        /// The threshold, in GB, that storage
+        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+        /// GB.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -93,6 +95,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
+        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
+        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
@@ -251,7 +255,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DatastoreClusterArgs : Pulumi.ResourceArgs
+    public sealed class DatastoreClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -329,7 +333,9 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The free space threshold to use.
+        /// The threshold, in GB, that storage
+        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+        /// GB.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -346,6 +352,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
+        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
+        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
@@ -469,9 +477,10 @@ namespace Pulumi.VSphere
         public DatastoreClusterArgs()
         {
         }
+        public static new DatastoreClusterArgs Empty => new DatastoreClusterArgs();
     }
 
-    public sealed class DatastoreClusterState : Pulumi.ResourceArgs
+    public sealed class DatastoreClusterState : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -549,7 +558,9 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The free space threshold to use.
+        /// The threshold, in GB, that storage
+        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
+        /// GB.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -566,6 +577,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
+        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
+        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
@@ -689,5 +702,6 @@ namespace Pulumi.VSphere
         public DatastoreClusterState()
         {
         }
+        public static new DatastoreClusterState Empty => new DatastoreClusterState();
     }
 }

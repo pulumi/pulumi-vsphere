@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCloneCustomizeGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneCustomizeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dnsServerLists")]
         private InputList<string>? _dnsServerLists;
@@ -56,10 +56,20 @@ namespace Pulumi.VSphere.Inputs
         public Input<Inputs.VirtualMachineCloneCustomizeWindowsOptionsGetArgs>? WindowsOptions { get; set; }
 
         [Input("windowsSysprepText")]
-        public Input<string>? WindowsSysprepText { get; set; }
+        private Input<string>? _windowsSysprepText;
+        public Input<string>? WindowsSysprepText
+        {
+            get => _windowsSysprepText;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _windowsSysprepText = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public VirtualMachineCloneCustomizeGetArgs()
         {
         }
+        public static new VirtualMachineCloneCustomizeGetArgs Empty => new VirtualMachineCloneCustomizeGetArgs();
     }
 }

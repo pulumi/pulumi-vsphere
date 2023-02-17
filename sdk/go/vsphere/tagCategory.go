@@ -219,6 +219,31 @@ func (o TagCategoryOutput) ToTagCategoryOutputWithContext(ctx context.Context) T
 	return o
 }
 
+// A list object types that this category is
+// valid to be assigned to. For a full list, click
+// here.
+func (o TagCategoryOutput) AssociableTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TagCategory) pulumi.StringArrayOutput { return v.AssociableTypes }).(pulumi.StringArrayOutput)
+}
+
+// The number of tags that can be assigned from this
+// category to a single object at once. Can be one of `SINGLE` (object can only
+// be assigned one tag in this category), to `MULTIPLE` (object can be assigned
+// multiple tags in this category). Forces a new resource if changed.
+func (o TagCategoryOutput) Cardinality() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagCategory) pulumi.StringOutput { return v.Cardinality }).(pulumi.StringOutput)
+}
+
+// A description for the category.
+func (o TagCategoryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagCategory) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the category.
+func (o TagCategoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagCategory) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type TagCategoryArrayOutput struct{ *pulumi.OutputState }
 
 func (TagCategoryArrayOutput) ElementType() reflect.Type {

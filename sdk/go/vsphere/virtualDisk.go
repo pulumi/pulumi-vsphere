@@ -287,6 +287,53 @@ func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) V
 	return o
 }
 
+// The adapter type for this virtual disk. Can be
+// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+//
+// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
+func (o VirtualDiskOutput) AdapterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.AdapterType }).(pulumi.StringPtrOutput)
+}
+
+// Tells the resource to create any
+// directories that are a part of the `vmdkPath` parameter if they are missing.
+// Default: `false`.
+func (o VirtualDiskOutput) CreateDirectories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.BoolPtrOutput { return v.CreateDirectories }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the datacenter in which to create the
+// disk. Can be omitted when when ESXi or if there is only one datacenter in
+// your infrastructure.
+func (o VirtualDiskOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the datastore in which to create the
+// disk.
+func (o VirtualDiskOutput) Datastore() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.StringOutput { return v.Datastore }).(pulumi.StringOutput)
+}
+
+// Size of the disk (in GB).
+func (o VirtualDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of disk to create. Can be one of
+// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
+// information on what each kind of disk provisioning policy means, click
+// [here][docs-vmware-vm-disk-provisioning].
+func (o VirtualDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The path, including filename, of the virtual disk to
+// be created.  This needs to end in `.vmdk`.
+func (o VirtualDiskOutput) VmdkPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualDisk) pulumi.StringOutput { return v.VmdkPath }).(pulumi.StringOutput)
+}
+
 type VirtualDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualDiskArrayOutput) ElementType() reflect.Type {

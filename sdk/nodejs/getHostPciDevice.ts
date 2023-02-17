@@ -32,11 +32,8 @@ import * as utilities from "./utilities";
  * ### With Name Regular Expression
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getHostPciDevice:getHostPciDevice", {
         "classId": args.classId,
         "hostId": args.hostId,
@@ -85,9 +82,35 @@ export interface GetHostPciDeviceResult {
     readonly nameRegex?: string;
     readonly vendorId?: string;
 }
-
+/**
+ * The `vsphere.getHostPciDevice` data source can be used to discover the device ID
+ * of a vSphere host's PCI device. This can then be used with
+ * `vsphere.VirtualMachine`'s `pciDeviceId`.
+ *
+ * ## Example Usage
+ * ### With Vendor ID And Class ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const dev = host.then(host => vsphere.getHostPciDevice({
+ *     hostId: host.id,
+ *     classId: "123",
+ *     vendorId: "456",
+ * }));
+ * ```
+ * ### With Name Regular Expression
+ */
 export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {
-    return pulumi.output(args).apply(a => getHostPciDevice(a, opts))
+    return pulumi.output(args).apply((a: any) => getHostPciDevice(a, opts))
 }
 
 /**

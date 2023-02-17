@@ -21,42 +21,43 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = @var.Vsphere_datacenter,
-        ///         }));
-        ///         var cluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
-        ///         {
-        ///             Name = @var.Vsphere_cluster,
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var hostGroup1 = cluster.Apply(cluster =&gt; Output.Create(VSphere.GetComputeClusterHostGroup.InvokeAsync(new VSphere.GetComputeClusterHostGroupArgs
-        ///         {
-        ///             Name = "host_group1",
-        ///             ComputeClusterId = cluster.Id,
-        ///         })));
-        ///         var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new VSphere.ComputeClusterVmHostRuleArgs
-        ///         {
-        ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
-        ///             VmGroupName = "vm_group1",
-        ///             AffinityHostGroupName = hostGroup1.Apply(hostGroup1 =&gt; hostGroup1.Name),
-        ///         });
-        ///     }
+        ///         Name = @var.Vsphere_datacenter,
+        ///     });
         /// 
-        /// }
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_cluster,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostGroup1 = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     {
+        ///         Name = "host_group1",
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///     });
+        /// 
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     {
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         VmGroupName = "vm_group1",
+        ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeClusterHostGroupResult> InvokeAsync(GetComputeClusterHostGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.ComputeClusterHostGroup` data source can be used to discover
@@ -68,46 +69,47 @@ namespace Pulumi.VSphere
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = @var.Vsphere_datacenter,
-        ///         }));
-        ///         var cluster = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetComputeCluster.InvokeAsync(new VSphere.GetComputeClusterArgs
-        ///         {
-        ///             Name = @var.Vsphere_cluster,
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var hostGroup1 = cluster.Apply(cluster =&gt; Output.Create(VSphere.GetComputeClusterHostGroup.InvokeAsync(new VSphere.GetComputeClusterHostGroupArgs
-        ///         {
-        ///             Name = "host_group1",
-        ///             ComputeClusterId = cluster.Id,
-        ///         })));
-        ///         var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new VSphere.ComputeClusterVmHostRuleArgs
-        ///         {
-        ///             ComputeClusterId = cluster.Apply(cluster =&gt; cluster.Id),
-        ///             VmGroupName = "vm_group1",
-        ///             AffinityHostGroupName = hostGroup1.Apply(hostGroup1 =&gt; hostGroup1.Name),
-        ///         });
-        ///     }
+        ///         Name = @var.Vsphere_datacenter,
+        ///     });
         /// 
-        /// }
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_cluster,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostGroup1 = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     {
+        ///         Name = "host_group1",
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///     });
+        /// 
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     {
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         VmGroupName = "vm_group1",
+        ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetComputeClusterHostGroupResult> Invoke(GetComputeClusterHostGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetComputeClusterHostGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetComputeClusterHostGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The [managed object reference ID][docs-about-morefs]
@@ -125,9 +127,10 @@ namespace Pulumi.VSphere
         public GetComputeClusterHostGroupArgs()
         {
         }
+        public static new GetComputeClusterHostGroupArgs Empty => new GetComputeClusterHostGroupArgs();
     }
 
-    public sealed class GetComputeClusterHostGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetComputeClusterHostGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The [managed object reference ID][docs-about-morefs]
@@ -145,6 +148,7 @@ namespace Pulumi.VSphere
         public GetComputeClusterHostGroupInvokeArgs()
         {
         }
+        public static new GetComputeClusterHostGroupInvokeArgs Empty => new GetComputeClusterHostGroupInvokeArgs();
     }
 
 
@@ -152,6 +156,10 @@ namespace Pulumi.VSphere
     public sealed class GetComputeClusterHostGroupResult
     {
         public readonly string ComputeClusterId;
+        /// <summary>
+        /// The [managed object reference ID][docs-about-morefs] of
+        /// the ESXi hosts in the host group.
+        /// </summary>
         public readonly ImmutableArray<string> HostSystemIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

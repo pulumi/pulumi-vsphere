@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/computeClusterVmGroup:ComputeClusterVmGroup")]
-    public partial class ComputeClusterVmGroup : Pulumi.CustomResource
+    public partial class ComputeClusterVmGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The managed object reference
@@ -78,7 +78,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ComputeClusterVmGroupArgs : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -111,9 +111,10 @@ namespace Pulumi.VSphere
         public ComputeClusterVmGroupArgs()
         {
         }
+        public static new ComputeClusterVmGroupArgs Empty => new ComputeClusterVmGroupArgs();
     }
 
-    public sealed class ComputeClusterVmGroupState : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The managed object reference
@@ -146,5 +147,6 @@ namespace Pulumi.VSphere
         public ComputeClusterVmGroupState()
         {
         }
+        public static new ComputeClusterVmGroupState Empty => new ComputeClusterVmGroupState();
     }
 }

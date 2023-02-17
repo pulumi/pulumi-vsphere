@@ -26,11 +26,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("vsphere:index/getVappContainer:getVappContainer", {
         "datacenterId": args.datacenterId,
         "name": args.name,
@@ -64,9 +61,29 @@ export interface GetVappContainerResult {
     readonly id: string;
     readonly name: string;
 }
-
+/**
+ * The `vsphere.VappContainer` data source can be used to discover the ID of a
+ * vApp container in vSphere. This is useful to return the ID of a vApp container
+ * that you want to use to create virtual machines in using the
+ * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getVappContainer({
+ *     name: "vapp-container-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ */
 export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVappContainerResult> {
-    return pulumi.output(args).apply(a => getVappContainer(a, opts))
+    return pulumi.output(args).apply((a: any) => getVappContainer(a, opts))
 }
 
 /**

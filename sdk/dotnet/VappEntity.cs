@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/vappEntity:VappEntity")]
-    public partial class VappEntity : Pulumi.CustomResource
+    public partial class VappEntity : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Managed object ID of the vApp
@@ -127,7 +127,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class VappEntityArgs : Pulumi.ResourceArgs
+    public sealed class VappEntityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Managed object ID of the vApp
@@ -215,9 +215,10 @@ namespace Pulumi.VSphere
         public VappEntityArgs()
         {
         }
+        public static new VappEntityArgs Empty => new VappEntityArgs();
     }
 
-    public sealed class VappEntityState : Pulumi.ResourceArgs
+    public sealed class VappEntityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Managed object ID of the vApp
@@ -305,5 +306,6 @@ namespace Pulumi.VSphere
         public VappEntityState()
         {
         }
+        public static new VappEntityState Empty => new VappEntityState();
     }
 }

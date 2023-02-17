@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/computeClusterVmHostRule:ComputeClusterVmHostRule")]
-    public partial class ComputeClusterVmHostRule : Pulumi.CustomResource
+    public partial class ComputeClusterVmHostRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When this field is used, the virtual
@@ -107,7 +107,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class ComputeClusterVmHostRuleArgs : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmHostRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When this field is used, the virtual
@@ -163,9 +163,10 @@ namespace Pulumi.VSphere
         public ComputeClusterVmHostRuleArgs()
         {
         }
+        public static new ComputeClusterVmHostRuleArgs Empty => new ComputeClusterVmHostRuleArgs();
     }
 
-    public sealed class ComputeClusterVmHostRuleState : Pulumi.ResourceArgs
+    public sealed class ComputeClusterVmHostRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When this field is used, the virtual
@@ -221,5 +222,6 @@ namespace Pulumi.VSphere
         public ComputeClusterVmHostRuleState()
         {
         }
+        public static new ComputeClusterVmHostRuleState Empty => new ComputeClusterVmHostRuleState();
     }
 }

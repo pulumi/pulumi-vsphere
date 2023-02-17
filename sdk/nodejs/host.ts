@@ -18,11 +18,16 @@ import * as utilities from "./utilities";
  * const datacenter = vsphere.getDatacenter({
  *     name: "dc-01",
  * });
+ * const thumbprint = vsphere.getHostThumbprint({
+ *     address: "esx-01.example.com",
+ *     insecure: true,
+ * });
  * const esx_01 = new vsphere.Host("esx-01", {
  *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
  *     license: "00000-00000-00000-00000-00000",
+ *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
  *     datacenter: datacenter.then(datacenter => datacenter.id),
  * });
  * ```
@@ -39,11 +44,16 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
+ * const thumbprint = vsphere.getHostThumbprint({
+ *     address: "esx-01.example.com",
+ *     insecure: true,
+ * });
  * const esx_01 = new vsphere.Host("esx-01", {
  *     hostname: "esx-01.example.com",
  *     username: "root",
  *     password: "password",
  *     license: "00000-00000-00000-00000-00000",
+ *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
  *     cluster: cluster.then(cluster => cluster.id),
  * });
  * ```
@@ -101,7 +111,7 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly clusterManaged!: pulumi.Output<boolean | undefined>;
     /**
-     * If set to false then the host will be disconected.
+     * If set to false then the host will be disconnected.
      * Default is `false`.
      */
     public readonly connected!: pulumi.Output<boolean | undefined>;
@@ -156,7 +166,8 @@ export class Host extends pulumi.CustomResource {
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
     public readonly thumbprint!: pulumi.Output<string | undefined>;
     /**
@@ -213,12 +224,14 @@ export class Host extends pulumi.CustomResource {
             resourceInputs["license"] = args ? args.license : undefined;
             resourceInputs["lockdown"] = args ? args.lockdown : undefined;
             resourceInputs["maintenance"] = args ? args.maintenance : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thumbprint"] = args ? args.thumbprint : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Host.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -240,7 +253,7 @@ export interface HostState {
      */
     clusterManaged?: pulumi.Input<boolean>;
     /**
-     * If set to false then the host will be disconected.
+     * If set to false then the host will be disconnected.
      * Default is `false`.
      */
     connected?: pulumi.Input<boolean>;
@@ -295,7 +308,8 @@ export interface HostState {
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
     thumbprint?: pulumi.Input<string>;
     /**
@@ -322,7 +336,7 @@ export interface HostArgs {
      */
     clusterManaged?: pulumi.Input<boolean>;
     /**
-     * If set to false then the host will be disconected.
+     * If set to false then the host will be disconnected.
      * Default is `false`.
      */
     connected?: pulumi.Input<boolean>;
@@ -377,7 +391,8 @@ export interface HostArgs {
     /**
      * Host's certificate SHA-1 thumbprint. If not set the
      * CA that signed the host's certificate should be trusted. If the CA is not
-     * trusted and no thumbprint is set then the operation will fail.
+     * trusted and no thumbprint is set then the operation will fail. See data source
+     * [`vsphere.getHostThumbprint`][docs-host-thumbprint-data-source].
      */
     thumbprint?: pulumi.Input<string>;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/tagCategory:TagCategory")]
-    public partial class TagCategory : Pulumi.CustomResource
+    public partial class TagCategory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list object types that this category is
@@ -85,7 +85,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class TagCategoryArgs : Pulumi.ResourceArgs
+    public sealed class TagCategoryArgs : global::Pulumi.ResourceArgs
     {
         [Input("associableTypes", required: true)]
         private InputList<string>? _associableTypes;
@@ -125,9 +125,10 @@ namespace Pulumi.VSphere
         public TagCategoryArgs()
         {
         }
+        public static new TagCategoryArgs Empty => new TagCategoryArgs();
     }
 
-    public sealed class TagCategoryState : Pulumi.ResourceArgs
+    public sealed class TagCategoryState : global::Pulumi.ResourceArgs
     {
         [Input("associableTypes")]
         private InputList<string>? _associableTypes;
@@ -167,5 +168,6 @@ namespace Pulumi.VSphere
         public TagCategoryState()
         {
         }
+        public static new TagCategoryState Empty => new TagCategoryState();
     }
 }

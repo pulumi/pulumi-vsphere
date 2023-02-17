@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere
 {
     [VSphereResourceType("vsphere:index/tag:Tag")]
-    public partial class Tag : Pulumi.CustomResource
+    public partial class Tag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique identifier of the parent category in
@@ -76,7 +76,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class TagArgs : Pulumi.ResourceArgs
+    public sealed class TagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier of the parent category in
@@ -101,9 +101,10 @@ namespace Pulumi.VSphere
         public TagArgs()
         {
         }
+        public static new TagArgs Empty => new TagArgs();
     }
 
-    public sealed class TagState : Pulumi.ResourceArgs
+    public sealed class TagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier of the parent category in
@@ -128,5 +129,6 @@ namespace Pulumi.VSphere
         public TagState()
         {
         }
+        public static new TagState Empty => new TagState();
     }
 }

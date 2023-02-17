@@ -21,6 +21,61 @@ import javax.annotation.Nullable;
  * container of inventory objects such as hosts and virtual machines.
  * 
  * ## Example Usage
+ * ### Create datacenter on the root folder
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.Datacenter;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prodDatacenter = new Datacenter(&#34;prodDatacenter&#34;);
+ * 
+ *     }
+ * }
+ * ```
+ * ### Create datacenter on a subfolder
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.Datacenter;
+ * import com.pulumi.vsphere.DatacenterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var researchDatacenter = new Datacenter(&#34;researchDatacenter&#34;, DatacenterArgs.builder()        
+ *             .folder(&#34;/research/&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="vsphere:index/datacenter:Datacenter")

@@ -10,10 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.VSphere.Inputs
 {
 
-    public sealed class VirtualMachineCloneCustomizeWindowsOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineCloneCustomizeWindowsOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        private Input<string>? _adminPassword;
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("autoLogon")]
         public Input<bool>? AutoLogon { get; set; }
@@ -25,7 +34,16 @@ namespace Pulumi.VSphere.Inputs
         public Input<string> ComputerName { get; set; } = null!;
 
         [Input("domainAdminPassword")]
-        public Input<string>? DomainAdminPassword { get; set; }
+        private Input<string>? _domainAdminPassword;
+        public Input<string>? DomainAdminPassword
+        {
+            get => _domainAdminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainAdminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("domainAdminUser")]
         public Input<string>? DomainAdminUser { get; set; }
@@ -40,7 +58,16 @@ namespace Pulumi.VSphere.Inputs
         public Input<string>? OrganizationName { get; set; }
 
         [Input("productKey")]
-        public Input<string>? ProductKey { get; set; }
+        private Input<string>? _productKey;
+        public Input<string>? ProductKey
+        {
+            get => _productKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _productKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("runOnceCommandLists")]
         private InputList<string>? _runOnceCommandLists;
@@ -59,5 +86,6 @@ namespace Pulumi.VSphere.Inputs
         public VirtualMachineCloneCustomizeWindowsOptionsGetArgs()
         {
         }
+        public static new VirtualMachineCloneCustomizeWindowsOptionsGetArgs Empty => new VirtualMachineCloneCustomizeWindowsOptionsGetArgs();
     }
 }

@@ -17,41 +17,35 @@ namespace Pulumi.VSphere
     /// ### Create datacenter on the root folder
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var prodDatacenter = new VSphere.Datacenter("prodDatacenter", new VSphere.DatacenterArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var prodDatacenter = new VSphere.Datacenter("prodDatacenter");
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create datacenter on a subfolder
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var researchDatacenter = new VSphere.Datacenter("researchDatacenter", new()
     ///     {
-    ///         var researchDatacenter = new VSphere.Datacenter("researchDatacenter", new VSphere.DatacenterArgs
-    ///         {
-    ///             Folder = "/research/",
-    ///         });
-    ///     }
+    ///         Folder = "/research/",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/datacenter:Datacenter")]
-    public partial class Datacenter : Pulumi.CustomResource
+    public partial class Datacenter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Map of custom attribute ids to value 
@@ -132,7 +126,7 @@ namespace Pulumi.VSphere
         }
     }
 
-    public sealed class DatacenterArgs : Pulumi.ResourceArgs
+    public sealed class DatacenterArgs : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -178,9 +172,10 @@ namespace Pulumi.VSphere
         public DatacenterArgs()
         {
         }
+        public static new DatacenterArgs Empty => new DatacenterArgs();
     }
 
-    public sealed class DatacenterState : Pulumi.ResourceArgs
+    public sealed class DatacenterState : global::Pulumi.ResourceArgs
     {
         [Input("customAttributes")]
         private InputMap<string>? _customAttributes;
@@ -232,5 +227,6 @@ namespace Pulumi.VSphere
         public DatacenterState()
         {
         }
+        public static new DatacenterState Empty => new DatacenterState();
     }
 }

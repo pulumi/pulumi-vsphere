@@ -31,43 +31,43 @@ namespace Pulumi.VSphere
         /// primary uplink and the second uplink as a secondary.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var vds = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDistributedVirtualSwitch.InvokeAsync(new VSphere.GetDistributedVirtualSwitchArgs
-        ///         {
-        ///             Name = "vds-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var dvpg = new VSphere.DistributedPortGroup("dvpg", new VSphere.DistributedPortGroupArgs
-        ///         {
-        ///             DistributedVirtualSwitchUuid = vds.Apply(vds =&gt; vds.Id),
-        ///             ActiveUplinks = 
-        ///             {
-        ///                 vds.Apply(vds =&gt; vds.Uplinks?[0]),
-        ///             },
-        ///             StandbyUplinks = 
-        ///             {
-        ///                 vds.Apply(vds =&gt; vds.Uplinks?[1]),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
+        ///     {
+        ///         Name = "vds-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
+        ///     {
+        ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
+        ///         ActiveUplinks = new[]
+        ///         {
+        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[0]),
+        ///         },
+        ///         StandbyUplinks = new[]
+        ///         {
+        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[1]),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.DistributedVirtualSwitch` data source can be used to discover
@@ -89,47 +89,47 @@ namespace Pulumi.VSphere
         /// primary uplink and the second uplink as a secondary.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var vds = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetDistributedVirtualSwitch.InvokeAsync(new VSphere.GetDistributedVirtualSwitchArgs
-        ///         {
-        ///             Name = "vds-01",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var dvpg = new VSphere.DistributedPortGroup("dvpg", new VSphere.DistributedPortGroupArgs
-        ///         {
-        ///             DistributedVirtualSwitchUuid = vds.Apply(vds =&gt; vds.Id),
-        ///             ActiveUplinks = 
-        ///             {
-        ///                 vds.Apply(vds =&gt; vds.Uplinks?[0]),
-        ///             },
-        ///             StandbyUplinks = 
-        ///             {
-        ///                 vds.Apply(vds =&gt; vds.Uplinks?[1]),
-        ///             },
-        ///         });
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
+        ///     {
+        ///         Name = "vds-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
+        ///     {
+        ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
+        ///         ActiveUplinks = new[]
+        ///         {
+        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[0]),
+        ///         },
+        ///         StandbyUplinks = new[]
+        ///         {
+        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[1]),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDistributedVirtualSwitchResult> Invoke(GetDistributedVirtualSwitchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDistributedVirtualSwitchArgs : Pulumi.InvokeArgs
+    public sealed class GetDistributedVirtualSwitchArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -149,9 +149,10 @@ namespace Pulumi.VSphere
         public GetDistributedVirtualSwitchArgs()
         {
         }
+        public static new GetDistributedVirtualSwitchArgs Empty => new GetDistributedVirtualSwitchArgs();
     }
 
-    public sealed class GetDistributedVirtualSwitchInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDistributedVirtualSwitchInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The managed object reference ID
@@ -171,6 +172,7 @@ namespace Pulumi.VSphere
         public GetDistributedVirtualSwitchInvokeArgs()
         {
         }
+        public static new GetDistributedVirtualSwitchInvokeArgs Empty => new GetDistributedVirtualSwitchInvokeArgs();
     }
 
 
@@ -183,6 +185,12 @@ namespace Pulumi.VSphere
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        /// <summary>
+        /// The list of the uplinks on this vSphere distributed switch, as per the
+        /// `uplinks` argument to the
+        /// `vsphere.DistributedVirtualSwitch`
+        /// resource.
+        /// </summary>
         public readonly ImmutableArray<string> Uplinks;
 
         [OutputConstructor]

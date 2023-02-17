@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class ComputeCluster extends pulumi.CustomResource {
@@ -376,7 +377,11 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly proactiveHaSevereRemediation!: pulumi.Output<string | undefined>;
     /**
-     * The managed object ID of the cluster's root resource pool.
+     * The managed object ID of the primary
+     * resource pool for this cluster. This can be passed directly to the
+     * `resourcePoolId`
+     * attribute of the
+     * `vsphere.VirtualMachine` resource.
      */
     public /*out*/ readonly resourcePoolId!: pulumi.Output<string>;
     /**
@@ -384,13 +389,64 @@ export class ComputeCluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of disk UUIDs to add to the vSAN cluster.
+     * Enables vSAN compression on the
+     * cluster.
+     */
+    public readonly vsanCompressionEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     */
+    public readonly vsanDedupEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Represents the configuration of a host disk
+     * group in the cluster.
      */
     public readonly vsanDiskGroups!: pulumi.Output<outputs.ComputeClusterVsanDiskGroup[]>;
     /**
-     * Whether the VSAN service is enabled for the cluster.
+     * Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
      */
-    public readonly vsanEnabled!: pulumi.Output<boolean>;
+    public readonly vsanDitEncryptionEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+     */
+    public readonly vsanDitRekeyInterval!: pulumi.Output<number>;
+    /**
+     * Enables vSAN on the cluster.
+     */
+    public readonly vsanEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     */
+    public readonly vsanNetworkDiagnosticModeEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     */
+    public readonly vsanPerformanceEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+     * `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     */
+    public readonly vsanRemoteDatastoreIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Enables vSAN unmap on the cluster.
+     */
+    public readonly vsanUnmapEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enables verbose mode for vSAN
+     * performance service on the cluster.
+     */
+    public readonly vsanVerboseModeEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ComputeCluster resource with the given unique name, arguments, and options.
@@ -460,8 +516,17 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["proactiveHaSevereRemediation"] = state ? state.proactiveHaSevereRemediation : undefined;
             resourceInputs["resourcePoolId"] = state ? state.resourcePoolId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vsanCompressionEnabled"] = state ? state.vsanCompressionEnabled : undefined;
+            resourceInputs["vsanDedupEnabled"] = state ? state.vsanDedupEnabled : undefined;
             resourceInputs["vsanDiskGroups"] = state ? state.vsanDiskGroups : undefined;
+            resourceInputs["vsanDitEncryptionEnabled"] = state ? state.vsanDitEncryptionEnabled : undefined;
+            resourceInputs["vsanDitRekeyInterval"] = state ? state.vsanDitRekeyInterval : undefined;
             resourceInputs["vsanEnabled"] = state ? state.vsanEnabled : undefined;
+            resourceInputs["vsanNetworkDiagnosticModeEnabled"] = state ? state.vsanNetworkDiagnosticModeEnabled : undefined;
+            resourceInputs["vsanPerformanceEnabled"] = state ? state.vsanPerformanceEnabled : undefined;
+            resourceInputs["vsanRemoteDatastoreIds"] = state ? state.vsanRemoteDatastoreIds : undefined;
+            resourceInputs["vsanUnmapEnabled"] = state ? state.vsanUnmapEnabled : undefined;
+            resourceInputs["vsanVerboseModeEnabled"] = state ? state.vsanVerboseModeEnabled : undefined;
         } else {
             const args = argsOrState as ComputeClusterArgs | undefined;
             if ((!args || args.datacenterId === undefined) && !opts.urn) {
@@ -521,8 +586,17 @@ export class ComputeCluster extends pulumi.CustomResource {
             resourceInputs["proactiveHaProviderIds"] = args ? args.proactiveHaProviderIds : undefined;
             resourceInputs["proactiveHaSevereRemediation"] = args ? args.proactiveHaSevereRemediation : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vsanCompressionEnabled"] = args ? args.vsanCompressionEnabled : undefined;
+            resourceInputs["vsanDedupEnabled"] = args ? args.vsanDedupEnabled : undefined;
             resourceInputs["vsanDiskGroups"] = args ? args.vsanDiskGroups : undefined;
+            resourceInputs["vsanDitEncryptionEnabled"] = args ? args.vsanDitEncryptionEnabled : undefined;
+            resourceInputs["vsanDitRekeyInterval"] = args ? args.vsanDitRekeyInterval : undefined;
             resourceInputs["vsanEnabled"] = args ? args.vsanEnabled : undefined;
+            resourceInputs["vsanNetworkDiagnosticModeEnabled"] = args ? args.vsanNetworkDiagnosticModeEnabled : undefined;
+            resourceInputs["vsanPerformanceEnabled"] = args ? args.vsanPerformanceEnabled : undefined;
+            resourceInputs["vsanRemoteDatastoreIds"] = args ? args.vsanRemoteDatastoreIds : undefined;
+            resourceInputs["vsanUnmapEnabled"] = args ? args.vsanUnmapEnabled : undefined;
+            resourceInputs["vsanVerboseModeEnabled"] = args ? args.vsanVerboseModeEnabled : undefined;
             resourceInputs["resourcePoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -877,7 +951,11 @@ export interface ComputeClusterState {
      */
     proactiveHaSevereRemediation?: pulumi.Input<string>;
     /**
-     * The managed object ID of the cluster's root resource pool.
+     * The managed object ID of the primary
+     * resource pool for this cluster. This can be passed directly to the
+     * `resourcePoolId`
+     * attribute of the
+     * `vsphere.VirtualMachine` resource.
      */
     resourcePoolId?: pulumi.Input<string>;
     /**
@@ -885,13 +963,64 @@ export interface ComputeClusterState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of disk UUIDs to add to the vSAN cluster.
+     * Enables vSAN compression on the
+     * cluster.
+     */
+    vsanCompressionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     */
+    vsanDedupEnabled?: pulumi.Input<boolean>;
+    /**
+     * Represents the configuration of a host disk
+     * group in the cluster.
      */
     vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
     /**
-     * Whether the VSAN service is enabled for the cluster.
+     * Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     */
+    vsanDitEncryptionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+     */
+    vsanDitRekeyInterval?: pulumi.Input<number>;
+    /**
+     * Enables vSAN on the cluster.
      */
     vsanEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     */
+    vsanNetworkDiagnosticModeEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     */
+    vsanPerformanceEnabled?: pulumi.Input<boolean>;
+    /**
+     * The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+     * `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     */
+    vsanRemoteDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enables vSAN unmap on the cluster.
+     */
+    vsanUnmapEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables verbose mode for vSAN
+     * performance service on the cluster.
+     */
+    vsanVerboseModeEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -1245,11 +1374,62 @@ export interface ComputeClusterArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of disk UUIDs to add to the vSAN cluster.
+     * Enables vSAN compression on the
+     * cluster.
+     */
+    vsanCompressionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables vSAN deduplication on the cluster.
+     * Cannot be independently set to true. When vSAN deduplication is enabled, vSAN
+     * compression must also be enabled.
+     */
+    vsanDedupEnabled?: pulumi.Input<boolean>;
+    /**
+     * Represents the configuration of a host disk
+     * group in the cluster.
      */
     vsanDiskGroups?: pulumi.Input<pulumi.Input<inputs.ComputeClusterVsanDiskGroup>[]>;
     /**
-     * Whether the VSAN service is enabled for the cluster.
+     * Enables vSAN data-in-transit
+     * encryption on the cluster. Conflicts with `vsanRemoteDatastoreIds`, i.e.,
+     * vSAN data-in-transit feature cannot be enabled with the vSAN HCI Mesh feature
+     * at the same time.
+     */
+    vsanDitEncryptionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates the rekey interval in
+     * minutes for data-in-transit encryption. The valid rekey interval is 30 to
+     * 10800 (feature defaults to 1440). Conflicts with `vsanRemoteDatastoreIds`.
+     */
+    vsanDitRekeyInterval?: pulumi.Input<number>;
+    /**
+     * Enables vSAN on the cluster.
      */
     vsanEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables network
+     * diagnostic mode for vSAN performance service on the cluster.
+     */
+    vsanNetworkDiagnosticModeEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables vSAN performance service on
+     * the cluster. Default: `true`.
+     */
+    vsanPerformanceEnabled?: pulumi.Input<boolean>;
+    /**
+     * The remote vSAN datastore IDs to be
+     * mounted to this cluster. Conflicts with `vsanDitEncryptionEnabled` and
+     * `vsanDitRekeyInterval`, i.e., vSAN HCI Mesh feature cannot be enabled with
+     * data-in-transit encryption feature at the same time.
+     */
+    vsanRemoteDatastoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enables vSAN unmap on the cluster.
+     */
+    vsanUnmapEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enables verbose mode for vSAN
+     * performance service on the cluster.
+     */
+    vsanVerboseModeEnabled?: pulumi.Input<boolean>;
 }

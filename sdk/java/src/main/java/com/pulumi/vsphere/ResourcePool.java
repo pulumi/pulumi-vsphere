@@ -28,6 +28,128 @@ import javax.annotation.Nullable;
  * [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  * 
  * ## Example Usage
+ * 
+ * The following example sets up a resource pool in an existing compute cluster
+ * with the default settings for CPU and memory reservations, shares, and limits.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.ResourcePool;
+ * import com.pulumi.vsphere.ResourcePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name(&#34;cluster-01&#34;)
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var resourcePool = new ResourcePool(&#34;resourcePool&#34;, ResourcePoolArgs.builder()        
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * A virtual machine resource could be targeted to use the default resource pool
+ * of the cluster using the following:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VirtualMachine;
+ * import com.pulumi.vsphere.VirtualMachineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vm = new VirtualMachine(&#34;vm&#34;, VirtualMachineArgs.builder()        
+ *             .resourcePoolId(data.vsphere_compute_cluster().cluster().resource_pool_id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * The following example sets up a parent resource pool in an existing compute cluster
+ * with a child resource pool nested below. Each resource pool is configured with
+ * the default settings for CPU and memory reservations, shares, and limits.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.vsphere.VsphereFunctions;
+ * import com.pulumi.vsphere.inputs.GetDatacenterArgs;
+ * import com.pulumi.vsphere.inputs.GetComputeClusterArgs;
+ * import com.pulumi.vsphere.ResourcePool;
+ * import com.pulumi.vsphere.ResourcePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var datacenter = VsphereFunctions.getDatacenter(GetDatacenterArgs.builder()
+ *             .name(&#34;dc-01&#34;)
+ *             .build());
+ * 
+ *         final var computeCluster = VsphereFunctions.getComputeCluster(GetComputeClusterArgs.builder()
+ *             .name(&#34;cluster-01&#34;)
+ *             .datacenterId(datacenter.applyValue(getDatacenterResult -&gt; getDatacenterResult.id()))
+ *             .build());
+ * 
+ *         var resourcePoolParent = new ResourcePool(&#34;resourcePoolParent&#34;, ResourcePoolArgs.builder()        
+ *             .parentResourcePoolId(computeCluster.applyValue(getComputeClusterResult -&gt; getComputeClusterResult.resourcePoolId()))
+ *             .build());
+ * 
+ *         var resourcePoolChild = new ResourcePool(&#34;resourcePoolChild&#34;, ResourcePoolArgs.builder()        
+ *             .parentResourcePoolId(resourcePoolParent.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Importing
  * ### Settings that Require vSphere 7.0 or higher
  * 

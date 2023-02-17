@@ -22,31 +22,31 @@ namespace Pulumi.VSphere
         /// ### With Vendor ID And Class ID
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var dev = host.Apply(host =&gt; Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs
-        ///         {
-        ///             HostId = host.Id,
-        ///             ClassId = "123",
-        ///             VendorId = "456",
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ClassId = "123",
+        ///         VendorId = "456",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// ### With Name Regular Expression
@@ -69,7 +69,7 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostPciDeviceResult> InvokeAsync(GetHostPciDeviceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `vsphere.getHostPciDevice` data source can be used to discover the device ID
@@ -82,31 +82,31 @@ namespace Pulumi.VSphere
         /// ### With Vendor ID And Class ID
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
         ///     {
-        ///         var datacenter = Output.Create(VSphere.GetDatacenter.InvokeAsync(new VSphere.GetDatacenterArgs
-        ///         {
-        ///             Name = "dc-01",
-        ///         }));
-        ///         var host = datacenter.Apply(datacenter =&gt; Output.Create(VSphere.GetHost.InvokeAsync(new VSphere.GetHostArgs
-        ///         {
-        ///             Name = "esxi-01.example.com",
-        ///             DatacenterId = datacenter.Id,
-        ///         })));
-        ///         var dev = host.Apply(host =&gt; Output.Create(VSphere.GetHostPciDevice.InvokeAsync(new VSphere.GetHostPciDeviceArgs
-        ///         {
-        ///             HostId = host.Id,
-        ///             ClassId = "123",
-        ///             VendorId = "456",
-        ///         })));
-        ///     }
+        ///         Name = "dc-01",
+        ///     });
         /// 
-        /// }
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ClassId = "123",
+        ///         VendorId = "456",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// ### With Name Regular Expression
@@ -129,11 +129,11 @@ namespace Pulumi.VSphere
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostPciDeviceResult> Invoke(GetHostPciDeviceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostPciDeviceResult>("vsphere:index/getHostPciDevice:getHostPciDevice", args ?? new GetHostPciDeviceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostPciDeviceArgs : Pulumi.InvokeArgs
+    public sealed class GetHostPciDeviceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hexadecimal PCI device class ID
@@ -163,9 +163,10 @@ namespace Pulumi.VSphere
         public GetHostPciDeviceArgs()
         {
         }
+        public static new GetHostPciDeviceArgs Empty => new GetHostPciDeviceArgs();
     }
 
-    public sealed class GetHostPciDeviceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostPciDeviceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hexadecimal PCI device class ID
@@ -195,6 +196,7 @@ namespace Pulumi.VSphere
         public GetHostPciDeviceInvokeArgs()
         {
         }
+        public static new GetHostPciDeviceInvokeArgs Empty => new GetHostPciDeviceInvokeArgs();
     }
 
 
