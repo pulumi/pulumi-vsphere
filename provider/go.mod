@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-vsphere/provider/v4
 
-go 1.18
+go 1.19
 
 require (
 	github.com/hashicorp/terraform-provider-vsphere v1.18.2
