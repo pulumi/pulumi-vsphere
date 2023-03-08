@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,28 +49,28 @@ func NewProvider(ctx *pulumi.Context,
 	if args.User == nil {
 		return nil, errors.New("invalid value for required argument 'User'")
 	}
-	if isZero(args.AllowUnverifiedSsl) {
+	if args.AllowUnverifiedSsl == nil {
 		args.AllowUnverifiedSsl = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool))
 	}
-	if isZero(args.ClientDebug) {
+	if args.ClientDebug == nil {
 		args.ClientDebug = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_CLIENT_DEBUG").(bool))
 	}
-	if isZero(args.ClientDebugPath) {
+	if args.ClientDebugPath == nil {
 		args.ClientDebugPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH").(string))
 	}
-	if isZero(args.ClientDebugPathRun) {
+	if args.ClientDebugPathRun == nil {
 		args.ClientDebugPathRun = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string))
 	}
-	if isZero(args.PersistSession) {
+	if args.PersistSession == nil {
 		args.PersistSession = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool))
 	}
-	if isZero(args.RestSessionPath) {
+	if args.RestSessionPath == nil {
 		args.RestSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string))
 	}
-	if isZero(args.VimKeepAlive) {
+	if args.VimKeepAlive == nil {
 		args.VimKeepAlive = pulumi.IntPtr(getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int))
 	}
-	if isZero(args.VimSessionPath) {
+	if args.VimSessionPath == nil {
 		args.VimSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string))
 	}
 	var resource Provider
