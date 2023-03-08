@@ -45,14 +45,15 @@ func vsphereResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(vsphere.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "vsphere",
-		Description: "A Pulumi package for creating vsphere resources",
-		Keywords:    []string{"pulumi", "vsphere"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-vsphere",
-		GitHubOrg:   "hashicorp",
+		P:                p,
+		Name:             "vsphere",
+		Description:      "A Pulumi package for creating vsphere resources",
+		Keywords:         []string{"pulumi", "vsphere"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-vsphere",
+		GitHubOrg:        "hashicorp",
+		UpstreamRepoPath: "/upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
