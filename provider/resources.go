@@ -7,9 +7,11 @@ import (
 
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-vsphere/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 const (
@@ -53,7 +55,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:         "https://pulumi.io",
 		Repository:       "https://github.com/pulumi/pulumi-vsphere",
 		GitHubOrg:        "hashicorp",
-		UpstreamRepoPath: "/upstream",
+		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"allow_unverified_ssl": {
 				Default: &tfbridge.DefaultInfo{
@@ -210,6 +212,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("vsphere_", vsphereMod,
+		x.MakeStandardToken(vspherePkg)))
+	contract.AssertNoError(err)
 	prov.SetAutonaming(255, "-")
 
 	return prov
