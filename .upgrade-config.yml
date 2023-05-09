@@ -2,4 +2,5 @@
 
 ---
 upstream-provider-name: terraform-provider-vsphere
+pulumi-infer-version: true
 
