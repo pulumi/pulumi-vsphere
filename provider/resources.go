@@ -214,7 +214,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("vsphere_", vsphereMod,
 		x.MakeStandardToken(vspherePkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to compute default modules")
 	prov.SetAutonaming(255, "-")
 
 	return prov
