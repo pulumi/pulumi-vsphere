@@ -302,6 +302,13 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.memoryShareLevel);
     }
 
+    @Import(name="moid")
+    private @Nullable Output<String> moid;
+
+    public Optional<Output<String>> moid() {
+        return Optional.ofNullable(this.moid);
+    }
+
     /**
      * The name of the virtual machine. This can be a name or
      * the full path relative to the datacenter. This is required if a UUID lookup
@@ -413,6 +420,12 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
      * 
+     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
+     * 
      */
     @Import(name="scsiControllerScanCount")
     private @Nullable Output<Integer> scsiControllerScanCount;
@@ -420,6 +433,12 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
+     * 
+     * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
      * 
      */
     public Optional<Output<Integer>> scsiControllerScanCount() {
@@ -533,6 +552,7 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         this.memoryReservation = $.memoryReservation;
         this.memoryShareCount = $.memoryShareCount;
         this.memoryShareLevel = $.memoryShareLevel;
+        this.moid = $.moid;
         this.name = $.name;
         this.nestedHvEnabled = $.nestedHvEnabled;
         this.numCoresPerSocket = $.numCoresPerSocket;
@@ -947,6 +967,15 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
             return memoryShareLevel(Output.of(memoryShareLevel));
         }
 
+        public Builder moid(@Nullable Output<String> moid) {
+            $.moid = moid;
+            return this;
+        }
+
+        public Builder moid(String moid) {
+            return moid(Output.of(moid));
+        }
+
         /**
          * @param name The name of the virtual machine. This can be a name or
          * the full path relative to the datacenter. This is required if a UUID lookup
@@ -1092,6 +1121,12 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
          * @param scsiControllerScanCount The number of SCSI controllers to
          * scan for disk attributes and controller types on. Default: `1`.
          * 
+         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+         * use with this data source reside on the primary controller, and leave this
+         * value at the default. See the `vsphere.VirtualMachine`
+         * resource documentation for the significance of this setting, specifically the
+         * additional requirements and notes for cloning section.
+         * 
          * @return builder
          * 
          */
@@ -1103,6 +1138,12 @@ public final class GetVirtualMachineArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param scsiControllerScanCount The number of SCSI controllers to
          * scan for disk attributes and controller types on. Default: `1`.
+         * 
+         * &gt; **NOTE:** For best results, ensure that all the disks on any templates you
+         * use with this data source reside on the primary controller, and leave this
+         * value at the default. See the `vsphere.VirtualMachine`
+         * resource documentation for the significance of this setting, specifically the
+         * additional requirements and notes for cloning section.
          * 
          * @return builder
          * 

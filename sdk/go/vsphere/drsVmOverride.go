@@ -21,6 +21,10 @@ type DrsVmOverride struct {
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DrsAutomationLevel pulumi.StringPtrOutput `pulumi:"drsAutomationLevel"`
 	// Overrides the default DRS setting for this virtual
 	// machine. Can be either `true` or `false`. Default: `false`.
@@ -72,6 +76,10 @@ type drsVmOverrideState struct {
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
 	// Overrides the default DRS setting for this virtual
 	// machine. Can be either `true` or `false`. Default: `false`.
@@ -89,6 +97,10 @@ type DrsVmOverrideState struct {
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DrsAutomationLevel pulumi.StringPtrInput
 	// Overrides the default DRS setting for this virtual
 	// machine. Can be either `true` or `false`. Default: `false`.
@@ -110,6 +122,10 @@ type drsVmOverrideArgs struct {
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DrsAutomationLevel *string `pulumi:"drsAutomationLevel"`
 	// Overrides the default DRS setting for this virtual
 	// machine. Can be either `true` or `false`. Default: `false`.
@@ -128,6 +144,10 @@ type DrsVmOverrideArgs struct {
 	// Overrides the automation level for this virtual
 	// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 	// `fullyAutomated`. Default: `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DrsAutomationLevel pulumi.StringPtrInput
 	// Overrides the default DRS setting for this virtual
 	// machine. Can be either `true` or `false`. Default: `false`.
@@ -234,6 +254,10 @@ func (o DrsVmOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 // Overrides the automation level for this virtual
 // machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
 // `fullyAutomated`. Default: `manual`.
+//
+// > **NOTE:** Using this resource _always_ implies an override, even if one of
+// `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+// for both options.
 func (o DrsVmOverrideOutput) DrsAutomationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DrsVmOverride) pulumi.StringPtrOutput { return v.DrsAutomationLevel }).(pulumi.StringPtrOutput)
 }

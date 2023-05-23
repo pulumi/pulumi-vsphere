@@ -272,6 +272,9 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
      * The number of ports to create with this
      * virtual switch. Default: `128`.
      * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+     * will not restart the host for you.
+     * 
      */
     @Import(name="numberOfPorts")
     private @Nullable Output<Integer> numberOfPorts;
@@ -279,6 +282,9 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
     /**
      * @return The number of ports to create with this
      * virtual switch. Default: `128`.
+     * 
+     * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+     * will not restart the host for you.
      * 
      */
     public Optional<Output<Integer>> numberOfPorts() {
@@ -792,6 +798,9 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
          * @param numberOfPorts The number of ports to create with this
          * virtual switch. Default: `128`.
          * 
+         * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+         * will not restart the host for you.
+         * 
          * @return builder
          * 
          */
@@ -803,6 +812,9 @@ public final class HostVirtualSwitchState extends com.pulumi.resources.ResourceA
         /**
          * @param numberOfPorts The number of ports to create with this
          * virtual switch. Default: `128`.
+         * 
+         * &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+         * will not restart the host for you.
          * 
          * @return builder
          * 

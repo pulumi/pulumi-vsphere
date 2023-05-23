@@ -101,6 +101,10 @@ type LookupResourcePoolArgs struct {
 	// if the search path used in `name` is an absolute path. For default
 	// datacenters, use the id attribute from an empty `Datacenter` data
 	// source.
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not
+	// need to specify either attribute to use this data source. An empty declaration
+	// will load the ESXi host's root resource pool.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.
@@ -135,6 +139,10 @@ type LookupResourcePoolOutputArgs struct {
 	// if the search path used in `name` is an absolute path. For default
 	// datacenters, use the id attribute from an empty `Datacenter` data
 	// source.
+	//
+	// > **Note:** When using ESXi without a vCenter Server instance, you do not
+	// need to specify either attribute to use this data source. An empty declaration
+	// will load the ESXi host's root resource pool.
 	DatacenterId pulumi.StringPtrInput `pulumi:"datacenterId"`
 	// The name of the resource pool. This can be a name or
 	// path. This is required when using vCenter.

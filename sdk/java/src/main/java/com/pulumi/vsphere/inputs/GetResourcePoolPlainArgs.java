@@ -21,6 +21,10 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
      * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
+     * 
      */
     @Import(name="datacenterId")
     private @Nullable String datacenterId;
@@ -31,6 +35,10 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
+     * 
+     * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host&#39;s root resource pool.
      * 
      */
     public Optional<String> datacenterId() {
@@ -85,6 +93,10 @@ public final class GetResourcePoolPlainArgs extends com.pulumi.resources.InvokeA
          * if the search path used in `name` is an absolute path. For default
          * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
          * source.
+         * 
+         * &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+         * need to specify either attribute to use this data source. An empty declaration
+         * will load the ESXi host&#39;s root resource pool.
          * 
          * @return builder
          * 

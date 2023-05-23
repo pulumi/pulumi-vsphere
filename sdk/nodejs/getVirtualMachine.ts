@@ -86,6 +86,7 @@ export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.In
         "memoryReservation": args.memoryReservation,
         "memoryShareCount": args.memoryShareCount,
         "memoryShareLevel": args.memoryShareLevel,
+        "moid": args.moid,
         "name": args.name,
         "nestedHvEnabled": args.nestedHvEnabled,
         "numCoresPerSocket": args.numCoresPerSocket,
@@ -171,6 +172,7 @@ export interface GetVirtualMachineArgs {
     memoryReservation?: number;
     memoryShareCount?: number;
     memoryShareLevel?: string;
+    moid?: string;
     /**
      * The name of the virtual machine. This can be a name or
      * the full path relative to the datacenter. This is required if a UUID lookup
@@ -197,6 +199,12 @@ export interface GetVirtualMachineArgs {
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
+     *
+     * > **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
      */
     scsiControllerScanCount?: number;
     storagePolicyId?: string;
@@ -296,6 +304,7 @@ export interface GetVirtualMachineResult {
     readonly memoryReservation?: number;
     readonly memoryShareCount: number;
     readonly memoryShareLevel?: string;
+    readonly moid: string;
     readonly name?: string;
     readonly nestedHvEnabled?: boolean;
     /**
@@ -465,6 +474,7 @@ export interface GetVirtualMachineOutputArgs {
     memoryReservation?: pulumi.Input<number>;
     memoryShareCount?: pulumi.Input<number>;
     memoryShareLevel?: pulumi.Input<string>;
+    moid?: pulumi.Input<string>;
     /**
      * The name of the virtual machine. This can be a name or
      * the full path relative to the datacenter. This is required if a UUID lookup
@@ -491,6 +501,12 @@ export interface GetVirtualMachineOutputArgs {
     /**
      * The number of SCSI controllers to
      * scan for disk attributes and controller types on. Default: `1`.
+     *
+     * > **NOTE:** For best results, ensure that all the disks on any templates you
+     * use with this data source reside on the primary controller, and leave this
+     * value at the default. See the `vsphere.VirtualMachine`
+     * resource documentation for the significance of this setting, specifically the
+     * additional requirements and notes for cloning section.
      */
     scsiControllerScanCount?: pulumi.Input<number>;
     storagePolicyId?: pulumi.Input<string>;

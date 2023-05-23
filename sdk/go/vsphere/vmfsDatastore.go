@@ -21,6 +21,9 @@ type VmfsDatastore struct {
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -53,6 +56,9 @@ type VmfsDatastore struct {
 	// changed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -103,6 +109,9 @@ type vmfsDatastoreState struct {
 	Capacity *int `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -135,6 +144,9 @@ type vmfsDatastoreState struct {
 	// changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -151,6 +163,9 @@ type VmfsDatastoreState struct {
 	Capacity pulumi.IntPtrInput
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -183,6 +198,9 @@ type VmfsDatastoreState struct {
 	// changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// Total additional storage space, in megabytes,
 	// potentially used by all virtual machines on this datastore.
@@ -198,6 +216,9 @@ func (VmfsDatastoreState) ElementType() reflect.Type {
 type vmfsDatastoreArgs struct {
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -223,6 +244,9 @@ type vmfsDatastoreArgs struct {
 	// changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -230,6 +254,9 @@ type vmfsDatastoreArgs struct {
 type VmfsDatastoreArgs struct {
 	// Map of custom attribute ids to attribute
 	// value string to set on datastore resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -255,6 +282,9 @@ type VmfsDatastoreArgs struct {
 	// changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -358,6 +388,9 @@ func (o VmfsDatastoreOutput) Capacity() pulumi.IntOutput {
 
 // Map of custom attribute ids to attribute
 // value string to set on datastore resource.
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter.
 func (o VmfsDatastoreOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -417,6 +450,9 @@ func (o VmfsDatastoreOutput) Name() pulumi.StringOutput {
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// requires vCenter 6.0 or higher.
 func (o VmfsDatastoreOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VmfsDatastore) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

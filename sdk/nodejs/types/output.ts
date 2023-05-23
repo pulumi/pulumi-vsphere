@@ -12,6 +12,35 @@ export interface ComputeClusterVsanDiskGroup {
     cache?: string;
     /**
      * An array of disk canonical names for vSAN storage.
+     *
+     * > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+     * You can enable or re-enable vSphere HA after vSAN is configured.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as vsphere from "@pulumi/vsphere";
+     *
+     * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
+     *     datacenterId: data.vsphere_datacenter.datacenter.id,
+     *     hostSystemIds: [data.vsphere_host.host.map(__item => __item.id)],
+     *     drsEnabled: true,
+     *     drsAutomationLevel: "fullyAutomated",
+     *     haEnabled: false,
+     *     vsanEnabled: true,
+     *     vsanDedupEnabled: true,
+     *     vsanCompressionEnabled: true,
+     *     vsanPerformanceEnabled: true,
+     *     vsanVerboseModeEnabled: true,
+     *     vsanNetworkDiagnosticModeEnabled: true,
+     *     vsanUnmapEnabled: true,
+     *     vsanDitEncryptionEnabled: true,
+     *     vsanDitRekeyInterval: 1800,
+     *     vsanDiskGroups: [{
+     *         cache: data.vsphere_vmfs_disks.cache_disks[0],
+     *         storages: data.vsphere_vmfs_disks.storage_disks,
+     *     }],
+     * });
+     * ```
      */
     storages?: string[];
 }
@@ -207,6 +236,8 @@ export interface VirtualMachineCdrom {
     clientDevice?: boolean;
     /**
      * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId?: string;
     deviceAddress: string;
@@ -216,6 +247,10 @@ export interface VirtualMachineCdrom {
     key: number;
     /**
      * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     *
+     * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+     *
+     * > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
      */
     path?: string;
 }
@@ -280,6 +315,8 @@ export interface VirtualMachineCloneCustomizeWindowsOptions {
 export interface VirtualMachineDisk {
     /**
      * Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
+     *
+     * > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
      */
     attach?: boolean;
     /**
@@ -288,15 +325,21 @@ export interface VirtualMachineDisk {
     controllerType?: string;
     /**
      * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+     *
+     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
      */
     datastoreId: string;
     deviceAddress: string;
     /**
      * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+     *
+     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
      */
     diskMode?: string;
     /**
      * The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+     *
+     * > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
      */
     diskSharing?: string;
     /**
@@ -327,12 +370,13 @@ export interface VirtualMachineDisk {
      * The ID of the device within the virtual machine.
      */
     key: number;
-    /**
-     * A label for the virtual disk. Forces a new disk, if changed.
-     */
     label: string;
     /**
      * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     *
+     * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+     *
+     * > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
      */
     path: string;
     /**

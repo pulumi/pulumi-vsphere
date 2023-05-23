@@ -26,6 +26,8 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
                a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
@@ -60,6 +62,8 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
         """
         The UUIDs of the virtual machines to run
         on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -124,6 +128,8 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         if datastore_cluster_id is not None:
             pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
@@ -193,6 +199,8 @@ class _DatastoreClusterVmAntiAffinityRuleState:
         """
         The UUIDs of the virtual machines to run
         on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -225,6 +233,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         ...
     @overload
@@ -303,6 +313,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on different datastores from each other.
+               
+               > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,6 +368,8 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         The UUIDs of the virtual machines to run
         on different datastores from each other.
+
+        > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
         return pulumi.get(self, "virtual_machine_ids")
 

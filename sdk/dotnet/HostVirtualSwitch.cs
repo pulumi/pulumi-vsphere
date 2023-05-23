@@ -119,6 +119,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of ports to create with this
         /// virtual switch. Default: `128`.
+        /// 
+        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+        /// will not restart the host for you.
         /// </summary>
         [Output("numberOfPorts")]
         public Output<int?> NumberOfPorts { get; private set; } = null!;
@@ -331,6 +334,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of ports to create with this
         /// virtual switch. Default: `128`.
+        /// 
+        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+        /// will not restart the host for you.
         /// </summary>
         [Input("numberOfPorts")]
         public Input<int>? NumberOfPorts { get; set; }
@@ -511,6 +517,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The number of ports to create with this
         /// virtual switch. Default: `128`.
+        /// 
+        /// &gt; **NOTE:** Changing the port count requires a reboot of the host. This provider
+        /// will not restart the host for you.
         /// </summary>
         [Input("numberOfPorts")]
         public Input<int>? NumberOfPorts { get; set; }

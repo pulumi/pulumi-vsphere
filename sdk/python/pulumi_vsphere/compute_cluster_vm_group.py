@@ -26,6 +26,11 @@ class ComputeClusterVmGroupArgs:
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterHostGroup`
+               resource. Make sure your names are unique across both resources.
         """
         pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         if name is not None:
@@ -66,6 +71,11 @@ class ComputeClusterVmGroupArgs:
         """
         The UUIDs of the virtual machines in this
         group.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterHostGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -89,6 +99,11 @@ class _ComputeClusterVmGroupState:
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterHostGroup`
+               resource. Make sure your names are unique across both resources.
         """
         if compute_cluster_id is not None:
             pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
@@ -130,6 +145,11 @@ class _ComputeClusterVmGroupState:
         """
         The UUIDs of the virtual machines in this
         group.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterHostGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "virtual_machine_ids")
 
@@ -158,6 +178,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterHostGroup`
+               resource. Make sure your names are unique across both resources.
         """
         ...
     @overload
@@ -226,6 +251,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
                cluster. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines in this
                group.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterHostGroup`
+               resource. Make sure your names are unique across both resources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -261,6 +291,11 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         """
         The UUIDs of the virtual machines in this
         group.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterHostGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "virtual_machine_ids")
 

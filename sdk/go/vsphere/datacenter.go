@@ -69,6 +69,11 @@ type Datacenter struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
@@ -79,6 +84,9 @@ type Datacenter struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -115,6 +123,11 @@ type datacenterState struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
@@ -125,6 +138,9 @@ type datacenterState struct {
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -133,6 +149,11 @@ type DatacenterState struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
@@ -143,6 +164,9 @@ type DatacenterState struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -155,6 +179,11 @@ type datacenterArgs struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
@@ -163,6 +192,9 @@ type datacenterArgs struct {
 	// within the folder. Forces a new resource if changed.
 	Name *string `pulumi:"name"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -172,6 +204,11 @@ type DatacenterArgs struct {
 	// strings to set for datacenter resource. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The folder where the datacenter should be created.
 	// Forces a new resource if changed.
@@ -180,6 +217,9 @@ type DatacenterArgs struct {
 	// within the folder. Forces a new resource if changed.
 	Name pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -274,6 +314,11 @@ func (o DatacenterOutput) ToDatacenterOutputWithContext(ctx context.Context) Dat
 // strings to set for datacenter resource. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
+//
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter.
 func (o DatacenterOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -296,6 +341,9 @@ func (o DatacenterOutput) Name() pulumi.StringOutput {
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// requires vCenter 6.0 or higher.
 func (o DatacenterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Datacenter) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

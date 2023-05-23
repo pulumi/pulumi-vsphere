@@ -24,6 +24,10 @@ namespace Pulumi.VSphere
         /// Overrides the automation level for this virtual
         /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         /// `fullyAutomated`. Default: `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Output("drsAutomationLevel")]
         public Output<string?> DrsAutomationLevel { get; private set; } = null!;
@@ -100,6 +104,10 @@ namespace Pulumi.VSphere
         /// Overrides the automation level for this virtual
         /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         /// `fullyAutomated`. Default: `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Input("drsAutomationLevel")]
         public Input<string>? DrsAutomationLevel { get; set; }
@@ -138,6 +146,10 @@ namespace Pulumi.VSphere
         /// Overrides the automation level for this virtual
         /// machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         /// `fullyAutomated`. Default: `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Input("drsAutomationLevel")]
         public Input<string>? DrsAutomationLevel { get; set; }

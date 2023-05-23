@@ -41,6 +41,11 @@ export class ComputeClusterHostGroup extends pulumi.CustomResource {
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     public readonly hostSystemIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -92,6 +97,11 @@ export interface ComputeClusterHostGroupState {
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -114,6 +124,11 @@ export interface ComputeClusterHostGroupArgs {
     /**
      * The managed object IDs of
      * the hosts to put in the cluster.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     hostSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -23,6 +23,11 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -31,6 +36,11 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * @return Map of custom attribute ids to attribute
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -62,6 +72,11 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      * 
+     * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
+     * 
      */
     @Export(name="path", type=String.class, parameters={})
     private Output<String> path;
@@ -74,6 +89,11 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      * 
+     * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
+     * 
      */
     public Output<String> path() {
         return this.path;
@@ -81,12 +101,18 @@ public class Folder extends com.pulumi.resources.CustomResource {
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      * 
      */
     public Output<Optional<List<String>>> tags() {

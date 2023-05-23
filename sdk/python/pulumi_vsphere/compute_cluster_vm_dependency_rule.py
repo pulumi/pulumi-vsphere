@@ -36,6 +36,10 @@ class ComputeClusterVmDependencyRuleArgs:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         """
@@ -111,6 +115,10 @@ class ComputeClusterVmDependencyRuleArgs:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -153,6 +161,10 @@ class _ComputeClusterVmDependencyRuleState:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the VM group that is the subject of
@@ -220,6 +232,10 @@ class _ComputeClusterVmDependencyRuleState:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -282,6 +298,10 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the VM group that is the subject of
@@ -372,6 +392,10 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the VM group that is the subject of
@@ -426,6 +450,10 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 

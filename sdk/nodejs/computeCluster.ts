@@ -37,6 +37,9 @@ export class ComputeCluster extends pulumi.CustomResource {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter Server.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -78,6 +81,8 @@ export class ComputeCluster extends pulumi.CustomResource {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
+     *
+     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     public readonly drsEnablePredictiveDrs!: pulumi.Output<boolean | undefined>;
     /**
@@ -117,6 +122,13 @@ export class ComputeCluster extends pulumi.CustomResource {
      * as if they were removed by taking their entry out of `hostSystemIds` (see
      * below. This is an advanced
      * option and should only be used for testing. Default: `false`.
+     *
+     * > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+     * there are many pitfalls to its use when working with complex cluster
+     * configurations. Depending on the virtual machines currently on the cluster, and
+     * your DRS and HA settings, the full host evacuation may fail. Instead,
+     * incrementally remove hosts from your configuration by adjusting the contents of
+     * the `hostSystemIds` attribute.
      */
     public readonly forceEvacuateOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -611,6 +623,9 @@ export interface ComputeClusterState {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -652,6 +667,8 @@ export interface ComputeClusterState {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
+     *
+     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**
@@ -691,6 +708,13 @@ export interface ComputeClusterState {
      * as if they were removed by taking their entry out of `hostSystemIds` (see
      * below. This is an advanced
      * option and should only be used for testing. Default: `false`.
+     *
+     * > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+     * there are many pitfalls to its use when working with complex cluster
+     * configurations. Depending on the virtual machines currently on the cluster, and
+     * your DRS and HA settings, the full host evacuation may fail. Instead,
+     * incrementally remove hosts from your configuration by adjusting the contents of
+     * the `hostSystemIds` attribute.
      */
     forceEvacuateOnDestroy?: pulumi.Input<boolean>;
     /**
@@ -1030,6 +1054,9 @@ export interface ComputeClusterArgs {
     /**
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1071,6 +1098,8 @@ export interface ComputeClusterArgs {
      * When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. <sup>\*</sup>
+     *
+     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      */
     drsEnablePredictiveDrs?: pulumi.Input<boolean>;
     /**
@@ -1110,6 +1139,13 @@ export interface ComputeClusterArgs {
      * as if they were removed by taking their entry out of `hostSystemIds` (see
      * below. This is an advanced
      * option and should only be used for testing. Default: `false`.
+     *
+     * > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+     * there are many pitfalls to its use when working with complex cluster
+     * configurations. Depending on the virtual machines currently on the cluster, and
+     * your DRS and HA settings, the full host evacuation may fail. Instead,
+     * incrementally remove hosts from your configuration by adjusting the contents of
+     * the `hostSystemIds` attribute.
      */
     forceEvacuateOnDestroy?: pulumi.Input<boolean>;
     /**

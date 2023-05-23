@@ -18,6 +18,11 @@ public final class GetDatacenterPlainArgs extends com.pulumi.resources.InvokeArg
      * The name of the datacenter. This can be a name or path.
      * Can be omitted if there is only one datacenter in the inventory.
      * 
+     * &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
+     * host&#39;s &#34;default&#34; datacenter, which is a special datacenter name unrelated to the
+     * datacenters that exist in the vSphere inventory when managed by a vCenter Server
+     * instance. Hence, the `name` attribute is completely ignored.
+     * 
      */
     @Import(name="name")
     private @Nullable String name;
@@ -25,6 +30,11 @@ public final class GetDatacenterPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return The name of the datacenter. This can be a name or path.
      * Can be omitted if there is only one datacenter in the inventory.
+     * 
+     * &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
+     * host&#39;s &#34;default&#34; datacenter, which is a special datacenter name unrelated to the
+     * datacenters that exist in the vSphere inventory when managed by a vCenter Server
+     * instance. Hence, the `name` attribute is completely ignored.
      * 
      */
     public Optional<String> name() {
@@ -58,6 +68,11 @@ public final class GetDatacenterPlainArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param name The name of the datacenter. This can be a name or path.
          * Can be omitted if there is only one datacenter in the inventory.
+         * 
+         * &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
+         * host&#39;s &#34;default&#34; datacenter, which is a special datacenter name unrelated to the
+         * datacenters that exist in the vSphere inventory when managed by a vCenter Server
+         * instance. Hence, the `name` attribute is completely ignored.
          * 
          * @return builder
          * 

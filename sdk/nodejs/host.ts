@@ -101,7 +101,7 @@ export class Host extends pulumi.CustomResource {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster`.
+     * `clusterManaged`.
      */
     public readonly cluster!: pulumi.Output<string | undefined>;
     /**
@@ -120,6 +120,11 @@ export class Host extends pulumi.CustomResource {
      * values to apply to the resource. Please refer to the
      * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     *
+     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -161,6 +166,9 @@ export class Host extends pulumi.CustomResource {
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Tagging support is not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -243,7 +251,7 @@ export interface HostState {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster`.
+     * `clusterManaged`.
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -262,6 +270,11 @@ export interface HostState {
      * values to apply to the resource. Please refer to the
      * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     *
+     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -303,6 +316,9 @@ export interface HostState {
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Tagging support is not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -326,7 +342,7 @@ export interface HostArgs {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster`.
+     * `clusterManaged`.
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -345,6 +361,11 @@ export interface HostArgs {
      * values to apply to the resource. Please refer to the
      * `vsphereCustomAttributes` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     *
+     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -386,6 +407,9 @@ export interface HostArgs {
      * The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
+     *
+     * > **NOTE:** Tagging support is not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -68,6 +68,10 @@ export class File extends pulumi.CustomResource {
     /**
      * Create directories in `destinationFile`
      * path parameter on first apply if any are missing for copy operation.
+     *
+     * > **NOTE:** Any directory created as part of the `createDirectories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destinationFile` path is changed in subsequent applies.
      */
     public readonly createDirectories!: pulumi.Output<boolean | undefined>;
     /**
@@ -148,6 +152,10 @@ export interface FileState {
     /**
      * Create directories in `destinationFile`
      * path parameter on first apply if any are missing for copy operation.
+     *
+     * > **NOTE:** Any directory created as part of the `createDirectories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destinationFile` path is changed in subsequent applies.
      */
     createDirectories?: pulumi.Input<boolean>;
     /**
@@ -185,6 +193,10 @@ export interface FileArgs {
     /**
      * Create directories in `destinationFile`
      * path parameter on first apply if any are missing for copy operation.
+     *
+     * > **NOTE:** Any directory created as part of the `createDirectories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destinationFile` path is changed in subsequent applies.
      */
     createDirectories?: pulumi.Input<boolean>;
     /**

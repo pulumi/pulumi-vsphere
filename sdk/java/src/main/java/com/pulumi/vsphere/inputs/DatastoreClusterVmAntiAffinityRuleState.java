@@ -87,6 +87,8 @@ public final class DatastoreClusterVmAntiAffinityRuleState extends com.pulumi.re
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
      * 
+     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+     * 
      */
     @Import(name="virtualMachineIds")
     private @Nullable Output<List<String>> virtualMachineIds;
@@ -94,6 +96,8 @@ public final class DatastoreClusterVmAntiAffinityRuleState extends com.pulumi.re
     /**
      * @return The UUIDs of the virtual machines to run
      * on different datastores from each other.
+     * 
+     * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
      * 
      */
     public Optional<Output<List<String>>> virtualMachineIds() {
@@ -222,6 +226,8 @@ public final class DatastoreClusterVmAntiAffinityRuleState extends com.pulumi.re
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
          * 
+         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+         * 
          * @return builder
          * 
          */
@@ -234,6 +240,8 @@ public final class DatastoreClusterVmAntiAffinityRuleState extends com.pulumi.re
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
          * 
+         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
+         * 
          * @return builder
          * 
          */
@@ -244,6 +252,8 @@ public final class DatastoreClusterVmAntiAffinityRuleState extends com.pulumi.re
         /**
          * @param virtualMachineIds The UUIDs of the virtual machines to run
          * on different datastores from each other.
+         * 
+         * &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
          * 
          * @return builder
          * 

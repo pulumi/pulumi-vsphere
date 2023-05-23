@@ -17,12 +17,20 @@ public final class GetHostPciDevicePlainArgs extends com.pulumi.resources.Invoke
     /**
      * The hexadecimal PCI device class ID
      * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
+     * 
      */
     @Import(name="classId")
     private @Nullable String classId;
 
     /**
      * @return The hexadecimal PCI device class ID
+     * 
+     * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+     * 
+     * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
      * 
      */
     public Optional<String> classId() {
@@ -105,6 +113,10 @@ public final class GetHostPciDevicePlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param classId The hexadecimal PCI device class ID
+         * 
+         * [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+         * 
+         * &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
          * 
          * @return builder
          * 

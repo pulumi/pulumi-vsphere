@@ -24,6 +24,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -68,6 +69,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -106,6 +108,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A regular expression to filter the disks against. Only
         /// disks with canonical names that match will be included.
+        /// 
+        /// &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+        /// will have any specific storage devices added to it that may affect the order of
+        /// the output `disks` attribute below, which is lexicographically sorted.
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -136,6 +142,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A regular expression to filter the disks against. Only
         /// disks with canonical names that match will be included.
+        /// 
+        /// &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+        /// will have any specific storage devices added to it that may affect the order of
+        /// the output `disks` attribute below, which is lexicographically sorted.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

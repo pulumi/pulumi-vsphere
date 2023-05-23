@@ -66,7 +66,7 @@ def get_datastore(datacenter_id: Optional[str] = None,
                   name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoreResult:
     """
-    The _get_datastore_ data source can be used to discover the ID of a
+    The `get_datastore` data source can be used to discover the ID of a
     vSphere datastore object. This can then be used with resources or data sources
     that require a datastore. For example, to create virtual machines in using the
     `VirtualMachine` resource.
@@ -106,7 +106,7 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = 
                          name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatastoreResult]:
     """
-    The _get_datastore_ data source can be used to discover the ID of a
+    The `get_datastore` data source can be used to discover the ID of a
     vSphere datastore object. This can then be used with resources or data sources
     that require a datastore. For example, to create virtual machines in using the
     `VirtualMachine` resource.

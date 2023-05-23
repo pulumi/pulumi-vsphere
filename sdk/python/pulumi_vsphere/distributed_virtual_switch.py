@@ -134,12 +134,18 @@ class DistributedVirtualSwitchArgs:
                virtual devices.
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
+               
+               > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+               probing.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
                who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for VDS.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+               and requires vCenter Server.
         :param pulumi.Input[str] description: A detailed description for the VDS.
         :param pulumi.Input[bool] directpath_gen2_allowed: Allow VMDirectPath Gen2 for the ports
                for which this policy applies to.
@@ -240,6 +246,8 @@ class DistributedVirtualSwitchArgs:
                `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
                `failover_explicit`, or `loadbalance_loadbased`.
@@ -266,6 +274,22 @@ class DistributedVirtualSwitchArgs:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -599,6 +623,9 @@ class DistributedVirtualSwitchArgs:
         """
         Enables beacon probing as an additional measure
         to detect NIC failure.
+
+        > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        probing.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -638,6 +665,9 @@ class DistributedVirtualSwitchArgs:
         """
         Map of custom attribute ids to attribute
         value strings to set for VDS.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1376,6 +1406,8 @@ class DistributedVirtualSwitchArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -1556,6 +1588,22 @@ class DistributedVirtualSwitchArgs:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -1780,6 +1828,9 @@ class _DistributedVirtualSwitchState:
                virtual devices.
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
+               
+               > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+               probing.
         :param pulumi.Input[str] config_version: The current version of the VDS configuration, incremented
                by subsequent updates to the VDS.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
@@ -1788,6 +1839,9 @@ class _DistributedVirtualSwitchState:
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for VDS.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+               and requires vCenter Server.
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
                created. Forces a new resource if changed.
         :param pulumi.Input[str] description: A detailed description for the VDS.
@@ -1890,6 +1944,8 @@ class _DistributedVirtualSwitchState:
                `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
                `failover_explicit`, or `loadbalance_loadbased`.
@@ -1916,6 +1972,22 @@ class _DistributedVirtualSwitchState:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -2239,6 +2311,9 @@ class _DistributedVirtualSwitchState:
         """
         Enables beacon probing as an additional measure
         to detect NIC failure.
+
+        > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        probing.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -2291,6 +2366,9 @@ class _DistributedVirtualSwitchState:
         """
         Map of custom attribute ids to attribute
         value strings to set for VDS.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -3042,6 +3120,8 @@ class _DistributedVirtualSwitchState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -3222,6 +3302,22 @@ class _DistributedVirtualSwitchState:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -3450,12 +3546,18 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                virtual devices.
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
+               
+               > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+               probing.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
                who is responsible for the VDS.
         :param pulumi.Input[str] contact_name: The name of the person who is responsible for the
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for VDS.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+               and requires vCenter Server.
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
                created. Forces a new resource if changed.
         :param pulumi.Input[str] description: A detailed description for the VDS.
@@ -3558,6 +3660,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
                `failover_explicit`, or `loadbalance_loadbased`.
@@ -3584,6 +3688,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -3948,6 +4068,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                virtual devices.
         :param pulumi.Input[bool] check_beacon: Enables beacon probing as an additional measure
                to detect NIC failure.
+               
+               > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+               probing.
         :param pulumi.Input[str] config_version: The current version of the VDS configuration, incremented
                by subsequent updates to the VDS.
         :param pulumi.Input[str] contact_detail: The detailed contact information for the person
@@ -3956,6 +4079,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                VDS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Map of custom attribute ids to attribute
                value strings to set for VDS.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+               and requires vCenter Server.
         :param pulumi.Input[str] datacenter_id: The ID of the datacenter where the VDS will be
                created. Forces a new resource if changed.
         :param pulumi.Input[str] description: A detailed description for the VDS.
@@ -4058,6 +4184,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                `uplinks` VDS argument. See
                here for more details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         :param pulumi.Input[str] teaming_policy: The uplink teaming policy. Can be one of
                `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`,
                `failover_explicit`, or `loadbalance_loadbased`.
@@ -4084,6 +4212,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4281,6 +4425,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         Enables beacon probing as an additional measure
         to detect NIC failure.
+
+        > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        probing.
         """
         return pulumi.get(self, "check_beacon")
 
@@ -4317,6 +4464,9 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         """
         Map of custom attribute ids to attribute
         value strings to set for VDS.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        and requires vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -4832,6 +4982,8 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -4956,6 +5108,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 

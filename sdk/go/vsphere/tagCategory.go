@@ -24,6 +24,9 @@ type TagCategory struct {
 	// multiple tags in this category). Forces a new resource if changed.
 	Cardinality pulumi.StringOutput `pulumi:"cardinality"`
 	// A description for the category.
+	//
+	// > **NOTE:** You can add associable types to a category, but you cannot remove
+	// them. Attempting to do so will result in an error.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the category.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -74,6 +77,9 @@ type tagCategoryState struct {
 	// multiple tags in this category). Forces a new resource if changed.
 	Cardinality *string `pulumi:"cardinality"`
 	// A description for the category.
+	//
+	// > **NOTE:** You can add associable types to a category, but you cannot remove
+	// them. Attempting to do so will result in an error.
 	Description *string `pulumi:"description"`
 	// The name of the category.
 	Name *string `pulumi:"name"`
@@ -90,6 +96,9 @@ type TagCategoryState struct {
 	// multiple tags in this category). Forces a new resource if changed.
 	Cardinality pulumi.StringPtrInput
 	// A description for the category.
+	//
+	// > **NOTE:** You can add associable types to a category, but you cannot remove
+	// them. Attempting to do so will result in an error.
 	Description pulumi.StringPtrInput
 	// The name of the category.
 	Name pulumi.StringPtrInput
@@ -110,6 +119,9 @@ type tagCategoryArgs struct {
 	// multiple tags in this category). Forces a new resource if changed.
 	Cardinality string `pulumi:"cardinality"`
 	// A description for the category.
+	//
+	// > **NOTE:** You can add associable types to a category, but you cannot remove
+	// them. Attempting to do so will result in an error.
 	Description *string `pulumi:"description"`
 	// The name of the category.
 	Name *string `pulumi:"name"`
@@ -127,6 +139,9 @@ type TagCategoryArgs struct {
 	// multiple tags in this category). Forces a new resource if changed.
 	Cardinality pulumi.StringInput
 	// A description for the category.
+	//
+	// > **NOTE:** You can add associable types to a category, but you cannot remove
+	// them. Attempting to do so will result in an error.
 	Description pulumi.StringPtrInput
 	// The name of the category.
 	Name pulumi.StringPtrInput
@@ -235,6 +250,9 @@ func (o TagCategoryOutput) Cardinality() pulumi.StringOutput {
 }
 
 // A description for the category.
+//
+// > **NOTE:** You can add associable types to a category, but you cannot remove
+// them. Attempting to do so will result in an error.
 func (o TagCategoryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagCategory) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

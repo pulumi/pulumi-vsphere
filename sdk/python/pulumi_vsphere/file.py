@@ -29,6 +29,10 @@ class FileArgs:
                or copied to on the destination `datastore` in vSphere.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter on first apply if any are missing for copy operation.
+               
+               > **NOTE:** Any directory created as part of the `create_directories` argument
+               will not be deleted when the resource is destroyed. New directories are not
+               created if the `destination_file` path is changed in subsequent applies.
         :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[str] source_datacenter: The name of a datacenter from which the file
@@ -89,6 +93,10 @@ class FileArgs:
         """
         Create directories in `destination_file`
         path parameter on first apply if any are missing for copy operation.
+
+        > **NOTE:** Any directory created as part of the `create_directories` argument
+        will not be deleted when the resource is destroyed. New directories are not
+        created if the `destination_file` path is changed in subsequent applies.
         """
         return pulumi.get(self, "create_directories")
 
@@ -150,6 +158,10 @@ class _FileState:
         Input properties used for looking up and filtering File resources.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter on first apply if any are missing for copy operation.
+               
+               > **NOTE:** Any directory created as part of the `create_directories` argument
+               will not be deleted when the resource is destroyed. New directories are not
+               created if the `destination_file` path is changed in subsequent applies.
         :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
@@ -182,6 +194,10 @@ class _FileState:
         """
         Create directories in `destination_file`
         path parameter on first apply if any are missing for copy operation.
+
+        > **NOTE:** Any directory created as part of the `create_directories` argument
+        will not be deleted when the resource is destroyed. New directories are not
+        created if the `destination_file` path is changed in subsequent applies.
         """
         return pulumi.get(self, "create_directories")
 
@@ -312,6 +328,10 @@ class File(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter on first apply if any are missing for copy operation.
+               
+               > **NOTE:** Any directory created as part of the `create_directories` argument
+               will not be deleted when the resource is destroyed. New directories are not
+               created if the `destination_file` path is changed in subsequent applies.
         :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
@@ -430,6 +450,10 @@ class File(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_directories: Create directories in `destination_file`
                path parameter on first apply if any are missing for copy operation.
+               
+               > **NOTE:** Any directory created as part of the `create_directories` argument
+               will not be deleted when the resource is destroyed. New directories are not
+               created if the `destination_file` path is changed in subsequent applies.
         :param pulumi.Input[str] datacenter: The name of a datacenter to which the file will be
                uploaded.
         :param pulumi.Input[str] datastore: The name of the datastore to which to upload the
@@ -460,6 +484,10 @@ class File(pulumi.CustomResource):
         """
         Create directories in `destination_file`
         path parameter on first apply if any are missing for copy operation.
+
+        > **NOTE:** Any directory created as part of the `create_directories` argument
+        will not be deleted when the resource is destroyed. New directories are not
+        created if the `destination_file` path is changed in subsequent applies.
         """
         return pulumi.get(self, "create_directories")
 

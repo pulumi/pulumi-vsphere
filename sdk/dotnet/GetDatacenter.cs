@@ -23,6 +23,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -53,6 +54,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -78,6 +80,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
         /// Can be omitted if there is only one datacenter in the inventory.
+        /// 
+        /// &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
+        /// host's "default" datacenter, which is a special datacenter name unrelated to the
+        /// datacenters that exist in the vSphere inventory when managed by a vCenter Server
+        /// instance. Hence, the `name` attribute is completely ignored.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -93,6 +100,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the datacenter. This can be a name or path.
         /// Can be omitted if there is only one datacenter in the inventory.
+        /// 
+        /// &gt; **NOTE:** When used with an ESXi host, this data source _always_ returns the
+        /// host's "default" datacenter, which is a special datacenter name unrelated to the
+        /// datacenters that exist in the vSphere inventory when managed by a vCenter Server
+        /// instance. Hence, the `name` attribute is completely ignored.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

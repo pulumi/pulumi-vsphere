@@ -23,6 +23,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -55,6 +56,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -90,6 +92,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -122,6 +125,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -155,6 +159,10 @@ namespace Pulumi.VSphere
         /// if the search path used in `name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
         /// source.
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+        /// need to specify either attribute to use this data source. An empty declaration
+        /// will load the ESXi host's root resource pool.
         /// </summary>
         [Input("datacenterId")]
         public string? DatacenterId { get; set; }
@@ -180,6 +188,10 @@ namespace Pulumi.VSphere
         /// if the search path used in `name` is an absolute path. For default
         /// datacenters, use the id attribute from an empty `vsphere.Datacenter` data
         /// source.
+        /// 
+        /// &gt; **Note:** When using ESXi without a vCenter Server instance, you do not
+        /// need to specify either attribute to use this data source. An empty declaration
+        /// will load the ESXi host's root resource pool.
         /// </summary>
         [Input("datacenterId")]
         public Input<string>? DatacenterId { get; set; }

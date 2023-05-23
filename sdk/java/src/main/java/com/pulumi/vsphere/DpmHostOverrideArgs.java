@@ -40,6 +40,10 @@ public final class DpmHostOverrideArgs extends com.pulumi.resources.ResourceArgs
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
      * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * for both options.
+     * 
      */
     @Import(name="dpmAutomationLevel")
     private @Nullable Output<String> dpmAutomationLevel;
@@ -48,6 +52,10 @@ public final class DpmHostOverrideArgs extends com.pulumi.resources.ResourceArgs
      * @return The automation level for host power
      * operations on this host. Can be one of `manual` or `automated`. Default:
      * `manual`.
+     * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+     * for both options.
      * 
      */
     public Optional<Output<String>> dpmAutomationLevel() {
@@ -143,6 +151,10 @@ public final class DpmHostOverrideArgs extends com.pulumi.resources.ResourceArgs
          * operations on this host. Can be one of `manual` or `automated`. Default:
          * `manual`.
          * 
+         * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+         * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+         * for both options.
+         * 
          * @return builder
          * 
          */
@@ -155,6 +167,10 @@ public final class DpmHostOverrideArgs extends com.pulumi.resources.ResourceArgs
          * @param dpmAutomationLevel The automation level for host power
          * operations on this host. Can be one of `manual` or `automated`. Default:
          * `manual`.
+         * 
+         * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+         * `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+         * for both options.
          * 
          * @return builder
          * 

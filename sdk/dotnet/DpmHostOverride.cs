@@ -24,6 +24,10 @@ namespace Pulumi.VSphere
         /// The automation level for host power
         /// operations on this host. Can be one of `manual` or `automated`. Default:
         /// `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Output("dpmAutomationLevel")]
         public Output<string?> DpmAutomationLevel { get; private set; } = null!;
@@ -99,6 +103,10 @@ namespace Pulumi.VSphere
         /// The automation level for host power
         /// operations on this host. Can be one of `manual` or `automated`. Default:
         /// `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Input("dpmAutomationLevel")]
         public Input<string>? DpmAutomationLevel { get; set; }
@@ -136,6 +144,10 @@ namespace Pulumi.VSphere
         /// The automation level for host power
         /// operations on this host. Can be one of `manual` or `automated`. Default:
         /// `manual`.
+        /// 
+        /// &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+        /// `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        /// for both options.
         /// </summary>
         [Input("dpmAutomationLevel")]
         public Input<string>? DpmAutomationLevel { get; set; }

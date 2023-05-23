@@ -46,6 +46,11 @@ export class ComputeClusterVmGroup extends pulumi.CustomResource {
     /**
      * The UUIDs of the virtual machines in this
      * group.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     public readonly virtualMachineIds!: pulumi.Output<string[] | undefined>;
 
@@ -97,6 +102,11 @@ export interface ComputeClusterVmGroupState {
     /**
      * The UUIDs of the virtual machines in this
      * group.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -119,6 +129,11 @@ export interface ComputeClusterVmGroupArgs {
     /**
      * The UUIDs of the virtual machines in this
      * group.
+     *
+     * > **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

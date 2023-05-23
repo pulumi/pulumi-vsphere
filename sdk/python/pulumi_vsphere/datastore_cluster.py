@@ -48,6 +48,11 @@ class DatastoreClusterArgs:
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] folder: The relative path to a folder to put this datastore
                cluster in.  This is a path relative to the datacenter you are deploying the
                datastore to.  Example: for the `dc1` datacenter, and a provided `folder` of
@@ -115,6 +120,8 @@ class DatastoreClusterArgs:
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         pulumi.set(__self__, "datacenter_id", datacenter_id)
         if custom_attributes is not None:
@@ -188,6 +195,11 @@ class DatastoreClusterArgs:
         value strings to set for the datastore cluster. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -508,6 +520,8 @@ class DatastoreClusterArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -550,6 +564,11 @@ class _DatastoreClusterState:
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
@@ -620,6 +639,8 @@ class _DatastoreClusterState:
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -680,6 +701,11 @@ class _DatastoreClusterState:
         value strings to set for the datastore cluster. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1014,6 +1040,8 @@ class _DatastoreClusterState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -1061,6 +1089,11 @@ class DatastoreCluster(pulumi.CustomResource):
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
@@ -1131,6 +1164,8 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         ...
     @overload
@@ -1262,6 +1297,11 @@ class DatastoreCluster(pulumi.CustomResource):
                value strings to set for the datastore cluster. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the datastore cluster in. Forces a new resource if
                changed.
@@ -1332,6 +1372,8 @@ class DatastoreCluster(pulumi.CustomResource):
         :param pulumi.Input[str] sdrs_vm_evacuation_automation_level: Overrides the default
                automation settings when generating recommendations for datastore evacuation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1372,6 +1414,11 @@ class DatastoreCluster(pulumi.CustomResource):
         value strings to set for the datastore cluster. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1610,6 +1657,8 @@ class DatastoreCluster(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 

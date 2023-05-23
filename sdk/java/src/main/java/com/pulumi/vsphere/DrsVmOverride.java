@@ -40,6 +40,10 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * for both options.
+     * 
      */
     @Export(name="drsAutomationLevel", type=String.class, parameters={})
     private Output</* @Nullable */ String> drsAutomationLevel;
@@ -48,6 +52,10 @@ public class DrsVmOverride extends com.pulumi.resources.CustomResource {
      * @return Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
+     * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * for both options.
      * 
      */
     public Output<Optional<String>> drsAutomationLevel() {

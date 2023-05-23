@@ -145,6 +145,7 @@ type LookupVirtualMachineArgs struct {
 	MemoryReservation   *int    `pulumi:"memoryReservation"`
 	MemoryShareCount    *int    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
+	Moid                *string `pulumi:"moid"`
 	// The name of the virtual machine. This can be a name or
 	// the full path relative to the datacenter. This is required if a UUID lookup
 	// is not performed.
@@ -164,6 +165,12 @@ type LookupVirtualMachineArgs struct {
 	SataControllerScanCount            *int    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
+	//
+	// > **NOTE:** For best results, ensure that all the disks on any templates you
+	// use with this data source reside on the primary controller, and leave this
+	// value at the default. See the `VirtualMachine`
+	// resource documentation for the significance of this setting, specifically the
+	// additional requirements and notes for cloning section.
 	ScsiControllerScanCount      *int    `pulumi:"scsiControllerScanCount"`
 	StoragePolicyId              *string `pulumi:"storagePolicyId"`
 	SwapPlacementPolicy          *string `pulumi:"swapPlacementPolicy"`
@@ -238,6 +245,7 @@ type LookupVirtualMachineResult struct {
 	MemoryReservation   *int    `pulumi:"memoryReservation"`
 	MemoryShareCount    int     `pulumi:"memoryShareCount"`
 	MemoryShareLevel    *string `pulumi:"memoryShareLevel"`
+	Moid                string  `pulumi:"moid"`
 	Name                *string `pulumi:"name"`
 	NestedHvEnabled     *bool   `pulumi:"nestedHvEnabled"`
 	// The network interface types for each network
@@ -345,6 +353,7 @@ type LookupVirtualMachineOutputArgs struct {
 	MemoryReservation   pulumi.IntPtrInput    `pulumi:"memoryReservation"`
 	MemoryShareCount    pulumi.IntPtrInput    `pulumi:"memoryShareCount"`
 	MemoryShareLevel    pulumi.StringPtrInput `pulumi:"memoryShareLevel"`
+	Moid                pulumi.StringPtrInput `pulumi:"moid"`
 	// The name of the virtual machine. This can be a name or
 	// the full path relative to the datacenter. This is required if a UUID lookup
 	// is not performed.
@@ -364,6 +373,12 @@ type LookupVirtualMachineOutputArgs struct {
 	SataControllerScanCount            pulumi.IntPtrInput    `pulumi:"sataControllerScanCount"`
 	// The number of SCSI controllers to
 	// scan for disk attributes and controller types on. Default: `1`.
+	//
+	// > **NOTE:** For best results, ensure that all the disks on any templates you
+	// use with this data source reside on the primary controller, and leave this
+	// value at the default. See the `VirtualMachine`
+	// resource documentation for the significance of this setting, specifically the
+	// additional requirements and notes for cloning section.
 	ScsiControllerScanCount      pulumi.IntPtrInput    `pulumi:"scsiControllerScanCount"`
 	StoragePolicyId              pulumi.StringPtrInput `pulumi:"storagePolicyId"`
 	SwapPlacementPolicy          pulumi.StringPtrInput `pulumi:"swapPlacementPolicy"`
@@ -561,6 +576,10 @@ func (o LookupVirtualMachineResultOutput) MemoryShareCount() pulumi.IntOutput {
 
 func (o LookupVirtualMachineResultOutput) MemoryShareLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.MemoryShareLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVirtualMachineResultOutput) Moid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Moid }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualMachineResultOutput) Name() pulumi.StringPtrOutput {

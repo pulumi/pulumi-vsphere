@@ -80,6 +80,10 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
+     * 
      */
     @Export(name="mandatory", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> mandatory;
@@ -87,6 +91,10 @@ public class ComputeClusterVmAffinityRule extends com.pulumi.resources.CustomRes
     /**
      * @return When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      * 
      */
     public Output<Optional<Boolean>> mandatory() {

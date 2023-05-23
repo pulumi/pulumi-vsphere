@@ -68,6 +68,10 @@ export interface GetResourcePoolArgs {
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
+     *
+     * > **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host's root resource pool.
      */
     datacenterId?: string;
     /**
@@ -146,6 +150,10 @@ export interface GetResourcePoolOutputArgs {
      * if the search path used in `name` is an absolute path. For default
      * datacenters, use the id attribute from an empty `vsphere.Datacenter` data
      * source.
+     *
+     * > **Note:** When using ESXi without a vCenter Server instance, you do not
+     * need to specify either attribute to use this data source. An empty declaration
+     * will load the ESXi host's root resource pool.
      */
     datacenterId?: pulumi.Input<string>;
     /**

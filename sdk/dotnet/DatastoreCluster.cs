@@ -17,6 +17,11 @@ namespace Pulumi.VSphere
         /// value strings to set for the datastore cluster. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -207,6 +212,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -265,6 +272,11 @@ namespace Pulumi.VSphere
         /// value strings to set for the datastore cluster. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -467,6 +479,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -490,6 +504,11 @@ namespace Pulumi.VSphere
         /// value strings to set for the datastore cluster. See
         /// [here][docs-setting-custom-attributes] for a reference on how to set values
         /// for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -692,6 +711,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {

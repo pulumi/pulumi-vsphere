@@ -42,6 +42,10 @@ export class DrsVmOverride extends pulumi.CustomResource {
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
+     *
+     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+     * for both options.
      */
     public readonly drsAutomationLevel!: pulumi.Output<string | undefined>;
     /**
@@ -104,6 +108,10 @@ export interface DrsVmOverrideState {
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
+     *
+     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+     * for both options.
      */
     drsAutomationLevel?: pulumi.Input<string>;
     /**
@@ -132,6 +140,10 @@ export interface DrsVmOverrideArgs {
      * Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
+     *
+     * > **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drsEnabled` or `drsAutomationLevel` is omitted. Take note of the defaults
+     * for both options.
      */
     drsAutomationLevel?: pulumi.Input<string>;
     /**

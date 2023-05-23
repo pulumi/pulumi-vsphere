@@ -26,6 +26,9 @@ type NasDatastore struct {
 	Capacity pulumi.IntOutput `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -67,6 +70,9 @@ type NasDatastore struct {
 	// if changed.
 	SecurityType pulumi.StringPtrOutput `pulumi:"securityType"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -129,6 +135,9 @@ type nasDatastoreState struct {
 	Capacity *int `pulumi:"capacity"`
 	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -170,6 +179,9 @@ type nasDatastoreState struct {
 	// if changed.
 	SecurityType *string `pulumi:"securityType"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -195,6 +207,9 @@ type NasDatastoreState struct {
 	Capacity pulumi.IntPtrInput
 	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -236,6 +251,9 @@ type NasDatastoreState struct {
 	// if changed.
 	SecurityType pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -260,6 +278,9 @@ type nasDatastoreArgs struct {
 	AccessMode *string `pulumi:"accessMode"`
 	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -291,6 +312,9 @@ type nasDatastoreArgs struct {
 	// if changed.
 	SecurityType *string `pulumi:"securityType"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -307,6 +331,9 @@ type NasDatastoreArgs struct {
 	AccessMode pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// value strings to set on datasource resource.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object
 	// ID of a datastore cluster to put this datastore in.
@@ -338,6 +365,9 @@ type NasDatastoreArgs struct {
 	// if changed.
 	SecurityType pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of NAS volume. Can be one of `NFS` (to denote
 	// v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
@@ -453,6 +483,9 @@ func (o NasDatastoreOutput) Capacity() pulumi.IntOutput {
 
 // Map of custom attribute ids to attribute
 // value strings to set on datasource resource.
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter.
 func (o NasDatastoreOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NasDatastore) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -530,6 +563,9 @@ func (o NasDatastoreOutput) SecurityType() pulumi.StringPtrOutput {
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// requires vCenter 6.0 or higher.
 func (o NasDatastoreOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NasDatastore) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

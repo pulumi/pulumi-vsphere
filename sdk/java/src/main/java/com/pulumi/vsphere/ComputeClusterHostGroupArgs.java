@@ -39,6 +39,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
      * The managed object IDs of
      * the hosts to put in the cluster.
      * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
+     * 
      */
     @Import(name="hostSystemIds")
     private @Nullable Output<List<String>> hostSystemIds;
@@ -46,6 +51,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
     /**
      * @return The managed object IDs of
      * the hosts to put in the cluster.
+     * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
      * 
      */
     public Optional<Output<List<String>>> hostSystemIds() {
@@ -124,6 +134,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
          * @param hostSystemIds The managed object IDs of
          * the hosts to put in the cluster.
          * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterVmGroup`
+         * resource. Make sure your names are unique across both resources.
+         * 
          * @return builder
          * 
          */
@@ -136,6 +151,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
          * @param hostSystemIds The managed object IDs of
          * the hosts to put in the cluster.
          * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterVmGroup`
+         * resource. Make sure your names are unique across both resources.
+         * 
          * @return builder
          * 
          */
@@ -146,6 +166,11 @@ public final class ComputeClusterHostGroupArgs extends com.pulumi.resources.Reso
         /**
          * @param hostSystemIds The managed object IDs of
          * the hosts to put in the cluster.
+         * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterVmGroup`
+         * resource. Make sure your names are unique across both resources.
          * 
          * @return builder
          * 

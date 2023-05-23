@@ -52,6 +52,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// When this value is `true`, prevents any virtual
         /// machine operations that may violate this rule. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+        /// `name` argument) is shared with all rules in the cluster - consider
+        /// this when naming your rules.
         /// </summary>
         [Output("mandatory")]
         public Output<bool?> Mandatory { get; private set; } = null!;
@@ -132,6 +136,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// When this value is `true`, prevents any virtual
         /// machine operations that may violate this rule. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+        /// `name` argument) is shared with all rules in the cluster - consider
+        /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
         public Input<bool>? Mandatory { get; set; }
@@ -180,6 +188,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// When this value is `true`, prevents any virtual
         /// machine operations that may violate this rule. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+        /// `name` argument) is shared with all rules in the cluster - consider
+        /// this when naming your rules.
         /// </summary>
         [Input("mandatory")]
         public Input<bool>? Mandatory { get; set; }

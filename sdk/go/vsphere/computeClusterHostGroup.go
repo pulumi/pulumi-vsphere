@@ -20,6 +20,11 @@ type ComputeClusterHostGroup struct {
 	ComputeClusterId pulumi.StringOutput `pulumi:"computeClusterId"`
 	// The managed object IDs of
 	// the hosts to put in the cluster.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterVmGroup`
+	// resource. Make sure your names are unique across both resources.
 	HostSystemIds pulumi.StringArrayOutput `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -64,6 +69,11 @@ type computeClusterHostGroupState struct {
 	ComputeClusterId *string `pulumi:"computeClusterId"`
 	// The managed object IDs of
 	// the hosts to put in the cluster.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterVmGroup`
+	// resource. Make sure your names are unique across both resources.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -77,6 +87,11 @@ type ComputeClusterHostGroupState struct {
 	ComputeClusterId pulumi.StringPtrInput
 	// The managed object IDs of
 	// the hosts to put in the cluster.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterVmGroup`
+	// resource. Make sure your names are unique across both resources.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -94,6 +109,11 @@ type computeClusterHostGroupArgs struct {
 	ComputeClusterId string `pulumi:"computeClusterId"`
 	// The managed object IDs of
 	// the hosts to put in the cluster.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterVmGroup`
+	// resource. Make sure your names are unique across both resources.
 	HostSystemIds []string `pulumi:"hostSystemIds"`
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -108,6 +128,11 @@ type ComputeClusterHostGroupArgs struct {
 	ComputeClusterId pulumi.StringInput
 	// The managed object IDs of
 	// the hosts to put in the cluster.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterVmGroup`
+	// resource. Make sure your names are unique across both resources.
 	HostSystemIds pulumi.StringArrayInput
 	// The name of the host group. This must be unique in the
 	// cluster. Forces a new resource if changed.
@@ -210,6 +235,11 @@ func (o ComputeClusterHostGroupOutput) ComputeClusterId() pulumi.StringOutput {
 
 // The managed object IDs of
 // the hosts to put in the cluster.
+//
+// > **NOTE:** The namespace for cluster names on this resource (defined by the
+// `name` argument) is shared with the
+// `ComputeClusterVmGroup`
+// resource. Make sure your names are unique across both resources.
 func (o ComputeClusterHostGroupOutput) HostSystemIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeClusterHostGroup) pulumi.StringArrayOutput { return v.HostSystemIds }).(pulumi.StringArrayOutput)
 }

@@ -180,6 +180,9 @@ export interface GetOvfVmTemplateArgs {
     ovfNetworkMap?: {[key: string]: string};
     /**
      * URL of the remote OVF/OVA file to be deployed.
+     *
+     * > **NOTE:** Either `localOvfPath` or `remoteOvfUrl` is required, both can
+     * not be empty.
      */
     remoteOvfUrl?: string;
     /**
@@ -430,6 +433,9 @@ export interface GetOvfVmTemplateOutputArgs {
     ovfNetworkMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * URL of the remote OVF/OVA file to be deployed.
+     *
+     * > **NOTE:** Either `localOvfPath` or `remoteOvfUrl` is required, both can
+     * not be empty.
      */
     remoteOvfUrl?: pulumi.Input<string>;
     /**

@@ -22,6 +22,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -57,6 +58,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -95,6 +97,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the ESXI host. This can be a name or path.
         /// Can be omitted if there is only one host in your inventory.
+        /// 
+        /// &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+        /// returns the ESXi host's object ID, regardless of what is entered into `name`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -117,6 +122,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The name of the ESXI host. This can be a name or path.
         /// Can be omitted if there is only one host in your inventory.
+        /// 
+        /// &gt; **NOTE:** When used against an ESXi host directly, this data source _always_
+        /// returns the ESXi host's object ID, regardless of what is entered into `name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

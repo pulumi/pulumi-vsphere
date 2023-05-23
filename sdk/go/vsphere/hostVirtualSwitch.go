@@ -64,6 +64,9 @@ type HostVirtualSwitch struct {
 	NotifySwitches pulumi.BoolPtrOutput `pulumi:"notifySwitches"`
 	// The number of ports to create with this
 	// virtual switch. Default: `128`.
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrOutput `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per
 	// second if traffic shaping is enabled. Default: `0`
@@ -174,6 +177,9 @@ type hostVirtualSwitchState struct {
 	NotifySwitches *bool `pulumi:"notifySwitches"`
 	// The number of ports to create with this
 	// virtual switch. Default: `128`.
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+	// will not restart the host for you.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per
 	// second if traffic shaping is enabled. Default: `0`
@@ -247,6 +253,9 @@ type HostVirtualSwitchState struct {
 	NotifySwitches pulumi.BoolPtrInput
 	// The number of ports to create with this
 	// virtual switch. Default: `128`.
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per
 	// second if traffic shaping is enabled. Default: `0`
@@ -324,6 +333,9 @@ type hostVirtualSwitchArgs struct {
 	NotifySwitches *bool `pulumi:"notifySwitches"`
 	// The number of ports to create with this
 	// virtual switch. Default: `128`.
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+	// will not restart the host for you.
 	NumberOfPorts *int `pulumi:"numberOfPorts"`
 	// The average bandwidth in bits per
 	// second if traffic shaping is enabled. Default: `0`
@@ -398,6 +410,9 @@ type HostVirtualSwitchArgs struct {
 	NotifySwitches pulumi.BoolPtrInput
 	// The number of ports to create with this
 	// virtual switch. Default: `128`.
+	//
+	// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+	// will not restart the host for you.
 	NumberOfPorts pulumi.IntPtrInput
 	// The average bandwidth in bits per
 	// second if traffic shaping is enabled. Default: `0`
@@ -599,6 +614,9 @@ func (o HostVirtualSwitchOutput) NotifySwitches() pulumi.BoolPtrOutput {
 
 // The number of ports to create with this
 // virtual switch. Default: `128`.
+//
+// > **NOTE:** Changing the port count requires a reboot of the host. This provider
+// will not restart the host for you.
 func (o HostVirtualSwitchOutput) NumberOfPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostVirtualSwitch) pulumi.IntPtrOutput { return v.NumberOfPorts }).(pulumi.IntPtrOutput)
 }

@@ -9,6 +9,7 @@ import com.pulumi.vsphere.inputs.VnicIpv4Args;
 import com.pulumi.vsphere.inputs.VnicIpv6Args;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -153,6 +154,21 @@ public final class VnicArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portgroup);
     }
 
+    /**
+     * Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * 
+     */
+    @Import(name="services")
+    private @Nullable Output<List<String>> services;
+
+    /**
+     * @return Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * 
+     */
+    public Optional<Output<List<String>>> services() {
+        return Optional.ofNullable(this.services);
+    }
+
     private VnicArgs() {}
 
     private VnicArgs(VnicArgs $) {
@@ -165,6 +181,7 @@ public final class VnicArgs extends com.pulumi.resources.ResourceArgs {
         this.mtu = $.mtu;
         this.netstack = $.netstack;
         this.portgroup = $.portgroup;
+        this.services = $.services;
     }
 
     public static Builder builder() {
@@ -372,6 +389,37 @@ public final class VnicArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder portgroup(String portgroup) {
             return portgroup(Output.of(portgroup));
+        }
+
+        /**
+         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(@Nullable Output<List<String>> services) {
+            $.services = services;
+            return this;
+        }
+
+        /**
+         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(List<String> services) {
+            return services(Output.of(services));
+        }
+
+        /**
+         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder services(String... services) {
+            return services(List.of(services));
         }
 
         public VnicArgs build() {

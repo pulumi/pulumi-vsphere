@@ -21,6 +21,10 @@ type DpmHostOverride struct {
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DpmAutomationLevel pulumi.StringPtrOutput `pulumi:"dpmAutomationLevel"`
 	// Enable DPM support for this host. Default:
 	// `false`.
@@ -71,6 +75,10 @@ type dpmHostOverrideState struct {
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DpmAutomationLevel *string `pulumi:"dpmAutomationLevel"`
 	// Enable DPM support for this host. Default:
 	// `false`.
@@ -87,6 +95,10 @@ type DpmHostOverrideState struct {
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DpmAutomationLevel pulumi.StringPtrInput
 	// Enable DPM support for this host. Default:
 	// `false`.
@@ -107,6 +119,10 @@ type dpmHostOverrideArgs struct {
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DpmAutomationLevel *string `pulumi:"dpmAutomationLevel"`
 	// Enable DPM support for this host. Default:
 	// `false`.
@@ -124,6 +140,10 @@ type DpmHostOverrideArgs struct {
 	// The automation level for host power
 	// operations on this host. Can be one of `manual` or `automated`. Default:
 	// `manual`.
+	//
+	// > **NOTE:** Using this resource _always_ implies an override, even if one of
+	// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+	// for both options.
 	DpmAutomationLevel pulumi.StringPtrInput
 	// Enable DPM support for this host. Default:
 	// `false`.
@@ -229,6 +249,10 @@ func (o DpmHostOverrideOutput) ComputeClusterId() pulumi.StringOutput {
 // The automation level for host power
 // operations on this host. Can be one of `manual` or `automated`. Default:
 // `manual`.
+//
+// > **NOTE:** Using this resource _always_ implies an override, even if one of
+// `dpmEnabled` or `dpmAutomationLevel` is omitted. Take note of the defaults
+// for both options.
 func (o DpmHostOverrideOutput) DpmAutomationLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DpmHostOverride) pulumi.StringPtrOutput { return v.DpmAutomationLevel }).(pulumi.StringPtrOutput)
 }

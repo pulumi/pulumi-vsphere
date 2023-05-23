@@ -46,6 +46,34 @@ class ComputeClusterVsanDiskGroup(dict):
         """
         :param str cache: The canonical name of the disk to use for vSAN cache.
         :param Sequence[str] storages: An array of disk canonical names for vSAN storage.
+               
+               > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+               You can enable or re-enable vSphere HA after vSAN is configured.
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               compute_cluster = vsphere.ComputeCluster("computeCluster",
+                   datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
+                   host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+                   drs_enabled=True,
+                   drs_automation_level="fullyAutomated",
+                   ha_enabled=False,
+                   vsan_enabled=True,
+                   vsan_dedup_enabled=True,
+                   vsan_compression_enabled=True,
+                   vsan_performance_enabled=True,
+                   vsan_verbose_mode_enabled=True,
+                   vsan_network_diagnostic_mode_enabled=True,
+                   vsan_unmap_enabled=True,
+                   vsan_dit_encryption_enabled=True,
+                   vsan_dit_rekey_interval=1800,
+                   vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
+                       cache=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       storages=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                   )])
+               ```
         """
         if cache is not None:
             pulumi.set(__self__, "cache", cache)
@@ -65,6 +93,34 @@ class ComputeClusterVsanDiskGroup(dict):
     def storages(self) -> Optional[Sequence[str]]:
         """
         An array of disk canonical names for vSAN storage.
+
+        > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+        You can enable or re-enable vSphere HA after vSAN is configured.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        compute_cluster = vsphere.ComputeCluster("computeCluster",
+            datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
+            host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=False,
+            vsan_enabled=True,
+            vsan_dedup_enabled=True,
+            vsan_compression_enabled=True,
+            vsan_performance_enabled=True,
+            vsan_verbose_mode_enabled=True,
+            vsan_network_diagnostic_mode_enabled=True,
+            vsan_unmap_enabled=True,
+            vsan_dit_encryption_enabled=True,
+            vsan_dit_rekey_interval=1800,
+            vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
+                cache=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                storages=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+            )])
+        ```
         """
         return pulumi.get(self, "storages")
 
@@ -607,8 +663,14 @@ class VirtualMachineCdrom(dict):
         """
         :param bool client_device: Indicates whether the device should be backed by remote client device. Conflicts with `datastore_id` and `path`.
         :param str datastore_id: The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param int key: The ID of the device within the virtual machine.
         :param str path: When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+               
+               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+               
+               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         """
         if client_device is not None:
             pulumi.set(__self__, "client_device", client_device)
@@ -634,6 +696,8 @@ class VirtualMachineCdrom(dict):
     def datastore_id(self) -> Optional[str]:
         """
         The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -655,6 +719,10 @@ class VirtualMachineCdrom(dict):
     def path(self) -> Optional[str]:
         """
         When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+
+        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+
+        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         """
         return pulumi.get(self, "path")
 
@@ -1211,12 +1279,19 @@ class VirtualMachineDisk(dict):
                  uuid: Optional[str] = None,
                  write_through: Optional[bool] = None):
         """
-        :param str label: A label for the virtual disk. Forces a new disk, if changed.
         :param bool attach: Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+               
+               > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
         :param str controller_type: The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
         :param str datastore_id: The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+               
+               > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         :param str disk_mode: The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+               
+               [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
         :param str disk_sharing: The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+               
+               > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
         :param bool eagerly_scrub: If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thin_provisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
         :param int io_limit: The upper limit of IOPS that this disk can use. The default is no limit.
         :param int io_reservation: The I/O reservation (guarantee) for the virtual disk has, in IOPS.  The default is no reservation.
@@ -1225,6 +1300,10 @@ class VirtualMachineDisk(dict):
         :param bool keep_on_remove: Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
         :param int key: The ID of the device within the virtual machine.
         :param str path: When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+               
+               > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+               
+               > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         :param int size: The size of the disk, in GB. Must be a whole number.
         :param str storage_policy_id: The ID of the storage policy to assign to the home directory of a virtual machine.
         :param bool thin_provisioned: If `true`, the disk is thin provisioned, with space for the file being allocated on an as-needed basis. Cannot be set to `true` when `eagerly_scrub` is `true`. See the section on selecting a disk type for more information. Default: `true`.
@@ -1277,9 +1356,6 @@ class VirtualMachineDisk(dict):
     @property
     @pulumi.getter
     def label(self) -> str:
-        """
-        A label for the virtual disk. Forces a new disk, if changed.
-        """
         return pulumi.get(self, "label")
 
     @property
@@ -1287,6 +1363,8 @@ class VirtualMachineDisk(dict):
     def attach(self) -> Optional[bool]:
         """
         Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+
+        > **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "attach")
 
@@ -1303,6 +1381,8 @@ class VirtualMachineDisk(dict):
     def datastore_id(self) -> Optional[str]:
         """
         The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+
+        > **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         """
         return pulumi.get(self, "datastore_id")
 
@@ -1316,6 +1396,8 @@ class VirtualMachineDisk(dict):
     def disk_mode(self) -> Optional[str]:
         """
         The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+
+        [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
         """
         return pulumi.get(self, "disk_mode")
 
@@ -1324,6 +1406,8 @@ class VirtualMachineDisk(dict):
     def disk_sharing(self) -> Optional[str]:
         """
         The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+
+        > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
         """
         return pulumi.get(self, "disk_sharing")
 
@@ -1388,6 +1472,10 @@ class VirtualMachineDisk(dict):
     def path(self) -> Optional[str]:
         """
         When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+
+        > **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+
+        > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         """
         return pulumi.get(self, "path")
 

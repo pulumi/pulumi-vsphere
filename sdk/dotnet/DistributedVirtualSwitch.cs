@@ -78,6 +78,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Enables beacon probing as an additional measure
         /// to detect NIC failure.
+        /// 
+        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        /// probing.
         /// </summary>
         [Output("checkBeacon")]
         public Output<bool> CheckBeacon { get; private set; } = null!;
@@ -106,6 +109,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value strings to set for VDS.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and requires vCenter Server.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -503,6 +509,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -599,6 +607,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Output("vlanRanges")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
@@ -769,6 +805,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Enables beacon probing as an additional measure
         /// to detect NIC failure.
+        /// 
+        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        /// probing.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -793,6 +832,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value strings to set for VDS.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and requires vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1214,6 +1256,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -1322,6 +1366,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
@@ -1457,6 +1529,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Enables beacon probing as an additional measure
         /// to detect NIC failure.
+        /// 
+        /// &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+        /// probing.
         /// </summary>
         [Input("checkBeacon")]
         public Input<bool>? CheckBeacon { get; set; }
@@ -1488,6 +1563,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value strings to set for VDS.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+        /// and requires vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1909,6 +1987,8 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -2017,6 +2097,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {

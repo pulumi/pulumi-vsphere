@@ -89,7 +89,7 @@ def get_vmfs_disks(filter: Optional[str] = None,
                    rescan: Optional[bool] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmfsDisksResult:
     """
-    The _get_vmfs_disks_ data source can be used to discover the storage
+    The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
     `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
@@ -111,6 +111,10 @@ def get_vmfs_disks(filter: Optional[str] = None,
 
     :param str filter: A regular expression to filter the disks against. Only
            disks with canonical names that match will be included.
+           
+           > **NOTE:** Using a `filter` is recommended if there is any chance the host
+           will have any specific storage devices added to it that may affect the order of
+           the output `disks` attribute below, which is lexicographically sorted.
     :param str host_system_id: The managed object ID of
            the host to look for disks on.
     :param bool rescan: Whether or not to rescan storage adapters before
@@ -138,7 +142,7 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                           rescan: Optional[pulumi.Input[Optional[bool]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmfsDisksResult]:
     """
-    The _get_vmfs_disks_ data source can be used to discover the storage
+    The `get_vmfs_disks` data source can be used to discover the storage
     devices available on an ESXi host. This data source can be combined with the
     `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
@@ -160,6 +164,10 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str filter: A regular expression to filter the disks against. Only
            disks with canonical names that match will be included.
+           
+           > **NOTE:** Using a `filter` is recommended if there is any chance the host
+           will have any specific storage devices added to it that may affect the order of
+           the output `disks` attribute below, which is lexicographically sorted.
     :param str host_system_id: The managed object ID of
            the host to look for disks on.
     :param bool rescan: Whether or not to rescan storage adapters before

@@ -16,6 +16,11 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -35,12 +40,20 @@ namespace Pulumi.VSphere
         /// `vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
+        /// 
+        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// any part before the last `/`), your folder will be moved to that new parent. If
+        /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -107,6 +120,11 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -129,6 +147,11 @@ namespace Pulumi.VSphere
         /// `vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
+        /// 
+        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// any part before the last `/`), your folder will be moved to that new parent. If
+        /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -138,6 +161,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {
@@ -169,6 +195,11 @@ namespace Pulumi.VSphere
         /// Map of custom attribute ids to attribute 
         /// value strings to set for folder. See [here][docs-setting-custom-attributes]
         /// for a reference on how to set values for custom attributes.
+        /// 
+        /// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -191,6 +222,11 @@ namespace Pulumi.VSphere
         /// `vm` (denoting a virtual machine folder), and a supplied folder of
         /// `test-folder`, the resulting path would be
         /// `/default-dc/vm/test-folder`.
+        /// 
+        /// &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+        /// what section of `path` you are modifying. If you are modifying the parent (so
+        /// any part before the last `/`), your folder will be moved to that new parent. If
+        /// modifying the name (the part after the last `/`), your folder will be renamed.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -200,6 +236,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The IDs of any tags to attach to this resource.
+        /// 
+        /// &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        /// requires vCenter 6.0 or higher.
         /// </summary>
         public InputList<string> Tags
         {

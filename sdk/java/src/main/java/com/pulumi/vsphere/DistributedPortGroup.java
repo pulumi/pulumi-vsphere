@@ -83,6 +83,10 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Allows the port group to create additional ports
      * past the limit specified in `number_of_ports` if necessary. Default: `true`.
      * 
+     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * may lead to errors when the port count grows past the amount specified.  If you
+     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
+     * 
      */
     @Export(name="autoExpand", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoExpand;
@@ -90,6 +94,10 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return Allows the port group to create additional ports
      * past the limit specified in `number_of_ports` if necessary. Default: `true`.
+     * 
+     * &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+     * may lead to errors when the port count grows past the amount specified.  If you
+     * specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
      * 
      */
     public Output<Optional<Boolean>> autoExpand() {
@@ -159,6 +167,9 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * Map of custom attribute ids to attribute
      * value string to set for port group.
      * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -166,6 +177,9 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return Map of custom attribute ids to attribute
      * value string to set for port group.
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -530,6 +544,8 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
      * 
+     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
+     * 
      */
     @Export(name="portNameFormat", type=String.class, parameters={})
     private Output</* @Nullable */ String> portNameFormat;
@@ -538,6 +554,8 @@ public class DistributedPortGroup extends com.pulumi.resources.CustomResource {
      * @return An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
+     * 
+     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      * 
      */
     public Output<Optional<String>> portNameFormat() {

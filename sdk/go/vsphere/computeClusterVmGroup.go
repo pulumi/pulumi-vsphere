@@ -23,6 +23,11 @@ type ComputeClusterVmGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The UUIDs of the virtual machines in this
 	// group.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterHostGroup`
+	// resource. Make sure your names are unique across both resources.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
 }
 
@@ -67,6 +72,11 @@ type computeClusterVmGroupState struct {
 	Name *string `pulumi:"name"`
 	// The UUIDs of the virtual machines in this
 	// group.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterHostGroup`
+	// resource. Make sure your names are unique across both resources.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -80,6 +90,11 @@ type ComputeClusterVmGroupState struct {
 	Name pulumi.StringPtrInput
 	// The UUIDs of the virtual machines in this
 	// group.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterHostGroup`
+	// resource. Make sure your names are unique across both resources.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -97,6 +112,11 @@ type computeClusterVmGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The UUIDs of the virtual machines in this
 	// group.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterHostGroup`
+	// resource. Make sure your names are unique across both resources.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -111,6 +131,11 @@ type ComputeClusterVmGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The UUIDs of the virtual machines in this
 	// group.
+	//
+	// > **NOTE:** The namespace for cluster names on this resource (defined by the
+	// `name` argument) is shared with the
+	// `ComputeClusterHostGroup`
+	// resource. Make sure your names are unique across both resources.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -216,6 +241,11 @@ func (o ComputeClusterVmGroupOutput) Name() pulumi.StringOutput {
 
 // The UUIDs of the virtual machines in this
 // group.
+//
+// > **NOTE:** The namespace for cluster names on this resource (defined by the
+// `name` argument) is shared with the
+// `ComputeClusterHostGroup`
+// resource. Make sure your names are unique across both resources.
 func (o ComputeClusterVmGroupOutput) VirtualMachineIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ComputeClusterVmGroup) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
 }

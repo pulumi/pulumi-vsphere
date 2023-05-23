@@ -21,6 +21,13 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      * 
+     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * controller that the virtual disk will be attached to on the virtual machine.
+     * Please see the `scsi_type` parameter
+     * in the `vsphere.VirtualMachine` resource for information on how to control
+     * disk controller types. This parameter will be removed in future versions of the
+     * vSphere provider.
+     * 
      * @deprecated
      * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      * 
@@ -32,6 +39,13 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+     * 
+     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * controller that the virtual disk will be attached to on the virtual machine.
+     * Please see the `scsi_type` parameter
+     * in the `vsphere.VirtualMachine` resource for information on how to control
+     * disk controller types. This parameter will be removed in future versions of the
+     * vSphere provider.
      * 
      * @deprecated
      * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
@@ -47,6 +61,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * directories that are a part of the `vmdk_path` parameter if they are missing.
      * Default: `false`.
      * 
+     * &gt; **NOTE:** Any directory created as part of the operation when
+     * `create_directories` is enabled will not be deleted when the resource is
+     * destroyed.
+     * 
      */
     @Import(name="createDirectories")
     private @Nullable Output<Boolean> createDirectories;
@@ -55,6 +73,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * @return Tells the resource to create any
      * directories that are a part of the `vmdk_path` parameter if they are missing.
      * Default: `false`.
+     * 
+     * &gt; **NOTE:** Any directory created as part of the operation when
+     * `create_directories` is enabled will not be deleted when the resource is
+     * destroyed.
      * 
      */
     public Optional<Output<Boolean>> createDirectories() {
@@ -118,6 +140,8 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
+     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -127,6 +151,8 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
+     * 
+     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
      * 
      */
     public Optional<Output<String>> type() {
@@ -184,6 +210,13 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param adapterType The adapter type for this virtual disk. Can be
          * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
          * 
+         * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+         * controller that the virtual disk will be attached to on the virtual machine.
+         * Please see the `scsi_type` parameter
+         * in the `vsphere.VirtualMachine` resource for information on how to control
+         * disk controller types. This parameter will be removed in future versions of the
+         * vSphere provider.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -199,6 +232,13 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param adapterType The adapter type for this virtual disk. Can be
          * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+         * 
+         * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+         * controller that the virtual disk will be attached to on the virtual machine.
+         * Please see the `scsi_type` parameter
+         * in the `vsphere.VirtualMachine` resource for information on how to control
+         * disk controller types. This parameter will be removed in future versions of the
+         * vSphere provider.
          * 
          * @return builder
          * 
@@ -216,6 +256,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * directories that are a part of the `vmdk_path` parameter if they are missing.
          * Default: `false`.
          * 
+         * &gt; **NOTE:** Any directory created as part of the operation when
+         * `create_directories` is enabled will not be deleted when the resource is
+         * destroyed.
+         * 
          * @return builder
          * 
          */
@@ -228,6 +272,10 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * @param createDirectories Tells the resource to create any
          * directories that are a part of the `vmdk_path` parameter if they are missing.
          * Default: `false`.
+         * 
+         * &gt; **NOTE:** Any directory created as part of the operation when
+         * `create_directories` is enabled will not be deleted when the resource is
+         * destroyed.
          * 
          * @return builder
          * 
@@ -311,6 +359,8 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
          * 
+         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+         * 
          * @return builder
          * 
          */
@@ -324,6 +374,8 @@ public final class VirtualDiskArgs extends com.pulumi.resources.ResourceArgs {
          * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
          * information on what each kind of disk provisioning policy means, click
          * [here][docs-vmware-vm-disk-provisioning].
+         * 
+         * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
          * 
          * @return builder
          * 

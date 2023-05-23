@@ -24,11 +24,19 @@ class DatacenterArgs:
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+               requires vCenter 6.0 or higher.
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -47,6 +55,11 @@ class DatacenterArgs:
         strings to set for datacenter resource. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -85,6 +98,9 @@ class DatacenterArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -107,12 +123,20 @@ class _DatacenterState:
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
         :param pulumi.Input[str] moid: Managed object ID of this datacenter.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+               requires vCenter 6.0 or higher.
         """
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -133,6 +157,11 @@ class _DatacenterState:
         strings to set for datacenter resource. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -183,6 +212,9 @@ class _DatacenterState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 
@@ -229,11 +261,19 @@ class Datacenter(pulumi.CustomResource):
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+               requires vCenter 6.0 or higher.
         """
         ...
     @overload
@@ -322,12 +362,20 @@ class Datacenter(pulumi.CustomResource):
                strings to set for datacenter resource. See
                [here][docs-setting-custom-attributes] for a reference on how to set values
                for custom attributes.
+               
+               [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter.
         :param pulumi.Input[str] folder: The folder where the datacenter should be created.
                Forces a new resource if changed.
         :param pulumi.Input[str] moid: Managed object ID of this datacenter.
         :param pulumi.Input[str] name: The name of the datacenter. This name needs to be unique
                within the folder. Forces a new resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
+               
+               > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+               requires vCenter 6.0 or higher.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -348,6 +396,11 @@ class Datacenter(pulumi.CustomResource):
         strings to set for datacenter resource. See
         [here][docs-setting-custom-attributes] for a reference on how to set values
         for custom attributes.
+
+        [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -382,6 +435,9 @@ class Datacenter(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The IDs of any tags to attach to this resource.
+
+        > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+        requires vCenter 6.0 or higher.
         """
         return pulumi.get(self, "tags")
 

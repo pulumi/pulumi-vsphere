@@ -37,7 +37,7 @@ class HostArgs:
                to the host.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
-               `cluster`.
+               `cluster_managed`.
         :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
                membership will be managed through the `compute_cluster` resource rather
                than the`host` resource. Conflicts with: `cluster`.
@@ -47,6 +47,11 @@ class HostArgs:
                values to apply to the resource. Please refer to the
                `vsphere_custom_attributes` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and require vCenter Server.
+               
+               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -61,10 +66,13 @@ class HostArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Tagging support is not supported on direct ESXi host
+               connections and require vCenter Server.
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "password", password)
@@ -136,7 +144,7 @@ class HostArgs:
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
-        `cluster`.
+        `cluster_managed`.
         """
         return pulumi.get(self, "cluster")
 
@@ -179,6 +187,11 @@ class HostArgs:
         values to apply to the resource. Please refer to the
         `vsphere_custom_attributes` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and require vCenter Server.
+
+        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -259,6 +272,9 @@ class HostArgs:
         The IDs of any tags to attach to this resource. Please
         refer to the `Tag` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Tagging support is not supported on direct ESXi host
+        connections and require vCenter Server.
         """
         return pulumi.get(self, "tags")
 
@@ -273,7 +289,7 @@ class HostArgs:
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         """
         return pulumi.get(self, "thumbprint")
 
@@ -303,7 +319,7 @@ class _HostState:
         Input properties used for looking up and filtering Host resources.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
-               `cluster`.
+               `cluster_managed`.
         :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
                membership will be managed through the `compute_cluster` resource rather
                than the`host` resource. Conflicts with: `cluster`.
@@ -313,6 +329,11 @@ class _HostState:
                values to apply to the resource. Please refer to the
                `vsphere_custom_attributes` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and require vCenter Server.
+               
+               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -330,10 +351,13 @@ class _HostState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Tagging support is not supported on direct ESXi host
+               connections and require vCenter Server.
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -372,7 +396,7 @@ class _HostState:
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
-        `cluster`.
+        `cluster_managed`.
         """
         return pulumi.get(self, "cluster")
 
@@ -415,6 +439,11 @@ class _HostState:
         values to apply to the resource. Please refer to the
         `vsphere_custom_attributes` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and require vCenter Server.
+
+        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -520,6 +549,9 @@ class _HostState:
         The IDs of any tags to attach to this resource. Please
         refer to the `Tag` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Tagging support is not supported on direct ESXi host
+        connections and require vCenter Server.
         """
         return pulumi.get(self, "tags")
 
@@ -534,7 +566,7 @@ class _HostState:
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         """
         return pulumi.get(self, "thumbprint")
 
@@ -634,7 +666,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
-               `cluster`.
+               `cluster_managed`.
         :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
                membership will be managed through the `compute_cluster` resource rather
                than the`host` resource. Conflicts with: `cluster`.
@@ -644,6 +676,11 @@ class Host(pulumi.CustomResource):
                values to apply to the resource. Please refer to the
                `vsphere_custom_attributes` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and require vCenter Server.
+               
+               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -661,10 +698,13 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Tagging support is not supported on direct ESXi host
+               connections and require vCenter Server.
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -821,7 +861,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The ID of the Compute Cluster this host should
                be added to. This should not be set if `datacenter` is set. Conflicts with:
-               `cluster`.
+               `cluster_managed`.
         :param pulumi.Input[bool] cluster_managed: Can be set to `true` if compute cluster
                membership will be managed through the `compute_cluster` resource rather
                than the`host` resource. Conflicts with: `cluster`.
@@ -831,6 +871,11 @@ class Host(pulumi.CustomResource):
                values to apply to the resource. Please refer to the
                `vsphere_custom_attributes` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Custom attributes are not supported on direct ESXi host
+               connections and require vCenter Server.
+               
+               [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         :param pulumi.Input[str] datacenter: The ID of the datacenter this host should
                be added to. This should not be set if `cluster` is set.
         :param pulumi.Input[bool] force: If set to `true` then it will force the host to be added,
@@ -848,10 +893,13 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource. Please
                refer to the `Tag` resource for more information on applying
                tags to resources.
+               
+               > **NOTE:** Tagging support is not supported on direct ESXi host
+               connections and require vCenter Server.
         :param pulumi.Input[str] thumbprint: Host's certificate SHA-1 thumbprint. If not set the
                CA that signed the host's certificate should be trusted. If the CA is not
                trusted and no thumbprint is set then the operation will fail. See data source
-               [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+               [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
@@ -881,7 +929,7 @@ class Host(pulumi.CustomResource):
         """
         The ID of the Compute Cluster this host should
         be added to. This should not be set if `datacenter` is set. Conflicts with:
-        `cluster`.
+        `cluster_managed`.
         """
         return pulumi.get(self, "cluster")
 
@@ -912,6 +960,11 @@ class Host(pulumi.CustomResource):
         values to apply to the resource. Please refer to the
         `vsphere_custom_attributes` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Custom attributes are not supported on direct ESXi host
+        connections and require vCenter Server.
+
+        [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -985,6 +1038,9 @@ class Host(pulumi.CustomResource):
         The IDs of any tags to attach to this resource. Please
         refer to the `Tag` resource for more information on applying
         tags to resources.
+
+        > **NOTE:** Tagging support is not supported on direct ESXi host
+        connections and require vCenter Server.
         """
         return pulumi.get(self, "tags")
 
@@ -995,7 +1051,7 @@ class Host(pulumi.CustomResource):
         Host's certificate SHA-1 thumbprint. If not set the
         CA that signed the host's certificate should be trusted. If the CA is not
         trusted and no thumbprint is set then the operation will fail. See data source
-        [_get_host_thumbprint_][docs-host-thumbprint-data-source].
+        [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         """
         return pulumi.get(self, "thumbprint")
 

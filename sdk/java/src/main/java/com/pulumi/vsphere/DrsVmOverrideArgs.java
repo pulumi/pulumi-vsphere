@@ -40,6 +40,10 @@ public final class DrsVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
      * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * for both options.
+     * 
      */
     @Import(name="drsAutomationLevel")
     private @Nullable Output<String> drsAutomationLevel;
@@ -48,6 +52,10 @@ public final class DrsVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
      * @return Overrides the automation level for this virtual
      * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
      * `fullyAutomated`. Default: `manual`.
+     * 
+     * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+     * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+     * for both options.
      * 
      */
     public Optional<Output<String>> drsAutomationLevel() {
@@ -145,6 +153,10 @@ public final class DrsVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
          * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
          * `fullyAutomated`. Default: `manual`.
          * 
+         * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+         * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+         * for both options.
+         * 
          * @return builder
          * 
          */
@@ -157,6 +169,10 @@ public final class DrsVmOverrideArgs extends com.pulumi.resources.ResourceArgs {
          * @param drsAutomationLevel Overrides the automation level for this virtual
          * machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
          * `fullyAutomated`. Default: `manual`.
+         * 
+         * &gt; **NOTE:** Using this resource _always_ implies an override, even if one of
+         * `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+         * for both options.
          * 
          * @return builder
          * 

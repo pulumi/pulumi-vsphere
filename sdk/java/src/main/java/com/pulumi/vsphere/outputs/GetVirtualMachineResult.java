@@ -106,6 +106,7 @@ public final class GetVirtualMachineResult {
     private @Nullable Integer memoryReservation;
     private Integer memoryShareCount;
     private @Nullable String memoryShareLevel;
+    private String moid;
     private @Nullable String name;
     private @Nullable Boolean nestedHvEnabled;
     /**
@@ -333,6 +334,9 @@ public final class GetVirtualMachineResult {
     public Optional<String> memoryShareLevel() {
         return Optional.ofNullable(this.memoryShareLevel);
     }
+    public String moid() {
+        return this.moid;
+    }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -496,6 +500,7 @@ public final class GetVirtualMachineResult {
         private @Nullable Integer memoryReservation;
         private Integer memoryShareCount;
         private @Nullable String memoryShareLevel;
+        private String moid;
         private @Nullable String name;
         private @Nullable Boolean nestedHvEnabled;
         private List<String> networkInterfaceTypes;
@@ -561,6 +566,7 @@ public final class GetVirtualMachineResult {
     	      this.memoryReservation = defaults.memoryReservation;
     	      this.memoryShareCount = defaults.memoryShareCount;
     	      this.memoryShareLevel = defaults.memoryShareLevel;
+    	      this.moid = defaults.moid;
     	      this.name = defaults.name;
     	      this.nestedHvEnabled = defaults.nestedHvEnabled;
     	      this.networkInterfaceTypes = defaults.networkInterfaceTypes;
@@ -776,6 +782,11 @@ public final class GetVirtualMachineResult {
             return this;
         }
         @CustomType.Setter
+        public Builder moid(String moid) {
+            this.moid = Objects.requireNonNull(moid);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
@@ -952,6 +963,7 @@ public final class GetVirtualMachineResult {
             o.memoryReservation = memoryReservation;
             o.memoryShareCount = memoryShareCount;
             o.memoryShareLevel = memoryShareLevel;
+            o.moid = moid;
             o.name = name;
             o.nestedHvEnabled = nestedHvEnabled;
             o.networkInterfaceTypes = networkInterfaceTypes;

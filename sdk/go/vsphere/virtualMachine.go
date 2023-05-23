@@ -45,18 +45,30 @@ type VirtualMachine struct {
 	// The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrOutput `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+	//
+	// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The datacenter ID. Required only when deploying an OVF/OVA template.
 	DatacenterId pulumi.StringPtrOutput `pulumi:"datacenterId"`
 	// The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	//
+	// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+	//
+	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks VirtualMachineDiskArrayOutput `pulumi:"disks"`
 	// Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+	//
+	// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 	EfiSecureBootEnabled pulumi.BoolPtrOutput `pulumi:"efiSecureBootEnabled"`
 	// Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
 	EnableDiskUuid pulumi.BoolPtrOutput `pulumi:"enableDiskUuid"`
@@ -65,6 +77,8 @@ type VirtualMachine struct {
 	// The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
 	EptRviMode pulumi.StringPtrOutput `pulumi:"eptRviMode"`
 	// Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+	//
+	// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 	ExtraConfig pulumi.StringMapOutput `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
 	ExtraConfigRebootRequired pulumi.BoolPtrOutput `pulumi:"extraConfigRebootRequired"`
@@ -75,10 +89,14 @@ type VirtualMachine struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrOutput `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+	//
+	// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringOutput `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayOutput `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+	//
+	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntOutput `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringOutput `pulumi:"hostSystemId"`
@@ -91,10 +109,20 @@ type VirtualMachine struct {
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported pulumi.BoolOutput `pulumi:"imported"`
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+	//
+	// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 	LatencySensitivity pulumi.StringPtrOutput `pulumi:"latencySensitivity"`
 	// The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
 	Memory pulumi.IntPtrOutput `pulumi:"memory"`
 	// Allow memory to be added to the virtual machine while it is powered on.
+	//
+	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+	//
+	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+	//
+	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+	//
+	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrOutput `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrOutput `pulumi:"memoryLimit"`
@@ -121,6 +149,8 @@ type VirtualMachine struct {
 	// When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
 	OvfDeploy VirtualMachineOvfDeployPtrOutput `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs in which to create PCI passthroughs.
+	//
+	// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 	PciDeviceIds pulumi.StringArrayOutput `pulumi:"pciDeviceIds"`
 	// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
@@ -129,8 +159,12 @@ type VirtualMachine struct {
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired pulumi.BoolOutput `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
+	//
+	// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 	ReplaceTrigger pulumi.StringPtrOutput `pulumi:"replaceTrigger"`
 	// The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+	//
+	// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
 	// Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
 	RunToolsScriptsAfterPowerOn pulumi.BoolPtrOutput `pulumi:"runToolsScriptsAfterPowerOn"`
@@ -165,6 +199,8 @@ type VirtualMachine struct {
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrOutput `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
 	ToolsUpgradePolicy pulumi.StringPtrOutput `pulumi:"toolsUpgradePolicy"`
@@ -253,18 +289,30 @@ type virtualMachineState struct {
 	// The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+	//
+	// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The datacenter ID. Required only when deploying an OVF/OVA template.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	//
+	// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+	//
+	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
 	// Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+	//
+	// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 	EfiSecureBootEnabled *bool `pulumi:"efiSecureBootEnabled"`
 	// Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
 	EnableDiskUuid *bool `pulumi:"enableDiskUuid"`
@@ -273,6 +321,8 @@ type virtualMachineState struct {
 	// The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
 	EptRviMode *string `pulumi:"eptRviMode"`
 	// Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+	//
+	// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
@@ -283,10 +333,14 @@ type virtualMachineState struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+	//
+	// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId *string `pulumi:"guestId"`
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses []string `pulumi:"guestIpAddresses"`
 	// The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+	//
+	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -299,10 +353,20 @@ type virtualMachineState struct {
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported *bool `pulumi:"imported"`
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+	//
+	// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 	LatencySensitivity *string `pulumi:"latencySensitivity"`
 	// The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
 	Memory *int `pulumi:"memory"`
 	// Allow memory to be added to the virtual machine while it is powered on.
+	//
+	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+	//
+	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+	//
+	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+	//
+	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit *int `pulumi:"memoryLimit"`
@@ -329,6 +393,8 @@ type virtualMachineState struct {
 	// When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs in which to create PCI passthroughs.
+	//
+	// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 	PciDeviceIds []string `pulumi:"pciDeviceIds"`
 	// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
 	PowerState *string `pulumi:"powerState"`
@@ -337,8 +403,12 @@ type virtualMachineState struct {
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired *bool `pulumi:"rebootRequired"`
 	// Triggers replacement of resource whenever it changes.
+	//
+	// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 	ReplaceTrigger *string `pulumi:"replaceTrigger"`
 	// The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+	//
+	// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
 	// Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
 	RunToolsScriptsAfterPowerOn *bool `pulumi:"runToolsScriptsAfterPowerOn"`
@@ -373,6 +443,8 @@ type virtualMachineState struct {
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 	Tags []string `pulumi:"tags"`
 	// Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
 	ToolsUpgradePolicy *string `pulumi:"toolsUpgradePolicy"`
@@ -430,18 +502,30 @@ type VirtualMachineState struct {
 	// The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+	//
+	// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 	CustomAttributes pulumi.StringMapInput
 	// The datacenter ID. Required only when deploying an OVF/OVA template.
 	DatacenterId pulumi.StringPtrInput
 	// The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	//
+	// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+	//
+	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringPtrInput
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks VirtualMachineDiskArrayInput
 	// Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+	//
+	// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 	EfiSecureBootEnabled pulumi.BoolPtrInput
 	// Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
 	EnableDiskUuid pulumi.BoolPtrInput
@@ -450,6 +534,8 @@ type VirtualMachineState struct {
 	// The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
 	EptRviMode pulumi.StringPtrInput
 	// Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+	//
+	// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
@@ -460,10 +546,14 @@ type VirtualMachineState struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+	//
+	// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringPtrInput
 	// The current list of IP addresses on this machine, including the value of `defaultIpAddress`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
 	GuestIpAddresses pulumi.StringArrayInput
 	// The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+	//
+	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntPtrInput
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringPtrInput
@@ -476,10 +566,20 @@ type VirtualMachineState struct {
 	// Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
 	Imported pulumi.BoolPtrInput
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+	//
+	// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 	LatencySensitivity pulumi.StringPtrInput
 	// The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
 	Memory pulumi.IntPtrInput
 	// Allow memory to be added to the virtual machine while it is powered on.
+	//
+	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+	//
+	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+	//
+	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+	//
+	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrInput
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrInput
@@ -506,6 +606,8 @@ type VirtualMachineState struct {
 	// When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// List of host PCI device IDs in which to create PCI passthroughs.
+	//
+	// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 	PciDeviceIds pulumi.StringArrayInput
 	// A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
 	PowerState pulumi.StringPtrInput
@@ -514,8 +616,12 @@ type VirtualMachineState struct {
 	// Value internal to Terraform used to determine if a configuration set change requires a reboot.
 	RebootRequired pulumi.BoolPtrInput
 	// Triggers replacement of resource whenever it changes.
+	//
+	// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 	ReplaceTrigger pulumi.StringPtrInput
 	// The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+	//
+	// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 	ResourcePoolId pulumi.StringPtrInput
 	// Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
 	RunToolsScriptsAfterPowerOn pulumi.BoolPtrInput
@@ -550,6 +656,8 @@ type VirtualMachineState struct {
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 	Tags pulumi.StringArrayInput
 	// Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
 	ToolsUpgradePolicy pulumi.StringPtrInput
@@ -609,16 +717,28 @@ type virtualMachineArgs struct {
 	// The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel *string `pulumi:"cpuShareLevel"`
 	// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+	//
+	// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The datacenter ID. Required only when deploying an OVF/OVA template.
 	DatacenterId *string `pulumi:"datacenterId"`
 	// The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	//
+	// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+	//
+	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
 	// Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+	//
+	// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 	EfiSecureBootEnabled *bool `pulumi:"efiSecureBootEnabled"`
 	// Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
 	EnableDiskUuid *bool `pulumi:"enableDiskUuid"`
@@ -627,6 +747,8 @@ type virtualMachineArgs struct {
 	// The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
 	EptRviMode *string `pulumi:"eptRviMode"`
 	// Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+	//
+	// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 	ExtraConfig map[string]string `pulumi:"extraConfig"`
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
 	ExtraConfigRebootRequired *bool `pulumi:"extraConfigRebootRequired"`
@@ -637,8 +759,12 @@ type virtualMachineArgs struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff *bool `pulumi:"forcePowerOff"`
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+	//
+	// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId *string `pulumi:"guestId"`
 	// The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+	//
+	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion *int `pulumi:"hardwareVersion"`
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId *string `pulumi:"hostSystemId"`
@@ -649,10 +775,20 @@ type virtualMachineArgs struct {
 	// List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
 	IgnoredGuestIps []string `pulumi:"ignoredGuestIps"`
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+	//
+	// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 	LatencySensitivity *string `pulumi:"latencySensitivity"`
 	// The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
 	Memory *int `pulumi:"memory"`
 	// Allow memory to be added to the virtual machine while it is powered on.
+	//
+	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+	//
+	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+	//
+	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+	//
+	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled *bool `pulumi:"memoryHotAddEnabled"`
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit *int `pulumi:"memoryLimit"`
@@ -677,12 +813,18 @@ type virtualMachineArgs struct {
 	// When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
 	OvfDeploy *VirtualMachineOvfDeploy `pulumi:"ovfDeploy"`
 	// List of host PCI device IDs in which to create PCI passthroughs.
+	//
+	// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 	PciDeviceIds []string `pulumi:"pciDeviceIds"`
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout *int `pulumi:"poweronTimeout"`
 	// Triggers replacement of resource whenever it changes.
+	//
+	// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 	ReplaceTrigger *string `pulumi:"replaceTrigger"`
 	// The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+	//
+	// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 	ResourcePoolId string `pulumi:"resourcePoolId"`
 	// Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
 	RunToolsScriptsAfterPowerOn *bool `pulumi:"runToolsScriptsAfterPowerOn"`
@@ -717,6 +859,8 @@ type virtualMachineArgs struct {
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically *bool `pulumi:"syncTimeWithHostPeriodically"`
 	// The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 	Tags []string `pulumi:"tags"`
 	// Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
 	ToolsUpgradePolicy *string `pulumi:"toolsUpgradePolicy"`
@@ -765,16 +909,28 @@ type VirtualMachineArgs struct {
 	// The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
 	CpuShareLevel pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+	//
+	// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 	CustomAttributes pulumi.StringMapInput
 	// The datacenter ID. Required only when deploying an OVF/OVA template.
 	DatacenterId pulumi.StringPtrInput
 	// The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+	//
+	// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+	//
+	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId pulumi.StringPtrInput
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks VirtualMachineDiskArrayInput
 	// Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+	//
+	// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 	EfiSecureBootEnabled pulumi.BoolPtrInput
 	// Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
 	EnableDiskUuid pulumi.BoolPtrInput
@@ -783,6 +939,8 @@ type VirtualMachineArgs struct {
 	// The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
 	EptRviMode pulumi.StringPtrInput
 	// Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+	//
+	// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 	ExtraConfig pulumi.StringMapInput
 	// Allow the virtual machine to be rebooted when a change to `extraConfig` occurs. Default: `true`.
 	ExtraConfigRebootRequired pulumi.BoolPtrInput
@@ -793,8 +951,12 @@ type VirtualMachineArgs struct {
 	// If a guest shutdown failed or times out while updating or destroying (see `shutdownWaitTimeout`), force the power-off of the virtual machine. Default: `true`.
 	ForcePowerOff pulumi.BoolPtrInput
 	// The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+	//
+	// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 	GuestId pulumi.StringPtrInput
 	// The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+	//
+	// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 	HardwareVersion pulumi.IntPtrInput
 	// The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `hostSystemId` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
 	HostSystemId pulumi.StringPtrInput
@@ -805,10 +967,20 @@ type VirtualMachineArgs struct {
 	// List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
 	IgnoredGuestIps pulumi.StringArrayInput
 	// Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+	//
+	// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 	LatencySensitivity pulumi.StringPtrInput
 	// The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
 	Memory pulumi.IntPtrInput
 	// Allow memory to be added to the virtual machine while it is powered on.
+	//
+	// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+	//
+	// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+	//
+	// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+	//
+	// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 	MemoryHotAddEnabled pulumi.BoolPtrInput
 	// The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
 	MemoryLimit pulumi.IntPtrInput
@@ -833,12 +1005,18 @@ type VirtualMachineArgs struct {
 	// When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
 	OvfDeploy VirtualMachineOvfDeployPtrInput
 	// List of host PCI device IDs in which to create PCI passthroughs.
+	//
+	// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 	PciDeviceIds pulumi.StringArrayInput
 	// The amount of time, in seconds, that we will be trying to power on a VM
 	PoweronTimeout pulumi.IntPtrInput
 	// Triggers replacement of resource whenever it changes.
+	//
+	// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 	ReplaceTrigger pulumi.StringPtrInput
 	// The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+	//
+	// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 	ResourcePoolId pulumi.StringInput
 	// Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
 	RunToolsScriptsAfterPowerOn pulumi.BoolPtrInput
@@ -873,6 +1051,8 @@ type VirtualMachineArgs struct {
 	// Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `syncTimeWithHost` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
 	SyncTimeWithHostPeriodically pulumi.BoolPtrInput
 	// The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 	Tags pulumi.StringArrayInput
 	// Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
 	ToolsUpgradePolicy pulumi.StringPtrInput
@@ -1053,6 +1233,8 @@ func (o VirtualMachineOutput) CpuShareLevel() pulumi.StringPtrOutput {
 }
 
 // Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphereCustomAttributes` resource for more information on setting custom attributes.
+//
+// > **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
 func (o VirtualMachineOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -1063,11 +1245,19 @@ func (o VirtualMachineOutput) DatacenterId() pulumi.StringPtrOutput {
 }
 
 // The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+//
+// > **NOTE:** One of `datastoreId` or `datastoreClusterId` must be specified.
+//
+// > **NOTE:** Use of `datastoreClusterId` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+//
+// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 func (o VirtualMachineOutput) DatastoreClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
@@ -1083,6 +1273,8 @@ func (o VirtualMachineOutput) Disks() VirtualMachineDiskArrayOutput {
 }
 
 // Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+//
+// > **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
 func (o VirtualMachineOutput) EfiSecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.EfiSecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1103,6 +1295,8 @@ func (o VirtualMachineOutput) EptRviMode() pulumi.StringPtrOutput {
 }
 
 // Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+//
+// > **NOTE:** Do not use `extraConfig` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
 func (o VirtualMachineOutput) ExtraConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringMapOutput { return v.ExtraConfig }).(pulumi.StringMapOutput)
 }
@@ -1128,6 +1322,8 @@ func (o VirtualMachineOutput) ForcePowerOff() pulumi.BoolPtrOutput {
 }
 
 // The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+//
+// [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
 func (o VirtualMachineOutput) GuestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.GuestId }).(pulumi.StringOutput)
 }
@@ -1138,6 +1334,8 @@ func (o VirtualMachineOutput) GuestIpAddresses() pulumi.StringArrayOutput {
 }
 
 // The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+//
+// [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
 func (o VirtualMachineOutput) HardwareVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntOutput { return v.HardwareVersion }).(pulumi.IntOutput)
 }
@@ -1168,6 +1366,8 @@ func (o VirtualMachineOutput) Imported() pulumi.BoolOutput {
 }
 
 // Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+//
+// > **NOTE:** On higher sensitivities, you may need to adjust the `memoryReservation` to the full amount of memory provisioned for the virtual machine.
 func (o VirtualMachineOutput) LatencySensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.LatencySensitivity }).(pulumi.StringPtrOutput)
 }
@@ -1178,6 +1378,13 @@ func (o VirtualMachineOutput) Memory() pulumi.IntPtrOutput {
 }
 
 // Allow memory to be added to the virtual machine while it is powered on.
+//
+// > **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+//
+// > **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+//
+// [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+// [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
 func (o VirtualMachineOutput) MemoryHotAddEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.MemoryHotAddEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1243,6 +1450,8 @@ func (o VirtualMachineOutput) OvfDeploy() VirtualMachineOvfDeployPtrOutput {
 }
 
 // List of host PCI device IDs in which to create PCI passthroughs.
+//
+// > **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
 func (o VirtualMachineOutput) PciDeviceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.PciDeviceIds }).(pulumi.StringArrayOutput)
 }
@@ -1263,11 +1472,15 @@ func (o VirtualMachineOutput) RebootRequired() pulumi.BoolOutput {
 }
 
 // Triggers replacement of resource whenever it changes.
+//
+// For example, `replaceTrigger = sha256(format("%s-%s",data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
 func (o VirtualMachineOutput) ReplaceTrigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.ReplaceTrigger }).(pulumi.StringPtrOutput)
 }
 
 // The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+//
+// > **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `ResourcePool` data source documentation on using the root resource pool.
 func (o VirtualMachineOutput) ResourcePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.ResourcePoolId }).(pulumi.StringOutput)
 }
@@ -1347,6 +1560,8 @@ func (o VirtualMachineOutput) SyncTimeWithHostPeriodically() pulumi.BoolPtrOutpu
 }
 
 // The IDs of any tags to attach to this resource. Please refer to the `Tag` resource for more information on applying tags to virtual machine resources.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
 func (o VirtualMachineOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

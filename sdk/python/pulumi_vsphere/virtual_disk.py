@@ -30,9 +30,20 @@ class VirtualDiskArgs:
                be created.  This needs to end in `.vmdk`.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
                one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+               
+               > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+               controller that the virtual disk will be attached to on the virtual machine.
+               Please see the `scsi_type` parameter
+               in the `VirtualMachine` resource for information on how to control
+               disk controller types. This parameter will be removed in future versions of the
+               vSphere provider.
         :param pulumi.Input[bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
+               
+               > **NOTE:** Any directory created as part of the operation when
+               `create_directories` is enabled will not be deleted when the resource is
+               destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
                disk. Can be omitted when when ESXi or if there is only one datacenter in
                your infrastructure.
@@ -40,6 +51,8 @@ class VirtualDiskArgs:
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
                [here][docs-vmware-vm-disk-provisioning].
+               
+               [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         """
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "size", size)
@@ -100,6 +113,13 @@ class VirtualDiskArgs:
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+
+        > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        controller that the virtual disk will be attached to on the virtual machine.
+        Please see the `scsi_type` parameter
+        in the `VirtualMachine` resource for information on how to control
+        disk controller types. This parameter will be removed in future versions of the
+        vSphere provider.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -114,6 +134,10 @@ class VirtualDiskArgs:
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
         Default: `false`.
+
+        > **NOTE:** Any directory created as part of the operation when
+        `create_directories` is enabled will not be deleted when the resource is
+        destroyed.
         """
         return pulumi.get(self, "create_directories")
 
@@ -143,6 +167,8 @@ class VirtualDiskArgs:
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         information on what each kind of disk provisioning policy means, click
         [here][docs-vmware-vm-disk-provisioning].
+
+        [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         """
         return pulumi.get(self, "type")
 
@@ -165,9 +191,20 @@ class _VirtualDiskState:
         Input properties used for looking up and filtering VirtualDisk resources.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
                one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+               
+               > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+               controller that the virtual disk will be attached to on the virtual machine.
+               Please see the `scsi_type` parameter
+               in the `VirtualMachine` resource for information on how to control
+               disk controller types. This parameter will be removed in future versions of the
+               vSphere provider.
         :param pulumi.Input[bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
+               
+               > **NOTE:** Any directory created as part of the operation when
+               `create_directories` is enabled will not be deleted when the resource is
+               destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
                disk. Can be omitted when when ESXi or if there is only one datacenter in
                your infrastructure.
@@ -178,6 +215,8 @@ class _VirtualDiskState:
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
                [here][docs-vmware-vm-disk-provisioning].
+               
+               [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
         """
@@ -205,6 +244,13 @@ class _VirtualDiskState:
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+
+        > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        controller that the virtual disk will be attached to on the virtual machine.
+        Please see the `scsi_type` parameter
+        in the `VirtualMachine` resource for information on how to control
+        disk controller types. This parameter will be removed in future versions of the
+        vSphere provider.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -219,6 +265,10 @@ class _VirtualDiskState:
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
         Default: `false`.
+
+        > **NOTE:** Any directory created as part of the operation when
+        `create_directories` is enabled will not be deleted when the resource is
+        destroyed.
         """
         return pulumi.get(self, "create_directories")
 
@@ -273,6 +323,8 @@ class _VirtualDiskState:
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         information on what each kind of disk provisioning policy means, click
         [here][docs-vmware-vm-disk-provisioning].
+
+        [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         """
         return pulumi.get(self, "type")
 
@@ -313,9 +365,20 @@ class VirtualDisk(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
                one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+               
+               > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+               controller that the virtual disk will be attached to on the virtual machine.
+               Please see the `scsi_type` parameter
+               in the `VirtualMachine` resource for information on how to control
+               disk controller types. This parameter will be removed in future versions of the
+               vSphere provider.
         :param pulumi.Input[bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
+               
+               > **NOTE:** Any directory created as part of the operation when
+               `create_directories` is enabled will not be deleted when the resource is
+               destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
                disk. Can be omitted when when ESXi or if there is only one datacenter in
                your infrastructure.
@@ -326,6 +389,8 @@ class VirtualDisk(pulumi.CustomResource):
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
                [here][docs-vmware-vm-disk-provisioning].
+               
+               [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
         """
@@ -410,9 +475,20 @@ class VirtualDisk(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adapter_type: The adapter type for this virtual disk. Can be
                one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+               
+               > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+               controller that the virtual disk will be attached to on the virtual machine.
+               Please see the `scsi_type` parameter
+               in the `VirtualMachine` resource for information on how to control
+               disk controller types. This parameter will be removed in future versions of the
+               vSphere provider.
         :param pulumi.Input[bool] create_directories: Tells the resource to create any
                directories that are a part of the `vmdk_path` parameter if they are missing.
                Default: `false`.
+               
+               > **NOTE:** Any directory created as part of the operation when
+               `create_directories` is enabled will not be deleted when the resource is
+               destroyed.
         :param pulumi.Input[str] datacenter: The name of the datacenter in which to create the
                disk. Can be omitted when when ESXi or if there is only one datacenter in
                your infrastructure.
@@ -423,6 +499,8 @@ class VirtualDisk(pulumi.CustomResource):
                `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
                information on what each kind of disk provisioning policy means, click
                [here][docs-vmware-vm-disk-provisioning].
+               
+               [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         :param pulumi.Input[str] vmdk_path: The path, including filename, of the virtual disk to
                be created.  This needs to end in `.vmdk`.
         """
@@ -445,6 +523,13 @@ class VirtualDisk(pulumi.CustomResource):
         """
         The adapter type for this virtual disk. Can be
         one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
+
+        > **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+        controller that the virtual disk will be attached to on the virtual machine.
+        Please see the `scsi_type` parameter
+        in the `VirtualMachine` resource for information on how to control
+        disk controller types. This parameter will be removed in future versions of the
+        vSphere provider.
         """
         return pulumi.get(self, "adapter_type")
 
@@ -455,6 +540,10 @@ class VirtualDisk(pulumi.CustomResource):
         Tells the resource to create any
         directories that are a part of the `vmdk_path` parameter if they are missing.
         Default: `false`.
+
+        > **NOTE:** Any directory created as part of the operation when
+        `create_directories` is enabled will not be deleted when the resource is
+        destroyed.
         """
         return pulumi.get(self, "create_directories")
 
@@ -493,6 +582,8 @@ class VirtualDisk(pulumi.CustomResource):
         `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
         information on what each kind of disk provisioning policy means, click
         [here][docs-vmware-vm-disk-provisioning].
+
+        [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
         """
         return pulumi.get(self, "type")
 

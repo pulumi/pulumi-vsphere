@@ -25,6 +25,9 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
      * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter Server.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -32,6 +35,9 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
     /**
      * @return A map of custom attribute ids to attribute
      * value strings to set for the datastore cluster.
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter Server.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -148,6 +154,8 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
      * 
+     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
+     * 
      */
     @Export(name="drsEnablePredictiveDrs", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> drsEnablePredictiveDrs;
@@ -156,6 +164,8 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * @return When `true`, enables DRS to use data
      * from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
      * recommendations. &lt;sup&gt;\*&lt;/sup&gt;
+     * 
+     * [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
      * 
      */
     public Output<Optional<Boolean>> drsEnablePredictiveDrs() {
@@ -260,6 +270,13 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * below. This is an advanced
      * option and should only be used for testing. Default: `false`.
      * 
+     * &gt; **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+     * there are many pitfalls to its use when working with complex cluster
+     * configurations. Depending on the virtual machines currently on the cluster, and
+     * your DRS and HA settings, the full host evacuation may fail. Instead,
+     * incrementally remove hosts from your configuration by adjusting the contents of
+     * the `host_system_ids` attribute.
+     * 
      */
     @Export(name="forceEvacuateOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceEvacuateOnDestroy;
@@ -270,6 +287,13 @@ public class ComputeCluster extends com.pulumi.resources.CustomResource {
      * as if they were removed by taking their entry out of `host_system_ids` (see
      * below. This is an advanced
      * option and should only be used for testing. Default: `false`.
+     * 
+     * &gt; **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+     * there are many pitfalls to its use when working with complex cluster
+     * configurations. Depending on the virtual machines currently on the cluster, and
+     * your DRS and HA settings, the full host evacuation may fail. Instead,
+     * incrementally remove hosts from your configuration by adjusting the contents of
+     * the `host_system_ids` attribute.
      * 
      */
     public Output<Optional<Boolean>> forceEvacuateOnDestroy() {

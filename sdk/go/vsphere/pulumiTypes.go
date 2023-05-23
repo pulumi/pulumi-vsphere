@@ -14,6 +14,9 @@ type ComputeClusterVsanDiskGroup struct {
 	// The canonical name of the disk to use for vSAN cache.
 	Cache *string `pulumi:"cache"`
 	// An array of disk canonical names for vSAN storage.
+	//
+	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+	// You can enable or re-enable vSphere HA after vSAN is configured.
 	Storages []string `pulumi:"storages"`
 }
 
@@ -32,6 +35,9 @@ type ComputeClusterVsanDiskGroupArgs struct {
 	// The canonical name of the disk to use for vSAN cache.
 	Cache pulumi.StringPtrInput `pulumi:"cache"`
 	// An array of disk canonical names for vSAN storage.
+	//
+	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+	// You can enable or re-enable vSphere HA after vSAN is configured.
 	Storages pulumi.StringArrayInput `pulumi:"storages"`
 }
 
@@ -92,6 +98,9 @@ func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 }
 
 // An array of disk canonical names for vSAN storage.
+//
+// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
+// You can enable or re-enable vSphere HA after vSAN is configured.
 func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
 }
@@ -1234,11 +1243,17 @@ type VirtualMachineCdrom struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice *bool `pulumi:"clientDevice"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key *int `pulumi:"key"`
 	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+	//
+	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+	//
+	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 	Path *string `pulumi:"path"`
 }
 
@@ -1257,11 +1272,17 @@ type VirtualMachineCdromArgs struct {
 	// Indicates whether the device should be backed by remote client device. Conflicts with `datastoreId` and `path`.
 	ClientDevice pulumi.BoolPtrInput `pulumi:"clientDevice"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The ID of the device within the virtual machine.
 	Key pulumi.IntPtrInput `pulumi:"key"`
 	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+	//
+	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+	//
+	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -1322,6 +1343,8 @@ func (o VirtualMachineCdromOutput) ClientDevice() pulumi.BoolPtrOutput {
 }
 
 // The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineCdromOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -1336,6 +1359,10 @@ func (o VirtualMachineCdromOutput) Key() pulumi.IntPtrOutput {
 }
 
 // When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+//
+// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+//
+// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 func (o VirtualMachineCdromOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCdrom) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2461,15 +2488,23 @@ func (o VirtualMachineCloneCustomizeWindowsOptionsPtrOutput) Workgroup() pulumi.
 
 type VirtualMachineDisk struct {
 	// Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
+	//
+	// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
 	Attach *bool `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType *string `pulumi:"controllerType"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   *string `pulumi:"datastoreId"`
 	DeviceAddress *string `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+	//
+	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 	DiskMode *string `pulumi:"diskMode"`
 	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+	//
+	// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
 	DiskSharing *string `pulumi:"diskSharing"`
 	// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
 	EagerlyScrub *bool `pulumi:"eagerlyScrub"`
@@ -2484,10 +2519,13 @@ type VirtualMachineDisk struct {
 	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
 	KeepOnRemove *bool `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
-	Key *int `pulumi:"key"`
-	// A label for the virtual disk. Forces a new disk, if changed.
+	Key   *int   `pulumi:"key"`
 	Label string `pulumi:"label"`
 	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+	//
+	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+	//
+	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 	Path *string `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size *int `pulumi:"size"`
@@ -2516,15 +2554,23 @@ type VirtualMachineDiskInput interface {
 
 type VirtualMachineDiskArgs struct {
 	// Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
+	//
+	// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
 	Attach pulumi.BoolPtrInput `pulumi:"attach"`
 	// The type of storage controller to attach the  disk to. Can be `scsi`, `sata`, or `ide`. You must have the appropriate number of controllers enabled for the selected type. Default `scsi`.
 	ControllerType pulumi.StringPtrInput `pulumi:"controllerType"`
 	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+	//
+	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 	DatastoreId   pulumi.StringPtrInput `pulumi:"datastoreId"`
 	DeviceAddress pulumi.StringPtrInput `pulumi:"deviceAddress"`
 	// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+	//
+	// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 	DiskMode pulumi.StringPtrInput `pulumi:"diskMode"`
 	// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+	//
+	// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
 	DiskSharing pulumi.StringPtrInput `pulumi:"diskSharing"`
 	// If set to `true`, the disk space is zeroed out when the virtual machine is created. This will delay the creation of the virtual disk. Cannot be set to `true` when `thinProvisioned` is `true`.  See the section on picking a disk type for more information.  Default: `false`.
 	EagerlyScrub pulumi.BoolPtrInput `pulumi:"eagerlyScrub"`
@@ -2539,10 +2585,13 @@ type VirtualMachineDiskArgs struct {
 	// Keep this disk when removing the device or destroying the virtual machine. Default: `false`.
 	KeepOnRemove pulumi.BoolPtrInput `pulumi:"keepOnRemove"`
 	// The ID of the device within the virtual machine.
-	Key pulumi.IntPtrInput `pulumi:"key"`
-	// A label for the virtual disk. Forces a new disk, if changed.
+	Key   pulumi.IntPtrInput `pulumi:"key"`
 	Label pulumi.StringInput `pulumi:"label"`
 	// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+	//
+	// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+	//
+	// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The size of the disk, in GB. Must be a whole number.
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -2610,6 +2659,8 @@ func (o VirtualMachineDiskOutput) ToVirtualMachineDiskOutputWithContext(ctx cont
 }
 
 // Attach an external disk instead of creating a new one. Implies and conflicts with `keepOnRemove`. If set, you cannot set `size`, `eagerlyScrub`, or `thinProvisioned`. Must set `path` if used.
+//
+// > **NOTE:** External disks cannot be attached when `datastoreClusterId` is used.
 func (o VirtualMachineDiskOutput) Attach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *bool { return v.Attach }).(pulumi.BoolPtrOutput)
 }
@@ -2620,6 +2671,8 @@ func (o VirtualMachineDiskOutput) ControllerType() pulumi.StringPtrOutput {
 }
 
 // The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+//
+// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
 func (o VirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -2629,11 +2682,15 @@ func (o VirtualMachineDiskOutput) DeviceAddress() pulumi.StringPtrOutput {
 }
 
 // The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independentNonpersistent`, `independentPersistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+//
+// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
 func (o VirtualMachineDiskOutput) DiskMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DiskMode }).(pulumi.StringPtrOutput)
 }
 
 // The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+//
+// > **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
 func (o VirtualMachineDiskOutput) DiskSharing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.DiskSharing }).(pulumi.StringPtrOutput)
 }
@@ -2673,12 +2730,15 @@ func (o VirtualMachineDiskOutput) Key() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *int { return v.Key }).(pulumi.IntPtrOutput)
 }
 
-// A label for the virtual disk. Forces a new disk, if changed.
 func (o VirtualMachineDiskOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+//
+// > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
+//
+// > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
 func (o VirtualMachineDiskOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.Path }).(pulumi.StringPtrOutput)
 }

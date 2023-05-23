@@ -46,40 +46,6 @@ import * as utilities from "./utilities";
  *     netstack: "vmotion",
  * });
  * ```
- * ### Create a vnic attached to a portgroup using the default TCP/IP stack
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const dc = vsphere.getDatacenter({
- *     name: "mydc",
- * });
- * const h1 = dc.then(dc => vsphere.getHost({
- *     name: "esxi1.host.test",
- *     datacenterId: dc.id,
- * }));
- * const hvs1 = new vsphere.HostVirtualSwitch("hvs1", {
- *     hostSystemId: h1.then(h1 => h1.id),
- *     networkAdapters: [
- *         "vmnic3",
- *         "vmnic4",
- *     ],
- *     activeNics: ["vmnic3"],
- *     standbyNics: ["vmnic4"],
- * });
- * const p1 = new vsphere.HostPortGroup("p1", {
- *     virtualSwitchName: hvs1.name,
- *     hostSystemId: h1.then(h1 => h1.id),
- * });
- * const v1 = new vsphere.Vnic("v1", {
- *     host: h1.then(h1 => h1.id),
- *     portgroup: p1.name,
- *     ipv4: {
- *         dhcp: true,
- *     },
- * });
- * ```
  * ## Importing
  *
  * An existing vNic can be [imported][docs-import] into this resource
@@ -157,6 +123,10 @@ export class Vnic extends pulumi.CustomResource {
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
     public readonly portgroup!: pulumi.Output<string | undefined>;
+    /**
+     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     */
+    public readonly services!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Vnic resource with the given unique name, arguments, and options.
@@ -180,6 +150,7 @@ export class Vnic extends pulumi.CustomResource {
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["netstack"] = state ? state.netstack : undefined;
             resourceInputs["portgroup"] = state ? state.portgroup : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
         } else {
             const args = argsOrState as VnicArgs | undefined;
             if ((!args || args.host === undefined) && !opts.urn) {
@@ -194,6 +165,7 @@ export class Vnic extends pulumi.CustomResource {
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["netstack"] = args ? args.netstack : undefined;
             resourceInputs["portgroup"] = args ? args.portgroup : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Vnic.__pulumiType, name, resourceInputs, opts);
@@ -240,6 +212,10 @@ export interface VnicState {
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
     portgroup?: pulumi.Input<string>;
+    /**
+     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     */
+    services?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -282,4 +258,8 @@ export interface VnicArgs {
      * Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
      */
     portgroup?: pulumi.Input<string>;
+    /**
+     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     */
+    services?: pulumi.Input<pulumi.Input<string>[]>;
 }

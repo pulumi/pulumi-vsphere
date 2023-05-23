@@ -23,6 +23,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object IDs of
         /// the hosts to put in the cluster.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterVmGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         [Output("hostSystemIds")]
         public Output<ImmutableArray<string>> HostSystemIds { get; private set; } = null!;
@@ -94,6 +99,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object IDs of
         /// the hosts to put in the cluster.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterVmGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         public InputList<string> HostSystemIds
         {
@@ -130,6 +140,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The managed object IDs of
         /// the hosts to put in the cluster.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterVmGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         public InputList<string> HostSystemIds
         {

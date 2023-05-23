@@ -224,12 +224,18 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * URL of the remote OVF/OVA file to be deployed.
      * 
+     * &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+     * not be empty.
+     * 
      */
     @Import(name="remoteOvfUrl")
     private @Nullable Output<String> remoteOvfUrl;
 
     /**
      * @return URL of the remote OVF/OVA file to be deployed.
+     * 
+     * &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+     * not be empty.
      * 
      */
     public Optional<Output<String>> remoteOvfUrl() {
@@ -569,6 +575,9 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param remoteOvfUrl URL of the remote OVF/OVA file to be deployed.
          * 
+         * &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+         * not be empty.
+         * 
          * @return builder
          * 
          */
@@ -579,6 +588,9 @@ public final class GetOvfVmTemplateArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param remoteOvfUrl URL of the remote OVF/OVA file to be deployed.
+         * 
+         * &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+         * not be empty.
          * 
          * @return builder
          * 

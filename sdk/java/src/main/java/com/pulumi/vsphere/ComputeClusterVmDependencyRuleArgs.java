@@ -75,6 +75,10 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
+     * 
      */
     @Import(name="mandatory")
     private @Nullable Output<Boolean> mandatory;
@@ -82,6 +86,10 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
     /**
      * @return When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      * 
      */
     public Optional<Output<Boolean>> mandatory() {
@@ -232,6 +240,10 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
          * 
+         * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+         * `name` argument) is shared with all rules in the cluster - consider
+         * this when naming your rules.
+         * 
          * @return builder
          * 
          */
@@ -243,6 +255,10 @@ public final class ComputeClusterVmDependencyRuleArgs extends com.pulumi.resourc
         /**
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
+         * 
+         * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+         * `name` argument) is shared with all rules in the cluster - consider
+         * this when naming your rules.
          * 
          * @return builder
          * 

@@ -39,6 +39,11 @@ public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource
      * The managed object IDs of
      * the hosts to put in the cluster.
      * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
+     * 
      */
     @Export(name="hostSystemIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> hostSystemIds;
@@ -46,6 +51,11 @@ public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource
     /**
      * @return The managed object IDs of
      * the hosts to put in the cluster.
+     * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterVmGroup`
+     * resource. Make sure your names are unique across both resources.
      * 
      */
     public Output<Optional<List<String>>> hostSystemIds() {
