@@ -43,6 +43,9 @@ type DistributedVirtualSwitch struct {
 	BlockAllPorts pulumi.BoolOutput `pulumi:"blockAllPorts"`
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
+	//
+	// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+	// probing.
 	CheckBeacon pulumi.BoolOutput `pulumi:"checkBeacon"`
 	// The current version of the VDS configuration, incremented
 	// by subsequent updates to the VDS.
@@ -55,6 +58,9 @@ type DistributedVirtualSwitch struct {
 	ContactName pulumi.StringPtrOutput `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
 	// value strings to set for VDS.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+	// and requires vCenter Server.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter where the VDS will be
 	// created. Forces a new resource if changed.
@@ -216,6 +222,8 @@ type DistributedVirtualSwitch struct {
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayOutput `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
@@ -256,6 +264,36 @@ type DistributedVirtualSwitch struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(199),
+	// 					MinVlan: pulumi.Int(100),
+	// 				},
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(399),
+	// 					MinVlan: pulumi.Int(300),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayOutput `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntOutput `pulumi:"vmotionMaximumMbit"`
@@ -336,6 +374,9 @@ type distributedVirtualSwitchState struct {
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
+	//
+	// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+	// probing.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// The current version of the VDS configuration, incremented
 	// by subsequent updates to the VDS.
@@ -348,6 +389,9 @@ type distributedVirtualSwitchState struct {
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
 	// value strings to set for VDS.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+	// and requires vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter where the VDS will be
 	// created. Forces a new resource if changed.
@@ -509,6 +553,8 @@ type distributedVirtualSwitchState struct {
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
@@ -549,6 +595,36 @@ type distributedVirtualSwitchState struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(199),
+	// 					MinVlan: pulumi.Int(100),
+	// 				},
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(399),
+	// 					MinVlan: pulumi.Int(300),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -598,6 +674,9 @@ type DistributedVirtualSwitchState struct {
 	BlockAllPorts pulumi.BoolPtrInput
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
+	//
+	// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+	// probing.
 	CheckBeacon pulumi.BoolPtrInput
 	// The current version of the VDS configuration, incremented
 	// by subsequent updates to the VDS.
@@ -610,6 +689,9 @@ type DistributedVirtualSwitchState struct {
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// value strings to set for VDS.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+	// and requires vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter where the VDS will be
 	// created. Forces a new resource if changed.
@@ -771,6 +853,8 @@ type DistributedVirtualSwitchState struct {
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
@@ -811,6 +895,36 @@ type DistributedVirtualSwitchState struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(199),
+	// 					MinVlan: pulumi.Int(100),
+	// 				},
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(399),
+	// 					MinVlan: pulumi.Int(300),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -864,6 +978,9 @@ type distributedVirtualSwitchArgs struct {
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
+	//
+	// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+	// probing.
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// The detailed contact information for the person
 	// who is responsible for the VDS.
@@ -873,6 +990,9 @@ type distributedVirtualSwitchArgs struct {
 	ContactName *string `pulumi:"contactName"`
 	// Map of custom attribute ids to attribute
 	// value strings to set for VDS.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+	// and requires vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter where the VDS will be
 	// created. Forces a new resource if changed.
@@ -1034,6 +1154,8 @@ type distributedVirtualSwitchArgs struct {
 	// here for more details.
 	StandbyUplinks []string `pulumi:"standbyUplinks"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
@@ -1074,6 +1196,36 @@ type distributedVirtualSwitchArgs struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(199),
+	// 					MinVlan: pulumi.Int(100),
+	// 				},
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(399),
+	// 					MinVlan: pulumi.Int(300),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -1124,6 +1276,9 @@ type DistributedVirtualSwitchArgs struct {
 	BlockAllPorts pulumi.BoolPtrInput
 	// Enables beacon probing as an additional measure
 	// to detect NIC failure.
+	//
+	// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+	// probing.
 	CheckBeacon pulumi.BoolPtrInput
 	// The detailed contact information for the person
 	// who is responsible for the VDS.
@@ -1133,6 +1288,9 @@ type DistributedVirtualSwitchArgs struct {
 	ContactName pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// value strings to set for VDS.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+	// and requires vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter where the VDS will be
 	// created. Forces a new resource if changed.
@@ -1294,6 +1452,8 @@ type DistributedVirtualSwitchArgs struct {
 	// here for more details.
 	StandbyUplinks pulumi.StringArrayInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The uplink teaming policy. Can be one of
 	// `loadbalanceIp`, `loadbalanceSrcmac`, `loadbalanceSrcid`,
@@ -1334,6 +1494,36 @@ type DistributedVirtualSwitchArgs struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(199),
+	// 					MinVlan: pulumi.Int(100),
+	// 				},
+	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+	// 					MaxVlan: pulumi.Int(399),
+	// 					MinVlan: pulumi.Int(300),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -1496,6 +1686,9 @@ func (o DistributedVirtualSwitchOutput) BlockAllPorts() pulumi.BoolOutput {
 
 // Enables beacon probing as an additional measure
 // to detect NIC failure.
+//
+// > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+// probing.
 func (o DistributedVirtualSwitchOutput) CheckBeacon() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.BoolOutput { return v.CheckBeacon }).(pulumi.BoolOutput)
 }
@@ -1520,6 +1713,9 @@ func (o DistributedVirtualSwitchOutput) ContactName() pulumi.StringPtrOutput {
 
 // Map of custom attribute ids to attribute
 // value strings to set for VDS.
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+// and requires vCenter Server.
 func (o DistributedVirtualSwitchOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -1860,6 +2056,8 @@ func (o DistributedVirtualSwitchOutput) StandbyUplinks() pulumi.StringArrayOutpu
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
 func (o DistributedVirtualSwitchOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -1942,6 +2140,39 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 // and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 // `vlanRange` definitions are allowed, but they must not overlap. Example
 // below:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
+//				VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
+//					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+//						MaxVlan: pulumi.Int(199),
+//						MinVlan: pulumi.Int(100),
+//					},
+//					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
+//						MaxVlan: pulumi.Int(399),
+//						MinVlan: pulumi.Int(300),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o DistributedVirtualSwitchOutput) VlanRanges() DistributedVirtualSwitchVlanRangeArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchVlanRangeArrayOutput { return v.VlanRanges }).(DistributedVirtualSwitchVlanRangeArrayOutput)
 }

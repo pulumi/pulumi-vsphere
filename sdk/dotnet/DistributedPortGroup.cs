@@ -40,6 +40,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Allows the port group to create additional ports
         /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// 
+        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// may lead to errors when the port count grows past the amount specified.  If you
+        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
         /// </summary>
         [Output("autoExpand")]
         public Output<bool?> AutoExpand { get; private set; } = null!;
@@ -73,6 +77,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value string to set for port group.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and require vCenter Server.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -234,6 +241,8 @@ namespace Pulumi.VSphere
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
         /// [here][ext-vsphere-portname-format] for details on the format syntax.
+        /// 
+        /// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
         /// </summary>
         [Output("portNameFormat")]
         public Output<string?> PortNameFormat { get; private set; } = null!;
@@ -408,6 +417,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Allows the port group to create additional ports
         /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// 
+        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// may lead to errors when the port count grows past the amount specified.  If you
+        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
         /// </summary>
         [Input("autoExpand")]
         public Input<bool>? AutoExpand { get; set; }
@@ -437,6 +450,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value string to set for port group.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and require vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -595,6 +611,8 @@ namespace Pulumi.VSphere
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
         /// [here][ext-vsphere-portname-format] for details on the format syntax.
+        /// 
+        /// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
         /// </summary>
         [Input("portNameFormat")]
         public Input<string>? PortNameFormat { get; set; }
@@ -749,6 +767,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Allows the port group to create additional ports
         /// past the limit specified in `number_of_ports` if necessary. Default: `true`.
+        /// 
+        /// &gt; **NOTE:** Using `auto_expand` with a statically defined `number_of_ports`
+        /// may lead to errors when the port count grows past the amount specified.  If you
+        /// specify `number_of_ports`, you may wish to set `auto_expand` to `false`.
         /// </summary>
         [Input("autoExpand")]
         public Input<bool>? AutoExpand { get; set; }
@@ -785,6 +807,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Map of custom attribute ids to attribute
         /// value string to set for port group.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+        /// connections and require vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -949,6 +974,8 @@ namespace Pulumi.VSphere
         /// An optional formatting policy for naming of
         /// the ports in this port group. See the `portNameFormat` attribute listed
         /// [here][ext-vsphere-portname-format] for details on the format syntax.
+        /// 
+        /// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
         /// </summary>
         [Input("portNameFormat")]
         public Input<string>? PortNameFormat { get; set; }

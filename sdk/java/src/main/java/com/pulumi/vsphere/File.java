@@ -93,6 +93,10 @@ public class File extends com.pulumi.resources.CustomResource {
      * Create directories in `destination_file`
      * path parameter on first apply if any are missing for copy operation.
      * 
+     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destination_file` path is changed in subsequent applies.
+     * 
      */
     @Export(name="createDirectories", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> createDirectories;
@@ -100,6 +104,10 @@ public class File extends com.pulumi.resources.CustomResource {
     /**
      * @return Create directories in `destination_file`
      * path parameter on first apply if any are missing for copy operation.
+     * 
+     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destination_file` path is changed in subsequent applies.
      * 
      */
     public Output<Optional<Boolean>> createDirectories() {

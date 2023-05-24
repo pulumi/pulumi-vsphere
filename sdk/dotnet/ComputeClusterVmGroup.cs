@@ -30,6 +30,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines in this
         /// group.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterHostGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         [Output("virtualMachineIds")]
         public Output<ImmutableArray<string>> VirtualMachineIds { get; private set; } = null!;
@@ -101,6 +106,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines in this
         /// group.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterHostGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
@@ -137,6 +147,11 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines in this
         /// group.
+        /// 
+        /// &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+        /// `name` argument) is shared with the
+        /// `vsphere.ComputeClusterHostGroup`
+        /// resource. Make sure your names are unique across both resources.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {

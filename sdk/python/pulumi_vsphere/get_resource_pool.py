@@ -96,7 +96,7 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
     import pulumi_vsphere as vsphere
 
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
-        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
+        datacenter_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
     For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -109,6 +109,10 @@ def get_resource_pool(datacenter_id: Optional[str] = None,
            if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
            source.
+           
+           > **Note:** When using ESXi without a vCenter Server instance, you do not
+           need to specify either attribute to use this data source. An empty declaration
+           will load the ESXi host's root resource pool.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
     """
@@ -159,7 +163,7 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
     import pulumi_vsphere as vsphere
 
     pool = vsphere.get_resource_pool(name="esxi-01.example.com/Resources",
-        datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"])
+        datacenter_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
     For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
@@ -172,6 +176,10 @@ def get_resource_pool_output(datacenter_id: Optional[pulumi.Input[Optional[str]]
            if the search path used in `name` is an absolute path. For default
            datacenters, use the id attribute from an empty `Datacenter` data
            source.
+           
+           > **Note:** When using ESXi without a vCenter Server instance, you do not
+           need to specify either attribute to use this data source. An empty declaration
+           will load the ESXi host's root resource pool.
     :param str name: The name of the resource pool. This can be a name or
            path. This is required when using vCenter.
     """

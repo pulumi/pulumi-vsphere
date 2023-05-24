@@ -31,6 +31,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A description for the category.
+        /// 
+        /// &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+        /// them. Attempting to do so will result in an error.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -112,6 +115,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A description for the category.
+        /// 
+        /// &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+        /// them. Attempting to do so will result in an error.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -155,6 +161,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// A description for the category.
+        /// 
+        /// &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+        /// them. Attempting to do so will result in an error.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

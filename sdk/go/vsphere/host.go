@@ -138,7 +138,7 @@ type Host struct {
 
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:
-	// `cluster`.
+	// `clusterManaged`.
 	Cluster pulumi.StringPtrOutput `pulumi:"cluster"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `computeCluster` resource rather
@@ -151,6 +151,11 @@ type Host struct {
 	// values to apply to the resource. Please refer to the
 	// `vsphereCustomAttributes` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
+	//
+	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -176,6 +181,9 @@ type Host struct {
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Tagging support is not supported on direct ESXi host
+	// connections and require vCenter Server.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
@@ -234,7 +242,7 @@ func GetHost(ctx *pulumi.Context,
 type hostState struct {
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:
-	// `cluster`.
+	// `clusterManaged`.
 	Cluster *string `pulumi:"cluster"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `computeCluster` resource rather
@@ -247,6 +255,11 @@ type hostState struct {
 	// values to apply to the resource. Please refer to the
 	// `vsphereCustomAttributes` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
+	//
+	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -272,6 +285,9 @@ type hostState struct {
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Tagging support is not supported on direct ESXi host
+	// connections and require vCenter Server.
 	Tags []string `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
@@ -286,7 +302,7 @@ type hostState struct {
 type HostState struct {
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:
-	// `cluster`.
+	// `clusterManaged`.
 	Cluster pulumi.StringPtrInput
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `computeCluster` resource rather
@@ -299,6 +315,11 @@ type HostState struct {
 	// values to apply to the resource. Please refer to the
 	// `vsphereCustomAttributes` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
+	//
+	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -324,6 +345,9 @@ type HostState struct {
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Tagging support is not supported on direct ESXi host
+	// connections and require vCenter Server.
 	Tags pulumi.StringArrayInput
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
@@ -342,7 +366,7 @@ func (HostState) ElementType() reflect.Type {
 type hostArgs struct {
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:
-	// `cluster`.
+	// `clusterManaged`.
 	Cluster *string `pulumi:"cluster"`
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `computeCluster` resource rather
@@ -355,6 +379,11 @@ type hostArgs struct {
 	// values to apply to the resource. Please refer to the
 	// `vsphereCustomAttributes` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
+	//
+	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -380,6 +409,9 @@ type hostArgs struct {
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Tagging support is not supported on direct ESXi host
+	// connections and require vCenter Server.
 	Tags []string `pulumi:"tags"`
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
@@ -395,7 +427,7 @@ type hostArgs struct {
 type HostArgs struct {
 	// The ID of the Compute Cluster this host should
 	// be added to. This should not be set if `datacenter` is set. Conflicts with:
-	// `cluster`.
+	// `clusterManaged`.
 	Cluster pulumi.StringPtrInput
 	// Can be set to `true` if compute cluster
 	// membership will be managed through the `computeCluster` resource rather
@@ -408,6 +440,11 @@ type HostArgs struct {
 	// values to apply to the resource. Please refer to the
 	// `vsphereCustomAttributes` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
+	//
+	// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter this host should
 	// be added to. This should not be set if `cluster` is set.
@@ -433,6 +470,9 @@ type HostArgs struct {
 	// The IDs of any tags to attach to this resource. Please
 	// refer to the `Tag` resource for more information on applying
 	// tags to resources.
+	//
+	// > **NOTE:** Tagging support is not supported on direct ESXi host
+	// connections and require vCenter Server.
 	Tags pulumi.StringArrayInput
 	// Host's certificate SHA-1 thumbprint. If not set the
 	// CA that signed the host's certificate should be trusted. If the CA is not
@@ -533,7 +573,7 @@ func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 
 // The ID of the Compute Cluster this host should
 // be added to. This should not be set if `datacenter` is set. Conflicts with:
-// `cluster`.
+// `clusterManaged`.
 func (o HostOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringPtrOutput { return v.Cluster }).(pulumi.StringPtrOutput)
 }
@@ -555,6 +595,11 @@ func (o HostOutput) Connected() pulumi.BoolPtrOutput {
 // values to apply to the resource. Please refer to the
 // `vsphereCustomAttributes` resource for more information on applying
 // tags to resources.
+//
+// > **NOTE:** Custom attributes are not supported on direct ESXi host
+// connections and require vCenter Server.
+//
+// [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
 func (o HostOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -604,6 +649,9 @@ func (o HostOutput) Password() pulumi.StringOutput {
 // The IDs of any tags to attach to this resource. Please
 // refer to the `Tag` resource for more information on applying
 // tags to resources.
+//
+// > **NOTE:** Tagging support is not supported on direct ESXi host
+// connections and require vCenter Server.
 func (o HostOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Host) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

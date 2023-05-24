@@ -22,6 +22,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
      * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
+     * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
@@ -30,6 +35,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Map of custom attribute ids to attribute
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -63,6 +73,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      * 
+     * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
+     * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
@@ -75,6 +90,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
      * 
+     * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
+     * 
      */
     public Output<String> path() {
         return this.path;
@@ -83,12 +103,18 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -149,6 +175,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
          * value strings to set for folder. See [here][docs-setting-custom-attributes]
          * for a reference on how to set values for custom attributes.
          * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+         * and require vCenter.
+         * 
          * @return builder
          * 
          */
@@ -161,6 +192,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
          * @param customAttributes Map of custom attribute ids to attribute
          * value strings to set for folder. See [here][docs-setting-custom-attributes]
          * for a reference on how to set values for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+         * and require vCenter.
          * 
          * @return builder
          * 
@@ -202,6 +238,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
          * `test-folder`, the resulting path would be
          * `/default-dc/vm/test-folder`.
          * 
+         * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+         * what section of `path` you are modifying. If you are modifying the parent (so
+         * any part before the last `/`), your folder will be moved to that new parent. If
+         * modifying the name (the part after the last `/`), your folder will be renamed.
+         * 
          * @return builder
          * 
          */
@@ -218,6 +259,11 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
          * `test-folder`, the resulting path would be
          * `/default-dc/vm/test-folder`.
          * 
+         * &gt; **NOTE:** `path` can be modified - the resulting behavior is dependent on
+         * what section of `path` you are modifying. If you are modifying the parent (so
+         * any part before the last `/`), your folder will be moved to that new parent. If
+         * modifying the name (the part after the last `/`), your folder will be renamed.
+         * 
          * @return builder
          * 
          */
@@ -227,6 +273,9 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
+         * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
          * 
          * @return builder
          * 
@@ -239,6 +288,9 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
+         * 
          * @return builder
          * 
          */
@@ -248,6 +300,9 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
+         * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
          * 
          * @return builder
          * 

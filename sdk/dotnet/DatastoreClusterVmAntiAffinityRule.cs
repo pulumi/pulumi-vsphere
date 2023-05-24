@@ -42,6 +42,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         /// </summary>
         [Output("virtualMachineIds")]
         public Output<ImmutableArray<string>> VirtualMachineIds { get; private set; } = null!;
@@ -125,6 +127,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {
@@ -173,6 +177,8 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The UUIDs of the virtual machines to run
         /// on different datastores from each other.
+        /// 
+        /// &gt; **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         /// </summary>
         public InputList<string> VirtualMachineIds
         {

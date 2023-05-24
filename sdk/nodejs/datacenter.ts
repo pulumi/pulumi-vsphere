@@ -59,6 +59,11 @@ export class Datacenter extends pulumi.CustomResource {
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -77,6 +82,9 @@ export class Datacenter extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -120,6 +128,11 @@ export interface DatacenterState {
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -138,6 +151,9 @@ export interface DatacenterState {
     name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -151,6 +167,11 @@ export interface DatacenterArgs {
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -165,6 +186,9 @@ export interface DatacenterArgs {
     name?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -15,6 +15,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute ids to attribute
         /// value strings to set for the datastore cluster.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter Server.
         /// </summary>
         [Output("customAttributes")]
         public Output<ImmutableDictionary<string, string>?> CustomAttributes { get; private set; } = null!;
@@ -70,6 +73,8 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
+        /// 
+        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Output("drsEnablePredictiveDrs")]
         public Output<bool?> DrsEnablePredictiveDrs { get; private set; } = null!;
@@ -121,6 +126,13 @@ namespace Pulumi.VSphere
         /// as if they were removed by taking their entry out of `host_system_ids` (see
         /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        /// there are many pitfalls to its use when working with complex cluster
+        /// configurations. Depending on the virtual machines currently on the cluster, and
+        /// your DRS and HA settings, the full host evacuation may fail. Instead,
+        /// incrementally remove hosts from your configuration by adjusting the contents of
+        /// the `host_system_ids` attribute.
         /// </summary>
         [Output("forceEvacuateOnDestroy")]
         public Output<bool?> ForceEvacuateOnDestroy { get; private set; } = null!;
@@ -609,6 +621,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute ids to attribute
         /// value strings to set for the datastore cluster.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -673,6 +688,8 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
+        /// 
+        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
         public Input<bool>? DrsEnablePredictiveDrs { get; set; }
@@ -724,6 +741,13 @@ namespace Pulumi.VSphere
         /// as if they were removed by taking their entry out of `host_system_ids` (see
         /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        /// there are many pitfalls to its use when working with complex cluster
+        /// configurations. Depending on the virtual machines currently on the cluster, and
+        /// your DRS and HA settings, the full host evacuation may fail. Instead,
+        /// incrementally remove hosts from your configuration by adjusting the contents of
+        /// the `host_system_ids` attribute.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
         public Input<bool>? ForceEvacuateOnDestroy { get; set; }
@@ -1212,6 +1236,9 @@ namespace Pulumi.VSphere
         /// <summary>
         /// A map of custom attribute ids to attribute
         /// value strings to set for the datastore cluster.
+        /// 
+        /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        /// and require vCenter Server.
         /// </summary>
         public InputMap<string> CustomAttributes
         {
@@ -1276,6 +1303,8 @@ namespace Pulumi.VSphere
         /// When `true`, enables DRS to use data
         /// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         /// recommendations. &lt;sup&gt;\*&lt;/sup&gt;
+        /// 
+        /// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         /// </summary>
         [Input("drsEnablePredictiveDrs")]
         public Input<bool>? DrsEnablePredictiveDrs { get; set; }
@@ -1327,6 +1356,13 @@ namespace Pulumi.VSphere
         /// as if they were removed by taking their entry out of `host_system_ids` (see
         /// below. This is an advanced
         /// option and should only be used for testing. Default: `false`.
+        /// 
+        /// &gt; **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        /// there are many pitfalls to its use when working with complex cluster
+        /// configurations. Depending on the virtual machines currently on the cluster, and
+        /// your DRS and HA settings, the full host evacuation may fail. Instead,
+        /// incrementally remove hosts from your configuration by adjusting the contents of
+        /// the `host_system_ids` attribute.
         /// </summary>
         [Input("forceEvacuateOnDestroy")]
         public Input<bool>? ForceEvacuateOnDestroy { get; set; }

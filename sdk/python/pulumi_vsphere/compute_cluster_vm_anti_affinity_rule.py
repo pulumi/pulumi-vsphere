@@ -29,6 +29,10 @@ class ComputeClusterVmAntiAffinityRuleArgs:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         """
         pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
@@ -85,6 +89,10 @@ class ComputeClusterVmAntiAffinityRuleArgs:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -121,6 +129,10 @@ class _ComputeClusterVmAntiAffinityRuleState:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
@@ -168,6 +180,10 @@ class _ComputeClusterVmAntiAffinityRuleState:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -222,6 +238,10 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
@@ -300,6 +320,10 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
@@ -339,6 +363,10 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 

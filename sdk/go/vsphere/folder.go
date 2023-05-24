@@ -17,6 +17,11 @@ type Folder struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The ID of the datacenter the folder will be created in.
 	// Required for all folder types except for datacenter folders. Forces a new
@@ -28,8 +33,16 @@ type Folder struct {
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
 	// `test-folder`, the resulting path would be
 	// `/default-dc/vm/test-folder`.
+	//
+	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+	// what section of `path` you are modifying. If you are modifying the parent (so
+	// any part before the last `/`), your folder will be moved to that new parent. If
+	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -76,6 +89,11 @@ type folderState struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter the folder will be created in.
 	// Required for all folder types except for datacenter folders. Forces a new
@@ -87,8 +105,16 @@ type folderState struct {
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
 	// `test-folder`, the resulting path would be
 	// `/default-dc/vm/test-folder`.
+	//
+	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+	// what section of `path` you are modifying. If you are modifying the parent (so
+	// any part before the last `/`), your folder will be moved to that new parent. If
+	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path *string `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -101,6 +127,11 @@ type FolderState struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter the folder will be created in.
 	// Required for all folder types except for datacenter folders. Forces a new
@@ -112,8 +143,16 @@ type FolderState struct {
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
 	// `test-folder`, the resulting path would be
 	// `/default-dc/vm/test-folder`.
+	//
+	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+	// what section of `path` you are modifying. If you are modifying the parent (so
+	// any part before the last `/`), your folder will be moved to that new parent. If
+	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -130,6 +169,11 @@ type folderArgs struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The ID of the datacenter the folder will be created in.
 	// Required for all folder types except for datacenter folders. Forces a new
@@ -141,8 +185,16 @@ type folderArgs struct {
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
 	// `test-folder`, the resulting path would be
 	// `/default-dc/vm/test-folder`.
+	//
+	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+	// what section of `path` you are modifying. If you are modifying the parent (so
+	// any part before the last `/`), your folder will be moved to that new parent. If
+	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path string `pulumi:"path"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -156,6 +208,11 @@ type FolderArgs struct {
 	// Map of custom attribute ids to attribute
 	// value strings to set for folder. See [here][docs-setting-custom-attributes]
 	// for a reference on how to set values for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The ID of the datacenter the folder will be created in.
 	// Required for all folder types except for datacenter folders. Forces a new
@@ -167,8 +224,16 @@ type FolderArgs struct {
 	// `vm` (denoting a virtual machine folder), and a supplied folder of
 	// `test-folder`, the resulting path would be
 	// `/default-dc/vm/test-folder`.
+	//
+	// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+	// what section of `path` you are modifying. If you are modifying the parent (so
+	// any part before the last `/`), your folder will be moved to that new parent. If
+	// modifying the name (the part after the last `/`), your folder will be renamed.
 	Path pulumi.StringInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+	// requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 	// The type of folder to create. Allowed options are
 	// `datacenter` for datacenter folders, `host` for host and cluster folders,
@@ -267,6 +332,11 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 // Map of custom attribute ids to attribute
 // value strings to set for folder. See [here][docs-setting-custom-attributes]
 // for a reference on how to set values for custom attributes.
+//
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter.
 func (o FolderOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -284,11 +354,19 @@ func (o FolderOutput) DatacenterId() pulumi.StringPtrOutput {
 // `vm` (denoting a virtual machine folder), and a supplied folder of
 // `test-folder`, the resulting path would be
 // `/default-dc/vm/test-folder`.
+//
+// > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+// what section of `path` you are modifying. If you are modifying the parent (so
+// any part before the last `/`), your folder will be moved to that new parent. If
+// modifying the name (the part after the last `/`), your folder will be renamed.
 func (o FolderOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+// requires vCenter 6.0 or higher.
 func (o FolderOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

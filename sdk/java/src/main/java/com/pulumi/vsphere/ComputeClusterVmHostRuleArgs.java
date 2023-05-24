@@ -92,6 +92,14 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
      * 
+     * &gt; **NOTE:** One of `affinity_host_group_name` or
+     * `anti_affinity_host_group_name` must be
+     * defined, but not both.
+     * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
+     * 
      */
     @Import(name="mandatory")
     private @Nullable Output<Boolean> mandatory;
@@ -99,6 +107,14 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
     /**
      * @return When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     * 
+     * &gt; **NOTE:** One of `affinity_host_group_name` or
+     * `anti_affinity_host_group_name` must be
+     * defined, but not both.
+     * 
+     * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      * 
      */
     public Optional<Output<Boolean>> mandatory() {
@@ -269,6 +285,14 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
          * 
+         * &gt; **NOTE:** One of `affinity_host_group_name` or
+         * `anti_affinity_host_group_name` must be
+         * defined, but not both.
+         * 
+         * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+         * `name` argument) is shared with all rules in the cluster - consider
+         * this when naming your rules.
+         * 
          * @return builder
          * 
          */
@@ -280,6 +304,14 @@ public final class ComputeClusterVmHostRuleArgs extends com.pulumi.resources.Res
         /**
          * @param mandatory When this value is `true`, prevents any virtual
          * machine operations that may violate this rule. Default: `false`.
+         * 
+         * &gt; **NOTE:** One of `affinity_host_group_name` or
+         * `anti_affinity_host_group_name` must be
+         * defined, but not both.
+         * 
+         * &gt; **NOTE:** The namespace for rule names on this resource (defined by the
+         * `name` argument) is shared with all rules in the cluster - consider
+         * this when naming your rules.
          * 
          * @return builder
          * 

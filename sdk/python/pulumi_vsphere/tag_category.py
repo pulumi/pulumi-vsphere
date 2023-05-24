@@ -28,6 +28,9 @@ class TagCategoryArgs:
                be assigned one tag in this category), to `MULTIPLE` (object can be assigned
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
+               
+               > **NOTE:** You can add associable types to a category, but you cannot remove
+               them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
         pulumi.set(__self__, "associable_types", associable_types)
@@ -71,6 +74,9 @@ class TagCategoryArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description for the category.
+
+        > **NOTE:** You can add associable types to a category, but you cannot remove
+        them. Attempting to do so will result in an error.
         """
         return pulumi.get(self, "description")
 
@@ -108,6 +114,9 @@ class _TagCategoryState:
                be assigned one tag in this category), to `MULTIPLE` (object can be assigned
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
+               
+               > **NOTE:** You can add associable types to a category, but you cannot remove
+               them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
         if associable_types is not None:
@@ -153,6 +162,9 @@ class _TagCategoryState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description for the category.
+
+        > **NOTE:** You can add associable types to a category, but you cannot remove
+        them. Attempting to do so will result in an error.
         """
         return pulumi.get(self, "description")
 
@@ -195,6 +207,9 @@ class TagCategory(pulumi.CustomResource):
                be assigned one tag in this category), to `MULTIPLE` (object can be assigned
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
+               
+               > **NOTE:** You can add associable types to a category, but you cannot remove
+               them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
         ...
@@ -270,6 +285,9 @@ class TagCategory(pulumi.CustomResource):
                be assigned one tag in this category), to `MULTIPLE` (object can be assigned
                multiple tags in this category). Forces a new resource if changed.
         :param pulumi.Input[str] description: A description for the category.
+               
+               > **NOTE:** You can add associable types to a category, but you cannot remove
+               them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -308,6 +326,9 @@ class TagCategory(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description for the category.
+
+        > **NOTE:** You can add associable types to a category, but you cannot remove
+        them. Attempting to do so will result in an error.
         """
         return pulumi.get(self, "description")
 

@@ -23,6 +23,11 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
+     * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
@@ -32,6 +37,11 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
      * strings to set for datacenter resource. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -75,12 +85,18 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -120,6 +136,11 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
          * [here][docs-setting-custom-attributes] for a reference on how to set values
          * for custom attributes.
          * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+         * and require vCenter.
+         * 
          * @return builder
          * 
          */
@@ -133,6 +154,11 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
          * strings to set for datacenter resource. See
          * [here][docs-setting-custom-attributes] for a reference on how to set values
          * for custom attributes.
+         * 
+         * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+         * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+         * and require vCenter.
          * 
          * @return builder
          * 
@@ -190,6 +216,9 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
+         * 
          * @return builder
          * 
          */
@@ -201,6 +230,9 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
+         * 
          * @return builder
          * 
          */
@@ -210,6 +242,9 @@ public final class DatacenterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
+         * 
+         * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+         * requires vCenter 6.0 or higher.
          * 
          * @return builder
          * 

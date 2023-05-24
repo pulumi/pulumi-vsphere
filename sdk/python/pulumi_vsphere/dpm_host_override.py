@@ -27,6 +27,10 @@ class DpmHostOverrideArgs:
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
         """
@@ -70,6 +74,10 @@ class DpmHostOverrideArgs:
         The automation level for host power
         operations on this host. Can be one of `manual` or `automated`. Default:
         `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "dpm_automation_level")
 
@@ -106,6 +114,10 @@ class _DpmHostOverrideState:
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
         :param pulumi.Input[str] host_system_id: The managed object ID of the host.
@@ -140,6 +152,10 @@ class _DpmHostOverrideState:
         The automation level for host power
         operations on this host. Can be one of `manual` or `automated`. Default:
         `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "dpm_automation_level")
 
@@ -193,6 +209,10 @@ class DpmHostOverride(pulumi.CustomResource):
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
         :param pulumi.Input[str] host_system_id: The managed object ID of the host.
@@ -268,6 +288,10 @@ class DpmHostOverride(pulumi.CustomResource):
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations on this host. Can be one of `manual` or `automated`. Default:
                `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
         :param pulumi.Input[str] host_system_id: The managed object ID of the host.
@@ -299,6 +323,10 @@ class DpmHostOverride(pulumi.CustomResource):
         The automation level for host power
         operations on this host. Can be one of `manual` or `automated`. Default:
         `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `dpm_enabled` or `dpm_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "dpm_automation_level")
 

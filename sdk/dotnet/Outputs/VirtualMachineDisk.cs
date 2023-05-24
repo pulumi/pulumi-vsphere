@@ -15,6 +15,8 @@ namespace Pulumi.VSphere.Outputs
     {
         /// <summary>
         /// Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+        /// 
+        /// &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
         /// </summary>
         public readonly bool? Attach;
         /// <summary>
@@ -23,15 +25,21 @@ namespace Pulumi.VSphere.Outputs
         public readonly string? ControllerType;
         /// <summary>
         /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+        /// 
+        /// &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
         /// </summary>
         public readonly string? DatastoreId;
         public readonly string? DeviceAddress;
         /// <summary>
         /// The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+        /// 
+        /// [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
         /// </summary>
         public readonly string? DiskMode;
         /// <summary>
         /// The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+        /// 
+        /// &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
         /// </summary>
         public readonly string? DiskSharing;
         /// <summary>
@@ -62,12 +70,13 @@ namespace Pulumi.VSphere.Outputs
         /// The ID of the device within the virtual machine.
         /// </summary>
         public readonly int? Key;
-        /// <summary>
-        /// A label for the virtual disk. Forces a new disk, if changed.
-        /// </summary>
         public readonly string Label;
         /// <summary>
         /// When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+        /// 
+        /// &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+        /// 
+        /// &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         /// </summary>
         public readonly string? Path;
         /// <summary>

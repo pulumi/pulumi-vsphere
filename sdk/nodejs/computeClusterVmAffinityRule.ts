@@ -74,7 +74,7 @@ import * as utilities from "./utilities";
  * }
  * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
  *     computeClusterId: cluster.then(cluster => cluster.id),
- *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => v.id),
+ *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => (v.id)),
  * });
  * ```
  *
@@ -97,10 +97,10 @@ import * as utilities from "./utilities";
  *     name: "cluster-01",
  *     datacenterId: datacenter.id,
  * }));
- * const vmsVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => vsphere.getVirtualMachine({
+ * const vmsVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => (vsphere.getVirtualMachine({
  *     name: vms[__index],
  *     datacenterId: _arg0_.id,
- * }));
+ * })));
  * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
  *     enabled: true,
  *     computeClusterId: cluster.then(cluster => cluster.id),
@@ -149,6 +149,10 @@ export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
@@ -215,6 +219,10 @@ export interface ComputeClusterVmAffinityRuleState {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     mandatory?: pulumi.Input<boolean>;
     /**
@@ -245,6 +253,10 @@ export interface ComputeClusterVmAffinityRuleArgs {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     mandatory?: pulumi.Input<boolean>;
     /**

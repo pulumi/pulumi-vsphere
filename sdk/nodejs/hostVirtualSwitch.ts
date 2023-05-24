@@ -111,6 +111,9 @@ export class HostVirtualSwitch extends pulumi.CustomResource {
     /**
      * The number of ports to create with this
      * virtual switch. Default: `128`.
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. This provider
+     * will not restart the host for you.
      */
     public readonly numberOfPorts!: pulumi.Output<number | undefined>;
     /**
@@ -300,6 +303,9 @@ export interface HostVirtualSwitchState {
     /**
      * The number of ports to create with this
      * virtual switch. Default: `128`.
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. This provider
+     * will not restart the host for you.
      */
     numberOfPorts?: pulumi.Input<number>;
     /**
@@ -418,6 +424,9 @@ export interface HostVirtualSwitchArgs {
     /**
      * The number of ports to create with this
      * virtual switch. Default: `128`.
+     *
+     * > **NOTE:** Changing the port count requires a reboot of the host. This provider
+     * will not restart the host for you.
      */
     numberOfPorts?: pulumi.Input<number>;
     /**

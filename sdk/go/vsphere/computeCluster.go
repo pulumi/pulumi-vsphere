@@ -16,6 +16,9 @@ type ComputeCluster struct {
 
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter Server.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
@@ -43,6 +46,8 @@ type ComputeCluster struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
+	//
+	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrOutput `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -70,6 +75,13 @@ type ComputeCluster struct {
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
 	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
+	//
+	// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+	// there are many pitfalls to its use when working with complex cluster
+	// configurations. Depending on the virtual machines currently on the cluster, and
+	// your DRS and HA settings, the full host evacuation may fail. Instead,
+	// incrementally remove hosts from your configuration by adjusting the contents of
+	// the `hostSystemIds` attribute.
 	ForceEvacuateOnDestroy pulumi.BoolPtrOutput `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
 	// managed object IDs of hosts to use as dedicated failover
@@ -331,6 +343,9 @@ func GetComputeCluster(ctx *pulumi.Context,
 type computeClusterState struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
@@ -358,6 +373,8 @@ type computeClusterState struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
+	//
+	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -385,6 +402,13 @@ type computeClusterState struct {
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
 	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
+	//
+	// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+	// there are many pitfalls to its use when working with complex cluster
+	// configurations. Depending on the virtual machines currently on the cluster, and
+	// your DRS and HA settings, the full host evacuation may fail. Instead,
+	// incrementally remove hosts from your configuration by adjusting the contents of
+	// the `hostSystemIds` attribute.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
 	// managed object IDs of hosts to use as dedicated failover
@@ -615,6 +639,9 @@ type computeClusterState struct {
 type ComputeClusterState struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
@@ -642,6 +669,8 @@ type ComputeClusterState struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
+	//
+	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -669,6 +698,13 @@ type ComputeClusterState struct {
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
 	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
+	//
+	// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+	// there are many pitfalls to its use when working with complex cluster
+	// configurations. Depending on the virtual machines currently on the cluster, and
+	// your DRS and HA settings, the full host evacuation may fail. Instead,
+	// incrementally remove hosts from your configuration by adjusting the contents of
+	// the `hostSystemIds` attribute.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
 	// managed object IDs of hosts to use as dedicated failover
@@ -903,6 +939,9 @@ func (ComputeClusterState) ElementType() reflect.Type {
 type computeClusterArgs struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
@@ -930,6 +969,8 @@ type computeClusterArgs struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
+	//
+	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs *bool `pulumi:"drsEnablePredictiveDrs"`
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -957,6 +998,13 @@ type computeClusterArgs struct {
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
 	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
+	//
+	// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+	// there are many pitfalls to its use when working with complex cluster
+	// configurations. Depending on the virtual machines currently on the cluster, and
+	// your DRS and HA settings, the full host evacuation may fail. Instead,
+	// incrementally remove hosts from your configuration by adjusting the contents of
+	// the `hostSystemIds` attribute.
 	ForceEvacuateOnDestroy *bool `pulumi:"forceEvacuateOnDestroy"`
 	// Defines the
 	// managed object IDs of hosts to use as dedicated failover
@@ -1182,6 +1230,9 @@ type computeClusterArgs struct {
 type ComputeClusterArgs struct {
 	// A map of custom attribute ids to attribute
 	// value strings to set for the datastore cluster.
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object ID of
 	// the datacenter to create the cluster in. Forces a new resource if changed.
@@ -1209,6 +1260,8 @@ type ComputeClusterArgs struct {
 	// When `true`, enables DRS to use data
 	// from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 	// recommendations. <sup>\*</sup>
+	//
+	// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 	DrsEnablePredictiveDrs pulumi.BoolPtrInput
 	// Allow individual DRS overrides to be
 	// set for virtual machines in the cluster. Default: `true`.
@@ -1236,6 +1289,13 @@ type ComputeClusterArgs struct {
 	// as if they were removed by taking their entry out of `hostSystemIds` (see
 	// below. This is an advanced
 	// option and should only be used for testing. Default: `false`.
+	//
+	// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+	// there are many pitfalls to its use when working with complex cluster
+	// configurations. Depending on the virtual machines currently on the cluster, and
+	// your DRS and HA settings, the full host evacuation may fail. Instead,
+	// incrementally remove hosts from your configuration by adjusting the contents of
+	// the `hostSystemIds` attribute.
 	ForceEvacuateOnDestroy pulumi.BoolPtrInput
 	// Defines the
 	// managed object IDs of hosts to use as dedicated failover
@@ -1546,6 +1606,9 @@ func (o ComputeClusterOutput) ToComputeClusterOutputWithContext(ctx context.Cont
 
 // A map of custom attribute ids to attribute
 // value strings to set for the datastore cluster.
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter Server.
 func (o ComputeClusterOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -1594,6 +1657,8 @@ func (o ComputeClusterOutput) DrsAutomationLevel() pulumi.StringPtrOutput {
 // When `true`, enables DRS to use data
 // from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
 // recommendations. <sup>\*</sup>
+//
+// [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
 func (o ComputeClusterOutput) DrsEnablePredictiveDrs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.DrsEnablePredictiveDrs }).(pulumi.BoolPtrOutput)
 }
@@ -1639,6 +1704,13 @@ func (o ComputeClusterOutput) Folder() pulumi.StringPtrOutput {
 // as if they were removed by taking their entry out of `hostSystemIds` (see
 // below. This is an advanced
 // option and should only be used for testing. Default: `false`.
+//
+// > **NOTE:** Do not set `forceEvacuateOnDestroy` in production operation as
+// there are many pitfalls to its use when working with complex cluster
+// configurations. Depending on the virtual machines currently on the cluster, and
+// your DRS and HA settings, the full host evacuation may fail. Instead,
+// incrementally remove hosts from your configuration by adjusting the contents of
+// the `hostSystemIds` attribute.
 func (o ComputeClusterOutput) ForceEvacuateOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeCluster) pulumi.BoolPtrOutput { return v.ForceEvacuateOnDestroy }).(pulumi.BoolPtrOutput)
 }

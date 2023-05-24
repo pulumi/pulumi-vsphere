@@ -291,6 +291,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// URL of the remote OVF/OVA file to be deployed.
+        /// 
+        /// &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+        /// not be empty.
         /// </summary>
         [Input("remoteOvfUrl")]
         public string? RemoteOvfUrl { get; set; }
@@ -402,6 +405,9 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// URL of the remote OVF/OVA file to be deployed.
+        /// 
+        /// &gt; **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+        /// not be empty.
         /// </summary>
         [Input("remoteOvfUrl")]
         public Input<string>? RemoteOvfUrl { get; set; }

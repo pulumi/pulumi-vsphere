@@ -52,6 +52,10 @@ export class ComputeClusterVmDependencyRule extends pulumi.CustomResource {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     public readonly mandatory!: pulumi.Output<boolean | undefined>;
     /**
@@ -133,6 +137,10 @@ export interface ComputeClusterVmDependencyRuleState {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     mandatory?: pulumi.Input<boolean>;
     /**
@@ -173,6 +181,10 @@ export interface ComputeClusterVmDependencyRuleArgs {
     /**
      * When this value is `true`, prevents any virtual
      * machine operations that may violate this rule. Default: `false`.
+     *
+     * > **NOTE:** The namespace for rule names on this resource (defined by the
+     * `name` argument) is shared with all rules in the cluster - consider
+     * this when naming your rules.
      */
     mandatory?: pulumi.Input<boolean>;
     /**

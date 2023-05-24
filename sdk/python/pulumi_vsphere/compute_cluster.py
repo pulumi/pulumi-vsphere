@@ -87,6 +87,9 @@ class ComputeClusterArgs:
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter Server.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
                operations in this cluster. Can be one of `manual` or `automated`. Default:
                `manual`.
@@ -105,6 +108,8 @@ class ComputeClusterArgs:
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
+               
+               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -126,6 +131,13 @@ class ComputeClusterArgs:
                as if they were removed by taking their entry out of `host_system_ids` (see
                below. This is an advanced
                option and should only be used for testing. Default: `false`.
+               
+               > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+               there are many pitfalls to its use when working with complex cluster
+               configurations. Depending on the virtual machines currently on the cluster, and
+               your DRS and HA settings, the full host evacuation may fail. Instead,
+               incrementally remove hosts from your configuration by adjusting the contents of
+               the `host_system_ids` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -443,6 +455,9 @@ class ComputeClusterArgs:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -527,6 +542,8 @@ class ComputeClusterArgs:
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
+
+        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
@@ -614,6 +631,13 @@ class ComputeClusterArgs:
         as if they were removed by taking their entry out of `host_system_ids` (see
         below. This is an advanced
         option and should only be used for testing. Default: `false`.
+
+        > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        there are many pitfalls to its use when working with complex cluster
+        configurations. Depending on the virtual machines currently on the cluster, and
+        your DRS and HA settings, the full host evacuation may fail. Instead,
+        incrementally remove hosts from your configuration by adjusting the contents of
+        the `host_system_ids` attribute.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
@@ -1423,6 +1447,9 @@ class _ComputeClusterState:
         Input properties used for looking up and filtering ComputeCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter Server.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
@@ -1443,6 +1470,8 @@ class _ComputeClusterState:
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
+               
+               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -1464,6 +1493,13 @@ class _ComputeClusterState:
                as if they were removed by taking their entry out of `host_system_ids` (see
                below. This is an advanced
                option and should only be used for testing. Default: `false`.
+               
+               > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+               there are many pitfalls to its use when working with complex cluster
+               configurations. Depending on the virtual machines currently on the cluster, and
+               your DRS and HA settings, the full host evacuation may fail. Instead,
+               incrementally remove hosts from your configuration by adjusting the contents of
+               the `host_system_ids` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -1776,6 +1812,9 @@ class _ComputeClusterState:
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -1873,6 +1912,8 @@ class _ComputeClusterState:
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
+
+        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
@@ -1960,6 +2001,13 @@ class _ComputeClusterState:
         as if they were removed by taking their entry out of `host_system_ids` (see
         below. This is an advanced
         option and should only be used for testing. Default: `false`.
+
+        > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        there are many pitfalls to its use when working with complex cluster
+        configurations. Depending on the virtual machines currently on the cluster, and
+        your DRS and HA settings, the full host evacuation may fail. Instead,
+        incrementally remove hosts from your configuration by adjusting the contents of
+        the `host_system_ids` attribute.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 
@@ -2789,6 +2837,9 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter Server.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
@@ -2809,6 +2860,8 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
+               
+               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -2830,6 +2883,13 @@ class ComputeCluster(pulumi.CustomResource):
                as if they were removed by taking their entry out of `host_system_ids` (see
                below. This is an advanced
                option and should only be used for testing. Default: `false`.
+               
+               > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+               there are many pitfalls to its use when working with complex cluster
+               configurations. Depending on the virtual machines currently on the cluster, and
+               your DRS and HA settings, the full host evacuation may fail. Instead,
+               incrementally remove hosts from your configuration by adjusting the contents of
+               the `host_system_ids` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -3248,6 +3308,9 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of custom attribute ids to attribute
                value strings to set for the datastore cluster.
+               
+               > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+               and require vCenter Server.
         :param pulumi.Input[str] datacenter_id: The managed object ID of
                the datacenter to create the cluster in. Forces a new resource if changed.
         :param pulumi.Input[str] dpm_automation_level: The automation level for host power
@@ -3268,6 +3331,8 @@ class ComputeCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] drs_enable_predictive_drs: When `true`, enables DRS to use data
                from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
                recommendations. <sup>\\*</sup>
+               
+               [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         :param pulumi.Input[bool] drs_enable_vm_overrides: Allow individual DRS overrides to be
                set for virtual machines in the cluster. Default: `true`.
         :param pulumi.Input[bool] drs_enabled: Enable DRS for this cluster. Default: `false`.
@@ -3289,6 +3354,13 @@ class ComputeCluster(pulumi.CustomResource):
                as if they were removed by taking their entry out of `host_system_ids` (see
                below. This is an advanced
                option and should only be used for testing. Default: `false`.
+               
+               > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+               there are many pitfalls to its use when working with complex cluster
+               configurations. Depending on the virtual machines currently on the cluster, and
+               your DRS and HA settings, the full host evacuation may fail. Instead,
+               incrementally remove hosts from your configuration by adjusting the contents of
+               the `host_system_ids` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ha_admission_control_failover_host_system_ids: Defines the
                managed object IDs of hosts to use as dedicated failover
                hosts. These hosts are kept as available as possible - admission control will
@@ -3540,6 +3612,9 @@ class ComputeCluster(pulumi.CustomResource):
         """
         A map of custom attribute ids to attribute
         value strings to set for the datastore cluster.
+
+        > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+        and require vCenter Server.
         """
         return pulumi.get(self, "custom_attributes")
 
@@ -3609,6 +3684,8 @@ class ComputeCluster(pulumi.CustomResource):
         When `true`, enables DRS to use data
         from [vRealize Operations Manager][ref-vsphere-vrops] to make proactive DRS
         recommendations. <sup>\\*</sup>
+
+        [ref-vsphere-vrops]: https://docs.vmware.com/en/vRealize-Operations-Manager/index.html
         """
         return pulumi.get(self, "drs_enable_predictive_drs")
 
@@ -3672,6 +3749,13 @@ class ComputeCluster(pulumi.CustomResource):
         as if they were removed by taking their entry out of `host_system_ids` (see
         below. This is an advanced
         option and should only be used for testing. Default: `false`.
+
+        > **NOTE:** Do not set `force_evacuate_on_destroy` in production operation as
+        there are many pitfalls to its use when working with complex cluster
+        configurations. Depending on the virtual machines currently on the cluster, and
+        your DRS and HA settings, the full host evacuation may fail. Instead,
+        incrementally remove hosts from your configuration by adjusting the contents of
+        the `host_system_ids` attribute.
         """
         return pulumi.get(self, "force_evacuate_on_destroy")
 

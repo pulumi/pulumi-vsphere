@@ -54,6 +54,8 @@ export class DatastoreClusterVmAntiAffinityRule extends pulumi.CustomResource {
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2.
      */
     public readonly virtualMachineIds!: pulumi.Output<string[]>;
 
@@ -120,6 +122,8 @@ export interface DatastoreClusterVmAntiAffinityRuleState {
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2.
      */
     virtualMachineIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -150,6 +154,8 @@ export interface DatastoreClusterVmAntiAffinityRuleArgs {
     /**
      * The UUIDs of the virtual machines to run
      * on different datastores from each other.
+     *
+     * > **NOTE:** The minimum length of `virtualMachineIds` is 2.
      */
     virtualMachineIds: pulumi.Input<pulumi.Input<string>[]>;
 }

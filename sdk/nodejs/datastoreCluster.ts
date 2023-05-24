@@ -37,6 +37,11 @@ export class DatastoreCluster extends pulumi.CustomResource {
      * value strings to set for the datastore cluster. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -179,6 +184,8 @@ export class DatastoreCluster extends pulumi.CustomResource {
     public readonly sdrsVmEvacuationAutomationLevel!: pulumi.Output<string | undefined>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -265,6 +272,11 @@ export interface DatastoreClusterState {
      * value strings to set for the datastore cluster. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -407,6 +419,8 @@ export interface DatastoreClusterState {
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -420,6 +434,11 @@ export interface DatastoreClusterArgs {
      * value strings to set for the datastore cluster. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -562,6 +581,8 @@ export interface DatastoreClusterArgs {
     sdrsVmEvacuationAutomationLevel?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

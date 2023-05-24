@@ -23,7 +23,7 @@ class GetVirtualMachineResult:
     """
     A collection of values returned by getVirtualMachine.
     """
-    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
+    def __init__(__self__, alternate_guest_name=None, annotation=None, boot_delay=None, boot_retry_delay=None, boot_retry_enabled=None, change_version=None, cpu_hot_add_enabled=None, cpu_hot_remove_enabled=None, cpu_limit=None, cpu_performance_counters_enabled=None, cpu_reservation=None, cpu_share_count=None, cpu_share_level=None, datacenter_id=None, default_ip_address=None, disks=None, efi_secure_boot_enabled=None, enable_disk_uuid=None, enable_logging=None, ept_rvi_mode=None, extra_config=None, extra_config_reboot_required=None, firmware=None, guest_id=None, guest_ip_addresses=None, hardware_version=None, hv_mode=None, id=None, ide_controller_scan_count=None, latency_sensitivity=None, memory=None, memory_hot_add_enabled=None, memory_limit=None, memory_reservation=None, memory_share_count=None, memory_share_level=None, moid=None, name=None, nested_hv_enabled=None, network_interface_types=None, network_interfaces=None, num_cores_per_socket=None, num_cpus=None, replace_trigger=None, run_tools_scripts_after_power_on=None, run_tools_scripts_after_resume=None, run_tools_scripts_before_guest_reboot=None, run_tools_scripts_before_guest_shutdown=None, run_tools_scripts_before_guest_standby=None, sata_controller_scan_count=None, scsi_bus_sharing=None, scsi_controller_scan_count=None, scsi_type=None, storage_policy_id=None, swap_placement_policy=None, sync_time_with_host=None, sync_time_with_host_periodically=None, tools_upgrade_policy=None, uuid=None, vapp=None, vapp_transports=None, vbs_enabled=None, vvtd_enabled=None):
         if alternate_guest_name and not isinstance(alternate_guest_name, str):
             raise TypeError("Expected argument 'alternate_guest_name' to be a str")
         pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
@@ -132,6 +132,9 @@ class GetVirtualMachineResult:
         if memory_share_level and not isinstance(memory_share_level, str):
             raise TypeError("Expected argument 'memory_share_level' to be a str")
         pulumi.set(__self__, "memory_share_level", memory_share_level)
+        if moid and not isinstance(moid, str):
+            raise TypeError("Expected argument 'moid' to be a str")
+        pulumi.set(__self__, "moid", moid)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -435,6 +438,11 @@ class GetVirtualMachineResult:
 
     @property
     @pulumi.getter
+    def moid(self) -> str:
+        return pulumi.get(self, "moid")
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
 
@@ -639,6 +647,7 @@ class AwaitableGetVirtualMachineResult(GetVirtualMachineResult):
             memory_reservation=self.memory_reservation,
             memory_share_count=self.memory_share_count,
             memory_share_level=self.memory_share_level,
+            moid=self.moid,
             name=self.name,
             nested_hv_enabled=self.nested_hv_enabled,
             network_interface_types=self.network_interface_types,
@@ -698,6 +707,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
                         memory_reservation: Optional[int] = None,
                         memory_share_count: Optional[int] = None,
                         memory_share_level: Optional[str] = None,
+                        moid: Optional[str] = None,
                         name: Optional[str] = None,
                         nested_hv_enabled: Optional[bool] = None,
                         num_cores_per_socket: Optional[int] = None,
@@ -775,6 +785,12 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
+           
+           > **NOTE:** For best results, ensure that all the disks on any templates you
+           use with this data source reside on the primary controller, and leave this
+           value at the default. See the `VirtualMachine`
+           resource documentation for the significance of this setting, specifically the
+           additional requirements and notes for cloning section.
     :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
            are not required if this is specified.
     """
@@ -810,6 +826,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     __args__['memoryReservation'] = memory_reservation
     __args__['memoryShareCount'] = memory_share_count
     __args__['memoryShareLevel'] = memory_share_level
+    __args__['moid'] = moid
     __args__['name'] = name
     __args__['nestedHvEnabled'] = nested_hv_enabled
     __args__['numCoresPerSocket'] = num_cores_per_socket
@@ -871,6 +888,7 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
         memory_reservation=__ret__.memory_reservation,
         memory_share_count=__ret__.memory_share_count,
         memory_share_level=__ret__.memory_share_level,
+        moid=__ret__.moid,
         name=__ret__.name,
         nested_hv_enabled=__ret__.nested_hv_enabled,
         network_interface_types=__ret__.network_interface_types,
@@ -931,6 +949,7 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
                                memory_reservation: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_share_count: Optional[pulumi.Input[Optional[int]]] = None,
                                memory_share_level: Optional[pulumi.Input[Optional[str]]] = None,
+                               moid: Optional[pulumi.Input[Optional[str]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                nested_hv_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                num_cores_per_socket: Optional[pulumi.Input[Optional[int]]] = None,
@@ -1008,6 +1027,12 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
            virtual machine.
     :param int scsi_controller_scan_count: The number of SCSI controllers to
            scan for disk attributes and controller types on. Default: `1`.
+           
+           > **NOTE:** For best results, ensure that all the disks on any templates you
+           use with this data source reside on the primary controller, and leave this
+           value at the default. See the `VirtualMachine`
+           resource documentation for the significance of this setting, specifically the
+           additional requirements and notes for cloning section.
     :param str uuid: Specify this field for a UUID lookup, `name` and `datacenter_id`
            are not required if this is specified.
     """

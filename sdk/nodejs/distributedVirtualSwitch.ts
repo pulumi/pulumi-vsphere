@@ -82,6 +82,9 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
+     *
+     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+     * probing.
      */
     public readonly checkBeacon!: pulumi.Output<boolean>;
     /**
@@ -102,6 +105,9 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for VDS.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and requires vCenter Server.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -381,6 +387,8 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
     public readonly standbyUplinks!: pulumi.Output<string[]>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -449,6 +457,22 @@ export class DistributedVirtualSwitch extends pulumi.CustomResource {
      * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as vsphere from "@pulumi/vsphere";
+     *
+     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
+     *     {
+     *         maxVlan: 199,
+     *         minVlan: 100,
+     *     },
+     *     {
+     *         maxVlan: 399,
+     *         minVlan: 300,
+     *     },
+     * ]});
+     * ```
      */
     public readonly vlanRanges!: pulumi.Output<outputs.DistributedVirtualSwitchVlanRange[]>;
     /**
@@ -750,6 +774,9 @@ export interface DistributedVirtualSwitchState {
     /**
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
+     *
+     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+     * probing.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -770,6 +797,9 @@ export interface DistributedVirtualSwitchState {
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for VDS.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and requires vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1049,6 +1079,8 @@ export interface DistributedVirtualSwitchState {
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1117,6 +1149,22 @@ export interface DistributedVirtualSwitchState {
      * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as vsphere from "@pulumi/vsphere";
+     *
+     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
+     *     {
+     *         maxVlan: 199,
+     *         minVlan: 100,
+     *     },
+     *     {
+     *         maxVlan: 399,
+     *         minVlan: 300,
+     *     },
+     * ]});
+     * ```
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**
@@ -1205,6 +1253,9 @@ export interface DistributedVirtualSwitchArgs {
     /**
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
+     *
+     * > **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+     * probing.
      */
     checkBeacon?: pulumi.Input<boolean>;
     /**
@@ -1220,6 +1271,9 @@ export interface DistributedVirtualSwitchArgs {
     /**
      * Map of custom attribute ids to attribute
      * value strings to set for VDS.
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and requires vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1499,6 +1553,8 @@ export interface DistributedVirtualSwitchArgs {
     standbyUplinks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1567,6 +1623,22 @@ export interface DistributedVirtualSwitchArgs {
      * and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlanRange` definitions are allowed, but they must not overlap. Example
      * below:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as vsphere from "@pulumi/vsphere";
+     *
+     * const vds = new vsphere.DistributedVirtualSwitch("vds", {vlanRanges: [
+     *     {
+     *         maxVlan: 199,
+     *         minVlan: 100,
+     *     },
+     *     {
+     *         maxVlan: 399,
+     *         minVlan: 300,
+     *     },
+     * ]});
+     * ```
      */
     vlanRanges?: pulumi.Input<pulumi.Input<inputs.DistributedVirtualSwitchVlanRange>[]>;
     /**

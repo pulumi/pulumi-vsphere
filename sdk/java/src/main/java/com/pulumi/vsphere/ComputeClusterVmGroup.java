@@ -55,6 +55,11 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
      * The UUIDs of the virtual machines in this
      * group.
      * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
+     * 
      */
     @Export(name="virtualMachineIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> virtualMachineIds;
@@ -62,6 +67,11 @@ public class ComputeClusterVmGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The UUIDs of the virtual machines in this
      * group.
+     * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
      * 
      */
     public Output<Optional<List<String>>> virtualMachineIds() {

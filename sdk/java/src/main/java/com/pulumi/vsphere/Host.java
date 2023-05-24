@@ -157,7 +157,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster`.
+     * `cluster_managed`.
      * 
      */
     @Export(name="cluster", type=String.class, parameters={})
@@ -166,7 +166,7 @@ public class Host extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the Compute Cluster this host should
      * be added to. This should not be set if `datacenter` is set. Conflicts with:
-     * `cluster`.
+     * `cluster_managed`.
      * 
      */
     public Output<Optional<String>> cluster() {
@@ -212,6 +212,11 @@ public class Host extends com.pulumi.resources.CustomResource {
      * `vsphere_custom_attributes` resource for more information on applying
      * tags to resources.
      * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     * 
+     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -221,6 +226,11 @@ public class Host extends com.pulumi.resources.CustomResource {
      * values to apply to the resource. Please refer to the
      * `vsphere_custom_attributes` resource for more information on applying
      * tags to resources.
+     * 
+     * &gt; **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
+     * 
+     * [docs-host-thumbprint-data-source]: /docs/providers/vsphere/d/host_thumbprint.html
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -343,6 +353,9 @@ public class Host extends com.pulumi.resources.CustomResource {
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
      * 
+     * &gt; **NOTE:** Tagging support is not supported on direct ESXi host
+     * connections and require vCenter Server.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
@@ -351,6 +364,9 @@ public class Host extends com.pulumi.resources.CustomResource {
      * @return The IDs of any tags to attach to this resource. Please
      * refer to the `vsphere.Tag` resource for more information on applying
      * tags to resources.
+     * 
+     * &gt; **NOTE:** Tagging support is not supported on direct ESXi host
+     * connections and require vCenter Server.
      * 
      */
     public Output<Optional<List<String>>> tags() {

@@ -179,6 +179,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * Enables beacon probing as an additional measure
      * to detect NIC failure.
      * 
+     * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+     * probing.
+     * 
      */
     @Import(name="checkBeacon")
     private @Nullable Output<Boolean> checkBeacon;
@@ -186,6 +189,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     /**
      * @return Enables beacon probing as an additional measure
      * to detect NIC failure.
+     * 
+     * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+     * probing.
      * 
      */
     public Optional<Output<Boolean>> checkBeacon() {
@@ -230,6 +236,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * Map of custom attribute ids to attribute
      * value strings to set for VDS.
      * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and requires vCenter Server.
+     * 
      */
     @Import(name="customAttributes")
     private @Nullable Output<Map<String,String>> customAttributes;
@@ -237,6 +246,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     /**
      * @return Map of custom attribute ids to attribute
      * value strings to set for VDS.
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+     * and requires vCenter Server.
      * 
      */
     public Optional<Output<Map<String,String>>> customAttributes() {
@@ -1202,12 +1214,16 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1432,6 +1448,43 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.DistributedVirtualSwitch;
+     * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+     * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
+     *             .vlanRanges(            
+     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+     *                     .maxVlan(199)
+     *                     .minVlan(100)
+     *                     .build(),
+     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+     *                     .maxVlan(399)
+     *                     .minVlan(300)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     @Import(name="vlanRanges")
@@ -1442,6 +1495,43 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
      * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
      * `vlan_range` definitions are allowed, but they must not overlap. Example
      * below:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.vsphere.DistributedVirtualSwitch;
+     * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+     * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
+     *             .vlanRanges(            
+     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+     *                     .maxVlan(199)
+     *                     .minVlan(100)
+     *                     .build(),
+     *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+     *                     .maxVlan(399)
+     *                     .minVlan(300)
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<List<DistributedVirtualSwitchVlanRangeArgs>>> vlanRanges() {
@@ -1909,6 +1999,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * @param checkBeacon Enables beacon probing as an additional measure
          * to detect NIC failure.
          * 
+         * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+         * probing.
+         * 
          * @return builder
          * 
          */
@@ -1920,6 +2013,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param checkBeacon Enables beacon probing as an additional measure
          * to detect NIC failure.
+         * 
+         * &gt; **NOTE:** VMware recommends using a minimum of 3 NICs when using beacon
+         * probing.
          * 
          * @return builder
          * 
@@ -1978,6 +2074,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * @param customAttributes Map of custom attribute ids to attribute
          * value strings to set for VDS.
          * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+         * and requires vCenter Server.
+         * 
          * @return builder
          * 
          */
@@ -1989,6 +2088,9 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param customAttributes Map of custom attribute ids to attribute
          * value strings to set for VDS.
+         * 
+         * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
+         * and requires vCenter Server.
          * 
          * @return builder
          * 
@@ -3339,6 +3441,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
+         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
+         * 
          * @return builder
          * 
          */
@@ -3350,6 +3454,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
         /**
          * @param tags The IDs of any tags to attach to this resource.
          * 
+         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
+         * 
          * @return builder
          * 
          */
@@ -3359,6 +3465,8 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
 
         /**
          * @param tags The IDs of any tags to attach to this resource.
+         * 
+         * &gt; **NOTE:** Tagging support requires vCenter Server 6.0 or higher.
          * 
          * @return builder
          * 
@@ -3677,6 +3785,43 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.vsphere.DistributedVirtualSwitch;
+         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
+         *             .vlanRanges(            
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(199)
+         *                     .minVlan(100)
+         *                     .build(),
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(399)
+         *                     .minVlan(300)
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -3691,6 +3836,43 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.vsphere.DistributedVirtualSwitch;
+         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
+         *             .vlanRanges(            
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(199)
+         *                     .minVlan(100)
+         *                     .build(),
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(399)
+         *                     .minVlan(300)
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -3704,6 +3886,43 @@ public final class DistributedVirtualSwitchArgs extends com.pulumi.resources.Res
          * and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
          * `vlan_range` definitions are allowed, but they must not overlap. Example
          * below:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.vsphere.DistributedVirtualSwitch;
+         * import com.pulumi.vsphere.DistributedVirtualSwitchArgs;
+         * import com.pulumi.vsphere.inputs.DistributedVirtualSwitchVlanRangeArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var vds = new DistributedVirtualSwitch(&#34;vds&#34;, DistributedVirtualSwitchArgs.builder()        
+         *             .vlanRanges(            
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(199)
+         *                     .minVlan(100)
+         *                     .build(),
+         *                 DistributedVirtualSwitchVlanRangeArgs.builder()
+         *                     .maxVlan(399)
+         *                     .minVlan(300)
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

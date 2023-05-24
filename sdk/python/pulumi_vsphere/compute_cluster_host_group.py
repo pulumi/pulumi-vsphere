@@ -24,6 +24,11 @@ class ComputeClusterHostGroupArgs:
                resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterVmGroup`
+               resource. Make sure your names are unique across both resources.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -53,6 +58,11 @@ class ComputeClusterHostGroupArgs:
         """
         The managed object IDs of
         the hosts to put in the cluster.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterVmGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "host_system_ids")
 
@@ -87,6 +97,11 @@ class _ComputeClusterHostGroupState:
                resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterVmGroup`
+               resource. Make sure your names are unique across both resources.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -117,6 +132,11 @@ class _ComputeClusterHostGroupState:
         """
         The managed object IDs of
         the hosts to put in the cluster.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterVmGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "host_system_ids")
 
@@ -156,6 +176,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterVmGroup`
+               resource. Make sure your names are unique across both resources.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -224,6 +249,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
                resource if changed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] host_system_ids: The managed object IDs of
                the hosts to put in the cluster.
+               
+               > **NOTE:** The namespace for cluster names on this resource (defined by the
+               `name` argument) is shared with the
+               `ComputeClusterVmGroup`
+               resource. Make sure your names are unique across both resources.
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
@@ -252,6 +282,11 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         """
         The managed object IDs of
         the hosts to put in the cluster.
+
+        > **NOTE:** The namespace for cluster names on this resource (defined by the
+        `name` argument) is shared with the
+        `ComputeClusterVmGroup`
+        resource. Make sure your names are unique across both resources.
         """
         return pulumi.get(self, "host_system_ids")
 

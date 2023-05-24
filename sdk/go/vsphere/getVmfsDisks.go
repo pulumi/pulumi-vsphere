@@ -68,6 +68,10 @@ func GetVmfsDisks(ctx *pulumi.Context, args *GetVmfsDisksArgs, opts ...pulumi.In
 type GetVmfsDisksArgs struct {
 	// A regular expression to filter the disks against. Only
 	// disks with canonical names that match will be included.
+	//
+	// > **NOTE:** Using a `filter` is recommended if there is any chance the host
+	// will have any specific storage devices added to it that may affect the order of
+	// the output `disks` attribute below, which is lexicographically sorted.
 	Filter *string `pulumi:"filter"`
 	// The managed object ID of
 	// the host to look for disks on.
@@ -107,6 +111,10 @@ func GetVmfsDisksOutput(ctx *pulumi.Context, args GetVmfsDisksOutputArgs, opts .
 type GetVmfsDisksOutputArgs struct {
 	// A regular expression to filter the disks against. Only
 	// disks with canonical names that match will be included.
+	//
+	// > **NOTE:** Using a `filter` is recommended if there is any chance the host
+	// will have any specific storage devices added to it that may affect the order of
+	// the output `disks` attribute below, which is lexicographically sorted.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The managed object ID of
 	// the host to look for disks on.

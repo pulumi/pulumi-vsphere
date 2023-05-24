@@ -22,6 +22,13 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      * 
+     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * controller that the virtual disk will be attached to on the virtual machine.
+     * Please see the `scsi_type` parameter
+     * in the `vsphere.VirtualMachine` resource for information on how to control
+     * disk controller types. This parameter will be removed in future versions of the
+     * vSphere provider.
+     * 
      * @deprecated
      * this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
      * 
@@ -34,6 +41,13 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * @return The adapter type for this virtual disk. Can be
      * one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
      * 
+     * &gt; **NOTE:** `adapter_type` is **deprecated**: it does not dictate the type of
+     * controller that the virtual disk will be attached to on the virtual machine.
+     * Please see the `scsi_type` parameter
+     * in the `vsphere.VirtualMachine` resource for information on how to control
+     * disk controller types. This parameter will be removed in future versions of the
+     * vSphere provider.
+     * 
      */
     public Output<Optional<String>> adapterType() {
         return Codegen.optional(this.adapterType);
@@ -43,6 +57,10 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * directories that are a part of the `vmdk_path` parameter if they are missing.
      * Default: `false`.
      * 
+     * &gt; **NOTE:** Any directory created as part of the operation when
+     * `create_directories` is enabled will not be deleted when the resource is
+     * destroyed.
+     * 
      */
     @Export(name="createDirectories", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> createDirectories;
@@ -51,6 +69,10 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * @return Tells the resource to create any
      * directories that are a part of the `vmdk_path` parameter if they are missing.
      * Default: `false`.
+     * 
+     * &gt; **NOTE:** Any directory created as part of the operation when
+     * `create_directories` is enabled will not be deleted when the resource is
+     * destroyed.
      * 
      */
     public Output<Optional<Boolean>> createDirectories() {
@@ -110,6 +132,8 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
      * 
+     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
+     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
@@ -119,6 +143,8 @@ public class VirtualDisk extends com.pulumi.resources.CustomResource {
      * `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
      * information on what each kind of disk provisioning policy means, click
      * [here][docs-vmware-vm-disk-provisioning].
+     * 
+     * [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
      * 
      */
     public Output<Optional<String>> type() {

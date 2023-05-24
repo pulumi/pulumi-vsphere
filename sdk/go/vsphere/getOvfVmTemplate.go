@@ -145,6 +145,9 @@ type GetOvfVmTemplateArgs struct {
 	// from the OVF descriptor to network UUID in the environment.
 	OvfNetworkMap map[string]string `pulumi:"ovfNetworkMap"`
 	// URL of the remote OVF/OVA file to be deployed.
+	//
+	// > **NOTE:** Either `localOvfPath` or `remoteOvfUrl` is required, both can
+	// not be empty.
 	RemoteOvfUrl *string `pulumi:"remoteOvfUrl"`
 	// The ID of a resource pool in which to place
 	// the virtual machine.
@@ -258,6 +261,9 @@ type GetOvfVmTemplateOutputArgs struct {
 	// from the OVF descriptor to network UUID in the environment.
 	OvfNetworkMap pulumi.StringMapInput `pulumi:"ovfNetworkMap"`
 	// URL of the remote OVF/OVA file to be deployed.
+	//
+	// > **NOTE:** Either `localOvfPath` or `remoteOvfUrl` is required, both can
+	// not be empty.
 	RemoteOvfUrl pulumi.StringPtrInput `pulumi:"remoteOvfUrl"`
 	// The ID of a resource pool in which to place
 	// the virtual machine.

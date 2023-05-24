@@ -54,6 +54,10 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+     *
+     * > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+     * may lead to errors when the port count grows past the amount specified.  If you
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
     public readonly autoExpand!: pulumi.Output<boolean | undefined>;
     /**
@@ -77,6 +81,9 @@ export class DistributedPortGroup extends pulumi.CustomResource {
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -188,6 +195,8 @@ export class DistributedPortGroup extends pulumi.CustomResource {
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
+     *
+     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      */
     public readonly portNameFormat!: pulumi.Output<string | undefined>;
     /**
@@ -399,6 +408,10 @@ export interface DistributedPortGroupState {
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+     *
+     * > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+     * may lead to errors when the port count grows past the amount specified.  If you
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
     autoExpand?: pulumi.Input<boolean>;
     /**
@@ -422,6 +435,9 @@ export interface DistributedPortGroupState {
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -533,6 +549,8 @@ export interface DistributedPortGroupState {
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
+     *
+     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      */
     portNameFormat?: pulumi.Input<string>;
     /**
@@ -625,6 +643,10 @@ export interface DistributedPortGroupArgs {
     /**
      * Allows the port group to create additional ports
      * past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+     *
+     * > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+     * may lead to errors when the port count grows past the amount specified.  If you
+     * specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
      */
     autoExpand?: pulumi.Input<boolean>;
     /**
@@ -643,6 +665,9 @@ export interface DistributedPortGroupArgs {
     /**
      * Map of custom attribute ids to attribute
      * value string to set for port group.
+     *
+     * > **NOTE:** Custom attributes are not supported on direct ESXi host
+     * connections and require vCenter Server.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -750,6 +775,8 @@ export interface DistributedPortGroupArgs {
      * An optional formatting policy for naming of
      * the ports in this port group. See the `portNameFormat` attribute listed
      * [here][ext-vsphere-portname-format] for details on the format syntax.
+     *
+     * [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
      */
     portNameFormat?: pulumi.Input<string>;
     /**

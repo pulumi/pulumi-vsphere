@@ -36,6 +36,11 @@ export class Folder extends pulumi.CustomResource {
      * Map of custom attribute ids to attribute 
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     public readonly customAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -51,10 +56,18 @@ export class Folder extends pulumi.CustomResource {
      * `vm` (denoting a virtual machine folder), and a supplied folder of
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
+     *
+     * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
      */
     public readonly path!: pulumi.Output<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -110,6 +123,11 @@ export interface FolderState {
      * Map of custom attribute ids to attribute 
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -125,10 +143,18 @@ export interface FolderState {
      * `vm` (denoting a virtual machine folder), and a supplied folder of
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
+     *
+     * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
      */
     path?: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -148,6 +174,11 @@ export interface FolderArgs {
      * Map of custom attribute ids to attribute 
      * value strings to set for folder. See [here][docs-setting-custom-attributes]
      * for a reference on how to set values for custom attributes.
+     *
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     *
+     * > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      */
     customAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -163,10 +194,18 @@ export interface FolderArgs {
      * `vm` (denoting a virtual machine folder), and a supplied folder of
      * `test-folder`, the resulting path would be
      * `/default-dc/vm/test-folder`.
+     *
+     * > **NOTE:** `path` can be modified - the resulting behavior is dependent on
+     * what section of `path` you are modifying. If you are modifying the parent (so
+     * any part before the last `/`), your folder will be moved to that new parent. If
+     * modifying the name (the part after the last `/`), your folder will be renamed.
      */
     path: pulumi.Input<string>;
     /**
      * The IDs of any tags to attach to this resource.
+     *
+     * > **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

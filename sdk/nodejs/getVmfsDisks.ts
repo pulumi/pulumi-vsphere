@@ -47,6 +47,10 @@ export interface GetVmfsDisksArgs {
     /**
      * A regular expression to filter the disks against. Only
      * disks with canonical names that match will be included.
+     *
+     * > **NOTE:** Using a `filter` is recommended if there is any chance the host
+     * will have any specific storage devices added to it that may affect the order of
+     * the output `disks` attribute below, which is lexicographically sorted.
      */
     filter?: string;
     /**
@@ -116,6 +120,10 @@ export interface GetVmfsDisksOutputArgs {
     /**
      * A regular expression to filter the disks against. Only
      * disks with canonical names that match will be included.
+     *
+     * > **NOTE:** Using a `filter` is recommended if there is any chance the host
+     * will have any specific storage devices added to it that may affect the order of
+     * the output `disks` attribute below, which is lexicographically sorted.
      */
     filter?: pulumi.Input<string>;
     /**

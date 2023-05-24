@@ -77,6 +77,10 @@ type File struct {
 
 	// Create directories in `destinationFile`
 	// path parameter on first apply if any are missing for copy operation.
+	//
+	// > **NOTE:** Any directory created as part of the `createDirectories` argument
+	// will not be deleted when the resource is destroyed. New directories are not
+	// created if the `destinationFile` path is changed in subsequent applies.
 	CreateDirectories pulumi.BoolPtrOutput `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -136,6 +140,10 @@ func GetFile(ctx *pulumi.Context,
 type fileState struct {
 	// Create directories in `destinationFile`
 	// path parameter on first apply if any are missing for copy operation.
+	//
+	// > **NOTE:** Any directory created as part of the `createDirectories` argument
+	// will not be deleted when the resource is destroyed. New directories are not
+	// created if the `destinationFile` path is changed in subsequent applies.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -158,6 +166,10 @@ type fileState struct {
 type FileState struct {
 	// Create directories in `destinationFile`
 	// path parameter on first apply if any are missing for copy operation.
+	//
+	// > **NOTE:** Any directory created as part of the `createDirectories` argument
+	// will not be deleted when the resource is destroyed. New directories are not
+	// created if the `destinationFile` path is changed in subsequent applies.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -184,6 +196,10 @@ func (FileState) ElementType() reflect.Type {
 type fileArgs struct {
 	// Create directories in `destinationFile`
 	// path parameter on first apply if any are missing for copy operation.
+	//
+	// > **NOTE:** Any directory created as part of the `createDirectories` argument
+	// will not be deleted when the resource is destroyed. New directories are not
+	// created if the `destinationFile` path is changed in subsequent applies.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -207,6 +223,10 @@ type fileArgs struct {
 type FileArgs struct {
 	// Create directories in `destinationFile`
 	// path parameter on first apply if any are missing for copy operation.
+	//
+	// > **NOTE:** Any directory created as part of the `createDirectories` argument
+	// will not be deleted when the resource is destroyed. New directories are not
+	// created if the `destinationFile` path is changed in subsequent applies.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of a datacenter to which the file will be
 	// uploaded.
@@ -315,6 +335,10 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 
 // Create directories in `destinationFile`
 // path parameter on first apply if any are missing for copy operation.
+//
+// > **NOTE:** Any directory created as part of the `createDirectories` argument
+// will not be deleted when the resource is destroyed. New directories are not
+// created if the `destinationFile` path is changed in subsequent applies.
 func (o FileOutput) CreateDirectories() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.CreateDirectories }).(pulumi.BoolPtrOutput)
 }

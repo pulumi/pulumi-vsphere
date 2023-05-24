@@ -19,6 +19,7 @@ namespace Pulumi.VSphere
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
@@ -71,62 +72,6 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
-    /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using VSphere = Pulumi.VSphere;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dc = VSphere.GetDatacenter.Invoke(new()
-    ///     {
-    ///         Name = "mydc",
-    ///     });
-    /// 
-    ///     var h1 = VSphere.GetHost.Invoke(new()
-    ///     {
-    ///         Name = "esxi1.host.test",
-    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-    ///     });
-    /// 
-    ///     var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new()
-    ///     {
-    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
-    ///         NetworkAdapters = new[]
-    ///         {
-    ///             "vmnic3",
-    ///             "vmnic4",
-    ///         },
-    ///         ActiveNics = new[]
-    ///         {
-    ///             "vmnic3",
-    ///         },
-    ///         StandbyNics = new[]
-    ///         {
-    ///             "vmnic4",
-    ///         },
-    ///     });
-    /// 
-    ///     var p1 = new VSphere.HostPortGroup("p1", new()
-    ///     {
-    ///         VirtualSwitchName = hvs1.Name,
-    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
-    ///     });
-    /// 
-    ///     var v1 = new VSphere.Vnic("v1", new()
-    ///     {
-    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
-    ///         Portgroup = p1.Name,
-    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
-    ///         {
-    ///             Dhcp = true,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Importing
     /// 
     /// An existing vNic can be [imported][docs-import] into this resource
@@ -136,6 +81,7 @@ namespace Pulumi.VSphere
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -201,6 +147,12 @@ namespace Pulumi.VSphere
         /// </summary>
         [Output("portgroup")]
         public Output<string?> Portgroup { get; private set; } = null!;
+
+        /// <summary>
+        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// </summary>
+        [Output("services")]
+        public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
 
         /// <summary>
@@ -302,6 +254,18 @@ namespace Pulumi.VSphere
         [Input("portgroup")]
         public Input<string>? Portgroup { get; set; }
 
+        [Input("services")]
+        private InputList<string>? _services;
+
+        /// <summary>
+        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// </summary>
+        public InputList<string> Services
+        {
+            get => _services ?? (_services = new InputList<string>());
+            set => _services = value;
+        }
+
         public VnicArgs()
         {
         }
@@ -363,6 +327,18 @@ namespace Pulumi.VSphere
         /// </summary>
         [Input("portgroup")]
         public Input<string>? Portgroup { get; set; }
+
+        [Input("services")]
+        private InputList<string>? _services;
+
+        /// <summary>
+        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// </summary>
+        public InputList<string> Services
+        {
+            get => _services ?? (_services = new InputList<string>());
+            set => _services = value;
+        }
 
         public VnicState()
         {

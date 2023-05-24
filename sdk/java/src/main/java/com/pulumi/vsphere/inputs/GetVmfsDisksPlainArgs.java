@@ -19,6 +19,10 @@ public final class GetVmfsDisksPlainArgs extends com.pulumi.resources.InvokeArgs
      * A regular expression to filter the disks against. Only
      * disks with canonical names that match will be included.
      * 
+     * &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+     * will have any specific storage devices added to it that may affect the order of
+     * the output `disks` attribute below, which is lexicographically sorted.
+     * 
      */
     @Import(name="filter")
     private @Nullable String filter;
@@ -26,6 +30,10 @@ public final class GetVmfsDisksPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return A regular expression to filter the disks against. Only
      * disks with canonical names that match will be included.
+     * 
+     * &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+     * will have any specific storage devices added to it that may affect the order of
+     * the output `disks` attribute below, which is lexicographically sorted.
      * 
      */
     public Optional<String> filter() {
@@ -97,6 +105,10 @@ public final class GetVmfsDisksPlainArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param filter A regular expression to filter the disks against. Only
          * disks with canonical names that match will be included.
+         * 
+         * &gt; **NOTE:** Using a `filter` is recommended if there is any chance the host
+         * will have any specific storage devices added to it that may affect the order of
+         * the output `disks` attribute below, which is lexicographically sorted.
          * 
          * @return builder
          * 

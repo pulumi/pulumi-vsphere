@@ -22,6 +22,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -51,6 +52,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 

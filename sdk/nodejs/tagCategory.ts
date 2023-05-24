@@ -47,6 +47,9 @@ export class TagCategory extends pulumi.CustomResource {
     public readonly cardinality!: pulumi.Output<string>;
     /**
      * A description for the category.
+     *
+     * > **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -108,6 +111,9 @@ export interface TagCategoryState {
     cardinality?: pulumi.Input<string>;
     /**
      * A description for the category.
+     *
+     * > **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
      */
     description?: pulumi.Input<string>;
     /**
@@ -135,6 +141,9 @@ export interface TagCategoryArgs {
     cardinality: pulumi.Input<string>;
     /**
      * A description for the category.
+     *
+     * > **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
      */
     description?: pulumi.Input<string>;
     /**

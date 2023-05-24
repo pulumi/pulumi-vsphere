@@ -22,6 +22,10 @@ type ComputeClusterVmAntiAffinityRule struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrOutput `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -73,6 +77,10 @@ type computeClusterVmAntiAffinityRuleState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
@@ -90,6 +98,10 @@ type ComputeClusterVmAntiAffinityRuleState struct {
 	Enabled pulumi.BoolPtrInput
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
@@ -111,6 +123,10 @@ type computeClusterVmAntiAffinityRuleArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the cluster.
 	Name *string `pulumi:"name"`
@@ -129,6 +145,10 @@ type ComputeClusterVmAntiAffinityRuleArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the cluster.
 	Name pulumi.StringPtrInput
@@ -238,6 +258,10 @@ func (o ComputeClusterVmAntiAffinityRuleOutput) Enabled() pulumi.BoolPtrOutput {
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
+//
+// > **NOTE:** The namespace for rule names on this resource (defined by the
+// `name` argument) is shared with all rules in the cluster - consider
+// this when naming your rules.
 func (o ComputeClusterVmAntiAffinityRuleOutput) Mandatory() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVmAntiAffinityRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
 }

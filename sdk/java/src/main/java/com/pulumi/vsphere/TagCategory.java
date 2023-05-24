@@ -58,12 +58,18 @@ public class TagCategory extends com.pulumi.resources.CustomResource {
     /**
      * A description for the category.
      * 
+     * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
+     * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
      * @return A description for the category.
+     * 
+     * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
      * 
      */
     public Output<Optional<String>> description() {

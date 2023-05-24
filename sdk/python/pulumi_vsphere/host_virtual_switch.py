@@ -73,6 +73,9 @@ class HostVirtualSwitchArgs:
                Default: `true`.
         :param pulumi.Input[int] number_of_ports: The number of ports to create with this
                virtual switch. Default: `128`.
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. This provider
+               will not restart the host for you.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
                second if traffic shaping is enabled. Default: `0`
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
@@ -321,6 +324,9 @@ class HostVirtualSwitchArgs:
         """
         The number of ports to create with this
         virtual switch. Default: `128`.
+
+        > **NOTE:** Changing the port count requires a reboot of the host. This provider
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -470,6 +476,9 @@ class _HostVirtualSwitchState:
                Default: `true`.
         :param pulumi.Input[int] number_of_ports: The number of ports to create with this
                virtual switch. Default: `128`.
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. This provider
+               will not restart the host for you.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
                second if traffic shaping is enabled. Default: `0`
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
@@ -721,6 +730,9 @@ class _HostVirtualSwitchState:
         """
         The number of ports to create with this
         virtual switch. Default: `128`.
+
+        > **NOTE:** Changing the port count requires a reboot of the host. This provider
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 
@@ -875,6 +887,9 @@ class HostVirtualSwitch(pulumi.CustomResource):
                Default: `true`.
         :param pulumi.Input[int] number_of_ports: The number of ports to create with this
                virtual switch. Default: `128`.
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. This provider
+               will not restart the host for you.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
                second if traffic shaping is enabled. Default: `0`
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
@@ -1043,6 +1058,9 @@ class HostVirtualSwitch(pulumi.CustomResource):
                Default: `true`.
         :param pulumi.Input[int] number_of_ports: The number of ports to create with this
                virtual switch. Default: `128`.
+               
+               > **NOTE:** Changing the port count requires a reboot of the host. This provider
+               will not restart the host for you.
         :param pulumi.Input[int] shaping_average_bandwidth: The average bandwidth in bits per
                second if traffic shaping is enabled. Default: `0`
         :param pulumi.Input[int] shaping_burst_size: The maximum burst size allowed in bytes if
@@ -1222,6 +1240,9 @@ class HostVirtualSwitch(pulumi.CustomResource):
         """
         The number of ports to create with this
         virtual switch. Default: `128`.
+
+        > **NOTE:** Changing the port count requires a reboot of the host. This provider
+        will not restart the host for you.
         """
         return pulumi.get(self, "number_of_ports")
 

@@ -23,6 +23,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -83,6 +84,7 @@ namespace Pulumi.VSphere
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using VSphere = Pulumi.VSphere;
         /// 
@@ -137,6 +139,10 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The hexadecimal PCI device class ID
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>
         [Input("classId")]
         public string? ClassId { get; set; }
@@ -170,6 +176,10 @@ namespace Pulumi.VSphere
     {
         /// <summary>
         /// The hexadecimal PCI device class ID
+        /// 
+        /// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+        /// 
+        /// &gt; **NOTE:** `name_regex`, `vendor_id`, and `class_id` can all be used together.
         /// </summary>
         [Input("classId")]
         public Input<string>? ClassId { get; set; }

@@ -17,11 +17,22 @@ type VirtualDisk struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	//
+	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+	// controller that the virtual disk will be attached to on the virtual machine.
+	// Please see the `scsiType` parameter
+	// in the `VirtualMachine` resource for information on how to control
+	// disk controller types. This parameter will be removed in future versions of the
+	// vSphere provider.
+	//
 	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrOutput `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
+	//
+	// > **NOTE:** Any directory created as part of the operation when
+	// `createDirectories` is enabled will not be deleted when the resource is
+	// destroyed.
 	CreateDirectories pulumi.BoolPtrOutput `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
 	// disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -36,6 +47,8 @@ type VirtualDisk struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
+	//
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -83,11 +96,22 @@ type virtualDiskState struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	//
+	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+	// controller that the virtual disk will be attached to on the virtual machine.
+	// Please see the `scsiType` parameter
+	// in the `VirtualMachine` resource for information on how to control
+	// disk controller types. This parameter will be removed in future versions of the
+	// vSphere provider.
+	//
 	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
+	//
+	// > **NOTE:** Any directory created as part of the operation when
+	// `createDirectories` is enabled will not be deleted when the resource is
+	// destroyed.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
 	// disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -102,6 +126,8 @@ type virtualDiskState struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
+	//
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -112,11 +138,22 @@ type VirtualDiskState struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	//
+	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+	// controller that the virtual disk will be attached to on the virtual machine.
+	// Please see the `scsiType` parameter
+	// in the `VirtualMachine` resource for information on how to control
+	// disk controller types. This parameter will be removed in future versions of the
+	// vSphere provider.
+	//
 	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
+	//
+	// > **NOTE:** Any directory created as part of the operation when
+	// `createDirectories` is enabled will not be deleted when the resource is
+	// destroyed.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of the datacenter in which to create the
 	// disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -131,6 +168,8 @@ type VirtualDiskState struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
+	//
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -145,11 +184,22 @@ type virtualDiskArgs struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	//
+	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+	// controller that the virtual disk will be attached to on the virtual machine.
+	// Please see the `scsiType` parameter
+	// in the `VirtualMachine` resource for information on how to control
+	// disk controller types. This parameter will be removed in future versions of the
+	// vSphere provider.
+	//
 	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType *string `pulumi:"adapterType"`
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
+	//
+	// > **NOTE:** Any directory created as part of the operation when
+	// `createDirectories` is enabled will not be deleted when the resource is
+	// destroyed.
 	CreateDirectories *bool `pulumi:"createDirectories"`
 	// The name of the datacenter in which to create the
 	// disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -164,6 +214,8 @@ type virtualDiskArgs struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
+	//
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type *string `pulumi:"type"`
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -175,11 +227,22 @@ type VirtualDiskArgs struct {
 	// The adapter type for this virtual disk. Can be
 	// one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 	//
+	// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+	// controller that the virtual disk will be attached to on the virtual machine.
+	// Please see the `scsiType` parameter
+	// in the `VirtualMachine` resource for information on how to control
+	// disk controller types. This parameter will be removed in future versions of the
+	// vSphere provider.
+	//
 	// Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 	AdapterType pulumi.StringPtrInput
 	// Tells the resource to create any
 	// directories that are a part of the `vmdkPath` parameter if they are missing.
 	// Default: `false`.
+	//
+	// > **NOTE:** Any directory created as part of the operation when
+	// `createDirectories` is enabled will not be deleted when the resource is
+	// destroyed.
 	CreateDirectories pulumi.BoolPtrInput
 	// The name of the datacenter in which to create the
 	// disk. Can be omitted when when ESXi or if there is only one datacenter in
@@ -194,6 +257,8 @@ type VirtualDiskArgs struct {
 	// `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 	// information on what each kind of disk provisioning policy means, click
 	// [here][docs-vmware-vm-disk-provisioning].
+	//
+	// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 	Type pulumi.StringPtrInput
 	// The path, including filename, of the virtual disk to
 	// be created.  This needs to end in `.vmdk`.
@@ -290,6 +355,13 @@ func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) V
 // The adapter type for this virtual disk. Can be
 // one of `ide`, `lsiLogic`, or `busLogic`.  Default: `lsiLogic`.
 //
+// > **NOTE:** `adapterType` is **deprecated**: it does not dictate the type of
+// controller that the virtual disk will be attached to on the virtual machine.
+// Please see the `scsiType` parameter
+// in the `VirtualMachine` resource for information on how to control
+// disk controller types. This parameter will be removed in future versions of the
+// vSphere provider.
+//
 // Deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead
 func (o VirtualDiskOutput) AdapterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.AdapterType }).(pulumi.StringPtrOutput)
@@ -298,6 +370,10 @@ func (o VirtualDiskOutput) AdapterType() pulumi.StringPtrOutput {
 // Tells the resource to create any
 // directories that are a part of the `vmdkPath` parameter if they are missing.
 // Default: `false`.
+//
+// > **NOTE:** Any directory created as part of the operation when
+// `createDirectories` is enabled will not be deleted when the resource is
+// destroyed.
 func (o VirtualDiskOutput) CreateDirectories() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.BoolPtrOutput { return v.CreateDirectories }).(pulumi.BoolPtrOutput)
 }
@@ -324,6 +400,8 @@ func (o VirtualDiskOutput) Size() pulumi.IntOutput {
 // `eagerZeroedThick`, `lazy`, or `thin`. Default: `eagerZeroedThick`. For
 // information on what each kind of disk provisioning policy means, click
 // [here][docs-vmware-vm-disk-provisioning].
+//
+// [docs-vmware-vm-disk-provisioning]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-4C0F4D73-82F2-4B81-8AA7-1DD752A8A5AC.html
 func (o VirtualDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

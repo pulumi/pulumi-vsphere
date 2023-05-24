@@ -25,6 +25,10 @@ type DistributedPortGroup struct {
 	AllowPromiscuous pulumi.BoolOutput `pulumi:"allowPromiscuous"`
 	// Allows the port group to create additional ports
 	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+	//
+	// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+	// may lead to errors when the port count grows past the amount specified.  If you
+	// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 	AutoExpand pulumi.BoolPtrOutput `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolOutput `pulumi:"blockAllPorts"`
@@ -38,6 +42,9 @@ type DistributedPortGroup struct {
 	ConfigVersion pulumi.StringOutput `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// An optional description for the port group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -99,6 +106,8 @@ type DistributedPortGroup struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
+	//
+	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrOutput `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntOutput `pulumi:"portPrivateSecondaryVlanId"`
@@ -183,6 +192,10 @@ type distributedPortGroupState struct {
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
 	// Allows the port group to create additional ports
 	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+	//
+	// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+	// may lead to errors when the port count grows past the amount specified.  If you
+	// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 	AutoExpand *bool `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
@@ -196,6 +209,9 @@ type distributedPortGroupState struct {
 	ConfigVersion *string `pulumi:"configVersion"`
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// An optional description for the port group.
 	Description *string `pulumi:"description"`
@@ -257,6 +273,8 @@ type distributedPortGroupState struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
+	//
+	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -310,6 +328,10 @@ type DistributedPortGroupState struct {
 	AllowPromiscuous pulumi.BoolPtrInput
 	// Allows the port group to create additional ports
 	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+	//
+	// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+	// may lead to errors when the port count grows past the amount specified.  If you
+	// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 	AutoExpand pulumi.BoolPtrInput
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolPtrInput
@@ -323,6 +345,9 @@ type DistributedPortGroupState struct {
 	ConfigVersion pulumi.StringPtrInput
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// An optional description for the port group.
 	Description pulumi.StringPtrInput
@@ -384,6 +409,8 @@ type DistributedPortGroupState struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
+	//
+	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -441,6 +468,10 @@ type distributedPortGroupArgs struct {
 	AllowPromiscuous *bool `pulumi:"allowPromiscuous"`
 	// Allows the port group to create additional ports
 	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+	//
+	// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+	// may lead to errors when the port count grows past the amount specified.  If you
+	// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 	AutoExpand *bool `pulumi:"autoExpand"`
 	// Indicates whether to block all ports by default.
 	BlockAllPorts *bool `pulumi:"blockAllPorts"`
@@ -451,6 +482,9 @@ type distributedPortGroupArgs struct {
 	CheckBeacon *bool `pulumi:"checkBeacon"`
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// An optional description for the port group.
 	Description *string `pulumi:"description"`
@@ -510,6 +544,8 @@ type distributedPortGroupArgs struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
+	//
+	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat *string `pulumi:"portNameFormat"`
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId *int `pulumi:"portPrivateSecondaryVlanId"`
@@ -564,6 +600,10 @@ type DistributedPortGroupArgs struct {
 	AllowPromiscuous pulumi.BoolPtrInput
 	// Allows the port group to create additional ports
 	// past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+	//
+	// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+	// may lead to errors when the port count grows past the amount specified.  If you
+	// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 	AutoExpand pulumi.BoolPtrInput
 	// Indicates whether to block all ports by default.
 	BlockAllPorts pulumi.BoolPtrInput
@@ -574,6 +614,9 @@ type DistributedPortGroupArgs struct {
 	CheckBeacon pulumi.BoolPtrInput
 	// Map of custom attribute ids to attribute
 	// value string to set for port group.
+	//
+	// > **NOTE:** Custom attributes are not supported on direct ESXi host
+	// connections and require vCenter Server.
 	CustomAttributes pulumi.StringMapInput
 	// An optional description for the port group.
 	Description pulumi.StringPtrInput
@@ -633,6 +676,8 @@ type DistributedPortGroupArgs struct {
 	// An optional formatting policy for naming of
 	// the ports in this port group. See the `portNameFormat` attribute listed
 	// [here][ext-vsphere-portname-format] for details on the format syntax.
+	//
+	// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 	PortNameFormat pulumi.StringPtrInput
 	// The secondary VLAN ID for this port.
 	PortPrivateSecondaryVlanId pulumi.IntPtrInput
@@ -784,6 +829,10 @@ func (o DistributedPortGroupOutput) AllowPromiscuous() pulumi.BoolOutput {
 
 // Allows the port group to create additional ports
 // past the limit specified in `numberOfPorts` if necessary. Default: `true`.
+//
+// > **NOTE:** Using `autoExpand` with a statically defined `numberOfPorts`
+// may lead to errors when the port count grows past the amount specified.  If you
+// specify `numberOfPorts`, you may wish to set `autoExpand` to `false`.
 func (o DistributedPortGroupOutput) AutoExpand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.BoolPtrOutput { return v.AutoExpand }).(pulumi.BoolPtrOutput)
 }
@@ -812,6 +861,9 @@ func (o DistributedPortGroupOutput) ConfigVersion() pulumi.StringOutput {
 
 // Map of custom attribute ids to attribute
 // value string to set for port group.
+//
+// > **NOTE:** Custom attributes are not supported on direct ESXi host
+// connections and require vCenter Server.
 func (o DistributedPortGroupOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -948,6 +1000,8 @@ func (o DistributedPortGroupOutput) PortConfigResetAtDisconnect() pulumi.BoolPtr
 // An optional formatting policy for naming of
 // the ports in this port group. See the `portNameFormat` attribute listed
 // [here][ext-vsphere-portname-format] for details on the format syntax.
+//
+// [ext-vsphere-portname-format]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.dvs.DistributedVirtualPortgroup.ConfigInfo.html#portNameFormat
 func (o DistributedPortGroupOutput) PortNameFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DistributedPortGroup) pulumi.StringPtrOutput { return v.PortNameFormat }).(pulumi.StringPtrOutput)
 }

@@ -381,7 +381,7 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
                         resource_pool_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOvfVmTemplateResult:
     """
-    The _get_ovf_vm_template_ data source can be used to submit an OVF to
+    The `get_ovf_vm_template` data source can be used to submit an OVF to
     vSphere and extract its hardware settings in a form that can be then used as
     inputs for a `VirtualMachine` resource.
 
@@ -495,6 +495,9 @@ def get_ovf_vm_template(allow_unverified_ssl_cert: Optional[bool] = None,
     :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers
            from the OVF descriptor to network UUID in the environment.
     :param str remote_ovf_url: URL of the remote OVF/OVA file to be deployed.
+           
+           > **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+           not be empty.
     :param str resource_pool_id: The ID of a resource pool in which to place
            the virtual machine.
     """
@@ -568,7 +571,7 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
                                resource_pool_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOvfVmTemplateResult]:
     """
-    The _get_ovf_vm_template_ data source can be used to submit an OVF to
+    The `get_ovf_vm_template` data source can be used to submit an OVF to
     vSphere and extract its hardware settings in a form that can be then used as
     inputs for a `VirtualMachine` resource.
 
@@ -682,6 +685,9 @@ def get_ovf_vm_template_output(allow_unverified_ssl_cert: Optional[pulumi.Input[
     :param Mapping[str, str] ovf_network_map: The mapping of name of network identifiers
            from the OVF descriptor to network UUID in the environment.
     :param str remote_ovf_url: URL of the remote OVF/OVA file to be deployed.
+           
+           > **NOTE:** Either `local_ovf_path` or `remote_ovf_url` is required, both can
+           not be empty.
     :param str resource_pool_id: The ID of a resource pool in which to place
            the virtual machine.
     """

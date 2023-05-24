@@ -68,6 +68,10 @@ func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...p
 // A collection of arguments for invoking getHostPciDevice.
 type GetHostPciDeviceArgs struct {
 	// The hexadecimal PCI device class ID
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId *string `pulumi:"classId"`
 	// The [managed object reference ID][docs-about-morefs] of a host.
 	HostId string `pulumi:"hostId"`
@@ -106,6 +110,10 @@ func GetHostPciDeviceOutput(ctx *pulumi.Context, args GetHostPciDeviceOutputArgs
 // A collection of arguments for invoking getHostPciDevice.
 type GetHostPciDeviceOutputArgs struct {
 	// The hexadecimal PCI device class ID
+	//
+	// [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
+	//
+	// > **NOTE:** `nameRegex`, `vendorId`, and `classId` can all be used together.
 	ClassId pulumi.StringPtrInput `pulumi:"classId"`
 	// The [managed object reference ID][docs-about-morefs] of a host.
 	HostId pulumi.StringInput `pulumi:"hostId"`

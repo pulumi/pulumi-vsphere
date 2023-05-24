@@ -26,6 +26,11 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
      * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -35,6 +40,11 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
      * value strings to set for the datastore cluster. See
      * [here][docs-setting-custom-attributes] for a reference on how to set values
      * for custom attributes.
+     * 
+     * [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -457,12 +467,16 @@ public class DatastoreCluster extends com.pulumi.resources.CustomResource {
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support requires vCenter 6.0 or higher.
      * 
      */
     public Output<Optional<List<String>>> tags() {

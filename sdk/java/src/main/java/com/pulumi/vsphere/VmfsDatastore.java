@@ -54,6 +54,9 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
      * Map of custom attribute ids to attribute
      * value string to set on datastore resource.
      * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
@@ -61,6 +64,9 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
     /**
      * @return Map of custom attribute ids to attribute
      * value string to set on datastore resource.
+     * 
+     * &gt; **NOTE:** Custom attributes are unsupported on direct ESXi connections
+     * and require vCenter.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -209,12 +215,18 @@ public class VmfsDatastore extends com.pulumi.resources.CustomResource {
     /**
      * The IDs of any tags to attach to this resource.
      * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource.
+     * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi connections and
+     * requires vCenter 6.0 or higher.
      * 
      */
     public Output<Optional<List<String>>> tags() {

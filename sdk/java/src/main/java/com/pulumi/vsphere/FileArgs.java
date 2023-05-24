@@ -20,6 +20,10 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
      * Create directories in `destination_file`
      * path parameter on first apply if any are missing for copy operation.
      * 
+     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destination_file` path is changed in subsequent applies.
+     * 
      */
     @Import(name="createDirectories")
     private @Nullable Output<Boolean> createDirectories;
@@ -27,6 +31,10 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Create directories in `destination_file`
      * path parameter on first apply if any are missing for copy operation.
+     * 
+     * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+     * will not be deleted when the resource is destroyed. New directories are not
+     * created if the `destination_file` path is changed in subsequent applies.
      * 
      */
     public Optional<Output<Boolean>> createDirectories() {
@@ -159,6 +167,10 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
          * @param createDirectories Create directories in `destination_file`
          * path parameter on first apply if any are missing for copy operation.
          * 
+         * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+         * will not be deleted when the resource is destroyed. New directories are not
+         * created if the `destination_file` path is changed in subsequent applies.
+         * 
          * @return builder
          * 
          */
@@ -170,6 +182,10 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param createDirectories Create directories in `destination_file`
          * path parameter on first apply if any are missing for copy operation.
+         * 
+         * &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+         * will not be deleted when the resource is destroyed. New directories are not
+         * created if the `destination_file` path is changed in subsequent applies.
          * 
          * @return builder
          * 

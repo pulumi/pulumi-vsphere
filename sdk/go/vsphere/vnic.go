@@ -81,71 +81,6 @@ import (
 //	}
 //
 // ```
-// ### Create a vnic attached to a portgroup using the default TCP/IP stack
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("mydc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
-//				Name:         pulumi.StringRef("esxi1.host.test"),
-//				DatacenterId: dc.Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			hvs1, err := vsphere.NewHostVirtualSwitch(ctx, "hvs1", &vsphere.HostVirtualSwitchArgs{
-//				HostSystemId: *pulumi.String(h1.Id),
-//				NetworkAdapters: pulumi.StringArray{
-//					pulumi.String("vmnic3"),
-//					pulumi.String("vmnic4"),
-//				},
-//				ActiveNics: pulumi.StringArray{
-//					pulumi.String("vmnic3"),
-//				},
-//				StandbyNics: pulumi.StringArray{
-//					pulumi.String("vmnic4"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			p1, err := vsphere.NewHostPortGroup(ctx, "p1", &vsphere.HostPortGroupArgs{
-//				VirtualSwitchName: hvs1.Name,
-//				HostSystemId:      *pulumi.String(h1.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
-//				Host:      *pulumi.String(h1.Id),
-//				Portgroup: p1.Name,
-//				Ipv4: &vsphere.VnicIpv4Args{
-//					Dhcp: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Importing
 //
 // An existing vNic can be [imported][docs-import] into this resource
@@ -192,6 +127,8 @@ type Vnic struct {
 	Netstack pulumi.StringPtrOutput `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrOutput `pulumi:"portgroup"`
+	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	Services pulumi.StringArrayOutput `pulumi:"services"`
 }
 
 // NewVnic registers a new resource with the given unique name, arguments, and options.
@@ -244,6 +181,8 @@ type vnicState struct {
 	Netstack *string `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup *string `pulumi:"portgroup"`
+	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	Services []string `pulumi:"services"`
 }
 
 type VnicState struct {
@@ -265,6 +204,8 @@ type VnicState struct {
 	Netstack pulumi.StringPtrInput
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrInput
+	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	Services pulumi.StringArrayInput
 }
 
 func (VnicState) ElementType() reflect.Type {
@@ -290,6 +231,8 @@ type vnicArgs struct {
 	Netstack *string `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup *string `pulumi:"portgroup"`
+	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	Services []string `pulumi:"services"`
 }
 
 // The set of arguments for constructing a Vnic resource.
@@ -312,6 +255,8 @@ type VnicArgs struct {
 	Netstack pulumi.StringPtrInput
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrInput
+	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	Services pulumi.StringArrayInput
 }
 
 func (VnicArgs) ElementType() reflect.Type {
@@ -444,6 +389,11 @@ func (o VnicOutput) Netstack() pulumi.StringPtrOutput {
 // Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 func (o VnicOutput) Portgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.Portgroup }).(pulumi.StringPtrOutput)
+}
+
+// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+func (o VnicOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Vnic) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
 type VnicArrayOutput struct{ *pulumi.OutputState }

@@ -37,6 +37,14 @@ class ComputeClusterVmHostRuleArgs:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** One of `affinity_host_group_name` or
+               `anti_affinity_host_group_name` must be
+               defined, but not both.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         """
@@ -126,6 +134,14 @@ class ComputeClusterVmHostRuleArgs:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** One of `affinity_host_group_name` or
+        `anti_affinity_host_group_name` must be
+        defined, but not both.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -171,6 +187,14 @@ class _ComputeClusterVmHostRuleState:
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** One of `affinity_host_group_name` or
+               `anti_affinity_host_group_name` must be
+               defined, but not both.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
@@ -251,6 +275,14 @@ class _ComputeClusterVmHostRuleState:
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** One of `affinity_host_group_name` or
+        `anti_affinity_host_group_name` must be
+        defined, but not both.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 
@@ -314,6 +346,14 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** One of `affinity_host_group_name` or
+               `anti_affinity_host_group_name` must be
+               defined, but not both.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
@@ -405,6 +445,14 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Enable this rule in the cluster. Default: `true`.
         :param pulumi.Input[bool] mandatory: When this value is `true`, prevents any virtual
                machine operations that may violate this rule. Default: `false`.
+               
+               > **NOTE:** One of `affinity_host_group_name` or
+               `anti_affinity_host_group_name` must be
+               defined, but not both.
+               
+               > **NOTE:** The namespace for rule names on this resource (defined by the
+               `name` argument) is shared with all rules in the cluster - consider
+               this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
@@ -467,6 +515,14 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         """
         When this value is `true`, prevents any virtual
         machine operations that may violate this rule. Default: `false`.
+
+        > **NOTE:** One of `affinity_host_group_name` or
+        `anti_affinity_host_group_name` must be
+        defined, but not both.
+
+        > **NOTE:** The namespace for rule names on this resource (defined by the
+        `name` argument) is shared with all rules in the cluster - consider
+        this when naming your rules.
         """
         return pulumi.get(self, "mandatory")
 

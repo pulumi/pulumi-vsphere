@@ -91,7 +91,7 @@ def get_network(datacenter_id: Optional[str] = None,
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
-    The _get_network_ data source can be used to discover the ID of a network
+    The `get_network` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
     network interface for `VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups,
@@ -140,7 +140,7 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
-    The _get_network_ data source can be used to discover the ID of a network
+    The `get_network` data source can be used to discover the ID of a network
     in vSphere. This can be any network that can be used as the backing for a
     network interface for `VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups,

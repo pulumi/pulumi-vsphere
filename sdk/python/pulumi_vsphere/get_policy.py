@@ -56,7 +56,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
 def get_policy(name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyResult:
     """
-    The _get_policy_ data source can be used to discover the UUID of a
+    The `get_policy` data source can be used to discover the UUID of a
     storage policy. This can then be used with other resources or data sources that
     use a storage policy.
 
@@ -90,7 +90,7 @@ def get_policy(name: Optional[str] = None,
 def get_policy_output(name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
-    The _get_policy_ data source can be used to discover the UUID of a
+    The `get_policy` data source can be used to discover the UUID of a
     storage policy. This can then be used with other resources or data sources that
     use a storage policy.
 

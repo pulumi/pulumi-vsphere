@@ -18,6 +18,11 @@ type DatastoreCluster struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
@@ -112,6 +117,8 @@ type DatastoreCluster struct {
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrOutput `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -151,6 +158,11 @@ type datastoreClusterState struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
@@ -245,6 +257,8 @@ type datastoreClusterState struct {
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -253,6 +267,11 @@ type DatastoreClusterState struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
@@ -347,6 +366,8 @@ type DatastoreClusterState struct {
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -359,6 +380,11 @@ type datastoreClusterArgs struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes map[string]string `pulumi:"customAttributes"`
 	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
@@ -453,6 +479,8 @@ type datastoreClusterArgs struct {
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel *string `pulumi:"sdrsVmEvacuationAutomationLevel"`
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -462,6 +490,11 @@ type DatastoreClusterArgs struct {
 	// value strings to set for the datastore cluster. See
 	// [here][docs-setting-custom-attributes] for a reference on how to set values
 	// for custom attributes.
+	//
+	// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+	//
+	// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+	// and require vCenter.
 	CustomAttributes pulumi.StringMapInput
 	// The managed object ID of
 	// the datacenter to create the datastore cluster in. Forces a new resource if
@@ -556,6 +589,8 @@ type DatastoreClusterArgs struct {
 	// automation settings when generating recommendations for datastore evacuation.
 	SdrsVmEvacuationAutomationLevel pulumi.StringPtrInput
 	// The IDs of any tags to attach to this resource.
+	//
+	// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 	Tags pulumi.StringArrayInput
 }
 
@@ -650,6 +685,11 @@ func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.
 // value strings to set for the datastore cluster. See
 // [here][docs-setting-custom-attributes] for a reference on how to set values
 // for custom attributes.
+//
+// [docs-setting-custom-attributes]: /docs/providers/vsphere/r/custom_attribute.html#using-custom-attributes-in-a-supported-resource
+//
+// > **NOTE:** Custom attributes are unsupported on direct ESXi connections
+// and require vCenter.
 func (o DatastoreClusterOutput) CustomAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
 }
@@ -816,6 +856,8 @@ func (o DatastoreClusterOutput) SdrsVmEvacuationAutomationLevel() pulumi.StringP
 }
 
 // The IDs of any tags to attach to this resource.
+//
+// > **NOTE:** Tagging support requires vCenter 6.0 or higher.
 func (o DatastoreClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

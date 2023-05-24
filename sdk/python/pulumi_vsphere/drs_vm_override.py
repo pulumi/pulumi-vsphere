@@ -28,6 +28,10 @@ class DrsVmOverrideArgs:
         :param pulumi.Input[str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
                machine. Can be either `true` or `false`. Default: `false`.
         """
@@ -72,6 +76,10 @@ class DrsVmOverrideArgs:
         Overrides the automation level for this virtual
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "drs_automation_level")
 
@@ -108,6 +116,10 @@ class _DrsVmOverrideState:
         :param pulumi.Input[str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
                machine. Can be either `true` or `false`. Default: `false`.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
@@ -143,6 +155,10 @@ class _DrsVmOverrideState:
         Overrides the automation level for this virtual
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "drs_automation_level")
 
@@ -197,6 +213,10 @@ class DrsVmOverride(pulumi.CustomResource):
         :param pulumi.Input[str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
                machine. Can be either `true` or `false`. Default: `false`.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
@@ -273,6 +293,10 @@ class DrsVmOverride(pulumi.CustomResource):
         :param pulumi.Input[str] drs_automation_level: Overrides the automation level for this virtual
                machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
                `fullyAutomated`. Default: `manual`.
+               
+               > **NOTE:** Using this resource _always_ implies an override, even if one of
+               `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+               for both options.
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
                machine. Can be either `true` or `false`. Default: `false`.
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
@@ -305,6 +329,10 @@ class DrsVmOverride(pulumi.CustomResource):
         Overrides the automation level for this virtual
         machine in the cluster. Can be one of `manual`, `partiallyAutomated`, or
         `fullyAutomated`. Default: `manual`.
+
+        > **NOTE:** Using this resource _always_ implies an override, even if one of
+        `drs_enabled` or `drs_automation_level` is omitted. Take note of the defaults
+        for both options.
         """
         return pulumi.get(self, "drs_automation_level")
 

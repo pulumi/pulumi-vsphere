@@ -30,6 +30,14 @@ type ComputeClusterVmHostRule struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** One of `affinityHostGroupName` or
+	// `antiAffinityHostGroupName` must be
+	// defined, but not both.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrOutput `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the
 	// cluster.
@@ -90,6 +98,14 @@ type computeClusterVmHostRuleState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** One of `affinityHostGroupName` or
+	// `antiAffinityHostGroupName` must be
+	// defined, but not both.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the
 	// cluster.
@@ -116,6 +132,14 @@ type ComputeClusterVmHostRuleState struct {
 	Enabled pulumi.BoolPtrInput
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** One of `affinityHostGroupName` or
+	// `antiAffinityHostGroupName` must be
+	// defined, but not both.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the
 	// cluster.
@@ -146,6 +170,14 @@ type computeClusterVmHostRuleArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** One of `affinityHostGroupName` or
+	// `antiAffinityHostGroupName` must be
+	// defined, but not both.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory *bool `pulumi:"mandatory"`
 	// The name of the rule. This must be unique in the
 	// cluster.
@@ -173,6 +205,14 @@ type ComputeClusterVmHostRuleArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// When this value is `true`, prevents any virtual
 	// machine operations that may violate this rule. Default: `false`.
+	//
+	// > **NOTE:** One of `affinityHostGroupName` or
+	// `antiAffinityHostGroupName` must be
+	// defined, but not both.
+	//
+	// > **NOTE:** The namespace for rule names on this resource (defined by the
+	// `name` argument) is shared with all rules in the cluster - consider
+	// this when naming your rules.
 	Mandatory pulumi.BoolPtrInput
 	// The name of the rule. This must be unique in the
 	// cluster.
@@ -297,6 +337,14 @@ func (o ComputeClusterVmHostRuleOutput) Enabled() pulumi.BoolPtrOutput {
 
 // When this value is `true`, prevents any virtual
 // machine operations that may violate this rule. Default: `false`.
+//
+// > **NOTE:** One of `affinityHostGroupName` or
+// `antiAffinityHostGroupName` must be
+// defined, but not both.
+//
+// > **NOTE:** The namespace for rule names on this resource (defined by the
+// `name` argument) is shared with all rules in the cluster - consider
+// this when naming your rules.
 func (o ComputeClusterVmHostRuleOutput) Mandatory() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ComputeClusterVmHostRule) pulumi.BoolPtrOutput { return v.Mandatory }).(pulumi.BoolPtrOutput)
 }

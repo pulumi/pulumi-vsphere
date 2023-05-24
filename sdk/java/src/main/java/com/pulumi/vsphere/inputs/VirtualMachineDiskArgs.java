@@ -20,12 +20,16 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
      * 
+     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+     * 
      */
     @Import(name="attach")
     private @Nullable Output<Boolean> attach;
 
     /**
      * @return Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+     * 
+     * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
      * 
      */
     public Optional<Output<Boolean>> attach() {
@@ -50,12 +54,16 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
      * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -72,12 +80,16 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
      * 
+     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+     * 
      */
     @Import(name="diskMode")
     private @Nullable Output<String> diskMode;
 
     /**
      * @return The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
+     * 
+     * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
      * 
      */
     public Optional<Output<String>> diskMode() {
@@ -87,12 +99,16 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
      * 
+     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
+     * 
      */
     @Import(name="diskSharing")
     private @Nullable Output<String> diskSharing;
 
     /**
      * @return The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+     * 
+     * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
      * 
      */
     public Optional<Output<String>> diskSharing() {
@@ -204,17 +220,9 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * A label for the virtual disk. Forces a new disk, if changed.
-     * 
-     */
     @Import(name="label", required=true)
     private Output<String> label;
 
-    /**
-     * @return A label for the virtual disk. Forces a new disk, if changed.
-     * 
-     */
     public Output<String> label() {
         return this.label;
     }
@@ -222,12 +230,20 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
      * 
+     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+     * 
+     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
+     * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
      * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * 
+     * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+     * 
+     * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
      * 
      */
     public Optional<Output<String>> path() {
@@ -371,6 +387,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param attach Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
          * 
+         * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
+         * 
          * @return builder
          * 
          */
@@ -381,6 +399,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param attach Attach an external disk instead of creating a new one. Implies and conflicts with `keep_on_remove`. If set, you cannot set `size`, `eagerly_scrub`, or `thin_provisioned`. Must set `path` if used.
+         * 
+         * &gt; **NOTE:** External disks cannot be attached when `datastore_cluster_id` is used.
          * 
          * @return builder
          * 
@@ -413,6 +433,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
          * 
+         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+         * 
          * @return builder
          * 
          */
@@ -423,6 +445,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+         * 
+         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
          * 
          * @return builder
          * 
@@ -443,6 +467,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param diskMode The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
          * 
+         * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+         * 
          * @return builder
          * 
          */
@@ -454,6 +480,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param diskMode The mode of this this virtual disk for purposes of writes and snapshots. One of `append`, `independent_nonpersistent`, `independent_persistent`, `nonpersistent`, `persistent`, or `undoable`. Default: `persistent`. For more information on these option, please refer to the [product documentation][vmware-docs-disk-mode].
          * 
+         * [vmware-docs-disk-mode]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.device.VirtualDiskOption.DiskMode.html
+         * 
          * @return builder
          * 
          */
@@ -463,6 +491,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param diskSharing The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+         * 
+         * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
          * 
          * @return builder
          * 
@@ -474,6 +504,8 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param diskSharing The sharing mode of this virtual disk. One of `sharingMultiWriter` or `sharingNone`. Default: `sharingNone`.
+         * 
+         * &gt; **NOTE:** Disk sharing is only available on vSphere 6.0 and later.
          * 
          * @return builder
          * 
@@ -629,29 +661,21 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
             return key(Output.of(key));
         }
 
-        /**
-         * @param label A label for the virtual disk. Forces a new disk, if changed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
 
-        /**
-         * @param label A label for the virtual disk. Forces a new disk, if changed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
         /**
          * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+         * 
+         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+         * 
+         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
          * 
          * @return builder
          * 
@@ -663,6 +687,10 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+         * 
+         * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
+         * 
+         * &gt; **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
          * 
          * @return builder
          * 

@@ -14,6 +14,7 @@ import com.pulumi.vsphere.outputs.VnicIpv4;
 import com.pulumi.vsphere.outputs.VnicIpv6;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -90,6 +91,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
+ * 
  * ```java
  * package generated_program;
  * 
@@ -148,6 +150,9 @@ import javax.annotation.Nullable;
  *             .ipv4(VnicIpv4Args.builder()
  *                 .dhcp(true)
  *                 .build())
+ *             .enabledServices(            
+ *                 &#34;vsan&#34;,
+ *                 &#34;management&#34;)
  *             .build());
  * 
  *     }
@@ -312,6 +317,20 @@ public class Vnic extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> portgroup() {
         return Codegen.optional(this.portgroup);
+    }
+    /**
+     * Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * 
+     */
+    @Export(name="services", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> services;
+
+    /**
+     * @return Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * 
+     */
+    public Output<Optional<List<String>>> services() {
+        return Codegen.optional(this.services);
     }
 
     /**

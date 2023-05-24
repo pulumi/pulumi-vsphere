@@ -239,12 +239,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
      * 
+     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
+     * 
      */
     @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
      * @return Map of custom attribute ids to attribute value strings to set for virtual machine. Please refer to the `vsphere_custom_attributes` resource for more information on setting custom attributes.
+     * 
+     * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
      * 
      */
     public Output<Optional<Map<String,String>>> customAttributes() {
@@ -267,12 +271,24 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
      * 
+     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
+     * 
+     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+     * 
+     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
+     * 
      */
     @Export(name="datastoreClusterId", type=String.class, parameters={})
     private Output</* @Nullable */ String> datastoreClusterId;
 
     /**
      * @return The managed object reference ID of the datastore cluster in which to place the virtual machine. This setting applies to entire virtual machine and implies that you wish to use vSphere Storage DRS with the virtual machine. See the section on virtual machine migration for more information on modifying this value.
+     * 
+     * &gt; **NOTE:** One of `datastore_id` or `datastore_cluster_id` must be specified.
+     * 
+     * &gt; **NOTE:** Use of `datastore_cluster_id` requires vSphere Storage DRS to be enabled on the specified datastore cluster.
+     * 
+     * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
      * 
      */
     public Output<Optional<String>> datastoreClusterId() {
@@ -281,12 +297,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
      * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * 
      */
     @Export(name="datastoreId", type=String.class, parameters={})
     private Output<String> datastoreId;
 
     /**
      * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
+     * 
+     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
     public Output<String> datastoreId() {
@@ -323,12 +343,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
      * 
+     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
+     * 
      */
     @Export(name="efiSecureBootEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> efiSecureBootEnabled;
 
     /**
      * @return Use this option to enable EFI secure boot when the `firmware` type is set to is `efi`. Default: `false`.
+     * 
+     * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
      * 
      */
     public Output<Optional<Boolean>> efiSecureBootEnabled() {
@@ -379,12 +403,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
      * 
+     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
+     * 
      */
     @Export(name="extraConfig", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> extraConfig;
 
     /**
      * @return Extra configuration data for the virtual machine. Can be used to supply advanced parameters not normally in configuration, such as instance metadata and userdata.
+     * 
+     * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
      * 
      */
     public Output<Optional<Map<String,String>>> extraConfig() {
@@ -449,12 +477,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
      * 
+     * [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
+     * 
      */
     @Export(name="guestId", type=String.class, parameters={})
     private Output<String> guestId;
 
     /**
      * @return The guest ID for the operating system type. For a full list of possible values, see [here][vmware-docs-guest-ids]. Default: `otherGuest64`.
+     * 
+     * [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      * 
      */
     public Output<String> guestId() {
@@ -477,12 +509,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
      * 
+     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
+     * 
      */
     @Export(name="hardwareVersion", type=Integer.class, parameters={})
     private Output<Integer> hardwareVersion;
 
     /**
      * @return The hardware version number. Valid range is from 4 to 19. The hardware version cannot be downgraded. See [virtual machine hardware compatibility][virtual-machine-hardware-compatibility] for more information.
+     * 
+     * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      * 
      */
     public Output<Integer> hardwareVersion() {
@@ -561,12 +597,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
      * 
+     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
+     * 
      */
     @Export(name="latencySensitivity", type=String.class, parameters={})
     private Output</* @Nullable */ String> latencySensitivity;
 
     /**
      * @return Controls the scheduling delay of the virtual machine. Use a higher sensitivity for applications that require lower latency, such as VOIP, media player applications, or applications that require frequent access to mouse or keyboard devices. One of `low`, `normal`, `medium`, or `high`.
+     * 
+     * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
      * 
      */
     public Output<Optional<String>> latencySensitivity() {
@@ -589,12 +629,28 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Allow memory to be added to the virtual machine while it is powered on.
      * 
+     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+     * 
+     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+     * 
+     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+     * 
+     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
+     * 
      */
     @Export(name="memoryHotAddEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> memoryHotAddEnabled;
 
     /**
      * @return Allow memory to be added to the virtual machine while it is powered on.
+     * 
+     * &gt; **NOTE:** CPU and memory hot add options are not available on all guest operating systems. Please refer to the [VMware Guest OS Compatibility Guide][vmware-docs-compat-guide] to which settings are allow for your guest operating system. In addition, at least one `pulumi up` must be run before you are able to use CPU and memory hot add.
+     * 
+     * [vmware-docs-compat-guide]: http://partnerweb.vmware.com/comp_guide2/pdf/VMware_GOS_Compatibility_Guide.pdf
+     * 
+     * &gt; **NOTE:** For Linux 64-bit guest operating systems with less than or equal to 3GB, the virtual machine must powered off to add memory beyond 3GB. Subsequent hot add of memory does not require the virtual machine to be powered-off to apply the plan. Please refer to [VMware KB 2008405][vmware-kb-2008405].
+     * 
+     * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      * 
      */
     public Output<Optional<Boolean>> memoryHotAddEnabled() {
@@ -771,12 +827,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * List of host PCI device IDs in which to create PCI passthroughs.
      * 
+     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
+     * 
      */
     @Export(name="pciDeviceIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> pciDeviceIds;
 
     /**
      * @return List of host PCI device IDs in which to create PCI passthroughs.
+     * 
+     * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
      * 
      */
     public Output<Optional<List<String>>> pciDeviceIds() {
@@ -827,12 +887,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * Triggers replacement of resource whenever it changes.
      * 
+     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
+     * 
      */
     @Export(name="replaceTrigger", type=String.class, parameters={})
     private Output</* @Nullable */ String> replaceTrigger;
 
     /**
      * @return Triggers replacement of resource whenever it changes.
+     * 
+     * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      * 
      */
     public Output<Optional<String>> replaceTrigger() {
@@ -841,12 +905,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
      * 
+     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
+     * 
      */
     @Export(name="resourcePoolId", type=String.class, parameters={})
     private Output<String> resourcePoolId;
 
     /**
      * @return The managed object reference ID of the resource pool in which to place the virtual machine. See the Virtual Machine Migration section for more information on modifying this value.
+     * 
+     * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
      * 
      */
     public Output<String> resourcePoolId() {
@@ -1059,12 +1127,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
      * The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
      * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The IDs of any tags to attach to this resource. Please refer to the `vsphere.Tag` resource for more information on applying tags to virtual machine resources.
+     * 
+     * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
      * 
      */
     public Output<Optional<List<String>>> tags() {

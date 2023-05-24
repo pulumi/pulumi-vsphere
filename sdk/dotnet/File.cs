@@ -15,6 +15,7 @@ namespace Pulumi.VSphere
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
@@ -35,6 +36,7 @@ namespace Pulumi.VSphere
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using VSphere = Pulumi.VSphere;
     /// 
@@ -60,6 +62,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Create directories in `destination_file`
         /// path parameter on first apply if any are missing for copy operation.
+        /// 
+        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+        /// will not be deleted when the resource is destroyed. New directories are not
+        /// created if the `destination_file` path is changed in subsequent applies.
         /// </summary>
         [Output("createDirectories")]
         public Output<bool?> CreateDirectories { get; private set; } = null!;
@@ -151,6 +157,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Create directories in `destination_file`
         /// path parameter on first apply if any are missing for copy operation.
+        /// 
+        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+        /// will not be deleted when the resource is destroyed. New directories are not
+        /// created if the `destination_file` path is changed in subsequent applies.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }
@@ -204,6 +214,10 @@ namespace Pulumi.VSphere
         /// <summary>
         /// Create directories in `destination_file`
         /// path parameter on first apply if any are missing for copy operation.
+        /// 
+        /// &gt; **NOTE:** Any directory created as part of the `create_directories` argument
+        /// will not be deleted when the resource is destroyed. New directories are not
+        /// created if the `destination_file` path is changed in subsequent applies.
         /// </summary>
         [Input("createDirectories")]
         public Input<bool>? CreateDirectories { get; set; }

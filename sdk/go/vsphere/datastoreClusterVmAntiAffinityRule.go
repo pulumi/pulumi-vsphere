@@ -27,6 +27,8 @@ type DatastoreClusterVmAntiAffinityRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The UUIDs of the virtual machines to run
 	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 	VirtualMachineIds pulumi.StringArrayOutput `pulumi:"virtualMachineIds"`
 }
 
@@ -78,6 +80,8 @@ type datastoreClusterVmAntiAffinityRuleState struct {
 	Name *string `pulumi:"name"`
 	// The UUIDs of the virtual machines to run
 	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -95,6 +99,8 @@ type DatastoreClusterVmAntiAffinityRuleState struct {
 	Name pulumi.StringPtrInput
 	// The UUIDs of the virtual machines to run
 	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -116,6 +122,8 @@ type datastoreClusterVmAntiAffinityRuleArgs struct {
 	Name *string `pulumi:"name"`
 	// The UUIDs of the virtual machines to run
 	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 	VirtualMachineIds []string `pulumi:"virtualMachineIds"`
 }
 
@@ -134,6 +142,8 @@ type DatastoreClusterVmAntiAffinityRuleArgs struct {
 	Name pulumi.StringPtrInput
 	// The UUIDs of the virtual machines to run
 	// on different datastores from each other.
+	//
+	// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 	VirtualMachineIds pulumi.StringArrayInput
 }
 
@@ -249,6 +259,8 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) Name() pulumi.StringOutput {
 
 // The UUIDs of the virtual machines to run
 // on different datastores from each other.
+//
+// > **NOTE:** The minimum length of `virtualMachineIds` is 2.
 func (o DatastoreClusterVmAntiAffinityRuleOutput) VirtualMachineIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatastoreClusterVmAntiAffinityRule) pulumi.StringArrayOutput { return v.VirtualMachineIds }).(pulumi.StringArrayOutput)
 }

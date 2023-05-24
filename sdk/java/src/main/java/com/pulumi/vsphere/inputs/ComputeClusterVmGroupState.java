@@ -56,6 +56,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
      * The UUIDs of the virtual machines in this
      * group.
      * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
+     * 
      */
     @Import(name="virtualMachineIds")
     private @Nullable Output<List<String>> virtualMachineIds;
@@ -63,6 +68,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
     /**
      * @return The UUIDs of the virtual machines in this
      * group.
+     * 
+     * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+     * `name` argument) is shared with the
+     * `vsphere.ComputeClusterHostGroup`
+     * resource. Make sure your names are unique across both resources.
      * 
      */
     public Optional<Output<List<String>>> virtualMachineIds() {
@@ -147,6 +157,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * @param virtualMachineIds The UUIDs of the virtual machines in this
          * group.
          * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterHostGroup`
+         * resource. Make sure your names are unique across both resources.
+         * 
          * @return builder
          * 
          */
@@ -159,6 +174,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
          * @param virtualMachineIds The UUIDs of the virtual machines in this
          * group.
          * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterHostGroup`
+         * resource. Make sure your names are unique across both resources.
+         * 
          * @return builder
          * 
          */
@@ -169,6 +189,11 @@ public final class ComputeClusterVmGroupState extends com.pulumi.resources.Resou
         /**
          * @param virtualMachineIds The UUIDs of the virtual machines in this
          * group.
+         * 
+         * &gt; **NOTE:** The namespace for cluster names on this resource (defined by the
+         * `name` argument) is shared with the
+         * `vsphere.ComputeClusterHostGroup`
+         * resource. Make sure your names are unique across both resources.
          * 
          * @return builder
          * 

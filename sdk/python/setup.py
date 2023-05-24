@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='pulumi_vsphere',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating vsphere resources",
       long_description=readme(),

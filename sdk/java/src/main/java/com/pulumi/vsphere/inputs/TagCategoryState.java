@@ -59,12 +59,18 @@ public final class TagCategoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * A description for the category.
      * 
+     * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return A description for the category.
+     * 
+     * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+     * them. Attempting to do so will result in an error.
      * 
      */
     public Optional<Output<String>> description() {
@@ -180,6 +186,9 @@ public final class TagCategoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description A description for the category.
          * 
+         * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+         * them. Attempting to do so will result in an error.
+         * 
          * @return builder
          * 
          */
@@ -190,6 +199,9 @@ public final class TagCategoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description A description for the category.
+         * 
+         * &gt; **NOTE:** You can add associable types to a category, but you cannot remove
+         * them. Attempting to do so will result in an error.
          * 
          * @return builder
          * 
