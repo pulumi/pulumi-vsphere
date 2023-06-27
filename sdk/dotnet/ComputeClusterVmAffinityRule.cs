@@ -31,6 +31,135 @@ namespace Pulumi.VSphere
     /// direct ESXi host connections.
     /// 
     /// &gt; **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates two virtual machines in a cluster using the
+    /// `vsphere.VirtualMachine` resource, creating the
+    /// virtual machines in the cluster looked up by the
+    /// `vsphere.ComputeCluster` data source. It
+    /// then creates an affinity rule for these two virtual machines, ensuring they
+    /// will run on the same host whenever possible.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var datastore = VSphere.GetDatastore.Invoke(new()
+    ///     {
+    ///         Name = "datastore-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var network = VSphere.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "VM Network",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vm = new List&lt;VSphere.VirtualMachine&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vm.Add(new VSphere.VirtualMachine($"vm-{range.Value}", new()
+    ///         {
+    ///             ResourcePoolId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///             DatastoreId = datastore.Apply(getDatastoreResult =&gt; getDatastoreResult.Id),
+    ///             NumCpus = 1,
+    ///             Memory = 1024,
+    ///             GuestId = "otherLinux64Guest",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineNetworkInterfaceArgs
+    ///                 {
+    ///                     NetworkId = network.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///                 },
+    ///             },
+    ///             Disks = new[]
+    ///             {
+    ///                 new VSphere.Inputs.VirtualMachineDiskArgs
+    ///                 {
+    ///                     Label = "disk0",
+    ///                     Size = 20,
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vmAffinityRule", new()
+    ///     {
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = vm.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(v =&gt; 
+    ///         {
+    ///             return  v.Id;
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The following example creates an affinity rule for a set of virtual machines
+    /// in the cluster by looking up the virtual machine UUIDs from the
+    /// `vsphere.VirtualMachine` data source.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vms = new[]
+    ///     {
+    ///         "foo-0",
+    ///         "foo-1",
+    ///     };
+    /// 
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var vmsVirtualMachine = "TODO: Range  range( length(vms)
+    /// ) false".Select(__index =&gt; 
+    ///     {
+    ///         return  VSphere.GetVirtualMachine.Invoke(new()
+    ///         {
+    ///             Name = vms[__index],
+    ///             DatacenterId = _arg0_.Id,
+    ///         });
+    ///     });
+    /// 
+    ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vmAffinityRule", new()
+    ///     {
+    ///         Enabled = true,
+    ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///         VirtualMachineIds = vmsVirtualMachine.Select(__item =&gt; __item.Id).ToList(),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule")]
     public partial class ComputeClusterVmAffinityRule : global::Pulumi.CustomResource

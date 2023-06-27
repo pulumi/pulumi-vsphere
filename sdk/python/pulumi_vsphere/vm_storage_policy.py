@@ -189,17 +189,17 @@ class VmStoragePolicy(pulumi.CustomResource):
             description="prod_platinum_replicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
                     tags=[data["vsphere_tag"]["production"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
                     tags=[data["vsphere_tag"]["platinum"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
                     tags=[data["vsphere_tag"]["replicated"]["name"]],
                     include_datastores_with_tags=True,
                 ),
@@ -208,17 +208,17 @@ class VmStoragePolicy(pulumi.CustomResource):
             description="dev_silver_nonreplicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
                     tags=[data["vsphere_tag"]["development"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
                     tags=[data["vsphere_tag"]["silver"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
                     tags=[data["vsphere_tag"]["non_replicated"]["name"]],
                     include_datastores_with_tags=True,
                 ),
@@ -307,17 +307,17 @@ class VmStoragePolicy(pulumi.CustomResource):
             description="prod_platinum_replicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
                     tags=[data["vsphere_tag"]["production"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
                     tags=[data["vsphere_tag"]["platinum"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
                     tags=[data["vsphere_tag"]["replicated"]["name"]],
                     include_datastores_with_tags=True,
                 ),
@@ -326,17 +326,17 @@ class VmStoragePolicy(pulumi.CustomResource):
             description="dev_silver_nonreplicated",
             tag_rules=[
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
                     tags=[data["vsphere_tag"]["development"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
                     tags=[data["vsphere_tag"]["silver"]["name"]],
                     include_datastores_with_tags=True,
                 ),
                 vsphere.VmStoragePolicyTagRuleArgs(
-                    tag_category=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
                     tags=[data["vsphere_tag"]["non_replicated"]["name"]],
                     include_datastores_with_tags=True,
                 ),

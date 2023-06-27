@@ -70,8 +70,8 @@ class ComputeClusterVsanDiskGroup(dict):
                    vsan_dit_encryption_enabled=True,
                    vsan_dit_rekey_interval=1800,
                    vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                       cache=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                       storages=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       cache=data["vsphere_vmfs_disks"]["cache_disks"],
+                       storages=data["vsphere_vmfs_disks"]["storage_disks"],
                    )])
                ```
         """
@@ -117,8 +117,8 @@ class ComputeClusterVsanDiskGroup(dict):
             vsan_dit_encryption_enabled=True,
             vsan_dit_rekey_interval=1800,
             vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
-                cache=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                storages=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                cache=data["vsphere_vmfs_disks"]["cache_disks"],
+                storages=data["vsphere_vmfs_disks"]["storage_disks"],
             )])
         ```
         """

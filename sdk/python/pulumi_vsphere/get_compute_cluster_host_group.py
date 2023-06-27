@@ -89,8 +89,8 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-    cluster = vsphere.get_compute_cluster(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    datacenter = vsphere.get_datacenter(name=var["vsphere_datacenter"])
+    cluster = vsphere.get_compute_cluster(name=var["vsphere_cluster"],
         datacenter_id=datacenter.id)
     host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
         compute_cluster_id=cluster.id)
@@ -135,8 +135,8 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
     import pulumi
     import pulumi_vsphere as vsphere
 
-    datacenter = vsphere.get_datacenter(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-    cluster = vsphere.get_compute_cluster(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    datacenter = vsphere.get_datacenter(name=var["vsphere_datacenter"])
+    cluster = vsphere.get_compute_cluster(name=var["vsphere_cluster"],
         datacenter_id=datacenter.id)
     host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
         compute_cluster_id=cluster.id)
