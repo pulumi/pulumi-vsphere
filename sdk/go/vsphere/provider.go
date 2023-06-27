@@ -50,28 +50,44 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	if args.AllowUnverifiedSsl == nil {
-		args.AllowUnverifiedSsl = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL").(bool))
+		if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL"); d != nil {
+			args.AllowUnverifiedSsl = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.ClientDebug == nil {
-		args.ClientDebug = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_CLIENT_DEBUG").(bool))
+		if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_CLIENT_DEBUG"); d != nil {
+			args.ClientDebug = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.ClientDebugPath == nil {
-		args.ClientDebugPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH").(string))
+		if d := getEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH"); d != nil {
+			args.ClientDebugPath = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.ClientDebugPathRun == nil {
-		args.ClientDebugPathRun = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN").(string))
+		if d := getEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN"); d != nil {
+			args.ClientDebugPathRun = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.PersistSession == nil {
-		args.PersistSession = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "VSPHERE_PERSIST_SESSION").(bool))
+		if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_PERSIST_SESSION"); d != nil {
+			args.PersistSession = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.RestSessionPath == nil {
-		args.RestSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_REST_SESSION_PATH").(string))
+		if d := getEnvOrDefault(nil, nil, "VSPHERE_REST_SESSION_PATH"); d != nil {
+			args.RestSessionPath = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.VimKeepAlive == nil {
-		args.VimKeepAlive = pulumi.IntPtr(getEnvOrDefault(0, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE").(int))
+		if d := getEnvOrDefault(nil, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE"); d != nil {
+			args.VimKeepAlive = pulumi.IntPtr(d.(int))
+		}
 	}
 	if args.VimSessionPath == nil {
-		args.VimSessionPath = pulumi.StringPtr(getEnvOrDefault("", nil, "VSPHERE_VIM_SESSION_PATH").(string))
+		if d := getEnvOrDefault(nil, nil, "VSPHERE_VIM_SESSION_PATH"); d != nil {
+			args.VimSessionPath = pulumi.StringPtr(d.(string))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:vsphere", name, args, &resource, opts...)
