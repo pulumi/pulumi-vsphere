@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ func NewNasDatastore(ctx *pulumi.Context,
 	if args.RemotePath == nil {
 		return nil, errors.New("invalid value for required argument 'RemotePath'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NasDatastore
 	err := ctx.RegisterResource("vsphere:index/nasDatastore:NasDatastore", name, args, &resource, opts...)
 	if err != nil {

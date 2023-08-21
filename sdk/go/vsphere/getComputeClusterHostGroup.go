@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ import (
 //
 // ```
 func LookupComputeClusterHostGroup(ctx *pulumi.Context, args *LookupComputeClusterHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupComputeClusterHostGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeClusterHostGroupResult
 	err := ctx.Invoke("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args, &rv, opts...)
 	if err != nil {

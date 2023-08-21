@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ import (
 // ```
 // ### With Name Regular Expression
 func GetHostPciDevice(ctx *pulumi.Context, args *GetHostPciDeviceArgs, opts ...pulumi.InvokeOption) (*GetHostPciDeviceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostPciDeviceResult
 	err := ctx.Invoke("vsphere:index/getHostPciDevice:getHostPciDevice", args, &rv, opts...)
 	if err != nil {

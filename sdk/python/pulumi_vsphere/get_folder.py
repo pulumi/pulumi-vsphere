@@ -81,8 +81,8 @@ def get_folder(path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
-        id=__ret__.id,
-        path=__ret__.path)
+        id=pulumi.get(__ret__, 'id'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_folder)

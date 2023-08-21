@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,6 +29,7 @@ func NewCustomAttribute(ctx *pulumi.Context,
 		args = &CustomAttributeArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomAttribute
 	err := ctx.RegisterResource("vsphere:index/customAttribute:CustomAttribute", name, args, &resource, opts...)
 	if err != nil {

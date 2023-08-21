@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -319,6 +320,7 @@ func NewComputeCluster(ctx *pulumi.Context,
 	if args.DatacenterId == nil {
 		return nil, errors.New("invalid value for required argument 'DatacenterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ComputeCluster
 	err := ctx.RegisterResource("vsphere:index/computeCluster:ComputeCluster", name, args, &resource, opts...)
 	if err != nil {

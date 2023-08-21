@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func LookupVappContainer(ctx *pulumi.Context, args *LookupVappContainerArgs, opts ...pulumi.InvokeOption) (*LookupVappContainerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVappContainerResult
 	err := ctx.Invoke("vsphere:index/getVappContainer:getVappContainer", args, &rv, opts...)
 	if err != nil {

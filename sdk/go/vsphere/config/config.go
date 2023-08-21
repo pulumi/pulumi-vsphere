@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // If set, VMware vSphere client will permit unverifiable SSL certificates.
 func GetAllowUnverifiedSsl(ctx *pulumi.Context) bool {
@@ -15,7 +18,7 @@ func GetAllowUnverifiedSsl(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "VSPHERE_ALLOW_UNVERIFIED_SSL"); d != nil {
 		value = d.(bool)
 	}
 	return value
@@ -33,7 +36,7 @@ func GetClientDebug(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_CLIENT_DEBUG"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "VSPHERE_CLIENT_DEBUG"); d != nil {
 		value = d.(bool)
 	}
 	return value
@@ -46,7 +49,7 @@ func GetClientDebugPath(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -59,7 +62,7 @@ func GetClientDebugPathRun(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "VSPHERE_CLIENT_DEBUG_PATH_RUN"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -77,7 +80,7 @@ func GetPersistSession(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(nil, parseEnvBool, "VSPHERE_PERSIST_SESSION"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "VSPHERE_PERSIST_SESSION"); d != nil {
 		value = d.(bool)
 	}
 	return value
@@ -90,7 +93,7 @@ func GetRestSessionPath(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "VSPHERE_REST_SESSION_PATH"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "VSPHERE_REST_SESSION_PATH"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -113,7 +116,7 @@ func GetVimKeepAlive(ctx *pulumi.Context) int {
 		return v
 	}
 	var value int
-	if d := getEnvOrDefault(nil, parseEnvInt, "VSPHERE_VIM_KEEP_ALIVE"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvInt, "VSPHERE_VIM_KEEP_ALIVE"); d != nil {
 		value = d.(int)
 	}
 	return value
@@ -126,7 +129,7 @@ func GetVimSessionPath(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "VSPHERE_VIM_SESSION_PATH"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "VSPHERE_VIM_SESSION_PATH"); d != nil {
 		value = d.(string)
 	}
 	return value

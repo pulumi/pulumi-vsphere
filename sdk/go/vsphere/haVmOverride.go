@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -98,6 +99,7 @@ func NewHaVmOverride(ctx *pulumi.Context,
 	if args.VirtualMachineId == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HaVmOverride
 	err := ctx.RegisterResource("vsphere:index/haVmOverride:HaVmOverride", name, args, &resource, opts...)
 	if err != nil {

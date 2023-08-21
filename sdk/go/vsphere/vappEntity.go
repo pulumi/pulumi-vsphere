@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewVappEntity(ctx *pulumi.Context,
 	if args.TargetId == nil {
 		return nil, errors.New("invalid value for required argument 'TargetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VappEntity
 	err := ctx.RegisterResource("vsphere:index/vappEntity:VappEntity", name, args, &resource, opts...)
 	if err != nil {

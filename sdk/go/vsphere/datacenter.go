@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ func NewDatacenter(ctx *pulumi.Context,
 		args = &DatacenterArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Datacenter
 	err := ctx.RegisterResource("vsphere:index/datacenter:Datacenter", name, args, &resource, opts...)
 	if err != nil {

@@ -138,12 +138,12 @@ def get_host_pci_device(class_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHostPciDevice:getHostPciDevice', __args__, opts=opts, typ=GetHostPciDeviceResult).value
 
     return AwaitableGetHostPciDeviceResult(
-        class_id=__ret__.class_id,
-        host_id=__ret__.host_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        vendor_id=__ret__.vendor_id)
+        class_id=pulumi.get(__ret__, 'class_id'),
+        host_id=pulumi.get(__ret__, 'host_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        vendor_id=pulumi.get(__ret__, 'vendor_id'))
 
 
 @_utilities.lift_output_func(get_host_pci_device)

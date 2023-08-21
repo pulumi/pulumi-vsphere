@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewVmfsDatastore(ctx *pulumi.Context,
 	if args.HostSystemId == nil {
 		return nil, errors.New("invalid value for required argument 'HostSystemId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VmfsDatastore
 	err := ctx.RegisterResource("vsphere:index/vmfsDatastore:VmfsDatastore", name, args, &resource, opts...)
 	if err != nil {

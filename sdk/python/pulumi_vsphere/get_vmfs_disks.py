@@ -129,11 +129,11 @@ def get_vmfs_disks(filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getVmfsDisks:getVmfsDisks', __args__, opts=opts, typ=GetVmfsDisksResult).value
 
     return AwaitableGetVmfsDisksResult(
-        disks=__ret__.disks,
-        filter=__ret__.filter,
-        host_system_id=__ret__.host_system_id,
-        id=__ret__.id,
-        rescan=__ret__.rescan)
+        disks=pulumi.get(__ret__, 'disks'),
+        filter=pulumi.get(__ret__, 'filter'),
+        host_system_id=pulumi.get(__ret__, 'host_system_id'),
+        id=pulumi.get(__ret__, 'id'),
+        rescan=pulumi.get(__ret__, 'rescan'))
 
 
 @_utilities.lift_output_func(get_vmfs_disks)

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func LookupTagCategory(ctx *pulumi.Context, args *LookupTagCategoryArgs, opts ...pulumi.InvokeOption) (*LookupTagCategoryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagCategoryResult
 	err := ctx.Invoke("vsphere:index/getTagCategory:getTagCategory", args, &rv, opts...)
 	if err != nil {

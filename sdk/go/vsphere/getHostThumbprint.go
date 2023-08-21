@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetHostThumbprint(ctx *pulumi.Context, args *GetHostThumbprintArgs, opts ...pulumi.InvokeOption) (*GetHostThumbprintResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostThumbprintResult
 	err := ctx.Invoke("vsphere:index/getHostThumbprint:getHostThumbprint", args, &rv, opts...)
 	if err != nil {

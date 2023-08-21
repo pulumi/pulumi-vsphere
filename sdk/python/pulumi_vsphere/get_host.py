@@ -110,10 +110,10 @@ def get_host(datacenter_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHost:getHost', __args__, opts=opts, typ=GetHostResult).value
 
     return AwaitableGetHostResult(
-        datacenter_id=__ret__.datacenter_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        resource_pool_id=__ret__.resource_pool_id)
+        datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'))
 
 
 @_utilities.lift_output_func(get_host)

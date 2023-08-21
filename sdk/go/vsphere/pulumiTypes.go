@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ComputeClusterVsanDiskGroup struct {
 	// The canonical name of the disk to use for vSAN cache.
@@ -22,9 +25,8 @@ type ComputeClusterVsanDiskGroup struct {
 	// package main
 	//
 	// import (
-	//
-	// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// "github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	// func main() {
 	// pulumi.Run(func(ctx *pulumi.Context) error {
@@ -85,9 +87,8 @@ type ComputeClusterVsanDiskGroupArgs struct {
 	// package main
 	//
 	// import (
-	//
-	// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// "github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	// func main() {
 	// pulumi.Run(func(ctx *pulumi.Context) error {
@@ -191,8 +192,9 @@ func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostResult
 	err := ctx.Invoke("vsphere:index/getHost:getHost", args, &rv, opts...)
 	if err != nil {

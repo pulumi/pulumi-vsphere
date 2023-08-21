@@ -121,6 +121,9 @@ class VirtualDiskArgs:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
+
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
@@ -252,6 +255,9 @@ class _VirtualDiskState:
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
+
         return pulumi.get(self, "adapter_type")
 
     @adapter_type.setter
@@ -531,6 +537,9 @@ class VirtualDisk(pulumi.CustomResource):
         disk controller types. This parameter will be removed in future versions of the
         vSphere provider.
         """
+        warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
+        pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")
+
         return pulumi.get(self, "adapter_type")
 
     @property

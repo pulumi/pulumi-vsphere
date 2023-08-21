@@ -107,10 +107,10 @@ def get_tag(category_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTag:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(
-        category_id=__ret__.category_id,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name)
+        category_id=pulumi.get(__ret__, 'category_id'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_tag)

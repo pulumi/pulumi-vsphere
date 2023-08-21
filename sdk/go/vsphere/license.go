@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ func NewLicense(ctx *pulumi.Context,
 	if args.LicenseKey == nil {
 		return nil, errors.New("invalid value for required argument 'LicenseKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource License
 	err := ctx.RegisterResource("vsphere:index/license:License", name, args, &resource, opts...)
 	if err != nil {

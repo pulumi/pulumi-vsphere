@@ -110,11 +110,11 @@ def get_tag_category(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getTagCategory:getTagCategory', __args__, opts=opts, typ=GetTagCategoryResult).value
 
     return AwaitableGetTagCategoryResult(
-        associable_types=__ret__.associable_types,
-        cardinality=__ret__.cardinality,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name)
+        associable_types=pulumi.get(__ret__, 'associable_types'),
+        cardinality=pulumi.get(__ret__, 'cardinality'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_tag_category)
