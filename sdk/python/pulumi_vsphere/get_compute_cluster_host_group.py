@@ -114,10 +114,10 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup', __args__, opts=opts, typ=GetComputeClusterHostGroupResult).value
 
     return AwaitableGetComputeClusterHostGroupResult(
-        compute_cluster_id=__ret__.compute_cluster_id,
-        host_system_ids=__ret__.host_system_ids,
-        id=__ret__.id,
-        name=__ret__.name)
+        compute_cluster_id=pulumi.get(__ret__, 'compute_cluster_id'),
+        host_system_ids=pulumi.get(__ret__, 'host_system_ids'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_compute_cluster_host_group)

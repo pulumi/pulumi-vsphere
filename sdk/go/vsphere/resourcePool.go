@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -214,6 +215,7 @@ func NewResourcePool(ctx *pulumi.Context,
 	if args.ParentResourcePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentResourcePoolId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResourcePool
 	err := ctx.RegisterResource("vsphere:index/resourcePool:ResourcePool", name, args, &resource, opts...)
 	if err != nil {

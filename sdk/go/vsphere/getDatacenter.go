@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupDatacenter(ctx *pulumi.Context, args *LookupDatacenterArgs, opts ...pulumi.InvokeOption) (*LookupDatacenterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatacenterResult
 	err := ctx.Invoke("vsphere:index/getDatacenter:getDatacenter", args, &rv, opts...)
 	if err != nil {

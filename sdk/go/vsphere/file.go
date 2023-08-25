@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,6 +117,7 @@ func NewFile(ctx *pulumi.Context,
 	if args.SourceFile == nil {
 		return nil, errors.New("invalid value for required argument 'SourceFile'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource File
 	err := ctx.RegisterResource("vsphere:index/file:File", name, args, &resource, opts...)
 	if err != nil {

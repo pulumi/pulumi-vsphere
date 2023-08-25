@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,6 +17,7 @@ import (
 // > **NOTE:** This resource requires vCenter Server and is not available on
 // direct ESXi host connections.
 func LookupContentLibraryItem(ctx *pulumi.Context, args *LookupContentLibraryItemArgs, opts ...pulumi.InvokeOption) (*LookupContentLibraryItemResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentLibraryItemResult
 	err := ctx.Invoke("vsphere:index/getContentLibraryItem:getContentLibraryItem", args, &rv, opts...)
 	if err != nil {

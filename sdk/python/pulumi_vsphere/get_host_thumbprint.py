@@ -105,10 +105,10 @@ def get_host_thumbprint(address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getHostThumbprint:getHostThumbprint', __args__, opts=opts, typ=GetHostThumbprintResult).value
 
     return AwaitableGetHostThumbprintResult(
-        address=__ret__.address,
-        id=__ret__.id,
-        insecure=__ret__.insecure,
-        port=__ret__.port)
+        address=pulumi.get(__ret__, 'address'),
+        id=pulumi.get(__ret__, 'id'),
+        insecure=pulumi.get(__ret__, 'insecure'),
+        port=pulumi.get(__ret__, 'port'))
 
 
 @_utilities.lift_output_func(get_host_thumbprint)

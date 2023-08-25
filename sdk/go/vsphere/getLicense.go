@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.InvokeOption) (*LookupLicenseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseResult
 	err := ctx.Invoke("vsphere:index/getLicense:getLicense", args, &rv, opts...)
 	if err != nil {

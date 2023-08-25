@@ -114,10 +114,10 @@ def get_compute_cluster(datacenter_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getComputeCluster:getComputeCluster', __args__, opts=opts, typ=GetComputeClusterResult).value
 
     return AwaitableGetComputeClusterResult(
-        datacenter_id=__ret__.datacenter_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        resource_pool_id=__ret__.resource_pool_id)
+        datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'))
 
 
 @_utilities.lift_output_func(get_compute_cluster)

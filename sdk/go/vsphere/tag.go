@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +35,7 @@ func NewTag(ctx *pulumi.Context,
 	if args.CategoryId == nil {
 		return nil, errors.New("invalid value for required argument 'CategoryId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tag
 	err := ctx.RegisterResource("vsphere:index/tag:Tag", name, args, &resource, opts...)
 	if err != nil {

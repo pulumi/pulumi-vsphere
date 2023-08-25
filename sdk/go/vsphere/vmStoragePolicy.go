@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -275,6 +276,7 @@ func NewVmStoragePolicy(ctx *pulumi.Context,
 	if args.TagRules == nil {
 		return nil, errors.New("invalid value for required argument 'TagRules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VmStoragePolicy
 	err := ctx.RegisterResource("vsphere:index/vmStoragePolicy:VmStoragePolicy", name, args, &resource, opts...)
 	if err != nil {

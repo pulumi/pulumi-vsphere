@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ import (
 //
 // ```
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributedVirtualSwitchArgs, opts ...pulumi.InvokeOption) (*LookupDistributedVirtualSwitchResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDistributedVirtualSwitchResult
 	err := ctx.Invoke("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args, &rv, opts...)
 	if err != nil {

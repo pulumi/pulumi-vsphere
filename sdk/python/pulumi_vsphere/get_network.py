@@ -127,11 +127,11 @@ def get_network(datacenter_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
-        datacenter_id=__ret__.datacenter_id,
-        distributed_virtual_switch_uuid=__ret__.distributed_virtual_switch_uuid,
-        id=__ret__.id,
-        name=__ret__.name,
-        type=__ret__.type)
+        datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
+        distributed_virtual_switch_uuid=pulumi.get(__ret__, 'distributed_virtual_switch_uuid'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_network)

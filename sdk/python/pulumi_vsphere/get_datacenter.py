@@ -85,8 +85,8 @@ def get_datacenter(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatacenter:getDatacenter', __args__, opts=opts, typ=GetDatacenterResult).value
 
     return AwaitableGetDatacenterResult(
-        id=__ret__.id,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_datacenter)

@@ -134,13 +134,13 @@ def get_license(license_key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getLicense:getLicense', __args__, opts=opts, typ=GetLicenseResult).value
 
     return AwaitableGetLicenseResult(
-        edition_key=__ret__.edition_key,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        license_key=__ret__.license_key,
-        name=__ret__.name,
-        total=__ret__.total,
-        used=__ret__.used)
+        edition_key=pulumi.get(__ret__, 'edition_key'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        license_key=pulumi.get(__ret__, 'license_key'),
+        name=pulumi.get(__ret__, 'name'),
+        total=pulumi.get(__ret__, 'total'),
+        used=pulumi.get(__ret__, 'used'))
 
 
 @_utilities.lift_output_func(get_license)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +85,7 @@ func NewVappContainer(ctx *pulumi.Context,
 	if args.ParentResourcePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'ParentResourcePoolId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VappContainer
 	err := ctx.RegisterResource("vsphere:index/vappContainer:VappContainer", name, args, &resource, opts...)
 	if err != nil {

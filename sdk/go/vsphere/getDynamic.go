@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +24,9 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
@@ -64,6 +66,7 @@ import (
 // }
 // ```
 func GetDynamic(ctx *pulumi.Context, args *GetDynamicArgs, opts ...pulumi.InvokeOption) (*GetDynamicResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDynamicResult
 	err := ctx.Invoke("vsphere:index/getDynamic:getDynamic", args, &rv, opts...)
 	if err != nil {

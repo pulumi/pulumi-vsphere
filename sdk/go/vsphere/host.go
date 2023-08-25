@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -218,6 +219,7 @@ func NewHost(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Host
 	err := ctx.RegisterResource("vsphere:index/host:Host", name, args, &resource, opts...)
 	if err != nil {

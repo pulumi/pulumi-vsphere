@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,6 +37,7 @@ func NewContentLibrary(ctx *pulumi.Context,
 	if args.StorageBackings == nil {
 		return nil, errors.New("invalid value for required argument 'StorageBackings'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContentLibrary
 	err := ctx.RegisterResource("vsphere:index/contentLibrary:ContentLibrary", name, args, &resource, opts...)
 	if err != nil {

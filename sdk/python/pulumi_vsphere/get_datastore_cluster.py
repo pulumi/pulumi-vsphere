@@ -97,9 +97,9 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDatastoreCluster:getDatastoreCluster', __args__, opts=opts, typ=GetDatastoreClusterResult).value
 
     return AwaitableGetDatastoreClusterResult(
-        datacenter_id=__ret__.datacenter_id,
-        id=__ret__.id,
-        name=__ret__.name)
+        datacenter_id=pulumi.get(__ret__, 'datacenter_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_datastore_cluster)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ func NewEntityPermissions(ctx *pulumi.Context,
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EntityPermissions
 	err := ctx.RegisterResource("vsphere:index/entityPermissions:EntityPermissions", name, args, &resource, opts...)
 	if err != nil {

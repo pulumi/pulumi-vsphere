@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewDrsVmOverride(ctx *pulumi.Context,
 	if args.VirtualMachineId == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualMachineId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DrsVmOverride
 	err := ctx.RegisterResource("vsphere:index/drsVmOverride:DrsVmOverride", name, args, &resource, opts...)
 	if err != nil {

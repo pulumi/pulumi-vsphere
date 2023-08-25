@@ -95,10 +95,10 @@ def get_content_library_item(library_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getContentLibraryItem:getContentLibraryItem', __args__, opts=opts, typ=GetContentLibraryItemResult).value
 
     return AwaitableGetContentLibraryItemResult(
-        id=__ret__.id,
-        library_id=__ret__.library_id,
-        name=__ret__.name,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        library_id=pulumi.get(__ret__, 'library_id'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_content_library_item)

@@ -121,11 +121,11 @@ def get_role(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        label=__ret__.label,
-        name=__ret__.name,
-        role_privileges=__ret__.role_privileges)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        label=pulumi.get(__ret__, 'label'),
+        name=pulumi.get(__ret__, 'name'),
+        role_privileges=pulumi.get(__ret__, 'role_privileges'))
 
 
 @_utilities.lift_output_func(get_role)

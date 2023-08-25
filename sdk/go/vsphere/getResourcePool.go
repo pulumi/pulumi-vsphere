@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ import (
 //
 // [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcePoolResult
 	err := ctx.Invoke("vsphere:index/getResourcePool:getResourcePool", args, &rv, opts...)
 	if err != nil {

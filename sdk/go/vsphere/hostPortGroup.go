@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -233,6 +234,7 @@ func NewHostPortGroup(ctx *pulumi.Context,
 	if args.VirtualSwitchName == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualSwitchName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostPortGroup
 	err := ctx.RegisterResource("vsphere:index/hostPortGroup:HostPortGroup", name, args, &resource, opts...)
 	if err != nil {

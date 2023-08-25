@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -208,6 +209,7 @@ func NewComputeClusterVmAffinityRule(ctx *pulumi.Context,
 	if args.VirtualMachineIds == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualMachineIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ComputeClusterVmAffinityRule
 	err := ctx.RegisterResource("vsphere:index/computeClusterVmAffinityRule:ComputeClusterVmAffinityRule", name, args, &resource, opts...)
 	if err != nil {

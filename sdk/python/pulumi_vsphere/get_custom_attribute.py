@@ -92,9 +92,9 @@ def get_custom_attribute(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getCustomAttribute:getCustomAttribute', __args__, opts=opts, typ=GetCustomAttributeResult).value
 
     return AwaitableGetCustomAttributeResult(
-        id=__ret__.id,
-        managed_object_type=__ret__.managed_object_type,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        managed_object_type=pulumi.get(__ret__, 'managed_object_type'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_custom_attribute)

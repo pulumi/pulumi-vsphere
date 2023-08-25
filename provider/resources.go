@@ -7,7 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform-provider-vsphere/vsphere"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-vsphere/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -212,8 +212,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("vsphere_", vsphereMod,
-		x.MakeStandardToken(vspherePkg)))
+	err := prov.ComputeTokens(tfbridgetokens.SingleModule("vsphere_", vsphereMod,
+		tfbridgetokens.MakeStandard(vspherePkg)))
 	contract.AssertNoErrorf(err, "failed to compute default modules")
 	prov.SetAutonaming(255, "-")
 

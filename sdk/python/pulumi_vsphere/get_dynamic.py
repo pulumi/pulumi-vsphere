@@ -118,10 +118,10 @@ def get_dynamic(filters: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('vsphere:index/getDynamic:getDynamic', __args__, opts=opts, typ=GetDynamicResult).value
 
     return AwaitableGetDynamicResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        name_regex=__ret__.name_regex,
-        type=__ret__.type)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_dynamic)
