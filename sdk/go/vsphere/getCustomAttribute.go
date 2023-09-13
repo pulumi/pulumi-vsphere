@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `CustomAttribute` data source can be used to reference custom
@@ -105,6 +106,12 @@ func (o LookupCustomAttributeResultOutput) ToLookupCustomAttributeResultOutput()
 
 func (o LookupCustomAttributeResultOutput) ToLookupCustomAttributeResultOutputWithContext(ctx context.Context) LookupCustomAttributeResultOutput {
 	return o
+}
+
+func (o LookupCustomAttributeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomAttributeResult] {
+	return pulumix.Output[LookupCustomAttributeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

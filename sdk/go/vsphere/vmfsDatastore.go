@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type VmfsDatastore struct {
@@ -313,6 +314,12 @@ func (i *VmfsDatastore) ToVmfsDatastoreOutputWithContext(ctx context.Context) Vm
 	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreOutput)
 }
 
+func (i *VmfsDatastore) ToOutput(ctx context.Context) pulumix.Output[*VmfsDatastore] {
+	return pulumix.Output[*VmfsDatastore]{
+		OutputState: i.ToVmfsDatastoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VmfsDatastoreArrayInput is an input type that accepts VmfsDatastoreArray and VmfsDatastoreArrayOutput values.
 // You can construct a concrete instance of `VmfsDatastoreArrayInput` via:
 //
@@ -336,6 +343,12 @@ func (i VmfsDatastoreArray) ToVmfsDatastoreArrayOutput() VmfsDatastoreArrayOutpu
 
 func (i VmfsDatastoreArray) ToVmfsDatastoreArrayOutputWithContext(ctx context.Context) VmfsDatastoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreArrayOutput)
+}
+
+func (i VmfsDatastoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*VmfsDatastore] {
+	return pulumix.Output[[]*VmfsDatastore]{
+		OutputState: i.ToVmfsDatastoreArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VmfsDatastoreMapInput is an input type that accepts VmfsDatastoreMap and VmfsDatastoreMapOutput values.
@@ -363,6 +376,12 @@ func (i VmfsDatastoreMap) ToVmfsDatastoreMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VmfsDatastoreMapOutput)
 }
 
+func (i VmfsDatastoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VmfsDatastore] {
+	return pulumix.Output[map[string]*VmfsDatastore]{
+		OutputState: i.ToVmfsDatastoreMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VmfsDatastoreOutput struct{ *pulumi.OutputState }
 
 func (VmfsDatastoreOutput) ElementType() reflect.Type {
@@ -375,6 +394,12 @@ func (o VmfsDatastoreOutput) ToVmfsDatastoreOutput() VmfsDatastoreOutput {
 
 func (o VmfsDatastoreOutput) ToVmfsDatastoreOutputWithContext(ctx context.Context) VmfsDatastoreOutput {
 	return o
+}
+
+func (o VmfsDatastoreOutput) ToOutput(ctx context.Context) pulumix.Output[*VmfsDatastore] {
+	return pulumix.Output[*VmfsDatastore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The connectivity status of the datastore. If this is `false`,
@@ -484,6 +509,12 @@ func (o VmfsDatastoreArrayOutput) ToVmfsDatastoreArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o VmfsDatastoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VmfsDatastore] {
+	return pulumix.Output[[]*VmfsDatastore]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VmfsDatastoreArrayOutput) Index(i pulumi.IntInput) VmfsDatastoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VmfsDatastore {
 		return vs[0].([]*VmfsDatastore)[vs[1].(int)]
@@ -502,6 +533,12 @@ func (o VmfsDatastoreMapOutput) ToVmfsDatastoreMapOutput() VmfsDatastoreMapOutpu
 
 func (o VmfsDatastoreMapOutput) ToVmfsDatastoreMapOutputWithContext(ctx context.Context) VmfsDatastoreMapOutput {
 	return o
+}
+
+func (o VmfsDatastoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VmfsDatastore] {
+	return pulumix.Output[map[string]*VmfsDatastore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VmfsDatastoreMapOutput) MapIndex(k pulumi.StringInput) VmfsDatastoreOutput {

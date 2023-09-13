@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `vsphereThumbprint` data source can be used to discover the host
@@ -114,6 +115,12 @@ func (o GetHostThumbprintResultOutput) ToGetHostThumbprintResultOutput() GetHost
 
 func (o GetHostThumbprintResultOutput) ToGetHostThumbprintResultOutputWithContext(ctx context.Context) GetHostThumbprintResultOutput {
 	return o
+}
+
+func (o GetHostThumbprintResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostThumbprintResult] {
+	return pulumix.Output[GetHostThumbprintResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostThumbprintResultOutput) Address() pulumi.StringOutput {

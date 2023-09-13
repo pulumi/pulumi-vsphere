@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type EntityPermissions struct {
@@ -135,6 +136,12 @@ func (i *EntityPermissions) ToEntityPermissionsOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsOutput)
 }
 
+func (i *EntityPermissions) ToOutput(ctx context.Context) pulumix.Output[*EntityPermissions] {
+	return pulumix.Output[*EntityPermissions]{
+		OutputState: i.ToEntityPermissionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntityPermissionsArrayInput is an input type that accepts EntityPermissionsArray and EntityPermissionsArrayOutput values.
 // You can construct a concrete instance of `EntityPermissionsArrayInput` via:
 //
@@ -158,6 +165,12 @@ func (i EntityPermissionsArray) ToEntityPermissionsArrayOutput() EntityPermissio
 
 func (i EntityPermissionsArray) ToEntityPermissionsArrayOutputWithContext(ctx context.Context) EntityPermissionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsArrayOutput)
+}
+
+func (i EntityPermissionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*EntityPermissions] {
+	return pulumix.Output[[]*EntityPermissions]{
+		OutputState: i.ToEntityPermissionsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EntityPermissionsMapInput is an input type that accepts EntityPermissionsMap and EntityPermissionsMapOutput values.
@@ -185,6 +198,12 @@ func (i EntityPermissionsMap) ToEntityPermissionsMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPermissionsMapOutput)
 }
 
+func (i EntityPermissionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntityPermissions] {
+	return pulumix.Output[map[string]*EntityPermissions]{
+		OutputState: i.ToEntityPermissionsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntityPermissionsOutput struct{ *pulumi.OutputState }
 
 func (EntityPermissionsOutput) ElementType() reflect.Type {
@@ -197,6 +216,12 @@ func (o EntityPermissionsOutput) ToEntityPermissionsOutput() EntityPermissionsOu
 
 func (o EntityPermissionsOutput) ToEntityPermissionsOutputWithContext(ctx context.Context) EntityPermissionsOutput {
 	return o
+}
+
+func (o EntityPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityPermissions] {
+	return pulumix.Output[*EntityPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed object id (uuid for some entities) on which permissions are to be created.
@@ -230,6 +255,12 @@ func (o EntityPermissionsArrayOutput) ToEntityPermissionsArrayOutputWithContext(
 	return o
 }
 
+func (o EntityPermissionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EntityPermissions] {
+	return pulumix.Output[[]*EntityPermissions]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityPermissionsArrayOutput) Index(i pulumi.IntInput) EntityPermissionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntityPermissions {
 		return vs[0].([]*EntityPermissions)[vs[1].(int)]
@@ -248,6 +279,12 @@ func (o EntityPermissionsMapOutput) ToEntityPermissionsMapOutput() EntityPermiss
 
 func (o EntityPermissionsMapOutput) ToEntityPermissionsMapOutputWithContext(ctx context.Context) EntityPermissionsMapOutput {
 	return o
+}
+
+func (o EntityPermissionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntityPermissions] {
+	return pulumix.Output[map[string]*EntityPermissions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityPermissionsMapOutput) MapIndex(k pulumi.StringInput) EntityPermissionsOutput {

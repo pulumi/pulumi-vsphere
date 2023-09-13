@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Tag` data source can be used to reference tags that are not
@@ -119,6 +120,12 @@ func (o LookupTagResultOutput) ToLookupTagResultOutput() LookupTagResultOutput {
 
 func (o LookupTagResultOutput) ToLookupTagResultOutputWithContext(ctx context.Context) LookupTagResultOutput {
 	return o
+}
+
+func (o LookupTagResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagResult] {
+	return pulumix.Output[LookupTagResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupTagResultOutput) CategoryId() pulumi.StringOutput {

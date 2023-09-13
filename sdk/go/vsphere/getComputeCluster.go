@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ComputeCluster` data source can be used to discover the ID of a
@@ -127,6 +128,12 @@ func (o LookupComputeClusterResultOutput) ToLookupComputeClusterResultOutput() L
 
 func (o LookupComputeClusterResultOutput) ToLookupComputeClusterResultOutputWithContext(ctx context.Context) LookupComputeClusterResultOutput {
 	return o
+}
+
+func (o LookupComputeClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComputeClusterResult] {
+	return pulumix.Output[LookupComputeClusterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupComputeClusterResultOutput) DatacenterId() pulumi.StringPtrOutput {

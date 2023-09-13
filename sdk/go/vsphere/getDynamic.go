@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // [docs-about-morefs]: /docs/providers/vsphere/index.html#use-of-managed-object-references-by-the-vsphere-provider
@@ -142,6 +143,12 @@ func (o GetDynamicResultOutput) ToGetDynamicResultOutput() GetDynamicResultOutpu
 
 func (o GetDynamicResultOutput) ToGetDynamicResultOutputWithContext(ctx context.Context) GetDynamicResultOutput {
 	return o
+}
+
+func (o GetDynamicResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDynamicResult] {
+	return pulumix.Output[GetDynamicResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDynamicResultOutput) Filters() pulumi.StringArrayOutput {
