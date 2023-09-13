@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getVmfsDisks` data source can be used to discover the storage
@@ -144,6 +145,12 @@ func (o GetVmfsDisksResultOutput) ToGetVmfsDisksResultOutput() GetVmfsDisksResul
 
 func (o GetVmfsDisksResultOutput) ToGetVmfsDisksResultOutputWithContext(ctx context.Context) GetVmfsDisksResultOutput {
 	return o
+}
+
+func (o GetVmfsDisksResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetVmfsDisksResult] {
+	return pulumix.Output[GetVmfsDisksResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A lexicographically sorted list of devices discovered by the

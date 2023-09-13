@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ComputeClusterVmDependencyRule struct {
@@ -225,6 +226,12 @@ func (i *ComputeClusterVmDependencyRule) ToComputeClusterVmDependencyRuleOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleOutput)
 }
 
+func (i *ComputeClusterVmDependencyRule) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[*ComputeClusterVmDependencyRule]{
+		OutputState: i.ToComputeClusterVmDependencyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ComputeClusterVmDependencyRuleArrayInput is an input type that accepts ComputeClusterVmDependencyRuleArray and ComputeClusterVmDependencyRuleArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmDependencyRuleArrayInput` via:
 //
@@ -248,6 +255,12 @@ func (i ComputeClusterVmDependencyRuleArray) ToComputeClusterVmDependencyRuleArr
 
 func (i ComputeClusterVmDependencyRuleArray) ToComputeClusterVmDependencyRuleArrayOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleArrayOutput)
+}
+
+func (i ComputeClusterVmDependencyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[[]*ComputeClusterVmDependencyRule]{
+		OutputState: i.ToComputeClusterVmDependencyRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ComputeClusterVmDependencyRuleMapInput is an input type that accepts ComputeClusterVmDependencyRuleMap and ComputeClusterVmDependencyRuleMapOutput values.
@@ -275,6 +288,12 @@ func (i ComputeClusterVmDependencyRuleMap) ToComputeClusterVmDependencyRuleMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmDependencyRuleMapOutput)
 }
 
+func (i ComputeClusterVmDependencyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[map[string]*ComputeClusterVmDependencyRule]{
+		OutputState: i.ToComputeClusterVmDependencyRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComputeClusterVmDependencyRuleOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmDependencyRuleOutput) ElementType() reflect.Type {
@@ -287,6 +306,12 @@ func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOu
 
 func (o ComputeClusterVmDependencyRuleOutput) ToComputeClusterVmDependencyRuleOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleOutput {
 	return o
+}
+
+func (o ComputeClusterVmDependencyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[*ComputeClusterVmDependencyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed object reference
@@ -347,6 +372,12 @@ func (o ComputeClusterVmDependencyRuleArrayOutput) ToComputeClusterVmDependencyR
 	return o
 }
 
+func (o ComputeClusterVmDependencyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[[]*ComputeClusterVmDependencyRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeClusterVmDependencyRuleArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmDependencyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterVmDependencyRule {
 		return vs[0].([]*ComputeClusterVmDependencyRule)[vs[1].(int)]
@@ -365,6 +396,12 @@ func (o ComputeClusterVmDependencyRuleMapOutput) ToComputeClusterVmDependencyRul
 
 func (o ComputeClusterVmDependencyRuleMapOutput) ToComputeClusterVmDependencyRuleMapOutputWithContext(ctx context.Context) ComputeClusterVmDependencyRuleMapOutput {
 	return o
+}
+
+func (o ComputeClusterVmDependencyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmDependencyRule] {
+	return pulumix.Output[map[string]*ComputeClusterVmDependencyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeClusterVmDependencyRuleMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmDependencyRuleOutput {

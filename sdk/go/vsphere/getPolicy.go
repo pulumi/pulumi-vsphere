@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getPolicy` data source can be used to discover the UUID of a
@@ -108,6 +109,12 @@ func (o GetPolicyResultOutput) ToGetPolicyResultOutput() GetPolicyResultOutput {
 
 func (o GetPolicyResultOutput) ToGetPolicyResultOutputWithContext(ctx context.Context) GetPolicyResultOutput {
 	return o
+}
+
+func (o GetPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPolicyResult] {
+	return pulumix.Output[GetPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DatastoreCluster struct {
@@ -619,6 +620,12 @@ func (i *DatastoreCluster) ToDatastoreClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterOutput)
 }
 
+func (i *DatastoreCluster) ToOutput(ctx context.Context) pulumix.Output[*DatastoreCluster] {
+	return pulumix.Output[*DatastoreCluster]{
+		OutputState: i.ToDatastoreClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatastoreClusterArrayInput is an input type that accepts DatastoreClusterArray and DatastoreClusterArrayOutput values.
 // You can construct a concrete instance of `DatastoreClusterArrayInput` via:
 //
@@ -642,6 +649,12 @@ func (i DatastoreClusterArray) ToDatastoreClusterArrayOutput() DatastoreClusterA
 
 func (i DatastoreClusterArray) ToDatastoreClusterArrayOutputWithContext(ctx context.Context) DatastoreClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterArrayOutput)
+}
+
+func (i DatastoreClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatastoreCluster] {
+	return pulumix.Output[[]*DatastoreCluster]{
+		OutputState: i.ToDatastoreClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatastoreClusterMapInput is an input type that accepts DatastoreClusterMap and DatastoreClusterMapOutput values.
@@ -669,6 +682,12 @@ func (i DatastoreClusterMap) ToDatastoreClusterMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterMapOutput)
 }
 
+func (i DatastoreClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatastoreCluster] {
+	return pulumix.Output[map[string]*DatastoreCluster]{
+		OutputState: i.ToDatastoreClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatastoreClusterOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterOutput) ElementType() reflect.Type {
@@ -681,6 +700,12 @@ func (o DatastoreClusterOutput) ToDatastoreClusterOutput() DatastoreClusterOutpu
 
 func (o DatastoreClusterOutput) ToDatastoreClusterOutputWithContext(ctx context.Context) DatastoreClusterOutput {
 	return o
+}
+
+func (o DatastoreClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*DatastoreCluster] {
+	return pulumix.Output[*DatastoreCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A map of custom attribute ids to attribute
@@ -878,6 +903,12 @@ func (o DatastoreClusterArrayOutput) ToDatastoreClusterArrayOutputWithContext(ct
 	return o
 }
 
+func (o DatastoreClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatastoreCluster] {
+	return pulumix.Output[[]*DatastoreCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatastoreClusterArrayOutput) Index(i pulumi.IntInput) DatastoreClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatastoreCluster {
 		return vs[0].([]*DatastoreCluster)[vs[1].(int)]
@@ -896,6 +927,12 @@ func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutput() DatastoreCluste
 
 func (o DatastoreClusterMapOutput) ToDatastoreClusterMapOutputWithContext(ctx context.Context) DatastoreClusterMapOutput {
 	return o
+}
+
+func (o DatastoreClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatastoreCluster] {
+	return pulumix.Output[map[string]*DatastoreCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatastoreClusterMapOutput) MapIndex(k pulumi.StringInput) DatastoreClusterOutput {

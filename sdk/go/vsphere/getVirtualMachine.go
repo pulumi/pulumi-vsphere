@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `VirtualMachine` data source can be used to find the UUID of an
@@ -412,6 +413,12 @@ func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutput() L
 
 func (o LookupVirtualMachineResultOutput) ToLookupVirtualMachineResultOutputWithContext(ctx context.Context) LookupVirtualMachineResultOutput {
 	return o
+}
+
+func (o LookupVirtualMachineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineResult] {
+	return pulumix.Output[LookupVirtualMachineResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alternate guest name of the virtual machine when

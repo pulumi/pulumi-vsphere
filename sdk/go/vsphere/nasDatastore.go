@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type NasDatastore struct {
@@ -400,6 +401,12 @@ func (i *NasDatastore) ToNasDatastoreOutputWithContext(ctx context.Context) NasD
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreOutput)
 }
 
+func (i *NasDatastore) ToOutput(ctx context.Context) pulumix.Output[*NasDatastore] {
+	return pulumix.Output[*NasDatastore]{
+		OutputState: i.ToNasDatastoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NasDatastoreArrayInput is an input type that accepts NasDatastoreArray and NasDatastoreArrayOutput values.
 // You can construct a concrete instance of `NasDatastoreArrayInput` via:
 //
@@ -423,6 +430,12 @@ func (i NasDatastoreArray) ToNasDatastoreArrayOutput() NasDatastoreArrayOutput {
 
 func (i NasDatastoreArray) ToNasDatastoreArrayOutputWithContext(ctx context.Context) NasDatastoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreArrayOutput)
+}
+
+func (i NasDatastoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*NasDatastore] {
+	return pulumix.Output[[]*NasDatastore]{
+		OutputState: i.ToNasDatastoreArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NasDatastoreMapInput is an input type that accepts NasDatastoreMap and NasDatastoreMapOutput values.
@@ -450,6 +463,12 @@ func (i NasDatastoreMap) ToNasDatastoreMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NasDatastoreMapOutput)
 }
 
+func (i NasDatastoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasDatastore] {
+	return pulumix.Output[map[string]*NasDatastore]{
+		OutputState: i.ToNasDatastoreMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NasDatastoreOutput struct{ *pulumi.OutputState }
 
 func (NasDatastoreOutput) ElementType() reflect.Type {
@@ -462,6 +481,12 @@ func (o NasDatastoreOutput) ToNasDatastoreOutput() NasDatastoreOutput {
 
 func (o NasDatastoreOutput) ToNasDatastoreOutputWithContext(ctx context.Context) NasDatastoreOutput {
 	return o
+}
+
+func (o NasDatastoreOutput) ToOutput(ctx context.Context) pulumix.Output[*NasDatastore] {
+	return pulumix.Output[*NasDatastore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access mode for the mount point. Can be one of
@@ -604,6 +629,12 @@ func (o NasDatastoreArrayOutput) ToNasDatastoreArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o NasDatastoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NasDatastore] {
+	return pulumix.Output[[]*NasDatastore]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NasDatastoreArrayOutput) Index(i pulumi.IntInput) NasDatastoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasDatastore {
 		return vs[0].([]*NasDatastore)[vs[1].(int)]
@@ -622,6 +653,12 @@ func (o NasDatastoreMapOutput) ToNasDatastoreMapOutput() NasDatastoreMapOutput {
 
 func (o NasDatastoreMapOutput) ToNasDatastoreMapOutputWithContext(ctx context.Context) NasDatastoreMapOutput {
 	return o
+}
+
+func (o NasDatastoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NasDatastore] {
+	return pulumix.Output[map[string]*NasDatastore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NasDatastoreMapOutput) MapIndex(k pulumi.StringInput) NasDatastoreOutput {

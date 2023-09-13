@@ -105,8 +105,8 @@ namespace Pulumi.VSphere
     ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
     ///         VirtualMachineIds = vm.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(v =&gt; 
     ///         {
-    ///             return  v.Id;
-    ///         }),
+    ///             return v.Id;
+    ///         }).ToList(),
     ///     });
     /// 
     /// });
@@ -144,12 +144,12 @@ namespace Pulumi.VSphere
     ///     var vmsVirtualMachine = "TODO: Range  range( length(vms)
     /// ) false".Select(__index =&gt; 
     ///     {
-    ///         return  VSphere.GetVirtualMachine.Invoke(new()
+    ///         return VSphere.GetVirtualMachine.Invoke(new()
     ///         {
     ///             Name = vms[__index],
     ///             DatacenterId = _arg0_.Id,
     ///         });
-    ///     });
+    ///     }).ToList();
     /// 
     ///     var vmAffinityRule = new VSphere.ComputeClusterVmAffinityRule("vmAffinityRule", new()
     ///     {

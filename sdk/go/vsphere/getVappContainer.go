@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `VappContainer` data source can be used to discover the ID of a
@@ -116,6 +117,12 @@ func (o LookupVappContainerResultOutput) ToLookupVappContainerResultOutput() Loo
 
 func (o LookupVappContainerResultOutput) ToLookupVappContainerResultOutputWithContext(ctx context.Context) LookupVappContainerResultOutput {
 	return o
+}
+
+func (o LookupVappContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVappContainerResult] {
+	return pulumix.Output[LookupVappContainerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupVappContainerResultOutput) DatacenterId() pulumi.StringOutput {

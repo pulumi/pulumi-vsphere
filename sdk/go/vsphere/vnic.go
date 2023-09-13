@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VMware vSphere vnic resource.
@@ -284,6 +285,12 @@ func (i *Vnic) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicOutput)
 }
 
+func (i *Vnic) ToOutput(ctx context.Context) pulumix.Output[*Vnic] {
+	return pulumix.Output[*Vnic]{
+		OutputState: i.ToVnicOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VnicArrayInput is an input type that accepts VnicArray and VnicArrayOutput values.
 // You can construct a concrete instance of `VnicArrayInput` via:
 //
@@ -307,6 +314,12 @@ func (i VnicArray) ToVnicArrayOutput() VnicArrayOutput {
 
 func (i VnicArray) ToVnicArrayOutputWithContext(ctx context.Context) VnicArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicArrayOutput)
+}
+
+func (i VnicArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vnic] {
+	return pulumix.Output[[]*Vnic]{
+		OutputState: i.ToVnicArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VnicMapInput is an input type that accepts VnicMap and VnicMapOutput values.
@@ -334,6 +347,12 @@ func (i VnicMap) ToVnicMapOutputWithContext(ctx context.Context) VnicMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VnicMapOutput)
 }
 
+func (i VnicMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vnic] {
+	return pulumix.Output[map[string]*Vnic]{
+		OutputState: i.ToVnicMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VnicOutput struct{ *pulumi.OutputState }
 
 func (VnicOutput) ElementType() reflect.Type {
@@ -346,6 +365,12 @@ func (o VnicOutput) ToVnicOutput() VnicOutput {
 
 func (o VnicOutput) ToVnicOutputWithContext(ctx context.Context) VnicOutput {
 	return o
+}
+
+func (o VnicOutput) ToOutput(ctx context.Context) pulumix.Output[*Vnic] {
+	return pulumix.Output[*Vnic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Key of the distributed portgroup the nic will connect to.
@@ -412,6 +437,12 @@ func (o VnicArrayOutput) ToVnicArrayOutputWithContext(ctx context.Context) VnicA
 	return o
 }
 
+func (o VnicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vnic] {
+	return pulumix.Output[[]*Vnic]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VnicArrayOutput) Index(i pulumi.IntInput) VnicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vnic {
 		return vs[0].([]*Vnic)[vs[1].(int)]
@@ -430,6 +461,12 @@ func (o VnicMapOutput) ToVnicMapOutput() VnicMapOutput {
 
 func (o VnicMapOutput) ToVnicMapOutputWithContext(ctx context.Context) VnicMapOutput {
 	return o
+}
+
+func (o VnicMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vnic] {
+	return pulumix.Output[map[string]*Vnic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VnicMapOutput) MapIndex(k pulumi.StringInput) VnicOutput {

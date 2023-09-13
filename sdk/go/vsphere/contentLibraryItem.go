@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ContentLibraryItem struct {
@@ -154,6 +155,12 @@ func (i *ContentLibraryItem) ToContentLibraryItemOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemOutput)
 }
 
+func (i *ContentLibraryItem) ToOutput(ctx context.Context) pulumix.Output[*ContentLibraryItem] {
+	return pulumix.Output[*ContentLibraryItem]{
+		OutputState: i.ToContentLibraryItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContentLibraryItemArrayInput is an input type that accepts ContentLibraryItemArray and ContentLibraryItemArrayOutput values.
 // You can construct a concrete instance of `ContentLibraryItemArrayInput` via:
 //
@@ -177,6 +184,12 @@ func (i ContentLibraryItemArray) ToContentLibraryItemArrayOutput() ContentLibrar
 
 func (i ContentLibraryItemArray) ToContentLibraryItemArrayOutputWithContext(ctx context.Context) ContentLibraryItemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemArrayOutput)
+}
+
+func (i ContentLibraryItemArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContentLibraryItem] {
+	return pulumix.Output[[]*ContentLibraryItem]{
+		OutputState: i.ToContentLibraryItemArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContentLibraryItemMapInput is an input type that accepts ContentLibraryItemMap and ContentLibraryItemMapOutput values.
@@ -204,6 +217,12 @@ func (i ContentLibraryItemMap) ToContentLibraryItemMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryItemMapOutput)
 }
 
+func (i ContentLibraryItemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentLibraryItem] {
+	return pulumix.Output[map[string]*ContentLibraryItem]{
+		OutputState: i.ToContentLibraryItemMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContentLibraryItemOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryItemOutput) ElementType() reflect.Type {
@@ -216,6 +235,12 @@ func (o ContentLibraryItemOutput) ToContentLibraryItemOutput() ContentLibraryIte
 
 func (o ContentLibraryItemOutput) ToContentLibraryItemOutputWithContext(ctx context.Context) ContentLibraryItemOutput {
 	return o
+}
+
+func (o ContentLibraryItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentLibraryItem] {
+	return pulumix.Output[*ContentLibraryItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description for the content library item.
@@ -263,6 +288,12 @@ func (o ContentLibraryItemArrayOutput) ToContentLibraryItemArrayOutputWithContex
 	return o
 }
 
+func (o ContentLibraryItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContentLibraryItem] {
+	return pulumix.Output[[]*ContentLibraryItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContentLibraryItemArrayOutput) Index(i pulumi.IntInput) ContentLibraryItemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContentLibraryItem {
 		return vs[0].([]*ContentLibraryItem)[vs[1].(int)]
@@ -281,6 +312,12 @@ func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutput() ContentLibr
 
 func (o ContentLibraryItemMapOutput) ToContentLibraryItemMapOutputWithContext(ctx context.Context) ContentLibraryItemMapOutput {
 	return o
+}
+
+func (o ContentLibraryItemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentLibraryItem] {
+	return pulumix.Output[map[string]*ContentLibraryItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContentLibraryItemMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryItemOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DrsVmOverride struct {
@@ -182,6 +183,12 @@ func (i *DrsVmOverride) ToDrsVmOverrideOutputWithContext(ctx context.Context) Dr
 	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideOutput)
 }
 
+func (i *DrsVmOverride) ToOutput(ctx context.Context) pulumix.Output[*DrsVmOverride] {
+	return pulumix.Output[*DrsVmOverride]{
+		OutputState: i.ToDrsVmOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DrsVmOverrideArrayInput is an input type that accepts DrsVmOverrideArray and DrsVmOverrideArrayOutput values.
 // You can construct a concrete instance of `DrsVmOverrideArrayInput` via:
 //
@@ -205,6 +212,12 @@ func (i DrsVmOverrideArray) ToDrsVmOverrideArrayOutput() DrsVmOverrideArrayOutpu
 
 func (i DrsVmOverrideArray) ToDrsVmOverrideArrayOutputWithContext(ctx context.Context) DrsVmOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideArrayOutput)
+}
+
+func (i DrsVmOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*DrsVmOverride] {
+	return pulumix.Output[[]*DrsVmOverride]{
+		OutputState: i.ToDrsVmOverrideArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DrsVmOverrideMapInput is an input type that accepts DrsVmOverrideMap and DrsVmOverrideMapOutput values.
@@ -232,6 +245,12 @@ func (i DrsVmOverrideMap) ToDrsVmOverrideMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DrsVmOverrideMapOutput)
 }
 
+func (i DrsVmOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DrsVmOverride] {
+	return pulumix.Output[map[string]*DrsVmOverride]{
+		OutputState: i.ToDrsVmOverrideMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DrsVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (DrsVmOverrideOutput) ElementType() reflect.Type {
@@ -244,6 +263,12 @@ func (o DrsVmOverrideOutput) ToDrsVmOverrideOutput() DrsVmOverrideOutput {
 
 func (o DrsVmOverrideOutput) ToDrsVmOverrideOutputWithContext(ctx context.Context) DrsVmOverrideOutput {
 	return o
+}
+
+func (o DrsVmOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*DrsVmOverride] {
+	return pulumix.Output[*DrsVmOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed object reference
@@ -290,6 +315,12 @@ func (o DrsVmOverrideArrayOutput) ToDrsVmOverrideArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o DrsVmOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DrsVmOverride] {
+	return pulumix.Output[[]*DrsVmOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DrsVmOverrideArrayOutput) Index(i pulumi.IntInput) DrsVmOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DrsVmOverride {
 		return vs[0].([]*DrsVmOverride)[vs[1].(int)]
@@ -308,6 +339,12 @@ func (o DrsVmOverrideMapOutput) ToDrsVmOverrideMapOutput() DrsVmOverrideMapOutpu
 
 func (o DrsVmOverrideMapOutput) ToDrsVmOverrideMapOutputWithContext(ctx context.Context) DrsVmOverrideMapOutput {
 	return o
+}
+
+func (o DrsVmOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DrsVmOverride] {
+	return pulumix.Output[map[string]*DrsVmOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DrsVmOverrideMapOutput) MapIndex(k pulumi.StringInput) DrsVmOverrideOutput {

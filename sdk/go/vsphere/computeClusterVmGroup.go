@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ComputeClusterVmGroup struct {
@@ -164,6 +165,12 @@ func (i *ComputeClusterVmGroup) ToComputeClusterVmGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupOutput)
 }
 
+func (i *ComputeClusterVmGroup) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmGroup] {
+	return pulumix.Output[*ComputeClusterVmGroup]{
+		OutputState: i.ToComputeClusterVmGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ComputeClusterVmGroupArrayInput is an input type that accepts ComputeClusterVmGroupArray and ComputeClusterVmGroupArrayOutput values.
 // You can construct a concrete instance of `ComputeClusterVmGroupArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i ComputeClusterVmGroupArray) ToComputeClusterVmGroupArrayOutput() Compute
 
 func (i ComputeClusterVmGroupArray) ToComputeClusterVmGroupArrayOutputWithContext(ctx context.Context) ComputeClusterVmGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupArrayOutput)
+}
+
+func (i ComputeClusterVmGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmGroup] {
+	return pulumix.Output[[]*ComputeClusterVmGroup]{
+		OutputState: i.ToComputeClusterVmGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ComputeClusterVmGroupMapInput is an input type that accepts ComputeClusterVmGroupMap and ComputeClusterVmGroupMapOutput values.
@@ -214,6 +227,12 @@ func (i ComputeClusterVmGroupMap) ToComputeClusterVmGroupMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeClusterVmGroupMapOutput)
 }
 
+func (i ComputeClusterVmGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmGroup] {
+	return pulumix.Output[map[string]*ComputeClusterVmGroup]{
+		OutputState: i.ToComputeClusterVmGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ComputeClusterVmGroupOutput struct{ *pulumi.OutputState }
 
 func (ComputeClusterVmGroupOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutput() ComputeClus
 
 func (o ComputeClusterVmGroupOutput) ToComputeClusterVmGroupOutputWithContext(ctx context.Context) ComputeClusterVmGroupOutput {
 	return o
+}
+
+func (o ComputeClusterVmGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeClusterVmGroup] {
+	return pulumix.Output[*ComputeClusterVmGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed object reference
@@ -266,6 +291,12 @@ func (o ComputeClusterVmGroupArrayOutput) ToComputeClusterVmGroupArrayOutputWith
 	return o
 }
 
+func (o ComputeClusterVmGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ComputeClusterVmGroup] {
+	return pulumix.Output[[]*ComputeClusterVmGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ComputeClusterVmGroupArrayOutput) Index(i pulumi.IntInput) ComputeClusterVmGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ComputeClusterVmGroup {
 		return vs[0].([]*ComputeClusterVmGroup)[vs[1].(int)]
@@ -284,6 +315,12 @@ func (o ComputeClusterVmGroupMapOutput) ToComputeClusterVmGroupMapOutput() Compu
 
 func (o ComputeClusterVmGroupMapOutput) ToComputeClusterVmGroupMapOutputWithContext(ctx context.Context) ComputeClusterVmGroupMapOutput {
 	return o
+}
+
+func (o ComputeClusterVmGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ComputeClusterVmGroup] {
+	return pulumix.Output[map[string]*ComputeClusterVmGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ComputeClusterVmGroupMapOutput) MapIndex(k pulumi.StringInput) ComputeClusterVmGroupOutput {

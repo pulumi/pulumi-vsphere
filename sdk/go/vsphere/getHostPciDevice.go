@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getHostPciDevice` data source can be used to discover the device ID
@@ -143,6 +144,12 @@ func (o GetHostPciDeviceResultOutput) ToGetHostPciDeviceResultOutput() GetHostPc
 
 func (o GetHostPciDeviceResultOutput) ToGetHostPciDeviceResultOutputWithContext(ctx context.Context) GetHostPciDeviceResultOutput {
 	return o
+}
+
+func (o GetHostPciDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHostPciDeviceResult] {
+	return pulumix.Output[GetHostPciDeviceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetHostPciDeviceResultOutput) ClassId() pulumi.StringPtrOutput {

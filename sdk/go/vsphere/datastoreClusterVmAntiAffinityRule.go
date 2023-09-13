@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DatastoreClusterVmAntiAffinityRule struct {
@@ -172,6 +173,12 @@ func (i *DatastoreClusterVmAntiAffinityRule) ToDatastoreClusterVmAntiAffinityRul
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterVmAntiAffinityRuleOutput)
 }
 
+func (i *DatastoreClusterVmAntiAffinityRule) ToOutput(ctx context.Context) pulumix.Output[*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: i.ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatastoreClusterVmAntiAffinityRuleArrayInput is an input type that accepts DatastoreClusterVmAntiAffinityRuleArray and DatastoreClusterVmAntiAffinityRuleArrayOutput values.
 // You can construct a concrete instance of `DatastoreClusterVmAntiAffinityRuleArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i DatastoreClusterVmAntiAffinityRuleArray) ToDatastoreClusterVmAntiAffinit
 
 func (i DatastoreClusterVmAntiAffinityRuleArray) ToDatastoreClusterVmAntiAffinityRuleArrayOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterVmAntiAffinityRuleArrayOutput)
+}
+
+func (i DatastoreClusterVmAntiAffinityRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[[]*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: i.ToDatastoreClusterVmAntiAffinityRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatastoreClusterVmAntiAffinityRuleMapInput is an input type that accepts DatastoreClusterVmAntiAffinityRuleMap and DatastoreClusterVmAntiAffinityRuleMapOutput values.
@@ -222,6 +235,12 @@ func (i DatastoreClusterVmAntiAffinityRuleMap) ToDatastoreClusterVmAntiAffinityR
 	return pulumi.ToOutputWithContext(ctx, i).(DatastoreClusterVmAntiAffinityRuleMapOutput)
 }
 
+func (i DatastoreClusterVmAntiAffinityRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[map[string]*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: i.ToDatastoreClusterVmAntiAffinityRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatastoreClusterVmAntiAffinityRuleOutput struct{ *pulumi.OutputState }
 
 func (DatastoreClusterVmAntiAffinityRuleOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffini
 
 func (o DatastoreClusterVmAntiAffinityRuleOutput) ToDatastoreClusterVmAntiAffinityRuleOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleOutput {
 	return o
+}
+
+func (o DatastoreClusterVmAntiAffinityRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The managed object reference
@@ -281,6 +306,12 @@ func (o DatastoreClusterVmAntiAffinityRuleArrayOutput) ToDatastoreClusterVmAntiA
 	return o
 }
 
+func (o DatastoreClusterVmAntiAffinityRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[[]*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatastoreClusterVmAntiAffinityRuleArrayOutput) Index(i pulumi.IntInput) DatastoreClusterVmAntiAffinityRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatastoreClusterVmAntiAffinityRule {
 		return vs[0].([]*DatastoreClusterVmAntiAffinityRule)[vs[1].(int)]
@@ -299,6 +330,12 @@ func (o DatastoreClusterVmAntiAffinityRuleMapOutput) ToDatastoreClusterVmAntiAff
 
 func (o DatastoreClusterVmAntiAffinityRuleMapOutput) ToDatastoreClusterVmAntiAffinityRuleMapOutputWithContext(ctx context.Context) DatastoreClusterVmAntiAffinityRuleMapOutput {
 	return o
+}
+
+func (o DatastoreClusterVmAntiAffinityRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatastoreClusterVmAntiAffinityRule] {
+	return pulumix.Output[map[string]*DatastoreClusterVmAntiAffinityRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatastoreClusterVmAntiAffinityRuleMapOutput) MapIndex(k pulumi.StringInput) DatastoreClusterVmAntiAffinityRuleOutput {

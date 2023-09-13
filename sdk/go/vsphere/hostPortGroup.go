@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `HostPortGroup` resource can be used to manage port groups on
@@ -484,6 +485,12 @@ func (i *HostPortGroup) ToHostPortGroupOutputWithContext(ctx context.Context) Ho
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupOutput)
 }
 
+func (i *HostPortGroup) ToOutput(ctx context.Context) pulumix.Output[*HostPortGroup] {
+	return pulumix.Output[*HostPortGroup]{
+		OutputState: i.ToHostPortGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostPortGroupArrayInput is an input type that accepts HostPortGroupArray and HostPortGroupArrayOutput values.
 // You can construct a concrete instance of `HostPortGroupArrayInput` via:
 //
@@ -507,6 +514,12 @@ func (i HostPortGroupArray) ToHostPortGroupArrayOutput() HostPortGroupArrayOutpu
 
 func (i HostPortGroupArray) ToHostPortGroupArrayOutputWithContext(ctx context.Context) HostPortGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupArrayOutput)
+}
+
+func (i HostPortGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostPortGroup] {
+	return pulumix.Output[[]*HostPortGroup]{
+		OutputState: i.ToHostPortGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostPortGroupMapInput is an input type that accepts HostPortGroupMap and HostPortGroupMapOutput values.
@@ -534,6 +547,12 @@ func (i HostPortGroupMap) ToHostPortGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostPortGroupMapOutput)
 }
 
+func (i HostPortGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostPortGroup] {
+	return pulumix.Output[map[string]*HostPortGroup]{
+		OutputState: i.ToHostPortGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostPortGroupOutput struct{ *pulumi.OutputState }
 
 func (HostPortGroupOutput) ElementType() reflect.Type {
@@ -546,6 +565,12 @@ func (o HostPortGroupOutput) ToHostPortGroupOutput() HostPortGroupOutput {
 
 func (o HostPortGroupOutput) ToHostPortGroupOutputWithContext(ctx context.Context) HostPortGroupOutput {
 	return o
+}
+
+func (o HostPortGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*HostPortGroup] {
+	return pulumix.Output[*HostPortGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of active network adapters used for load balancing.
@@ -673,6 +698,12 @@ func (o HostPortGroupArrayOutput) ToHostPortGroupArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o HostPortGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostPortGroup] {
+	return pulumix.Output[[]*HostPortGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostPortGroupArrayOutput) Index(i pulumi.IntInput) HostPortGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostPortGroup {
 		return vs[0].([]*HostPortGroup)[vs[1].(int)]
@@ -691,6 +722,12 @@ func (o HostPortGroupMapOutput) ToHostPortGroupMapOutput() HostPortGroupMapOutpu
 
 func (o HostPortGroupMapOutput) ToHostPortGroupMapOutputWithContext(ctx context.Context) HostPortGroupMapOutput {
 	return o
+}
+
+func (o HostPortGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostPortGroup] {
+	return pulumix.Output[map[string]*HostPortGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostPortGroupMapOutput) MapIndex(k pulumi.StringInput) HostPortGroupOutput {
