@@ -23,7 +23,7 @@ public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource
      * resource if changed.
      * 
      */
-    @Export(name="computeClusterId", type=String.class, parameters={})
+    @Export(name="computeClusterId", refs={String.class}, tree="[0]")
     private Output<String> computeClusterId;
 
     /**
@@ -45,7 +45,7 @@ public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource
      * resource. Make sure your names are unique across both resources.
      * 
      */
-    @Export(name="hostSystemIds", type=List.class, parameters={String.class})
+    @Export(name="hostSystemIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> hostSystemIds;
 
     /**
@@ -66,7 +66,7 @@ public class ComputeClusterHostGroup extends com.pulumi.resources.CustomResource
      * cluster. Forces a new resource if changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

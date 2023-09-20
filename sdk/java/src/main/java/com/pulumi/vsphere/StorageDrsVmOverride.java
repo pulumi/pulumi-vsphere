@@ -22,7 +22,7 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * Forces a new resource if changed.
      * 
      */
-    @Export(name="datastoreClusterId", type=String.class, parameters={})
+    @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output<String> datastoreClusterId;
 
     /**
@@ -41,7 +41,7 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * specific SDRS subsystem.
      * 
      */
-    @Export(name="sdrsAutomationLevel", type=String.class, parameters={})
+    @Export(name="sdrsAutomationLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsAutomationLevel;
 
     /**
@@ -60,7 +60,7 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * used.
      * 
      */
-    @Export(name="sdrsEnabled", type=String.class, parameters={})
+    @Export(name="sdrsEnabled", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsEnabled;
 
     /**
@@ -80,7 +80,7 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * requirements. When not specified, the datastore cluster&#39;s settings are used.
      * 
      */
-    @Export(name="sdrsIntraVmAffinity", type=String.class, parameters={})
+    @Export(name="sdrsIntraVmAffinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sdrsIntraVmAffinity;
 
     /**
@@ -99,7 +99,7 @@ public class StorageDrsVmOverride extends com.pulumi.resources.CustomResource {
      * the override for.  Forces a new resource if changed.
      * 
      */
-    @Export(name="virtualMachineId", type=String.class, parameters={})
+    @Export(name="virtualMachineId", refs={String.class}, tree="[0]")
     private Output<String> virtualMachineId;
 
     /**

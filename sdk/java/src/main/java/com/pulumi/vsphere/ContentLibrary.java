@@ -23,7 +23,7 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
      * A description for the content library.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -37,7 +37,7 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
      * The name of the content library.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -51,7 +51,7 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
      * Options to publish a local content library.
      * 
      */
-    @Export(name="publication", type=ContentLibraryPublication.class, parameters={})
+    @Export(name="publication", refs={ContentLibraryPublication.class}, tree="[0]")
     private Output<ContentLibraryPublication> publication;
 
     /**
@@ -65,7 +65,7 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
      * The managed object reference ID of the datastore on which to store the content library items.
      * 
      */
-    @Export(name="storageBackings", type=List.class, parameters={String.class})
+    @Export(name="storageBackings", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> storageBackings;
 
     /**
@@ -79,7 +79,7 @@ public class ContentLibrary extends com.pulumi.resources.CustomResource {
      * Options subscribe to a published content library.
      * 
      */
-    @Export(name="subscription", type=ContentLibrarySubscription.class, parameters={})
+    @Export(name="subscription", refs={ContentLibrarySubscription.class}, tree="[0]")
     private Output</* @Nullable */ ContentLibrarySubscription> subscription;
 
     /**

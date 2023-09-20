@@ -30,7 +30,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The guest name for the operating system when `guest_id` is `otherGuest` or `otherGuest64`.
      * 
      */
-    @Export(name="alternateGuestName", type=String.class, parameters={})
+    @Export(name="alternateGuestName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alternateGuestName;
 
     /**
@@ -44,7 +44,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A user-provided description of the virtual machine.
      * 
      */
-    @Export(name="annotation", type=String.class, parameters={})
+    @Export(name="annotation", refs={String.class}, tree="[0]")
     private Output<String> annotation;
 
     /**
@@ -58,7 +58,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of milliseconds to wait before starting the boot sequence. The default is no delay.
      * 
      */
-    @Export(name="bootDelay", type=Integer.class, parameters={})
+    @Export(name="bootDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bootDelay;
 
     /**
@@ -72,7 +72,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of milliseconds to wait before retrying the boot sequence. This option is only valid if `boot_retry_enabled` is `true`. Default: `10000` (10 seconds).
      * 
      */
-    @Export(name="bootRetryDelay", type=Integer.class, parameters={})
+    @Export(name="bootRetryDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bootRetryDelay;
 
     /**
@@ -86,7 +86,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * If set to `true`, a virtual machine that fails to boot will try again after the delay defined in `boot_retry_delay`. Default: `false`.
      * 
      */
-    @Export(name="bootRetryEnabled", type=Boolean.class, parameters={})
+    @Export(name="bootRetryEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootRetryEnabled;
 
     /**
@@ -100,7 +100,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A specification for a CD-ROM device on the virtual machine. See CD-ROM options for more information.
      * 
      */
-    @Export(name="cdroms", type=List.class, parameters={VirtualMachineCdrom.class})
+    @Export(name="cdroms", refs={List.class,VirtualMachineCdrom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineCdrom>> cdroms;
 
     /**
@@ -114,7 +114,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A unique identifier for a given version of the last configuration was applied.
      * 
      */
-    @Export(name="changeVersion", type=String.class, parameters={})
+    @Export(name="changeVersion", refs={String.class}, tree="[0]")
     private Output<String> changeVersion;
 
     /**
@@ -128,7 +128,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * When specified, the virtual machine will be created as a clone of a specified template. Optional customization options can be submitted for the resource. See creating a virtual machine from a template for more information.
      * 
      */
-    @Export(name="clone", type=VirtualMachineClone.class, parameters={})
+    @Export(name="clone", refs={VirtualMachineClone.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineClone> clone;
 
     /**
@@ -142,7 +142,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Allow CPUs to be added to the virtual machine while it is powered on.
      * 
      */
-    @Export(name="cpuHotAddEnabled", type=Boolean.class, parameters={})
+    @Export(name="cpuHotAddEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuHotAddEnabled;
 
     /**
@@ -156,7 +156,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Allow CPUs to be removed to the virtual machine while it is powered on.
      * 
      */
-    @Export(name="cpuHotRemoveEnabled", type=Boolean.class, parameters={})
+    @Export(name="cpuHotRemoveEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuHotRemoveEnabled;
 
     /**
@@ -170,7 +170,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The maximum amount of CPU (in MHz) that the virtual machine can consume, regardless of available resources. The default is no limit.
      * 
      */
-    @Export(name="cpuLimit", type=Integer.class, parameters={})
+    @Export(name="cpuLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuLimit;
 
     /**
@@ -184,7 +184,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable CPU performance counters on the virtual machine. Default: `false`.
      * 
      */
-    @Export(name="cpuPerformanceCountersEnabled", type=Boolean.class, parameters={})
+    @Export(name="cpuPerformanceCountersEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cpuPerformanceCountersEnabled;
 
     /**
@@ -198,7 +198,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of CPU (in MHz) that the virtual machine is guaranteed. The default is no reservation.
      * 
      */
-    @Export(name="cpuReservation", type=Integer.class, parameters={})
+    @Export(name="cpuReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpuReservation;
 
     /**
@@ -212,7 +212,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of CPU shares allocated to the virtual machine when the `cpu_share_level` is `custom`.
      * 
      */
-    @Export(name="cpuShareCount", type=Integer.class, parameters={})
+    @Export(name="cpuShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpuShareCount;
 
     /**
@@ -226,7 +226,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The allocation level for the virtual machine CPU resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      * 
      */
-    @Export(name="cpuShareLevel", type=String.class, parameters={})
+    @Export(name="cpuShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuShareLevel;
 
     /**
@@ -242,7 +242,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Custom attributes requires vCenter Server and is not supported on direct ESXi host connections.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -258,7 +258,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The datacenter ID. Required only when deploying an OVF/OVA template.
      * 
      */
-    @Export(name="datacenterId", type=String.class, parameters={})
+    @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenterId;
 
     /**
@@ -278,7 +278,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The `datastore_cluster_id` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
      * 
      */
-    @Export(name="datastoreClusterId", type=String.class, parameters={})
+    @Export(name="datastoreClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datastoreClusterId;
 
     /**
@@ -300,7 +300,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
      * 
      */
-    @Export(name="datastoreId", type=String.class, parameters={})
+    @Export(name="datastoreId", refs={String.class}, tree="[0]")
     private Output<String> datastoreId;
 
     /**
@@ -316,7 +316,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
      * 
      */
-    @Export(name="defaultIpAddress", type=String.class, parameters={})
+    @Export(name="defaultIpAddress", refs={String.class}, tree="[0]")
     private Output<String> defaultIpAddress;
 
     /**
@@ -330,7 +330,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A specification for a virtual disk device on the virtual machine. See disk options for more information.
      * 
      */
-    @Export(name="disks", type=List.class, parameters={VirtualMachineDisk.class})
+    @Export(name="disks", refs={List.class,VirtualMachineDisk.class}, tree="[0,1]")
     private Output<List<VirtualMachineDisk>> disks;
 
     /**
@@ -346,7 +346,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** EFI secure boot is only available on vSphere 6.5 and later.
      * 
      */
-    @Export(name="efiSecureBootEnabled", type=Boolean.class, parameters={})
+    @Export(name="efiSecureBootEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> efiSecureBootEnabled;
 
     /**
@@ -362,7 +362,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Expose the UUIDs of attached virtual disks to the virtual machine, allowing access to them in the guest. Default: `false`.
      * 
      */
-    @Export(name="enableDiskUuid", type=Boolean.class, parameters={})
+    @Export(name="enableDiskUuid", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDiskUuid;
 
     /**
@@ -376,7 +376,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable logging of virtual machine events to a log file stored in the virtual machine directory. Default: `false`.
      * 
      */
-    @Export(name="enableLogging", type=Boolean.class, parameters={})
+    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
@@ -390,7 +390,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The EPT/RVI (hardware memory virtualization) setting for the virtual machine. One of `automatic`, `on`, or `off`. Default: `automatic`.
      * 
      */
-    @Export(name="eptRviMode", type=String.class, parameters={})
+    @Export(name="eptRviMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eptRviMode;
 
     /**
@@ -406,7 +406,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Do not use `extra_config` when working with a template imported from OVF/OVA as your settings may be ignored. Use the `vapp` block `properties` section as described in Using vApp Properties for OVF/OVA Configuration.
      * 
      */
-    @Export(name="extraConfig", type=Map.class, parameters={String.class, String.class})
+    @Export(name="extraConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> extraConfig;
 
     /**
@@ -422,7 +422,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Allow the virtual machine to be rebooted when a change to `extra_config` occurs. Default: `true`.
      * 
      */
-    @Export(name="extraConfigRebootRequired", type=Boolean.class, parameters={})
+    @Export(name="extraConfigRebootRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> extraConfigRebootRequired;
 
     /**
@@ -436,7 +436,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The firmware for the virtual machine. One of `bios` or `efi`.
      * 
      */
-    @Export(name="firmware", type=String.class, parameters={})
+    @Export(name="firmware", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firmware;
 
     /**
@@ -450,7 +450,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The path to the virtual machine folder in which to place the virtual machine, relative to the datacenter path (`/&lt;datacenter-name&gt;/vm`).  For example, `/dc-01/vm/foo`
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folder;
 
     /**
@@ -464,7 +464,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * If a guest shutdown failed or times out while updating or destroying (see `shutdown_wait_timeout`), force the power-off of the virtual machine. Default: `true`.
      * 
      */
-    @Export(name="forcePowerOff", type=Boolean.class, parameters={})
+    @Export(name="forcePowerOff", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forcePowerOff;
 
     /**
@@ -480,7 +480,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * [vmware-docs-guest-ids]: https://vdc-download.vmware.com/vmwb-repository/dcr-public/b50dcbbf-051d-4204-a3e7-e1b618c1e384/538cf2ec-b34f-4bae-a332-3820ef9e7773/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html
      * 
      */
-    @Export(name="guestId", type=String.class, parameters={})
+    @Export(name="guestId", refs={String.class}, tree="[0]")
     private Output<String> guestId;
 
     /**
@@ -496,7 +496,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The current list of IP addresses on this machine, including the value of `default_ip_address`. If VMware Tools is not running on the virtual machine, or if the virtul machine is powered off, this list will be empty.
      * 
      */
-    @Export(name="guestIpAddresses", type=List.class, parameters={String.class})
+    @Export(name="guestIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> guestIpAddresses;
 
     /**
@@ -512,7 +512,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * [virtual-machine-hardware-compatibility]: https://kb.vmware.com/s/article/2007240
      * 
      */
-    @Export(name="hardwareVersion", type=Integer.class, parameters={})
+    @Export(name="hardwareVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> hardwareVersion;
 
     /**
@@ -528,7 +528,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The managed object reference ID of a host on which to place the virtual machine. See the section on virtual machine migration for more information on modifying this value. When using a vSphere cluster, if a `host_system_id` is not supplied, vSphere will select a host in the cluster to place the virtual machine, according to any defaults or vSphere DRS placement policies.
      * 
      */
-    @Export(name="hostSystemId", type=String.class, parameters={})
+    @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**
@@ -542,7 +542,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The hardware virtualization (non-nested) setting for the virtual machine. One of `hvAuto`, `hvOn`, or `hvOff`. Default: `hvAuto`.
      * 
      */
-    @Export(name="hvMode", type=String.class, parameters={})
+    @Export(name="hvMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hvMode;
 
     /**
@@ -556,7 +556,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of IDE controllers that the virtual machine. This directly affects the number of disks you can add to the virtual machine and the maximum disk unit number. Note that lowering this value does not remove controllers. Default: `2`.
      * 
      */
-    @Export(name="ideControllerCount", type=Integer.class, parameters={})
+    @Export(name="ideControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ideControllerCount;
 
     /**
@@ -570,7 +570,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * List of IP addresses and CIDR networks to ignore while waiting for an available IP address using either of the waiters. Any IP addresses in this list will be ignored so that the waiter will continue to wait for a valid IP address. Default: `[]`.
      * 
      */
-    @Export(name="ignoredGuestIps", type=List.class, parameters={String.class})
+    @Export(name="ignoredGuestIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ignoredGuestIps;
 
     /**
@@ -584,7 +584,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Indicates if the virtual machine resource has been imported, or if the state has been migrated from a previous version of the resource. It influences the behavior of the first post-import apply operation. See the section on importing below.
      * 
      */
-    @Export(name="imported", type=Boolean.class, parameters={})
+    @Export(name="imported", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> imported;
 
     /**
@@ -600,7 +600,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** On higher sensitivities, you may need to adjust the `memory_reservation` to the full amount of memory provisioned for the virtual machine.
      * 
      */
-    @Export(name="latencySensitivity", type=String.class, parameters={})
+    @Export(name="latencySensitivity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> latencySensitivity;
 
     /**
@@ -616,7 +616,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The memory size to assign to the virtual machine, in MB. Default: `1024` (1 GB).
      * 
      */
-    @Export(name="memory", type=Integer.class, parameters={})
+    @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memory;
 
     /**
@@ -638,7 +638,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * [vmware-kb-2008405]: https://kb.vmware.com/s/article/2008405
      * 
      */
-    @Export(name="memoryHotAddEnabled", type=Boolean.class, parameters={})
+    @Export(name="memoryHotAddEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> memoryHotAddEnabled;
 
     /**
@@ -660,7 +660,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The maximum amount of memory (in MB) that th virtual machine can consume, regardless of available resources. The default is no limit.
      * 
      */
-    @Export(name="memoryLimit", type=Integer.class, parameters={})
+    @Export(name="memoryLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryLimit;
 
     /**
@@ -674,7 +674,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of memory (in MB) that the virtual machine is guaranteed. The default is no reservation.
      * 
      */
-    @Export(name="memoryReservation", type=Integer.class, parameters={})
+    @Export(name="memoryReservation", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memoryReservation;
 
     /**
@@ -688,7 +688,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of memory shares allocated to the virtual machine when the `memory_share_level` is `custom`.
      * 
      */
-    @Export(name="memoryShareCount", type=Integer.class, parameters={})
+    @Export(name="memoryShareCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> memoryShareCount;
 
     /**
@@ -702,7 +702,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The allocation level for the virtual machine memory resources. One of `high`, `low`, `normal`, or `custom`. Default: `custom`.
      * 
      */
-    @Export(name="memoryShareLevel", type=String.class, parameters={})
+    @Export(name="memoryShareLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memoryShareLevel;
 
     /**
@@ -716,7 +716,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of time, in minutes, to wait for a virtual machine migration to complete before failing. Default: `10` minutes. See the section on virtual machine migration for more information.
      * 
      */
-    @Export(name="migrateWaitTimeout", type=Integer.class, parameters={})
+    @Export(name="migrateWaitTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> migrateWaitTimeout;
 
     /**
@@ -730,7 +730,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The managed object reference ID of the created virtual machine.
      * 
      */
-    @Export(name="moid", type=String.class, parameters={})
+    @Export(name="moid", refs={String.class}, tree="[0]")
     private Output<String> moid;
 
     /**
@@ -744,7 +744,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The name of the virtual machine.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -758,7 +758,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable nested hardware virtualization on the virtual machine, facilitating nested virtualization in the guest operating system. Default: `false`.
      * 
      */
-    @Export(name="nestedHvEnabled", type=Boolean.class, parameters={})
+    @Export(name="nestedHvEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> nestedHvEnabled;
 
     /**
@@ -772,7 +772,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A specification for a virtual NIC on the virtual machine. See network interface options for more information.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={VirtualMachineNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,VirtualMachineNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualMachineNetworkInterface>> networkInterfaces;
 
     /**
@@ -786,7 +786,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The number of cores per socket in the virtual machine. The number of vCPUs on the virtual machine will be `num_cpus` divided by `num_cores_per_socket`. If specified, the value supplied to `num_cpus` must be evenly divisible by this value. Default: `1`.
      * 
      */
-    @Export(name="numCoresPerSocket", type=Integer.class, parameters={})
+    @Export(name="numCoresPerSocket", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCoresPerSocket;
 
     /**
@@ -800,7 +800,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The total number of virtual processor cores to assign to the virtual machine. Default: `1`.
      * 
      */
-    @Export(name="numCpus", type=Integer.class, parameters={})
+    @Export(name="numCpus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numCpus;
 
     /**
@@ -814,7 +814,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * When specified, the virtual machine will be deployed from the provided OVF/OVA template. See creating a virtual machine from an OVF/OVA template for more information.
      * 
      */
-    @Export(name="ovfDeploy", type=VirtualMachineOvfDeploy.class, parameters={})
+    @Export(name="ovfDeploy", refs={VirtualMachineOvfDeploy.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineOvfDeploy> ovfDeploy;
 
     /**
@@ -830,7 +830,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Cloning requires vCenter Server and is not supported on direct ESXi host connections.
      * 
      */
-    @Export(name="pciDeviceIds", type=List.class, parameters={String.class})
+    @Export(name="pciDeviceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> pciDeviceIds;
 
     /**
@@ -846,7 +846,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A computed value for the current power state of the virtual machine. One of `on`, `off`, or `suspended`.
      * 
      */
-    @Export(name="powerState", type=String.class, parameters={})
+    @Export(name="powerState", refs={String.class}, tree="[0]")
     private Output<String> powerState;
 
     /**
@@ -860,7 +860,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of time, in seconds, that we will be trying to power on a VM
      * 
      */
-    @Export(name="poweronTimeout", type=Integer.class, parameters={})
+    @Export(name="poweronTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> poweronTimeout;
 
     /**
@@ -874,7 +874,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Value internal to Terraform used to determine if a configuration set change requires a reboot.
      * 
      */
-    @Export(name="rebootRequired", type=Boolean.class, parameters={})
+    @Export(name="rebootRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> rebootRequired;
 
     /**
@@ -890,7 +890,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * For example, `replace_trigger = sha256(format(&#34;%s-%s&#34;,data.template_file.cloud_init_metadata.rendered,data.template_file.cloud_init_userdata.rendered))` will fingerprint the changes in cloud-init metadata and userdata templates. This will enable a replacement of the resource whenever the dependant template renders a new configuration. (Forces a replacement.)
      * 
      */
-    @Export(name="replaceTrigger", type=String.class, parameters={})
+    @Export(name="replaceTrigger", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> replaceTrigger;
 
     /**
@@ -908,7 +908,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** All clusters and standalone hosts have a default root resource pool. This resource argument does not directly accept the cluster or standalone host resource. For more information, see the section on specifying the Root Resource Pool in the `vsphere.ResourcePool` data source documentation on using the root resource pool.
      * 
      */
-    @Export(name="resourcePoolId", type=String.class, parameters={})
+    @Export(name="resourcePoolId", refs={String.class}, tree="[0]")
     private Output<String> resourcePoolId;
 
     /**
@@ -924,7 +924,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable post-power-on scripts to run when VMware Tools is installed. Default: `true`.
      * 
      */
-    @Export(name="runToolsScriptsAfterPowerOn", type=Boolean.class, parameters={})
+    @Export(name="runToolsScriptsAfterPowerOn", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsAfterPowerOn;
 
     /**
@@ -938,7 +938,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable ost-resume scripts to run when VMware Tools is installed. Default: `true`.
      * 
      */
-    @Export(name="runToolsScriptsAfterResume", type=Boolean.class, parameters={})
+    @Export(name="runToolsScriptsAfterResume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsAfterResume;
 
     /**
@@ -952,7 +952,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable pre-reboot scripts to run when VMware Tools is installed. Default: `false`.
      * 
      */
-    @Export(name="runToolsScriptsBeforeGuestReboot", type=Boolean.class, parameters={})
+    @Export(name="runToolsScriptsBeforeGuestReboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestReboot;
 
     /**
@@ -966,7 +966,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable pre-shutdown scripts to run when VMware Tools is installed. Default: `true`.
      * 
      */
-    @Export(name="runToolsScriptsBeforeGuestShutdown", type=Boolean.class, parameters={})
+    @Export(name="runToolsScriptsBeforeGuestShutdown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestShutdown;
 
     /**
@@ -980,7 +980,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable pre-standby scripts to run when VMware Tools is installed. Default: `true`.
      * 
      */
-    @Export(name="runToolsScriptsBeforeGuestStandby", type=Boolean.class, parameters={})
+    @Export(name="runToolsScriptsBeforeGuestStandby", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runToolsScriptsBeforeGuestStandby;
 
     /**
@@ -996,7 +996,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * controllers.
      * 
      */
-    @Export(name="sataControllerCount", type=Integer.class, parameters={})
+    @Export(name="sataControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sataControllerCount;
 
     /**
@@ -1012,7 +1012,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The type of SCSI bus sharing for the virtual machine SCSI controller. One of `physicalSharing`, `virtualSharing`, and `noSharing`. Default: `noSharing`.
      * 
      */
-    @Export(name="scsiBusSharing", type=String.class, parameters={})
+    @Export(name="scsiBusSharing", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiBusSharing;
 
     /**
@@ -1028,7 +1028,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * controllers.
      * 
      */
-    @Export(name="scsiControllerCount", type=Integer.class, parameters={})
+    @Export(name="scsiControllerCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scsiControllerCount;
 
     /**
@@ -1044,7 +1044,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The SCSI controller type for the virtual machine. One of `lsilogic` (LSI Logic Parallel), `lsilogic-sas` (LSI Logic SAS) or `pvscsi` (VMware Paravirtual). Default: `pvscsi`.
      * 
      */
-    @Export(name="scsiType", type=String.class, parameters={})
+    @Export(name="scsiType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scsiType;
 
     /**
@@ -1058,7 +1058,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `force_power_off` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
      * 
      */
-    @Export(name="shutdownWaitTimeout", type=Integer.class, parameters={})
+    @Export(name="shutdownWaitTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shutdownWaitTimeout;
 
     /**
@@ -1072,7 +1072,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The ID of the storage policy to assign to the home directory of a virtual machine.
      * 
      */
-    @Export(name="storagePolicyId", type=String.class, parameters={})
+    @Export(name="storagePolicyId", refs={String.class}, tree="[0]")
     private Output<String> storagePolicyId;
 
     /**
@@ -1086,7 +1086,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
      * 
      */
-    @Export(name="swapPlacementPolicy", type=String.class, parameters={})
+    @Export(name="swapPlacementPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> swapPlacementPolicy;
 
     /**
@@ -1100,7 +1100,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable the guest operating system to synchronization its clock with the host when the virtual machine is powered on or resumed. Requires vSphere 7.0 Update 1 and later. Requires VMware Tools to be installed. Default: `false`.
      * 
      */
-    @Export(name="syncTimeWithHost", type=Boolean.class, parameters={})
+    @Export(name="syncTimeWithHost", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHost;
 
     /**
@@ -1114,7 +1114,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable the guest operating system to periodically synchronize its clock with the host. Requires vSphere 7.0 Update 1 and later. On previous versions, setting `sync_time_with_host` is will enable periodic synchronization. Requires VMware Tools to be installed. Default: `false`.
      * 
      */
-    @Export(name="syncTimeWithHostPeriodically", type=Boolean.class, parameters={})
+    @Export(name="syncTimeWithHostPeriodically", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncTimeWithHostPeriodically;
 
     /**
@@ -1130,7 +1130,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Tagging support is unsupported on direct ESXi host connections and requires vCenter Server instance.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -1146,7 +1146,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable automatic upgrade of the VMware Tools version when the virtual machine is rebooted. If necessary, VMware Tools is upgraded to the latest version supported by the host on which the virtual machine is running. Requires VMware Tools to be installed. One of `manual` or `upgradeAtPowerCycle`. Default: `manual`.
      * 
      */
-    @Export(name="toolsUpgradePolicy", type=String.class, parameters={})
+    @Export(name="toolsUpgradePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> toolsUpgradePolicy;
 
     /**
@@ -1160,7 +1160,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
@@ -1174,7 +1174,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Used for vApp configurations. The only sub-key available is `properties`, which is a key/value map of properties for virtual machines imported from and OVF/OVA. See Using vApp Properties for OVF/OVA Configuration for more information.
      * 
      */
-    @Export(name="vapp", type=VirtualMachineVapp.class, parameters={})
+    @Export(name="vapp", refs={VirtualMachineVapp.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineVapp> vapp;
 
     /**
@@ -1188,7 +1188,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Computed value which is only valid for cloned virtual machines. A list of vApp transport methods supported by the source virtual machine or template.
      * 
      */
-    @Export(name="vappTransports", type=List.class, parameters={String.class})
+    @Export(name="vappTransports", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vappTransports;
 
     /**
@@ -1202,7 +1202,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable Virtualization Based Security. Requires `firmware` to be `efi`. In addition, `vvtd_enabled`, `nested_hv_enabled`, and `efi_secure_boot_enabled` must all have a value of `true`. Supported on vSphere 6.7 and later. Default: `false`.
      * 
      */
-    @Export(name="vbsEnabled", type=Boolean.class, parameters={})
+    @Export(name="vbsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vbsEnabled;
 
     /**
@@ -1216,7 +1216,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The state of  VMware Tools in the guest. This will determine the proper course of action for some device operations.
      * 
      */
-    @Export(name="vmwareToolsStatus", type=String.class, parameters={})
+    @Export(name="vmwareToolsStatus", refs={String.class}, tree="[0]")
     private Output<String> vmwareToolsStatus;
 
     /**
@@ -1230,7 +1230,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The path of the virtual machine configuration file on the datastore in which the virtual machine is placed.
      * 
      */
-    @Export(name="vmxPath", type=String.class, parameters={})
+    @Export(name="vmxPath", refs={String.class}, tree="[0]")
     private Output<String> vmxPath;
 
     /**
@@ -1244,7 +1244,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Enable Intel Virtualization Technology for Directed I/O for the virtual machine (_I/O MMU_ in the vSphere Client). Supported on vSphere 6.7 and later. Default: `false`.
      * 
      */
-    @Export(name="vvtdEnabled", type=Boolean.class, parameters={})
+    @Export(name="vvtdEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> vvtdEnabled;
 
     /**
@@ -1258,7 +1258,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. This should only be used if the version VMware Tools does not allow the `wait_for_guest_net_timeout` waiter to be used. A value less than `1` disables the waiter. Default: `0`.
      * 
      */
-    @Export(name="waitForGuestIpTimeout", type=Integer.class, parameters={})
+    @Export(name="waitForGuestIpTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestIpTimeout;
 
     /**
@@ -1272,7 +1272,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
      * 
      */
-    @Export(name="waitForGuestNetRoutable", type=Boolean.class, parameters={})
+    @Export(name="waitForGuestNetRoutable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForGuestNetRoutable;
 
     /**
@@ -1286,7 +1286,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
      * 
      */
-    @Export(name="waitForGuestNetTimeout", type=Integer.class, parameters={})
+    @Export(name="waitForGuestNetTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> waitForGuestNetTimeout;
 
     /**

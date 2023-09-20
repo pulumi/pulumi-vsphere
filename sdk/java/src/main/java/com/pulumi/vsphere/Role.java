@@ -21,7 +21,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The display label of the role.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -35,7 +35,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -49,7 +49,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The privileges to be associated with this role.
      * 
      */
-    @Export(name="rolePrivileges", type=List.class, parameters={String.class})
+    @Export(name="rolePrivileges", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rolePrivileges;
 
     /**

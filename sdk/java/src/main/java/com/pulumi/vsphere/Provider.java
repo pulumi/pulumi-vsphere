@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * govmomi debug path for debug
      * 
      */
-    @Export(name="clientDebugPath", type=String.class, parameters={})
+    @Export(name="clientDebugPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientDebugPath;
 
     /**
@@ -40,7 +40,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * govmomi debug path for a single run
      * 
      */
-    @Export(name="clientDebugPathRun", type=String.class, parameters={})
+    @Export(name="clientDebugPathRun", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientDebugPathRun;
 
     /**
@@ -54,7 +54,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The user password for vSphere API operations.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -68,7 +68,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The directory to save vSphere REST API sessions to
      * 
      */
-    @Export(name="restSessionPath", type=String.class, parameters={})
+    @Export(name="restSessionPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restSessionPath;
 
     /**
@@ -82,7 +82,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The user name for vSphere API operations.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
@@ -98,7 +98,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* This field has been renamed to vsphere_server. */
-    @Export(name="vcenterServer", type=String.class, parameters={})
+    @Export(name="vcenterServer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vcenterServer;
 
     public Output<Optional<String>> vcenterServer() {
@@ -108,7 +108,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The directory to save vSphere SOAP API sessions to
      * 
      */
-    @Export(name="vimSessionPath", type=String.class, parameters={})
+    @Export(name="vimSessionPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vimSessionPath;
 
     /**
@@ -122,7 +122,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The vSphere Server name for vSphere API operations.
      * 
      */
-    @Export(name="vsphereServer", type=String.class, parameters={})
+    @Export(name="vsphereServer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vsphereServer;
 
     /**

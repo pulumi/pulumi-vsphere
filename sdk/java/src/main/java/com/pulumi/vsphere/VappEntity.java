@@ -25,7 +25,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * container the entity is a member of.
      * 
      */
-    @Export(name="containerId", type=String.class, parameters={})
+    @Export(name="containerId", refs={String.class}, tree="[0]")
     private Output<String> containerId;
 
     /**
@@ -40,7 +40,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * A list of custom attributes to set on this resource.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -56,7 +56,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * Default: powerOn
      * 
      */
-    @Export(name="startAction", type=String.class, parameters={})
+    @Export(name="startAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startAction;
 
     /**
@@ -73,7 +73,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * entity in the order of entities to be started. Default: 120
      * 
      */
-    @Export(name="startDelay", type=Integer.class, parameters={})
+    @Export(name="startDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startDelay;
 
     /**
@@ -88,7 +88,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * Order to start and stop target in vApp. Default: 1
      * 
      */
-    @Export(name="startOrder", type=Integer.class, parameters={})
+    @Export(name="startOrder", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startOrder;
 
     /**
@@ -104,7 +104,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * does not participate in auto-stop. Default: powerOff
      * 
      */
-    @Export(name="stopAction", type=String.class, parameters={})
+    @Export(name="stopAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stopAction;
 
     /**
@@ -122,7 +122,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * guestShutdown. Default: 120
      * 
      */
-    @Export(name="stopDelay", type=Integer.class, parameters={})
+    @Export(name="stopDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stopDelay;
 
     /**
@@ -138,7 +138,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * A list of tag IDs to apply to this object.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -153,7 +153,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * to power on or power off. This can be a virtual machine or a vApp.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
@@ -170,7 +170,7 @@ public class VappEntity extends com.pulumi.resources.CustomResource {
      * property has no effect for vApps. Default: false
      * 
      */
-    @Export(name="waitForGuest", type=Boolean.class, parameters={})
+    @Export(name="waitForGuest", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForGuest;
 
     /**

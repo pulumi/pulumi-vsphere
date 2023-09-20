@@ -20,7 +20,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * A description for the content library item.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -34,7 +34,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * File to import as the content library item.
      * 
      */
-    @Export(name="fileUrl", type=String.class, parameters={})
+    @Export(name="fileUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileUrl;
 
     /**
@@ -48,7 +48,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * The ID of the content library in which to create the item.
      * 
      */
-    @Export(name="libraryId", type=String.class, parameters={})
+    @Export(name="libraryId", refs={String.class}, tree="[0]")
     private Output<String> libraryId;
 
     /**
@@ -62,7 +62,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * The name of the item to be created in the content library.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -76,7 +76,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * Virtual machine UUID to clone to content library.
      * 
      */
-    @Export(name="sourceUuid", type=String.class, parameters={})
+    @Export(name="sourceUuid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceUuid;
 
     /**
@@ -91,7 +91,7 @@ public class ContentLibraryItem extends com.pulumi.resources.CustomResource {
      * One of &#34;ovf&#34;, &#34;iso&#34;, or &#34;vm-template&#34;. Default: `ovf`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

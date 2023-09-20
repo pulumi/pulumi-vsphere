@@ -182,7 +182,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * List of active network adapters used for load balancing.
      * 
      */
-    @Export(name="activeNics", type=List.class, parameters={String.class})
+    @Export(name="activeNics", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> activeNics;
 
     /**
@@ -197,7 +197,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * that of its own.
      * 
      */
-    @Export(name="allowForgedTransmits", type=Boolean.class, parameters={})
+    @Export(name="allowForgedTransmits", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowForgedTransmits;
 
     /**
@@ -212,7 +212,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * Controls whether or not the Media Access Control (MAC) address can be changed.
      * 
      */
-    @Export(name="allowMacChanges", type=Boolean.class, parameters={})
+    @Export(name="allowMacChanges", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowMacChanges;
 
     /**
@@ -226,7 +226,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * Enable promiscuous mode on the network. This flag indicates whether or not all traffic is seen on a given port.
      * 
      */
-    @Export(name="allowPromiscuous", type=Boolean.class, parameters={})
+    @Export(name="allowPromiscuous", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowPromiscuous;
 
     /**
@@ -241,7 +241,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * only.
      * 
      */
-    @Export(name="checkBeacon", type=Boolean.class, parameters={})
+    @Export(name="checkBeacon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkBeacon;
 
     /**
@@ -258,7 +258,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * explaining the effective policy for this port group.
      * 
      */
-    @Export(name="computedPolicy", type=Map.class, parameters={String.class, String.class})
+    @Export(name="computedPolicy", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> computedPolicy;
 
     /**
@@ -274,7 +274,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * If true, the teaming policy will re-activate failed interfaces higher in precedence when they come back up.
      * 
      */
-    @Export(name="failback", type=Boolean.class, parameters={})
+    @Export(name="failback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> failback;
 
     /**
@@ -289,7 +289,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * the host to set the port group up on. Forces a new resource if changed.
      * 
      */
-    @Export(name="hostSystemId", type=String.class, parameters={})
+    @Export(name="hostSystemId", refs={String.class}, tree="[0]")
     private Output<String> hostSystemId;
 
     /**
@@ -304,7 +304,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * The key for this port group as returned from the vSphere API.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -319,7 +319,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * changed.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -334,7 +334,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * If true, the teaming policy will notify the broadcast network of a NIC failover, triggering cache updates.
      * 
      */
-    @Export(name="notifySwitches", type=Boolean.class, parameters={})
+    @Export(name="notifySwitches", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> notifySwitches;
 
     /**
@@ -348,7 +348,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * A list of ports that currently exist and are used on this port group.
      * 
      */
-    @Export(name="ports", type=List.class, parameters={HostPortGroupPort.class})
+    @Export(name="ports", refs={List.class,HostPortGroupPort.class}, tree="[0,1]")
     private Output<List<HostPortGroupPort>> ports;
 
     /**
@@ -362,7 +362,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * The average bandwidth in bits per second if traffic shaping is enabled.
      * 
      */
-    @Export(name="shapingAverageBandwidth", type=Integer.class, parameters={})
+    @Export(name="shapingAverageBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingAverageBandwidth;
 
     /**
@@ -376,7 +376,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * The maximum burst size allowed in bytes if traffic shaping is enabled.
      * 
      */
-    @Export(name="shapingBurstSize", type=Integer.class, parameters={})
+    @Export(name="shapingBurstSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingBurstSize;
 
     /**
@@ -390,7 +390,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * Enable traffic shaping on this virtual switch or port group.
      * 
      */
-    @Export(name="shapingEnabled", type=Boolean.class, parameters={})
+    @Export(name="shapingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shapingEnabled;
 
     /**
@@ -404,7 +404,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * The peak bandwidth during bursts in bits per second if traffic shaping is enabled.
      * 
      */
-    @Export(name="shapingPeakBandwidth", type=Integer.class, parameters={})
+    @Export(name="shapingPeakBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shapingPeakBandwidth;
 
     /**
@@ -418,7 +418,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * List of standby network adapters used for failover.
      * 
      */
-    @Export(name="standbyNics", type=List.class, parameters={String.class})
+    @Export(name="standbyNics", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> standbyNics;
 
     /**
@@ -433,7 +433,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * failover_explicit.
      * 
      */
-    @Export(name="teamingPolicy", type=String.class, parameters={})
+    @Export(name="teamingPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> teamingPolicy;
 
     /**
@@ -449,7 +449,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * this port group to. Forces a new resource if changed.
      * 
      */
-    @Export(name="virtualSwitchName", type=String.class, parameters={})
+    @Export(name="virtualSwitchName", refs={String.class}, tree="[0]")
     private Output<String> virtualSwitchName;
 
     /**
@@ -467,7 +467,7 @@ public class HostPortGroup extends com.pulumi.resources.CustomResource {
      * tagging. Default: `0`.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vlanId;
 
     /**

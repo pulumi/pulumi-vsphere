@@ -98,7 +98,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * created if the `destination_file` path is changed in subsequent applies.
      * 
      */
-    @Export(name="createDirectories", type=Boolean.class, parameters={})
+    @Export(name="createDirectories", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createDirectories;
 
     /**
@@ -118,7 +118,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * uploaded.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -134,7 +134,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * file.
      * 
      */
-    @Export(name="datastore", type=String.class, parameters={})
+    @Export(name="datastore", refs={String.class}, tree="[0]")
     private Output<String> datastore;
 
     /**
@@ -150,7 +150,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * or copied to on the destination `datastore` in vSphere.
      * 
      */
-    @Export(name="destinationFile", type=String.class, parameters={})
+    @Export(name="destinationFile", refs={String.class}, tree="[0]")
     private Output<String> destinationFile;
 
     /**
@@ -166,7 +166,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * will be copied. Forces a new resource if changed.
      * 
      */
-    @Export(name="sourceDatacenter", type=String.class, parameters={})
+    @Export(name="sourceDatacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDatacenter;
 
     /**
@@ -182,7 +182,7 @@ public class File extends com.pulumi.resources.CustomResource {
      * be copied. Forces a new resource if changed.
      * 
      */
-    @Export(name="sourceDatastore", type=String.class, parameters={})
+    @Export(name="sourceDatastore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDatastore;
 
     /**
@@ -193,7 +193,7 @@ public class File extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> sourceDatastore() {
         return Codegen.optional(this.sourceDatastore);
     }
-    @Export(name="sourceFile", type=String.class, parameters={})
+    @Export(name="sourceFile", refs={String.class}, tree="[0]")
     private Output<String> sourceFile;
 
     public Output<String> sourceFile() {

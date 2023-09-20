@@ -22,7 +22,7 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      * type. For a full list, review the Managed Object Types. Forces a new resource if changed.
      * 
      */
-    @Export(name="managedObjectType", type=String.class, parameters={})
+    @Export(name="managedObjectType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedObjectType;
 
     /**
@@ -38,7 +38,7 @@ public class CustomAttribute extends com.pulumi.resources.CustomResource {
      * The name of the custom attribute.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

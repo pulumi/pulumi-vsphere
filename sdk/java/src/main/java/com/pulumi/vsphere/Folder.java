@@ -29,7 +29,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * and require vCenter.
      * 
      */
-    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -52,7 +52,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * resource if changed.
      * 
      */
-    @Export(name="datacenterId", type=String.class, parameters={})
+    @Export(name="datacenterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenterId;
 
     /**
@@ -78,7 +78,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * modifying the name (the part after the last `/`), your folder will be renamed.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -105,7 +105,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * requires vCenter 6.0 or higher.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -125,7 +125,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * `network` for network folders. Forces a new resource if changed.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
