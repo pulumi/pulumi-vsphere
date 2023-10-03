@@ -52,18 +52,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -228,7 +224,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
      * 
@@ -239,7 +235,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> path;
 
     /**
-     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
      * 
@@ -266,14 +262,14 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the storage policy to assign to the home directory of a virtual machine.
+     * The UUID of the storage policy to assign to the virtual disk.
      * 
      */
     @Import(name="storagePolicyId")
     private @Nullable Output<String> storagePolicyId;
 
     /**
-     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
+     * @return The UUID of the storage policy to assign to the virtual disk.
      * 
      */
     public Optional<Output<String>> storagePolicyId() {
@@ -431,9 +427,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
          * 
          * @return builder
          * 
@@ -444,9 +438,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param datastoreId The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-         * 
-         * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+         * @param datastoreId The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
          * 
          * @return builder
          * 
@@ -671,7 +663,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
          * 
          * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
          * 
@@ -686,7 +678,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+         * @param path The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
          * 
          * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
          * 
@@ -721,7 +713,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storagePolicyId The ID of the storage policy to assign to the home directory of a virtual machine.
+         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
          * 
          * @return builder
          * 
@@ -732,7 +724,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param storagePolicyId The ID of the storage policy to assign to the home directory of a virtual machine.
+         * @param storagePolicyId The UUID of the storage policy to assign to the virtual disk.
          * 
          * @return builder
          * 

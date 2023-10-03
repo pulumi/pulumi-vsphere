@@ -115,9 +115,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly datastoreClusterId!: pulumi.Output<string | undefined>;
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     *
-     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     public readonly datastoreId!: pulumi.Output<string>;
     /**
@@ -349,7 +347,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     public readonly shutdownWaitTimeout!: pulumi.Output<number | undefined>;
     /**
-     * The ID of the storage policy to assign to the home directory of a virtual machine.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     public readonly storagePolicyId!: pulumi.Output<string>;
     /**
@@ -694,9 +692,7 @@ export interface VirtualMachineState {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     *
-     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -928,7 +924,7 @@ export interface VirtualMachineState {
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The ID of the storage policy to assign to the home directory of a virtual machine.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
@@ -1076,9 +1072,7 @@ export interface VirtualMachineArgs {
      */
     datastoreClusterId?: pulumi.Input<string>;
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     *
-     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     /**
@@ -1286,7 +1280,7 @@ export interface VirtualMachineArgs {
      */
     shutdownWaitTimeout?: pulumi.Input<number>;
     /**
-     * The ID of the storage policy to assign to the home directory of a virtual machine.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeClusterVmDependencyRuleArgs', 'ComputeClusterVmDependencyRule']
@@ -43,15 +43,34 @@ class ComputeClusterVmDependencyRuleArgs:
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         """
-        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
-        pulumi.set(__self__, "dependency_vm_group_name", dependency_vm_group_name)
-        pulumi.set(__self__, "vm_group_name", vm_group_name)
+        ComputeClusterVmDependencyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            dependency_vm_group_name=dependency_vm_group_name,
+            vm_group_name=vm_group_name,
+            enabled=enabled,
+            mandatory=mandatory,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: pulumi.Input[str],
+             dependency_vm_group_name: pulumi.Input[str],
+             vm_group_name: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             mandatory: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_cluster_id", compute_cluster_id)
+        _setter("dependency_vm_group_name", dependency_vm_group_name)
+        _setter("vm_group_name", vm_group_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if mandatory is not None:
-            pulumi.set(__self__, "mandatory", mandatory)
+            _setter("mandatory", mandatory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -172,18 +191,37 @@ class _ComputeClusterVmDependencyRuleState:
                the group specified by
                `dependency_vm_group_name` are started.
         """
+        _ComputeClusterVmDependencyRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            dependency_vm_group_name=dependency_vm_group_name,
+            enabled=enabled,
+            mandatory=mandatory,
+            name=name,
+            vm_group_name=vm_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             dependency_vm_group_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             mandatory: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             vm_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_cluster_id is not None:
-            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+            _setter("compute_cluster_id", compute_cluster_id)
         if dependency_vm_group_name is not None:
-            pulumi.set(__self__, "dependency_vm_group_name", dependency_vm_group_name)
+            _setter("dependency_vm_group_name", dependency_vm_group_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if mandatory is not None:
-            pulumi.set(__self__, "mandatory", mandatory)
+            _setter("mandatory", mandatory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if vm_group_name is not None:
-            pulumi.set(__self__, "vm_group_name", vm_group_name)
+            _setter("vm_group_name", vm_group_name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -327,6 +365,10 @@ class ComputeClusterVmDependencyRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ComputeClusterVmDependencyRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

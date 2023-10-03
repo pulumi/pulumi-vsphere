@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['StorageDrsVmOverrideArgs', 'StorageDrsVmOverride']
@@ -39,14 +39,31 @@ class StorageDrsVmOverrideArgs:
                individual disks on different datastores if it helps satisfy cluster
                requirements. When not specified, the datastore cluster's settings are used.
         """
-        pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
-        pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
+        StorageDrsVmOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore_cluster_id=datastore_cluster_id,
+            virtual_machine_id=virtual_machine_id,
+            sdrs_automation_level=sdrs_automation_level,
+            sdrs_enabled=sdrs_enabled,
+            sdrs_intra_vm_affinity=sdrs_intra_vm_affinity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore_cluster_id: pulumi.Input[str],
+             virtual_machine_id: pulumi.Input[str],
+             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_enabled: Optional[pulumi.Input[str]] = None,
+             sdrs_intra_vm_affinity: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datastore_cluster_id", datastore_cluster_id)
+        _setter("virtual_machine_id", virtual_machine_id)
         if sdrs_automation_level is not None:
-            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
+            _setter("sdrs_automation_level", sdrs_automation_level)
         if sdrs_enabled is not None:
-            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
+            _setter("sdrs_enabled", sdrs_enabled)
         if sdrs_intra_vm_affinity is not None:
-            pulumi.set(__self__, "sdrs_intra_vm_affinity", sdrs_intra_vm_affinity)
+            _setter("sdrs_intra_vm_affinity", sdrs_intra_vm_affinity)
 
     @property
     @pulumi.getter(name="datastoreClusterId")
@@ -149,16 +166,33 @@ class _StorageDrsVmOverrideState:
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
         """
+        _StorageDrsVmOverrideState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore_cluster_id=datastore_cluster_id,
+            sdrs_automation_level=sdrs_automation_level,
+            sdrs_enabled=sdrs_enabled,
+            sdrs_intra_vm_affinity=sdrs_intra_vm_affinity,
+            virtual_machine_id=virtual_machine_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_enabled: Optional[pulumi.Input[str]] = None,
+             sdrs_intra_vm_affinity: Optional[pulumi.Input[str]] = None,
+             virtual_machine_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if datastore_cluster_id is not None:
-            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+            _setter("datastore_cluster_id", datastore_cluster_id)
         if sdrs_automation_level is not None:
-            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
+            _setter("sdrs_automation_level", sdrs_automation_level)
         if sdrs_enabled is not None:
-            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
+            _setter("sdrs_enabled", sdrs_enabled)
         if sdrs_intra_vm_affinity is not None:
-            pulumi.set(__self__, "sdrs_intra_vm_affinity", sdrs_intra_vm_affinity)
+            _setter("sdrs_intra_vm_affinity", sdrs_intra_vm_affinity)
         if virtual_machine_id is not None:
-            pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
+            _setter("virtual_machine_id", virtual_machine_id)
 
     @property
     @pulumi.getter(name="datastoreClusterId")
@@ -284,6 +318,10 @@ class StorageDrsVmOverride(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StorageDrsVmOverrideArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

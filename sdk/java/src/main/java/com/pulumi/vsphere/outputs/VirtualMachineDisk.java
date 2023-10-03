@@ -26,9 +26,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String controllerType;
     /**
-     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      */
     private @Nullable String datastoreId;
@@ -84,7 +82,7 @@ public final class VirtualMachineDisk {
     private @Nullable Integer key;
     private String label;
     /**
-     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
      * 
@@ -98,7 +96,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable Integer size;
     /**
-     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
+     * @return The UUID of the storage policy to assign to the virtual disk.
      * 
      */
     private @Nullable String storagePolicyId;
@@ -141,9 +139,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.controllerType);
     }
     /**
-     * @return The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     * 
-     * &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+     * @return The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      */
     public Optional<String> datastoreId() {
@@ -223,7 +219,7 @@ public final class VirtualMachineDisk {
         return this.label;
     }
     /**
-     * @return When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * @return The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.
      * 
      * &gt; **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .
      * 
@@ -241,7 +237,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return The ID of the storage policy to assign to the home directory of a virtual machine.
+     * @return The UUID of the storage policy to assign to the virtual disk.
      * 
      */
     public Optional<String> storagePolicyId() {

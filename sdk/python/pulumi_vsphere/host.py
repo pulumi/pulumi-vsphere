@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['HostArgs', 'Host']
@@ -74,31 +74,66 @@ class HostArgs:
                trusted and no thumbprint is set then the operation will fail. See data source
                [`get_host_thumbprint`][docs-host-thumbprint-data-source].
         """
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        HostArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostname=hostname,
+            password=password,
+            username=username,
+            cluster=cluster,
+            cluster_managed=cluster_managed,
+            connected=connected,
+            custom_attributes=custom_attributes,
+            datacenter=datacenter,
+            force=force,
+            license=license,
+            lockdown=lockdown,
+            maintenance=maintenance,
+            tags=tags,
+            thumbprint=thumbprint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostname: pulumi.Input[str],
+             password: pulumi.Input[str],
+             username: pulumi.Input[str],
+             cluster: Optional[pulumi.Input[str]] = None,
+             cluster_managed: Optional[pulumi.Input[bool]] = None,
+             connected: Optional[pulumi.Input[bool]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             license: Optional[pulumi.Input[str]] = None,
+             lockdown: Optional[pulumi.Input[str]] = None,
+             maintenance: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             thumbprint: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hostname", hostname)
+        _setter("password", password)
+        _setter("username", username)
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if cluster_managed is not None:
-            pulumi.set(__self__, "cluster_managed", cluster_managed)
+            _setter("cluster_managed", cluster_managed)
         if connected is not None:
-            pulumi.set(__self__, "connected", connected)
+            _setter("connected", connected)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if license is not None:
-            pulumi.set(__self__, "license", license)
+            _setter("license", license)
         if lockdown is not None:
-            pulumi.set(__self__, "lockdown", lockdown)
+            _setter("lockdown", lockdown)
         if maintenance is not None:
-            pulumi.set(__self__, "maintenance", maintenance)
+            _setter("maintenance", maintenance)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if thumbprint is not None:
-            pulumi.set(__self__, "thumbprint", thumbprint)
+            _setter("thumbprint", thumbprint)
 
     @property
     @pulumi.getter
@@ -361,34 +396,69 @@ class _HostState:
         :param pulumi.Input[str] username: Username that will be used by vSphere to authenticate
                to the host.
         """
+        _HostState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            cluster_managed=cluster_managed,
+            connected=connected,
+            custom_attributes=custom_attributes,
+            datacenter=datacenter,
+            force=force,
+            hostname=hostname,
+            license=license,
+            lockdown=lockdown,
+            maintenance=maintenance,
+            password=password,
+            tags=tags,
+            thumbprint=thumbprint,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: Optional[pulumi.Input[str]] = None,
+             cluster_managed: Optional[pulumi.Input[bool]] = None,
+             connected: Optional[pulumi.Input[bool]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             license: Optional[pulumi.Input[str]] = None,
+             lockdown: Optional[pulumi.Input[str]] = None,
+             maintenance: Optional[pulumi.Input[bool]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             thumbprint: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
+            _setter("cluster", cluster)
         if cluster_managed is not None:
-            pulumi.set(__self__, "cluster_managed", cluster_managed)
+            _setter("cluster_managed", cluster_managed)
         if connected is not None:
-            pulumi.set(__self__, "connected", connected)
+            _setter("connected", connected)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if license is not None:
-            pulumi.set(__self__, "license", license)
+            _setter("license", license)
         if lockdown is not None:
-            pulumi.set(__self__, "lockdown", lockdown)
+            _setter("lockdown", lockdown)
         if maintenance is not None:
-            pulumi.set(__self__, "maintenance", maintenance)
+            _setter("maintenance", maintenance)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if thumbprint is not None:
-            pulumi.set(__self__, "thumbprint", thumbprint)
+            _setter("thumbprint", thumbprint)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -778,6 +848,10 @@ class Host(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

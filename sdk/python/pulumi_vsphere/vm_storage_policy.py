@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,11 +25,24 @@ class VmStoragePolicyArgs:
         :param pulumi.Input[str] description: Description of the storage policy.
         :param pulumi.Input[str] name: The name of the storage policy.
         """
-        pulumi.set(__self__, "tag_rules", tag_rules)
+        VmStoragePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_rules=tag_rules,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_rules: pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("tag_rules", tag_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="tagRules")
@@ -80,12 +93,25 @@ class _VmStoragePolicyState:
         :param pulumi.Input[str] name: The name of the storage policy.
         :param pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]] tag_rules: List of tag rules. The tag category and tags to be associated to this storage policy.
         """
+        _VmStoragePolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            tag_rules=tag_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tag_rules: Optional[pulumi.Input[Sequence[pulumi.Input['VmStoragePolicyTagRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tag_rules is not None:
-            pulumi.set(__self__, "tag_rules", tag_rules)
+            _setter("tag_rules", tag_rules)
 
     @property
     @pulumi.getter
@@ -367,6 +393,10 @@ class VmStoragePolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VmStoragePolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
