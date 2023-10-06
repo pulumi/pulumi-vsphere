@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['HostVirtualSwitchArgs', 'HostVirtualSwitch']
@@ -90,45 +90,94 @@ class HostVirtualSwitchArgs:
                of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`. Default: `loadbalance_srcid`.
         """
-        pulumi.set(__self__, "active_nics", active_nics)
-        pulumi.set(__self__, "host_system_id", host_system_id)
-        pulumi.set(__self__, "network_adapters", network_adapters)
+        HostVirtualSwitchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_nics=active_nics,
+            host_system_id=host_system_id,
+            network_adapters=network_adapters,
+            allow_forged_transmits=allow_forged_transmits,
+            allow_mac_changes=allow_mac_changes,
+            allow_promiscuous=allow_promiscuous,
+            beacon_interval=beacon_interval,
+            check_beacon=check_beacon,
+            failback=failback,
+            link_discovery_operation=link_discovery_operation,
+            link_discovery_protocol=link_discovery_protocol,
+            mtu=mtu,
+            name=name,
+            notify_switches=notify_switches,
+            number_of_ports=number_of_ports,
+            shaping_average_bandwidth=shaping_average_bandwidth,
+            shaping_burst_size=shaping_burst_size,
+            shaping_enabled=shaping_enabled,
+            shaping_peak_bandwidth=shaping_peak_bandwidth,
+            standby_nics=standby_nics,
+            teaming_policy=teaming_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_nics: pulumi.Input[Sequence[pulumi.Input[str]]],
+             host_system_id: pulumi.Input[str],
+             network_adapters: pulumi.Input[Sequence[pulumi.Input[str]]],
+             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+             beacon_interval: Optional[pulumi.Input[int]] = None,
+             check_beacon: Optional[pulumi.Input[bool]] = None,
+             failback: Optional[pulumi.Input[bool]] = None,
+             link_discovery_operation: Optional[pulumi.Input[str]] = None,
+             link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notify_switches: Optional[pulumi.Input[bool]] = None,
+             number_of_ports: Optional[pulumi.Input[int]] = None,
+             shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teaming_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active_nics", active_nics)
+        _setter("host_system_id", host_system_id)
+        _setter("network_adapters", network_adapters)
         if allow_forged_transmits is not None:
-            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+            _setter("allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+            _setter("allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+            _setter("allow_promiscuous", allow_promiscuous)
         if beacon_interval is not None:
-            pulumi.set(__self__, "beacon_interval", beacon_interval)
+            _setter("beacon_interval", beacon_interval)
         if check_beacon is not None:
-            pulumi.set(__self__, "check_beacon", check_beacon)
+            _setter("check_beacon", check_beacon)
         if failback is not None:
-            pulumi.set(__self__, "failback", failback)
+            _setter("failback", failback)
         if link_discovery_operation is not None:
-            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+            _setter("link_discovery_operation", link_discovery_operation)
         if link_discovery_protocol is not None:
-            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+            _setter("link_discovery_protocol", link_discovery_protocol)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notify_switches is not None:
-            pulumi.set(__self__, "notify_switches", notify_switches)
+            _setter("notify_switches", notify_switches)
         if number_of_ports is not None:
-            pulumi.set(__self__, "number_of_ports", number_of_ports)
+            _setter("number_of_ports", number_of_ports)
         if shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "shaping_average_bandwidth", shaping_average_bandwidth)
+            _setter("shaping_average_bandwidth", shaping_average_bandwidth)
         if shaping_burst_size is not None:
-            pulumi.set(__self__, "shaping_burst_size", shaping_burst_size)
+            _setter("shaping_burst_size", shaping_burst_size)
         if shaping_enabled is not None:
-            pulumi.set(__self__, "shaping_enabled", shaping_enabled)
+            _setter("shaping_enabled", shaping_enabled)
         if shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "shaping_peak_bandwidth", shaping_peak_bandwidth)
+            _setter("shaping_peak_bandwidth", shaping_peak_bandwidth)
         if standby_nics is not None:
-            pulumi.set(__self__, "standby_nics", standby_nics)
+            _setter("standby_nics", standby_nics)
         if teaming_policy is not None:
-            pulumi.set(__self__, "teaming_policy", teaming_policy)
+            _setter("teaming_policy", teaming_policy)
 
     @property
     @pulumi.getter(name="activeNics")
@@ -493,48 +542,97 @@ class _HostVirtualSwitchState:
                of `loadbalance_ip`, `loadbalance_srcmac`, `loadbalance_srcid`, or
                `failover_explicit`. Default: `loadbalance_srcid`.
         """
+        _HostVirtualSwitchState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_nics=active_nics,
+            allow_forged_transmits=allow_forged_transmits,
+            allow_mac_changes=allow_mac_changes,
+            allow_promiscuous=allow_promiscuous,
+            beacon_interval=beacon_interval,
+            check_beacon=check_beacon,
+            failback=failback,
+            host_system_id=host_system_id,
+            link_discovery_operation=link_discovery_operation,
+            link_discovery_protocol=link_discovery_protocol,
+            mtu=mtu,
+            name=name,
+            network_adapters=network_adapters,
+            notify_switches=notify_switches,
+            number_of_ports=number_of_ports,
+            shaping_average_bandwidth=shaping_average_bandwidth,
+            shaping_burst_size=shaping_burst_size,
+            shaping_enabled=shaping_enabled,
+            shaping_peak_bandwidth=shaping_peak_bandwidth,
+            standby_nics=standby_nics,
+            teaming_policy=teaming_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+             beacon_interval: Optional[pulumi.Input[int]] = None,
+             check_beacon: Optional[pulumi.Input[bool]] = None,
+             failback: Optional[pulumi.Input[bool]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             link_discovery_operation: Optional[pulumi.Input[str]] = None,
+             link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_adapters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notify_switches: Optional[pulumi.Input[bool]] = None,
+             number_of_ports: Optional[pulumi.Input[int]] = None,
+             shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teaming_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active_nics is not None:
-            pulumi.set(__self__, "active_nics", active_nics)
+            _setter("active_nics", active_nics)
         if allow_forged_transmits is not None:
-            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+            _setter("allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+            _setter("allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+            _setter("allow_promiscuous", allow_promiscuous)
         if beacon_interval is not None:
-            pulumi.set(__self__, "beacon_interval", beacon_interval)
+            _setter("beacon_interval", beacon_interval)
         if check_beacon is not None:
-            pulumi.set(__self__, "check_beacon", check_beacon)
+            _setter("check_beacon", check_beacon)
         if failback is not None:
-            pulumi.set(__self__, "failback", failback)
+            _setter("failback", failback)
         if host_system_id is not None:
-            pulumi.set(__self__, "host_system_id", host_system_id)
+            _setter("host_system_id", host_system_id)
         if link_discovery_operation is not None:
-            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+            _setter("link_discovery_operation", link_discovery_operation)
         if link_discovery_protocol is not None:
-            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+            _setter("link_discovery_protocol", link_discovery_protocol)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_adapters is not None:
-            pulumi.set(__self__, "network_adapters", network_adapters)
+            _setter("network_adapters", network_adapters)
         if notify_switches is not None:
-            pulumi.set(__self__, "notify_switches", notify_switches)
+            _setter("notify_switches", notify_switches)
         if number_of_ports is not None:
-            pulumi.set(__self__, "number_of_ports", number_of_ports)
+            _setter("number_of_ports", number_of_ports)
         if shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "shaping_average_bandwidth", shaping_average_bandwidth)
+            _setter("shaping_average_bandwidth", shaping_average_bandwidth)
         if shaping_burst_size is not None:
-            pulumi.set(__self__, "shaping_burst_size", shaping_burst_size)
+            _setter("shaping_burst_size", shaping_burst_size)
         if shaping_enabled is not None:
-            pulumi.set(__self__, "shaping_enabled", shaping_enabled)
+            _setter("shaping_enabled", shaping_enabled)
         if shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "shaping_peak_bandwidth", shaping_peak_bandwidth)
+            _setter("shaping_peak_bandwidth", shaping_peak_bandwidth)
         if standby_nics is not None:
-            pulumi.set(__self__, "standby_nics", standby_nics)
+            _setter("standby_nics", standby_nics)
         if teaming_policy is not None:
-            pulumi.set(__self__, "teaming_policy", teaming_policy)
+            _setter("teaming_policy", teaming_policy)
 
     @property
     @pulumi.getter(name="activeNics")
@@ -922,6 +1020,10 @@ class HostVirtualSwitch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostVirtualSwitchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

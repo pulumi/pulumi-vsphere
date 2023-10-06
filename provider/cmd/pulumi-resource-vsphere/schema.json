@@ -385,7 +385,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
+                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "deviceAddress": {
                     "type": "string"
@@ -396,7 +396,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
+                    "description": "The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
                 }
             },
             "type": "object",
@@ -600,7 +600,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
+                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "deviceAddress": {
                     "type": "string"
@@ -646,7 +646,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
+                    "description": "The path to the ISO file. Required for using a datastore ISO. Conflicts with `client_device`.\n\n\u003e **NOTE:** Either `client_device` (for a remote backed CD-ROM) or `datastore_id` and `path` (for a datastore ISO backed CD-ROM) are required to .\n\n\u003e **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.\n"
                 },
                 "size": {
                     "type": "integer",
@@ -654,7 +654,7 @@
                 },
                 "storagePolicyId": {
                     "type": "string",
-                    "description": "The ID of the storage policy to assign to the home directory of a virtual machine.\n"
+                    "description": "The UUID of the storage policy to assign to the virtual disk.\n"
                 },
                 "thinProvisioned": {
                     "type": "boolean",
@@ -840,7 +840,7 @@
                 },
                 "gw": {
                     "type": "string",
-                    "description": "IP address of the default gateway, if DHCP is not set.\n"
+                    "description": "IP address of the default gateway, if DHCP or autoconfig is not set.\n"
                 },
                 "ip": {
                     "type": "string",
@@ -872,7 +872,7 @@
                 },
                 "gw": {
                     "type": "string",
-                    "description": "IP address of the default gateway, if DHCP is not set.\n"
+                    "description": "IP address of the default gateway, if DHCP or autoconfig is not set.\n"
                 }
             },
             "type": "object"
@@ -2938,7 +2938,7 @@
                 },
                 "sdrsFreeSpaceThreshold": {
                     "type": "integer",
-                    "description": "The threshold, in GB, that storage\nDRS uses to make decisions to migrate VMs out of a datastore. Default: `50`\nGB.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
+                    "description": "The free space threshold to use.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
                 },
                 "sdrsFreeSpaceThresholdMode": {
                     "type": "string",
@@ -2946,7 +2946,7 @@
                 },
                 "sdrsFreeSpaceUtilizationDifference": {
                     "type": "integer",
-                    "description": "The threshold, in\npercent of used space, that storage DRS uses to make decisions to migrate VMs\nout of a datastore. Default: `80` percent.\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
+                    "description": "The threshold, in\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
                 },
                 "sdrsIoBalanceAutomationLevel": {
                     "type": "string",
@@ -3054,7 +3054,7 @@
                 },
                 "sdrsFreeSpaceThreshold": {
                     "type": "integer",
-                    "description": "The threshold, in GB, that storage\nDRS uses to make decisions to migrate VMs out of a datastore. Default: `50`\nGB.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
+                    "description": "The free space threshold to use.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
                 },
                 "sdrsFreeSpaceThresholdMode": {
                     "type": "string",
@@ -3062,7 +3062,7 @@
                 },
                 "sdrsFreeSpaceUtilizationDifference": {
                     "type": "integer",
-                    "description": "The threshold, in\npercent of used space, that storage DRS uses to make decisions to migrate VMs\nout of a datastore. Default: `80` percent.\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
+                    "description": "The threshold, in\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
                 },
                 "sdrsIoBalanceAutomationLevel": {
                     "type": "string",
@@ -3171,7 +3171,7 @@
                     },
                     "sdrsFreeSpaceThreshold": {
                         "type": "integer",
-                        "description": "The threshold, in GB, that storage\nDRS uses to make decisions to migrate VMs out of a datastore. Default: `50`\nGB.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
+                        "description": "The free space threshold to use.\nWhen set to `utilization`, `drs_space_utilization_threshold` is used, and\nwhen set to `freeSpace`, `drs_free_space_threshold` is used. Default:\n`utilization`.\n"
                     },
                     "sdrsFreeSpaceThresholdMode": {
                         "type": "string",
@@ -3179,7 +3179,7 @@
                     },
                     "sdrsFreeSpaceUtilizationDifference": {
                         "type": "integer",
-                        "description": "The threshold, in\npercent of used space, that storage DRS uses to make decisions to migrate VMs\nout of a datastore. Default: `80` percent.\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
+                        "description": "The threshold, in\npercent, of difference between space utilization in datastores before storage\nDRS makes decisions to balance the space. Default: `5` percent.\n"
                     },
                     "sdrsIoBalanceAutomationLevel": {
                         "type": "string",
@@ -8184,7 +8184,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
+                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "defaultIpAddress": {
                     "type": "string",
@@ -8406,7 +8406,7 @@
                 },
                 "storagePolicyId": {
                     "type": "string",
-                    "description": "The ID of the storage policy to assign to the home directory of a virtual machine.\n"
+                    "description": "The UUID of the storage policy to assign to the virtual disk.\n"
                 },
                 "swapPlacementPolicy": {
                     "type": "string",
@@ -8576,7 +8576,7 @@
                 },
                 "datastoreId": {
                     "type": "string",
-                    "description": "The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
+                    "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                 },
                 "disks": {
                     "type": "array",
@@ -8772,7 +8772,7 @@
                 },
                 "storagePolicyId": {
                     "type": "string",
-                    "description": "The ID of the storage policy to assign to the home directory of a virtual machine.\n"
+                    "description": "The UUID of the storage policy to assign to the virtual disk.\n"
                 },
                 "swapPlacementPolicy": {
                     "type": "string",
@@ -8908,7 +8908,7 @@
                     },
                     "datastoreId": {
                         "type": "string",
-                        "description": "The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.\n\n\u003e **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.\n"
+                        "description": "The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.\n"
                     },
                     "defaultIpAddress": {
                         "type": "string",
@@ -9131,7 +9131,7 @@
                     },
                     "storagePolicyId": {
                         "type": "string",
-                        "description": "The ID of the storage policy to assign to the home directory of a virtual machine.\n"
+                        "description": "The UUID of the storage policy to assign to the virtual disk.\n"
                     },
                     "swapPlacementPolicy": {
                         "type": "string",

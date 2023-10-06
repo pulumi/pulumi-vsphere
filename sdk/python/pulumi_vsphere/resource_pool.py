@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ResourcePoolArgs', 'ResourcePool']
@@ -76,35 +76,72 @@ class ResourcePoolArgs:
                `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
-        pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
+        ResourcePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parent_resource_pool_id=parent_resource_pool_id,
+            cpu_expandable=cpu_expandable,
+            cpu_limit=cpu_limit,
+            cpu_reservation=cpu_reservation,
+            cpu_share_level=cpu_share_level,
+            cpu_shares=cpu_shares,
+            custom_attributes=custom_attributes,
+            memory_expandable=memory_expandable,
+            memory_limit=memory_limit,
+            memory_reservation=memory_reservation,
+            memory_share_level=memory_share_level,
+            memory_shares=memory_shares,
+            name=name,
+            scale_descendants_shares=scale_descendants_shares,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parent_resource_pool_id: pulumi.Input[str],
+             cpu_expandable: Optional[pulumi.Input[bool]] = None,
+             cpu_limit: Optional[pulumi.Input[int]] = None,
+             cpu_reservation: Optional[pulumi.Input[int]] = None,
+             cpu_share_level: Optional[pulumi.Input[str]] = None,
+             cpu_shares: Optional[pulumi.Input[int]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             memory_expandable: Optional[pulumi.Input[bool]] = None,
+             memory_limit: Optional[pulumi.Input[int]] = None,
+             memory_reservation: Optional[pulumi.Input[int]] = None,
+             memory_share_level: Optional[pulumi.Input[str]] = None,
+             memory_shares: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             scale_descendants_shares: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parent_resource_pool_id", parent_resource_pool_id)
         if cpu_expandable is not None:
-            pulumi.set(__self__, "cpu_expandable", cpu_expandable)
+            _setter("cpu_expandable", cpu_expandable)
         if cpu_limit is not None:
-            pulumi.set(__self__, "cpu_limit", cpu_limit)
+            _setter("cpu_limit", cpu_limit)
         if cpu_reservation is not None:
-            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+            _setter("cpu_reservation", cpu_reservation)
         if cpu_share_level is not None:
-            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+            _setter("cpu_share_level", cpu_share_level)
         if cpu_shares is not None:
-            pulumi.set(__self__, "cpu_shares", cpu_shares)
+            _setter("cpu_shares", cpu_shares)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if memory_expandable is not None:
-            pulumi.set(__self__, "memory_expandable", memory_expandable)
+            _setter("memory_expandable", memory_expandable)
         if memory_limit is not None:
-            pulumi.set(__self__, "memory_limit", memory_limit)
+            _setter("memory_limit", memory_limit)
         if memory_reservation is not None:
-            pulumi.set(__self__, "memory_reservation", memory_reservation)
+            _setter("memory_reservation", memory_reservation)
         if memory_share_level is not None:
-            pulumi.set(__self__, "memory_share_level", memory_share_level)
+            _setter("memory_share_level", memory_share_level)
         if memory_shares is not None:
-            pulumi.set(__self__, "memory_shares", memory_shares)
+            _setter("memory_shares", memory_shares)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if scale_descendants_shares is not None:
-            pulumi.set(__self__, "scale_descendants_shares", scale_descendants_shares)
+            _setter("scale_descendants_shares", scale_descendants_shares)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="parentResourcePoolId")
@@ -381,36 +418,73 @@ class _ResourcePoolState:
                `scaleCpuAndMemoryShares`. Default: `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The IDs of any tags to attach to this resource.
         """
+        _ResourcePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_expandable=cpu_expandable,
+            cpu_limit=cpu_limit,
+            cpu_reservation=cpu_reservation,
+            cpu_share_level=cpu_share_level,
+            cpu_shares=cpu_shares,
+            custom_attributes=custom_attributes,
+            memory_expandable=memory_expandable,
+            memory_limit=memory_limit,
+            memory_reservation=memory_reservation,
+            memory_share_level=memory_share_level,
+            memory_shares=memory_shares,
+            name=name,
+            parent_resource_pool_id=parent_resource_pool_id,
+            scale_descendants_shares=scale_descendants_shares,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_expandable: Optional[pulumi.Input[bool]] = None,
+             cpu_limit: Optional[pulumi.Input[int]] = None,
+             cpu_reservation: Optional[pulumi.Input[int]] = None,
+             cpu_share_level: Optional[pulumi.Input[str]] = None,
+             cpu_shares: Optional[pulumi.Input[int]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             memory_expandable: Optional[pulumi.Input[bool]] = None,
+             memory_limit: Optional[pulumi.Input[int]] = None,
+             memory_reservation: Optional[pulumi.Input[int]] = None,
+             memory_share_level: Optional[pulumi.Input[str]] = None,
+             memory_shares: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
+             scale_descendants_shares: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_expandable is not None:
-            pulumi.set(__self__, "cpu_expandable", cpu_expandable)
+            _setter("cpu_expandable", cpu_expandable)
         if cpu_limit is not None:
-            pulumi.set(__self__, "cpu_limit", cpu_limit)
+            _setter("cpu_limit", cpu_limit)
         if cpu_reservation is not None:
-            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+            _setter("cpu_reservation", cpu_reservation)
         if cpu_share_level is not None:
-            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+            _setter("cpu_share_level", cpu_share_level)
         if cpu_shares is not None:
-            pulumi.set(__self__, "cpu_shares", cpu_shares)
+            _setter("cpu_shares", cpu_shares)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if memory_expandable is not None:
-            pulumi.set(__self__, "memory_expandable", memory_expandable)
+            _setter("memory_expandable", memory_expandable)
         if memory_limit is not None:
-            pulumi.set(__self__, "memory_limit", memory_limit)
+            _setter("memory_limit", memory_limit)
         if memory_reservation is not None:
-            pulumi.set(__self__, "memory_reservation", memory_reservation)
+            _setter("memory_reservation", memory_reservation)
         if memory_share_level is not None:
-            pulumi.set(__self__, "memory_share_level", memory_share_level)
+            _setter("memory_share_level", memory_share_level)
         if memory_shares is not None:
-            pulumi.set(__self__, "memory_shares", memory_shares)
+            _setter("memory_shares", memory_shares)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_resource_pool_id is not None:
-            pulumi.set(__self__, "parent_resource_pool_id", parent_resource_pool_id)
+            _setter("parent_resource_pool_id", parent_resource_pool_id)
         if scale_descendants_shares is not None:
-            pulumi.set(__self__, "scale_descendants_shares", scale_descendants_shares)
+            _setter("scale_descendants_shares", scale_descendants_shares)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="cpuExpandable")
@@ -818,6 +892,10 @@ class ResourcePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourcePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

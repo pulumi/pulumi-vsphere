@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TagCategoryArgs', 'TagCategory']
@@ -33,12 +33,27 @@ class TagCategoryArgs:
                them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
-        pulumi.set(__self__, "associable_types", associable_types)
-        pulumi.set(__self__, "cardinality", cardinality)
+        TagCategoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associable_types=associable_types,
+            cardinality=cardinality,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associable_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             cardinality: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associable_types", associable_types)
+        _setter("cardinality", cardinality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="associableTypes")
@@ -119,14 +134,29 @@ class _TagCategoryState:
                them. Attempting to do so will result in an error.
         :param pulumi.Input[str] name: The name of the category.
         """
+        _TagCategoryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associable_types=associable_types,
+            cardinality=cardinality,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associable_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cardinality: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if associable_types is not None:
-            pulumi.set(__self__, "associable_types", associable_types)
+            _setter("associable_types", associable_types)
         if cardinality is not None:
-            pulumi.set(__self__, "cardinality", cardinality)
+            _setter("cardinality", cardinality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="associableTypes")
@@ -230,6 +260,10 @@ class TagCategory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagCategoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

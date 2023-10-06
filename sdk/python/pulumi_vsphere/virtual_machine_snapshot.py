@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VirtualMachineSnapshotArgs', 'VirtualMachineSnapshot']
@@ -37,15 +37,36 @@ class VirtualMachineSnapshotArgs:
         :param pulumi.Input[bool] remove_children: If set to `true`, the entire snapshot subtree
                is removed when this resource is destroyed.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "quiesce", quiesce)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "virtual_machine_uuid", virtual_machine_uuid)
+        VirtualMachineSnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            memory=memory,
+            quiesce=quiesce,
+            snapshot_name=snapshot_name,
+            virtual_machine_uuid=virtual_machine_uuid,
+            consolidate=consolidate,
+            remove_children=remove_children,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             memory: pulumi.Input[bool],
+             quiesce: pulumi.Input[bool],
+             snapshot_name: pulumi.Input[str],
+             virtual_machine_uuid: pulumi.Input[str],
+             consolidate: Optional[pulumi.Input[bool]] = None,
+             remove_children: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("memory", memory)
+        _setter("quiesce", quiesce)
+        _setter("snapshot_name", snapshot_name)
+        _setter("virtual_machine_uuid", virtual_machine_uuid)
         if consolidate is not None:
-            pulumi.set(__self__, "consolidate", consolidate)
+            _setter("consolidate", consolidate)
         if remove_children is not None:
-            pulumi.set(__self__, "remove_children", remove_children)
+            _setter("remove_children", remove_children)
 
     @property
     @pulumi.getter
@@ -164,20 +185,41 @@ class _VirtualMachineSnapshotState:
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[str] virtual_machine_uuid: The virtual machine UUID.
         """
+        _VirtualMachineSnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consolidate=consolidate,
+            description=description,
+            memory=memory,
+            quiesce=quiesce,
+            remove_children=remove_children,
+            snapshot_name=snapshot_name,
+            virtual_machine_uuid=virtual_machine_uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consolidate: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[bool]] = None,
+             quiesce: Optional[pulumi.Input[bool]] = None,
+             remove_children: Optional[pulumi.Input[bool]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             virtual_machine_uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if consolidate is not None:
-            pulumi.set(__self__, "consolidate", consolidate)
+            _setter("consolidate", consolidate)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if quiesce is not None:
-            pulumi.set(__self__, "quiesce", quiesce)
+            _setter("quiesce", quiesce)
         if remove_children is not None:
-            pulumi.set(__self__, "remove_children", remove_children)
+            _setter("remove_children", remove_children)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
         if virtual_machine_uuid is not None:
-            pulumi.set(__self__, "virtual_machine_uuid", virtual_machine_uuid)
+            _setter("virtual_machine_uuid", virtual_machine_uuid)
 
     @property
     @pulumi.getter
@@ -393,6 +435,10 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VirtualMachineSnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

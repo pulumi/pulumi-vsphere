@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -42,49 +42,82 @@ class ProviderArgs:
         :param pulumi.Input[str] vim_session_path: The directory to save vSphere SOAP API sessions to
         :param pulumi.Input[str] vsphere_server: The vSphere Server name for vSphere API operations.
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "user", user)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            user=user,
+            allow_unverified_ssl=allow_unverified_ssl,
+            api_timeout=api_timeout,
+            client_debug=client_debug,
+            client_debug_path=client_debug_path,
+            client_debug_path_run=client_debug_path_run,
+            persist_session=persist_session,
+            rest_session_path=rest_session_path,
+            vcenter_server=vcenter_server,
+            vim_keep_alive=vim_keep_alive,
+            vim_session_path=vim_session_path,
+            vsphere_server=vsphere_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: pulumi.Input[str],
+             user: pulumi.Input[str],
+             allow_unverified_ssl: Optional[pulumi.Input[bool]] = None,
+             api_timeout: Optional[pulumi.Input[int]] = None,
+             client_debug: Optional[pulumi.Input[bool]] = None,
+             client_debug_path: Optional[pulumi.Input[str]] = None,
+             client_debug_path_run: Optional[pulumi.Input[str]] = None,
+             persist_session: Optional[pulumi.Input[bool]] = None,
+             rest_session_path: Optional[pulumi.Input[str]] = None,
+             vcenter_server: Optional[pulumi.Input[str]] = None,
+             vim_keep_alive: Optional[pulumi.Input[int]] = None,
+             vim_session_path: Optional[pulumi.Input[str]] = None,
+             vsphere_server: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("user", user)
         if allow_unverified_ssl is None:
             allow_unverified_ssl = _utilities.get_env_bool('VSPHERE_ALLOW_UNVERIFIED_SSL')
         if allow_unverified_ssl is not None:
-            pulumi.set(__self__, "allow_unverified_ssl", allow_unverified_ssl)
+            _setter("allow_unverified_ssl", allow_unverified_ssl)
         if api_timeout is not None:
-            pulumi.set(__self__, "api_timeout", api_timeout)
+            _setter("api_timeout", api_timeout)
         if client_debug is None:
             client_debug = _utilities.get_env_bool('VSPHERE_CLIENT_DEBUG')
         if client_debug is not None:
-            pulumi.set(__self__, "client_debug", client_debug)
+            _setter("client_debug", client_debug)
         if client_debug_path is None:
             client_debug_path = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH')
         if client_debug_path is not None:
-            pulumi.set(__self__, "client_debug_path", client_debug_path)
+            _setter("client_debug_path", client_debug_path)
         if client_debug_path_run is None:
             client_debug_path_run = _utilities.get_env('VSPHERE_CLIENT_DEBUG_PATH_RUN')
         if client_debug_path_run is not None:
-            pulumi.set(__self__, "client_debug_path_run", client_debug_path_run)
+            _setter("client_debug_path_run", client_debug_path_run)
         if persist_session is None:
             persist_session = _utilities.get_env_bool('VSPHERE_PERSIST_SESSION')
         if persist_session is not None:
-            pulumi.set(__self__, "persist_session", persist_session)
+            _setter("persist_session", persist_session)
         if rest_session_path is None:
             rest_session_path = _utilities.get_env('VSPHERE_REST_SESSION_PATH')
         if rest_session_path is not None:
-            pulumi.set(__self__, "rest_session_path", rest_session_path)
+            _setter("rest_session_path", rest_session_path)
         if vcenter_server is not None:
             warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
             pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
         if vcenter_server is not None:
-            pulumi.set(__self__, "vcenter_server", vcenter_server)
+            _setter("vcenter_server", vcenter_server)
         if vim_keep_alive is None:
             vim_keep_alive = _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')
         if vim_keep_alive is not None:
-            pulumi.set(__self__, "vim_keep_alive", vim_keep_alive)
+            _setter("vim_keep_alive", vim_keep_alive)
         if vim_session_path is None:
             vim_session_path = _utilities.get_env('VSPHERE_VIM_SESSION_PATH')
         if vim_session_path is not None:
-            pulumi.set(__self__, "vim_session_path", vim_session_path)
+            _setter("vim_session_path", vim_session_path)
         if vsphere_server is not None:
-            pulumi.set(__self__, "vsphere_server", vsphere_server)
+            _setter("vsphere_server", vsphere_server)
 
     @property
     @pulumi.getter
@@ -305,6 +338,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -357,9 +394,6 @@ class Provider(pulumi.ProviderResource):
             if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
             __props__.__dict__["user"] = user
-            if vcenter_server is not None and not opts.urn:
-                warnings.warn("""This field has been renamed to vsphere_server.""", DeprecationWarning)
-                pulumi.log.warn("""vcenter_server is deprecated: This field has been renamed to vsphere_server.""")
             __props__.__dict__["vcenter_server"] = vcenter_server
             if vim_keep_alive is None:
                 vim_keep_alive = _utilities.get_env_int('VSPHERE_VIM_KEEP_ALIVE')

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ContentLibraryItemArgs', 'ContentLibraryItem']
@@ -30,17 +30,36 @@ class ContentLibraryItemArgs:
         :param pulumi.Input[str] type: Type of content library item.
                One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
-        pulumi.set(__self__, "library_id", library_id)
+        ContentLibraryItemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            library_id=library_id,
+            description=description,
+            file_url=file_url,
+            name=name,
+            source_uuid=source_uuid,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             library_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             file_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             source_uuid: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("library_id", library_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_url is not None:
-            pulumi.set(__self__, "file_url", file_url)
+            _setter("file_url", file_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if source_uuid is not None:
-            pulumi.set(__self__, "source_uuid", source_uuid)
+            _setter("source_uuid", source_uuid)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="libraryId")
@@ -135,18 +154,37 @@ class _ContentLibraryItemState:
         :param pulumi.Input[str] type: Type of content library item.
                One of "ovf", "iso", or "vm-template". Default: `ovf`.
         """
+        _ContentLibraryItemState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            file_url=file_url,
+            library_id=library_id,
+            name=name,
+            source_uuid=source_uuid,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             file_url: Optional[pulumi.Input[str]] = None,
+             library_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             source_uuid: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_url is not None:
-            pulumi.set(__self__, "file_url", file_url)
+            _setter("file_url", file_url)
         if library_id is not None:
-            pulumi.set(__self__, "library_id", library_id)
+            _setter("library_id", library_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if source_uuid is not None:
-            pulumi.set(__self__, "source_uuid", source_uuid)
+            _setter("source_uuid", source_uuid)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -264,6 +302,10 @@ class ContentLibraryItem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContentLibraryItemArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeClusterHostGroupArgs', 'ComputeClusterHostGroup']
@@ -32,11 +32,24 @@ class ComputeClusterHostGroupArgs:
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
-        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        ComputeClusterHostGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            host_system_ids=host_system_ids,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: pulumi.Input[str],
+             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_cluster_id", compute_cluster_id)
         if host_system_ids is not None:
-            pulumi.set(__self__, "host_system_ids", host_system_ids)
+            _setter("host_system_ids", host_system_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -105,12 +118,25 @@ class _ComputeClusterHostGroupState:
         :param pulumi.Input[str] name: The name of the host group. This must be unique in the
                cluster. Forces a new resource if changed.
         """
+        _ComputeClusterHostGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            host_system_ids=host_system_ids,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_cluster_id is not None:
-            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+            _setter("compute_cluster_id", compute_cluster_id)
         if host_system_ids is not None:
-            pulumi.set(__self__, "host_system_ids", host_system_ids)
+            _setter("host_system_ids", host_system_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -202,6 +228,10 @@ class ComputeClusterHostGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ComputeClusterHostGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

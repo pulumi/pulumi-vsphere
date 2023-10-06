@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatastoreClusterArgs', 'DatastoreCluster']
@@ -69,17 +69,13 @@ class DatastoreClusterArgs:
                single virtual machine will be kept on the same datastore. Default: `true`.
         :param pulumi.Input[bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
-        :param pulumi.Input[int] sdrs_free_space_threshold: The threshold, in GB, that storage
-               DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-               GB.
+        :param pulumi.Input[int] sdrs_free_space_threshold: The free space threshold to use.
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
         :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
                freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[int] sdrs_free_space_utilization_difference: The threshold, in
-               percent of used space, that storage DRS uses to make decisions to migrate VMs
-               out of a datastore. Default: `80` percent.
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
         :param pulumi.Input[str] sdrs_io_balance_automation_level: Overrides the default
@@ -123,55 +119,112 @@ class DatastoreClusterArgs:
                
                > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
-        pulumi.set(__self__, "datacenter_id", datacenter_id)
+        DatastoreClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter_id=datacenter_id,
+            custom_attributes=custom_attributes,
+            folder=folder,
+            name=name,
+            sdrs_advanced_options=sdrs_advanced_options,
+            sdrs_automation_level=sdrs_automation_level,
+            sdrs_default_intra_vm_affinity=sdrs_default_intra_vm_affinity,
+            sdrs_enabled=sdrs_enabled,
+            sdrs_free_space_threshold=sdrs_free_space_threshold,
+            sdrs_free_space_threshold_mode=sdrs_free_space_threshold_mode,
+            sdrs_free_space_utilization_difference=sdrs_free_space_utilization_difference,
+            sdrs_io_balance_automation_level=sdrs_io_balance_automation_level,
+            sdrs_io_latency_threshold=sdrs_io_latency_threshold,
+            sdrs_io_load_balance_enabled=sdrs_io_load_balance_enabled,
+            sdrs_io_load_imbalance_threshold=sdrs_io_load_imbalance_threshold,
+            sdrs_io_reservable_iops_threshold=sdrs_io_reservable_iops_threshold,
+            sdrs_io_reservable_percent_threshold=sdrs_io_reservable_percent_threshold,
+            sdrs_io_reservable_threshold_mode=sdrs_io_reservable_threshold_mode,
+            sdrs_load_balance_interval=sdrs_load_balance_interval,
+            sdrs_policy_enforcement_automation_level=sdrs_policy_enforcement_automation_level,
+            sdrs_rule_enforcement_automation_level=sdrs_rule_enforcement_automation_level,
+            sdrs_space_balance_automation_level=sdrs_space_balance_automation_level,
+            sdrs_space_utilization_threshold=sdrs_space_utilization_threshold,
+            sdrs_vm_evacuation_automation_level=sdrs_vm_evacuation_automation_level,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter_id: pulumi.Input[str],
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_default_intra_vm_affinity: Optional[pulumi.Input[bool]] = None,
+             sdrs_enabled: Optional[pulumi.Input[bool]] = None,
+             sdrs_free_space_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_free_space_threshold_mode: Optional[pulumi.Input[str]] = None,
+             sdrs_free_space_utilization_difference: Optional[pulumi.Input[int]] = None,
+             sdrs_io_balance_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_io_latency_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_load_balance_enabled: Optional[pulumi.Input[bool]] = None,
+             sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[str]] = None,
+             sdrs_load_balance_interval: Optional[pulumi.Input[int]] = None,
+             sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_space_balance_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datacenter_id", datacenter_id)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sdrs_advanced_options is not None:
-            pulumi.set(__self__, "sdrs_advanced_options", sdrs_advanced_options)
+            _setter("sdrs_advanced_options", sdrs_advanced_options)
         if sdrs_automation_level is not None:
-            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
+            _setter("sdrs_automation_level", sdrs_automation_level)
         if sdrs_default_intra_vm_affinity is not None:
-            pulumi.set(__self__, "sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
+            _setter("sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
         if sdrs_enabled is not None:
-            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
+            _setter("sdrs_enabled", sdrs_enabled)
         if sdrs_free_space_threshold is not None:
-            pulumi.set(__self__, "sdrs_free_space_threshold", sdrs_free_space_threshold)
+            _setter("sdrs_free_space_threshold", sdrs_free_space_threshold)
         if sdrs_free_space_threshold_mode is not None:
-            pulumi.set(__self__, "sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
+            _setter("sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
         if sdrs_free_space_utilization_difference is not None:
-            pulumi.set(__self__, "sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
+            _setter("sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
         if sdrs_io_balance_automation_level is not None:
-            pulumi.set(__self__, "sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
+            _setter("sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
         if sdrs_io_latency_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_latency_threshold", sdrs_io_latency_threshold)
+            _setter("sdrs_io_latency_threshold", sdrs_io_latency_threshold)
         if sdrs_io_load_balance_enabled is not None:
-            pulumi.set(__self__, "sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
+            _setter("sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
         if sdrs_io_load_imbalance_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
+            _setter("sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
         if sdrs_io_reservable_iops_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
+            _setter("sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
         if sdrs_io_reservable_percent_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
+            _setter("sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
         if sdrs_io_reservable_threshold_mode is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
+            _setter("sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
         if sdrs_load_balance_interval is not None:
-            pulumi.set(__self__, "sdrs_load_balance_interval", sdrs_load_balance_interval)
+            _setter("sdrs_load_balance_interval", sdrs_load_balance_interval)
         if sdrs_policy_enforcement_automation_level is not None:
-            pulumi.set(__self__, "sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
+            _setter("sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
         if sdrs_rule_enforcement_automation_level is not None:
-            pulumi.set(__self__, "sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
+            _setter("sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
         if sdrs_space_balance_automation_level is not None:
-            pulumi.set(__self__, "sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
+            _setter("sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
         if sdrs_space_utilization_threshold is not None:
-            pulumi.set(__self__, "sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
+            _setter("sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
         if sdrs_vm_evacuation_automation_level is not None:
-            pulumi.set(__self__, "sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
+            _setter("sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -293,9 +346,7 @@ class DatastoreClusterArgs:
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
     def sdrs_free_space_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold, in GB, that storage
-        DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        GB.
+        The free space threshold to use.
         When set to `utilization`, `drs_space_utilization_threshold` is used, and
         when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         `utilization`.
@@ -324,8 +375,6 @@ class DatastoreClusterArgs:
     def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[int]]:
         """
         The threshold, in
-        percent of used space, that storage DRS uses to make decisions to migrate VMs
-        out of a datastore. Default: `80` percent.
         percent, of difference between space utilization in datastores before storage
         DRS makes decisions to balance the space. Default: `5` percent.
         """
@@ -588,17 +637,13 @@ class _DatastoreClusterState:
                single virtual machine will be kept on the same datastore. Default: `true`.
         :param pulumi.Input[bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
-        :param pulumi.Input[int] sdrs_free_space_threshold: The threshold, in GB, that storage
-               DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-               GB.
+        :param pulumi.Input[int] sdrs_free_space_threshold: The free space threshold to use.
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
         :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
                freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[int] sdrs_free_space_utilization_difference: The threshold, in
-               percent of used space, that storage DRS uses to make decisions to migrate VMs
-               out of a datastore. Default: `80` percent.
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
         :param pulumi.Input[str] sdrs_io_balance_automation_level: Overrides the default
@@ -642,56 +687,113 @@ class _DatastoreClusterState:
                
                > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
+        _DatastoreClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_attributes=custom_attributes,
+            datacenter_id=datacenter_id,
+            folder=folder,
+            name=name,
+            sdrs_advanced_options=sdrs_advanced_options,
+            sdrs_automation_level=sdrs_automation_level,
+            sdrs_default_intra_vm_affinity=sdrs_default_intra_vm_affinity,
+            sdrs_enabled=sdrs_enabled,
+            sdrs_free_space_threshold=sdrs_free_space_threshold,
+            sdrs_free_space_threshold_mode=sdrs_free_space_threshold_mode,
+            sdrs_free_space_utilization_difference=sdrs_free_space_utilization_difference,
+            sdrs_io_balance_automation_level=sdrs_io_balance_automation_level,
+            sdrs_io_latency_threshold=sdrs_io_latency_threshold,
+            sdrs_io_load_balance_enabled=sdrs_io_load_balance_enabled,
+            sdrs_io_load_imbalance_threshold=sdrs_io_load_imbalance_threshold,
+            sdrs_io_reservable_iops_threshold=sdrs_io_reservable_iops_threshold,
+            sdrs_io_reservable_percent_threshold=sdrs_io_reservable_percent_threshold,
+            sdrs_io_reservable_threshold_mode=sdrs_io_reservable_threshold_mode,
+            sdrs_load_balance_interval=sdrs_load_balance_interval,
+            sdrs_policy_enforcement_automation_level=sdrs_policy_enforcement_automation_level,
+            sdrs_rule_enforcement_automation_level=sdrs_rule_enforcement_automation_level,
+            sdrs_space_balance_automation_level=sdrs_space_balance_automation_level,
+            sdrs_space_utilization_threshold=sdrs_space_utilization_threshold,
+            sdrs_vm_evacuation_automation_level=sdrs_vm_evacuation_automation_level,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_default_intra_vm_affinity: Optional[pulumi.Input[bool]] = None,
+             sdrs_enabled: Optional[pulumi.Input[bool]] = None,
+             sdrs_free_space_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_free_space_threshold_mode: Optional[pulumi.Input[str]] = None,
+             sdrs_free_space_utilization_difference: Optional[pulumi.Input[int]] = None,
+             sdrs_io_balance_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_io_latency_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_load_balance_enabled: Optional[pulumi.Input[bool]] = None,
+             sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[str]] = None,
+             sdrs_load_balance_interval: Optional[pulumi.Input[int]] = None,
+             sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_space_balance_automation_level: Optional[pulumi.Input[str]] = None,
+             sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
+             sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            pulumi.set(__self__, "datacenter_id", datacenter_id)
+            _setter("datacenter_id", datacenter_id)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sdrs_advanced_options is not None:
-            pulumi.set(__self__, "sdrs_advanced_options", sdrs_advanced_options)
+            _setter("sdrs_advanced_options", sdrs_advanced_options)
         if sdrs_automation_level is not None:
-            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
+            _setter("sdrs_automation_level", sdrs_automation_level)
         if sdrs_default_intra_vm_affinity is not None:
-            pulumi.set(__self__, "sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
+            _setter("sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
         if sdrs_enabled is not None:
-            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
+            _setter("sdrs_enabled", sdrs_enabled)
         if sdrs_free_space_threshold is not None:
-            pulumi.set(__self__, "sdrs_free_space_threshold", sdrs_free_space_threshold)
+            _setter("sdrs_free_space_threshold", sdrs_free_space_threshold)
         if sdrs_free_space_threshold_mode is not None:
-            pulumi.set(__self__, "sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
+            _setter("sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
         if sdrs_free_space_utilization_difference is not None:
-            pulumi.set(__self__, "sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
+            _setter("sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
         if sdrs_io_balance_automation_level is not None:
-            pulumi.set(__self__, "sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
+            _setter("sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
         if sdrs_io_latency_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_latency_threshold", sdrs_io_latency_threshold)
+            _setter("sdrs_io_latency_threshold", sdrs_io_latency_threshold)
         if sdrs_io_load_balance_enabled is not None:
-            pulumi.set(__self__, "sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
+            _setter("sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
         if sdrs_io_load_imbalance_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
+            _setter("sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
         if sdrs_io_reservable_iops_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
+            _setter("sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
         if sdrs_io_reservable_percent_threshold is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
+            _setter("sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
         if sdrs_io_reservable_threshold_mode is not None:
-            pulumi.set(__self__, "sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
+            _setter("sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
         if sdrs_load_balance_interval is not None:
-            pulumi.set(__self__, "sdrs_load_balance_interval", sdrs_load_balance_interval)
+            _setter("sdrs_load_balance_interval", sdrs_load_balance_interval)
         if sdrs_policy_enforcement_automation_level is not None:
-            pulumi.set(__self__, "sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
+            _setter("sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
         if sdrs_rule_enforcement_automation_level is not None:
-            pulumi.set(__self__, "sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
+            _setter("sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
         if sdrs_space_balance_automation_level is not None:
-            pulumi.set(__self__, "sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
+            _setter("sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
         if sdrs_space_utilization_threshold is not None:
-            pulumi.set(__self__, "sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
+            _setter("sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
         if sdrs_vm_evacuation_automation_level is not None:
-            pulumi.set(__self__, "sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
+            _setter("sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -813,9 +915,7 @@ class _DatastoreClusterState:
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
     def sdrs_free_space_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold, in GB, that storage
-        DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        GB.
+        The free space threshold to use.
         When set to `utilization`, `drs_space_utilization_threshold` is used, and
         when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         `utilization`.
@@ -844,8 +944,6 @@ class _DatastoreClusterState:
     def sdrs_free_space_utilization_difference(self) -> Optional[pulumi.Input[int]]:
         """
         The threshold, in
-        percent of used space, that storage DRS uses to make decisions to migrate VMs
-        out of a datastore. Default: `80` percent.
         percent, of difference between space utilization in datastores before storage
         DRS makes decisions to balance the space. Default: `5` percent.
         """
@@ -1113,17 +1211,13 @@ class DatastoreCluster(pulumi.CustomResource):
                single virtual machine will be kept on the same datastore. Default: `true`.
         :param pulumi.Input[bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
-        :param pulumi.Input[int] sdrs_free_space_threshold: The threshold, in GB, that storage
-               DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-               GB.
+        :param pulumi.Input[int] sdrs_free_space_threshold: The free space threshold to use.
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
         :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
                freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[int] sdrs_free_space_utilization_difference: The threshold, in
-               percent of used space, that storage DRS uses to make decisions to migrate VMs
-               out of a datastore. Default: `80` percent.
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
         :param pulumi.Input[str] sdrs_io_balance_automation_level: Overrides the default
@@ -1185,6 +1279,10 @@ class DatastoreCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatastoreClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1321,17 +1419,13 @@ class DatastoreCluster(pulumi.CustomResource):
                single virtual machine will be kept on the same datastore. Default: `true`.
         :param pulumi.Input[bool] sdrs_enabled: Enable Storage DRS for this datastore cluster.
                Default: `false`.
-        :param pulumi.Input[int] sdrs_free_space_threshold: The threshold, in GB, that storage
-               DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-               GB.
+        :param pulumi.Input[int] sdrs_free_space_threshold: The free space threshold to use.
                When set to `utilization`, `drs_space_utilization_threshold` is used, and
                when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
                `utilization`.
         :param pulumi.Input[str] sdrs_free_space_threshold_mode: The free space threshold to use. When set to utilization, drs_space_utilization_threshold is used, and when set to
                freeSpace, drs_free_space_threshold is used.
         :param pulumi.Input[int] sdrs_free_space_utilization_difference: The threshold, in
-               percent of used space, that storage DRS uses to make decisions to migrate VMs
-               out of a datastore. Default: `80` percent.
                percent, of difference between space utilization in datastores before storage
                DRS makes decisions to balance the space. Default: `5` percent.
         :param pulumi.Input[str] sdrs_io_balance_automation_level: Overrides the default
@@ -1494,9 +1588,7 @@ class DatastoreCluster(pulumi.CustomResource):
     @pulumi.getter(name="sdrsFreeSpaceThreshold")
     def sdrs_free_space_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The threshold, in GB, that storage
-        DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        GB.
+        The free space threshold to use.
         When set to `utilization`, `drs_space_utilization_threshold` is used, and
         when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         `utilization`.
@@ -1517,8 +1609,6 @@ class DatastoreCluster(pulumi.CustomResource):
     def sdrs_free_space_utilization_difference(self) -> pulumi.Output[Optional[int]]:
         """
         The threshold, in
-        percent of used space, that storage DRS uses to make decisions to migrate VMs
-        out of a datastore. Default: `80` percent.
         percent, of difference between space utilization in datastores before storage
         DRS makes decisions to balance the space. Default: `5` percent.
         """

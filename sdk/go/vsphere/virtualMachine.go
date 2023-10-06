@@ -60,9 +60,7 @@ type VirtualMachine struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrOutput `pulumi:"datastoreClusterId"`
-	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-	//
-	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringOutput `pulumi:"defaultIpAddress"`
@@ -192,7 +190,7 @@ type VirtualMachine struct {
 	ScsiType pulumi.StringPtrOutput `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
 	ShutdownWaitTimeout pulumi.IntPtrOutput `pulumi:"shutdownWaitTimeout"`
-	// The ID of the storage policy to assign to the home directory of a virtual machine.
+	// The UUID of the storage policy to assign to the virtual disk.
 	StoragePolicyId pulumi.StringOutput `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrOutput `pulumi:"swapPlacementPolicy"`
@@ -305,9 +303,7 @@ type virtualMachineState struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-	//
-	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress *string `pulumi:"defaultIpAddress"`
@@ -437,7 +433,7 @@ type virtualMachineState struct {
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
 	ShutdownWaitTimeout *int `pulumi:"shutdownWaitTimeout"`
-	// The ID of the storage policy to assign to the home directory of a virtual machine.
+	// The UUID of the storage policy to assign to the virtual disk.
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
@@ -518,9 +514,7 @@ type VirtualMachineState struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-	//
-	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringPtrInput
 	// The IP address selected by the provider to be used with any provisioners configured on this resource. When possible, this is the first IPv4 address that is reachable through the default gateway configured on the machine, then the first reachable IPv6 address, and then the first general discovered address if neither exists. If  VMware Tools is not running on the virtual machine, or if the virtual machine is powered off, this value will be blank.
 	DefaultIpAddress pulumi.StringPtrInput
@@ -650,7 +644,7 @@ type VirtualMachineState struct {
 	ScsiType pulumi.StringPtrInput
 	// The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
 	ShutdownWaitTimeout pulumi.IntPtrInput
-	// The ID of the storage policy to assign to the home directory of a virtual machine.
+	// The UUID of the storage policy to assign to the virtual disk.
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
@@ -733,9 +727,7 @@ type virtualMachineArgs struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId *string `pulumi:"datastoreClusterId"`
-	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-	//
-	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId *string `pulumi:"datastoreId"`
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks []VirtualMachineDisk `pulumi:"disks"`
@@ -853,7 +845,7 @@ type virtualMachineArgs struct {
 	ScsiType *string `pulumi:"scsiType"`
 	// The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
 	ShutdownWaitTimeout *int `pulumi:"shutdownWaitTimeout"`
-	// The ID of the storage policy to assign to the home directory of a virtual machine.
+	// The UUID of the storage policy to assign to the virtual disk.
 	StoragePolicyId *string `pulumi:"storagePolicyId"`
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy *string `pulumi:"swapPlacementPolicy"`
@@ -925,9 +917,7 @@ type VirtualMachineArgs struct {
 	//
 	// > **NOTE:** The `datastoreClusterId` setting applies to the entire virtual machine resource. You cannot assign individual individual disks to datastore clusters. In addition, you cannot use the `attach` setting to attach external disks on virtual machines that are assigned to datastore clusters.
 	DatastoreClusterId pulumi.StringPtrInput
-	// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-	//
-	// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+	// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 	DatastoreId pulumi.StringPtrInput
 	// A specification for a virtual disk device on the virtual machine. See disk options for more information.
 	Disks VirtualMachineDiskArrayInput
@@ -1045,7 +1035,7 @@ type VirtualMachineArgs struct {
 	ScsiType pulumi.StringPtrInput
 	// The amount of time, in minutes, to wait for a graceful guest shutdown when making necessary updates to the virtual machine. If `forcePowerOff` is set to `true`, the virtual machine will be forced to power-off after the timeout, otherwise an error is returned. Default: `3` minutes.
 	ShutdownWaitTimeout pulumi.IntPtrInput
-	// The ID of the storage policy to assign to the home directory of a virtual machine.
+	// The UUID of the storage policy to assign to the virtual disk.
 	StoragePolicyId pulumi.StringPtrInput
 	// The swap file placement policy for the virtual machine. One of `inherit`, `hostLocal`, or `vmDirectory`. Default: `inherit`.
 	SwapPlacementPolicy pulumi.StringPtrInput
@@ -1282,9 +1272,7 @@ func (o VirtualMachineOutput) DatastoreClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.DatastoreClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-//
-// > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
 func (o VirtualMachineOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
@@ -1566,7 +1554,7 @@ func (o VirtualMachineOutput) ShutdownWaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.ShutdownWaitTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the storage policy to assign to the home directory of a virtual machine.
+// The UUID of the storage policy to assign to the virtual disk.
 func (o VirtualMachineOutput) StoragePolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.StoragePolicyId }).(pulumi.StringOutput)
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TagArgs', 'Tag']
@@ -25,11 +25,24 @@ class TagArgs:
         :param pulumi.Input[str] name: The display name of the tag. The name must be unique
                within its category.
         """
-        pulumi.set(__self__, "category_id", category_id)
+        TagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category_id=category_id,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category_id", category_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="categoryId")
@@ -84,12 +97,25 @@ class _TagState:
         :param pulumi.Input[str] name: The display name of the tag. The name must be unique
                within its category.
         """
+        _TagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category_id=category_id,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category_id is not None:
-            pulumi.set(__self__, "category_id", category_id)
+            _setter("category_id", category_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="categoryId")
@@ -167,6 +193,10 @@ class Tag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

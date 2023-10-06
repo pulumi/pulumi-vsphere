@@ -52,9 +52,7 @@ type DatastoreCluster struct {
 	// Enable Storage DRS for this datastore cluster.
 	// Default: `false`.
 	SdrsEnabled pulumi.BoolPtrOutput `pulumi:"sdrsEnabled"`
-	// The threshold, in GB, that storage
-	// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-	// GB.
+	// The free space threshold to use.
 	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
@@ -63,8 +61,6 @@ type DatastoreCluster struct {
 	// freeSpace, drs_free_space_threshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrOutput `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in
-	// percent of used space, that storage DRS uses to make decisions to migrate VMs
-	// out of a datastore. Default: `80` percent.
 	// percent, of difference between space utilization in datastores before storage
 	// DRS makes decisions to balance the space. Default: `5` percent.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrOutput `pulumi:"sdrsFreeSpaceUtilizationDifference"`
@@ -193,9 +189,7 @@ type datastoreClusterState struct {
 	// Enable Storage DRS for this datastore cluster.
 	// Default: `false`.
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
-	// The threshold, in GB, that storage
-	// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-	// GB.
+	// The free space threshold to use.
 	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
@@ -204,8 +198,6 @@ type datastoreClusterState struct {
 	// freeSpace, drs_free_space_threshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in
-	// percent of used space, that storage DRS uses to make decisions to migrate VMs
-	// out of a datastore. Default: `80` percent.
 	// percent, of difference between space utilization in datastores before storage
 	// DRS makes decisions to balance the space. Default: `5` percent.
 	SdrsFreeSpaceUtilizationDifference *int `pulumi:"sdrsFreeSpaceUtilizationDifference"`
@@ -302,9 +294,7 @@ type DatastoreClusterState struct {
 	// Enable Storage DRS for this datastore cluster.
 	// Default: `false`.
 	SdrsEnabled pulumi.BoolPtrInput
-	// The threshold, in GB, that storage
-	// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-	// GB.
+	// The free space threshold to use.
 	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
@@ -313,8 +303,6 @@ type DatastoreClusterState struct {
 	// freeSpace, drs_free_space_threshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
 	// The threshold, in
-	// percent of used space, that storage DRS uses to make decisions to migrate VMs
-	// out of a datastore. Default: `80` percent.
 	// percent, of difference between space utilization in datastores before storage
 	// DRS makes decisions to balance the space. Default: `5` percent.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrInput
@@ -415,9 +403,7 @@ type datastoreClusterArgs struct {
 	// Enable Storage DRS for this datastore cluster.
 	// Default: `false`.
 	SdrsEnabled *bool `pulumi:"sdrsEnabled"`
-	// The threshold, in GB, that storage
-	// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-	// GB.
+	// The free space threshold to use.
 	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
@@ -426,8 +412,6 @@ type datastoreClusterArgs struct {
 	// freeSpace, drs_free_space_threshold is used.
 	SdrsFreeSpaceThresholdMode *string `pulumi:"sdrsFreeSpaceThresholdMode"`
 	// The threshold, in
-	// percent of used space, that storage DRS uses to make decisions to migrate VMs
-	// out of a datastore. Default: `80` percent.
 	// percent, of difference between space utilization in datastores before storage
 	// DRS makes decisions to balance the space. Default: `5` percent.
 	SdrsFreeSpaceUtilizationDifference *int `pulumi:"sdrsFreeSpaceUtilizationDifference"`
@@ -525,9 +509,7 @@ type DatastoreClusterArgs struct {
 	// Enable Storage DRS for this datastore cluster.
 	// Default: `false`.
 	SdrsEnabled pulumi.BoolPtrInput
-	// The threshold, in GB, that storage
-	// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-	// GB.
+	// The free space threshold to use.
 	// When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 	// when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 	// `utilization`.
@@ -536,8 +518,6 @@ type DatastoreClusterArgs struct {
 	// freeSpace, drs_free_space_threshold is used.
 	SdrsFreeSpaceThresholdMode pulumi.StringPtrInput
 	// The threshold, in
-	// percent of used space, that storage DRS uses to make decisions to migrate VMs
-	// out of a datastore. Default: `80` percent.
 	// percent, of difference between space utilization in datastores before storage
 	// DRS makes decisions to balance the space. Default: `5` percent.
 	SdrsFreeSpaceUtilizationDifference pulumi.IntPtrInput
@@ -768,9 +748,7 @@ func (o DatastoreClusterOutput) SdrsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatastoreCluster) pulumi.BoolPtrOutput { return v.SdrsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The threshold, in GB, that storage
-// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-// GB.
+// The free space threshold to use.
 // When set to `utilization`, `drsSpaceUtilizationThreshold` is used, and
 // when set to `freeSpace`, `drsFreeSpaceThreshold` is used. Default:
 // `utilization`.
@@ -785,8 +763,6 @@ func (o DatastoreClusterOutput) SdrsFreeSpaceThresholdMode() pulumi.StringPtrOut
 }
 
 // The threshold, in
-// percent of used space, that storage DRS uses to make decisions to migrate VMs
-// out of a datastore. Default: `80` percent.
 // percent, of difference between space utilization in datastores before storage
 // DRS makes decisions to balance the space. Default: `5` percent.
 func (o DatastoreClusterOutput) SdrsFreeSpaceUtilizationDifference() pulumi.IntPtrOutput {

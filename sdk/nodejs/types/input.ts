@@ -178,9 +178,7 @@ export interface VirtualMachineCdrom {
      */
     clientDevice?: pulumi.Input<boolean>;
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     *
-     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     deviceAddress?: pulumi.Input<string>;
@@ -189,7 +187,7 @@ export interface VirtualMachineCdrom {
      */
     key?: pulumi.Input<number>;
     /**
-     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
      *
      * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
      *
@@ -267,9 +265,7 @@ export interface VirtualMachineDisk {
      */
     controllerType?: pulumi.Input<string>;
     /**
-     * The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-     *
-     * > **NOTE:** Datastores cannot be assigned to individual disks when `datastoreClusterId` is used.
+     * The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `clientDevice`.
      */
     datastoreId?: pulumi.Input<string>;
     deviceAddress?: pulumi.Input<string>;
@@ -315,7 +311,7 @@ export interface VirtualMachineDisk {
     key?: pulumi.Input<number>;
     label: pulumi.Input<string>;
     /**
-     * When using `attach`, this parameter controls the path of a virtual disk to attach externally. Otherwise, it is a computed attribute that contains the virtual disk filename.
+     * The path to the ISO file. Required for using a datastore ISO. Conflicts with `clientDevice`.
      *
      * > **NOTE:** Either `clientDevice` (for a remote backed CD-ROM) or `datastoreId` and `path` (for a datastore ISO backed CD-ROM) are required to .
      *
@@ -327,7 +323,7 @@ export interface VirtualMachineDisk {
      */
     size?: pulumi.Input<number>;
     /**
-     * The ID of the storage policy to assign to the home directory of a virtual machine.
+     * The UUID of the storage policy to assign to the virtual disk.
      */
     storagePolicyId?: pulumi.Input<string>;
     /**
@@ -429,7 +425,7 @@ export interface VnicIpv4 {
      */
     dhcp?: pulumi.Input<boolean>;
     /**
-     * IP address of the default gateway, if DHCP is not set.
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
      */
     gw?: pulumi.Input<string>;
     /**
@@ -456,7 +452,7 @@ export interface VnicIpv6 {
      */
     dhcp?: pulumi.Input<boolean>;
     /**
-     * IP address of the default gateway, if DHCP is not set.
+     * IP address of the default gateway, if DHCP or autoconfig is not set.
      */
     gw?: pulumi.Input<string>;
 }

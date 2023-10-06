@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatacenterArgs', 'Datacenter']
@@ -38,14 +38,29 @@ class DatacenterArgs:
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
         """
+        DatacenterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_attributes=custom_attributes,
+            folder=folder,
+            name=name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -138,16 +153,33 @@ class _DatacenterState:
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
         """
+        _DatacenterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_attributes=custom_attributes,
+            folder=folder,
+            moid=moid,
+            name=name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             moid: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if moid is not None:
-            pulumi.set(__self__, "moid", moid)
+            _setter("moid", moid)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -313,6 +345,10 @@ class Datacenter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatacenterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -129,9 +129,7 @@ namespace Pulumi.VSphere
         public Output<string?> DatastoreClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-        /// 
-        /// &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         [Output("datastoreId")]
         public Output<string> DatastoreId { get; private set; } = null!;
@@ -465,7 +463,7 @@ namespace Pulumi.VSphere
         public Output<int?> ShutdownWaitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the storage policy to assign to the home directory of a virtual machine.
+        /// The UUID of the storage policy to assign to the virtual disk.
         /// </summary>
         [Output("storagePolicyId")]
         public Output<string> StoragePolicyId { get; private set; } = null!;
@@ -731,9 +729,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-        /// 
-        /// &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -1061,7 +1057,7 @@ namespace Pulumi.VSphere
         public Input<int>? ShutdownWaitTimeout { get; set; }
 
         /// <summary>
-        /// The ID of the storage policy to assign to the home directory of a virtual machine.
+        /// The UUID of the storage policy to assign to the virtual disk.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }
@@ -1277,9 +1273,7 @@ namespace Pulumi.VSphere
         public Input<string>? DatastoreClusterId { get; set; }
 
         /// <summary>
-        /// The managed object reference ID of the datastore in which to place the virtual machine. The virtual machine configuration files is placed here, along with any virtual disks that are created where a datastore is not explicitly specified. See the section on virtual machine migration for more information on modifying this value.
-        /// 
-        /// &gt; **NOTE:** Datastores cannot be assigned to individual disks when `datastore_cluster_id` is used.
+        /// The datastore ID that on which the ISO is located. Required for using a datastore ISO. Conflicts with `client_device`.
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }
@@ -1649,7 +1643,7 @@ namespace Pulumi.VSphere
         public Input<int>? ShutdownWaitTimeout { get; set; }
 
         /// <summary>
-        /// The ID of the storage policy to assign to the home directory of a virtual machine.
+        /// The UUID of the storage policy to assign to the virtual disk.
         /// </summary>
         [Input("storagePolicyId")]
         public Input<string>? StoragePolicyId { get; set; }

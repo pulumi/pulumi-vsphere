@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DrsVmOverrideArgs', 'DrsVmOverride']
@@ -35,12 +35,27 @@ class DrsVmOverrideArgs:
         :param pulumi.Input[bool] drs_enabled: Overrides the default DRS setting for this virtual
                machine. Can be either `true` or `false`. Default: `false`.
         """
-        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
-        pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
+        DrsVmOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            virtual_machine_id=virtual_machine_id,
+            drs_automation_level=drs_automation_level,
+            drs_enabled=drs_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: pulumi.Input[str],
+             virtual_machine_id: pulumi.Input[str],
+             drs_automation_level: Optional[pulumi.Input[str]] = None,
+             drs_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_cluster_id", compute_cluster_id)
+        _setter("virtual_machine_id", virtual_machine_id)
         if drs_automation_level is not None:
-            pulumi.set(__self__, "drs_automation_level", drs_automation_level)
+            _setter("drs_automation_level", drs_automation_level)
         if drs_enabled is not None:
-            pulumi.set(__self__, "drs_enabled", drs_enabled)
+            _setter("drs_enabled", drs_enabled)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -125,14 +140,29 @@ class _DrsVmOverrideState:
         :param pulumi.Input[str] virtual_machine_id: The UUID of the virtual machine to create
                the override for.  Forces a new resource if changed.
         """
+        _DrsVmOverrideState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            drs_automation_level=drs_automation_level,
+            drs_enabled=drs_enabled,
+            virtual_machine_id=virtual_machine_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             drs_automation_level: Optional[pulumi.Input[str]] = None,
+             drs_enabled: Optional[pulumi.Input[bool]] = None,
+             virtual_machine_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compute_cluster_id is not None:
-            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+            _setter("compute_cluster_id", compute_cluster_id)
         if drs_automation_level is not None:
-            pulumi.set(__self__, "drs_automation_level", drs_automation_level)
+            _setter("drs_automation_level", drs_automation_level)
         if drs_enabled is not None:
-            pulumi.set(__self__, "drs_enabled", drs_enabled)
+            _setter("drs_enabled", drs_enabled)
         if virtual_machine_id is not None:
-            pulumi.set(__self__, "virtual_machine_id", virtual_machine_id)
+            _setter("virtual_machine_id", virtual_machine_id)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -240,6 +270,10 @@ class DrsVmOverride(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DrsVmOverrideArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

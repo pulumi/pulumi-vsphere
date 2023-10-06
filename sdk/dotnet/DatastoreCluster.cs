@@ -81,9 +81,7 @@ namespace Pulumi.VSphere
         public Output<bool?> SdrsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold, in GB, that storage
-        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        /// GB.
+        /// The free space threshold to use.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -100,8 +98,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
-        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
-        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
@@ -345,9 +341,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The threshold, in GB, that storage
-        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        /// GB.
+        /// The free space threshold to use.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -364,8 +358,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
-        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
-        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
@@ -577,9 +569,7 @@ namespace Pulumi.VSphere
         public Input<bool>? SdrsEnabled { get; set; }
 
         /// <summary>
-        /// The threshold, in GB, that storage
-        /// DRS uses to make decisions to migrate VMs out of a datastore. Default: `50`
-        /// GB.
+        /// The free space threshold to use.
         /// When set to `utilization`, `drs_space_utilization_threshold` is used, and
         /// when set to `freeSpace`, `drs_free_space_threshold` is used. Default:
         /// `utilization`.
@@ -596,8 +586,6 @@ namespace Pulumi.VSphere
 
         /// <summary>
         /// The threshold, in
-        /// percent of used space, that storage DRS uses to make decisions to migrate VMs
-        /// out of a datastore. Default: `80` percent.
         /// percent, of difference between space utilization in datastores before storage
         /// DRS makes decisions to balance the space. Default: `5` percent.
         /// </summary>
