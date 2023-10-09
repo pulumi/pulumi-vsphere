@@ -83,6 +83,75 @@ import (
 //	}
 //
 // ```
+// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("mydc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi1.host.test"),
+//				DatacenterId: dc.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			hvs1, err := vsphere.NewHostVirtualSwitch(ctx, "hvs1", &vsphere.HostVirtualSwitchArgs{
+//				HostSystemId: *pulumi.String(h1.Id),
+//				NetworkAdapters: pulumi.StringArray{
+//					pulumi.String("vmnic3"),
+//					pulumi.String("vmnic4"),
+//				},
+//				ActiveNics: pulumi.StringArray{
+//					pulumi.String("vmnic3"),
+//				},
+//				StandbyNics: pulumi.StringArray{
+//					pulumi.String("vmnic4"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			p1, err := vsphere.NewHostPortGroup(ctx, "p1", &vsphere.HostPortGroupArgs{
+//				VirtualSwitchName: hvs1.Name,
+//				HostSystemId:      *pulumi.String(h1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
+//				Host:      *pulumi.String(h1.Id),
+//				Portgroup: p1.Name,
+//				Ipv4: &vsphere.VnicIpv4Args{
+//					Dhcp: pulumi.Bool(true),
+//				},
+//				Services: pulumi.StringArray{
+//					pulumi.String("vsan"),
+//					pulumi.String("management"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Importing
 //
 // An existing vNic can be [imported][docs-import] into this resource
@@ -117,19 +186,19 @@ type Vnic struct {
 	DistributedSwitchPort pulumi.StringPtrOutput `pulumi:"distributedSwitchPort"`
 	// ESX host the interface belongs to
 	Host pulumi.StringOutput `pulumi:"host"`
-	// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+	// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 	Ipv4 VnicIpv4PtrOutput `pulumi:"ipv4"`
-	// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+	// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 	Ipv6 VnicIpv6PtrOutput `pulumi:"ipv6"`
 	// MAC address of the interface.
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// MTU of the interface.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
-	// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+	// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 	Netstack pulumi.StringPtrOutput `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrOutput `pulumi:"portgroup"`
-	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 }
 
@@ -172,19 +241,19 @@ type vnicState struct {
 	DistributedSwitchPort *string `pulumi:"distributedSwitchPort"`
 	// ESX host the interface belongs to
 	Host *string `pulumi:"host"`
-	// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+	// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 	Ipv4 *VnicIpv4 `pulumi:"ipv4"`
-	// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+	// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 	Ipv6 *VnicIpv6 `pulumi:"ipv6"`
 	// MAC address of the interface.
 	Mac *string `pulumi:"mac"`
 	// MTU of the interface.
 	Mtu *int `pulumi:"mtu"`
-	// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+	// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 	Netstack *string `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup *string `pulumi:"portgroup"`
-	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 	Services []string `pulumi:"services"`
 }
 
@@ -195,19 +264,19 @@ type VnicState struct {
 	DistributedSwitchPort pulumi.StringPtrInput
 	// ESX host the interface belongs to
 	Host pulumi.StringPtrInput
-	// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+	// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 	Ipv4 VnicIpv4PtrInput
-	// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+	// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 	Ipv6 VnicIpv6PtrInput
 	// MAC address of the interface.
 	Mac pulumi.StringPtrInput
 	// MTU of the interface.
 	Mtu pulumi.IntPtrInput
-	// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+	// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 	Netstack pulumi.StringPtrInput
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrInput
-	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 	Services pulumi.StringArrayInput
 }
 
@@ -222,19 +291,19 @@ type vnicArgs struct {
 	DistributedSwitchPort *string `pulumi:"distributedSwitchPort"`
 	// ESX host the interface belongs to
 	Host string `pulumi:"host"`
-	// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+	// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 	Ipv4 *VnicIpv4 `pulumi:"ipv4"`
-	// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+	// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 	Ipv6 *VnicIpv6 `pulumi:"ipv6"`
 	// MAC address of the interface.
 	Mac *string `pulumi:"mac"`
 	// MTU of the interface.
 	Mtu *int `pulumi:"mtu"`
-	// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+	// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 	Netstack *string `pulumi:"netstack"`
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup *string `pulumi:"portgroup"`
-	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 	Services []string `pulumi:"services"`
 }
 
@@ -246,19 +315,19 @@ type VnicArgs struct {
 	DistributedSwitchPort pulumi.StringPtrInput
 	// ESX host the interface belongs to
 	Host pulumi.StringInput
-	// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+	// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 	Ipv4 VnicIpv4PtrInput
-	// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+	// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 	Ipv6 VnicIpv6PtrInput
 	// MAC address of the interface.
 	Mac pulumi.StringPtrInput
 	// MTU of the interface.
 	Mtu pulumi.IntPtrInput
-	// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+	// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 	Netstack pulumi.StringPtrInput
 	// Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
 	Portgroup pulumi.StringPtrInput
-	// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+	// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 	Services pulumi.StringArrayInput
 }
 
@@ -388,12 +457,12 @@ func (o VnicOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
 func (o VnicOutput) Ipv4() VnicIpv4PtrOutput {
 	return o.ApplyT(func(v *Vnic) VnicIpv4PtrOutput { return v.Ipv4 }).(VnicIpv4PtrOutput)
 }
 
-// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
 func (o VnicOutput) Ipv6() VnicIpv6PtrOutput {
 	return o.ApplyT(func(v *Vnic) VnicIpv6PtrOutput { return v.Ipv6 }).(VnicIpv6PtrOutput)
 }
@@ -408,7 +477,7 @@ func (o VnicOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
 
-// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack“, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
 func (o VnicOutput) Netstack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.Netstack }).(pulumi.StringPtrOutput)
 }
@@ -418,7 +487,7 @@ func (o VnicOutput) Portgroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.StringPtrOutput { return v.Portgroup }).(pulumi.StringPtrOutput)
 }
 
-// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
 func (o VnicOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vnic) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }

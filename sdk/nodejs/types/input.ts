@@ -421,7 +421,7 @@ export interface VmStoragePolicyTagRule {
 
 export interface VnicIpv4 {
     /**
-     * Use DHCP to configure the interface's IPv4 stack.
+     * Use DHCP to configure the interface's IPv6 stack.
      */
     dhcp?: pulumi.Input<boolean>;
     /**
@@ -448,7 +448,7 @@ export interface VnicIpv6 {
      */
     autoconfig?: pulumi.Input<boolean>;
     /**
-     * Use DHCP to configure the interface's IPv4 stack.
+     * Use DHCP to configure the interface's IPv6 stack.
      */
     dhcp?: pulumi.Input<boolean>;
     /**

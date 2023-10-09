@@ -91,7 +91,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Create a vnic attached to a portgroup using the default TCP/IP stack
- * 
  * ```java
  * package generated_program;
  * 
@@ -150,7 +149,7 @@ import javax.annotation.Nullable;
  *             .ipv4(VnicIpv4Args.builder()
  *                 .dhcp(true)
  *                 .build())
- *             .enabledServices(            
+ *             .services(            
  *                 &#34;vsan&#34;,
  *                 &#34;management&#34;)
  *             .build());
@@ -235,28 +234,28 @@ public class Vnic extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     /**
-     * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      * 
      */
     @Export(name="ipv4", type=VnicIpv4.class, parameters={})
     private Output</* @Nullable */ VnicIpv4> ipv4;
 
     /**
-     * @return IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * @return IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      * 
      */
     public Output<Optional<VnicIpv4>> ipv4() {
         return Codegen.optional(this.ipv4);
     }
     /**
-     * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      * 
      */
     @Export(name="ipv6", type=VnicIpv6.class, parameters={})
     private Output</* @Nullable */ VnicIpv6> ipv6;
 
     /**
-     * @return IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * @return IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      * 
      */
     public Output<Optional<VnicIpv6>> ipv6() {
@@ -291,14 +290,14 @@ public class Vnic extends com.pulumi.resources.CustomResource {
         return this.mtu;
     }
     /**
-     * TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      * 
      */
     @Export(name="netstack", type=String.class, parameters={})
     private Output</* @Nullable */ String> netstack;
 
     /**
-     * @return TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * @return TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      * 
      */
     public Output<Optional<String>> netstack() {
@@ -319,14 +318,14 @@ public class Vnic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portgroup);
     }
     /**
-     * Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
     @Export(name="services", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> services;
 
     /**
-     * @return Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * @return Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
     public Output<Optional<List<String>>> services() {
