@@ -14,7 +14,7 @@ namespace Pulumi.VSphere.Outputs
     public sealed class VnicIpv4
     {
         /// <summary>
-        /// Use DHCP to configure the interface's IPv4 stack.
+        /// Use DHCP to configure the interface's IPv6 stack.
         /// </summary>
         public readonly bool? Dhcp;
         /// <summary>

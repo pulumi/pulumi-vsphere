@@ -46,6 +46,44 @@ import * as utilities from "./utilities";
  *     netstack: "vmotion",
  * });
  * ```
+ * ### Create a vnic attached to a portgroup using the default TCP/IP stack
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const dc = vsphere.getDatacenter({
+ *     name: "mydc",
+ * });
+ * const h1 = dc.then(dc => vsphere.getHost({
+ *     name: "esxi1.host.test",
+ *     datacenterId: dc.id,
+ * }));
+ * const hvs1 = new vsphere.HostVirtualSwitch("hvs1", {
+ *     hostSystemId: h1.then(h1 => h1.id),
+ *     networkAdapters: [
+ *         "vmnic3",
+ *         "vmnic4",
+ *     ],
+ *     activeNics: ["vmnic3"],
+ *     standbyNics: ["vmnic4"],
+ * });
+ * const p1 = new vsphere.HostPortGroup("p1", {
+ *     virtualSwitchName: hvs1.name,
+ *     hostSystemId: h1.then(h1 => h1.id),
+ * });
+ * const v1 = new vsphere.Vnic("v1", {
+ *     host: h1.then(h1 => h1.id),
+ *     portgroup: p1.name,
+ *     ipv4: {
+ *         dhcp: true,
+ *     },
+ *     services: [
+ *         "vsan",
+ *         "management",
+ *     ],
+ * });
+ * ```
  * ## Importing
  *
  * An existing vNic can be [imported][docs-import] into this resource
@@ -100,11 +138,11 @@ export class Vnic extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
     public readonly ipv4!: pulumi.Output<outputs.VnicIpv4 | undefined>;
     /**
-     * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
     public readonly ipv6!: pulumi.Output<outputs.VnicIpv6 | undefined>;
     /**
@@ -116,7 +154,7 @@ export class Vnic extends pulumi.CustomResource {
      */
     public readonly mtu!: pulumi.Output<number>;
     /**
-     * TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
     public readonly netstack!: pulumi.Output<string | undefined>;
     /**
@@ -124,7 +162,7 @@ export class Vnic extends pulumi.CustomResource {
      */
     public readonly portgroup!: pulumi.Output<string | undefined>;
     /**
-     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
 
@@ -189,11 +227,11 @@ export interface VnicState {
      */
     host?: pulumi.Input<string>;
     /**
-     * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
     ipv4?: pulumi.Input<inputs.VnicIpv4>;
     /**
-     * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
     ipv6?: pulumi.Input<inputs.VnicIpv6>;
     /**
@@ -205,7 +243,7 @@ export interface VnicState {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
     netstack?: pulumi.Input<string>;
     /**
@@ -213,7 +251,7 @@ export interface VnicState {
      */
     portgroup?: pulumi.Input<string>;
     /**
-     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -235,11 +273,11 @@ export interface VnicArgs {
      */
     host: pulumi.Input<string>;
     /**
-     * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      */
     ipv4?: pulumi.Input<inputs.VnicIpv4>;
     /**
-     * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      */
     ipv6?: pulumi.Input<inputs.VnicIpv6>;
     /**
@@ -251,7 +289,7 @@ export interface VnicArgs {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      */
     netstack?: pulumi.Input<string>;
     /**
@@ -259,7 +297,7 @@ export interface VnicArgs {
      */
     portgroup?: pulumi.Input<string>;
     /**
-     * Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+     * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
 }

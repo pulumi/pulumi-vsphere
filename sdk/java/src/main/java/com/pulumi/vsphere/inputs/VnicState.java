@@ -65,14 +65,14 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<VnicIpv4Args> ipv4;
 
     /**
-     * @return IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+     * @return IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
      * 
      */
     public Optional<Output<VnicIpv4Args>> ipv4() {
@@ -80,14 +80,14 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<VnicIpv6Args> ipv6;
 
     /**
-     * @return IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+     * @return IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
      * 
      */
     public Optional<Output<VnicIpv6Args>> ipv6() {
@@ -125,14 +125,14 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      * 
      */
     @Import(name="netstack")
     private @Nullable Output<String> netstack;
 
     /**
-     * @return TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+     * @return TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
      * 
      */
     public Optional<Output<String>> netstack() {
@@ -155,14 +155,14 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+     * @return Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -266,7 +266,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+         * @param ipv4 IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+         * @param ipv4 IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+         * @param ipv6 IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+         * @param ipv6 IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netstack TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+         * @param netstack TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netstack TCP/IP stack setting for this interface. Possible values are &#39;defaultTcpipStack&#39;, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+         * @param netstack TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, &#39;vmotion&#39;, &#39;vSphereProvisioning&#39;. Changing this will force the creation of a new interface since it&#39;s not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * @param services Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * @param services Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class VnicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services Enabled services setting for this interface. Current possible values are &#39;vmotion&#39;, &#39;management&#39;, and &#39;vsan&#39;.
+         * @param services Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
          * 
          * @return builder
          * 

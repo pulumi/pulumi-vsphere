@@ -72,6 +72,68 @@ namespace Pulumi.VSphere
     /// 
     /// });
     /// ```
+    /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "mydc",
+    ///     });
+    /// 
+    ///     var h1 = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi1.host.test",
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new()
+    ///     {
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic3",
+    ///             "vmnic4",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic3",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic4",
+    ///         },
+    ///     });
+    /// 
+    ///     var p1 = new VSphere.HostPortGroup("p1", new()
+    ///     {
+    ///         VirtualSwitchName = hvs1.Name,
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///     });
+    /// 
+    ///     var v1 = new VSphere.Vnic("v1", new()
+    ///     {
+    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         Portgroup = p1.Name,
+    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///         {
+    ///             Dhcp = true,
+    ///         },
+    ///         Services = new[]
+    ///         {
+    ///             "vsan",
+    ///             "management",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Importing
     /// 
     /// An existing vNic can be [imported][docs-import] into this resource
@@ -113,13 +175,13 @@ namespace Pulumi.VSphere
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Output("ipv4")]
         public Output<Outputs.VnicIpv4?> Ipv4 { get; private set; } = null!;
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Output("ipv6")]
         public Output<Outputs.VnicIpv6?> Ipv6 { get; private set; } = null!;
@@ -137,7 +199,7 @@ namespace Pulumi.VSphere
         public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
-        /// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        /// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
         /// </summary>
         [Output("netstack")]
         public Output<string?> Netstack { get; private set; } = null!;
@@ -149,7 +211,7 @@ namespace Pulumi.VSphere
         public Output<string?> Portgroup { get; private set; } = null!;
 
         /// <summary>
-        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
@@ -219,13 +281,13 @@ namespace Pulumi.VSphere
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.VnicIpv4Args>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.VnicIpv6Args>? Ipv6 { get; set; }
@@ -243,7 +305,7 @@ namespace Pulumi.VSphere
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        /// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
         /// </summary>
         [Input("netstack")]
         public Input<string>? Netstack { get; set; }
@@ -258,7 +320,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _services;
 
         /// <summary>
-        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         /// </summary>
         public InputList<string> Services
         {
@@ -293,13 +355,13 @@ namespace Pulumi.VSphere
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// IPv4 settings. Either this or `ipv6` needs to be set. See  ipv4 options below.
+        /// IPv4 settings. Either this or `ipv6` needs to be set. See IPv4 options below.
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.VnicIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 settings. Either this or `ipv6` needs to be set. See  ipv6 options below.
+        /// IPv6 settings. Either this or `ipv6` needs to be set. See IPv6 options below.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.VnicIpv6GetArgs>? Ipv6 { get; set; }
@@ -317,7 +379,7 @@ namespace Pulumi.VSphere
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// TCP/IP stack setting for this interface. Possible values are 'defaultTcpipStack', 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default: `defaultTcpipStack`)
+        /// TCP/IP stack setting for this interface. Possible values are `defaultTcpipStack``, 'vmotion', 'vSphereProvisioning'. Changing this will force the creation of a new interface since it's not possible to change the stack once it gets created. (Default:`defaultTcpipStack`)
         /// </summary>
         [Input("netstack")]
         public Input<string>? Netstack { get; set; }
@@ -332,7 +394,7 @@ namespace Pulumi.VSphere
         private InputList<string>? _services;
 
         /// <summary>
-        /// Enabled services setting for this interface. Current possible values are 'vmotion', 'management', and 'vsan'.
+        /// Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         /// </summary>
         public InputList<string> Services
         {
