@@ -4076,7 +4076,7 @@ func (o VmStoragePolicyTagRuleArrayOutput) Index(i pulumi.IntInput) VmStoragePol
 }
 
 type VnicIpv4 struct {
-	// Use DHCP to configure the interface's IPv4 stack.
+	// Use DHCP to configure the interface's IPv6 stack.
 	Dhcp *bool `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw *string `pulumi:"gw"`
@@ -4098,7 +4098,7 @@ type VnicIpv4Input interface {
 }
 
 type VnicIpv4Args struct {
-	// Use DHCP to configure the interface's IPv4 stack.
+	// Use DHCP to configure the interface's IPv6 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
@@ -4203,7 +4203,7 @@ func (o VnicIpv4Output) ToOutput(ctx context.Context) pulumix.Output[VnicIpv4] {
 	}
 }
 
-// Use DHCP to configure the interface's IPv4 stack.
+// Use DHCP to configure the interface's IPv6 stack.
 func (o VnicIpv4Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv4) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
@@ -4253,7 +4253,7 @@ func (o VnicIpv4PtrOutput) Elem() VnicIpv4Output {
 	}).(VnicIpv4Output)
 }
 
-// Use DHCP to configure the interface's IPv4 stack.
+// Use DHCP to configure the interface's IPv6 stack.
 func (o VnicIpv4PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnicIpv4) *bool {
 		if v == nil {
@@ -4298,7 +4298,7 @@ type VnicIpv6 struct {
 	Addresses []string `pulumi:"addresses"`
 	// Use IPv6 Autoconfiguration (RFC2462).
 	Autoconfig *bool `pulumi:"autoconfig"`
-	// Use DHCP to configure the interface's IPv4 stack.
+	// Use DHCP to configure the interface's IPv6 stack.
 	Dhcp *bool `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw *string `pulumi:"gw"`
@@ -4320,7 +4320,7 @@ type VnicIpv6Args struct {
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// Use IPv6 Autoconfiguration (RFC2462).
 	Autoconfig pulumi.BoolPtrInput `pulumi:"autoconfig"`
-	// Use DHCP to configure the interface's IPv4 stack.
+	// Use DHCP to configure the interface's IPv6 stack.
 	Dhcp pulumi.BoolPtrInput `pulumi:"dhcp"`
 	// IP address of the default gateway, if DHCP or autoconfig is not set.
 	Gw pulumi.StringPtrInput `pulumi:"gw"`
@@ -4431,7 +4431,7 @@ func (o VnicIpv6Output) Autoconfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *bool { return v.Autoconfig }).(pulumi.BoolPtrOutput)
 }
 
-// Use DHCP to configure the interface's IPv4 stack.
+// Use DHCP to configure the interface's IPv6 stack.
 func (o VnicIpv6Output) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VnicIpv6) *bool { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
@@ -4491,7 +4491,7 @@ func (o VnicIpv6PtrOutput) Autoconfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Use DHCP to configure the interface's IPv4 stack.
+// Use DHCP to configure the interface's IPv6 stack.
 func (o VnicIpv6PtrOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VnicIpv6) *bool {
 		if v == nil {

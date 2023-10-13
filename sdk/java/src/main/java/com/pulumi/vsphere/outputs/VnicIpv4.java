@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VnicIpv4 {
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
      * 
      */
     private @Nullable Boolean dhcp;
@@ -35,7 +35,7 @@ public final class VnicIpv4 {
 
     private VnicIpv4() {}
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
      * 
      */
     public Optional<Boolean> dhcp() {

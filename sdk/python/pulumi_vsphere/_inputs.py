@@ -2273,7 +2273,7 @@ class VnicIpv4Args:
                  ip: Optional[pulumi.Input[str]] = None,
                  netmask: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] dhcp: Use DHCP to configure the interface's IPv4 stack.
+        :param pulumi.Input[bool] dhcp: Use DHCP to configure the interface's IPv6 stack.
         :param pulumi.Input[str] gw: IP address of the default gateway, if DHCP or autoconfig is not set.
         :param pulumi.Input[str] ip: Address of the interface, if DHCP is not set.
         :param pulumi.Input[str] netmask: Netmask of the interface, if DHCP is not set.
@@ -2306,7 +2306,7 @@ class VnicIpv4Args:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use DHCP to configure the interface's IPv4 stack.
+        Use DHCP to configure the interface's IPv6 stack.
         """
         return pulumi.get(self, "dhcp")
 
@@ -2361,7 +2361,7 @@ class VnicIpv6Args:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: List of IPv6 addresses
         :param pulumi.Input[bool] autoconfig: Use IPv6 Autoconfiguration (RFC2462).
-        :param pulumi.Input[bool] dhcp: Use DHCP to configure the interface's IPv4 stack.
+        :param pulumi.Input[bool] dhcp: Use DHCP to configure the interface's IPv6 stack.
         :param pulumi.Input[str] gw: IP address of the default gateway, if DHCP or autoconfig is not set.
         """
         VnicIpv6Args._configure(
@@ -2416,7 +2416,7 @@ class VnicIpv6Args:
     @pulumi.getter
     def dhcp(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use DHCP to configure the interface's IPv4 stack.
+        Use DHCP to configure the interface's IPv6 stack.
         """
         return pulumi.get(self, "dhcp")
 

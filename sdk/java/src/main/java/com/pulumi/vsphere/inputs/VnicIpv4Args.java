@@ -17,14 +17,14 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
     public static final VnicIpv4Args Empty = new VnicIpv4Args();
 
     /**
-     * Use DHCP to configure the interface&#39;s IPv4 stack.
+     * Use DHCP to configure the interface&#39;s IPv6 stack.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<Boolean> dhcp;
 
     /**
-     * @return Use DHCP to configure the interface&#39;s IPv4 stack.
+     * @return Use DHCP to configure the interface&#39;s IPv6 stack.
      * 
      */
     public Optional<Output<Boolean>> dhcp() {
@@ -104,7 +104,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp Use DHCP to configure the interface&#39;s IPv4 stack.
+         * @param dhcp Use DHCP to configure the interface&#39;s IPv6 stack.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class VnicIpv4Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp Use DHCP to configure the interface&#39;s IPv4 stack.
+         * @param dhcp Use DHCP to configure the interface&#39;s IPv6 stack.
          * 
          * @return builder
          * 

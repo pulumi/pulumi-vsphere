@@ -13,7 +13,7 @@ namespace Pulumi.VSphere.Inputs
     public sealed class VnicIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use DHCP to configure the interface's IPv4 stack.
+        /// Use DHCP to configure the interface's IPv6 stack.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }

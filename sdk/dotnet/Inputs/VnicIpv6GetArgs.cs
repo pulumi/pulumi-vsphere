@@ -31,7 +31,7 @@ namespace Pulumi.VSphere.Inputs
         public Input<bool>? Autoconfig { get; set; }
 
         /// <summary>
-        /// Use DHCP to configure the interface's IPv4 stack.
+        /// Use DHCP to configure the interface's IPv6 stack.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
