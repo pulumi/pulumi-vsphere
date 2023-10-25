@@ -55,13 +55,27 @@ class ComputeClusterVmDependencyRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_cluster_id: pulumi.Input[str],
-             dependency_vm_group_name: pulumi.Input[str],
-             vm_group_name: pulumi.Input[str],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             dependency_vm_group_name: Optional[pulumi.Input[str]] = None,
+             vm_group_name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              mandatory: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if dependency_vm_group_name is None and 'dependencyVmGroupName' in kwargs:
+            dependency_vm_group_name = kwargs['dependencyVmGroupName']
+        if dependency_vm_group_name is None:
+            raise TypeError("Missing 'dependency_vm_group_name' argument")
+        if vm_group_name is None and 'vmGroupName' in kwargs:
+            vm_group_name = kwargs['vmGroupName']
+        if vm_group_name is None:
+            raise TypeError("Missing 'vm_group_name' argument")
+
         _setter("compute_cluster_id", compute_cluster_id)
         _setter("dependency_vm_group_name", dependency_vm_group_name)
         _setter("vm_group_name", vm_group_name)
@@ -209,7 +223,15 @@ class _ComputeClusterVmDependencyRuleState:
              mandatory: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              vm_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if dependency_vm_group_name is None and 'dependencyVmGroupName' in kwargs:
+            dependency_vm_group_name = kwargs['dependencyVmGroupName']
+        if vm_group_name is None and 'vmGroupName' in kwargs:
+            vm_group_name = kwargs['vmGroupName']
+
         if compute_cluster_id is not None:
             _setter("compute_cluster_id", compute_cluster_id)
         if dependency_vm_group_name is not None:

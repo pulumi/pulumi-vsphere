@@ -64,8 +64,8 @@ class VappEntityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_id: pulumi.Input[str],
-             target_id: pulumi.Input[str],
+             container_id: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_action: Optional[pulumi.Input[str]] = None,
              start_delay: Optional[pulumi.Input[int]] = None,
@@ -74,7 +74,31 @@ class VappEntityArgs:
              stop_delay: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              wait_for_guest: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_id is None and 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if container_id is None:
+            raise TypeError("Missing 'container_id' argument")
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if target_id is None:
+            raise TypeError("Missing 'target_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if start_action is None and 'startAction' in kwargs:
+            start_action = kwargs['startAction']
+        if start_delay is None and 'startDelay' in kwargs:
+            start_delay = kwargs['startDelay']
+        if start_order is None and 'startOrder' in kwargs:
+            start_order = kwargs['startOrder']
+        if stop_action is None and 'stopAction' in kwargs:
+            stop_action = kwargs['stopAction']
+        if stop_delay is None and 'stopDelay' in kwargs:
+            stop_delay = kwargs['stopDelay']
+        if wait_for_guest is None and 'waitForGuest' in kwargs:
+            wait_for_guest = kwargs['waitForGuest']
+
         _setter("container_id", container_id)
         _setter("target_id", target_id)
         if custom_attributes is not None:
@@ -289,7 +313,27 @@ class _VappEntityState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
              wait_for_guest: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_id is None and 'containerId' in kwargs:
+            container_id = kwargs['containerId']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if start_action is None and 'startAction' in kwargs:
+            start_action = kwargs['startAction']
+        if start_delay is None and 'startDelay' in kwargs:
+            start_delay = kwargs['startDelay']
+        if start_order is None and 'startOrder' in kwargs:
+            start_order = kwargs['startOrder']
+        if stop_action is None and 'stopAction' in kwargs:
+            stop_action = kwargs['stopAction']
+        if stop_delay is None and 'stopDelay' in kwargs:
+            stop_delay = kwargs['stopDelay']
+        if target_id is None and 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if wait_for_guest is None and 'waitForGuest' in kwargs:
+            wait_for_guest = kwargs['waitForGuest']
+
         if container_id is not None:
             _setter("container_id", container_id)
         if custom_attributes is not None:

@@ -286,7 +286,7 @@ class VirtualMachineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             resource_pool_id: pulumi.Input[str],
+             resource_pool_id: Optional[pulumi.Input[str]] = None,
              alternate_guest_name: Optional[pulumi.Input[str]] = None,
              annotation: Optional[pulumi.Input[str]] = None,
              boot_delay: Optional[pulumi.Input[int]] = None,
@@ -360,7 +360,139 @@ class VirtualMachineArgs:
              wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
              wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
              wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resource_pool_id is None and 'resourcePoolId' in kwargs:
+            resource_pool_id = kwargs['resourcePoolId']
+        if resource_pool_id is None:
+            raise TypeError("Missing 'resource_pool_id' argument")
+        if alternate_guest_name is None and 'alternateGuestName' in kwargs:
+            alternate_guest_name = kwargs['alternateGuestName']
+        if boot_delay is None and 'bootDelay' in kwargs:
+            boot_delay = kwargs['bootDelay']
+        if boot_retry_delay is None and 'bootRetryDelay' in kwargs:
+            boot_retry_delay = kwargs['bootRetryDelay']
+        if boot_retry_enabled is None and 'bootRetryEnabled' in kwargs:
+            boot_retry_enabled = kwargs['bootRetryEnabled']
+        if cpu_hot_add_enabled is None and 'cpuHotAddEnabled' in kwargs:
+            cpu_hot_add_enabled = kwargs['cpuHotAddEnabled']
+        if cpu_hot_remove_enabled is None and 'cpuHotRemoveEnabled' in kwargs:
+            cpu_hot_remove_enabled = kwargs['cpuHotRemoveEnabled']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_performance_counters_enabled is None and 'cpuPerformanceCountersEnabled' in kwargs:
+            cpu_performance_counters_enabled = kwargs['cpuPerformanceCountersEnabled']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_count is None and 'cpuShareCount' in kwargs:
+            cpu_share_count = kwargs['cpuShareCount']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_id is None and 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if efi_secure_boot_enabled is None and 'efiSecureBootEnabled' in kwargs:
+            efi_secure_boot_enabled = kwargs['efiSecureBootEnabled']
+        if enable_disk_uuid is None and 'enableDiskUuid' in kwargs:
+            enable_disk_uuid = kwargs['enableDiskUuid']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if ept_rvi_mode is None and 'eptRviMode' in kwargs:
+            ept_rvi_mode = kwargs['eptRviMode']
+        if extra_config is None and 'extraConfig' in kwargs:
+            extra_config = kwargs['extraConfig']
+        if extra_config_reboot_required is None and 'extraConfigRebootRequired' in kwargs:
+            extra_config_reboot_required = kwargs['extraConfigRebootRequired']
+        if force_power_off is None and 'forcePowerOff' in kwargs:
+            force_power_off = kwargs['forcePowerOff']
+        if guest_id is None and 'guestId' in kwargs:
+            guest_id = kwargs['guestId']
+        if hardware_version is None and 'hardwareVersion' in kwargs:
+            hardware_version = kwargs['hardwareVersion']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if hv_mode is None and 'hvMode' in kwargs:
+            hv_mode = kwargs['hvMode']
+        if ide_controller_count is None and 'ideControllerCount' in kwargs:
+            ide_controller_count = kwargs['ideControllerCount']
+        if ignored_guest_ips is None and 'ignoredGuestIps' in kwargs:
+            ignored_guest_ips = kwargs['ignoredGuestIps']
+        if latency_sensitivity is None and 'latencySensitivity' in kwargs:
+            latency_sensitivity = kwargs['latencySensitivity']
+        if memory_hot_add_enabled is None and 'memoryHotAddEnabled' in kwargs:
+            memory_hot_add_enabled = kwargs['memoryHotAddEnabled']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_count is None and 'memoryShareCount' in kwargs:
+            memory_share_count = kwargs['memoryShareCount']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if migrate_wait_timeout is None and 'migrateWaitTimeout' in kwargs:
+            migrate_wait_timeout = kwargs['migrateWaitTimeout']
+        if nested_hv_enabled is None and 'nestedHvEnabled' in kwargs:
+            nested_hv_enabled = kwargs['nestedHvEnabled']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if num_cores_per_socket is None and 'numCoresPerSocket' in kwargs:
+            num_cores_per_socket = kwargs['numCoresPerSocket']
+        if num_cpus is None and 'numCpus' in kwargs:
+            num_cpus = kwargs['numCpus']
+        if ovf_deploy is None and 'ovfDeploy' in kwargs:
+            ovf_deploy = kwargs['ovfDeploy']
+        if pci_device_ids is None and 'pciDeviceIds' in kwargs:
+            pci_device_ids = kwargs['pciDeviceIds']
+        if poweron_timeout is None and 'poweronTimeout' in kwargs:
+            poweron_timeout = kwargs['poweronTimeout']
+        if replace_trigger is None and 'replaceTrigger' in kwargs:
+            replace_trigger = kwargs['replaceTrigger']
+        if run_tools_scripts_after_power_on is None and 'runToolsScriptsAfterPowerOn' in kwargs:
+            run_tools_scripts_after_power_on = kwargs['runToolsScriptsAfterPowerOn']
+        if run_tools_scripts_after_resume is None and 'runToolsScriptsAfterResume' in kwargs:
+            run_tools_scripts_after_resume = kwargs['runToolsScriptsAfterResume']
+        if run_tools_scripts_before_guest_reboot is None and 'runToolsScriptsBeforeGuestReboot' in kwargs:
+            run_tools_scripts_before_guest_reboot = kwargs['runToolsScriptsBeforeGuestReboot']
+        if run_tools_scripts_before_guest_shutdown is None and 'runToolsScriptsBeforeGuestShutdown' in kwargs:
+            run_tools_scripts_before_guest_shutdown = kwargs['runToolsScriptsBeforeGuestShutdown']
+        if run_tools_scripts_before_guest_standby is None and 'runToolsScriptsBeforeGuestStandby' in kwargs:
+            run_tools_scripts_before_guest_standby = kwargs['runToolsScriptsBeforeGuestStandby']
+        if sata_controller_count is None and 'sataControllerCount' in kwargs:
+            sata_controller_count = kwargs['sataControllerCount']
+        if scsi_bus_sharing is None and 'scsiBusSharing' in kwargs:
+            scsi_bus_sharing = kwargs['scsiBusSharing']
+        if scsi_controller_count is None and 'scsiControllerCount' in kwargs:
+            scsi_controller_count = kwargs['scsiControllerCount']
+        if scsi_type is None and 'scsiType' in kwargs:
+            scsi_type = kwargs['scsiType']
+        if shutdown_wait_timeout is None and 'shutdownWaitTimeout' in kwargs:
+            shutdown_wait_timeout = kwargs['shutdownWaitTimeout']
+        if storage_policy_id is None and 'storagePolicyId' in kwargs:
+            storage_policy_id = kwargs['storagePolicyId']
+        if swap_placement_policy is None and 'swapPlacementPolicy' in kwargs:
+            swap_placement_policy = kwargs['swapPlacementPolicy']
+        if sync_time_with_host is None and 'syncTimeWithHost' in kwargs:
+            sync_time_with_host = kwargs['syncTimeWithHost']
+        if sync_time_with_host_periodically is None and 'syncTimeWithHostPeriodically' in kwargs:
+            sync_time_with_host_periodically = kwargs['syncTimeWithHostPeriodically']
+        if tools_upgrade_policy is None and 'toolsUpgradePolicy' in kwargs:
+            tools_upgrade_policy = kwargs['toolsUpgradePolicy']
+        if vbs_enabled is None and 'vbsEnabled' in kwargs:
+            vbs_enabled = kwargs['vbsEnabled']
+        if vvtd_enabled is None and 'vvtdEnabled' in kwargs:
+            vvtd_enabled = kwargs['vvtdEnabled']
+        if wait_for_guest_ip_timeout is None and 'waitForGuestIpTimeout' in kwargs:
+            wait_for_guest_ip_timeout = kwargs['waitForGuestIpTimeout']
+        if wait_for_guest_net_routable is None and 'waitForGuestNetRoutable' in kwargs:
+            wait_for_guest_net_routable = kwargs['waitForGuestNetRoutable']
+        if wait_for_guest_net_timeout is None and 'waitForGuestNetTimeout' in kwargs:
+            wait_for_guest_net_timeout = kwargs['waitForGuestNetTimeout']
+
         _setter("resource_pool_id", resource_pool_id)
         if alternate_guest_name is not None:
             _setter("alternate_guest_name", alternate_guest_name)
@@ -1828,7 +1960,153 @@ class _VirtualMachineState:
              wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
              wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
              wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alternate_guest_name is None and 'alternateGuestName' in kwargs:
+            alternate_guest_name = kwargs['alternateGuestName']
+        if boot_delay is None and 'bootDelay' in kwargs:
+            boot_delay = kwargs['bootDelay']
+        if boot_retry_delay is None and 'bootRetryDelay' in kwargs:
+            boot_retry_delay = kwargs['bootRetryDelay']
+        if boot_retry_enabled is None and 'bootRetryEnabled' in kwargs:
+            boot_retry_enabled = kwargs['bootRetryEnabled']
+        if change_version is None and 'changeVersion' in kwargs:
+            change_version = kwargs['changeVersion']
+        if cpu_hot_add_enabled is None and 'cpuHotAddEnabled' in kwargs:
+            cpu_hot_add_enabled = kwargs['cpuHotAddEnabled']
+        if cpu_hot_remove_enabled is None and 'cpuHotRemoveEnabled' in kwargs:
+            cpu_hot_remove_enabled = kwargs['cpuHotRemoveEnabled']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_performance_counters_enabled is None and 'cpuPerformanceCountersEnabled' in kwargs:
+            cpu_performance_counters_enabled = kwargs['cpuPerformanceCountersEnabled']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_count is None and 'cpuShareCount' in kwargs:
+            cpu_share_count = kwargs['cpuShareCount']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_id is None and 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if default_ip_address is None and 'defaultIpAddress' in kwargs:
+            default_ip_address = kwargs['defaultIpAddress']
+        if efi_secure_boot_enabled is None and 'efiSecureBootEnabled' in kwargs:
+            efi_secure_boot_enabled = kwargs['efiSecureBootEnabled']
+        if enable_disk_uuid is None and 'enableDiskUuid' in kwargs:
+            enable_disk_uuid = kwargs['enableDiskUuid']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if ept_rvi_mode is None and 'eptRviMode' in kwargs:
+            ept_rvi_mode = kwargs['eptRviMode']
+        if extra_config is None and 'extraConfig' in kwargs:
+            extra_config = kwargs['extraConfig']
+        if extra_config_reboot_required is None and 'extraConfigRebootRequired' in kwargs:
+            extra_config_reboot_required = kwargs['extraConfigRebootRequired']
+        if force_power_off is None and 'forcePowerOff' in kwargs:
+            force_power_off = kwargs['forcePowerOff']
+        if guest_id is None and 'guestId' in kwargs:
+            guest_id = kwargs['guestId']
+        if guest_ip_addresses is None and 'guestIpAddresses' in kwargs:
+            guest_ip_addresses = kwargs['guestIpAddresses']
+        if hardware_version is None and 'hardwareVersion' in kwargs:
+            hardware_version = kwargs['hardwareVersion']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if hv_mode is None and 'hvMode' in kwargs:
+            hv_mode = kwargs['hvMode']
+        if ide_controller_count is None and 'ideControllerCount' in kwargs:
+            ide_controller_count = kwargs['ideControllerCount']
+        if ignored_guest_ips is None and 'ignoredGuestIps' in kwargs:
+            ignored_guest_ips = kwargs['ignoredGuestIps']
+        if latency_sensitivity is None and 'latencySensitivity' in kwargs:
+            latency_sensitivity = kwargs['latencySensitivity']
+        if memory_hot_add_enabled is None and 'memoryHotAddEnabled' in kwargs:
+            memory_hot_add_enabled = kwargs['memoryHotAddEnabled']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_count is None and 'memoryShareCount' in kwargs:
+            memory_share_count = kwargs['memoryShareCount']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if migrate_wait_timeout is None and 'migrateWaitTimeout' in kwargs:
+            migrate_wait_timeout = kwargs['migrateWaitTimeout']
+        if nested_hv_enabled is None and 'nestedHvEnabled' in kwargs:
+            nested_hv_enabled = kwargs['nestedHvEnabled']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if num_cores_per_socket is None and 'numCoresPerSocket' in kwargs:
+            num_cores_per_socket = kwargs['numCoresPerSocket']
+        if num_cpus is None and 'numCpus' in kwargs:
+            num_cpus = kwargs['numCpus']
+        if ovf_deploy is None and 'ovfDeploy' in kwargs:
+            ovf_deploy = kwargs['ovfDeploy']
+        if pci_device_ids is None and 'pciDeviceIds' in kwargs:
+            pci_device_ids = kwargs['pciDeviceIds']
+        if power_state is None and 'powerState' in kwargs:
+            power_state = kwargs['powerState']
+        if poweron_timeout is None and 'poweronTimeout' in kwargs:
+            poweron_timeout = kwargs['poweronTimeout']
+        if reboot_required is None and 'rebootRequired' in kwargs:
+            reboot_required = kwargs['rebootRequired']
+        if replace_trigger is None and 'replaceTrigger' in kwargs:
+            replace_trigger = kwargs['replaceTrigger']
+        if resource_pool_id is None and 'resourcePoolId' in kwargs:
+            resource_pool_id = kwargs['resourcePoolId']
+        if run_tools_scripts_after_power_on is None and 'runToolsScriptsAfterPowerOn' in kwargs:
+            run_tools_scripts_after_power_on = kwargs['runToolsScriptsAfterPowerOn']
+        if run_tools_scripts_after_resume is None and 'runToolsScriptsAfterResume' in kwargs:
+            run_tools_scripts_after_resume = kwargs['runToolsScriptsAfterResume']
+        if run_tools_scripts_before_guest_reboot is None and 'runToolsScriptsBeforeGuestReboot' in kwargs:
+            run_tools_scripts_before_guest_reboot = kwargs['runToolsScriptsBeforeGuestReboot']
+        if run_tools_scripts_before_guest_shutdown is None and 'runToolsScriptsBeforeGuestShutdown' in kwargs:
+            run_tools_scripts_before_guest_shutdown = kwargs['runToolsScriptsBeforeGuestShutdown']
+        if run_tools_scripts_before_guest_standby is None and 'runToolsScriptsBeforeGuestStandby' in kwargs:
+            run_tools_scripts_before_guest_standby = kwargs['runToolsScriptsBeforeGuestStandby']
+        if sata_controller_count is None and 'sataControllerCount' in kwargs:
+            sata_controller_count = kwargs['sataControllerCount']
+        if scsi_bus_sharing is None and 'scsiBusSharing' in kwargs:
+            scsi_bus_sharing = kwargs['scsiBusSharing']
+        if scsi_controller_count is None and 'scsiControllerCount' in kwargs:
+            scsi_controller_count = kwargs['scsiControllerCount']
+        if scsi_type is None and 'scsiType' in kwargs:
+            scsi_type = kwargs['scsiType']
+        if shutdown_wait_timeout is None and 'shutdownWaitTimeout' in kwargs:
+            shutdown_wait_timeout = kwargs['shutdownWaitTimeout']
+        if storage_policy_id is None and 'storagePolicyId' in kwargs:
+            storage_policy_id = kwargs['storagePolicyId']
+        if swap_placement_policy is None and 'swapPlacementPolicy' in kwargs:
+            swap_placement_policy = kwargs['swapPlacementPolicy']
+        if sync_time_with_host is None and 'syncTimeWithHost' in kwargs:
+            sync_time_with_host = kwargs['syncTimeWithHost']
+        if sync_time_with_host_periodically is None and 'syncTimeWithHostPeriodically' in kwargs:
+            sync_time_with_host_periodically = kwargs['syncTimeWithHostPeriodically']
+        if tools_upgrade_policy is None and 'toolsUpgradePolicy' in kwargs:
+            tools_upgrade_policy = kwargs['toolsUpgradePolicy']
+        if vapp_transports is None and 'vappTransports' in kwargs:
+            vapp_transports = kwargs['vappTransports']
+        if vbs_enabled is None and 'vbsEnabled' in kwargs:
+            vbs_enabled = kwargs['vbsEnabled']
+        if vmware_tools_status is None and 'vmwareToolsStatus' in kwargs:
+            vmware_tools_status = kwargs['vmwareToolsStatus']
+        if vmx_path is None and 'vmxPath' in kwargs:
+            vmx_path = kwargs['vmxPath']
+        if vvtd_enabled is None and 'vvtdEnabled' in kwargs:
+            vvtd_enabled = kwargs['vvtdEnabled']
+        if wait_for_guest_ip_timeout is None and 'waitForGuestIpTimeout' in kwargs:
+            wait_for_guest_ip_timeout = kwargs['waitForGuestIpTimeout']
+        if wait_for_guest_net_routable is None and 'waitForGuestNetRoutable' in kwargs:
+            wait_for_guest_net_routable = kwargs['waitForGuestNetRoutable']
+        if wait_for_guest_net_timeout is None and 'waitForGuestNetTimeout' in kwargs:
+            wait_for_guest_net_timeout = kwargs['waitForGuestNetTimeout']
+
         if alternate_guest_name is not None:
             _setter("alternate_guest_name", alternate_guest_name)
         if annotation is not None:
@@ -3374,11 +3652,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["boot_retry_delay"] = boot_retry_delay
             __props__.__dict__["boot_retry_enabled"] = boot_retry_enabled
             __props__.__dict__["cdroms"] = cdroms
-            if clone is not None and not isinstance(clone, VirtualMachineCloneArgs):
-                clone = clone or {}
-                def _setter(key, value):
-                    clone[key] = value
-                VirtualMachineCloneArgs._configure(_setter, **clone)
+            clone = _utilities.configure(clone, VirtualMachineCloneArgs, True)
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu_hot_add_enabled"] = cpu_hot_add_enabled
             __props__.__dict__["cpu_hot_remove_enabled"] = cpu_hot_remove_enabled
@@ -3420,11 +3694,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
             __props__.__dict__["num_cpus"] = num_cpus
-            if ovf_deploy is not None and not isinstance(ovf_deploy, VirtualMachineOvfDeployArgs):
-                ovf_deploy = ovf_deploy or {}
-                def _setter(key, value):
-                    ovf_deploy[key] = value
-                VirtualMachineOvfDeployArgs._configure(_setter, **ovf_deploy)
+            ovf_deploy = _utilities.configure(ovf_deploy, VirtualMachineOvfDeployArgs, True)
             __props__.__dict__["ovf_deploy"] = ovf_deploy
             __props__.__dict__["pci_device_ids"] = pci_device_ids
             __props__.__dict__["poweron_timeout"] = poweron_timeout
@@ -3448,11 +3718,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["sync_time_with_host_periodically"] = sync_time_with_host_periodically
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tools_upgrade_policy"] = tools_upgrade_policy
-            if vapp is not None and not isinstance(vapp, VirtualMachineVappArgs):
-                vapp = vapp or {}
-                def _setter(key, value):
-                    vapp[key] = value
-                VirtualMachineVappArgs._configure(_setter, **vapp)
+            vapp = _utilities.configure(vapp, VirtualMachineVappArgs, True)
             __props__.__dict__["vapp"] = vapp
             __props__.__dict__["vbs_enabled"] = vbs_enabled
             __props__.__dict__["vvtd_enabled"] = vvtd_enabled

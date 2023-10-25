@@ -50,14 +50,32 @@ class VirtualMachineSnapshotArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             memory: pulumi.Input[bool],
-             quiesce: pulumi.Input[bool],
-             snapshot_name: pulumi.Input[str],
-             virtual_machine_uuid: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[bool]] = None,
+             quiesce: Optional[pulumi.Input[bool]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             virtual_machine_uuid: Optional[pulumi.Input[str]] = None,
              consolidate: Optional[pulumi.Input[bool]] = None,
              remove_children: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if memory is None:
+            raise TypeError("Missing 'memory' argument")
+        if quiesce is None:
+            raise TypeError("Missing 'quiesce' argument")
+        if snapshot_name is None and 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if snapshot_name is None:
+            raise TypeError("Missing 'snapshot_name' argument")
+        if virtual_machine_uuid is None and 'virtualMachineUuid' in kwargs:
+            virtual_machine_uuid = kwargs['virtualMachineUuid']
+        if virtual_machine_uuid is None:
+            raise TypeError("Missing 'virtual_machine_uuid' argument")
+        if remove_children is None and 'removeChildren' in kwargs:
+            remove_children = kwargs['removeChildren']
+
         _setter("description", description)
         _setter("memory", memory)
         _setter("quiesce", quiesce)
@@ -205,7 +223,15 @@ class _VirtualMachineSnapshotState:
              remove_children: Optional[pulumi.Input[bool]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              virtual_machine_uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if remove_children is None and 'removeChildren' in kwargs:
+            remove_children = kwargs['removeChildren']
+        if snapshot_name is None and 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if virtual_machine_uuid is None and 'virtualMachineUuid' in kwargs:
+            virtual_machine_uuid = kwargs['virtualMachineUuid']
+
         if consolidate is not None:
             _setter("consolidate", consolidate)
         if description is not None:
@@ -348,22 +374,6 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
 
         [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        demo1 = vsphere.VirtualMachineSnapshot("demo1",
-            consolidate=True,
-            description="This is Demo Snapshot",
-            memory=True,
-            quiesce=True,
-            remove_children=False,
-            snapshot_name="Snapshot Name",
-            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] consolidate: If set to `true`, the delta disks involved in this
@@ -408,22 +418,6 @@ class VirtualMachineSnapshot(pulumi.CustomResource):
         limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
 
         [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        demo1 = vsphere.VirtualMachineSnapshot("demo1",
-            consolidate=True,
-            description="This is Demo Snapshot",
-            memory=True,
-            quiesce=True,
-            remove_children=False,
-            snapshot_name="Snapshot Name",
-            virtual_machine_uuid="9aac5551-a351-4158-8c5c-15a71e8ec5c9")
-        ```
 
         :param str resource_name: The name of the resource.
         :param VirtualMachineSnapshotArgs args: The arguments to use to populate this resource's properties.

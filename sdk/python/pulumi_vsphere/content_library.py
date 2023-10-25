@@ -40,12 +40,18 @@ class ContentLibraryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             storage_backings: pulumi.Input[Sequence[pulumi.Input[str]]],
+             storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
              subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if storage_backings is None and 'storageBackings' in kwargs:
+            storage_backings = kwargs['storageBackings']
+        if storage_backings is None:
+            raise TypeError("Missing 'storage_backings' argument")
+
         _setter("storage_backings", storage_backings)
         if description is not None:
             _setter("description", description)
@@ -149,7 +155,11 @@ class _ContentLibraryState:
              publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
              storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if storage_backings is None and 'storageBackings' in kwargs:
+            storage_backings = kwargs['storageBackings']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -286,20 +296,12 @@ class ContentLibrary(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if publication is not None and not isinstance(publication, ContentLibraryPublicationArgs):
-                publication = publication or {}
-                def _setter(key, value):
-                    publication[key] = value
-                ContentLibraryPublicationArgs._configure(_setter, **publication)
+            publication = _utilities.configure(publication, ContentLibraryPublicationArgs, True)
             __props__.__dict__["publication"] = publication
             if storage_backings is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_backings'")
             __props__.__dict__["storage_backings"] = storage_backings
-            if subscription is not None and not isinstance(subscription, ContentLibrarySubscriptionArgs):
-                subscription = subscription or {}
-                def _setter(key, value):
-                    subscription[key] = value
-                ContentLibrarySubscriptionArgs._configure(_setter, **subscription)
+            subscription = _utilities.configure(subscription, ContentLibrarySubscriptionArgs, True)
             __props__.__dict__["subscription"] = subscription
         super(ContentLibrary, __self__).__init__(
             'vsphere:index/contentLibrary:ContentLibrary',

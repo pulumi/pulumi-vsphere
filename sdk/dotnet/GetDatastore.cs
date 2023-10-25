@@ -16,35 +16,6 @@ namespace Pulumi.VSphere
         /// vSphere datastore object. This can then be used with resources or data sources
         /// that require a datastore. For example, to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var datastore = VSphere.GetDatastore.Invoke(new()
-        ///     {
-        ///         Name = "datastore-01",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatastoreResult> InvokeAsync(GetDatastoreArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreArgs(), options.WithDefaults());
@@ -54,35 +25,6 @@ namespace Pulumi.VSphere
         /// vSphere datastore object. This can then be used with resources or data sources
         /// that require a datastore. For example, to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var datastore = VSphere.GetDatastore.Invoke(new()
-        ///     {
-        ///         Name = "datastore-01",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatastoreResult> Invoke(GetDatastoreInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatastoreResult>("vsphere:index/getDatastore:getDatastore", args ?? new GetDatastoreInvokeArgs(), options.WithDefaults());

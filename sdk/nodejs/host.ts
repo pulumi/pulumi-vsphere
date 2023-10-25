@@ -9,66 +9,6 @@ import * as utilities from "./utilities";
  * can be used either as a member of a cluster or as a standalone host.
  *
  * ## Example Usage
- * ### Create a standalone host
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esx-01.example.com",
- *     insecure: true,
- * });
- * const esx_01 = new vsphere.Host("esx-01", {
- *     hostname: "esx-01.example.com",
- *     username: "root",
- *     password: "password",
- *     license: "00000-00000-00000-00000-00000",
- *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
- *     datacenter: datacenter.then(datacenter => datacenter.id),
- * });
- * ```
- * ### Create host in a compute cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
- *     name: "cluster-01",
- *     datacenterId: datacenter.id,
- * }));
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esx-01.example.com",
- *     insecure: true,
- * });
- * const esx_01 = new vsphere.Host("esx-01", {
- *     hostname: "esx-01.example.com",
- *     username: "root",
- *     password: "password",
- *     license: "00000-00000-00000-00000-00000",
- *     thumbprint: thumbprint.then(thumbprint => thumbprint.id),
- *     cluster: cluster.then(cluster => cluster.id),
- * });
- * ```
- * ## Importing
- *
- * An existing host can be [imported][docs-import] into this resource by supplying
- * the host's ID. An example is below:
- *
- * [docs-import]: /docs/import/index.html
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * The above would import the host with ID `host-123`.
  */
 export class Host extends pulumi.CustomResource {
     /**

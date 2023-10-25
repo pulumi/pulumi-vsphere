@@ -94,9 +94,9 @@ class HostArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: pulumi.Input[str],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
+             hostname: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              cluster: Optional[pulumi.Input[str]] = None,
              cluster_managed: Optional[pulumi.Input[bool]] = None,
              connected: Optional[pulumi.Input[bool]] = None,
@@ -108,7 +108,19 @@ class HostArgs:
              maintenance: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              thumbprint: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if cluster_managed is None and 'clusterManaged' in kwargs:
+            cluster_managed = kwargs['clusterManaged']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+
         _setter("hostname", hostname)
         _setter("password", password)
         _setter("username", username)
@@ -430,7 +442,13 @@ class _HostState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              thumbprint: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_managed is None and 'clusterManaged' in kwargs:
+            cluster_managed = kwargs['clusterManaged']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+
         if cluster is not None:
             _setter("cluster", cluster)
         if cluster_managed is not None:
@@ -683,54 +701,6 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
-        ### Create a standalone host
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            datacenter=datacenter.id)
-        ```
-        ### Create host in a compute cluster
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            cluster=cluster.id)
-        ```
-        ## Importing
-
-        An existing host can be [imported][docs-import] into this resource by supplying
-        the host's ID. An example is below:
-
-        [docs-import]: /docs/import/index.html
-
-        ```python
-        import pulumi
-        ```
-
-        The above would import the host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -789,54 +759,6 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
-        ### Create a standalone host
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            datacenter=datacenter.id)
-        ```
-        ### Create host in a compute cluster
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
-            insecure=True)
-        esx_01 = vsphere.Host("esx-01",
-            hostname="esx-01.example.com",
-            username="root",
-            password="password",
-            license="00000-00000-00000-00000-00000",
-            thumbprint=thumbprint.id,
-            cluster=cluster.id)
-        ```
-        ## Importing
-
-        An existing host can be [imported][docs-import] into this resource by supplying
-        the host's ID. An example is below:
-
-        [docs-import]: /docs/import/index.html
-
-        ```python
-        import pulumi
-        ```
-
-        The above would import the host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.

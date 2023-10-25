@@ -34,10 +34,16 @@ class TagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             category_id: pulumi.Input[str],
+             category_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if category_id is None and 'categoryId' in kwargs:
+            category_id = kwargs['categoryId']
+        if category_id is None:
+            raise TypeError("Missing 'category_id' argument")
+
         _setter("category_id", category_id)
         if description is not None:
             _setter("description", description)
@@ -109,7 +115,11 @@ class _TagState:
              category_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if category_id is None and 'categoryId' in kwargs:
+            category_id = kwargs['categoryId']
+
         if category_id is not None:
             _setter("category_id", category_id)
         if description is not None:

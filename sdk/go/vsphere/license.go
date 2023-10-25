@@ -14,36 +14,6 @@ import (
 )
 
 // Provides a VMware vSphere license resource. This can be used to add and remove license keys.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewLicense(ctx, "licenseKey", &vsphere.LicenseArgs{
-//				Labels: pulumi.StringMap{
-//					"VpxClientLicenseLabel": pulumi.String("Hello World"),
-//					"Workflow":              pulumi.String("Hello World"),
-//				},
-//				LicenseKey: pulumi.String("452CQ-2EK54-K8742-00000-00000"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type License struct {
 	pulumi.CustomResourceState
 

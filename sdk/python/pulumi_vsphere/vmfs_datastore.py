@@ -64,14 +64,26 @@ class VmfsDatastoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disks: pulumi.Input[Sequence[pulumi.Input[str]]],
-             host_system_id: pulumi.Input[str],
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              datastore_cluster_id: Optional[pulumi.Input[str]] = None,
              folder: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disks is None:
+            raise TypeError("Missing 'disks' argument")
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+
         _setter("disks", disks)
         _setter("host_system_id", host_system_id)
         if custom_attributes is not None:
@@ -281,7 +293,23 @@ class _VmfsDatastoreState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              uncommitted_space: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if free_space is None and 'freeSpace' in kwargs:
+            free_space = kwargs['freeSpace']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if maintenance_mode is None and 'maintenanceMode' in kwargs:
+            maintenance_mode = kwargs['maintenanceMode']
+        if multiple_host_access is None and 'multipleHostAccess' in kwargs:
+            multiple_host_access = kwargs['multipleHostAccess']
+        if uncommitted_space is None and 'uncommittedSpace' in kwargs:
+            uncommitted_space = kwargs['uncommittedSpace']
+
         if accessible is not None:
             _setter("accessible", accessible)
         if capacity is not None:

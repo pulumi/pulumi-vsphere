@@ -20,32 +20,6 @@ import (
 //
 // > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
 // and require vCenter Server.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupCustomAttribute(ctx, &vsphere.LookupCustomAttributeArgs{
-//				Name: "test-attribute",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupCustomAttribute(ctx *pulumi.Context, args *LookupCustomAttributeArgs, opts ...pulumi.InvokeOption) (*LookupCustomAttributeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomAttributeResult

@@ -266,36 +266,6 @@ type DistributedVirtualSwitch struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
-	// 					MinVlan: pulumi.Int(100),
-	// 				},
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
-	// 					MinVlan: pulumi.Int(300),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayOutput `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntOutput `pulumi:"vmotionMaximumMbit"`
@@ -598,36 +568,6 @@ type distributedVirtualSwitchState struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
-	// 					MinVlan: pulumi.Int(100),
-	// 				},
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
-	// 					MinVlan: pulumi.Int(300),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -898,36 +838,6 @@ type DistributedVirtualSwitchState struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
-	// 					MinVlan: pulumi.Int(100),
-	// 				},
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
-	// 					MinVlan: pulumi.Int(300),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -1199,36 +1109,6 @@ type distributedVirtualSwitchArgs struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
-	// 					MinVlan: pulumi.Int(100),
-	// 				},
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
-	// 					MinVlan: pulumi.Int(300),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	VlanRanges []DistributedVirtualSwitchVlanRange `pulumi:"vlanRanges"`
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit *int `pulumi:"vmotionMaximumMbit"`
@@ -1497,36 +1377,6 @@ type DistributedVirtualSwitchArgs struct {
 	// and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 	// `vlanRange` definitions are allowed, but they must not overlap. Example
 	// below:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-	// 			VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(199),
-	// 					MinVlan: pulumi.Int(100),
-	// 				},
-	// 				&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-	// 					MaxVlan: pulumi.Int(399),
-	// 					MinVlan: pulumi.Int(300),
-	// 				},
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	VlanRanges DistributedVirtualSwitchVlanRangeArrayInput
 	// The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
 	VmotionMaximumMbit pulumi.IntPtrInput
@@ -2167,39 +2017,6 @@ func (o DistributedVirtualSwitchOutput) VlanId() pulumi.IntOutput {
 // and `maxVlan` sub-arguments to define the tagged VLAN range. Multiple
 // `vlanRange` definitions are allowed, but they must not overlap. Example
 // below:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.NewDistributedVirtualSwitch(ctx, "vds", &vsphere.DistributedVirtualSwitchArgs{
-//				VlanRanges: vsphere.DistributedVirtualSwitchVlanRangeArray{
-//					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-//						MaxVlan: pulumi.Int(199),
-//						MinVlan: pulumi.Int(100),
-//					},
-//					&vsphere.DistributedVirtualSwitchVlanRangeArgs{
-//						MaxVlan: pulumi.Int(399),
-//						MinVlan: pulumi.Int(300),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o DistributedVirtualSwitchOutput) VlanRanges() DistributedVirtualSwitchVlanRangeArrayOutput {
 	return o.ApplyT(func(v *DistributedVirtualSwitch) DistributedVirtualSwitchVlanRangeArrayOutput { return v.VlanRanges }).(DistributedVirtualSwitchVlanRangeArrayOutput)
 }

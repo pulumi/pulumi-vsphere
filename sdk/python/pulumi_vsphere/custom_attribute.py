@@ -33,7 +33,11 @@ class CustomAttributeArgs:
              _setter: Callable[[Any, Any], None],
              managed_object_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if managed_object_type is None and 'managedObjectType' in kwargs:
+            managed_object_type = kwargs['managedObjectType']
+
         if managed_object_type is not None:
             _setter("managed_object_type", managed_object_type)
         if name is not None:
@@ -88,7 +92,11 @@ class _CustomAttributeState:
              _setter: Callable[[Any, Any], None],
              managed_object_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if managed_object_type is None and 'managedObjectType' in kwargs:
+            managed_object_type = kwargs['managedObjectType']
+
         if managed_object_type is not None:
             _setter("managed_object_type", managed_object_type)
         if name is not None:

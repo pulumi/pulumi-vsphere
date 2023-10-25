@@ -14,32 +14,6 @@ import (
 
 // The `Role` data source can be used to discover the `id` and privileges associated
 // with a role given its name or display label.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupRole(ctx, &vsphere.LookupRoleArgs{
-//				Label: "Terraform to vSphere Integration Role",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult

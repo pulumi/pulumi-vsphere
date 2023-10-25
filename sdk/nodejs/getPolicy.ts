@@ -11,20 +11,6 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Storage policies are not supported on direct ESXi hosts and
  * requires vCenter Server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const prodPlatinumReplicated = vsphere.getPolicy({
- *     name: "prod_platinum_replicated",
- * });
- * const devSilverNonreplicated = vsphere.getPolicy({
- *     name: "dev_silver_nonreplicated",
- * });
- * ```
  */
 export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
 
@@ -61,20 +47,6 @@ export interface GetPolicyResult {
  *
  * > **NOTE:** Storage policies are not supported on direct ESXi hosts and
  * requires vCenter Server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const prodPlatinumReplicated = vsphere.getPolicy({
- *     name: "prod_platinum_replicated",
- * });
- * const devSilverNonreplicated = vsphere.getPolicy({
- *     name: "dev_silver_nonreplicated",
- * });
- * ```
  */
 export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
     return pulumi.output(args).apply((a: any) => getPolicy(a, opts))

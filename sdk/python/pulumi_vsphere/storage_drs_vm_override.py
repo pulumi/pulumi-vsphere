@@ -50,12 +50,28 @@ class StorageDrsVmOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore_cluster_id: pulumi.Input[str],
-             virtual_machine_id: pulumi.Input[str],
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_machine_id: Optional[pulumi.Input[str]] = None,
              sdrs_automation_level: Optional[pulumi.Input[str]] = None,
              sdrs_enabled: Optional[pulumi.Input[str]] = None,
              sdrs_intra_vm_affinity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_cluster_id is None:
+            raise TypeError("Missing 'datastore_cluster_id' argument")
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+        if virtual_machine_id is None:
+            raise TypeError("Missing 'virtual_machine_id' argument")
+        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
+            sdrs_automation_level = kwargs['sdrsAutomationLevel']
+        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
+            sdrs_enabled = kwargs['sdrsEnabled']
+        if sdrs_intra_vm_affinity is None and 'sdrsIntraVmAffinity' in kwargs:
+            sdrs_intra_vm_affinity = kwargs['sdrsIntraVmAffinity']
+
         _setter("datastore_cluster_id", datastore_cluster_id)
         _setter("virtual_machine_id", virtual_machine_id)
         if sdrs_automation_level is not None:
@@ -182,7 +198,19 @@ class _StorageDrsVmOverrideState:
              sdrs_enabled: Optional[pulumi.Input[str]] = None,
              sdrs_intra_vm_affinity: Optional[pulumi.Input[str]] = None,
              virtual_machine_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
+            sdrs_automation_level = kwargs['sdrsAutomationLevel']
+        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
+            sdrs_enabled = kwargs['sdrsEnabled']
+        if sdrs_intra_vm_affinity is None and 'sdrsIntraVmAffinity' in kwargs:
+            sdrs_intra_vm_affinity = kwargs['sdrsIntraVmAffinity']
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+
         if datastore_cluster_id is not None:
             _setter("datastore_cluster_id", datastore_cluster_id)
         if sdrs_automation_level is not None:

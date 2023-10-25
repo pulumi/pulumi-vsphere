@@ -7,17 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.License` data source can be used to get the general attributes of
  * a license keys from a vCenter Server instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const license = vsphere.getLicense({
- *     licenseKey: "00000-00000-00000-00000-00000",
- * });
- * ```
  */
 export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseResult> {
 
@@ -67,17 +56,6 @@ export interface GetLicenseResult {
 /**
  * The `vsphere.License` data source can be used to get the general attributes of
  * a license keys from a vCenter Server instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const license = vsphere.getLicense({
- *     licenseKey: "00000-00000-00000-00000-00000",
- * });
- * ```
  */
 export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
     return pulumi.output(args).apply((a: any) => getLicense(a, opts))

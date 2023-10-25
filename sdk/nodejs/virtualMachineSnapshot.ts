@@ -26,23 +26,6 @@ import * as utilities from "./utilities";
  * limitation of virtual machine snapshots, see [here][ext-vm-snap-limitations].
  *
  * [ext-vm-snap-limitations]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-53F65726-A23B-4CF0-A7D5-48E584B88613.html
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const demo1 = new vsphere.VirtualMachineSnapshot("demo1", {
- *     consolidate: true,
- *     description: "This is Demo Snapshot",
- *     memory: true,
- *     quiesce: true,
- *     removeChildren: false,
- *     snapshotName: "Snapshot Name",
- *     virtualMachineUuid: "9aac5551-a351-4158-8c5c-15a71e8ec5c9",
- * });
- * ```
  */
 export class VirtualMachineSnapshot extends pulumi.CustomResource {
     /**

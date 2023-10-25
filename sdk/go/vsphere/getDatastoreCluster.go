@@ -16,39 +16,6 @@ import (
 // vSphere datastore cluster object. This can then be used with resources or data sources
 // that require a datastore. For example, to assign datastores using the
 // `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
-//				Name: pulumi.StringRef("dc-01"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vsphere.LookupDatastoreCluster(ctx, &vsphere.LookupDatastoreClusterArgs{
-//				Name:         "datastore-cluster-01",
-//				DatacenterId: pulumi.StringRef(datacenter.Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDatastoreCluster(ctx *pulumi.Context, args *LookupDatastoreClusterArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreClusterResult

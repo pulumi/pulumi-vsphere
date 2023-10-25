@@ -44,12 +44,22 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore_cluster_id: pulumi.Input[str],
-             virtual_machine_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              mandatory: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_cluster_id is None:
+            raise TypeError("Missing 'datastore_cluster_id' argument")
+        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
+            virtual_machine_ids = kwargs['virtualMachineIds']
+        if virtual_machine_ids is None:
+            raise TypeError("Missing 'virtual_machine_ids' argument")
+
         _setter("datastore_cluster_id", datastore_cluster_id)
         _setter("virtual_machine_ids", virtual_machine_ids)
         if enabled is not None:
@@ -164,7 +174,13 @@ class _DatastoreClusterVmAntiAffinityRuleState:
              mandatory: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
+            virtual_machine_ids = kwargs['virtualMachineIds']
+
         if datastore_cluster_id is not None:
             _setter("datastore_cluster_id", datastore_cluster_id)
         if enabled is not None:

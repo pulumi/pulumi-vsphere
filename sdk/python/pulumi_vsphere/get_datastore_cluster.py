@@ -71,17 +71,6 @@ def get_datastore_cluster(datacenter_id: Optional[str] = None,
     that require a datastore. For example, to assign datastores using the
     `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
-        datacenter_id=datacenter.id)
-    ```
-
 
     :param str datacenter_id: The managed object reference
            ID of the datacenter the datastore cluster is located in.
@@ -111,17 +100,6 @@ def get_datastore_cluster_output(datacenter_id: Optional[pulumi.Input[Optional[s
     vSphere datastore cluster object. This can then be used with resources or data sources
     that require a datastore. For example, to assign datastores using the
     `NasDatastore` or `VmfsDatastore` resources, or to create virtual machines in using the `VirtualMachine` resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    datastore_cluster = vsphere.get_datastore_cluster(name="datastore-cluster-01",
-        datacenter_id=datacenter.id)
-    ```
 
 
     :param str datacenter_id: The managed object reference

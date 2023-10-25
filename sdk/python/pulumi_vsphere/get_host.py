@@ -83,17 +83,6 @@ def get_host(datacenter_id: Optional[str] = None,
     This can then be used with resources or data sources that require an ESX
     host's managed object reference ID.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    host = vsphere.get_host(name="esxi-01.example.com",
-        datacenter_id=datacenter.id)
-    ```
-
 
     :param str datacenter_id: The managed object reference ID
            of a vSphere datacenter object.
@@ -124,17 +113,6 @@ def get_host_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     The `Host` data source can be used to discover the ID of an ESXi host.
     This can then be used with resources or data sources that require an ESX
     host's managed object reference ID.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    host = vsphere.get_host(name="esxi-01.example.com",
-        datacenter_id=datacenter.id)
-    ```
 
 
     :param str datacenter_id: The managed object reference ID

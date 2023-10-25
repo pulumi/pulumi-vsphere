@@ -96,7 +96,7 @@ class VappContainerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent_resource_pool_id: pulumi.Input[str],
+             parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
              cpu_expandable: Optional[pulumi.Input[bool]] = None,
              cpu_limit: Optional[pulumi.Input[int]] = None,
              cpu_reservation: Optional[pulumi.Input[int]] = None,
@@ -111,7 +111,37 @@ class VappContainerArgs:
              name: Optional[pulumi.Input[str]] = None,
              parent_folder_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_resource_pool_id is None and 'parentResourcePoolId' in kwargs:
+            parent_resource_pool_id = kwargs['parentResourcePoolId']
+        if parent_resource_pool_id is None:
+            raise TypeError("Missing 'parent_resource_pool_id' argument")
+        if cpu_expandable is None and 'cpuExpandable' in kwargs:
+            cpu_expandable = kwargs['cpuExpandable']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if cpu_shares is None and 'cpuShares' in kwargs:
+            cpu_shares = kwargs['cpuShares']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if memory_expandable is None and 'memoryExpandable' in kwargs:
+            memory_expandable = kwargs['memoryExpandable']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if memory_shares is None and 'memoryShares' in kwargs:
+            memory_shares = kwargs['memoryShares']
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+
         _setter("parent_resource_pool_id", parent_resource_pool_id)
         if cpu_expandable is not None:
             _setter("cpu_expandable", cpu_expandable)
@@ -451,7 +481,35 @@ class _VappContainerState:
              parent_folder_id: Optional[pulumi.Input[str]] = None,
              parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_expandable is None and 'cpuExpandable' in kwargs:
+            cpu_expandable = kwargs['cpuExpandable']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if cpu_shares is None and 'cpuShares' in kwargs:
+            cpu_shares = kwargs['cpuShares']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if memory_expandable is None and 'memoryExpandable' in kwargs:
+            memory_expandable = kwargs['memoryExpandable']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if memory_shares is None and 'memoryShares' in kwargs:
+            memory_shares = kwargs['memoryShares']
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+        if parent_resource_pool_id is None and 'parentResourcePoolId' in kwargs:
+            parent_resource_pool_id = kwargs['parentResourcePoolId']
+
         if cpu_expandable is not None:
             _setter("cpu_expandable", cpu_expandable)
         if cpu_limit is not None:

@@ -14,29 +14,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
         /// with a role given its name or display label.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var terraformRole = VSphere.GetRole.Invoke(new()
-        ///     {
-        ///         Label = "Terraform to vSphere Integration Role",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
@@ -44,29 +21,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.Role` data source can be used to discover the `id` and privileges associated
         /// with a role given its name or display label.
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var terraformRole = VSphere.GetRole.Invoke(new()
-        ///     {
-        ///         Label = "Terraform to vSphere Integration Role",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("vsphere:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());

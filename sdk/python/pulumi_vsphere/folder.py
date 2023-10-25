@@ -63,12 +63,22 @@ class FolderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             type: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              datacenter_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+
         _setter("path", path)
         _setter("type", type)
         if custom_attributes is not None:
@@ -221,7 +231,13 @@ class _FolderState:
              path: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+
         if custom_attributes is not None:
             _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:

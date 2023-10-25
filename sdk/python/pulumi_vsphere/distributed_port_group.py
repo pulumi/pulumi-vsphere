@@ -199,7 +199,7 @@ class DistributedPortGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             distributed_virtual_switch_uuid: pulumi.Input[str],
+             distributed_virtual_switch_uuid: Optional[pulumi.Input[str]] = None,
              active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
              allow_mac_changes: Optional[pulumi.Input[bool]] = None,
@@ -245,7 +245,93 @@ class DistributedPortGroupArgs:
              vlan_id: Optional[pulumi.Input[int]] = None,
              vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
              vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if distributed_virtual_switch_uuid is None and 'distributedVirtualSwitchUuid' in kwargs:
+            distributed_virtual_switch_uuid = kwargs['distributedVirtualSwitchUuid']
+        if distributed_virtual_switch_uuid is None:
+            raise TypeError("Missing 'distributed_virtual_switch_uuid' argument")
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if auto_expand is None and 'autoExpand' in kwargs:
+            auto_expand = kwargs['autoExpand']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if block_override_allowed is None and 'blockOverrideAllowed' in kwargs:
+            block_override_allowed = kwargs['blockOverrideAllowed']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if live_port_moving_allowed is None and 'livePortMovingAllowed' in kwargs:
+            live_port_moving_allowed = kwargs['livePortMovingAllowed']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_override_allowed is None and 'netflowOverrideAllowed' in kwargs:
+            netflow_override_allowed = kwargs['netflowOverrideAllowed']
+        if network_resource_pool_key is None and 'networkResourcePoolKey' in kwargs:
+            network_resource_pool_key = kwargs['networkResourcePoolKey']
+        if network_resource_pool_override_allowed is None and 'networkResourcePoolOverrideAllowed' in kwargs:
+            network_resource_pool_override_allowed = kwargs['networkResourcePoolOverrideAllowed']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if number_of_ports is None and 'numberOfPorts' in kwargs:
+            number_of_ports = kwargs['numberOfPorts']
+        if port_config_reset_at_disconnect is None and 'portConfigResetAtDisconnect' in kwargs:
+            port_config_reset_at_disconnect = kwargs['portConfigResetAtDisconnect']
+        if port_name_format is None and 'portNameFormat' in kwargs:
+            port_name_format = kwargs['portNameFormat']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if security_policy_override_allowed is None and 'securityPolicyOverrideAllowed' in kwargs:
+            security_policy_override_allowed = kwargs['securityPolicyOverrideAllowed']
+        if shaping_override_allowed is None and 'shapingOverrideAllowed' in kwargs:
+            shaping_override_allowed = kwargs['shapingOverrideAllowed']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if traffic_filter_override_allowed is None and 'trafficFilterOverrideAllowed' in kwargs:
+            traffic_filter_override_allowed = kwargs['trafficFilterOverrideAllowed']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if uplink_teaming_override_allowed is None and 'uplinkTeamingOverrideAllowed' in kwargs:
+            uplink_teaming_override_allowed = kwargs['uplinkTeamingOverrideAllowed']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_override_allowed is None and 'vlanOverrideAllowed' in kwargs:
+            vlan_override_allowed = kwargs['vlanOverrideAllowed']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+
         _setter("distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
         if active_uplinks is not None:
             _setter("active_uplinks", active_uplinks)
@@ -1168,7 +1254,93 @@ class _DistributedPortGroupState:
              vlan_id: Optional[pulumi.Input[int]] = None,
              vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
              vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if auto_expand is None and 'autoExpand' in kwargs:
+            auto_expand = kwargs['autoExpand']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if block_override_allowed is None and 'blockOverrideAllowed' in kwargs:
+            block_override_allowed = kwargs['blockOverrideAllowed']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if distributed_virtual_switch_uuid is None and 'distributedVirtualSwitchUuid' in kwargs:
+            distributed_virtual_switch_uuid = kwargs['distributedVirtualSwitchUuid']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if live_port_moving_allowed is None and 'livePortMovingAllowed' in kwargs:
+            live_port_moving_allowed = kwargs['livePortMovingAllowed']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_override_allowed is None and 'netflowOverrideAllowed' in kwargs:
+            netflow_override_allowed = kwargs['netflowOverrideAllowed']
+        if network_resource_pool_key is None and 'networkResourcePoolKey' in kwargs:
+            network_resource_pool_key = kwargs['networkResourcePoolKey']
+        if network_resource_pool_override_allowed is None and 'networkResourcePoolOverrideAllowed' in kwargs:
+            network_resource_pool_override_allowed = kwargs['networkResourcePoolOverrideAllowed']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if number_of_ports is None and 'numberOfPorts' in kwargs:
+            number_of_ports = kwargs['numberOfPorts']
+        if port_config_reset_at_disconnect is None and 'portConfigResetAtDisconnect' in kwargs:
+            port_config_reset_at_disconnect = kwargs['portConfigResetAtDisconnect']
+        if port_name_format is None and 'portNameFormat' in kwargs:
+            port_name_format = kwargs['portNameFormat']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if security_policy_override_allowed is None and 'securityPolicyOverrideAllowed' in kwargs:
+            security_policy_override_allowed = kwargs['securityPolicyOverrideAllowed']
+        if shaping_override_allowed is None and 'shapingOverrideAllowed' in kwargs:
+            shaping_override_allowed = kwargs['shapingOverrideAllowed']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if traffic_filter_override_allowed is None and 'trafficFilterOverrideAllowed' in kwargs:
+            traffic_filter_override_allowed = kwargs['trafficFilterOverrideAllowed']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if uplink_teaming_override_allowed is None and 'uplinkTeamingOverrideAllowed' in kwargs:
+            uplink_teaming_override_allowed = kwargs['uplinkTeamingOverrideAllowed']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_override_allowed is None and 'vlanOverrideAllowed' in kwargs:
+            vlan_override_allowed = kwargs['vlanOverrideAllowed']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+
         if active_uplinks is not None:
             _setter("active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:

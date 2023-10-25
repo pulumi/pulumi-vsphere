@@ -17,67 +17,6 @@ namespace Pulumi.VSphere
         /// the UUID of a template to be used as the source for cloning to a new
         /// `vsphere.VirtualMachine` resource. It also
         /// reads the guest ID so that can be supplied as well.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// In the following example, a virtual machine template is returned by its
-        /// unique name within the `vsphere.Datacenter`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// In the following example, each virtual machine template is returned by its
-        /// unique full path within the `vsphere.Datacenter`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "production/templates/ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "development/templates/ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualMachineResult> InvokeAsync(GetVirtualMachineArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineArgs(), options.WithDefaults());
@@ -88,67 +27,6 @@ namespace Pulumi.VSphere
         /// the UUID of a template to be used as the source for cloning to a new
         /// `vsphere.VirtualMachine` resource. It also
         /// reads the guest ID so that can be supplied as well.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// In the following example, a virtual machine template is returned by its
-        /// unique name within the `vsphere.Datacenter`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var template = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// In the following example, each virtual machine template is returned by its
-        /// unique full path within the `vsphere.Datacenter`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var productionTemplate = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "production/templates/ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        ///     var developmentTemplate = VSphere.GetVirtualMachine.Invoke(new()
-        ///     {
-        ///         Name = "development/templates/ubuntu-server-template",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualMachineResult> Invoke(GetVirtualMachineInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualMachineResult>("vsphere:index/getVirtualMachine:getVirtualMachine", args ?? new GetVirtualMachineInvokeArgs(), options.WithDefaults());

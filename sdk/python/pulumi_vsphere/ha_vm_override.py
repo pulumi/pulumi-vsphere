@@ -107,8 +107,8 @@ class HaVmOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_cluster_id: pulumi.Input[str],
-             virtual_machine_id: pulumi.Input[str],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_machine_id: Optional[pulumi.Input[str]] = None,
              ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
              ha_datastore_apd_response: Optional[pulumi.Input[str]] = None,
              ha_datastore_apd_response_delay: Optional[pulumi.Input[int]] = None,
@@ -122,7 +122,43 @@ class HaVmOverrideArgs:
              ha_vm_monitoring_use_cluster_defaults: Optional[pulumi.Input[bool]] = None,
              ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
              ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+        if virtual_machine_id is None:
+            raise TypeError("Missing 'virtual_machine_id' argument")
+        if ha_datastore_apd_recovery_action is None and 'haDatastoreApdRecoveryAction' in kwargs:
+            ha_datastore_apd_recovery_action = kwargs['haDatastoreApdRecoveryAction']
+        if ha_datastore_apd_response is None and 'haDatastoreApdResponse' in kwargs:
+            ha_datastore_apd_response = kwargs['haDatastoreApdResponse']
+        if ha_datastore_apd_response_delay is None and 'haDatastoreApdResponseDelay' in kwargs:
+            ha_datastore_apd_response_delay = kwargs['haDatastoreApdResponseDelay']
+        if ha_datastore_pdl_response is None and 'haDatastorePdlResponse' in kwargs:
+            ha_datastore_pdl_response = kwargs['haDatastorePdlResponse']
+        if ha_host_isolation_response is None and 'haHostIsolationResponse' in kwargs:
+            ha_host_isolation_response = kwargs['haHostIsolationResponse']
+        if ha_vm_failure_interval is None and 'haVmFailureInterval' in kwargs:
+            ha_vm_failure_interval = kwargs['haVmFailureInterval']
+        if ha_vm_maximum_failure_window is None and 'haVmMaximumFailureWindow' in kwargs:
+            ha_vm_maximum_failure_window = kwargs['haVmMaximumFailureWindow']
+        if ha_vm_maximum_resets is None and 'haVmMaximumResets' in kwargs:
+            ha_vm_maximum_resets = kwargs['haVmMaximumResets']
+        if ha_vm_minimum_uptime is None and 'haVmMinimumUptime' in kwargs:
+            ha_vm_minimum_uptime = kwargs['haVmMinimumUptime']
+        if ha_vm_monitoring is None and 'haVmMonitoring' in kwargs:
+            ha_vm_monitoring = kwargs['haVmMonitoring']
+        if ha_vm_monitoring_use_cluster_defaults is None and 'haVmMonitoringUseClusterDefaults' in kwargs:
+            ha_vm_monitoring_use_cluster_defaults = kwargs['haVmMonitoringUseClusterDefaults']
+        if ha_vm_restart_priority is None and 'haVmRestartPriority' in kwargs:
+            ha_vm_restart_priority = kwargs['haVmRestartPriority']
+        if ha_vm_restart_timeout is None and 'haVmRestartTimeout' in kwargs:
+            ha_vm_restart_timeout = kwargs['haVmRestartTimeout']
+
         _setter("compute_cluster_id", compute_cluster_id)
         _setter("virtual_machine_id", virtual_machine_id)
         if ha_datastore_apd_recovery_action is not None:
@@ -483,7 +519,39 @@ class _HaVmOverrideState:
              ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
              ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
              virtual_machine_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if ha_datastore_apd_recovery_action is None and 'haDatastoreApdRecoveryAction' in kwargs:
+            ha_datastore_apd_recovery_action = kwargs['haDatastoreApdRecoveryAction']
+        if ha_datastore_apd_response is None and 'haDatastoreApdResponse' in kwargs:
+            ha_datastore_apd_response = kwargs['haDatastoreApdResponse']
+        if ha_datastore_apd_response_delay is None and 'haDatastoreApdResponseDelay' in kwargs:
+            ha_datastore_apd_response_delay = kwargs['haDatastoreApdResponseDelay']
+        if ha_datastore_pdl_response is None and 'haDatastorePdlResponse' in kwargs:
+            ha_datastore_pdl_response = kwargs['haDatastorePdlResponse']
+        if ha_host_isolation_response is None and 'haHostIsolationResponse' in kwargs:
+            ha_host_isolation_response = kwargs['haHostIsolationResponse']
+        if ha_vm_failure_interval is None and 'haVmFailureInterval' in kwargs:
+            ha_vm_failure_interval = kwargs['haVmFailureInterval']
+        if ha_vm_maximum_failure_window is None and 'haVmMaximumFailureWindow' in kwargs:
+            ha_vm_maximum_failure_window = kwargs['haVmMaximumFailureWindow']
+        if ha_vm_maximum_resets is None and 'haVmMaximumResets' in kwargs:
+            ha_vm_maximum_resets = kwargs['haVmMaximumResets']
+        if ha_vm_minimum_uptime is None and 'haVmMinimumUptime' in kwargs:
+            ha_vm_minimum_uptime = kwargs['haVmMinimumUptime']
+        if ha_vm_monitoring is None and 'haVmMonitoring' in kwargs:
+            ha_vm_monitoring = kwargs['haVmMonitoring']
+        if ha_vm_monitoring_use_cluster_defaults is None and 'haVmMonitoringUseClusterDefaults' in kwargs:
+            ha_vm_monitoring_use_cluster_defaults = kwargs['haVmMonitoringUseClusterDefaults']
+        if ha_vm_restart_priority is None and 'haVmRestartPriority' in kwargs:
+            ha_vm_restart_priority = kwargs['haVmRestartPriority']
+        if ha_vm_restart_timeout is None and 'haVmRestartTimeout' in kwargs:
+            ha_vm_restart_timeout = kwargs['haVmRestartTimeout']
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+
         if compute_cluster_id is not None:
             _setter("compute_cluster_id", compute_cluster_id)
         if ha_datastore_apd_recovery_action is not None:

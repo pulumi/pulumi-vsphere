@@ -61,8 +61,8 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             user: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              allow_unverified_ssl: Optional[pulumi.Input[bool]] = None,
              api_timeout: Optional[pulumi.Input[int]] = None,
              client_debug: Optional[pulumi.Input[bool]] = None,
@@ -74,7 +74,35 @@ class ProviderArgs:
              vim_keep_alive: Optional[pulumi.Input[int]] = None,
              vim_session_path: Optional[pulumi.Input[str]] = None,
              vsphere_server: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if allow_unverified_ssl is None and 'allowUnverifiedSsl' in kwargs:
+            allow_unverified_ssl = kwargs['allowUnverifiedSsl']
+        if api_timeout is None and 'apiTimeout' in kwargs:
+            api_timeout = kwargs['apiTimeout']
+        if client_debug is None and 'clientDebug' in kwargs:
+            client_debug = kwargs['clientDebug']
+        if client_debug_path is None and 'clientDebugPath' in kwargs:
+            client_debug_path = kwargs['clientDebugPath']
+        if client_debug_path_run is None and 'clientDebugPathRun' in kwargs:
+            client_debug_path_run = kwargs['clientDebugPathRun']
+        if persist_session is None and 'persistSession' in kwargs:
+            persist_session = kwargs['persistSession']
+        if rest_session_path is None and 'restSessionPath' in kwargs:
+            rest_session_path = kwargs['restSessionPath']
+        if vcenter_server is None and 'vcenterServer' in kwargs:
+            vcenter_server = kwargs['vcenterServer']
+        if vim_keep_alive is None and 'vimKeepAlive' in kwargs:
+            vim_keep_alive = kwargs['vimKeepAlive']
+        if vim_session_path is None and 'vimSessionPath' in kwargs:
+            vim_session_path = kwargs['vimSessionPath']
+        if vsphere_server is None and 'vsphereServer' in kwargs:
+            vsphere_server = kwargs['vsphereServer']
+
         _setter("password", password)
         _setter("user", user)
         if allow_unverified_ssl is None:

@@ -14,28 +14,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.License` data source can be used to get the general attributes of
         /// a license keys from a vCenter Server instance.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var license = VSphere.GetLicense.Invoke(new()
-        ///     {
-        ///         LicenseKey = "00000-00000-00000-00000-00000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLicenseResult> InvokeAsync(GetLicenseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseArgs(), options.WithDefaults());
@@ -43,28 +21,6 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.License` data source can be used to get the general attributes of
         /// a license keys from a vCenter Server instance.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var license = VSphere.GetLicense.Invoke(new()
-        ///     {
-        ///         LicenseKey = "00000-00000-00000-00000-00000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLicenseResult> Invoke(GetLicenseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLicenseResult>("vsphere:index/getLicense:getLicense", args ?? new GetLicenseInvokeArgs(), options.WithDefaults());
