@@ -117,9 +117,9 @@ class HostVirtualSwitchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             active_nics: pulumi.Input[Sequence[pulumi.Input[str]]],
-             host_system_id: pulumi.Input[str],
-             network_adapters: pulumi.Input[Sequence[pulumi.Input[str]]],
+             active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             network_adapters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
              allow_mac_changes: Optional[pulumi.Input[bool]] = None,
              allow_promiscuous: Optional[pulumi.Input[bool]] = None,
@@ -138,7 +138,51 @@ class HostVirtualSwitchArgs:
              shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
              standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              teaming_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_nics is None and 'activeNics' in kwargs:
+            active_nics = kwargs['activeNics']
+        if active_nics is None:
+            raise TypeError("Missing 'active_nics' argument")
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if network_adapters is None and 'networkAdapters' in kwargs:
+            network_adapters = kwargs['networkAdapters']
+        if network_adapters is None:
+            raise TypeError("Missing 'network_adapters' argument")
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if beacon_interval is None and 'beaconInterval' in kwargs:
+            beacon_interval = kwargs['beaconInterval']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if number_of_ports is None and 'numberOfPorts' in kwargs:
+            number_of_ports = kwargs['numberOfPorts']
+        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
+            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
+        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
+            shaping_burst_size = kwargs['shapingBurstSize']
+        if shaping_enabled is None and 'shapingEnabled' in kwargs:
+            shaping_enabled = kwargs['shapingEnabled']
+        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
+            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
+        if standby_nics is None and 'standbyNics' in kwargs:
+            standby_nics = kwargs['standbyNics']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+
         _setter("active_nics", active_nics)
         _setter("host_system_id", host_system_id)
         _setter("network_adapters", network_adapters)
@@ -590,7 +634,45 @@ class _HostVirtualSwitchState:
              shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
              standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              teaming_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_nics is None and 'activeNics' in kwargs:
+            active_nics = kwargs['activeNics']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if beacon_interval is None and 'beaconInterval' in kwargs:
+            beacon_interval = kwargs['beaconInterval']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if network_adapters is None and 'networkAdapters' in kwargs:
+            network_adapters = kwargs['networkAdapters']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if number_of_ports is None and 'numberOfPorts' in kwargs:
+            number_of_ports = kwargs['numberOfPorts']
+        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
+            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
+        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
+            shaping_burst_size = kwargs['shapingBurstSize']
+        if shaping_enabled is None and 'shapingEnabled' in kwargs:
+            shaping_enabled = kwargs['shapingEnabled']
+        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
+            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
+        if standby_nics is None and 'standbyNics' in kwargs:
+            standby_nics = kwargs['standbyNics']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+
         if active_nics is not None:
             _setter("active_nics", active_nics)
         if allow_forged_transmits is not None:

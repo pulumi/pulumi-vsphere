@@ -14,32 +14,6 @@ import (
 
 // The `Folder` data source can be used to get the general attributes of a
 // vSphere inventory folder. Paths are absolute and must include the datacenter.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupFolder(ctx, &vsphere.LookupFolderArgs{
-//				Path: "/dc-01/datastore-01/folder-01",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderResult

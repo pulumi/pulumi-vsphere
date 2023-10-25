@@ -44,11 +44,25 @@ class DpmHostOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_cluster_id: pulumi.Input[str],
-             host_system_id: pulumi.Input[str],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
              dpm_automation_level: Optional[pulumi.Input[str]] = None,
              dpm_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+
         _setter("compute_cluster_id", compute_cluster_id)
         _setter("host_system_id", host_system_id)
         if dpm_automation_level is not None:
@@ -151,7 +165,17 @@ class _DpmHostOverrideState:
              dpm_automation_level: Optional[pulumi.Input[str]] = None,
              dpm_enabled: Optional[pulumi.Input[bool]] = None,
              host_system_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+
         if compute_cluster_id is not None:
             _setter("compute_cluster_id", compute_cluster_id)
         if dpm_automation_level is not None:

@@ -21,47 +21,6 @@ type ComputeClusterVsanDiskGroup struct {
 	//
 	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-	// },
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
 	Storages []string `pulumi:"storages"`
 }
 
@@ -83,47 +42,6 @@ type ComputeClusterVsanDiskGroupArgs struct {
 	//
 	// > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 	// You can enable or re-enable vSphere HA after vSAN is configured.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	// func main() {
-	// pulumi.Run(func(ctx *pulumi.Context) error {
-	// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-	// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-	// HostSystemIds: pulumi.StringArray{
-	// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-	// },
-	// DrsEnabled: pulumi.Bool(true),
-	// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-	// HaEnabled: pulumi.Bool(false),
-	// VsanEnabled: pulumi.Bool(true),
-	// VsanDedupEnabled: pulumi.Bool(true),
-	// VsanCompressionEnabled: pulumi.Bool(true),
-	// VsanPerformanceEnabled: pulumi.Bool(true),
-	// VsanVerboseModeEnabled: pulumi.Bool(true),
-	// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-	// VsanUnmapEnabled: pulumi.Bool(true),
-	// VsanDitEncryptionEnabled: pulumi.Bool(true),
-	// VsanDitRekeyInterval: pulumi.Int(1800),
-	// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-	// &vsphere.ComputeClusterVsanDiskGroupArgs{
-	// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-	// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-	// },
-	// },
-	// })
-	// if err != nil {
-	// return err
-	// }
-	// return nil
-	// })
-	// }
-	// ```
 	Storages pulumi.StringArrayInput `pulumi:"storages"`
 }
 
@@ -205,49 +123,6 @@ func (o ComputeClusterVsanDiskGroupOutput) Cache() pulumi.StringPtrOutput {
 //
 // > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
 // You can enable or re-enable vSphere HA after vSAN is configured.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := vsphere.NewComputeCluster(ctx, "computeCluster", &vsphere.ComputeClusterArgs{
-// DatacenterId: pulumi.Any(data.Vsphere_datacenter.Datacenter.Id),
-// HostSystemIds: pulumi.StringArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-types-vsphere:index-ComputeClusterVsanDiskGroup:ComputeClusterVsanDiskGroup-storages.pp:2,18-45),
-// },
-// DrsEnabled: pulumi.Bool(true),
-// DrsAutomationLevel: pulumi.String("fullyAutomated"),
-// HaEnabled: pulumi.Bool(false),
-// VsanEnabled: pulumi.Bool(true),
-// VsanDedupEnabled: pulumi.Bool(true),
-// VsanCompressionEnabled: pulumi.Bool(true),
-// VsanPerformanceEnabled: pulumi.Bool(true),
-// VsanVerboseModeEnabled: pulumi.Bool(true),
-// VsanNetworkDiagnosticModeEnabled: pulumi.Bool(true),
-// VsanUnmapEnabled: pulumi.Bool(true),
-// VsanDitEncryptionEnabled: pulumi.Bool(true),
-// VsanDitRekeyInterval: pulumi.Int(1800),
-// VsanDiskGroups: vsphere.ComputeClusterVsanDiskGroupArray{
-// &vsphere.ComputeClusterVsanDiskGroupArgs{
-// Cache: pulumi.Any(data.Vsphere_vmfs_disks.Cache_disks[0]),
-// Storages: pulumi.Any(data.Vsphere_vmfs_disks.Storage_disks),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 func (o ComputeClusterVsanDiskGroupOutput) Storages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ComputeClusterVsanDiskGroup) []string { return v.Storages }).(pulumi.StringArrayOutput)
 }

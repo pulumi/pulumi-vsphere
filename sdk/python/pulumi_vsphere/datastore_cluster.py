@@ -150,7 +150,7 @@ class DatastoreClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter_id: pulumi.Input[str],
+             datacenter_id: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              folder: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -175,7 +175,55 @@ class DatastoreClusterArgs:
              sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
              sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datacenter_id is None:
+            raise TypeError("Missing 'datacenter_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if sdrs_advanced_options is None and 'sdrsAdvancedOptions' in kwargs:
+            sdrs_advanced_options = kwargs['sdrsAdvancedOptions']
+        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
+            sdrs_automation_level = kwargs['sdrsAutomationLevel']
+        if sdrs_default_intra_vm_affinity is None and 'sdrsDefaultIntraVmAffinity' in kwargs:
+            sdrs_default_intra_vm_affinity = kwargs['sdrsDefaultIntraVmAffinity']
+        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
+            sdrs_enabled = kwargs['sdrsEnabled']
+        if sdrs_free_space_threshold is None and 'sdrsFreeSpaceThreshold' in kwargs:
+            sdrs_free_space_threshold = kwargs['sdrsFreeSpaceThreshold']
+        if sdrs_free_space_threshold_mode is None and 'sdrsFreeSpaceThresholdMode' in kwargs:
+            sdrs_free_space_threshold_mode = kwargs['sdrsFreeSpaceThresholdMode']
+        if sdrs_free_space_utilization_difference is None and 'sdrsFreeSpaceUtilizationDifference' in kwargs:
+            sdrs_free_space_utilization_difference = kwargs['sdrsFreeSpaceUtilizationDifference']
+        if sdrs_io_balance_automation_level is None and 'sdrsIoBalanceAutomationLevel' in kwargs:
+            sdrs_io_balance_automation_level = kwargs['sdrsIoBalanceAutomationLevel']
+        if sdrs_io_latency_threshold is None and 'sdrsIoLatencyThreshold' in kwargs:
+            sdrs_io_latency_threshold = kwargs['sdrsIoLatencyThreshold']
+        if sdrs_io_load_balance_enabled is None and 'sdrsIoLoadBalanceEnabled' in kwargs:
+            sdrs_io_load_balance_enabled = kwargs['sdrsIoLoadBalanceEnabled']
+        if sdrs_io_load_imbalance_threshold is None and 'sdrsIoLoadImbalanceThreshold' in kwargs:
+            sdrs_io_load_imbalance_threshold = kwargs['sdrsIoLoadImbalanceThreshold']
+        if sdrs_io_reservable_iops_threshold is None and 'sdrsIoReservableIopsThreshold' in kwargs:
+            sdrs_io_reservable_iops_threshold = kwargs['sdrsIoReservableIopsThreshold']
+        if sdrs_io_reservable_percent_threshold is None and 'sdrsIoReservablePercentThreshold' in kwargs:
+            sdrs_io_reservable_percent_threshold = kwargs['sdrsIoReservablePercentThreshold']
+        if sdrs_io_reservable_threshold_mode is None and 'sdrsIoReservableThresholdMode' in kwargs:
+            sdrs_io_reservable_threshold_mode = kwargs['sdrsIoReservableThresholdMode']
+        if sdrs_load_balance_interval is None and 'sdrsLoadBalanceInterval' in kwargs:
+            sdrs_load_balance_interval = kwargs['sdrsLoadBalanceInterval']
+        if sdrs_policy_enforcement_automation_level is None and 'sdrsPolicyEnforcementAutomationLevel' in kwargs:
+            sdrs_policy_enforcement_automation_level = kwargs['sdrsPolicyEnforcementAutomationLevel']
+        if sdrs_rule_enforcement_automation_level is None and 'sdrsRuleEnforcementAutomationLevel' in kwargs:
+            sdrs_rule_enforcement_automation_level = kwargs['sdrsRuleEnforcementAutomationLevel']
+        if sdrs_space_balance_automation_level is None and 'sdrsSpaceBalanceAutomationLevel' in kwargs:
+            sdrs_space_balance_automation_level = kwargs['sdrsSpaceBalanceAutomationLevel']
+        if sdrs_space_utilization_threshold is None and 'sdrsSpaceUtilizationThreshold' in kwargs:
+            sdrs_space_utilization_threshold = kwargs['sdrsSpaceUtilizationThreshold']
+        if sdrs_vm_evacuation_automation_level is None and 'sdrsVmEvacuationAutomationLevel' in kwargs:
+            sdrs_vm_evacuation_automation_level = kwargs['sdrsVmEvacuationAutomationLevel']
+
         _setter("datacenter_id", datacenter_id)
         if custom_attributes is not None:
             _setter("custom_attributes", custom_attributes)
@@ -743,7 +791,53 @@ class _DatastoreClusterState:
              sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
              sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if sdrs_advanced_options is None and 'sdrsAdvancedOptions' in kwargs:
+            sdrs_advanced_options = kwargs['sdrsAdvancedOptions']
+        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
+            sdrs_automation_level = kwargs['sdrsAutomationLevel']
+        if sdrs_default_intra_vm_affinity is None and 'sdrsDefaultIntraVmAffinity' in kwargs:
+            sdrs_default_intra_vm_affinity = kwargs['sdrsDefaultIntraVmAffinity']
+        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
+            sdrs_enabled = kwargs['sdrsEnabled']
+        if sdrs_free_space_threshold is None and 'sdrsFreeSpaceThreshold' in kwargs:
+            sdrs_free_space_threshold = kwargs['sdrsFreeSpaceThreshold']
+        if sdrs_free_space_threshold_mode is None and 'sdrsFreeSpaceThresholdMode' in kwargs:
+            sdrs_free_space_threshold_mode = kwargs['sdrsFreeSpaceThresholdMode']
+        if sdrs_free_space_utilization_difference is None and 'sdrsFreeSpaceUtilizationDifference' in kwargs:
+            sdrs_free_space_utilization_difference = kwargs['sdrsFreeSpaceUtilizationDifference']
+        if sdrs_io_balance_automation_level is None and 'sdrsIoBalanceAutomationLevel' in kwargs:
+            sdrs_io_balance_automation_level = kwargs['sdrsIoBalanceAutomationLevel']
+        if sdrs_io_latency_threshold is None and 'sdrsIoLatencyThreshold' in kwargs:
+            sdrs_io_latency_threshold = kwargs['sdrsIoLatencyThreshold']
+        if sdrs_io_load_balance_enabled is None and 'sdrsIoLoadBalanceEnabled' in kwargs:
+            sdrs_io_load_balance_enabled = kwargs['sdrsIoLoadBalanceEnabled']
+        if sdrs_io_load_imbalance_threshold is None and 'sdrsIoLoadImbalanceThreshold' in kwargs:
+            sdrs_io_load_imbalance_threshold = kwargs['sdrsIoLoadImbalanceThreshold']
+        if sdrs_io_reservable_iops_threshold is None and 'sdrsIoReservableIopsThreshold' in kwargs:
+            sdrs_io_reservable_iops_threshold = kwargs['sdrsIoReservableIopsThreshold']
+        if sdrs_io_reservable_percent_threshold is None and 'sdrsIoReservablePercentThreshold' in kwargs:
+            sdrs_io_reservable_percent_threshold = kwargs['sdrsIoReservablePercentThreshold']
+        if sdrs_io_reservable_threshold_mode is None and 'sdrsIoReservableThresholdMode' in kwargs:
+            sdrs_io_reservable_threshold_mode = kwargs['sdrsIoReservableThresholdMode']
+        if sdrs_load_balance_interval is None and 'sdrsLoadBalanceInterval' in kwargs:
+            sdrs_load_balance_interval = kwargs['sdrsLoadBalanceInterval']
+        if sdrs_policy_enforcement_automation_level is None and 'sdrsPolicyEnforcementAutomationLevel' in kwargs:
+            sdrs_policy_enforcement_automation_level = kwargs['sdrsPolicyEnforcementAutomationLevel']
+        if sdrs_rule_enforcement_automation_level is None and 'sdrsRuleEnforcementAutomationLevel' in kwargs:
+            sdrs_rule_enforcement_automation_level = kwargs['sdrsRuleEnforcementAutomationLevel']
+        if sdrs_space_balance_automation_level is None and 'sdrsSpaceBalanceAutomationLevel' in kwargs:
+            sdrs_space_balance_automation_level = kwargs['sdrsSpaceBalanceAutomationLevel']
+        if sdrs_space_utilization_threshold is None and 'sdrsSpaceUtilizationThreshold' in kwargs:
+            sdrs_space_utilization_threshold = kwargs['sdrsSpaceUtilizationThreshold']
+        if sdrs_vm_evacuation_automation_level is None and 'sdrsVmEvacuationAutomationLevel' in kwargs:
+            sdrs_vm_evacuation_automation_level = kwargs['sdrsVmEvacuationAutomationLevel']
+
         if custom_attributes is not None:
             _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:

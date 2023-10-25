@@ -85,8 +85,8 @@ class HostPortGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_system_id: pulumi.Input[str],
-             virtual_switch_name: pulumi.Input[str],
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             virtual_switch_name: Optional[pulumi.Input[str]] = None,
              active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
              allow_mac_changes: Optional[pulumi.Input[bool]] = None,
@@ -102,7 +102,43 @@ class HostPortGroupArgs:
              standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              teaming_policy: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if virtual_switch_name is None and 'virtualSwitchName' in kwargs:
+            virtual_switch_name = kwargs['virtualSwitchName']
+        if virtual_switch_name is None:
+            raise TypeError("Missing 'virtual_switch_name' argument")
+        if active_nics is None and 'activeNics' in kwargs:
+            active_nics = kwargs['activeNics']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
+            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
+        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
+            shaping_burst_size = kwargs['shapingBurstSize']
+        if shaping_enabled is None and 'shapingEnabled' in kwargs:
+            shaping_enabled = kwargs['shapingEnabled']
+        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
+            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
+        if standby_nics is None and 'standbyNics' in kwargs:
+            standby_nics = kwargs['standbyNics']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         _setter("host_system_id", host_system_id)
         _setter("virtual_switch_name", virtual_switch_name)
         if active_nics is not None:
@@ -453,7 +489,41 @@ class _HostPortGroupState:
              teaming_policy: Optional[pulumi.Input[str]] = None,
              virtual_switch_name: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_nics is None and 'activeNics' in kwargs:
+            active_nics = kwargs['activeNics']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if computed_policy is None and 'computedPolicy' in kwargs:
+            computed_policy = kwargs['computedPolicy']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
+            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
+        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
+            shaping_burst_size = kwargs['shapingBurstSize']
+        if shaping_enabled is None and 'shapingEnabled' in kwargs:
+            shaping_enabled = kwargs['shapingEnabled']
+        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
+            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
+        if standby_nics is None and 'standbyNics' in kwargs:
+            standby_nics = kwargs['standbyNics']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if virtual_switch_name is None and 'virtualSwitchName' in kwargs:
+            virtual_switch_name = kwargs['virtualSwitchName']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         if active_nics is not None:
             _setter("active_nics", active_nics)
         if allow_forged_transmits is not None:
@@ -780,70 +850,6 @@ class HostPortGroup(pulumi.CustomResource):
 
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 
-        ## Example Usage
-
-        **Create a Virtual Switch and Bind a Port Group:**
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = vsphere.get_host(name="esxi-01.example.com",
-            datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
-            host_system_id=host.id,
-            network_adapters=[
-                "vmnic0",
-                "vmnic1",
-            ],
-            active_nics=["vmnic0"],
-            standby_nics=["vmnic1"])
-        pg = vsphere.HostPortGroup("pg",
-            host_system_id=host.id,
-            virtual_switch_name=host_virtual_switch.name)
-        ```
-
-        **Create a Port Group with a VLAN and ab Override:**
-
-        This example sets the trunk mode VLAN (`4095`, which passes through all tags)
-        and sets
-        `allow_promiscuous`
-        to ensure that all traffic is seen on the port. The setting overrides
-        the implicit default of `false` set on the standard switch.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = vsphere.get_host(name="esxi-01.example.com",
-            datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
-            host_system_id=host.id,
-            network_adapters=[
-                "vmnic0",
-                "vmnic1",
-            ],
-            active_nics=["vmnic0"],
-            standby_nics=["vmnic1"])
-        pg = vsphere.HostPortGroup("pg",
-            host_system_id=host.id,
-            virtual_switch_name=host_virtual_switch.name,
-            vlan_id=4095,
-            allow_promiscuous=True)
-        ```
-        ## Importing
-
-        An existing host port group can be imported into this resource
-        using the host port group's ID. An example is below:
-
-        ```python
-        import pulumi
-        ```
-
-        The above would import the `management` host port group from host with ID `host-123`.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
@@ -888,70 +894,6 @@ class HostPortGroup(pulumi.CustomResource):
         For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
-
-        ## Example Usage
-
-        **Create a Virtual Switch and Bind a Port Group:**
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = vsphere.get_host(name="esxi-01.example.com",
-            datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
-            host_system_id=host.id,
-            network_adapters=[
-                "vmnic0",
-                "vmnic1",
-            ],
-            active_nics=["vmnic0"],
-            standby_nics=["vmnic1"])
-        pg = vsphere.HostPortGroup("pg",
-            host_system_id=host.id,
-            virtual_switch_name=host_virtual_switch.name)
-        ```
-
-        **Create a Port Group with a VLAN and ab Override:**
-
-        This example sets the trunk mode VLAN (`4095`, which passes through all tags)
-        and sets
-        `allow_promiscuous`
-        to ensure that all traffic is seen on the port. The setting overrides
-        the implicit default of `false` set on the standard switch.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        host = vsphere.get_host(name="esxi-01.example.com",
-            datacenter_id=datacenter.id)
-        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
-            host_system_id=host.id,
-            network_adapters=[
-                "vmnic0",
-                "vmnic1",
-            ],
-            active_nics=["vmnic0"],
-            standby_nics=["vmnic1"])
-        pg = vsphere.HostPortGroup("pg",
-            host_system_id=host.id,
-            virtual_switch_name=host_virtual_switch.name,
-            vlan_id=4095,
-            allow_promiscuous=True)
-        ```
-        ## Importing
-
-        An existing host port group can be imported into this resource
-        using the host port group's ID. An example is below:
-
-        ```python
-        import pulumi
-        ```
-
-        The above would import the `management` host port group from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param HostPortGroupArgs args: The arguments to use to populate this resource's properties.

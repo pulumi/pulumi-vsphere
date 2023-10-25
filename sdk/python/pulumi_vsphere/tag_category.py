@@ -43,11 +43,19 @@ class TagCategoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             associable_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             cardinality: pulumi.Input[str],
+             associable_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cardinality: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if associable_types is None and 'associableTypes' in kwargs:
+            associable_types = kwargs['associableTypes']
+        if associable_types is None:
+            raise TypeError("Missing 'associable_types' argument")
+        if cardinality is None:
+            raise TypeError("Missing 'cardinality' argument")
+
         _setter("associable_types", associable_types)
         _setter("cardinality", cardinality)
         if description is not None:
@@ -148,7 +156,11 @@ class _TagCategoryState:
              cardinality: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if associable_types is None and 'associableTypes' in kwargs:
+            associable_types = kwargs['associableTypes']
+
         if associable_types is not None:
             _setter("associable_types", associable_types)
         if cardinality is not None:

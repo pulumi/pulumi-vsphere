@@ -83,9 +83,9 @@ class NasDatastoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_system_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             remote_hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
-             remote_path: pulumi.Input[str],
+             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             remote_path: Optional[pulumi.Input[str]] = None,
              access_mode: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              datastore_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,29 @@ class NasDatastoreArgs:
              security_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+        if host_system_ids is None:
+            raise TypeError("Missing 'host_system_ids' argument")
+        if remote_hosts is None and 'remoteHosts' in kwargs:
+            remote_hosts = kwargs['remoteHosts']
+        if remote_hosts is None:
+            raise TypeError("Missing 'remote_hosts' argument")
+        if remote_path is None and 'remotePath' in kwargs:
+            remote_path = kwargs['remotePath']
+        if remote_path is None:
+            raise TypeError("Missing 'remote_path' argument")
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if security_type is None and 'securityType' in kwargs:
+            security_type = kwargs['securityType']
+
         _setter("host_system_ids", host_system_ids)
         _setter("remote_hosts", remote_hosts)
         _setter("remote_path", remote_path)
@@ -394,7 +416,33 @@ class _NasDatastoreState:
              type: Optional[pulumi.Input[str]] = None,
              uncommitted_space: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_mode is None and 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if free_space is None and 'freeSpace' in kwargs:
+            free_space = kwargs['freeSpace']
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+        if maintenance_mode is None and 'maintenanceMode' in kwargs:
+            maintenance_mode = kwargs['maintenanceMode']
+        if multiple_host_access is None and 'multipleHostAccess' in kwargs:
+            multiple_host_access = kwargs['multipleHostAccess']
+        if protocol_endpoint is None and 'protocolEndpoint' in kwargs:
+            protocol_endpoint = kwargs['protocolEndpoint']
+        if remote_hosts is None and 'remoteHosts' in kwargs:
+            remote_hosts = kwargs['remoteHosts']
+        if remote_path is None and 'remotePath' in kwargs:
+            remote_path = kwargs['remotePath']
+        if security_type is None and 'securityType' in kwargs:
+            security_type = kwargs['securityType']
+        if uncommitted_space is None and 'uncommittedSpace' in kwargs:
+            uncommitted_space = kwargs['uncommittedSpace']
+
         if access_mode is not None:
             _setter("access_mode", access_mode)
         if accessible is not None:

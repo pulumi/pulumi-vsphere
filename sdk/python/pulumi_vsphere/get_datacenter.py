@@ -61,15 +61,6 @@ def get_datacenter(name: Optional[str] = None,
     that require a datacenter, such as the `Host`
     data source.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    ```
-
 
     :param str name: The name of the datacenter. This can be a name or path.
            Can be omitted if there is only one datacenter in the inventory.
@@ -97,15 +88,6 @@ def get_datacenter_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     vSphere datacenter object. This can then be used with resources or data sources
     that require a datacenter, such as the `Host`
     data source.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    ```
 
 
     :param str name: The name of the datacenter. This can be a name or path.

@@ -67,14 +67,28 @@ class VirtualDiskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore: pulumi.Input[str],
-             size: pulumi.Input[int],
-             vmdk_path: pulumi.Input[str],
+             datastore: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             vmdk_path: Optional[pulumi.Input[str]] = None,
              adapter_type: Optional[pulumi.Input[str]] = None,
              create_directories: Optional[pulumi.Input[bool]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore is None:
+            raise TypeError("Missing 'datastore' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if vmdk_path is None and 'vmdkPath' in kwargs:
+            vmdk_path = kwargs['vmdkPath']
+        if vmdk_path is None:
+            raise TypeError("Missing 'vmdk_path' argument")
+        if adapter_type is None and 'adapterType' in kwargs:
+            adapter_type = kwargs['adapterType']
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+
         _setter("datastore", datastore)
         _setter("size", size)
         _setter("vmdk_path", vmdk_path)
@@ -264,7 +278,15 @@ class _VirtualDiskState:
              size: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vmdk_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if adapter_type is None and 'adapterType' in kwargs:
+            adapter_type = kwargs['adapterType']
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+        if vmdk_path is None and 'vmdkPath' in kwargs:
+            vmdk_path = kwargs['vmdkPath']
+
         if adapter_type is not None:
             warnings.warn("""this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""", DeprecationWarning)
             pulumi.log.warn("""adapter_type is deprecated: this attribute has no effect on controller types - please use scsi_type in vsphere_virtual_machine instead""")

@@ -97,7 +97,7 @@ class ResourcePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent_resource_pool_id: pulumi.Input[str],
+             parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
              cpu_expandable: Optional[pulumi.Input[bool]] = None,
              cpu_limit: Optional[pulumi.Input[int]] = None,
              cpu_reservation: Optional[pulumi.Input[int]] = None,
@@ -112,7 +112,37 @@ class ResourcePoolArgs:
              name: Optional[pulumi.Input[str]] = None,
              scale_descendants_shares: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_resource_pool_id is None and 'parentResourcePoolId' in kwargs:
+            parent_resource_pool_id = kwargs['parentResourcePoolId']
+        if parent_resource_pool_id is None:
+            raise TypeError("Missing 'parent_resource_pool_id' argument")
+        if cpu_expandable is None and 'cpuExpandable' in kwargs:
+            cpu_expandable = kwargs['cpuExpandable']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if cpu_shares is None and 'cpuShares' in kwargs:
+            cpu_shares = kwargs['cpuShares']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if memory_expandable is None and 'memoryExpandable' in kwargs:
+            memory_expandable = kwargs['memoryExpandable']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if memory_shares is None and 'memoryShares' in kwargs:
+            memory_shares = kwargs['memoryShares']
+        if scale_descendants_shares is None and 'scaleDescendantsShares' in kwargs:
+            scale_descendants_shares = kwargs['scaleDescendantsShares']
+
         _setter("parent_resource_pool_id", parent_resource_pool_id)
         if cpu_expandable is not None:
             _setter("cpu_expandable", cpu_expandable)
@@ -454,7 +484,35 @@ class _ResourcePoolState:
              parent_resource_pool_id: Optional[pulumi.Input[str]] = None,
              scale_descendants_shares: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cpu_expandable is None and 'cpuExpandable' in kwargs:
+            cpu_expandable = kwargs['cpuExpandable']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if cpu_shares is None and 'cpuShares' in kwargs:
+            cpu_shares = kwargs['cpuShares']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if memory_expandable is None and 'memoryExpandable' in kwargs:
+            memory_expandable = kwargs['memoryExpandable']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if memory_shares is None and 'memoryShares' in kwargs:
+            memory_shares = kwargs['memoryShares']
+        if parent_resource_pool_id is None and 'parentResourcePoolId' in kwargs:
+            parent_resource_pool_id = kwargs['parentResourcePoolId']
+        if scale_descendants_shares is None and 'scaleDescendantsShares' in kwargs:
+            scale_descendants_shares = kwargs['scaleDescendantsShares']
+
         if cpu_expandable is not None:
             _setter("cpu_expandable", cpu_expandable)
         if cpu_limit is not None:
@@ -726,46 +784,6 @@ class ResourcePool(pulumi.CustomResource):
 
         [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
-        ## Example Usage
-
-        The following example sets up a resource pool in an existing compute cluster
-        with the default settings for CPU and memory reservations, shares, and limits.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        ```
-
-        A virtual machine resource could be targeted to use the default resource pool
-        of the cluster using the following:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
-        # ... other configuration ...
-        ```
-
-        The following example sets up a parent resource pool in an existing compute cluster
-        with a child resource pool nested below. Each resource pool is configured with
-        the default settings for CPU and memory reservations, shares, and limits.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
-        ```
         ## Importing
         ### Settings that Require vSphere 7.0 or higher
 
@@ -835,46 +853,6 @@ class ResourcePool(pulumi.CustomResource):
 
         [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
-        ## Example Usage
-
-        The following example sets up a resource pool in an existing compute cluster
-        with the default settings for CPU and memory reservations, shares, and limits.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        ```
-
-        A virtual machine resource could be targeted to use the default resource pool
-        of the cluster using the following:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
-        # ... other configuration ...
-        ```
-
-        The following example sets up a parent resource pool in an existing compute cluster
-        with a child resource pool nested below. Each resource pool is configured with
-        the default settings for CPU and memory reservations, shares, and limits.
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        datacenter = vsphere.get_datacenter(name="dc-01")
-        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
-            datacenter_id=datacenter.id)
-        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
-        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
-        ```
         ## Importing
         ### Settings that Require vSphere 7.0 or higher
 

@@ -45,11 +45,25 @@ class DrsVmOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_cluster_id: pulumi.Input[str],
-             virtual_machine_id: pulumi.Input[str],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_machine_id: Optional[pulumi.Input[str]] = None,
              drs_automation_level: Optional[pulumi.Input[str]] = None,
              drs_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+        if virtual_machine_id is None:
+            raise TypeError("Missing 'virtual_machine_id' argument")
+        if drs_automation_level is None and 'drsAutomationLevel' in kwargs:
+            drs_automation_level = kwargs['drsAutomationLevel']
+        if drs_enabled is None and 'drsEnabled' in kwargs:
+            drs_enabled = kwargs['drsEnabled']
+
         _setter("compute_cluster_id", compute_cluster_id)
         _setter("virtual_machine_id", virtual_machine_id)
         if drs_automation_level is not None:
@@ -154,7 +168,17 @@ class _DrsVmOverrideState:
              drs_automation_level: Optional[pulumi.Input[str]] = None,
              drs_enabled: Optional[pulumi.Input[bool]] = None,
              virtual_machine_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if drs_automation_level is None and 'drsAutomationLevel' in kwargs:
+            drs_automation_level = kwargs['drsAutomationLevel']
+        if drs_enabled is None and 'drsEnabled' in kwargs:
+            drs_enabled = kwargs['drsEnabled']
+        if virtual_machine_id is None and 'virtualMachineId' in kwargs:
+            virtual_machine_id = kwargs['virtualMachineId']
+
         if compute_cluster_id is not None:
             _setter("compute_cluster_id", compute_cluster_id)
         if drs_automation_level is not None:

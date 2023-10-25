@@ -41,10 +41,18 @@ class ComputeClusterHostGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compute_cluster_id: pulumi.Input[str],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
              host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+
         _setter("compute_cluster_id", compute_cluster_id)
         if host_system_ids is not None:
             _setter("host_system_ids", host_system_ids)
@@ -130,7 +138,13 @@ class _ComputeClusterHostGroupState:
              compute_cluster_id: Optional[pulumi.Input[str]] = None,
              host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+
         if compute_cluster_id is not None:
             _setter("compute_cluster_id", compute_cluster_id)
         if host_system_ids is not None:

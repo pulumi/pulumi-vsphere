@@ -90,26 +90,6 @@ def get_distributed_virtual_switch(datacenter_id: Optional[str] = None,
     > **NOTE:** This data source requires vCenter Server and is not available on
     direct ESXi host connections.
 
-    ## Example Usage
-
-    The following example locates a distributed switch named `vds-01`, in the
-    datacenter `dc-01`. It then uses this distributed switch to set up a
-    `DistributedPortGroup` resource that uses the first uplink as a
-    primary uplink and the second uplink as a secondary.
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    vds = vsphere.get_distributed_virtual_switch(name="vds-01",
-        datacenter_id=datacenter.id)
-    dvpg = vsphere.DistributedPortGroup("dvpg",
-        distributed_virtual_switch_uuid=vds.id,
-        active_uplinks=[vds.uplinks[0]],
-        standby_uplinks=[vds.uplinks[1]])
-    ```
-
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter the VDS is located in. This can be omitted if the search
@@ -143,26 +123,6 @@ def get_distributed_virtual_switch_output(datacenter_id: Optional[pulumi.Input[O
 
     > **NOTE:** This data source requires vCenter Server and is not available on
     direct ESXi host connections.
-
-    ## Example Usage
-
-    The following example locates a distributed switch named `vds-01`, in the
-    datacenter `dc-01`. It then uses this distributed switch to set up a
-    `DistributedPortGroup` resource that uses the first uplink as a
-    primary uplink and the second uplink as a secondary.
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    vds = vsphere.get_distributed_virtual_switch(name="vds-01",
-        datacenter_id=datacenter.id)
-    dvpg = vsphere.DistributedPortGroup("dvpg",
-        distributed_virtual_switch_uuid=vds.id,
-        active_uplinks=[vds.uplinks[0]],
-        standby_uplinks=[vds.uplinks[1]])
-    ```
 
 
     :param str datacenter_id: The managed object reference ID

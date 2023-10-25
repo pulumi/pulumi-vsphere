@@ -14,32 +14,6 @@ import (
 
 // The `License` data source can be used to get the general attributes of
 // a license keys from a vCenter Server instance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vsphere.LookupLicense(ctx, &vsphere.LookupLicenseArgs{
-//				LicenseKey: "00000-00000-00000-00000-00000",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.InvokeOption) (*LookupLicenseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseResult

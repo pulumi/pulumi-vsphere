@@ -81,15 +81,6 @@ def get_host_thumbprint(address: Optional[str] = None,
     resource. If the ESXi host is using a certificate chain, the first one returned
     will be used to generate the thumbprint.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
-    ```
-
 
     :param str address: The address of the ESXi host to retrieve the
            thumbprint from.
@@ -121,15 +112,6 @@ def get_host_thumbprint_output(address: Optional[pulumi.Input[str]] = None,
     thumbprint of an ESXi host. This can be used when adding the `Host`
     resource. If the ESXi host is using a certificate chain, the first one returned
     will be used to generate the thumbprint.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    thumbprint = vsphere.get_host_thumbprint(address="esxi-01.example.com")
-    ```
 
 
     :param str address: The address of the ESXi host to retrieve the

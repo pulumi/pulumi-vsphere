@@ -274,22 +274,6 @@ class DistributedVirtualSwitchArgs:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
-               
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
-                       min_vlan=100,
-                   ),
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
-                       min_vlan=300,
-                   ),
-               ])
-               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -399,7 +383,7 @@ class DistributedVirtualSwitchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter_id: pulumi.Input[str],
+             datacenter_id: Optional[pulumi.Input[str]] = None,
              active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
              allow_mac_changes: Optional[pulumi.Input[bool]] = None,
@@ -493,7 +477,183 @@ class DistributedVirtualSwitchArgs:
              vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
              vsan_share_count: Optional[pulumi.Input[int]] = None,
              vsan_share_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datacenter_id is None:
+            raise TypeError("Missing 'datacenter_id' argument")
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if backupnfc_maximum_mbit is None and 'backupnfcMaximumMbit' in kwargs:
+            backupnfc_maximum_mbit = kwargs['backupnfcMaximumMbit']
+        if backupnfc_reservation_mbit is None and 'backupnfcReservationMbit' in kwargs:
+            backupnfc_reservation_mbit = kwargs['backupnfcReservationMbit']
+        if backupnfc_share_count is None and 'backupnfcShareCount' in kwargs:
+            backupnfc_share_count = kwargs['backupnfcShareCount']
+        if backupnfc_share_level is None and 'backupnfcShareLevel' in kwargs:
+            backupnfc_share_level = kwargs['backupnfcShareLevel']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if contact_detail is None and 'contactDetail' in kwargs:
+            contact_detail = kwargs['contactDetail']
+        if contact_name is None and 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if faulttolerance_maximum_mbit is None and 'faulttoleranceMaximumMbit' in kwargs:
+            faulttolerance_maximum_mbit = kwargs['faulttoleranceMaximumMbit']
+        if faulttolerance_reservation_mbit is None and 'faulttoleranceReservationMbit' in kwargs:
+            faulttolerance_reservation_mbit = kwargs['faulttoleranceReservationMbit']
+        if faulttolerance_share_count is None and 'faulttoleranceShareCount' in kwargs:
+            faulttolerance_share_count = kwargs['faulttoleranceShareCount']
+        if faulttolerance_share_level is None and 'faulttoleranceShareLevel' in kwargs:
+            faulttolerance_share_level = kwargs['faulttoleranceShareLevel']
+        if hbr_maximum_mbit is None and 'hbrMaximumMbit' in kwargs:
+            hbr_maximum_mbit = kwargs['hbrMaximumMbit']
+        if hbr_reservation_mbit is None and 'hbrReservationMbit' in kwargs:
+            hbr_reservation_mbit = kwargs['hbrReservationMbit']
+        if hbr_share_count is None and 'hbrShareCount' in kwargs:
+            hbr_share_count = kwargs['hbrShareCount']
+        if hbr_share_level is None and 'hbrShareLevel' in kwargs:
+            hbr_share_level = kwargs['hbrShareLevel']
+        if ignore_other_pvlan_mappings is None and 'ignoreOtherPvlanMappings' in kwargs:
+            ignore_other_pvlan_mappings = kwargs['ignoreOtherPvlanMappings']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if iscsi_maximum_mbit is None and 'iscsiMaximumMbit' in kwargs:
+            iscsi_maximum_mbit = kwargs['iscsiMaximumMbit']
+        if iscsi_reservation_mbit is None and 'iscsiReservationMbit' in kwargs:
+            iscsi_reservation_mbit = kwargs['iscsiReservationMbit']
+        if iscsi_share_count is None and 'iscsiShareCount' in kwargs:
+            iscsi_share_count = kwargs['iscsiShareCount']
+        if iscsi_share_level is None and 'iscsiShareLevel' in kwargs:
+            iscsi_share_level = kwargs['iscsiShareLevel']
+        if lacp_api_version is None and 'lacpApiVersion' in kwargs:
+            lacp_api_version = kwargs['lacpApiVersion']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if management_maximum_mbit is None and 'managementMaximumMbit' in kwargs:
+            management_maximum_mbit = kwargs['managementMaximumMbit']
+        if management_reservation_mbit is None and 'managementReservationMbit' in kwargs:
+            management_reservation_mbit = kwargs['managementReservationMbit']
+        if management_share_count is None and 'managementShareCount' in kwargs:
+            management_share_count = kwargs['managementShareCount']
+        if management_share_level is None and 'managementShareLevel' in kwargs:
+            management_share_level = kwargs['managementShareLevel']
+        if max_mtu is None and 'maxMtu' in kwargs:
+            max_mtu = kwargs['maxMtu']
+        if multicast_filtering_mode is None and 'multicastFilteringMode' in kwargs:
+            multicast_filtering_mode = kwargs['multicastFilteringMode']
+        if netflow_active_flow_timeout is None and 'netflowActiveFlowTimeout' in kwargs:
+            netflow_active_flow_timeout = kwargs['netflowActiveFlowTimeout']
+        if netflow_collector_ip_address is None and 'netflowCollectorIpAddress' in kwargs:
+            netflow_collector_ip_address = kwargs['netflowCollectorIpAddress']
+        if netflow_collector_port is None and 'netflowCollectorPort' in kwargs:
+            netflow_collector_port = kwargs['netflowCollectorPort']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_idle_flow_timeout is None and 'netflowIdleFlowTimeout' in kwargs:
+            netflow_idle_flow_timeout = kwargs['netflowIdleFlowTimeout']
+        if netflow_internal_flows_only is None and 'netflowInternalFlowsOnly' in kwargs:
+            netflow_internal_flows_only = kwargs['netflowInternalFlowsOnly']
+        if netflow_observation_domain_id is None and 'netflowObservationDomainId' in kwargs:
+            netflow_observation_domain_id = kwargs['netflowObservationDomainId']
+        if netflow_sampling_rate is None and 'netflowSamplingRate' in kwargs:
+            netflow_sampling_rate = kwargs['netflowSamplingRate']
+        if network_resource_control_enabled is None and 'networkResourceControlEnabled' in kwargs:
+            network_resource_control_enabled = kwargs['networkResourceControlEnabled']
+        if network_resource_control_version is None and 'networkResourceControlVersion' in kwargs:
+            network_resource_control_version = kwargs['networkResourceControlVersion']
+        if nfs_maximum_mbit is None and 'nfsMaximumMbit' in kwargs:
+            nfs_maximum_mbit = kwargs['nfsMaximumMbit']
+        if nfs_reservation_mbit is None and 'nfsReservationMbit' in kwargs:
+            nfs_reservation_mbit = kwargs['nfsReservationMbit']
+        if nfs_share_count is None and 'nfsShareCount' in kwargs:
+            nfs_share_count = kwargs['nfsShareCount']
+        if nfs_share_level is None and 'nfsShareLevel' in kwargs:
+            nfs_share_level = kwargs['nfsShareLevel']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if pvlan_mappings is None and 'pvlanMappings' in kwargs:
+            pvlan_mappings = kwargs['pvlanMappings']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if vdp_maximum_mbit is None and 'vdpMaximumMbit' in kwargs:
+            vdp_maximum_mbit = kwargs['vdpMaximumMbit']
+        if vdp_reservation_mbit is None and 'vdpReservationMbit' in kwargs:
+            vdp_reservation_mbit = kwargs['vdpReservationMbit']
+        if vdp_share_count is None and 'vdpShareCount' in kwargs:
+            vdp_share_count = kwargs['vdpShareCount']
+        if vdp_share_level is None and 'vdpShareLevel' in kwargs:
+            vdp_share_level = kwargs['vdpShareLevel']
+        if virtualmachine_maximum_mbit is None and 'virtualmachineMaximumMbit' in kwargs:
+            virtualmachine_maximum_mbit = kwargs['virtualmachineMaximumMbit']
+        if virtualmachine_reservation_mbit is None and 'virtualmachineReservationMbit' in kwargs:
+            virtualmachine_reservation_mbit = kwargs['virtualmachineReservationMbit']
+        if virtualmachine_share_count is None and 'virtualmachineShareCount' in kwargs:
+            virtualmachine_share_count = kwargs['virtualmachineShareCount']
+        if virtualmachine_share_level is None and 'virtualmachineShareLevel' in kwargs:
+            virtualmachine_share_level = kwargs['virtualmachineShareLevel']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+        if vmotion_maximum_mbit is None and 'vmotionMaximumMbit' in kwargs:
+            vmotion_maximum_mbit = kwargs['vmotionMaximumMbit']
+        if vmotion_reservation_mbit is None and 'vmotionReservationMbit' in kwargs:
+            vmotion_reservation_mbit = kwargs['vmotionReservationMbit']
+        if vmotion_share_count is None and 'vmotionShareCount' in kwargs:
+            vmotion_share_count = kwargs['vmotionShareCount']
+        if vmotion_share_level is None and 'vmotionShareLevel' in kwargs:
+            vmotion_share_level = kwargs['vmotionShareLevel']
+        if vsan_maximum_mbit is None and 'vsanMaximumMbit' in kwargs:
+            vsan_maximum_mbit = kwargs['vsanMaximumMbit']
+        if vsan_reservation_mbit is None and 'vsanReservationMbit' in kwargs:
+            vsan_reservation_mbit = kwargs['vsanReservationMbit']
+        if vsan_share_count is None and 'vsanShareCount' in kwargs:
+            vsan_share_count = kwargs['vsanShareCount']
+        if vsan_share_level is None and 'vsanShareLevel' in kwargs:
+            vsan_share_level = kwargs['vsanShareLevel']
+
         _setter("datacenter_id", datacenter_id)
         if active_uplinks is not None:
             _setter("active_uplinks", active_uplinks)
@@ -1783,22 +1943,6 @@ class DistributedVirtualSwitchArgs:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
-                min_vlan=100,
-            ),
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
-                min_vlan=300,
-            ),
-        ])
-        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -2167,22 +2311,6 @@ class _DistributedVirtualSwitchState:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
-               
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
-                       min_vlan=100,
-                   ),
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
-                       min_vlan=300,
-                   ),
-               ])
-               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -2388,7 +2516,183 @@ class _DistributedVirtualSwitchState:
              vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
              vsan_share_count: Optional[pulumi.Input[int]] = None,
              vsan_share_level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if backupnfc_maximum_mbit is None and 'backupnfcMaximumMbit' in kwargs:
+            backupnfc_maximum_mbit = kwargs['backupnfcMaximumMbit']
+        if backupnfc_reservation_mbit is None and 'backupnfcReservationMbit' in kwargs:
+            backupnfc_reservation_mbit = kwargs['backupnfcReservationMbit']
+        if backupnfc_share_count is None and 'backupnfcShareCount' in kwargs:
+            backupnfc_share_count = kwargs['backupnfcShareCount']
+        if backupnfc_share_level is None and 'backupnfcShareLevel' in kwargs:
+            backupnfc_share_level = kwargs['backupnfcShareLevel']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if contact_detail is None and 'contactDetail' in kwargs:
+            contact_detail = kwargs['contactDetail']
+        if contact_name is None and 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if faulttolerance_maximum_mbit is None and 'faulttoleranceMaximumMbit' in kwargs:
+            faulttolerance_maximum_mbit = kwargs['faulttoleranceMaximumMbit']
+        if faulttolerance_reservation_mbit is None and 'faulttoleranceReservationMbit' in kwargs:
+            faulttolerance_reservation_mbit = kwargs['faulttoleranceReservationMbit']
+        if faulttolerance_share_count is None and 'faulttoleranceShareCount' in kwargs:
+            faulttolerance_share_count = kwargs['faulttoleranceShareCount']
+        if faulttolerance_share_level is None and 'faulttoleranceShareLevel' in kwargs:
+            faulttolerance_share_level = kwargs['faulttoleranceShareLevel']
+        if hbr_maximum_mbit is None and 'hbrMaximumMbit' in kwargs:
+            hbr_maximum_mbit = kwargs['hbrMaximumMbit']
+        if hbr_reservation_mbit is None and 'hbrReservationMbit' in kwargs:
+            hbr_reservation_mbit = kwargs['hbrReservationMbit']
+        if hbr_share_count is None and 'hbrShareCount' in kwargs:
+            hbr_share_count = kwargs['hbrShareCount']
+        if hbr_share_level is None and 'hbrShareLevel' in kwargs:
+            hbr_share_level = kwargs['hbrShareLevel']
+        if ignore_other_pvlan_mappings is None and 'ignoreOtherPvlanMappings' in kwargs:
+            ignore_other_pvlan_mappings = kwargs['ignoreOtherPvlanMappings']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if iscsi_maximum_mbit is None and 'iscsiMaximumMbit' in kwargs:
+            iscsi_maximum_mbit = kwargs['iscsiMaximumMbit']
+        if iscsi_reservation_mbit is None and 'iscsiReservationMbit' in kwargs:
+            iscsi_reservation_mbit = kwargs['iscsiReservationMbit']
+        if iscsi_share_count is None and 'iscsiShareCount' in kwargs:
+            iscsi_share_count = kwargs['iscsiShareCount']
+        if iscsi_share_level is None and 'iscsiShareLevel' in kwargs:
+            iscsi_share_level = kwargs['iscsiShareLevel']
+        if lacp_api_version is None and 'lacpApiVersion' in kwargs:
+            lacp_api_version = kwargs['lacpApiVersion']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if management_maximum_mbit is None and 'managementMaximumMbit' in kwargs:
+            management_maximum_mbit = kwargs['managementMaximumMbit']
+        if management_reservation_mbit is None and 'managementReservationMbit' in kwargs:
+            management_reservation_mbit = kwargs['managementReservationMbit']
+        if management_share_count is None and 'managementShareCount' in kwargs:
+            management_share_count = kwargs['managementShareCount']
+        if management_share_level is None and 'managementShareLevel' in kwargs:
+            management_share_level = kwargs['managementShareLevel']
+        if max_mtu is None and 'maxMtu' in kwargs:
+            max_mtu = kwargs['maxMtu']
+        if multicast_filtering_mode is None and 'multicastFilteringMode' in kwargs:
+            multicast_filtering_mode = kwargs['multicastFilteringMode']
+        if netflow_active_flow_timeout is None and 'netflowActiveFlowTimeout' in kwargs:
+            netflow_active_flow_timeout = kwargs['netflowActiveFlowTimeout']
+        if netflow_collector_ip_address is None and 'netflowCollectorIpAddress' in kwargs:
+            netflow_collector_ip_address = kwargs['netflowCollectorIpAddress']
+        if netflow_collector_port is None and 'netflowCollectorPort' in kwargs:
+            netflow_collector_port = kwargs['netflowCollectorPort']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_idle_flow_timeout is None and 'netflowIdleFlowTimeout' in kwargs:
+            netflow_idle_flow_timeout = kwargs['netflowIdleFlowTimeout']
+        if netflow_internal_flows_only is None and 'netflowInternalFlowsOnly' in kwargs:
+            netflow_internal_flows_only = kwargs['netflowInternalFlowsOnly']
+        if netflow_observation_domain_id is None and 'netflowObservationDomainId' in kwargs:
+            netflow_observation_domain_id = kwargs['netflowObservationDomainId']
+        if netflow_sampling_rate is None and 'netflowSamplingRate' in kwargs:
+            netflow_sampling_rate = kwargs['netflowSamplingRate']
+        if network_resource_control_enabled is None and 'networkResourceControlEnabled' in kwargs:
+            network_resource_control_enabled = kwargs['networkResourceControlEnabled']
+        if network_resource_control_version is None and 'networkResourceControlVersion' in kwargs:
+            network_resource_control_version = kwargs['networkResourceControlVersion']
+        if nfs_maximum_mbit is None and 'nfsMaximumMbit' in kwargs:
+            nfs_maximum_mbit = kwargs['nfsMaximumMbit']
+        if nfs_reservation_mbit is None and 'nfsReservationMbit' in kwargs:
+            nfs_reservation_mbit = kwargs['nfsReservationMbit']
+        if nfs_share_count is None and 'nfsShareCount' in kwargs:
+            nfs_share_count = kwargs['nfsShareCount']
+        if nfs_share_level is None and 'nfsShareLevel' in kwargs:
+            nfs_share_level = kwargs['nfsShareLevel']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if pvlan_mappings is None and 'pvlanMappings' in kwargs:
+            pvlan_mappings = kwargs['pvlanMappings']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if vdp_maximum_mbit is None and 'vdpMaximumMbit' in kwargs:
+            vdp_maximum_mbit = kwargs['vdpMaximumMbit']
+        if vdp_reservation_mbit is None and 'vdpReservationMbit' in kwargs:
+            vdp_reservation_mbit = kwargs['vdpReservationMbit']
+        if vdp_share_count is None and 'vdpShareCount' in kwargs:
+            vdp_share_count = kwargs['vdpShareCount']
+        if vdp_share_level is None and 'vdpShareLevel' in kwargs:
+            vdp_share_level = kwargs['vdpShareLevel']
+        if virtualmachine_maximum_mbit is None and 'virtualmachineMaximumMbit' in kwargs:
+            virtualmachine_maximum_mbit = kwargs['virtualmachineMaximumMbit']
+        if virtualmachine_reservation_mbit is None and 'virtualmachineReservationMbit' in kwargs:
+            virtualmachine_reservation_mbit = kwargs['virtualmachineReservationMbit']
+        if virtualmachine_share_count is None and 'virtualmachineShareCount' in kwargs:
+            virtualmachine_share_count = kwargs['virtualmachineShareCount']
+        if virtualmachine_share_level is None and 'virtualmachineShareLevel' in kwargs:
+            virtualmachine_share_level = kwargs['virtualmachineShareLevel']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+        if vmotion_maximum_mbit is None and 'vmotionMaximumMbit' in kwargs:
+            vmotion_maximum_mbit = kwargs['vmotionMaximumMbit']
+        if vmotion_reservation_mbit is None and 'vmotionReservationMbit' in kwargs:
+            vmotion_reservation_mbit = kwargs['vmotionReservationMbit']
+        if vmotion_share_count is None and 'vmotionShareCount' in kwargs:
+            vmotion_share_count = kwargs['vmotionShareCount']
+        if vmotion_share_level is None and 'vmotionShareLevel' in kwargs:
+            vmotion_share_level = kwargs['vmotionShareLevel']
+        if vsan_maximum_mbit is None and 'vsanMaximumMbit' in kwargs:
+            vsan_maximum_mbit = kwargs['vsanMaximumMbit']
+        if vsan_reservation_mbit is None and 'vsanReservationMbit' in kwargs:
+            vsan_reservation_mbit = kwargs['vsanReservationMbit']
+        if vsan_share_count is None and 'vsanShareCount' in kwargs:
+            vsan_share_count = kwargs['vsanShareCount']
+        if vsan_share_level is None and 'vsanShareLevel' in kwargs:
+            vsan_share_level = kwargs['vsanShareLevel']
+
         if active_uplinks is not None:
             _setter("active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:
@@ -3694,22 +3998,6 @@ class _DistributedVirtualSwitchState:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
-                min_vlan=100,
-            ),
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
-                min_vlan=300,
-            ),
-        ])
-        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -4080,22 +4368,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
-               
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
-                       min_vlan=100,
-                   ),
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
-                       min_vlan=300,
-                   ),
-               ])
-               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4608,22 +4880,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
-               
-               ```python
-               import pulumi
-               import pulumi_vsphere as vsphere
-               
-               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=199,
-                       min_vlan=100,
-                   ),
-                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                       max_vlan=399,
-                       min_vlan=300,
-                   ),
-               ])
-               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -5504,22 +5760,6 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=199,
-                min_vlan=100,
-            ),
-            vsphere.DistributedVirtualSwitchVlanRangeArgs(
-                max_vlan=399,
-                min_vlan=300,
-            ),
-        ])
-        ```
         """
         return pulumi.get(self, "vlan_ranges")
 

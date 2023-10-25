@@ -42,13 +42,23 @@ class ContentLibraryItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             library_id: pulumi.Input[str],
+             library_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              file_url: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              source_uuid: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if library_id is None and 'libraryId' in kwargs:
+            library_id = kwargs['libraryId']
+        if library_id is None:
+            raise TypeError("Missing 'library_id' argument")
+        if file_url is None and 'fileUrl' in kwargs:
+            file_url = kwargs['fileUrl']
+        if source_uuid is None and 'sourceUuid' in kwargs:
+            source_uuid = kwargs['sourceUuid']
+
         _setter("library_id", library_id)
         if description is not None:
             _setter("description", description)
@@ -172,7 +182,15 @@ class _ContentLibraryItemState:
              name: Optional[pulumi.Input[str]] = None,
              source_uuid: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if file_url is None and 'fileUrl' in kwargs:
+            file_url = kwargs['fileUrl']
+        if library_id is None and 'libraryId' in kwargs:
+            library_id = kwargs['libraryId']
+        if source_uuid is None and 'sourceUuid' in kwargs:
+            source_uuid = kwargs['sourceUuid']
+
         if description is not None:
             _setter("description", description)
         if file_url is not None:

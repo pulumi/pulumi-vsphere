@@ -20,52 +20,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example locates a distributed switch named `vds-01`, in the
-        /// datacenter `dc-01`. It then uses this distributed switch to set up a
-        /// `vsphere.DistributedPortGroup` resource that uses the first uplink as a
-        /// primary uplink and the second uplink as a secondary.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
-        ///     {
-        ///         Name = "vds-01",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
-        ///     {
-        ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
-        ///         ActiveUplinks = new[]
-        ///         {
-        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[0]),
-        ///         },
-        ///         StandbyUplinks = new[]
-        ///         {
-        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[1]),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDistributedVirtualSwitchResult> InvokeAsync(GetDistributedVirtualSwitchArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchArgs(), options.WithDefaults());
@@ -79,52 +33,6 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** This data source requires vCenter Server and is not available on
         /// direct ESXi host connections.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// The following example locates a distributed switch named `vds-01`, in the
-        /// datacenter `dc-01`. It then uses this distributed switch to set up a
-        /// `vsphere.DistributedPortGroup` resource that uses the first uplink as a
-        /// primary uplink and the second uplink as a secondary.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using VSphere = Pulumi.VSphere;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
-        ///     {
-        ///         Name = "dc-01",
-        ///     });
-        /// 
-        ///     var vds = VSphere.GetDistributedVirtualSwitch.Invoke(new()
-        ///     {
-        ///         Name = "vds-01",
-        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
-        ///     });
-        /// 
-        ///     var dvpg = new VSphere.DistributedPortGroup("dvpg", new()
-        ///     {
-        ///         DistributedVirtualSwitchUuid = vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Id),
-        ///         ActiveUplinks = new[]
-        ///         {
-        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[0]),
-        ///         },
-        ///         StandbyUplinks = new[]
-        ///         {
-        ///             vds.Apply(getDistributedVirtualSwitchResult =&gt; getDistributedVirtualSwitchResult.Uplinks[1]),
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDistributedVirtualSwitchResult> Invoke(GetDistributedVirtualSwitchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDistributedVirtualSwitchResult>("vsphere:index/getDistributedVirtualSwitch:getDistributedVirtualSwitch", args ?? new GetDistributedVirtualSwitchInvokeArgs(), options.WithDefaults());

@@ -97,17 +97,6 @@ def get_network(datacenter_id: Optional[str] = None,
     that requires a network. This includes standard (host-based) port groups,
     distributed port groups, or opaque networks such as those managed by NSX.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    network = vsphere.get_network(name="VM Network",
-        datacenter_id=datacenter.id)
-    ```
-
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter the network is located in. This can be omitted if the
@@ -145,17 +134,6 @@ def get_network_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = No
     network interface for `VirtualMachine` or any other vSphere resource
     that requires a network. This includes standard (host-based) port groups,
     distributed port groups, or opaque networks such as those managed by NSX.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    network = vsphere.get_network(name="VM Network",
-        datacenter_id=datacenter.id)
-    ```
 
 
     :param str datacenter_id: The managed object reference ID

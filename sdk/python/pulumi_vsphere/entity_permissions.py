@@ -36,10 +36,22 @@ class EntityPermissionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_id: pulumi.Input[str],
-             entity_type: pulumi.Input[str],
-             permissions: pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_id: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_id is None:
+            raise TypeError("Missing 'entity_id' argument")
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+
         _setter("entity_id", entity_id)
         _setter("entity_type", entity_type)
         _setter("permissions", permissions)
@@ -109,7 +121,13 @@ class _EntityPermissionsState:
              entity_id: Optional[pulumi.Input[str]] = None,
              entity_type: Optional[pulumi.Input[str]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+
         if entity_id is not None:
             _setter("entity_id", entity_id)
         if entity_type is not None:

@@ -8,21 +8,6 @@ import * as utilities from "./utilities";
  * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
  * This can then be used with resources or data sources that require an ESX
  * host's managed object reference ID.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const host = datacenter.then(datacenter => vsphere.getHost({
- *     name: "esxi-01.example.com",
- *     datacenterId: datacenter.id,
- * }));
- * ```
  */
 export function getHost(args: GetHostArgs, opts?: pulumi.InvokeOptions): Promise<GetHostResult> {
 
@@ -72,21 +57,6 @@ export interface GetHostResult {
  * The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
  * This can then be used with resources or data sources that require an ESX
  * host's managed object reference ID.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * const host = datacenter.then(datacenter => vsphere.getHost({
- *     name: "esxi-01.example.com",
- *     datacenterId: datacenter.id,
- * }));
- * ```
  */
 export function getHostOutput(args: GetHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostResult> {
     return pulumi.output(args).apply((a: any) => getHost(a, opts))

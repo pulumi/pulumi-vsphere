@@ -9,17 +9,6 @@ import * as utilities from "./utilities";
  * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
  * resource. If the ESXi host is using a certificate chain, the first one returned
  * will be used to generate the thumbprint.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esxi-01.example.com",
- * });
- * ```
  */
 export function getHostThumbprint(args: GetHostThumbprintArgs, opts?: pulumi.InvokeOptions): Promise<GetHostThumbprintResult> {
 
@@ -68,17 +57,6 @@ export interface GetHostThumbprintResult {
  * thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
  * resource. If the ESXi host is using a certificate chain, the first one returned
  * will be used to generate the thumbprint.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const thumbprint = vsphere.getHostThumbprint({
- *     address: "esxi-01.example.com",
- * });
- * ```
  */
 export function getHostThumbprintOutput(args: GetHostThumbprintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostThumbprintResult> {
     return pulumi.output(args).apply((a: any) => getHostThumbprint(a, opts))

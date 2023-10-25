@@ -92,15 +92,6 @@ def get_tag_category(name: Optional[str] = None,
     > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
     requires vCenter Server.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    category = vsphere.get_tag_category(name="example-category")
-    ```
-
 
     :param str name: The name of the tag category.
     """
@@ -129,15 +120,6 @@ def get_tag_category_output(name: Optional[pulumi.Input[str]] = None,
 
     > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
     requires vCenter Server.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    category = vsphere.get_tag_category(name="example-category")
-    ```
 
 
     :param str name: The name of the tag category.

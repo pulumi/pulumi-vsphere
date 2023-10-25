@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
  * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
  *
  * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const library = vsphere.getContentLibrary({
- *     name: "Content Library",
- * });
- * ```
  */
 export function getContentLibrary(args: GetContentLibraryArgs, opts?: pulumi.InvokeOptions): Promise<GetContentLibraryResult> {
 
@@ -52,17 +41,6 @@ export interface GetContentLibraryResult {
  * The `vsphere.ContentLibrary` data source can be used to discover the ID of a content library.
  *
  * > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const library = vsphere.getContentLibrary({
- *     name: "Content Library",
- * });
- * ```
  */
 export function getContentLibraryOutput(args: GetContentLibraryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentLibraryResult> {
     return pulumi.output(args).apply((a: any) => getContentLibrary(a, opts))

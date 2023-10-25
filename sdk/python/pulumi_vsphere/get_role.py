@@ -98,15 +98,6 @@ def get_role(description: Optional[str] = None,
     The `Role` data source can be used to discover the `id` and privileges associated
     with a role given its name or display label.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
-    ```
-
 
     :param str description: The description of the role.
     :param str label: The label of the role.
@@ -137,15 +128,6 @@ def get_role_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     """
     The `Role` data source can be used to discover the `id` and privileges associated
     with a role given its name or display label.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    terraform_role = vsphere.get_role(label="Terraform to vSphere Integration Role")
-    ```
 
 
     :param str description: The description of the role.

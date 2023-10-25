@@ -9,17 +9,6 @@ import * as utilities from "./utilities";
  * vSphere datacenter object. This can then be used with resources or data sources
  * that require a datacenter, such as the `vsphere.Host`
  * data source.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * ```
  */
 export function getDatacenter(args?: GetDatacenterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterResult> {
     args = args || {};
@@ -61,17 +50,6 @@ export interface GetDatacenterResult {
  * vSphere datacenter object. This can then be used with resources or data sources
  * that require a datacenter, such as the `vsphere.Host`
  * data source.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const datacenter = vsphere.getDatacenter({
- *     name: "dc-01",
- * });
- * ```
  */
 export function getDatacenterOutput(args?: GetDatacenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacenterResult> {
     return pulumi.output(args).apply((a: any) => getDatacenter(a, opts))

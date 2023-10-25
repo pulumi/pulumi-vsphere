@@ -71,17 +71,6 @@ def get_datastore(datacenter_id: Optional[str] = None,
     that require a datastore. For example, to create virtual machines in using the
     `VirtualMachine` resource.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    datastore = vsphere.get_datastore(name="datastore-01",
-        datacenter_id=datacenter.id)
-    ```
-
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter the datastore is located in. This can be omitted if the
@@ -110,17 +99,6 @@ def get_datastore_output(datacenter_id: Optional[pulumi.Input[Optional[str]]] = 
     vSphere datastore object. This can then be used with resources or data sources
     that require a datastore. For example, to create virtual machines in using the
     `VirtualMachine` resource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_vsphere as vsphere
-
-    datacenter = vsphere.get_datacenter(name="dc-01")
-    datastore = vsphere.get_datastore(name="datastore-01",
-        datacenter_id=datacenter.id)
-    ```
 
 
     :param str datacenter_id: The managed object reference ID

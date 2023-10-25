@@ -7,17 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
  * with a role given its name or display label.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const terraformRole = vsphere.getRole({
- *     label: "Terraform to vSphere Integration Role",
- * });
- * ```
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
 
@@ -74,17 +63,6 @@ export interface GetRoleResult {
 /**
  * The `vsphere.Role` data source can be used to discover the `id` and privileges associated
  * with a role given its name or display label.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as vsphere from "@pulumi/vsphere";
- *
- * const terraformRole = vsphere.getRole({
- *     label: "Terraform to vSphere Integration Role",
- * });
- * ```
  */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))

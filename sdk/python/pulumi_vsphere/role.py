@@ -31,7 +31,11 @@ class RoleArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              role_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if role_privileges is None and 'rolePrivileges' in kwargs:
+            role_privileges = kwargs['rolePrivileges']
+
         if name is not None:
             _setter("name", name)
         if role_privileges is not None:
@@ -86,7 +90,11 @@ class _RoleState:
              label: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              role_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if role_privileges is None and 'rolePrivileges' in kwargs:
+            role_privileges = kwargs['rolePrivileges']
+
         if label is not None:
             _setter("label", label)
         if name is not None:

@@ -53,14 +53,32 @@ class FileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore: pulumi.Input[str],
-             destination_file: pulumi.Input[str],
-             source_file: pulumi.Input[str],
+             datastore: Optional[pulumi.Input[str]] = None,
+             destination_file: Optional[pulumi.Input[str]] = None,
+             source_file: Optional[pulumi.Input[str]] = None,
              create_directories: Optional[pulumi.Input[bool]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              source_datacenter: Optional[pulumi.Input[str]] = None,
              source_datastore: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore is None:
+            raise TypeError("Missing 'datastore' argument")
+        if destination_file is None and 'destinationFile' in kwargs:
+            destination_file = kwargs['destinationFile']
+        if destination_file is None:
+            raise TypeError("Missing 'destination_file' argument")
+        if source_file is None and 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+        if source_file is None:
+            raise TypeError("Missing 'source_file' argument")
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+        if source_datacenter is None and 'sourceDatacenter' in kwargs:
+            source_datacenter = kwargs['sourceDatacenter']
+        if source_datastore is None and 'sourceDatastore' in kwargs:
+            source_datastore = kwargs['sourceDatastore']
+
         _setter("datastore", datastore)
         _setter("destination_file", destination_file)
         _setter("source_file", source_file)
@@ -214,7 +232,19 @@ class _FileState:
              source_datacenter: Optional[pulumi.Input[str]] = None,
              source_datastore: Optional[pulumi.Input[str]] = None,
              source_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+        if destination_file is None and 'destinationFile' in kwargs:
+            destination_file = kwargs['destinationFile']
+        if source_datacenter is None and 'sourceDatacenter' in kwargs:
+            source_datacenter = kwargs['sourceDatacenter']
+        if source_datastore is None and 'sourceDatastore' in kwargs:
+            source_datastore = kwargs['sourceDatastore']
+        if source_file is None and 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+
         if create_directories is not None:
             _setter("create_directories", create_directories)
         if datacenter is not None:
@@ -337,34 +367,6 @@ class File(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Uploading a File
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
-        ```
-        ### Copying a File
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_copy = vsphere.File("ubuntuCopy",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_datacenter="dc-01",
-            source_datastore="datastore-01",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -393,34 +395,6 @@ class File(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Uploading a File
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_vmdk_upload = vsphere.File("ubuntuVmdkUpload",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
-        ```
-        ### Copying a File
-
-        ```python
-        import pulumi
-        import pulumi_vsphere as vsphere
-
-        ubuntu_copy = vsphere.File("ubuntuCopy",
-            create_directories=True,
-            datacenter="dc-01",
-            datastore="datastore-01",
-            destination_file="/my/dst/path/custom_ubuntu.vmdk",
-            source_datacenter="dc-01",
-            source_datastore="datastore-01",
-            source_file="/my/src/path/custom_ubuntu.vmdk")
-        ```
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
