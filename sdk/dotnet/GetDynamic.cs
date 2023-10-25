@@ -18,6 +18,50 @@ namespace Pulumi.VSphere
         /// of any tagged managed object in vCenter Server by providing a list of tag IDs
         /// and an optional regular expression to filter objects by name.
         ///    
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "SomeCategory",
+        ///     });
+        /// 
+        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "FirstTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "SecondTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///         },
+        ///         NameRegex = "ubuntu",
+        ///         Type = "Datacenter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDynamicResult> InvokeAsync(GetDynamicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicArgs(), options.WithDefaults());
@@ -29,6 +73,50 @@ namespace Pulumi.VSphere
         /// of any tagged managed object in vCenter Server by providing a list of tag IDs
         /// and an optional regular expression to filter objects by name.
         ///    
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "SomeCategory",
+        ///     });
+        /// 
+        ///     var tag1 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "FirstTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var tag2 = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "SecondTag",
+        ///         CategoryId = data.Vsphere_tag_category.Cat.Id,
+        ///     });
+        /// 
+        ///     var dyn = VSphere.GetDynamic.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///             tag1.Apply(getTagResult =&gt; getTagResult.Id),
+        ///         },
+        ///         NameRegex = "ubuntu",
+        ///         Type = "Datacenter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDynamicResult> Invoke(GetDynamicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDynamicResult>("vsphere:index/getDynamic:getDynamic", args ?? new GetDynamicInvokeArgs(), options.WithDefaults());

@@ -16,6 +16,32 @@ import (
 // thumbprint of an ESXi host. This can be used when adding the `Host`
 // resource. If the ESXi host is using a certificate chain, the first one returned
 // will be used to generate the thumbprint.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.GetHostThumbprint(ctx, &vsphere.GetHostThumbprintArgs{
+//				Address: "esxi-01.example.com",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHostThumbprint(ctx *pulumi.Context, args *GetHostThumbprintArgs, opts ...pulumi.InvokeOption) (*GetHostThumbprintResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostThumbprintResult

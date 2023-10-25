@@ -274,6 +274,22 @@ class DistributedVirtualSwitchArgs:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -1943,6 +1959,22 @@ class DistributedVirtualSwitchArgs:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -2311,6 +2343,22 @@ class _DistributedVirtualSwitchState:
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -3998,6 +4046,22 @@ class _DistributedVirtualSwitchState:
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 
@@ -4368,6 +4432,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -4880,6 +4960,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
                and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
                `vlan_range` definitions are allowed, but they must not overlap. Example
                below:
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=199,
+                       min_vlan=100,
+                   ),
+                   vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                       max_vlan=399,
+                       min_vlan=300,
+                   ),
+               ])
+               ```
         :param pulumi.Input[int] vmotion_maximum_mbit: The maximum allowed usage for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_reservation_mbit: The amount of guaranteed bandwidth for the vmotion traffic class, in Mbits/sec.
         :param pulumi.Input[int] vmotion_share_count: The amount of shares to allocate to the vmotion traffic class for a custom share level.
@@ -5760,6 +5856,22 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         `vlan_range` definitions are allowed, but they must not overlap. Example
         below:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vds = vsphere.DistributedVirtualSwitch("vds", vlan_ranges=[
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=199,
+                min_vlan=100,
+            ),
+            vsphere.DistributedVirtualSwitchVlanRangeArgs(
+                max_vlan=399,
+                min_vlan=300,
+            ),
+        ])
+        ```
         """
         return pulumi.get(self, "vlan_ranges")
 

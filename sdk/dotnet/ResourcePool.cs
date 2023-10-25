@@ -18,6 +18,93 @@ namespace Pulumi.VSphere
     /// 
     /// [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
     /// 
+    /// ## Example Usage
+    /// 
+    /// The following example sets up a resource pool in an existing compute cluster
+    /// with the default settings for CPU and memory reservations, shares, and limits.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var resourcePool = new VSphere.ResourcePool("resourcePool", new()
+    ///     {
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// A virtual machine resource could be targeted to use the default resource pool
+    /// of the cluster using the following:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vm = new VSphere.VirtualMachine("vm", new()
+    ///     {
+    ///         ResourcePoolId = data.Vsphere_compute_cluster.Cluster.Resource_pool_id,
+    ///     });
+    /// 
+    ///     // ... other configuration ...
+    /// });
+    /// ```
+    /// 
+    /// The following example sets up a parent resource pool in an existing compute cluster
+    /// with a child resource pool nested below. Each resource pool is configured with
+    /// the default settings for CPU and memory reservations, shares, and limits.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var resourcePoolParent = new VSphere.ResourcePool("resourcePoolParent", new()
+    ///     {
+    ///         ParentResourcePoolId = computeCluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.ResourcePoolId),
+    ///     });
+    /// 
+    ///     var resourcePoolChild = new VSphere.ResourcePool("resourcePoolChild", new()
+    ///     {
+    ///         ParentResourcePoolId = resourcePoolParent.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Importing
     /// ### Settings that Require vSphere 7.0 or higher
     /// 

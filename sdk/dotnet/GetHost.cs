@@ -15,6 +15,34 @@ namespace Pulumi.VSphere
         /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
         /// This can then be used with resources or data sources that require an ESX
         /// host's managed object reference ID.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostResult> InvokeAsync(GetHostArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostArgs(), options.WithDefaults());
@@ -23,6 +51,34 @@ namespace Pulumi.VSphere
         /// The `vsphere.Host` data source can be used to discover the ID of an ESXi host.
         /// This can then be used with resources or data sources that require an ESX
         /// host's managed object reference ID.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostResult> Invoke(GetHostInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostResult>("vsphere:index/getHost:getHost", args ?? new GetHostInvokeArgs(), options.WithDefaults());

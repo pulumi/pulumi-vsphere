@@ -607,6 +607,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Output("vlanRanges")]
         public Output<ImmutableArray<Outputs.DistributedVirtualSwitchVlanRange>> VlanRanges { get; private set; } = null!;
@@ -1338,6 +1366,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeArgs> VlanRanges
         {
@@ -2041,6 +2097,34 @@ namespace Pulumi.VSphere
         /// and `max_vlan` sub-arguments to define the tagged VLAN range. Multiple
         /// `vlan_range` definitions are allowed, but they must not overlap. Example
         /// below:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vds = new VSphere.DistributedVirtualSwitch("vds", new()
+        ///     {
+        ///         VlanRanges = new[]
+        ///         {
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 199,
+        ///                 MinVlan = 100,
+        ///             },
+        ///             new VSphere.Inputs.DistributedVirtualSwitchVlanRangeArgs
+        ///             {
+        ///                 MaxVlan = 399,
+        ///                 MinVlan = 300,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.DistributedVirtualSwitchVlanRangeGetArgs> VlanRanges
         {

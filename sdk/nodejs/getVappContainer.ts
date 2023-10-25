@@ -9,6 +9,21 @@ import * as utilities from "./utilities";
  * vApp container in vSphere. This is useful to return the ID of a vApp container
  * that you want to use to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getVappContainer({
+ *     name: "vapp-container-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getVappContainer(args: GetVappContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetVappContainerResult> {
 
@@ -51,6 +66,21 @@ export interface GetVappContainerResult {
  * vApp container in vSphere. This is useful to return the ID of a vApp container
  * that you want to use to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getVappContainer({
+ *     name: "vapp-container-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getVappContainerOutput(args: GetVappContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVappContainerResult> {
     return pulumi.output(args).apply((a: any) => getVappContainer(a, opts))

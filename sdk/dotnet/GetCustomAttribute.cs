@@ -20,6 +20,28 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and require vCenter Server.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     {
+        ///         Name = "test-attribute",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomAttributeResult> InvokeAsync(GetCustomAttributeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeArgs(), options.WithDefaults());
@@ -33,6 +55,28 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Custom attributes are unsupported on direct ESXi host connections
         /// and require vCenter Server.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var attribute = VSphere.GetCustomAttribute.Invoke(new()
+        ///     {
+        ///         Name = "test-attribute",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomAttributeResult> Invoke(GetCustomAttributeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomAttributeResult>("vsphere:index/getCustomAttribute:getCustomAttribute", args ?? new GetCustomAttributeInvokeArgs(), options.WithDefaults());

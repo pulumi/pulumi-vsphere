@@ -16,6 +16,28 @@ namespace Pulumi.VSphere
         /// vSphere datacenter object. This can then be used with resources or data sources
         /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatacenterResult> InvokeAsync(GetDatacenterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterArgs(), options.WithDefaults());
@@ -25,6 +47,28 @@ namespace Pulumi.VSphere
         /// vSphere datacenter object. This can then be used with resources or data sources
         /// that require a datacenter, such as the `vsphere.Host`
         /// data source.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatacenterResult> Invoke(GetDatacenterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatacenterResult>("vsphere:index/getDatacenter:getDatacenter", args ?? new GetDatacenterInvokeArgs(), options.WithDefaults());

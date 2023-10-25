@@ -784,6 +784,46 @@ class ResourcePool(pulumi.CustomResource):
 
         [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
+        ## Example Usage
+
+        The following example sets up a resource pool in an existing compute cluster
+        with the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        A virtual machine resource could be targeted to use the default resource pool
+        of the cluster using the following:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
+        # ... other configuration ...
+        ```
+
+        The following example sets up a parent resource pool in an existing compute cluster
+        with a child resource pool nested below. Each resource pool is configured with
+        the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        ```
         ## Importing
         ### Settings that Require vSphere 7.0 or higher
 
@@ -853,6 +893,46 @@ class ResourcePool(pulumi.CustomResource):
 
         [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 
+        ## Example Usage
+
+        The following example sets up a resource pool in an existing compute cluster
+        with the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool = vsphere.ResourcePool("resourcePool", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        ```
+
+        A virtual machine resource could be targeted to use the default resource pool
+        of the cluster using the following:
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vm = vsphere.VirtualMachine("vm", resource_pool_id=data["vsphere_compute_cluster"]["cluster"]["resource_pool_id"])
+        # ... other configuration ...
+        ```
+
+        The following example sets up a parent resource pool in an existing compute cluster
+        with a child resource pool nested below. Each resource pool is configured with
+        the default settings for CPU and memory reservations, shares, and limits.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        compute_cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        resource_pool_parent = vsphere.ResourcePool("resourcePoolParent", parent_resource_pool_id=compute_cluster.resource_pool_id)
+        resource_pool_child = vsphere.ResourcePool("resourcePoolChild", parent_resource_pool_id=resource_pool_parent.id)
+        ```
         ## Importing
         ### Settings that Require vSphere 7.0 or higher
 

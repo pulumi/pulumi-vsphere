@@ -13,6 +13,17 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
  * requires vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const category = vsphere.getTagCategory({
+ *     name: "example-category",
+ * });
+ * ```
  */
 export function getTagCategory(args: GetTagCategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetTagCategoryResult> {
 
@@ -54,6 +65,17 @@ export interface GetTagCategoryResult {
  *
  * > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
  * requires vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const category = vsphere.getTagCategory({
+ *     name: "example-category",
+ * });
+ * ```
  */
 export function getTagCategoryOutput(args: GetTagCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagCategoryResult> {
     return pulumi.output(args).apply((a: any) => getTagCategory(a, opts))

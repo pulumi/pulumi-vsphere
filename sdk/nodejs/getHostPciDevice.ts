@@ -10,7 +10,25 @@ import * as utilities from "./utilities";
  * `vsphere.VirtualMachine`'s `pciDeviceId`.
  *
  * ## Example Usage
+ * ### With Vendor ID And Class ID
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const dev = host.then(host => vsphere.getHostPciDevice({
+ *     hostId: host.id,
+ *     classId: "123",
+ *     vendorId: "456",
+ * }));
+ * ```
  * ### With Name Regular Expression
  */
 export function getHostPciDevice(args: GetHostPciDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetHostPciDeviceResult> {
@@ -74,7 +92,25 @@ export interface GetHostPciDeviceResult {
  * `vsphere.VirtualMachine`'s `pciDeviceId`.
  *
  * ## Example Usage
+ * ### With Vendor ID And Class ID
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const dev = host.then(host => vsphere.getHostPciDevice({
+ *     hostId: host.id,
+ *     classId: "123",
+ *     vendorId: "456",
+ * }));
+ * ```
  * ### With Name Regular Expression
  */
 export function getHostPciDeviceOutput(args: GetHostPciDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostPciDeviceResult> {

@@ -20,6 +20,39 @@ import (
 //
 // > **NOTE:** Tagging is not supported on direct ESXi hosts connections and
 // requires vCenter Server.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			category, err := vsphere.LookupTagCategory(ctx, &vsphere.LookupTagCategoryArgs{
+//				Name: "example-category",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupTag(ctx, &vsphere.LookupTagArgs{
+//				Name:       "example-tag",
+//				CategoryId: category.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult

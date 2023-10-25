@@ -701,6 +701,54 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
+        ### Create a standalone host
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            datacenter=datacenter.id)
+        ```
+        ### Create host in a compute cluster
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            cluster=cluster.id)
+        ```
+        ## Importing
+
+        An existing host can be [imported][docs-import] into this resource by supplying
+        the host's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -759,6 +807,54 @@ class Host(pulumi.CustomResource):
         can be used either as a member of a cluster or as a standalone host.
 
         ## Example Usage
+        ### Create a standalone host
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            datacenter=datacenter.id)
+        ```
+        ### Create host in a compute cluster
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        thumbprint = vsphere.get_host_thumbprint(address="esx-01.example.com",
+            insecure=True)
+        esx_01 = vsphere.Host("esx-01",
+            hostname="esx-01.example.com",
+            username="root",
+            password="password",
+            license="00000-00000-00000-00000-00000",
+            thumbprint=thumbprint.id,
+            cluster=cluster.id)
+        ```
+        ## Importing
+
+        An existing host can be [imported][docs-import] into this resource by supplying
+        the host's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.

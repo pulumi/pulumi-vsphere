@@ -850,6 +850,70 @@ class HostPortGroup(pulumi.CustomResource):
 
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
 
+        ## Example Usage
+
+        **Create a Virtual Switch and Bind a Port Group:**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        pg = vsphere.HostPortGroup("pg",
+            host_system_id=host.id,
+            virtual_switch_name=host_virtual_switch.name)
+        ```
+
+        **Create a Port Group with a VLAN and ab Override:**
+
+        This example sets the trunk mode VLAN (`4095`, which passes through all tags)
+        and sets
+        `allow_promiscuous`
+        to ensure that all traffic is seen on the port. The setting overrides
+        the implicit default of `false` set on the standard switch.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        pg = vsphere.HostPortGroup("pg",
+            host_system_id=host.id,
+            virtual_switch_name=host_virtual_switch.name,
+            vlan_id=4095,
+            allow_promiscuous=True)
+        ```
+        ## Importing
+
+        An existing host port group can be imported into this resource
+        using the host port group's ID. An example is below:
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the `management` host port group from host with ID `host-123`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_nics: List of active network adapters used for load balancing.
@@ -894,6 +958,70 @@ class HostPortGroup(pulumi.CustomResource):
         For an overview on vSphere networking concepts, see [the product documentation][ref-vsphere-net-concepts].
 
         [ref-vsphere-net-concepts]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.networking.doc/GUID-2B11DBB8-CB3C-4AFF-8885-EFEA0FC562F4.html
+
+        ## Example Usage
+
+        **Create a Virtual Switch and Bind a Port Group:**
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        pg = vsphere.HostPortGroup("pg",
+            host_system_id=host.id,
+            virtual_switch_name=host_virtual_switch.name)
+        ```
+
+        **Create a Port Group with a VLAN and ab Override:**
+
+        This example sets the trunk mode VLAN (`4095`, which passes through all tags)
+        and sets
+        `allow_promiscuous`
+        to ensure that all traffic is seen on the port. The setting overrides
+        the implicit default of `false` set on the standard switch.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        host = vsphere.get_host(name="esxi-01.example.com",
+            datacenter_id=datacenter.id)
+        host_virtual_switch = vsphere.HostVirtualSwitch("hostVirtualSwitch",
+            host_system_id=host.id,
+            network_adapters=[
+                "vmnic0",
+                "vmnic1",
+            ],
+            active_nics=["vmnic0"],
+            standby_nics=["vmnic1"])
+        pg = vsphere.HostPortGroup("pg",
+            host_system_id=host.id,
+            virtual_switch_name=host_virtual_switch.name,
+            vlan_id=4095,
+            allow_promiscuous=True)
+        ```
+        ## Importing
+
+        An existing host port group can be imported into this resource
+        using the host port group's ID. An example is below:
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the `management` host port group from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param HostPortGroupArgs args: The arguments to use to populate this resource's properties.

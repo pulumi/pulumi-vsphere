@@ -26,6 +26,87 @@ import * as utilities from "./utilities";
  * direct ESXi host connections.
  *
  * > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+ *
+ * ## Example Usage
+ *
+ * The following example creates two virtual machines in a cluster using the
+ * `vsphere.VirtualMachine` resource, creating the
+ * virtual machines in the cluster looked up by the
+ * `vsphere.ComputeCluster` data source. It
+ * then creates an affinity rule for these two virtual machines, ensuring they
+ * will run on the same host whenever possible.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "VM Network",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vm: vsphere.VirtualMachine[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     vm.push(new vsphere.VirtualMachine(`vm-${range.value}`, {
+ *         resourcePoolId: cluster.then(cluster => cluster.resourcePoolId),
+ *         datastoreId: datastore.then(datastore => datastore.id),
+ *         numCpus: 1,
+ *         memory: 1024,
+ *         guestId: "otherLinux64Guest",
+ *         networkInterfaces: [{
+ *             networkId: network.then(network => network.id),
+ *         }],
+ *         disks: [{
+ *             label: "disk0",
+ *             size: 20,
+ *         }],
+ *     }));
+ * }
+ * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     virtualMachineIds: vm.map((v, k) => [k, v]).map(([, ]) => (v.id)),
+ * });
+ * ```
+ *
+ * The following example creates an affinity rule for a set of virtual machines
+ * in the cluster by looking up the virtual machine UUIDs from the
+ * `vsphere.VirtualMachine` data source.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const vms = [
+ *     "foo-0",
+ *     "foo-1",
+ * ];
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const cluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vmsVirtualMachine = (new Array(vms.length)).map((_, i) => i).map(__index => (vsphere.getVirtualMachine({
+ *     name: vms[__index],
+ *     datacenterId: _arg0_.id,
+ * })));
+ * const vmAffinityRule = new vsphere.ComputeClusterVmAffinityRule("vmAffinityRule", {
+ *     enabled: true,
+ *     computeClusterId: cluster.then(cluster => cluster.id),
+ *     virtualMachineIds: vmsVirtualMachine.map(__item => __item.id),
+ * });
+ * ```
  */
 export class ComputeClusterVmAffinityRule extends pulumi.CustomResource {
     /**

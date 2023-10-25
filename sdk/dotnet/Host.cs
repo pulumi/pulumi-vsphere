@@ -14,6 +14,96 @@ namespace Pulumi.VSphere
     /// can be used either as a member of a cluster or as a standalone host.
     /// 
     /// ## Example Usage
+    /// ### Create a standalone host
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esx-01.example.com",
+    ///         Insecure = true,
+    ///     });
+    /// 
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esx-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Datacenter = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create host in a compute cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "dc-01",
+    ///     });
+    /// 
+    ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+    ///     {
+    ///         Name = "cluster-01",
+    ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+    ///     {
+    ///         Address = "esx-01.example.com",
+    ///         Insecure = true,
+    ///     });
+    /// 
+    ///     var esx_01 = new VSphere.Host("esx-01", new()
+    ///     {
+    ///         Hostname = "esx-01.example.com",
+    ///         Username = "root",
+    ///         Password = "password",
+    ///         License = "00000-00000-00000-00000-00000",
+    ///         Thumbprint = thumbprint.Apply(getHostThumbprintResult =&gt; getHostThumbprintResult.Id),
+    ///         Cluster = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Importing
+    /// 
+    /// An existing host can be [imported][docs-import] into this resource by supplying
+    /// the host's ID. An example is below:
+    /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// The above would import the host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/host:Host")]
     public partial class Host : global::Pulumi.CustomResource

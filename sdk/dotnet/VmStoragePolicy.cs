@@ -13,6 +13,224 @@ namespace Pulumi.VSphere
     /// The `vsphere.VmStoragePolicy` resource can be used to create and manage storage
     /// policies. Using this resource, tag based placement rules can be created to
     /// place virtual machines on a datastore with matching tags. If storage requirements for the applications on the virtual machine change, you can modify the storage policy that was originally applied to the virtual machine.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+    /// 
+    /// In this example, tags are first applied to datastores.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var environment = VSphere.GetTagCategory.Invoke(new()
+    ///     {
+    ///         Name = "environment",
+    ///     });
+    /// 
+    ///     var serviceLevel = VSphere.GetTagCategory.Invoke(new()
+    ///     {
+    ///         Name = "service_level",
+    ///     });
+    /// 
+    ///     var replication = VSphere.GetTagCategory.Invoke(new()
+    ///     {
+    ///         Name = "replication",
+    ///     });
+    /// 
+    ///     var production = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.environment.id",
+    ///         Name = "production",
+    ///     });
+    /// 
+    ///     var development = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.environment.id",
+    ///         Name = "development",
+    ///     });
+    /// 
+    ///     var platinum = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.service_level.id",
+    ///         Name = "platinum",
+    ///     });
+    /// 
+    ///     var gold = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.service_level.id",
+    ///         Name = "platinum",
+    ///     });
+    /// 
+    ///     var silver = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.service_level.id",
+    ///         Name = "silver",
+    ///     });
+    /// 
+    ///     var bronze = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.service_level.id",
+    ///         Name = "bronze",
+    ///     });
+    /// 
+    ///     var replicated = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.replication.id",
+    ///         Name = "replicated",
+    ///     });
+    /// 
+    ///     var nonReplicated = VSphere.GetTag.Invoke(new()
+    ///     {
+    ///         CategoryId = "data.vsphere_tag_category.replication.id",
+    ///         Name = "non_replicated",
+    ///     });
+    /// 
+    ///     var prodDatastore = new VSphere.VmfsDatastore("prodDatastore", new()
+    ///     {
+    ///         Tags = new[]
+    ///         {
+    ///             "data.vsphere_tag.production.id",
+    ///             "data.vsphere_tag.platinum.id",
+    ///             "data.vsphere_tag.replicated.id",
+    ///         },
+    ///     });
+    /// 
+    ///     var devDatastore = new VSphere.NasDatastore("devDatastore", new()
+    ///     {
+    ///         Tags = new[]
+    ///         {
+    ///             "data.vsphere_tag.development.id",
+    ///             "data.vsphere_tag.silver.id",
+    ///             "data.vsphere_tag.non_replicated.id",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Next, storage policies are created and `tag_rules` are applied.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prodPlatinumReplicated = new VSphere.VmStoragePolicy("prodPlatinumReplicated", new()
+    ///     {
+    ///         Description = "prod_platinum_replicated",
+    ///         TagRules = new[]
+    ///         {
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Environment.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Production.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Service_level.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Platinum.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Replication.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Replicated.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var devSilverNonreplicated = new VSphere.VmStoragePolicy("devSilverNonreplicated", new()
+    ///     {
+    ///         Description = "dev_silver_nonreplicated",
+    ///         TagRules = new[]
+    ///         {
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Environment.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Development.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Service_level.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Silver.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///             new VSphere.Inputs.VmStoragePolicyTagRuleArgs
+    ///             {
+    ///                 TagCategory = data.Vsphere_tag_category.Replication.Name,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     data.Vsphere_tag.Non_replicated.Name,
+    ///                 },
+    ///                 IncludeDatastoresWithTags = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prodPlatinumReplicated = VSphere.GetPolicy.Invoke(new()
+    ///     {
+    ///         Name = "prod_platinum_replicated",
+    ///     });
+    /// 
+    ///     var devSilverNonreplicated = VSphere.GetPolicy.Invoke(new()
+    ///     {
+    ///         Name = "dev_silver_nonreplicated",
+    ///     });
+    /// 
+    ///     var prodVm = new VSphere.VirtualMachine("prodVm", new()
+    ///     {
+    ///         StoragePolicyId = data.Vsphere_storage_policy.Storage_policy.Prod_platinum_replicated.Id,
+    ///     });
+    /// 
+    ///     // ... other configuration ...
+    ///     var devVm = new VSphere.VirtualMachine("devVm", new()
+    ///     {
+    ///         StoragePolicyId = data.Vsphere_storage_policy.Storage_policy.Dev_silver_nonreplicated.Id,
+    ///     });
+    /// 
+    ///     // ... other configuration ...
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/vmStoragePolicy:VmStoragePolicy")]
     public partial class VmStoragePolicy : global::Pulumi.CustomResource

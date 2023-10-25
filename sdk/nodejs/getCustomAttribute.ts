@@ -13,6 +13,17 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
  * and require vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const attribute = vsphere.getCustomAttribute({
+ *     name: "test-attribute",
+ * });
+ * ```
  */
 export function getCustomAttribute(args: GetCustomAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomAttributeResult> {
 
@@ -52,6 +63,17 @@ export interface GetCustomAttributeResult {
  *
  * > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
  * and require vCenter Server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const attribute = vsphere.getCustomAttribute({
+ *     name: "test-attribute",
+ * });
+ * ```
  */
 export function getCustomAttributeOutput(args: GetCustomAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomAttributeResult> {
     return pulumi.output(args).apply((a: any) => getCustomAttribute(a, opts))

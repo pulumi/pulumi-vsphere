@@ -17,6 +17,39 @@ import (
 // network interface for `VirtualMachine` or any other vSphere resource
 // that requires a network. This includes standard (host-based) port groups,
 // distributed port groups, or opaque networks such as those managed by NSX.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetwork(ctx *pulumi.Context, args *GetNetworkArgs, opts ...pulumi.InvokeOption) (*GetNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkResult

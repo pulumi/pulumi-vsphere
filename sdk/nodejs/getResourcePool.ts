@@ -9,6 +9,44 @@ import * as utilities from "./utilities";
  * resource pool in vSphere. This is useful to return the ID of a resource pool
  * that you want to use to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getResourcePool({
+ *     name: "resource-pool-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ * ### Specifying the Root Resource Pool for a Standalone ESXi Host
+ *
+ * > **NOTE:** Returning the root resource pool for a cluster can be done
+ * directly via the `vsphere.ComputeCluster`
+ * data source.
+ *
+ * All compute resources in vSphere have a resource pool, even if one has not been
+ * explicitly created. This resource pool is referred to as the
+ * _root resource pool_ and can be looked up by specifying the path.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const pool = vsphere.getResourcePool({
+ *     name: "esxi-01.example.com/Resources",
+ *     datacenterId: data.vsphere_datacenter.datacenter.id,
+ * });
+ * ```
+ *
+ * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+ *
+ * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  */
 export function getResourcePool(args?: GetResourcePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePoolResult> {
     args = args || {};
@@ -59,6 +97,44 @@ export interface GetResourcePoolResult {
  * resource pool in vSphere. This is useful to return the ID of a resource pool
  * that you want to use to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const pool = datacenter.then(datacenter => vsphere.getResourcePool({
+ *     name: "resource-pool-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ * ### Specifying the Root Resource Pool for a Standalone ESXi Host
+ *
+ * > **NOTE:** Returning the root resource pool for a cluster can be done
+ * directly via the `vsphere.ComputeCluster`
+ * data source.
+ *
+ * All compute resources in vSphere have a resource pool, even if one has not been
+ * explicitly created. This resource pool is referred to as the
+ * _root resource pool_ and can be looked up by specifying the path.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const pool = vsphere.getResourcePool({
+ *     name: "esxi-01.example.com/Resources",
+ *     datacenterId: data.vsphere_datacenter.datacenter.id,
+ * });
+ * ```
+ *
+ * For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+ *
+ * [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  */
 export function getResourcePoolOutput(args?: GetResourcePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePoolResult> {
     return pulumi.output(args).apply((a: any) => getResourcePool(a, opts))

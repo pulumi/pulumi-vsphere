@@ -14,6 +14,28 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
         /// vSphere inventory folder. Paths are absolute and must include the datacenter.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
@@ -21,6 +43,28 @@ namespace Pulumi.VSphere
         /// <summary>
         /// The `vsphere.Folder` data source can be used to get the general attributes of a
         /// vSphere inventory folder. Paths are absolute and must include the datacenter.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var folder = VSphere.GetFolder.Invoke(new()
+        ///     {
+        ///         Path = "/dc-01/datastore-01/folder-01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("vsphere:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());

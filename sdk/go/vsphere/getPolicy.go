@@ -18,6 +18,38 @@ import (
 //
 // > **NOTE:** Storage policies are not supported on direct ESXi hosts and
 // requires vCenter Server.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
+//				Name: "prod_platinum_replicated",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetPolicy(ctx, &vsphere.GetPolicyArgs{
+//				Name: "dev_silver_nonreplicated",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPolicy(ctx *pulumi.Context, args *GetPolicyArgs, opts ...pulumi.InvokeOption) (*GetPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyResult

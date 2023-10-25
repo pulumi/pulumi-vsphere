@@ -18,6 +18,165 @@ import (
 // ## Example Usage
 //
 // ### S
+// ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("mydc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi1.host.test"),
+//				DatacenterId: dc.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			d1, err := vsphere.NewDistributedVirtualSwitch(ctx, "d1", &vsphere.DistributedVirtualSwitchArgs{
+//				DatacenterId: *pulumi.String(dc.Id),
+//				Hosts: vsphere.DistributedVirtualSwitchHostArray{
+//					&vsphere.DistributedVirtualSwitchHostArgs{
+//						HostSystemId: *pulumi.String(h1.Id),
+//						Devices: pulumi.StringArray{
+//							pulumi.String("vnic3"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			p1, err := vsphere.NewDistributedPortGroup(ctx, "p1", &vsphere.DistributedPortGroupArgs{
+//				VlanId:                       pulumi.Int(1234),
+//				DistributedVirtualSwitchUuid: d1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
+//				Host:                  *pulumi.String(h1.Id),
+//				DistributedSwitchPort: d1.ID(),
+//				DistributedPortGroup:  p1.ID(),
+//				Ipv4: &vsphere.VnicIpv4Args{
+//					Dhcp: pulumi.Bool(true),
+//				},
+//				Netstack: pulumi.String("vmotion"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dc, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("mydc"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			h1, err := vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi1.host.test"),
+//				DatacenterId: dc.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			hvs1, err := vsphere.NewHostVirtualSwitch(ctx, "hvs1", &vsphere.HostVirtualSwitchArgs{
+//				HostSystemId: *pulumi.String(h1.Id),
+//				NetworkAdapters: pulumi.StringArray{
+//					pulumi.String("vmnic3"),
+//					pulumi.String("vmnic4"),
+//				},
+//				ActiveNics: pulumi.StringArray{
+//					pulumi.String("vmnic3"),
+//				},
+//				StandbyNics: pulumi.StringArray{
+//					pulumi.String("vmnic4"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			p1, err := vsphere.NewHostPortGroup(ctx, "p1", &vsphere.HostPortGroupArgs{
+//				VirtualSwitchName: hvs1.Name,
+//				HostSystemId:      *pulumi.String(h1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewVnic(ctx, "v1", &vsphere.VnicArgs{
+//				Host:      *pulumi.String(h1.Id),
+//				Portgroup: p1.Name,
+//				Ipv4: &vsphere.VnicIpv4Args{
+//					Dhcp: pulumi.Bool(true),
+//				},
+//				Services: pulumi.StringArray{
+//					pulumi.String("vsan"),
+//					pulumi.String("management"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Importing
+//
+// An existing vNic can be [imported][docs-import] into this resource
+// via supplying the vNic's ID. An example is below:
+//
+// [docs-import]: /docs/import/index.html
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The above would import the vnic `vmk2` from host with ID `host-123`.
 type Vnic struct {
 	pulumi.CustomResourceState
 

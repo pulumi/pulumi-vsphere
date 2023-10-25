@@ -83,6 +83,23 @@ def get_compute_cluster_host_group(compute_cluster_id: Optional[str] = None,
     the IDs ESXi hosts in a host group and return host group attributes to other
     resources.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name=var["vsphere_datacenter"])
+    cluster = vsphere.get_compute_cluster(name=var["vsphere_cluster"],
+        datacenter_id=datacenter.id)
+    host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
+        compute_cluster_id=cluster.id)
+    host_rule1 = vsphere.ComputeClusterVmHostRule("hostRule1",
+        compute_cluster_id=cluster.id,
+        vm_group_name="vm_group1",
+        affinity_host_group_name=host_group1.name)
+    ```
+
 
     :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]
            of the compute cluster for the host group.
@@ -111,6 +128,23 @@ def get_compute_cluster_host_group_output(compute_cluster_id: Optional[pulumi.In
     The `ComputeClusterHostGroup` data source can be used to discover
     the IDs ESXi hosts in a host group and return host group attributes to other
     resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name=var["vsphere_datacenter"])
+    cluster = vsphere.get_compute_cluster(name=var["vsphere_cluster"],
+        datacenter_id=datacenter.id)
+    host_group1 = vsphere.get_compute_cluster_host_group(name="host_group1",
+        compute_cluster_id=cluster.id)
+    host_rule1 = vsphere.ComputeClusterVmHostRule("hostRule1",
+        compute_cluster_id=cluster.id,
+        vm_group_name="vm_group1",
+        affinity_host_group_name=host_group1.name)
+    ```
 
 
     :param str compute_cluster_id: The [managed object reference ID][docs-about-morefs]

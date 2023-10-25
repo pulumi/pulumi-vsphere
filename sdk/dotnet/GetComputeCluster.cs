@@ -21,6 +21,34 @@ namespace Pulumi.VSphere
         /// &gt; You may also wish to see the `vsphere.ComputeCluster`
         ///  resource for more information about clusters and how to managed the resource
         ///  in this provider.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeClusterResult> InvokeAsync(GetComputeClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterArgs(), options.WithDefaults());
@@ -35,6 +63,34 @@ namespace Pulumi.VSphere
         /// &gt; You may also wish to see the `vsphere.ComputeCluster`
         ///  resource for more information about clusters and how to managed the resource
         ///  in this provider.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var computeCluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = "cluster-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetComputeClusterResult> Invoke(GetComputeClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterResult>("vsphere:index/getComputeCluster:getComputeCluster", args ?? new GetComputeClusterInvokeArgs(), options.WithDefaults());

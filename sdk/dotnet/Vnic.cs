@@ -15,6 +15,143 @@ namespace Pulumi.VSphere
     /// ## Example Usage
     /// 
     /// ### S
+    /// ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "mydc",
+    ///     });
+    /// 
+    ///     var h1 = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi1.host.test",
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var d1 = new VSphere.DistributedVirtualSwitch("d1", new()
+    ///     {
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///         Hosts = new[]
+    ///         {
+    ///             new VSphere.Inputs.DistributedVirtualSwitchHostArgs
+    ///             {
+    ///                 HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///                 Devices = new[]
+    ///                 {
+    ///                     "vnic3",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var p1 = new VSphere.DistributedPortGroup("p1", new()
+    ///     {
+    ///         VlanId = 1234,
+    ///         DistributedVirtualSwitchUuid = d1.Id,
+    ///     });
+    /// 
+    ///     var v1 = new VSphere.Vnic("v1", new()
+    ///     {
+    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         DistributedSwitchPort = d1.Id,
+    ///         DistributedPortGroup = p1.Id,
+    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///         {
+    ///             Dhcp = true,
+    ///         },
+    ///         Netstack = "vmotion",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a vnic attached to a portgroup using the default TCP/IP stack
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc = VSphere.GetDatacenter.Invoke(new()
+    ///     {
+    ///         Name = "mydc",
+    ///     });
+    /// 
+    ///     var h1 = VSphere.GetHost.Invoke(new()
+    ///     {
+    ///         Name = "esxi1.host.test",
+    ///         DatacenterId = dc.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+    ///     });
+    /// 
+    ///     var hvs1 = new VSphere.HostVirtualSwitch("hvs1", new()
+    ///     {
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         NetworkAdapters = new[]
+    ///         {
+    ///             "vmnic3",
+    ///             "vmnic4",
+    ///         },
+    ///         ActiveNics = new[]
+    ///         {
+    ///             "vmnic3",
+    ///         },
+    ///         StandbyNics = new[]
+    ///         {
+    ///             "vmnic4",
+    ///         },
+    ///     });
+    /// 
+    ///     var p1 = new VSphere.HostPortGroup("p1", new()
+    ///     {
+    ///         VirtualSwitchName = hvs1.Name,
+    ///         HostSystemId = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///     });
+    /// 
+    ///     var v1 = new VSphere.Vnic("v1", new()
+    ///     {
+    ///         Host = h1.Apply(getHostResult =&gt; getHostResult.Id),
+    ///         Portgroup = p1.Name,
+    ///         Ipv4 = new VSphere.Inputs.VnicIpv4Args
+    ///         {
+    ///             Dhcp = true,
+    ///         },
+    ///         Services = new[]
+    ///         {
+    ///             "vsan",
+    ///             "management",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Importing
+    /// 
+    /// An existing vNic can be [imported][docs-import] into this resource
+    /// via supplying the vNic's ID. An example is below:
+    /// 
+    /// [docs-import]: /docs/import/index.html
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// The above would import the vnic `vmk2` from host with ID `host-123`.
     /// </summary>
     [VSphereResourceType("vsphere:index/vnic:Vnic")]
     public partial class Vnic : global::Pulumi.CustomResource

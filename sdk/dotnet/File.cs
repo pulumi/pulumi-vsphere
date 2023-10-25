@@ -11,6 +11,50 @@ namespace Pulumi.VSphere
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Uploading a File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuVmdkUpload = new VSphere.File("ubuntuVmdkUpload", new()
+    ///     {
+    ///         CreateDirectories = true,
+    ///         Datacenter = "dc-01",
+    ///         Datastore = "datastore-01",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Copying a File
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuCopy = new VSphere.File("ubuntuCopy", new()
+    ///     {
+    ///         CreateDirectories = true,
+    ///         Datacenter = "dc-01",
+    ///         Datastore = "datastore-01",
+    ///         DestinationFile = "/my/dst/path/custom_ubuntu.vmdk",
+    ///         SourceDatacenter = "dc-01",
+    ///         SourceDatastore = "datastore-01",
+    ///         SourceFile = "/my/src/path/custom_ubuntu.vmdk",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/file:File")]
     public partial class File : global::Pulumi.CustomResource

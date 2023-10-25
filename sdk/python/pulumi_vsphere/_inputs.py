@@ -46,6 +46,31 @@ class ComputeClusterVsanDiskGroupArgs:
                
                > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
                You can enable or re-enable vSphere HA after vSAN is configured.
+               
+               ```python
+               import pulumi
+               import pulumi_vsphere as vsphere
+               
+               compute_cluster = vsphere.ComputeCluster("computeCluster",
+                   datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
+                   host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+                   drs_enabled=True,
+                   drs_automation_level="fullyAutomated",
+                   ha_enabled=False,
+                   vsan_enabled=True,
+                   vsan_dedup_enabled=True,
+                   vsan_compression_enabled=True,
+                   vsan_performance_enabled=True,
+                   vsan_verbose_mode_enabled=True,
+                   vsan_network_diagnostic_mode_enabled=True,
+                   vsan_unmap_enabled=True,
+                   vsan_dit_encryption_enabled=True,
+                   vsan_dit_rekey_interval=1800,
+                   vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
+                       cache=data["vsphere_vmfs_disks"]["cache_disks"],
+                       storages=data["vsphere_vmfs_disks"]["storage_disks"],
+                   )])
+               ```
         """
         ComputeClusterVsanDiskGroupArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -85,6 +110,31 @@ class ComputeClusterVsanDiskGroupArgs:
 
         > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
         You can enable or re-enable vSphere HA after vSAN is configured.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        compute_cluster = vsphere.ComputeCluster("computeCluster",
+            datacenter_id=data["vsphere_datacenter"]["datacenter"]["id"],
+            host_system_ids=[[__item["id"] for __item in data["vsphere_host"]["host"]]],
+            drs_enabled=True,
+            drs_automation_level="fullyAutomated",
+            ha_enabled=False,
+            vsan_enabled=True,
+            vsan_dedup_enabled=True,
+            vsan_compression_enabled=True,
+            vsan_performance_enabled=True,
+            vsan_verbose_mode_enabled=True,
+            vsan_network_diagnostic_mode_enabled=True,
+            vsan_unmap_enabled=True,
+            vsan_dit_encryption_enabled=True,
+            vsan_dit_rekey_interval=1800,
+            vsan_disk_groups=[vsphere.ComputeClusterVsanDiskGroupArgs(
+                cache=data["vsphere_vmfs_disks"]["cache_disks"],
+                storages=data["vsphere_vmfs_disks"]["storage_disks"],
+            )])
+        ```
         """
         return pulumi.get(self, "storages")
 

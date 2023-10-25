@@ -20,6 +20,56 @@ import (
 //
 // > **NOTE:** This data source requires vCenter Server and is not available on
 // direct ESXi host connections.
+//
+// ## Example Usage
+//
+// The following example locates a distributed switch named `vds-01`, in the
+// datacenter `dc-01`. It then uses this distributed switch to set up a
+// `DistributedPortGroup` resource that uses the first uplink as a
+// primary uplink and the second uplink as a secondary.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vds, err := vsphere.LookupDistributedVirtualSwitch(ctx, &vsphere.LookupDistributedVirtualSwitchArgs{
+//				Name:         "vds-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewDistributedPortGroup(ctx, "dvpg", &vsphere.DistributedPortGroupArgs{
+//				DistributedVirtualSwitchUuid: *pulumi.String(vds.Id),
+//				ActiveUplinks: pulumi.StringArray{
+//					*pulumi.String(vds.Uplinks[0]),
+//				},
+//				StandbyUplinks: pulumi.StringArray{
+//					*pulumi.String(vds.Uplinks[1]),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDistributedVirtualSwitch(ctx *pulumi.Context, args *LookupDistributedVirtualSwitchArgs, opts ...pulumi.InvokeOption) (*LookupDistributedVirtualSwitchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDistributedVirtualSwitchResult

@@ -737,6 +737,33 @@ def get_virtual_machine(alternate_guest_name: Optional[str] = None,
     `VirtualMachine` resource. It also
     reads the guest ID so that can be supplied as well.
 
+    ## Example Usage
+
+    In the following example, a virtual machine template is returned by its
+    unique name within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
+    In the following example, each virtual machine template is returned by its
+    unique full path within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    production_template = vsphere.get_virtual_machine(name="production/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
+
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when
            `guest_id` is a non-specific operating system, like `otherGuest` or `otherGuest64`.
@@ -951,6 +978,33 @@ def get_virtual_machine_output(alternate_guest_name: Optional[pulumi.Input[Optio
     the UUID of a template to be used as the source for cloning to a new
     `VirtualMachine` resource. It also
     reads the guest ID so that can be supplied as well.
+
+    ## Example Usage
+
+    In the following example, a virtual machine template is returned by its
+    unique name within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    template = vsphere.get_virtual_machine(name="ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
+    In the following example, each virtual machine template is returned by its
+    unique full path within the `Datacenter`.
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    production_template = vsphere.get_virtual_machine(name="production/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    development_template = vsphere.get_virtual_machine(name="development/templates/ubuntu-server-template",
+        datacenter_id=datacenter.id)
+    ```
 
 
     :param str alternate_guest_name: The alternate guest name of the virtual machine when

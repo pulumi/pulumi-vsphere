@@ -207,6 +207,20 @@ class License(pulumi.CustomResource):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        license_key = vsphere.License("licenseKey",
+            labels={
+                "VpxClientLicenseLabel": "Hello World",
+                "Workflow": "Hello World",
+            },
+            license_key="452CQ-2EK54-K8742-00000-00000")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
@@ -220,6 +234,20 @@ class License(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        license_key = vsphere.License("licenseKey",
+            labels={
+                "VpxClientLicenseLabel": "Hello World",
+                "Workflow": "Hello World",
+            },
+            license_key="452CQ-2EK54-K8742-00000-00000")
+        ```
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

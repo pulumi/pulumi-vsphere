@@ -6,6 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a VMware vSphere license resource. This can be used to add and remove license keys.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const licenseKey = new vsphere.License("licenseKey", {
+ *     labels: {
+ *         VpxClientLicenseLabel: "Hello World",
+ *         Workflow: "Hello World",
+ *     },
+ *     licenseKey: "452CQ-2EK54-K8742-00000-00000",
+ * });
+ * ```
  */
 export class License extends pulumi.CustomResource {
     /**

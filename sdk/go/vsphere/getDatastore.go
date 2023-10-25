@@ -16,6 +16,39 @@ import (
 // vSphere datastore object. This can then be used with resources or data sources
 // that require a datastore. For example, to create virtual machines in using the
 // `VirtualMachine` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatastore(ctx *pulumi.Context, args *GetDatastoreArgs, opts ...pulumi.InvokeOption) (*GetDatastoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatastoreResult

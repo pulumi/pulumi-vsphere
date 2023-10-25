@@ -116,6 +116,15 @@ def get_license(license_key: Optional[str] = None,
     The `License` data source can be used to get the general attributes of
     a license keys from a vCenter Server instance.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    license = vsphere.get_license(license_key="00000-00000-00000-00000-00000")
+    ```
+
 
     :param str license_key: The license key.
     """
@@ -140,6 +149,15 @@ def get_license_output(license_key: Optional[pulumi.Input[str]] = None,
     """
     The `License` data source can be used to get the general attributes of
     a license keys from a vCenter Server instance.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    license = vsphere.get_license(license_key="00000-00000-00000-00000-00000")
+    ```
 
 
     :param str license_key: The license key.

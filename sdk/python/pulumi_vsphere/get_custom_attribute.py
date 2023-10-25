@@ -74,6 +74,15 @@ def get_custom_attribute(name: Optional[str] = None,
     > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
     and require vCenter Server.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    attribute = vsphere.get_custom_attribute(name="test-attribute")
+    ```
+
 
     :param str name: The name of the custom attribute.
     """
@@ -100,6 +109,15 @@ def get_custom_attribute_output(name: Optional[pulumi.Input[str]] = None,
 
     > **NOTE:** Custom attributes are unsupported on direct ESXi host connections
     and require vCenter Server.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    attribute = vsphere.get_custom_attribute(name="test-attribute")
+    ```
 
 
     :param str name: The name of the custom attribute.

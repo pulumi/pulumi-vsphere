@@ -10,6 +10,21 @@ import * as utilities from "./utilities";
  * network interface for `vsphere.VirtualMachine` or any other vSphere resource
  * that requires a network. This includes standard (host-based) port groups,
  * distributed port groups, or opaque networks such as those managed by NSX.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "VM Network",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
 
@@ -70,6 +85,21 @@ export interface GetNetworkResult {
  * network interface for `vsphere.VirtualMachine` or any other vSphere resource
  * that requires a network. This includes standard (host-based) port groups,
  * distributed port groups, or opaque networks such as those managed by NSX.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const network = datacenter.then(datacenter => vsphere.getNetwork({
+ *     name: "VM Network",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))

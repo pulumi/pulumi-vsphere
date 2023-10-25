@@ -15,6 +15,39 @@ import (
 // The `Host` data source can be used to discover the ID of an ESXi host.
 // This can then be used with resources or data sources that require an ESX
 // host's managed object reference ID.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupHost(ctx, &vsphere.LookupHostArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com"),
+//				DatacenterId: datacenter.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupHost(ctx *pulumi.Context, args *LookupHostArgs, opts ...pulumi.InvokeOption) (*LookupHostResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostResult
