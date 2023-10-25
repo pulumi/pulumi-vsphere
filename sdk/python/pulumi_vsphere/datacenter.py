@@ -278,6 +278,22 @@ class Datacenter(pulumi.CustomResource):
         container of inventory objects such as hosts and virtual machines.
 
         ## Example Usage
+        ### Create datacenter on the root folder
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_datacenter = vsphere.Datacenter("prodDatacenter")
+        ```
+        ### Create datacenter on a subfolder
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -310,6 +326,22 @@ class Datacenter(pulumi.CustomResource):
         container of inventory objects such as hosts and virtual machines.
 
         ## Example Usage
+        ### Create datacenter on the root folder
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_datacenter = vsphere.Datacenter("prodDatacenter")
+        ```
+        ### Create datacenter on a subfolder
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        research_datacenter = vsphere.Datacenter("researchDatacenter", folder="/research/")
+        ```
 
         :param str resource_name: The name of the resource.
         :param DatacenterArgs args: The arguments to use to populate this resource's properties.

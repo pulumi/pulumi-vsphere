@@ -16,6 +16,66 @@ namespace Pulumi.VSphere
         /// resource pool in vSphere. This is useful to return the ID of a resource pool
         /// that you want to use to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "resource-pool-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
+        /// 
+        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done
+        /// directly via the `vsphere.ComputeCluster`
+        /// data source.
+        /// 
+        /// All compute resources in vSphere have a resource pool, even if one has not been
+        /// explicitly created. This resource pool is referred to as the
+        /// _root resource pool_ and can be looked up by specifying the path.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com/Resources",
+        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+        /// 
+        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourcePoolResult> InvokeAsync(GetResourcePoolArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolArgs(), options.WithDefaults());
@@ -25,6 +85,66 @@ namespace Pulumi.VSphere
         /// resource pool in vSphere. This is useful to return the ID of a resource pool
         /// that you want to use to create virtual machines in using the
         /// `vsphere.VirtualMachine` resource.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "resource-pool-01",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Specifying the Root Resource Pool for a Standalone ESXi Host
+        /// 
+        /// &gt; **NOTE:** Returning the root resource pool for a cluster can be done
+        /// directly via the `vsphere.ComputeCluster`
+        /// data source.
+        /// 
+        /// All compute resources in vSphere have a resource pool, even if one has not been
+        /// explicitly created. This resource pool is referred to as the
+        /// _root resource pool_ and can be looked up by specifying the path.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pool = VSphere.GetResourcePool.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com/Resources",
+        ///         DatacenterId = data.Vsphere_datacenter.Datacenter.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+        /// 
+        /// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourcePoolResult> Invoke(GetResourcePoolInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcePoolResult>("vsphere:index/getResourcePool:getResourcePool", args ?? new GetResourcePoolInvokeArgs(), options.WithDefaults());

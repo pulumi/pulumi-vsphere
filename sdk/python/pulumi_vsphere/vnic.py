@@ -438,6 +438,76 @@ class Vnic(pulumi.CustomResource):
         ## Example Usage
 
         ### S
+        ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        d1 = vsphere.DistributedVirtualSwitch("d1",
+            datacenter_id=dc.id,
+            hosts=[vsphere.DistributedVirtualSwitchHostArgs(
+                host_system_id=h1.id,
+                devices=["vnic3"],
+            )])
+        p1 = vsphere.DistributedPortGroup("p1",
+            vlan_id=1234,
+            distributed_virtual_switch_uuid=d1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            distributed_switch_port=d1.id,
+            distributed_port_group=p1.id,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
+            netstack="vmotion")
+        ```
+        ### Create a vnic attached to a portgroup using the default TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        hvs1 = vsphere.HostVirtualSwitch("hvs1",
+            host_system_id=h1.id,
+            network_adapters=[
+                "vmnic3",
+                "vmnic4",
+            ],
+            active_nics=["vmnic3"],
+            standby_nics=["vmnic4"])
+        p1 = vsphere.HostPortGroup("p1",
+            virtual_switch_name=hvs1.name,
+            host_system_id=h1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            portgroup=p1.name,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
+            services=[
+                "vsan",
+                "management",
+            ])
+        ```
+        ## Importing
+
+        An existing vNic can be [imported][docs-import] into this resource
+        via supplying the vNic's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the vnic `vmk2` from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -464,6 +534,76 @@ class Vnic(pulumi.CustomResource):
         ## Example Usage
 
         ### S
+        ### Create a vnic attached to a distributed virtual switch using the vmotion TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        d1 = vsphere.DistributedVirtualSwitch("d1",
+            datacenter_id=dc.id,
+            hosts=[vsphere.DistributedVirtualSwitchHostArgs(
+                host_system_id=h1.id,
+                devices=["vnic3"],
+            )])
+        p1 = vsphere.DistributedPortGroup("p1",
+            vlan_id=1234,
+            distributed_virtual_switch_uuid=d1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            distributed_switch_port=d1.id,
+            distributed_port_group=p1.id,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
+            netstack="vmotion")
+        ```
+        ### Create a vnic attached to a portgroup using the default TCP/IP stack
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        dc = vsphere.get_datacenter(name="mydc")
+        h1 = vsphere.get_host(name="esxi1.host.test",
+            datacenter_id=dc.id)
+        hvs1 = vsphere.HostVirtualSwitch("hvs1",
+            host_system_id=h1.id,
+            network_adapters=[
+                "vmnic3",
+                "vmnic4",
+            ],
+            active_nics=["vmnic3"],
+            standby_nics=["vmnic4"])
+        p1 = vsphere.HostPortGroup("p1",
+            virtual_switch_name=hvs1.name,
+            host_system_id=h1.id)
+        v1 = vsphere.Vnic("v1",
+            host=h1.id,
+            portgroup=p1.name,
+            ipv4=vsphere.VnicIpv4Args(
+                dhcp=True,
+            ),
+            services=[
+                "vsan",
+                "management",
+            ])
+        ```
+        ## Importing
+
+        An existing vNic can be [imported][docs-import] into this resource
+        via supplying the vNic's ID. An example is below:
+
+        [docs-import]: /docs/import/index.html
+
+        ```python
+        import pulumi
+        ```
+
+        The above would import the vnic `vmk2` from host with ID `host-123`.
 
         :param str resource_name: The name of the resource.
         :param VnicArgs args: The arguments to use to populate this resource's properties.

@@ -16,6 +16,28 @@ namespace Pulumi.VSphere
         /// thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
         /// resource. If the ESXi host is using a certificate chain, the first one returned
         /// will be used to generate the thumbprint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     {
+        ///         Address = "esxi-01.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostThumbprintResult> InvokeAsync(GetHostThumbprintArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintArgs(), options.WithDefaults());
@@ -25,6 +47,28 @@ namespace Pulumi.VSphere
         /// thumbprint of an ESXi host. This can be used when adding the `vsphere.Host`
         /// resource. If the ESXi host is using a certificate chain, the first one returned
         /// will be used to generate the thumbprint.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thumbprint = VSphere.GetHostThumbprint.Invoke(new()
+        ///     {
+        ///         Address = "esxi-01.example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostThumbprintResult> Invoke(GetHostThumbprintInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostThumbprintResult>("vsphere:index/getHostThumbprint:getHostThumbprint", args ?? new GetHostThumbprintInvokeArgs(), options.WithDefaults());

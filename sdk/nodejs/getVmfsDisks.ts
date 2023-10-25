@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
  * devices available on an ESXi host. This data source can be combined with the
  * `vsphere.VmfsDatastore` resource to create VMFS
  * datastores based off a set of discovered disks.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vmfsDisks = host.then(host => vsphere.getVmfsDisks({
+ *     hostSystemId: host.id,
+ *     rescan: true,
+ *     filter: "mpx.vmhba1:C0:T[12]:L0",
+ * }));
+ * ```
  */
 export function getVmfsDisks(args: GetVmfsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetVmfsDisksResult> {
 
@@ -68,6 +88,26 @@ export interface GetVmfsDisksResult {
  * devices available on an ESXi host. This data source can be combined with the
  * `vsphere.VmfsDatastore` resource to create VMFS
  * datastores based off a set of discovered disks.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const host = datacenter.then(datacenter => vsphere.getHost({
+ *     name: "esxi-01.example.com",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const vmfsDisks = host.then(host => vsphere.getVmfsDisks({
+ *     hostSystemId: host.id,
+ *     rescan: true,
+ *     filter: "mpx.vmhba1:C0:T[12]:L0",
+ * }));
+ * ```
  */
 export function getVmfsDisksOutput(args: GetVmfsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmfsDisksResult> {
     return pulumi.output(args).apply((a: any) => getVmfsDisks(a, opts))

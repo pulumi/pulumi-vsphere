@@ -18,7 +18,38 @@ namespace Pulumi.VSphere
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### With Vendor ID And Class ID
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ClassId = "123",
+        ///         VendorId = "456",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// ### With Name Regular Expression
         ///  
         ///  ```hcl
@@ -48,7 +79,38 @@ namespace Pulumi.VSphere
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### With Vendor ID And Class ID
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = "dc-01",
+        ///     });
+        /// 
+        ///     var host = VSphere.GetHost.Invoke(new()
+        ///     {
+        ///         Name = "esxi-01.example.com",
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var dev = VSphere.GetHostPciDevice.Invoke(new()
+        ///     {
+        ///         HostId = host.Apply(getHostResult =&gt; getHostResult.Id),
+        ///         ClassId = "123",
+        ///         VendorId = "456",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// ### With Name Regular Expression
         ///  
         ///  ```hcl

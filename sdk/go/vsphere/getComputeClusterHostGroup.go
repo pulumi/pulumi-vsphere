@@ -15,6 +15,54 @@ import (
 // The `ComputeClusterHostGroup` data source can be used to discover
 // the IDs ESXi hosts in a host group and return host group attributes to other
 // resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef(_var.Vsphere_datacenter),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         _var.Vsphere_cluster,
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			hostGroup1, err := vsphere.LookupComputeClusterHostGroup(ctx, &vsphere.LookupComputeClusterHostGroupArgs{
+//				Name:             "host_group1",
+//				ComputeClusterId: cluster.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.NewComputeClusterVmHostRule(ctx, "hostRule1", &vsphere.ComputeClusterVmHostRuleArgs{
+//				ComputeClusterId:      *pulumi.String(cluster.Id),
+//				VmGroupName:           pulumi.String("vm_group1"),
+//				AffinityHostGroupName: *pulumi.String(hostGroup1.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupComputeClusterHostGroup(ctx *pulumi.Context, args *LookupComputeClusterHostGroupArgs, opts ...pulumi.InvokeOption) (*LookupComputeClusterHostGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupComputeClusterHostGroupResult

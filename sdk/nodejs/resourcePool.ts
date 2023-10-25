@@ -13,6 +13,54 @@ import * as utilities from "./utilities";
  *
  * [ref-vsphere-resource_pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
  *
+ * ## Example Usage
+ *
+ * The following example sets up a resource pool in an existing compute cluster
+ * with the default settings for CPU and memory reservations, shares, and limits.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const resourcePool = new vsphere.ResourcePool("resourcePool", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
+ * ```
+ *
+ * A virtual machine resource could be targeted to use the default resource pool
+ * of the cluster using the following:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const vm = new vsphere.VirtualMachine("vm", {resourcePoolId: data.vsphere_compute_cluster.cluster.resource_pool_id});
+ * // ... other configuration ...
+ * ```
+ *
+ * The following example sets up a parent resource pool in an existing compute cluster
+ * with a child resource pool nested below. Each resource pool is configured with
+ * the default settings for CPU and memory reservations, shares, and limits.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const computeCluster = datacenter.then(datacenter => vsphere.getComputeCluster({
+ *     name: "cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const resourcePoolParent = new vsphere.ResourcePool("resourcePoolParent", {parentResourcePoolId: computeCluster.then(computeCluster => computeCluster.resourcePoolId)});
+ * const resourcePoolChild = new vsphere.ResourcePool("resourcePoolChild", {parentResourcePoolId: resourcePoolParent.id});
+ * ```
  * ## Importing
  * ### Settings that Require vSphere 7.0 or higher
  *

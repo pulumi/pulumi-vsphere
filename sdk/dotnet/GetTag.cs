@@ -20,6 +20,34 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
         /// requires vCenter Server.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "example-category",
+        ///     });
+        /// 
+        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "example-tag",
+        ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
@@ -33,6 +61,34 @@ namespace Pulumi.VSphere
         /// 
         /// &gt; **NOTE:** Tagging is not supported on direct ESXi hosts connections and
         /// requires vCenter Server.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var category = VSphere.GetTagCategory.Invoke(new()
+        ///     {
+        ///         Name = "example-category",
+        ///     });
+        /// 
+        ///     var tag = VSphere.GetTag.Invoke(new()
+        ///     {
+        ///         Name = "example-tag",
+        ///         CategoryId = category.Apply(getTagCategoryResult =&gt; getTagCategoryResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("vsphere:index/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());

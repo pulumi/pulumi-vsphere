@@ -34,6 +34,146 @@ import (
 // direct ESXi host connections.
 //
 // > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+//
+// ## Example Usage
+//
+// The following example creates two virtual machines in a cluster using the
+// `VirtualMachine` resource, creating the
+// virtual machines in the cluster looked up by the
+// `ComputeCluster` data source. It
+// then creates an affinity rule for these two virtual machines, ensuring they
+// will run on the same host whenever possible.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datastore, err := vsphere.GetDatastore(ctx, &vsphere.GetDatastoreArgs{
+//				Name:         "datastore-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			network, err := vsphere.GetNetwork(ctx, &vsphere.GetNetworkArgs{
+//				Name:         "VM Network",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var vm []*vsphere.VirtualMachine
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := vsphere.NewVirtualMachine(ctx, fmt.Sprintf("vm-%v", key0), &vsphere.VirtualMachineArgs{
+//					ResourcePoolId: *pulumi.String(cluster.ResourcePoolId),
+//					DatastoreId:    *pulumi.String(datastore.Id),
+//					NumCpus:        pulumi.Int(1),
+//					Memory:         pulumi.Int(1024),
+//					GuestId:        pulumi.String("otherLinux64Guest"),
+//					NetworkInterfaces: vsphere.VirtualMachineNetworkInterfaceArray{
+//						&vsphere.VirtualMachineNetworkInterfaceArgs{
+//							NetworkId: *pulumi.String(network.Id),
+//						},
+//					},
+//					Disks: vsphere.VirtualMachineDiskArray{
+//						&vsphere.VirtualMachineDiskArgs{
+//							Label: pulumi.String("disk0"),
+//							Size:  pulumi.Int(20),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				vm = append(vm, __res)
+//			}
+//			_, err = vsphere.NewComputeClusterVmAffinityRule(ctx, "vmAffinityRule", &vsphere.ComputeClusterVmAffinityRuleArgs{
+//				ComputeClusterId:  *pulumi.String(cluster.Id),
+//				VirtualMachineIds: "TODO: For expression",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The following example creates an affinity rule for a set of virtual machines
+// in the cluster by looking up the virtual machine UUIDs from the
+// `VirtualMachine` data source.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vms := []string{
+//				"foo-0",
+//				"foo-1",
+//			}
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cluster, err := vsphere.LookupComputeCluster(ctx, &vsphere.LookupComputeClusterArgs{
+//				Name:         "cluster-01",
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vmsVirtualMachine := "TODO: For expression"
+//			var splat0 []*string
+//			for _, val0 := range vmsVirtualMachine {
+//				splat0 = append(splat0, val0.Id)
+//			}
+//			_, err = vsphere.NewComputeClusterVmAffinityRule(ctx, "vmAffinityRule", &vsphere.ComputeClusterVmAffinityRuleArgs{
+//				Enabled:           pulumi.Bool(true),
+//				ComputeClusterId:  *pulumi.String(cluster.Id),
+//				VirtualMachineIds: []*pulumi.String(splat0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ComputeClusterVmAffinityRule struct {
 	pulumi.CustomResourceState
 

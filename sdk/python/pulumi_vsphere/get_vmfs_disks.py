@@ -94,6 +94,20 @@ def get_vmfs_disks(filter: Optional[str] = None,
     `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    vmfs_disks = vsphere.get_vmfs_disks(host_system_id=host.id,
+        rescan=True,
+        filter="mpx.vmhba1:C0:T[12]:L0")
+    ```
+
 
     :param str filter: A regular expression to filter the disks against. Only
            disks with canonical names that match will be included.
@@ -132,6 +146,20 @@ def get_vmfs_disks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     devices available on an ESXi host. This data source can be combined with the
     `VmfsDatastore` resource to create VMFS
     datastores based off a set of discovered disks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    host = vsphere.get_host(name="esxi-01.example.com",
+        datacenter_id=datacenter.id)
+    vmfs_disks = vsphere.get_vmfs_disks(host_system_id=host.id,
+        rescan=True,
+        filter="mpx.vmhba1:C0:T[12]:L0")
+    ```
 
 
     :param str filter: A regular expression to filter the disks against. Only

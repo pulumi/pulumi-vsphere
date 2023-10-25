@@ -12,6 +12,43 @@ import * as utilities from "./utilities";
  * the UUID of a template to be used as the source for cloning to a new
  * `vsphere.VirtualMachine` resource. It also
  * reads the guest ID so that can be supplied as well.
+ *
+ * ## Example Usage
+ *
+ * In the following example, a virtual machine template is returned by its
+ * unique name within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ * In the following example, each virtual machine template is returned by its
+ * unique full path within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const productionTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "production/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const developmentTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "development/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getVirtualMachine(args?: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
     args = args || {};
@@ -334,6 +371,43 @@ export interface GetVirtualMachineResult {
  * the UUID of a template to be used as the source for cloning to a new
  * `vsphere.VirtualMachine` resource. It also
  * reads the guest ID so that can be supplied as well.
+ *
+ * ## Example Usage
+ *
+ * In the following example, a virtual machine template is returned by its
+ * unique name within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const template = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
+ * In the following example, each virtual machine template is returned by its
+ * unique full path within the `vsphere.Datacenter`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const productionTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "production/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * const developmentTemplate = datacenter.then(datacenter => vsphere.getVirtualMachine({
+ *     name: "development/templates/ubuntu-server-template",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getVirtualMachineOutput(args?: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))

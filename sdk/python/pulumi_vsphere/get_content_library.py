@@ -60,6 +60,15 @@ def get_content_library(name: Optional[str] = None,
 
     > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library")
+    ```
+
 
     :param str name: The name of the content library.
     """
@@ -80,6 +89,15 @@ def get_content_library_output(name: Optional[pulumi.Input[str]] = None,
     The `ContentLibrary` data source can be used to discover the ID of a content library.
 
     > **NOTE:** This resource requires vCenter Server and is not available on direct ESXi host connections.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    library = vsphere.get_content_library(name="Content Library")
+    ```
 
 
     :param str name: The name of the content library.

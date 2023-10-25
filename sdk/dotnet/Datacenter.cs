@@ -14,6 +14,37 @@ namespace Pulumi.VSphere
     /// container of inventory objects such as hosts and virtual machines.
     /// 
     /// ## Example Usage
+    /// ### Create datacenter on the root folder
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prodDatacenter = new VSphere.Datacenter("prodDatacenter");
+    /// 
+    /// });
+    /// ```
+    /// ### Create datacenter on a subfolder
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using VSphere = Pulumi.VSphere;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var researchDatacenter = new VSphere.Datacenter("researchDatacenter", new()
+    ///     {
+    ///         Folder = "/research/",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [VSphereResourceType("vsphere:index/datacenter:Datacenter")]
     public partial class Datacenter : global::Pulumi.CustomResource

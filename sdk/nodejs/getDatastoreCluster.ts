@@ -9,6 +9,21 @@ import * as utilities from "./utilities";
  * vSphere datastore cluster object. This can then be used with resources or data sources
  * that require a datastore. For example, to assign datastores using the
  * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastoreCluster = datacenter.then(datacenter => vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getDatastoreCluster(args: GetDatastoreClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreClusterResult> {
 
@@ -53,6 +68,21 @@ export interface GetDatastoreClusterResult {
  * vSphere datastore cluster object. This can then be used with resources or data sources
  * that require a datastore. For example, to assign datastores using the
  * `vsphere.NasDatastore` or `vsphere.VmfsDatastore` resources, or to create virtual machines in using the `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastoreCluster = datacenter.then(datacenter => vsphere.getDatastoreCluster({
+ *     name: "datastore-cluster-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getDatastoreClusterOutput(args: GetDatastoreClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreClusterResult> {
     return pulumi.output(args).apply((a: any) => getDatastoreCluster(a, opts))

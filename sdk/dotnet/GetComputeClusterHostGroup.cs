@@ -15,6 +15,47 @@ namespace Pulumi.VSphere
         /// The `vsphere.ComputeClusterHostGroup` data source can be used to discover
         /// the IDs ESXi hosts in a host group and return host group attributes to other
         /// resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_datacenter,
+        ///     });
+        /// 
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_cluster,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostGroup1 = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     {
+        ///         Name = "host_group1",
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///     });
+        /// 
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     {
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         VmGroupName = "vm_group1",
+        ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetComputeClusterHostGroupResult> InvokeAsync(GetComputeClusterHostGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupArgs(), options.WithDefaults());
@@ -23,6 +64,47 @@ namespace Pulumi.VSphere
         /// The `vsphere.ComputeClusterHostGroup` data source can be used to discover
         /// the IDs ESXi hosts in a host group and return host group attributes to other
         /// resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using VSphere = Pulumi.VSphere;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datacenter = VSphere.GetDatacenter.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_datacenter,
+        ///     });
+        /// 
+        ///     var cluster = VSphere.GetComputeCluster.Invoke(new()
+        ///     {
+        ///         Name = @var.Vsphere_cluster,
+        ///         DatacenterId = datacenter.Apply(getDatacenterResult =&gt; getDatacenterResult.Id),
+        ///     });
+        /// 
+        ///     var hostGroup1 = VSphere.GetComputeClusterHostGroup.Invoke(new()
+        ///     {
+        ///         Name = "host_group1",
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///     });
+        /// 
+        ///     var hostRule1 = new VSphere.ComputeClusterVmHostRule("hostRule1", new()
+        ///     {
+        ///         ComputeClusterId = cluster.Apply(getComputeClusterResult =&gt; getComputeClusterResult.Id),
+        ///         VmGroupName = "vm_group1",
+        ///         AffinityHostGroupName = hostGroup1.Apply(getComputeClusterHostGroupResult =&gt; getComputeClusterHostGroupResult.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetComputeClusterHostGroupResult> Invoke(GetComputeClusterHostGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetComputeClusterHostGroupResult>("vsphere:index/getComputeClusterHostGroup:getComputeClusterHostGroup", args ?? new GetComputeClusterHostGroupInvokeArgs(), options.WithDefaults());

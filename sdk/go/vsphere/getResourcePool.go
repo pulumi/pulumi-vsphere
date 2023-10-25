@@ -16,6 +16,77 @@ import (
 // resource pool in vSphere. This is useful to return the ID of a resource pool
 // that you want to use to create virtual machines in using the
 // `VirtualMachine` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			datacenter, err := vsphere.LookupDatacenter(ctx, &vsphere.LookupDatacenterArgs{
+//				Name: pulumi.StringRef("dc-01"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name:         pulumi.StringRef("resource-pool-01"),
+//				DatacenterId: pulumi.StringRef(datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Specifying the Root Resource Pool for a Standalone ESXi Host
+//
+// > **NOTE:** Returning the root resource pool for a cluster can be done
+// directly via the `ComputeCluster`
+// data source.
+//
+// All compute resources in vSphere have a resource pool, even if one has not been
+// explicitly created. This resource pool is referred to as the
+// _root resource pool_ and can be looked up by specifying the path.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vsphere.LookupResourcePool(ctx, &vsphere.LookupResourcePoolArgs{
+//				Name:         pulumi.StringRef("esxi-01.example.com/Resources"),
+//				DatacenterId: pulumi.StringRef(data.Vsphere_datacenter.Datacenter.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// For more information on the root resource pool, see [Managing Resource Pools][vmware-docs-resource-pools] in the vSphere documentation.
+//
+// [vmware-docs-resource-pools]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-60077B40-66FF-4625-934A-641703ED7601.html
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcePoolResult

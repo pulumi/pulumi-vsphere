@@ -15,6 +15,32 @@ export interface ComputeClusterVsanDiskGroup {
      *
      * > **NOTE:** You must disable vSphere HA before you enable vSAN on the cluster.
      * You can enable or re-enable vSphere HA after vSAN is configured.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as vsphere from "@pulumi/vsphere";
+     *
+     * const computeCluster = new vsphere.ComputeCluster("computeCluster", {
+     *     datacenterId: data.vsphere_datacenter.datacenter.id,
+     *     hostSystemIds: [data.vsphere_host.host.map(__item => __item.id)],
+     *     drsEnabled: true,
+     *     drsAutomationLevel: "fullyAutomated",
+     *     haEnabled: false,
+     *     vsanEnabled: true,
+     *     vsanDedupEnabled: true,
+     *     vsanCompressionEnabled: true,
+     *     vsanPerformanceEnabled: true,
+     *     vsanVerboseModeEnabled: true,
+     *     vsanNetworkDiagnosticModeEnabled: true,
+     *     vsanUnmapEnabled: true,
+     *     vsanDitEncryptionEnabled: true,
+     *     vsanDitRekeyInterval: 1800,
+     *     vsanDiskGroups: [{
+     *         cache: data.vsphere_vmfs_disks.cache_disks[0],
+     *         storages: data.vsphere_vmfs_disks.storage_disks,
+     *     }],
+     * });
+     * ```
      */
     storages?: pulumi.Input<pulumi.Input<string>[]>;
 }

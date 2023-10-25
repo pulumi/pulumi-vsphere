@@ -9,6 +9,21 @@ import * as utilities from "./utilities";
  * vSphere datastore object. This can then be used with resources or data sources
  * that require a datastore. For example, to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
 
@@ -52,6 +67,21 @@ export interface GetDatastoreResult {
  * vSphere datastore object. This can then be used with resources or data sources
  * that require a datastore. For example, to create virtual machines in using the
  * `vsphere.VirtualMachine` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as vsphere from "@pulumi/vsphere";
+ *
+ * const datacenter = vsphere.getDatacenter({
+ *     name: "dc-01",
+ * });
+ * const datastore = datacenter.then(datacenter => vsphere.getDatastore({
+ *     name: "datastore-01",
+ *     datacenterId: datacenter.id,
+ * }));
+ * ```
  */
 export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreResult> {
     return pulumi.output(args).apply((a: any) => getDatastore(a, opts))

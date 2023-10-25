@@ -63,6 +63,16 @@ def get_policy(name: Optional[str] = None,
     > **NOTE:** Storage policies are not supported on direct ESXi hosts and
     requires vCenter Server.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+    dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
+    ```
+
 
     :param str name: The name of the storage policy.
     """
@@ -86,6 +96,16 @@ def get_policy_output(name: Optional[pulumi.Input[str]] = None,
 
     > **NOTE:** Storage policies are not supported on direct ESXi hosts and
     requires vCenter Server.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+    dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
+    ```
 
 
     :param str name: The name of the storage policy.

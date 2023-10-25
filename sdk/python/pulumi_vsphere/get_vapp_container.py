@@ -71,6 +71,17 @@ def get_vapp_container(datacenter_id: Optional[str] = None,
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_vapp_container(name="vapp-container-01",
+        datacenter_id=datacenter.id)
+    ```
+
 
     :param str datacenter_id: The managed object reference ID
            of the datacenter in which the vApp container is located.
@@ -98,6 +109,17 @@ def get_vapp_container_output(datacenter_id: Optional[pulumi.Input[str]] = None,
     vApp container in vSphere. This is useful to return the ID of a vApp container
     that you want to use to create virtual machines in using the
     `VirtualMachine` resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_vsphere as vsphere
+
+    datacenter = vsphere.get_datacenter(name="dc-01")
+    pool = vsphere.get_vapp_container(name="vapp-container-01",
+        datacenter_id=datacenter.id)
+    ```
 
 
     :param str datacenter_id: The managed object reference ID

@@ -174,6 +174,107 @@ class VmStoragePolicy(pulumi.CustomResource):
         policies. Using this resource, tag based placement rules can be created to
         place virtual machines on a datastore with matching tags. If storage requirements for the applications on the virtual machine change, you can modify the storage policy that was originally applied to the virtual machine.
 
+        ## Example Usage
+
+        The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+
+        In this example, tags are first applied to datastores.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        environment = vsphere.get_tag_category(name="environment")
+        service_level = vsphere.get_tag_category(name="service_level")
+        replication = vsphere.get_tag_category(name="replication")
+        production = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
+            name="production")
+        development = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
+            name="development")
+        platinum = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="platinum")
+        gold = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="platinum")
+        silver = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="silver")
+        bronze = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="bronze")
+        replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
+            name="replicated")
+        non_replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
+            name="non_replicated")
+        prod_datastore = vsphere.VmfsDatastore("prodDatastore", tags=[
+            "data.vsphere_tag.production.id",
+            "data.vsphere_tag.platinum.id",
+            "data.vsphere_tag.replicated.id",
+        ])
+        dev_datastore = vsphere.NasDatastore("devDatastore", tags=[
+            "data.vsphere_tag.development.id",
+            "data.vsphere_tag.silver.id",
+            "data.vsphere_tag.non_replicated.id",
+        ])
+        ```
+
+        Next, storage policies are created and `tag_rules` are applied.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_platinum_replicated = vsphere.VmStoragePolicy("prodPlatinumReplicated",
+            description="prod_platinum_replicated",
+            tag_rules=[
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
+                    tags=[data["vsphere_tag"]["production"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
+                    tags=[data["vsphere_tag"]["platinum"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
+                    tags=[data["vsphere_tag"]["replicated"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+            ])
+        dev_silver_nonreplicated = vsphere.VmStoragePolicy("devSilverNonreplicated",
+            description="dev_silver_nonreplicated",
+            tag_rules=[
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
+                    tags=[data["vsphere_tag"]["development"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
+                    tags=[data["vsphere_tag"]["silver"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
+                    tags=[data["vsphere_tag"]["non_replicated"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+            ])
+        ```
+
+        Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+        dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
+        prod_vm = vsphere.VirtualMachine("prodVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["prod_platinum_replicated"]["id"])
+        # ... other configuration ...
+        dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
+        # ... other configuration ...
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the storage policy.
@@ -190,6 +291,107 @@ class VmStoragePolicy(pulumi.CustomResource):
         The `VmStoragePolicy` resource can be used to create and manage storage
         policies. Using this resource, tag based placement rules can be created to
         place virtual machines on a datastore with matching tags. If storage requirements for the applications on the virtual machine change, you can modify the storage policy that was originally applied to the virtual machine.
+
+        ## Example Usage
+
+        The following example creates storage policies with `tag_rules` base on sets of environment, service level, and replication attributes.
+
+        In this example, tags are first applied to datastores.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        environment = vsphere.get_tag_category(name="environment")
+        service_level = vsphere.get_tag_category(name="service_level")
+        replication = vsphere.get_tag_category(name="replication")
+        production = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
+            name="production")
+        development = vsphere.get_tag(category_id="data.vsphere_tag_category.environment.id",
+            name="development")
+        platinum = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="platinum")
+        gold = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="platinum")
+        silver = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="silver")
+        bronze = vsphere.get_tag(category_id="data.vsphere_tag_category.service_level.id",
+            name="bronze")
+        replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
+            name="replicated")
+        non_replicated = vsphere.get_tag(category_id="data.vsphere_tag_category.replication.id",
+            name="non_replicated")
+        prod_datastore = vsphere.VmfsDatastore("prodDatastore", tags=[
+            "data.vsphere_tag.production.id",
+            "data.vsphere_tag.platinum.id",
+            "data.vsphere_tag.replicated.id",
+        ])
+        dev_datastore = vsphere.NasDatastore("devDatastore", tags=[
+            "data.vsphere_tag.development.id",
+            "data.vsphere_tag.silver.id",
+            "data.vsphere_tag.non_replicated.id",
+        ])
+        ```
+
+        Next, storage policies are created and `tag_rules` are applied.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_platinum_replicated = vsphere.VmStoragePolicy("prodPlatinumReplicated",
+            description="prod_platinum_replicated",
+            tag_rules=[
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
+                    tags=[data["vsphere_tag"]["production"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
+                    tags=[data["vsphere_tag"]["platinum"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
+                    tags=[data["vsphere_tag"]["replicated"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+            ])
+        dev_silver_nonreplicated = vsphere.VmStoragePolicy("devSilverNonreplicated",
+            description="dev_silver_nonreplicated",
+            tag_rules=[
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["environment"]["name"],
+                    tags=[data["vsphere_tag"]["development"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["service_level"]["name"],
+                    tags=[data["vsphere_tag"]["silver"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+                vsphere.VmStoragePolicyTagRuleArgs(
+                    tag_category=data["vsphere_tag_category"]["replication"]["name"],
+                    tags=[data["vsphere_tag"]["non_replicated"]["name"]],
+                    include_datastores_with_tags=True,
+                ),
+            ])
+        ```
+
+        Lasttly, when creating a virtual machine resource, a storage policy can be specificed to direct virtual machine placement to a datastore which matches the policy's `tags_rules`.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        prod_platinum_replicated = vsphere.get_policy(name="prod_platinum_replicated")
+        dev_silver_nonreplicated = vsphere.get_policy(name="dev_silver_nonreplicated")
+        prod_vm = vsphere.VirtualMachine("prodVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["prod_platinum_replicated"]["id"])
+        # ... other configuration ...
+        dev_vm = vsphere.VirtualMachine("devVm", storage_policy_id=data["vsphere_storage_policy"]["storage_policy"]["dev_silver_nonreplicated"]["id"])
+        # ... other configuration ...
+        ```
 
         :param str resource_name: The name of the resource.
         :param VmStoragePolicyArgs args: The arguments to use to populate this resource's properties.

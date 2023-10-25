@@ -301,6 +301,69 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
 
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
 
+        ## Example Usage
+
+        The following example creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machines in the cluster looked up by the
+        `ComputeCluster` data source. It
+        then creates an affinity rule for these two virtual machines, ensuring they
+        will run on the same host whenever possible.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore-01",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="VM Network",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_id=datastore.id,
+                num_cpus=1,
+                memory=1024,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[vsphere.VirtualMachineNetworkInterfaceArgs(
+                    network_id=network.id,
+                )],
+                disks=[vsphere.VirtualMachineDiskArgs(
+                    label="disk0",
+                    size=20,
+                )]))
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[v.id for k, v in vm])
+        ```
+
+        The following example creates an affinity rule for a set of virtual machines
+        in the cluster by looking up the virtual machine UUIDs from the
+        `VirtualMachine` data source.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vms = [
+            "foo-0",
+            "foo-1",
+        ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        vms_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
+            datacenter_id=datacenter.id) for __index in range(len(vms))]
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+            enabled=True,
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[__item.id for __item in vms_virtual_machine])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_cluster_id: The managed object reference
@@ -345,6 +408,69 @@ class ComputeClusterVmAffinityRule(pulumi.CustomResource):
         direct ESXi host connections.
 
         > **NOTE:** vSphere DRS requires a vSphere Enterprise Plus license.
+
+        ## Example Usage
+
+        The following example creates two virtual machines in a cluster using the
+        `VirtualMachine` resource, creating the
+        virtual machines in the cluster looked up by the
+        `ComputeCluster` data source. It
+        then creates an affinity rule for these two virtual machines, ensuring they
+        will run on the same host whenever possible.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        datastore = vsphere.get_datastore(name="datastore-01",
+            datacenter_id=datacenter.id)
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        network = vsphere.get_network(name="VM Network",
+            datacenter_id=datacenter.id)
+        vm = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vm.append(vsphere.VirtualMachine(f"vm-{range['value']}",
+                resource_pool_id=cluster.resource_pool_id,
+                datastore_id=datastore.id,
+                num_cpus=1,
+                memory=1024,
+                guest_id="otherLinux64Guest",
+                network_interfaces=[vsphere.VirtualMachineNetworkInterfaceArgs(
+                    network_id=network.id,
+                )],
+                disks=[vsphere.VirtualMachineDiskArgs(
+                    label="disk0",
+                    size=20,
+                )]))
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[v.id for k, v in vm])
+        ```
+
+        The following example creates an affinity rule for a set of virtual machines
+        in the cluster by looking up the virtual machine UUIDs from the
+        `VirtualMachine` data source.
+
+        ```python
+        import pulumi
+        import pulumi_vsphere as vsphere
+
+        vms = [
+            "foo-0",
+            "foo-1",
+        ]
+        datacenter = vsphere.get_datacenter(name="dc-01")
+        cluster = vsphere.get_compute_cluster(name="cluster-01",
+            datacenter_id=datacenter.id)
+        vms_virtual_machine = [vsphere.get_virtual_machine(name=vms[__index],
+            datacenter_id=datacenter.id) for __index in range(len(vms))]
+        vm_affinity_rule = vsphere.ComputeClusterVmAffinityRule("vmAffinityRule",
+            enabled=True,
+            compute_cluster_id=cluster.id,
+            virtual_machine_ids=[__item.id for __item in vms_virtual_machine])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ComputeClusterVmAffinityRuleArgs args: The arguments to use to populate this resource's properties.
