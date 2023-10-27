@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeClusterVmHostRuleArgs', 'ComputeClusterVmHostRule']
@@ -48,53 +48,18 @@ class ComputeClusterVmHostRuleArgs:
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the
                cluster.
         """
-        ComputeClusterVmHostRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compute_cluster_id=compute_cluster_id,
-            vm_group_name=vm_group_name,
-            affinity_host_group_name=affinity_host_group_name,
-            anti_affinity_host_group_name=anti_affinity_host_group_name,
-            enabled=enabled,
-            mandatory=mandatory,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compute_cluster_id: Optional[pulumi.Input[str]] = None,
-             vm_group_name: Optional[pulumi.Input[str]] = None,
-             affinity_host_group_name: Optional[pulumi.Input[str]] = None,
-             anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             mandatory: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compute_cluster_id is None and 'computeClusterId' in kwargs:
-            compute_cluster_id = kwargs['computeClusterId']
-        if compute_cluster_id is None:
-            raise TypeError("Missing 'compute_cluster_id' argument")
-        if vm_group_name is None and 'vmGroupName' in kwargs:
-            vm_group_name = kwargs['vmGroupName']
-        if vm_group_name is None:
-            raise TypeError("Missing 'vm_group_name' argument")
-        if affinity_host_group_name is None and 'affinityHostGroupName' in kwargs:
-            affinity_host_group_name = kwargs['affinityHostGroupName']
-        if anti_affinity_host_group_name is None and 'antiAffinityHostGroupName' in kwargs:
-            anti_affinity_host_group_name = kwargs['antiAffinityHostGroupName']
-
-        _setter("compute_cluster_id", compute_cluster_id)
-        _setter("vm_group_name", vm_group_name)
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+        pulumi.set(__self__, "vm_group_name", vm_group_name)
         if affinity_host_group_name is not None:
-            _setter("affinity_host_group_name", affinity_host_group_name)
+            pulumi.set(__self__, "affinity_host_group_name", affinity_host_group_name)
         if anti_affinity_host_group_name is not None:
-            _setter("anti_affinity_host_group_name", anti_affinity_host_group_name)
+            pulumi.set(__self__, "anti_affinity_host_group_name", anti_affinity_host_group_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if mandatory is not None:
-            _setter("mandatory", mandatory)
+            pulumi.set(__self__, "mandatory", mandatory)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -235,51 +200,20 @@ class _ComputeClusterVmHostRuleState:
         :param pulumi.Input[str] vm_group_name: The name of the virtual machine group to use
                with this rule.
         """
-        _ComputeClusterVmHostRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            affinity_host_group_name=affinity_host_group_name,
-            anti_affinity_host_group_name=anti_affinity_host_group_name,
-            compute_cluster_id=compute_cluster_id,
-            enabled=enabled,
-            mandatory=mandatory,
-            name=name,
-            vm_group_name=vm_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             affinity_host_group_name: Optional[pulumi.Input[str]] = None,
-             anti_affinity_host_group_name: Optional[pulumi.Input[str]] = None,
-             compute_cluster_id: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             mandatory: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             vm_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if affinity_host_group_name is None and 'affinityHostGroupName' in kwargs:
-            affinity_host_group_name = kwargs['affinityHostGroupName']
-        if anti_affinity_host_group_name is None and 'antiAffinityHostGroupName' in kwargs:
-            anti_affinity_host_group_name = kwargs['antiAffinityHostGroupName']
-        if compute_cluster_id is None and 'computeClusterId' in kwargs:
-            compute_cluster_id = kwargs['computeClusterId']
-        if vm_group_name is None and 'vmGroupName' in kwargs:
-            vm_group_name = kwargs['vmGroupName']
-
         if affinity_host_group_name is not None:
-            _setter("affinity_host_group_name", affinity_host_group_name)
+            pulumi.set(__self__, "affinity_host_group_name", affinity_host_group_name)
         if anti_affinity_host_group_name is not None:
-            _setter("anti_affinity_host_group_name", anti_affinity_host_group_name)
+            pulumi.set(__self__, "anti_affinity_host_group_name", anti_affinity_host_group_name)
         if compute_cluster_id is not None:
-            _setter("compute_cluster_id", compute_cluster_id)
+            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if mandatory is not None:
-            _setter("mandatory", mandatory)
+            pulumi.set(__self__, "mandatory", mandatory)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if vm_group_name is not None:
-            _setter("vm_group_name", vm_group_name)
+            pulumi.set(__self__, "vm_group_name", vm_group_name)
 
     @property
     @pulumi.getter(name="affinityHostGroupName")
@@ -443,10 +377,6 @@ class ComputeClusterVmHostRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ComputeClusterVmHostRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

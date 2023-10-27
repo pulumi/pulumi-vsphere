@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NasDatastoreArgs', 'NasDatastore']
@@ -66,76 +66,25 @@ class NasDatastoreArgs:
                v3) or `NFS41` (to denote NFS v4.1). Default: `NFS`. Forces a new resource if
                changed.
         """
-        NasDatastoreArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_system_ids=host_system_ids,
-            remote_hosts=remote_hosts,
-            remote_path=remote_path,
-            access_mode=access_mode,
-            custom_attributes=custom_attributes,
-            datastore_cluster_id=datastore_cluster_id,
-            folder=folder,
-            name=name,
-            security_type=security_type,
-            tags=tags,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             remote_path: Optional[pulumi.Input[str]] = None,
-             access_mode: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             security_type: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_system_ids is None and 'hostSystemIds' in kwargs:
-            host_system_ids = kwargs['hostSystemIds']
-        if host_system_ids is None:
-            raise TypeError("Missing 'host_system_ids' argument")
-        if remote_hosts is None and 'remoteHosts' in kwargs:
-            remote_hosts = kwargs['remoteHosts']
-        if remote_hosts is None:
-            raise TypeError("Missing 'remote_hosts' argument")
-        if remote_path is None and 'remotePath' in kwargs:
-            remote_path = kwargs['remotePath']
-        if remote_path is None:
-            raise TypeError("Missing 'remote_path' argument")
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
-            datastore_cluster_id = kwargs['datastoreClusterId']
-        if security_type is None and 'securityType' in kwargs:
-            security_type = kwargs['securityType']
-
-        _setter("host_system_ids", host_system_ids)
-        _setter("remote_hosts", remote_hosts)
-        _setter("remote_path", remote_path)
+        pulumi.set(__self__, "host_system_ids", host_system_ids)
+        pulumi.set(__self__, "remote_hosts", remote_hosts)
+        pulumi.set(__self__, "remote_path", remote_path)
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datastore_cluster_id is not None:
-            _setter("datastore_cluster_id", datastore_cluster_id)
+            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if folder is not None:
-            _setter("folder", folder)
+            pulumi.set(__self__, "folder", folder)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if security_type is not None:
-            _setter("security_type", security_type)
+            pulumi.set(__self__, "security_type", security_type)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="hostSystemIds")
@@ -372,115 +321,44 @@ class _NasDatastoreState:
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
         """
-        _NasDatastoreState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_mode=access_mode,
-            accessible=accessible,
-            capacity=capacity,
-            custom_attributes=custom_attributes,
-            datastore_cluster_id=datastore_cluster_id,
-            folder=folder,
-            free_space=free_space,
-            host_system_ids=host_system_ids,
-            maintenance_mode=maintenance_mode,
-            multiple_host_access=multiple_host_access,
-            name=name,
-            protocol_endpoint=protocol_endpoint,
-            remote_hosts=remote_hosts,
-            remote_path=remote_path,
-            security_type=security_type,
-            tags=tags,
-            type=type,
-            uncommitted_space=uncommitted_space,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_mode: Optional[pulumi.Input[str]] = None,
-             accessible: Optional[pulumi.Input[bool]] = None,
-             capacity: Optional[pulumi.Input[int]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             free_space: Optional[pulumi.Input[int]] = None,
-             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             maintenance_mode: Optional[pulumi.Input[str]] = None,
-             multiple_host_access: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             protocol_endpoint: Optional[pulumi.Input[bool]] = None,
-             remote_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             remote_path: Optional[pulumi.Input[str]] = None,
-             security_type: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uncommitted_space: Optional[pulumi.Input[int]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_mode is None and 'accessMode' in kwargs:
-            access_mode = kwargs['accessMode']
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
-            datastore_cluster_id = kwargs['datastoreClusterId']
-        if free_space is None and 'freeSpace' in kwargs:
-            free_space = kwargs['freeSpace']
-        if host_system_ids is None and 'hostSystemIds' in kwargs:
-            host_system_ids = kwargs['hostSystemIds']
-        if maintenance_mode is None and 'maintenanceMode' in kwargs:
-            maintenance_mode = kwargs['maintenanceMode']
-        if multiple_host_access is None and 'multipleHostAccess' in kwargs:
-            multiple_host_access = kwargs['multipleHostAccess']
-        if protocol_endpoint is None and 'protocolEndpoint' in kwargs:
-            protocol_endpoint = kwargs['protocolEndpoint']
-        if remote_hosts is None and 'remoteHosts' in kwargs:
-            remote_hosts = kwargs['remoteHosts']
-        if remote_path is None and 'remotePath' in kwargs:
-            remote_path = kwargs['remotePath']
-        if security_type is None and 'securityType' in kwargs:
-            security_type = kwargs['securityType']
-        if uncommitted_space is None and 'uncommittedSpace' in kwargs:
-            uncommitted_space = kwargs['uncommittedSpace']
-
         if access_mode is not None:
-            _setter("access_mode", access_mode)
+            pulumi.set(__self__, "access_mode", access_mode)
         if accessible is not None:
-            _setter("accessible", accessible)
+            pulumi.set(__self__, "accessible", accessible)
         if capacity is not None:
-            _setter("capacity", capacity)
+            pulumi.set(__self__, "capacity", capacity)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datastore_cluster_id is not None:
-            _setter("datastore_cluster_id", datastore_cluster_id)
+            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if folder is not None:
-            _setter("folder", folder)
+            pulumi.set(__self__, "folder", folder)
         if free_space is not None:
-            _setter("free_space", free_space)
+            pulumi.set(__self__, "free_space", free_space)
         if host_system_ids is not None:
-            _setter("host_system_ids", host_system_ids)
+            pulumi.set(__self__, "host_system_ids", host_system_ids)
         if maintenance_mode is not None:
-            _setter("maintenance_mode", maintenance_mode)
+            pulumi.set(__self__, "maintenance_mode", maintenance_mode)
         if multiple_host_access is not None:
-            _setter("multiple_host_access", multiple_host_access)
+            pulumi.set(__self__, "multiple_host_access", multiple_host_access)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if protocol_endpoint is not None:
-            _setter("protocol_endpoint", protocol_endpoint)
+            pulumi.set(__self__, "protocol_endpoint", protocol_endpoint)
         if remote_hosts is not None:
-            _setter("remote_hosts", remote_hosts)
+            pulumi.set(__self__, "remote_hosts", remote_hosts)
         if remote_path is not None:
-            _setter("remote_path", remote_path)
+            pulumi.set(__self__, "remote_path", remote_path)
         if security_type is not None:
-            _setter("security_type", security_type)
+            pulumi.set(__self__, "security_type", security_type)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uncommitted_space is not None:
-            _setter("uncommitted_space", uncommitted_space)
+            pulumi.set(__self__, "uncommitted_space", uncommitted_space)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -820,10 +698,6 @@ class NasDatastore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NasDatastoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

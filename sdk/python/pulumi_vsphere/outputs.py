@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -75,23 +75,10 @@ class ComputeClusterVsanDiskGroup(dict):
                    )])
                ```
         """
-        ComputeClusterVsanDiskGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cache=cache,
-            storages=storages,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cache: Optional[str] = None,
-             storages: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if cache is not None:
-            _setter("cache", cache)
+            pulumi.set(__self__, "cache", cache)
         if storages is not None:
-            _setter("storages", storages)
+            pulumi.set(__self__, "storages", storages)
 
     @property
     @pulumi.getter
@@ -172,39 +159,16 @@ class ContentLibraryPublication(dict):
         :param bool published: Publish the content library. Default `false`.
         :param str username: Username used for authentication.
         """
-        ContentLibraryPublication._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authentication_method=authentication_method,
-            password=password,
-            publish_url=publish_url,
-            published=published,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authentication_method: Optional[str] = None,
-             password: Optional[str] = None,
-             publish_url: Optional[str] = None,
-             published: Optional[bool] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authentication_method is None and 'authenticationMethod' in kwargs:
-            authentication_method = kwargs['authenticationMethod']
-        if publish_url is None and 'publishUrl' in kwargs:
-            publish_url = kwargs['publishUrl']
-
         if authentication_method is not None:
-            _setter("authentication_method", authentication_method)
+            pulumi.set(__self__, "authentication_method", authentication_method)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if publish_url is not None:
-            _setter("publish_url", publish_url)
+            pulumi.set(__self__, "publish_url", publish_url)
         if published is not None:
-            _setter("published", published)
+            pulumi.set(__self__, "published", published)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="authenticationMethod")
@@ -287,47 +251,18 @@ class ContentLibrarySubscription(dict):
         :param str subscription_url: URL of the published content library.
         :param str username: Username used for authentication.
         """
-        ContentLibrarySubscription._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authentication_method=authentication_method,
-            automatic_sync=automatic_sync,
-            on_demand=on_demand,
-            password=password,
-            subscription_url=subscription_url,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authentication_method: Optional[str] = None,
-             automatic_sync: Optional[bool] = None,
-             on_demand: Optional[bool] = None,
-             password: Optional[str] = None,
-             subscription_url: Optional[str] = None,
-             username: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authentication_method is None and 'authenticationMethod' in kwargs:
-            authentication_method = kwargs['authenticationMethod']
-        if automatic_sync is None and 'automaticSync' in kwargs:
-            automatic_sync = kwargs['automaticSync']
-        if on_demand is None and 'onDemand' in kwargs:
-            on_demand = kwargs['onDemand']
-        if subscription_url is None and 'subscriptionUrl' in kwargs:
-            subscription_url = kwargs['subscriptionUrl']
-
         if authentication_method is not None:
-            _setter("authentication_method", authentication_method)
+            pulumi.set(__self__, "authentication_method", authentication_method)
         if automatic_sync is not None:
-            _setter("automatic_sync", automatic_sync)
+            pulumi.set(__self__, "automatic_sync", automatic_sync)
         if on_demand is not None:
-            _setter("on_demand", on_demand)
+            pulumi.set(__self__, "on_demand", on_demand)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if subscription_url is not None:
-            _setter("subscription_url", subscription_url)
+            pulumi.set(__self__, "subscription_url", subscription_url)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="authenticationMethod")
@@ -402,29 +337,8 @@ class DistributedPortGroupVlanRange(dict):
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
-        DistributedPortGroupVlanRange._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_vlan=max_vlan,
-            min_vlan=min_vlan,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_vlan: Optional[int] = None,
-             min_vlan: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_vlan is None and 'maxVlan' in kwargs:
-            max_vlan = kwargs['maxVlan']
-        if max_vlan is None:
-            raise TypeError("Missing 'max_vlan' argument")
-        if min_vlan is None and 'minVlan' in kwargs:
-            min_vlan = kwargs['minVlan']
-        if min_vlan is None:
-            raise TypeError("Missing 'min_vlan' argument")
-
-        _setter("max_vlan", max_vlan)
-        _setter("min_vlan", min_vlan)
+        pulumi.set(__self__, "max_vlan", max_vlan)
+        pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
@@ -465,26 +379,9 @@ class DistributedVirtualSwitchHost(dict):
         :param Sequence[str] devices: The list of NIC devices to map to uplinks on the VDS,
                added in order they are specified.
         """
-        DistributedVirtualSwitchHost._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_system_id=host_system_id,
-            devices=devices,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_system_id: Optional[str] = None,
-             devices: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_system_id is None and 'hostSystemId' in kwargs:
-            host_system_id = kwargs['hostSystemId']
-        if host_system_id is None:
-            raise TypeError("Missing 'host_system_id' argument")
-
-        _setter("host_system_id", host_system_id)
+        pulumi.set(__self__, "host_system_id", host_system_id)
         if devices is not None:
-            _setter("devices", devices)
+            pulumi.set(__self__, "devices", devices)
 
     @property
     @pulumi.getter(name="hostSystemId")
@@ -540,36 +437,9 @@ class DistributedVirtualSwitchPvlanMapping(dict):
         :param int secondary_vlan_id: The secondary VLAN ID. The VLAN IDs of 0
                and 4095 are reserved and cannot be used in this property.
         """
-        DistributedVirtualSwitchPvlanMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            primary_vlan_id=primary_vlan_id,
-            pvlan_type=pvlan_type,
-            secondary_vlan_id=secondary_vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             primary_vlan_id: Optional[int] = None,
-             pvlan_type: Optional[str] = None,
-             secondary_vlan_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if primary_vlan_id is None and 'primaryVlanId' in kwargs:
-            primary_vlan_id = kwargs['primaryVlanId']
-        if primary_vlan_id is None:
-            raise TypeError("Missing 'primary_vlan_id' argument")
-        if pvlan_type is None and 'pvlanType' in kwargs:
-            pvlan_type = kwargs['pvlanType']
-        if pvlan_type is None:
-            raise TypeError("Missing 'pvlan_type' argument")
-        if secondary_vlan_id is None and 'secondaryVlanId' in kwargs:
-            secondary_vlan_id = kwargs['secondaryVlanId']
-        if secondary_vlan_id is None:
-            raise TypeError("Missing 'secondary_vlan_id' argument")
-
-        _setter("primary_vlan_id", primary_vlan_id)
-        _setter("pvlan_type", pvlan_type)
-        _setter("secondary_vlan_id", secondary_vlan_id)
+        pulumi.set(__self__, "primary_vlan_id", primary_vlan_id)
+        pulumi.set(__self__, "pvlan_type", pvlan_type)
+        pulumi.set(__self__, "secondary_vlan_id", secondary_vlan_id)
 
     @property
     @pulumi.getter(name="primaryVlanId")
@@ -623,29 +493,8 @@ class DistributedVirtualSwitchVlanRange(dict):
     def __init__(__self__, *,
                  max_vlan: int,
                  min_vlan: int):
-        DistributedVirtualSwitchVlanRange._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_vlan=max_vlan,
-            min_vlan=min_vlan,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_vlan: Optional[int] = None,
-             min_vlan: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_vlan is None and 'maxVlan' in kwargs:
-            max_vlan = kwargs['maxVlan']
-        if max_vlan is None:
-            raise TypeError("Missing 'max_vlan' argument")
-        if min_vlan is None and 'minVlan' in kwargs:
-            min_vlan = kwargs['minVlan']
-        if min_vlan is None:
-            raise TypeError("Missing 'min_vlan' argument")
-
-        _setter("max_vlan", max_vlan)
-        _setter("min_vlan", min_vlan)
+        pulumi.set(__self__, "max_vlan", max_vlan)
+        pulumi.set(__self__, "min_vlan", min_vlan)
 
     @property
     @pulumi.getter(name="maxVlan")
@@ -692,41 +541,10 @@ class EntityPermissionsPermission(dict):
         :param str role_id: The role id of the role to be given to the user on the specified entity.
         :param str user_or_group: The user/group getting the permission.
         """
-        EntityPermissionsPermission._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_group=is_group,
-            propagate=propagate,
-            role_id=role_id,
-            user_or_group=user_or_group,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_group: Optional[bool] = None,
-             propagate: Optional[bool] = None,
-             role_id: Optional[str] = None,
-             user_or_group: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_group is None and 'isGroup' in kwargs:
-            is_group = kwargs['isGroup']
-        if is_group is None:
-            raise TypeError("Missing 'is_group' argument")
-        if propagate is None:
-            raise TypeError("Missing 'propagate' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-        if user_or_group is None and 'userOrGroup' in kwargs:
-            user_or_group = kwargs['userOrGroup']
-        if user_or_group is None:
-            raise TypeError("Missing 'user_or_group' argument")
-
-        _setter("is_group", is_group)
-        _setter("propagate", propagate)
-        _setter("role_id", role_id)
-        _setter("user_or_group", user_or_group)
+        pulumi.set(__self__, "is_group", is_group)
+        pulumi.set(__self__, "propagate", propagate)
+        pulumi.set(__self__, "role_id", role_id)
+        pulumi.set(__self__, "user_or_group", user_or_group)
 
     @property
     @pulumi.getter(name="isGroup")
@@ -787,29 +605,12 @@ class HostPortGroupPort(dict):
         """
         :param str key: The key for this port group as returned from the vSphere API.
         """
-        HostPortGroupPort._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            mac_addresses=mac_addresses,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             mac_addresses: Optional[Sequence[str]] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mac_addresses is None and 'macAddresses' in kwargs:
-            mac_addresses = kwargs['macAddresses']
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if mac_addresses is not None:
-            _setter("mac_addresses", mac_addresses)
+            pulumi.set(__self__, "mac_addresses", mac_addresses)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -869,41 +670,16 @@ class VirtualMachineCdrom(dict):
                
                > **NOTE:** Some CD-ROM drive types are not supported by this resource, such as pass-through devices. If these drives are present in a cloned template, or added outside of the provider, the desired state will be corrected to the defined device, or removed if no `cdrom` block is present.
         """
-        VirtualMachineCdrom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_device=client_device,
-            datastore_id=datastore_id,
-            device_address=device_address,
-            key=key,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_device: Optional[bool] = None,
-             datastore_id: Optional[str] = None,
-             device_address: Optional[str] = None,
-             key: Optional[int] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_device is None and 'clientDevice' in kwargs:
-            client_device = kwargs['clientDevice']
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if device_address is None and 'deviceAddress' in kwargs:
-            device_address = kwargs['deviceAddress']
-
         if client_device is not None:
-            _setter("client_device", client_device)
+            pulumi.set(__self__, "client_device", client_device)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if device_address is not None:
-            _setter("device_address", device_address)
+            pulumi.set(__self__, "device_address", device_address)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="clientDevice")
@@ -979,48 +755,17 @@ class VirtualMachineClone(dict):
                  ovf_network_map: Optional[Mapping[str, str]] = None,
                  ovf_storage_map: Optional[Mapping[str, str]] = None,
                  timeout: Optional[int] = None):
-        VirtualMachineClone._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template_uuid=template_uuid,
-            customize=customize,
-            linked_clone=linked_clone,
-            ovf_network_map=ovf_network_map,
-            ovf_storage_map=ovf_storage_map,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template_uuid: Optional[str] = None,
-             customize: Optional['outputs.VirtualMachineCloneCustomize'] = None,
-             linked_clone: Optional[bool] = None,
-             ovf_network_map: Optional[Mapping[str, str]] = None,
-             ovf_storage_map: Optional[Mapping[str, str]] = None,
-             timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template_uuid is None and 'templateUuid' in kwargs:
-            template_uuid = kwargs['templateUuid']
-        if template_uuid is None:
-            raise TypeError("Missing 'template_uuid' argument")
-        if linked_clone is None and 'linkedClone' in kwargs:
-            linked_clone = kwargs['linkedClone']
-        if ovf_network_map is None and 'ovfNetworkMap' in kwargs:
-            ovf_network_map = kwargs['ovfNetworkMap']
-        if ovf_storage_map is None and 'ovfStorageMap' in kwargs:
-            ovf_storage_map = kwargs['ovfStorageMap']
-
-        _setter("template_uuid", template_uuid)
+        pulumi.set(__self__, "template_uuid", template_uuid)
         if customize is not None:
-            _setter("customize", customize)
+            pulumi.set(__self__, "customize", customize)
         if linked_clone is not None:
-            _setter("linked_clone", linked_clone)
+            pulumi.set(__self__, "linked_clone", linked_clone)
         if ovf_network_map is not None:
-            _setter("ovf_network_map", ovf_network_map)
+            pulumi.set(__self__, "ovf_network_map", ovf_network_map)
         if ovf_storage_map is not None:
-            _setter("ovf_storage_map", ovf_storage_map)
+            pulumi.set(__self__, "ovf_storage_map", ovf_storage_map)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter(name="templateUuid")
@@ -1099,67 +844,24 @@ class VirtualMachineCloneCustomize(dict):
         """
         :param Sequence['VirtualMachineCloneCustomizeNetworkInterfaceArgs'] network_interfaces: A specification for a virtual NIC on the virtual machine. See network interface options for more information.
         """
-        VirtualMachineCloneCustomize._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_server_lists=dns_server_lists,
-            dns_suffix_lists=dns_suffix_lists,
-            ipv4_gateway=ipv4_gateway,
-            ipv6_gateway=ipv6_gateway,
-            linux_options=linux_options,
-            network_interfaces=network_interfaces,
-            timeout=timeout,
-            windows_options=windows_options,
-            windows_sysprep_text=windows_sysprep_text,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_server_lists: Optional[Sequence[str]] = None,
-             dns_suffix_lists: Optional[Sequence[str]] = None,
-             ipv4_gateway: Optional[str] = None,
-             ipv6_gateway: Optional[str] = None,
-             linux_options: Optional['outputs.VirtualMachineCloneCustomizeLinuxOptions'] = None,
-             network_interfaces: Optional[Sequence['outputs.VirtualMachineCloneCustomizeNetworkInterface']] = None,
-             timeout: Optional[int] = None,
-             windows_options: Optional['outputs.VirtualMachineCloneCustomizeWindowsOptions'] = None,
-             windows_sysprep_text: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_server_lists is None and 'dnsServerLists' in kwargs:
-            dns_server_lists = kwargs['dnsServerLists']
-        if dns_suffix_lists is None and 'dnsSuffixLists' in kwargs:
-            dns_suffix_lists = kwargs['dnsSuffixLists']
-        if ipv4_gateway is None and 'ipv4Gateway' in kwargs:
-            ipv4_gateway = kwargs['ipv4Gateway']
-        if ipv6_gateway is None and 'ipv6Gateway' in kwargs:
-            ipv6_gateway = kwargs['ipv6Gateway']
-        if linux_options is None and 'linuxOptions' in kwargs:
-            linux_options = kwargs['linuxOptions']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if windows_options is None and 'windowsOptions' in kwargs:
-            windows_options = kwargs['windowsOptions']
-        if windows_sysprep_text is None and 'windowsSysprepText' in kwargs:
-            windows_sysprep_text = kwargs['windowsSysprepText']
-
         if dns_server_lists is not None:
-            _setter("dns_server_lists", dns_server_lists)
+            pulumi.set(__self__, "dns_server_lists", dns_server_lists)
         if dns_suffix_lists is not None:
-            _setter("dns_suffix_lists", dns_suffix_lists)
+            pulumi.set(__self__, "dns_suffix_lists", dns_suffix_lists)
         if ipv4_gateway is not None:
-            _setter("ipv4_gateway", ipv4_gateway)
+            pulumi.set(__self__, "ipv4_gateway", ipv4_gateway)
         if ipv6_gateway is not None:
-            _setter("ipv6_gateway", ipv6_gateway)
+            pulumi.set(__self__, "ipv6_gateway", ipv6_gateway)
         if linux_options is not None:
-            _setter("linux_options", linux_options)
+            pulumi.set(__self__, "linux_options", linux_options)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if windows_options is not None:
-            _setter("windows_options", windows_options)
+            pulumi.set(__self__, "windows_options", windows_options)
         if windows_sysprep_text is not None:
-            _setter("windows_sysprep_text", windows_sysprep_text)
+            pulumi.set(__self__, "windows_sysprep_text", windows_sysprep_text)
 
     @property
     @pulumi.getter(name="dnsServerLists")
@@ -1241,45 +943,14 @@ class VirtualMachineCloneCustomizeLinuxOptions(dict):
                  hw_clock_utc: Optional[bool] = None,
                  script_text: Optional[str] = None,
                  time_zone: Optional[str] = None):
-        VirtualMachineCloneCustomizeLinuxOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            host_name=host_name,
-            hw_clock_utc=hw_clock_utc,
-            script_text=script_text,
-            time_zone=time_zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[str] = None,
-             host_name: Optional[str] = None,
-             hw_clock_utc: Optional[bool] = None,
-             script_text: Optional[str] = None,
-             time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if host_name is None:
-            raise TypeError("Missing 'host_name' argument")
-        if hw_clock_utc is None and 'hwClockUtc' in kwargs:
-            hw_clock_utc = kwargs['hwClockUtc']
-        if script_text is None and 'scriptText' in kwargs:
-            script_text = kwargs['scriptText']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
-        _setter("domain", domain)
-        _setter("host_name", host_name)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "host_name", host_name)
         if hw_clock_utc is not None:
-            _setter("hw_clock_utc", hw_clock_utc)
+            pulumi.set(__self__, "hw_clock_utc", hw_clock_utc)
         if script_text is not None:
-            _setter("script_text", script_text)
+            pulumi.set(__self__, "script_text", script_text)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -1343,51 +1014,18 @@ class VirtualMachineCloneCustomizeNetworkInterface(dict):
                  ipv4_netmask: Optional[int] = None,
                  ipv6_address: Optional[str] = None,
                  ipv6_netmask: Optional[int] = None):
-        VirtualMachineCloneCustomizeNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dns_domain=dns_domain,
-            dns_server_lists=dns_server_lists,
-            ipv4_address=ipv4_address,
-            ipv4_netmask=ipv4_netmask,
-            ipv6_address=ipv6_address,
-            ipv6_netmask=ipv6_netmask,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dns_domain: Optional[str] = None,
-             dns_server_lists: Optional[Sequence[str]] = None,
-             ipv4_address: Optional[str] = None,
-             ipv4_netmask: Optional[int] = None,
-             ipv6_address: Optional[str] = None,
-             ipv6_netmask: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_domain is None and 'dnsDomain' in kwargs:
-            dns_domain = kwargs['dnsDomain']
-        if dns_server_lists is None and 'dnsServerLists' in kwargs:
-            dns_server_lists = kwargs['dnsServerLists']
-        if ipv4_address is None and 'ipv4Address' in kwargs:
-            ipv4_address = kwargs['ipv4Address']
-        if ipv4_netmask is None and 'ipv4Netmask' in kwargs:
-            ipv4_netmask = kwargs['ipv4Netmask']
-        if ipv6_address is None and 'ipv6Address' in kwargs:
-            ipv6_address = kwargs['ipv6Address']
-        if ipv6_netmask is None and 'ipv6Netmask' in kwargs:
-            ipv6_netmask = kwargs['ipv6Netmask']
-
         if dns_domain is not None:
-            _setter("dns_domain", dns_domain)
+            pulumi.set(__self__, "dns_domain", dns_domain)
         if dns_server_lists is not None:
-            _setter("dns_server_lists", dns_server_lists)
+            pulumi.set(__self__, "dns_server_lists", dns_server_lists)
         if ipv4_address is not None:
-            _setter("ipv4_address", ipv4_address)
+            pulumi.set(__self__, "ipv4_address", ipv4_address)
         if ipv4_netmask is not None:
-            _setter("ipv4_netmask", ipv4_netmask)
+            pulumi.set(__self__, "ipv4_netmask", ipv4_netmask)
         if ipv6_address is not None:
-            _setter("ipv6_address", ipv6_address)
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if ipv6_netmask is not None:
-            _setter("ipv6_netmask", ipv6_netmask)
+            pulumi.set(__self__, "ipv6_netmask", ipv6_netmask)
 
     @property
     @pulumi.getter(name="dnsDomain")
@@ -1475,92 +1113,31 @@ class VirtualMachineCloneCustomizeWindowsOptions(dict):
                  run_once_command_lists: Optional[Sequence[str]] = None,
                  time_zone: Optional[int] = None,
                  workgroup: Optional[str] = None):
-        VirtualMachineCloneCustomizeWindowsOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            computer_name=computer_name,
-            admin_password=admin_password,
-            auto_logon=auto_logon,
-            auto_logon_count=auto_logon_count,
-            domain_admin_password=domain_admin_password,
-            domain_admin_user=domain_admin_user,
-            full_name=full_name,
-            join_domain=join_domain,
-            organization_name=organization_name,
-            product_key=product_key,
-            run_once_command_lists=run_once_command_lists,
-            time_zone=time_zone,
-            workgroup=workgroup,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             computer_name: Optional[str] = None,
-             admin_password: Optional[str] = None,
-             auto_logon: Optional[bool] = None,
-             auto_logon_count: Optional[int] = None,
-             domain_admin_password: Optional[str] = None,
-             domain_admin_user: Optional[str] = None,
-             full_name: Optional[str] = None,
-             join_domain: Optional[str] = None,
-             organization_name: Optional[str] = None,
-             product_key: Optional[str] = None,
-             run_once_command_lists: Optional[Sequence[str]] = None,
-             time_zone: Optional[int] = None,
-             workgroup: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if computer_name is None and 'computerName' in kwargs:
-            computer_name = kwargs['computerName']
-        if computer_name is None:
-            raise TypeError("Missing 'computer_name' argument")
-        if admin_password is None and 'adminPassword' in kwargs:
-            admin_password = kwargs['adminPassword']
-        if auto_logon is None and 'autoLogon' in kwargs:
-            auto_logon = kwargs['autoLogon']
-        if auto_logon_count is None and 'autoLogonCount' in kwargs:
-            auto_logon_count = kwargs['autoLogonCount']
-        if domain_admin_password is None and 'domainAdminPassword' in kwargs:
-            domain_admin_password = kwargs['domainAdminPassword']
-        if domain_admin_user is None and 'domainAdminUser' in kwargs:
-            domain_admin_user = kwargs['domainAdminUser']
-        if full_name is None and 'fullName' in kwargs:
-            full_name = kwargs['fullName']
-        if join_domain is None and 'joinDomain' in kwargs:
-            join_domain = kwargs['joinDomain']
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-        if product_key is None and 'productKey' in kwargs:
-            product_key = kwargs['productKey']
-        if run_once_command_lists is None and 'runOnceCommandLists' in kwargs:
-            run_once_command_lists = kwargs['runOnceCommandLists']
-        if time_zone is None and 'timeZone' in kwargs:
-            time_zone = kwargs['timeZone']
-
-        _setter("computer_name", computer_name)
+        pulumi.set(__self__, "computer_name", computer_name)
         if admin_password is not None:
-            _setter("admin_password", admin_password)
+            pulumi.set(__self__, "admin_password", admin_password)
         if auto_logon is not None:
-            _setter("auto_logon", auto_logon)
+            pulumi.set(__self__, "auto_logon", auto_logon)
         if auto_logon_count is not None:
-            _setter("auto_logon_count", auto_logon_count)
+            pulumi.set(__self__, "auto_logon_count", auto_logon_count)
         if domain_admin_password is not None:
-            _setter("domain_admin_password", domain_admin_password)
+            pulumi.set(__self__, "domain_admin_password", domain_admin_password)
         if domain_admin_user is not None:
-            _setter("domain_admin_user", domain_admin_user)
+            pulumi.set(__self__, "domain_admin_user", domain_admin_user)
         if full_name is not None:
-            _setter("full_name", full_name)
+            pulumi.set(__self__, "full_name", full_name)
         if join_domain is not None:
-            _setter("join_domain", join_domain)
+            pulumi.set(__self__, "join_domain", join_domain)
         if organization_name is not None:
-            _setter("organization_name", organization_name)
+            pulumi.set(__self__, "organization_name", organization_name)
         if product_key is not None:
-            _setter("product_key", product_key)
+            pulumi.set(__self__, "product_key", product_key)
         if run_once_command_lists is not None:
-            _setter("run_once_command_lists", run_once_command_lists)
+            pulumi.set(__self__, "run_once_command_lists", run_once_command_lists)
         if time_zone is not None:
-            _setter("time_zone", time_zone)
+            pulumi.set(__self__, "time_zone", time_zone)
         if workgroup is not None:
-            _setter("workgroup", workgroup)
+            pulumi.set(__self__, "workgroup", workgroup)
 
     @property
     @pulumi.getter(name="computerName")
@@ -1728,130 +1305,47 @@ class VirtualMachineDisk(dict):
         :param str uuid: The UUID of the virtual disk VMDK file. This is used to track the virtual disk on the virtual machine.
         :param bool write_through: If `true`, writes for this disk are sent directly to the filesystem immediately instead of being buffered. Default: `false`.
         """
-        VirtualMachineDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            label=label,
-            attach=attach,
-            controller_type=controller_type,
-            datastore_id=datastore_id,
-            device_address=device_address,
-            disk_mode=disk_mode,
-            disk_sharing=disk_sharing,
-            eagerly_scrub=eagerly_scrub,
-            io_limit=io_limit,
-            io_reservation=io_reservation,
-            io_share_count=io_share_count,
-            io_share_level=io_share_level,
-            keep_on_remove=keep_on_remove,
-            key=key,
-            path=path,
-            size=size,
-            storage_policy_id=storage_policy_id,
-            thin_provisioned=thin_provisioned,
-            unit_number=unit_number,
-            uuid=uuid,
-            write_through=write_through,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             label: Optional[str] = None,
-             attach: Optional[bool] = None,
-             controller_type: Optional[str] = None,
-             datastore_id: Optional[str] = None,
-             device_address: Optional[str] = None,
-             disk_mode: Optional[str] = None,
-             disk_sharing: Optional[str] = None,
-             eagerly_scrub: Optional[bool] = None,
-             io_limit: Optional[int] = None,
-             io_reservation: Optional[int] = None,
-             io_share_count: Optional[int] = None,
-             io_share_level: Optional[str] = None,
-             keep_on_remove: Optional[bool] = None,
-             key: Optional[int] = None,
-             path: Optional[str] = None,
-             size: Optional[int] = None,
-             storage_policy_id: Optional[str] = None,
-             thin_provisioned: Optional[bool] = None,
-             unit_number: Optional[int] = None,
-             uuid: Optional[str] = None,
-             write_through: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if controller_type is None and 'controllerType' in kwargs:
-            controller_type = kwargs['controllerType']
-        if datastore_id is None and 'datastoreId' in kwargs:
-            datastore_id = kwargs['datastoreId']
-        if device_address is None and 'deviceAddress' in kwargs:
-            device_address = kwargs['deviceAddress']
-        if disk_mode is None and 'diskMode' in kwargs:
-            disk_mode = kwargs['diskMode']
-        if disk_sharing is None and 'diskSharing' in kwargs:
-            disk_sharing = kwargs['diskSharing']
-        if eagerly_scrub is None and 'eagerlyScrub' in kwargs:
-            eagerly_scrub = kwargs['eagerlyScrub']
-        if io_limit is None and 'ioLimit' in kwargs:
-            io_limit = kwargs['ioLimit']
-        if io_reservation is None and 'ioReservation' in kwargs:
-            io_reservation = kwargs['ioReservation']
-        if io_share_count is None and 'ioShareCount' in kwargs:
-            io_share_count = kwargs['ioShareCount']
-        if io_share_level is None and 'ioShareLevel' in kwargs:
-            io_share_level = kwargs['ioShareLevel']
-        if keep_on_remove is None and 'keepOnRemove' in kwargs:
-            keep_on_remove = kwargs['keepOnRemove']
-        if storage_policy_id is None and 'storagePolicyId' in kwargs:
-            storage_policy_id = kwargs['storagePolicyId']
-        if thin_provisioned is None and 'thinProvisioned' in kwargs:
-            thin_provisioned = kwargs['thinProvisioned']
-        if unit_number is None and 'unitNumber' in kwargs:
-            unit_number = kwargs['unitNumber']
-        if write_through is None and 'writeThrough' in kwargs:
-            write_through = kwargs['writeThrough']
-
-        _setter("label", label)
+        pulumi.set(__self__, "label", label)
         if attach is not None:
-            _setter("attach", attach)
+            pulumi.set(__self__, "attach", attach)
         if controller_type is not None:
-            _setter("controller_type", controller_type)
+            pulumi.set(__self__, "controller_type", controller_type)
         if datastore_id is not None:
-            _setter("datastore_id", datastore_id)
+            pulumi.set(__self__, "datastore_id", datastore_id)
         if device_address is not None:
-            _setter("device_address", device_address)
+            pulumi.set(__self__, "device_address", device_address)
         if disk_mode is not None:
-            _setter("disk_mode", disk_mode)
+            pulumi.set(__self__, "disk_mode", disk_mode)
         if disk_sharing is not None:
-            _setter("disk_sharing", disk_sharing)
+            pulumi.set(__self__, "disk_sharing", disk_sharing)
         if eagerly_scrub is not None:
-            _setter("eagerly_scrub", eagerly_scrub)
+            pulumi.set(__self__, "eagerly_scrub", eagerly_scrub)
         if io_limit is not None:
-            _setter("io_limit", io_limit)
+            pulumi.set(__self__, "io_limit", io_limit)
         if io_reservation is not None:
-            _setter("io_reservation", io_reservation)
+            pulumi.set(__self__, "io_reservation", io_reservation)
         if io_share_count is not None:
-            _setter("io_share_count", io_share_count)
+            pulumi.set(__self__, "io_share_count", io_share_count)
         if io_share_level is not None:
-            _setter("io_share_level", io_share_level)
+            pulumi.set(__self__, "io_share_level", io_share_level)
         if keep_on_remove is not None:
-            _setter("keep_on_remove", keep_on_remove)
+            pulumi.set(__self__, "keep_on_remove", keep_on_remove)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if storage_policy_id is not None:
-            _setter("storage_policy_id", storage_policy_id)
+            pulumi.set(__self__, "storage_policy_id", storage_policy_id)
         if thin_provisioned is not None:
-            _setter("thin_provisioned", thin_provisioned)
+            pulumi.set(__self__, "thin_provisioned", thin_provisioned)
         if unit_number is not None:
-            _setter("unit_number", unit_number)
+            pulumi.set(__self__, "unit_number", unit_number)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
         if write_through is not None:
-            _setter("write_through", write_through)
+            pulumi.set(__self__, "write_through", write_through)
 
     @property
     @pulumi.getter
@@ -2087,80 +1581,27 @@ class VirtualMachineNetworkInterface(dict):
         :param str ovf_mapping: Specifies which NIC in an OVF/OVA the `network_interface` should be associated. Only applies at creation when deploying from an OVF/OVA.
         :param bool use_static_mac: If true, the `mac_address` field is treated as a static MAC address and set accordingly. Setting this to `true` requires `mac_address` to be set. Default: `false`.
         """
-        VirtualMachineNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_id=network_id,
-            adapter_type=adapter_type,
-            bandwidth_limit=bandwidth_limit,
-            bandwidth_reservation=bandwidth_reservation,
-            bandwidth_share_count=bandwidth_share_count,
-            bandwidth_share_level=bandwidth_share_level,
-            device_address=device_address,
-            key=key,
-            mac_address=mac_address,
-            ovf_mapping=ovf_mapping,
-            use_static_mac=use_static_mac,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_id: Optional[str] = None,
-             adapter_type: Optional[str] = None,
-             bandwidth_limit: Optional[int] = None,
-             bandwidth_reservation: Optional[int] = None,
-             bandwidth_share_count: Optional[int] = None,
-             bandwidth_share_level: Optional[str] = None,
-             device_address: Optional[str] = None,
-             key: Optional[int] = None,
-             mac_address: Optional[str] = None,
-             ovf_mapping: Optional[str] = None,
-             use_static_mac: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_id is None and 'networkId' in kwargs:
-            network_id = kwargs['networkId']
-        if network_id is None:
-            raise TypeError("Missing 'network_id' argument")
-        if adapter_type is None and 'adapterType' in kwargs:
-            adapter_type = kwargs['adapterType']
-        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
-            bandwidth_limit = kwargs['bandwidthLimit']
-        if bandwidth_reservation is None and 'bandwidthReservation' in kwargs:
-            bandwidth_reservation = kwargs['bandwidthReservation']
-        if bandwidth_share_count is None and 'bandwidthShareCount' in kwargs:
-            bandwidth_share_count = kwargs['bandwidthShareCount']
-        if bandwidth_share_level is None and 'bandwidthShareLevel' in kwargs:
-            bandwidth_share_level = kwargs['bandwidthShareLevel']
-        if device_address is None and 'deviceAddress' in kwargs:
-            device_address = kwargs['deviceAddress']
-        if mac_address is None and 'macAddress' in kwargs:
-            mac_address = kwargs['macAddress']
-        if ovf_mapping is None and 'ovfMapping' in kwargs:
-            ovf_mapping = kwargs['ovfMapping']
-        if use_static_mac is None and 'useStaticMac' in kwargs:
-            use_static_mac = kwargs['useStaticMac']
-
-        _setter("network_id", network_id)
+        pulumi.set(__self__, "network_id", network_id)
         if adapter_type is not None:
-            _setter("adapter_type", adapter_type)
+            pulumi.set(__self__, "adapter_type", adapter_type)
         if bandwidth_limit is not None:
-            _setter("bandwidth_limit", bandwidth_limit)
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
         if bandwidth_reservation is not None:
-            _setter("bandwidth_reservation", bandwidth_reservation)
+            pulumi.set(__self__, "bandwidth_reservation", bandwidth_reservation)
         if bandwidth_share_count is not None:
-            _setter("bandwidth_share_count", bandwidth_share_count)
+            pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
         if bandwidth_share_level is not None:
-            _setter("bandwidth_share_level", bandwidth_share_level)
+            pulumi.set(__self__, "bandwidth_share_level", bandwidth_share_level)
         if device_address is not None:
-            _setter("device_address", device_address)
+            pulumi.set(__self__, "device_address", device_address)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if mac_address is not None:
-            _setter("mac_address", mac_address)
+            pulumi.set(__self__, "mac_address", mac_address)
         if ovf_mapping is not None:
-            _setter("ovf_mapping", ovf_mapping)
+            pulumi.set(__self__, "ovf_mapping", ovf_mapping)
         if use_static_mac is not None:
-            _setter("use_static_mac", use_static_mac)
+            pulumi.set(__self__, "use_static_mac", use_static_mac)
 
     @property
     @pulumi.getter(name="networkId")
@@ -2293,69 +1734,24 @@ class VirtualMachineOvfDeploy(dict):
                  local_ovf_path: Optional[str] = None,
                  ovf_network_map: Optional[Mapping[str, str]] = None,
                  remote_ovf_url: Optional[str] = None):
-        VirtualMachineOvfDeploy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_unverified_ssl_cert=allow_unverified_ssl_cert,
-            deployment_option=deployment_option,
-            disk_provisioning=disk_provisioning,
-            enable_hidden_properties=enable_hidden_properties,
-            ip_allocation_policy=ip_allocation_policy,
-            ip_protocol=ip_protocol,
-            local_ovf_path=local_ovf_path,
-            ovf_network_map=ovf_network_map,
-            remote_ovf_url=remote_ovf_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_unverified_ssl_cert: Optional[bool] = None,
-             deployment_option: Optional[str] = None,
-             disk_provisioning: Optional[str] = None,
-             enable_hidden_properties: Optional[bool] = None,
-             ip_allocation_policy: Optional[str] = None,
-             ip_protocol: Optional[str] = None,
-             local_ovf_path: Optional[str] = None,
-             ovf_network_map: Optional[Mapping[str, str]] = None,
-             remote_ovf_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_unverified_ssl_cert is None and 'allowUnverifiedSslCert' in kwargs:
-            allow_unverified_ssl_cert = kwargs['allowUnverifiedSslCert']
-        if deployment_option is None and 'deploymentOption' in kwargs:
-            deployment_option = kwargs['deploymentOption']
-        if disk_provisioning is None and 'diskProvisioning' in kwargs:
-            disk_provisioning = kwargs['diskProvisioning']
-        if enable_hidden_properties is None and 'enableHiddenProperties' in kwargs:
-            enable_hidden_properties = kwargs['enableHiddenProperties']
-        if ip_allocation_policy is None and 'ipAllocationPolicy' in kwargs:
-            ip_allocation_policy = kwargs['ipAllocationPolicy']
-        if ip_protocol is None and 'ipProtocol' in kwargs:
-            ip_protocol = kwargs['ipProtocol']
-        if local_ovf_path is None and 'localOvfPath' in kwargs:
-            local_ovf_path = kwargs['localOvfPath']
-        if ovf_network_map is None and 'ovfNetworkMap' in kwargs:
-            ovf_network_map = kwargs['ovfNetworkMap']
-        if remote_ovf_url is None and 'remoteOvfUrl' in kwargs:
-            remote_ovf_url = kwargs['remoteOvfUrl']
-
         if allow_unverified_ssl_cert is not None:
-            _setter("allow_unverified_ssl_cert", allow_unverified_ssl_cert)
+            pulumi.set(__self__, "allow_unverified_ssl_cert", allow_unverified_ssl_cert)
         if deployment_option is not None:
-            _setter("deployment_option", deployment_option)
+            pulumi.set(__self__, "deployment_option", deployment_option)
         if disk_provisioning is not None:
-            _setter("disk_provisioning", disk_provisioning)
+            pulumi.set(__self__, "disk_provisioning", disk_provisioning)
         if enable_hidden_properties is not None:
-            _setter("enable_hidden_properties", enable_hidden_properties)
+            pulumi.set(__self__, "enable_hidden_properties", enable_hidden_properties)
         if ip_allocation_policy is not None:
-            _setter("ip_allocation_policy", ip_allocation_policy)
+            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if ip_protocol is not None:
-            _setter("ip_protocol", ip_protocol)
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
         if local_ovf_path is not None:
-            _setter("local_ovf_path", local_ovf_path)
+            pulumi.set(__self__, "local_ovf_path", local_ovf_path)
         if ovf_network_map is not None:
-            _setter("ovf_network_map", ovf_network_map)
+            pulumi.set(__self__, "ovf_network_map", ovf_network_map)
         if remote_ovf_url is not None:
-            _setter("remote_ovf_url", remote_ovf_url)
+            pulumi.set(__self__, "remote_ovf_url", remote_ovf_url)
 
     @property
     @pulumi.getter(name="allowUnverifiedSslCert")
@@ -2407,19 +1803,8 @@ class VirtualMachineOvfDeploy(dict):
 class VirtualMachineVapp(dict):
     def __init__(__self__, *,
                  properties: Optional[Mapping[str, str]] = None):
-        VirtualMachineVapp._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            properties=properties,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter
@@ -2457,33 +1842,10 @@ class VmStoragePolicyTagRule(dict):
         :param Sequence[str] tags: List of Name of tags to select from the given category.
         :param bool include_datastores_with_tags: Include datastores with the given tags or exclude. Default `true`.
         """
-        VmStoragePolicyTagRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_category=tag_category,
-            tags=tags,
-            include_datastores_with_tags=include_datastores_with_tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_category: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             include_datastores_with_tags: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_category is None and 'tagCategory' in kwargs:
-            tag_category = kwargs['tagCategory']
-        if tag_category is None:
-            raise TypeError("Missing 'tag_category' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if include_datastores_with_tags is None and 'includeDatastoresWithTags' in kwargs:
-            include_datastores_with_tags = kwargs['includeDatastoresWithTags']
-
-        _setter("tag_category", tag_category)
-        _setter("tags", tags)
+        pulumi.set(__self__, "tag_category", tag_category)
+        pulumi.set(__self__, "tags", tags)
         if include_datastores_with_tags is not None:
-            _setter("include_datastores_with_tags", include_datastores_with_tags)
+            pulumi.set(__self__, "include_datastores_with_tags", include_datastores_with_tags)
 
     @property
     @pulumi.getter(name="tagCategory")
@@ -2523,31 +1885,14 @@ class VnicIpv4(dict):
         :param str ip: Address of the interface, if DHCP is not set.
         :param str netmask: Netmask of the interface, if DHCP is not set.
         """
-        VnicIpv4._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            dhcp=dhcp,
-            gw=gw,
-            ip=ip,
-            netmask=netmask,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             dhcp: Optional[bool] = None,
-             gw: Optional[str] = None,
-             ip: Optional[str] = None,
-             netmask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if dhcp is not None:
-            _setter("dhcp", dhcp)
+            pulumi.set(__self__, "dhcp", dhcp)
         if gw is not None:
-            _setter("gw", gw)
+            pulumi.set(__self__, "gw", gw)
         if ip is not None:
-            _setter("ip", ip)
+            pulumi.set(__self__, "ip", ip)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
 
     @property
     @pulumi.getter
@@ -2595,31 +1940,14 @@ class VnicIpv6(dict):
         :param bool dhcp: Use DHCP to configure the interface's IPv6 stack.
         :param str gw: IP address of the default gateway, if DHCP or autoconfig is not set.
         """
-        VnicIpv6._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addresses=addresses,
-            autoconfig=autoconfig,
-            dhcp=dhcp,
-            gw=gw,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addresses: Optional[Sequence[str]] = None,
-             autoconfig: Optional[bool] = None,
-             dhcp: Optional[bool] = None,
-             gw: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if addresses is not None:
-            _setter("addresses", addresses)
+            pulumi.set(__self__, "addresses", addresses)
         if autoconfig is not None:
-            _setter("autoconfig", autoconfig)
+            pulumi.set(__self__, "autoconfig", autoconfig)
         if dhcp is not None:
-            _setter("dhcp", dhcp)
+            pulumi.set(__self__, "dhcp", dhcp)
         if gw is not None:
-            _setter("gw", gw)
+            pulumi.set(__self__, "gw", gw)
 
     @property
     @pulumi.getter
@@ -2669,46 +1997,11 @@ class GetVirtualMachineDiskResult(dict):
         :param bool thin_provisioned: Set to `true` if the disk has been thin provisioned.
         :param int unit_number: The disk number on the storage bus.
         """
-        GetVirtualMachineDiskResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            eagerly_scrub=eagerly_scrub,
-            label=label,
-            size=size,
-            thin_provisioned=thin_provisioned,
-            unit_number=unit_number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             eagerly_scrub: Optional[bool] = None,
-             label: Optional[str] = None,
-             size: Optional[int] = None,
-             thin_provisioned: Optional[bool] = None,
-             unit_number: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if eagerly_scrub is None and 'eagerlyScrub' in kwargs:
-            eagerly_scrub = kwargs['eagerlyScrub']
-        if eagerly_scrub is None:
-            raise TypeError("Missing 'eagerly_scrub' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if thin_provisioned is None and 'thinProvisioned' in kwargs:
-            thin_provisioned = kwargs['thinProvisioned']
-        if thin_provisioned is None:
-            raise TypeError("Missing 'thin_provisioned' argument")
-        if unit_number is None and 'unitNumber' in kwargs:
-            unit_number = kwargs['unitNumber']
-        if unit_number is None:
-            raise TypeError("Missing 'unit_number' argument")
-
-        _setter("eagerly_scrub", eagerly_scrub)
-        _setter("label", label)
-        _setter("size", size)
-        _setter("thin_provisioned", thin_provisioned)
-        _setter("unit_number", unit_number)
+        pulumi.set(__self__, "eagerly_scrub", eagerly_scrub)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "thin_provisioned", thin_provisioned)
+        pulumi.set(__self__, "unit_number", unit_number)
 
     @property
     @pulumi.getter(name="eagerlyScrub")
@@ -2777,61 +2070,16 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
         :param str bandwidth_share_level: The bandwidth share allocation level for this interface.
                Can be one of `low`, `normal`, `high`, or `custom`.
         """
-        GetVirtualMachineNetworkInterfaceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            adapter_type=adapter_type,
-            bandwidth_share_count=bandwidth_share_count,
-            mac_address=mac_address,
-            network_id=network_id,
-            bandwidth_limit=bandwidth_limit,
-            bandwidth_reservation=bandwidth_reservation,
-            bandwidth_share_level=bandwidth_share_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             adapter_type: Optional[str] = None,
-             bandwidth_share_count: Optional[int] = None,
-             mac_address: Optional[str] = None,
-             network_id: Optional[str] = None,
-             bandwidth_limit: Optional[int] = None,
-             bandwidth_reservation: Optional[int] = None,
-             bandwidth_share_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if adapter_type is None and 'adapterType' in kwargs:
-            adapter_type = kwargs['adapterType']
-        if adapter_type is None:
-            raise TypeError("Missing 'adapter_type' argument")
-        if bandwidth_share_count is None and 'bandwidthShareCount' in kwargs:
-            bandwidth_share_count = kwargs['bandwidthShareCount']
-        if bandwidth_share_count is None:
-            raise TypeError("Missing 'bandwidth_share_count' argument")
-        if mac_address is None and 'macAddress' in kwargs:
-            mac_address = kwargs['macAddress']
-        if mac_address is None:
-            raise TypeError("Missing 'mac_address' argument")
-        if network_id is None and 'networkId' in kwargs:
-            network_id = kwargs['networkId']
-        if network_id is None:
-            raise TypeError("Missing 'network_id' argument")
-        if bandwidth_limit is None and 'bandwidthLimit' in kwargs:
-            bandwidth_limit = kwargs['bandwidthLimit']
-        if bandwidth_reservation is None and 'bandwidthReservation' in kwargs:
-            bandwidth_reservation = kwargs['bandwidthReservation']
-        if bandwidth_share_level is None and 'bandwidthShareLevel' in kwargs:
-            bandwidth_share_level = kwargs['bandwidthShareLevel']
-
-        _setter("adapter_type", adapter_type)
-        _setter("bandwidth_share_count", bandwidth_share_count)
-        _setter("mac_address", mac_address)
-        _setter("network_id", network_id)
+        pulumi.set(__self__, "adapter_type", adapter_type)
+        pulumi.set(__self__, "bandwidth_share_count", bandwidth_share_count)
+        pulumi.set(__self__, "mac_address", mac_address)
+        pulumi.set(__self__, "network_id", network_id)
         if bandwidth_limit is not None:
-            _setter("bandwidth_limit", bandwidth_limit)
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
         if bandwidth_reservation is not None:
-            _setter("bandwidth_reservation", bandwidth_reservation)
+            pulumi.set(__self__, "bandwidth_reservation", bandwidth_reservation)
         if bandwidth_share_level is not None:
-            _setter("bandwidth_share_level", bandwidth_share_level)
+            pulumi.set(__self__, "bandwidth_share_level", bandwidth_share_level)
 
     @property
     @pulumi.getter(name="adapterType")
@@ -2901,19 +2149,8 @@ class GetVirtualMachineNetworkInterfaceResult(dict):
 class GetVirtualMachineVappResult(dict):
     def __init__(__self__, *,
                  properties: Optional[Mapping[str, str]] = None):
-        GetVirtualMachineVappResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            properties=properties,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             properties: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
 
     @property
     @pulumi.getter

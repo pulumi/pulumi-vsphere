@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatastoreClusterArgs', 'DatastoreCluster']
@@ -119,160 +119,55 @@ class DatastoreClusterArgs:
                
                > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
-        DatastoreClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter_id=datacenter_id,
-            custom_attributes=custom_attributes,
-            folder=folder,
-            name=name,
-            sdrs_advanced_options=sdrs_advanced_options,
-            sdrs_automation_level=sdrs_automation_level,
-            sdrs_default_intra_vm_affinity=sdrs_default_intra_vm_affinity,
-            sdrs_enabled=sdrs_enabled,
-            sdrs_free_space_threshold=sdrs_free_space_threshold,
-            sdrs_free_space_threshold_mode=sdrs_free_space_threshold_mode,
-            sdrs_free_space_utilization_difference=sdrs_free_space_utilization_difference,
-            sdrs_io_balance_automation_level=sdrs_io_balance_automation_level,
-            sdrs_io_latency_threshold=sdrs_io_latency_threshold,
-            sdrs_io_load_balance_enabled=sdrs_io_load_balance_enabled,
-            sdrs_io_load_imbalance_threshold=sdrs_io_load_imbalance_threshold,
-            sdrs_io_reservable_iops_threshold=sdrs_io_reservable_iops_threshold,
-            sdrs_io_reservable_percent_threshold=sdrs_io_reservable_percent_threshold,
-            sdrs_io_reservable_threshold_mode=sdrs_io_reservable_threshold_mode,
-            sdrs_load_balance_interval=sdrs_load_balance_interval,
-            sdrs_policy_enforcement_automation_level=sdrs_policy_enforcement_automation_level,
-            sdrs_rule_enforcement_automation_level=sdrs_rule_enforcement_automation_level,
-            sdrs_space_balance_automation_level=sdrs_space_balance_automation_level,
-            sdrs_space_utilization_threshold=sdrs_space_utilization_threshold,
-            sdrs_vm_evacuation_automation_level=sdrs_vm_evacuation_automation_level,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter_id: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_default_intra_vm_affinity: Optional[pulumi.Input[bool]] = None,
-             sdrs_enabled: Optional[pulumi.Input[bool]] = None,
-             sdrs_free_space_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_free_space_threshold_mode: Optional[pulumi.Input[str]] = None,
-             sdrs_free_space_utilization_difference: Optional[pulumi.Input[int]] = None,
-             sdrs_io_balance_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_io_latency_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_load_balance_enabled: Optional[pulumi.Input[bool]] = None,
-             sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[str]] = None,
-             sdrs_load_balance_interval: Optional[pulumi.Input[int]] = None,
-             sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_space_balance_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenter_id is None and 'datacenterId' in kwargs:
-            datacenter_id = kwargs['datacenterId']
-        if datacenter_id is None:
-            raise TypeError("Missing 'datacenter_id' argument")
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if sdrs_advanced_options is None and 'sdrsAdvancedOptions' in kwargs:
-            sdrs_advanced_options = kwargs['sdrsAdvancedOptions']
-        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
-            sdrs_automation_level = kwargs['sdrsAutomationLevel']
-        if sdrs_default_intra_vm_affinity is None and 'sdrsDefaultIntraVmAffinity' in kwargs:
-            sdrs_default_intra_vm_affinity = kwargs['sdrsDefaultIntraVmAffinity']
-        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
-            sdrs_enabled = kwargs['sdrsEnabled']
-        if sdrs_free_space_threshold is None and 'sdrsFreeSpaceThreshold' in kwargs:
-            sdrs_free_space_threshold = kwargs['sdrsFreeSpaceThreshold']
-        if sdrs_free_space_threshold_mode is None and 'sdrsFreeSpaceThresholdMode' in kwargs:
-            sdrs_free_space_threshold_mode = kwargs['sdrsFreeSpaceThresholdMode']
-        if sdrs_free_space_utilization_difference is None and 'sdrsFreeSpaceUtilizationDifference' in kwargs:
-            sdrs_free_space_utilization_difference = kwargs['sdrsFreeSpaceUtilizationDifference']
-        if sdrs_io_balance_automation_level is None and 'sdrsIoBalanceAutomationLevel' in kwargs:
-            sdrs_io_balance_automation_level = kwargs['sdrsIoBalanceAutomationLevel']
-        if sdrs_io_latency_threshold is None and 'sdrsIoLatencyThreshold' in kwargs:
-            sdrs_io_latency_threshold = kwargs['sdrsIoLatencyThreshold']
-        if sdrs_io_load_balance_enabled is None and 'sdrsIoLoadBalanceEnabled' in kwargs:
-            sdrs_io_load_balance_enabled = kwargs['sdrsIoLoadBalanceEnabled']
-        if sdrs_io_load_imbalance_threshold is None and 'sdrsIoLoadImbalanceThreshold' in kwargs:
-            sdrs_io_load_imbalance_threshold = kwargs['sdrsIoLoadImbalanceThreshold']
-        if sdrs_io_reservable_iops_threshold is None and 'sdrsIoReservableIopsThreshold' in kwargs:
-            sdrs_io_reservable_iops_threshold = kwargs['sdrsIoReservableIopsThreshold']
-        if sdrs_io_reservable_percent_threshold is None and 'sdrsIoReservablePercentThreshold' in kwargs:
-            sdrs_io_reservable_percent_threshold = kwargs['sdrsIoReservablePercentThreshold']
-        if sdrs_io_reservable_threshold_mode is None and 'sdrsIoReservableThresholdMode' in kwargs:
-            sdrs_io_reservable_threshold_mode = kwargs['sdrsIoReservableThresholdMode']
-        if sdrs_load_balance_interval is None and 'sdrsLoadBalanceInterval' in kwargs:
-            sdrs_load_balance_interval = kwargs['sdrsLoadBalanceInterval']
-        if sdrs_policy_enforcement_automation_level is None and 'sdrsPolicyEnforcementAutomationLevel' in kwargs:
-            sdrs_policy_enforcement_automation_level = kwargs['sdrsPolicyEnforcementAutomationLevel']
-        if sdrs_rule_enforcement_automation_level is None and 'sdrsRuleEnforcementAutomationLevel' in kwargs:
-            sdrs_rule_enforcement_automation_level = kwargs['sdrsRuleEnforcementAutomationLevel']
-        if sdrs_space_balance_automation_level is None and 'sdrsSpaceBalanceAutomationLevel' in kwargs:
-            sdrs_space_balance_automation_level = kwargs['sdrsSpaceBalanceAutomationLevel']
-        if sdrs_space_utilization_threshold is None and 'sdrsSpaceUtilizationThreshold' in kwargs:
-            sdrs_space_utilization_threshold = kwargs['sdrsSpaceUtilizationThreshold']
-        if sdrs_vm_evacuation_automation_level is None and 'sdrsVmEvacuationAutomationLevel' in kwargs:
-            sdrs_vm_evacuation_automation_level = kwargs['sdrsVmEvacuationAutomationLevel']
-
-        _setter("datacenter_id", datacenter_id)
+        pulumi.set(__self__, "datacenter_id", datacenter_id)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if folder is not None:
-            _setter("folder", folder)
+            pulumi.set(__self__, "folder", folder)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if sdrs_advanced_options is not None:
-            _setter("sdrs_advanced_options", sdrs_advanced_options)
+            pulumi.set(__self__, "sdrs_advanced_options", sdrs_advanced_options)
         if sdrs_automation_level is not None:
-            _setter("sdrs_automation_level", sdrs_automation_level)
+            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
         if sdrs_default_intra_vm_affinity is not None:
-            _setter("sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
+            pulumi.set(__self__, "sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
         if sdrs_enabled is not None:
-            _setter("sdrs_enabled", sdrs_enabled)
+            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
         if sdrs_free_space_threshold is not None:
-            _setter("sdrs_free_space_threshold", sdrs_free_space_threshold)
+            pulumi.set(__self__, "sdrs_free_space_threshold", sdrs_free_space_threshold)
         if sdrs_free_space_threshold_mode is not None:
-            _setter("sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
+            pulumi.set(__self__, "sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
         if sdrs_free_space_utilization_difference is not None:
-            _setter("sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
+            pulumi.set(__self__, "sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
         if sdrs_io_balance_automation_level is not None:
-            _setter("sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
+            pulumi.set(__self__, "sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
         if sdrs_io_latency_threshold is not None:
-            _setter("sdrs_io_latency_threshold", sdrs_io_latency_threshold)
+            pulumi.set(__self__, "sdrs_io_latency_threshold", sdrs_io_latency_threshold)
         if sdrs_io_load_balance_enabled is not None:
-            _setter("sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
+            pulumi.set(__self__, "sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
         if sdrs_io_load_imbalance_threshold is not None:
-            _setter("sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
+            pulumi.set(__self__, "sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
         if sdrs_io_reservable_iops_threshold is not None:
-            _setter("sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
+            pulumi.set(__self__, "sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
         if sdrs_io_reservable_percent_threshold is not None:
-            _setter("sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
+            pulumi.set(__self__, "sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
         if sdrs_io_reservable_threshold_mode is not None:
-            _setter("sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
+            pulumi.set(__self__, "sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
         if sdrs_load_balance_interval is not None:
-            _setter("sdrs_load_balance_interval", sdrs_load_balance_interval)
+            pulumi.set(__self__, "sdrs_load_balance_interval", sdrs_load_balance_interval)
         if sdrs_policy_enforcement_automation_level is not None:
-            _setter("sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
+            pulumi.set(__self__, "sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
         if sdrs_rule_enforcement_automation_level is not None:
-            _setter("sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
+            pulumi.set(__self__, "sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
         if sdrs_space_balance_automation_level is not None:
-            _setter("sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
+            pulumi.set(__self__, "sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
         if sdrs_space_utilization_threshold is not None:
-            _setter("sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
+            pulumi.set(__self__, "sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
         if sdrs_vm_evacuation_automation_level is not None:
-            _setter("sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
+            pulumi.set(__self__, "sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -735,159 +630,56 @@ class _DatastoreClusterState:
                
                > **NOTE:** Tagging support requires vCenter 6.0 or higher.
         """
-        _DatastoreClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_attributes=custom_attributes,
-            datacenter_id=datacenter_id,
-            folder=folder,
-            name=name,
-            sdrs_advanced_options=sdrs_advanced_options,
-            sdrs_automation_level=sdrs_automation_level,
-            sdrs_default_intra_vm_affinity=sdrs_default_intra_vm_affinity,
-            sdrs_enabled=sdrs_enabled,
-            sdrs_free_space_threshold=sdrs_free_space_threshold,
-            sdrs_free_space_threshold_mode=sdrs_free_space_threshold_mode,
-            sdrs_free_space_utilization_difference=sdrs_free_space_utilization_difference,
-            sdrs_io_balance_automation_level=sdrs_io_balance_automation_level,
-            sdrs_io_latency_threshold=sdrs_io_latency_threshold,
-            sdrs_io_load_balance_enabled=sdrs_io_load_balance_enabled,
-            sdrs_io_load_imbalance_threshold=sdrs_io_load_imbalance_threshold,
-            sdrs_io_reservable_iops_threshold=sdrs_io_reservable_iops_threshold,
-            sdrs_io_reservable_percent_threshold=sdrs_io_reservable_percent_threshold,
-            sdrs_io_reservable_threshold_mode=sdrs_io_reservable_threshold_mode,
-            sdrs_load_balance_interval=sdrs_load_balance_interval,
-            sdrs_policy_enforcement_automation_level=sdrs_policy_enforcement_automation_level,
-            sdrs_rule_enforcement_automation_level=sdrs_rule_enforcement_automation_level,
-            sdrs_space_balance_automation_level=sdrs_space_balance_automation_level,
-            sdrs_space_utilization_threshold=sdrs_space_utilization_threshold,
-            sdrs_vm_evacuation_automation_level=sdrs_vm_evacuation_automation_level,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             datacenter_id: Optional[pulumi.Input[str]] = None,
-             folder: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             sdrs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             sdrs_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_default_intra_vm_affinity: Optional[pulumi.Input[bool]] = None,
-             sdrs_enabled: Optional[pulumi.Input[bool]] = None,
-             sdrs_free_space_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_free_space_threshold_mode: Optional[pulumi.Input[str]] = None,
-             sdrs_free_space_utilization_difference: Optional[pulumi.Input[int]] = None,
-             sdrs_io_balance_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_io_latency_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_load_balance_enabled: Optional[pulumi.Input[bool]] = None,
-             sdrs_io_load_imbalance_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_iops_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_percent_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_io_reservable_threshold_mode: Optional[pulumi.Input[str]] = None,
-             sdrs_load_balance_interval: Optional[pulumi.Input[int]] = None,
-             sdrs_policy_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_rule_enforcement_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_space_balance_automation_level: Optional[pulumi.Input[str]] = None,
-             sdrs_space_utilization_threshold: Optional[pulumi.Input[int]] = None,
-             sdrs_vm_evacuation_automation_level: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if datacenter_id is None and 'datacenterId' in kwargs:
-            datacenter_id = kwargs['datacenterId']
-        if sdrs_advanced_options is None and 'sdrsAdvancedOptions' in kwargs:
-            sdrs_advanced_options = kwargs['sdrsAdvancedOptions']
-        if sdrs_automation_level is None and 'sdrsAutomationLevel' in kwargs:
-            sdrs_automation_level = kwargs['sdrsAutomationLevel']
-        if sdrs_default_intra_vm_affinity is None and 'sdrsDefaultIntraVmAffinity' in kwargs:
-            sdrs_default_intra_vm_affinity = kwargs['sdrsDefaultIntraVmAffinity']
-        if sdrs_enabled is None and 'sdrsEnabled' in kwargs:
-            sdrs_enabled = kwargs['sdrsEnabled']
-        if sdrs_free_space_threshold is None and 'sdrsFreeSpaceThreshold' in kwargs:
-            sdrs_free_space_threshold = kwargs['sdrsFreeSpaceThreshold']
-        if sdrs_free_space_threshold_mode is None and 'sdrsFreeSpaceThresholdMode' in kwargs:
-            sdrs_free_space_threshold_mode = kwargs['sdrsFreeSpaceThresholdMode']
-        if sdrs_free_space_utilization_difference is None and 'sdrsFreeSpaceUtilizationDifference' in kwargs:
-            sdrs_free_space_utilization_difference = kwargs['sdrsFreeSpaceUtilizationDifference']
-        if sdrs_io_balance_automation_level is None and 'sdrsIoBalanceAutomationLevel' in kwargs:
-            sdrs_io_balance_automation_level = kwargs['sdrsIoBalanceAutomationLevel']
-        if sdrs_io_latency_threshold is None and 'sdrsIoLatencyThreshold' in kwargs:
-            sdrs_io_latency_threshold = kwargs['sdrsIoLatencyThreshold']
-        if sdrs_io_load_balance_enabled is None and 'sdrsIoLoadBalanceEnabled' in kwargs:
-            sdrs_io_load_balance_enabled = kwargs['sdrsIoLoadBalanceEnabled']
-        if sdrs_io_load_imbalance_threshold is None and 'sdrsIoLoadImbalanceThreshold' in kwargs:
-            sdrs_io_load_imbalance_threshold = kwargs['sdrsIoLoadImbalanceThreshold']
-        if sdrs_io_reservable_iops_threshold is None and 'sdrsIoReservableIopsThreshold' in kwargs:
-            sdrs_io_reservable_iops_threshold = kwargs['sdrsIoReservableIopsThreshold']
-        if sdrs_io_reservable_percent_threshold is None and 'sdrsIoReservablePercentThreshold' in kwargs:
-            sdrs_io_reservable_percent_threshold = kwargs['sdrsIoReservablePercentThreshold']
-        if sdrs_io_reservable_threshold_mode is None and 'sdrsIoReservableThresholdMode' in kwargs:
-            sdrs_io_reservable_threshold_mode = kwargs['sdrsIoReservableThresholdMode']
-        if sdrs_load_balance_interval is None and 'sdrsLoadBalanceInterval' in kwargs:
-            sdrs_load_balance_interval = kwargs['sdrsLoadBalanceInterval']
-        if sdrs_policy_enforcement_automation_level is None and 'sdrsPolicyEnforcementAutomationLevel' in kwargs:
-            sdrs_policy_enforcement_automation_level = kwargs['sdrsPolicyEnforcementAutomationLevel']
-        if sdrs_rule_enforcement_automation_level is None and 'sdrsRuleEnforcementAutomationLevel' in kwargs:
-            sdrs_rule_enforcement_automation_level = kwargs['sdrsRuleEnforcementAutomationLevel']
-        if sdrs_space_balance_automation_level is None and 'sdrsSpaceBalanceAutomationLevel' in kwargs:
-            sdrs_space_balance_automation_level = kwargs['sdrsSpaceBalanceAutomationLevel']
-        if sdrs_space_utilization_threshold is None and 'sdrsSpaceUtilizationThreshold' in kwargs:
-            sdrs_space_utilization_threshold = kwargs['sdrsSpaceUtilizationThreshold']
-        if sdrs_vm_evacuation_automation_level is None and 'sdrsVmEvacuationAutomationLevel' in kwargs:
-            sdrs_vm_evacuation_automation_level = kwargs['sdrsVmEvacuationAutomationLevel']
-
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            _setter("datacenter_id", datacenter_id)
+            pulumi.set(__self__, "datacenter_id", datacenter_id)
         if folder is not None:
-            _setter("folder", folder)
+            pulumi.set(__self__, "folder", folder)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if sdrs_advanced_options is not None:
-            _setter("sdrs_advanced_options", sdrs_advanced_options)
+            pulumi.set(__self__, "sdrs_advanced_options", sdrs_advanced_options)
         if sdrs_automation_level is not None:
-            _setter("sdrs_automation_level", sdrs_automation_level)
+            pulumi.set(__self__, "sdrs_automation_level", sdrs_automation_level)
         if sdrs_default_intra_vm_affinity is not None:
-            _setter("sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
+            pulumi.set(__self__, "sdrs_default_intra_vm_affinity", sdrs_default_intra_vm_affinity)
         if sdrs_enabled is not None:
-            _setter("sdrs_enabled", sdrs_enabled)
+            pulumi.set(__self__, "sdrs_enabled", sdrs_enabled)
         if sdrs_free_space_threshold is not None:
-            _setter("sdrs_free_space_threshold", sdrs_free_space_threshold)
+            pulumi.set(__self__, "sdrs_free_space_threshold", sdrs_free_space_threshold)
         if sdrs_free_space_threshold_mode is not None:
-            _setter("sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
+            pulumi.set(__self__, "sdrs_free_space_threshold_mode", sdrs_free_space_threshold_mode)
         if sdrs_free_space_utilization_difference is not None:
-            _setter("sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
+            pulumi.set(__self__, "sdrs_free_space_utilization_difference", sdrs_free_space_utilization_difference)
         if sdrs_io_balance_automation_level is not None:
-            _setter("sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
+            pulumi.set(__self__, "sdrs_io_balance_automation_level", sdrs_io_balance_automation_level)
         if sdrs_io_latency_threshold is not None:
-            _setter("sdrs_io_latency_threshold", sdrs_io_latency_threshold)
+            pulumi.set(__self__, "sdrs_io_latency_threshold", sdrs_io_latency_threshold)
         if sdrs_io_load_balance_enabled is not None:
-            _setter("sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
+            pulumi.set(__self__, "sdrs_io_load_balance_enabled", sdrs_io_load_balance_enabled)
         if sdrs_io_load_imbalance_threshold is not None:
-            _setter("sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
+            pulumi.set(__self__, "sdrs_io_load_imbalance_threshold", sdrs_io_load_imbalance_threshold)
         if sdrs_io_reservable_iops_threshold is not None:
-            _setter("sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
+            pulumi.set(__self__, "sdrs_io_reservable_iops_threshold", sdrs_io_reservable_iops_threshold)
         if sdrs_io_reservable_percent_threshold is not None:
-            _setter("sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
+            pulumi.set(__self__, "sdrs_io_reservable_percent_threshold", sdrs_io_reservable_percent_threshold)
         if sdrs_io_reservable_threshold_mode is not None:
-            _setter("sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
+            pulumi.set(__self__, "sdrs_io_reservable_threshold_mode", sdrs_io_reservable_threshold_mode)
         if sdrs_load_balance_interval is not None:
-            _setter("sdrs_load_balance_interval", sdrs_load_balance_interval)
+            pulumi.set(__self__, "sdrs_load_balance_interval", sdrs_load_balance_interval)
         if sdrs_policy_enforcement_automation_level is not None:
-            _setter("sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
+            pulumi.set(__self__, "sdrs_policy_enforcement_automation_level", sdrs_policy_enforcement_automation_level)
         if sdrs_rule_enforcement_automation_level is not None:
-            _setter("sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
+            pulumi.set(__self__, "sdrs_rule_enforcement_automation_level", sdrs_rule_enforcement_automation_level)
         if sdrs_space_balance_automation_level is not None:
-            _setter("sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
+            pulumi.set(__self__, "sdrs_space_balance_automation_level", sdrs_space_balance_automation_level)
         if sdrs_space_utilization_threshold is not None:
-            _setter("sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
+            pulumi.set(__self__, "sdrs_space_utilization_threshold", sdrs_space_utilization_threshold)
         if sdrs_vm_evacuation_automation_level is not None:
-            _setter("sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
+            pulumi.set(__self__, "sdrs_vm_evacuation_automation_level", sdrs_vm_evacuation_automation_level)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -1373,10 +1165,6 @@ class DatastoreCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatastoreClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
