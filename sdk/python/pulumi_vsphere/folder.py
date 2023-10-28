@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
@@ -52,41 +52,14 @@ class FolderArgs:
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
         """
-        FolderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            type=type,
-            custom_attributes=custom_attributes,
-            datacenter_id=datacenter_id,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             datacenter_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if datacenter_id is None and 'datacenterId' in kwargs:
-            datacenter_id = kwargs['datacenterId']
-
-        _setter("path", path)
-        _setter("type", type)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "type", type)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            _setter("datacenter_id", datacenter_id)
+            pulumi.set(__self__, "datacenter_id", datacenter_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -215,39 +188,16 @@ class _FolderState:
                `vm` for virtual machine folders, `datastore` for datastore folders, and
                `network` for network folders. Forces a new resource if changed.
         """
-        _FolderState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_attributes=custom_attributes,
-            datacenter_id=datacenter_id,
-            path=path,
-            tags=tags,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             datacenter_id: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if datacenter_id is None and 'datacenterId' in kwargs:
-            datacenter_id = kwargs['datacenterId']
-
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            _setter("datacenter_id", datacenter_id)
+            pulumi.set(__self__, "datacenter_id", datacenter_id)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -399,10 +349,6 @@ class Folder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatastoreClusterVmAntiAffinityRuleArgs', 'DatastoreClusterVmAntiAffinityRule']
@@ -33,41 +33,14 @@ class DatastoreClusterVmAntiAffinityRuleArgs:
                machine operations that may violate this rule. Default: `false`.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         """
-        DatastoreClusterVmAntiAffinityRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_cluster_id=datastore_cluster_id,
-            virtual_machine_ids=virtual_machine_ids,
-            enabled=enabled,
-            mandatory=mandatory,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             mandatory: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
-            datastore_cluster_id = kwargs['datastoreClusterId']
-        if datastore_cluster_id is None:
-            raise TypeError("Missing 'datastore_cluster_id' argument")
-        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
-            virtual_machine_ids = kwargs['virtualMachineIds']
-        if virtual_machine_ids is None:
-            raise TypeError("Missing 'virtual_machine_ids' argument")
-
-        _setter("datastore_cluster_id", datastore_cluster_id)
-        _setter("virtual_machine_ids", virtual_machine_ids)
+        pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+        pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if mandatory is not None:
-            _setter("mandatory", mandatory)
+            pulumi.set(__self__, "mandatory", mandatory)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="datastoreClusterId")
@@ -158,39 +131,16 @@ class _DatastoreClusterVmAntiAffinityRuleState:
                
                > **NOTE:** The minimum length of `virtual_machine_ids` is 2.
         """
-        _DatastoreClusterVmAntiAffinityRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore_cluster_id=datastore_cluster_id,
-            enabled=enabled,
-            mandatory=mandatory,
-            name=name,
-            virtual_machine_ids=virtual_machine_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             mandatory: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
-            datastore_cluster_id = kwargs['datastoreClusterId']
-        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
-            virtual_machine_ids = kwargs['virtualMachineIds']
-
         if datastore_cluster_id is not None:
-            _setter("datastore_cluster_id", datastore_cluster_id)
+            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if mandatory is not None:
-            _setter("mandatory", mandatory)
+            pulumi.set(__self__, "mandatory", mandatory)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if virtual_machine_ids is not None:
-            _setter("virtual_machine_ids", virtual_machine_ids)
+            pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
 
     @property
     @pulumi.getter(name="datastoreClusterId")
@@ -304,10 +254,6 @@ class DatastoreClusterVmAntiAffinityRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatastoreClusterVmAntiAffinityRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

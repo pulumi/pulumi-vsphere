@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeClusterVmGroupArgs', 'ComputeClusterVmGroup']
@@ -32,32 +32,11 @@ class ComputeClusterVmGroupArgs:
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
         """
-        ComputeClusterVmGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compute_cluster_id=compute_cluster_id,
-            name=name,
-            virtual_machine_ids=virtual_machine_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compute_cluster_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compute_cluster_id is None and 'computeClusterId' in kwargs:
-            compute_cluster_id = kwargs['computeClusterId']
-        if compute_cluster_id is None:
-            raise TypeError("Missing 'compute_cluster_id' argument")
-        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
-            virtual_machine_ids = kwargs['virtualMachineIds']
-
-        _setter("compute_cluster_id", compute_cluster_id)
+        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if virtual_machine_ids is not None:
-            _setter("virtual_machine_ids", virtual_machine_ids)
+            pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -126,31 +105,12 @@ class _ComputeClusterVmGroupState:
                `ComputeClusterHostGroup`
                resource. Make sure your names are unique across both resources.
         """
-        _ComputeClusterVmGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compute_cluster_id=compute_cluster_id,
-            name=name,
-            virtual_machine_ids=virtual_machine_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compute_cluster_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if compute_cluster_id is None and 'computeClusterId' in kwargs:
-            compute_cluster_id = kwargs['computeClusterId']
-        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
-            virtual_machine_ids = kwargs['virtualMachineIds']
-
         if compute_cluster_id is not None:
-            _setter("compute_cluster_id", compute_cluster_id)
+            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if virtual_machine_ids is not None:
-            _setter("virtual_machine_ids", virtual_machine_ids)
+            pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -242,10 +202,6 @@ class ComputeClusterVmGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ComputeClusterVmGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
