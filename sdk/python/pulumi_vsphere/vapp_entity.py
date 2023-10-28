@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VappEntityArgs', 'VappEntity']
@@ -48,75 +48,24 @@ class VappEntityArgs:
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
         """
-        VappEntityArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_id=container_id,
-            target_id=target_id,
-            custom_attributes=custom_attributes,
-            start_action=start_action,
-            start_delay=start_delay,
-            start_order=start_order,
-            stop_action=stop_action,
-            stop_delay=stop_delay,
-            tags=tags,
-            wait_for_guest=wait_for_guest,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_id: Optional[pulumi.Input[str]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             start_action: Optional[pulumi.Input[str]] = None,
-             start_delay: Optional[pulumi.Input[int]] = None,
-             start_order: Optional[pulumi.Input[int]] = None,
-             stop_action: Optional[pulumi.Input[str]] = None,
-             stop_delay: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             wait_for_guest: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if container_id is None:
-            raise TypeError("Missing 'container_id' argument")
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if target_id is None:
-            raise TypeError("Missing 'target_id' argument")
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if start_action is None and 'startAction' in kwargs:
-            start_action = kwargs['startAction']
-        if start_delay is None and 'startDelay' in kwargs:
-            start_delay = kwargs['startDelay']
-        if start_order is None and 'startOrder' in kwargs:
-            start_order = kwargs['startOrder']
-        if stop_action is None and 'stopAction' in kwargs:
-            stop_action = kwargs['stopAction']
-        if stop_delay is None and 'stopDelay' in kwargs:
-            stop_delay = kwargs['stopDelay']
-        if wait_for_guest is None and 'waitForGuest' in kwargs:
-            wait_for_guest = kwargs['waitForGuest']
-
-        _setter("container_id", container_id)
-        _setter("target_id", target_id)
+        pulumi.set(__self__, "container_id", container_id)
+        pulumi.set(__self__, "target_id", target_id)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if start_action is not None:
-            _setter("start_action", start_action)
+            pulumi.set(__self__, "start_action", start_action)
         if start_delay is not None:
-            _setter("start_delay", start_delay)
+            pulumi.set(__self__, "start_delay", start_delay)
         if start_order is not None:
-            _setter("start_order", start_order)
+            pulumi.set(__self__, "start_order", start_order)
         if stop_action is not None:
-            _setter("stop_action", stop_action)
+            pulumi.set(__self__, "stop_action", stop_action)
         if stop_delay is not None:
-            _setter("stop_delay", stop_delay)
+            pulumi.set(__self__, "stop_delay", stop_delay)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if wait_for_guest is not None:
-            _setter("wait_for_guest", wait_for_guest)
+            pulumi.set(__self__, "wait_for_guest", wait_for_guest)
 
     @property
     @pulumi.getter(name="containerId")
@@ -287,73 +236,26 @@ class _VappEntityState:
                started when VMware Tools are ready instead of waiting for `start_delay`. This
                property has no effect for vApps. Default: false
         """
-        _VappEntityState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_id=container_id,
-            custom_attributes=custom_attributes,
-            start_action=start_action,
-            start_delay=start_delay,
-            start_order=start_order,
-            stop_action=stop_action,
-            stop_delay=stop_delay,
-            tags=tags,
-            target_id=target_id,
-            wait_for_guest=wait_for_guest,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_id: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             start_action: Optional[pulumi.Input[str]] = None,
-             start_delay: Optional[pulumi.Input[int]] = None,
-             start_order: Optional[pulumi.Input[int]] = None,
-             stop_action: Optional[pulumi.Input[str]] = None,
-             stop_delay: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             target_id: Optional[pulumi.Input[str]] = None,
-             wait_for_guest: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_id is None and 'containerId' in kwargs:
-            container_id = kwargs['containerId']
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if start_action is None and 'startAction' in kwargs:
-            start_action = kwargs['startAction']
-        if start_delay is None and 'startDelay' in kwargs:
-            start_delay = kwargs['startDelay']
-        if start_order is None and 'startOrder' in kwargs:
-            start_order = kwargs['startOrder']
-        if stop_action is None and 'stopAction' in kwargs:
-            stop_action = kwargs['stopAction']
-        if stop_delay is None and 'stopDelay' in kwargs:
-            stop_delay = kwargs['stopDelay']
-        if target_id is None and 'targetId' in kwargs:
-            target_id = kwargs['targetId']
-        if wait_for_guest is None and 'waitForGuest' in kwargs:
-            wait_for_guest = kwargs['waitForGuest']
-
         if container_id is not None:
-            _setter("container_id", container_id)
+            pulumi.set(__self__, "container_id", container_id)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if start_action is not None:
-            _setter("start_action", start_action)
+            pulumi.set(__self__, "start_action", start_action)
         if start_delay is not None:
-            _setter("start_delay", start_delay)
+            pulumi.set(__self__, "start_delay", start_delay)
         if start_order is not None:
-            _setter("start_order", start_order)
+            pulumi.set(__self__, "start_order", start_order)
         if stop_action is not None:
-            _setter("stop_action", stop_action)
+            pulumi.set(__self__, "stop_action", stop_action)
         if stop_delay is not None:
-            _setter("stop_delay", stop_delay)
+            pulumi.set(__self__, "stop_delay", stop_delay)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_id is not None:
-            _setter("target_id", target_id)
+            pulumi.set(__self__, "target_id", target_id)
         if wait_for_guest is not None:
-            _setter("wait_for_guest", wait_for_guest)
+            pulumi.set(__self__, "wait_for_guest", wait_for_guest)
 
     @property
     @pulumi.getter(name="containerId")
@@ -547,10 +449,6 @@ class VappEntity(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VappEntityArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

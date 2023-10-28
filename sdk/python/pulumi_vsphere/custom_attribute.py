@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CustomAttributeArgs', 'CustomAttribute']
@@ -23,25 +23,10 @@ class CustomAttributeArgs:
                type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
-        CustomAttributeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            managed_object_type=managed_object_type,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             managed_object_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if managed_object_type is None and 'managedObjectType' in kwargs:
-            managed_object_type = kwargs['managedObjectType']
-
         if managed_object_type is not None:
-            _setter("managed_object_type", managed_object_type)
+            pulumi.set(__self__, "managed_object_type", managed_object_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="managedObjectType")
@@ -82,25 +67,10 @@ class _CustomAttributeState:
                type. For a full list, review the Managed Object Types. Forces a new resource if changed.
         :param pulumi.Input[str] name: The name of the custom attribute.
         """
-        _CustomAttributeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            managed_object_type=managed_object_type,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             managed_object_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if managed_object_type is None and 'managedObjectType' in kwargs:
-            managed_object_type = kwargs['managedObjectType']
-
         if managed_object_type is not None:
-            _setter("managed_object_type", managed_object_type)
+            pulumi.set(__self__, "managed_object_type", managed_object_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="managedObjectType")
@@ -164,10 +134,6 @@ class CustomAttribute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomAttributeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

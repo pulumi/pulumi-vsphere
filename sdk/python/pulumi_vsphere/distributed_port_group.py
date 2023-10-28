@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -147,282 +147,97 @@ class DistributedPortGroupArgs:
                individual port.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
-        DistributedPortGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            distributed_virtual_switch_uuid=distributed_virtual_switch_uuid,
-            active_uplinks=active_uplinks,
-            allow_forged_transmits=allow_forged_transmits,
-            allow_mac_changes=allow_mac_changes,
-            allow_promiscuous=allow_promiscuous,
-            auto_expand=auto_expand,
-            block_all_ports=block_all_ports,
-            block_override_allowed=block_override_allowed,
-            check_beacon=check_beacon,
-            custom_attributes=custom_attributes,
-            description=description,
-            directpath_gen2_allowed=directpath_gen2_allowed,
-            egress_shaping_average_bandwidth=egress_shaping_average_bandwidth,
-            egress_shaping_burst_size=egress_shaping_burst_size,
-            egress_shaping_enabled=egress_shaping_enabled,
-            egress_shaping_peak_bandwidth=egress_shaping_peak_bandwidth,
-            failback=failback,
-            ingress_shaping_average_bandwidth=ingress_shaping_average_bandwidth,
-            ingress_shaping_burst_size=ingress_shaping_burst_size,
-            ingress_shaping_enabled=ingress_shaping_enabled,
-            ingress_shaping_peak_bandwidth=ingress_shaping_peak_bandwidth,
-            lacp_enabled=lacp_enabled,
-            lacp_mode=lacp_mode,
-            live_port_moving_allowed=live_port_moving_allowed,
-            name=name,
-            netflow_enabled=netflow_enabled,
-            netflow_override_allowed=netflow_override_allowed,
-            network_resource_pool_key=network_resource_pool_key,
-            network_resource_pool_override_allowed=network_resource_pool_override_allowed,
-            notify_switches=notify_switches,
-            number_of_ports=number_of_ports,
-            port_config_reset_at_disconnect=port_config_reset_at_disconnect,
-            port_name_format=port_name_format,
-            port_private_secondary_vlan_id=port_private_secondary_vlan_id,
-            security_policy_override_allowed=security_policy_override_allowed,
-            shaping_override_allowed=shaping_override_allowed,
-            standby_uplinks=standby_uplinks,
-            tags=tags,
-            teaming_policy=teaming_policy,
-            traffic_filter_override_allowed=traffic_filter_override_allowed,
-            tx_uplink=tx_uplink,
-            type=type,
-            uplink_teaming_override_allowed=uplink_teaming_override_allowed,
-            vlan_id=vlan_id,
-            vlan_override_allowed=vlan_override_allowed,
-            vlan_ranges=vlan_ranges,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             distributed_virtual_switch_uuid: Optional[pulumi.Input[str]] = None,
-             active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
-             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
-             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
-             auto_expand: Optional[pulumi.Input[bool]] = None,
-             block_all_ports: Optional[pulumi.Input[bool]] = None,
-             block_override_allowed: Optional[pulumi.Input[bool]] = None,
-             check_beacon: Optional[pulumi.Input[bool]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
-             egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             failback: Optional[pulumi.Input[bool]] = None,
-             ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             lacp_enabled: Optional[pulumi.Input[bool]] = None,
-             lacp_mode: Optional[pulumi.Input[str]] = None,
-             live_port_moving_allowed: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netflow_enabled: Optional[pulumi.Input[bool]] = None,
-             netflow_override_allowed: Optional[pulumi.Input[bool]] = None,
-             network_resource_pool_key: Optional[pulumi.Input[str]] = None,
-             network_resource_pool_override_allowed: Optional[pulumi.Input[bool]] = None,
-             notify_switches: Optional[pulumi.Input[bool]] = None,
-             number_of_ports: Optional[pulumi.Input[int]] = None,
-             port_config_reset_at_disconnect: Optional[pulumi.Input[bool]] = None,
-             port_name_format: Optional[pulumi.Input[str]] = None,
-             port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
-             security_policy_override_allowed: Optional[pulumi.Input[bool]] = None,
-             shaping_override_allowed: Optional[pulumi.Input[bool]] = None,
-             standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             teaming_policy: Optional[pulumi.Input[str]] = None,
-             traffic_filter_override_allowed: Optional[pulumi.Input[bool]] = None,
-             tx_uplink: Optional[pulumi.Input[bool]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-             vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if distributed_virtual_switch_uuid is None and 'distributedVirtualSwitchUuid' in kwargs:
-            distributed_virtual_switch_uuid = kwargs['distributedVirtualSwitchUuid']
-        if distributed_virtual_switch_uuid is None:
-            raise TypeError("Missing 'distributed_virtual_switch_uuid' argument")
-        if active_uplinks is None and 'activeUplinks' in kwargs:
-            active_uplinks = kwargs['activeUplinks']
-        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
-            allow_forged_transmits = kwargs['allowForgedTransmits']
-        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
-            allow_mac_changes = kwargs['allowMacChanges']
-        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
-            allow_promiscuous = kwargs['allowPromiscuous']
-        if auto_expand is None and 'autoExpand' in kwargs:
-            auto_expand = kwargs['autoExpand']
-        if block_all_ports is None and 'blockAllPorts' in kwargs:
-            block_all_ports = kwargs['blockAllPorts']
-        if block_override_allowed is None and 'blockOverrideAllowed' in kwargs:
-            block_override_allowed = kwargs['blockOverrideAllowed']
-        if check_beacon is None and 'checkBeacon' in kwargs:
-            check_beacon = kwargs['checkBeacon']
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
-            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
-        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
-            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
-        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
-            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
-        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
-            egress_shaping_enabled = kwargs['egressShapingEnabled']
-        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
-            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
-        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
-            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
-        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
-            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
-        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
-            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
-        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
-            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
-        if lacp_enabled is None and 'lacpEnabled' in kwargs:
-            lacp_enabled = kwargs['lacpEnabled']
-        if lacp_mode is None and 'lacpMode' in kwargs:
-            lacp_mode = kwargs['lacpMode']
-        if live_port_moving_allowed is None and 'livePortMovingAllowed' in kwargs:
-            live_port_moving_allowed = kwargs['livePortMovingAllowed']
-        if netflow_enabled is None and 'netflowEnabled' in kwargs:
-            netflow_enabled = kwargs['netflowEnabled']
-        if netflow_override_allowed is None and 'netflowOverrideAllowed' in kwargs:
-            netflow_override_allowed = kwargs['netflowOverrideAllowed']
-        if network_resource_pool_key is None and 'networkResourcePoolKey' in kwargs:
-            network_resource_pool_key = kwargs['networkResourcePoolKey']
-        if network_resource_pool_override_allowed is None and 'networkResourcePoolOverrideAllowed' in kwargs:
-            network_resource_pool_override_allowed = kwargs['networkResourcePoolOverrideAllowed']
-        if notify_switches is None and 'notifySwitches' in kwargs:
-            notify_switches = kwargs['notifySwitches']
-        if number_of_ports is None and 'numberOfPorts' in kwargs:
-            number_of_ports = kwargs['numberOfPorts']
-        if port_config_reset_at_disconnect is None and 'portConfigResetAtDisconnect' in kwargs:
-            port_config_reset_at_disconnect = kwargs['portConfigResetAtDisconnect']
-        if port_name_format is None and 'portNameFormat' in kwargs:
-            port_name_format = kwargs['portNameFormat']
-        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
-            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
-        if security_policy_override_allowed is None and 'securityPolicyOverrideAllowed' in kwargs:
-            security_policy_override_allowed = kwargs['securityPolicyOverrideAllowed']
-        if shaping_override_allowed is None and 'shapingOverrideAllowed' in kwargs:
-            shaping_override_allowed = kwargs['shapingOverrideAllowed']
-        if standby_uplinks is None and 'standbyUplinks' in kwargs:
-            standby_uplinks = kwargs['standbyUplinks']
-        if teaming_policy is None and 'teamingPolicy' in kwargs:
-            teaming_policy = kwargs['teamingPolicy']
-        if traffic_filter_override_allowed is None and 'trafficFilterOverrideAllowed' in kwargs:
-            traffic_filter_override_allowed = kwargs['trafficFilterOverrideAllowed']
-        if tx_uplink is None and 'txUplink' in kwargs:
-            tx_uplink = kwargs['txUplink']
-        if uplink_teaming_override_allowed is None and 'uplinkTeamingOverrideAllowed' in kwargs:
-            uplink_teaming_override_allowed = kwargs['uplinkTeamingOverrideAllowed']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_override_allowed is None and 'vlanOverrideAllowed' in kwargs:
-            vlan_override_allowed = kwargs['vlanOverrideAllowed']
-        if vlan_ranges is None and 'vlanRanges' in kwargs:
-            vlan_ranges = kwargs['vlanRanges']
-
-        _setter("distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
+        pulumi.set(__self__, "distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
         if active_uplinks is not None:
-            _setter("active_uplinks", active_uplinks)
+            pulumi.set(__self__, "active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:
-            _setter("allow_forged_transmits", allow_forged_transmits)
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            _setter("allow_mac_changes", allow_mac_changes)
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            _setter("allow_promiscuous", allow_promiscuous)
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
         if auto_expand is not None:
-            _setter("auto_expand", auto_expand)
+            pulumi.set(__self__, "auto_expand", auto_expand)
         if block_all_ports is not None:
-            _setter("block_all_ports", block_all_ports)
+            pulumi.set(__self__, "block_all_ports", block_all_ports)
         if block_override_allowed is not None:
-            _setter("block_override_allowed", block_override_allowed)
+            pulumi.set(__self__, "block_override_allowed", block_override_allowed)
         if check_beacon is not None:
-            _setter("check_beacon", check_beacon)
+            pulumi.set(__self__, "check_beacon", check_beacon)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if directpath_gen2_allowed is not None:
-            _setter("directpath_gen2_allowed", directpath_gen2_allowed)
+            pulumi.set(__self__, "directpath_gen2_allowed", directpath_gen2_allowed)
         if egress_shaping_average_bandwidth is not None:
-            _setter("egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
+            pulumi.set(__self__, "egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
         if egress_shaping_burst_size is not None:
-            _setter("egress_shaping_burst_size", egress_shaping_burst_size)
+            pulumi.set(__self__, "egress_shaping_burst_size", egress_shaping_burst_size)
         if egress_shaping_enabled is not None:
-            _setter("egress_shaping_enabled", egress_shaping_enabled)
+            pulumi.set(__self__, "egress_shaping_enabled", egress_shaping_enabled)
         if egress_shaping_peak_bandwidth is not None:
-            _setter("egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
+            pulumi.set(__self__, "egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
         if failback is not None:
-            _setter("failback", failback)
+            pulumi.set(__self__, "failback", failback)
         if ingress_shaping_average_bandwidth is not None:
-            _setter("ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
+            pulumi.set(__self__, "ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
         if ingress_shaping_burst_size is not None:
-            _setter("ingress_shaping_burst_size", ingress_shaping_burst_size)
+            pulumi.set(__self__, "ingress_shaping_burst_size", ingress_shaping_burst_size)
         if ingress_shaping_enabled is not None:
-            _setter("ingress_shaping_enabled", ingress_shaping_enabled)
+            pulumi.set(__self__, "ingress_shaping_enabled", ingress_shaping_enabled)
         if ingress_shaping_peak_bandwidth is not None:
-            _setter("ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
+            pulumi.set(__self__, "ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
         if lacp_enabled is not None:
-            _setter("lacp_enabled", lacp_enabled)
+            pulumi.set(__self__, "lacp_enabled", lacp_enabled)
         if lacp_mode is not None:
-            _setter("lacp_mode", lacp_mode)
+            pulumi.set(__self__, "lacp_mode", lacp_mode)
         if live_port_moving_allowed is not None:
-            _setter("live_port_moving_allowed", live_port_moving_allowed)
+            pulumi.set(__self__, "live_port_moving_allowed", live_port_moving_allowed)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netflow_enabled is not None:
-            _setter("netflow_enabled", netflow_enabled)
+            pulumi.set(__self__, "netflow_enabled", netflow_enabled)
         if netflow_override_allowed is not None:
-            _setter("netflow_override_allowed", netflow_override_allowed)
+            pulumi.set(__self__, "netflow_override_allowed", netflow_override_allowed)
         if network_resource_pool_key is not None:
-            _setter("network_resource_pool_key", network_resource_pool_key)
+            pulumi.set(__self__, "network_resource_pool_key", network_resource_pool_key)
         if network_resource_pool_override_allowed is not None:
-            _setter("network_resource_pool_override_allowed", network_resource_pool_override_allowed)
+            pulumi.set(__self__, "network_resource_pool_override_allowed", network_resource_pool_override_allowed)
         if notify_switches is not None:
-            _setter("notify_switches", notify_switches)
+            pulumi.set(__self__, "notify_switches", notify_switches)
         if number_of_ports is not None:
-            _setter("number_of_ports", number_of_ports)
+            pulumi.set(__self__, "number_of_ports", number_of_ports)
         if port_config_reset_at_disconnect is not None:
-            _setter("port_config_reset_at_disconnect", port_config_reset_at_disconnect)
+            pulumi.set(__self__, "port_config_reset_at_disconnect", port_config_reset_at_disconnect)
         if port_name_format is not None:
-            _setter("port_name_format", port_name_format)
+            pulumi.set(__self__, "port_name_format", port_name_format)
         if port_private_secondary_vlan_id is not None:
-            _setter("port_private_secondary_vlan_id", port_private_secondary_vlan_id)
+            pulumi.set(__self__, "port_private_secondary_vlan_id", port_private_secondary_vlan_id)
         if security_policy_override_allowed is not None:
-            _setter("security_policy_override_allowed", security_policy_override_allowed)
+            pulumi.set(__self__, "security_policy_override_allowed", security_policy_override_allowed)
         if shaping_override_allowed is not None:
-            _setter("shaping_override_allowed", shaping_override_allowed)
+            pulumi.set(__self__, "shaping_override_allowed", shaping_override_allowed)
         if standby_uplinks is not None:
-            _setter("standby_uplinks", standby_uplinks)
+            pulumi.set(__self__, "standby_uplinks", standby_uplinks)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if teaming_policy is not None:
-            _setter("teaming_policy", teaming_policy)
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
         if traffic_filter_override_allowed is not None:
-            _setter("traffic_filter_override_allowed", traffic_filter_override_allowed)
+            pulumi.set(__self__, "traffic_filter_override_allowed", traffic_filter_override_allowed)
         if tx_uplink is not None:
-            _setter("tx_uplink", tx_uplink)
+            pulumi.set(__self__, "tx_uplink", tx_uplink)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uplink_teaming_override_allowed is not None:
-            _setter("uplink_teaming_override_allowed", uplink_teaming_override_allowed)
+            pulumi.set(__self__, "uplink_teaming_override_allowed", uplink_teaming_override_allowed)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
         if vlan_override_allowed is not None:
-            _setter("vlan_override_allowed", vlan_override_allowed)
+            pulumi.set(__self__, "vlan_override_allowed", vlan_override_allowed)
         if vlan_ranges is not None:
-            _setter("vlan_ranges", vlan_ranges)
+            pulumi.set(__self__, "vlan_ranges", vlan_ranges)
 
     @property
     @pulumi.getter(name="distributedVirtualSwitchUuid")
@@ -1152,291 +967,102 @@ class _DistributedPortGroupState:
                individual port.
         :param pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]] vlan_ranges: The VLAN ID for single VLAN mode. 0 denotes no VLAN.
         """
-        _DistributedPortGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_uplinks=active_uplinks,
-            allow_forged_transmits=allow_forged_transmits,
-            allow_mac_changes=allow_mac_changes,
-            allow_promiscuous=allow_promiscuous,
-            auto_expand=auto_expand,
-            block_all_ports=block_all_ports,
-            block_override_allowed=block_override_allowed,
-            check_beacon=check_beacon,
-            config_version=config_version,
-            custom_attributes=custom_attributes,
-            description=description,
-            directpath_gen2_allowed=directpath_gen2_allowed,
-            distributed_virtual_switch_uuid=distributed_virtual_switch_uuid,
-            egress_shaping_average_bandwidth=egress_shaping_average_bandwidth,
-            egress_shaping_burst_size=egress_shaping_burst_size,
-            egress_shaping_enabled=egress_shaping_enabled,
-            egress_shaping_peak_bandwidth=egress_shaping_peak_bandwidth,
-            failback=failback,
-            ingress_shaping_average_bandwidth=ingress_shaping_average_bandwidth,
-            ingress_shaping_burst_size=ingress_shaping_burst_size,
-            ingress_shaping_enabled=ingress_shaping_enabled,
-            ingress_shaping_peak_bandwidth=ingress_shaping_peak_bandwidth,
-            key=key,
-            lacp_enabled=lacp_enabled,
-            lacp_mode=lacp_mode,
-            live_port_moving_allowed=live_port_moving_allowed,
-            name=name,
-            netflow_enabled=netflow_enabled,
-            netflow_override_allowed=netflow_override_allowed,
-            network_resource_pool_key=network_resource_pool_key,
-            network_resource_pool_override_allowed=network_resource_pool_override_allowed,
-            notify_switches=notify_switches,
-            number_of_ports=number_of_ports,
-            port_config_reset_at_disconnect=port_config_reset_at_disconnect,
-            port_name_format=port_name_format,
-            port_private_secondary_vlan_id=port_private_secondary_vlan_id,
-            security_policy_override_allowed=security_policy_override_allowed,
-            shaping_override_allowed=shaping_override_allowed,
-            standby_uplinks=standby_uplinks,
-            tags=tags,
-            teaming_policy=teaming_policy,
-            traffic_filter_override_allowed=traffic_filter_override_allowed,
-            tx_uplink=tx_uplink,
-            type=type,
-            uplink_teaming_override_allowed=uplink_teaming_override_allowed,
-            vlan_id=vlan_id,
-            vlan_override_allowed=vlan_override_allowed,
-            vlan_ranges=vlan_ranges,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
-             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
-             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
-             auto_expand: Optional[pulumi.Input[bool]] = None,
-             block_all_ports: Optional[pulumi.Input[bool]] = None,
-             block_override_allowed: Optional[pulumi.Input[bool]] = None,
-             check_beacon: Optional[pulumi.Input[bool]] = None,
-             config_version: Optional[pulumi.Input[str]] = None,
-             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
-             distributed_virtual_switch_uuid: Optional[pulumi.Input[str]] = None,
-             egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             failback: Optional[pulumi.Input[bool]] = None,
-             ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             lacp_enabled: Optional[pulumi.Input[bool]] = None,
-             lacp_mode: Optional[pulumi.Input[str]] = None,
-             live_port_moving_allowed: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             netflow_enabled: Optional[pulumi.Input[bool]] = None,
-             netflow_override_allowed: Optional[pulumi.Input[bool]] = None,
-             network_resource_pool_key: Optional[pulumi.Input[str]] = None,
-             network_resource_pool_override_allowed: Optional[pulumi.Input[bool]] = None,
-             notify_switches: Optional[pulumi.Input[bool]] = None,
-             number_of_ports: Optional[pulumi.Input[int]] = None,
-             port_config_reset_at_disconnect: Optional[pulumi.Input[bool]] = None,
-             port_name_format: Optional[pulumi.Input[str]] = None,
-             port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
-             security_policy_override_allowed: Optional[pulumi.Input[bool]] = None,
-             shaping_override_allowed: Optional[pulumi.Input[bool]] = None,
-             standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             teaming_policy: Optional[pulumi.Input[str]] = None,
-             traffic_filter_override_allowed: Optional[pulumi.Input[bool]] = None,
-             tx_uplink: Optional[pulumi.Input[bool]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uplink_teaming_override_allowed: Optional[pulumi.Input[bool]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             vlan_override_allowed: Optional[pulumi.Input[bool]] = None,
-             vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedPortGroupVlanRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_uplinks is None and 'activeUplinks' in kwargs:
-            active_uplinks = kwargs['activeUplinks']
-        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
-            allow_forged_transmits = kwargs['allowForgedTransmits']
-        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
-            allow_mac_changes = kwargs['allowMacChanges']
-        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
-            allow_promiscuous = kwargs['allowPromiscuous']
-        if auto_expand is None and 'autoExpand' in kwargs:
-            auto_expand = kwargs['autoExpand']
-        if block_all_ports is None and 'blockAllPorts' in kwargs:
-            block_all_ports = kwargs['blockAllPorts']
-        if block_override_allowed is None and 'blockOverrideAllowed' in kwargs:
-            block_override_allowed = kwargs['blockOverrideAllowed']
-        if check_beacon is None and 'checkBeacon' in kwargs:
-            check_beacon = kwargs['checkBeacon']
-        if config_version is None and 'configVersion' in kwargs:
-            config_version = kwargs['configVersion']
-        if custom_attributes is None and 'customAttributes' in kwargs:
-            custom_attributes = kwargs['customAttributes']
-        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
-            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
-        if distributed_virtual_switch_uuid is None and 'distributedVirtualSwitchUuid' in kwargs:
-            distributed_virtual_switch_uuid = kwargs['distributedVirtualSwitchUuid']
-        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
-            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
-        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
-            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
-        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
-            egress_shaping_enabled = kwargs['egressShapingEnabled']
-        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
-            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
-        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
-            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
-        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
-            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
-        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
-            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
-        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
-            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
-        if lacp_enabled is None and 'lacpEnabled' in kwargs:
-            lacp_enabled = kwargs['lacpEnabled']
-        if lacp_mode is None and 'lacpMode' in kwargs:
-            lacp_mode = kwargs['lacpMode']
-        if live_port_moving_allowed is None and 'livePortMovingAllowed' in kwargs:
-            live_port_moving_allowed = kwargs['livePortMovingAllowed']
-        if netflow_enabled is None and 'netflowEnabled' in kwargs:
-            netflow_enabled = kwargs['netflowEnabled']
-        if netflow_override_allowed is None and 'netflowOverrideAllowed' in kwargs:
-            netflow_override_allowed = kwargs['netflowOverrideAllowed']
-        if network_resource_pool_key is None and 'networkResourcePoolKey' in kwargs:
-            network_resource_pool_key = kwargs['networkResourcePoolKey']
-        if network_resource_pool_override_allowed is None and 'networkResourcePoolOverrideAllowed' in kwargs:
-            network_resource_pool_override_allowed = kwargs['networkResourcePoolOverrideAllowed']
-        if notify_switches is None and 'notifySwitches' in kwargs:
-            notify_switches = kwargs['notifySwitches']
-        if number_of_ports is None and 'numberOfPorts' in kwargs:
-            number_of_ports = kwargs['numberOfPorts']
-        if port_config_reset_at_disconnect is None and 'portConfigResetAtDisconnect' in kwargs:
-            port_config_reset_at_disconnect = kwargs['portConfigResetAtDisconnect']
-        if port_name_format is None and 'portNameFormat' in kwargs:
-            port_name_format = kwargs['portNameFormat']
-        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
-            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
-        if security_policy_override_allowed is None and 'securityPolicyOverrideAllowed' in kwargs:
-            security_policy_override_allowed = kwargs['securityPolicyOverrideAllowed']
-        if shaping_override_allowed is None and 'shapingOverrideAllowed' in kwargs:
-            shaping_override_allowed = kwargs['shapingOverrideAllowed']
-        if standby_uplinks is None and 'standbyUplinks' in kwargs:
-            standby_uplinks = kwargs['standbyUplinks']
-        if teaming_policy is None and 'teamingPolicy' in kwargs:
-            teaming_policy = kwargs['teamingPolicy']
-        if traffic_filter_override_allowed is None and 'trafficFilterOverrideAllowed' in kwargs:
-            traffic_filter_override_allowed = kwargs['trafficFilterOverrideAllowed']
-        if tx_uplink is None and 'txUplink' in kwargs:
-            tx_uplink = kwargs['txUplink']
-        if uplink_teaming_override_allowed is None and 'uplinkTeamingOverrideAllowed' in kwargs:
-            uplink_teaming_override_allowed = kwargs['uplinkTeamingOverrideAllowed']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vlan_override_allowed is None and 'vlanOverrideAllowed' in kwargs:
-            vlan_override_allowed = kwargs['vlanOverrideAllowed']
-        if vlan_ranges is None and 'vlanRanges' in kwargs:
-            vlan_ranges = kwargs['vlanRanges']
-
         if active_uplinks is not None:
-            _setter("active_uplinks", active_uplinks)
+            pulumi.set(__self__, "active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:
-            _setter("allow_forged_transmits", allow_forged_transmits)
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            _setter("allow_mac_changes", allow_mac_changes)
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            _setter("allow_promiscuous", allow_promiscuous)
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
         if auto_expand is not None:
-            _setter("auto_expand", auto_expand)
+            pulumi.set(__self__, "auto_expand", auto_expand)
         if block_all_ports is not None:
-            _setter("block_all_ports", block_all_ports)
+            pulumi.set(__self__, "block_all_ports", block_all_ports)
         if block_override_allowed is not None:
-            _setter("block_override_allowed", block_override_allowed)
+            pulumi.set(__self__, "block_override_allowed", block_override_allowed)
         if check_beacon is not None:
-            _setter("check_beacon", check_beacon)
+            pulumi.set(__self__, "check_beacon", check_beacon)
         if config_version is not None:
-            _setter("config_version", config_version)
+            pulumi.set(__self__, "config_version", config_version)
         if custom_attributes is not None:
-            _setter("custom_attributes", custom_attributes)
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if directpath_gen2_allowed is not None:
-            _setter("directpath_gen2_allowed", directpath_gen2_allowed)
+            pulumi.set(__self__, "directpath_gen2_allowed", directpath_gen2_allowed)
         if distributed_virtual_switch_uuid is not None:
-            _setter("distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
+            pulumi.set(__self__, "distributed_virtual_switch_uuid", distributed_virtual_switch_uuid)
         if egress_shaping_average_bandwidth is not None:
-            _setter("egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
+            pulumi.set(__self__, "egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
         if egress_shaping_burst_size is not None:
-            _setter("egress_shaping_burst_size", egress_shaping_burst_size)
+            pulumi.set(__self__, "egress_shaping_burst_size", egress_shaping_burst_size)
         if egress_shaping_enabled is not None:
-            _setter("egress_shaping_enabled", egress_shaping_enabled)
+            pulumi.set(__self__, "egress_shaping_enabled", egress_shaping_enabled)
         if egress_shaping_peak_bandwidth is not None:
-            _setter("egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
+            pulumi.set(__self__, "egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
         if failback is not None:
-            _setter("failback", failback)
+            pulumi.set(__self__, "failback", failback)
         if ingress_shaping_average_bandwidth is not None:
-            _setter("ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
+            pulumi.set(__self__, "ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
         if ingress_shaping_burst_size is not None:
-            _setter("ingress_shaping_burst_size", ingress_shaping_burst_size)
+            pulumi.set(__self__, "ingress_shaping_burst_size", ingress_shaping_burst_size)
         if ingress_shaping_enabled is not None:
-            _setter("ingress_shaping_enabled", ingress_shaping_enabled)
+            pulumi.set(__self__, "ingress_shaping_enabled", ingress_shaping_enabled)
         if ingress_shaping_peak_bandwidth is not None:
-            _setter("ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
+            pulumi.set(__self__, "ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if lacp_enabled is not None:
-            _setter("lacp_enabled", lacp_enabled)
+            pulumi.set(__self__, "lacp_enabled", lacp_enabled)
         if lacp_mode is not None:
-            _setter("lacp_mode", lacp_mode)
+            pulumi.set(__self__, "lacp_mode", lacp_mode)
         if live_port_moving_allowed is not None:
-            _setter("live_port_moving_allowed", live_port_moving_allowed)
+            pulumi.set(__self__, "live_port_moving_allowed", live_port_moving_allowed)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if netflow_enabled is not None:
-            _setter("netflow_enabled", netflow_enabled)
+            pulumi.set(__self__, "netflow_enabled", netflow_enabled)
         if netflow_override_allowed is not None:
-            _setter("netflow_override_allowed", netflow_override_allowed)
+            pulumi.set(__self__, "netflow_override_allowed", netflow_override_allowed)
         if network_resource_pool_key is not None:
-            _setter("network_resource_pool_key", network_resource_pool_key)
+            pulumi.set(__self__, "network_resource_pool_key", network_resource_pool_key)
         if network_resource_pool_override_allowed is not None:
-            _setter("network_resource_pool_override_allowed", network_resource_pool_override_allowed)
+            pulumi.set(__self__, "network_resource_pool_override_allowed", network_resource_pool_override_allowed)
         if notify_switches is not None:
-            _setter("notify_switches", notify_switches)
+            pulumi.set(__self__, "notify_switches", notify_switches)
         if number_of_ports is not None:
-            _setter("number_of_ports", number_of_ports)
+            pulumi.set(__self__, "number_of_ports", number_of_ports)
         if port_config_reset_at_disconnect is not None:
-            _setter("port_config_reset_at_disconnect", port_config_reset_at_disconnect)
+            pulumi.set(__self__, "port_config_reset_at_disconnect", port_config_reset_at_disconnect)
         if port_name_format is not None:
-            _setter("port_name_format", port_name_format)
+            pulumi.set(__self__, "port_name_format", port_name_format)
         if port_private_secondary_vlan_id is not None:
-            _setter("port_private_secondary_vlan_id", port_private_secondary_vlan_id)
+            pulumi.set(__self__, "port_private_secondary_vlan_id", port_private_secondary_vlan_id)
         if security_policy_override_allowed is not None:
-            _setter("security_policy_override_allowed", security_policy_override_allowed)
+            pulumi.set(__self__, "security_policy_override_allowed", security_policy_override_allowed)
         if shaping_override_allowed is not None:
-            _setter("shaping_override_allowed", shaping_override_allowed)
+            pulumi.set(__self__, "shaping_override_allowed", shaping_override_allowed)
         if standby_uplinks is not None:
-            _setter("standby_uplinks", standby_uplinks)
+            pulumi.set(__self__, "standby_uplinks", standby_uplinks)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if teaming_policy is not None:
-            _setter("teaming_policy", teaming_policy)
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
         if traffic_filter_override_allowed is not None:
-            _setter("traffic_filter_override_allowed", traffic_filter_override_allowed)
+            pulumi.set(__self__, "traffic_filter_override_allowed", traffic_filter_override_allowed)
         if tx_uplink is not None:
-            _setter("tx_uplink", tx_uplink)
+            pulumi.set(__self__, "tx_uplink", tx_uplink)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uplink_teaming_override_allowed is not None:
-            _setter("uplink_teaming_override_allowed", uplink_teaming_override_allowed)
+            pulumi.set(__self__, "uplink_teaming_override_allowed", uplink_teaming_override_allowed)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
         if vlan_override_allowed is not None:
-            _setter("vlan_override_allowed", vlan_override_allowed)
+            pulumi.set(__self__, "vlan_override_allowed", vlan_override_allowed)
         if vlan_ranges is not None:
-            _setter("vlan_ranges", vlan_ranges)
+            pulumi.set(__self__, "vlan_ranges", vlan_ranges)
 
     @property
     @pulumi.getter(name="activeUplinks")
@@ -2209,10 +1835,6 @@ class DistributedPortGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DistributedPortGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

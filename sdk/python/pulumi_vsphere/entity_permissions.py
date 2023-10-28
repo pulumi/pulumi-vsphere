@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,34 +27,9 @@ class EntityPermissionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
-        EntityPermissionsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entity_id=entity_id,
-            entity_type=entity_type,
-            permissions=permissions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entity_id: Optional[pulumi.Input[str]] = None,
-             entity_type: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entity_id is None and 'entityId' in kwargs:
-            entity_id = kwargs['entityId']
-        if entity_id is None:
-            raise TypeError("Missing 'entity_id' argument")
-        if entity_type is None and 'entityType' in kwargs:
-            entity_type = kwargs['entityType']
-        if entity_type is None:
-            raise TypeError("Missing 'entity_type' argument")
-        if permissions is None:
-            raise TypeError("Missing 'permissions' argument")
-
-        _setter("entity_id", entity_id)
-        _setter("entity_type", entity_type)
-        _setter("permissions", permissions)
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter(name="entityId")
@@ -109,31 +84,12 @@ class _EntityPermissionsState:
         :param pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]] permissions: The permissions to be given on this entity. Keep the permissions sorted
                alphabetically on `user_or_group` for a better user experience.
         """
-        _EntityPermissionsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            entity_id=entity_id,
-            entity_type=entity_type,
-            permissions=permissions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             entity_id: Optional[pulumi.Input[str]] = None,
-             entity_type: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['EntityPermissionsPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entity_id is None and 'entityId' in kwargs:
-            entity_id = kwargs['entityId']
-        if entity_type is None and 'entityType' in kwargs:
-            entity_type = kwargs['entityType']
-
         if entity_id is not None:
-            _setter("entity_id", entity_id)
+            pulumi.set(__self__, "entity_id", entity_id)
         if entity_type is not None:
-            _setter("entity_type", entity_type)
+            pulumi.set(__self__, "entity_type", entity_type)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter(name="entityId")
@@ -211,10 +167,6 @@ class EntityPermissions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EntityPermissionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -62,115 +62,38 @@ class HostPortGroupArgs:
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
         """
-        HostPortGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_system_id=host_system_id,
-            virtual_switch_name=virtual_switch_name,
-            active_nics=active_nics,
-            allow_forged_transmits=allow_forged_transmits,
-            allow_mac_changes=allow_mac_changes,
-            allow_promiscuous=allow_promiscuous,
-            check_beacon=check_beacon,
-            failback=failback,
-            name=name,
-            notify_switches=notify_switches,
-            shaping_average_bandwidth=shaping_average_bandwidth,
-            shaping_burst_size=shaping_burst_size,
-            shaping_enabled=shaping_enabled,
-            shaping_peak_bandwidth=shaping_peak_bandwidth,
-            standby_nics=standby_nics,
-            teaming_policy=teaming_policy,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_system_id: Optional[pulumi.Input[str]] = None,
-             virtual_switch_name: Optional[pulumi.Input[str]] = None,
-             active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
-             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
-             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
-             check_beacon: Optional[pulumi.Input[bool]] = None,
-             failback: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notify_switches: Optional[pulumi.Input[bool]] = None,
-             shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             teaming_policy: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_system_id is None and 'hostSystemId' in kwargs:
-            host_system_id = kwargs['hostSystemId']
-        if host_system_id is None:
-            raise TypeError("Missing 'host_system_id' argument")
-        if virtual_switch_name is None and 'virtualSwitchName' in kwargs:
-            virtual_switch_name = kwargs['virtualSwitchName']
-        if virtual_switch_name is None:
-            raise TypeError("Missing 'virtual_switch_name' argument")
-        if active_nics is None and 'activeNics' in kwargs:
-            active_nics = kwargs['activeNics']
-        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
-            allow_forged_transmits = kwargs['allowForgedTransmits']
-        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
-            allow_mac_changes = kwargs['allowMacChanges']
-        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
-            allow_promiscuous = kwargs['allowPromiscuous']
-        if check_beacon is None and 'checkBeacon' in kwargs:
-            check_beacon = kwargs['checkBeacon']
-        if notify_switches is None and 'notifySwitches' in kwargs:
-            notify_switches = kwargs['notifySwitches']
-        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
-            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
-        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
-            shaping_burst_size = kwargs['shapingBurstSize']
-        if shaping_enabled is None and 'shapingEnabled' in kwargs:
-            shaping_enabled = kwargs['shapingEnabled']
-        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
-            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
-        if standby_nics is None and 'standbyNics' in kwargs:
-            standby_nics = kwargs['standbyNics']
-        if teaming_policy is None and 'teamingPolicy' in kwargs:
-            teaming_policy = kwargs['teamingPolicy']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-
-        _setter("host_system_id", host_system_id)
-        _setter("virtual_switch_name", virtual_switch_name)
+        pulumi.set(__self__, "host_system_id", host_system_id)
+        pulumi.set(__self__, "virtual_switch_name", virtual_switch_name)
         if active_nics is not None:
-            _setter("active_nics", active_nics)
+            pulumi.set(__self__, "active_nics", active_nics)
         if allow_forged_transmits is not None:
-            _setter("allow_forged_transmits", allow_forged_transmits)
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            _setter("allow_mac_changes", allow_mac_changes)
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            _setter("allow_promiscuous", allow_promiscuous)
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
         if check_beacon is not None:
-            _setter("check_beacon", check_beacon)
+            pulumi.set(__self__, "check_beacon", check_beacon)
         if failback is not None:
-            _setter("failback", failback)
+            pulumi.set(__self__, "failback", failback)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notify_switches is not None:
-            _setter("notify_switches", notify_switches)
+            pulumi.set(__self__, "notify_switches", notify_switches)
         if shaping_average_bandwidth is not None:
-            _setter("shaping_average_bandwidth", shaping_average_bandwidth)
+            pulumi.set(__self__, "shaping_average_bandwidth", shaping_average_bandwidth)
         if shaping_burst_size is not None:
-            _setter("shaping_burst_size", shaping_burst_size)
+            pulumi.set(__self__, "shaping_burst_size", shaping_burst_size)
         if shaping_enabled is not None:
-            _setter("shaping_enabled", shaping_enabled)
+            pulumi.set(__self__, "shaping_enabled", shaping_enabled)
         if shaping_peak_bandwidth is not None:
-            _setter("shaping_peak_bandwidth", shaping_peak_bandwidth)
+            pulumi.set(__self__, "shaping_peak_bandwidth", shaping_peak_bandwidth)
         if standby_nics is not None:
-            _setter("standby_nics", standby_nics)
+            pulumi.set(__self__, "standby_nics", standby_nics)
         if teaming_policy is not None:
-            _setter("teaming_policy", teaming_policy)
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter(name="hostSystemId")
@@ -443,127 +366,46 @@ class _HostPortGroupState:
                ID of `4095` enables trunk mode, allowing the guest to manage its own
                tagging. Default: `0`.
         """
-        _HostPortGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            active_nics=active_nics,
-            allow_forged_transmits=allow_forged_transmits,
-            allow_mac_changes=allow_mac_changes,
-            allow_promiscuous=allow_promiscuous,
-            check_beacon=check_beacon,
-            computed_policy=computed_policy,
-            failback=failback,
-            host_system_id=host_system_id,
-            key=key,
-            name=name,
-            notify_switches=notify_switches,
-            ports=ports,
-            shaping_average_bandwidth=shaping_average_bandwidth,
-            shaping_burst_size=shaping_burst_size,
-            shaping_enabled=shaping_enabled,
-            shaping_peak_bandwidth=shaping_peak_bandwidth,
-            standby_nics=standby_nics,
-            teaming_policy=teaming_policy,
-            virtual_switch_name=virtual_switch_name,
-            vlan_id=vlan_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             active_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
-             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
-             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
-             check_beacon: Optional[pulumi.Input[bool]] = None,
-             computed_policy: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             failback: Optional[pulumi.Input[bool]] = None,
-             host_system_id: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notify_switches: Optional[pulumi.Input[bool]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['HostPortGroupPortArgs']]]] = None,
-             shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
-             shaping_burst_size: Optional[pulumi.Input[int]] = None,
-             shaping_enabled: Optional[pulumi.Input[bool]] = None,
-             shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
-             standby_nics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             teaming_policy: Optional[pulumi.Input[str]] = None,
-             virtual_switch_name: Optional[pulumi.Input[str]] = None,
-             vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if active_nics is None and 'activeNics' in kwargs:
-            active_nics = kwargs['activeNics']
-        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
-            allow_forged_transmits = kwargs['allowForgedTransmits']
-        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
-            allow_mac_changes = kwargs['allowMacChanges']
-        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
-            allow_promiscuous = kwargs['allowPromiscuous']
-        if check_beacon is None and 'checkBeacon' in kwargs:
-            check_beacon = kwargs['checkBeacon']
-        if computed_policy is None and 'computedPolicy' in kwargs:
-            computed_policy = kwargs['computedPolicy']
-        if host_system_id is None and 'hostSystemId' in kwargs:
-            host_system_id = kwargs['hostSystemId']
-        if notify_switches is None and 'notifySwitches' in kwargs:
-            notify_switches = kwargs['notifySwitches']
-        if shaping_average_bandwidth is None and 'shapingAverageBandwidth' in kwargs:
-            shaping_average_bandwidth = kwargs['shapingAverageBandwidth']
-        if shaping_burst_size is None and 'shapingBurstSize' in kwargs:
-            shaping_burst_size = kwargs['shapingBurstSize']
-        if shaping_enabled is None and 'shapingEnabled' in kwargs:
-            shaping_enabled = kwargs['shapingEnabled']
-        if shaping_peak_bandwidth is None and 'shapingPeakBandwidth' in kwargs:
-            shaping_peak_bandwidth = kwargs['shapingPeakBandwidth']
-        if standby_nics is None and 'standbyNics' in kwargs:
-            standby_nics = kwargs['standbyNics']
-        if teaming_policy is None and 'teamingPolicy' in kwargs:
-            teaming_policy = kwargs['teamingPolicy']
-        if virtual_switch_name is None and 'virtualSwitchName' in kwargs:
-            virtual_switch_name = kwargs['virtualSwitchName']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-
         if active_nics is not None:
-            _setter("active_nics", active_nics)
+            pulumi.set(__self__, "active_nics", active_nics)
         if allow_forged_transmits is not None:
-            _setter("allow_forged_transmits", allow_forged_transmits)
+            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            _setter("allow_mac_changes", allow_mac_changes)
+            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            _setter("allow_promiscuous", allow_promiscuous)
+            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
         if check_beacon is not None:
-            _setter("check_beacon", check_beacon)
+            pulumi.set(__self__, "check_beacon", check_beacon)
         if computed_policy is not None:
-            _setter("computed_policy", computed_policy)
+            pulumi.set(__self__, "computed_policy", computed_policy)
         if failback is not None:
-            _setter("failback", failback)
+            pulumi.set(__self__, "failback", failback)
         if host_system_id is not None:
-            _setter("host_system_id", host_system_id)
+            pulumi.set(__self__, "host_system_id", host_system_id)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notify_switches is not None:
-            _setter("notify_switches", notify_switches)
+            pulumi.set(__self__, "notify_switches", notify_switches)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if shaping_average_bandwidth is not None:
-            _setter("shaping_average_bandwidth", shaping_average_bandwidth)
+            pulumi.set(__self__, "shaping_average_bandwidth", shaping_average_bandwidth)
         if shaping_burst_size is not None:
-            _setter("shaping_burst_size", shaping_burst_size)
+            pulumi.set(__self__, "shaping_burst_size", shaping_burst_size)
         if shaping_enabled is not None:
-            _setter("shaping_enabled", shaping_enabled)
+            pulumi.set(__self__, "shaping_enabled", shaping_enabled)
         if shaping_peak_bandwidth is not None:
-            _setter("shaping_peak_bandwidth", shaping_peak_bandwidth)
+            pulumi.set(__self__, "shaping_peak_bandwidth", shaping_peak_bandwidth)
         if standby_nics is not None:
-            _setter("standby_nics", standby_nics)
+            pulumi.set(__self__, "standby_nics", standby_nics)
         if teaming_policy is not None:
-            _setter("teaming_policy", teaming_policy)
+            pulumi.set(__self__, "teaming_policy", teaming_policy)
         if virtual_switch_name is not None:
-            _setter("virtual_switch_name", virtual_switch_name)
+            pulumi.set(__self__, "virtual_switch_name", virtual_switch_name)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
 
     @property
     @pulumi.getter(name="activeNics")
@@ -1033,10 +875,6 @@ class HostPortGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HostPortGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
