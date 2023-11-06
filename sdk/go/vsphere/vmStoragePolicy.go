@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `VmStoragePolicy` resource can be used to create and manage storage
@@ -363,12 +362,6 @@ func (i *VmStoragePolicy) ToVmStoragePolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyOutput)
 }
 
-func (i *VmStoragePolicy) ToOutput(ctx context.Context) pulumix.Output[*VmStoragePolicy] {
-	return pulumix.Output[*VmStoragePolicy]{
-		OutputState: i.ToVmStoragePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VmStoragePolicyArrayInput is an input type that accepts VmStoragePolicyArray and VmStoragePolicyArrayOutput values.
 // You can construct a concrete instance of `VmStoragePolicyArrayInput` via:
 //
@@ -392,12 +385,6 @@ func (i VmStoragePolicyArray) ToVmStoragePolicyArrayOutput() VmStoragePolicyArra
 
 func (i VmStoragePolicyArray) ToVmStoragePolicyArrayOutputWithContext(ctx context.Context) VmStoragePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyArrayOutput)
-}
-
-func (i VmStoragePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*VmStoragePolicy] {
-	return pulumix.Output[[]*VmStoragePolicy]{
-		OutputState: i.ToVmStoragePolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VmStoragePolicyMapInput is an input type that accepts VmStoragePolicyMap and VmStoragePolicyMapOutput values.
@@ -425,12 +412,6 @@ func (i VmStoragePolicyMap) ToVmStoragePolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmStoragePolicyMapOutput)
 }
 
-func (i VmStoragePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VmStoragePolicy] {
-	return pulumix.Output[map[string]*VmStoragePolicy]{
-		OutputState: i.ToVmStoragePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmStoragePolicyOutput struct{ *pulumi.OutputState }
 
 func (VmStoragePolicyOutput) ElementType() reflect.Type {
@@ -443,12 +424,6 @@ func (o VmStoragePolicyOutput) ToVmStoragePolicyOutput() VmStoragePolicyOutput {
 
 func (o VmStoragePolicyOutput) ToVmStoragePolicyOutputWithContext(ctx context.Context) VmStoragePolicyOutput {
 	return o
-}
-
-func (o VmStoragePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*VmStoragePolicy] {
-	return pulumix.Output[*VmStoragePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the storage policy.
@@ -480,12 +455,6 @@ func (o VmStoragePolicyArrayOutput) ToVmStoragePolicyArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o VmStoragePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VmStoragePolicy] {
-	return pulumix.Output[[]*VmStoragePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VmStoragePolicyArrayOutput) Index(i pulumi.IntInput) VmStoragePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VmStoragePolicy {
 		return vs[0].([]*VmStoragePolicy)[vs[1].(int)]
@@ -504,12 +473,6 @@ func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutput() VmStoragePolicyMa
 
 func (o VmStoragePolicyMapOutput) ToVmStoragePolicyMapOutputWithContext(ctx context.Context) VmStoragePolicyMapOutput {
 	return o
-}
-
-func (o VmStoragePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VmStoragePolicy] {
-	return pulumix.Output[map[string]*VmStoragePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VmStoragePolicyMapOutput) MapIndex(k pulumi.StringInput) VmStoragePolicyOutput {

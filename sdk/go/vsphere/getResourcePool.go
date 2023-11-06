@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ResourcePool` data source can be used to discover the ID of a
@@ -169,12 +168,6 @@ func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutput() Looku
 
 func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutputWithContext(ctx context.Context) LookupResourcePoolResultOutput {
 	return o
-}
-
-func (o LookupResourcePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourcePoolResult] {
-	return pulumix.Output[LookupResourcePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupResourcePoolResultOutput) DatacenterId() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Datacenter` data source can be used to discover the ID of a
@@ -113,12 +112,6 @@ func (o LookupDatacenterResultOutput) ToLookupDatacenterResultOutput() LookupDat
 
 func (o LookupDatacenterResultOutput) ToLookupDatacenterResultOutputWithContext(ctx context.Context) LookupDatacenterResultOutput {
 	return o
-}
-
-func (o LookupDatacenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatacenterResult] {
-	return pulumix.Output[LookupDatacenterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

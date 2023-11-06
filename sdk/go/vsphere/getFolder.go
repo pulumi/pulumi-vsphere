@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Folder` data source can be used to get the general attributes of a
@@ -107,12 +106,6 @@ func (o LookupFolderResultOutput) ToLookupFolderResultOutput() LookupFolderResul
 
 func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx context.Context) LookupFolderResultOutput {
 	return o
-}
-
-func (o LookupFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderResult] {
-	return pulumix.Output[LookupFolderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Host` data source can be used to discover the ID of an ESXi host.
@@ -125,12 +124,6 @@ func (o LookupHostResultOutput) ToLookupHostResultOutput() LookupHostResultOutpu
 
 func (o LookupHostResultOutput) ToLookupHostResultOutputWithContext(ctx context.Context) LookupHostResultOutput {
 	return o
-}
-
-func (o LookupHostResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostResult] {
-	return pulumix.Output[LookupHostResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupHostResultOutput) DatacenterId() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `TagCategory` data source can be used to reference tag categories
@@ -108,12 +107,6 @@ func (o LookupTagCategoryResultOutput) ToLookupTagCategoryResultOutput() LookupT
 
 func (o LookupTagCategoryResultOutput) ToLookupTagCategoryResultOutputWithContext(ctx context.Context) LookupTagCategoryResultOutput {
 	return o
-}
-
-func (o LookupTagCategoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagCategoryResult] {
-	return pulumix.Output[LookupTagCategoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTagCategoryResultOutput) AssociableTypes() pulumi.StringArrayOutput {

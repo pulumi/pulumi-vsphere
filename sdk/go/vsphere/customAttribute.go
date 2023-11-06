@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type CustomAttribute struct {
@@ -116,12 +115,6 @@ func (i *CustomAttribute) ToCustomAttributeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput)
 }
 
-func (i *CustomAttribute) ToOutput(ctx context.Context) pulumix.Output[*CustomAttribute] {
-	return pulumix.Output[*CustomAttribute]{
-		OutputState: i.ToCustomAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomAttributeArrayInput is an input type that accepts CustomAttributeArray and CustomAttributeArrayOutput values.
 // You can construct a concrete instance of `CustomAttributeArrayInput` via:
 //
@@ -145,12 +138,6 @@ func (i CustomAttributeArray) ToCustomAttributeArrayOutput() CustomAttributeArra
 
 func (i CustomAttributeArray) ToCustomAttributeArrayOutputWithContext(ctx context.Context) CustomAttributeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeArrayOutput)
-}
-
-func (i CustomAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomAttribute] {
-	return pulumix.Output[[]*CustomAttribute]{
-		OutputState: i.ToCustomAttributeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomAttributeMapInput is an input type that accepts CustomAttributeMap and CustomAttributeMapOutput values.
@@ -178,12 +165,6 @@ func (i CustomAttributeMap) ToCustomAttributeMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeMapOutput)
 }
 
-func (i CustomAttributeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomAttribute] {
-	return pulumix.Output[map[string]*CustomAttribute]{
-		OutputState: i.ToCustomAttributeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomAttributeOutput struct{ *pulumi.OutputState }
 
 func (CustomAttributeOutput) ElementType() reflect.Type {
@@ -196,12 +177,6 @@ func (o CustomAttributeOutput) ToCustomAttributeOutput() CustomAttributeOutput {
 
 func (o CustomAttributeOutput) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
 	return o
-}
-
-func (o CustomAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomAttribute] {
-	return pulumix.Output[*CustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object type that this attribute may be
@@ -230,12 +205,6 @@ func (o CustomAttributeArrayOutput) ToCustomAttributeArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o CustomAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomAttribute] {
-	return pulumix.Output[[]*CustomAttribute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomAttributeArrayOutput) Index(i pulumi.IntInput) CustomAttributeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomAttribute {
 		return vs[0].([]*CustomAttribute)[vs[1].(int)]
@@ -254,12 +223,6 @@ func (o CustomAttributeMapOutput) ToCustomAttributeMapOutput() CustomAttributeMa
 
 func (o CustomAttributeMapOutput) ToCustomAttributeMapOutputWithContext(ctx context.Context) CustomAttributeMapOutput {
 	return o
-}
-
-func (o CustomAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomAttribute] {
-	return pulumix.Output[map[string]*CustomAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomAttributeMapOutput) MapIndex(k pulumi.StringInput) CustomAttributeOutput {

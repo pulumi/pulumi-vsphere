@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getOvfVmTemplate` data source can be used to submit an OVF to
@@ -290,12 +289,6 @@ func (o GetOvfVmTemplateResultOutput) ToGetOvfVmTemplateResultOutput() GetOvfVmT
 
 func (o GetOvfVmTemplateResultOutput) ToGetOvfVmTemplateResultOutputWithContext(ctx context.Context) GetOvfVmTemplateResultOutput {
 	return o
-}
-
-func (o GetOvfVmTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOvfVmTemplateResult] {
-	return pulumix.Output[GetOvfVmTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOvfVmTemplateResultOutput) AllowUnverifiedSslCert() pulumi.BoolPtrOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ContentLibrary struct {
@@ -140,12 +139,6 @@ func (i *ContentLibrary) ToContentLibraryOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryOutput)
 }
 
-func (i *ContentLibrary) ToOutput(ctx context.Context) pulumix.Output[*ContentLibrary] {
-	return pulumix.Output[*ContentLibrary]{
-		OutputState: i.ToContentLibraryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContentLibraryArrayInput is an input type that accepts ContentLibraryArray and ContentLibraryArrayOutput values.
 // You can construct a concrete instance of `ContentLibraryArrayInput` via:
 //
@@ -169,12 +162,6 @@ func (i ContentLibraryArray) ToContentLibraryArrayOutput() ContentLibraryArrayOu
 
 func (i ContentLibraryArray) ToContentLibraryArrayOutputWithContext(ctx context.Context) ContentLibraryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryArrayOutput)
-}
-
-func (i ContentLibraryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContentLibrary] {
-	return pulumix.Output[[]*ContentLibrary]{
-		OutputState: i.ToContentLibraryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContentLibraryMapInput is an input type that accepts ContentLibraryMap and ContentLibraryMapOutput values.
@@ -202,12 +189,6 @@ func (i ContentLibraryMap) ToContentLibraryMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLibraryMapOutput)
 }
 
-func (i ContentLibraryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentLibrary] {
-	return pulumix.Output[map[string]*ContentLibrary]{
-		OutputState: i.ToContentLibraryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentLibraryOutput struct{ *pulumi.OutputState }
 
 func (ContentLibraryOutput) ElementType() reflect.Type {
@@ -220,12 +201,6 @@ func (o ContentLibraryOutput) ToContentLibraryOutput() ContentLibraryOutput {
 
 func (o ContentLibraryOutput) ToContentLibraryOutputWithContext(ctx context.Context) ContentLibraryOutput {
 	return o
-}
-
-func (o ContentLibraryOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentLibrary] {
-	return pulumix.Output[*ContentLibrary]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description for the content library.
@@ -267,12 +242,6 @@ func (o ContentLibraryArrayOutput) ToContentLibraryArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ContentLibraryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContentLibrary] {
-	return pulumix.Output[[]*ContentLibrary]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContentLibraryArrayOutput) Index(i pulumi.IntInput) ContentLibraryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContentLibrary {
 		return vs[0].([]*ContentLibrary)[vs[1].(int)]
@@ -291,12 +260,6 @@ func (o ContentLibraryMapOutput) ToContentLibraryMapOutput() ContentLibraryMapOu
 
 func (o ContentLibraryMapOutput) ToContentLibraryMapOutputWithContext(ctx context.Context) ContentLibraryMapOutput {
 	return o
-}
-
-func (o ContentLibraryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentLibrary] {
-	return pulumix.Output[map[string]*ContentLibrary]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentLibraryMapOutput) MapIndex(k pulumi.StringInput) ContentLibraryOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a VMware vSphere host resource. This represents an ESXi host that
@@ -510,12 +509,6 @@ func (i *Host) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostOutput)
 }
 
-func (i *Host) ToOutput(ctx context.Context) pulumix.Output[*Host] {
-	return pulumix.Output[*Host]{
-		OutputState: i.ToHostOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostArrayInput is an input type that accepts HostArray and HostArrayOutput values.
 // You can construct a concrete instance of `HostArrayInput` via:
 //
@@ -539,12 +532,6 @@ func (i HostArray) ToHostArrayOutput() HostArrayOutput {
 
 func (i HostArray) ToHostArrayOutputWithContext(ctx context.Context) HostArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostArrayOutput)
-}
-
-func (i HostArray) ToOutput(ctx context.Context) pulumix.Output[[]*Host] {
-	return pulumix.Output[[]*Host]{
-		OutputState: i.ToHostArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostMapInput is an input type that accepts HostMap and HostMapOutput values.
@@ -572,12 +559,6 @@ func (i HostMap) ToHostMapOutputWithContext(ctx context.Context) HostMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostMapOutput)
 }
 
-func (i HostMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Host] {
-	return pulumix.Output[map[string]*Host]{
-		OutputState: i.ToHostMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostOutput struct{ *pulumi.OutputState }
 
 func (HostOutput) ElementType() reflect.Type {
@@ -590,12 +571,6 @@ func (o HostOutput) ToHostOutput() HostOutput {
 
 func (o HostOutput) ToHostOutputWithContext(ctx context.Context) HostOutput {
 	return o
-}
-
-func (o HostOutput) ToOutput(ctx context.Context) pulumix.Output[*Host] {
-	return pulumix.Output[*Host]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the Compute Cluster this host should
@@ -711,12 +686,6 @@ func (o HostArrayOutput) ToHostArrayOutputWithContext(ctx context.Context) HostA
 	return o
 }
 
-func (o HostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Host] {
-	return pulumix.Output[[]*Host]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostArrayOutput) Index(i pulumi.IntInput) HostOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Host {
 		return vs[0].([]*Host)[vs[1].(int)]
@@ -735,12 +704,6 @@ func (o HostMapOutput) ToHostMapOutput() HostMapOutput {
 
 func (o HostMapOutput) ToHostMapOutputWithContext(ctx context.Context) HostMapOutput {
 	return o
-}
-
-func (o HostMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Host] {
-	return pulumix.Output[map[string]*Host]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostMapOutput) MapIndex(k pulumi.StringInput) HostOutput {
