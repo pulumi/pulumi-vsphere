@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -206,153 +206,440 @@ class VirtualMachineArgs:
         :param pulumi.Input[bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
         :param pulumi.Input[int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
         """
-        pulumi.set(__self__, "resource_pool_id", resource_pool_id)
+        VirtualMachineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_pool_id=resource_pool_id,
+            alternate_guest_name=alternate_guest_name,
+            annotation=annotation,
+            boot_delay=boot_delay,
+            boot_retry_delay=boot_retry_delay,
+            boot_retry_enabled=boot_retry_enabled,
+            cdroms=cdroms,
+            clone=clone,
+            cpu_hot_add_enabled=cpu_hot_add_enabled,
+            cpu_hot_remove_enabled=cpu_hot_remove_enabled,
+            cpu_limit=cpu_limit,
+            cpu_performance_counters_enabled=cpu_performance_counters_enabled,
+            cpu_reservation=cpu_reservation,
+            cpu_share_count=cpu_share_count,
+            cpu_share_level=cpu_share_level,
+            custom_attributes=custom_attributes,
+            datacenter_id=datacenter_id,
+            datastore_cluster_id=datastore_cluster_id,
+            datastore_id=datastore_id,
+            disks=disks,
+            efi_secure_boot_enabled=efi_secure_boot_enabled,
+            enable_disk_uuid=enable_disk_uuid,
+            enable_logging=enable_logging,
+            ept_rvi_mode=ept_rvi_mode,
+            extra_config=extra_config,
+            extra_config_reboot_required=extra_config_reboot_required,
+            firmware=firmware,
+            folder=folder,
+            force_power_off=force_power_off,
+            guest_id=guest_id,
+            hardware_version=hardware_version,
+            host_system_id=host_system_id,
+            hv_mode=hv_mode,
+            ide_controller_count=ide_controller_count,
+            ignored_guest_ips=ignored_guest_ips,
+            latency_sensitivity=latency_sensitivity,
+            memory=memory,
+            memory_hot_add_enabled=memory_hot_add_enabled,
+            memory_limit=memory_limit,
+            memory_reservation=memory_reservation,
+            memory_share_count=memory_share_count,
+            memory_share_level=memory_share_level,
+            migrate_wait_timeout=migrate_wait_timeout,
+            name=name,
+            nested_hv_enabled=nested_hv_enabled,
+            network_interfaces=network_interfaces,
+            num_cores_per_socket=num_cores_per_socket,
+            num_cpus=num_cpus,
+            ovf_deploy=ovf_deploy,
+            pci_device_ids=pci_device_ids,
+            poweron_timeout=poweron_timeout,
+            replace_trigger=replace_trigger,
+            run_tools_scripts_after_power_on=run_tools_scripts_after_power_on,
+            run_tools_scripts_after_resume=run_tools_scripts_after_resume,
+            run_tools_scripts_before_guest_reboot=run_tools_scripts_before_guest_reboot,
+            run_tools_scripts_before_guest_shutdown=run_tools_scripts_before_guest_shutdown,
+            run_tools_scripts_before_guest_standby=run_tools_scripts_before_guest_standby,
+            sata_controller_count=sata_controller_count,
+            scsi_bus_sharing=scsi_bus_sharing,
+            scsi_controller_count=scsi_controller_count,
+            scsi_type=scsi_type,
+            shutdown_wait_timeout=shutdown_wait_timeout,
+            storage_policy_id=storage_policy_id,
+            swap_placement_policy=swap_placement_policy,
+            sync_time_with_host=sync_time_with_host,
+            sync_time_with_host_periodically=sync_time_with_host_periodically,
+            tags=tags,
+            tools_upgrade_policy=tools_upgrade_policy,
+            vapp=vapp,
+            vbs_enabled=vbs_enabled,
+            vvtd_enabled=vvtd_enabled,
+            wait_for_guest_ip_timeout=wait_for_guest_ip_timeout,
+            wait_for_guest_net_routable=wait_for_guest_net_routable,
+            wait_for_guest_net_timeout=wait_for_guest_net_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_pool_id: Optional[pulumi.Input[str]] = None,
+             alternate_guest_name: Optional[pulumi.Input[str]] = None,
+             annotation: Optional[pulumi.Input[str]] = None,
+             boot_delay: Optional[pulumi.Input[int]] = None,
+             boot_retry_delay: Optional[pulumi.Input[int]] = None,
+             boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
+             cdroms: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
+             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
+             cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_limit: Optional[pulumi.Input[int]] = None,
+             cpu_performance_counters_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_reservation: Optional[pulumi.Input[int]] = None,
+             cpu_share_count: Optional[pulumi.Input[int]] = None,
+             cpu_share_level: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             datastore_id: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+             efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+             enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             ept_rvi_mode: Optional[pulumi.Input[str]] = None,
+             extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             extra_config_reboot_required: Optional[pulumi.Input[bool]] = None,
+             firmware: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             force_power_off: Optional[pulumi.Input[bool]] = None,
+             guest_id: Optional[pulumi.Input[str]] = None,
+             hardware_version: Optional[pulumi.Input[int]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             hv_mode: Optional[pulumi.Input[str]] = None,
+             ide_controller_count: Optional[pulumi.Input[int]] = None,
+             ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             latency_sensitivity: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+             memory_limit: Optional[pulumi.Input[int]] = None,
+             memory_reservation: Optional[pulumi.Input[int]] = None,
+             memory_share_count: Optional[pulumi.Input[int]] = None,
+             memory_share_level: Optional[pulumi.Input[str]] = None,
+             migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+             num_cores_per_socket: Optional[pulumi.Input[int]] = None,
+             num_cpus: Optional[pulumi.Input[int]] = None,
+             ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
+             pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             poweron_timeout: Optional[pulumi.Input[int]] = None,
+             replace_trigger: Optional[pulumi.Input[str]] = None,
+             run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_standby: Optional[pulumi.Input[bool]] = None,
+             sata_controller_count: Optional[pulumi.Input[int]] = None,
+             scsi_bus_sharing: Optional[pulumi.Input[str]] = None,
+             scsi_controller_count: Optional[pulumi.Input[int]] = None,
+             scsi_type: Optional[pulumi.Input[str]] = None,
+             shutdown_wait_timeout: Optional[pulumi.Input[int]] = None,
+             storage_policy_id: Optional[pulumi.Input[str]] = None,
+             swap_placement_policy: Optional[pulumi.Input[str]] = None,
+             sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+             sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
+             vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
+             vbs_enabled: Optional[pulumi.Input[bool]] = None,
+             vvtd_enabled: Optional[pulumi.Input[bool]] = None,
+             wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
+             wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
+             wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if resource_pool_id is None and 'resourcePoolId' in kwargs:
+            resource_pool_id = kwargs['resourcePoolId']
+        if resource_pool_id is None:
+            raise TypeError("Missing 'resource_pool_id' argument")
+        if alternate_guest_name is None and 'alternateGuestName' in kwargs:
+            alternate_guest_name = kwargs['alternateGuestName']
+        if boot_delay is None and 'bootDelay' in kwargs:
+            boot_delay = kwargs['bootDelay']
+        if boot_retry_delay is None and 'bootRetryDelay' in kwargs:
+            boot_retry_delay = kwargs['bootRetryDelay']
+        if boot_retry_enabled is None and 'bootRetryEnabled' in kwargs:
+            boot_retry_enabled = kwargs['bootRetryEnabled']
+        if cpu_hot_add_enabled is None and 'cpuHotAddEnabled' in kwargs:
+            cpu_hot_add_enabled = kwargs['cpuHotAddEnabled']
+        if cpu_hot_remove_enabled is None and 'cpuHotRemoveEnabled' in kwargs:
+            cpu_hot_remove_enabled = kwargs['cpuHotRemoveEnabled']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_performance_counters_enabled is None and 'cpuPerformanceCountersEnabled' in kwargs:
+            cpu_performance_counters_enabled = kwargs['cpuPerformanceCountersEnabled']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_count is None and 'cpuShareCount' in kwargs:
+            cpu_share_count = kwargs['cpuShareCount']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_id is None and 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if efi_secure_boot_enabled is None and 'efiSecureBootEnabled' in kwargs:
+            efi_secure_boot_enabled = kwargs['efiSecureBootEnabled']
+        if enable_disk_uuid is None and 'enableDiskUuid' in kwargs:
+            enable_disk_uuid = kwargs['enableDiskUuid']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if ept_rvi_mode is None and 'eptRviMode' in kwargs:
+            ept_rvi_mode = kwargs['eptRviMode']
+        if extra_config is None and 'extraConfig' in kwargs:
+            extra_config = kwargs['extraConfig']
+        if extra_config_reboot_required is None and 'extraConfigRebootRequired' in kwargs:
+            extra_config_reboot_required = kwargs['extraConfigRebootRequired']
+        if force_power_off is None and 'forcePowerOff' in kwargs:
+            force_power_off = kwargs['forcePowerOff']
+        if guest_id is None and 'guestId' in kwargs:
+            guest_id = kwargs['guestId']
+        if hardware_version is None and 'hardwareVersion' in kwargs:
+            hardware_version = kwargs['hardwareVersion']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if hv_mode is None and 'hvMode' in kwargs:
+            hv_mode = kwargs['hvMode']
+        if ide_controller_count is None and 'ideControllerCount' in kwargs:
+            ide_controller_count = kwargs['ideControllerCount']
+        if ignored_guest_ips is None and 'ignoredGuestIps' in kwargs:
+            ignored_guest_ips = kwargs['ignoredGuestIps']
+        if latency_sensitivity is None and 'latencySensitivity' in kwargs:
+            latency_sensitivity = kwargs['latencySensitivity']
+        if memory_hot_add_enabled is None and 'memoryHotAddEnabled' in kwargs:
+            memory_hot_add_enabled = kwargs['memoryHotAddEnabled']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_count is None and 'memoryShareCount' in kwargs:
+            memory_share_count = kwargs['memoryShareCount']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if migrate_wait_timeout is None and 'migrateWaitTimeout' in kwargs:
+            migrate_wait_timeout = kwargs['migrateWaitTimeout']
+        if nested_hv_enabled is None and 'nestedHvEnabled' in kwargs:
+            nested_hv_enabled = kwargs['nestedHvEnabled']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if num_cores_per_socket is None and 'numCoresPerSocket' in kwargs:
+            num_cores_per_socket = kwargs['numCoresPerSocket']
+        if num_cpus is None and 'numCpus' in kwargs:
+            num_cpus = kwargs['numCpus']
+        if ovf_deploy is None and 'ovfDeploy' in kwargs:
+            ovf_deploy = kwargs['ovfDeploy']
+        if pci_device_ids is None and 'pciDeviceIds' in kwargs:
+            pci_device_ids = kwargs['pciDeviceIds']
+        if poweron_timeout is None and 'poweronTimeout' in kwargs:
+            poweron_timeout = kwargs['poweronTimeout']
+        if replace_trigger is None and 'replaceTrigger' in kwargs:
+            replace_trigger = kwargs['replaceTrigger']
+        if run_tools_scripts_after_power_on is None and 'runToolsScriptsAfterPowerOn' in kwargs:
+            run_tools_scripts_after_power_on = kwargs['runToolsScriptsAfterPowerOn']
+        if run_tools_scripts_after_resume is None and 'runToolsScriptsAfterResume' in kwargs:
+            run_tools_scripts_after_resume = kwargs['runToolsScriptsAfterResume']
+        if run_tools_scripts_before_guest_reboot is None and 'runToolsScriptsBeforeGuestReboot' in kwargs:
+            run_tools_scripts_before_guest_reboot = kwargs['runToolsScriptsBeforeGuestReboot']
+        if run_tools_scripts_before_guest_shutdown is None and 'runToolsScriptsBeforeGuestShutdown' in kwargs:
+            run_tools_scripts_before_guest_shutdown = kwargs['runToolsScriptsBeforeGuestShutdown']
+        if run_tools_scripts_before_guest_standby is None and 'runToolsScriptsBeforeGuestStandby' in kwargs:
+            run_tools_scripts_before_guest_standby = kwargs['runToolsScriptsBeforeGuestStandby']
+        if sata_controller_count is None and 'sataControllerCount' in kwargs:
+            sata_controller_count = kwargs['sataControllerCount']
+        if scsi_bus_sharing is None and 'scsiBusSharing' in kwargs:
+            scsi_bus_sharing = kwargs['scsiBusSharing']
+        if scsi_controller_count is None and 'scsiControllerCount' in kwargs:
+            scsi_controller_count = kwargs['scsiControllerCount']
+        if scsi_type is None and 'scsiType' in kwargs:
+            scsi_type = kwargs['scsiType']
+        if shutdown_wait_timeout is None and 'shutdownWaitTimeout' in kwargs:
+            shutdown_wait_timeout = kwargs['shutdownWaitTimeout']
+        if storage_policy_id is None and 'storagePolicyId' in kwargs:
+            storage_policy_id = kwargs['storagePolicyId']
+        if swap_placement_policy is None and 'swapPlacementPolicy' in kwargs:
+            swap_placement_policy = kwargs['swapPlacementPolicy']
+        if sync_time_with_host is None and 'syncTimeWithHost' in kwargs:
+            sync_time_with_host = kwargs['syncTimeWithHost']
+        if sync_time_with_host_periodically is None and 'syncTimeWithHostPeriodically' in kwargs:
+            sync_time_with_host_periodically = kwargs['syncTimeWithHostPeriodically']
+        if tools_upgrade_policy is None and 'toolsUpgradePolicy' in kwargs:
+            tools_upgrade_policy = kwargs['toolsUpgradePolicy']
+        if vbs_enabled is None and 'vbsEnabled' in kwargs:
+            vbs_enabled = kwargs['vbsEnabled']
+        if vvtd_enabled is None and 'vvtdEnabled' in kwargs:
+            vvtd_enabled = kwargs['vvtdEnabled']
+        if wait_for_guest_ip_timeout is None and 'waitForGuestIpTimeout' in kwargs:
+            wait_for_guest_ip_timeout = kwargs['waitForGuestIpTimeout']
+        if wait_for_guest_net_routable is None and 'waitForGuestNetRoutable' in kwargs:
+            wait_for_guest_net_routable = kwargs['waitForGuestNetRoutable']
+        if wait_for_guest_net_timeout is None and 'waitForGuestNetTimeout' in kwargs:
+            wait_for_guest_net_timeout = kwargs['waitForGuestNetTimeout']
+
+        _setter("resource_pool_id", resource_pool_id)
         if alternate_guest_name is not None:
-            pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
+            _setter("alternate_guest_name", alternate_guest_name)
         if annotation is not None:
-            pulumi.set(__self__, "annotation", annotation)
+            _setter("annotation", annotation)
         if boot_delay is not None:
-            pulumi.set(__self__, "boot_delay", boot_delay)
+            _setter("boot_delay", boot_delay)
         if boot_retry_delay is not None:
-            pulumi.set(__self__, "boot_retry_delay", boot_retry_delay)
+            _setter("boot_retry_delay", boot_retry_delay)
         if boot_retry_enabled is not None:
-            pulumi.set(__self__, "boot_retry_enabled", boot_retry_enabled)
+            _setter("boot_retry_enabled", boot_retry_enabled)
         if cdroms is not None:
-            pulumi.set(__self__, "cdroms", cdroms)
+            _setter("cdroms", cdroms)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if cpu_hot_add_enabled is not None:
-            pulumi.set(__self__, "cpu_hot_add_enabled", cpu_hot_add_enabled)
+            _setter("cpu_hot_add_enabled", cpu_hot_add_enabled)
         if cpu_hot_remove_enabled is not None:
-            pulumi.set(__self__, "cpu_hot_remove_enabled", cpu_hot_remove_enabled)
+            _setter("cpu_hot_remove_enabled", cpu_hot_remove_enabled)
         if cpu_limit is not None:
-            pulumi.set(__self__, "cpu_limit", cpu_limit)
+            _setter("cpu_limit", cpu_limit)
         if cpu_performance_counters_enabled is not None:
-            pulumi.set(__self__, "cpu_performance_counters_enabled", cpu_performance_counters_enabled)
+            _setter("cpu_performance_counters_enabled", cpu_performance_counters_enabled)
         if cpu_reservation is not None:
-            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+            _setter("cpu_reservation", cpu_reservation)
         if cpu_share_count is not None:
-            pulumi.set(__self__, "cpu_share_count", cpu_share_count)
+            _setter("cpu_share_count", cpu_share_count)
         if cpu_share_level is not None:
-            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+            _setter("cpu_share_level", cpu_share_level)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            pulumi.set(__self__, "datacenter_id", datacenter_id)
+            _setter("datacenter_id", datacenter_id)
         if datastore_cluster_id is not None:
-            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+            _setter("datastore_cluster_id", datastore_cluster_id)
         if datastore_id is not None:
-            pulumi.set(__self__, "datastore_id", datastore_id)
+            _setter("datastore_id", datastore_id)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if efi_secure_boot_enabled is not None:
-            pulumi.set(__self__, "efi_secure_boot_enabled", efi_secure_boot_enabled)
+            _setter("efi_secure_boot_enabled", efi_secure_boot_enabled)
         if enable_disk_uuid is not None:
-            pulumi.set(__self__, "enable_disk_uuid", enable_disk_uuid)
+            _setter("enable_disk_uuid", enable_disk_uuid)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if ept_rvi_mode is not None:
-            pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+            _setter("ept_rvi_mode", ept_rvi_mode)
         if extra_config is not None:
-            pulumi.set(__self__, "extra_config", extra_config)
+            _setter("extra_config", extra_config)
         if extra_config_reboot_required is not None:
-            pulumi.set(__self__, "extra_config_reboot_required", extra_config_reboot_required)
+            _setter("extra_config_reboot_required", extra_config_reboot_required)
         if firmware is not None:
-            pulumi.set(__self__, "firmware", firmware)
+            _setter("firmware", firmware)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if force_power_off is not None:
-            pulumi.set(__self__, "force_power_off", force_power_off)
+            _setter("force_power_off", force_power_off)
         if guest_id is not None:
-            pulumi.set(__self__, "guest_id", guest_id)
+            _setter("guest_id", guest_id)
         if hardware_version is not None:
-            pulumi.set(__self__, "hardware_version", hardware_version)
+            _setter("hardware_version", hardware_version)
         if host_system_id is not None:
-            pulumi.set(__self__, "host_system_id", host_system_id)
+            _setter("host_system_id", host_system_id)
         if hv_mode is not None:
-            pulumi.set(__self__, "hv_mode", hv_mode)
+            _setter("hv_mode", hv_mode)
         if ide_controller_count is not None:
-            pulumi.set(__self__, "ide_controller_count", ide_controller_count)
+            _setter("ide_controller_count", ide_controller_count)
         if ignored_guest_ips is not None:
-            pulumi.set(__self__, "ignored_guest_ips", ignored_guest_ips)
+            _setter("ignored_guest_ips", ignored_guest_ips)
         if latency_sensitivity is not None:
-            pulumi.set(__self__, "latency_sensitivity", latency_sensitivity)
+            _setter("latency_sensitivity", latency_sensitivity)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if memory_hot_add_enabled is not None:
-            pulumi.set(__self__, "memory_hot_add_enabled", memory_hot_add_enabled)
+            _setter("memory_hot_add_enabled", memory_hot_add_enabled)
         if memory_limit is not None:
-            pulumi.set(__self__, "memory_limit", memory_limit)
+            _setter("memory_limit", memory_limit)
         if memory_reservation is not None:
-            pulumi.set(__self__, "memory_reservation", memory_reservation)
+            _setter("memory_reservation", memory_reservation)
         if memory_share_count is not None:
-            pulumi.set(__self__, "memory_share_count", memory_share_count)
+            _setter("memory_share_count", memory_share_count)
         if memory_share_level is not None:
-            pulumi.set(__self__, "memory_share_level", memory_share_level)
+            _setter("memory_share_level", memory_share_level)
         if migrate_wait_timeout is not None:
-            pulumi.set(__self__, "migrate_wait_timeout", migrate_wait_timeout)
+            _setter("migrate_wait_timeout", migrate_wait_timeout)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nested_hv_enabled is not None:
-            pulumi.set(__self__, "nested_hv_enabled", nested_hv_enabled)
+            _setter("nested_hv_enabled", nested_hv_enabled)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if num_cores_per_socket is not None:
-            pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
+            _setter("num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
-            pulumi.set(__self__, "num_cpus", num_cpus)
+            _setter("num_cpus", num_cpus)
         if ovf_deploy is not None:
-            pulumi.set(__self__, "ovf_deploy", ovf_deploy)
+            _setter("ovf_deploy", ovf_deploy)
         if pci_device_ids is not None:
-            pulumi.set(__self__, "pci_device_ids", pci_device_ids)
+            _setter("pci_device_ids", pci_device_ids)
         if poweron_timeout is not None:
-            pulumi.set(__self__, "poweron_timeout", poweron_timeout)
+            _setter("poweron_timeout", poweron_timeout)
         if replace_trigger is not None:
-            pulumi.set(__self__, "replace_trigger", replace_trigger)
+            _setter("replace_trigger", replace_trigger)
         if run_tools_scripts_after_power_on is not None:
-            pulumi.set(__self__, "run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
+            _setter("run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
         if run_tools_scripts_after_resume is not None:
-            pulumi.set(__self__, "run_tools_scripts_after_resume", run_tools_scripts_after_resume)
+            _setter("run_tools_scripts_after_resume", run_tools_scripts_after_resume)
         if run_tools_scripts_before_guest_reboot is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_reboot", run_tools_scripts_before_guest_reboot)
+            _setter("run_tools_scripts_before_guest_reboot", run_tools_scripts_before_guest_reboot)
         if run_tools_scripts_before_guest_shutdown is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_shutdown", run_tools_scripts_before_guest_shutdown)
+            _setter("run_tools_scripts_before_guest_shutdown", run_tools_scripts_before_guest_shutdown)
         if run_tools_scripts_before_guest_standby is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
+            _setter("run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
         if sata_controller_count is not None:
-            pulumi.set(__self__, "sata_controller_count", sata_controller_count)
+            _setter("sata_controller_count", sata_controller_count)
         if scsi_bus_sharing is not None:
-            pulumi.set(__self__, "scsi_bus_sharing", scsi_bus_sharing)
+            _setter("scsi_bus_sharing", scsi_bus_sharing)
         if scsi_controller_count is not None:
-            pulumi.set(__self__, "scsi_controller_count", scsi_controller_count)
+            _setter("scsi_controller_count", scsi_controller_count)
         if scsi_type is not None:
-            pulumi.set(__self__, "scsi_type", scsi_type)
+            _setter("scsi_type", scsi_type)
         if shutdown_wait_timeout is not None:
-            pulumi.set(__self__, "shutdown_wait_timeout", shutdown_wait_timeout)
+            _setter("shutdown_wait_timeout", shutdown_wait_timeout)
         if storage_policy_id is not None:
-            pulumi.set(__self__, "storage_policy_id", storage_policy_id)
+            _setter("storage_policy_id", storage_policy_id)
         if swap_placement_policy is not None:
-            pulumi.set(__self__, "swap_placement_policy", swap_placement_policy)
+            _setter("swap_placement_policy", swap_placement_policy)
         if sync_time_with_host is not None:
-            pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+            _setter("sync_time_with_host", sync_time_with_host)
         if sync_time_with_host_periodically is not None:
-            pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
+            _setter("sync_time_with_host_periodically", sync_time_with_host_periodically)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tools_upgrade_policy is not None:
-            pulumi.set(__self__, "tools_upgrade_policy", tools_upgrade_policy)
+            _setter("tools_upgrade_policy", tools_upgrade_policy)
         if vapp is not None:
-            pulumi.set(__self__, "vapp", vapp)
+            _setter("vapp", vapp)
         if vbs_enabled is not None:
-            pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+            _setter("vbs_enabled", vbs_enabled)
         if vvtd_enabled is not None:
-            pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
+            _setter("vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
-            pulumi.set(__self__, "wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
+            _setter("wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
         if wait_for_guest_net_routable is not None:
-            pulumi.set(__self__, "wait_for_guest_net_routable", wait_for_guest_net_routable)
+            _setter("wait_for_guest_net_routable", wait_for_guest_net_routable)
         if wait_for_guest_net_timeout is not None:
-            pulumi.set(__self__, "wait_for_guest_net_timeout", wait_for_guest_net_timeout)
+            _setter("wait_for_guest_net_timeout", wait_for_guest_net_timeout)
 
     @property
     @pulumi.getter(name="resourcePoolId")
@@ -1497,176 +1784,499 @@ class _VirtualMachineState:
         :param pulumi.Input[bool] wait_for_guest_net_routable: Controls whether or not the guest network waiter waits for a routable address. When `false`, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the `wait_for_guest_ip_timeout` waiter is used. Default: `true`.
         :param pulumi.Input[int] wait_for_guest_net_timeout: The amount of time, in minutes, to wait for an available guest IP address on the virtual machine. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the `wait_for_guest_ip_timeout` waiter can be used instead. A value less than `1` disables the waiter. Default: `5` minutes.
         """
+        _VirtualMachineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alternate_guest_name=alternate_guest_name,
+            annotation=annotation,
+            boot_delay=boot_delay,
+            boot_retry_delay=boot_retry_delay,
+            boot_retry_enabled=boot_retry_enabled,
+            cdroms=cdroms,
+            change_version=change_version,
+            clone=clone,
+            cpu_hot_add_enabled=cpu_hot_add_enabled,
+            cpu_hot_remove_enabled=cpu_hot_remove_enabled,
+            cpu_limit=cpu_limit,
+            cpu_performance_counters_enabled=cpu_performance_counters_enabled,
+            cpu_reservation=cpu_reservation,
+            cpu_share_count=cpu_share_count,
+            cpu_share_level=cpu_share_level,
+            custom_attributes=custom_attributes,
+            datacenter_id=datacenter_id,
+            datastore_cluster_id=datastore_cluster_id,
+            datastore_id=datastore_id,
+            default_ip_address=default_ip_address,
+            disks=disks,
+            efi_secure_boot_enabled=efi_secure_boot_enabled,
+            enable_disk_uuid=enable_disk_uuid,
+            enable_logging=enable_logging,
+            ept_rvi_mode=ept_rvi_mode,
+            extra_config=extra_config,
+            extra_config_reboot_required=extra_config_reboot_required,
+            firmware=firmware,
+            folder=folder,
+            force_power_off=force_power_off,
+            guest_id=guest_id,
+            guest_ip_addresses=guest_ip_addresses,
+            hardware_version=hardware_version,
+            host_system_id=host_system_id,
+            hv_mode=hv_mode,
+            ide_controller_count=ide_controller_count,
+            ignored_guest_ips=ignored_guest_ips,
+            imported=imported,
+            latency_sensitivity=latency_sensitivity,
+            memory=memory,
+            memory_hot_add_enabled=memory_hot_add_enabled,
+            memory_limit=memory_limit,
+            memory_reservation=memory_reservation,
+            memory_share_count=memory_share_count,
+            memory_share_level=memory_share_level,
+            migrate_wait_timeout=migrate_wait_timeout,
+            moid=moid,
+            name=name,
+            nested_hv_enabled=nested_hv_enabled,
+            network_interfaces=network_interfaces,
+            num_cores_per_socket=num_cores_per_socket,
+            num_cpus=num_cpus,
+            ovf_deploy=ovf_deploy,
+            pci_device_ids=pci_device_ids,
+            power_state=power_state,
+            poweron_timeout=poweron_timeout,
+            reboot_required=reboot_required,
+            replace_trigger=replace_trigger,
+            resource_pool_id=resource_pool_id,
+            run_tools_scripts_after_power_on=run_tools_scripts_after_power_on,
+            run_tools_scripts_after_resume=run_tools_scripts_after_resume,
+            run_tools_scripts_before_guest_reboot=run_tools_scripts_before_guest_reboot,
+            run_tools_scripts_before_guest_shutdown=run_tools_scripts_before_guest_shutdown,
+            run_tools_scripts_before_guest_standby=run_tools_scripts_before_guest_standby,
+            sata_controller_count=sata_controller_count,
+            scsi_bus_sharing=scsi_bus_sharing,
+            scsi_controller_count=scsi_controller_count,
+            scsi_type=scsi_type,
+            shutdown_wait_timeout=shutdown_wait_timeout,
+            storage_policy_id=storage_policy_id,
+            swap_placement_policy=swap_placement_policy,
+            sync_time_with_host=sync_time_with_host,
+            sync_time_with_host_periodically=sync_time_with_host_periodically,
+            tags=tags,
+            tools_upgrade_policy=tools_upgrade_policy,
+            uuid=uuid,
+            vapp=vapp,
+            vapp_transports=vapp_transports,
+            vbs_enabled=vbs_enabled,
+            vmware_tools_status=vmware_tools_status,
+            vmx_path=vmx_path,
+            vvtd_enabled=vvtd_enabled,
+            wait_for_guest_ip_timeout=wait_for_guest_ip_timeout,
+            wait_for_guest_net_routable=wait_for_guest_net_routable,
+            wait_for_guest_net_timeout=wait_for_guest_net_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alternate_guest_name: Optional[pulumi.Input[str]] = None,
+             annotation: Optional[pulumi.Input[str]] = None,
+             boot_delay: Optional[pulumi.Input[int]] = None,
+             boot_retry_delay: Optional[pulumi.Input[int]] = None,
+             boot_retry_enabled: Optional[pulumi.Input[bool]] = None,
+             cdroms: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineCdromArgs']]]] = None,
+             change_version: Optional[pulumi.Input[str]] = None,
+             clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
+             cpu_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_hot_remove_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_limit: Optional[pulumi.Input[int]] = None,
+             cpu_performance_counters_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_reservation: Optional[pulumi.Input[int]] = None,
+             cpu_share_count: Optional[pulumi.Input[int]] = None,
+             cpu_share_level: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             datastore_id: Optional[pulumi.Input[str]] = None,
+             default_ip_address: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
+             efi_secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+             enable_disk_uuid: Optional[pulumi.Input[bool]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             ept_rvi_mode: Optional[pulumi.Input[str]] = None,
+             extra_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             extra_config_reboot_required: Optional[pulumi.Input[bool]] = None,
+             firmware: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             force_power_off: Optional[pulumi.Input[bool]] = None,
+             guest_id: Optional[pulumi.Input[str]] = None,
+             guest_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             hardware_version: Optional[pulumi.Input[int]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             hv_mode: Optional[pulumi.Input[str]] = None,
+             ide_controller_count: Optional[pulumi.Input[int]] = None,
+             ignored_guest_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             imported: Optional[pulumi.Input[bool]] = None,
+             latency_sensitivity: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             memory_hot_add_enabled: Optional[pulumi.Input[bool]] = None,
+             memory_limit: Optional[pulumi.Input[int]] = None,
+             memory_reservation: Optional[pulumi.Input[int]] = None,
+             memory_share_count: Optional[pulumi.Input[int]] = None,
+             memory_share_level: Optional[pulumi.Input[str]] = None,
+             migrate_wait_timeout: Optional[pulumi.Input[int]] = None,
+             moid: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nested_hv_enabled: Optional[pulumi.Input[bool]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineNetworkInterfaceArgs']]]] = None,
+             num_cores_per_socket: Optional[pulumi.Input[int]] = None,
+             num_cpus: Optional[pulumi.Input[int]] = None,
+             ovf_deploy: Optional[pulumi.Input['VirtualMachineOvfDeployArgs']] = None,
+             pci_device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             power_state: Optional[pulumi.Input[str]] = None,
+             poweron_timeout: Optional[pulumi.Input[int]] = None,
+             reboot_required: Optional[pulumi.Input[bool]] = None,
+             replace_trigger: Optional[pulumi.Input[str]] = None,
+             resource_pool_id: Optional[pulumi.Input[str]] = None,
+             run_tools_scripts_after_power_on: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_after_resume: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_reboot: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_shutdown: Optional[pulumi.Input[bool]] = None,
+             run_tools_scripts_before_guest_standby: Optional[pulumi.Input[bool]] = None,
+             sata_controller_count: Optional[pulumi.Input[int]] = None,
+             scsi_bus_sharing: Optional[pulumi.Input[str]] = None,
+             scsi_controller_count: Optional[pulumi.Input[int]] = None,
+             scsi_type: Optional[pulumi.Input[str]] = None,
+             shutdown_wait_timeout: Optional[pulumi.Input[int]] = None,
+             storage_policy_id: Optional[pulumi.Input[str]] = None,
+             swap_placement_policy: Optional[pulumi.Input[str]] = None,
+             sync_time_with_host: Optional[pulumi.Input[bool]] = None,
+             sync_time_with_host_periodically: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tools_upgrade_policy: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vapp: Optional[pulumi.Input['VirtualMachineVappArgs']] = None,
+             vapp_transports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vbs_enabled: Optional[pulumi.Input[bool]] = None,
+             vmware_tools_status: Optional[pulumi.Input[str]] = None,
+             vmx_path: Optional[pulumi.Input[str]] = None,
+             vvtd_enabled: Optional[pulumi.Input[bool]] = None,
+             wait_for_guest_ip_timeout: Optional[pulumi.Input[int]] = None,
+             wait_for_guest_net_routable: Optional[pulumi.Input[bool]] = None,
+             wait_for_guest_net_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if alternate_guest_name is None and 'alternateGuestName' in kwargs:
+            alternate_guest_name = kwargs['alternateGuestName']
+        if boot_delay is None and 'bootDelay' in kwargs:
+            boot_delay = kwargs['bootDelay']
+        if boot_retry_delay is None and 'bootRetryDelay' in kwargs:
+            boot_retry_delay = kwargs['bootRetryDelay']
+        if boot_retry_enabled is None and 'bootRetryEnabled' in kwargs:
+            boot_retry_enabled = kwargs['bootRetryEnabled']
+        if change_version is None and 'changeVersion' in kwargs:
+            change_version = kwargs['changeVersion']
+        if cpu_hot_add_enabled is None and 'cpuHotAddEnabled' in kwargs:
+            cpu_hot_add_enabled = kwargs['cpuHotAddEnabled']
+        if cpu_hot_remove_enabled is None and 'cpuHotRemoveEnabled' in kwargs:
+            cpu_hot_remove_enabled = kwargs['cpuHotRemoveEnabled']
+        if cpu_limit is None and 'cpuLimit' in kwargs:
+            cpu_limit = kwargs['cpuLimit']
+        if cpu_performance_counters_enabled is None and 'cpuPerformanceCountersEnabled' in kwargs:
+            cpu_performance_counters_enabled = kwargs['cpuPerformanceCountersEnabled']
+        if cpu_reservation is None and 'cpuReservation' in kwargs:
+            cpu_reservation = kwargs['cpuReservation']
+        if cpu_share_count is None and 'cpuShareCount' in kwargs:
+            cpu_share_count = kwargs['cpuShareCount']
+        if cpu_share_level is None and 'cpuShareLevel' in kwargs:
+            cpu_share_level = kwargs['cpuShareLevel']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if datastore_id is None and 'datastoreId' in kwargs:
+            datastore_id = kwargs['datastoreId']
+        if default_ip_address is None and 'defaultIpAddress' in kwargs:
+            default_ip_address = kwargs['defaultIpAddress']
+        if efi_secure_boot_enabled is None and 'efiSecureBootEnabled' in kwargs:
+            efi_secure_boot_enabled = kwargs['efiSecureBootEnabled']
+        if enable_disk_uuid is None and 'enableDiskUuid' in kwargs:
+            enable_disk_uuid = kwargs['enableDiskUuid']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if ept_rvi_mode is None and 'eptRviMode' in kwargs:
+            ept_rvi_mode = kwargs['eptRviMode']
+        if extra_config is None and 'extraConfig' in kwargs:
+            extra_config = kwargs['extraConfig']
+        if extra_config_reboot_required is None and 'extraConfigRebootRequired' in kwargs:
+            extra_config_reboot_required = kwargs['extraConfigRebootRequired']
+        if force_power_off is None and 'forcePowerOff' in kwargs:
+            force_power_off = kwargs['forcePowerOff']
+        if guest_id is None and 'guestId' in kwargs:
+            guest_id = kwargs['guestId']
+        if guest_ip_addresses is None and 'guestIpAddresses' in kwargs:
+            guest_ip_addresses = kwargs['guestIpAddresses']
+        if hardware_version is None and 'hardwareVersion' in kwargs:
+            hardware_version = kwargs['hardwareVersion']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if hv_mode is None and 'hvMode' in kwargs:
+            hv_mode = kwargs['hvMode']
+        if ide_controller_count is None and 'ideControllerCount' in kwargs:
+            ide_controller_count = kwargs['ideControllerCount']
+        if ignored_guest_ips is None and 'ignoredGuestIps' in kwargs:
+            ignored_guest_ips = kwargs['ignoredGuestIps']
+        if latency_sensitivity is None and 'latencySensitivity' in kwargs:
+            latency_sensitivity = kwargs['latencySensitivity']
+        if memory_hot_add_enabled is None and 'memoryHotAddEnabled' in kwargs:
+            memory_hot_add_enabled = kwargs['memoryHotAddEnabled']
+        if memory_limit is None and 'memoryLimit' in kwargs:
+            memory_limit = kwargs['memoryLimit']
+        if memory_reservation is None and 'memoryReservation' in kwargs:
+            memory_reservation = kwargs['memoryReservation']
+        if memory_share_count is None and 'memoryShareCount' in kwargs:
+            memory_share_count = kwargs['memoryShareCount']
+        if memory_share_level is None and 'memoryShareLevel' in kwargs:
+            memory_share_level = kwargs['memoryShareLevel']
+        if migrate_wait_timeout is None and 'migrateWaitTimeout' in kwargs:
+            migrate_wait_timeout = kwargs['migrateWaitTimeout']
+        if nested_hv_enabled is None and 'nestedHvEnabled' in kwargs:
+            nested_hv_enabled = kwargs['nestedHvEnabled']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if num_cores_per_socket is None and 'numCoresPerSocket' in kwargs:
+            num_cores_per_socket = kwargs['numCoresPerSocket']
+        if num_cpus is None and 'numCpus' in kwargs:
+            num_cpus = kwargs['numCpus']
+        if ovf_deploy is None and 'ovfDeploy' in kwargs:
+            ovf_deploy = kwargs['ovfDeploy']
+        if pci_device_ids is None and 'pciDeviceIds' in kwargs:
+            pci_device_ids = kwargs['pciDeviceIds']
+        if power_state is None and 'powerState' in kwargs:
+            power_state = kwargs['powerState']
+        if poweron_timeout is None and 'poweronTimeout' in kwargs:
+            poweron_timeout = kwargs['poweronTimeout']
+        if reboot_required is None and 'rebootRequired' in kwargs:
+            reboot_required = kwargs['rebootRequired']
+        if replace_trigger is None and 'replaceTrigger' in kwargs:
+            replace_trigger = kwargs['replaceTrigger']
+        if resource_pool_id is None and 'resourcePoolId' in kwargs:
+            resource_pool_id = kwargs['resourcePoolId']
+        if run_tools_scripts_after_power_on is None and 'runToolsScriptsAfterPowerOn' in kwargs:
+            run_tools_scripts_after_power_on = kwargs['runToolsScriptsAfterPowerOn']
+        if run_tools_scripts_after_resume is None and 'runToolsScriptsAfterResume' in kwargs:
+            run_tools_scripts_after_resume = kwargs['runToolsScriptsAfterResume']
+        if run_tools_scripts_before_guest_reboot is None and 'runToolsScriptsBeforeGuestReboot' in kwargs:
+            run_tools_scripts_before_guest_reboot = kwargs['runToolsScriptsBeforeGuestReboot']
+        if run_tools_scripts_before_guest_shutdown is None and 'runToolsScriptsBeforeGuestShutdown' in kwargs:
+            run_tools_scripts_before_guest_shutdown = kwargs['runToolsScriptsBeforeGuestShutdown']
+        if run_tools_scripts_before_guest_standby is None and 'runToolsScriptsBeforeGuestStandby' in kwargs:
+            run_tools_scripts_before_guest_standby = kwargs['runToolsScriptsBeforeGuestStandby']
+        if sata_controller_count is None and 'sataControllerCount' in kwargs:
+            sata_controller_count = kwargs['sataControllerCount']
+        if scsi_bus_sharing is None and 'scsiBusSharing' in kwargs:
+            scsi_bus_sharing = kwargs['scsiBusSharing']
+        if scsi_controller_count is None and 'scsiControllerCount' in kwargs:
+            scsi_controller_count = kwargs['scsiControllerCount']
+        if scsi_type is None and 'scsiType' in kwargs:
+            scsi_type = kwargs['scsiType']
+        if shutdown_wait_timeout is None and 'shutdownWaitTimeout' in kwargs:
+            shutdown_wait_timeout = kwargs['shutdownWaitTimeout']
+        if storage_policy_id is None and 'storagePolicyId' in kwargs:
+            storage_policy_id = kwargs['storagePolicyId']
+        if swap_placement_policy is None and 'swapPlacementPolicy' in kwargs:
+            swap_placement_policy = kwargs['swapPlacementPolicy']
+        if sync_time_with_host is None and 'syncTimeWithHost' in kwargs:
+            sync_time_with_host = kwargs['syncTimeWithHost']
+        if sync_time_with_host_periodically is None and 'syncTimeWithHostPeriodically' in kwargs:
+            sync_time_with_host_periodically = kwargs['syncTimeWithHostPeriodically']
+        if tools_upgrade_policy is None and 'toolsUpgradePolicy' in kwargs:
+            tools_upgrade_policy = kwargs['toolsUpgradePolicy']
+        if vapp_transports is None and 'vappTransports' in kwargs:
+            vapp_transports = kwargs['vappTransports']
+        if vbs_enabled is None and 'vbsEnabled' in kwargs:
+            vbs_enabled = kwargs['vbsEnabled']
+        if vmware_tools_status is None and 'vmwareToolsStatus' in kwargs:
+            vmware_tools_status = kwargs['vmwareToolsStatus']
+        if vmx_path is None and 'vmxPath' in kwargs:
+            vmx_path = kwargs['vmxPath']
+        if vvtd_enabled is None and 'vvtdEnabled' in kwargs:
+            vvtd_enabled = kwargs['vvtdEnabled']
+        if wait_for_guest_ip_timeout is None and 'waitForGuestIpTimeout' in kwargs:
+            wait_for_guest_ip_timeout = kwargs['waitForGuestIpTimeout']
+        if wait_for_guest_net_routable is None and 'waitForGuestNetRoutable' in kwargs:
+            wait_for_guest_net_routable = kwargs['waitForGuestNetRoutable']
+        if wait_for_guest_net_timeout is None and 'waitForGuestNetTimeout' in kwargs:
+            wait_for_guest_net_timeout = kwargs['waitForGuestNetTimeout']
+
         if alternate_guest_name is not None:
-            pulumi.set(__self__, "alternate_guest_name", alternate_guest_name)
+            _setter("alternate_guest_name", alternate_guest_name)
         if annotation is not None:
-            pulumi.set(__self__, "annotation", annotation)
+            _setter("annotation", annotation)
         if boot_delay is not None:
-            pulumi.set(__self__, "boot_delay", boot_delay)
+            _setter("boot_delay", boot_delay)
         if boot_retry_delay is not None:
-            pulumi.set(__self__, "boot_retry_delay", boot_retry_delay)
+            _setter("boot_retry_delay", boot_retry_delay)
         if boot_retry_enabled is not None:
-            pulumi.set(__self__, "boot_retry_enabled", boot_retry_enabled)
+            _setter("boot_retry_enabled", boot_retry_enabled)
         if cdroms is not None:
-            pulumi.set(__self__, "cdroms", cdroms)
+            _setter("cdroms", cdroms)
         if change_version is not None:
-            pulumi.set(__self__, "change_version", change_version)
+            _setter("change_version", change_version)
         if clone is not None:
-            pulumi.set(__self__, "clone", clone)
+            _setter("clone", clone)
         if cpu_hot_add_enabled is not None:
-            pulumi.set(__self__, "cpu_hot_add_enabled", cpu_hot_add_enabled)
+            _setter("cpu_hot_add_enabled", cpu_hot_add_enabled)
         if cpu_hot_remove_enabled is not None:
-            pulumi.set(__self__, "cpu_hot_remove_enabled", cpu_hot_remove_enabled)
+            _setter("cpu_hot_remove_enabled", cpu_hot_remove_enabled)
         if cpu_limit is not None:
-            pulumi.set(__self__, "cpu_limit", cpu_limit)
+            _setter("cpu_limit", cpu_limit)
         if cpu_performance_counters_enabled is not None:
-            pulumi.set(__self__, "cpu_performance_counters_enabled", cpu_performance_counters_enabled)
+            _setter("cpu_performance_counters_enabled", cpu_performance_counters_enabled)
         if cpu_reservation is not None:
-            pulumi.set(__self__, "cpu_reservation", cpu_reservation)
+            _setter("cpu_reservation", cpu_reservation)
         if cpu_share_count is not None:
-            pulumi.set(__self__, "cpu_share_count", cpu_share_count)
+            _setter("cpu_share_count", cpu_share_count)
         if cpu_share_level is not None:
-            pulumi.set(__self__, "cpu_share_level", cpu_share_level)
+            _setter("cpu_share_level", cpu_share_level)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            pulumi.set(__self__, "datacenter_id", datacenter_id)
+            _setter("datacenter_id", datacenter_id)
         if datastore_cluster_id is not None:
-            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+            _setter("datastore_cluster_id", datastore_cluster_id)
         if datastore_id is not None:
-            pulumi.set(__self__, "datastore_id", datastore_id)
+            _setter("datastore_id", datastore_id)
         if default_ip_address is not None:
-            pulumi.set(__self__, "default_ip_address", default_ip_address)
+            _setter("default_ip_address", default_ip_address)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if efi_secure_boot_enabled is not None:
-            pulumi.set(__self__, "efi_secure_boot_enabled", efi_secure_boot_enabled)
+            _setter("efi_secure_boot_enabled", efi_secure_boot_enabled)
         if enable_disk_uuid is not None:
-            pulumi.set(__self__, "enable_disk_uuid", enable_disk_uuid)
+            _setter("enable_disk_uuid", enable_disk_uuid)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if ept_rvi_mode is not None:
-            pulumi.set(__self__, "ept_rvi_mode", ept_rvi_mode)
+            _setter("ept_rvi_mode", ept_rvi_mode)
         if extra_config is not None:
-            pulumi.set(__self__, "extra_config", extra_config)
+            _setter("extra_config", extra_config)
         if extra_config_reboot_required is not None:
-            pulumi.set(__self__, "extra_config_reboot_required", extra_config_reboot_required)
+            _setter("extra_config_reboot_required", extra_config_reboot_required)
         if firmware is not None:
-            pulumi.set(__self__, "firmware", firmware)
+            _setter("firmware", firmware)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if force_power_off is not None:
-            pulumi.set(__self__, "force_power_off", force_power_off)
+            _setter("force_power_off", force_power_off)
         if guest_id is not None:
-            pulumi.set(__self__, "guest_id", guest_id)
+            _setter("guest_id", guest_id)
         if guest_ip_addresses is not None:
-            pulumi.set(__self__, "guest_ip_addresses", guest_ip_addresses)
+            _setter("guest_ip_addresses", guest_ip_addresses)
         if hardware_version is not None:
-            pulumi.set(__self__, "hardware_version", hardware_version)
+            _setter("hardware_version", hardware_version)
         if host_system_id is not None:
-            pulumi.set(__self__, "host_system_id", host_system_id)
+            _setter("host_system_id", host_system_id)
         if hv_mode is not None:
-            pulumi.set(__self__, "hv_mode", hv_mode)
+            _setter("hv_mode", hv_mode)
         if ide_controller_count is not None:
-            pulumi.set(__self__, "ide_controller_count", ide_controller_count)
+            _setter("ide_controller_count", ide_controller_count)
         if ignored_guest_ips is not None:
-            pulumi.set(__self__, "ignored_guest_ips", ignored_guest_ips)
+            _setter("ignored_guest_ips", ignored_guest_ips)
         if imported is not None:
-            pulumi.set(__self__, "imported", imported)
+            _setter("imported", imported)
         if latency_sensitivity is not None:
-            pulumi.set(__self__, "latency_sensitivity", latency_sensitivity)
+            _setter("latency_sensitivity", latency_sensitivity)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if memory_hot_add_enabled is not None:
-            pulumi.set(__self__, "memory_hot_add_enabled", memory_hot_add_enabled)
+            _setter("memory_hot_add_enabled", memory_hot_add_enabled)
         if memory_limit is not None:
-            pulumi.set(__self__, "memory_limit", memory_limit)
+            _setter("memory_limit", memory_limit)
         if memory_reservation is not None:
-            pulumi.set(__self__, "memory_reservation", memory_reservation)
+            _setter("memory_reservation", memory_reservation)
         if memory_share_count is not None:
-            pulumi.set(__self__, "memory_share_count", memory_share_count)
+            _setter("memory_share_count", memory_share_count)
         if memory_share_level is not None:
-            pulumi.set(__self__, "memory_share_level", memory_share_level)
+            _setter("memory_share_level", memory_share_level)
         if migrate_wait_timeout is not None:
-            pulumi.set(__self__, "migrate_wait_timeout", migrate_wait_timeout)
+            _setter("migrate_wait_timeout", migrate_wait_timeout)
         if moid is not None:
-            pulumi.set(__self__, "moid", moid)
+            _setter("moid", moid)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nested_hv_enabled is not None:
-            pulumi.set(__self__, "nested_hv_enabled", nested_hv_enabled)
+            _setter("nested_hv_enabled", nested_hv_enabled)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if num_cores_per_socket is not None:
-            pulumi.set(__self__, "num_cores_per_socket", num_cores_per_socket)
+            _setter("num_cores_per_socket", num_cores_per_socket)
         if num_cpus is not None:
-            pulumi.set(__self__, "num_cpus", num_cpus)
+            _setter("num_cpus", num_cpus)
         if ovf_deploy is not None:
-            pulumi.set(__self__, "ovf_deploy", ovf_deploy)
+            _setter("ovf_deploy", ovf_deploy)
         if pci_device_ids is not None:
-            pulumi.set(__self__, "pci_device_ids", pci_device_ids)
+            _setter("pci_device_ids", pci_device_ids)
         if power_state is not None:
-            pulumi.set(__self__, "power_state", power_state)
+            _setter("power_state", power_state)
         if poweron_timeout is not None:
-            pulumi.set(__self__, "poweron_timeout", poweron_timeout)
+            _setter("poweron_timeout", poweron_timeout)
         if reboot_required is not None:
-            pulumi.set(__self__, "reboot_required", reboot_required)
+            _setter("reboot_required", reboot_required)
         if replace_trigger is not None:
-            pulumi.set(__self__, "replace_trigger", replace_trigger)
+            _setter("replace_trigger", replace_trigger)
         if resource_pool_id is not None:
-            pulumi.set(__self__, "resource_pool_id", resource_pool_id)
+            _setter("resource_pool_id", resource_pool_id)
         if run_tools_scripts_after_power_on is not None:
-            pulumi.set(__self__, "run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
+            _setter("run_tools_scripts_after_power_on", run_tools_scripts_after_power_on)
         if run_tools_scripts_after_resume is not None:
-            pulumi.set(__self__, "run_tools_scripts_after_resume", run_tools_scripts_after_resume)
+            _setter("run_tools_scripts_after_resume", run_tools_scripts_after_resume)
         if run_tools_scripts_before_guest_reboot is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_reboot", run_tools_scripts_before_guest_reboot)
+            _setter("run_tools_scripts_before_guest_reboot", run_tools_scripts_before_guest_reboot)
         if run_tools_scripts_before_guest_shutdown is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_shutdown", run_tools_scripts_before_guest_shutdown)
+            _setter("run_tools_scripts_before_guest_shutdown", run_tools_scripts_before_guest_shutdown)
         if run_tools_scripts_before_guest_standby is not None:
-            pulumi.set(__self__, "run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
+            _setter("run_tools_scripts_before_guest_standby", run_tools_scripts_before_guest_standby)
         if sata_controller_count is not None:
-            pulumi.set(__self__, "sata_controller_count", sata_controller_count)
+            _setter("sata_controller_count", sata_controller_count)
         if scsi_bus_sharing is not None:
-            pulumi.set(__self__, "scsi_bus_sharing", scsi_bus_sharing)
+            _setter("scsi_bus_sharing", scsi_bus_sharing)
         if scsi_controller_count is not None:
-            pulumi.set(__self__, "scsi_controller_count", scsi_controller_count)
+            _setter("scsi_controller_count", scsi_controller_count)
         if scsi_type is not None:
-            pulumi.set(__self__, "scsi_type", scsi_type)
+            _setter("scsi_type", scsi_type)
         if shutdown_wait_timeout is not None:
-            pulumi.set(__self__, "shutdown_wait_timeout", shutdown_wait_timeout)
+            _setter("shutdown_wait_timeout", shutdown_wait_timeout)
         if storage_policy_id is not None:
-            pulumi.set(__self__, "storage_policy_id", storage_policy_id)
+            _setter("storage_policy_id", storage_policy_id)
         if swap_placement_policy is not None:
-            pulumi.set(__self__, "swap_placement_policy", swap_placement_policy)
+            _setter("swap_placement_policy", swap_placement_policy)
         if sync_time_with_host is not None:
-            pulumi.set(__self__, "sync_time_with_host", sync_time_with_host)
+            _setter("sync_time_with_host", sync_time_with_host)
         if sync_time_with_host_periodically is not None:
-            pulumi.set(__self__, "sync_time_with_host_periodically", sync_time_with_host_periodically)
+            _setter("sync_time_with_host_periodically", sync_time_with_host_periodically)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tools_upgrade_policy is not None:
-            pulumi.set(__self__, "tools_upgrade_policy", tools_upgrade_policy)
+            _setter("tools_upgrade_policy", tools_upgrade_policy)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vapp is not None:
-            pulumi.set(__self__, "vapp", vapp)
+            _setter("vapp", vapp)
         if vapp_transports is not None:
-            pulumi.set(__self__, "vapp_transports", vapp_transports)
+            _setter("vapp_transports", vapp_transports)
         if vbs_enabled is not None:
-            pulumi.set(__self__, "vbs_enabled", vbs_enabled)
+            _setter("vbs_enabled", vbs_enabled)
         if vmware_tools_status is not None:
-            pulumi.set(__self__, "vmware_tools_status", vmware_tools_status)
+            _setter("vmware_tools_status", vmware_tools_status)
         if vmx_path is not None:
-            pulumi.set(__self__, "vmx_path", vmx_path)
+            _setter("vmx_path", vmx_path)
         if vvtd_enabled is not None:
-            pulumi.set(__self__, "vvtd_enabled", vvtd_enabled)
+            _setter("vvtd_enabled", vvtd_enabled)
         if wait_for_guest_ip_timeout is not None:
-            pulumi.set(__self__, "wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
+            _setter("wait_for_guest_ip_timeout", wait_for_guest_ip_timeout)
         if wait_for_guest_net_routable is not None:
-            pulumi.set(__self__, "wait_for_guest_net_routable", wait_for_guest_net_routable)
+            _setter("wait_for_guest_net_routable", wait_for_guest_net_routable)
         if wait_for_guest_net_timeout is not None:
-            pulumi.set(__self__, "wait_for_guest_net_timeout", wait_for_guest_net_timeout)
+            _setter("wait_for_guest_net_timeout", wait_for_guest_net_timeout)
 
     @property
     @pulumi.getter(name="alternateGuestName")
@@ -2944,6 +3554,10 @@ class VirtualMachine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VirtualMachineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3038,6 +3652,11 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["boot_retry_delay"] = boot_retry_delay
             __props__.__dict__["boot_retry_enabled"] = boot_retry_enabled
             __props__.__dict__["cdroms"] = cdroms
+            if clone is not None and not isinstance(clone, VirtualMachineCloneArgs):
+                clone = clone or {}
+                def _setter(key, value):
+                    clone[key] = value
+                VirtualMachineCloneArgs._configure(_setter, **clone)
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu_hot_add_enabled"] = cpu_hot_add_enabled
             __props__.__dict__["cpu_hot_remove_enabled"] = cpu_hot_remove_enabled
@@ -3079,6 +3698,11 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["num_cores_per_socket"] = num_cores_per_socket
             __props__.__dict__["num_cpus"] = num_cpus
+            if ovf_deploy is not None and not isinstance(ovf_deploy, VirtualMachineOvfDeployArgs):
+                ovf_deploy = ovf_deploy or {}
+                def _setter(key, value):
+                    ovf_deploy[key] = value
+                VirtualMachineOvfDeployArgs._configure(_setter, **ovf_deploy)
             __props__.__dict__["ovf_deploy"] = ovf_deploy
             __props__.__dict__["pci_device_ids"] = pci_device_ids
             __props__.__dict__["poweron_timeout"] = poweron_timeout
@@ -3102,6 +3726,11 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["sync_time_with_host_periodically"] = sync_time_with_host_periodically
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tools_upgrade_policy"] = tools_upgrade_policy
+            if vapp is not None and not isinstance(vapp, VirtualMachineVappArgs):
+                vapp = vapp or {}
+                def _setter(key, value):
+                    vapp[key] = value
+                VirtualMachineVappArgs._configure(_setter, **vapp)
             __props__.__dict__["vapp"] = vapp
             __props__.__dict__["vbs_enabled"] = vbs_enabled
             __props__.__dict__["vvtd_enabled"] = vvtd_enabled

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LicenseArgs', 'License']
@@ -21,9 +21,26 @@ class LicenseArgs:
         :param pulumi.Input[str] license_key: The license key to add.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value pairs to be attached as labels (tags) to the license key.
         """
-        pulumi.set(__self__, "license_key", license_key)
+        LicenseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_key=license_key,
+            labels=labels,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_key: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if license_key is None and 'licenseKey' in kwargs:
+            license_key = kwargs['licenseKey']
+        if license_key is None:
+            raise TypeError("Missing 'license_key' argument")
+
+        _setter("license_key", license_key)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
 
     @property
     @pulumi.getter(name="licenseKey")
@@ -68,18 +85,43 @@ class _LicenseState:
         :param pulumi.Input[int] total: Total number of units (example: CPUs) contained in the license.
         :param pulumi.Input[int] used: The number of units (example: CPUs) assigned to this license.
         """
+        _LicenseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            edition_key=edition_key,
+            labels=labels,
+            license_key=license_key,
+            name=name,
+            total=total,
+            used=used,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             edition_key: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             license_key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             total: Optional[pulumi.Input[int]] = None,
+             used: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if edition_key is None and 'editionKey' in kwargs:
+            edition_key = kwargs['editionKey']
+        if license_key is None and 'licenseKey' in kwargs:
+            license_key = kwargs['licenseKey']
+
         if edition_key is not None:
-            pulumi.set(__self__, "edition_key", edition_key)
+            _setter("edition_key", edition_key)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if license_key is not None:
-            pulumi.set(__self__, "license_key", license_key)
+            _setter("license_key", license_key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if total is not None:
-            pulumi.set(__self__, "total", total)
+            _setter("total", total)
         if used is not None:
-            pulumi.set(__self__, "used", used)
+            _setter("used", used)
 
     @property
     @pulumi.getter(name="editionKey")
@@ -217,6 +259,10 @@ class License(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LicenseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

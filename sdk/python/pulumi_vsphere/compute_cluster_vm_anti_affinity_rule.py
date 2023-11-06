@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ComputeClusterVmAntiAffinityRuleArgs', 'ComputeClusterVmAntiAffinityRule']
@@ -35,14 +35,41 @@ class ComputeClusterVmAntiAffinityRuleArgs:
                this when naming your rules.
         :param pulumi.Input[str] name: The name of the rule. This must be unique in the cluster.
         """
-        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
-        pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
+        ComputeClusterVmAntiAffinityRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            virtual_machine_ids=virtual_machine_ids,
+            enabled=enabled,
+            mandatory=mandatory,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             mandatory: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
+            virtual_machine_ids = kwargs['virtualMachineIds']
+        if virtual_machine_ids is None:
+            raise TypeError("Missing 'virtual_machine_ids' argument")
+
+        _setter("compute_cluster_id", compute_cluster_id)
+        _setter("virtual_machine_ids", virtual_machine_ids)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if mandatory is not None:
-            pulumi.set(__self__, "mandatory", mandatory)
+            _setter("mandatory", mandatory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -137,16 +164,39 @@ class _ComputeClusterVmAntiAffinityRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtual_machine_ids: The UUIDs of the virtual machines to run
                on hosts different from each other.
         """
+        _ComputeClusterVmAntiAffinityRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            enabled=enabled,
+            mandatory=mandatory,
+            name=name,
+            virtual_machine_ids=virtual_machine_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             mandatory: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             virtual_machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if virtual_machine_ids is None and 'virtualMachineIds' in kwargs:
+            virtual_machine_ids = kwargs['virtualMachineIds']
+
         if compute_cluster_id is not None:
-            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+            _setter("compute_cluster_id", compute_cluster_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if mandatory is not None:
-            pulumi.set(__self__, "mandatory", mandatory)
+            _setter("mandatory", mandatory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if virtual_machine_ids is not None:
-            pulumi.set(__self__, "virtual_machine_ids", virtual_machine_ids)
+            _setter("virtual_machine_ids", virtual_machine_ids)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -264,6 +314,10 @@ class ComputeClusterVmAntiAffinityRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ComputeClusterVmAntiAffinityRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

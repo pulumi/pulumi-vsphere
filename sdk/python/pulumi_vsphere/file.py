@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FileArgs', 'File']
@@ -40,17 +40,56 @@ class FileArgs:
         :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
                be copied. Forces a new resource if changed.
         """
-        pulumi.set(__self__, "datastore", datastore)
-        pulumi.set(__self__, "destination_file", destination_file)
-        pulumi.set(__self__, "source_file", source_file)
+        FileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore=datastore,
+            destination_file=destination_file,
+            source_file=source_file,
+            create_directories=create_directories,
+            datacenter=datacenter,
+            source_datacenter=source_datacenter,
+            source_datastore=source_datastore,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore: Optional[pulumi.Input[str]] = None,
+             destination_file: Optional[pulumi.Input[str]] = None,
+             source_file: Optional[pulumi.Input[str]] = None,
+             create_directories: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             source_datacenter: Optional[pulumi.Input[str]] = None,
+             source_datastore: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if datastore is None:
+            raise TypeError("Missing 'datastore' argument")
+        if destination_file is None and 'destinationFile' in kwargs:
+            destination_file = kwargs['destinationFile']
+        if destination_file is None:
+            raise TypeError("Missing 'destination_file' argument")
+        if source_file is None and 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+        if source_file is None:
+            raise TypeError("Missing 'source_file' argument")
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+        if source_datacenter is None and 'sourceDatacenter' in kwargs:
+            source_datacenter = kwargs['sourceDatacenter']
+        if source_datastore is None and 'sourceDatastore' in kwargs:
+            source_datastore = kwargs['sourceDatastore']
+
+        _setter("datastore", datastore)
+        _setter("destination_file", destination_file)
+        _setter("source_file", source_file)
         if create_directories is not None:
-            pulumi.set(__self__, "create_directories", create_directories)
+            _setter("create_directories", create_directories)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if source_datacenter is not None:
-            pulumi.set(__self__, "source_datacenter", source_datacenter)
+            _setter("source_datacenter", source_datacenter)
         if source_datastore is not None:
-            pulumi.set(__self__, "source_datastore", source_datastore)
+            _setter("source_datastore", source_datastore)
 
     @property
     @pulumi.getter
@@ -173,20 +212,53 @@ class _FileState:
         :param pulumi.Input[str] source_datastore: The name of the datastore from which file will
                be copied. Forces a new resource if changed.
         """
+        _FileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_directories=create_directories,
+            datacenter=datacenter,
+            datastore=datastore,
+            destination_file=destination_file,
+            source_datacenter=source_datacenter,
+            source_datastore=source_datastore,
+            source_file=source_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_directories: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             datastore: Optional[pulumi.Input[str]] = None,
+             destination_file: Optional[pulumi.Input[str]] = None,
+             source_datacenter: Optional[pulumi.Input[str]] = None,
+             source_datastore: Optional[pulumi.Input[str]] = None,
+             source_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_directories is None and 'createDirectories' in kwargs:
+            create_directories = kwargs['createDirectories']
+        if destination_file is None and 'destinationFile' in kwargs:
+            destination_file = kwargs['destinationFile']
+        if source_datacenter is None and 'sourceDatacenter' in kwargs:
+            source_datacenter = kwargs['sourceDatacenter']
+        if source_datastore is None and 'sourceDatastore' in kwargs:
+            source_datastore = kwargs['sourceDatastore']
+        if source_file is None and 'sourceFile' in kwargs:
+            source_file = kwargs['sourceFile']
+
         if create_directories is not None:
-            pulumi.set(__self__, "create_directories", create_directories)
+            _setter("create_directories", create_directories)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if datastore is not None:
-            pulumi.set(__self__, "datastore", datastore)
+            _setter("datastore", datastore)
         if destination_file is not None:
-            pulumi.set(__self__, "destination_file", destination_file)
+            _setter("destination_file", destination_file)
         if source_datacenter is not None:
-            pulumi.set(__self__, "source_datacenter", source_datacenter)
+            _setter("source_datacenter", source_datacenter)
         if source_datastore is not None:
-            pulumi.set(__self__, "source_datastore", source_datastore)
+            _setter("source_datastore", source_datastore)
         if source_file is not None:
-            pulumi.set(__self__, "source_file", source_file)
+            _setter("source_file", source_file)
 
     @property
     @pulumi.getter(name="createDirectories")
@@ -390,6 +462,10 @@ class File(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

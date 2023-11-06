@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,25 +39,60 @@ class VnicArgs:
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         """
-        pulumi.set(__self__, "host", host)
+        VnicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            distributed_port_group=distributed_port_group,
+            distributed_switch_port=distributed_switch_port,
+            ipv4=ipv4,
+            ipv6=ipv6,
+            mac=mac,
+            mtu=mtu,
+            netstack=netstack,
+            portgroup=portgroup,
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: Optional[pulumi.Input[str]] = None,
+             distributed_port_group: Optional[pulumi.Input[str]] = None,
+             distributed_switch_port: Optional[pulumi.Input[str]] = None,
+             ipv4: Optional[pulumi.Input['VnicIpv4Args']] = None,
+             ipv6: Optional[pulumi.Input['VnicIpv6Args']] = None,
+             mac: Optional[pulumi.Input[str]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             netstack: Optional[pulumi.Input[str]] = None,
+             portgroup: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if distributed_port_group is None and 'distributedPortGroup' in kwargs:
+            distributed_port_group = kwargs['distributedPortGroup']
+        if distributed_switch_port is None and 'distributedSwitchPort' in kwargs:
+            distributed_switch_port = kwargs['distributedSwitchPort']
+
+        _setter("host", host)
         if distributed_port_group is not None:
-            pulumi.set(__self__, "distributed_port_group", distributed_port_group)
+            _setter("distributed_port_group", distributed_port_group)
         if distributed_switch_port is not None:
-            pulumi.set(__self__, "distributed_switch_port", distributed_switch_port)
+            _setter("distributed_switch_port", distributed_switch_port)
         if ipv4 is not None:
-            pulumi.set(__self__, "ipv4", ipv4)
+            _setter("ipv4", ipv4)
         if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+            _setter("ipv6", ipv6)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if netstack is not None:
-            pulumi.set(__self__, "netstack", netstack)
+            _setter("netstack", netstack)
         if portgroup is not None:
-            pulumi.set(__self__, "portgroup", portgroup)
+            _setter("portgroup", portgroup)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
 
     @property
     @pulumi.getter
@@ -206,26 +241,59 @@ class _VnicState:
         :param pulumi.Input[str] portgroup: Portgroup to attach the nic to. Do not set if you set distributed_switch_port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Enabled services setting for this interface. Currently support values are `vmotion`, `management`, and `vsan`.
         """
+        _VnicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            distributed_port_group=distributed_port_group,
+            distributed_switch_port=distributed_switch_port,
+            host=host,
+            ipv4=ipv4,
+            ipv6=ipv6,
+            mac=mac,
+            mtu=mtu,
+            netstack=netstack,
+            portgroup=portgroup,
+            services=services,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             distributed_port_group: Optional[pulumi.Input[str]] = None,
+             distributed_switch_port: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             ipv4: Optional[pulumi.Input['VnicIpv4Args']] = None,
+             ipv6: Optional[pulumi.Input['VnicIpv6Args']] = None,
+             mac: Optional[pulumi.Input[str]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             netstack: Optional[pulumi.Input[str]] = None,
+             portgroup: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if distributed_port_group is None and 'distributedPortGroup' in kwargs:
+            distributed_port_group = kwargs['distributedPortGroup']
+        if distributed_switch_port is None and 'distributedSwitchPort' in kwargs:
+            distributed_switch_port = kwargs['distributedSwitchPort']
+
         if distributed_port_group is not None:
-            pulumi.set(__self__, "distributed_port_group", distributed_port_group)
+            _setter("distributed_port_group", distributed_port_group)
         if distributed_switch_port is not None:
-            pulumi.set(__self__, "distributed_switch_port", distributed_switch_port)
+            _setter("distributed_switch_port", distributed_switch_port)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if ipv4 is not None:
-            pulumi.set(__self__, "ipv4", ipv4)
+            _setter("ipv4", ipv4)
         if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+            _setter("ipv6", ipv6)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if netstack is not None:
-            pulumi.set(__self__, "netstack", netstack)
+            _setter("netstack", netstack)
         if portgroup is not None:
-            pulumi.set(__self__, "portgroup", portgroup)
+            _setter("portgroup", portgroup)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
 
     @property
     @pulumi.getter(name="distributedPortGroup")
@@ -547,6 +615,10 @@ class Vnic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VnicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -576,7 +648,17 @@ class Vnic(pulumi.CustomResource):
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
+            if ipv4 is not None and not isinstance(ipv4, VnicIpv4Args):
+                ipv4 = ipv4 or {}
+                def _setter(key, value):
+                    ipv4[key] = value
+                VnicIpv4Args._configure(_setter, **ipv4)
             __props__.__dict__["ipv4"] = ipv4
+            if ipv6 is not None and not isinstance(ipv6, VnicIpv6Args):
+                ipv6 = ipv6 or {}
+                def _setter(key, value):
+                    ipv6[key] = value
+                VnicIpv6Args._configure(_setter, **ipv6)
             __props__.__dict__["ipv6"] = ipv6
             __props__.__dict__["mac"] = mac
             __props__.__dict__["mtu"] = mtu

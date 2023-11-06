@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DpmHostOverrideArgs', 'DpmHostOverride']
@@ -34,12 +34,41 @@ class DpmHostOverrideArgs:
         :param pulumi.Input[bool] dpm_enabled: Enable DPM support for this host. Default:
                `false`.
         """
-        pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
-        pulumi.set(__self__, "host_system_id", host_system_id)
+        DpmHostOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            host_system_id=host_system_id,
+            dpm_automation_level=dpm_automation_level,
+            dpm_enabled=dpm_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             dpm_automation_level: Optional[pulumi.Input[str]] = None,
+             dpm_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if compute_cluster_id is None:
+            raise TypeError("Missing 'compute_cluster_id' argument")
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+
+        _setter("compute_cluster_id", compute_cluster_id)
+        _setter("host_system_id", host_system_id)
         if dpm_automation_level is not None:
-            pulumi.set(__self__, "dpm_automation_level", dpm_automation_level)
+            _setter("dpm_automation_level", dpm_automation_level)
         if dpm_enabled is not None:
-            pulumi.set(__self__, "dpm_enabled", dpm_enabled)
+            _setter("dpm_enabled", dpm_enabled)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -122,14 +151,39 @@ class _DpmHostOverrideState:
                `false`.
         :param pulumi.Input[str] host_system_id: The managed object ID of the host.
         """
+        _DpmHostOverrideState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_cluster_id=compute_cluster_id,
+            dpm_automation_level=dpm_automation_level,
+            dpm_enabled=dpm_enabled,
+            host_system_id=host_system_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_cluster_id: Optional[pulumi.Input[str]] = None,
+             dpm_automation_level: Optional[pulumi.Input[str]] = None,
+             dpm_enabled: Optional[pulumi.Input[bool]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compute_cluster_id is None and 'computeClusterId' in kwargs:
+            compute_cluster_id = kwargs['computeClusterId']
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+
         if compute_cluster_id is not None:
-            pulumi.set(__self__, "compute_cluster_id", compute_cluster_id)
+            _setter("compute_cluster_id", compute_cluster_id)
         if dpm_automation_level is not None:
-            pulumi.set(__self__, "dpm_automation_level", dpm_automation_level)
+            _setter("dpm_automation_level", dpm_automation_level)
         if dpm_enabled is not None:
-            pulumi.set(__self__, "dpm_enabled", dpm_enabled)
+            _setter("dpm_enabled", dpm_enabled)
         if host_system_id is not None:
-            pulumi.set(__self__, "host_system_id", host_system_id)
+            _setter("host_system_id", host_system_id)
 
     @property
     @pulumi.getter(name="computeClusterId")
@@ -235,6 +289,10 @@ class DpmHostOverride(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DpmHostOverrideArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

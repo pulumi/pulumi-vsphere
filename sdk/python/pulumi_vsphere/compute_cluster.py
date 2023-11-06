@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -306,135 +306,400 @@ class ComputeClusterArgs:
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
-        pulumi.set(__self__, "datacenter_id", datacenter_id)
+        ComputeClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter_id=datacenter_id,
+            custom_attributes=custom_attributes,
+            dpm_automation_level=dpm_automation_level,
+            dpm_enabled=dpm_enabled,
+            dpm_threshold=dpm_threshold,
+            drs_advanced_options=drs_advanced_options,
+            drs_automation_level=drs_automation_level,
+            drs_enable_predictive_drs=drs_enable_predictive_drs,
+            drs_enable_vm_overrides=drs_enable_vm_overrides,
+            drs_enabled=drs_enabled,
+            drs_migration_threshold=drs_migration_threshold,
+            drs_scale_descendants_shares=drs_scale_descendants_shares,
+            folder=folder,
+            force_evacuate_on_destroy=force_evacuate_on_destroy,
+            ha_admission_control_failover_host_system_ids=ha_admission_control_failover_host_system_ids,
+            ha_admission_control_host_failure_tolerance=ha_admission_control_host_failure_tolerance,
+            ha_admission_control_performance_tolerance=ha_admission_control_performance_tolerance,
+            ha_admission_control_policy=ha_admission_control_policy,
+            ha_admission_control_resource_percentage_auto_compute=ha_admission_control_resource_percentage_auto_compute,
+            ha_admission_control_resource_percentage_cpu=ha_admission_control_resource_percentage_cpu,
+            ha_admission_control_resource_percentage_memory=ha_admission_control_resource_percentage_memory,
+            ha_admission_control_slot_policy_explicit_cpu=ha_admission_control_slot_policy_explicit_cpu,
+            ha_admission_control_slot_policy_explicit_memory=ha_admission_control_slot_policy_explicit_memory,
+            ha_admission_control_slot_policy_use_explicit_size=ha_admission_control_slot_policy_use_explicit_size,
+            ha_advanced_options=ha_advanced_options,
+            ha_datastore_apd_recovery_action=ha_datastore_apd_recovery_action,
+            ha_datastore_apd_response=ha_datastore_apd_response,
+            ha_datastore_apd_response_delay=ha_datastore_apd_response_delay,
+            ha_datastore_pdl_response=ha_datastore_pdl_response,
+            ha_enabled=ha_enabled,
+            ha_heartbeat_datastore_ids=ha_heartbeat_datastore_ids,
+            ha_heartbeat_datastore_policy=ha_heartbeat_datastore_policy,
+            ha_host_isolation_response=ha_host_isolation_response,
+            ha_host_monitoring=ha_host_monitoring,
+            ha_vm_component_protection=ha_vm_component_protection,
+            ha_vm_dependency_restart_condition=ha_vm_dependency_restart_condition,
+            ha_vm_failure_interval=ha_vm_failure_interval,
+            ha_vm_maximum_failure_window=ha_vm_maximum_failure_window,
+            ha_vm_maximum_resets=ha_vm_maximum_resets,
+            ha_vm_minimum_uptime=ha_vm_minimum_uptime,
+            ha_vm_monitoring=ha_vm_monitoring,
+            ha_vm_restart_additional_delay=ha_vm_restart_additional_delay,
+            ha_vm_restart_priority=ha_vm_restart_priority,
+            ha_vm_restart_timeout=ha_vm_restart_timeout,
+            host_cluster_exit_timeout=host_cluster_exit_timeout,
+            host_managed=host_managed,
+            host_system_ids=host_system_ids,
+            name=name,
+            proactive_ha_automation_level=proactive_ha_automation_level,
+            proactive_ha_enabled=proactive_ha_enabled,
+            proactive_ha_moderate_remediation=proactive_ha_moderate_remediation,
+            proactive_ha_provider_ids=proactive_ha_provider_ids,
+            proactive_ha_severe_remediation=proactive_ha_severe_remediation,
+            tags=tags,
+            vsan_compression_enabled=vsan_compression_enabled,
+            vsan_dedup_enabled=vsan_dedup_enabled,
+            vsan_disk_groups=vsan_disk_groups,
+            vsan_dit_encryption_enabled=vsan_dit_encryption_enabled,
+            vsan_dit_rekey_interval=vsan_dit_rekey_interval,
+            vsan_enabled=vsan_enabled,
+            vsan_network_diagnostic_mode_enabled=vsan_network_diagnostic_mode_enabled,
+            vsan_performance_enabled=vsan_performance_enabled,
+            vsan_remote_datastore_ids=vsan_remote_datastore_ids,
+            vsan_unmap_enabled=vsan_unmap_enabled,
+            vsan_verbose_mode_enabled=vsan_verbose_mode_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             dpm_automation_level: Optional[pulumi.Input[str]] = None,
+             dpm_enabled: Optional[pulumi.Input[bool]] = None,
+             dpm_threshold: Optional[pulumi.Input[int]] = None,
+             drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             drs_automation_level: Optional[pulumi.Input[str]] = None,
+             drs_enable_predictive_drs: Optional[pulumi.Input[bool]] = None,
+             drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
+             drs_enabled: Optional[pulumi.Input[bool]] = None,
+             drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+             drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
+             ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_performance_tolerance: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_policy: Optional[pulumi.Input[str]] = None,
+             ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[bool]] = None,
+             ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[bool]] = None,
+             ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
+             ha_datastore_apd_response: Optional[pulumi.Input[str]] = None,
+             ha_datastore_apd_response_delay: Optional[pulumi.Input[int]] = None,
+             ha_datastore_pdl_response: Optional[pulumi.Input[str]] = None,
+             ha_enabled: Optional[pulumi.Input[bool]] = None,
+             ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ha_heartbeat_datastore_policy: Optional[pulumi.Input[str]] = None,
+             ha_host_isolation_response: Optional[pulumi.Input[str]] = None,
+             ha_host_monitoring: Optional[pulumi.Input[str]] = None,
+             ha_vm_component_protection: Optional[pulumi.Input[str]] = None,
+             ha_vm_dependency_restart_condition: Optional[pulumi.Input[str]] = None,
+             ha_vm_failure_interval: Optional[pulumi.Input[int]] = None,
+             ha_vm_maximum_failure_window: Optional[pulumi.Input[int]] = None,
+             ha_vm_maximum_resets: Optional[pulumi.Input[int]] = None,
+             ha_vm_minimum_uptime: Optional[pulumi.Input[int]] = None,
+             ha_vm_monitoring: Optional[pulumi.Input[str]] = None,
+             ha_vm_restart_additional_delay: Optional[pulumi.Input[int]] = None,
+             ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
+             ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
+             host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+             host_managed: Optional[pulumi.Input[bool]] = None,
+             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             proactive_ha_automation_level: Optional[pulumi.Input[str]] = None,
+             proactive_ha_enabled: Optional[pulumi.Input[bool]] = None,
+             proactive_ha_moderate_remediation: Optional[pulumi.Input[str]] = None,
+             proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proactive_ha_severe_remediation: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vsan_compression_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_dedup_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
+             vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
+             vsan_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datacenter_id is None:
+            raise TypeError("Missing 'datacenter_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+        if dpm_threshold is None and 'dpmThreshold' in kwargs:
+            dpm_threshold = kwargs['dpmThreshold']
+        if drs_advanced_options is None and 'drsAdvancedOptions' in kwargs:
+            drs_advanced_options = kwargs['drsAdvancedOptions']
+        if drs_automation_level is None and 'drsAutomationLevel' in kwargs:
+            drs_automation_level = kwargs['drsAutomationLevel']
+        if drs_enable_predictive_drs is None and 'drsEnablePredictiveDrs' in kwargs:
+            drs_enable_predictive_drs = kwargs['drsEnablePredictiveDrs']
+        if drs_enable_vm_overrides is None and 'drsEnableVmOverrides' in kwargs:
+            drs_enable_vm_overrides = kwargs['drsEnableVmOverrides']
+        if drs_enabled is None and 'drsEnabled' in kwargs:
+            drs_enabled = kwargs['drsEnabled']
+        if drs_migration_threshold is None and 'drsMigrationThreshold' in kwargs:
+            drs_migration_threshold = kwargs['drsMigrationThreshold']
+        if drs_scale_descendants_shares is None and 'drsScaleDescendantsShares' in kwargs:
+            drs_scale_descendants_shares = kwargs['drsScaleDescendantsShares']
+        if force_evacuate_on_destroy is None and 'forceEvacuateOnDestroy' in kwargs:
+            force_evacuate_on_destroy = kwargs['forceEvacuateOnDestroy']
+        if ha_admission_control_failover_host_system_ids is None and 'haAdmissionControlFailoverHostSystemIds' in kwargs:
+            ha_admission_control_failover_host_system_ids = kwargs['haAdmissionControlFailoverHostSystemIds']
+        if ha_admission_control_host_failure_tolerance is None and 'haAdmissionControlHostFailureTolerance' in kwargs:
+            ha_admission_control_host_failure_tolerance = kwargs['haAdmissionControlHostFailureTolerance']
+        if ha_admission_control_performance_tolerance is None and 'haAdmissionControlPerformanceTolerance' in kwargs:
+            ha_admission_control_performance_tolerance = kwargs['haAdmissionControlPerformanceTolerance']
+        if ha_admission_control_policy is None and 'haAdmissionControlPolicy' in kwargs:
+            ha_admission_control_policy = kwargs['haAdmissionControlPolicy']
+        if ha_admission_control_resource_percentage_auto_compute is None and 'haAdmissionControlResourcePercentageAutoCompute' in kwargs:
+            ha_admission_control_resource_percentage_auto_compute = kwargs['haAdmissionControlResourcePercentageAutoCompute']
+        if ha_admission_control_resource_percentage_cpu is None and 'haAdmissionControlResourcePercentageCpu' in kwargs:
+            ha_admission_control_resource_percentage_cpu = kwargs['haAdmissionControlResourcePercentageCpu']
+        if ha_admission_control_resource_percentage_memory is None and 'haAdmissionControlResourcePercentageMemory' in kwargs:
+            ha_admission_control_resource_percentage_memory = kwargs['haAdmissionControlResourcePercentageMemory']
+        if ha_admission_control_slot_policy_explicit_cpu is None and 'haAdmissionControlSlotPolicyExplicitCpu' in kwargs:
+            ha_admission_control_slot_policy_explicit_cpu = kwargs['haAdmissionControlSlotPolicyExplicitCpu']
+        if ha_admission_control_slot_policy_explicit_memory is None and 'haAdmissionControlSlotPolicyExplicitMemory' in kwargs:
+            ha_admission_control_slot_policy_explicit_memory = kwargs['haAdmissionControlSlotPolicyExplicitMemory']
+        if ha_admission_control_slot_policy_use_explicit_size is None and 'haAdmissionControlSlotPolicyUseExplicitSize' in kwargs:
+            ha_admission_control_slot_policy_use_explicit_size = kwargs['haAdmissionControlSlotPolicyUseExplicitSize']
+        if ha_advanced_options is None and 'haAdvancedOptions' in kwargs:
+            ha_advanced_options = kwargs['haAdvancedOptions']
+        if ha_datastore_apd_recovery_action is None and 'haDatastoreApdRecoveryAction' in kwargs:
+            ha_datastore_apd_recovery_action = kwargs['haDatastoreApdRecoveryAction']
+        if ha_datastore_apd_response is None and 'haDatastoreApdResponse' in kwargs:
+            ha_datastore_apd_response = kwargs['haDatastoreApdResponse']
+        if ha_datastore_apd_response_delay is None and 'haDatastoreApdResponseDelay' in kwargs:
+            ha_datastore_apd_response_delay = kwargs['haDatastoreApdResponseDelay']
+        if ha_datastore_pdl_response is None and 'haDatastorePdlResponse' in kwargs:
+            ha_datastore_pdl_response = kwargs['haDatastorePdlResponse']
+        if ha_enabled is None and 'haEnabled' in kwargs:
+            ha_enabled = kwargs['haEnabled']
+        if ha_heartbeat_datastore_ids is None and 'haHeartbeatDatastoreIds' in kwargs:
+            ha_heartbeat_datastore_ids = kwargs['haHeartbeatDatastoreIds']
+        if ha_heartbeat_datastore_policy is None and 'haHeartbeatDatastorePolicy' in kwargs:
+            ha_heartbeat_datastore_policy = kwargs['haHeartbeatDatastorePolicy']
+        if ha_host_isolation_response is None and 'haHostIsolationResponse' in kwargs:
+            ha_host_isolation_response = kwargs['haHostIsolationResponse']
+        if ha_host_monitoring is None and 'haHostMonitoring' in kwargs:
+            ha_host_monitoring = kwargs['haHostMonitoring']
+        if ha_vm_component_protection is None and 'haVmComponentProtection' in kwargs:
+            ha_vm_component_protection = kwargs['haVmComponentProtection']
+        if ha_vm_dependency_restart_condition is None and 'haVmDependencyRestartCondition' in kwargs:
+            ha_vm_dependency_restart_condition = kwargs['haVmDependencyRestartCondition']
+        if ha_vm_failure_interval is None and 'haVmFailureInterval' in kwargs:
+            ha_vm_failure_interval = kwargs['haVmFailureInterval']
+        if ha_vm_maximum_failure_window is None and 'haVmMaximumFailureWindow' in kwargs:
+            ha_vm_maximum_failure_window = kwargs['haVmMaximumFailureWindow']
+        if ha_vm_maximum_resets is None and 'haVmMaximumResets' in kwargs:
+            ha_vm_maximum_resets = kwargs['haVmMaximumResets']
+        if ha_vm_minimum_uptime is None and 'haVmMinimumUptime' in kwargs:
+            ha_vm_minimum_uptime = kwargs['haVmMinimumUptime']
+        if ha_vm_monitoring is None and 'haVmMonitoring' in kwargs:
+            ha_vm_monitoring = kwargs['haVmMonitoring']
+        if ha_vm_restart_additional_delay is None and 'haVmRestartAdditionalDelay' in kwargs:
+            ha_vm_restart_additional_delay = kwargs['haVmRestartAdditionalDelay']
+        if ha_vm_restart_priority is None and 'haVmRestartPriority' in kwargs:
+            ha_vm_restart_priority = kwargs['haVmRestartPriority']
+        if ha_vm_restart_timeout is None and 'haVmRestartTimeout' in kwargs:
+            ha_vm_restart_timeout = kwargs['haVmRestartTimeout']
+        if host_cluster_exit_timeout is None and 'hostClusterExitTimeout' in kwargs:
+            host_cluster_exit_timeout = kwargs['hostClusterExitTimeout']
+        if host_managed is None and 'hostManaged' in kwargs:
+            host_managed = kwargs['hostManaged']
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+        if proactive_ha_automation_level is None and 'proactiveHaAutomationLevel' in kwargs:
+            proactive_ha_automation_level = kwargs['proactiveHaAutomationLevel']
+        if proactive_ha_enabled is None and 'proactiveHaEnabled' in kwargs:
+            proactive_ha_enabled = kwargs['proactiveHaEnabled']
+        if proactive_ha_moderate_remediation is None and 'proactiveHaModerateRemediation' in kwargs:
+            proactive_ha_moderate_remediation = kwargs['proactiveHaModerateRemediation']
+        if proactive_ha_provider_ids is None and 'proactiveHaProviderIds' in kwargs:
+            proactive_ha_provider_ids = kwargs['proactiveHaProviderIds']
+        if proactive_ha_severe_remediation is None and 'proactiveHaSevereRemediation' in kwargs:
+            proactive_ha_severe_remediation = kwargs['proactiveHaSevereRemediation']
+        if vsan_compression_enabled is None and 'vsanCompressionEnabled' in kwargs:
+            vsan_compression_enabled = kwargs['vsanCompressionEnabled']
+        if vsan_dedup_enabled is None and 'vsanDedupEnabled' in kwargs:
+            vsan_dedup_enabled = kwargs['vsanDedupEnabled']
+        if vsan_disk_groups is None and 'vsanDiskGroups' in kwargs:
+            vsan_disk_groups = kwargs['vsanDiskGroups']
+        if vsan_dit_encryption_enabled is None and 'vsanDitEncryptionEnabled' in kwargs:
+            vsan_dit_encryption_enabled = kwargs['vsanDitEncryptionEnabled']
+        if vsan_dit_rekey_interval is None and 'vsanDitRekeyInterval' in kwargs:
+            vsan_dit_rekey_interval = kwargs['vsanDitRekeyInterval']
+        if vsan_enabled is None and 'vsanEnabled' in kwargs:
+            vsan_enabled = kwargs['vsanEnabled']
+        if vsan_network_diagnostic_mode_enabled is None and 'vsanNetworkDiagnosticModeEnabled' in kwargs:
+            vsan_network_diagnostic_mode_enabled = kwargs['vsanNetworkDiagnosticModeEnabled']
+        if vsan_performance_enabled is None and 'vsanPerformanceEnabled' in kwargs:
+            vsan_performance_enabled = kwargs['vsanPerformanceEnabled']
+        if vsan_remote_datastore_ids is None and 'vsanRemoteDatastoreIds' in kwargs:
+            vsan_remote_datastore_ids = kwargs['vsanRemoteDatastoreIds']
+        if vsan_unmap_enabled is None and 'vsanUnmapEnabled' in kwargs:
+            vsan_unmap_enabled = kwargs['vsanUnmapEnabled']
+        if vsan_verbose_mode_enabled is None and 'vsanVerboseModeEnabled' in kwargs:
+            vsan_verbose_mode_enabled = kwargs['vsanVerboseModeEnabled']
+
+        _setter("datacenter_id", datacenter_id)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if dpm_automation_level is not None:
-            pulumi.set(__self__, "dpm_automation_level", dpm_automation_level)
+            _setter("dpm_automation_level", dpm_automation_level)
         if dpm_enabled is not None:
-            pulumi.set(__self__, "dpm_enabled", dpm_enabled)
+            _setter("dpm_enabled", dpm_enabled)
         if dpm_threshold is not None:
-            pulumi.set(__self__, "dpm_threshold", dpm_threshold)
+            _setter("dpm_threshold", dpm_threshold)
         if drs_advanced_options is not None:
-            pulumi.set(__self__, "drs_advanced_options", drs_advanced_options)
+            _setter("drs_advanced_options", drs_advanced_options)
         if drs_automation_level is not None:
-            pulumi.set(__self__, "drs_automation_level", drs_automation_level)
+            _setter("drs_automation_level", drs_automation_level)
         if drs_enable_predictive_drs is not None:
-            pulumi.set(__self__, "drs_enable_predictive_drs", drs_enable_predictive_drs)
+            _setter("drs_enable_predictive_drs", drs_enable_predictive_drs)
         if drs_enable_vm_overrides is not None:
-            pulumi.set(__self__, "drs_enable_vm_overrides", drs_enable_vm_overrides)
+            _setter("drs_enable_vm_overrides", drs_enable_vm_overrides)
         if drs_enabled is not None:
-            pulumi.set(__self__, "drs_enabled", drs_enabled)
+            _setter("drs_enabled", drs_enabled)
         if drs_migration_threshold is not None:
-            pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
+            _setter("drs_migration_threshold", drs_migration_threshold)
         if drs_scale_descendants_shares is not None:
-            pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
+            _setter("drs_scale_descendants_shares", drs_scale_descendants_shares)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if force_evacuate_on_destroy is not None:
-            pulumi.set(__self__, "force_evacuate_on_destroy", force_evacuate_on_destroy)
+            _setter("force_evacuate_on_destroy", force_evacuate_on_destroy)
         if ha_admission_control_failover_host_system_ids is not None:
-            pulumi.set(__self__, "ha_admission_control_failover_host_system_ids", ha_admission_control_failover_host_system_ids)
+            _setter("ha_admission_control_failover_host_system_ids", ha_admission_control_failover_host_system_ids)
         if ha_admission_control_host_failure_tolerance is not None:
-            pulumi.set(__self__, "ha_admission_control_host_failure_tolerance", ha_admission_control_host_failure_tolerance)
+            _setter("ha_admission_control_host_failure_tolerance", ha_admission_control_host_failure_tolerance)
         if ha_admission_control_performance_tolerance is not None:
-            pulumi.set(__self__, "ha_admission_control_performance_tolerance", ha_admission_control_performance_tolerance)
+            _setter("ha_admission_control_performance_tolerance", ha_admission_control_performance_tolerance)
         if ha_admission_control_policy is not None:
-            pulumi.set(__self__, "ha_admission_control_policy", ha_admission_control_policy)
+            _setter("ha_admission_control_policy", ha_admission_control_policy)
         if ha_admission_control_resource_percentage_auto_compute is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_auto_compute", ha_admission_control_resource_percentage_auto_compute)
+            _setter("ha_admission_control_resource_percentage_auto_compute", ha_admission_control_resource_percentage_auto_compute)
         if ha_admission_control_resource_percentage_cpu is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_cpu", ha_admission_control_resource_percentage_cpu)
+            _setter("ha_admission_control_resource_percentage_cpu", ha_admission_control_resource_percentage_cpu)
         if ha_admission_control_resource_percentage_memory is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_memory", ha_admission_control_resource_percentage_memory)
+            _setter("ha_admission_control_resource_percentage_memory", ha_admission_control_resource_percentage_memory)
         if ha_admission_control_slot_policy_explicit_cpu is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_explicit_cpu", ha_admission_control_slot_policy_explicit_cpu)
+            _setter("ha_admission_control_slot_policy_explicit_cpu", ha_admission_control_slot_policy_explicit_cpu)
         if ha_admission_control_slot_policy_explicit_memory is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_explicit_memory", ha_admission_control_slot_policy_explicit_memory)
+            _setter("ha_admission_control_slot_policy_explicit_memory", ha_admission_control_slot_policy_explicit_memory)
         if ha_admission_control_slot_policy_use_explicit_size is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_use_explicit_size", ha_admission_control_slot_policy_use_explicit_size)
+            _setter("ha_admission_control_slot_policy_use_explicit_size", ha_admission_control_slot_policy_use_explicit_size)
         if ha_advanced_options is not None:
-            pulumi.set(__self__, "ha_advanced_options", ha_advanced_options)
+            _setter("ha_advanced_options", ha_advanced_options)
         if ha_datastore_apd_recovery_action is not None:
-            pulumi.set(__self__, "ha_datastore_apd_recovery_action", ha_datastore_apd_recovery_action)
+            _setter("ha_datastore_apd_recovery_action", ha_datastore_apd_recovery_action)
         if ha_datastore_apd_response is not None:
-            pulumi.set(__self__, "ha_datastore_apd_response", ha_datastore_apd_response)
+            _setter("ha_datastore_apd_response", ha_datastore_apd_response)
         if ha_datastore_apd_response_delay is not None:
-            pulumi.set(__self__, "ha_datastore_apd_response_delay", ha_datastore_apd_response_delay)
+            _setter("ha_datastore_apd_response_delay", ha_datastore_apd_response_delay)
         if ha_datastore_pdl_response is not None:
-            pulumi.set(__self__, "ha_datastore_pdl_response", ha_datastore_pdl_response)
+            _setter("ha_datastore_pdl_response", ha_datastore_pdl_response)
         if ha_enabled is not None:
-            pulumi.set(__self__, "ha_enabled", ha_enabled)
+            _setter("ha_enabled", ha_enabled)
         if ha_heartbeat_datastore_ids is not None:
-            pulumi.set(__self__, "ha_heartbeat_datastore_ids", ha_heartbeat_datastore_ids)
+            _setter("ha_heartbeat_datastore_ids", ha_heartbeat_datastore_ids)
         if ha_heartbeat_datastore_policy is not None:
-            pulumi.set(__self__, "ha_heartbeat_datastore_policy", ha_heartbeat_datastore_policy)
+            _setter("ha_heartbeat_datastore_policy", ha_heartbeat_datastore_policy)
         if ha_host_isolation_response is not None:
-            pulumi.set(__self__, "ha_host_isolation_response", ha_host_isolation_response)
+            _setter("ha_host_isolation_response", ha_host_isolation_response)
         if ha_host_monitoring is not None:
-            pulumi.set(__self__, "ha_host_monitoring", ha_host_monitoring)
+            _setter("ha_host_monitoring", ha_host_monitoring)
         if ha_vm_component_protection is not None:
-            pulumi.set(__self__, "ha_vm_component_protection", ha_vm_component_protection)
+            _setter("ha_vm_component_protection", ha_vm_component_protection)
         if ha_vm_dependency_restart_condition is not None:
-            pulumi.set(__self__, "ha_vm_dependency_restart_condition", ha_vm_dependency_restart_condition)
+            _setter("ha_vm_dependency_restart_condition", ha_vm_dependency_restart_condition)
         if ha_vm_failure_interval is not None:
-            pulumi.set(__self__, "ha_vm_failure_interval", ha_vm_failure_interval)
+            _setter("ha_vm_failure_interval", ha_vm_failure_interval)
         if ha_vm_maximum_failure_window is not None:
-            pulumi.set(__self__, "ha_vm_maximum_failure_window", ha_vm_maximum_failure_window)
+            _setter("ha_vm_maximum_failure_window", ha_vm_maximum_failure_window)
         if ha_vm_maximum_resets is not None:
-            pulumi.set(__self__, "ha_vm_maximum_resets", ha_vm_maximum_resets)
+            _setter("ha_vm_maximum_resets", ha_vm_maximum_resets)
         if ha_vm_minimum_uptime is not None:
-            pulumi.set(__self__, "ha_vm_minimum_uptime", ha_vm_minimum_uptime)
+            _setter("ha_vm_minimum_uptime", ha_vm_minimum_uptime)
         if ha_vm_monitoring is not None:
-            pulumi.set(__self__, "ha_vm_monitoring", ha_vm_monitoring)
+            _setter("ha_vm_monitoring", ha_vm_monitoring)
         if ha_vm_restart_additional_delay is not None:
-            pulumi.set(__self__, "ha_vm_restart_additional_delay", ha_vm_restart_additional_delay)
+            _setter("ha_vm_restart_additional_delay", ha_vm_restart_additional_delay)
         if ha_vm_restart_priority is not None:
-            pulumi.set(__self__, "ha_vm_restart_priority", ha_vm_restart_priority)
+            _setter("ha_vm_restart_priority", ha_vm_restart_priority)
         if ha_vm_restart_timeout is not None:
-            pulumi.set(__self__, "ha_vm_restart_timeout", ha_vm_restart_timeout)
+            _setter("ha_vm_restart_timeout", ha_vm_restart_timeout)
         if host_cluster_exit_timeout is not None:
-            pulumi.set(__self__, "host_cluster_exit_timeout", host_cluster_exit_timeout)
+            _setter("host_cluster_exit_timeout", host_cluster_exit_timeout)
         if host_managed is not None:
-            pulumi.set(__self__, "host_managed", host_managed)
+            _setter("host_managed", host_managed)
         if host_system_ids is not None:
-            pulumi.set(__self__, "host_system_ids", host_system_ids)
+            _setter("host_system_ids", host_system_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if proactive_ha_automation_level is not None:
-            pulumi.set(__self__, "proactive_ha_automation_level", proactive_ha_automation_level)
+            _setter("proactive_ha_automation_level", proactive_ha_automation_level)
         if proactive_ha_enabled is not None:
-            pulumi.set(__self__, "proactive_ha_enabled", proactive_ha_enabled)
+            _setter("proactive_ha_enabled", proactive_ha_enabled)
         if proactive_ha_moderate_remediation is not None:
-            pulumi.set(__self__, "proactive_ha_moderate_remediation", proactive_ha_moderate_remediation)
+            _setter("proactive_ha_moderate_remediation", proactive_ha_moderate_remediation)
         if proactive_ha_provider_ids is not None:
-            pulumi.set(__self__, "proactive_ha_provider_ids", proactive_ha_provider_ids)
+            _setter("proactive_ha_provider_ids", proactive_ha_provider_ids)
         if proactive_ha_severe_remediation is not None:
-            pulumi.set(__self__, "proactive_ha_severe_remediation", proactive_ha_severe_remediation)
+            _setter("proactive_ha_severe_remediation", proactive_ha_severe_remediation)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vsan_compression_enabled is not None:
-            pulumi.set(__self__, "vsan_compression_enabled", vsan_compression_enabled)
+            _setter("vsan_compression_enabled", vsan_compression_enabled)
         if vsan_dedup_enabled is not None:
-            pulumi.set(__self__, "vsan_dedup_enabled", vsan_dedup_enabled)
+            _setter("vsan_dedup_enabled", vsan_dedup_enabled)
         if vsan_disk_groups is not None:
-            pulumi.set(__self__, "vsan_disk_groups", vsan_disk_groups)
+            _setter("vsan_disk_groups", vsan_disk_groups)
         if vsan_dit_encryption_enabled is not None:
-            pulumi.set(__self__, "vsan_dit_encryption_enabled", vsan_dit_encryption_enabled)
+            _setter("vsan_dit_encryption_enabled", vsan_dit_encryption_enabled)
         if vsan_dit_rekey_interval is not None:
-            pulumi.set(__self__, "vsan_dit_rekey_interval", vsan_dit_rekey_interval)
+            _setter("vsan_dit_rekey_interval", vsan_dit_rekey_interval)
         if vsan_enabled is not None:
-            pulumi.set(__self__, "vsan_enabled", vsan_enabled)
+            _setter("vsan_enabled", vsan_enabled)
         if vsan_network_diagnostic_mode_enabled is not None:
-            pulumi.set(__self__, "vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
+            _setter("vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
         if vsan_performance_enabled is not None:
-            pulumi.set(__self__, "vsan_performance_enabled", vsan_performance_enabled)
+            _setter("vsan_performance_enabled", vsan_performance_enabled)
         if vsan_remote_datastore_ids is not None:
-            pulumi.set(__self__, "vsan_remote_datastore_ids", vsan_remote_datastore_ids)
+            _setter("vsan_remote_datastore_ids", vsan_remote_datastore_ids)
         if vsan_unmap_enabled is not None:
-            pulumi.set(__self__, "vsan_unmap_enabled", vsan_unmap_enabled)
+            _setter("vsan_unmap_enabled", vsan_unmap_enabled)
         if vsan_verbose_mode_enabled is not None:
-            pulumi.set(__self__, "vsan_verbose_mode_enabled", vsan_verbose_mode_enabled)
+            _setter("vsan_verbose_mode_enabled", vsan_verbose_mode_enabled)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -1673,138 +1938,405 @@ class _ComputeClusterState:
         :param pulumi.Input[bool] vsan_verbose_mode_enabled: Enables verbose mode for vSAN
                performance service on the cluster.
         """
+        _ComputeClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_attributes=custom_attributes,
+            datacenter_id=datacenter_id,
+            dpm_automation_level=dpm_automation_level,
+            dpm_enabled=dpm_enabled,
+            dpm_threshold=dpm_threshold,
+            drs_advanced_options=drs_advanced_options,
+            drs_automation_level=drs_automation_level,
+            drs_enable_predictive_drs=drs_enable_predictive_drs,
+            drs_enable_vm_overrides=drs_enable_vm_overrides,
+            drs_enabled=drs_enabled,
+            drs_migration_threshold=drs_migration_threshold,
+            drs_scale_descendants_shares=drs_scale_descendants_shares,
+            folder=folder,
+            force_evacuate_on_destroy=force_evacuate_on_destroy,
+            ha_admission_control_failover_host_system_ids=ha_admission_control_failover_host_system_ids,
+            ha_admission_control_host_failure_tolerance=ha_admission_control_host_failure_tolerance,
+            ha_admission_control_performance_tolerance=ha_admission_control_performance_tolerance,
+            ha_admission_control_policy=ha_admission_control_policy,
+            ha_admission_control_resource_percentage_auto_compute=ha_admission_control_resource_percentage_auto_compute,
+            ha_admission_control_resource_percentage_cpu=ha_admission_control_resource_percentage_cpu,
+            ha_admission_control_resource_percentage_memory=ha_admission_control_resource_percentage_memory,
+            ha_admission_control_slot_policy_explicit_cpu=ha_admission_control_slot_policy_explicit_cpu,
+            ha_admission_control_slot_policy_explicit_memory=ha_admission_control_slot_policy_explicit_memory,
+            ha_admission_control_slot_policy_use_explicit_size=ha_admission_control_slot_policy_use_explicit_size,
+            ha_advanced_options=ha_advanced_options,
+            ha_datastore_apd_recovery_action=ha_datastore_apd_recovery_action,
+            ha_datastore_apd_response=ha_datastore_apd_response,
+            ha_datastore_apd_response_delay=ha_datastore_apd_response_delay,
+            ha_datastore_pdl_response=ha_datastore_pdl_response,
+            ha_enabled=ha_enabled,
+            ha_heartbeat_datastore_ids=ha_heartbeat_datastore_ids,
+            ha_heartbeat_datastore_policy=ha_heartbeat_datastore_policy,
+            ha_host_isolation_response=ha_host_isolation_response,
+            ha_host_monitoring=ha_host_monitoring,
+            ha_vm_component_protection=ha_vm_component_protection,
+            ha_vm_dependency_restart_condition=ha_vm_dependency_restart_condition,
+            ha_vm_failure_interval=ha_vm_failure_interval,
+            ha_vm_maximum_failure_window=ha_vm_maximum_failure_window,
+            ha_vm_maximum_resets=ha_vm_maximum_resets,
+            ha_vm_minimum_uptime=ha_vm_minimum_uptime,
+            ha_vm_monitoring=ha_vm_monitoring,
+            ha_vm_restart_additional_delay=ha_vm_restart_additional_delay,
+            ha_vm_restart_priority=ha_vm_restart_priority,
+            ha_vm_restart_timeout=ha_vm_restart_timeout,
+            host_cluster_exit_timeout=host_cluster_exit_timeout,
+            host_managed=host_managed,
+            host_system_ids=host_system_ids,
+            name=name,
+            proactive_ha_automation_level=proactive_ha_automation_level,
+            proactive_ha_enabled=proactive_ha_enabled,
+            proactive_ha_moderate_remediation=proactive_ha_moderate_remediation,
+            proactive_ha_provider_ids=proactive_ha_provider_ids,
+            proactive_ha_severe_remediation=proactive_ha_severe_remediation,
+            resource_pool_id=resource_pool_id,
+            tags=tags,
+            vsan_compression_enabled=vsan_compression_enabled,
+            vsan_dedup_enabled=vsan_dedup_enabled,
+            vsan_disk_groups=vsan_disk_groups,
+            vsan_dit_encryption_enabled=vsan_dit_encryption_enabled,
+            vsan_dit_rekey_interval=vsan_dit_rekey_interval,
+            vsan_enabled=vsan_enabled,
+            vsan_network_diagnostic_mode_enabled=vsan_network_diagnostic_mode_enabled,
+            vsan_performance_enabled=vsan_performance_enabled,
+            vsan_remote_datastore_ids=vsan_remote_datastore_ids,
+            vsan_unmap_enabled=vsan_unmap_enabled,
+            vsan_verbose_mode_enabled=vsan_verbose_mode_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             dpm_automation_level: Optional[pulumi.Input[str]] = None,
+             dpm_enabled: Optional[pulumi.Input[bool]] = None,
+             dpm_threshold: Optional[pulumi.Input[int]] = None,
+             drs_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             drs_automation_level: Optional[pulumi.Input[str]] = None,
+             drs_enable_predictive_drs: Optional[pulumi.Input[bool]] = None,
+             drs_enable_vm_overrides: Optional[pulumi.Input[bool]] = None,
+             drs_enabled: Optional[pulumi.Input[bool]] = None,
+             drs_migration_threshold: Optional[pulumi.Input[int]] = None,
+             drs_scale_descendants_shares: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             force_evacuate_on_destroy: Optional[pulumi.Input[bool]] = None,
+             ha_admission_control_failover_host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ha_admission_control_host_failure_tolerance: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_performance_tolerance: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_policy: Optional[pulumi.Input[str]] = None,
+             ha_admission_control_resource_percentage_auto_compute: Optional[pulumi.Input[bool]] = None,
+             ha_admission_control_resource_percentage_cpu: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_resource_percentage_memory: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_explicit_cpu: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_explicit_memory: Optional[pulumi.Input[int]] = None,
+             ha_admission_control_slot_policy_use_explicit_size: Optional[pulumi.Input[bool]] = None,
+             ha_advanced_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             ha_datastore_apd_recovery_action: Optional[pulumi.Input[str]] = None,
+             ha_datastore_apd_response: Optional[pulumi.Input[str]] = None,
+             ha_datastore_apd_response_delay: Optional[pulumi.Input[int]] = None,
+             ha_datastore_pdl_response: Optional[pulumi.Input[str]] = None,
+             ha_enabled: Optional[pulumi.Input[bool]] = None,
+             ha_heartbeat_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ha_heartbeat_datastore_policy: Optional[pulumi.Input[str]] = None,
+             ha_host_isolation_response: Optional[pulumi.Input[str]] = None,
+             ha_host_monitoring: Optional[pulumi.Input[str]] = None,
+             ha_vm_component_protection: Optional[pulumi.Input[str]] = None,
+             ha_vm_dependency_restart_condition: Optional[pulumi.Input[str]] = None,
+             ha_vm_failure_interval: Optional[pulumi.Input[int]] = None,
+             ha_vm_maximum_failure_window: Optional[pulumi.Input[int]] = None,
+             ha_vm_maximum_resets: Optional[pulumi.Input[int]] = None,
+             ha_vm_minimum_uptime: Optional[pulumi.Input[int]] = None,
+             ha_vm_monitoring: Optional[pulumi.Input[str]] = None,
+             ha_vm_restart_additional_delay: Optional[pulumi.Input[int]] = None,
+             ha_vm_restart_priority: Optional[pulumi.Input[str]] = None,
+             ha_vm_restart_timeout: Optional[pulumi.Input[int]] = None,
+             host_cluster_exit_timeout: Optional[pulumi.Input[int]] = None,
+             host_managed: Optional[pulumi.Input[bool]] = None,
+             host_system_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             proactive_ha_automation_level: Optional[pulumi.Input[str]] = None,
+             proactive_ha_enabled: Optional[pulumi.Input[bool]] = None,
+             proactive_ha_moderate_remediation: Optional[pulumi.Input[str]] = None,
+             proactive_ha_provider_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proactive_ha_severe_remediation: Optional[pulumi.Input[str]] = None,
+             resource_pool_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vsan_compression_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_dedup_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_disk_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ComputeClusterVsanDiskGroupArgs']]]] = None,
+             vsan_dit_encryption_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_dit_rekey_interval: Optional[pulumi.Input[int]] = None,
+             vsan_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_network_diagnostic_mode_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_performance_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_remote_datastore_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vsan_unmap_enabled: Optional[pulumi.Input[bool]] = None,
+             vsan_verbose_mode_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if dpm_automation_level is None and 'dpmAutomationLevel' in kwargs:
+            dpm_automation_level = kwargs['dpmAutomationLevel']
+        if dpm_enabled is None and 'dpmEnabled' in kwargs:
+            dpm_enabled = kwargs['dpmEnabled']
+        if dpm_threshold is None and 'dpmThreshold' in kwargs:
+            dpm_threshold = kwargs['dpmThreshold']
+        if drs_advanced_options is None and 'drsAdvancedOptions' in kwargs:
+            drs_advanced_options = kwargs['drsAdvancedOptions']
+        if drs_automation_level is None and 'drsAutomationLevel' in kwargs:
+            drs_automation_level = kwargs['drsAutomationLevel']
+        if drs_enable_predictive_drs is None and 'drsEnablePredictiveDrs' in kwargs:
+            drs_enable_predictive_drs = kwargs['drsEnablePredictiveDrs']
+        if drs_enable_vm_overrides is None and 'drsEnableVmOverrides' in kwargs:
+            drs_enable_vm_overrides = kwargs['drsEnableVmOverrides']
+        if drs_enabled is None and 'drsEnabled' in kwargs:
+            drs_enabled = kwargs['drsEnabled']
+        if drs_migration_threshold is None and 'drsMigrationThreshold' in kwargs:
+            drs_migration_threshold = kwargs['drsMigrationThreshold']
+        if drs_scale_descendants_shares is None and 'drsScaleDescendantsShares' in kwargs:
+            drs_scale_descendants_shares = kwargs['drsScaleDescendantsShares']
+        if force_evacuate_on_destroy is None and 'forceEvacuateOnDestroy' in kwargs:
+            force_evacuate_on_destroy = kwargs['forceEvacuateOnDestroy']
+        if ha_admission_control_failover_host_system_ids is None and 'haAdmissionControlFailoverHostSystemIds' in kwargs:
+            ha_admission_control_failover_host_system_ids = kwargs['haAdmissionControlFailoverHostSystemIds']
+        if ha_admission_control_host_failure_tolerance is None and 'haAdmissionControlHostFailureTolerance' in kwargs:
+            ha_admission_control_host_failure_tolerance = kwargs['haAdmissionControlHostFailureTolerance']
+        if ha_admission_control_performance_tolerance is None and 'haAdmissionControlPerformanceTolerance' in kwargs:
+            ha_admission_control_performance_tolerance = kwargs['haAdmissionControlPerformanceTolerance']
+        if ha_admission_control_policy is None and 'haAdmissionControlPolicy' in kwargs:
+            ha_admission_control_policy = kwargs['haAdmissionControlPolicy']
+        if ha_admission_control_resource_percentage_auto_compute is None and 'haAdmissionControlResourcePercentageAutoCompute' in kwargs:
+            ha_admission_control_resource_percentage_auto_compute = kwargs['haAdmissionControlResourcePercentageAutoCompute']
+        if ha_admission_control_resource_percentage_cpu is None and 'haAdmissionControlResourcePercentageCpu' in kwargs:
+            ha_admission_control_resource_percentage_cpu = kwargs['haAdmissionControlResourcePercentageCpu']
+        if ha_admission_control_resource_percentage_memory is None and 'haAdmissionControlResourcePercentageMemory' in kwargs:
+            ha_admission_control_resource_percentage_memory = kwargs['haAdmissionControlResourcePercentageMemory']
+        if ha_admission_control_slot_policy_explicit_cpu is None and 'haAdmissionControlSlotPolicyExplicitCpu' in kwargs:
+            ha_admission_control_slot_policy_explicit_cpu = kwargs['haAdmissionControlSlotPolicyExplicitCpu']
+        if ha_admission_control_slot_policy_explicit_memory is None and 'haAdmissionControlSlotPolicyExplicitMemory' in kwargs:
+            ha_admission_control_slot_policy_explicit_memory = kwargs['haAdmissionControlSlotPolicyExplicitMemory']
+        if ha_admission_control_slot_policy_use_explicit_size is None and 'haAdmissionControlSlotPolicyUseExplicitSize' in kwargs:
+            ha_admission_control_slot_policy_use_explicit_size = kwargs['haAdmissionControlSlotPolicyUseExplicitSize']
+        if ha_advanced_options is None and 'haAdvancedOptions' in kwargs:
+            ha_advanced_options = kwargs['haAdvancedOptions']
+        if ha_datastore_apd_recovery_action is None and 'haDatastoreApdRecoveryAction' in kwargs:
+            ha_datastore_apd_recovery_action = kwargs['haDatastoreApdRecoveryAction']
+        if ha_datastore_apd_response is None and 'haDatastoreApdResponse' in kwargs:
+            ha_datastore_apd_response = kwargs['haDatastoreApdResponse']
+        if ha_datastore_apd_response_delay is None and 'haDatastoreApdResponseDelay' in kwargs:
+            ha_datastore_apd_response_delay = kwargs['haDatastoreApdResponseDelay']
+        if ha_datastore_pdl_response is None and 'haDatastorePdlResponse' in kwargs:
+            ha_datastore_pdl_response = kwargs['haDatastorePdlResponse']
+        if ha_enabled is None and 'haEnabled' in kwargs:
+            ha_enabled = kwargs['haEnabled']
+        if ha_heartbeat_datastore_ids is None and 'haHeartbeatDatastoreIds' in kwargs:
+            ha_heartbeat_datastore_ids = kwargs['haHeartbeatDatastoreIds']
+        if ha_heartbeat_datastore_policy is None and 'haHeartbeatDatastorePolicy' in kwargs:
+            ha_heartbeat_datastore_policy = kwargs['haHeartbeatDatastorePolicy']
+        if ha_host_isolation_response is None and 'haHostIsolationResponse' in kwargs:
+            ha_host_isolation_response = kwargs['haHostIsolationResponse']
+        if ha_host_monitoring is None and 'haHostMonitoring' in kwargs:
+            ha_host_monitoring = kwargs['haHostMonitoring']
+        if ha_vm_component_protection is None and 'haVmComponentProtection' in kwargs:
+            ha_vm_component_protection = kwargs['haVmComponentProtection']
+        if ha_vm_dependency_restart_condition is None and 'haVmDependencyRestartCondition' in kwargs:
+            ha_vm_dependency_restart_condition = kwargs['haVmDependencyRestartCondition']
+        if ha_vm_failure_interval is None and 'haVmFailureInterval' in kwargs:
+            ha_vm_failure_interval = kwargs['haVmFailureInterval']
+        if ha_vm_maximum_failure_window is None and 'haVmMaximumFailureWindow' in kwargs:
+            ha_vm_maximum_failure_window = kwargs['haVmMaximumFailureWindow']
+        if ha_vm_maximum_resets is None and 'haVmMaximumResets' in kwargs:
+            ha_vm_maximum_resets = kwargs['haVmMaximumResets']
+        if ha_vm_minimum_uptime is None and 'haVmMinimumUptime' in kwargs:
+            ha_vm_minimum_uptime = kwargs['haVmMinimumUptime']
+        if ha_vm_monitoring is None and 'haVmMonitoring' in kwargs:
+            ha_vm_monitoring = kwargs['haVmMonitoring']
+        if ha_vm_restart_additional_delay is None and 'haVmRestartAdditionalDelay' in kwargs:
+            ha_vm_restart_additional_delay = kwargs['haVmRestartAdditionalDelay']
+        if ha_vm_restart_priority is None and 'haVmRestartPriority' in kwargs:
+            ha_vm_restart_priority = kwargs['haVmRestartPriority']
+        if ha_vm_restart_timeout is None and 'haVmRestartTimeout' in kwargs:
+            ha_vm_restart_timeout = kwargs['haVmRestartTimeout']
+        if host_cluster_exit_timeout is None and 'hostClusterExitTimeout' in kwargs:
+            host_cluster_exit_timeout = kwargs['hostClusterExitTimeout']
+        if host_managed is None and 'hostManaged' in kwargs:
+            host_managed = kwargs['hostManaged']
+        if host_system_ids is None and 'hostSystemIds' in kwargs:
+            host_system_ids = kwargs['hostSystemIds']
+        if proactive_ha_automation_level is None and 'proactiveHaAutomationLevel' in kwargs:
+            proactive_ha_automation_level = kwargs['proactiveHaAutomationLevel']
+        if proactive_ha_enabled is None and 'proactiveHaEnabled' in kwargs:
+            proactive_ha_enabled = kwargs['proactiveHaEnabled']
+        if proactive_ha_moderate_remediation is None and 'proactiveHaModerateRemediation' in kwargs:
+            proactive_ha_moderate_remediation = kwargs['proactiveHaModerateRemediation']
+        if proactive_ha_provider_ids is None and 'proactiveHaProviderIds' in kwargs:
+            proactive_ha_provider_ids = kwargs['proactiveHaProviderIds']
+        if proactive_ha_severe_remediation is None and 'proactiveHaSevereRemediation' in kwargs:
+            proactive_ha_severe_remediation = kwargs['proactiveHaSevereRemediation']
+        if resource_pool_id is None and 'resourcePoolId' in kwargs:
+            resource_pool_id = kwargs['resourcePoolId']
+        if vsan_compression_enabled is None and 'vsanCompressionEnabled' in kwargs:
+            vsan_compression_enabled = kwargs['vsanCompressionEnabled']
+        if vsan_dedup_enabled is None and 'vsanDedupEnabled' in kwargs:
+            vsan_dedup_enabled = kwargs['vsanDedupEnabled']
+        if vsan_disk_groups is None and 'vsanDiskGroups' in kwargs:
+            vsan_disk_groups = kwargs['vsanDiskGroups']
+        if vsan_dit_encryption_enabled is None and 'vsanDitEncryptionEnabled' in kwargs:
+            vsan_dit_encryption_enabled = kwargs['vsanDitEncryptionEnabled']
+        if vsan_dit_rekey_interval is None and 'vsanDitRekeyInterval' in kwargs:
+            vsan_dit_rekey_interval = kwargs['vsanDitRekeyInterval']
+        if vsan_enabled is None and 'vsanEnabled' in kwargs:
+            vsan_enabled = kwargs['vsanEnabled']
+        if vsan_network_diagnostic_mode_enabled is None and 'vsanNetworkDiagnosticModeEnabled' in kwargs:
+            vsan_network_diagnostic_mode_enabled = kwargs['vsanNetworkDiagnosticModeEnabled']
+        if vsan_performance_enabled is None and 'vsanPerformanceEnabled' in kwargs:
+            vsan_performance_enabled = kwargs['vsanPerformanceEnabled']
+        if vsan_remote_datastore_ids is None and 'vsanRemoteDatastoreIds' in kwargs:
+            vsan_remote_datastore_ids = kwargs['vsanRemoteDatastoreIds']
+        if vsan_unmap_enabled is None and 'vsanUnmapEnabled' in kwargs:
+            vsan_unmap_enabled = kwargs['vsanUnmapEnabled']
+        if vsan_verbose_mode_enabled is None and 'vsanVerboseModeEnabled' in kwargs:
+            vsan_verbose_mode_enabled = kwargs['vsanVerboseModeEnabled']
+
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            pulumi.set(__self__, "datacenter_id", datacenter_id)
+            _setter("datacenter_id", datacenter_id)
         if dpm_automation_level is not None:
-            pulumi.set(__self__, "dpm_automation_level", dpm_automation_level)
+            _setter("dpm_automation_level", dpm_automation_level)
         if dpm_enabled is not None:
-            pulumi.set(__self__, "dpm_enabled", dpm_enabled)
+            _setter("dpm_enabled", dpm_enabled)
         if dpm_threshold is not None:
-            pulumi.set(__self__, "dpm_threshold", dpm_threshold)
+            _setter("dpm_threshold", dpm_threshold)
         if drs_advanced_options is not None:
-            pulumi.set(__self__, "drs_advanced_options", drs_advanced_options)
+            _setter("drs_advanced_options", drs_advanced_options)
         if drs_automation_level is not None:
-            pulumi.set(__self__, "drs_automation_level", drs_automation_level)
+            _setter("drs_automation_level", drs_automation_level)
         if drs_enable_predictive_drs is not None:
-            pulumi.set(__self__, "drs_enable_predictive_drs", drs_enable_predictive_drs)
+            _setter("drs_enable_predictive_drs", drs_enable_predictive_drs)
         if drs_enable_vm_overrides is not None:
-            pulumi.set(__self__, "drs_enable_vm_overrides", drs_enable_vm_overrides)
+            _setter("drs_enable_vm_overrides", drs_enable_vm_overrides)
         if drs_enabled is not None:
-            pulumi.set(__self__, "drs_enabled", drs_enabled)
+            _setter("drs_enabled", drs_enabled)
         if drs_migration_threshold is not None:
-            pulumi.set(__self__, "drs_migration_threshold", drs_migration_threshold)
+            _setter("drs_migration_threshold", drs_migration_threshold)
         if drs_scale_descendants_shares is not None:
-            pulumi.set(__self__, "drs_scale_descendants_shares", drs_scale_descendants_shares)
+            _setter("drs_scale_descendants_shares", drs_scale_descendants_shares)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if force_evacuate_on_destroy is not None:
-            pulumi.set(__self__, "force_evacuate_on_destroy", force_evacuate_on_destroy)
+            _setter("force_evacuate_on_destroy", force_evacuate_on_destroy)
         if ha_admission_control_failover_host_system_ids is not None:
-            pulumi.set(__self__, "ha_admission_control_failover_host_system_ids", ha_admission_control_failover_host_system_ids)
+            _setter("ha_admission_control_failover_host_system_ids", ha_admission_control_failover_host_system_ids)
         if ha_admission_control_host_failure_tolerance is not None:
-            pulumi.set(__self__, "ha_admission_control_host_failure_tolerance", ha_admission_control_host_failure_tolerance)
+            _setter("ha_admission_control_host_failure_tolerance", ha_admission_control_host_failure_tolerance)
         if ha_admission_control_performance_tolerance is not None:
-            pulumi.set(__self__, "ha_admission_control_performance_tolerance", ha_admission_control_performance_tolerance)
+            _setter("ha_admission_control_performance_tolerance", ha_admission_control_performance_tolerance)
         if ha_admission_control_policy is not None:
-            pulumi.set(__self__, "ha_admission_control_policy", ha_admission_control_policy)
+            _setter("ha_admission_control_policy", ha_admission_control_policy)
         if ha_admission_control_resource_percentage_auto_compute is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_auto_compute", ha_admission_control_resource_percentage_auto_compute)
+            _setter("ha_admission_control_resource_percentage_auto_compute", ha_admission_control_resource_percentage_auto_compute)
         if ha_admission_control_resource_percentage_cpu is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_cpu", ha_admission_control_resource_percentage_cpu)
+            _setter("ha_admission_control_resource_percentage_cpu", ha_admission_control_resource_percentage_cpu)
         if ha_admission_control_resource_percentage_memory is not None:
-            pulumi.set(__self__, "ha_admission_control_resource_percentage_memory", ha_admission_control_resource_percentage_memory)
+            _setter("ha_admission_control_resource_percentage_memory", ha_admission_control_resource_percentage_memory)
         if ha_admission_control_slot_policy_explicit_cpu is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_explicit_cpu", ha_admission_control_slot_policy_explicit_cpu)
+            _setter("ha_admission_control_slot_policy_explicit_cpu", ha_admission_control_slot_policy_explicit_cpu)
         if ha_admission_control_slot_policy_explicit_memory is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_explicit_memory", ha_admission_control_slot_policy_explicit_memory)
+            _setter("ha_admission_control_slot_policy_explicit_memory", ha_admission_control_slot_policy_explicit_memory)
         if ha_admission_control_slot_policy_use_explicit_size is not None:
-            pulumi.set(__self__, "ha_admission_control_slot_policy_use_explicit_size", ha_admission_control_slot_policy_use_explicit_size)
+            _setter("ha_admission_control_slot_policy_use_explicit_size", ha_admission_control_slot_policy_use_explicit_size)
         if ha_advanced_options is not None:
-            pulumi.set(__self__, "ha_advanced_options", ha_advanced_options)
+            _setter("ha_advanced_options", ha_advanced_options)
         if ha_datastore_apd_recovery_action is not None:
-            pulumi.set(__self__, "ha_datastore_apd_recovery_action", ha_datastore_apd_recovery_action)
+            _setter("ha_datastore_apd_recovery_action", ha_datastore_apd_recovery_action)
         if ha_datastore_apd_response is not None:
-            pulumi.set(__self__, "ha_datastore_apd_response", ha_datastore_apd_response)
+            _setter("ha_datastore_apd_response", ha_datastore_apd_response)
         if ha_datastore_apd_response_delay is not None:
-            pulumi.set(__self__, "ha_datastore_apd_response_delay", ha_datastore_apd_response_delay)
+            _setter("ha_datastore_apd_response_delay", ha_datastore_apd_response_delay)
         if ha_datastore_pdl_response is not None:
-            pulumi.set(__self__, "ha_datastore_pdl_response", ha_datastore_pdl_response)
+            _setter("ha_datastore_pdl_response", ha_datastore_pdl_response)
         if ha_enabled is not None:
-            pulumi.set(__self__, "ha_enabled", ha_enabled)
+            _setter("ha_enabled", ha_enabled)
         if ha_heartbeat_datastore_ids is not None:
-            pulumi.set(__self__, "ha_heartbeat_datastore_ids", ha_heartbeat_datastore_ids)
+            _setter("ha_heartbeat_datastore_ids", ha_heartbeat_datastore_ids)
         if ha_heartbeat_datastore_policy is not None:
-            pulumi.set(__self__, "ha_heartbeat_datastore_policy", ha_heartbeat_datastore_policy)
+            _setter("ha_heartbeat_datastore_policy", ha_heartbeat_datastore_policy)
         if ha_host_isolation_response is not None:
-            pulumi.set(__self__, "ha_host_isolation_response", ha_host_isolation_response)
+            _setter("ha_host_isolation_response", ha_host_isolation_response)
         if ha_host_monitoring is not None:
-            pulumi.set(__self__, "ha_host_monitoring", ha_host_monitoring)
+            _setter("ha_host_monitoring", ha_host_monitoring)
         if ha_vm_component_protection is not None:
-            pulumi.set(__self__, "ha_vm_component_protection", ha_vm_component_protection)
+            _setter("ha_vm_component_protection", ha_vm_component_protection)
         if ha_vm_dependency_restart_condition is not None:
-            pulumi.set(__self__, "ha_vm_dependency_restart_condition", ha_vm_dependency_restart_condition)
+            _setter("ha_vm_dependency_restart_condition", ha_vm_dependency_restart_condition)
         if ha_vm_failure_interval is not None:
-            pulumi.set(__self__, "ha_vm_failure_interval", ha_vm_failure_interval)
+            _setter("ha_vm_failure_interval", ha_vm_failure_interval)
         if ha_vm_maximum_failure_window is not None:
-            pulumi.set(__self__, "ha_vm_maximum_failure_window", ha_vm_maximum_failure_window)
+            _setter("ha_vm_maximum_failure_window", ha_vm_maximum_failure_window)
         if ha_vm_maximum_resets is not None:
-            pulumi.set(__self__, "ha_vm_maximum_resets", ha_vm_maximum_resets)
+            _setter("ha_vm_maximum_resets", ha_vm_maximum_resets)
         if ha_vm_minimum_uptime is not None:
-            pulumi.set(__self__, "ha_vm_minimum_uptime", ha_vm_minimum_uptime)
+            _setter("ha_vm_minimum_uptime", ha_vm_minimum_uptime)
         if ha_vm_monitoring is not None:
-            pulumi.set(__self__, "ha_vm_monitoring", ha_vm_monitoring)
+            _setter("ha_vm_monitoring", ha_vm_monitoring)
         if ha_vm_restart_additional_delay is not None:
-            pulumi.set(__self__, "ha_vm_restart_additional_delay", ha_vm_restart_additional_delay)
+            _setter("ha_vm_restart_additional_delay", ha_vm_restart_additional_delay)
         if ha_vm_restart_priority is not None:
-            pulumi.set(__self__, "ha_vm_restart_priority", ha_vm_restart_priority)
+            _setter("ha_vm_restart_priority", ha_vm_restart_priority)
         if ha_vm_restart_timeout is not None:
-            pulumi.set(__self__, "ha_vm_restart_timeout", ha_vm_restart_timeout)
+            _setter("ha_vm_restart_timeout", ha_vm_restart_timeout)
         if host_cluster_exit_timeout is not None:
-            pulumi.set(__self__, "host_cluster_exit_timeout", host_cluster_exit_timeout)
+            _setter("host_cluster_exit_timeout", host_cluster_exit_timeout)
         if host_managed is not None:
-            pulumi.set(__self__, "host_managed", host_managed)
+            _setter("host_managed", host_managed)
         if host_system_ids is not None:
-            pulumi.set(__self__, "host_system_ids", host_system_ids)
+            _setter("host_system_ids", host_system_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if proactive_ha_automation_level is not None:
-            pulumi.set(__self__, "proactive_ha_automation_level", proactive_ha_automation_level)
+            _setter("proactive_ha_automation_level", proactive_ha_automation_level)
         if proactive_ha_enabled is not None:
-            pulumi.set(__self__, "proactive_ha_enabled", proactive_ha_enabled)
+            _setter("proactive_ha_enabled", proactive_ha_enabled)
         if proactive_ha_moderate_remediation is not None:
-            pulumi.set(__self__, "proactive_ha_moderate_remediation", proactive_ha_moderate_remediation)
+            _setter("proactive_ha_moderate_remediation", proactive_ha_moderate_remediation)
         if proactive_ha_provider_ids is not None:
-            pulumi.set(__self__, "proactive_ha_provider_ids", proactive_ha_provider_ids)
+            _setter("proactive_ha_provider_ids", proactive_ha_provider_ids)
         if proactive_ha_severe_remediation is not None:
-            pulumi.set(__self__, "proactive_ha_severe_remediation", proactive_ha_severe_remediation)
+            _setter("proactive_ha_severe_remediation", proactive_ha_severe_remediation)
         if resource_pool_id is not None:
-            pulumi.set(__self__, "resource_pool_id", resource_pool_id)
+            _setter("resource_pool_id", resource_pool_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vsan_compression_enabled is not None:
-            pulumi.set(__self__, "vsan_compression_enabled", vsan_compression_enabled)
+            _setter("vsan_compression_enabled", vsan_compression_enabled)
         if vsan_dedup_enabled is not None:
-            pulumi.set(__self__, "vsan_dedup_enabled", vsan_dedup_enabled)
+            _setter("vsan_dedup_enabled", vsan_dedup_enabled)
         if vsan_disk_groups is not None:
-            pulumi.set(__self__, "vsan_disk_groups", vsan_disk_groups)
+            _setter("vsan_disk_groups", vsan_disk_groups)
         if vsan_dit_encryption_enabled is not None:
-            pulumi.set(__self__, "vsan_dit_encryption_enabled", vsan_dit_encryption_enabled)
+            _setter("vsan_dit_encryption_enabled", vsan_dit_encryption_enabled)
         if vsan_dit_rekey_interval is not None:
-            pulumi.set(__self__, "vsan_dit_rekey_interval", vsan_dit_rekey_interval)
+            _setter("vsan_dit_rekey_interval", vsan_dit_rekey_interval)
         if vsan_enabled is not None:
-            pulumi.set(__self__, "vsan_enabled", vsan_enabled)
+            _setter("vsan_enabled", vsan_enabled)
         if vsan_network_diagnostic_mode_enabled is not None:
-            pulumi.set(__self__, "vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
+            _setter("vsan_network_diagnostic_mode_enabled", vsan_network_diagnostic_mode_enabled)
         if vsan_performance_enabled is not None:
-            pulumi.set(__self__, "vsan_performance_enabled", vsan_performance_enabled)
+            _setter("vsan_performance_enabled", vsan_performance_enabled)
         if vsan_remote_datastore_ids is not None:
-            pulumi.set(__self__, "vsan_remote_datastore_ids", vsan_remote_datastore_ids)
+            _setter("vsan_remote_datastore_ids", vsan_remote_datastore_ids)
         if vsan_unmap_enabled is not None:
-            pulumi.set(__self__, "vsan_unmap_enabled", vsan_unmap_enabled)
+            _setter("vsan_unmap_enabled", vsan_unmap_enabled)
         if vsan_verbose_mode_enabled is not None:
-            pulumi.set(__self__, "vsan_verbose_mode_enabled", vsan_verbose_mode_enabled)
+            _setter("vsan_verbose_mode_enabled", vsan_verbose_mode_enabled)
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -3076,6 +3608,10 @@ class ComputeCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ComputeClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VmfsDatastoreArgs', 'VmfsDatastore']
@@ -51,18 +51,51 @@ class VmfsDatastoreArgs:
                > **NOTE:** Tagging support is unsupported on direct ESXi connections and
                requires vCenter 6.0 or higher.
         """
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "host_system_id", host_system_id)
+        VmfsDatastoreArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disks=disks,
+            host_system_id=host_system_id,
+            custom_attributes=custom_attributes,
+            datastore_cluster_id=datastore_cluster_id,
+            folder=folder,
+            name=name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if disks is None:
+            raise TypeError("Missing 'disks' argument")
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if host_system_id is None:
+            raise TypeError("Missing 'host_system_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+
+        _setter("disks", disks)
+        _setter("host_system_id", host_system_id)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datastore_cluster_id is not None:
-            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+            _setter("datastore_cluster_id", datastore_cluster_id)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -226,34 +259,85 @@ class _VmfsDatastoreState:
                potentially used by all virtual machines on this datastore.
         :param pulumi.Input[str] url: The unique locator for the datastore.
         """
+        _VmfsDatastoreState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accessible=accessible,
+            capacity=capacity,
+            custom_attributes=custom_attributes,
+            datastore_cluster_id=datastore_cluster_id,
+            disks=disks,
+            folder=folder,
+            free_space=free_space,
+            host_system_id=host_system_id,
+            maintenance_mode=maintenance_mode,
+            multiple_host_access=multiple_host_access,
+            name=name,
+            tags=tags,
+            uncommitted_space=uncommitted_space,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accessible: Optional[pulumi.Input[bool]] = None,
+             capacity: Optional[pulumi.Input[int]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datastore_cluster_id: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             free_space: Optional[pulumi.Input[int]] = None,
+             host_system_id: Optional[pulumi.Input[str]] = None,
+             maintenance_mode: Optional[pulumi.Input[str]] = None,
+             multiple_host_access: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             uncommitted_space: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datastore_cluster_id is None and 'datastoreClusterId' in kwargs:
+            datastore_cluster_id = kwargs['datastoreClusterId']
+        if free_space is None and 'freeSpace' in kwargs:
+            free_space = kwargs['freeSpace']
+        if host_system_id is None and 'hostSystemId' in kwargs:
+            host_system_id = kwargs['hostSystemId']
+        if maintenance_mode is None and 'maintenanceMode' in kwargs:
+            maintenance_mode = kwargs['maintenanceMode']
+        if multiple_host_access is None and 'multipleHostAccess' in kwargs:
+            multiple_host_access = kwargs['multipleHostAccess']
+        if uncommitted_space is None and 'uncommittedSpace' in kwargs:
+            uncommitted_space = kwargs['uncommittedSpace']
+
         if accessible is not None:
-            pulumi.set(__self__, "accessible", accessible)
+            _setter("accessible", accessible)
         if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+            _setter("capacity", capacity)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datastore_cluster_id is not None:
-            pulumi.set(__self__, "datastore_cluster_id", datastore_cluster_id)
+            _setter("datastore_cluster_id", datastore_cluster_id)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if free_space is not None:
-            pulumi.set(__self__, "free_space", free_space)
+            _setter("free_space", free_space)
         if host_system_id is not None:
-            pulumi.set(__self__, "host_system_id", host_system_id)
+            _setter("host_system_id", host_system_id)
         if maintenance_mode is not None:
-            pulumi.set(__self__, "maintenance_mode", maintenance_mode)
+            _setter("maintenance_mode", maintenance_mode)
         if multiple_host_access is not None:
-            pulumi.set(__self__, "multiple_host_access", multiple_host_access)
+            _setter("multiple_host_access", multiple_host_access)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if uncommitted_space is not None:
-            pulumi.set(__self__, "uncommitted_space", uncommitted_space)
+            _setter("uncommitted_space", uncommitted_space)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -510,6 +594,10 @@ class VmfsDatastore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VmfsDatastoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

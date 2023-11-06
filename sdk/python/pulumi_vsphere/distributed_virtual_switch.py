@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -299,193 +299,564 @@ class DistributedVirtualSwitchArgs:
         :param pulumi.Input[int] vsan_share_count: The amount of shares to allocate to the vsan traffic class for a custom share level.
         :param pulumi.Input[str] vsan_share_level: The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
         """
-        pulumi.set(__self__, "datacenter_id", datacenter_id)
+        DistributedVirtualSwitchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter_id=datacenter_id,
+            active_uplinks=active_uplinks,
+            allow_forged_transmits=allow_forged_transmits,
+            allow_mac_changes=allow_mac_changes,
+            allow_promiscuous=allow_promiscuous,
+            backupnfc_maximum_mbit=backupnfc_maximum_mbit,
+            backupnfc_reservation_mbit=backupnfc_reservation_mbit,
+            backupnfc_share_count=backupnfc_share_count,
+            backupnfc_share_level=backupnfc_share_level,
+            block_all_ports=block_all_ports,
+            check_beacon=check_beacon,
+            contact_detail=contact_detail,
+            contact_name=contact_name,
+            custom_attributes=custom_attributes,
+            description=description,
+            directpath_gen2_allowed=directpath_gen2_allowed,
+            egress_shaping_average_bandwidth=egress_shaping_average_bandwidth,
+            egress_shaping_burst_size=egress_shaping_burst_size,
+            egress_shaping_enabled=egress_shaping_enabled,
+            egress_shaping_peak_bandwidth=egress_shaping_peak_bandwidth,
+            failback=failback,
+            faulttolerance_maximum_mbit=faulttolerance_maximum_mbit,
+            faulttolerance_reservation_mbit=faulttolerance_reservation_mbit,
+            faulttolerance_share_count=faulttolerance_share_count,
+            faulttolerance_share_level=faulttolerance_share_level,
+            folder=folder,
+            hbr_maximum_mbit=hbr_maximum_mbit,
+            hbr_reservation_mbit=hbr_reservation_mbit,
+            hbr_share_count=hbr_share_count,
+            hbr_share_level=hbr_share_level,
+            hosts=hosts,
+            ignore_other_pvlan_mappings=ignore_other_pvlan_mappings,
+            ingress_shaping_average_bandwidth=ingress_shaping_average_bandwidth,
+            ingress_shaping_burst_size=ingress_shaping_burst_size,
+            ingress_shaping_enabled=ingress_shaping_enabled,
+            ingress_shaping_peak_bandwidth=ingress_shaping_peak_bandwidth,
+            ipv4_address=ipv4_address,
+            iscsi_maximum_mbit=iscsi_maximum_mbit,
+            iscsi_reservation_mbit=iscsi_reservation_mbit,
+            iscsi_share_count=iscsi_share_count,
+            iscsi_share_level=iscsi_share_level,
+            lacp_api_version=lacp_api_version,
+            lacp_enabled=lacp_enabled,
+            lacp_mode=lacp_mode,
+            link_discovery_operation=link_discovery_operation,
+            link_discovery_protocol=link_discovery_protocol,
+            management_maximum_mbit=management_maximum_mbit,
+            management_reservation_mbit=management_reservation_mbit,
+            management_share_count=management_share_count,
+            management_share_level=management_share_level,
+            max_mtu=max_mtu,
+            multicast_filtering_mode=multicast_filtering_mode,
+            name=name,
+            netflow_active_flow_timeout=netflow_active_flow_timeout,
+            netflow_collector_ip_address=netflow_collector_ip_address,
+            netflow_collector_port=netflow_collector_port,
+            netflow_enabled=netflow_enabled,
+            netflow_idle_flow_timeout=netflow_idle_flow_timeout,
+            netflow_internal_flows_only=netflow_internal_flows_only,
+            netflow_observation_domain_id=netflow_observation_domain_id,
+            netflow_sampling_rate=netflow_sampling_rate,
+            network_resource_control_enabled=network_resource_control_enabled,
+            network_resource_control_version=network_resource_control_version,
+            nfs_maximum_mbit=nfs_maximum_mbit,
+            nfs_reservation_mbit=nfs_reservation_mbit,
+            nfs_share_count=nfs_share_count,
+            nfs_share_level=nfs_share_level,
+            notify_switches=notify_switches,
+            port_private_secondary_vlan_id=port_private_secondary_vlan_id,
+            pvlan_mappings=pvlan_mappings,
+            standby_uplinks=standby_uplinks,
+            tags=tags,
+            teaming_policy=teaming_policy,
+            tx_uplink=tx_uplink,
+            uplinks=uplinks,
+            vdp_maximum_mbit=vdp_maximum_mbit,
+            vdp_reservation_mbit=vdp_reservation_mbit,
+            vdp_share_count=vdp_share_count,
+            vdp_share_level=vdp_share_level,
+            version=version,
+            virtualmachine_maximum_mbit=virtualmachine_maximum_mbit,
+            virtualmachine_reservation_mbit=virtualmachine_reservation_mbit,
+            virtualmachine_share_count=virtualmachine_share_count,
+            virtualmachine_share_level=virtualmachine_share_level,
+            vlan_id=vlan_id,
+            vlan_ranges=vlan_ranges,
+            vmotion_maximum_mbit=vmotion_maximum_mbit,
+            vmotion_reservation_mbit=vmotion_reservation_mbit,
+            vmotion_share_count=vmotion_share_count,
+            vmotion_share_level=vmotion_share_level,
+            vsan_maximum_mbit=vsan_maximum_mbit,
+            vsan_reservation_mbit=vsan_reservation_mbit,
+            vsan_share_count=vsan_share_count,
+            vsan_share_level=vsan_share_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+             backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+             backupnfc_share_level: Optional[pulumi.Input[str]] = None,
+             block_all_ports: Optional[pulumi.Input[bool]] = None,
+             check_beacon: Optional[pulumi.Input[bool]] = None,
+             contact_detail: Optional[pulumi.Input[str]] = None,
+             contact_name: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
+             egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             failback: Optional[pulumi.Input[bool]] = None,
+             faulttolerance_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             faulttolerance_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             faulttolerance_share_count: Optional[pulumi.Input[int]] = None,
+             faulttolerance_share_level: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             hbr_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             hbr_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             hbr_share_count: Optional[pulumi.Input[int]] = None,
+             hbr_share_level: Optional[pulumi.Input[str]] = None,
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]]] = None,
+             ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
+             ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             iscsi_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             iscsi_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             iscsi_share_count: Optional[pulumi.Input[int]] = None,
+             iscsi_share_level: Optional[pulumi.Input[str]] = None,
+             lacp_api_version: Optional[pulumi.Input[str]] = None,
+             lacp_enabled: Optional[pulumi.Input[bool]] = None,
+             lacp_mode: Optional[pulumi.Input[str]] = None,
+             link_discovery_operation: Optional[pulumi.Input[str]] = None,
+             link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+             management_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             management_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             management_share_count: Optional[pulumi.Input[int]] = None,
+             management_share_level: Optional[pulumi.Input[str]] = None,
+             max_mtu: Optional[pulumi.Input[int]] = None,
+             multicast_filtering_mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             netflow_active_flow_timeout: Optional[pulumi.Input[int]] = None,
+             netflow_collector_ip_address: Optional[pulumi.Input[str]] = None,
+             netflow_collector_port: Optional[pulumi.Input[int]] = None,
+             netflow_enabled: Optional[pulumi.Input[bool]] = None,
+             netflow_idle_flow_timeout: Optional[pulumi.Input[int]] = None,
+             netflow_internal_flows_only: Optional[pulumi.Input[bool]] = None,
+             netflow_observation_domain_id: Optional[pulumi.Input[int]] = None,
+             netflow_sampling_rate: Optional[pulumi.Input[int]] = None,
+             network_resource_control_enabled: Optional[pulumi.Input[bool]] = None,
+             network_resource_control_version: Optional[pulumi.Input[str]] = None,
+             nfs_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             nfs_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             nfs_share_count: Optional[pulumi.Input[int]] = None,
+             nfs_share_level: Optional[pulumi.Input[str]] = None,
+             notify_switches: Optional[pulumi.Input[bool]] = None,
+             port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
+             pvlan_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]]] = None,
+             standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teaming_policy: Optional[pulumi.Input[str]] = None,
+             tx_uplink: Optional[pulumi.Input[bool]] = None,
+             uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vdp_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vdp_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vdp_share_count: Optional[pulumi.Input[int]] = None,
+             vdp_share_level: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             virtualmachine_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             virtualmachine_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             virtualmachine_share_count: Optional[pulumi.Input[int]] = None,
+             virtualmachine_share_level: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[int]] = None,
+             vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]]] = None,
+             vmotion_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vmotion_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vmotion_share_count: Optional[pulumi.Input[int]] = None,
+             vmotion_share_level: Optional[pulumi.Input[str]] = None,
+             vsan_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vsan_share_count: Optional[pulumi.Input[int]] = None,
+             vsan_share_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if datacenter_id is None:
+            raise TypeError("Missing 'datacenter_id' argument")
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if backupnfc_maximum_mbit is None and 'backupnfcMaximumMbit' in kwargs:
+            backupnfc_maximum_mbit = kwargs['backupnfcMaximumMbit']
+        if backupnfc_reservation_mbit is None and 'backupnfcReservationMbit' in kwargs:
+            backupnfc_reservation_mbit = kwargs['backupnfcReservationMbit']
+        if backupnfc_share_count is None and 'backupnfcShareCount' in kwargs:
+            backupnfc_share_count = kwargs['backupnfcShareCount']
+        if backupnfc_share_level is None and 'backupnfcShareLevel' in kwargs:
+            backupnfc_share_level = kwargs['backupnfcShareLevel']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if contact_detail is None and 'contactDetail' in kwargs:
+            contact_detail = kwargs['contactDetail']
+        if contact_name is None and 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if faulttolerance_maximum_mbit is None and 'faulttoleranceMaximumMbit' in kwargs:
+            faulttolerance_maximum_mbit = kwargs['faulttoleranceMaximumMbit']
+        if faulttolerance_reservation_mbit is None and 'faulttoleranceReservationMbit' in kwargs:
+            faulttolerance_reservation_mbit = kwargs['faulttoleranceReservationMbit']
+        if faulttolerance_share_count is None and 'faulttoleranceShareCount' in kwargs:
+            faulttolerance_share_count = kwargs['faulttoleranceShareCount']
+        if faulttolerance_share_level is None and 'faulttoleranceShareLevel' in kwargs:
+            faulttolerance_share_level = kwargs['faulttoleranceShareLevel']
+        if hbr_maximum_mbit is None and 'hbrMaximumMbit' in kwargs:
+            hbr_maximum_mbit = kwargs['hbrMaximumMbit']
+        if hbr_reservation_mbit is None and 'hbrReservationMbit' in kwargs:
+            hbr_reservation_mbit = kwargs['hbrReservationMbit']
+        if hbr_share_count is None and 'hbrShareCount' in kwargs:
+            hbr_share_count = kwargs['hbrShareCount']
+        if hbr_share_level is None and 'hbrShareLevel' in kwargs:
+            hbr_share_level = kwargs['hbrShareLevel']
+        if ignore_other_pvlan_mappings is None and 'ignoreOtherPvlanMappings' in kwargs:
+            ignore_other_pvlan_mappings = kwargs['ignoreOtherPvlanMappings']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if iscsi_maximum_mbit is None and 'iscsiMaximumMbit' in kwargs:
+            iscsi_maximum_mbit = kwargs['iscsiMaximumMbit']
+        if iscsi_reservation_mbit is None and 'iscsiReservationMbit' in kwargs:
+            iscsi_reservation_mbit = kwargs['iscsiReservationMbit']
+        if iscsi_share_count is None and 'iscsiShareCount' in kwargs:
+            iscsi_share_count = kwargs['iscsiShareCount']
+        if iscsi_share_level is None and 'iscsiShareLevel' in kwargs:
+            iscsi_share_level = kwargs['iscsiShareLevel']
+        if lacp_api_version is None and 'lacpApiVersion' in kwargs:
+            lacp_api_version = kwargs['lacpApiVersion']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if management_maximum_mbit is None and 'managementMaximumMbit' in kwargs:
+            management_maximum_mbit = kwargs['managementMaximumMbit']
+        if management_reservation_mbit is None and 'managementReservationMbit' in kwargs:
+            management_reservation_mbit = kwargs['managementReservationMbit']
+        if management_share_count is None and 'managementShareCount' in kwargs:
+            management_share_count = kwargs['managementShareCount']
+        if management_share_level is None and 'managementShareLevel' in kwargs:
+            management_share_level = kwargs['managementShareLevel']
+        if max_mtu is None and 'maxMtu' in kwargs:
+            max_mtu = kwargs['maxMtu']
+        if multicast_filtering_mode is None and 'multicastFilteringMode' in kwargs:
+            multicast_filtering_mode = kwargs['multicastFilteringMode']
+        if netflow_active_flow_timeout is None and 'netflowActiveFlowTimeout' in kwargs:
+            netflow_active_flow_timeout = kwargs['netflowActiveFlowTimeout']
+        if netflow_collector_ip_address is None and 'netflowCollectorIpAddress' in kwargs:
+            netflow_collector_ip_address = kwargs['netflowCollectorIpAddress']
+        if netflow_collector_port is None and 'netflowCollectorPort' in kwargs:
+            netflow_collector_port = kwargs['netflowCollectorPort']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_idle_flow_timeout is None and 'netflowIdleFlowTimeout' in kwargs:
+            netflow_idle_flow_timeout = kwargs['netflowIdleFlowTimeout']
+        if netflow_internal_flows_only is None and 'netflowInternalFlowsOnly' in kwargs:
+            netflow_internal_flows_only = kwargs['netflowInternalFlowsOnly']
+        if netflow_observation_domain_id is None and 'netflowObservationDomainId' in kwargs:
+            netflow_observation_domain_id = kwargs['netflowObservationDomainId']
+        if netflow_sampling_rate is None and 'netflowSamplingRate' in kwargs:
+            netflow_sampling_rate = kwargs['netflowSamplingRate']
+        if network_resource_control_enabled is None and 'networkResourceControlEnabled' in kwargs:
+            network_resource_control_enabled = kwargs['networkResourceControlEnabled']
+        if network_resource_control_version is None and 'networkResourceControlVersion' in kwargs:
+            network_resource_control_version = kwargs['networkResourceControlVersion']
+        if nfs_maximum_mbit is None and 'nfsMaximumMbit' in kwargs:
+            nfs_maximum_mbit = kwargs['nfsMaximumMbit']
+        if nfs_reservation_mbit is None and 'nfsReservationMbit' in kwargs:
+            nfs_reservation_mbit = kwargs['nfsReservationMbit']
+        if nfs_share_count is None and 'nfsShareCount' in kwargs:
+            nfs_share_count = kwargs['nfsShareCount']
+        if nfs_share_level is None and 'nfsShareLevel' in kwargs:
+            nfs_share_level = kwargs['nfsShareLevel']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if pvlan_mappings is None and 'pvlanMappings' in kwargs:
+            pvlan_mappings = kwargs['pvlanMappings']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if vdp_maximum_mbit is None and 'vdpMaximumMbit' in kwargs:
+            vdp_maximum_mbit = kwargs['vdpMaximumMbit']
+        if vdp_reservation_mbit is None and 'vdpReservationMbit' in kwargs:
+            vdp_reservation_mbit = kwargs['vdpReservationMbit']
+        if vdp_share_count is None and 'vdpShareCount' in kwargs:
+            vdp_share_count = kwargs['vdpShareCount']
+        if vdp_share_level is None and 'vdpShareLevel' in kwargs:
+            vdp_share_level = kwargs['vdpShareLevel']
+        if virtualmachine_maximum_mbit is None and 'virtualmachineMaximumMbit' in kwargs:
+            virtualmachine_maximum_mbit = kwargs['virtualmachineMaximumMbit']
+        if virtualmachine_reservation_mbit is None and 'virtualmachineReservationMbit' in kwargs:
+            virtualmachine_reservation_mbit = kwargs['virtualmachineReservationMbit']
+        if virtualmachine_share_count is None and 'virtualmachineShareCount' in kwargs:
+            virtualmachine_share_count = kwargs['virtualmachineShareCount']
+        if virtualmachine_share_level is None and 'virtualmachineShareLevel' in kwargs:
+            virtualmachine_share_level = kwargs['virtualmachineShareLevel']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+        if vmotion_maximum_mbit is None and 'vmotionMaximumMbit' in kwargs:
+            vmotion_maximum_mbit = kwargs['vmotionMaximumMbit']
+        if vmotion_reservation_mbit is None and 'vmotionReservationMbit' in kwargs:
+            vmotion_reservation_mbit = kwargs['vmotionReservationMbit']
+        if vmotion_share_count is None and 'vmotionShareCount' in kwargs:
+            vmotion_share_count = kwargs['vmotionShareCount']
+        if vmotion_share_level is None and 'vmotionShareLevel' in kwargs:
+            vmotion_share_level = kwargs['vmotionShareLevel']
+        if vsan_maximum_mbit is None and 'vsanMaximumMbit' in kwargs:
+            vsan_maximum_mbit = kwargs['vsanMaximumMbit']
+        if vsan_reservation_mbit is None and 'vsanReservationMbit' in kwargs:
+            vsan_reservation_mbit = kwargs['vsanReservationMbit']
+        if vsan_share_count is None and 'vsanShareCount' in kwargs:
+            vsan_share_count = kwargs['vsanShareCount']
+        if vsan_share_level is None and 'vsanShareLevel' in kwargs:
+            vsan_share_level = kwargs['vsanShareLevel']
+
+        _setter("datacenter_id", datacenter_id)
         if active_uplinks is not None:
-            pulumi.set(__self__, "active_uplinks", active_uplinks)
+            _setter("active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:
-            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+            _setter("allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+            _setter("allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+            _setter("allow_promiscuous", allow_promiscuous)
         if backupnfc_maximum_mbit is not None:
-            pulumi.set(__self__, "backupnfc_maximum_mbit", backupnfc_maximum_mbit)
+            _setter("backupnfc_maximum_mbit", backupnfc_maximum_mbit)
         if backupnfc_reservation_mbit is not None:
-            pulumi.set(__self__, "backupnfc_reservation_mbit", backupnfc_reservation_mbit)
+            _setter("backupnfc_reservation_mbit", backupnfc_reservation_mbit)
         if backupnfc_share_count is not None:
-            pulumi.set(__self__, "backupnfc_share_count", backupnfc_share_count)
+            _setter("backupnfc_share_count", backupnfc_share_count)
         if backupnfc_share_level is not None:
-            pulumi.set(__self__, "backupnfc_share_level", backupnfc_share_level)
+            _setter("backupnfc_share_level", backupnfc_share_level)
         if block_all_ports is not None:
-            pulumi.set(__self__, "block_all_ports", block_all_ports)
+            _setter("block_all_ports", block_all_ports)
         if check_beacon is not None:
-            pulumi.set(__self__, "check_beacon", check_beacon)
+            _setter("check_beacon", check_beacon)
         if contact_detail is not None:
-            pulumi.set(__self__, "contact_detail", contact_detail)
+            _setter("contact_detail", contact_detail)
         if contact_name is not None:
-            pulumi.set(__self__, "contact_name", contact_name)
+            _setter("contact_name", contact_name)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if directpath_gen2_allowed is not None:
-            pulumi.set(__self__, "directpath_gen2_allowed", directpath_gen2_allowed)
+            _setter("directpath_gen2_allowed", directpath_gen2_allowed)
         if egress_shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
+            _setter("egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
         if egress_shaping_burst_size is not None:
-            pulumi.set(__self__, "egress_shaping_burst_size", egress_shaping_burst_size)
+            _setter("egress_shaping_burst_size", egress_shaping_burst_size)
         if egress_shaping_enabled is not None:
-            pulumi.set(__self__, "egress_shaping_enabled", egress_shaping_enabled)
+            _setter("egress_shaping_enabled", egress_shaping_enabled)
         if egress_shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
+            _setter("egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
         if failback is not None:
-            pulumi.set(__self__, "failback", failback)
+            _setter("failback", failback)
         if faulttolerance_maximum_mbit is not None:
-            pulumi.set(__self__, "faulttolerance_maximum_mbit", faulttolerance_maximum_mbit)
+            _setter("faulttolerance_maximum_mbit", faulttolerance_maximum_mbit)
         if faulttolerance_reservation_mbit is not None:
-            pulumi.set(__self__, "faulttolerance_reservation_mbit", faulttolerance_reservation_mbit)
+            _setter("faulttolerance_reservation_mbit", faulttolerance_reservation_mbit)
         if faulttolerance_share_count is not None:
-            pulumi.set(__self__, "faulttolerance_share_count", faulttolerance_share_count)
+            _setter("faulttolerance_share_count", faulttolerance_share_count)
         if faulttolerance_share_level is not None:
-            pulumi.set(__self__, "faulttolerance_share_level", faulttolerance_share_level)
+            _setter("faulttolerance_share_level", faulttolerance_share_level)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if hbr_maximum_mbit is not None:
-            pulumi.set(__self__, "hbr_maximum_mbit", hbr_maximum_mbit)
+            _setter("hbr_maximum_mbit", hbr_maximum_mbit)
         if hbr_reservation_mbit is not None:
-            pulumi.set(__self__, "hbr_reservation_mbit", hbr_reservation_mbit)
+            _setter("hbr_reservation_mbit", hbr_reservation_mbit)
         if hbr_share_count is not None:
-            pulumi.set(__self__, "hbr_share_count", hbr_share_count)
+            _setter("hbr_share_count", hbr_share_count)
         if hbr_share_level is not None:
-            pulumi.set(__self__, "hbr_share_level", hbr_share_level)
+            _setter("hbr_share_level", hbr_share_level)
         if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+            _setter("hosts", hosts)
         if ignore_other_pvlan_mappings is not None:
-            pulumi.set(__self__, "ignore_other_pvlan_mappings", ignore_other_pvlan_mappings)
+            _setter("ignore_other_pvlan_mappings", ignore_other_pvlan_mappings)
         if ingress_shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
+            _setter("ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
         if ingress_shaping_burst_size is not None:
-            pulumi.set(__self__, "ingress_shaping_burst_size", ingress_shaping_burst_size)
+            _setter("ingress_shaping_burst_size", ingress_shaping_burst_size)
         if ingress_shaping_enabled is not None:
-            pulumi.set(__self__, "ingress_shaping_enabled", ingress_shaping_enabled)
+            _setter("ingress_shaping_enabled", ingress_shaping_enabled)
         if ingress_shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
+            _setter("ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
         if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
+            _setter("ipv4_address", ipv4_address)
         if iscsi_maximum_mbit is not None:
-            pulumi.set(__self__, "iscsi_maximum_mbit", iscsi_maximum_mbit)
+            _setter("iscsi_maximum_mbit", iscsi_maximum_mbit)
         if iscsi_reservation_mbit is not None:
-            pulumi.set(__self__, "iscsi_reservation_mbit", iscsi_reservation_mbit)
+            _setter("iscsi_reservation_mbit", iscsi_reservation_mbit)
         if iscsi_share_count is not None:
-            pulumi.set(__self__, "iscsi_share_count", iscsi_share_count)
+            _setter("iscsi_share_count", iscsi_share_count)
         if iscsi_share_level is not None:
-            pulumi.set(__self__, "iscsi_share_level", iscsi_share_level)
+            _setter("iscsi_share_level", iscsi_share_level)
         if lacp_api_version is not None:
-            pulumi.set(__self__, "lacp_api_version", lacp_api_version)
+            _setter("lacp_api_version", lacp_api_version)
         if lacp_enabled is not None:
-            pulumi.set(__self__, "lacp_enabled", lacp_enabled)
+            _setter("lacp_enabled", lacp_enabled)
         if lacp_mode is not None:
-            pulumi.set(__self__, "lacp_mode", lacp_mode)
+            _setter("lacp_mode", lacp_mode)
         if link_discovery_operation is not None:
-            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+            _setter("link_discovery_operation", link_discovery_operation)
         if link_discovery_protocol is not None:
-            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+            _setter("link_discovery_protocol", link_discovery_protocol)
         if management_maximum_mbit is not None:
-            pulumi.set(__self__, "management_maximum_mbit", management_maximum_mbit)
+            _setter("management_maximum_mbit", management_maximum_mbit)
         if management_reservation_mbit is not None:
-            pulumi.set(__self__, "management_reservation_mbit", management_reservation_mbit)
+            _setter("management_reservation_mbit", management_reservation_mbit)
         if management_share_count is not None:
-            pulumi.set(__self__, "management_share_count", management_share_count)
+            _setter("management_share_count", management_share_count)
         if management_share_level is not None:
-            pulumi.set(__self__, "management_share_level", management_share_level)
+            _setter("management_share_level", management_share_level)
         if max_mtu is not None:
-            pulumi.set(__self__, "max_mtu", max_mtu)
+            _setter("max_mtu", max_mtu)
         if multicast_filtering_mode is not None:
-            pulumi.set(__self__, "multicast_filtering_mode", multicast_filtering_mode)
+            _setter("multicast_filtering_mode", multicast_filtering_mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if netflow_active_flow_timeout is not None:
-            pulumi.set(__self__, "netflow_active_flow_timeout", netflow_active_flow_timeout)
+            _setter("netflow_active_flow_timeout", netflow_active_flow_timeout)
         if netflow_collector_ip_address is not None:
-            pulumi.set(__self__, "netflow_collector_ip_address", netflow_collector_ip_address)
+            _setter("netflow_collector_ip_address", netflow_collector_ip_address)
         if netflow_collector_port is not None:
-            pulumi.set(__self__, "netflow_collector_port", netflow_collector_port)
+            _setter("netflow_collector_port", netflow_collector_port)
         if netflow_enabled is not None:
-            pulumi.set(__self__, "netflow_enabled", netflow_enabled)
+            _setter("netflow_enabled", netflow_enabled)
         if netflow_idle_flow_timeout is not None:
-            pulumi.set(__self__, "netflow_idle_flow_timeout", netflow_idle_flow_timeout)
+            _setter("netflow_idle_flow_timeout", netflow_idle_flow_timeout)
         if netflow_internal_flows_only is not None:
-            pulumi.set(__self__, "netflow_internal_flows_only", netflow_internal_flows_only)
+            _setter("netflow_internal_flows_only", netflow_internal_flows_only)
         if netflow_observation_domain_id is not None:
-            pulumi.set(__self__, "netflow_observation_domain_id", netflow_observation_domain_id)
+            _setter("netflow_observation_domain_id", netflow_observation_domain_id)
         if netflow_sampling_rate is not None:
-            pulumi.set(__self__, "netflow_sampling_rate", netflow_sampling_rate)
+            _setter("netflow_sampling_rate", netflow_sampling_rate)
         if network_resource_control_enabled is not None:
-            pulumi.set(__self__, "network_resource_control_enabled", network_resource_control_enabled)
+            _setter("network_resource_control_enabled", network_resource_control_enabled)
         if network_resource_control_version is not None:
-            pulumi.set(__self__, "network_resource_control_version", network_resource_control_version)
+            _setter("network_resource_control_version", network_resource_control_version)
         if nfs_maximum_mbit is not None:
-            pulumi.set(__self__, "nfs_maximum_mbit", nfs_maximum_mbit)
+            _setter("nfs_maximum_mbit", nfs_maximum_mbit)
         if nfs_reservation_mbit is not None:
-            pulumi.set(__self__, "nfs_reservation_mbit", nfs_reservation_mbit)
+            _setter("nfs_reservation_mbit", nfs_reservation_mbit)
         if nfs_share_count is not None:
-            pulumi.set(__self__, "nfs_share_count", nfs_share_count)
+            _setter("nfs_share_count", nfs_share_count)
         if nfs_share_level is not None:
-            pulumi.set(__self__, "nfs_share_level", nfs_share_level)
+            _setter("nfs_share_level", nfs_share_level)
         if notify_switches is not None:
-            pulumi.set(__self__, "notify_switches", notify_switches)
+            _setter("notify_switches", notify_switches)
         if port_private_secondary_vlan_id is not None:
-            pulumi.set(__self__, "port_private_secondary_vlan_id", port_private_secondary_vlan_id)
+            _setter("port_private_secondary_vlan_id", port_private_secondary_vlan_id)
         if pvlan_mappings is not None:
-            pulumi.set(__self__, "pvlan_mappings", pvlan_mappings)
+            _setter("pvlan_mappings", pvlan_mappings)
         if standby_uplinks is not None:
-            pulumi.set(__self__, "standby_uplinks", standby_uplinks)
+            _setter("standby_uplinks", standby_uplinks)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if teaming_policy is not None:
-            pulumi.set(__self__, "teaming_policy", teaming_policy)
+            _setter("teaming_policy", teaming_policy)
         if tx_uplink is not None:
-            pulumi.set(__self__, "tx_uplink", tx_uplink)
+            _setter("tx_uplink", tx_uplink)
         if uplinks is not None:
-            pulumi.set(__self__, "uplinks", uplinks)
+            _setter("uplinks", uplinks)
         if vdp_maximum_mbit is not None:
-            pulumi.set(__self__, "vdp_maximum_mbit", vdp_maximum_mbit)
+            _setter("vdp_maximum_mbit", vdp_maximum_mbit)
         if vdp_reservation_mbit is not None:
-            pulumi.set(__self__, "vdp_reservation_mbit", vdp_reservation_mbit)
+            _setter("vdp_reservation_mbit", vdp_reservation_mbit)
         if vdp_share_count is not None:
-            pulumi.set(__self__, "vdp_share_count", vdp_share_count)
+            _setter("vdp_share_count", vdp_share_count)
         if vdp_share_level is not None:
-            pulumi.set(__self__, "vdp_share_level", vdp_share_level)
+            _setter("vdp_share_level", vdp_share_level)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if virtualmachine_maximum_mbit is not None:
-            pulumi.set(__self__, "virtualmachine_maximum_mbit", virtualmachine_maximum_mbit)
+            _setter("virtualmachine_maximum_mbit", virtualmachine_maximum_mbit)
         if virtualmachine_reservation_mbit is not None:
-            pulumi.set(__self__, "virtualmachine_reservation_mbit", virtualmachine_reservation_mbit)
+            _setter("virtualmachine_reservation_mbit", virtualmachine_reservation_mbit)
         if virtualmachine_share_count is not None:
-            pulumi.set(__self__, "virtualmachine_share_count", virtualmachine_share_count)
+            _setter("virtualmachine_share_count", virtualmachine_share_count)
         if virtualmachine_share_level is not None:
-            pulumi.set(__self__, "virtualmachine_share_level", virtualmachine_share_level)
+            _setter("virtualmachine_share_level", virtualmachine_share_level)
         if vlan_id is not None:
-            pulumi.set(__self__, "vlan_id", vlan_id)
+            _setter("vlan_id", vlan_id)
         if vlan_ranges is not None:
-            pulumi.set(__self__, "vlan_ranges", vlan_ranges)
+            _setter("vlan_ranges", vlan_ranges)
         if vmotion_maximum_mbit is not None:
-            pulumi.set(__self__, "vmotion_maximum_mbit", vmotion_maximum_mbit)
+            _setter("vmotion_maximum_mbit", vmotion_maximum_mbit)
         if vmotion_reservation_mbit is not None:
-            pulumi.set(__self__, "vmotion_reservation_mbit", vmotion_reservation_mbit)
+            _setter("vmotion_reservation_mbit", vmotion_reservation_mbit)
         if vmotion_share_count is not None:
-            pulumi.set(__self__, "vmotion_share_count", vmotion_share_count)
+            _setter("vmotion_share_count", vmotion_share_count)
         if vmotion_share_level is not None:
-            pulumi.set(__self__, "vmotion_share_level", vmotion_share_level)
+            _setter("vmotion_share_level", vmotion_share_level)
         if vsan_maximum_mbit is not None:
-            pulumi.set(__self__, "vsan_maximum_mbit", vsan_maximum_mbit)
+            _setter("vsan_maximum_mbit", vsan_maximum_mbit)
         if vsan_reservation_mbit is not None:
-            pulumi.set(__self__, "vsan_reservation_mbit", vsan_reservation_mbit)
+            _setter("vsan_reservation_mbit", vsan_reservation_mbit)
         if vsan_share_count is not None:
-            pulumi.set(__self__, "vsan_share_count", vsan_share_count)
+            _setter("vsan_share_count", vsan_share_count)
         if vsan_share_level is not None:
-            pulumi.set(__self__, "vsan_share_level", vsan_share_level)
+            _setter("vsan_share_level", vsan_share_level)
 
     @property
     @pulumi.getter(name="datacenterId")
@@ -1997,196 +2368,569 @@ class _DistributedVirtualSwitchState:
         :param pulumi.Input[int] vsan_share_count: The amount of shares to allocate to the vsan traffic class for a custom share level.
         :param pulumi.Input[str] vsan_share_level: The allocation level for the vsan traffic class. Can be one of high, low, normal, or custom.
         """
+        _DistributedVirtualSwitchState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_uplinks=active_uplinks,
+            allow_forged_transmits=allow_forged_transmits,
+            allow_mac_changes=allow_mac_changes,
+            allow_promiscuous=allow_promiscuous,
+            backupnfc_maximum_mbit=backupnfc_maximum_mbit,
+            backupnfc_reservation_mbit=backupnfc_reservation_mbit,
+            backupnfc_share_count=backupnfc_share_count,
+            backupnfc_share_level=backupnfc_share_level,
+            block_all_ports=block_all_ports,
+            check_beacon=check_beacon,
+            config_version=config_version,
+            contact_detail=contact_detail,
+            contact_name=contact_name,
+            custom_attributes=custom_attributes,
+            datacenter_id=datacenter_id,
+            description=description,
+            directpath_gen2_allowed=directpath_gen2_allowed,
+            egress_shaping_average_bandwidth=egress_shaping_average_bandwidth,
+            egress_shaping_burst_size=egress_shaping_burst_size,
+            egress_shaping_enabled=egress_shaping_enabled,
+            egress_shaping_peak_bandwidth=egress_shaping_peak_bandwidth,
+            failback=failback,
+            faulttolerance_maximum_mbit=faulttolerance_maximum_mbit,
+            faulttolerance_reservation_mbit=faulttolerance_reservation_mbit,
+            faulttolerance_share_count=faulttolerance_share_count,
+            faulttolerance_share_level=faulttolerance_share_level,
+            folder=folder,
+            hbr_maximum_mbit=hbr_maximum_mbit,
+            hbr_reservation_mbit=hbr_reservation_mbit,
+            hbr_share_count=hbr_share_count,
+            hbr_share_level=hbr_share_level,
+            hosts=hosts,
+            ignore_other_pvlan_mappings=ignore_other_pvlan_mappings,
+            ingress_shaping_average_bandwidth=ingress_shaping_average_bandwidth,
+            ingress_shaping_burst_size=ingress_shaping_burst_size,
+            ingress_shaping_enabled=ingress_shaping_enabled,
+            ingress_shaping_peak_bandwidth=ingress_shaping_peak_bandwidth,
+            ipv4_address=ipv4_address,
+            iscsi_maximum_mbit=iscsi_maximum_mbit,
+            iscsi_reservation_mbit=iscsi_reservation_mbit,
+            iscsi_share_count=iscsi_share_count,
+            iscsi_share_level=iscsi_share_level,
+            lacp_api_version=lacp_api_version,
+            lacp_enabled=lacp_enabled,
+            lacp_mode=lacp_mode,
+            link_discovery_operation=link_discovery_operation,
+            link_discovery_protocol=link_discovery_protocol,
+            management_maximum_mbit=management_maximum_mbit,
+            management_reservation_mbit=management_reservation_mbit,
+            management_share_count=management_share_count,
+            management_share_level=management_share_level,
+            max_mtu=max_mtu,
+            multicast_filtering_mode=multicast_filtering_mode,
+            name=name,
+            netflow_active_flow_timeout=netflow_active_flow_timeout,
+            netflow_collector_ip_address=netflow_collector_ip_address,
+            netflow_collector_port=netflow_collector_port,
+            netflow_enabled=netflow_enabled,
+            netflow_idle_flow_timeout=netflow_idle_flow_timeout,
+            netflow_internal_flows_only=netflow_internal_flows_only,
+            netflow_observation_domain_id=netflow_observation_domain_id,
+            netflow_sampling_rate=netflow_sampling_rate,
+            network_resource_control_enabled=network_resource_control_enabled,
+            network_resource_control_version=network_resource_control_version,
+            nfs_maximum_mbit=nfs_maximum_mbit,
+            nfs_reservation_mbit=nfs_reservation_mbit,
+            nfs_share_count=nfs_share_count,
+            nfs_share_level=nfs_share_level,
+            notify_switches=notify_switches,
+            port_private_secondary_vlan_id=port_private_secondary_vlan_id,
+            pvlan_mappings=pvlan_mappings,
+            standby_uplinks=standby_uplinks,
+            tags=tags,
+            teaming_policy=teaming_policy,
+            tx_uplink=tx_uplink,
+            uplinks=uplinks,
+            vdp_maximum_mbit=vdp_maximum_mbit,
+            vdp_reservation_mbit=vdp_reservation_mbit,
+            vdp_share_count=vdp_share_count,
+            vdp_share_level=vdp_share_level,
+            version=version,
+            virtualmachine_maximum_mbit=virtualmachine_maximum_mbit,
+            virtualmachine_reservation_mbit=virtualmachine_reservation_mbit,
+            virtualmachine_share_count=virtualmachine_share_count,
+            virtualmachine_share_level=virtualmachine_share_level,
+            vlan_id=vlan_id,
+            vlan_ranges=vlan_ranges,
+            vmotion_maximum_mbit=vmotion_maximum_mbit,
+            vmotion_reservation_mbit=vmotion_reservation_mbit,
+            vmotion_share_count=vmotion_share_count,
+            vmotion_share_level=vmotion_share_level,
+            vsan_maximum_mbit=vsan_maximum_mbit,
+            vsan_reservation_mbit=vsan_reservation_mbit,
+            vsan_share_count=vsan_share_count,
+            vsan_share_level=vsan_share_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allow_forged_transmits: Optional[pulumi.Input[bool]] = None,
+             allow_mac_changes: Optional[pulumi.Input[bool]] = None,
+             allow_promiscuous: Optional[pulumi.Input[bool]] = None,
+             backupnfc_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             backupnfc_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             backupnfc_share_count: Optional[pulumi.Input[int]] = None,
+             backupnfc_share_level: Optional[pulumi.Input[str]] = None,
+             block_all_ports: Optional[pulumi.Input[bool]] = None,
+             check_beacon: Optional[pulumi.Input[bool]] = None,
+             config_version: Optional[pulumi.Input[str]] = None,
+             contact_detail: Optional[pulumi.Input[str]] = None,
+             contact_name: Optional[pulumi.Input[str]] = None,
+             custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             datacenter_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             directpath_gen2_allowed: Optional[pulumi.Input[bool]] = None,
+             egress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             egress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             egress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             egress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             failback: Optional[pulumi.Input[bool]] = None,
+             faulttolerance_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             faulttolerance_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             faulttolerance_share_count: Optional[pulumi.Input[int]] = None,
+             faulttolerance_share_level: Optional[pulumi.Input[str]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             hbr_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             hbr_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             hbr_share_count: Optional[pulumi.Input[int]] = None,
+             hbr_share_level: Optional[pulumi.Input[str]] = None,
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchHostArgs']]]] = None,
+             ignore_other_pvlan_mappings: Optional[pulumi.Input[bool]] = None,
+             ingress_shaping_average_bandwidth: Optional[pulumi.Input[int]] = None,
+             ingress_shaping_burst_size: Optional[pulumi.Input[int]] = None,
+             ingress_shaping_enabled: Optional[pulumi.Input[bool]] = None,
+             ingress_shaping_peak_bandwidth: Optional[pulumi.Input[int]] = None,
+             ipv4_address: Optional[pulumi.Input[str]] = None,
+             iscsi_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             iscsi_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             iscsi_share_count: Optional[pulumi.Input[int]] = None,
+             iscsi_share_level: Optional[pulumi.Input[str]] = None,
+             lacp_api_version: Optional[pulumi.Input[str]] = None,
+             lacp_enabled: Optional[pulumi.Input[bool]] = None,
+             lacp_mode: Optional[pulumi.Input[str]] = None,
+             link_discovery_operation: Optional[pulumi.Input[str]] = None,
+             link_discovery_protocol: Optional[pulumi.Input[str]] = None,
+             management_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             management_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             management_share_count: Optional[pulumi.Input[int]] = None,
+             management_share_level: Optional[pulumi.Input[str]] = None,
+             max_mtu: Optional[pulumi.Input[int]] = None,
+             multicast_filtering_mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             netflow_active_flow_timeout: Optional[pulumi.Input[int]] = None,
+             netflow_collector_ip_address: Optional[pulumi.Input[str]] = None,
+             netflow_collector_port: Optional[pulumi.Input[int]] = None,
+             netflow_enabled: Optional[pulumi.Input[bool]] = None,
+             netflow_idle_flow_timeout: Optional[pulumi.Input[int]] = None,
+             netflow_internal_flows_only: Optional[pulumi.Input[bool]] = None,
+             netflow_observation_domain_id: Optional[pulumi.Input[int]] = None,
+             netflow_sampling_rate: Optional[pulumi.Input[int]] = None,
+             network_resource_control_enabled: Optional[pulumi.Input[bool]] = None,
+             network_resource_control_version: Optional[pulumi.Input[str]] = None,
+             nfs_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             nfs_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             nfs_share_count: Optional[pulumi.Input[int]] = None,
+             nfs_share_level: Optional[pulumi.Input[str]] = None,
+             notify_switches: Optional[pulumi.Input[bool]] = None,
+             port_private_secondary_vlan_id: Optional[pulumi.Input[int]] = None,
+             pvlan_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchPvlanMappingArgs']]]] = None,
+             standby_uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teaming_policy: Optional[pulumi.Input[str]] = None,
+             tx_uplink: Optional[pulumi.Input[bool]] = None,
+             uplinks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vdp_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vdp_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vdp_share_count: Optional[pulumi.Input[int]] = None,
+             vdp_share_level: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             virtualmachine_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             virtualmachine_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             virtualmachine_share_count: Optional[pulumi.Input[int]] = None,
+             virtualmachine_share_level: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[int]] = None,
+             vlan_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['DistributedVirtualSwitchVlanRangeArgs']]]] = None,
+             vmotion_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vmotion_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vmotion_share_count: Optional[pulumi.Input[int]] = None,
+             vmotion_share_level: Optional[pulumi.Input[str]] = None,
+             vsan_maximum_mbit: Optional[pulumi.Input[int]] = None,
+             vsan_reservation_mbit: Optional[pulumi.Input[int]] = None,
+             vsan_share_count: Optional[pulumi.Input[int]] = None,
+             vsan_share_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if active_uplinks is None and 'activeUplinks' in kwargs:
+            active_uplinks = kwargs['activeUplinks']
+        if allow_forged_transmits is None and 'allowForgedTransmits' in kwargs:
+            allow_forged_transmits = kwargs['allowForgedTransmits']
+        if allow_mac_changes is None and 'allowMacChanges' in kwargs:
+            allow_mac_changes = kwargs['allowMacChanges']
+        if allow_promiscuous is None and 'allowPromiscuous' in kwargs:
+            allow_promiscuous = kwargs['allowPromiscuous']
+        if backupnfc_maximum_mbit is None and 'backupnfcMaximumMbit' in kwargs:
+            backupnfc_maximum_mbit = kwargs['backupnfcMaximumMbit']
+        if backupnfc_reservation_mbit is None and 'backupnfcReservationMbit' in kwargs:
+            backupnfc_reservation_mbit = kwargs['backupnfcReservationMbit']
+        if backupnfc_share_count is None and 'backupnfcShareCount' in kwargs:
+            backupnfc_share_count = kwargs['backupnfcShareCount']
+        if backupnfc_share_level is None and 'backupnfcShareLevel' in kwargs:
+            backupnfc_share_level = kwargs['backupnfcShareLevel']
+        if block_all_ports is None and 'blockAllPorts' in kwargs:
+            block_all_ports = kwargs['blockAllPorts']
+        if check_beacon is None and 'checkBeacon' in kwargs:
+            check_beacon = kwargs['checkBeacon']
+        if config_version is None and 'configVersion' in kwargs:
+            config_version = kwargs['configVersion']
+        if contact_detail is None and 'contactDetail' in kwargs:
+            contact_detail = kwargs['contactDetail']
+        if contact_name is None and 'contactName' in kwargs:
+            contact_name = kwargs['contactName']
+        if custom_attributes is None and 'customAttributes' in kwargs:
+            custom_attributes = kwargs['customAttributes']
+        if datacenter_id is None and 'datacenterId' in kwargs:
+            datacenter_id = kwargs['datacenterId']
+        if directpath_gen2_allowed is None and 'directpathGen2Allowed' in kwargs:
+            directpath_gen2_allowed = kwargs['directpathGen2Allowed']
+        if egress_shaping_average_bandwidth is None and 'egressShapingAverageBandwidth' in kwargs:
+            egress_shaping_average_bandwidth = kwargs['egressShapingAverageBandwidth']
+        if egress_shaping_burst_size is None and 'egressShapingBurstSize' in kwargs:
+            egress_shaping_burst_size = kwargs['egressShapingBurstSize']
+        if egress_shaping_enabled is None and 'egressShapingEnabled' in kwargs:
+            egress_shaping_enabled = kwargs['egressShapingEnabled']
+        if egress_shaping_peak_bandwidth is None and 'egressShapingPeakBandwidth' in kwargs:
+            egress_shaping_peak_bandwidth = kwargs['egressShapingPeakBandwidth']
+        if faulttolerance_maximum_mbit is None and 'faulttoleranceMaximumMbit' in kwargs:
+            faulttolerance_maximum_mbit = kwargs['faulttoleranceMaximumMbit']
+        if faulttolerance_reservation_mbit is None and 'faulttoleranceReservationMbit' in kwargs:
+            faulttolerance_reservation_mbit = kwargs['faulttoleranceReservationMbit']
+        if faulttolerance_share_count is None and 'faulttoleranceShareCount' in kwargs:
+            faulttolerance_share_count = kwargs['faulttoleranceShareCount']
+        if faulttolerance_share_level is None and 'faulttoleranceShareLevel' in kwargs:
+            faulttolerance_share_level = kwargs['faulttoleranceShareLevel']
+        if hbr_maximum_mbit is None and 'hbrMaximumMbit' in kwargs:
+            hbr_maximum_mbit = kwargs['hbrMaximumMbit']
+        if hbr_reservation_mbit is None and 'hbrReservationMbit' in kwargs:
+            hbr_reservation_mbit = kwargs['hbrReservationMbit']
+        if hbr_share_count is None and 'hbrShareCount' in kwargs:
+            hbr_share_count = kwargs['hbrShareCount']
+        if hbr_share_level is None and 'hbrShareLevel' in kwargs:
+            hbr_share_level = kwargs['hbrShareLevel']
+        if ignore_other_pvlan_mappings is None and 'ignoreOtherPvlanMappings' in kwargs:
+            ignore_other_pvlan_mappings = kwargs['ignoreOtherPvlanMappings']
+        if ingress_shaping_average_bandwidth is None and 'ingressShapingAverageBandwidth' in kwargs:
+            ingress_shaping_average_bandwidth = kwargs['ingressShapingAverageBandwidth']
+        if ingress_shaping_burst_size is None and 'ingressShapingBurstSize' in kwargs:
+            ingress_shaping_burst_size = kwargs['ingressShapingBurstSize']
+        if ingress_shaping_enabled is None and 'ingressShapingEnabled' in kwargs:
+            ingress_shaping_enabled = kwargs['ingressShapingEnabled']
+        if ingress_shaping_peak_bandwidth is None and 'ingressShapingPeakBandwidth' in kwargs:
+            ingress_shaping_peak_bandwidth = kwargs['ingressShapingPeakBandwidth']
+        if ipv4_address is None and 'ipv4Address' in kwargs:
+            ipv4_address = kwargs['ipv4Address']
+        if iscsi_maximum_mbit is None and 'iscsiMaximumMbit' in kwargs:
+            iscsi_maximum_mbit = kwargs['iscsiMaximumMbit']
+        if iscsi_reservation_mbit is None and 'iscsiReservationMbit' in kwargs:
+            iscsi_reservation_mbit = kwargs['iscsiReservationMbit']
+        if iscsi_share_count is None and 'iscsiShareCount' in kwargs:
+            iscsi_share_count = kwargs['iscsiShareCount']
+        if iscsi_share_level is None and 'iscsiShareLevel' in kwargs:
+            iscsi_share_level = kwargs['iscsiShareLevel']
+        if lacp_api_version is None and 'lacpApiVersion' in kwargs:
+            lacp_api_version = kwargs['lacpApiVersion']
+        if lacp_enabled is None and 'lacpEnabled' in kwargs:
+            lacp_enabled = kwargs['lacpEnabled']
+        if lacp_mode is None and 'lacpMode' in kwargs:
+            lacp_mode = kwargs['lacpMode']
+        if link_discovery_operation is None and 'linkDiscoveryOperation' in kwargs:
+            link_discovery_operation = kwargs['linkDiscoveryOperation']
+        if link_discovery_protocol is None and 'linkDiscoveryProtocol' in kwargs:
+            link_discovery_protocol = kwargs['linkDiscoveryProtocol']
+        if management_maximum_mbit is None and 'managementMaximumMbit' in kwargs:
+            management_maximum_mbit = kwargs['managementMaximumMbit']
+        if management_reservation_mbit is None and 'managementReservationMbit' in kwargs:
+            management_reservation_mbit = kwargs['managementReservationMbit']
+        if management_share_count is None and 'managementShareCount' in kwargs:
+            management_share_count = kwargs['managementShareCount']
+        if management_share_level is None and 'managementShareLevel' in kwargs:
+            management_share_level = kwargs['managementShareLevel']
+        if max_mtu is None and 'maxMtu' in kwargs:
+            max_mtu = kwargs['maxMtu']
+        if multicast_filtering_mode is None and 'multicastFilteringMode' in kwargs:
+            multicast_filtering_mode = kwargs['multicastFilteringMode']
+        if netflow_active_flow_timeout is None and 'netflowActiveFlowTimeout' in kwargs:
+            netflow_active_flow_timeout = kwargs['netflowActiveFlowTimeout']
+        if netflow_collector_ip_address is None and 'netflowCollectorIpAddress' in kwargs:
+            netflow_collector_ip_address = kwargs['netflowCollectorIpAddress']
+        if netflow_collector_port is None and 'netflowCollectorPort' in kwargs:
+            netflow_collector_port = kwargs['netflowCollectorPort']
+        if netflow_enabled is None and 'netflowEnabled' in kwargs:
+            netflow_enabled = kwargs['netflowEnabled']
+        if netflow_idle_flow_timeout is None and 'netflowIdleFlowTimeout' in kwargs:
+            netflow_idle_flow_timeout = kwargs['netflowIdleFlowTimeout']
+        if netflow_internal_flows_only is None and 'netflowInternalFlowsOnly' in kwargs:
+            netflow_internal_flows_only = kwargs['netflowInternalFlowsOnly']
+        if netflow_observation_domain_id is None and 'netflowObservationDomainId' in kwargs:
+            netflow_observation_domain_id = kwargs['netflowObservationDomainId']
+        if netflow_sampling_rate is None and 'netflowSamplingRate' in kwargs:
+            netflow_sampling_rate = kwargs['netflowSamplingRate']
+        if network_resource_control_enabled is None and 'networkResourceControlEnabled' in kwargs:
+            network_resource_control_enabled = kwargs['networkResourceControlEnabled']
+        if network_resource_control_version is None and 'networkResourceControlVersion' in kwargs:
+            network_resource_control_version = kwargs['networkResourceControlVersion']
+        if nfs_maximum_mbit is None and 'nfsMaximumMbit' in kwargs:
+            nfs_maximum_mbit = kwargs['nfsMaximumMbit']
+        if nfs_reservation_mbit is None and 'nfsReservationMbit' in kwargs:
+            nfs_reservation_mbit = kwargs['nfsReservationMbit']
+        if nfs_share_count is None and 'nfsShareCount' in kwargs:
+            nfs_share_count = kwargs['nfsShareCount']
+        if nfs_share_level is None and 'nfsShareLevel' in kwargs:
+            nfs_share_level = kwargs['nfsShareLevel']
+        if notify_switches is None and 'notifySwitches' in kwargs:
+            notify_switches = kwargs['notifySwitches']
+        if port_private_secondary_vlan_id is None and 'portPrivateSecondaryVlanId' in kwargs:
+            port_private_secondary_vlan_id = kwargs['portPrivateSecondaryVlanId']
+        if pvlan_mappings is None and 'pvlanMappings' in kwargs:
+            pvlan_mappings = kwargs['pvlanMappings']
+        if standby_uplinks is None and 'standbyUplinks' in kwargs:
+            standby_uplinks = kwargs['standbyUplinks']
+        if teaming_policy is None and 'teamingPolicy' in kwargs:
+            teaming_policy = kwargs['teamingPolicy']
+        if tx_uplink is None and 'txUplink' in kwargs:
+            tx_uplink = kwargs['txUplink']
+        if vdp_maximum_mbit is None and 'vdpMaximumMbit' in kwargs:
+            vdp_maximum_mbit = kwargs['vdpMaximumMbit']
+        if vdp_reservation_mbit is None and 'vdpReservationMbit' in kwargs:
+            vdp_reservation_mbit = kwargs['vdpReservationMbit']
+        if vdp_share_count is None and 'vdpShareCount' in kwargs:
+            vdp_share_count = kwargs['vdpShareCount']
+        if vdp_share_level is None and 'vdpShareLevel' in kwargs:
+            vdp_share_level = kwargs['vdpShareLevel']
+        if virtualmachine_maximum_mbit is None and 'virtualmachineMaximumMbit' in kwargs:
+            virtualmachine_maximum_mbit = kwargs['virtualmachineMaximumMbit']
+        if virtualmachine_reservation_mbit is None and 'virtualmachineReservationMbit' in kwargs:
+            virtualmachine_reservation_mbit = kwargs['virtualmachineReservationMbit']
+        if virtualmachine_share_count is None and 'virtualmachineShareCount' in kwargs:
+            virtualmachine_share_count = kwargs['virtualmachineShareCount']
+        if virtualmachine_share_level is None and 'virtualmachineShareLevel' in kwargs:
+            virtualmachine_share_level = kwargs['virtualmachineShareLevel']
+        if vlan_id is None and 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if vlan_ranges is None and 'vlanRanges' in kwargs:
+            vlan_ranges = kwargs['vlanRanges']
+        if vmotion_maximum_mbit is None and 'vmotionMaximumMbit' in kwargs:
+            vmotion_maximum_mbit = kwargs['vmotionMaximumMbit']
+        if vmotion_reservation_mbit is None and 'vmotionReservationMbit' in kwargs:
+            vmotion_reservation_mbit = kwargs['vmotionReservationMbit']
+        if vmotion_share_count is None and 'vmotionShareCount' in kwargs:
+            vmotion_share_count = kwargs['vmotionShareCount']
+        if vmotion_share_level is None and 'vmotionShareLevel' in kwargs:
+            vmotion_share_level = kwargs['vmotionShareLevel']
+        if vsan_maximum_mbit is None and 'vsanMaximumMbit' in kwargs:
+            vsan_maximum_mbit = kwargs['vsanMaximumMbit']
+        if vsan_reservation_mbit is None and 'vsanReservationMbit' in kwargs:
+            vsan_reservation_mbit = kwargs['vsanReservationMbit']
+        if vsan_share_count is None and 'vsanShareCount' in kwargs:
+            vsan_share_count = kwargs['vsanShareCount']
+        if vsan_share_level is None and 'vsanShareLevel' in kwargs:
+            vsan_share_level = kwargs['vsanShareLevel']
+
         if active_uplinks is not None:
-            pulumi.set(__self__, "active_uplinks", active_uplinks)
+            _setter("active_uplinks", active_uplinks)
         if allow_forged_transmits is not None:
-            pulumi.set(__self__, "allow_forged_transmits", allow_forged_transmits)
+            _setter("allow_forged_transmits", allow_forged_transmits)
         if allow_mac_changes is not None:
-            pulumi.set(__self__, "allow_mac_changes", allow_mac_changes)
+            _setter("allow_mac_changes", allow_mac_changes)
         if allow_promiscuous is not None:
-            pulumi.set(__self__, "allow_promiscuous", allow_promiscuous)
+            _setter("allow_promiscuous", allow_promiscuous)
         if backupnfc_maximum_mbit is not None:
-            pulumi.set(__self__, "backupnfc_maximum_mbit", backupnfc_maximum_mbit)
+            _setter("backupnfc_maximum_mbit", backupnfc_maximum_mbit)
         if backupnfc_reservation_mbit is not None:
-            pulumi.set(__self__, "backupnfc_reservation_mbit", backupnfc_reservation_mbit)
+            _setter("backupnfc_reservation_mbit", backupnfc_reservation_mbit)
         if backupnfc_share_count is not None:
-            pulumi.set(__self__, "backupnfc_share_count", backupnfc_share_count)
+            _setter("backupnfc_share_count", backupnfc_share_count)
         if backupnfc_share_level is not None:
-            pulumi.set(__self__, "backupnfc_share_level", backupnfc_share_level)
+            _setter("backupnfc_share_level", backupnfc_share_level)
         if block_all_ports is not None:
-            pulumi.set(__self__, "block_all_ports", block_all_ports)
+            _setter("block_all_ports", block_all_ports)
         if check_beacon is not None:
-            pulumi.set(__self__, "check_beacon", check_beacon)
+            _setter("check_beacon", check_beacon)
         if config_version is not None:
-            pulumi.set(__self__, "config_version", config_version)
+            _setter("config_version", config_version)
         if contact_detail is not None:
-            pulumi.set(__self__, "contact_detail", contact_detail)
+            _setter("contact_detail", contact_detail)
         if contact_name is not None:
-            pulumi.set(__self__, "contact_name", contact_name)
+            _setter("contact_name", contact_name)
         if custom_attributes is not None:
-            pulumi.set(__self__, "custom_attributes", custom_attributes)
+            _setter("custom_attributes", custom_attributes)
         if datacenter_id is not None:
-            pulumi.set(__self__, "datacenter_id", datacenter_id)
+            _setter("datacenter_id", datacenter_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if directpath_gen2_allowed is not None:
-            pulumi.set(__self__, "directpath_gen2_allowed", directpath_gen2_allowed)
+            _setter("directpath_gen2_allowed", directpath_gen2_allowed)
         if egress_shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
+            _setter("egress_shaping_average_bandwidth", egress_shaping_average_bandwidth)
         if egress_shaping_burst_size is not None:
-            pulumi.set(__self__, "egress_shaping_burst_size", egress_shaping_burst_size)
+            _setter("egress_shaping_burst_size", egress_shaping_burst_size)
         if egress_shaping_enabled is not None:
-            pulumi.set(__self__, "egress_shaping_enabled", egress_shaping_enabled)
+            _setter("egress_shaping_enabled", egress_shaping_enabled)
         if egress_shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
+            _setter("egress_shaping_peak_bandwidth", egress_shaping_peak_bandwidth)
         if failback is not None:
-            pulumi.set(__self__, "failback", failback)
+            _setter("failback", failback)
         if faulttolerance_maximum_mbit is not None:
-            pulumi.set(__self__, "faulttolerance_maximum_mbit", faulttolerance_maximum_mbit)
+            _setter("faulttolerance_maximum_mbit", faulttolerance_maximum_mbit)
         if faulttolerance_reservation_mbit is not None:
-            pulumi.set(__self__, "faulttolerance_reservation_mbit", faulttolerance_reservation_mbit)
+            _setter("faulttolerance_reservation_mbit", faulttolerance_reservation_mbit)
         if faulttolerance_share_count is not None:
-            pulumi.set(__self__, "faulttolerance_share_count", faulttolerance_share_count)
+            _setter("faulttolerance_share_count", faulttolerance_share_count)
         if faulttolerance_share_level is not None:
-            pulumi.set(__self__, "faulttolerance_share_level", faulttolerance_share_level)
+            _setter("faulttolerance_share_level", faulttolerance_share_level)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if hbr_maximum_mbit is not None:
-            pulumi.set(__self__, "hbr_maximum_mbit", hbr_maximum_mbit)
+            _setter("hbr_maximum_mbit", hbr_maximum_mbit)
         if hbr_reservation_mbit is not None:
-            pulumi.set(__self__, "hbr_reservation_mbit", hbr_reservation_mbit)
+            _setter("hbr_reservation_mbit", hbr_reservation_mbit)
         if hbr_share_count is not None:
-            pulumi.set(__self__, "hbr_share_count", hbr_share_count)
+            _setter("hbr_share_count", hbr_share_count)
         if hbr_share_level is not None:
-            pulumi.set(__self__, "hbr_share_level", hbr_share_level)
+            _setter("hbr_share_level", hbr_share_level)
         if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+            _setter("hosts", hosts)
         if ignore_other_pvlan_mappings is not None:
-            pulumi.set(__self__, "ignore_other_pvlan_mappings", ignore_other_pvlan_mappings)
+            _setter("ignore_other_pvlan_mappings", ignore_other_pvlan_mappings)
         if ingress_shaping_average_bandwidth is not None:
-            pulumi.set(__self__, "ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
+            _setter("ingress_shaping_average_bandwidth", ingress_shaping_average_bandwidth)
         if ingress_shaping_burst_size is not None:
-            pulumi.set(__self__, "ingress_shaping_burst_size", ingress_shaping_burst_size)
+            _setter("ingress_shaping_burst_size", ingress_shaping_burst_size)
         if ingress_shaping_enabled is not None:
-            pulumi.set(__self__, "ingress_shaping_enabled", ingress_shaping_enabled)
+            _setter("ingress_shaping_enabled", ingress_shaping_enabled)
         if ingress_shaping_peak_bandwidth is not None:
-            pulumi.set(__self__, "ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
+            _setter("ingress_shaping_peak_bandwidth", ingress_shaping_peak_bandwidth)
         if ipv4_address is not None:
-            pulumi.set(__self__, "ipv4_address", ipv4_address)
+            _setter("ipv4_address", ipv4_address)
         if iscsi_maximum_mbit is not None:
-            pulumi.set(__self__, "iscsi_maximum_mbit", iscsi_maximum_mbit)
+            _setter("iscsi_maximum_mbit", iscsi_maximum_mbit)
         if iscsi_reservation_mbit is not None:
-            pulumi.set(__self__, "iscsi_reservation_mbit", iscsi_reservation_mbit)
+            _setter("iscsi_reservation_mbit", iscsi_reservation_mbit)
         if iscsi_share_count is not None:
-            pulumi.set(__self__, "iscsi_share_count", iscsi_share_count)
+            _setter("iscsi_share_count", iscsi_share_count)
         if iscsi_share_level is not None:
-            pulumi.set(__self__, "iscsi_share_level", iscsi_share_level)
+            _setter("iscsi_share_level", iscsi_share_level)
         if lacp_api_version is not None:
-            pulumi.set(__self__, "lacp_api_version", lacp_api_version)
+            _setter("lacp_api_version", lacp_api_version)
         if lacp_enabled is not None:
-            pulumi.set(__self__, "lacp_enabled", lacp_enabled)
+            _setter("lacp_enabled", lacp_enabled)
         if lacp_mode is not None:
-            pulumi.set(__self__, "lacp_mode", lacp_mode)
+            _setter("lacp_mode", lacp_mode)
         if link_discovery_operation is not None:
-            pulumi.set(__self__, "link_discovery_operation", link_discovery_operation)
+            _setter("link_discovery_operation", link_discovery_operation)
         if link_discovery_protocol is not None:
-            pulumi.set(__self__, "link_discovery_protocol", link_discovery_protocol)
+            _setter("link_discovery_protocol", link_discovery_protocol)
         if management_maximum_mbit is not None:
-            pulumi.set(__self__, "management_maximum_mbit", management_maximum_mbit)
+            _setter("management_maximum_mbit", management_maximum_mbit)
         if management_reservation_mbit is not None:
-            pulumi.set(__self__, "management_reservation_mbit", management_reservation_mbit)
+            _setter("management_reservation_mbit", management_reservation_mbit)
         if management_share_count is not None:
-            pulumi.set(__self__, "management_share_count", management_share_count)
+            _setter("management_share_count", management_share_count)
         if management_share_level is not None:
-            pulumi.set(__self__, "management_share_level", management_share_level)
+            _setter("management_share_level", management_share_level)
         if max_mtu is not None:
-            pulumi.set(__self__, "max_mtu", max_mtu)
+            _setter("max_mtu", max_mtu)
         if multicast_filtering_mode is not None:
-            pulumi.set(__self__, "multicast_filtering_mode", multicast_filtering_mode)
+            _setter("multicast_filtering_mode", multicast_filtering_mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if netflow_active_flow_timeout is not None:
-            pulumi.set(__self__, "netflow_active_flow_timeout", netflow_active_flow_timeout)
+            _setter("netflow_active_flow_timeout", netflow_active_flow_timeout)
         if netflow_collector_ip_address is not None:
-            pulumi.set(__self__, "netflow_collector_ip_address", netflow_collector_ip_address)
+            _setter("netflow_collector_ip_address", netflow_collector_ip_address)
         if netflow_collector_port is not None:
-            pulumi.set(__self__, "netflow_collector_port", netflow_collector_port)
+            _setter("netflow_collector_port", netflow_collector_port)
         if netflow_enabled is not None:
-            pulumi.set(__self__, "netflow_enabled", netflow_enabled)
+            _setter("netflow_enabled", netflow_enabled)
         if netflow_idle_flow_timeout is not None:
-            pulumi.set(__self__, "netflow_idle_flow_timeout", netflow_idle_flow_timeout)
+            _setter("netflow_idle_flow_timeout", netflow_idle_flow_timeout)
         if netflow_internal_flows_only is not None:
-            pulumi.set(__self__, "netflow_internal_flows_only", netflow_internal_flows_only)
+            _setter("netflow_internal_flows_only", netflow_internal_flows_only)
         if netflow_observation_domain_id is not None:
-            pulumi.set(__self__, "netflow_observation_domain_id", netflow_observation_domain_id)
+            _setter("netflow_observation_domain_id", netflow_observation_domain_id)
         if netflow_sampling_rate is not None:
-            pulumi.set(__self__, "netflow_sampling_rate", netflow_sampling_rate)
+            _setter("netflow_sampling_rate", netflow_sampling_rate)
         if network_resource_control_enabled is not None:
-            pulumi.set(__self__, "network_resource_control_enabled", network_resource_control_enabled)
+            _setter("network_resource_control_enabled", network_resource_control_enabled)
         if network_resource_control_version is not None:
-            pulumi.set(__self__, "network_resource_control_version", network_resource_control_version)
+            _setter("network_resource_control_version", network_resource_control_version)
         if nfs_maximum_mbit is not None:
-            pulumi.set(__self__, "nfs_maximum_mbit", nfs_maximum_mbit)
+            _setter("nfs_maximum_mbit", nfs_maximum_mbit)
         if nfs_reservation_mbit is not None:
-            pulumi.set(__self__, "nfs_reservation_mbit", nfs_reservation_mbit)
+            _setter("nfs_reservation_mbit", nfs_reservation_mbit)
         if nfs_share_count is not None:
-            pulumi.set(__self__, "nfs_share_count", nfs_share_count)
+            _setter("nfs_share_count", nfs_share_count)
         if nfs_share_level is not None:
-            pulumi.set(__self__, "nfs_share_level", nfs_share_level)
+            _setter("nfs_share_level", nfs_share_level)
         if notify_switches is not None:
-            pulumi.set(__self__, "notify_switches", notify_switches)
+            _setter("notify_switches", notify_switches)
         if port_private_secondary_vlan_id is not None:
-            pulumi.set(__self__, "port_private_secondary_vlan_id", port_private_secondary_vlan_id)
+            _setter("port_private_secondary_vlan_id", port_private_secondary_vlan_id)
         if pvlan_mappings is not None:
-            pulumi.set(__self__, "pvlan_mappings", pvlan_mappings)
+            _setter("pvlan_mappings", pvlan_mappings)
         if standby_uplinks is not None:
-            pulumi.set(__self__, "standby_uplinks", standby_uplinks)
+            _setter("standby_uplinks", standby_uplinks)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if teaming_policy is not None:
-            pulumi.set(__self__, "teaming_policy", teaming_policy)
+            _setter("teaming_policy", teaming_policy)
         if tx_uplink is not None:
-            pulumi.set(__self__, "tx_uplink", tx_uplink)
+            _setter("tx_uplink", tx_uplink)
         if uplinks is not None:
-            pulumi.set(__self__, "uplinks", uplinks)
+            _setter("uplinks", uplinks)
         if vdp_maximum_mbit is not None:
-            pulumi.set(__self__, "vdp_maximum_mbit", vdp_maximum_mbit)
+            _setter("vdp_maximum_mbit", vdp_maximum_mbit)
         if vdp_reservation_mbit is not None:
-            pulumi.set(__self__, "vdp_reservation_mbit", vdp_reservation_mbit)
+            _setter("vdp_reservation_mbit", vdp_reservation_mbit)
         if vdp_share_count is not None:
-            pulumi.set(__self__, "vdp_share_count", vdp_share_count)
+            _setter("vdp_share_count", vdp_share_count)
         if vdp_share_level is not None:
-            pulumi.set(__self__, "vdp_share_level", vdp_share_level)
+            _setter("vdp_share_level", vdp_share_level)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if virtualmachine_maximum_mbit is not None:
-            pulumi.set(__self__, "virtualmachine_maximum_mbit", virtualmachine_maximum_mbit)
+            _setter("virtualmachine_maximum_mbit", virtualmachine_maximum_mbit)
         if virtualmachine_reservation_mbit is not None:
-            pulumi.set(__self__, "virtualmachine_reservation_mbit", virtualmachine_reservation_mbit)
+            _setter("virtualmachine_reservation_mbit", virtualmachine_reservation_mbit)
         if virtualmachine_share_count is not None:
-            pulumi.set(__self__, "virtualmachine_share_count", virtualmachine_share_count)
+            _setter("virtualmachine_share_count", virtualmachine_share_count)
         if virtualmachine_share_level is not None:
-            pulumi.set(__self__, "virtualmachine_share_level", virtualmachine_share_level)
+            _setter("virtualmachine_share_level", virtualmachine_share_level)
         if vlan_id is not None:
-            pulumi.set(__self__, "vlan_id", vlan_id)
+            _setter("vlan_id", vlan_id)
         if vlan_ranges is not None:
-            pulumi.set(__self__, "vlan_ranges", vlan_ranges)
+            _setter("vlan_ranges", vlan_ranges)
         if vmotion_maximum_mbit is not None:
-            pulumi.set(__self__, "vmotion_maximum_mbit", vmotion_maximum_mbit)
+            _setter("vmotion_maximum_mbit", vmotion_maximum_mbit)
         if vmotion_reservation_mbit is not None:
-            pulumi.set(__self__, "vmotion_reservation_mbit", vmotion_reservation_mbit)
+            _setter("vmotion_reservation_mbit", vmotion_reservation_mbit)
         if vmotion_share_count is not None:
-            pulumi.set(__self__, "vmotion_share_count", vmotion_share_count)
+            _setter("vmotion_share_count", vmotion_share_count)
         if vmotion_share_level is not None:
-            pulumi.set(__self__, "vmotion_share_level", vmotion_share_level)
+            _setter("vmotion_share_level", vmotion_share_level)
         if vsan_maximum_mbit is not None:
-            pulumi.set(__self__, "vsan_maximum_mbit", vsan_maximum_mbit)
+            _setter("vsan_maximum_mbit", vsan_maximum_mbit)
         if vsan_reservation_mbit is not None:
-            pulumi.set(__self__, "vsan_reservation_mbit", vsan_reservation_mbit)
+            _setter("vsan_reservation_mbit", vsan_reservation_mbit)
         if vsan_share_count is not None:
-            pulumi.set(__self__, "vsan_share_count", vsan_share_count)
+            _setter("vsan_share_count", vsan_share_count)
         if vsan_share_level is not None:
-            pulumi.set(__self__, "vsan_share_level", vsan_share_level)
+            _setter("vsan_share_level", vsan_share_level)
 
     @property
     @pulumi.getter(name="activeUplinks")
@@ -3731,6 +4475,10 @@ class DistributedVirtualSwitch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DistributedVirtualSwitchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

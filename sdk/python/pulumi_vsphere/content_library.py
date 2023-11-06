@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,15 +29,38 @@ class ContentLibraryArgs:
         :param pulumi.Input['ContentLibraryPublicationArgs'] publication: Options to publish a local content library.
         :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options subscribe to a published content library.
         """
-        pulumi.set(__self__, "storage_backings", storage_backings)
+        ContentLibraryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            storage_backings=storage_backings,
+            description=description,
+            name=name,
+            publication=publication,
+            subscription=subscription,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
+             subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if storage_backings is None and 'storageBackings' in kwargs:
+            storage_backings = kwargs['storageBackings']
+        if storage_backings is None:
+            raise TypeError("Missing 'storage_backings' argument")
+
+        _setter("storage_backings", storage_backings)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if publication is not None:
-            pulumi.set(__self__, "publication", publication)
+            _setter("publication", publication)
         if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
+            _setter("subscription", subscription)
 
     @property
     @pulumi.getter(name="storageBackings")
@@ -116,16 +139,37 @@ class _ContentLibraryState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_backings: The managed object reference ID of the datastore on which to store the content library items.
         :param pulumi.Input['ContentLibrarySubscriptionArgs'] subscription: Options subscribe to a published content library.
         """
+        _ContentLibraryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            publication=publication,
+            storage_backings=storage_backings,
+            subscription=subscription,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             publication: Optional[pulumi.Input['ContentLibraryPublicationArgs']] = None,
+             storage_backings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subscription: Optional[pulumi.Input['ContentLibrarySubscriptionArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if storage_backings is None and 'storageBackings' in kwargs:
+            storage_backings = kwargs['storageBackings']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if publication is not None:
-            pulumi.set(__self__, "publication", publication)
+            _setter("publication", publication)
         if storage_backings is not None:
-            pulumi.set(__self__, "storage_backings", storage_backings)
+            _setter("storage_backings", storage_backings)
         if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
+            _setter("subscription", subscription)
 
     @property
     @pulumi.getter
@@ -227,6 +271,10 @@ class ContentLibrary(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContentLibraryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -248,10 +296,20 @@ class ContentLibrary(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            if publication is not None and not isinstance(publication, ContentLibraryPublicationArgs):
+                publication = publication or {}
+                def _setter(key, value):
+                    publication[key] = value
+                ContentLibraryPublicationArgs._configure(_setter, **publication)
             __props__.__dict__["publication"] = publication
             if storage_backings is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_backings'")
             __props__.__dict__["storage_backings"] = storage_backings
+            if subscription is not None and not isinstance(subscription, ContentLibrarySubscriptionArgs):
+                subscription = subscription or {}
+                def _setter(key, value):
+                    subscription[key] = value
+                ContentLibrarySubscriptionArgs._configure(_setter, **subscription)
             __props__.__dict__["subscription"] = subscription
         super(ContentLibrary, __self__).__init__(
             'vsphere:index/contentLibrary:ContentLibrary',
