@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DpmHostOverride struct {
@@ -178,12 +177,6 @@ func (i *DpmHostOverride) ToDpmHostOverrideOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideOutput)
 }
 
-func (i *DpmHostOverride) ToOutput(ctx context.Context) pulumix.Output[*DpmHostOverride] {
-	return pulumix.Output[*DpmHostOverride]{
-		OutputState: i.ToDpmHostOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DpmHostOverrideArrayInput is an input type that accepts DpmHostOverrideArray and DpmHostOverrideArrayOutput values.
 // You can construct a concrete instance of `DpmHostOverrideArrayInput` via:
 //
@@ -207,12 +200,6 @@ func (i DpmHostOverrideArray) ToDpmHostOverrideArrayOutput() DpmHostOverrideArra
 
 func (i DpmHostOverrideArray) ToDpmHostOverrideArrayOutputWithContext(ctx context.Context) DpmHostOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideArrayOutput)
-}
-
-func (i DpmHostOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*DpmHostOverride] {
-	return pulumix.Output[[]*DpmHostOverride]{
-		OutputState: i.ToDpmHostOverrideArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DpmHostOverrideMapInput is an input type that accepts DpmHostOverrideMap and DpmHostOverrideMapOutput values.
@@ -240,12 +227,6 @@ func (i DpmHostOverrideMap) ToDpmHostOverrideMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DpmHostOverrideMapOutput)
 }
 
-func (i DpmHostOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DpmHostOverride] {
-	return pulumix.Output[map[string]*DpmHostOverride]{
-		OutputState: i.ToDpmHostOverrideMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DpmHostOverrideOutput struct{ *pulumi.OutputState }
 
 func (DpmHostOverrideOutput) ElementType() reflect.Type {
@@ -258,12 +239,6 @@ func (o DpmHostOverrideOutput) ToDpmHostOverrideOutput() DpmHostOverrideOutput {
 
 func (o DpmHostOverrideOutput) ToDpmHostOverrideOutputWithContext(ctx context.Context) DpmHostOverrideOutput {
 	return o
-}
-
-func (o DpmHostOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*DpmHostOverride] {
-	return pulumix.Output[*DpmHostOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed object reference
@@ -309,12 +284,6 @@ func (o DpmHostOverrideArrayOutput) ToDpmHostOverrideArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o DpmHostOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DpmHostOverride] {
-	return pulumix.Output[[]*DpmHostOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DpmHostOverrideArrayOutput) Index(i pulumi.IntInput) DpmHostOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DpmHostOverride {
 		return vs[0].([]*DpmHostOverride)[vs[1].(int)]
@@ -333,12 +302,6 @@ func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutput() DpmHostOverrideMa
 
 func (o DpmHostOverrideMapOutput) ToDpmHostOverrideMapOutputWithContext(ctx context.Context) DpmHostOverrideMapOutput {
 	return o
-}
-
-func (o DpmHostOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DpmHostOverride] {
-	return pulumix.Output[map[string]*DpmHostOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DpmHostOverrideMapOutput) MapIndex(k pulumi.StringInput) DpmHostOverrideOutput {

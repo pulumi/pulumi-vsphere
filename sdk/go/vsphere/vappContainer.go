@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type VappContainer struct {
@@ -380,12 +379,6 @@ func (i *VappContainer) ToVappContainerOutputWithContext(ctx context.Context) Va
 	return pulumi.ToOutputWithContext(ctx, i).(VappContainerOutput)
 }
 
-func (i *VappContainer) ToOutput(ctx context.Context) pulumix.Output[*VappContainer] {
-	return pulumix.Output[*VappContainer]{
-		OutputState: i.ToVappContainerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VappContainerArrayInput is an input type that accepts VappContainerArray and VappContainerArrayOutput values.
 // You can construct a concrete instance of `VappContainerArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i VappContainerArray) ToVappContainerArrayOutput() VappContainerArrayOutpu
 
 func (i VappContainerArray) ToVappContainerArrayOutputWithContext(ctx context.Context) VappContainerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VappContainerArrayOutput)
-}
-
-func (i VappContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]*VappContainer] {
-	return pulumix.Output[[]*VappContainer]{
-		OutputState: i.ToVappContainerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VappContainerMapInput is an input type that accepts VappContainerMap and VappContainerMapOutput values.
@@ -442,12 +429,6 @@ func (i VappContainerMap) ToVappContainerMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VappContainerMapOutput)
 }
 
-func (i VappContainerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VappContainer] {
-	return pulumix.Output[map[string]*VappContainer]{
-		OutputState: i.ToVappContainerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VappContainerOutput struct{ *pulumi.OutputState }
 
 func (VappContainerOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o VappContainerOutput) ToVappContainerOutput() VappContainerOutput {
 
 func (o VappContainerOutput) ToVappContainerOutputWithContext(ctx context.Context) VappContainerOutput {
 	return o
-}
-
-func (o VappContainerOutput) ToOutput(ctx context.Context) pulumix.Output[*VappContainer] {
-	return pulumix.Output[*VappContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines if the reservation on a vApp
@@ -585,12 +560,6 @@ func (o VappContainerArrayOutput) ToVappContainerArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o VappContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VappContainer] {
-	return pulumix.Output[[]*VappContainer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VappContainerArrayOutput) Index(i pulumi.IntInput) VappContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VappContainer {
 		return vs[0].([]*VappContainer)[vs[1].(int)]
@@ -609,12 +578,6 @@ func (o VappContainerMapOutput) ToVappContainerMapOutput() VappContainerMapOutpu
 
 func (o VappContainerMapOutput) ToVappContainerMapOutputWithContext(ctx context.Context) VappContainerMapOutput {
 	return o
-}
-
-func (o VappContainerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VappContainer] {
-	return pulumix.Output[map[string]*VappContainer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VappContainerMapOutput) MapIndex(k pulumi.StringInput) VappContainerOutput {

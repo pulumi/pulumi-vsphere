@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type HaVmOverride struct {
@@ -438,12 +437,6 @@ func (i *HaVmOverride) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVm
 	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideOutput)
 }
 
-func (i *HaVmOverride) ToOutput(ctx context.Context) pulumix.Output[*HaVmOverride] {
-	return pulumix.Output[*HaVmOverride]{
-		OutputState: i.ToHaVmOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HaVmOverrideArrayInput is an input type that accepts HaVmOverrideArray and HaVmOverrideArrayOutput values.
 // You can construct a concrete instance of `HaVmOverrideArrayInput` via:
 //
@@ -467,12 +460,6 @@ func (i HaVmOverrideArray) ToHaVmOverrideArrayOutput() HaVmOverrideArrayOutput {
 
 func (i HaVmOverrideArray) ToHaVmOverrideArrayOutputWithContext(ctx context.Context) HaVmOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideArrayOutput)
-}
-
-func (i HaVmOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*HaVmOverride] {
-	return pulumix.Output[[]*HaVmOverride]{
-		OutputState: i.ToHaVmOverrideArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HaVmOverrideMapInput is an input type that accepts HaVmOverrideMap and HaVmOverrideMapOutput values.
@@ -500,12 +487,6 @@ func (i HaVmOverrideMap) ToHaVmOverrideMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HaVmOverrideMapOutput)
 }
 
-func (i HaVmOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVmOverride] {
-	return pulumix.Output[map[string]*HaVmOverride]{
-		OutputState: i.ToHaVmOverrideMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HaVmOverrideOutput struct{ *pulumi.OutputState }
 
 func (HaVmOverrideOutput) ElementType() reflect.Type {
@@ -518,12 +499,6 @@ func (o HaVmOverrideOutput) ToHaVmOverrideOutput() HaVmOverrideOutput {
 
 func (o HaVmOverrideOutput) ToHaVmOverrideOutputWithContext(ctx context.Context) HaVmOverrideOutput {
 	return o
-}
-
-func (o HaVmOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*HaVmOverride] {
-	return pulumix.Output[*HaVmOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed object reference
@@ -654,12 +629,6 @@ func (o HaVmOverrideArrayOutput) ToHaVmOverrideArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HaVmOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HaVmOverride] {
-	return pulumix.Output[[]*HaVmOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HaVmOverrideArrayOutput) Index(i pulumi.IntInput) HaVmOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HaVmOverride {
 		return vs[0].([]*HaVmOverride)[vs[1].(int)]
@@ -678,12 +647,6 @@ func (o HaVmOverrideMapOutput) ToHaVmOverrideMapOutput() HaVmOverrideMapOutput {
 
 func (o HaVmOverrideMapOutput) ToHaVmOverrideMapOutputWithContext(ctx context.Context) HaVmOverrideMapOutput {
 	return o
-}
-
-func (o HaVmOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HaVmOverride] {
-	return pulumix.Output[map[string]*HaVmOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HaVmOverrideMapOutput) MapIndex(k pulumi.StringInput) HaVmOverrideOutput {

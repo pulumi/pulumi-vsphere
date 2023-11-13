@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `DistributedVirtualSwitch` data source can be used to discover
@@ -145,12 +144,6 @@ func (o LookupDistributedVirtualSwitchResultOutput) ToLookupDistributedVirtualSw
 
 func (o LookupDistributedVirtualSwitchResultOutput) ToLookupDistributedVirtualSwitchResultOutputWithContext(ctx context.Context) LookupDistributedVirtualSwitchResultOutput {
 	return o
-}
-
-func (o LookupDistributedVirtualSwitchResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDistributedVirtualSwitchResult] {
-	return pulumix.Output[LookupDistributedVirtualSwitchResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDistributedVirtualSwitchResultOutput) DatacenterId() pulumi.StringPtrOutput {

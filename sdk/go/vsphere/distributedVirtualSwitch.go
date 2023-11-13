@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-vsphere/sdk/v4/go/vsphere/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DistributedVirtualSwitch struct {
@@ -1569,12 +1568,6 @@ func (i *DistributedVirtualSwitch) ToDistributedVirtualSwitchOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchOutput)
 }
 
-func (i *DistributedVirtualSwitch) ToOutput(ctx context.Context) pulumix.Output[*DistributedVirtualSwitch] {
-	return pulumix.Output[*DistributedVirtualSwitch]{
-		OutputState: i.ToDistributedVirtualSwitchOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DistributedVirtualSwitchArrayInput is an input type that accepts DistributedVirtualSwitchArray and DistributedVirtualSwitchArrayOutput values.
 // You can construct a concrete instance of `DistributedVirtualSwitchArrayInput` via:
 //
@@ -1598,12 +1591,6 @@ func (i DistributedVirtualSwitchArray) ToDistributedVirtualSwitchArrayOutput() D
 
 func (i DistributedVirtualSwitchArray) ToDistributedVirtualSwitchArrayOutputWithContext(ctx context.Context) DistributedVirtualSwitchArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchArrayOutput)
-}
-
-func (i DistributedVirtualSwitchArray) ToOutput(ctx context.Context) pulumix.Output[[]*DistributedVirtualSwitch] {
-	return pulumix.Output[[]*DistributedVirtualSwitch]{
-		OutputState: i.ToDistributedVirtualSwitchArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DistributedVirtualSwitchMapInput is an input type that accepts DistributedVirtualSwitchMap and DistributedVirtualSwitchMapOutput values.
@@ -1631,12 +1618,6 @@ func (i DistributedVirtualSwitchMap) ToDistributedVirtualSwitchMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedVirtualSwitchMapOutput)
 }
 
-func (i DistributedVirtualSwitchMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DistributedVirtualSwitch] {
-	return pulumix.Output[map[string]*DistributedVirtualSwitch]{
-		OutputState: i.ToDistributedVirtualSwitchMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DistributedVirtualSwitchOutput struct{ *pulumi.OutputState }
 
 func (DistributedVirtualSwitchOutput) ElementType() reflect.Type {
@@ -1649,12 +1630,6 @@ func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutput() Distr
 
 func (o DistributedVirtualSwitchOutput) ToDistributedVirtualSwitchOutputWithContext(ctx context.Context) DistributedVirtualSwitchOutput {
 	return o
-}
-
-func (o DistributedVirtualSwitchOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributedVirtualSwitch] {
-	return pulumix.Output[*DistributedVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of active uplinks to be used in load
@@ -2258,12 +2233,6 @@ func (o DistributedVirtualSwitchArrayOutput) ToDistributedVirtualSwitchArrayOutp
 	return o
 }
 
-func (o DistributedVirtualSwitchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DistributedVirtualSwitch] {
-	return pulumix.Output[[]*DistributedVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DistributedVirtualSwitchArrayOutput) Index(i pulumi.IntInput) DistributedVirtualSwitchOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DistributedVirtualSwitch {
 		return vs[0].([]*DistributedVirtualSwitch)[vs[1].(int)]
@@ -2282,12 +2251,6 @@ func (o DistributedVirtualSwitchMapOutput) ToDistributedVirtualSwitchMapOutput()
 
 func (o DistributedVirtualSwitchMapOutput) ToDistributedVirtualSwitchMapOutputWithContext(ctx context.Context) DistributedVirtualSwitchMapOutput {
 	return o
-}
-
-func (o DistributedVirtualSwitchMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DistributedVirtualSwitch] {
-	return pulumix.Output[map[string]*DistributedVirtualSwitch]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DistributedVirtualSwitchMapOutput) MapIndex(k pulumi.StringInput) DistributedVirtualSwitchOutput {
